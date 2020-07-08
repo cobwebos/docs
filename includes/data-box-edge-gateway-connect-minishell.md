@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173412"
 ---
 远程连接到设备的过程不同，具体取决于客户端的操作系统。
@@ -28,7 +28,7 @@ ms.locfileid: "67173412"
 
     $ip = "<device_ip>"
 
-    将`<device_ip>`替换为设备的 IP 地址。
+    `<device_ip>`将替换为设备的 IP 地址。
 
 4. 要将设备的 IP 地址添加到客户端的受信任主机列表，请键入以下命令：
 
@@ -59,7 +59,7 @@ ms.locfileid: "67173412"
 在将用于连接的 Linux 客户端上：
 
 - 从 GitHub[安装最新的适用于 Linux 的 PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6)以获取 SSH 远程处理功能。 
-- [仅从 NTLM `gss-ntlmssp`模块安装包](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 对于 Ubuntu 客户端，请使用以下命令：
+- [仅 `gss-ntlmssp` 从 NTLM 模块安装包](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 对于 Ubuntu 客户端，请使用以下命令：
     - `sudo apt-get install gss-ntlmssp`
 
 有关详细信息，请参阅[通过 SSH 进行 PowerShell 远程处理](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)。

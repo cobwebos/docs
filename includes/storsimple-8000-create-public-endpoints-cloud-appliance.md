@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173012"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>在云设备上创建公共终结点
@@ -39,7 +39,7 @@ ms.locfileid: "67173012"
 
         4. 对于“服务”，选择“WinRM”。******** “协议”自动设置为“TCP”，“端口范围”设置为“5986”。****************
 
-        5. 单击 **"确定"** 创建规则。
+        5. 单击“确定”创建规则  。
 
             ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt5.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "67173012"
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt7.png)
 
     3. 选择虚拟网络，并选择相应的子网。
-    4. 单击 **"确定"** 创建规则。
+    4. 单击“确定”创建规则  。
 
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt11.png)
 

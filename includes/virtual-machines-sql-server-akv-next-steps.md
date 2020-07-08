@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 9df08151e4af6e82a775b3ee99dab88134a2f032
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82784089"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84014684"
 ---
 ## <a name="next-steps"></a>后续步骤
 
@@ -17,9 +17,9 @@ ms.locfileid: "82784089"
 
 可以利用以下几种形式的加密：
 
-* [透明数据加密 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [加密备份](https://msdn.microsoft.com/library/dn449489.aspx)
-* [列级加密 (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [加密备份](/sql/relational-databases/backup-restore/backup-encryption)
+* [列级加密 (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)
 
 以下 Transact-SQL 脚本提供针对每种形式的示例。
 
@@ -146,4 +146,4 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 有关如何使用这些加密功能的详细信息，请参阅[将 EKM 用于 SQL Server 加密功能](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)。
 
-请注意，本文中的步骤假定已经具有在 Azure 虚拟机上运行的 SQL Server。 如果没有，请参阅[在 Azure 中预配 SQL Server 虚拟机](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)。 有关在 Azure VM 中运行 SQL Server 的其他指南，请参阅 [Azure 虚拟机上的 SQL Server 概述](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+请注意，本文中的步骤假定已经具有在 Azure 虚拟机上运行的 SQL Server。 如果没有，请参阅[在 Azure 中预配 SQL Server 虚拟机](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md)。 有关在 Azure VM 中运行 SQL Server 的其他指南，请参阅 [Azure 虚拟机上的 SQL Server 概述](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。

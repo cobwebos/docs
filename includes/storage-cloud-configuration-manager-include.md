@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 5102866cdda51ef545fd95b32946cb17c6e40a3c
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72038169"
 ---
 [适用于 .NET 的 Microsoft Azure Configuration Manager 库](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) 提供用于分析配置文件中连接字符串的类。 [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx)类分析配置设置。 它分析桌面、移动设备、Azure 虚拟机或 Azure 云服务中运行的客户端应用程序的设置。
 
-若要引用`CloudConfigurationManager`包，请添加以下`using`指令：
+若要引用 `CloudConfigurationManager` 包，请添加以下 `using` 指令：
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager

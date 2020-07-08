@@ -10,7 +10,7 @@ ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: e493d1c4f5851ee510ea83e706afce5fbb6f487e
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "70049063"

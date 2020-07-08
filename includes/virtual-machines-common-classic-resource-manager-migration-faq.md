@@ -10,7 +10,7 @@ ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: fa97935c10b2a5df70c9babf031a889a9c1e9f34
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83837874"

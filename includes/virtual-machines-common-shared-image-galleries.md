@@ -9,7 +9,7 @@ ms.author: akjosh
 ms.custom: include file
 ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
 ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/03/2020
 ms.locfileid: "84317436"

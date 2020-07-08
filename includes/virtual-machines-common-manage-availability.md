@@ -10,7 +10,7 @@ ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83696429"

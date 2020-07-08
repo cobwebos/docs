@@ -6,7 +6,7 @@ ms.date: 09/02/2019
 ms.author: crdun
 ms.openlocfilehash: 405efee7221bcfaca17e0334bd9be46d9b34b74c
 ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83860506"

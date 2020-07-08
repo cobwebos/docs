@@ -6,7 +6,7 @@ ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: c72b6564109b39fa4f58eedca68361f6a28a422d
 ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "67173504"
