@@ -1,21 +1,21 @@
 ---
 title: 有关选择时序 ID 的最佳做法 - Azure 时序见解 | Microsoft Docs
 description: 了解在 Azure 时序见解预览版中选择时序 ID 时的最佳做法。
-author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+author: shipramishra
+ms.author: shmishr
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 312bb9bac93ea30d01e1c3138709325ee1aa6173
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838716"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042163"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -28,8 +28,8 @@ ms.locfileid: "82838716"
 > [!IMPORTANT]
 > 时序 ID 如下：
 >
-> * 区分大小写的属性  ：搜索、比较和更新以及分区都会用到字母和字符的大小写。
-> * 不可变属性  ：一旦创建，无法更改。
+> * 区分大小写的属性：搜索、比较和更新以及分区都会用到字母和字符的大小写。
+> * 不可变属性：一旦创建，无法更改。
 
 > [!TIP]
 > 如果事件源是 IoT 中心，则时序 ID 可能是 iothub-connection-device-id。
@@ -37,10 +37,11 @@ ms.locfileid: "82838716"
 要遵守的主要最佳做法包括：
 
 * 选择具有许多（例如，几百甚至几千个）非重复值的分区键。 在许多情况下，该键可能是 JSON 中的设备 ID、传感器 ID 或标记 ID。
-* 在[时序模型](./time-series-insights-update-tsm.md)的叶节点级别，时序 ID 应是唯一的。
+* 在[时序模型](./concepts-model-overview.md)的叶节点级别，时序 ID 应是唯一的。
 * 时序 ID 属性名称字符串的字符数限制为 128 个。 时序 ID 属性值的字符数限制为 1024 个。
 * 如果时序 ID 的某个唯一属性值缺失，该值将被视为 null 值，并遵循相同的唯一性约束规则。
-* 此外，最多可以选择三个键属性作为时序 ID。  这些属性的组合将是表示时序 ID 的组合键。  
+* 如果你的时序 ID 嵌套在复杂的 JSON 对象中，请确保在提供属性名称时遵循入口[平展规则](./concepts-json-flattening-escaping-rules.md)。 请参阅示例[B](concepts-json-flattening-escaping-rules.md#example-b)。 
+* 此外，最多可以选择三个键属性作为时序 ID。 这些属性的组合将是表示时序 ID 的组合键。  
   > [!NOTE]
   > 三个键属性必须是字符串。
   > 必须针对此组合键运行查询，而不能每次查询一个属性。
@@ -75,12 +76,10 @@ ms.locfileid: "82838716"
 
 然后，可在 Azure 门户中输入组合键，如下所示：
 
-```JSON
-[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
-```
+[![配置环境的时序 ID。](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[数据建模](./time-series-insights-update-tsm.md)。
+* 阅读[JSON 平展和转义规则](./concepts-json-flattening-escaping-rules.md)以了解如何存储事件。
 
 * 规划 [Azure 时序见解预览版环境](./time-series-insights-update-plan.md)。

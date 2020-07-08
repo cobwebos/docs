@@ -14,12 +14,12 @@ ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7bfc00566ef24fb6d6851a7cdee402598fe15951
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: adc3cbd7b98d915a0b598227b459891cb0e0bfff
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052613"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042503"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>快速入门：结合使用 R 和 Azure SQL 数据库机器学习服务（预览版）来查询数据库 
 
@@ -85,4 +85,3 @@ ms.locfileid: "84052613"
 - [在 Azure SQL 数据库中设计第一个数据库](design-first-database-tutorial.md)
 - [Azure SQL 数据库机器学习服务（使用 R）](machine-learning-services-overview.md)
 - [在 Azure SQL 数据库机器学习服务（预览版）中创建和运行简单的 R 脚本](r-script-create-quickstart.md)
-- [使用机器学习服务（预览版）在 Azure SQL 数据库中编写高级 R 函数](machine-learning-services-functions.md)

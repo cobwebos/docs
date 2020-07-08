@@ -3,12 +3,12 @@ title: NIST SP 800-53 R4 蓝图示例概述
 description: NIST SP 800-53 R4 蓝图示例的概述。 此蓝图示例可帮助客户评估特定 NIST SP 800-53 R4 控制要求。
 ms.date: 05/14/2020
 ms.topic: sample
-ms.openlocfilehash: e7ad29904b87a20f59d2867d277d806331614461
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 20ea6e81746a07db85a00a0881744340b2a24d1f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739457"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042656"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 蓝图示例
 
@@ -102,7 +102,7 @@ NIST SP 800-53 R4 蓝图示例提供了监管防护措施，其中使用 [Azure 
 |项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
 |\[预览\]：审核 NIST SP 800-53 R4 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应为 VM 配置的 Log Analytics 工作区 ID|这是应为 VM 配置的 Log Analytics 工作区的 ID (GUID)。|
-|\[预览\]：审核 NIST SP 800-53 R4 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
+|\[预览\]：审核 NIST SP 800-53 R4 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。|
 |\[预览\]：审核 NIST SP 800-53 R4 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应该从 Windows VM 管理员组中排除的用户的列表|以分号分隔的应从管理员本地组中排除的成员列表。 例如：管理员；myUser1；myUser2|
 |\[预览\]：审核 NIST SP 800-53 R4 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应该包括在 Windows VM 管理员组中的用户的列表|以分号分隔的应包括在管理员本地组中的成员列表。 例如：管理员；myUser1；myUser2|
 |\[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|Linux VM 规模集 (VMSS) 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|

@@ -1,6 +1,6 @@
 ---
-title: 支持 Azure PaaS 资源的 azure 安全中心功能。
-description: 此页面显示 Azure 安全中心功能对支持的 Azure PaaS 资源的可用性。
+title: 受支持的 Azure PaaS 资源的 Azure 安全中心功能。
+description: 此页显示受支持的 Azure PaaS 资源的 Azure 安全中心功能的可用性。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78209358"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042350"
 ---
-# <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS 服务的功能范围<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>适用于 Azure PaaS 服务的功能覆盖范围 <a name="paas-services"></a>
 
-下表显示了支持的 Azure PaaS 资源的 Azure 安全中心功能可用性。
+下表显示受支持的 Azure PaaS 资源的 Azure 安全中心功能的可用性。
 
 |服务|建议（免费）|安全警报（标准）|漏洞评估（标准）|
 |:----|:----:|:----:|:----:|
@@ -37,22 +37,23 @@ ms.locfileid: "78209358"
 |Azure Cosmos DB*|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
 |Azure Data Lake Storage|✔|-|-|
-|Azure Database for MySQL *|✔|✔|-|
-|Azure Database for PostgreSQL *|✔|✔|-|
+|Azure Database for MySQL*|✔|✔|-|
+|Azure Database for PostgreSQL*|✔|✔|-|
 |Azure 事件中心命名空间|✔|-|-|
-|Azure Functions 应用程序|✔|-|-|
+|Azure Functions 应用|✔|-|-|
 |Azure Key Vault|✔|✔ *|-|
 |Azure Kubernetes 服务|✔|✔|-|
 |Azure 负载均衡器|✔|-|-|
 |Azure 逻辑应用|✔|-|-|
-|Azure SQL 数据库|✔|✔|✔|
+|Azure SQL Database|✔|✔|✔|
+|Azure SQL 托管实例|✔|✔|✔|
 |Azure 服务总线命名空间|✔|-|-|
 |Azure Service Fabric 帐户|✔|-|-|
-|Azure 存储帐户|✔|-|-|
+|Azure 存储帐户|✔ **|-|-|
 |Azure 流分析|✔|-|-|
 |Azure 订阅|✔ **|✔|-|
-|Azure 虚拟网络</br> （包括子网、Nic 和网络安全组）|✔|-|-|
+|Azure 虚拟网络</br> （包括子网、NIC 和网络安全组）|✔|-|-|
 
-\*预览版当前支持这些功能。
+\* 预览版目前支持这些功能。
 
-\*\*Azure Active Directory （Azure AD）建议仅适用于标准订阅。
+\*\* Azure Active Directory (Azure AD) 建议仅适用于标准订阅。

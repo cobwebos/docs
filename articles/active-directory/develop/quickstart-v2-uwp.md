@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 362f6d1f4e50e1cc78c8897499b9f6593096162b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536006"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553874"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -32,7 +32,7 @@ ms.locfileid: "81536006"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
 > 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs)窗格。
-> 1. 输入应用程序的名称，然后单击“注册”。 
+> 1. 输入应用程序的名称，然后单击“注册”。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
@@ -42,14 +42,14 @@ ms.locfileid: "81536006"
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://aka.ms/MobileAppReg)页。
-> 1. 选择“新注册”。 
-> 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
->      - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `UWP-App-calling-MsGraph`。
->      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。  
->      - 选择“注册”  以创建应用程序。
-> 1. 在应用的页面列表中，选择“身份验证”。 
-> 1. 在“重定向 URI”   | “建议用于公共客户端(移动、桌面)的重定向 URI”  部分中，选中 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
-> 1. 选择“保存”。 
+> 1. 选择“新注册”。
+> 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
+>      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `UWP-App-calling-MsGraph`。
+>      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。 
+>      - 选择“注册”以创建应用程序。
+> 1. 在应用的页面列表中，选择“身份验证”。
+> 1. 在“重定向 URI” | “建议用于公共客户端(移动、桌面)的重定向 URI”部分中，选中 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
+> 1. 选择“保存”。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>步骤 1：配置应用程序
@@ -92,14 +92,14 @@ ms.locfileid: "81536006"
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 >
 > > [!TIP]
-> > 若要查找“应用程序 ID”的值  ，请转到门户中的“概览”  部分
+> > 若要查找“应用程序 ID”的值，请转到门户中的“概览”部分
 
 #### <a name="step-4-run-your-application"></a>步骤 4：运行应用程序
 
 若要在 Windows 计算机上尝试快速入门，请执行以下操作：
 
-1. 在 Visual Studio 工具栏中，选择适当的平台（可能为 **x64** 或 **x86**，不是 ARM）。 你将看到目标设备从“设备”  更改为“本地计算机” 
-1. 选择“调试”|  “在不调试的情况下启动”
+1. 在 Visual Studio 工具栏中，选择适当的平台（可能为 **x64** 或 **x86**，不是 ARM）。 你将看到目标设备从“设备”更改为“本地计算机”
+1. 选择“调试”|“在不调试的情况下启动”
 
 ## <a name="more-information"></a>详细信息
 
@@ -110,7 +110,7 @@ ms.locfileid: "81536006"
 
 ### <a name="msalnet"></a>MSAL.NET
 
-MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 是一个库，用于用户登录和请求安全令牌。 安全令牌用于访问受面向开发人员的 Microsoft 标识平台保护的 API。 可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL  ：
+MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 是一个库，用于用户登录和请求安全令牌。 安全令牌用于访问受面向开发人员的 Microsoft 标识平台保护的 API。 可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL：
 
 ```powershell
 Install-Package Microsoft.Identity.Client
@@ -133,9 +133,9 @@ PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
                                                     .Build();
 ```
 
-> |其中： ||
+> |其中： | 说明 |
 > |---------|---------|
-> | `ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”  页中找到此值。 |
+> | `ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
 
 ### <a name="requesting-tokens"></a>请求令牌
 
@@ -155,7 +155,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |其中：||
+> |其中：| 说明 |
 > |---------|---------|
 > | `scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
 
@@ -170,7 +170,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |其中： ||
+> |其中： | 说明 |
 > |---------|---------|
 > | `scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph ）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
 > | `firstAccount` | 指定缓存中的第一个用户帐户（MSAL 支持在单个应用中使用多个用户） |
