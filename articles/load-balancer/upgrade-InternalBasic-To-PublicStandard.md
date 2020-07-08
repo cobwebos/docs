@@ -4,15 +4,15 @@ description: 本文介绍如何将 Azure 基本内部负载均衡器升级到标
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6b4d2a5cf441eb702bc33fc862fec9cc28a998b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809356"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升级 Azure 内部负载均衡器 - 需要出站连接
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能集和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。 由于标准内部负载均衡器不提供出站连接，因此我们提供了一个解决方案，改为创建标准公共负载均衡器。
@@ -23,7 +23,7 @@ ms.locfileid: "82858408"
 2. 将 VM 添加到标准公共负载均衡器的后端池
 3. 为应从/向 Internet 迄今为止的子网/Vm 设置 NSG 规则
 
-本文介绍配置迁移。 根据特定环境，将 Vm 添加到后端池可能会有所不同。 不过，本文提供了一些概要性的普通[建议](#add-vms-to-backend-pools-of-standard-load-balancer)。
+本文介绍配置迁移。 根据特定的环境，将 VM 添加到后端池的过程可能有所不同。 不过，本文提供了一些概要性的普通[建议](#add-vms-to-backend-pools-of-standard-load-balancer)。
 
 ## <a name="upgrade-overview"></a>升级概述
 

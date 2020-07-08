@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594128"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809481"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -46,7 +46,7 @@ Azure 前门支持动态站点加速（DSA）、TLS/SSL 卸载和端到端 TLS�
 
 - 前门只能在全局级别执行基于路径的负载均衡，但如果要在其虚拟网络（VNET）内进一步对流量进行负载均衡，则应使用应用程序网关。
 - 由于前端在 VM/容器级别不起作用，因此不能进行连接排出。 但是，应用程序网关允许进行连接排出。 
-- 使用 AFD 的应用程序网关，可以在其虚拟网络（VNET）内实现100% 的 TLS/SSL 卸载并只路由 HTTP 请求。
+- 使用前门之前的应用程序网关，可以在其虚拟网络（VNET）内实现100% 的 TLS/SSL 卸载并只路由 HTTP 请求。
 - 前门和应用程序网关都支持会话相关性。 当前门可以将来自用户会话的后续流量定向到给定区域中的同一群集或后端时，应用程序网关可以将流量定向到群集中的同一服务器。关联  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>是否可以在前门后部署 Azure 负载均衡器？
@@ -93,12 +93,12 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
  
     - 请参阅 Azure IP 范围中的*AzureFrontDoor* ，并为前门的 IPv4 后端 IP 地址范围提供[服务标记，](https://www.microsoft.com/download/details.aspx?id=56519)或者也可以使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的服务标记*AzureFrontDoor* 。
     - 在服务标记中涵盖的前端的**IPv6**后端 IP 空间未在 Azure IP 范围 JSON 文件中列出。 如果正在查找显式 IPv6 地址范围，则它当前限制为`2a01:111:2050::/44`
-    - Azure 的[基本基础结构服务](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)，通过虚拟化主机`168.63.129.16` IP 地址：和`169.254.169.254`
+    - Azure 的[基本基础结构服务](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)，通过虚拟化主机 IP 地址： `168.63.129.16` 和`169.254.169.254`
 
     > [!WARNING]
     > 前端的后端 IP 空间可能会更改，但在此之前，我们将确保我们已与[AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)集成。 建议订阅[AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)以进行任何更改或更新。
 
--    使用 API 版本或更高版本`2020-01-01`对前门执行 GET 操作。 在 API 调用中，查找 " `frontdoorID`字段"。 筛选由前门发送到后端的传入标头 "**X-FDID**"，其值与字段`frontdoorID`的值相同。 
+-    使用 API 版本或更高版本对前门执行 GET 操作 `2020-01-01` 。 在 API 调用中，查找 " `frontdoorID` 字段"。 筛选由前门发送到后端的传入标头 "**X-FDID**"，其值与字段的值相同 `frontdoorID` 。 你还可以 `Front Door ID` 在前门门户页面的 "概述" 部分下找到值。 
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>可播 IP 是否可以在前端的生存期内更改？
 
@@ -213,7 +213,7 @@ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_
 
 若要使 HTTPS 与后端的 HTTPS 连接成功，无论是针对运行状况探测还是转发请求，可能有两个原因导致 HTTPS 通信失败：
 
-1. **证书使用者名称不匹配**：对于 HTTPS 连接，前门要求后端使用与后端主机名匹配的使用者名称的有效 CA 提供证书。 例如，如果后端主机名设置为`myapp-centralus.contosonews.net` ，并且在 TLS 握手期间后端提供的证书既没有也`myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net`没有使用者名称，则前门将拒绝连接，并导致错误。 
+1. **证书使用者名称不匹配**：对于 HTTPS 连接，前门要求后端使用与后端主机名匹配的使用者名称的有效 CA 提供证书。 例如，如果后端主机名设置为 `myapp-centralus.contosonews.net` ，并且在 TLS 握手期间后端提供的证书既没有也没有 `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` 使用者名称，则前门将拒绝连接，并导致错误。 
     1. **解决方案**：尽管不建议从符合性的角度考虑，但你可以通过对前门禁用证书使用者名称检查来解决此错误。 这存在于 Azure 门户中的 "设置" 下，并且位于 API 中的 "BackendPoolsSettings" 下。
 2. **后端承载无效 CA 颁发的证书**：只有[有效 ca](/azure/frontdoor/front-door-troubleshoot-allowed-ca)中的证书才能在前门上用于前门。 不允许来自内部 Ca 或自签名证书的证书。
 
