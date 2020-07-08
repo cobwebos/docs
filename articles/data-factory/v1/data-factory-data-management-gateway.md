@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1340c205477b256e3d96ff7ccacb64e575725c2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84188310"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "80065408"
 
 数据管理网关是必须安装到本地环境中的客户端代理，用于在云和本地数据存储之间复制数据。 [支持的数据源](data-factory-data-movement-activities.md#supported-data-stores-and-formats)部分列出了数据工厂支持的本地数据存储。
 
-本文补充了[在本地和云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练。 在本演练中，将创建一个管道，该管道使用网关将数据从本地 SQL Server 数据库移至 Azure Blob。 本文深入说明了数据管理网关。
+本文补充了[在本地和云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练。 在本演练中，你将创建一个管道，该管道使用网关将数据从 SQL Server 数据库移到 Azure blob。 本文深入说明了数据管理网关。
 
 可通过将多个本地计算机与网关相关联来向外扩展数据管理网关。 可通过增加可以同时在一个节点上运行的数据移动作业数来进行扩展。 此功能也适用于包含一个节点的逻辑网关。 有关详细信息，请参阅[在 Azure 数据工厂中缩放数据管理网关](data-factory-data-management-gateway-high-availability-scalability.md)一文。
 
@@ -103,7 +102,7 @@ ms.locfileid: "80065408"
 10. 在计算机上运行的“数据管理网关配置管理器”**** 的“注册网关”**** 页上，执行以下步骤：
     1. 将密钥粘贴到文本中。
     2. 或者单击“显示网关密钥”****，以查看密钥文本。
-    3. 单击“注册”  。
+    3. 单击“注册”。
 
 ### <a name="register-gateway-using-key"></a>使用密钥注册网关
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>如果尚未在门户中创建逻辑网关
@@ -161,10 +160,10 @@ ms.locfileid: "80065408"
 例如，若要从**本地数据存储复制到 Azure SQL 数据库接收器或 Azure SQL 数据仓库接收器**，请执行以下步骤：
 
 * 对于 Windows 防火墙和企业防火墙，允许端口**1433**上的出站**TCP**通信。
-* 配置 Azure SQL Server 的防火墙设置，将网关计算机的 IP 地址添加到允许的 IP 地址列表。
+* 配置逻辑 SQL 服务器的防火墙设置，以将网关计算机的 IP 地址添加到允许的 IP 地址列表中。
 
 > [!NOTE]
-> 如果防火墙不允许出站端口 1433，则网关无法直接访问 Azure SQL。 在这种情况下，可以将[暂存复制](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy)用于 SQL Azure 数据库/SQL Azure DW。 在这种情况下，仅需要将 HTTPS（端口 443）用于数据移动。
+> 如果防火墙不允许出站端口 1433，则网关无法直接访问 Azure SQL。 在这种情况下，可以使用 SQL 数据库/SQL 托管实例/SQL Azure DW 的[暂存副本](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy)。 在这种情况下，仅需要将 HTTPS（端口 443）用于数据移动。
 >
 >
 
@@ -180,15 +179,15 @@ ms.locfileid: "80065408"
 有三个配置选项：
 
 * **不使用代理**：网关不显式使用任何代理来连接云服务。
-* **使用系统代理**：网关使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果在 diahost.exe.config 和 diawp.exe.config 中未配置代理，则网关将直接连接到云服务，而不需要通过代理。
-* **使用自定义代理**：配置用于网关的 HTTP 代理设置，而不是使用 diahost.exe.config 和 diawp.exe.config 中的配置。地址和端口是必需的。 用户名和密码可选，具体取决于代理的身份验证设置。 使用网关凭据证书对所有设置进行加密，并存储在网关主机计算机本地。
+* **使用系统代理**：网关使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未配置代理，则网关将直接连接到云服务而无需通过代理。
+* **使用自定义代理**：配置用于网关的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。地址和端口是必需的。 用户名和密码可选，具体取决于代理的身份验证设置。 使用网关凭据证书对所有设置进行加密，并存储在网关主机计算机本地。
 
 保存更新的代理设置之后，数据管理网关主机服务会自动重启。
 
 成功注册网关后，如果想要查看或更新代理设置，请使用数据管理网关配置管理器。
 
 1. 启动“数据管理网关配置管理器”****。
-2. 切换到“设置”**** 选项卡。
+2. 切换到“设置”选项卡。
 3. 单击“HTTP 代理”**** 部分的“更改”**** 链接，以启动“设置 HTTP 代理”**** 对话框。
 4. 单击“下一步”**** 按钮后，将出现警告对话框，询问是否允许保存代理设置和重启网关主机服务。
 
@@ -202,10 +201,10 @@ ms.locfileid: "80065408"
 >
 
 ### <a name="configure-proxy-server-settings"></a>配置代理服务器设置
-如果为 HTTP 代理选择 "**使用系统代理**" 设置，则网关将使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果在 diahost.exe.config 和 diawp.exe.config 中未指定代理，则网关将直接连接到云服务，而不需要通过代理。 以下过程说明如何更新 diahost.exe.config 文件。
+如果为 HTTP 代理选择 "**使用系统代理**" 设置，则网关将使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则网关将直接连接到云服务而无需通过代理。 以下过程说明如何更新 diahost.exe.config 文件。
 
-1. 在文件资源管理器中，创建*\\\\C： Program Files\\Microsoft 数据管理网关\\2.0\\共享\\diahost.exe.config*的安全副本，以备份原始文件。
-2. 启动作为管理员运行的 notepad.exe，并打开文本文件*C\\\\： Program Files\\Microsoft 数据管理网关\\2.0\\Shared\\diahost.exe.config*。找到 system.net 的默认标记，如以下代码所示：
+1. 在文件资源管理器中，创建*C： \\ \\ Program Files \\ Microsoft 数据管理网关 \\ 2.0 \\ 共享 \\diahost.exe.config*的安全副本，以备份原始文件。
+2. 启动 Notepad.exe 以管理员身份运行，并打开文本文件*C： \\ \\ Program Files \\ Microsoft 数据管理关 \\ 2.0 \\ 共享 \\diahost.exe.config*。找到 system.net 的默认标记，如以下代码所示：
 
     ```
     <system.net>
@@ -279,7 +278,7 @@ ms.locfileid: "80065408"
 
 [适用于单节点网关]
 1. 在网关计算机上启动 Windows PowerShell。
-2. 切换到*C\\\\： Program Files\\\\Microsoft Integration Runtime 3.0\\PowerShellScript\\ *文件夹。
+2. 切换到*C： \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3.0 \\ PowerShellScript \\ *文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。
 
     ```powershell
@@ -292,7 +291,7 @@ ms.locfileid: "80065408"
     ```
    [对于多节点高度可用的可扩展网关](data-factory-data-management-gateway-high-availability-scalability.md)
 1. 在网关计算机上启动 Windows PowerShell。
-2. 切换到*C\\\\： Program Files\\\\Microsoft Integration Runtime 3.0\\PowerShellScript\\ *文件夹。
+2. 切换到*C： \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3.0 \\ PowerShellScript \\ *文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。
 
     对于具有高可用性功能的网关，需要额外的 AuthKey 参数。
@@ -305,11 +304,11 @@ ms.locfileid: "80065408"
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
-## <a name="configuration-manager"></a>Configuration Manager
+## <a name="configuration-manager"></a>配置管理器
 安装网关后，可以通过以下方式之一来启动数据管理网关配置管理器：
 
 1. 在“搜索”**** 窗口中，键入“数据管理网关”****，以访问此实用程序。
-2. 在文件夹： *C\\\\： Program Files\\Microsoft 数据管理网关\\2.0\\共享*中运行可执行文件*ConfigManager* 。
+2. 在文件夹： *C： \\ \\ Program Files \\ Microsoft 数据管理关 \\ 2.0 \\ 共享*中运行可执行*ConfigManager.exe* 。
 
 ### <a name="home-page"></a>主页
 在主页中可执行以下操作：
@@ -362,16 +361,16 @@ ms.locfileid: "80065408"
 
 下表介绍“网关节点”列表中的列****：
 
-监视属性 | 说明
+监视属性 | 描述
 :------------------ | :----------
-名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
+“属性” | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限/等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。
-版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。
+Version | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。
 可用内存 | 网关节点上的可用内存。 此值为近实时快照。
 CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 网络（进/出） | 网关节点的网络利用率。 此值为近实时快照。
 并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用，但活动超时的高级方案中，可以增加限制以增加并发作业的执行。此功能也适用于单节点网关（即使未启用可伸缩性和可用性功能）。
-Role | 多节点网关中有两种角色 – 调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中请求任务/作业，并分派到其他辅助节点（包括其本身）。
+角色 | 多节点网关中有两种角色 – 调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中请求任务/作业，并分派到其他辅助节点（包括其本身）。
 
 在此页面，你将发现当网关中存在两个或以上节点（扩展方案）时，某些设置更为好用。 有关如何设置多节点网关的详细信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
 
@@ -381,18 +380,18 @@ Role | 多节点网关中有两种角色 – 调度程序和辅助角色。 所�
 状态  | 注释/方案
 :------- | :------------------
 联机 | 节点连接到数据工厂服务。
-脱机 | 节点处于脱机状态。
+Offline | 节点处于脱机状态。
 正在升级 | 节点正在进行自动更新。
 受限制 | 由于连接问题而受限。 可能由于 HTTP 端口 8050 问题、服务总线连接问题或凭据同步问题而受限。
 非活动 | 节点的配置与其他多数节点的配置不同。<br/><br/> 节点在无法与其他节点连接时可能处于非活动状态。
 
 下表提供逻辑网关可能的状态****。 网关状态取决于网关节点的状态。
 
-状态 | 说明
+状态 | 注释
 :----- | :-------
 需注册 | 尚未向此逻辑网关注册任何节点
 联机 | 网关节点处于联机状态
-脱机 | 没有节点处于联机状态。
+Offline | 没有节点处于联机状态。
 受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。
 
 ## <a name="scale-up-gateway"></a>向上扩展网关
@@ -420,7 +419,7 @@ Role | 多节点网关中有两种角色 – 调度程序和辅助角色。 所�
     ![“配置”页](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. 将“Microsoft 数据管理网关配置管理器”**** 保持为打开状态。
 
-    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    ![配置管理器](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. 在门户中的“配置”页中，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”************。 单击密钥文本旁边的“复制”**** 按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。
 
     ![重新创建密钥](./media/data-factory-data-management-gateway/RecreateKey.png)
@@ -510,7 +509,7 @@ Role | 多节点网关中有两种角色 – 调度程序和辅助角色。 所�
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切换到文件夹： *C：\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。****** 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
+1. 在 Azure PowerShell 中，切换到文件夹： *C： \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3.0 \\ PowerShellScript \\ *。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。****** 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -543,4 +542,4 @@ Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_Re
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 有关详细信息，请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 在本演练中，将创建一个管道，该管道使用网关将数据从本地 SQL Server 数据库移至 Azure Blob。
+* 有关详细信息，请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 在本演练中，你将创建一个管道，该管道使用网关将数据从 SQL Server 数据库移到 Azure blob。

@@ -6,18 +6,17 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 3ec30aafe63259237a89de6597970b908fb969cf
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: c2812219e689cb42fd871f85300239a10ab0da0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84116725"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Azure 应用程序配置的访问权限
-Azure 应用程序配置支持使用 Azure Active Directory (Azure AD) 授权对应用程序配置实例的请求。  Azure AD 允许使用基于角色的访问控制 (RBAC) 向安全主体授予权限。  安全主体可以是用户或[应用程序服务主体](../active-directory/develop/app-objects-and-service-principals.md)。  若要了解有关角色和角色分配的详细信息，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
+除了使用基于哈希的消息验证代码（HMAC）以外，Azure 应用配置支持使用 Azure Active Directory （Azure AD）来向应用配置实例授权请求。  Azure AD 允许使用基于角色的访问控制 (RBAC) 向安全主体授予权限。  安全主体可以是用户、[托管标识](../active-directory/managed-identities-azure-resources/overview.md)或[应用程序服务主体](../active-directory/develop/app-objects-and-service-principals.md)。  若要了解有关角色和角色分配的详细信息，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
 
 ## <a name="overview"></a>概述
-安全主体（用户或应用程序）发出的用于访问应用程序配置资源的请求必须获得授权。  使用 Azure AD 访问资源的过程分为两个步骤。
+安全主体对访问应用配置资源发出的请求必须获得授权。 使用 Azure AD，访问资源的过程分为两个步骤：
 1. 对安全主体的标识进行身份验证，并返回 OAuth 2.0 令牌。  请求令牌的资源名称为 `https://login.microsoftonline.com/{tenantID}`，其中 `{tenantID}` 与服务主体所属的 Azure Active Directory 租户 ID 匹配。
 2. 令牌作为请求的一部分传递到应用程序配置服务，以授予对指定资源的访问权限。
 
@@ -35,8 +34,11 @@ Azure 提供下列内置 RBAC 角色，用于使用 Azure AD 和 OAuth 授予对
 
 - 应用程序配置数据所有者：使用此角色授予对应用程序配置数据的读取/写入/删除访问权限。 这不会授予对应用程序配置资源的访问权限。
 - 应用程序配置数据读取者：使用此角色授予对应用程序配置数据的读取访问权限。 这不会授予对应用程序配置资源的访问权限。
-- **参与者**：使用此角色管理应用程序配置资源。 虽然可以使用访问密钥访问应用程序配置数据，但此角色不会使用 Azure AD 授予对数据的访问权限。
+- **参与者**：使用此角色管理应用程序配置资源。 尽管可以使用访问密钥访问应用配置数据，但此角色不会授予使用 Azure AD 直接访问数据的权限。
 - **读者**：使用此角色授予对应用程序配置资源的读取访问权限。 这不会授予对资源的访问密钥的访问权限，也不会授予对存储在应用程序配置中的数据的访问权限。
+
+> [!NOTE]
+> 目前，Azure 门户和 CLI 仅支持通过 HMAC 身份验证访问应用配置数据。 不支持 Azure AD 身份验证。 因此，Azure 门户和 CLI 的用户需要*参与者*角色才能检索应用配置资源的访问密钥。 授予*应用配置数据读取器*或*应用配置数据所有者*角色不会影响通过门户和 CLI 进行的访问。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关使用[托管标识](howto-integrate-azure-managed-service-identity.md)管理应用程序配置服务的详细信息。

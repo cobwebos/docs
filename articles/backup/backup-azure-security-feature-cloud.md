@@ -3,20 +3,22 @@ title: Azure 备份的软删除
 description: 了解如何在 Azure 备份中使用安全功能，使备份更加安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7831488482ef154ce00685e513b36ed235e335e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84116420"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 备份的软删除
 
 对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防范此类攻击，Azure 备份现提供可帮助保护备份数据（即使数据已删除）的安全功能。
 
-其中的一项功能是软删除。 通过软删除，即使恶意执行组件删除了备份（或意外删除了备份数据），备份数据仍将保留14天，允许恢复该备份项目，而不会丢失数据。 "软删除" 状态中的备份数据的额外14天的保留期不会对客户产生任何费用。
+其中的一项功能是软删除。 在使用软删除的情况下，即使恶意行动者删除了备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向客户收取任何费用。
 
-Azure[虚拟机](soft-delete-virtual-machines.md)中的软删除保护和 azure vm 中的[SQL server 软删除功能，适用于 azure vm 工作负荷中的 SAP HANA](soft-delete-sql-saphana-in-azure-vm.md)的软删除。
+软删除保护适用于以下服务：
+
+- [Azure 虚拟机的软删除](soft-delete-virtual-machines.md)
+- [Azure VM 中的 SQL server 软删除和 Azure VM 工作负荷中 SAP HANA 的软删除](soft-delete-sql-saphana-in-azure-vm.md)
 
 此流程图显示了启用软删除时备份项的不同步骤和状态：
 
@@ -24,17 +26,17 @@ Azure[虚拟机](soft-delete-virtual-machines.md)中的软删除保护和 azure 
 
 ## <a name="enabling-and-disabling-soft-delete"></a>启用和禁用软删除
 
-软删除在新创建的保管库上默认启用，目的是防止意外或恶意删除备份数据。  不建议禁用此功能。 你应考虑禁用软删除的唯一情况是，你打算将受保护的项移动到新的保管库，并且无法在删除和重新保护之前等待14天（例如在测试环境中）。只有保管库所有者才能禁用此功能。 如果禁用此功能，则以后删除受保护的项将导致立即删除，而不能还原。 在禁用此功能之前，备份处于软删除状态的数据会在14天内保持为软删除状态。 若要立即永久删除这些项，则需先取消删除，然后再次将其删除，这样就可以永久删除它们。
+软删除在新创建的保管库上默认启用，目的是防止意外或恶意删除备份数据。  建议不要禁用此功能。 唯一应该考虑禁用软删除的情况是，你打算将受保护的项移到新保管库，需要在删除后重新进行保护，因此等不及要求的 14 天（例如在测试环境中）。只有保管库所有者可以禁用此功能。 如果禁用此功能，将来删除任何受保护项将导致立即删除，而无法还原。 禁用此功能之前，以软删除状态存在的备份数据将在 14 天内保持软删除状态。 若要立即永久删除这些项，则需先取消删除，然后再次将其删除，这样就可以永久删除它们。
 
- 请记住，禁用软删除后，所有类型的工作负荷（包括 SQL server 和 SAP HANA 工作负荷）都将禁用该功能。 例如，一旦为某个订阅启用了[SQL Server/SAP HANA 预览版](https://docs.microsoft.com/azure/backup/soft-delete-sql-saphana-in-azure-vm#steps-to-enroll-in-preview)，就不可能在为同一保管库中的虚拟机启用此功能的情况下，仅对 SQL Server 或 SAP HANA db 禁用软删除。 可以创建单独的保管库以进行精细控制。
+ 请记住，禁用软删除后，将为所有类型的工作负载（包括 SQL server 和 SAP HANA 工作负载）禁用该功能。 例如，为某个订阅启用了 [SQL Server/SAP HANA 预览](https://docs.microsoft.com/azure/backup/soft-delete-sql-saphana-in-azure-vm#steps-to-enroll-in-preview)后，就不可能仅对 SQL Server 或 SAP HANA DB 禁用软删除而仍为同一保管库中的虚拟机保留软删除的启用状态。 可以创建单独的保管库以进行精细控制。
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>使用 Azure 门户禁用软删除
 
 若要禁用软删除，请执行以下步骤：
 
-1. 在 Azure 门户中转到保管库，然后前往 "**设置** -> " "**属性**"。
-2. 在 "属性" 窗格中，选择 "**安全设置** -> **更新**"。  
-3. 在 "安全设置" 窗格的 "**软删除**" 下，选择 "**禁用**"。
+1. 在 Azure 门户中转到保管库，然后转到“设置” -> “属性”。**** ****
+2. 在“属性”窗格中选择“安全设置” -> “更新”。**** ****  
+3. 在“安全设置”窗格的“软删除”下，选择“禁用”。**** ****
 
 ![禁用软删除](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
 
@@ -66,13 +68,13 @@ SoftDeleteFeatureState : Disabled
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-请执行这些步骤：
+执行以下步骤：
 
 1. 按照步骤[禁用软删除](#enabling-and-disabling-soft-delete)。
 
-2. 在 Azure 门户中，请前往保管库，中转到 "**备份项**"，然后选择软删除项。
+2. 在 Azure 门户中，请切换到保管库，转到“备份项”并选择已软删除的项****。
 
-   ![选择软删除项](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![选择已软删除的项](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
 3. 选择“撤消删除”选项****。
 
@@ -134,22 +136,22 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 如果在禁用软删除之前删除了项，则它们将处于已软删除状态。 若要立即删除它们，需要反转删除操作，然后再次执行。
 
 1. 首先，使用[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)提到的步骤撤消删除操作。
-2. 然后，使用[此处](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)所述的步骤，使用 REST API 禁用软删除功能。
+2. 然后遵循[此处](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)所述的步骤，使用 REST API 禁用软删除功能。
 3. 然后，使用[此处](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)所述的 REST API 删除备份。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>是否需要对每个保管库启用软删除功能？
 
-不会，它是内置的，并且默认情况下已为所有恢复服务保管库启用。
+否。此功能是内置的，为所有恢复服务保管库而设计，默认已启用。
 
-### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-the-delete-operation-is-complete"></a>是否可以配置在删除操作完成后，数据将在软删除状态中保留的天数？
+### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-the-delete-operation-is-complete"></a>是否可以配置在完成删除操作后，以软删除状态保留数据的天数？
 
-不可以。删除操作后，它会固定到14天的额外保留期。
+否。删除操作完成后，数据将额外保留固定的 14 天。
 
 ### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>是否需要支付这额外 14 天数据保留的费用？
 
-不能，这14天的额外保留期作为软删除功能的一部分提供。
+否。14 天额外保留是软删除功能免费附送的。
 
 ### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>如果数据处于软删除状态，是否可以执行还原操作？
 
@@ -161,15 +163,15 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>如何针对软删除的资源再次触发计划的备份？
 
-撤消删除后，继续操作将再次保护该资源。 恢复操作将备份策略与选定的保留期一起触发计划的备份。 此外，在恢复操作完成后，垃圾回收器会立即运行。 如果要从超过其到期日期的恢复点执行还原，则建议在触发恢复操作之前执行此操作。
+先取消删除，然后执行恢复操作，即可再次保护资源。 恢复操作将关联某个备份策略，以触发具有选定保持期的计划备份。 此外，在恢复操作完成后，垃圾回收器会立即运行。 若要从超出到期日期的恢复点执行还原，建议在触发恢复操作之前执行此还原操作。
 
 ### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>如果保管库中存在软删除的项，我是否可以删除该保管库？
 
-如果保管库中的备份项处于软删除状态，则无法删除恢复服务保管库。 完成删除操作 14 天后，软删除的项将永久删除。 如果你不能等待14天，则[禁用软删除](#enabling-and-disabling-soft-delete)，删除软删除项，并再次将其删除以永久删除。 确保不存在受保护的项，并且没有软删除的项，则可以删除该保管库。  
+如果保管库中存在处于软删除状态的备份项，则无法删除恢复服务保管库。 完成删除操作 14 天后，软删除的项将永久删除。 如果不能等 14 天，则请[禁用软删除](#enabling-and-disabling-soft-delete)，接着取消删除软删除的项，然后再次将其删除，这样就可以永久删除它们。 在确保没有受保护项和软删除项以后，可以删除保管库。  
 
 ### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>是否可以在删除后的 14 天软删除期之前删除数据？
 
-否。 不能强制删除软删除的项。 它们将在14天后自动删除。 启用此安全功能是为了保护备份的数据不被意外删除或恶意删除。  你应等待14天，然后对该项执行任何其他操作。  不会收取软删除项的费用。  如果需要在新的保管库中重新保护标记为软删除的项目，请联系 Microsoft 支持部门。
+否。 不能强制删除已软删除的项。 它们将在 14 天后自动删除。 启用此安全功能是为了保护备份的数据不被意外删除或恶意删除。  你应等待 14 天，然后再对该项执行任何其他操作。  不会对已软删除的项收费。  如果需要重新保护新保管库中 14 天内标记为软删除的项，请联系 Microsoft 客户支持。
 
 ### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>是否可以在 PowerShell 或 CLI 中执行软删除操作？
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: twooley
-ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84170080"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新 StorSimple 8000 系列设备
 > [!NOTE]
@@ -84,22 +83,22 @@ ms.locfileid: "75933423"
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>步骤 1：连接到串行控制台 <a name="step1">
+### <a name="step-1-connect-to-the-serial-console"></a>步骤 1：连接到串行控制台 <a name="step1"></a>
 首先，使用 PuTTY 之类的应用程序访问串行控制台。 以下过程说明如何使用 PuTTY 连接到串行控制台。
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>步骤 2：进入维护模式 <a name="step2">
+### <a name="step-2-enter-maintenance-mode"></a>步骤 2：进入维护模式 <a name="step2"></a>
 连接到控制台后，确定是否有要安装的更新，并进入维护模式安装更新。
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>步骤 3：安装更新 <a name="step3">
+### <a name="step-3-install-your-updates"></a>步骤 3：安装更新 <a name="step3"></a>
 接下来安装更新。
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>步骤 4：退出维护模式 <a name="step4">
+### <a name="step-4-exit-maintenance-mode"></a>步骤 4：退出维护模式 <a name="step4"></a>
 最后，退出维护模式。
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

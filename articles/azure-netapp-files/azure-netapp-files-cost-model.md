@@ -12,14 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 05/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70995118"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84142140"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp 文件的成本模型 
 
@@ -50,6 +49,8 @@ Azure NetApp 文件在预配的存储容量上计费。  预配的容量通过�
 ## <a name="overage-in-capacity-consumption"></a>容量消耗超额  
 
 如果池的总已用容量超出了其预配的容量，则仍允许进行数据写入。  宽限期（一小时）后，如果池的已用容量仍超过其预配的容量，则池大小将自动增加1个 TiB，直到预配的容量大于使用的总容量。  例如，在上图中，如果 Volume 3 持续增长，实际消耗达到 1.2 TiB，则在宽限期后，池将自动调整大小为 5 TiB。  结果是预配的池容量（5 TiB）超过了已用容量（4.2 TiB）。  
+
+尽管容量池大小会自动增长以满足卷的需求，但当卷大小减少时，它不会自动减少。 如果要在卷大小减少之后（例如，在对卷进行数据清理之后）调整容量池的大小，则需要_手动_减少容量池大小。
 
 ## <a name="manual-changes-of-the-pool-size"></a>池大小的手动更改  
 

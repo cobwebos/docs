@@ -5,13 +5,12 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 7f91d8eab2e7a29163dae5ae2a4d34792ddd0cb0
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.date: 05/28/2020
+ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84170267"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTPS 终结点调用、触发或嵌套逻辑应用
 
@@ -94,7 +93,7 @@ ms.locfileid: "83005509"
       }
       ```
 
-   1. 准备就绪后，选择“完成”。****
+   1. 准备就绪后，选择“完成”。
 
       “请求正文 JSON 架构”框现在会显示生成的架构。****
 
@@ -114,7 +113,7 @@ ms.locfileid: "83005509"
 
    * 从逻辑应用的 "**概述**" 窗格中复制回调 URL。
 
-     1. 在逻辑应用的菜单中，选择“概述”****。
+     1. 在逻辑应用的菜单中，选择“概述”。
 
      1. 在“摘要”部分，选择“查看触发器历史记录”。********
 
@@ -148,7 +147,7 @@ ms.locfileid: "83005509"
 
 * [通过 GET 参数](#get-parameters)或 URL 参数接受值。
 
-  这些值在终结点的 URL 中作为名称/值对传递。 对于此选项，需要在请求触发器中使用 GET 方法。 在后续操作中，可以通过在表达式中使用`triggerOutputs()`函数，将参数值作为触发器输出来获取。
+  这些值在终结点的 URL 中作为名称/值对传递。 对于此选项，需要在请求触发器中使用 GET 方法。 在后续操作中，可以通过在表达式中使用函数，将参数值作为触发器输出来获取 `triggerOutputs()` 。
 
 * 通过请求触发器中参数的[相对路径接受值](#relative-path)。
 
@@ -164,21 +163,21 @@ ms.locfileid: "83005509"
 
 1. 在请求触发器下，添加要在其中使用参数值的操作。 对于本示例，请添加 "**响应**" 操作。
 
-   1. 在请求触发器下，选择 "**新建步骤** > " "**添加操作**"。
+   1. 在请求触发器下，选择 "**新建步骤**" "  >  **添加操作**"。
    
    1. 在“选择操作”**** 下的搜索框中，输入 `response` 作为筛选器。 在操作列表中选择“响应”操作。****
 
-1. 若要生成`triggerOutputs()`检索参数值的表达式，请执行以下步骤：
+1. 若要生成 `triggerOutputs()` 检索参数值的表达式，请执行以下步骤：
 
    1. 单击 "响应" 操作的 "**正文**" 属性内部，以便显示 "动态内容" 列表，然后选择 "**表达式**"。
 
-   1. 在 "**表达式**" 框中，输入此表达式`parameter-name` ，将替换为您的参数名称，然后选择 **"确定"**。
+   1. 在 "**表达式**" 框中，输入此表达式， `parameter-name` 将替换为您的参数名称，然后选择 **"确定"**。
 
       `triggerOutputs()['queries']['parameter-name']`
 
       ![添加要触发的 "triggerOutputs （）" 表达式](./media/logic-apps-http-endpoint/trigger-outputs-expression.png)
 
-      在 "**正文**" 属性中，表达式解析为`triggerOutputs()`标记。
+      在 "**正文**" 属性中，表达式解析为 `triggerOutputs()` 标记。
 
       ![解析的 "triggerOutputs （）" 表达式](./media/logic-apps-http-endpoint/trigger-outputs-expression-token.png)
 
@@ -190,11 +189,11 @@ ms.locfileid: "83005509"
 
       `"body": "@{triggerOutputs()['queries']['parameter-name']}",`
 
-      例如，假设要传递名`postalCode`为的参数的值。 **Body**属性指定`Postal Code: `带有尾随空格的字符串，后跟相应的表达式：
+      例如，假设要传递名为的参数的值 `postalCode` 。 **Body**属性指定 `Postal Code: ` 带有尾随空格的字符串，后跟相应的表达式：
 
       ![添加要触发的 "triggerOutputs （）" 表达式](./media/logic-apps-http-endpoint/trigger-outputs-expression-postal-code.png)
 
-1. 若要测试可调用终结点，请从请求触发器中复制回调 URL，并将 URL 粘贴到另一个浏览器窗口中。 在 URL 中，按以下格式将问号（`?`）后面的参数名称和值添加到 URL，然后按 enter。
+1. 若要测试可调用终结点，请从请求触发器中复制回调 URL，并将 URL 粘贴到另一个浏览器窗口中。 在 URL 中，按以下格式将问号（）后面的参数名称和值添加 `?` 到 URL，然后按 enter。
 
    `...?{parameter-name=parameter-value}&api-version=2016-10-01...`
 
@@ -204,15 +203,18 @@ ms.locfileid: "83005509"
 
    ![向回调 URL 发送请求时的响应](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
-1. 若要在 URL 内将参数名称和值放在不同的位置，请确保使用 "and"`&`符（）作为前缀，例如：
+1. 若要在 URL 内将参数名称和值放在不同的位置，请确保使用 "and" 符（ `&` ）作为前缀，例如：
 
    `...?api-version=2016-10-01&{parameter-name=parameter-value}&...`
 
-   此示例显示了在 URL 中的不同位置包含示例参数`postalCode=123456`名称和值的回调 URL：
+   此示例显示了 `postalCode=123456` 在 URL 中的不同位置包含示例参数名称和值的回调 URL：
 
    * 第一个位置：`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
    * 第二个位置：`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+
+> [!NOTE]
+> 如果要在 URI 中包含哈希或井号（ **#** ），请改用此编码版本：`%25%23`
 
 <a name="relative-path"></a>
 
@@ -228,7 +230,7 @@ ms.locfileid: "83005509"
 
 1. 在请求触发器下，添加要在其中使用参数值的操作。 对于本示例，请添加 "**响应**" 操作。
 
-   1. 在请求触发器下，选择 "**新建步骤** > " "**添加操作**"。
+   1. 在请求触发器下，选择 "**新建步骤**" "  >  **添加操作**"。
 
    1. 在“选择操作”**** 下的搜索框中，输入 `response` 作为筛选器。 在操作列表中选择“响应”操作。****
 
@@ -252,15 +254,18 @@ ms.locfileid: "83005509"
 
    `https://prod-07.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-1. 若要测试可调用终结点，请从请求触发器复制更新的回调 URL，将 URL 粘贴到另一个浏览`{postalCode}`器窗口中， `123456`将 url 中的替换为，然后按 enter。
+1. 若要测试可调用终结点，请从请求触发器复制更新的回调 URL，将 URL 粘贴到另一个浏览器窗口中， `{postalCode}` 将 url 中的替换为 `123456` ，然后按 enter。
 
    浏览器将返回具有以下文本的响应：`Postal Code: 123456`
 
    ![向回调 URL 发送请求时的响应](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
+> [!NOTE]
+> 如果要在 URI 中包含哈希或井号（ **#** ），请改用此编码版本：`%25%23`
+
 ## <a name="call-logic-app-through-endpoint-url"></a>通过终结点 URL 调用逻辑应用
 
-创建终结点后，可以通过将 HTTPS `POST`请求发送到终结点的完整 URL 来触发逻辑应用。 逻辑应用对直接访问终结点提供内置支持。
+创建终结点后，可以通过将 HTTPS `POST` 请求发送到终结点的完整 URL 来触发逻辑应用。 逻辑应用对直接访问终结点提供内置支持。
 
 <a name="generated-tokens"></a>
 
@@ -302,9 +307,9 @@ ms.locfileid: "83005509"
 
 通过添加可接收请求的其他逻辑应用，可以在逻辑应用中嵌套工作流。 若要包含这些逻辑应用，请执行以下步骤：
 
-1. 在要调用另一个逻辑应用的步骤下，选择 "**新建步骤** > " "**添加操作**"。
+1. 在要调用另一个逻辑应用的步骤下，选择 "**新建步骤**" "  >  **添加操作**"。
 
-1. 在“选择操作”下，选择“内置”。******** 在搜索框中，输入 `logic apps` 作为筛选器。 在操作列表中，选择“选择逻辑应用工作流”。****
+1. 在“选择操作”下，选择“内置”。**** **** 在搜索框中，输入 `logic apps` 作为筛选器。 在操作列表中，选择“选择逻辑应用工作流”。****
 
    ![在当前逻辑应用内部嵌套逻辑应用](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -318,9 +323,9 @@ ms.locfileid: "83005509"
 
 如果传入请求的内容类型为 `application/json`，则可以在传入请求中引用属性。 否则，此内容被视为可以传递给其他 API 的单个二进制单元。 若要在逻辑应用的工作流内部引用此内容，首先需要转换此内容。
 
-例如，如果要传递具有`application/xml`类型的内容，则可以使用[ `@xpath()`表达式](../logic-apps/workflow-definition-language-functions-reference.md#xpath)来执行 XPath 提取，或使用[ `@json()`表达式](../logic-apps/workflow-definition-language-functions-reference.md#json)将 XML 转换为 JSON。 详细了解如何处理支持的[内容类型](../logic-apps/logic-apps-content-type.md)。
+例如，如果要传递具有类型的内容 `application/xml` ，则可以使用[ `@xpath()` 表达式](../logic-apps/workflow-definition-language-functions-reference.md#xpath)来执行 XPath 提取，或使用[ `@json()` 表达式](../logic-apps/workflow-definition-language-functions-reference.md#json)将 XML 转换为 JSON。 详细了解如何处理支持的[内容类型](../logic-apps/logic-apps-content-type.md)。
 
-若要获取传入请求的输出，可以使用[ `@triggerOutputs`表达式](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)。 例如，假设输出如以下示例所示：
+若要获取传入请求的输出，可以使用[ `@triggerOutputs` 表达式](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)。 例如，假设输出如以下示例所示：
 
 ```json
 {
@@ -333,7 +338,7 @@ ms.locfileid: "83005509"
 }
 ```
 
-若要专门访问`body`属性，可以将[ `@triggerBody()`表达式](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)用作快捷方式。
+若要专门访问 `body` 属性，可以将[ `@triggerBody()` 表达式](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)用作快捷方式。
 
 ## <a name="respond-to-requests"></a>对请求的响应
 
@@ -378,7 +383,7 @@ ms.locfileid: "83005509"
 }
 ```
 
-## <a name="q--a"></a>问与答
+## <a name="q--a"></a>问题解答
 
 #### <a name="q-what-about-url-security"></a>问：URL 的安全性如何？
 

@@ -10,7 +10,6 @@ ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: b0df0fc43fcd125c6fc96fd2abbe3857d0d23afa
 ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/28/2020
 ms.locfileid: "84141970"

@@ -2,13 +2,12 @@
 title: 从 Application Insights 连续导出遥测数据 | Microsoft Docs
 description: 将诊断和使用情况数据导出到 Microsoft Azure 中的存储，然后从中下载这些数据。
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.date: 05/26/2020
+ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744864"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84147964"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
@@ -24,7 +23,7 @@ ms.locfileid: "83744864"
 * [Analytics](../../azure-monitor/app/analytics.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](../../azure-monitor/app/export-power-bi.md )，无需使用连续导出也可以做到。
 * 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。
-* 也可以访问[通过 Powershell 设置连续导出](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
+* 还可以[通过 PowerShell 访问设置连续导出](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
 
 连续导出将数据复制到存储后（数据可在其中保存任意长的时间），在正常[保留期](../../azure-monitor/app/data-retention-privacy.md)内，这些数据仍可在 Application Insights 中使用。
 
@@ -33,8 +32,6 @@ ms.locfileid: "83744864"
 连续导出不支持以下 Azure 存储功能/配置：
 
 * 将 [VNET/Azure 存储防火墙](https://docs.microsoft.com/azure/storage/common/storage-network-security)与 Azure Blob 存储一起使用。
-
-* Azure Blob 存储的[不可变存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)。
 
 * [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
@@ -53,7 +50,8 @@ ms.locfileid: "83744864"
 
 4. 在存储中创建或选择一个容器。
 
-创建导出之后，将开始导出数据。 只能获取创建导出后到达的数据。
+> [!NOTE]
+> 创建导出后，新引入的数据将开始流向 Azure Blob 存储。 连续导出只会在启用连续导出后传输创建/引入的新遥测数据。 不会导出启用连续导出之前存在的任何数据，并且不支持使用连续导出以追溯方式导出以前创建的数据。
 
 数据出现在存储中之前可能有大约一小时的延迟。
 

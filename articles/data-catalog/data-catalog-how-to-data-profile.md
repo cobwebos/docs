@@ -6,12 +6,11 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68950219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84171219"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中进行数据配置文件数据源
 
@@ -45,7 +44,7 @@ ms.locfileid: "68950219"
 > 此外还可以向资产添加文档，描述如何将数据集成到应用程序。 请参阅[如何记录数据源](data-catalog-how-to-documentation.md)。
 >
 
-<a name="howto"/>
+<a name="howto"></a>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>如何在注册数据源时包括数据配置文件
 

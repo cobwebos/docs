@@ -1,52 +1,43 @@
 ---
-title: 使用 Azure 自动化更改跟踪和库存的作用域配置
-description: 本文介绍在使用更改跟踪和库存时如何使用作用域配置。
+title: 限制 Azure 自动化更改跟踪和清单部署范围
+description: 本文介绍如何使用作用域配置来限制更改跟踪和清单部署的范围。
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4fac94cc2f8f378b7e9d8e9485baed6a0ffa838b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84117427"
 ---
-# <a name="work-with-scope-configurations-for-change-tracking-and-inventory"></a>使用更改跟踪和库存的作用域配置
+# <a name="limit-change-tracking-and-inventory-deployment-scope"></a>限制更改跟踪和清单部署范围
 
-本文介绍了在 VM 上使用[更新管理](automation-update-management.md)功能时如何使用作用域配置。 
+本文介绍如何使用[更改跟踪和清单](change-tracking.md)功能将更改部署到 vm 时使用作用域配置。 有关详细信息，请参阅[以 Azure Monitor （预览版）中的监视解决方案为目标](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。 
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="about-scope-configurations"></a>关于作用域配置
 
-通过 https://portal.azure.com 登录到 Azure 门户。
+作用域配置是一个或多个已保存搜索的组（查询），用于将更改跟踪和清单的作用域限制为特定的计算机。 作用域配置在 "Log Analytics" 工作区中使用，以面向要启用的计算机。 将计算机添加到功能的更改时，还会将计算机添加到工作区中的已保存搜索。
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>检查作用域配置
+## <a name="set-the-scope-limit"></a>设置作用域限制
 
-更新管理在 Log Analytics 工作区中使用作用域配置来确定要启用该更新管理的计算机。 作用域配置是包含一个或多个已保存搜索的组，该组用来将功能的作用域限制为特定计算机。 访问作用域配置：
+限制更改跟踪和清单部署的作用域：
 
-1. 在“相关资源”下的自动化帐户中，选择“工作区” 。 
+1. 在自动化帐户中，选择 "**相关资源**" 下的 "**链接的工作区**"。
 
-2. 选择“工作区数据源”下的工作区，然后选择“作用域配置” 。
+2. 单击 "**前往工作区**"。
 
-3. 如果所选工作区尚未启用“更新管理”功能，则它会创建 `MicrosoftDefaultScopeConfig-ChangeTracking` 作用域配置。 
+3. 选择 "**工作区数据源**" 下的 "**作用域配置（预览）** "。
 
-4. 如果所选工作区已启用该功能，则不会重新进行部署，也不会向其添加作用域配置。 
+4. 选择 `MicrosoftDefaultScopeConfig-ChangeTracking` 作用域配置右侧的省略号，然后单击 "**编辑**"。 
 
-5. 选择任意作用域配置中的省略号，然后单击“编辑”。 
-
-6. 在“编辑”窗格中，选择“选择计算机组”。 “计算机组”窗格将显示用来创建作用域配置的已保存搜索。
-
-## <a name="view-a-saved-search"></a>查看保存的搜索
-
-将计算机添加到更改跟踪和库存时，它也会被添加到工作区中的已保存的搜索中。 已保存的搜索是包含目标计算机的查询。
-
-1. 导航到你的 Log Analytics 工作区并在“常规”下选择“保存的搜索” 。 更新管理使用的已保存的搜索是：
+5. 在“编辑”窗格中，选择“选择计算机组”。 “计算机组”窗格将显示用来创建作用域配置的已保存搜索。 更改跟踪和清单使用的已保存搜索如下：
 
     |名称     |类别  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 
-2. 选择保存的搜索来查看用来填充组的查询。 下图显示了查询及其结果：
+6. 选择已保存的搜索，查看和编辑用于填充组的查询。 下图显示了查询及其结果：
 
     ![保存的搜索](media/automation-scope-configurations-change-tracking/logsearch.png)
 

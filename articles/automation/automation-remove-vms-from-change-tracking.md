@@ -5,16 +5,17 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 22cb49c414e21e5c47330f2c67fc2cf30e3364b2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 8e9b80c60c098e4daf247db07fa48baa322aa7f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836662"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84169448"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>从“更改跟踪和清单”中删除 VM
 
 向环境中的 VM 部署更改完成后，可以从[更改跟踪和库存](change-tracking.md)功能中将它们删除。
+
+## <a name="to-remove-your-vms"></a>删除 Vm
 
 1. 在自动化帐户中，选择“配置管理”下的“更改跟踪”或“库存”  。
 
@@ -24,7 +25,7 @@ ms.locfileid: "83836662"
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. 在 Log Analytics 工作区的“常规”下，访问保存的搜索。
+3. 在 "**常规**" 下的 "Log Analytics" 工作区中，访问作用域配置的已保存搜索 `MicrosoftDefaultScopeConfig-ChangeTracking` 。
 
 4. 对于保存的搜索 `MicrosoftDefaultComputerGroup`，单击右侧的省略号，然后选择“编辑”。 
 

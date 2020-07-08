@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84187668"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -55,7 +54,7 @@ ms.locfileid: "81414222"
 
 可以使用复制活动在两个基于文件的数据存储之间按原样复制文件，在这种情况下，无需任何序列化或反序列化即可高效复制数据。 此外，还可以分析或生成给定格式的文件。例如，可以执行以下操作：
 
-* 从本地 SQL Server 数据库复制数据，并将数据以 Parquet 格式写入 Azure Data Lake Storage Gen2。
+* 从 SQL Server 数据库复制数据，并将数据以 Parquet 格式写入 Azure Data Lake Storage Gen2。
 * 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob 存储。
 * 从本地文件系统复制压缩文件，动态解压缩，然后将提取的文件写入 Azure Data Lake Storage Gen2。
 * 从 Azure Blob 存储复制 Gzip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
@@ -69,7 +68,7 @@ ms.locfileid: "81414222"
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-通常，若要在 Azure 数据工厂中使用复制活动，需要执行以下操作：
+通常，若要使用 Azure 数据工厂中的复制活动，需要执行以下操作：
 
 1. **创建用于源数据存储和接收器数据存储的链接服务。** 在本文的[支持的数据存储和格式](#supported-data-stores-and-formats)部分可以找到支持的连接器列表。 有关配置信息和支持的属性，请参阅连接器文章的“链接服务属性”部分。 
 2. **为源和接收器创建数据集。** 有关配置信息和支持的属性，请参阅源和接收器连接器文章的“数据集属性”部分。
@@ -127,7 +126,7 @@ ms.locfileid: "81414222"
 
 #### <a name="syntax-details"></a>语法详细信息
 
-| 属性 | 说明 | 是否必需？ |
+| properties | 说明 | 必需？ |
 |:--- |:--- |:--- |
 | type | 对于复制活动，请设置为 `Copy` | 是 |
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
@@ -144,34 +143,34 @@ ms.locfileid: "81414222"
 
 ## <a name="monitoring"></a>监视
 
-你可以以直观方式和编程方式监视 Azure 数据工厂中的复制活动运行。 有关详细信息，请参阅[监视复制活动](copy-activity-monitoring.md)。
+可通过视觉和编程方式监视在 Azure 数据工厂中运行的复制活动。 有关详细信息，请参阅[监视复制活动](copy-activity-monitoring.md)。
 
 ## <a name="incremental-copy"></a>增量复制
 
-数据工厂可让你以递增方式将增量数据从源数据存储复制到接收器数据存储。 有关详细信息，请参阅[教程：增量复制数据](tutorial-incremental-copy-overview.md)。
+数据工厂可让你以递增方式将增量数据从源数据存储复制到接收器数据存储。 有关详细信息，请参阅[教程：以增量方式复制数据](tutorial-incremental-copy-overview.md)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 
-[复制活动监视](copy-activity-monitoring.md)体验显示每个活动运行的复制性能统计信息。 [复制活动性能和可伸缩性指南](copy-activity-performance.md)中描述了哪些关键因素会影响通过 Azure 数据工厂中的复制活动移动数据时的性能。 其中还列出了在测试期间观测到的性能值，并介绍了如何优化复制活动的性能。
+[复制活动监视](copy-activity-monitoring.md)体验向你显示每个活动运行的复制性能统计信息。 [复制活动性能和可伸缩性指南](copy-activity-performance.md)中描述了哪些关键因素会影响通过 Azure 数据工厂中的复制活动移动数据时的性能。 其中还列出了在测试期间观测到的性能值，并介绍了如何优化复制活动的性能。
 
 ## <a name="resume-from-last-failed-run"></a>从上次失败的运行恢复
 
-复制活动支持从上一次失败的运行中恢复，当你在基于文件的存储之间按二进制格式复制大量文件，并选择将文件夹/文件层次结构从源复制到接收器，例如，将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2。 它适用于以下基于文件的连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)和[SFTP](connector-sftp.md)。
+在基于文件的存储之间以二进制格式按原样复制大量文件，并选择将文件夹/文件层次结构从源保存到接收器（例如，将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2）时，复制活动支持从上次失败的运行中恢复。 它适用于以下基于文件的连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)和[SFTP](connector-sftp.md)。
 
-可以通过以下两种方式利用复制活动恢复：
+可以通过下述两种方式利用复制活动恢复功能：
 
-- **活动级别重试：** 可以设置复制活动的重试次数。 在管道执行过程中，如果此复制活动运行失败，则下一次自动重试将从上一个试用的故障点开始。
-- **从失败的活动重新运行：** 管道执行完成后，还可以在 ADF UI 监视视图中或以编程方式触发从失败的活动中重新运行。 如果失败的活动是复制活动，则该管道将只能从此活动重新运行，但也会从上一个运行的故障点恢复。
+- **活动级别重试：** 可以设置复制活动的重试计数。 在管道执行过程中，如果此复制活动运行失败，则下一次自动重试将从上一次试用的故障点开始。
+- **从失败的活动重新运行：** 管道执行完成后，还可以通过 ADF UI 监视视图或编程方式触发从失败的活动重新运行的操作。 如果失败的活动是复制活动，则该管道将不仅从此活动重新运行，而且也会从上一个运行的故障点恢复。
 
     ![复制恢复](media/copy-activity-overview/resume-copy.png)
 
-请注意以下几点：
+要注意的几点：
 
-- 恢复发生在文件级别。 如果复制活动在复制文件时失败，则在下一次运行时，将重新复制此特定文件。
-- 若要使恢复正常工作，请不要在重新运行时更改复制活动设置。
-- 从 Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 和 Google 云存储复制数据时，复制活动可以从任意数量的复制文件恢复。 虽然作为源的其他基于文件的连接器的其余部分，当前复制活动支持从有限数量的文件中恢复，通常是在数十个文件的范围内，并且根据文件路径的长度而变化;在重新运行期间，将重新复制超出此数量的文件。
+- 恢复发生在文件级别。 如果复制活动在复制文件时失败，则在下一次运行时，会重新复制此特定文件。
+- 若要正常使用恢复功能，请不要在两次重新运行之间更改复制活动设置。
+- 从 Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 和 Google Cloud Storage 复制数据时，复制活动可以从任意数量的已复制文件恢复。 虽然就其他作为源的基于文件的连接器来说，目前复制活动只支持从有限数量的文件中恢复（通常是在数万个文件的范围内，因文件路径的长度而异），但超出此数量的文件将在重新运行期间重新复制。
 
-对于二进制文件复制以外的其他方案，将从开头开始重新运行复制活动。
+对于二进制文件复制以外的其他情况，将从头开始重新运行复制活动。
 
 ## <a name="preserve-metadata-along-with-data"></a>保留元数据和数据
 
@@ -183,24 +182,24 @@ ms.locfileid: "81414222"
 
 ## <a name="add-additional-columns-during-copy"></a>在复制过程中添加其他列
 
-除了将数据从源数据存储复制到接收器外，还可以将配置为添加其他数据列，以便将其复制到接收器。 例如：
+除了将数据从源数据存储复制到接收器外，还可以进行配置，以便添加要一起复制到接收器的其他数据列。 例如：
 
-- 从基于文件的源复制时，将相对文件路径存储为附加列，以跟踪数据来自哪个文件。
-- 添加包含 ADF 表达式的列，附加 ADF 系统变量（如管道名称/管道 id），或存储来自上游活动输出的其他动态值。
-- 添加具有静态值的列以满足下游消耗需求。
+- 从基于文件的源复制时，将相对文件路径存储为一个附加列，用以跟踪数据来自哪个文件。
+- 添加包含 ADF 表达式的列，以附加 ADF 系统变量（例如管道名称/管道 ID），或存储来自上游活动输出的其他动态值。
+- 添加一个包含静态值的列以满足下游消耗需求。
 
 可以在复制活动源选项卡上找到以下配置： 
 
 ![在复制活动中添加其他列](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
 
 >[!TIP]
->此功能适用于最新的数据集模型。 如果未在 UI 中看到此选项，请尝试创建新的数据集。
+>此功能适用于最新的数据集模型。 如果在 UI 中未看到此选项，请尝试创建一个新数据集。
 
-若要以编程方式对其`additionalColumns`进行配置，请在复制活动源中添加属性：
+若要以编程方式对其进行配置，请在复制活动源中添加 `additionalColumns` 属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必需 |
 | --- | --- | --- |
-| additionalColumns | 添加要复制到接收器的其他数据列。<br><br>数组下的`additionalColumns`每个对象都表示一个额外的列。 `name`定义列名称，并`value`指示该列的数据值。<br><br>允许的数据值为：<br>- **`$$FILEPATH`**-保留变量指示将源文件相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>- **表达式**<br>- **静态值** | 否 |
+| additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>- **表达式**<br>- **静态值** | 否 |
 
 **示例：**
 
@@ -250,4 +249,4 @@ ms.locfileid: "81414222"
 
 - [在同一 Azure Blob 存储帐户中将数据从一个位置复制到另一个位置](quickstart-create-data-factory-dot-net.md)
 - [将数据从 Azure Blob 存储复制到 Azure SQL 数据库](tutorial-copy-data-dot-net.md)
-- [将数据从本地 SQL Server 数据库复制到 Azure](tutorial-hybrid-copy-powershell.md)
+- [将数据从 SQL Server 数据库复制到 Azure](tutorial-hybrid-copy-powershell.md)

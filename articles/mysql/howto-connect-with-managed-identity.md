@@ -6,12 +6,11 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: fd11fd32c4c6901302d1f7960ad38ad426e6a3a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663265"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84141708"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>使用托管标识连接到 Azure Database for MySQL
 
@@ -22,6 +21,9 @@ ms.locfileid: "83663265"
 > * 在数据库中创建一个代表 VM 用户分配标识的用户
 > * 使用 VM 标识获取访问令牌，并使用它查询 Azure Database for MySQL 服务器
 > * 在 C# 示例应用程序中实现令牌检索
+
+> [!IMPORTANT]
+> 使用托管标识进行连接仅适用于 MySQL 5.7 和更高版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -202,4 +204,4 @@ MySQL version: 5.7.27
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[通过 Azure Active Directory 向 Azure Database for MySQL 进行身份验证](concepts-azure-ad-authentication.md)的总体概念
+* 查看[使用 Azure Active Directory 向 Azure Database for MySQL 进行身份验证](concepts-azure-ad-authentication.md)的总体概念

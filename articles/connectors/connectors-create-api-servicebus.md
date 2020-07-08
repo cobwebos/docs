@@ -7,12 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76261613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84141987"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -152,11 +151,21 @@ ms.locfileid: "76261613"
 
 1. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
 
+<a name="sequential-convoy"></a>
+
+## <a name="send-correlated-messages-in-order"></a>按顺序发送相关消息
+
+如果需要按特定顺序发送相关消息，可以使用[Azure 服务总线连接器](../connectors/connectors-create-api-servicebus.md)来使用[*顺序保护*模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)。 相关消息有一个属性，该属性定义这些消息之间的关系，例如服务总线中[会话](../service-bus-messaging/message-sessions.md)的 ID。
+
+在创建逻辑应用时，可以选择 "**使用服务总线会话进行相关的按顺序传递**" 模板来实现顺序保护模式。 有关详细信息，请参阅按[顺序发送相关消息](../logic-apps/send-related-messages-sequential-convoy.md)。
+
+<a name="connector-reference"></a>
+
 ## <a name="connector-reference"></a>连接器参考
 
 服务总线连接器一次最多可以将 1,500 个服务总线的唯一会话保存到连接器缓存。 如果会话计数超过此限制，则将从缓存中删除旧会话。 有关详细信息，请参阅[消息会话](../service-bus-messaging/message-sessions.md)。
 
-有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的其他技术详细信息，请查看连接器的[参考页](/connectors/servicebus/)。 有关 Azure 服务总线消息传送的详细信息，请参阅[什么是 Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)？
+有关由连接器的 Swagger 说明描述的触发器、操作和限制的其他技术详细信息，请查看 "[连接器引用" 页](/connectors/servicebus/)。 有关 Azure 服务总线消息传送的详细信息，请参阅[什么是 Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)？
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,11 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 8c85a652cde840336c51e1a5b5459f9dc591e0be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84118094"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>排查 SSIS Integration Runtime 中的包执行问题
 
@@ -38,7 +37,7 @@ ms.locfileid: "81414686"
 * 数据源或目标过载。 检查数据源或目标的负载，并查看它是否有足够的容量。 例如，如果使用的是 Azure SQL 数据库，而该数据库可能会超时，请考虑纵向扩展。
 * SSIS Integration Runtime 与数据源或目标之间的网络不稳定，当连接跨区域或者是在本地与 Azure 之间建立的时尤其如此。 执行以下步骤，在 SSIS 包中应用重试模式：
   * 确保 SSIS 包在失败时可以重新运行，且不产生负面影响（例如数据丢失或数据重复）。
-  * 在“常规”选项卡上配置“执行 SSIS 包”活动的“重试”和“重试间隔”。     ![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * 在“常规”选项卡上配置“执行 SSIS 包”活动的“重试”和“重试间隔”。   ![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
   * 对于 ADO.NET 和 OLE DB 源或目标组件，请在 SSIS 包或 SSIS 活动的连接管理器中设置 **ConnectRetryCount** 和 **ConnectRetryInterval**。
 
 ### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>错误消息：“ADO NET 源无法获取连接 '...'”， 同时显示“在与 SQL Server 建立连接时出现网络相关或特定于实例的错误。 找不到或无法访问服务器。”
@@ -74,10 +73,10 @@ ms.locfileid: "81414686"
 * 可能的原因和建议的操作：
   * 如果 SSIS 活动正在从文件系统（包文件或项目文件）执行包，而使用你在 SSIS 活动中提供的包访问凭据无法访问项目、包或配置文件，则会出现此错误
     * 如果使用 Azure 文件：
-      * 文件路径应以\\ \\ \<存储帐户名称\>开头。 file.core.windows.net\\\<文件共享路径\>
+      * 文件路径应以 \\ \\ \<storage account name\> . file.core.windows.net\\\<file share path\>
       * 域应是“Azure”
-      * 用户名应是 \<存储帐户名称\>
-      * 密码应是 \<存储访问密钥\>
+      * 用户名应为 \<storage account name\>
+      * 密码应为 \<storage access key\>
     * 如果使用本地文件，请检查是否正确配置了 VNet、包访问凭据和权限，以便 Azure-SSIS 集成运行时可以访问你的本地文件共享
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>错误消息：“连接中指定的文件名 '...' 无效”
@@ -95,20 +94,20 @@ ms.locfileid: "81414686"
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>错误消息：“数据库 'SSISDB' 已达到大小配额”
 
-可能的原因是，在 Azure SQL 数据库中创建的 SSISDB 数据库或者在创建 SSIS 集成运行时时的托管实例已达到其配额。 请尝试以下操作：
-* 考虑增加数据库的 DTU。 可以在 [Azure SQL 数据库服务器的 SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)中找到详细信息。
+可能的原因是，在 Azure SQL 数据库或 SQL 托管实例中创建的 SSISDB 数据库已达到其配额。 请尝试以下操作：
+* 考虑增加数据库的 DTU。 有关详细信息，可参阅[逻辑服务器的 SQL 数据库限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)。
 * 检查包是否会生成许多日志。 如果是，则可配置一项弹性作业来清理这些日志。 有关详细信息，请参阅[使用 Azure 弹性数据库作业清理 SSISDB 日志](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md)。
 
 ### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>错误消息：“数据库的请求限制是 ...，现已达到该限制。”
 
-如果在 SSIS Integration Runtime 中同时运行许多的包，可能会发生此错误，因为 SSISDB 已达到请求限制。 请考虑增加 SSISDB 的 DTC 来解决此问题。 可以在 [Azure SQL 数据库服务器的 SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)中找到详细信息。
+如果在 SSIS Integration Runtime 中同时运行许多的包，可能会发生此错误，因为 SSISDB 已达到请求限制。 请考虑增加 SSISDB 的 DTC 来解决此问题。 有关详细信息，可参阅[逻辑服务器的 SQL 数据库限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)。
 
 ### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>错误消息：“SSIS 操作失败并出现意外的操作状态: ...”
 
 该错误主要是由某个暂时性问题导致的，因此请尝试重新运行包执行。 执行以下步骤，在 SSIS 包中应用重试模式：
 
 * 确保 SSIS 包在失败时可以重新运行，且不产生负面影响（例如数据丢失或数据重复）。
-* 在“常规”选项卡上配置“执行 SSIS 包”活动的“重试”和“重试间隔”。     ![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* 在“常规”选项卡上配置“执行 SSIS 包”活动的“重试”和“重试间隔”。   ![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 * 对于 ADO.NET 和 OLE DB 源或目标组件，请在 SSIS 包或 SSIS 活动的连接管理器中设置 **ConnectRetryCount** 和 **ConnectRetryInterval**。
 
 ### <a name="error-message-there-is-no-active-worker"></a>错误消息：“没有任何活动的辅助角色。”
@@ -124,11 +123,11 @@ ms.locfileid: "81414686"
 一种潜在原因是为 Azure Analysis Services 身份验证配置了已启用 Azure 多重身份验证的用户名或密码。 SSIS Integration Runtime 不支持这种身份验证。 尝试使用服务主体进行 Azure Analysis Services 身份验证：
 
 1. 请根据[使用服务主体进行自动化](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)中所述准备服务主体。
-2. 在连接管理器中，配置“使用特定的用户名和密码”：将“AppID”设为用户名，将“clientSecret”设为密码。   
+2. 在连接管理器中，配置“使用特定的用户名和密码”：将“AppID”设为用户名，将“clientSecret”设为密码。  
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>错误消息：使用托管标识时发生错误“ADONET 源无法获取连接 {GUID} 并出现以下错误消息:用户 'NT AUTHORITY\ANONYMOUS LOGON' 登录失败”
 
-如果参数 *ConnectUsingManagedIdentity* 为 **True**，请确保不要将连接管理器的身份验证方法配置为“Active Directory密码身份验证”。  可将其配置为“SQL 身份验证”，设置了 *ConnectUsingManagedIdentity* 时会忽略此配置。 
+如果参数 *ConnectUsingManagedIdentity* 为 **True**，请确保不要将连接管理器的身份验证方法配置为“Active Directory密码身份验证”。 可将其配置为“SQL 身份验证”，设置了 *ConnectUsingManagedIdentity* 时会忽略此配置。
 
 ### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>错误消息：“0xC020801F 出现在...，OData 源 [...]:无法从运行时连接管理器获取托管连接”
 
@@ -179,7 +178,7 @@ ms.locfileid: "81414686"
   * 若要了解如何设置节点计数以及每个节点的最大并行执行数，请参阅[在 Azure 数据工厂中创建 Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md)。
 * SSIS Integration Runtime 已停止或处于不正常状态。 若要了解如何检查 SSIS Integration Runtime 状态和错误，请参阅 [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime)。
 
-我们还建议在“常规”选项卡上设置超时：  ![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)。
+我们还建议在“常规”选项卡上设置超时：![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)。
 
 ### <a name="poor-performance-in-package-execution"></a>包的执行性能不佳
 
@@ -187,7 +186,7 @@ ms.locfileid: "81414686"
 
 * 确保 SSIS Integration Runtime 与数据源和目标位于同一区域。
 
-* 将包执行的日志记录级别设置为“性能”，以收集执行中每个组件的持续时间信息。  有关详细信息，请参阅 [Integration Services (SSIS) 日志记录](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging)。
+* 将包执行的日志记录级别设置为“性能”，以收集执行中每个组件的持续时间信息。 有关详细信息，请参阅 [Integration Services (SSIS) 日志记录](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging)。
 
 * 在 Azure 门户中检查 IR 节点性能：
   * 有关如何监视 SSIS Integration Runtime 的信息，请参阅 [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime)。

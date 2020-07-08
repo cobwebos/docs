@@ -17,7 +17,6 @@ ms.date: 04/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 541c775897f95eda932d3e19653cf557756f3efd
 ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/29/2020
 ms.locfileid: "84170879"

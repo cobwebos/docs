@@ -4,12 +4,11 @@ description: 提供有关 Azure VMware 解决方案 (AVS) 的某些常见问题�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84112686"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>有关 Azure VMware 解决方案 (AVS) 预览版的常见问题解答
 
@@ -67,34 +66,7 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 可以，Azure VMware 解决方案支持使用熟悉的 VMware 工具（如 HCX）进行迁移。 如果客户对迁移到新解决方案感兴趣，请与你的 Microsoft 帐户团队合作，探索相关选项和可用支持。
 
-<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**如何请求为现有 Azure VMware 解决方案增加主机配额？**
 
-随时都可通过[提交支持请求](..\azure-portal\supportability\how-to-create-azure-support-request.md)来请求增加配额。 配额管理团队会在三个工作日内评估和批准请求。  
-
-> [!IMPORTANT]
-> 在请求增加配额之前，请确保在 Azure 门户中[注册 Microsoft AVS 资源提供程序](tutorial-create-private-cloud.md)。  
-> ```azurecli-interactive
-> az provider register -n Microsoft.AVS --subscription <your subscription ID>
-> ```
-> 有关注册资源提供程序的其他方式，请参阅 [Azure 资源提供程序和类型](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types)。
-
-1. 在 Azure 门户中的“帮助 + 支持”下，创建“新支持请求”并为票证提供以下信息 ：
-   - **问题类型：** 技术方面
-   - **订阅：** 订阅 ID
-   - **服务：** Azure VMware 解决方案 
-   - **摘要：** 配额增加
-   - **问题类型：** 容量管理问题
-   - **问题子类型：** 客户请求额外的主机配额/容量
-
-1. 在“详细信息”选项卡上，在支持票证的描述中提供：
-   - 附加节点数   
-   - 节点 SKU
-   - 区域
-
-   > [!NOTE] 
-   > 默认情况下，将授予至少四个节点。
-
-1. 单击“预览 + 创建”提交请求。
 
 ## <a name="compute-network-and-storage"></a>计算、网络和存储
 
@@ -142,7 +114,7 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 
 **可以为试用群集使用高端主机吗？**
 
-不是。 高端 ESXi 主机保留用于生产群集。
+不能。 高端 ESXi 主机保留用于生产群集。
 
 ## <a name="avs-and-vmware-software"></a>AVS 和 VMware 软件
 
@@ -164,7 +136,7 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 
 **在私有云中，VMware 软件的升级和更新计划是什么？**
 
-私有云软件捆绑包升级的目的是使软件与 VMware 最新发布的版软件捆绑包保持同一版本。 私有云软件版本可能不同于各个软件组件（ESXi、NSX-T、vCenter、VSAN）的最新版本。
+私有云软件捆绑升级的目的是将软件保存到 VMware 的软件捆绑版本的最新版本中。 私有云软件版本可能不同于各个软件组件（ESXi、NSX-T、vCenter、VSAN）的最新版本。
 
 **私有云软件堆栈的更新频率是多少？**
 
@@ -233,6 +205,35 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 **创建 AVS 私有云需要哪些帐户？**
 
 需要 Azure 订阅中的 Azure 帐户。
+
+<a name="how-to-request-a-quota-increase-for-avs"></a>**如何实现请求 Azure VMware 解决方案的主机配额增加？**
+
+随时都可通过[提交支持请求](..\azure-portal\supportability\how-to-create-azure-support-request.md)来请求增加配额。 配额管理团队会在三个工作日内评估和批准请求。  
+
+> [!IMPORTANT]
+> 在请求增加配额之前，请确保在 Azure 门户中注册 Microsoft AVS 资源提供程序。  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> 有关注册资源提供程序的其他方式，请参阅 [Azure 资源提供程序和类型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
+
+1. 在 Azure 门户中的“帮助 + 支持”下，创建“新支持请求”并为票证提供以下信息 ：
+   - **问题类型：** 技术方面
+   - **订阅：** 订阅 ID
+   - **服务：** Azure VMware 解决方案 
+   - **摘要：** 配额增加
+   - **问题类型：** 容量管理问题
+   - **问题子类型：** 客户请求额外的主机配额/容量
+
+1. 在“详细信息”选项卡上，在支持票证的描述中提供：
+   - 附加节点数   
+   - 节点 SKU
+   - 区域
+
+   > [!NOTE] 
+   > 默认情况下，将授予至少四个节点。
+
+1. 单击“预览 + 创建”提交请求。
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952

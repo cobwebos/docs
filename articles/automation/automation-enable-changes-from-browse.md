@@ -7,7 +7,6 @@ ms.topic: article
 ms.custom: mvc
 ms.openlocfilehash: f84a609ea2821546c4001b98ad11495305ac101a
 ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/29/2020
 ms.locfileid: "84171066"

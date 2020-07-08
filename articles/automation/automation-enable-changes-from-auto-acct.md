@@ -5,12 +5,11 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 28c61e637a37c158dcd80c0f02b748b4813945fb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 13f17ed9d165e368d2e9d9cde694408b600006cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826836"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84171117"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>从自动化帐户启用更改跟踪和清单
 
@@ -37,17 +36,13 @@ ms.locfileid: "83826836"
 
     ![启用更改跟踪和库存](media/automation-enable-changes-from-auto-acct/onboardsolutions.png)
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>检查作用域配置
-
-更改跟踪和库存在工作区中使用作用域配置来限定要接收更改的计算机。 作用域配置是包含一个或多个已保存搜索的组，该组用来将功能的作用域限制为特定计算机。 有关详细信息，请参阅[使用更改跟踪和库存的作用域配置](automation-scope-configurations-change-tracking.md)。
-
 ## <a name="enable-azure-vms"></a>启用 Azure VM
 
 1. 在自动化帐户中，选择“配置管理”下的“库存”或“更改跟踪”  。
 
 2. 单击“+ 添加 Azure VM”并从列表中选择一个或多个 VM。 无法启用的虚拟机将灰显，无法选择。 Azure VM 可以位于任何区域中，无论自动化帐户位于哪里。 
 
-3. 单击“启用”以将选定 VM 添加到计算机组为此功能保存的搜索。 有关详细信息，请参阅[使用更改跟踪和库存的作用域配置](automation-scope-configurations-change-tracking.md)。
+3. 单击“启用”以将选定 VM 添加到计算机组为此功能保存的搜索结果。 有关详细信息，请参阅[Limit 更改跟踪和清点部署范围](automation-scope-configurations-change-tracking.md)。
 
     ![启用 Azure VM](media/automation-enable-changes-from-auto-acct/enable-azure-vms.png)
 
@@ -73,15 +68,11 @@ ms.locfileid: "83826836"
 
 4. 若要为所有可用的计算机和将来的计算机启用该功能，请选择“在所有可用的和将来的计算机上启用”。 此选项将从工作区中删除已保存的搜索和作用域配置，并为向工作区报告的所有 Azure 和非 Azure 计算机启用该功能。 选中此项后，此操作将永久禁用“管理计算机”按钮，因为没有剩余的作用域配置。
 
-5. 如果需要，可以通过重新添加初始的已保存搜索来添加作用域配置。 有关详细信息，请参阅[使用更改跟踪和库存的作用域配置](automation-scope-configurations-change-tracking.md)。
+5. 如果需要，可以通过重新添加初始的已保存搜索来添加作用域配置。 有关详细信息，请参阅[Limit 更改跟踪和清点部署范围](automation-scope-configurations-change-tracking.md)。
 
 6. 若要为一台或多台计算机启用该功能，请选择“在所选计算机上启用”并单击每台计算机旁边的“添加”以启用该功能。 此任务会将所选计算机名称添加到计算机组为此功能保存的搜索查询。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关此功能的详细信息，请参阅[管理更改跟踪和库存](change-tracking-file-contents.md)。
-* 有关作用域配置的信息，请参阅[使用更改跟踪和库存的作用域配置](automation-scope-configurations-change-tracking.md)。
-* 若要了解如何使用此功能来识别环境中安装的软件，请参阅[发现 VM 上安装了哪些软件](automation-tutorial-installed-software.md)。
-* 如果不希望在启用此功能时将自动化帐户与 Log Analytics 工作区集成，请参阅[取消工作区与自动化帐户的链接](automation-unlink-workspace-change-tracking.md)。
-* 将更改部署到 VM 后，可以按照[从更改跟踪和库存中删除 VM](automation-remove-vms-from-change-tracking.md) 中的说明将其删除。
-* 若要排查该功能的常见问题，请参阅[排查更改跟踪和库存问题](troubleshoot/change-tracking.md)。
+* 若要使用该功能，请参阅[管理更改跟踪和清单](change-tracking-file-contents.md)。
+* 若要排查该功能的常见问题，请参阅[排查更改跟踪和清单问题](troubleshoot/change-tracking.md)。

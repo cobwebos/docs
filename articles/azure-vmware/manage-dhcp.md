@@ -1,14 +1,13 @@
 ---
 title: 如何管理 DHCP
-description: 本文介绍如何在 Azure VMWare 解决方案（AVS）中管理 DHCP
+description: 本文介绍如何在 Azure VMware 解决方案（AVS）中管理 DHCP
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ccf28c94e1991681c238f51847fe228313abe29e
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 80791dd2041fb9d6fbc7c67f2d7d7b2d0b6c977e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740442"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84148355"
 ---
 # <a name="how-to-manage-dhcp-in-azure-vmware-solution-avs-preview"></a>如何在 Azure VMWare 解决方案（AVS）预览版中管理 DHCP
 
@@ -56,7 +55,7 @@ NSX 为私有云提供配置 DHCP 的能力。 如果你计划使用 NSX-T 来�
 
 ## <a name="create-dhcp-relay-service"></a>创建 DHCP 中继服务
 
-在 NXT 的 "T" 窗口中，选择 "**网络**" 选项卡，然后在 " **IP 管理**" 下选择**DHCP**。 选择 "**添加服务器**"。 为 "**服务器类型**" 选择 "DHCP 中继"，并输入中继服务器的服务器名称和 IP 地址。 选择“保存”  以保存更改。
+在 NXT 的 "T" 窗口中，选择 "**网络**" 选项卡，然后在 " **IP 管理**" 下选择**DHCP**。 选择 "**添加服务器**"。 为 "**服务器类型**" 选择 "DHCP 中继"，并输入中继服务器的服务器名称和 IP 地址。 选择“保存”以保存更改。
 
 :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="创建 dhcp 中继服务器" border="true":::
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021851"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL 数据库安全功能    
 Azure SQL 数据库在 Azure 中提供关系型数据库服务。 为了保护客户数据并提供关系型数据库服务预期具备的强大安全功能，SQL 数据库具有自身的安全功能集。 这些功能立足于从 Azure 继承的控制能力。
@@ -31,13 +30,13 @@ Azure SQL 数据库在 Azure 中提供关系型数据库服务。 为了保护�
 Azure SQL 数据库仅支持表格格式数据流 (TDS) 协议，该协议要求只能通过默认端口 TCP/1433 访问数据库。
 
 ### <a name="azure-sql-database-firewall"></a>Azure SQL 数据库防火墙
-为了帮助保护客户数据，Azure SQL 数据库包含防火墙功能，默认情况下，该功能会阻止对 SQL 数据库服务器的所有访问，如下所示。
+为了帮助保护客户数据，Azure SQL 数据库包括防火墙功能，该功能默认情况下会阻止对 SQL 数据库的所有访问，如下所示。
 
 ![Azure SQL 数据库防火墙](./media/infrastructure-sql/sql-database-firewall.png)
 
 网关防火墙可以限制地址，使客户能够进行精细控制，以指定可接受的 IP 地址范围。 防火墙基于每个请求的来源 IP 地址授予访问权限。
 
-客户可以使用管理门户，或者使用 Microsoft Azure SQL 数据库管理 REST API 以编程方式实现防火墙配置。 默认情况下，Azure SQL 数据库网关防火墙阻止所有客户 TDS 访问 Azure SQL 数据库实例。 客户使用访问控制列表 (ACL) 配置访问权限，允许通过源和目标 Internet 地址、协议和端口号建立 Azure SQL 数据库建立连接。
+客户可以使用管理门户，或者使用 Microsoft Azure SQL 数据库管理 REST API 以编程方式实现防火墙配置。 默认情况下，Azure SQL 数据库网关防火墙阻止所有客户 TDS 对 Azure SQL 数据库的访问权限。 客户使用访问控制列表 (ACL) 配置访问权限，允许通过源和目标 Internet 地址、协议和端口号建立 Azure SQL 数据库建立连接。
 
 ### <a name="dosguard"></a>DoSGuard
 名为 DoSGuard 的 SQL 数据库网关服务可以减少拒绝服务 (DoS) 攻击。 DoSGuard 能够主动跟踪 IP 地址发起的失败登录。 如果特定的 IP 地址在一段时间内多次登录失败，则会阻止该 IP 地址在预定义的时间段内访问服务中的任何资源。
@@ -75,7 +74,7 @@ Azure 生产网络在逻辑上分离成三个主要 VLAN：
 ### <a name="types-of-rules-on-firewalls"></a>防火墙上的规则类型
 规则定义为：
 
-{Src IP、Src 端口、目标 IP、目标端口、目标协议、传入/传出、有状态/无状态、有状态流超时}。
+{Src IP，Src 端口，目标 IP，目标端口，目标协议，传入/传出，有状态/无状态，有状态流超时}。
 
 仅当受任一规则的允许时，才允许传入或传出同步空闲字符 (SYN) 数据包。 对于 TCP，Azure 使用无状态规则，其中的原则是，只允许所有非 SYN 数据包传入或传出 VM。 安全性的前提是，如果任何主机堆栈以前未发现 SYN 数据包，则灵活忽略非 SYN 数据包。 TCP 协议本身是有状态的，与无状态的基于 SYN 的规则相结合，实现有状态实施方案的整体行为。
 
@@ -100,7 +99,7 @@ Azure 生产网络在逻辑上分离成三个主要 VLAN：
 - [Azure 信息系统的组件和边界](infrastructure-components.md)
 - [Azure 网络体系结构](infrastructure-network.md)
 - [Azure 生产网络](production-network.md)
-- [Azure 生产操作和管理](infrastructure-operations.md)
+- [Azure 生产运营和管理](infrastructure-operations.md)
 - [Azure 基础结构监视](infrastructure-monitoring.md)
 - [Azure 基础结构完整性](infrastructure-integrity.md)
 - [Azure 客户数据保护](protection-customer-data.md)

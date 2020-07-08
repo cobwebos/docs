@@ -1,51 +1,52 @@
 ---
 title: 部署历史记录
-description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure 资源管理器部署操作。
+description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure Resource Manager 部署操作。
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.date: 05/26/2020
+ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84117836"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
 
-通过 Azure 资源管理器可以查看部署历史记录，并检查过去部署中的特定操作。 可以查看已部署的资源，并获取有关任何错误的信息。
+通过 Azure 资源管理器，你能够查看部署历史记录。 可以检查过去的部署中的特定操作和部署的资源。 此历史记录包含有关任何错误的信息。
 
-有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
+一个资源组的部署历史记录限含 800 个部署。 接近限制时，将自动从历史记录中删除部署。 有关详细信息，请参阅[从部署历史记录中自动删除](deployment-history-deletions.md)。
+
+如需帮助解决特定部署错误，请参阅[解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
 
 ## <a name="get-deployments-and-correlation-id"></a>获取部署和相关 ID
 
-可以通过 Azure 门户、PowerShell、Azure CLI 或 REST API 查看有关部署的详细信息。 每个部署都有一个相关 ID，用于跟踪相关事件。 与技术支持人员合作排查部署问题时，此 ID 非常有用。
+可通过 Azure 门户、PowerShell、Azure CLI 或 REST API 查看部署详细信息。 每个部署都有一个相关 ID，用于跟踪相关的事件。 与技术支持人员合作排查部署问题时，它非常有用。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 选择要检查的资源组。
 
-1. 选择“部署”下的链接。
+1. 选择“部署”**** 下的链接。
 
    ![选择部署历史记录](./media/deployment-history/select-deployment-history.png)
 
-1. 从部署历史记录中选择其中一个部署。
+1. 从部署历史记录中选择一个部署。
 
    ![选择部署](./media/deployment-history/select-details.png)
 
-1. 将显示部署摘要，包括相关 ID。
+1. 会显示部署摘要，包括相关 ID。
 
     ![部署摘要](./media/deployment-history/show-correlation-id.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要列出资源组的所有部署，请使用 [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment) 命令。
+若要列出一个资源组的所有部署，请使用 [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment) 命令。
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-若要从资源组中获取特定部署，请添加 DeploymentName 参数。
+若要获取资源组的特定部署，请添加 **DeploymentName** 参数。
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
@@ -79,19 +80,19 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-若要列出资源组的部署，请使用以下操作。 若要在请求中使用最新的 API 版本号，请参阅[部署 - 按资源组列出](/rest/api/resources/deployments/listbyresourcegroup)。
+若要列出某个资源组的部署，请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署 - 按资源组列出](/rest/api/resources/deployments/listbyresourcegroup)。
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
 ```
 
-若要获取特定部署， 请使用以下操作。 若要在请求中使用最新的 API 版本号，请参阅[部署 - 获取](/rest/api/resources/deployments/get)。
+若要获取特定部署， 请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署 - 获取](/rest/api/resources/deployments/get)。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
 ```
 
-响应包括相关 ID。
+响应包含相关 ID。
 
 ```json
 {
@@ -111,27 +112,27 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 ## <a name="get-deployment-operations-and-error-message"></a>获取部署操作和错误消息
 
-每个部署可包括多个操作。 若要了解有关部署的详细信息，请查看部署操作。 部署失败时，部署操作会包含一条错误消息。
+每个部署可能包括多个操作。 若要查看某个部署的更多详细信息，请参阅部署操作。 当部署失败时，部署操作会包含一条错误消息。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 在部署摘要中，选择“操作详细信息”。
+1. 在部署的摘要上，选择“操作详细信息”。****
 
-    ![选择部署操作](./media/deployment-history/get-operation-details.png)
+    ![选择操作详细信息](./media/deployment-history/get-operation-details.png)
 
-1. 将看到该部署步骤的详细信息。 出现错误时，详细信息将包含错误消息。
+1. 会看到部署的该步骤的详细信息。 发生错误时，详细信息会包含错误消息。
 
     ![显示操作详细信息](./media/deployment-history/see-operation-details.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要查看部署到资源组的部署操作，请使用 [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) 命令。
+若要查看部署到某个资源组时的部署操作，请使用 [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) 命令。
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy
 ```
 
-要查看失败操作，请筛选具有“失败”状态的操作。
+若要查看失败的操作，请使用“失败”状态筛选操作。****
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy).Properties | Where-Object ProvisioningState -eq Failed
@@ -151,7 +152,7 @@ Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Deployme
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
-若要查看失败操作，请筛选具有“失败”状态的操作。
+若要查看失败操作，请筛选具有“失败”**** 状态的操作。
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
@@ -165,13 +166,13 @@ az deployment operation group list --resource-group ExampleGroup --name ExampleD
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-若要获取部署操作，请使用以下操作。 若要在请求中使用最新的 API 版本号，请参阅[部署操作 - 列出](/rest/api/resources/deploymentoperations/list)。
+若要获取部署操作，请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署操作 - 列出](/rest/api/resources/deploymentoperations/list)。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
 ```
 
-响应中包含一个错误消息。
+响应包含错误消息。
 
 ```json
 {
@@ -209,7 +210,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
-* 若要了解如何使用活动日志监视其他类型的操作，请参阅[通过查看活动日志管理 Azure 资源](../management/view-activity-logs.md)。
-* 若要在执行部署之前验证部署，请参阅[使用 Azure 资源管理器模板部署资源组](deploy-powershell.md)。
+* 如需帮助解决特定部署错误，请参阅[解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
+* 要了解历史记录中的部署是如何进行管理的，请参阅[从部署历史记录中自动删除](deployment-history-deletions.md)。
+* 若要在执行部署之前验证部署，请参阅[使用 Azure Resource Manager 模板部署资源组](deploy-powershell.md)。
 

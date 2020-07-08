@@ -9,12 +9,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 8d0b49b73ef6b67653fbf32db1174880a51d432d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81412943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84187280"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 
@@ -65,9 +64,9 @@ ms.locfileid: "81412943"
 用户还能利用已记录的 REST API 来与数据工厂 V2 交互。
 
 ### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>使用可视化工具进行迭代开发和调试
-使用 Azure 数据工厂可视化工具可进行迭代开发和调试。 可使用管道画布中的“调试”功能创建管道并测试运行情况，无需编写任何代码****。 可以在管道画布的 "**输出**" 窗口中查看测试运行的结果。 在测试运行成功后，可向管道中添加更多活动并继续以迭代方式进行调试。 还可以“取消”正在进行的测试运行。 
+使用 Azure 数据工厂可视化工具可进行迭代开发和调试。 可使用管道画布中的“调试”功能创建管道并测试运行情况，无需编写任何代码。 可在管道画布的“输出”窗口中查看测试运行的结果。 在测试运行成功后，可向管道中添加更多活动并继续以迭代方式进行调试。 还可以“取消”正在进行的测试运行。 
 
-在选择“调试”之前，不需要将所做的更改发布至数据工厂服务。**** 在开发、测试或生产环境中更新数据工厂工作流之前，如果想确保新添加的内容或更改能按预期工作，这一点就很有帮助。 
+在选择“调试”之前，不需要将所做的更改发布至数据工厂服务。 在开发、测试或生产环境中更新数据工厂工作流之前，如果想确保新添加的内容或更改能按预期工作，这一点就很有帮助。 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>将 SSIS 包部署到 Azure 的功能 
 如果想要移动 SSIS 工作负荷，可以创建一个数据工厂，并预配 Azure-SSIS 集成运行时。 Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 有关分步说明，请参阅[将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md) 教程。 
@@ -83,11 +82,11 @@ ms.locfileid: "81412943"
 
 -    增加了对三种 Azure SQL 数据库配置/变体的支持，可托管项目/包的 SSIS 数据库 (SSISDB)：
 -    包含虚拟网络服务终结点的 SQL 数据库
--    托管实例
+-    SQL 托管实例
 -    弹性池
 -    支持构建在经典虚拟网络（将来会弃用）基础之上的 Azure 资源管理器虚拟网络，可让你将 Azure-SSIS Integration Runtime 注入/联接到可以访问虚拟网络服务终结点/MI/本地数据的 Azure SQL 数据库。 有关详细信息，另请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
 -    支持使用 Azure Active Directory (Azure AD) 身份验证和 SQL 身份验证连接到 SSISDB，以便可对 Azure 资源的数据工厂托管标识进行 Azure AD 身份验证
--    支持自带本地 SQL Server 许可证，大量节约 Azure 混合权益选项的成本
+-    支持引入现有 SQL Server 许可证，大量节约 Azure 混合权益选项的成本
 -    支持 Azure-SSIS Integration Runtime 企业版，可让你使用高级功能、用于安装附加组件/扩展的自定义安装界面，以及合作伙伴生态系统。 有关详细信息，另请参阅 [ADF 中的 SSIS 企业版、自定义安装和第三方可扩展性](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)。 
 -    在数据工厂中更深入地与 SSIS 进行了集成，可让你在数据工厂管道中调用/触发一流的执行 SSIS 包活动并通过 SSMS 对它们进行计划。 有关详细信息，另请参阅[使用 ADF 管道中的 SSIS 活动来实现 ETL/ELT 工作流的现代化并对其进行扩展](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)。
 
@@ -95,13 +94,13 @@ ms.locfileid: "81412943"
 ## <a name="what-is-the-integration-runtime"></a>什么是 Integration Runtime？
 集成运行时是 Azure 数据工厂用于在各种网络环境之间提供以下数据集成功能的计算基础结构：
 
-- **数据移动**：对于数据移动，集成运行时在源和目标数据存储之间移动数据，同时为内置连接器、格式转换、列映射和高性能和可缩放的数据传输提供支持。
-- **调度活动**：对于转换，集成运行时提供本机执行 SSIS 包的能力。
-- **执行 SSIS 包**：集成运行时在托管的 Azure 计算环境中本机执行 SSIS 包。 集成运行时还支持调度和监视在各种计算服务（例如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的转换活动。
+- **数据移动**：就数据移动而言，集成运行时在源和目标数据存储之间移动数据，同时为内置连接器、格式转换、列映射和高性能可缩放数据传输提供支持。
+- **调动活动**：就转换而言，集成运行时提供本机执行 SSIS 包的能力。
+- **执行 SSIS 包**：Integration Runtime 在托管的 Azure 计算环境中本机执行 SSIS 包。 集成运行时还支持调度和监视在各种计算服务（例如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的转换活动。
 
 可以按需部署一个或多个集成运行时实例来移动和转换数据。 集成运行时可以在 Azure 公用网络或专用网络（本地、Azure 虚拟网络或 Amazon Web Services 虚拟私有云 [VPC]）中运行。 
 
-有关详细信息，请参阅[Azure 数据工厂中的集成运行时](concepts-integration-runtime.md)。
+有关详细信息，请参阅 [Azure 数据工厂中的集成运行时](concepts-integration-runtime.md)。
 
 ## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>对集成运行时的数目有何限制？
 对于可在数据工厂中使用多少个集成运行时实例，没有硬性限制。 不过，对于集成运行时在每个订阅中可用于执行 SSIS 包的 VM 核心数有限制。 有关详细信息，请参阅[数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)。
@@ -122,11 +121,11 @@ ms.locfileid: "81412943"
 数据集代表数据存储中的数据结构，这些结构直接指向需要在活动中使用的数据，或者将其作为输入或输出引用。 
 
 ### <a name="linked-services"></a>链接服务
-链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 以这种方式思考：链接服务定义到数据源的连接，数据集表示数据的结构。 例如，Azure 存储链接服务指定连接到 Azure 存储帐户所需的连接字符串。 Azure Blob 数据集指定 Blob 容器以及包含数据的文件夹。
+链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 不妨这样考虑：链接服务定义到数据源的连接，而数据集则代表数据的结构。 例如，Azure 存储链接服务指定连接到 Azure 存储帐户所需的连接字符串。 Azure Blob 数据集指定 Blob 容器以及包含数据的文件夹。
 
 数据工厂中的链接服务有两个用途：
 
-- 代表数据存储，包括但不限于本地 SQL Server 实例、Oracle 数据库实例、文件共享或 Azure Blob 存储帐户。** 有关支持的数据存储列表，请参阅 [Azure 数据工厂中的复制活动](copy-activity-overview.md)。
+- 代表数据存储，包括但不限于 SQL Server 实例、Oracle 数据库实例、文件共享或 Azure Blob 存储帐户。 有关支持的数据存储列表，请参阅 [Azure 数据工厂中的复制活动](copy-activity-overview.md)。
 - 代表可托管活动执行的*计算资源*。 例如，HDInsight Hive 活动在 HDInsight Hadoop 群集上运行。 有关转换活动列表和支持的计算环境，请参阅[在 Azure 数据工厂中转换数据](transform-data.md)。
 
 ### <a name="triggers"></a>触发器
@@ -135,8 +134,8 @@ ms.locfileid: "81412943"
 ### <a name="pipeline-runs"></a>管道运行
 管道运行是管道执行实例。 我们通常通过将自变量传递给管道中定义的参数来实例化管道运行。 可以手动传递自变量，也可以在触发器定义中传递。
 
-### <a name="parameters"></a>参数
-参数是只读配置中的键值对。在管道中定义参数，并在执行期间通过运行上下文传递所定义参数的自变量。 运行上下文由触发器创建，或通过手动执行的管道创建。 管道中的活动使用参数值。
+### <a name="parameters"></a>parameters
+参数是只读配置中的键值对。 在管道中定义参数，并在执行期间通过运行上下文传递所定义参数的自变量。 运行上下文由触发器创建，或通过手动执行的管道创建。 管道中的活动使用参数值。
 
 数据集是可以重用或引用的强类型参数和实体。 活动可以引用数据集并且可以使用数据集定义中所定义的属性。
 
@@ -252,12 +251,12 @@ Azure 数据工厂（ADF）是一个托管数据集成服务，它允许数据�
 * short
 * double
 * real
-* FLOAT
+* float
 * char
 * nchar
 * varchar
 * nvarchar
-* 整数
+* integer
 * int
 * bit
 * boolean

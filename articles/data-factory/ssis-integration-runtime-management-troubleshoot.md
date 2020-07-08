@@ -11,12 +11,11 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84118834"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
 
@@ -30,27 +29,27 @@ ms.locfileid: "81414702"
 
 如果错误代码为 InternalServerError，则表示服务出现了暂时性的问题，应该在以后重试该操作。 如果重试不起作用，请联系 Azure 数据工厂支持团队。
 
-否则，以下三个主要的外部依赖项可能会导致错误：Azure SQL 数据库服务器或托管实例、自定义安装脚本和虚拟网络配置。
+否则，三个主要的外部依赖项可能会导致错误：Azure SQL 数据库或 Azure SQL 托管实例、自定义安装脚本以及虚拟网络配置。
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL 数据库服务器或托管实例问题
+## <a name="sql-database-or-sql-managed-instance-issues"></a>SQL 数据库或 SQL 托管实例问题
 
-如果要使用 SSIS 目录数据库预配 SSIS IR，则需要 Azure SQL Database 服务器或托管实例。 SSIS IR 必须能够访问 Azure SQL Database 服务器或托管实例。 此外，Azure SQL Database 服务器或托管实例的帐户应具有创建 SSIS 目录数据库 (SSISDB) 的权限。 如果出现错误，则会在数据工厂门户中显示带有详细 SQL 异常消息的错误代码。 使用以下列表中的信息来对错误代码进行故障排除。
+如果要使用 SSIS 目录数据库预配 SSIS IR，则需要 SQL 数据库或 SQL 托管实例。 SSIS IR 必须能够访问 SQL 数据库或 SQL 托管实例。 此外，SQL 数据库或 SQL 托管实例的登录帐户必须具有创建 SSIS 目录数据库 (SSISDB) 的权限。 如果出现错误，则会在数据工厂门户中显示带有详细 SQL 异常消息的错误代码。 使用以下列表中的信息来对错误代码进行故障排除。
 
 ### <a name="azuresqlconnectionfailure"></a>AzureSqlConnectionFailure
 
 在预配新的 SSIS IR 或 IR 正在运行时，可能会出现此问题。 如果在 IR 预配过程中遇到此错误，则可能会在错误消息中获取详细的 SqlException 消息，指示以下问题之一：
 
-* 网络连接问题。 检查 SQL Server 或托管实例主机名是否可访问。 同时，确保没有防火墙或网络安全组 (NSG) 阻止 SSIS IR 访问服务器。
+* 网络连接问题。 检查是否可以访问 SQL 数据库或 SQL 托管实例的主机名。 同时，确保没有防火墙或网络安全组 (NSG) 阻止 SSIS IR 访问服务器。
 * SQL 身份验证期间登录失败。 提供的帐户无法登录 SQL Server 数据库。 请确保提供正确的用户帐户。
 * Microsoft Azure Active Directory (Azure AD) 身份验证（托管标识）期间登录失败。 将工厂的托管标识添加到 AAD 组，并确保托管标识具有对目录数据库服务器的访问权限。
 * 连接超时。 此错误始终是由与安全相关的配置引起的。 建议：
   1. 创建新 VM。
   1. 如果 IR 在虚拟网络中，请将 VM 加入相同的 IR Microsoft Azure 虚拟网络。
-  1. 安装 SSMS 并检查 Azure SQL Database 服务器或托管实例状态。
+  1. 安装 SSMS 并检查 SQL 数据库或 SQL 托管实例的状态。
 
-对于其他问题，请修复详细的 SQL 异常错误消息中显示的问题。 如果仍有问题，请联系 Azure SQL Database 服务器或托管实例支持团队。
+对于其他问题，请修复详细的 SQL 异常错误消息中显示的问题。 如果仍有问题，请联系 SQL 数据库或 SQL 托管实例支持团队。
 
-如果在 IR 正在运行时出现错误，那么网络安全组或防火墙更改可能会阻止 SSIS IR 工作器节点访问 Azure SQL Database 服务器或托管实例。 取消阻止 SSIS IR 工作器节点，使其可以访问 Azure SQL Database 服务器或托管实例。
+如果在 IR 正在运行时出现错误，那么网络安全组或防火墙更改可能会阻止 SSIS IR 工作器节点访问 SQL 数据库或 SQL 托管实例。 取消阻止 SSIS IR 工作器节点，使其可以访问 SQL 数据库或 SQL 托管实例。
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
@@ -65,20 +64,20 @@ ms.locfileid: "81414702"
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
 
-此错误表示 Azure SQL Database 服务器或托管实例已具有 SSISDB，并且它正被另一个 IR 使用。 需要提供不同的 Azure SQL Database 服务器或托管实例，或者删除现有 SSISDB 并重启新的 IR。
+此错误表示 SQL 数据库或 SQL 托管实例已有 SSISDB，并且它正被另一个 IR 使用。 需要提供不同的 SQL 数据库或 SQL 托管实例，或者删除现有 SSISDB 并重启新的 IR。
 
 ### <a name="catalogdbcreationfailure"></a>CatalogDbCreationFailure
 
 存在以下任一原因时，可能出现此错误：
 
 * 为 SSIS IR 配置的用户帐户没有创建数据库的权限。 可以授予用户创建数据库的权限。
-* 在数据库创建期间发生超时，如执行超时或 DB 操作超时。 应稍后重试此操作。 如果重试不起作用，请联系 Azure SQL Database 服务器或托管实例支持团队。
+* 在数据库创建期间发生超时，如执行超时或 DB 操作超时。 应稍后重试此操作。 如果重试不起作用，请联系 SQL 数据库或 SQL 托管实例支持团队。
 
-对于其他问题，请检查 SQL 异常错误消息，并修复错误详细信息中提到的问题。 如果仍有问题，请联系 Azure SQL Database 服务器或托管实例支持团队。
+对于其他问题，请检查 SQL 异常错误消息，并修复错误详细信息中提到的问题。 如果仍有问题，请联系 SQL 数据库或 SQL 托管实例支持团队。
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-这种错误消息如下所示：“对象名称 'catalog.catalog_properties' 无效。”在这种情况下，已经有一个名为 SSISDB 的数据库，但它不是由 SSIS IR 创建的，或者该数据库处于无效状态，这是由上一个 SSIS IR 预配中的错误引起的。 可以删除名称为 SSISDB 的现有数据库，也可以为 IR 配置新的 Azure SQL Database 服务器或托管实例。
+这种错误消息如下所示： "无效的对象名称" 目录。 catalog_properties "。在这种情况下，你已经有一个名为 SSISDB 的数据库，但它不是由 SSIS IR 创建的，或者该数据库处于无效状态，这是由上一个 SSIS IR 预配中的错误引起的。 可以删除名称为 SSISDB 的现有数据库，也可以为 IR 配置新的 SQL 数据库或 SQL 托管实例。
 
 ## <a name="custom-setup-issues"></a>自定义安装问题
 
@@ -172,7 +171,7 @@ SSIS IR 将定期自动更新。 升级期间将创建一个新的 Azure Batch �
 | 错误消息 | 解决方案|
 |:--- |:--- |
 | 提供的静态公共 IP 地址已被使用，请为你的 Azure-SSIS Integration Runtime 提供两个未使用的静态公共 IP 地址。 | 你应当选择两个未使用的静态公共 IP 地址，或者删除对指定公共 IP 地址的当前引用，然后重启 Azure-SSIS IR。 |
-| 提供的静态公共 IP 地址没有 DNS 名称，请为你的 Azure-SSIS Integration Runtime 提供两个具有 DNS 名称的静态公共 IP 地址。 | 可以在 Azure 门户中设置公共 IP 地址的 DNS 名称，如下图所示。 具体步骤如下所述：(1) 打开 Azure 门户并转到此公共 IP 地址的资源页；(2) 选择“配置”  部分并设置 DNS 名称，然后单击“保存”  按钮；(3) 重启你的 Azure-SSIS IR。 |
+| 提供的静态公共 IP 地址没有 DNS 名称，请为你的 Azure-SSIS Integration Runtime 提供两个具有 DNS 名称的静态公共 IP 地址。 | 可以在 Azure 门户中设置公共 IP 地址的 DNS 名称，如下图所示。 具体步骤如下所述：(1) 打开 Azure 门户并转到此公共 IP 地址的资源页；(2) 选择“配置”部分并设置 DNS 名称，然后单击“保存”按钮；(3) 重启你的 Azure-SSIS IR。 |
 | 为 Azure-SSIS Integration Runtime 提供的 VNet 和静态公共 IP 地址必须位于同一位置。 | 根据 Azure 网络的要求，静态公共 IP 地址和虚拟网络应当位于同一位置和订阅中。 请提供两个有效的静态公共 IP 地址，然后重启 Azure-SSIS IR。 |
 | 提供的静态公共 IP 地址是一个基本地址，请为你的 Azure-SSIS Integration Runtime 提供两个标准静态公共 IP 地址。 | 有关帮助信息，请参阅[公共 IP 地址的 SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)。 |
 

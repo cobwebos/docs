@@ -10,12 +10,11 @@ ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 6d2ea5c0b7354867086fc0cce43732f2d73c53ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cfb40375fe841dd363681aea3d2cf6355046cd51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81398962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84113690"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时
 
@@ -170,10 +169,10 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | NodeSize | Azure-SSIS 集成运行时的每个节点的大小。 |
 | NodeCount | Azure-SSIS 集成运行时中的节点数目。 |
 | MaxParallelExecutionsPerNode | Azure-SSIS 集成运行时中每个节点的并行执行数。 |
-| CatalogServerEndpoint | 用于承载 SSISDB 的现有 Azure SQL 数据库/托管实例服务器终结点。 |
-| CatalogAdminUserName | 现有 Azure SQL 数据库/托管实例服务器的管理员用户名。 数据工厂服务使用此信息来代你准备和管理 SSISDB。 |
-| CatalogAdminPassword | 现有 Azure SQL 数据库/托管实例服务器的管理员密码。 |
-| CatalogPricingTier | 现有 Azure SQL 数据库服务器托管的 SSISDB 的定价层。  不适用于使用 Azure SQL 数据库托管实例来托管 SSISDB。 |
+| CatalogServerEndpoint | 用于托管 SSISDB 的现有 SQL 数据库/SQL 托管实例的终结点。 |
+| CatalogAdminUserName | 现有 SQL 数据库/SQL 托管实例的管理员用户名。 数据工厂服务使用此信息来代你准备和管理 SSISDB。 |
+| CatalogAdminPassword | 现有 SQL 数据库/SQL 托管实例的管理员密码。 |
+| CatalogPricingTier | 由 SQL 数据库托管的 SSISDB 的定价层。  不适用于托管 SSISDB 的 SQL 托管实例。 |
 | VNetId | Azure-SSIS 集成运行时要加入的虚拟网络资源 ID。 |
 | 子网 | Azure-SSIS 集成运行时要加入的子网名称。 |
 | ID | Azure-SSIS 集成运行时的资源 ID。 |
@@ -224,8 +223,8 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 请参阅以下文章了解有关 Azure-SSIS 集成运行时的详细信息：
 
 - [Azure-SSIS 集成运行时](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 此文提供有关集成运行时（包括 Azure-SSIS IR）的一般概念性信息。 
-- [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 此文提供有关创建 Azure-SSIS IR，并使用 Azure SQL 数据库来承载 SSIS 目录的分步说明。 
-- [如何：创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是教程的拓展延伸，介绍了如何使用 Azure SQL 数据库托管实例以及如何将 IR 加入虚拟网络。 
+- [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 此文以分步说明的方式介绍了如何创建 Azure-SSIS IR 并使用 SQL 数据库来托管 SSIS 目录。 
+- [如何：创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了本教程的内容，介绍了如何使用 SQL 托管实例以及如何将 IR 加入虚拟网络。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)。 此文介绍如何停止、启动或删除 Azure-SSIS IR。 此外，介绍如何通过在 Azure-SSIS IR 中添加更多节点来扩展 IR。 
 - [将 Azure-SSIS IR 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。 此文提供有关将 Azure-SSIS IR 加入 Azure 虚拟网络的概念性信息。 此外，还介绍可以执行哪些步骤来使用 Azure 门户配置虚拟网络，以便 Azure-SSIS IR 能够加入虚拟网络。 
 

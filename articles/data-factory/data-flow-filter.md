@@ -7,19 +7,20 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/26/2020
+ms.openlocfilehash: 8189228d6707812fb943e9925dc2bbf1b6da4972
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84112811"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>映射数据流中的筛选转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 筛选器转换允许基于条件进行行筛选。 输出流包括与筛选条件匹配的所有行。 筛选器转换类似于 SQL 中的 WHERE 子句。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xnxN]
 
 ## <a name="configuration"></a>配置
 
@@ -40,7 +41,7 @@ ms.locfileid: "81606428"
 
 ### <a name="example"></a>示例
 
-下面的示例是一个名为`FilterBefore1960`的筛选器转换，它`CleanData`采用传入流。 筛选条件是表达式`year <= 1960`。
+下面的示例是一个名为的筛选器转换 `FilterBefore1960` ，它采用传入流 `CleanData` 。 筛选条件是表达式 `year <= 1960` 。
 
 在数据工厂 UX 中，此转换如下图所示：
 
