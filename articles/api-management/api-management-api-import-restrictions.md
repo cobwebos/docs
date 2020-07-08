@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513365"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
@@ -35,7 +34,7 @@ ms.locfileid: "76513365"
 
 -   路径和查询所需的参数必须具有唯一名称。 （在 OpenAPI 中，参数名称只需要在一个位置内是唯一的，例如路径、查询、标头。 但是，在 API 管理中，我们允许操作通过路径和查询参数进行区分（OpenAPI 不支持此方法）。 这就是要求参数名称在整个 URL 模板中是唯一的原因。）
 -   `\$ref`指针不能引用外部文件。
--   `x-ms-paths`和`x-servers`是唯一受支持的扩展。
+-   `x-ms-paths`和 `x-servers` 是唯一受支持的扩展。
 -   自定义扩展在导入时将被忽略，并且不会为导出保存或保留。
 -   `Recursion`-API 管理不支持以递归方式定义的定义（例如，引用自身的架构）。
 -   源文件 URL（如果可用）应用于相对服务器 URL。
@@ -50,8 +49,8 @@ ms.locfileid: "76513365"
 
 ### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI 版本 3
 
--   如果指定`servers`了多个，则 API 管理将尝试选择第一个 HTTPs URL。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
--   `Examples`不支持，但`example`为。
+-   如果 `servers` 指定了多个，则 API 管理将尝试选择第一个 HTTPS URL。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
+-   `Examples`不支持，但 `example` 为。
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI 导入、更新和导出机制
 

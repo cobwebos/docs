@@ -4,10 +4,9 @@ description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76152725"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
@@ -20,7 +19,7 @@ ms.locfileid: "76152725"
 
 在本部分，我们将使用“Web 应用”模板创建 Azure 资源组项目  。
 
-1. 在 Visual Studio 中，选择“文件” **“新建”** “项目”>  >  。
+1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”。
 1. 选择“Azure 资源组”项目模板和“下一步”   。
 
     ![创建项目](./media/create-visual-studio-deployment-project/create-project.png)

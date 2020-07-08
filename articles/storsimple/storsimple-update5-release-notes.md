@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76275170"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 系列 Update 5 发行说明
@@ -44,7 +43,7 @@ Update 5 中进行了以下重大改进和 bug 修复。
 
 下表提供在 Update 5 中已修复问题的摘要。
 
-| 否 | Feature | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell 远程功能 |在以前的版本中，用户尝试通过 Windows PowerShell 与 StorSimple 云设备建立远程连接时会收到错误。 在此版本中已找到此问题的根本原因并进行了修复。 |否 |是 |
 | 2 |带宽模板 |在以前的版本中，带宽模板中的某个问题会导致带宽低于配置给设备的带宽。 在此版本中已修复了此问题。 |是 |是 |

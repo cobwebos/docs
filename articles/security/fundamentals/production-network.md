@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68726691"
 ---
 # <a name="the-azure-production-network"></a>Azure 生产网络
@@ -55,7 +54,7 @@ Azure 在各个级别实现可靠的软件安全性和防火墙功能来强制�
 ### <a name="azure-security-features"></a>Azure 安全功能
 Azure 在生产网络内实现基于主机的软件防火墙。 核心 Azure 环境中包含多种核心安全性和防火墙功能。 这些安全功能反映了 Azure 环境中的深层防御策略。 Azure 中的客户数据受以下防火墙的保护：
 
-**虚拟机监控程序防火墙（数据包筛选器）**：在虚拟机监控程序中实现此防火墙并由结构控制器 (FC) 代理配置。 此防火墙可保护在 VM 内运行的租户免受未经授权的访问。 默认情况下，创建 VM 时，将阻止所有流量，然后 FC 代理在筛选器中添加规则和例外，以允许获得授权的流量。
+**虚拟机监控程序防火墙（数据包筛选器）** ：在虚拟机监控程序中实现此防火墙并由结构控制器 (FC) 代理配置。 此防火墙可保护在 VM 内运行的租户免受未经授权的访问。 默认情况下，创建 VM 时，将阻止所有流量，然后 FC 代理在筛选器中添加规则和例外，以允许获得授权的流量。
 
 此处对两类规则进行了编程：
 
@@ -64,7 +63,7 @@ Azure 在生产网络内实现基于主机的软件防火墙。 核心 Azure 环
 
 **本机主机防火墙**：Azure Service Fabric 和 Azure 存储在本机 OS 上运行，其中没有虚拟机监控程序，因此会使用上述两组规则配置 Windows 防火墙。
 
-**主机防火墙**：主机防火墙用于保护运行虚拟机监控程序的主机分区。 可以通过编程方式对规则进行设置，只允许 FC 和跳转盒在特定端口上与主机分区通信。 其他例外包括允许 DHCP 响应和 DNS 回复。 Azure 使用计算机配置文件，其中包括主机分区的防火墙规则模板。 还有一种主机防火墙例外情况，可允许 VM 通过特定协议/端口与主机组件、网络服务器和元数据服务器进行通信。
+**主机防火墙**：主机防火墙保护运行虚拟机监控程序的主机分区。 可以通过编程方式对规则进行设置，只允许 FC 和跳转盒在特定端口上与主机分区通信。 其他例外包括允许 DHCP 响应和 DNS 回复。 Azure 使用计算机配置文件，其中包括主机分区的防火墙规则模板。 还有一种主机防火墙例外情况，可允许 VM 通过特定协议/端口与主机组件、网络服务器和元数据服务器进行通信。
 
 **来宾防火墙**：来宾 OS 的 Windows 防火墙部分，可由客户在客户 VM 和存储中配置。
 
@@ -86,7 +85,7 @@ Azure 在生产网络内实现基于主机的软件防火墙。 核心 Azure 环
 - [Azure 信息系统的组件和边界](infrastructure-components.md)
 - [Azure 网络体系结构](infrastructure-network.md)
 - [Azure SQL 数据库安全功能](infrastructure-sql.md)
-- [Azure 生产操作和管理](infrastructure-operations.md)
+- [Azure 生产运营和管理](infrastructure-operations.md)
 - [Azure 基础结构监视](infrastructure-monitoring.md)
 - [Azure 基础结构完整性](infrastructure-integrity.md)
 - [Azure 客户数据保护](protection-customer-data.md)

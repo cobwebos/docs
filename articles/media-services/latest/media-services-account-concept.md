@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980381"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>管理 Azure 媒体服务 v3 帐户
@@ -37,7 +36,7 @@ ms.locfileid: "75980381"
 > [!IMPORTANT]
 > 在移动成功完成之前，请勿启动流式处理终结点。
 
-### <a name="troubleshoot"></a>疑难解答 
+### <a name="troubleshoot"></a>故障排除 
 
 如果媒体服务帐户或关联的 Azure 存储帐户在资源组移动后变为“已断开连接”状态，请尝试轮换存储帐户密钥。 如果轮换存储帐户密钥不能解决媒体服务帐户的“已断开连接”状态，请通过媒体服务帐户中的“支持 + 疑难解答”菜单来提交新的支持请求。  
 

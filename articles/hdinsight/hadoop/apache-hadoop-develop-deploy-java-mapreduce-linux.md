@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/16/2020
 ms.openlocfilehash: a37a8bb45c11d5b74f3059a153806e3d083cf452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76311948"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
@@ -100,7 +99,7 @@ notepad pom.xml
 
 ### <a name="build-configuration"></a>生成配置
 
-Maven 插件允许自定义项目的构建阶段。 此节用于添加插件、资源和其他生成配置选项。
+Maven 插件可用于自定义项目的生成阶段。 此节用于添加插件、资源和其他生成配置选项。
 
 将以下代码添加到 `pom.xml` 文件，然后保存并关闭该文件。 此文本必须位于文件中的 `<project>...</project>` 标记内，例如 `</dependencies>` 和 `</project>` 之间。
 

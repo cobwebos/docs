@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721772"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
@@ -89,14 +88,14 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-此 Hive 查询假定*日期时间字段> 采用默认日期时间格式\<* 。
+此 Hive 查询假定采用 *\<datetime field>* 默认日期时间格式。
 
 如果日期时间字段并未使用默认格式，则需要先将日期时间字段转换为 Unix 时间戳，然后将 Unix 时间戳转换为默认格式的日期时间字符串。 如果日期时间使用默认格式，那么用户可以应用嵌入的日期时间 UDF 以提取功能。
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-在此查询中，如果 *日期时间字段> 具有类似 03/26/2015 12:04:39 的模式，则 \<日期时间字段的模式> 应为*  *\<* `'MM/dd/yyyy HH:mm:ss'`。 若要对其进行测试，用户可以运行
+在此查询中，如果 *\<datetime field>* 具有类似于*03/26/2015 12:04:39*的模式，则* \<pattern of the datetime field> "* 应为" `'MM/dd/yyyy HH:mm:ss'` 。 若要对其进行测试，用户可以运行
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -130,11 +129,11 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
         and dropoff_latitude between 30 and 90
         limit 10;
 
-计算两个 GPS 坐标之间距离的数学等式可在 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a>（可移动类型脚本）站点上找到，该站点由 Peter Lapisu 创作。 在此 Javascript 中，函数 `toRad()` 就是 lat_or_lonpi/180，它将度数转换为弧度  。 此处，*lat_or_lon* 是纬度或经度。 由于 Hive 不提供函数 `atan2`，但提供函数 `atan`，所以 `atan2` 函数通过 `atan`Wikipedia<a href="https://en.wikipedia.org/wiki/Atan2" target="_blank"> 中提供的定义由上述的 Hive 查询中的函数 </a> 来实现。
+计算两个 GPS 坐标之间距离的数学等式可在 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a>（可移动类型脚本）站点上找到，该站点由 Peter Lapisu 创作。 在此 Javascript 中，函数 `toRad()` 就是 lat_or_lonpi/180，它将度数转换为弧度  。 此处，*lat_or_lon* 是纬度或经度。 由于 Hive 不提供函数 `atan2`，但提供函数 `atan`，所以 `atan2` 函数通过 <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定义由上述的 Hive 查询中的函数 `atan` 来实现。
 
 ![创建工作区](./media/create-features-hive/atan2new.png)
 
-嵌入 UDF 的 Hive 的完整列表可在 **Apache Hive wiki** 上的<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">内置函数</a>部分中找到）。  
+嵌入 UDF 的 Hive 的完整列表可在 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a> 上的**内置函数**部分中找到）。  
 
 ## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>高级主题：优化 Hive 参数以加快查询速度
 Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查询的数据。 在本部分中，讨论用户可对其进行优化以改进 Hive 查询性能的某些参数。 用户需要在查询处理数据之前，先添加优化查询参数。

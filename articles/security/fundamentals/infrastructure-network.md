@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 02/20/2019
 ms.author: terrylan
 ms.openlocfilehash: c4756c36c2243840df69f3696e7ddac3628f3a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68727173"
 ---
 # <a name="azure-network-architecture"></a>Azure 网络体系结构
@@ -103,7 +102,7 @@ Microsoft 将网络设备定位在接入位置和边缘位置，使其充当应�
 - [Azure 信息系统的组件和边界](infrastructure-components.md)
 - [Azure 生产网络](production-network.md)
 - [Azure SQL 数据库安全功能](infrastructure-sql.md)
-- [Azure 生产操作和管理](infrastructure-operations.md)
+- [Azure 生产运营和管理](infrastructure-operations.md)
 - [Azure 基础结构监视](infrastructure-monitoring.md)
 - [Azure 基础结构完整性](infrastructure-integrity.md)
 - [Azure 客户数据保护](protection-customer-data.md)

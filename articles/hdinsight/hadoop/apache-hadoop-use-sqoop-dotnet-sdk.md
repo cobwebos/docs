@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/14/2020
 ms.openlocfilehash: f0f767273a40bc91b1d49477c896b0b157623106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157054"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>使用 HDInsight 中用于 Apache Hadoop 的 .NET SDK 运行 Apache Sqoop 作业
@@ -23,7 +22,7 @@ ms.locfileid: "76157054"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 从[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)中完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
+* 已完成[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)一文中的[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)步骤。
 
 * [Visual Studio](https://visualstudio.microsoft.com/vs/community/)。
 
@@ -31,13 +30,13 @@ ms.locfileid: "76157054"
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>通过 .NET SDK 使用 HDInsight 群集上的 Sqoop
 
-HDInsight .NET SDK 提供 .NET 客户端库，以便可轻易从 .NET 中使用 HDInsight 群集。 在本部分中，将创建一个 c # 控制台应用程序`hivesampletable` ，以将其导出到从先决条件创建的 Azure SQL 数据库表。
+HDInsight .NET SDK 提供 .NET 客户端库，以便可轻易从 .NET 中使用 HDInsight 群集。 在本部分中，将创建一个 c # 控制台应用程序，以将其导出 `hivesampletable` 到从先决条件创建的 AZURE SQL 数据库表。
 
-## <a name="set-up"></a>设置
+## <a name="set-up"></a>开始参与
 
 1. 启动 Visual Studio 并创建 c # 控制台应用程序。
 
-1. 导航到 "**工具** > " "**NuGet 包管理器** > " "**包管理器控制台**"，并运行以下命令：
+1. 导航到 "**工具**" "  >  **NuGet 包管理器**" "  >  **包管理器控制台**"，并运行以下命令：
 
     ```
     Install-Package Microsoft.Azure.Management.HDInsight.Job
@@ -45,9 +44,9 @@ HDInsight .NET SDK 提供 .NET 客户端库，以便可轻易从 .NET 中使用 
 
 ## <a name="sqoop-export"></a>Sqoop 导出
 
-从 Hive 到 SQL Server。  此示例将 Hive `hivesampletable`表中的数据导出到`mobiledata` SQL 数据库中的表。
+从 Hive 到 SQL Server。  此示例将数据从 Hive `hivesampletable` 表导出到 SQL 数据库中的 `mobiledata` 表。
 
-1. 在 Program.cs 文件中使用以下代码。 编辑代码以设置`ExistingClusterName`、和`ExistingClusterPassword`的值。
+1. 在 Program.cs 文件中使用以下代码。 编辑代码以设置、和的值 `ExistingClusterName` `ExistingClusterPassword` 。
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -115,9 +114,9 @@ HDInsight .NET SDK 提供 .NET 客户端库，以便可轻易从 .NET 中使用 
 
 ## <a name="sqoop-import"></a>Sqoop 导入
 
-从 SQL Server 到 Azure 存储。 此示例依赖于已执行的上述导出。  此示例将数据从 SQL `mobiledata`数据库中的表导入`wasb:///tutorials/usesqoop/importeddata`到群集的默认存储帐户上的目录。
+从 SQL Server 到 Azure 存储。 此示例依赖于已执行的上述导出。  此示例将数据从 `mobiledata` SQL 数据库中的表导入到 `wasb:///tutorials/usesqoop/importeddata` 群集的默认存储帐户上的目录。
 
-1. 将`//sqoop start //sqoop end`块中的代码替换为以下代码：
+1. 将块中的代码替换 `//sqoop start //sqoop end` 为以下代码：
 
     ```csharp
     var tableName = "mobiledata";
@@ -135,13 +134,13 @@ HDInsight .NET SDK 提供 .NET 客户端库，以便可轻易从 .NET 中使用 
 
 基于 Linux 的 HDInsight 存在以下限制：
 
-* 大容量导出：用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
+* 批量导出：用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
 
-* 批处理：通过使用`-batch`开关，Sqoop 将执行多个插入而不是批处理插入操作。
+* 批处理：通过使用 `-batch` 开关，Sqoop 将执行多个插入而不是批处理插入操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
+现在，你已了解了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
-* [将 Apache Oozie 与 HDInsight 配合使用](../hdinsight-use-oozie-linux-mac.md)：在 Oozie 工作流中使用 Sqoop 操作。
+* [将 Apache Oozie 和 HDInsight 配合使用](../hdinsight-use-oozie-linux-mac.md)：在 Oozie 工作流中使用 Sqoop 操作。
 * [将数据上传到 HDInsight](../hdinsight-upload-data.md)：了解将数据上传到 HDInsight 或 Azure Blob 存储的其他方法。

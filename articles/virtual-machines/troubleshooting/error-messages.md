@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76543012"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解在 Azure 中管理虚拟机时遇到的常见错误消息
@@ -69,7 +68,7 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  BadRequest  |  操作“{0}”在包含托管磁盘的资源“{1}”上不受支持。  |
 |  CertificateImproperlyFormatted  |  检索自 {0} 的机密的 JSON 表示形式中的数据字段可能是格式错误的 PFX 文件，或者所提供的密码无法正确解码 PFX 文件。  |
 |  CertificateImproperlyFormatted  |  检索自 {0} 的数据不可反序列化为 JSON。  |
-|  冲突  |  仅当创建 VM 或该 VM 已取消分配时，才允许磁盘重设大小。  |
+|  Conflict  |  仅当创建 VM 或该 VM 已取消分配时，才允许磁盘重设大小。  |
 |  ConflictingUserInput  |  无法附加磁盘“{0}”，因为磁盘已由 VM“{1}”拥有。  |
 |  ConflictingUserInput  |  源和目标资源组相同。  |
 |  ConflictingUserInput  |  磁盘 {0} 的源存储帐户和目标存储帐户不同。  |
@@ -179,7 +178,7 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  OSProvisioningTimedOut  |  VM“{0}”的 OS 预配未在分配的时间内完成。 该 VM 仍可能成功完成预配。 请于稍后检查预配状态。 此外，请确保已正确准备(通用化)映像。   <ul><li>适用于 Windows 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 适用于 Linux 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OSProvisioningTimedOut  |  VM“{0}”的 OS 预配未在分配的时间内完成。 但是检测到 VM 来宾代理正在运行。 这表示来宾 OS 尚未准备好用作 VM 映像(其中 CreateOption=FromImage)。 若要解决此问题，可以按原样使用 VHD 并使 CreateOption=Attach，或者对其进行适当准备使其可用作映像:   <ul><li>适用于 Windows 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 适用于 Linux 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  所需的 VM 大小当前在所选位置中不可用。  |
-|  ResourceUpdateBlockedOnPlatformUpdate  |  此时无法更新资源，因为正在更新平台。 请稍后重试。  |
+|  ResourceUpdateBlockedOnPlatformUpdate  |  此时无法更新资源，因为正在更新平台。 请稍后再试。  |
 |  StorageAccountLimitation  |  存储帐户“{0}”不支持创建磁盘所需的页 Blob。  |
 |  StorageAccountLimitation  |  存储帐户“{0}”已超出向其分配的配额。  |
 |  StorageAccountLocationMismatch  |  无法解析存储帐户 {0}。 请确保通过与计算资源位于相同位置的存储资源提供程序创建该帐户。  |
@@ -205,7 +204,7 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  VMExtensionManagementInternalError  |  准备 VM 扩展时出现多个错误。 有关详细信息，请参阅 VM 扩展实例视图。  |
 |  VMExtensionProvisioningError  |  VM 在处理扩展“{0}”时报告失败。 错误消息:“{1}”。  |
 |  VMExtensionProvisioningError  |  未能在 VM 上预配多个 VM 扩展。 有关详细信息，请参阅 VM 扩展实例视图。  |
-|  VMExtensionProvisioningTimeout  |  VM 扩展 "{0}" 的预配已超时。扩展安装可能耗时过长，或无法获得扩展状态。  |
+|  VMExtensionProvisioningTimeout  |  VM 扩展 "" 的预配 {0} 已超时。扩展安装可能耗时过长，或无法获得扩展状态。  |
 |  VMMarketplaceInvalidInput  |  从非市场映像创建虚拟机无需计划信息，请删除请求中的计划信息。 OS 磁盘名称为 {0}。  |
 |  VMMarketplaceInvalidInput  |  购买信息不匹配。 无法从市场映像部署。 OS 磁盘名称为 {0}。  |
 |  VMMarketplaceInvalidInput  |  从市场映像创建虚拟机需要请求中的计划信息。 OS 磁盘名称为 {0}。  |
@@ -216,4 +215,4 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 
 
 ## <a name="next-steps"></a>后续步骤
-如果需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。
+如果需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

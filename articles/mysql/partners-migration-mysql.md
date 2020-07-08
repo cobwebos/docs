@@ -7,17 +7,16 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: 7f922275e5541baabc77a1efb19e48fa8be4c5ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76289418"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL 迁移合作伙伴
 为了广泛支持你的 Azure Database for MySQL 解决方案，可以从众多行业领先的合作伙伴和工具中进行选择。 本文重点介绍了提供支持 Azure Database for MySQL 的迁移解决方案的 Microsoft 合作伙伴。
 
 ## <a name="migration-partners"></a>迁移合作伙伴
-| 合作伙伴 | 说明 | 链接 | 视频 |
+| Partner | 说明 | 链接 | 视频 |
 | --- | --- | --- | --- |
 | ![SNP Technologies][1] |**SNP Technologies**<br>SNP Technologies 是一家仅限云的服务提供商，负责为未来的创新型企业构建安全可靠的解决方案。 此公司的信念是为企业创造真正的价值。 从思考到执行，SNP Technologies 都与客户目标一致，即，将其投资转化为优势。|[网站][snp_website]<br>[Twitter][snp_twitter]<br>[联系人][snp_contact] | |
 | ![DB Best Technologies, LLC][2] |**DB Best Technologies, LLC**<br>DB Best 可帮助客户充分利用托管的 Azure 数据库服务。 此公司提供多种入门方式，包括[未来状态体系结构设计](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0)、[适用于 Microsoft 数据平台的数据管理优化](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/)、[Microsoft Azure 部署规划服务](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)和 [Azure 数据平台准备培训](https://www.dbbest.com/services/azure-data-platform-readiness-training)。|[网站][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[联系人][dbbest_contact] | |

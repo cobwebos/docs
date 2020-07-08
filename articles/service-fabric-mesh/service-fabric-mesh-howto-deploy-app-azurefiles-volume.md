@@ -7,10 +7,9 @@ ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76718814"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载基于 Azure 文件的卷 
@@ -19,7 +18,7 @@ ms.locfileid: "76718814"
 
 若要将卷装载到服务，需在 Service Fabric 网格应用程序中创建卷资源，然后在服务中引用该卷。  可在[基于 YAML 的资源文件](#declare-a-volume-resource-and-update-the-service-resource-yaml)或[基于 JSON 的部署模板](#declare-a-volume-resource-and-update-the-service-resource-json)中完成声明该卷资源并在服务资源中引用它。 必须先创建 Azure 存储帐户和 [Azure 文件共享](/azure/storage/files/storage-how-to-create-file-share)，然后才能装载此卷。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 > [!NOTE]
 > **WINDOWS RS5 开发计算机上的部署的已知问题：** RS5 Windows 计算机上的 Powershell cmdlet SmbGlobalMapping 的公开 bug 阻止装载 Azurefile 卷。 下面是在本地开发计算机上装载基于 AzureFile 的卷时遇到的示例错误。
 ```

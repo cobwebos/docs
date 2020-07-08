@@ -12,10 +12,9 @@ ms.topic: article
 tags: connectors
 ms.date: 01/14/2020
 ms.openlocfilehash: ecb1049d64197f2a60438df7eedfb244907f7327
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76046287"
 ---
 # <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用部署和管理 Azure 容器实例
@@ -49,12 +48,12 @@ ms.locfileid: "76046287"
 
 1. 选择一个路径： 
 
-   * 在要添加操作的最后一个步骤下，选择“新建步骤”。**** 
+   * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-     \- 或 -
+     -或-
 
    * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号（**+**），然后选择 "**添加操作**"。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 在搜索框中，输入 "容器实例" 作为筛选器。 在 "操作" 列表下，选择所需的 Azure 容器实例连接器操作。
 

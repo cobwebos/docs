@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76262956"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
@@ -20,7 +19,7 @@ ms.locfileid: "76262956"
 
 ## <a name="wait-for-events"></a>等待事件
 
-业务流程协调程序函数使用`WaitForExternalEvent`业务流程触发器绑定`waitForExternalEvent`的 [ (.NET) 和 ](durable-functions-bindings.md#orchestration-trigger) (JavaScript) 方法可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
+业务流程协调程序函数使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 `WaitForExternalEvent` (.NET) 和 `waitForExternalEvent` (JavaScript) 方法可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -173,7 +172,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>发送事件
 
-`RaiseEventAsync`业务流程客户端绑定`raiseEvent`的 [ (.NET) 或 ](durable-functions-bindings.md#orchestration-client) (JavaScript) 方法发送 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 等待的事件。  `RaiseEventAsync` 方法采用 *eventName* 和 *eventData* 作为参数。 事件数据必须是 JSON 可序列化的。
+[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 方法发送 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 等待的事件。  `RaiseEventAsync` 方法采用 *eventName* 和 *eventData* 作为参数。 事件数据必须是 JSON 可序列化的。
 
 下面是一个示例队列触发的函数，它将“Approval”事件发送到一个业务流程协调程序函数实例。 业务流程实例 ID 来自队列消息的正文。
 

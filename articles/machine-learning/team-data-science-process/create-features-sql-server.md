@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721738"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
@@ -76,7 +75,7 @@ ms.locfileid: "76721738"
 * 第五位小数值达 1.1 m：可将树与树区分开。 可通过差异更正获得该级别的、商用 GPS 计价单位的准确性。
 * 第六个小数位最高可达 0.11 m：可以使用此级别来详细布局结构，以便设计环境，构建道路。 对于追踪冰川和河流的运动，它是不二之选。 此目标可通过将 painstaking 度量值与 GPS 结合使用来实现，例如差异纠正 GPS。
 
-位置信息可具有以下特征：分离地区、位置和城市信息。 还可以调用 REST 终结点（如 Bing 地图 API）（请参阅`https://msdn.microsoft.com/library/ff701710.aspx`获取区域/地区信息）。
+位置信息可具有以下特征：分离地区、位置和城市信息。 还可以调用 REST 终结点（如 Bing 地图 API）（请参阅 `https://msdn.microsoft.com/library/ff701710.aspx` 获取区域/地区信息）。
 
     select
         <location_columnname>

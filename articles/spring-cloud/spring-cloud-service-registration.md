@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: brendm
 ms.openlocfilehash: 6c217096f0ba4200f49bd1fd8056768a6f6f6dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76278858"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>发现和注册春季云服务
@@ -19,8 +18,8 @@ ms.locfileid: "76278858"
 
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>使用春季云服务注册表注册应用程序
 
-在应用程序可以使用春季云服务注册表管理服务注册和发现之前，应用程序的*pom*文件中必须包含几个依赖项。
-将 netflix 的依赖项*包含在* *eureka-客户端*和*春季*---------云和
+在应用程序可以使用春季云服务注册表管理服务注册和发现之前，应用程序的*pom.xml*文件中必须包括多个依赖项。
+包括 netflix 的依赖项- *eureka-客户端和春季--客户*端和春季-从*云*到*pom.xml*
 
 ```xml
     <dependency>

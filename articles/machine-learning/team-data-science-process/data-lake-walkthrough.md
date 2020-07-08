@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9409f14b20684afa1a39d45e663ff316f405cc97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76717922"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
@@ -50,7 +49,7 @@ Azure 机器学习 Studio （经典）用于使用以下两种方法生成和部
 ### <a name="scripts"></a>脚本
 本演练中仅概述了主要步骤。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本**和 **Jupyter Notebook**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在开始阅读这些主题前，必须具有：
 
 * Azure 订阅。 如果还没有 Azure 订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
@@ -158,7 +157,7 @@ Azure 机器学习 Studio （经典）用于使用以下两种方法生成和部
 
 ### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>数据引入：从公共 blob 读入数据
 
-将 Azure blob 中数据的位置引用为 **wasb://container\_name\@blob\_storage\_account\_name.blob.core.windows.net/blob_name**，且可以使用 **Extractors.Csv()** 进行提取。 将以下脚本的 wasb 地址中的 container\_name\@blob\_storage\_account\_name 替换为自己的容器名和存储帐户名。 由于文件名的格式相同，因此可以使用**\_行程\_\{\*\}数据 .csv**读取所有12个行程文件。
+将 Azure blob 中数据的位置引用为 **wasb://container\_name\@blob\_storage\_account\_name.blob.core.windows.net/blob_name**，且可以使用 **Extractors.Csv()** 进行提取。 将以下脚本的 wasb 地址中的 container\_name\@blob\_storage\_account\_name 替换为自己的容器名和存储帐户名。 由于文件名的格式相同，因此可以使用**行程 \_ 数据 \_ \{ \* \} .csv**读取所有12个行程文件。
 
     ///Read in Trip data
     @trip0 =
@@ -569,7 +568,7 @@ Azure 机器学习 Studio （经典）用于使用以下两种方法生成和部
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>生成 Web 服务 API 并在 Python 中使用
 生成完成后，需要使机器学习模型可操作化。 此处以二进制逻辑模型为例。 请确保本地计算机中的 scikit-learn 版本为0.15.1 （Azure 机器学习 Studio 已至少在此版本中）。
 
-* 在 Azure 机器学习工作室（经典版）设置中查找工作区凭据。 在 Azure 机器学习 Studio 中，单击 "**设置** --> " "**名称** --> " "**授权令牌**"。
+* 在 Azure 机器学习工作室（经典版）设置中查找工作区凭据。 在 Azure 机器学习 Studio 中，单击 "**设置**" "名称" "  -->  **Name**  -->  **授权令牌**"。
 
     ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -612,7 +611,7 @@ Azure 机器学习 Studio （经典）可以直接从 Azure Data Lake Storage �
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>在 HDInsight 中创建 Hive 表
-现在，使用上一步中 Azure Data Lake Storage 中存储的数据，创建要在 HDInsight 群集中的 Azure 机器学习 Studio （经典）中使用的 Hive 表。 请转到已创建的 HDInsight 群集。 单击 "**设置** --> " "**属性** --> " "**群集 AAD 标识** --> **ADLS 访问**"，确保将 Azure Data Lake Storage 帐户添加到具有 "读取"、"写入" 和 "执行" 权限的列表中。
+现在，使用上一步中 Azure Data Lake Storage 中存储的数据，创建要在 HDInsight 群集中的 Azure 机器学习 Studio （经典）中使用的 Hive 表。 请转到已创建的 HDInsight 群集。 单击 "**设置**" "属性" "  -->  **Properties**  -->  **群集 AAD 标识**  -->  **ADLS 访问**"，确保将 Azure Data Lake Storage 帐户添加到具有 "读取"、"写入" 和 "执行" 权限的列表中。
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -675,7 +674,7 @@ Azure 机器学习 Studio （经典）可以直接从 Azure Data Lake Storage �
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 
-创建试验后，单击 "**设置 Web 服务** --> **预测 web 服务**"
+创建试验后，单击 "**设置 Web 服务**  -->  **预测 web 服务**"
 
  ![25](./media/data-lake-walkthrough/25-AML-exp-deploy.PNG)
 
@@ -687,7 +686,7 @@ Azure 机器学习 Studio （经典）可以直接从 Azure Data Lake Storage �
 
  ![27](./media/data-lake-walkthrough/27-AML-web-api.PNG)
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 完成本演练后，你已经创建了一个用于在 Azure Data Lake 中生成可缩放的端到端解决方案的数据科学环境。 此环境用于分析大型公共数据集，可在从数据采集到模型定型，再到将模型部署为 Web 服务的 Data Science Process 的规范步骤中使用。 使用了 U-SQL 处理、浏览和采样数据。 将 Python 和 Hive 与 Azure 机器学习工作室（经典版）配合使用，可生成和部署预测模型。
 
 ## <a name="whats-next"></a>后续步骤

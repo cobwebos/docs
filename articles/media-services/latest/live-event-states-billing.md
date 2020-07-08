@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.author: juliako
 ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76543069"
 ---
 # <a name="live-event-states-and-billing"></a>直播活动状态和计费
@@ -33,7 +32,7 @@ ms.locfileid: "76543069"
 
 直播活动可能会处于以下任一状态。
 
-|状态|说明|
+|状态|描述|
 |---|---|
 |**已停止**| 这是创建后实时事件的初始状态（除非自动启动设置为 true。）此状态下不会发生计费。 在此状态下，可以更新直播活动属性，但不允许进行流式处理。|
 |**正在启动**| 正在启动直播活动并分配资源。 此状态下不会发生计费。 此状态下不允许进行更新或流式处理。 如果发生错误，则直播活动会返回到“已停止”状态。|

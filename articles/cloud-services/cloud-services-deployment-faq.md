@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980635"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的部署问题：常见问题 (FAQ)
@@ -54,7 +53,7 @@ ms.locfileid: "75980635"
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>为什么我的订阅或服务的限制/配额/约束有时会导致部署云服务失败？
 如果需要分配的资源超过服务所在区域/数据中心级别允许的默认或最大配额，则云服务部署可能会失败。 有关详细信息，请参阅[云服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)。
 
-还可以在门户上跟踪订阅的当前使用情况/配额：Azure门户 => 订阅 => \<相应订阅> =>“使用情况 + 配额”。
+你还可以在门户中跟踪订阅的当前使用情况/配额： Azure 门户 => 订阅 => \<appropriate subscription>   => "用量 + 配额"。
 
 资源使用情况/相关消耗信息也可以通过 Azure 计费 API 检索。 请参阅 [Azure 资源使用状况 API（预览）](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview)。
 

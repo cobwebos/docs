@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511087"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>为 IoT Edge 准备开发和测试环境
@@ -49,7 +48,7 @@ Visual Studio 和 Visual Studio Code 都具有附加扩展，可帮助开发 IoT
 
 除 IoT Edge 扩展外，你可能会发现安装其他扩展也有助于开发。 例如，可使用[适用于 Visual Studio Code 的 Docker 支持](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)来管理映像、容器和注册表。 此外，所有主要支持的语言都具有 Visual Studio Code 的扩展，可在开发模块时提供帮助。
 
-#### <a name="prerequisites"></a>必备条件
+#### <a name="prerequisites"></a>先决条件
 
 某些语言和服务的模块模板具有使用 Visual Studio Code 在开发计算机上构建项目文件夹时所必需的先决条件。
 
@@ -80,7 +79,7 @@ Azure IoT Edge 开发工具使用命令行功能简化了 IoT Edge 开发。 此
 
 生产部署仅支持 IoT Edge 运行时，但借助以下工具可模拟或轻松创建 IoT Edge 设备以进行开发和测试。 这些工具不是互斥的，可协同工作以获得完整的开发体验。
 
-| 工具 | 也称为 | 支持的平台 | 最适用于 |
+| 工具 | 也称为 | 受支持的平台 | 最适用于 |
 | ---- | ------------- | ------------------- | --------- |
 | IoT EdgeHub 开发工具  | iotedgehubdev | Windows, Linux, MacOS | 模拟设备来调试模块。 |
 | IoT Edge 开发容器 | microsoft/iotedgedev | Windows, Linux, MacOS | 开发而无需安装依赖项。 |

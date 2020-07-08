@@ -7,10 +7,9 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76288908"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>将大型机存储移到 Azure
@@ -51,7 +50,7 @@ Azure 存储可用作[Azure 磁盘](/azure/virtual-machines/windows/managed-disk
 
 <table>
 <thead>
-    <tr><th>类型</th><th>说明</th><th>要执行以下操作时使用：</th></tr>
+    <tr><th>类型</th><th>描述</th><th>要执行以下操作时使用：</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure 文件
@@ -97,7 +96,7 @@ Ssd 在 Azure 上提供最高的存储性能。 提供以下选项（在撰写�
 | 类型         | 大小           | IOPS                  |
 |--------------|----------------|-----------------------|
 | 超级 SSD    | 4 GB 到 64 TB  | 1200到 160000 IOPS |
-| 高级 SSD  | 32 GB 到 32 TB | 12到 15000 IOPS     |
+| 高级·SSD  | 32 GB 到 32 TB | 12到 15000 IOPS     |
 | 标准 SSD | 32 GB 到 32 TB | 12到 2000 IOPS      |
 
 Blob 存储提供了 Azure 上最大的存储量。 除了存储大小以外，Azure 还提供托管和非托管存储。 使用托管存储，Azure 负责管理底层存储帐户。 使用非托管存储时，用户需要负责设置适当大小的 Azure 存储帐户，以满足存储要求。

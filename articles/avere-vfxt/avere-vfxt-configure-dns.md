@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76153779"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere 群集 DNS 配置
@@ -74,7 +73,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>群集 DNS 设置
 
-在 "**群集** > **管理网络**设置" 页中指定 vFXT 群集使用的 DNS 服务器。 该页面上的设置包括：
+在 "**群集**  >  **管理网络**设置" 页中指定 vFXT 群集使用的 DNS 服务器。 该页面上的设置包括：
 
 * DNS 服务器地址
 * DNS 域名

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76275115"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple 的可用区域
@@ -68,14 +67,14 @@ StorSimple 数据以物理方式存储在 Azure 存储帐户中，这些帐户�
 | 3  | 巴林               | 18 | 冰岛            | 33 | 挪威              | 48 | 西班牙                      |
 | 4  | 比利时               | 19 | 印度              | 34 | 秘鲁                | 49 | 斯里兰卡                  |
 | 5  | 巴西                | 20 | 印度尼西亚          | 35 | 菲律宾         | 50 | 瑞典                     |
-| 6  | Canada                | 21 | 爱尔兰            | 36 | 波兰              | 51 | 瑞士                |
-| 7  | 智利                 | 22 | 以色列             | 37 | 葡萄牙            | 52 | 中国台湾                     |
+| 6  | 加拿大                | 21 | 爱尔兰            | 36 | 波兰              | 51 | 瑞士                |
+| 7  | 智利                 | 22 | 以色列             | 37 | 葡萄牙            | 52 | 台湾                     |
 | 8  | 哥伦比亚              | 23 | 意大利              | 38 | 波多黎各         | 53 | 泰国                   |
 | 9  | 捷克共和国        | 24 | 日本              | 39 | 卡塔尔               | 54 | 土耳其                     |
 | 10 | 丹麦               | 25 | 肯尼亚              | 40 | 罗马尼亚             | 55 | 乌克兰                    |
 | 11 | 埃及                 | 26 | 科威特             | 41 | 俄罗斯              | 56 | 阿拉伯联合酋长国       |
-| 12 | 芬兰               | 27 | 澳门特别行政区          | 42 | 沙特阿拉伯        | 57 | United Kingdom             |
-| 13 | 法国                | 28 | 马来西亚           | 43 | 新加坡           | 58 | United States              |
+| 12 | 芬兰               | 27 | 澳门特别行政区          | 42 | 沙特阿拉伯        | 57 | 英国             |
+| 13 | 法国                | 28 | 马来西亚           | 43 | 新加坡           | 58 | 美国              |
 | 14 | 德国               | 29 | 墨西哥             | 44 | 斯洛伐克            | 59 | 越南                    |
 | 15 | 希腊                | 30 | 荷兰        | 45 | 斯洛文尼亚            | 60 | 克罗地亚                    |
 

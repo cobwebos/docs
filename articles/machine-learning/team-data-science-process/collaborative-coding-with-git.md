@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721891"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
@@ -39,7 +38,7 @@ ms.locfileid: "76721891"
 git checkout -b <new branch name> <base branch name>
 
 ```
-如果未指定\<基分支名称>，则新的分支将基于 `master`。 
+如果未指定，则 \<base branch name> 新的分支将基于 `master` 。 
 
 若要切换到工作分支，请运行以下命令： 
 
@@ -90,7 +89,7 @@ git push origin script
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-审阅者批准更改后，你或具有合并权限的其他人可以将工作分支合并到它的基分支中。 选择“完成”  ，然后在“完成拉取请求”  对话框中选择“完成合并”  。 可选择在合并完此工作分支后将其删除。 
+审阅者批准更改后，你或具有合并权限的其他人可以将工作分支合并到它的基分支中。 选择“完成”，然后在“完成拉取请求”对话框中选择“完成合并”。 可选择在合并完此工作分支后将其删除。 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 

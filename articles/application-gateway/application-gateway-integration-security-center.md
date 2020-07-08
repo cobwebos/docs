@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277194"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>应用程序网关和 Azure 安全中心之间的集成概述
@@ -30,7 +29,7 @@ ms.locfileid: "76277194"
 
 ## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>向现有资源添加 Web 应用程序防火墙
 
-导航到 **"所有服务** > **安全 + 标识** > **安全中心**" 和 "**安全中心-概述**"，单击 "**应用程序**"。 在“安全 + 标识 - 应用程序”上，表格包含安全中心在订阅中检测到的应用程序的列表。****
+导航到 "**所有服务**  >  **安全 + 标识**  >  **安全中心**" 和 "**安全中心-概述**"，单击 "**应用程序**"。 在“安全 + 标识 - 应用程序”上，表格包含安全中心在订阅中检测到的应用程序的列表。****
 
 ![Web 应用程序][3]
 
@@ -50,7 +49,7 @@ ms.locfileid: "76277194"
 
 ## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>将资源添加到现有 Web 应用程序防火墙。
 
-导航到 **"所有服务** > **安全 + 标识** > **安全中心**" 和 "**安全中心-概述**"，单击 "**合作伙伴解决方案**"。 “合作伙伴解决方案”页面中将显示现有安全中心感知应用程序网关。****
+导航到 "**所有服务**  >  **安全 + 标识**  >  **安全中心**" 和 "**安全中心-概述**"，单击 "**合作伙伴解决方案**"。 “合作伙伴解决方案”页面中将显示现有安全中心感知应用程序网关。****
 
 ![合作伙伴解决方案][7]
 
@@ -66,7 +65,7 @@ ms.locfileid: "76277194"
 
 ## <a name="security-alerts"></a>安全警报
 
-在 "安全中心" 中，导航到 "**检测** > **安全警报**"。  此处显示应用程序网关的 WAF 警报。 警报按 WAF 规则进行划分。
+在 "安全中心" 中，导航到 "**检测**  >  **安全警报**"。  此处显示应用程序网关的 WAF 警报。 警报按 WAF 规则进行划分。
 
 ![安全警报][8]
 

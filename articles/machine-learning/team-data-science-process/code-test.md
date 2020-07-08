@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721940"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>在 Azure 上使用 Team Data Science Process 和 Azure DevOps Services 进行数据科学代码测试
@@ -128,7 +127,7 @@ ms.locfileid: "76721940"
     
     ![生成和代理选择](./media/code-test/select_agent.PNG)
 
-    e. 在**+** 左窗格中选择，为此生成阶段添加任务。 由于我们要运行 Python 脚本**test1.py**来完成所有检查，因此此任务使用 PowerShell 命令来运行 Python 代码。
+    e. **+** 在左窗格中选择，为此生成阶段添加任务。 由于我们要运行 Python 脚本**test1.py**来完成所有检查，因此此任务使用 PowerShell 命令来运行 Python 代码。
     
     ![“添加任务”窗格，其中的 PowerShell 已选中](./media/code-test/add_task_powershell.PNG)
 
@@ -138,7 +137,7 @@ ms.locfileid: "76721940"
     
     ![PowerShell 详细信息](./media/code-test/powershell_scripts.PNG)
 
-    g. 选择 "**保存 & 队列**" 以完成生成管道过程。
+    如， 选择 "**保存 & 队列**" 以完成生成管道过程。
 
     ![“保存并排队”按钮](./media/code-test/save_and_queue_build_definition.PNG)
 

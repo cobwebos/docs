@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76024739"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 应用程序方案
@@ -61,9 +60,9 @@ Service Fabric 中的有状态服务可让所有类型的应用程序（而不�
 
 下图演示了设计有状态应用程序与无状态应用程序之间的差异。 通过利用 [Reliable Services](service-fabric-reliable-services-introduction.md) 和 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 编程模型，有状态服务降低了应用程序的复杂性，同时实现了高吞吐量和低延迟。
 
-下面是使用无状态服务的示例应用程序![：使用无状态服务的应用程序][Image1]
+下面是使用无状态服务的示例应用程序： ![ 使用无状态服务的应用程序][Image1]
 
-下面是使用有状态服务的示例应用程序![：使用有状态服务的应用程序][Image2]
+下面是使用有状态服务的示例应用程序： ![ 使用有状态服务的应用程序][Image2]
 
 ## <a name="next-steps"></a>后续步骤
 

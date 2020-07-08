@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721347"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>团队数据科学流程组管理员任务
@@ -57,7 +56,7 @@ ms.locfileid: "76721347"
    
    ![创建项目](./media/group-manager-tasks/create-project.png)
 
-GroupCommon 项目的摘要页随即打开   。 页面 URL 为 https:\//\<servername>/\<organization-name>/GroupCommon  。
+GroupCommon 项目的摘要页随即打开   。 页面 URL 是*https： \/ / \<servername> / \<organization-name> /GroupCommon*。
 
 ![项目摘要页](./media/group-manager-tasks/project-summary.png)
 

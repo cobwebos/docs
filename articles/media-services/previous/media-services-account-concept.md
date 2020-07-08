@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: 09a5f004570430fafe5c86f4f8ae048f2d1fe4c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981949"
 ---
 # <a name="manage-azure-media-services-v2-accounts"></a>管理 Azure 媒体服务 v2 帐户

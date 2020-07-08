@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513195"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>从 Windows Azure 媒体编码器迁移到 Media Encoder Standard
@@ -74,9 +73,9 @@ ITask task = job.Tasks.AddNew("My encoding task",
 * Media Encoder Standard 生成项目，例如包含[输入文件元数据](media-services-input-metadata-schema.md)和[输出文件元数据](media-services-output-metadata-schema.md)的文件。
 * 如[定价页](https://azure.microsoft.com/pricing/details/media-services/#encoding)（特别是“常见问题解答”部分）所述，使用 Media Encoder Standard 对视频进行编码时，将根据作为输出产生的文件的持续时间进行计费。 使用 WAME，将根据输入视频文件和输出视频文件的大小进行计费。
 
-## <a name="need-help"></a>需要帮助吗?
+## <a name="need-help"></a>需要帮助？
 
-可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
+可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
 
 ## <a name="next-steps"></a>后续步骤
 

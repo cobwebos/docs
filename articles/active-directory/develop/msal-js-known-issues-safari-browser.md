@@ -1,5 +1,5 @@
 ---
-title: 已知的 Safari 浏览器问题（MSAL） |Microsoft
+title: 已知的 Safari 浏览器问题（MSAL.js） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与 Safari 浏览器配合使用时的已知问题。
 services: active-directory
@@ -14,10 +14,9 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: edb995e31c2872c1541e29fee09dd66aafc8f9e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76696106"
 ---
 # <a name="known-issues-on-safari-browser-with-msaljs"></a>将 Safari 浏览器与 MSAL.js 配合使用时的已知问题 

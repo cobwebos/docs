@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721245"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process 中单个参与者的任务
@@ -55,7 +54,7 @@ ms.locfileid: "76721245"
 
 要在本地使用存储库并将所做的更改推送到共享的团队和项目存储库，请先将存储库复制或克隆到本地计算机  。 
 
-1. 在 Azure DevOps 中，转到团队项目的“摘要”页，地址为 https:\//\<server name>/\<organization name>/\<team name>，例如 https:\//dev.azure.com/DataScienceUnit/MyTeam   。
+1. 在 Azure DevOps 中，在*https： \/ / \<server name> / \<organization name> / \<team name> *（例如， **https： \/ /dev.azure.com/DataScienceUnit/MyTeam**）中转到你的团队的项目摘要页。
    
 1. 在左侧导航栏中，选择“存储库”，然后在页面顶部选择要克隆的存储库  。
    

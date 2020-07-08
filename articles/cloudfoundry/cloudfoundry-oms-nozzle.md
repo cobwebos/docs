@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277356"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
@@ -59,7 +58,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 #### <a name="to-create-the-workspace-manually"></a>手动创建工作区：
 
 1. 在 Azure 门户中，在 Azure Marketplace 中搜索服务列表，然后选择 "Log Analytics 工作区"。
-2. 选择“创建”****，然后为以下各项选择选项：
+2. 选择“创建”，然后为以下各项选择选项：
 
    * **** Log Analytics 工作区：键入工作区的名称。
    * **订阅**：如果有多个订阅，请选择与 CF 部署相同的订阅。
@@ -67,7 +66,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
    * **位置**：输入位置。
    * **定价层**：选择“确定”完成设置。****
 
-有关详细信息，请参阅[Azure Monitor 日志入门](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
+有关详细信息，请参阅 [Azure Monitor 日志入门](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>若要通过 Azure 市场中的监测模板创建 Log Analytics 工作区：
 
@@ -100,7 +99,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 #### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>通过 CF CLI 以管理员身份登录到 CF 部署
 
-运行以下命令：
+运行下面的命令：
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
@@ -124,13 +123,13 @@ uaac member add doppler.firehose ${FIREHOSE_USER}
 
 #### <a name="download-the-latest-log-analytics-nozzle-release"></a>下载最新的 Log Analytics Nozzle 版本
 
-运行以下命令：
+运行下面的命令：
 ```
 git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
 ```
 
-#### <a name="set-environment-variables"></a>设置环境变量
+#### <a name="set-environment-variables"></a>设置环境变量。
 
 现在，可在当前目录中的 manifest.yml 文件内设置环境变量。 下面显示了 Nozzle 的应用清单。 请将值替换为特定的 Log Analytics 工作区信息。
 
@@ -155,7 +154,7 @@ LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azur
 
 ### <a name="push-the-application-from-your-development-computer"></a>从开发计算机推送应用程序
 
-请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行以下命令：
+请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行下面的命令：
 ```
 cf push
 ```
@@ -183,7 +182,7 @@ cf apps
 
 ### <a name="1-import-the-oms-view"></a>1. 导入 OMS 视图
 
-在 OMS 门户中，浏览到 "**查看设计器** > " "**导入** > " "**浏览**"，然后选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。** 此时，“概述”页上会显示一个磁贴****。 选择此磁贴可查看可视化的指标。
+在 OMS 门户中，浏览到 "**查看设计器**  >  " "**导入**  >  " "**浏览**"，然后选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。** 此时，“概述”页上会显示一个磁贴****。 选择此磁贴可查看可视化的指标。
 
 可以通过“视图设计器”**** 自定义这些视图或新建视图。
 
@@ -193,7 +192,7 @@ cf apps
 
 可以[创建警报](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)，并视需要自定义查询和阈值。 下面是建议的警报：
 
-| 搜索查询                                                                  | 基于以下项生成警报 | 说明                                                                       |
+| 搜索查询                                                                  | 基于以下项生成警报 | 描述                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | 结果数 < 1   | **bbs.Domain.cf-apps** 指示 cf-apps 域是否为最新。 也就是说，来自 Cloud Controller 的 CF 应用程序请求会同步到 bbs.LRPsDesired（Diego 需要的 AI），以供执行。 没有收到数据则表示在指定时间范围内，cf-apps 域不是最新的。 |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | 结果数 > 0   | 对于 Diego 单元，0 表示正常，1 表示不正常。 设置在指定时间范围内检测到多个不正常的 Diego 单元时发出的警报。 |

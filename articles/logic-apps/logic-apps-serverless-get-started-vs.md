@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
 ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981167"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>在 Visual Studio 中使用 Azure 逻辑应用和 Azure Functions 生成第一个无服务器应用
@@ -60,7 +59,7 @@ ms.locfileid: "75981167"
 
 1. 启动 Visual Studio，然后使用 Azure 帐户登录。
 
-1. 在“文件”  菜单中，选择“新建” **“项目”**  > 。 
+1. 在“文件”菜单中，选择“新建” > “项目”。
 
    ![在 Visual Studio 中创建新项目](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
@@ -100,7 +99,7 @@ ms.locfileid: "75981167"
 
 在 Visual Studio 的逻辑应用设计器中打开逻辑应用之前，必须已在 Azure 中部署了一个 Azure 资源组。 然后，设计器可与逻辑应用中的资源和服务建立连接。 对于此任务，请执行以下步骤，将解决方案从 Visual Studio 部署到 Azure 门户：
 
-1. 在解决方案资源管理器中，从资源项目的快捷菜单中选择“部署” **“新建”。**  >  
+1. 在解决方案资源管理器中，从资源项目的快捷菜单中选择“部署” > “新建”。
 
    ![创建资源组的新部署](./media/logic-apps-serverless-get-started-vs/deploy.png)
 

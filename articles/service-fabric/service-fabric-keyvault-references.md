@@ -4,10 +4,9 @@ description: 本文介绍如何使用应用程序机密的 Service Fabric KeyVau
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76545477"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric 应用程序的 KeyVaultReference 支持（预览版）
@@ -90,7 +89,7 @@ ms.locfileid: "76545477"
 
 - 将一个节添加到 settings.xml
 
-    定义类型为 `DBPassword`、值为 `KeyVaultReference` 的 `<KeyVaultURL>` 参数
+    定义类型为 `KeyVaultReference`、值为 `<KeyVaultURL>` 的 `DBPassword` 参数
 
     ```xml
     <Section Name="dbsecrets">

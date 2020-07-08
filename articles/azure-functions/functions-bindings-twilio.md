@@ -7,10 +7,9 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76715056"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 绑定
@@ -70,7 +69,7 @@ namespace TwilioQueueOutput
 
 此示例使用包含方法返回值的 `TwilioSms` 特性。 一种替代方法是使用包含 `out CreateMessageOptions` 参数或者 `ICollector<CreateMessageOptions>` 或 `IAsyncCollector<CreateMessageOptions>` 参数的特性。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个 Twilio 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数使用 `out` 参数发送短信。
 
@@ -203,7 +202,7 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示如何使用下面的*函数 .js*中定义的输出绑定来发送 SMS 消息。
+下面的示例演示如何使用输出绑定发送 SMS 消息，如以下*function.js*中所定义。
 
 ```json
     {
@@ -217,7 +216,7 @@ module.exports = function (context, myQueueItem) {
     }
 ```
 
-可以将序列化的 JSON 对象传递到`func.Out`参数以发送 SMS 消息。
+可以将序列化的 JSON 对象传递到 `func.Out` 参数以发送 SMS 消息。
 
 ```python
 import logging
@@ -241,7 +240,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的示例演示如何使用[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注发送短信。 属性定义`to`中`from`需要、 `body`和的值，即使您以编程方式重写它们也是如此。
+下面的示例演示如何使用[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注发送短信。 `to` `from` 属性定义中需要、和的值， `body` 即使您以编程方式重写它们也是如此。
 
 ```java
 package com.function;
@@ -303,9 +302,9 @@ public static CreateMessageOptions Run(
 }
  ```
 
-有关完整示例，请参阅 [C# 示例](#example)。
+有关完整示例，请参阅[c # 示例](#example)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -319,24 +318,24 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-将[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注放置在[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding)参数上`T` `int`，其中可以是任何本机 Java 类型， `String`如`byte[]`、、或 POJO 类型。
+将[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注放置在 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) 参数上 `T` ，其中可以是任何本机 Java 类型 `int` ，如、 `String` 、 `byte[]` 或 POJO 类型。
 
 ---
 
 ## <a name="configuration"></a>配置
 
-下表说明了在*函数 json*文件和`TwilioSms`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `TwilioSms` 特性中设置的绑定配置属性。
 
 | v1 function.json 属性 | v2 function.json 属性 | Attribute 属性 |说明|
 |---------|---------|---------|----------------------|
-|type |**type**| 必须设置为 `twilioSms`。|
-|**方向键**|**方向键**| 必须设置为 `out`。|
+|**type**|**type**| 必须设置为 `twilioSms`。|
+|**direction**|**direction**| 必须设置为 `out`。|
 |**name**|**name**| 在 Twilio 短信的函数代码中使用的变量名。 |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid （`TwilioAccountSid`）的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
-|**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌（`TwilioAccountAuthToken`）的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
-|**to**| 不适用 - 在代码中指定 | **自**| 此值设置为短信将发送到的电话号码。|
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid （）的应用设置的名称 `TwilioAccountSid` 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
+|**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌（）的应用设置的名称 `TwilioAccountAuthToken` 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
+|**to**| 不适用 - 在代码中指定 | **To**| 此值设置为短信将发送到的电话号码。|
 |**from**|**from** | **From**| 此值设置为发送短信的电话号码。|
-|**body**|**body** | **大量**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |  
+|**body**|**body** | **正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
