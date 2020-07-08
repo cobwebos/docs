@@ -1,25 +1,17 @@
 ---
 title: 使用 Azure 模板创建服务总线授权规则
 description: 使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 7f1443a0-5fa8-4d90-8637-1a977ef0b1f0
-ms.service: service-bus-messaging
-ms.devlang: tbd
+author: spelluru
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: 1bfb2d2d946a85c1d051315fb29a5a63f7a00871
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 019129fe4a44824b3f9cb83bb4abc6122bfe7687
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80384919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337077"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则
 

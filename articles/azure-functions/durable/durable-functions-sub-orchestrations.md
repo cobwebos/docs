@@ -4,12 +4,12 @@ description: 如何从 Azure Functions 的 Durable Functions 扩展中的业务�
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5625bc2ddfa4b6f527ca16f19f33d257a1834d4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76261511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340806"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的子业务流程 (Azure Functions)
 
@@ -18,6 +18,10 @@ ms.locfileid: "76261511"
 一个业务流程协调程序函数可以使用 .NET 中的 `CallSubOrchestratorAsync` 或 `CallSubOrchestratorWithRetryAsync` 方法，或 JavaScript 中的 `callSubOrchestrator` 或 `callSubOrchestratorWithRetry` 方法来调用另一个业务流程协调程序函数。 [错误处理和修正](durable-functions-error-handling.md#automatic-retry-on-failure)一文提供了有关自动重试的更多信息。
 
 从调用方的角度来看，子业务流程协调程序函数的行为与活动函数相同。 它们可以返回值，引发异常，并且父业务流程协调程序函数可以等待它们。 
+
+> [!NOTE]
+> .NET 和 JavaScript 目前支持子业务流程。
+
 ## <a name="example"></a>示例
 
 以下示例说明了一个需要预配多台设备的 IoT（物联网）方案。 以下函数表示需要为每个设备执行的预配工作流：
@@ -66,7 +70,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-此业务流程协调程序函数可以按现样用于一次性设备预配，也可以用作大型业务流程的一部分。 在后一种情况下，父业务流程协调程序函数可以使用 `DeviceProvisioningOrchestration` (.NET) 或 `CallSubOrchestratorAsync` (JavaScript) API 调度 `callSubOrchestrator` 的实例。
+此业务流程协调程序函数可以按现样用于一次性设备预配，也可以用作大型业务流程的一部分。 在后一种情况下，父业务流程协调程序函数可以使用 `CallSubOrchestratorAsync` (.NET) 或 `callSubOrchestrator` (JavaScript) API 调度 `DeviceProvisioningOrchestration` 的实例。
 
 下面是一个示例，它展示了如何并行运行多个业务流程协调程序函数。
 

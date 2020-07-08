@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 门户将数据导入搜索索引
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用 Azure 门户中的“导入数据”向导从 Cosmos DB、Blob 存储、表存储、SQL 数据库和 Azure VM 上的 SQL Server 抓取 Azure 数据。
+description: 了解如何使用 Azure 门户中的 "导入数据" 向导对 Azure Vm 上的 Cosmos DB、Blob 存储、表存储、SQL 数据库、SQL 托管实例和 SQL Server 中的 Azure 数据进行爬网。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d786f1ebadc961ab367fdcc9b27c4d829a68400
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321375"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 认知搜索的导入数据向导
 
@@ -65,7 +65,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 | ---------- | ----------- |
 | **现有数据源** |如果已在搜索服务中定义索引器，则可能已经获得了一个可以重用的现有数据源定义。 在 Azure 认知搜索中，数据源对象仅供索引器使用。 可以编程方式或通过“导入数据”向导创建数据源对象，然后按需重用这些对象。 |
 | **示例**| Azure 认知搜索提供了两个在教程和快速入门中使用的内置示例数据源：房地产 SQL 数据库，以及托管在 Cosmos DB 上的“酒店”数据库。 若要根据“酒店”示例进行演练，请参阅[在 Azure 门户中创建索引](search-get-started-portal.md)快速入门。 |
-| [**Azure SQL 数据库**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |可以在此页上或通过 ADO.NET 连接字符串，指定服务名称、具有读取权限的数据库用户的凭据和数据库名称。 选择要查看或自定义属性的连接字符串选项。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。|
+| [**Azure SQL Database 或 SQL 托管实例**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |可以在此页上或通过 ADO.NET 连接字符串，指定服务名称、具有读取权限的数据库用户的凭据和数据库名称。 选择要查看或自定义属性的连接字符串选项。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。|
 | **Azure VM 上的 SQL Server** |指定完全限定的服务名、用户 ID 和密码以及数据库作为连接字符串。 若要使用此数据源，以前必须已在加密连接的本地存储中安装了证书。 有关说明，请参阅[SQL VM 与 Azure 认知搜索的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。 |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 可以定义查询以平展或筛选行集，或者将查询留空。 在此向导中，不需要查询。|
 | [**Azure Blob 存储**](search-howto-indexing-azure-blob-storage.md) |要求包括存储帐户和容器。 （可选）如果 blob 名称遵循用于分组的虚拟命名约定，可以将名称的虚拟目录部分指定为容器下的某个文件夹。 有关详细信息，请参阅[为 Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md)。 |
@@ -93,7 +93,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
    ![门户中的“导入数据”命令](./media/search-import-data-portal/import-data-cmd2.png "启动“导入数据”向导")
 
-还可以通过其他 Azure 服务（包括 Azure Cosmos DB、Azure SQL 数据库和 Azure Blob 存储）启动“导入数据”。  在服务概述页上的左侧导航窗格中查找“添加 Azure 认知搜索”。 
+你还可以启动从其他 Azure 服务（包括 Azure Cosmos DB、Azure SQL 数据库、SQL 托管实例和 Azure Blob 存储）**导入数据**。 在服务概述页上的左侧导航窗格中查找“添加 Azure 认知搜索”。 
 
 <a name="index-definition"></a>
 
@@ -125,7 +125,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
    默认值为“标准 Lucene”，但如果想要使用 Microsoft 的分析器以进行高级词汇处理（如解决不规则名词和动词形式），可选择“Microsoft 英语”   。 在门户中只能指定语言分析器。 若要使用自定义分析器或非语言分析器（例如关键字、模式等），必须以编程方式来实现。 有关分析器的详细信息，请参阅[添加语言分析器](search-language-support.md)。
 
-1. 是否需要自动完成或建议结果形式的自动提示功能？ 选中“建议器”复选框，对所选字段启用[自动提示查询建议和自动完成](index-add-suggesters.md)。  使用建议器会增加索引中标记化字词的数目，因此会消耗更多的存储。
+1. 是否需要自动完成或建议结果形式的自动提示功能？ 选中“建议器”复选框，对所选字段启用[自动提示查询建议和自动完成](index-add-suggesters.md)。 使用建议器会增加索引中标记化字词的数目，因此会消耗更多的存储。
 
 
 ## <a name="next-steps"></a>后续步骤

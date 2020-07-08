@@ -7,17 +7,17 @@ manager: daveba
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357862"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -243,7 +243,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
  5. 单击“确定”保存。
 ![将源属性添加到本地 AD 连接器架构](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>步骤 3：将 UserType 添加到 Azure AD 连接器架构
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>步骤3：将 UserType 特性添加到 Azure AD 连接器架构
 默认情况下，UserType 属性不会导入 Azure AD 连接空间。 将 UserType 属性添加到导入属性的列表：
 
  1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
@@ -340,7 +340,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 1. 在**本地 AD 连接器**上运行**完全导入**：
 
-   1. 在 Synchronization Service Manager 中转到“操作”选项卡。
+   1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
    2. 右键单击“本地 AD 连接器”，并选择“运行”。 
    3. 在弹出对话框中，选择“完全导入”，并单击“确定”。 
    4. 等待操作完成。

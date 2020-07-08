@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18c982b09aa8a28d520c709c9b8db2c9be4c7bb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261016"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356944"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暂存服务器和灾难恢复
 当服务器处于暂存模式时，可以在激活服务器之前更改配置并预览更改。 它还允许运行完全导入和完全同步，以便在生产环境中应用所有更改之前验证这些更改是否符合预期。
@@ -71,7 +71,7 @@ ms.locfileid: "79261016"
 
 现在，已将导出更改暂存到 Azure AD 和本地 AD（如果你正在使用 Exchange 混合部署）。 后续步骤可让你在实际开始导出到目录之前，检查将要更改的内容。
 
-#### <a name="verify"></a>Verify
+#### <a name="verify"></a>验证
 1. 启动 cmd 提示符并转到 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. 运行：`csexport "Name of Connector" %temp%\export.xml /f:x` 连接器名称可以在同步服务中找到。 它的名称类似于“contoso.com – AAD”（表示 Azure AD）。
 3. 运行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% 中已有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
@@ -270,5 +270,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>后续步骤
 **概述主题**  
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)  
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)  

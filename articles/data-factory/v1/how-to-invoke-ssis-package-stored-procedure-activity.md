@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab3b5c2ba892205f87235f7f0ce009719016622d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438791"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322124"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -28,11 +28,11 @@ ms.locfileid: "75438791"
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
-本文中的演练使用托管 SSIS 目录的 Azure SQL 数据库。 还可使用 Azure SQL 数据库托管实例。
+### <a name="azure-sql-database"></a>Azure SQL 数据库 
+本文中的演练使用 Azure SQL 数据库。 你还可以使用 Azure SQL 托管实例。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>创建 Azure-SSIS 集成运行时
-如果还没有 Azure-SSIS 集成运行时，请按照[教程：部署 SSIS 包](../tutorial-create-azure-ssis-runtime-portal.md)中的分步说明创建一个。 无法使用数据工厂版本 1 创建 Azure-SSIS 集成运行时。 
+如果还没有 Azure-SSIS 集成运行时，请按照[教程：部署 SSIS 包](../tutorial-create-azure-ssis-runtime-portal.md)。 无法使用数据工厂版本 1 创建 Azure-SSIS 集成运行时。 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 在此部分中，将使用 Azure PowerShell 创建数据工厂管道，管道中包含可调用 SSIS 包的存储过程活动。
@@ -82,9 +82,9 @@ ms.locfileid: "75438791"
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
-创建一个链接服务，将托管 SSIS 目录的 Azure SQL 数据库链接到数据工厂。 数据工厂使用此链接服务中的信息连接到 SSISDB 数据库，并执行存储过程来运行 SSIS 包。 
+创建链接服务，以将承载 SSIS 目录的 Azure SQL 数据库中的数据库链接到数据工厂。 数据工厂使用此链接服务中的信息连接到 SSISDB 数据库，并执行存储过程来运行 SSIS 包。 
 
-1. 在 C:\ADF\RunSSISPackage 文件夹中创建一个名为 AzureSqlDatabaseLinkedService.json 的 JSON 文件，并在其中包含以下内容********： 
+1. 在 C:\ADF\RunSSISPackage 文件夹中创建一个名为 AzureSqlDatabaseLinkedService.json 的 JSON 文件，并在其中包含以下内容 ： 
 
     > [!IMPORTANT]
     > 保存文件之前，请将 &lt;servername&gt;、&lt;username&gt;@&lt;servername&gt; 和 &lt;password&gt; 替换为 Azure SQL 数据库的值。
@@ -100,7 +100,7 @@ ms.locfileid: "75438791"
         }
         }
     ```
-2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹********。
+2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹 。
 3. 运行**AzDataFactoryLinkedService** cmdlet 创建链接服务： **AzureSqlDatabaseLinkedService**。 
 
     ```powershell
@@ -188,9 +188,9 @@ ms.locfileid: "75438791"
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
 
-    可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。******** 
+    可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。  
 
-    可在 Azure SQL 服务器中针对 SSISDB 数据库运行以下查询，验证是否执行了该包。 
+    你可以对服务器中的 SSISDB 数据库运行以下查询，以验证是否已执行此包。 
 
     ```sql
     select * from catalog.executions

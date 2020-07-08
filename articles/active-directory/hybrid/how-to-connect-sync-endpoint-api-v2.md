@@ -7,17 +7,17 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5501153a9c54d4509aa7dd948e03e011b30d79e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357573"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect 同步 V2 终结点 API（公共预览版） 
 Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Active Directory 的同步服务操作性能。 通过利用新的 V2 终结点，导出或导入 Azure AD 时的性能会有显著提升。 这一新终结点支持以下功能：

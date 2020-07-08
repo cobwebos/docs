@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357386"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
 本主题介绍 Azure AD Connect 同步（同步引擎）中的内置计划程序。
@@ -163,7 +163,7 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 计划程序仍处于活动状态，并在下次有机会时重新启动。
 
 ## <a name="custom-scheduler"></a>自定义计划程序
-本部分所述的 cmdlet 仅在内部版本 [1.1.130.0](reference-connect-version-history.md#111300) 及更高版本中提供。
+本节中所述的 cmdlet 仅在内部版本 [1.1.130.0](reference-connect-version-history.md#111300) 及更高版本中提供。
 
 如果内置的计划程序不符合要求，则可以使用 PowerShell 计划连接器。
 

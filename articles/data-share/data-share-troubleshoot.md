@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 510787b395388f0dc895b9646aee8208013f3b42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322037"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>排查 Azure 数据共享中的常见问题 
 
@@ -32,7 +32,7 @@ ms.locfileid: "76964220"
     1. 选择要用于创建 Azure 数据共享资源的订阅
     1. 单击“资源提供程序”****
     1. 搜索**DataShare**
-    1. 单击“注册”  
+    1. 单击“注册” 
 
     需要拥有 [Azure 参与者 RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)才能完成这些步骤。 
 
@@ -64,7 +64,7 @@ ms.locfileid: "76964220"
 
 "用户 x 在 SQL 数据库中不存在"
 
-如果从基于 SQL 的源添加数据集时收到此错误，原因可能是未在 SQL Server 上为 Azure 数据共享托管标识创建用户。  若要解决此问题，请运行以下脚本：
+如果从基于 SQL 的源添加数据集时收到此错误，可能是因为你未在 SQL 数据库中创建 Azure 数据共享托管标识的用户。  若要解决此问题，请运行以下脚本：
 
 ```sql
     create user "<share_acct_name>" from external provider; 

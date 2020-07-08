@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6da21e9aa3b3b4cafec71a4d1881b9eb32b4dedc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70211846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356213"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑难解答：Azure AD Connect 安装问题
 

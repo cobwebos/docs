@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2143546e10b413d1492b8734d2594de42fd37cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684402"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321399"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -38,8 +38,8 @@ ms.locfileid: "83684402"
 
  如果不熟悉 Batch，则以下文章可帮助了解本文所述的解决方案体系结构/实现：   
 
-* [Batch 基本信息](../../batch/batch-technical-overview.md)
-* [批处理功能概述](../../batch/batch-api-basics.md)
+* [Batch 基本信息](../../azure-sql/database/sql-database-paas-overview.md)
+* [批处理功能概述](../../batch/batch-service-workflow-features.md)
 
 （可选）若要了解有关 Batch 的详细信息，请参阅 [Batch 文档](https://docs.microsoft.com/azure/batch/)。
 
@@ -578,7 +578,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. 对于 **batchUri** JSON 属性，输入 batch URI。
 
       > [!IMPORTANT]
-      > “Batch 帐户”边栏选项卡中的 URL 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 示例为 `"batchUri": "https://eastus.batch.azure.com"`。
+      > " **Batch 帐户**" 边栏选项卡中的 URL 采用以下格式： \<accountname\> 。 \<region\>batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 示例为 `"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 
@@ -793,9 +793,9 @@ test custom activity Microsoft test custom activity Microsoft
 
    * 管道中仅包含一个活动，其类型为 **DotNetActivity**。
    * **AssemblyName** 设置为 DLL **MyDotNetActivity.dll** 的名称。
-   * **EntryPoint** 设置为 **MyDotNetActivityNS.MyDotNetActivity**。 在代码中其基本为 \<namespace\>.\<classname\>。
+   * **EntryPoint** 设置为 **MyDotNetActivityNS.MyDotNetActivity**。 基本上就是这样 \<namespace\> 。\<classname\> 在代码中。
    * **PackageLinkedService** 设置为 **StorageLinkedService**，它指向包含自定义活动 zip 文件的 blob 存储。 如果对输入/输出文件和自定义活动 zip 文件使用不同的存储帐户，则必须创建另一个存储链接服务。 本文假定使用相同的存储帐户。
-   * **PackageFile** 设置为 **customactivitycontainer/MyDotNetActivity.zip**。 采用以下格式：\<containerforthezip\>/\<nameofthezip.zip\>。
+   * **PackageFile** 设置为 **customactivitycontainer/MyDotNetActivity.zip**。 格式为 \<containerforthezip\> / \<nameofthezip.zip\> 。
    * 自定义活动采用 **InputDataset** 作为输入，采用 **OutputDataset** 作为输出。
    * 自定义活动的 **linkedServiceName** 属性指向 **AzureBatchLinkedService**，它将告诉数据工厂自定义活动需要在 Batch 上运行。
    * **并发**设置十分重要。 如果使用默认值 1，即使 Batch 池中存在两个或两个以上的计算节点，也只能逐个处理切片。 因此，无法利用 Batch 的并行处理功能。 如果将**并发**设置为更高的值，比如说 2，这表示可同时处理两个切片（对应 Batch 中的两个任务）。 在这种情况下，Batch 池中的两个 VM 都得以利用。 将并发属性设置为合适的值。
@@ -972,8 +972,8 @@ test custom activity Microsoft test custom activity Microsoft
   * [在数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [Batch 基本信息](../../batch/batch-technical-overview.md)
-  * [Batch 功能概述](../../batch/batch-api-basics.md)
+  * [Batch 基本信息](../../azure-sql/database/sql-database-paas-overview.md)
+  * [批处理功能概述](../../batch/batch-service-workflow-features.md)）
   * [在 Azure 门户中创建和管理 Batch 帐户](../../batch/batch-account-create-portal.md)
   * [适用于 .NET 的 Batch 客户端库入门](../../batch/quick-run-dotnet.md)
 

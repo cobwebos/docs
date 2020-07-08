@@ -8,25 +8,49 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure Arc 连接已启用 Azure Arc 的 Kubernetes 群集
 keywords: Kubernetes, Arc, Azure, K8s, 容器
-ms.openlocfilehash: 962b6a17743ea2beed1e16503739c55c83babbce
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.custom: references_regions
+ms.openlocfilehash: ec77609e5ee30cd3451c52635e530eb7153bc9a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341391"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>连接已启用 Azure Arc 的 Kubernetes 群集（预览版）
 
-将 Kubernetes 群集连接到 Azure Arc。 
+将 Kubernetes 群集连接到 Azure Arc。
 
 ## <a name="before-you-begin"></a>开始之前
 
 验证是否已满足以下要求：
 
-* 已启动并正在运行的 Kubernetes 群集
-* 你将需要使用 kubeconfig 和群集管理员访问权限进行访问。 
+* 已启动并正在运行的 Kubernetes 群集。 如果你没有现有的 Kubernetes 群集，则可以使用以下指南之一来创建测试群集：
+  * [在 Docker 中使用 Kubernetes 创建 Kubernetes 群集（种类）](https://kind.sigs.k8s.io/)
+  * 使用 Docker for [Mac](https://docs.docker.com/docker-for-mac/#kubernetes)或[Windows](https://docs.docker.com/docker-for-windows/#kubernetes)创建 Kubernetes 群集
+* 需要一个 kubeconfig 文件来访问群集上的群集和群集管理角色，以便部署启用了 Arc 的 Kubernetes 代理。
 * 使用 `az login` 和 `az connectedk8s connect` 命令的用户或服务主体必须具有对“Microsoft.Kubernetes/connectedclusters”资源类型的“读取”和“写入”权限。 具有这些权限的“Azure Arc for Kubernetes Onboarding”角色可用于使用 Azure CLI 进行加入的用户或服务主体上的角色分配。
-* 最新版本的 connectedk8s 和 k8sconfiguration 扩展 
+* 使用 connectedk8s 扩展加入群集时，Helm 3 是必需的。 [安装最新版本的 Helm 3](https://helm.sh/docs/intro/install)以满足此要求。
+* 安装支持 Azure Arc 的 Kubernetes CLI 扩展需要 Azure CLI 版本 2.3 +。 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)或更新到最新版本，以确保 Azure CLI 版本 2.3 +。
+* 安装启用 Arc 的 Kubernetes CLI 扩展：
+  
+  安装 `connectedk8s` 扩展，该扩展可帮助你将 Kubernetes 群集连接到 Azure：
+  
+  ```console
+  az extension add --name connectedk8s
+  ```
+  
+  安装 `k8sconfiguration` 扩展：
+  
+  ```console
+  az extension add --name k8sconfiguration
+  ```
+  
+  如果以后要更新这些扩展，请运行以下命令：
+  
+  ```console
+  az extension update --name connectedk8s
+  az extension update --name k8sconfiguration
+  ```
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -43,7 +67,7 @@ Azure Arc 代理需要以下协议/端口/出站 URL 才能正常运行。
 | 终结点 (DNS)                                                                                               | 说明                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | 代理需要该终结点才可连接到 Azure 并注册群集                                                        |
-| `https://eastus.dp.kubernetesconfiguration.azure.com`、`https://westeurope.dp.kubernetesconfiguration.azure.com` | 代理的数据平面终结点，用于推送状态和提取配置信息                                      |
+| `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | 代理的数据平面终结点，用于推送状态和提取配置信息                                      |
 | `https://docker.io`                                                                                            | 拉取容器映像所需                                                                                         |
 | `https://github.com`、git://github.com                                                                         | 示例 GitOps 存储库托管在 GitHub 上。 配置代理需要连接到指定的任何 git 终结点。 |
 | `https://login.microsoftonline.com`                                                                            | 提取和更新 Azure 资源管理器令牌所需                                                                                    |
@@ -53,10 +77,8 @@ Azure Arc 代理需要以下协议/端口/出站 URL 才能正常运行。
 
 ```console
 az provider register --namespace Microsoft.Kubernetes
-Registering is still on-going. You can monitor using 'az provider show -n Microsoft.Kubernetes'
 
 az provider register --namespace Microsoft.KubernetesConfiguration
-Registering is still on-going. You can monitor using 'az provider show -n Microsoft.KubernetesConfiguration'
 ```
 
 注册是一个异步过程。 注册可能需要大约 10 分钟。 可以使用以下命令监视注册进程：
@@ -67,27 +89,6 @@ az provider show -n Microsoft.Kubernetes -o table
 
 ```console
 az provider show -n Microsoft.KubernetesConfiguration -o table
-```
-
-## <a name="install-azure-cli-extensions"></a>安装 Azure CLI 扩展
-
-安装 `connectedk8s` 扩展，该扩展可帮助你将 Kubernetes 群集连接到 Azure：
-
-```console
-az extension add --name connectedk8s
-```
-
-安装 `k8sconfiguration` 扩展：
-
-```console
-az extension add --name k8sconfiguration
-```
-
-运行以下命令，将扩展更新到最新版本。
-
-```console
-az extension update --name connectedk8s
-az extension update --name k8sconfiguration
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组。
@@ -166,6 +167,8 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
+你还可以在[Azure 门户](https://portal.azure.com/)上查看此资源。 在浏览器中打开门户后，根据前面在命令中使用的资源名称和资源组名称输入，导航到 "资源组" 和 "已启用 Azure Arc" Kubernetes 资源 `az connectedk8s connect` 。
+
 已启用 Azure Arc 的 Kubernetes 会将几个运算符部署到 `azure-arc` 命名空间中。 可在此处查看这些部署和 Pod：
 
 ```console
@@ -203,18 +206,25 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 * `deployment.apps/metrics-agent`：收集其他 Arc 代理的指标，以确保这些代理表现出最佳性能
 * `deployment.apps/cluster-metadata-operator`：收集群集元数据 - 群集版本、节点计数和 Arc 代理版本
 * `deployment.apps/resource-sync-agent`：将上面提到的群集元数据同步到 Azure
-* `deployment.apps/clusteridentityoperator`：维护其他代理用于与 Azure 进行通信的托管服务标识 (MSI) 证书
+* `deployment.apps/clusteridentityoperator`：启用了 Azure Arc 的 Kubernetes 目前支持系统分配的标识。 clusteridentityoperator 维护其他代理用于与 Azure 进行通信的托管服务标识（MSI）证书。
 * `deployment.apps/flux-logs-agent`：从源代码管理配置中部署的 flux 运算符收集日志
 
 ## <a name="delete-a-connected-cluster"></a>删除已连接的群集
 
 可以使用 Azure CLI 或 Azure 门户删除 `Microsoft.Kubernetes/connectedcluster` 资源。
 
-Azure CLI 命令 `az connectedk8s delete` 可删除 Azure 中的 `Microsoft.Kubernetes/connectedCluster` 资源。 Azure CLI 可删除 Azure 中任何关联的 `sourcecontrolconfiguration` 资源。 Azure CLI 使用 helm 卸载删除群集中的代理。
 
-可在 Azure 门户中删除 Azure 中的 `Microsoft.Kubernetes/connectedcluster` 资源，并删除 Azure 中任何关联的 `sourcecontrolconfiguration` 资源。
+* **使用 Azure CLI 删除**：以下 Azure CLI 命令可用于启动对已启用 Azure Arc Kubernetes 资源的删除。
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
+  这会删除 `Microsoft.Kubernetes/connectedCluster` Azure 中的资源和任何关联的 `sourcecontrolconfiguration` 资源。 Azure CLI 使用 helm uninstall 删除群集上运行的代理。
 
-要删除群集中的代理，需要运行 `az connectedk8s delete` 或 `helm uninstall azurearcfork8s`。
+* **删除 Azure 门户**：在 Azure 门户上删除启用了 azure Arc 的 Kubernetes 资源会删除 `Microsoft.Kubernetes/connectedcluster` azure 中的资源和任何相关 `sourcecontrolconfiguration` 资源，但不会删除群集上运行的代理。 若要删除群集上运行的代理，请运行以下命令。
+
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
 
 ## <a name="next-steps"></a>后续步骤
 

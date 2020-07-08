@@ -5,21 +5,21 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 05/12/2020
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357845"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）
 
-使用分阶段推出方法，可以从联合身份验证迁移到云身份验证。 本文介绍如何进行这种切换。 但是，在开始分步推出之前，如果满足以下一个或多个条件，就应当考虑影响：
+通过使用分阶段推出方法，你可以避免整个域的切换。  这使你可以有选择性地测试用户组，其中包含云身份验证功能，如 Azure 多重身份验证（MFA）、条件性访问、泄漏凭据的身份保护、身份管理和其他。  本文介绍如何进行这种切换。 但是，在开始分步推出之前，如果满足以下一个或多个条件，就应当考虑影响：
     
 -  当前正在使用本地多重身份验证服务器。 
 -  使用智能卡进行身份验证。 
@@ -38,8 +38,8 @@ ms.locfileid: "83644153"
 -   你拥有具有联合域的 Azure Active Directory (Azure AD) 租户。
 
 -   你已决定改用以下两个选项之一：
-    - **选项 A** - 密码哈希同步（同步） + 无缝单一登录 (SSO)
-    - **选项 B** - 直通身份验证 + 无缝 SSO
+    - **选项 A**  - *密码哈希同步（同步）*  + *无缝单一登录（SSO）*。  有关详细信息，请参阅[什么是密码哈希同步](whatis-phs.md)以及[什么是无缝 SSO](how-to-connect-sso.md)
+    - **选项 B**  - *传递身份验证*  + *无缝 SSO*。  有关详细信息，请参阅[什么是直通身份验证](how-to-connect-pta.md)  
     
     尽管无缝 SSO 是可选的，但我们建议使用它，为运行着公司网络中加入域的计算机的用户提供无提示登录体验。
 
@@ -76,12 +76,12 @@ ms.locfileid: "83644153"
     - 分阶段推出不支持动态组。
     - 组内的联系人对象会阻止添加组。
 
-- 仍需要使用 Azure AD Connect 或 PowerShell 进行从联合身份验证到云身份验证的最终转换。 分阶段部署不会将域从联合域切换到托管域。
+- 仍需要使用 Azure AD Connect 或 PowerShell 进行从联合身份验证到云身份验证的最终转换。 分阶段部署不会将域从联合域切换到托管域。  有关域切换的详细信息，请参阅[从联合迁移到密码哈希同步](plan-migrate-adfs-password-hash-sync.md)和[从联合迁移到直通身份验证](plan-migrate-adfs-pass-through-authentication.md)
+
+
 
 - 首次为分阶段推出添加安全组时，限制于 200 个用户，以避免 UX 超时。添加组后，可以根据需要直接向其添加更多用户。
 
->[!NOTE]
-> 由于租用终结点不发送登录提示，因此不支持对其进行分阶段推出。  SAML 应用程序使用租用终结点，也不支持分阶段推出。
 
 ## <a name="get-started-with-staged-rollout"></a>分阶段推出入门
 

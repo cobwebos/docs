@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60241590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357505"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码
 AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用户帐户。 如果更改 AD DS 帐户的密码，则必须使用新密码更新 Azure AD Connect Synchronization Service。 否则，Synchronization 不再能正确与本地 Active Directory 同步，且会遇到以下错误：

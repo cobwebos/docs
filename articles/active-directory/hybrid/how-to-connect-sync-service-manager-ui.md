@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3a03b2320caa7facc04f589993907ab9b3a7703
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: e2975bb95511ba0a0d9f61886109c12715105fd8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60381499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357114"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Azure AD Connect Synchronization Service Manager UI 简介
 
@@ -30,7 +30,7 @@ ms.locfileid: "60381499"
 
 **Synchronization Service Manager** UI 用于配置同步引擎的更高级设置，以及查看该服务的运行情况。
 
-可以从开始菜单启动 **Synchronization Service Manager** UI。 它名为“同步服务”，可以在 **Azure AD Connect** 组中找到。   
+可以从开始菜单启动 **Synchronization Service Manager** UI。 它名为“同步服务”，可以在 **Azure AD Connect** 组中找到。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
 ## <a name="next-steps"></a>后续步骤

@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357556"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>更改 ADSync 服务帐户密码
 如果更改了 ADSync 服务帐户密码，则将无法正常启动同步服务，除非已放弃加密密钥并重新初始化 ADSync 服务帐户密码。 

@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 64ab5901ad54e37fc05d7da757ce7f31d42fe3b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60381370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357097"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>使用“Sync Service Manager 操作”选项卡
 

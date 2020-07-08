@@ -1,25 +1,14 @@
 ---
 title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Microsoft 文档
 description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南
-services: service-bus-messaging,event-hubs
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77086138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337896"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -88,7 +77,7 @@ Azure 服务总线目前只对每个连接使用一个会话。 服务总线标�
 
 ![目标端口列表][4]
 
-如果防火墙阻止这些端口，.NET 客户端将失败，并出现 SocketException （"以某种方式，尝试通过其访问权限禁止访问套接字"）。 可以通过在连接字符串中设置`EnableAmqpLinkRedirect=false`来禁用该功能，这会强制客户端通过端口5671与远程服务进行通信。
+如果防火墙阻止这些端口，.NET 客户端将失败，并出现 SocketException （"以某种方式，尝试通过其访问权限禁止访问套接字"）。 可以通过在连接字符串中设置来禁用该功能 `EnableAmqpLinkRedirect=false` ，这会强制客户端通过端口5671与远程服务进行通信。
 
 
 ### <a name="links"></a>链接
@@ -233,8 +222,8 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”**），其
 | --- | --- | --- |
 | message-id |应用程序为此消息定义的自由格式标识符。 用于重复检测。 |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |应用程序定义的用户标识符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
-| to |应用程序定义的目标标识符，服务总线无法进行解释。 |[自](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| to |应用程序定义的目标标识符，服务总线无法进行解释。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[标签](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |应用程序定义的回复路径指示符，服务总线无法进行解释。 |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[Id](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-type |应用程序定义的内容类型指示符，服务总线无法进行解释。 |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -298,7 +287,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”**），其
 
 #### <a name="sending-a-message-in-a-transaction"></a>在事务中发送消息
 
-所有事务工作都是使用携带 txn id 的`transactional-state`事务传递状态完成的。如果发送消息，则消息的传输帧会传输事务状态。 
+所有事务工作都是使用携带 txn id 的事务传递状态完成的 `transactional-state` 。如果发送消息，则消息的传输帧会传输事务状态。 
 
 | 客户端（控制器） | | 服务总线（协调器） |
 | --- | --- | --- |
@@ -337,9 +326,9 @@ AMQP 管理规范是本文中介绍的第一个草稿扩展。 此规范定义�
 | 逻辑运算 | 客户端 | 服务总线 |
 | --- | --- | --- |
 | 创建请求响应路径 |--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>) |无操作 |
-| 创建请求响应路径 |无操作 |\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>) |
+| 创建请求响应路径 |无操作 |\<-- attach(<br/>name = {*link name*}，<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>) |
 | 创建请求响应路径 |--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=”myentity/$management”,<br/>target=”myclient$id”<br/>) | |
-| 创建请求响应路径 |无操作 |\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=”myentity”,<br/>target=”myclient$id”<br/>) |
+| 创建请求响应路径 |无操作 |\<-- attach(<br/>name = {*link name*}，<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=”myentity”,<br/>target=”myclient$id”<br/>) |
 
 准备好该组链接，请求/响应实现就相当简单：请求是发送到消息传送基础结构内了解此模式之实体的消息。 在该请求消息中，properties ** 部分中的 reply-to ** 字段设置为链接（此响应要传递到的链接）的 target ** 标识符。 处理实体会处理此请求，并通过“target”标识符匹配所示“reply-to”标识符的链接传递回复****。
 
@@ -368,16 +357,16 @@ CBS 定义由消息传送基础结构所提供的虚拟管理节点（名为 $cb
 
 请求消息具有以下应用程序属性：
 
-| 密钥 | 可选 | 值类型 | 值内容 |
+| 键 | 可选 | 值类型 | 值内容 |
 | --- | --- | --- | --- |
 | operation |否 |字符串 |**put-token** |
-| type |否 |字符串 |正在放置的令牌类型。 |
+| 类型 |否 |字符串 |正在放置的令牌类型。 |
 | name |否 |字符串 |令牌应用到的“受众”。 |
 | expiration |是 |timestamp |令牌过期时间。 |
 
 name ** 属性标识应与此令牌关联的实体。 在服务总线中，这是队列或主题/订阅的路径。 type ** 属性标识令牌类型：
 
-| 令牌类型 | 令牌说明 | 正文类型 | 注意 |
+| 令牌类型 | 令牌说明 | 正文类型 | 说明 |
 | --- | --- | --- | --- |
 | amqp:jwt |JSON Web 令牌 (JWT) |AMQP 值（字符串） |尚不可用。 |
 | amqp:swt |简单 Web 令牌 (SWT) |AMQP 值（字符串） |仅支持 AAD/ACS 颁发的 SWT 令牌 |
@@ -387,7 +376,7 @@ name ** 属性标识应与此令牌关联的实体。 在服务总线中，这�
 
 回复消息具有以下 application-properties** 值
 
-| 密钥 | 可选 | 值类型 | 值内容 |
+| 键 | 可选 | 值类型 | 值内容 |
 | --- | --- | --- | --- |
 | status-code |否 |int |HTTP 响应代码 **[RFC2616]**。 |
 | status-description |是 |字符串 |状态的说明。 |

@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77917907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357454"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
 通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](https://docs.microsoft.com/graph/extensibility-overview
@@ -67,7 +67,7 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 通过使用[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer#)，现在可以通过 Microsoft Graph API 使用这些特性。
 
 >[!NOTE]
-> 在 Microsoft Graph API 中，需要请求返回属性。 按如下所示显式选择属性`https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`：。
+> 在 Microsoft Graph API 中，需要请求返回属性。 按如下所示显式选择属性： `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` 。
 >
 > 有关详细信息，请参阅 [Microsoft Graph: Use query parameters](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)（Microsoft Graph：使用查询参数）。
 

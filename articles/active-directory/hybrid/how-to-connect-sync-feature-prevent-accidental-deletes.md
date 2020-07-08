@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 55270889c8c284335d5aa7b545718da419ba8d84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71827127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357352"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同步：防止意外删除
 本主题说明 Azure AD Connect 中的防止意外删除功能。

@@ -1,26 +1,21 @@
 ---
 title: 使用 Blob 存储作为 Azure Stack 中心（预览版）上的检查点存储
 description: 本文介绍如何使用 Blob 存储作为 Azure Stack 中心（预览版）上的事件中心中的检查点存储。
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 03/18/2020
-ms.author: spelluru
-ms.openlocfilehash: 2938099383c32eac493e4b4bb620f03c76ca5c44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0990941191827c66cd51d70216c75e106d0448fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023643"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322358"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>使用 Blob 存储作为 Azure Stack 集线器上的检查点存储-事件中心（预览）
-如果将 Azure Blob 存储用作支持不同版本的存储 Blob SDK 的环境中的检查点存储，而不是 Azure 上通常可用的版本，则需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 例如，如果你正在[Azure Stack 中心版本2002上运行事件中心](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，则存储服务的最高可用版本为2017-11-09 版。 在这种情况下，需要使用代码将存储服务 API 版本设定为2017-11-09。 有关如何以特定存储 API 版本为目标的示例，请参阅 GitHub 上的以下示例： 
+如果将 Azure Blob 存储用作支持不同版本的存储 Blob SDK 的环境中的检查点存储，而不是 Azure 上通常可用的版本，则需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 例如，如果你正在[Azure Stack 中心版本2002上运行事件中心](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，则存储服务的最高可用版本为2017-11-09 版。 在这种情况下，需要使用代码将存储服务 API 版本设定为 2017-11-09。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅“GitHub 上的这些示例”： 
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)。 
-- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js)或[TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
+- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) 或 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
 - Python-[同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[异步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 
 > [!IMPORTANT]
@@ -34,7 +29,7 @@ The value for one of the HTTP headers is not in the correct format
 
 
 ## <a name="sample-error-message-in-python"></a>Python 中的示例错误消息
-对于 Python， `azure.core.exceptions.HttpResponseError`会将错误传递给的错误处理程序`on_error(partition_context, error)` `EventHubConsumerClient.receive()`。 但该方法`receive()`不会引发异常。 `print(error)`将打印以下异常信息：
+对于 Python，会将错误 `azure.core.exceptions.HttpResponseError` 传递给的错误处理程序 `on_error(partition_context, error)` `EventHubConsumerClient.receive()` 。 但该方法 `receive()` 不会引发异常。 `print(error)`将打印以下异常信息：
 
 ```bash
 The value for one of the HTTP headers is not in the correct format.

@@ -11,25 +11,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: b935355cce36a6e26b168db286ab40248f8f0f68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322318"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>在 Azure 前门中监视指标和日志
 
 使用 Azure 前门，可以通过以下方式监视资源：
 
-- **指标**。 Azure 前门目前有7个指标来查看性能计数器。
+- **指标** Azure 前门目前有7个指标来查看性能计数器。
 - **日志**。 活动和诊断日志允许出于监视目的从资源保存或使用性能、访问及其他数据。
 
 ### <a name="metrics"></a>指标
 
 度量值是某些 Azure 资源的一项功能，可用于在门户中查看性能计数器。 以下是可用的前门指标：
 
-| 指标 | 指标显示名称 | 单位 | 维度 | 说明 |
+| 指标 | 指标显示名称 | 计价单位 | 维度 | 说明 |
 | --- | --- | --- | --- | --- |
 | RequestCount | 请求计数 | 计数 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door 服务的客户端请求数。  |
 | RequestSize | 请求大小 | 字节 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 以请求的形式从客户端发送到 Front Door 的字节数。 |
@@ -38,7 +38,7 @@ ms.locfileid: "79471721"
 | BackendRequestCount | 后端请求计数 | 计数 | HttpStatus</br>HttpStatusGroup</br>后端 | 从 Front Door 发送到后端的请求数。 |
 | BackendRequestLatency | 后端请求延迟 | 毫秒 | 后端 | 自 Front Door 向后端发送请求起，直至 Front Door 接收到来自后端的最后一个响应字节为止，所计算的时间。 |
 | BackendHealthPercentage | 后端运行状况百分比 | 百分比 | 后端</br>BackendPool | 从 Front Door 到后端，成功运行状况探测的百分比。 |
-| WebApplicationFirewallRequestCount | Web 应用程序防火墙请求计数 | 计数 | PolicyName</br>RuleName</br>操作 | Front Door 的应用层安全性所处理的客户端请求数。 |
+| WebApplicationFirewallRequestCount | Web 应用程序防火墙请求计数 | Count | PolicyName</br>RuleName</br>操作 | Front Door 的应用层安全性所处理的客户端请求数。 |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>活动日志
 
@@ -69,11 +69,11 @@ ms.locfileid: "79471721"
 
 2. 选择 "**诊断设置**"。
 
-3. 选择“启用诊断”****。 将诊断日志和指标存档到存储帐户，将其流式传输到事件中心，或将其发送到 Azure Monitor 日志。
+3. 选择“启用诊断”。 将诊断日志和指标存档到存储帐户，将其流式传输到事件中心，或将其发送到 Azure Monitor 日志。
 
 前门当前提供诊断日志（每小时进行批处理）。 诊断日志提供单个 API 请求，其中每个条目具有以下架构：
 
-| properties  | 描述 |
+| Property  | 描述 |
 | ------------- | ------------- |
 | BackendHostname | 如果将请求转发到后端，此字段表示后端的主机名。 如果请求被重定向或转发到区域缓存（为路由规则启用了缓存），此字段将为空。 |
 | CacheStatus | 对于缓存方案，此字段定义了弹出窗口中的缓存命中/未命中 |
@@ -81,17 +81,18 @@ ms.locfileid: "79471721"
 | ClientPort | 发出请求的客户端的 IP 端口。 |
 | HttpMethod | 请求使用的 HTTP 方法。 |
 | HttpStatusCode | 从代理返回的 HTTP 状态代码。 |
-| HttpStatusDetails | 请求的结果状态。 可以在状态引用表中找到此字符串值的含义。 |
+| HttpStatusDetails | 请求的结果状态。 此字符串值的含义可以在状态引用表中找到。 |
 | HttpVersion | 请求或连接的类型。 |
 | POP | 请求着陆的边缘的短名称。 |
 | RequestBytes | HTTP 请求消息的大小（以字节为单位），包括请求标头和请求正文。 |
 | RequestUri | 已收到请求的 URI。 |
 | ResponseBytes | 后端服务器作为响应发送的字节数。  |
 | RoutingRuleName | 请求匹配的路由规则的名称。 |
-| SecurityProtocol | 请求使用的 TLS/SSL 协议版本，如果不加密，则为 null。 |
+| RulesEngineMatchNames | 请求匹配的规则的名称。 |
+| SecurityProtocol | 请求所使用的 TLS/SSL 协议版本，如果没有加密，则为 null。 |
 | SentToOriginShield | 布尔值字段，表示在第一个环境上是否出现缓存未命中，并向区域缓存发送请求。 如果路由规则是重定向或未启用缓存，则忽略此字段。 |
 | TimeTaken | 操作所用的时间长度（以毫秒为单位）。 |
-| TrackingReference | 标识由前门提供的请求的唯一引用字符串，也以 X Azure 引用标头的形式发送到客户端。 需要用于搜索特定请求的访问日志中的详细信息。 |
+| TrackingReference | 标识由 Front Door 提供的请求的唯一引用字符串，该请求还会以 X-Azure-Ref 标头的形式发送到客户端。 是搜索特定请求访问日志中的详细信息必需的。 |
 | UserAgent | 客户端使用的浏览器类型。 |
 
 **注意：** 对于各种路由配置和流量行为，某些字段（如 backendHostname、cacheStatus、sentToOriginShield 和 POP 字段）可能会用不同的值来响应。 下表说明了不同的值，这些字段适用于各种方案：

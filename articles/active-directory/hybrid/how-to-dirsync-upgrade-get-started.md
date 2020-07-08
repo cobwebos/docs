@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: e31f5e6afb3b586cd8eb20db8d1ca34e95de86cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60348523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356791"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect：从 DirSync 升级
 Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 DirSync 升级的方式。 这些步骤不适用于从另一个版本的 Azure AD Connect 或从 Azure AD Sync 升级。
@@ -101,7 +101,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
      ![分析完成，已准备好从 DirSync 升级](./media/how-to-dirsync-upgrade-get-started/AnalysisReady.png)
    * 如果使用完整的 SQL Server for DirSync，则会看到以下页面：  
      ![分析完成，已准备好从 DirSync 升级](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
-     系统会显示有关 DirSync 使用的现有 SQL Server 数据库服务器的信息。 如果需要，请做相应的调整。 单击“下一步”继续安装。****
+     系统会显示有关 DirSync 使用的现有 SQL Server 数据库服务器的信息。 如果需要，请做相应的调整。 单击“下一步”以继续安装。
    * 如果有超过 50,000 个对象，则会看到以下屏幕：  
      ![分析完成，已准备好从 DirSync 升级](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
      若要继续进行就地升级，请单击消息旁的复选框：“继续在此计算机上升级 DirSync”。****
@@ -160,9 +160,9 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
    * 用于连接 SQL Server 的服务帐户（如果 SQL Server 数据库位于远程，则此帐户必须是域服务帐户）。
      可以在此屏幕上看到以下选项：  
      ![输入 Azure AD 凭据](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
-7. 单击“下一步”。 
+7. 单击“下一步” 。
 8. 在“已准备好配置”页上，保留选中“配置完成后立即开始同步过程”。******** 服务器当前为[过渡模式](how-to-connect-sync-staging-server.md)，更改不会导出到 Azure AD。
-9. 单击“安装”  。
+9. 单击“安装” 。
 10. 安装完成后，请注销并再次登录到 Windows，即可使用同步服务管理器或同步规则编辑器，或者尝试进行其他任何配置更改。
 
 > [!NOTE]
@@ -218,4 +218,4 @@ Azure AD Connect 现在为活动服务器，不得切换回去使用现有的 Di
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

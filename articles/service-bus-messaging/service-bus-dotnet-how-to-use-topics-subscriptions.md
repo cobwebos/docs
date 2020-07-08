@@ -1,25 +1,15 @@
 ---
 title: Azure 服务总线主题和订阅入门 | Microsoft Docs
 description: 编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 11/27/2019
-ms.author: aschhab
-ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74560103"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337512"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
@@ -51,8 +41,8 @@ ms.locfileid: "74560103"
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 
-1. 右键单击新创建的项目，并选择“管理 NuGet 包”  。
-2. 单击“浏览”  选项卡，搜索 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)，然后选择“Microsoft.Azure.ServiceBus”   项。 单击“安装”  以完成安装，并关闭此对话框。
+1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
+2. 单击“浏览”选项卡，搜索 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)，然后选择“Microsoft.Azure.ServiceBus” 项。 单击“安装”以完成安装，并关闭此对话框。
    
     ![选择 NuGet 包][nuget-pkg]
 
@@ -182,7 +172,7 @@ ms.locfileid: "74560103"
     }
     ```
 
-3. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击主题的名称。  此时会显示主题的“基本信息”屏幕。  请注意，在列在窗口底部附近的订阅中，订阅的“消息计数”值现在应该为 **10**。  每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到主题，主题的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。  
+3. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击主题的名称。 此时会显示主题的“基本信息”屏幕。 请注意，在列在窗口底部附近的订阅中，订阅的“消息计数”值现在应该为 **10**。 每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到主题，主题的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。 
    
       ![消息大小][topic-message]
 
@@ -364,7 +354,7 @@ ms.locfileid: "74560103"
         }
     }
     ```
-9. 运行该程序，并再次检查门户。 请注意，“消息计数”和“当前”值现在为 **0**。  
+9. 运行该程序，并再次检查门户。 请注意，“消息计数”和“当前”值现在为 **0**。 
    
     ![主题长度][topic-message-receive]
 

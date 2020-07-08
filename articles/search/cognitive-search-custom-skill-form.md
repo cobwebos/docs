@@ -6,14 +6,14 @@ manager: nitinme
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321300"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>示例：创建窗体识别器自定义技能
 
@@ -43,9 +43,9 @@ ms.locfileid: "82791997"
 * `FORMS_RECOGNIZER_RETRY_DELAY`值设置为1000。 此值是程序重试查询前等待的时间（以毫秒为单位）。
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS`值设置为100。 此值是程序在尝试获取成功响应时将查询服务的次数。
 
-接下来，打开_AnalyzeForm.cs_并找到`fieldMappings`变量，该变量引用了*字段映射 json*文件。 此文件（和引用它的变量）定义要从窗体中提取的键的列表，以及每个键的自定义标签。 例如，如果值为， `{ "Address:", "address" }, { "Invoice For:", "recipient" }`则`Address:`表示脚本将仅保存检测到的和`Invoice For:`字段的值，并且将分别使用`"address"`和`"recipient"`标记这些值。
+接下来，打开_AnalyzeForm.cs_并找到 `fieldMappings` 变量，该变量引用文件*上的field-mappings.js* 。 此文件（和引用它的变量）定义要从窗体中提取的键的列表，以及每个键的自定义标签。 例如，如果值为，则 `{ "Address:", "address" }, { "Invoice For:", "recipient" }` 表示脚本将仅保存检测到的 `Address:` 和字段的值 `Invoice For:` ，并且将分别使用和标记这些 `"address"` 值 `"recipient"` 。
 
-最后，请记`contentType`下变量。 此脚本在 URL 引用的远程文档上运行给定的窗体识别器模型，因此内容类型为`application/json`。 如果要通过在 HTTP 请求中包含字节流来分析本地文件，则需要将更改`contentType`为文件的相应[MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types)。
+最后，请记下 `contentType` 变量。 此脚本在 URL 引用的远程文档上运行给定的窗体识别器模型，因此内容类型为 `application/json` 。 如果要通过在 HTTP 请求中包含字节流来分析本地文件，则需要将更改 `contentType` 为文件的相应[MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types)。
 
 ## <a name="test-the-function-from-visual-studio"></a>从 Visual Studio 中测试函数
 
@@ -77,12 +77,12 @@ POST https://localhost:7071/api/analyze-form
 }
 ```
 
-在这里，你将需要提供与你训练的窗体具有相同类型的窗体的 URL。 出于测试目的，可以使用您的一种训练窗体。 如果遵循了卷快速入门，则窗体将位于 Azure blob 存储帐户中。 打开 Azure 存储资源管理器，找到一个窗体文件，右键单击该文件，然后选择 "**获取共享访问签名**"。 下一个对话框窗口将提供 URL 和 SAS 令牌。 将这些字符串分别输入`"formUrl"`到`"formSasToken"`请求正文的和字段中。
+在这里，你将需要提供与你训练的窗体具有相同类型的窗体的 URL。 出于测试目的，可以使用您的一种训练窗体。 如果遵循了卷快速入门，则窗体将位于 Azure blob 存储帐户中。 打开 Azure 存储资源管理器，找到一个窗体文件，右键单击该文件，然后选择 "**获取共享访问签名**"。 下一个对话框窗口将提供 URL 和 SAS 令牌。 将这些字符串分别输入 `"formUrl"` 到 `"formSasToken"` 请求正文的和字段中。
 
 > [!div class="mx-imgBorder"]
 > ![Azure 存储资源管理器;选中 pdf 文档](media/cognitive-search-skill-form/form-sas.png)
 
-如果要分析不在 Azure blob 存储中的远程文档，请在`"formUrl"`字段中粘贴其 URL，并将该`"formSasToken"`字段留空。
+如果要分析不在 Azure blob 存储中的远程文档，请在字段中粘贴其 URL， `"formUrl"` 并将该 `"formSasToken"` 字段留空。
 
 > [!NOTE]
 > 在技能组合中集成了技能后，将认知搜索提供 URL 和令牌。
@@ -111,15 +111,15 @@ POST https://localhost:7071/api/analyze-form
 
 对函数行为感到满意后，可以将其发布。
 
-1. 在 Visual Studio 的 "**解决方案资源管理器**中，右键单击项目，然后选择"**发布**"。 选择 "**新建** > **发布**"。
+1. 在 Visual Studio 的 "**解决方案资源管理器**中，右键单击项目，然后选择"**发布**"。 选择 "**新建**  >  **发布**"。
 1. 如果尚未将 Visual Studio 连接到 Azure 帐户，请选择“添加帐户...”****
-1. 请按照屏幕上的提示操作。 为应用服务、Azure 订阅、资源组、托管计划以及要使用的存储帐户指定唯一名称。 如果还没有存储帐户，可以创建新的资源组和新的托管计划，并创建新的存储帐户。 完成后，选择“创建”****。
+1. 请按照屏幕上的提示操作。 为应用服务、Azure 订阅、资源组、托管计划以及要使用的存储帐户指定唯一名称。 如果还没有存储帐户，可以创建新的资源组和新的托管计划，并创建新的存储帐户。 完成后，请选择“创建”。
 1. 部署完成后，请记下站点 URL。 此 URL 是 Azure 中函数应用的地址。 将其保存到临时位置。
-1. 在[Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找已发布的`AnalyzeForm`函数。 在“管理”部分下，应可看到主机密钥****。 复制*默认*主机密钥并将其保存到临时位置。
+1. 在[Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找 `AnalyzeForm` 已发布的函数。 在“管理”部分下，应可看到主机密钥****。 复制*默认*主机密钥并将其保存到临时位置。
 
 ## <a name="connect-to-your-pipeline"></a>连接到管道
 
-若要在认知搜索管道中使用此技能，需要向技能组合添加技能定义。 以下 JSON 块是一个示例技术定义（应更新输入和输出，以反映特定方案和技能组合环境）。 将`AzureFunctionEndpointUrl`替换为函数 URL，并将`AzureFunctionDefaultHostKey`替换为主机密钥。
+若要在认知搜索管道中使用此技能，需要向技能组合添加技能定义。 以下 JSON 块是一个示例技术定义（应更新输入和输出，以反映特定方案和技能组合环境）。 `AzureFunctionEndpointUrl`将替换为函数 URL，并 `AzureFunctionDefaultHostKey` 将替换为主机密钥。
 
 ```json
 { 

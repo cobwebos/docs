@@ -6,16 +6,16 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fac33a01afc2efc1ab06c4783c11f7a089bb6208
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: cb82eb2d8e23daec0ddb8856b713c1aa051f25c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "62114148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355941"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>在安装期间排查源定位点问题
 本文解释了安装期间可能会出现的各种源定位点相关问题，并提供了这些问题的解决方法。

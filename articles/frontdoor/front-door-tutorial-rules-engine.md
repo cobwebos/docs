@@ -1,58 +1,56 @@
 ---
-title: 配置规则引擎 - Azure Front Door
-description: 本文介绍如何为 Azure Front Door 配置规则引擎
+title: Azure Front Door
+description: 本文提供了有关如何在 Azure 门户和 CLI 中配置规则引擎的教程。
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: ed54f26f37617d420fae1aaf3f51853b0439a349
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: a931a12889cec67baf6ef2db09091c8ec581ef08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321556"
 ---
-# <a name="configure-your-rules-engine"></a>配置规则引擎 
+# <a name="configure-your-rules-engine"></a>配置规则引擎
 
-> [!IMPORTANT]
-> 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
+本文提供在 Azure 门户和 CLI 中创建规则引擎配置和第一个规则的步骤。 
 
-## <a name="configure-rules-engine-in-azure-portal"></a>在 Azure 门户中配置规则引擎 
+## <a name="configure-rules-engine-in-azure-portal"></a>在 Azure 门户中配置规则引擎
 1. 在创建规则引擎配置之前，[创建一个 Front Door](quickstart-create-front-door.md)。
 
-2. 在你的 Front Door 资源中，转到“设置”，然后选择“规则引擎配置”。  单击“添加”，为配置命名，然后开始创建你的第一个规则引擎配置。 
+2. 在你的 Front Door 资源中，转到“设置”，然后选择“规则引擎配置”。  单击“添加”，为配置命名，然后开始创建你的第一个规则引擎配置。
 
-![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
+    ![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
 
-3. 单击“添加规则”，创建你的一个规则。 然后即可通过单击“添加条件”或“添加操作”来定义规则。  
+3. 单击“添加规则”，创建你的一个规则。 然后即可通过单击“添加条件”或“添加操作”来定义规则。 
     
-    注意：
-    - 若要从规则中删除条件或操作，请使用特定条件或操作右侧的垃圾桶。
-    - 若要创建适用于所有传入流量的规则，请不要指定任何条件。 
-    - 若要在满足第一个匹配条件后停止对规则进行评估，请选中“停止评估规则”。 
+    > [!NOTE]
+    >- 若要从规则中删除条件或操作，请使用特定条件或操作右侧的垃圾桶。
+    > - 若要创建适用于所有传入流量的规则，请不要指定任何条件。
+    > - 若要在满足第一个匹配条件后停止计算规则，请选中 "**停止计算剩余规则**"。 如果选中此项并且满足特定规则的所有匹配条件，则不会执行配置中的其余规则。  
 
-![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-4.png)
+    ![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 
-4. 使用“上移”、“下移”和“移至顶部”按钮来确定配置中的规则的优先级。 优先级按升序排序，即首先列出的规则是最重要的规则。 
+4. 使用“上移”、“下移”和“移至顶部”按钮来确定配置中的规则的优先级。 优先级按升序排序，即首先列出的规则是最重要的规则。
 
-5. 创建一个或多个规则后，按“保存”。 此操作将创建规则引擎配置。 
+5. 创建一个或多个规则后，按“保存”。 此操作将创建规则引擎配置。
 
-6. 创建一个或多个配置后，请将规则引擎配置与路由规则关联起来。 虽然一个配置可以应用于多个路由规则，但一个路由规则只能包含一个规则引擎配置。 若要进行关联，请转到“Front Door 设计器” > “路由规则”。 选择要向其中添加规则引擎配置的路由规则，转到“路由详细信息” > “规则引擎配置”，然后选择要关联的配置。 
+6. 创建一个或多个配置后，请将规则引擎配置与路由规则关联起来。 虽然一个配置可以应用于多个路由规则，但一个路由规则只能包含一个规则引擎配置。 若要进行关联，请转到“Front Door 设计器” > “路由规则”。 选择要向其中添加规则引擎配置的路由规则，转到“路由详细信息” > “规则引擎配置”，然后选择要关联的配置。
 
-![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
+    ![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 
 
-## <a name="configure-rules-engine-in-azure-cli"></a>在 Azure CLI 中配置规则引擎 
+## <a name="configure-rules-engine-in-azure-cli"></a>在 Azure CLI 中配置规则引擎
 
-1. 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（如果尚未安装）。 添加“front-door”扩展：- az extension add --name front-door。 然后，登录并切换到你的订阅：az account set --subscription <name_or_Id>。 
+1. 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（如果尚未安装）。 添加“front-door”扩展：- az extension add --name front-door。 然后，登录并切换到你的订阅：az account set --subscription <name_or_Id>。
 
 2. 首先创建规则引擎 - 此示例显示的规则包含一个基于标头的操作和一个匹配条件。 
 
@@ -60,31 +58,31 @@ ms.locfileid: "84743552"
 az network front-door rules-engine rule create -f {front_door} -g {resource_group} --rules-engine-name {rules_engine} --name {rule1} --priority 1 --action-type RequestHeader --header-action Overwrite --header-name Rewrite --header-value True --match-variable RequestFilenameExtension --operator Contains --match-values jpg png --transforms Lowercase
 ```
 
-2.  列出所有规则。 
+3. 列出所有规则。 
 
 ```azurecli-interactive
 az network front-door rules-engine rule list -f {front_door} -g {rg} --name {rules_engine}
 ```
 
-3.  添加一项转发路由替代操作。 
+4. 添加一项转发路由替代操作。 
 
 ```azurecli-interactive
 az network front-door rules-engine rule action add -f {front_door} -g {rg} --rules-engine-name {rules_engine} --name {rule1} --action-type ForwardRouteOverride --backend-pool {backend_pool_name} --caching Disabled
 ```
 
-4.  列出规则中的所有操作。 
+5. 列出规则中的所有操作。 
 
 ```azurecli-interactive
 az network front-door rules-engine rule action list -f {front_door} -g {rg} -r {rules_engine} --name {rule1}
 ```
 
-5. 将规则引擎配置关联到路由规则。  
+6. 将规则引擎配置关联到路由规则。  
 
 ```azurecli-interactive
 az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --rules-engine {rules_engine}
 ```
 
-6. 取消关联规则引擎。 
+7. 取消关联规则引擎。 
 
 ```azurecli-interactive
 az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’

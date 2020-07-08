@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78298337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356876"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>标识同步和重复属性复原
 重复属性复原是 Azure Active Directory 的一项功能，它将消除运行 Microsoft 的一种同步工具时 UserPrincipalName  和 SMTP ProxyAddress  冲突引起的摩擦。
@@ -40,7 +40,7 @@ ms.locfileid: "78298337"
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>重复属性复原的行为
 Azure Active Directory 并不是完全无法预配或更新具有重复属性的对象，而是“隔离”违反唯一性约束的重复属性。 如果预配时需要此属性（例如 UserPrincipalName），则服务将分配占位符值。 这些临时值的格式为  
-_** \@ \<OriginalPrefix>+\<4DigitNumber>InitialTenantDomain> onmicrosoft.com. \<**_
+_** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.com**_。
 
 属性复原过程仅处理 UPN 和 SMTP ProxyAddress  值。
 
@@ -161,9 +161,9 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
    
     a. **用户 A** 首先使用 **UPN = User\@contoso.com** 同步。
    
-    b. 然后，尝试使用 **UPN = User**contoso.com **同步\@用户 B**。
+    b. 然后，尝试使用 **UPN = User\@contoso.com** 同步**用户 B**。
    
-    c. **用户 B 的**UPN 更改为**User1234\@Contoso.onmicrosoft.com** ，而**User\@contoso.com**添加到**DirSyncProvisioningErrors**。
+    c. **用户 B 的**UPN 更改为**User1234 \@ contoso.onmicrosoft.com** ，而**User \@ contoso.com**添加到**DirSyncProvisioningErrors**。
    
     d. **用户 B** 的错误消息应指出**用户 A** 已有用作 UPN 的 **User\@contoso.com**，但却显示**用户 B** 自己的 displayName。
 
@@ -172,7 +172,7 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 *关于如何解决此问题的步骤*链接不正确：  
     ![活动用户](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "活动用户")  
 
-它应指向[https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。
+它应指向 [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency) 。
 
 ## <a name="see-also"></a>另请参阅
 * [Azure AD Connect 同步](how-to-connect-sync-whatis.md)

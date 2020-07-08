@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59a52fa1b67d37abfc79fd5738d70afb8aecf670
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 963c59cc002fec7ad0d882db19a83f4299a506c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60382908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357148"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Sync Service Manager Metaverse 搜索
 
@@ -29,7 +29,7 @@ ms.locfileid: "60382908"
 
 排查与数据相关的问题时，“Metaverse 搜索”选项卡非常有用。 在上半部分，可以基于属性组合创建查询。 如果对查询结果满意，请单击“搜索”。  结果显示在底部网格中。 可以利用“列设置”来选择应显示的列。 
 
-在搜索结果中，选择对象，然后选择“属性”查看 [Metaverse 对象属性](tshoot-connect-object-not-syncing.md#metaverse-object-properties)。 
+在搜索结果中，选择对象，并选择“属性”查看 [Metaverse 对象属性](tshoot-connect-object-not-syncing.md#metaverse-object-properties)。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。

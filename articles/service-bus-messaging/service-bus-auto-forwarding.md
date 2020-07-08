@@ -1,33 +1,22 @@
 ---
 title: 自动转发 Azure 服务总线消息实体
 description: 本文介绍如何将 Azure 服务总线队列或订阅链接到另一个队列或主题。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 28c3e8985f12163e871fa4de5fb6cc92d68110b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76761043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337739"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
-通过服务总线自动转发  功能可将队列或订阅链接到作为相同命名空间组成部分的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 仍可将消息直接发送到目标实体。
+通过服务总线自动转发功能可将队列或订阅链接到作为相同命名空间组成部分的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 仍可将消息直接发送到目标实体。
 
 ## <a name="using-autoforwarding"></a>使用自动转发
 
-可通过在源的 [QueueDescription][QueueDescription.ForwardTo] 或 [SubscriptionDescription][SubscriptionDescription.ForwardTo] 对象上设置 [QueueDescription.ForwardTo][QueueDescription] 或 [SubscriptionDescription.ForwardTo][SubscriptionDescription] 属性来启用自动转发，如以下示例所示：
+可通过在源的 [QueueDescription][QueueDescription] 或 [SubscriptionDescription][SubscriptionDescription] 对象上设置 [QueueDescription.ForwardTo][QueueDescription.ForwardTo] 或 [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] 属性来启用自动转发，如以下示例所示：
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -35,17 +24,17 @@ srcSubscription.ForwardTo = destTopic;
 namespaceManager.CreateSubscription(srcSubscription));
 ```
 
-创建源实体时，目标实体必须存在。 如果目标实体不存在，则当创建源实体时，服务总线将返回异常。
+创建源实体时，目标实体必须存在。 如果目标实体不存在，则当创建源实体时，服务总线返回异常。
 
-可使用自动转发扩大单个主题。 服务总线将[给定主题的订阅数](service-bus-quotas.md)限制为 2,000。 可通过创建二级主题来容纳其他订阅。 即使不受服务总线的订阅数限制，添加二级主题也可提高主题的整体吞吐量。
+可使用自动转发扩大单个主题。 服务总线将[给定主题的订阅数](service-bus-quotas.md)限制为 2,000。 可以通过创建二级主题来容纳其他订阅。 即使订阅数并未受到服务总线限制，添加二级主题也可以提高主题的整体吞吐量。
 
 ![自动转发方案][0]
 
-自动转发还可用于分离消息发送方与接收方。 例如，考虑一个由以下三个模块组成的 ERP 系统：订单处理、库存管理和客户关系管理。 每个这些模块生成的消息会排入到相应的主题中。 Alice 和 Bob 是两名销售代表，他们想了解与其客户相关的所有消息。 若要接收这些消息，Alice 和 Bob 会各自在每个自动转发所有消息到其队列中的 ERP 主题上创建一个个人队列和帐户。
+自动转发还可用于分离消息发送方与接收方。 例如，考虑一个由以下三个模块组成的 ERP 系统：订单处理、库存管理和客户关系管理。 每个模块都会生成消息，这些消息将被排入相应的主题队。 Alice 和 Bob 是两名销售代表，他们想了解与其客户相关的所有消息。 要接收这些消息，Alice 和 Bob 各自创建一个个人队列和一个针对 ERP 主题的订阅，该订阅将所有消息自动转发给该队列。
 
 ![自动转发方案][1]
 
-如果 Alice 处于度假期间，则其个人队列（而不是 ERP）会填满。 此方案中，由于销售代表未接收到任何消息，因此没有任何 ERP 主题会达到配额。
+如果 Alice 去度假，则填充她的个人队列，而不是 ERP 主题。 在此方案中，由于销售代表没有接收到任何消息，所以所有 ERP 主题都没有达到配额。
 
 > [!NOTE]
 > 设置自动转发时，**源和目标**上的 AutoDeleteOnIdle 值自动设置为数据类型的最大值。
@@ -57,7 +46,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 如果目标实体累积了过多消息并超出配额，或禁用了目标实体，则源实体会将消息添加到其[死信队列](service-bus-dead-letter-queues.md)，直到目标中存在可用空间（或重新启用了该实体）。 这些消息将继续位于死信队列中，因此，必须从死信队列显式接收和处理它们。
 
-将各个主题连接到一起以获取具有多个订阅的复合主题时，推荐第一级别主题上具有中等数量的订阅，第二级别主题上具有多个订阅。 例如，一个第一级别主题包含 20 个订阅，其中每个订阅连接到一个包含 200 个订阅的第二级别主题，则这个第一级别的主题允许的吞吐量高于另一个包含 200 个订阅（其中每个订阅连接到一个包含 20 个订阅的第二级别主题）的第一级别主题。
+将单个主题链接到一起以获取包含许多订阅的复合主题时，建议设置适量的一级主题订阅和许多二级主题订阅。 例如，一个包含 20 个订阅的一级主题（其中每个订阅都链接到包含 200 个订阅的二级主题）就能够比包含 200 个订阅的一级主题（其中每个订阅链接到包含 20 个订阅的二级主题）具有更高的吞吐量。
 
 服务总线对于每条转发的消息收取一个操作的费用。 例如，将一条消息发送到一个包含 20 个订阅（每个订阅配置为将消息自动转发到另一队列或主题）的主题，如果所有第一级别的订阅都接收到此消息的副本，则会作为 21 次操作进行计费。
 

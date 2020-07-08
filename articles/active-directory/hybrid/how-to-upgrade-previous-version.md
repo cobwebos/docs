@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60347640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356621"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从以前版本升级到最新版本
 本主题介绍可将 Azure Active Directory (Azure AD) Connect 安装升级到最新版本的不同方法。 建议使用最新版本的 Azure AD Connect。 进行重大配置更改时，也可以使用[交叉迁移](#swing-migration)部分所述的步骤。

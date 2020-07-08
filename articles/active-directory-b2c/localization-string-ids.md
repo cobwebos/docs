@@ -1,21 +1,21 @@
 ---
 title: 本地化字符串 ID - Azure Active Directory B2C | Microsoft Docs
-description: 在 Azure Active Directory B2C 中为自定义策略中 ID 为 api.signuporsignin 的内容定义指定 ID。
+description: 在 Azure Active Directory B2C 中使用自定义策略的 api.signuporsignin ID 指定内容定义的 ID。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/02/2020
+ms.date: 06/23/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa90775df4462328ed7c39e70c8dd1989248e308
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: 1cd18ae9fd3814765e77dad672909343d651913e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900515"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355499"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -25,7 +25,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>注册或登录页面元素
 
-以下 ID 用于 ID 为 `api.signuporsignin` 的内容定义。
+以下 ID 用于包含 `api.signuporsignin` ID 的内容定义。
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -37,7 +37,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **local_intro_username** | 使用用户名登录 |
 | **logonIdentifier_username** | 用户名 |
 | **requiredField_username** | 请输入用户名 |
-| password | 密码 |
+| **password** | 密码 |
 | **requiredField_password** | 请输入密码 |
 | **invalid_password** | 你输入的密码格式不正确。 |
 | **forgotpassword_link** | 忘记密码了? |
@@ -56,7 +56,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 标识提供者的 ID 在用户旅程 ClaimsExchange 元素中配置。 若要本地化标识提供者的标题，请将 ElementType 设置为 `ClaimsProvider`，同时将 StringId 设置为 `ClaimsExchange` 的 ID。
 
-```XML
+```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -75,7 +75,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 下面的示例将 Facebook 标识提供者本地化为阿拉伯语：
 
-```XML
+```xml
 <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">فيس بوك</LocalizedString>
 ```
 
@@ -88,7 +88,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **UserMessageIfOldPasswordUsed** | 你可能使用的是旧密码。 |
 | **DefaultMessage** | 无效的用户名或密码。 |
 | **UserMessageIfUserAccountDisabled** | 帐户已锁定。 请联系支持人员解除锁定，然后重试。 |
-| **UserMessageIfUserAccountLocked** | 帐户暂时锁定以防止未经授权的使用。 请稍后再试。 |
+| **UserMessageIfUserAccountLocked** | 帐户暂时锁定以防止未经授权的使用。 请稍后重试。 |
 | **AADRequestsThrottled** | 目前请求过多。 请等待一段时间，然后重试。 |
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>注册和自断言页用户界面元素
@@ -108,7 +108,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **verifying_blurb** | 正在处理你的信息，请稍候。 |
 | **button_cancel** | 取消 |
 | **ver_fail_no_retry** | 你进行不正确尝试的次数过多。 请稍后重试。 |
-| month | 月份 |
+| **month** | 月份 |
 | **ver_success_msg** | 已验证电子邮件地址。 现在可以继续。 |
 | **months** | 一月、二月、三月、四月、五月、六月、七月、八月、九月、十月、十一月、十二月 |
 | **ver_fail_server** | 我们无法验证你的电子邮件地址。 请输入有效的电子邮件地址，然后重试。 |
@@ -205,21 +205,21 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="verification-display-control-user-interface-elements"></a>验证显示控件用户界面元素
 
-下面是[验证显示控件](display-control-verification.md)的 ID
+以下是[验证显示控件](display-control-verification.md)的 ID
 
 | ID | 默认值 |
 | -- | ------------- |
 |verification_control_but_change_claims |更改 |
-|verification_control_fail_send_code |无法发送验证码，请稍后重试。 |
-|verification_control_fail_verify_code |无法验证验证码，请稍后重试。 |
+|verification_control_fail_send_code |无法发送代码，请稍后重试。 |
+|verification_control_fail_verify_code |无法验证代码，请稍后重试。 |
 |verification_control_but_send_code |发送验证码 |
-|verification_control_but_send_new_code |发送新验证码 |
+|verification_control_but_send_new_code |发送新代码 |
 |verification_control_but_verify_code |验证验证码 |
 |verification_control_code_sent| 已发送验证码。 请将其复制到下面的输入框。 |
 
 ### <a name="example"></a>示例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
@@ -233,22 +233,47 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 </LocalizedResources>
 ```
 
-## <a name="azure-mfa-error-messages"></a>Azure MFA 错误消息
+## <a name="restful-service-error-messages"></a>Restful 服务错误消息
 
-下面是 [Azure MFA 技术配置文件](multi-factor-auth-technical-profile.md)错误消息的 ID：
+下面是[Restful 服务技术配置文件](restful-technical-profile.md)的 id 错误消息：
 
 | ID | 默认值 |
 | -- | ------------- |
-|UserMessageIfCouldntSendSms | 无法向手机发送短信，请尝试其他电话号码。 |
-|UserMessageIfInvalidFormat | 你的电话号码格式无效，请更正并重试。|
-|UserMessageIfMaxAllowedCodeRetryReached | 输入错误代码次数过多，请稍后重试。|
+|DefaultUserMessageIfRequestFailed | 未能建立与 restful 服务终结点的连接。 Restful 服务 URL：{0} |
+|UserMessageIfCircuitOpen | {0}Restful 服务 URL：{1} |
+|UserMessageIfDnsResolutionFailed | 未能解析 restful 服务终结点的主机名。 Restful 服务 URL：{0} |
+|UserMessageIfRequestTimeout | 在超时限制秒内未能建立与 restful 服务终结点的连接 {0} 。 Restful 服务 URL：{1} |
+
+
+### <a name="example"></a>示例
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="DefaultUserMessageIfRequestFailed">Failed to establish connection to restful service end point.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCircuitOpen">Unable to connect to the restful service end point.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfDnsResolutionFailed">Failed to resolve the hostname of the restful service endpoint.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfRequestTimeout">Failed to establish connection to restful service end point within timeout limit.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="azure-mfa-error-messages"></a>Azure MFA 错误消息
+
+以下是 [Azure MFA 技术配置文件](multi-factor-auth-technical-profile.md)错误消息的 ID：
+
+| ID | 默认值 |
+| -- | ------------- |
+|UserMessageIfCouldntSendSms | 无法向手机发送短信，请尝试另一个电话号码。 |
+|UserMessageIfInvalidFormat | 电话号码格式无效，请更正，然后重试。|
+|UserMessageIfMaxAllowedCodeRetryReached | 输入错误代码的次数过多，请稍后重试。|
 |UserMessageIfServerError | 无法使用 MFA 服务，请稍后重试。|
-|UserMessageIfThrottled | 你的请求已被限制，请稍后重试。|
+|UserMessageIfThrottled | 请求被阻止，请稍后重试。|
 |UserMessageIfWrongCodeEntered|输入的代码错误，请重试。|
 
 ### <a name="example"></a>示例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCouldntSendSms">Cannot Send SMS to the phone, please try another phone number.</LocalizedString>
@@ -261,9 +286,36 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 </LocalizedResources>
 ```
 
+## <a name="azure-ad-sspr"></a>Azure AD SSPR
+
+下面是[AZURE AD SSPR 技术配置文件](aad-sspr-technical-profile.md)的 id 错误消息：
+
+| ID | 默认值 |
+| -- | ------------- |
+|UserMessageIfChallengeExpired | 代码已过期。|
+|UserMessageIfInternalError | 电子邮件服务遇到内部错误，请稍后重试。|
+|UserMessageIfThrottled | 你发送的请求过多，请稍后重试。|
+|UserMessageIfVerificationFailedNoRetry | 你已超过最大验证尝试次数。|
+|UserMessageIfVerificationFailedRetryAllowed | 验证失败，请重试。|
+
+
+### <a name="example"></a>示例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInternalError">We are having trouble verifying your email address. Please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfThrottled">There have been too many requests to verify this email address. Please wait a while, then try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfChallengeExpired">That code is expired. Please request a new code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedNoRetry">You've made too many incorrect attempts. Please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
 ## <a name="one-time-password-error-messages"></a>一次性密码错误消息
 
-下面是[一次性密码技术配置文件](one-time-password-technical-profile.md)错误消息的 ID
+以下是[一次性密码技术配置文件](one-time-password-technical-profile.md)错误消息的 ID
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -275,7 +327,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ### <a name="example"></a>示例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
@@ -287,20 +339,19 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 </LocalizedResources>
 ```
 
-
 ## <a name="claims-transformations-error-messages"></a>声明转换错误消息
 
-下面是声明转换错误消息的 ID：
+以下是声明转换错误消息的 ID：
 
 | ID | 声明转换 | 默认值 |
 | -- | ------------- |------------- |
-|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 针对声明类型“inputClaim”的布尔声明值比较失败。| 
+|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 声明类型“inputClaim”的布尔声明值比较失败。| 
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 声明值比较失败：提供的左操作数大于右操作数。|
-|UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | 使用 StringComparison“OrdinalIgnoreCase”进行声明值比较失败。|
+|UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | 使用 StringComparison“OrdinalIgnoreCase”的声明值比较失败。|
 
 ### <a name="example"></a>示例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Your email address hasn't been verified.</LocalizedString>

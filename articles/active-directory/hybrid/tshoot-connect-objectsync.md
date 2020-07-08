@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：排查对象同步错误 | Microsoft Docs
+title: Azure AD Connect：排查对象同步问题 | Microsoft Docs
 description: 本主题按步骤介绍了如何使用故障排除任务来排查对象同步问题。
 services: active-directory
 documentationcenter: ''
@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73d4239dd34f2a64aa7b3edbf88bad4348e01291
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407022"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356196"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步排查对象同步问题
 本文按步骤介绍了如何使用故障排除任务来排查对象同步问题。 若要了解如何在 Azure Active Directory (Azure AD) Connect 中对工作进行故障排除，请观看[此简短视频](https://aka.ms/AADCTSVideo)。
@@ -41,8 +41,8 @@ ms.locfileid: "81407022"
 
 ### <a name="troubleshooting-input-parameters"></a>排查输入参数问题
 以下输入参数是故障排除任务所需的：
-1.  **对象可分辨名称** – 这是需要进行故障排除的对象的可分辨名称
-2.  **AD 连接器名称** – 这是上述对象所驻留的 AD 林的名称。
+1.  **对象可分辨名称**–这是需要进行故障排除的对象的可分辨名称
+2.  **Ad 连接器名称**–这是上述对象所驻留的 AD 林的名称。
 3.  Azure AD 租户全局管理员凭据![全局管理员凭据](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>了解故障排除任务的结果

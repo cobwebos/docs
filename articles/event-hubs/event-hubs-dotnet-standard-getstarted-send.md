@@ -1,24 +1,14 @@
 ---
 title: 使用 .NET 向/从 Azure 事件中心发送/接收事件（旧版）
 description: 本文提供了创建 .NET Core 应用的演练，该应用使用旧 Microsoft.Azure.EventHubs 包向/从 Azure 事件中心发送/接收事件。
-services: event-hubs
-documentationcenter: na
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 2a3b14acad4990059a27201b7e1e6b9e93123194
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: bd8476c89fea94a9d1b4a101841c11137d4dd5be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320782"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core (Microsoft.Azure.EventHubs) 向/从 Azure 事件中心发送/接收事件
 本快速入门介绍如何使用 **Microsoft.Azure.EventHubs** .NET Core 库向/从事件中心发送/接收事件。
@@ -31,7 +21,7 @@ ms.locfileid: "82025163"
 
 若要完成本快速入门，需要具备以下先决条件：
 
-- **Microsoft Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
+- Microsoft Azure 订阅。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com)。
 - [.NET Core Visual Studio 2015 或 2017 工具](https://www.microsoft.com/net/core)。 
 - **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取**事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 稍后将在本快速入门中使用连接字符串。
@@ -373,7 +363,7 @@ ms.locfileid: "82025163"
 
 - [基于角色的访问控制 (RBAC) 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
-    这些示例使用旧的 **Microsoft.Azure.EventHubs** 库，但你可以轻松地将其更新为使用最新的 **Azure.Messaging.EventHubs** 库。 若要将示例从使用旧库移动到新库，请参阅[从 EventHubs 迁移到 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
+    这些示例使用旧的 **Microsoft.Azure.EventHubs** 库，但你可以轻松地将其更新为使用最新的 **Azure.Messaging.EventHubs** 库。 若要将示例从使用旧库迁移到使用新库，请参阅[从 Microsoft.Azure.EventHubs 迁移到 Azure.Messaging.EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中心的功能和术语](event-hubs-features.md)
 - [事件中心常见问题](event-hubs-faq.md)
