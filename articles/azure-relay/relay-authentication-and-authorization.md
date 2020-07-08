@@ -1,25 +1,14 @@
 ---
 title: Azure 中继身份验证和授权 | Microsoft Docs
 description: 本文概述了如何使用 Azure 中继服务进行共享访问签名 (SAS) 身份验证。
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: aac5c973a99b13d5918a0162feb7f1ede443463b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 63e075bc9bf75005a92866f9fa0f90ddaba2f016
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316936"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure 中继身份验证和授权
 
@@ -35,12 +24,12 @@ ms.locfileid: "83210562"
 
 若要使用 SAS，可在由以下项构成的中继命名空间上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象：
 
-* 标识此规则的 KeyName  。
-* PrimaryKey  ，用于对 SAS 令牌进行签名/验证的加密密钥。
-* SecondaryKey  ，用于对 SAS 令牌进行签名/验证的加密密钥。
-* Rights  ，表示授予的侦听、发送或管理权限的集合。
+* 标识此规则的 KeyName。
+* *PrimaryKey* ，是用于对 SAS 令牌进行签名/验证的加密密钥。
+* *SecondaryKey* ，是用于对 SAS 令牌进行签名/验证的加密密钥。
+* Rights，表示授予的侦听、发送或管理权限的集合。
 
-在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予命名空间中所有中继连接的访问权限。 在中继命名空间上最多可配置 12 个此类授权规则。 默认情况下，首次预配时，将为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。
+在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予命名空间中所有中继连接的访问权限。 在中继命名空间上最多可配置 12 个此类授权规则。 默认情况下，首次预配时，为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 。
 
 若要访问某个实体，客户端需要使用特定 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 生成的 SAS 令牌。 SAS 令牌是通过使用资源字符串的 HMAC-SHA256 生成的，该字符串由要授予对其访问权限的资源 URI 和授权规则相关加密密钥的过期时间组成。
 

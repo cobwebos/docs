@@ -1,18 +1,14 @@
 ---
 title: 将 Azure 中继与 Azure 专用链接服务集成
 description: 了解如何将 Azure 中继与 Azure 专用链接服务集成
-services: service-bus-relay
-author: spelluru
-ms.author: spelluru
-ms.date: 05/13/2020
-ms.service: service-bus-relay
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 3c2426b65e16d8d6bcdd9733280c8f97f4aa79d6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657574"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317322"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>与 Azure 中继与 Azure 专用链接（预览版）集成
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如，Azure 中继、Azure 服务总线、Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户/合作伙伴服务。 有关详细信息，请参阅[什么是 Azure 专用链接（预览版）？](../private-link/private-link-overview.md)

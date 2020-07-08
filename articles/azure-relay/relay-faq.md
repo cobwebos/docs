@@ -1,25 +1,14 @@
 ---
 title: Azure 中继常见问题 | Microsoft Docs
 description: 本文提供了一些有关 Azure 中继服务的常见问题解答 (FAQ)。
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ac8967ab036929bf5363a79c9d7c60485bc98841
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317022"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题解答
 
@@ -36,7 +25,7 @@ ms.locfileid: "83211978"
 [命名空间](relay-create-namespace-portal.md)是一个范围容器，可用于对应用程序中的中继资源进行寻址。 必须创建命名空间才能使用中继。 这是入门的开始步骤之一。
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>服务总线中继服务发生了什么情况？
-以前命名的服务总线中继服务现在称为[Azure 中继](service-bus-relay-tutorial.md)。 可以继续照常使用此服务。 混合连接功能是一种更新版的服务，从 Azure BizTalk 服务移植过来。 将继续支持 WCF 中继和混合连接。
+旧称“服务总线中继服务”现在称为 [Azure 中继](service-bus-relay-tutorial.md)。 可以继续照常使用此服务。 混合连接功能是一种更新版的服务，从 Azure BizTalk 服务移植过来。 将继续支持 WCF 中继和混合连接。
 
 ## <a name="pricing"></a>定价
 本部分回答了一些关于中继定价结构的常见问题。 若要了解一般的 Azure 定价信息，还可以参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。 有关中继定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。
@@ -75,7 +64,7 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 
 一般情况下，会使用与上述相同的用于中转实体（队列、主题和订阅）的方法来计算中继的可计费消息。 但是，有一些明显的区别。
 
-将消息发送到 Azure 中继将被视为 "完全通过" 发送到接收消息的中继侦听器。 它不会被视为对 Azure 中继的发送操作，而是传递到中继侦听器。 针对中继侦听器的请求-应答模式服务调用（最大 64 KB）将生成两条可计费消息：一条用于请求的可计费消息，一条用于应答（假设响应也是 64 KB 或更小）的可计费消息。 这不同于使用队列在客户端和服务之间进行协调。 如果使用队列在客户端和服务之间进行协调，则同一请求-答复模式要求先将请求发送到队列，然后再将其从队列交付到服务，或者取消其排队。 随后就是将响应发送至另一队列，再从该队列交付至客户端，或者取消排队。 如果始终使用同一大小作为假设吞吐量（最高 64 KB），则此中介型队列模式会生成 4 条计费消息。 收费的消息数两倍于使用中继实现同一模式时的消息数。 当然，使用队列来实现此模式好处更多，例如持久性和负载分级。 这些好处可能产生额外费用。
+向 Azure 中继发送消息被视为“完全通过”式发送，发送到接收消息的中继侦听器。 不会将其视为一个先发送到 Azure 中继然后再传递给中继侦听器的操作。 针对中继侦听器的请求-应答模式服务调用（最大 64 KB）将生成两条可计费消息：一条用于请求的可计费消息，一条用于应答（假设响应也是 64 KB 或更小）的可计费消息。 这不同于使用队列在客户端和服务之间进行协调。 如果使用队列在客户端和服务之间进行协调，则同一请求-答复模式要求先将请求发送到队列，然后再将其从队列交付到服务，或者取消其排队。 随后就是将响应发送至另一队列，再从该队列交付至客户端，或者取消排队。 如果始终使用同一大小作为假设吞吐量（最高 64 KB），则此中介型队列模式会生成 4 条计费消息。 收费的消息数两倍于使用中继实现同一模式时的消息数。 当然，使用队列来实现此模式好处更多，例如持久性和负载分级。 这些好处可能产生额外费用。
 
 使用 **netTCPRelay** WCF 绑定打开的中继不将消息视为单条消息，而视为流经系统的数据流。 使用此绑定时，只有发送方和侦听器可以识别发送和接收的单条分帧消息。 对于使用 **netTCPRelay** 绑定的中继，所有数据都会被视为用于计算可计费消息的数据流。 在这种情况下，服务总线每隔 5 分钟计算一次通过单个中继发送或接收的数据总量。 然后会将该数据总量除以 64 KB，得出该中继在该时段的计费消息数。
 

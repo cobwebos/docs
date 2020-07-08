@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317225"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure 认知搜索 - 常见问题解答 (FAQ)
 
@@ -41,19 +41,19 @@ Azure 认知搜索支持多个数据源、[针对多种语言的语言分析](ht
 
 此外，随时可以使用 Azure 认知搜索 REST API [获取索引定义](https://docs.microsoft.com/rest/api/searchservice/get-index)。
 
-Azure 门户目前不提供内置的索引提取、快照或备份/还原功能。 但是，我们正在考虑在将来的版本中添加备份和还原功能。 如果希望为此功能提供支持，请对[用户语音](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index)投票。
+Azure 门户目前不提供内置的索引提取、快照或备份/还原功能。 但是，我们正在考虑在将来的版本中添加备份和还原功能。 若要表达你对此功能的支持，请在 [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) 中投票。
 
 ### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>删除后能否还原索引或服务？
 
 不可以。如果删除 Azure 认知搜索索引或服务，将无法予以恢复。 删除 Azure 认知搜索服务会永久删除该服务中的所有索引。 如果删除包含一个或多个 Azure 认知搜索服务的 Azure 资源组，将永久删除所有服务。  
 
-重新创建索引、索引器、数据源和技能集等资源需要从代码重新创建它们。 
+重新创建索引、索引器、数据源和技能集等资源需要通过代码重新创建它们。 
 
 若要重新创建索引，必须为外部源中的数据重新编制索引。 因此，建议在其他数据存储（如 Azure SQL 数据库或 Cosmos DB）保留原始数据的主控副本或备份。
 
 作为替代方法，可以使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码，将索引定义和索引快照备份到一系列 JSON 文件。 以后，可以根据需要使用工具和文件来还原索引。  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>能否从 SQL 数据库副本（适用于 [Azure SQL 数据库索引器](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers)）进行索引？
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>能否从 SQL 数据库副本编制索引（适用于[AZURE SQL 数据库索引器](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers)）
 
 从头开始创建索引时，对使用主要或次要副本作为数据源没有任何限制。 然而，使用增量更新（基于已更改的记录）刷新索引时需要主要副本。 此需求来自于 SQL 数据库，它仅确保主要副本上的更改跟踪。 如果尝试为索引刷新工作负荷使用次要副本，则无法保证获得所有数据。
 
@@ -79,15 +79,15 @@ Azure 门户目前不提供内置的索引提取、快照或备份/还原功能�
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>为什么每个搜索词的搜索优先级是一个常数，或都等于 1.0？
 
-默认情况下，根据[匹配术语的统计属性](search-lucene-query-architecture.md#stage-4-scoring)对搜索结果打分，在结果集中从高到低排序。 但某些查询类型（通配符、前缀、正则表达式）始终会给文档总评分贡献一个常数分数。 这是设计的行为。 Azure 认知搜索设置一个常量评分后，便可以在结果中包含通过查询扩展找到的匹配项，且不会影响排名。
+默认情况下，根据[匹配术语的统计属性](search-lucene-query-architecture.md#stage-4-scoring)对搜索结果打分，在结果集中从高到低排序。 但某些查询类型（通配符、前缀、正则表达式）始终会给文档总评分贡献一个常数分数。 此行为是设计使然。 Azure 认知搜索设置一个常量评分后，便可以在结果中包含通过查询扩展找到的匹配项，且不会影响排名。
 
-例如，假设通配符搜索中的 "游览 *" 的输入生成了 "教程"、"结果" 和 "tourmaline" 的匹配项。 由于这些结果的性质，我们无法合理推断出哪些字词的相关性高于其他字词。 因此，在为通配符、前缀和正则表达式类型的查询结果评分时，我们会忽略字词频率。 建立在不完整输入上的搜索结果获得一个常数分数，以避免可能的意外匹配偏差。
+例如，假设在通配符搜索中输入“tour*”，会产生匹配结果“tours”、“tourettes”和“tourmaline”。 由于这些结果的性质，我们无法合理推断出哪些字词的相关性高于其他字词。 因此，在为通配符、前缀和正则表达式类型的查询结果评分时，我们会忽略字词频率。 建立在不完整输入上的搜索结果获得一个常数分数，以避免可能的意外匹配偏差。
 
-## <a name="skillset-operations"></a>技能组合操作
+## <a name="skillset-operations"></a>技能组操作
 
 ### <a name="are-there-any-tips-or-tricks-to-reduce-cognitive-services-charges-on-ingestion"></a>在引入时，是否有任何提示或技巧可降低认知服务费用？
 
-您不希望执行内置的技能或自定义技能，而不是绝对必要的，尤其是在处理数百万个文档的情况下。 考虑到这一点，我们已将 "增量扩充" 功能添加到技能组合执行。 实质上，你可以提供一个缓存位置（blob 存储连接字符串），该位置将用于存储 "中间" 扩充步骤的输出。  这使扩充管道成为智能，只应用修改技能组合时所需的根据。 这自然还会保存索引时间，因为管道将更有效。
+可以理解的是，你不希望执行的内置技能或自定义技能超出绝对必要的范围，尤其是在处理数百万个要处理的文档的情况下。 考虑到这一点，我们已将“增量扩充”功能添加到技能组执行。 实质上，你可以提供一个缓存位置（blob 存储连接字符串），用于存储“中间”扩充步骤的输出。  这可以使扩充管道智能化，并且使扩充管道只应用那些在修改技能组时必需的扩充。 这自然也会节省索引时间，因为管道会更加高效。
 
 详细了解[增量扩充](cognitive-search-incremental-indexing-conceptual.md)
 
