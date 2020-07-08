@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250512"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042112"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -107,17 +107,17 @@ info:    vm extension set command OK
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可通过 Azure 门户将 VM 扩展应用到现有 VM。 在门户中，依次选择该 VM、“扩展”、“添加”********。 从可用扩展的列表中选择所需扩展，并按向导中的说明操作。
+可通过 Azure 门户将 VM 扩展应用到现有 VM。 在门户中，依次选择该 VM、“扩展”、“添加”   。 从可用扩展的列表中选择所需扩展，并按向导中的说明操作。
 
 下图展示了如何从 Azure 门户安装 Linux 自定义脚本扩展：
 
 ![安装自定义脚本扩展](./media/features-linux/installscriptextensionlinux.png)
 
-### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
+### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 
-VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自一个资源管理器模板，该模板会在每个 VM 上部署一组负载均衡的 VM、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
+VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自部署一组负载均衡的 Vm 和 Azure SQL 数据库的资源管理器模板，然后在每个 VM 上安装 .NET Core 应用程序。 VM 扩展负责安装软件。
 
-有关详细信息，请参阅完整的 [Resource Manager 模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
+有关详细信息，请参阅完整[资源管理器模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
 
 ```json
 {
@@ -152,7 +152,7 @@ VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程�
 
 ## <a name="secure-vm-extension-data"></a>保护 VM 扩展数据
 
-运行 VM 扩展时，可能需要包括敏感信息，例如凭据、存储帐户名称和存储帐户访问密钥。 许多 VM 扩展包括受保护的配置，该配置对数据进行加密并且仅在目标 VM 内才对数据进行解密。 每个扩展都有一个特定的受保护的配置架构，扩展特定的文档中详述了各个架构。
+运行 VM 扩展时，可能需要包括敏感信息，例如凭据、存储帐户名称和存储帐户访问密钥。 许多 VM 扩展包括受保护的配置，该配置对数据进行加密并且仅在目标 VM 内才对数据进行解密。 每个扩展都有特定的受保护配置架构，会在特定于扩展的文档中详细介绍每个配置架构。
 
 以下示例显示了适用于 Linux 的自定义脚本扩展的一个实例。 要执行的命令包含一组凭据。 在此示例中，不会加密要执行的命令：
 
@@ -183,7 +183,7 @@ VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程�
 }
 ```
 
-将“要执行的命令”属性移到“受保护的”配置可以保护执行字符串，如以下示例中所示********：
+将“要执行的命令”属性移到“受保护的”配置可以保护执行字符串，如以下示例中所示   ：
 
 ```json
 {
@@ -235,7 +235,7 @@ Linux VM 代理将预配代理代码和扩展处理代码包含在一个包中�
 
 代理的受支持版本可以使用自动更新。 唯一可以更新的代码是扩展处理代码，不是预配代码**。 预配代理代码是一次性运行的代码**。
 
-扩展处理代码负责与 Azure 结构通信，并处理各种 VM 扩展操作，例如安装、报告状态、更新单个扩展，以及删除扩展**。 更新包含扩展处理代码的安全修复程序、bug 修复程序和增强功能**。
+扩展处理代码负责与 Azure 结构通信，并处理各种 VM 扩展操作，例如安装、报告状态、更新单个扩展，以及删除扩展  。 更新包含扩展处理代码的安全修复程序、bug 修复程序和增强功能  。
 
 安装代理时，创建父守护程序。 然后，此父进程生成一个用于处理扩展的子进程。 如果有可用的代理更新，下载它，父进程停止子进程，升级它，然后重启它。 如果存在更新问题，父进程回滚到以前的子版本。
 
@@ -263,7 +263,7 @@ Goal state agent: 2.2.18
 
 #### <a name="extension-updates"></a>扩展更新
 
-有扩展更新可用时，Linux 代理会下载并升级扩展。 自动扩展更新以次要版本或修补程序的形式提供****。 预配扩展时，可以选择安装或不安装扩展的次要版本更新**。 以下示例演示如何在资源管理器模板中使用 autoUpgradeMinorVersion": true,' 自动升级次要版本**：
+有扩展更新可用时，Linux 代理会下载并升级扩展。 自动扩展更新以次要版本或修补程序的形式提供   。 预配扩展时，可以选择安装或不安装扩展的次要版本更新  。 以下示例演示如何在资源管理器模板中使用 autoUpgradeMinorVersion": true,' 自动升级次要版本  ：
 
 ```json
     "publisher": "Microsoft.Azure.Extensions",
@@ -289,7 +289,7 @@ Goal state agent: 2.2.18
 az vm show --resource-group myResourceGroup --name myVM
 ```
 
-以下示例输出显示 autoUpgradeMinorVersion 设置为 true****：
+以下示例输出显示 autoUpgradeMinorVersion 设置为 true   ：
 
 ```json
   "resources": [
@@ -336,7 +336,7 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 1. 若要查看 Linux 代理日志，请在 /var/log/waagent.log 中查看预配扩展时的活动**
 
-2. 在 */var/log/azure/\<extensionName>* 中查看实际扩展日志，以便获取详细信息
+2. 在 /var/log/azure/\<extensionName> 中查看实际扩展日志，以便获取详细信息**
 
 3. 查看特定扩展文档中有关错误代码和已知问题等的故障排除部分。
 
@@ -381,11 +381,11 @@ az vm get-instance-view \
   }
 ```
 
-此外，还可以在 Azure 门户中找到扩展执行状态。 若要查看扩展的状态，请依次选择 VM、“扩展”、所需的扩展****。
+此外，还可以在 Azure 门户中找到扩展执行状态。 若要查看扩展的状态，请依次选择 VM、“扩展”、所需的扩展  。
 
 ### <a name="rerun-a-vm-extension"></a>重新运行 VM 扩展
 
-在某些情况下，可能需要重新运行 VM 扩展。 要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 [az vm extension delete](/cli/azure/vm/extension#az-vm-extension-delete)，如下所示：
+在某些情况下，可能需要重新运行 VM 扩展。 如果要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 [az vm extension delete](/cli/azure/vm/extension#az-vm-extension-delete)，如下所示：
 
 ```azurecli
 az vm extension delete \
@@ -397,13 +397,13 @@ az vm extension delete \
 也可以在 Azure 门户中删除扩展，如下所示：
 
 1. 选择 VM。
-2. 选择“扩展”。****
+2. 选择“扩展”  。
 3. 选择所需的扩展。
-4. 选择“卸载”。****
+4. 选择“卸载”  。
 
 ## <a name="common-vm-extension-reference"></a>常见 VM 扩展参考
 
-| 扩展名称 | 说明 | 更多信息 |
+| 扩展名称 | 说明 | 详细信息 |
 | --- | --- | --- |
 | 适用于 Linux 的自定义脚本扩展 |针对 Azure 虚拟机运行脚本 |[适用于 Linux 的自定义脚本扩展](custom-script-linux.md) |
 | VM 访问扩展 |重新获取对 Azure 虚拟机的访问权限 |[VM 访问扩展](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
