@@ -6,15 +6,14 @@ keywords: 设置, 超时, 语言, 区域
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310673"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763952"
 ---
 # <a name="set-your-azure-portal-preferences"></a>设置 Azure 门户首选项
 
@@ -70,7 +69,7 @@ ms.locfileid: "76310673"
 
 门户菜单的默认模式控制门户菜单在页面上占用的空间量。
 
-* 当门户菜单处于**浮出**模式时，在调用之前它会隐藏。 选择菜单图标可以打开或关闭菜单。
+* 当门户菜单处于**飞**入模式时，它会一直处于隐藏状态，直到您需要它。 选择菜单图标可以打开或关闭菜单。
 * 如果为门户菜单选择**停靠**模式，则它始终可见。 可以折叠菜单以提供更多的工作空间。 
 
 ### <a name="choose-a-theme"></a>选择主题
@@ -79,7 +78,7 @@ ms.locfileid: "76310673"
 
    ![显示 Azure 门户设置的屏幕截图，其中突出显示了“主题”](./media/set-preferences/theme.png)
 
-可以改为选择一个高对比度主题。 高对比度设置可以让有视觉障碍的用户更容易浏览 Azure 门户。这些设置会替代所有其他主题选择。 有关详细信息，请参阅[启用高对比度或更改主题](azure-portal-change-theme-high-contrast.md)。
+可以改为选择一个高对比度主题。 通过 "高对比度" 设置，可以更轻松地阅读具有视觉障碍的人士的 Azure 门户，并覆盖所有其他主题选择。 有关详细信息，请参阅[启用高对比度或更改主题](azure-portal-change-theme-high-contrast.md)。
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>启用或禁用弹出式通知
 
@@ -99,7 +98,7 @@ ms.locfileid: "76310673"
 
 如果你对 Azure 门户设置做了更改，但想要放弃这些更改，请选择“还原默认设置”。**** 对门户设置所做的所有更改将会丢失。 此选项不影响仪表板自定义。
 
-有关“导出所有设置”或“删除所有设置和专用仪表板”的详细信息，请参阅[导出或删除用户设置](azure-portal-export-delete-settings.md)。  
+有关“导出所有设置”或“删除所有设置和专用仪表板”的详细信息，请参阅[导出或删除用户设置](azure-portal-export-delete-settings.md)。 
 
 ## <a name="change-language-and-regional-settings"></a>更改语言和区域设置
 

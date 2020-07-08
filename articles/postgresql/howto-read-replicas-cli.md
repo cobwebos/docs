@@ -5,17 +5,27 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/09/2020
+ms.openlocfilehash: e9be14548704557b4bdd39119294671852040348
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774806"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636574"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>通过 Azure CLI、REST API 创建和管理只读副本
 
 本文介绍如何使用 Azure CLI 和 REST API 在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
+
+## <a name="azure-replication-support"></a>Azure 复制支持
+[读取副本](concepts-read-replicas.md)和[逻辑解码](concepts-logical.md)都依赖于 "Postgres 写入" 日志（WAL）来获取详细信息。 这两个功能需要来自 Postgres 的不同级别的日志记录。 逻辑解码需要比读取副本更高的日志记录级别。
+
+若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
+
+* **Off** -将最少的信息放在 WAL 中。 在大多数 Azure Database for PostgreSQL 服务器上，此设置不可用。  
+* **副本**-比**Off**更详细。 这是[读取副本](concepts-read-replicas.md)运行所需的最小日志记录级别。 在大多数服务器上，此设置是默认设置。
+* **逻辑**上比**副本**更详细。 这是要运行的逻辑解码的最小日志记录级别。 读取副本也可以通过此设置运行。
+
+需要在更改此参数后重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level` 、 `max_replication_slots` 和 `max_wal_senders` 。
 
 ## <a name="azure-cli"></a>Azure CLI
 可以使用 Azure CLI 创建和管理只读副本。
@@ -27,22 +37,20 @@ ms.locfileid: "76774806"
 
 
 ### <a name="prepare-the-master-server"></a>准备主服务器
-必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。
 
-主服务器上的 `azure.replication_support` 参数必须设置为 **REPLICA**。 更改此静态参数后，需要重启服务器才能使更改生效。
+1. 检查主服务器的 `azure.replication_support` 值。 它至少应该是副本，读取副本才能工作。
 
-1. 将 `azure.replication_support` 设置为 REPLICA。
+   ```azurecli-interactive
+   az postgres server configuration show --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support
+   ```
+
+2. 如果不 `azure.replication_support` 是至少副本，则设置它。 
 
    ```azurecli-interactive
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
-> [!NOTE]
-> 如果尝试在 Azure CLI 中设置 azure.replication_support 时出现“给定的值无效”错误，则可能是服务器在默认情况下已设置 REPLICA。 Bug 阻止此设置正确反映在 REPLICA 为内部默认值的较新服务器上。 <br><br>
-> 可以跳过“准备主服务器”步骤，转到“创建副本”。 <br><br>
-> 若要确认服务器是否属于此类别，请访问 Azure 门户中服务器的复制页。 在工具栏中，“禁用复制”会灰显，“添加副本”会处于活动状态。
-
-2. 重启服务器以应用更改。
+3. 重启服务器以应用更改。
 
    ```azurecli-interactive
    az postgres server restart --name mydemoserver --resource-group myresourcegroup
@@ -56,7 +64,7 @@ ms.locfileid: "76774806"
 | --- | --- | --- |
 | resource-group | myresourcegroup |  要在其中创建副本服务器的资源组。  |
 | name | mydemoserver-replica | 所创建的新副本服务器的名称。 |
-| source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或资源 ID。 |
+| source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或资源 ID。 如果希望副本和主资源组不同，请使用资源 ID。 |
 
 在下面的 CLI 示例中，副本在主服务器所在的区域中创建。
 
@@ -109,11 +117,14 @@ az postgres server delete --name myserver --resource-group myresourcegroup
 可以使用 [Azure REST API](/rest/api/azure/) 创建和管理只读副本。
 
 ### <a name="prepare-the-master-server"></a>准备主服务器
-必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。
 
-主服务器上的 `azure.replication_support` 参数必须设置为 **REPLICA**。 更改此静态参数后，需要重启服务器才能使更改生效。
+1. 检查主服务器的 `azure.replication_support` 值。 它至少应该是副本，读取副本才能工作。
 
-1. 将 `azure.replication_support` 设置为 REPLICA。
+   ```http
+   GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
+   ```
+
+2. 如果不 `azure.replication_support` 是至少副本，则设置它。
 
    ```http
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
@@ -127,7 +138,7 @@ az postgres server delete --name myserver --resource-group myresourcegroup
    }
    ```
 
-2. [重启服务器](/rest/api/postgresql/servers/restart)以应用更改。
+2. [重新启动服务器](/rest/api/postgresql/servers/restart)以应用更改。
 
    ```http
    POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/restart?api-version=2017-12-01

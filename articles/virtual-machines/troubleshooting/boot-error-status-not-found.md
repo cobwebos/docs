@@ -16,7 +16,6 @@ ms.date: 05/11/2020
 ms.author: v-miegge
 ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83663725"

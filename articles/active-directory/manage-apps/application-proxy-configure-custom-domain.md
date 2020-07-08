@@ -3,25 +3,24 @@ title: Azure AD 应用程序代理中的自定义域 | Microsoft 文档
 description: 在 Azure AD 应用程序代理中配置和管理自定义域。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
-ms.reviewer: harshja
+ms.author: kenwith
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764904"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理配置自定义域
 
@@ -138,7 +137,7 @@ ms.locfileid: "83736477"
 
 所有证书管理都是通过各个应用程序页面进行的。 请转到应用程序“应用程序代理”页面，访问“证书”字段 。
 
-可为多个应用程序使用相同的证书。 如果上传的证书适用于其他应用程序，则将自动应用该证书。 添加或配置该应用时，系统不会提示你重新上传。 
+为应用程序上载证书后，该证书也会自动应用到使用相同证书配置的**新**应用程序。 需要为租户中的现有应用重新上传证书。
 
 证书过期时，你将收到警告，上面通知你上传其他证书。 如果撤销了证书，用户在访问该应用时可能会看到安全警告。 若要更新应用的证书，请导航到应用的“应用程序代理”页面，选择“证书”，然后上传新证书 。 如果旧证书未由其他应用使用，则会自动删除该证书。 
 

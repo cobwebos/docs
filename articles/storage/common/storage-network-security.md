@@ -4,17 +4,16 @@ description: 配置存储帐户的分层网络安全性。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 01/21/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4b72f94548a5222fcb950141e983007efde7fe4e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 75f2e20db6ad1155e62691b711d8084a1feb5bae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513336"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -223,7 +222,7 @@ Azure 存储提供分层安全模型。 借助此模型，能够根据所使用�
     ```
 
     > [!TIP]
-    > 若要为属于另一个 Azure AD 租户的 VNet 中的子网添加规则，请使用完全限定的子网 ID，并采用形式“/subscriptions/\<subscription-ID\>/resourceGroups/\<resourceGroup-Name\>/providers/Microsoft.Network/virtualNetworks/\<vNet-name\>/subnets/\<subnet-name\>”。
+    > 若要为属于其他 Azure AD 租户的 VNet 中的子网添加规则，请使用“/subscriptions/\<subscription-ID\>/resourceGroups/\<resourceGroup-Name\>/providers/Microsoft.Network/virtualNetworks/\<vNet-name\>/subnets/\<subnet-name\>”格式的完全限定的子网 ID。
     >
     > 可以使用“订阅”参数检索属于另一个 Azure AD 租户的 VNet 的子网 ID。
 
@@ -374,14 +373,14 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 |:------------------------ |:-------------------------- |:---------------------------------- |
 | Azure 备份             | Microsoft.RecoveryServices | 在 IAAS 虚拟机中运行非托管磁盘的备份和还原。 （不是托管磁盘的必需操作）。 [了解详细信息](/azure/backup/backup-introduction-to-azure-backup)。 |
 | Azure Data Box           | Microsoft.DataBox          | 支持使用 Data Box 将数据导入到 Azure。 [了解详细信息](/azure/databox/data-box-overview)。 |
-| Azure 开发测试实验室       | Microsoft.DevTestLab       | 自定义映像创建和项目安装。 [了解详细信息](/azure/devtest-lab/devtest-lab-overview)。 |
+| Azure 开发测试实验室       | Microsoft.DevTestLab       | 自定义映像创建和项目安装。 [了解详细信息](../../devtest-labs/devtest-lab-overview.md)。 |
 | Azure 事件网格         | Microsoft.EventGrid        | 启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/azure/event-grid/event-sources)和[发布到队列](/azure/event-grid/event-handlers)的信息。 |
 | Azure 事件中心         | Microsoft.EventHub         | 使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。 |
 | Azure 文件同步          | Microsoft.StorageSync      | 使你能够将本地文件服务器转换为 Azure 文件共享的缓存。 可实现多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
 | Azure 导入导出      | Microsoft.ImportExport     | 支持使用导入/导出服务将数据导入到 Azure，并从 Azure 导出数据。 [了解详细信息](/azure/storage/common/storage-import-export-service)。  |
 | Azure Monitor            | Microsoft.Insights         | 可实现将监视数据写入安全存储帐户，包括资源日志、Azure Active Directory 登录和审核日志以及 Microsoft Intune 日志。 [了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
-| Azure 网络         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
+| Azure 网络         | Microsoft.Network          | 存储和分析网络流量日志，包括通过网络观察程序和流量分析服务。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 当使用启用了防火墙的缓存、源或目标存储帐户时，可为 Azure IaaS 虚拟机的灾难恢复启用复制。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
 “允许受信任的 Microsoft 服务…”设置还允许以下服务的特定实例访问存储帐户，前提是已为该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)[显式分配了 RBAC 角色](storage-auth-aad.md#assign-rbac-roles-for-access-rights)。 在这种情况下，实例的访问范围对应于分配给托管标识的 RBAC 角色。

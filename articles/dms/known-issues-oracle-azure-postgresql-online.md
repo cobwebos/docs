@@ -14,7 +14,6 @@ ms.topic: article
 ms.date: 05/20/2020
 ms.openlocfilehash: 2cf8ff446fe3441fc039ef3c2afef6308224666f
 ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83701216"

@@ -12,7 +12,6 @@ ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: b7aefc54a20e23ae969750532e7e3bc824f69c56
 ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83725306"

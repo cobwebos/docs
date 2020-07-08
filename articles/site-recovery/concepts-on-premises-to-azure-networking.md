@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770486"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>从本地故障转移后连接到 Azure VM 
 
@@ -149,11 +148,21 @@ ms.locfileid: "79281985"
 
 ## <a name="get-new-ip-addresses"></a>获取新 IP 地址
 
-在此方案中，Azure VM 会在故障转移后获取新的 IP 地址。 通过 DNS 更新将已故障转移的计算机的记录更新为指向 Azure VM 的 IP 地址。
+在此方案中，Azure VM 会在故障转移后获取新的 IP 地址。 若要为在故障转移后创建的虚拟机设置新的 IP 地址，可以参考以下步骤-
 
+1. 中转到 "**复制的项**"。
+2. 选择所需的 Azure 虚拟机。
+3. 选择 "**计算和网络**"，然后选择 "**编辑**"。
 
+     ![自定义故障转移网络配置](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+
+4. 若要更新故障转移网络设置，请选择要配置的 NIC 的 "**编辑**"。 在随后打开的页面中，在测试故障转移和故障转移位置提供相应的预先创建的 IP 地址。
+
+    ![编辑 NIC 配置](media/azure-to-azure-customize-networking/nic-drilldown.png)
+
+5. 选择“确定”。
+
+Site Recovery 现在将遵循这些设置，并确保故障转移中的虚拟机通过相应的 IP 地址（如果在目标 IP 范围内可用）连接到所选资源。 在此方案中，无需对整个子网进行故障转移。 需要进行 DNS 更新以更新已故障转移的计算机的记录，使之指向虚拟机的新 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
 [了解](site-recovery-active-directory.md)如何将本地 Active Directory 和 DNS 复制到 Azure。
-
-

@@ -11,12 +11,11 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254243"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037284"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
 
@@ -55,13 +54,13 @@ ms.locfileid: "79254243"
 
 ## <a name="add-a-time-series-insights-instance"></a>添加时序见解实例
 
-时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据****。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id`****。 若要了解有关时序见解实例和**时序 ID**的详细信息，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据****。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id`****。 若要了解有关时序见解实例和**时序 ID**的详细信息，请参阅[时序模型](./concepts-model-overview.md)。
 
 ### <a name="create-a-time-series-insights-event-source"></a>创建时序见解事件源
 
 1. 如果尚未创建事件源，请完成步骤以[创建事件源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 
-1. 为 `timeSeriesId` 设置一个值。 若要了解有关**时序 ID**的详细信息，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+1. 为 `timeSeriesId` 设置一个值。 若要了解有关**时序 ID**的详细信息，请参阅[时序模型](./concepts-model-overview.md)。
 
 ### <a name="push-events-to-windmills-sample"></a>将事件推送到 windmills 的示例
 
@@ -69,11 +68,11 @@ ms.locfileid: "79254243"
 
 1. 选择事件中心实例。
 
-1. 请访问**共享访问策略** > **MySendPolicy**。 复制“连接字符串 - 主密钥”的值****。
+1. 请访问**共享访问策略**  >  **MySendPolicy**。 复制“连接字符串 - 主密钥”的值****。
 
     [![复制主键连接字符串的值](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. 转到 https://tsiclientsample.azurewebsites.net/windFarmGen.html。 该 URL 创建并运行模拟 windmill 设备。
+1. 转到  https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 该 URL 创建并运行模拟 windmill 设备。
 1. 在网页上的“事件中心连接字符串”框中，粘贴在 [windmill 输入字段](#push-events-to-windmills-sample)中复制的连接字符串****。
   
     [![将主键连接字符串粘贴到“事件中心连接字符串”框中](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)

@@ -11,13 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/10/2020
+ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770945"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -31,7 +30,7 @@ ms.locfileid: "81414143"
 
 ## <a name="performance-tuning-tips"></a>性能优化提示
 
-在某些情况下，当你运行数据工厂中的复制活动时，将在顶部看到“性能优化提示”，如上面的示例中所示。  这些提示告知 ADF 针对此特定复制运行识别到的瓶颈，并建议如何提升复制吞吐量。 请尝试根据建议进行更改，然后再次运行复制。
+在某些情况下，当你运行数据工厂中的复制活动时，将在顶部看到“性能优化提示”，如上面的示例中所示。 这些提示告知 ADF 针对此特定复制运行识别到的瓶颈，并建议如何提升复制吞吐量。 请尝试根据建议进行更改，然后再次运行复制。
 
 作为参考，当前性能优化提示针对以下情况提供了建议：
 
@@ -40,6 +39,7 @@ ms.locfileid: "81414143"
 | 特定于数据存储   | 将数据载入 **Azure Synpase Analytics（前称为 SQL 数据仓库）** ：建议使用 PolyBase；如果 PolyBase 不可用，则使用 COPY 语句。 |
 | &nbsp;                | 从/向 **Azure SQL 数据库**复制数据：当 DTU 的利用率较高时，建议升级到更高的层。 |
 | &nbsp;                | 从/向 **Azure Cosmos DB** 复制数据：当 RU 的利用率较高时，建议升级到更大的 RU。 |
+|                       | 从 SAP 表复制数据：复制大量数据时，建议利用 SAP 连接器的分区选项启用并行加载并增加最大分区数。 |
 | &nbsp;                | 从 **Amazon Redshift** 引入数据：如果未使用 UNLOAD，建议使用它。 |
 | 数据存储限制 | 如果在复制期间数据存储限制了一些读/写操作，则建议检查并增大数据存储允许的请求速率，或减小并发工作负荷。 |
 | 集成运行时  | 如果使用了**自承载集成运行时 (IR)** ，而复制活动在队列中长时间等待，直到 IR 提供了用于执行该活动的资源，则建议横向/纵向扩展 IR。 |
@@ -56,7 +56,7 @@ ms.locfileid: "81414143"
 | --------------- | ------------------------------------------------------------ |
 | 队列           | 复制活动在集成运行时中实际启动之前所消逝的时间。 |
 | 复制前脚本 | 复制活动在 IR 中启动之后、在接收器数据存储中执行完复制前脚本之前所消逝的时间。 为数据库接收器配置复制前脚本时适用，例如，将数据写入 Azure SQL 数据库会在复制新数据之前执行清理。 |
-| 传输        | 完成前一步骤之后、在 IR 将所有数据从源传输到接收器之前所消逝的时间。 “传输”下的子步骤将并行运行。<br><br>- **距第一字节的时间：** 在前一步骤结束之后、IR 从源数据存储收到第一个字节之前所经过的时间。 适用于不是基于文件的源。<br>- **列出源：** 枚举源文件或数据分区所花费的时间。 后者适用于为数据库源配置分区选项时，例如，从 Oracle/SAP HANA/Teradata/Netezza 等数据库复制数据时。<br/>-**从源中读取：** 从源数据存储检索数据所花费的时间。<br/>- **写入接收器：** 将数据写入接收器数据存储所花费的时间。 |
+| 传输        | 完成前一步骤之后、在 IR 将所有数据从源传输到接收器之前所消逝的时间。 <br/>请注意，传输中的子步骤会并行运行，某些操作（例如，分析/生成文件格式）现在未显示。<br><br/>- **距第一字节的时间：** 在前一步骤结束之后、IR 从源数据存储收到第一个字节之前所经过的时间。 适用于不是基于文件的源。<br>- **列出源：** 枚举源文件或数据分区所花费的时间。 后者适用于为数据库源配置分区选项时，例如，从 Oracle/SAP HANA/Teradata/Netezza 等数据库复制数据时。<br/>-**从源中读取：** 从源数据存储检索数据所花费的时间。<br/>- **写入接收器：** 将数据写入接收器数据存储所花费的时间。 请注意，某些连接器目前没有此指标，包括 Azure 认知搜索、Azure 数据资源管理器、Azure 表存储、Oracle、SQL Server、Common Data Service、Dynamics 365、Dynamics CRM、Salesforce/Salesforce 服务云。 |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>排查 Azure IR 中的复制活动的问题
 
@@ -69,7 +69,6 @@ ms.locfileid: "81414143"
 - **“传输 - 距第一字节的时间”的工作持续时间较长：** 表示源查询花费了较长时间来返回任何数据。 检查并优化查询或服务器。 如需更多帮助，请与数据存储团队联系。
 
 - **“传输 - 列出源”的工作持续时间较长：** 表示枚举源文件或源数据库数据分区的速度缓慢。
-
   - 从基于文件的源复制数据时，如果对文件夹路径或文件名使用**通配符筛选器**（`wildcardFolderPath` 或 `wildcardFileName`），或使用**文件上次修改时间筛选器**（`modifiedDatetimeStart` 或 `modifiedDatetimeEnd`），请注意，此类筛选器会导致复制活动在客户端中列出指定文件夹下的所有文件，然后应用筛选器。 此类文件枚举可能会变成瓶颈，尤其是只有少量的文件符合筛选规则时。
 
     - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
@@ -181,7 +180,7 @@ ms.locfileid: "81414143"
 * Azure SQL 数据库：可[监视性能](../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位 (DTU) 百分比。
 * Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量。 请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../cosmos-db/performance-levels.md)。
-* 本地 SQL Server：[性能监视和优化](https://msdn.microsoft.com/library/ms189081.aspx)。
+* SQL Server：[性能监视和优化](https://msdn.microsoft.com/library/ms189081.aspx)。
 * 本地文件服务器：[文件服务器性能优化](https://msdn.microsoft.com/library/dn567661.aspx)。
 
 ## <a name="next-steps"></a>后续步骤

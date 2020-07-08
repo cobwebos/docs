@@ -5,16 +5,15 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: f4c49be5f5a0f2c89831891dc2640b64fee9fc44
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022412"
 ---
 # <a name="z-fighting-mitigation"></a>Z 冲突缓解
 
-当两个曲面重叠时，不好确定哪个曲面应当渲染在另一个曲面顶部。 结果甚至因像素而异，从而导致取决于视图的现象。 因此，当相机或网格移动时，这些模式会明显闪烁。 这种现象称为 z 冲突。 对于 AR 和 VR 应用程序，此问题进一步加剧，因为头戴式设备总是自然而然地移动。 为了防止观看者出现不适，Azure 远程渲染中提供了 z 冲突缓解功能。
+当两个曲面重叠时，不好确定哪个曲面应当渲染在另一个曲面顶部。 甚至每个像素的结果都是不同的，这会导致与相机视图相关的项目。 因此，当相机或网格移动时，这些模式会明显闪烁。 这种现象称为 z 冲突。 对于 AR 和 VR 应用程序，此问题进一步加剧，因为头戴式设备总是自然而然地移动。 为了防止观看者出现不适，Azure 远程渲染中提供了 z 冲突缓解功能。
 
 ## <a name="z-fighting-mitigation-modes"></a>z 冲突缓解模式
 

@@ -5,13 +5,12 @@ author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/09/2020
+ms.openlocfilehash: 57a5f3046ce7a1f968bb823a0e13008d076b78c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636557"
 ---
 # <a name="getting-paid-in-the-commercial-marketplace"></a>在商业市场中获得付款
 
@@ -27,21 +26,6 @@ ms.locfileid: "83849019"
 费用在 [Microsoft Azure 市场发布者协议](https://go.microsoft.com/fwlink/p/?LinkID=699560)中进行正式定义。 如果有任何问题，可始终查看该文档。
 
 应用商店费用适用于由商业市场收集的所有产品/服务销售（包括附加产品）。
-
-## <a name="price-tiers"></a>价格段
-
-你选择的价格段会在你选择分发产品/服务的所有国家/地区中设置销售价。 你还可以使用其他定价功能，如为不同市场选择不同价格。
-
-你可以免费提供应用，也可以选择客户为获取产品/服务而必须支付的价格。 价格段从 0.99 美元开始，随后进行递增（1.09 美元、1.19 美元等）。 价格段之间的递增会随着价格变高而增加。
-
-> [!NOTE] 
-> 这些价格段也适用于你在产品/服务内提供的任何附加产品。
-
-每个价格段都在应用商店提供的每种货币中具有对应值。 我们使用这些值来帮助你在全球范围内以相当的价格销售产品/服务。 但是，由于外汇汇率会发生变化，因此确切的销售额可能会在货币之间稍有不同。
-
-你还可以选择按特定市场的本地货币输入所选的自由格式价格。 执行此操作时，价格不会进行调整（即使转换率发生变化），除非你提交包含新价格的更新。 
-
-请记住，所选的价格可以包括客户必须支付的销售税或增值税。 有关详细信息，请参阅[付费产品/服务的税款详细信息](tax-details-paid-transactions.md)。
 
 ## <a name="payout-reporting"></a>付款报告
 

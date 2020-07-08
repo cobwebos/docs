@@ -10,10 +10,9 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp
 ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733393"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT 中心模块标识和模块孪生 (.NET) 入门
@@ -58,7 +57,7 @@ ms.locfileid: "81733393"
 
    ![Azure 门户模块详细信息](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. 在 Visual Studio 中将新项目添加到解决方案，只需选择“文件” **“新建”** “项目”即可。 >    >   在“创建新项目”中，选择“控制台应用(.NET Framework)”，然后选择“下一步”   。
+1. 在 Visual Studio 中将新项目添加到解决方案，只需选择“文件” > “新建” > “项目”即可。 在“创建新项目”中，选择“控制台应用(.NET Framework)”，然后选择“下一步”   。
 
 1. 将项目命名为“UpdateModuleTwinReportedProperties”  。 对于“解决方案”，请选择“添加到解决方案”。   确保 .NET Framework 版本为 4.6.1 或更高。
 
@@ -66,13 +65,13 @@ ms.locfileid: "81733393"
 
 1. 选择“创建”  来创建项目。
 
-1. 在 Visual Studio 中，打开“工具” **“NuGet 包管理器”** “管理解决方案的 NuGet 包”。 >    >   选择“浏览”按钮  。
+1. 在 Visual Studio 中，打开“工具” > “NuGet 包管理器” > “管理解决方案的 NuGet 包”。 选择“浏览”按钮  。
 
 1. 搜索并选择 **Microsoft.Azure.Devices.Client**，然后选择“安装”。 
 
     ![安装 Azure IoT 中心 .NET 服务 SDK 当前版本](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
-1. 在 Program.cs`using`**文件顶部添加以下** 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
     ```csharp
     using Microsoft.Azure.Devices.Client;

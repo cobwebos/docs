@@ -5,15 +5,14 @@ services: azure-portal
 author: mgblythe
 ms.author: mblythe
 ms.date: 01/21/2020
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7b3cc088a87731d2a118a4fe5183831e4d1bd6cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77133293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763969"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>在 Azure 门户中恢复删除的仪表板
 
@@ -21,7 +20,7 @@ ms.locfileid: "77133293"
 
 1. 从 Azure 门户菜单中，选择“资源组”****，然后选择你在其中发布了仪表板的资源组（默认情况下，此资源组名为“仪表板”****）。
 
-1. 在“活动日志”**** 下，展开“删除仪表板”**** 操作。 选择“更改历史记录”**** 选项卡，然后选择 **\<删除的资源”\>**。
+1. 在“活动日志”**** 下，展开“删除仪表板”**** 操作。 选择 "**更改历史记录**" 选项卡，然后选择 **\<deleted resource\>** 。
 
     ![“更改历史记录”选项卡的屏幕截图](media/recover-shared-deleted-dashboard/change-history-tab.png)
 

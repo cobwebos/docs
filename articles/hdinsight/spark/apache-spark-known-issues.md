@@ -8,12 +8,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eec5de7521c98e8147a8439844fd2a2a6b1bd2bc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73494532"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037488"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
 
@@ -30,13 +29,17 @@ ms.locfileid: "73494532"
 
 2. 运行以下命令，以查找通过 Livy 启动的交互式作业的应用程序 ID。
 
-        yarn application –list
+   ```bash
+   yarn application –list
+   ```
 
     如果在未指定显式名称的情况下通过 Livy 交互式对话启动作业，则默认的作业名称将为 Livy。 对于[Jupyter Notebook](https://jupyter.org/)启动的 Livy 会话，作业名称以开头 `remotesparkmagics_*` 。
 
 3. 运行以下命令以终止这些作业。
 
-        yarn application –kill <Application ID>
+   ```bash
+   yarn application –kill <Application ID>
+   ```
 
 新作业将开始运行。
 

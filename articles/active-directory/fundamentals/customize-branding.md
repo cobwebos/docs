@@ -7,23 +7,22 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/24/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 14e1e84fa96b1e6b686d039abedd38e080b5720e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603904"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Office 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
 
->[!Note]
+>[!NOTE]
 >添加自定义品牌需要使用 Azure Active Directory Premium 1、Premium 2 或 Basic 版，或拥有 Office 365 许可证。 有关许可和版本的详细信息，请参阅[注册 Azure AD Premium](active-directory-get-started-premium.md)。<br><br>在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure AD 高级和基本版。 中国区 21Vianet 运营的 Azure 服务目前不支持 Azure AD Premium 和 Azure AD Basic 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>自定义 Azure AD 登录页面
@@ -43,7 +42,7 @@ ms.locfileid: "82982031"
 
 3. 在“配置公司品牌”页面上，提供以下任意或全部信息****。
 
-    >[!Important]
+    >[!IMPORTANT]
     >在此页面上添加的所有自定义图像都具有图像尺寸（像素）限制，可能有文件大小 (KB) 限制。 由于这些限制，很可能需要使用照片编辑器来创建合适尺寸的图像。
 
     - **常规设置**
@@ -62,7 +61,17 @@ ms.locfileid: "82982031"
 
         - **用户名提示。** 键入提示文本，如果用户忘记用户名将会显示此提示文本。 此文本必须是 Unicode，不带链接或代码，且不能超过 64 个字符。 如果访客登录到应用，我们建议不添加此提示。
 
-        - **登录页面文本。** 键入显示在登录页面底部的文本。 可使用此文本传达其他信息，例如技术支持的电话号码或法律声明。 此文本必须为 Unicode，并且不能超过 256 个字符。
+        - **登录页文本和格式设置。** 键入显示在登录页面底部的文本。 可使用此文本传达其他信息，例如技术支持的电话号码或法律声明。 此文本必须是 Unicode 且不能超过1024个字符。
+
+           你可以自定义输入的登录页文本。 若要开始新段落，请使用 enter 键两次。 还可以更改文本格式，使其包含粗体、斜体、下划线或可单击的链接。 使用以下语法将格式添加到文本： 
+
+          > Hyperlink```[text](link)``` 
+          
+          > 粗体： ``` **text** ``` 或``` __text__ ``` 
+          
+          > 斜体： ``` *text* ``` 或``` _text_ ``` 
+          
+          > 划线``` ++text++ ``` 
 
     - **高级设置**
             
@@ -77,8 +86,10 @@ ms.locfileid: "82982031"
         - **方形徽标，深色主题。** 与上面的方形徽标图像相同。 当在深色背景下使用（例如在开箱即用体验 (OOBE) 中使用已加入 Windows 10 Azure AD 的屏幕）时，此徽标图像取代方形徽标图像。  如果徽标在白色、深蓝和黑色背景上看起来很好，则不需要添加此图像。 
         
         - **显示保持登录状态的选项。** 你可以选择让用户保持登录到 Azure AD，直到显式注销。如果选择 "**否**"，则隐藏此选项，用户必须在每次关闭并重新打开浏览器时登录。
+
+            若要详细了解如何配置选项并对其进行故障排除，请参阅[为 Azure AD 帐户配置 "保持登录状态？" 提示](keep-me-signed-in.md)
         
-            >[!Note]
+            >[!NOTE]
             >SharePoint Online 和 Office 2010 的某些功能取决于用户能否选择保持登录状态。 如果将此选项设置为“否”，用户会在登录时可能看到其他意外的提示。****
    
 
@@ -86,7 +97,7 @@ ms.locfileid: "82982031"
 
     如果此过程创建了首个自定义品牌配置，则它将成为租户的默认配置。 如果有其他配置，你可以选择默认配置。
     
-    >[!Important]
+    >[!IMPORTANT]
     >要向租户添加更多公司品牌配置，你必须在“Contoso - 公司品牌”页面上选择“新语言”********。 这将打开“配置公司品牌”页面，你可以按照上述相同步骤进行操作****。
 
 ## <a name="update-your-custom-branding"></a>更新自定义品牌
@@ -101,7 +112,7 @@ ms.locfileid: "82982031"
 
 3. 在“配置公司品牌”页面上，根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加、删除或更改任何信息****。
 
-4. 选择“保存”  。
+4. 选择“保存”。
 
    最长可能需要一个小时才能显示用户对登录页的品牌元素所做的任何更改。
 
@@ -118,7 +129,7 @@ ms.locfileid: "82982031"
 
 3. 在“配置公司品牌”页面上，选择语言（例如法语），然后根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加已翻译的信息****。
 
-4. 选择“保存”  。
+4. 选择“保存”。
 
     “Contoso - 公司品牌”页面更新以显示新的法语配置****。
 
@@ -134,5 +145,3 @@ ms.locfileid: "82982031"
 
 **原始 URL：** https://aka.ms/SSPR<br>
 **自定义 URL：**`https://passwordreset.microsoftonline.com/?whr=contoso.com`
-
- 

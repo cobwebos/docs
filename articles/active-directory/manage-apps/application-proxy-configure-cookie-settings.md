@@ -2,22 +2,21 @@
 title: 应用程序代理 cookie 设置 - Azure Active Directory | Microsoft 文档
 description: Azure Active Directory (Azure AD) 具有访问和会话 cookie，可通过应用程序代理访问本地应用程序。 本文会介绍如何使用和配置 cookie 设置。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcedb24a0efdbabaaef150fc3d5aff07d210ce23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481358"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764887"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置
 
@@ -48,12 +47,12 @@ Azure Active Directory (Azure AD) 具有访问和会话 cookie，可通过应用
 ## <a name="set-the-cookie-settings---azure-portal"></a>设置 cookie 设置 - Azure 门户
 使用 Azure 门户设置 cookie 设置：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
-2. 导航到 " **Azure Active Directory** > **企业应用程序** >" " **所有应用程序**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
+2. 导航到 " **Azure Active Directory**   >  **企业应用程序**" "   >  **所有应用程序**"。
 3. 选择要为其启用 cookie 设置的应用程序。
 4. 单击 "**应用程序代理**"。
 5. 在“其他设置”**** 下，将 cookie 设置设置为“是”**** 或“否”****。
-6. 单击“保存”**** 应用所做的更改。 
+6. 单击“保存”应用所做的更改。 
 
 ## <a name="view-current-cookie-settings---powershell"></a>查看当前 cookie 设置-PowerShell
 
@@ -65,7 +64,7 @@ Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl *
 
 ## <a name="set-cookie-settings---powershell"></a>设置 cookie 设置-PowerShell
 
-在下面的 PowerShell 命令中```<ObjectId>``` ，是应用程序的 ObjectId。 
+在下面的 PowerShell 命令中， ```<ObjectId>``` 是应用程序的 ObjectId。 
 
 **仅限 Http 的 Cookie** 
 

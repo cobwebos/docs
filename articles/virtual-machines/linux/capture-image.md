@@ -10,7 +10,6 @@ ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: 54f82d0ba4b0c5de0b4e373416857d670d4bba53
 ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83723300"

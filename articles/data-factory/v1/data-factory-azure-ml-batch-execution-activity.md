@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c40b58dfb63ac6bf1b5532eb06bfd2ad0cdccde9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73683148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022021"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 
@@ -80,7 +79,7 @@ ms.locfileid: "73683148"
 > [!IMPORTANT]
 > 如果 Web 服务需要多个输入，可改为使用 **webServiceInputs** 属性，而不是 **webServiceInput**。 有关使用 webServiceInputs 属性的示例，请参阅 [Web 服务需要多个输入](#web-service-requires-multiple-inputs)部分。
 >
-> **WebServiceInput**/**webServiceInputs**和**webServiceOutputs**属性（位于**typeProperties**中）引用的数据集也必须包括在活动**输入**和**输出**中。
+> **WebServiceInput** / **webServiceInputs**和**webServiceOutputs**属性（位于**typeProperties**中）引用的数据集也必须包括在活动**输入**和**输出**中。
 >
 > 在 Azure 机器学习工作室实验中，Web 服务输入和输出端口及全局参数具有可自定义的默认名称（“input1”、“input2”）。 用于 webServiceInputs、webServiceOutputs 和 globalParameters 设置的名称必须与实验中的名称完全匹配。 可在 Azure 机器学习工作室终结点的“批处理执行帮助”页上查看示例请求有效负载，验证预期映射。
 >
@@ -311,7 +310,7 @@ ms.locfileid: "73683148"
 ### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>方案：使用读取器/编写器模块参考各种存储中的数据的实验
 创建 Azure 机器学习工作室实验时的另一种常见方案是使用读取器和编写器模块。 读取器模块用于将数据加载到实验，编写器模块用于保存实验中的数据。 有关读取器和编写器模块的详细信息，请参阅 MSDN 库上的[读取器](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[编写器](https://msdn.microsoft.com/library/azure/dn905984.aspx)主题。
 
-使用读取器和编写器模块时，最好对这些读取器/编写器模块的每个属性使用 Web 服务参数。 使用这些 Web 参数，可在运行时配置值。 例如，可通过使用 Azure SQL 数据库 XXX.database.windows.net 的读取器模块创建实验。 部署 Web 服务后，需使 Web 服务使用者能够指定另一个名为 YYY.database.windows.net 的 Azure SQL Server。 Web 服务参数可用于允许配置此值。
+使用读取器和编写器模块时，最好对这些读取器/编写器模块的每个属性使用 Web 服务参数。 使用这些 Web 参数，可在运行时配置值。 例如，可通过使用 Azure SQL 数据库 XXX.database.windows.net 的读取器模块创建实验。 部署 web 服务后，你想要让 web 服务的使用者指定另一台名为 YYY.database.windows.net 的逻辑 SQL server。 Web 服务参数可用于允许配置此值。
 
 > [!NOTE]
 > Web 服务输入和输出与 Web 服务参数不同。 在第一个方案中，你已了解了可以如何为 Azure 机器学习工作室 Web 服务指定输入和输出。 在此方案中，为 Web 服务传递对应于读取器/编写器模块属性的参数。
@@ -555,7 +554,7 @@ Azure 机器学习工作室批处理执行 Web 服务可能未配置任何 Web �
 ## <a name="frequently-asked-questions"></a>常见问题
 **问：** 我有多个由大数据管道生成的文件。 可以使用 AzureMLBatchExecution 活动处理所有文件吗？
 
-**答：** 是的。 有关详细信息，请参阅**使用读取器模块读取 Azure Blob 中多个文件的数据**部分。
+**答:** 是的。 有关详细信息，请参阅**使用读取器模块读取 Azure Blob 中多个文件的数据**部分。
 
 ## <a name="azure-machine-learning-studio-batch-scoring-activity"></a>Azure 机器学习工作室批处理评分活动
 如果使用 **AzureMLBatchScoring** 活动集成 Azure 机器学习，建议使用最新的 **AzureMLBatchExecution** 活动。

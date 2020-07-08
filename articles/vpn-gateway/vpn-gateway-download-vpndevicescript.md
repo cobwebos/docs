@@ -6,15 +6,14 @@ services: vpn-gateway
 author: yushwang
 manager: rossort
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e17d17484ea9caf735fd717b1e58b85e798df87b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162130"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983200"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下载用于 S2S VPN 连接的 VPN 设备配置脚本
 

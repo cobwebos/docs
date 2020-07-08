@@ -9,12 +9,11 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7c2c14a937b4ef55d0e5f71e7b20214428ecd68c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660126"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central
 
@@ -37,12 +36,12 @@ ms.locfileid: "80158191"
 
 在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上使用以下设置创建一个 IoT Central 应用程序：
 
-| 设置 | 值 |
+| 设置 | “值” |
 | ------- | ----- |
 | 定价计划 | 标准 |
 | 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
-| 代码 | 接受默认设置，或选择自己的唯一 URL 前缀 |
+| URL | 接受默认设置，或选择自己的唯一 URL 前缀 |
 | 目录 | Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
 | 区域 | 离你最近的区域 |
@@ -62,7 +61,7 @@ ms.locfileid: "80158191"
 | 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择命名空间名称 |
-| 定价层 | 基本 |
+| 定价层 | Basic |
 | 订阅 | 订阅 |
 | 资源组 | IoTCentralAnalysis |
 | 位置 | 美国东部 |
@@ -72,7 +71,7 @@ ms.locfileid: "80158191"
 
 在 [Azure 门户中使用以下设置创建一个 Azure Databricks 服务](https://portal.azure.com/#create/Microsoft.Databricks)：
 
-| 设置 | 值 |
+| 设置 | “值” |
 | ------- | ----- |
 | 工作区名称    | 选择工作区名称 |
 | 订阅 | 订阅 |
@@ -106,15 +105,15 @@ ms.locfileid: "80158191"
 1. 导航到“数据导出”页，依次选择“+ 新建”、“Azure 事件中心”。************
 1. 使用以下设置配置导出，然后选择“保存”：****
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     | 显示名称 | 导出到事件中心 |
-    | 已启用 | 启用 |
+    | Enabled | 开 |
     | 事件中心命名空间 | 事件中心命名空间的名称 |
     | 事件中心 | centralexport |
-    | 度量 | 启用 |
-    | 设备 | Off |
-    | 设备模板 | Off |
+    | 度量 | 开 |
+    | 设备 | 关 |
+    | 设备模板 | 关 |
 
 ![数据导出配置](media/howto-create-custom-analytics/cde-configuration.png)
 
@@ -130,7 +129,7 @@ ms.locfileid: "80158191"
 
 使用下表中的信息创建群集：
 
-| 设置 | 值 |
+| 设置 | “值” |
 | ------- | ----- |
 | 群集名称 | centralanalysis |
 | 群集模式 | 标准 |
@@ -231,4 +230,4 @@ ms.locfileid: "80158191"
 * 使用“连续数据导出”从 IoT Central 应用程序流式传输遥测数据。**
 * 创建一个 Azure Databricks 环境用于分析和绘制遥测数据。
 
-了解如何创建自定义分析后，建议下一步是了解如何[管理应用程序](howto-administer.md)。
+了解如何创建自定义分析后，建议接下来了解如何在 Power BI 仪表板中[可视化和分析 Azure IoT Central 数据](howto-connect-powerbi.md)。

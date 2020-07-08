@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 830bf7134b3a8b0425c53673a1347dd77897a5bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2abddefebdf58b6c4f82bd6e6e882e3cb5d16023
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75423052"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604295"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>使用 Azure Active Directory 在组中添加或删除另一个组
 本文可帮助使用 Azure Active Directory 在其他组中添加和删除组。
@@ -63,7 +62,7 @@ ms.locfileid: "75423052"
 
 2. 在“MDM 策略 - 西部概述”页上，选择“组成员身份”   。
 
-3. 从“MDM 策略 - 西部 - 组成员身份”页中选择“MDM 策略 - 所有组织”组，然后选择“MDM 策略 - 西部”页详细信息中的“删除”     。
+3. 从“MDM 策略 - 西部 - 组成员身份”页面上选择“MDM 策略 - 所有组织”，然后从“MDM 策略 - 西部”页面详细信息中选择“删除”。 
 
     ![显示成员和组详细信息的“组成员身份”页](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
 

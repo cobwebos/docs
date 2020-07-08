@@ -6,12 +6,11 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ae27aba9fb6dc1421d224dab0c36373753acd5a2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: f56d3a364e38d13931f8e07d749d3a5958dcee67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322508"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>将 Azure Data Lake Storage Gen1 和其他 Azure 服务集成
 Azure Data Lake Storage Gen1 可和其他 Azure 服务结合使用来实现更多的使用方案。 下面的文章列出了可和 Data Lake Storage Gen1 集成的服务。
@@ -39,7 +38,7 @@ Azure Data Lake Storage Gen1 可和其他 Azure 服务结合使用来实现更�
 Azure Data Lake Storage Gen1 提供命令行工具 AdlCopy，可从 Azure 存储 Blob 复制数据到 Data Lake Storage Gen1 帐户。 有关详细信息，请参阅[从 Azure 存储 Blob 复制数据到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)。
 
 ## <a name="copy-data-between-azure-sql-database-and-data-lake-storage-gen1"></a>在 Azure SQL 数据库和 Data Lake Storage Gen1 之间复制数据
-可使用 Apache Sqoop 在 Azure SQL 数据库和 Data Lake Storage Gen1 之间导入和导出数据。 有关详细信息，请参阅[使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL 数据库之间复制数据](data-lake-store-data-transfer-sql-sqoop.md)。
+可使用 Apache Sqoop 在 Azure SQL 数据库和 Data Lake Storage Gen1 之间导入和导出数据。 有关详细信息，请参阅[使用 Sqoop 在 Data Lake Storage Gen1 和 AZURE SQL 数据库之间复制数据](data-lake-store-data-transfer-sql-sqoop.md)。
 
 ## <a name="use-data-lake-storage-gen1-with-stream-analytics"></a>配合使用 Data Lake Storage Gen1 和流分析
 可使用 Data Lake Storage Gen1 作为一个输出来存储使用 Azure 流分析处理的数据。 有关详细信息，请参阅[使用 Azure 流分析将 Azure 存储 Blob 中的数据流式传输到 Data Lake Storage Gen1](data-lake-store-stream-analytics.md)。
@@ -59,7 +58,7 @@ Azure Data Lake Storage Gen1 提供命令行工具 AdlCopy，可从 Azure 存储
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>配合使用 Data Lake Storage Gen1 和 Azure 事件中心
 可以使用 Azure Data Lake Storage Gen1 存档和捕获 Azure 事件中心收到的数据。 有关详细信息，请参阅[配合使用 Data Lake Storage Gen1 和 Azure 事件中心](data-lake-store-archive-eventhub-capture.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [通过门户实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * [使用 PowerShell 开始使用 Data Lake Storage Gen1](data-lake-store-get-started-powershell.md)  
