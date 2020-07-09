@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 46bfab6935d08ac28ced7f392892ade6f68a0492
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0a71a71679526f6d672f93b8b6176ddbbf8595d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79530846"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101454"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MariaDB VNet 服务终结点
 

@@ -1,17 +1,18 @@
 ---
 title: 准备 IoT Edge 模块技术资产-Azure Marketplace
 description: 了解物联网（IoT）边缘模块在将其发布到 Azure Marketplace 之前必须满足的技术和配置要求。
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/03/2020
-ms.openlocfilehash: 36b56cdf5a2aaa57cc452db9054380528fa8c68b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 685ac2a383bcc0b85121112b9b5df4aa7650ab59
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958576"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101165"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
 
