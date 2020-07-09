@@ -1,18 +1,18 @@
 ---
 title: 建议的安全做法
-description: 使用 Azure 委托资源管理时，必须考虑安全性和访问控制。
-ms.date: 03/24/2020
+description: 使用 Azure Lighthouse 时，必须考虑安全性和访问控制。
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c620feabf5bcedc35a36104c3ba305ac9337ff0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246902"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105415"
 ---
 # <a name="recommended-security-practices"></a>建议的安全做法
 
-使用[Azure 委托资源管理](azure-delegated-resource-management.md)时，必须考虑安全性和访问控制。 你的租户中的用户将可以直接访问客户订阅和资源组，因此你需要采取措施来维护你的租户的安全性。 你还需要确保仅允许有效地管理客户资源所需的访问权限。 本主题提供相关建议，以帮助你实现此目的。
+使用[Azure Lighthouse](../overview.md)时，必须考虑安全性和访问控制。 你的租户中的用户将可以直接访问客户订阅和资源组，因此你需要采取措施来维护你的租户的安全性。 你还需要确保仅允许有效地管理客户资源所需的访问权限。 本主题提供相关建议，以帮助你实现此目的。
 
 ## <a name="require-azure-multi-factor-authentication"></a>需要 Azure 多重身份验证
 

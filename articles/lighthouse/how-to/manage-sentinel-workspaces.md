@@ -3,16 +3,16 @@ title: 大规模管理 Azure Sentinel 工作区
 description: 了解如何在委派的客户资源上有效地管理 Azure Sentinel。
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bca5b6fdc84fa5a7a5553fe64c0218c5f0b44aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268626"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105262"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大规模管理 Azure Sentinel 工作区
 
-作为服务提供商，你可能已经载入了多个客户租户进行 Azure 委派资源管理。 Azure Lighthouse 允许服务提供商同时在多个 Azure Active Directory （Azure AD）租户中大规模执行操作，从而使管理任务更高效。
+作为服务提供商，你可能已将多个客户租户载入[Azure Lighthouse](../overview.md)。 Azure Lighthouse 允许服务提供商同时在多个 Azure Active Directory （Azure AD）租户中大规模执行操作，从而使管理任务更高效。
 
 Azure Sentinel 提供安全分析和威胁情报，为警报检测、威胁可见性、主动搜寻和威胁响应提供单一解决方案。 借助 Azure Lighthouse，可以在多个租户之间大规模管理多个 Azure Sentinel 工作区。 这样可以实现各种方案，例如，在多个工作区中运行查询，或创建工作簿，以可视化和监视已连接数据源中的数据，以获得见解。 查询和行动手册中的 IP 仍保留在管理租户中，但可用于在客户租户中执行安全管理。
 
@@ -35,7 +35,7 @@ Azure Sentinel 提供安全分析和威胁情报，为警报检测、威胁可�
 
 ## <a name="granular-role-based-access-control-rbac"></a>精细的基于角色的访问控制（RBAC）
 
-MSSP 将管理的每个客户订阅必须[载入 Azure 委托资源管理](onboard-customer.md)。 这允许管理租户中的指定用户在客户租户中部署的 Azure Sentinel 工作区上访问和执行管理操作。
+MSSP 将管理的每个客户订阅都必须[载入 Azure Lighthouse](onboard-customer.md)。 这允许管理租户中的指定用户在客户租户中部署的 Azure Sentinel 工作区上访问和执行管理操作。
 
 创建授权时，可以将 Azure Sentinel 内置角色分配给管理租户中的用户、组或服务主体：
 

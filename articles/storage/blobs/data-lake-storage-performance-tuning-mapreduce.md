@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f5de8da90ac3356480fd809af68ab2c8b30540aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e4030583ac902093c30374c24b877e3f089eb02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465943"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106214"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：MapReduce、HDInsight 和 Azure Data Lake Storage Gen2
 
@@ -56,15 +57,15 @@ ms.locfileid: "84465943"
 
 要优化 mapreduce.job.maps/mapreduce.job.reduces，应考虑可供使用的总 YARN 内存量。  该信息在 Ambari 中提供。  导航到 YARN 并查看“配置”选项卡。YARN 内存量会显示在此窗口中。  应将 YARN 内存量与群集中的节点数相乘，获得总 YARN 内存量。
 
-    Total YARN memory = nodes * YARN memory per node
+Total YARN memory = node * 每个节点的 YARN 内存
 
 如果使用的是空群集，则内存量可能会是群集的总 YARN 内存量。  如果其他应用程序正在使用内存，则可以通过将映射器或化简器的数目减少到要使用的容器数来选择仅使用群集的一部分内存。  
 
-**步骤 4：计算 YARN 容器数**
+**步骤4：计算 YARN 容器数**
 
 YARN 容器数决定作业可用的并发数量。  获取总 YARN 内存量并将其除以 mapreduce.map.memory。  
 
-    # of YARN containers = total YARN memory / mapreduce.map.memory
+\#YARN 容器 = total YARN memory/mapreduce. .map
 
 **步骤 5：设置 mapreduce.job.maps/mapreduce.job.reduces**
 
@@ -76,26 +77,27 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 假设我们有一个由 8 个 D14 节点组成的群集，并且要运行 I/O 密集型作业。  下面是你应执行的计算：
 
-**步骤 1：确定运行的作业数**
+**步骤1：确定正在运行的作业数**
 
 在此示例中，假定我们的作业是唯一正在运行的作业。  
 
-**步骤 2：设置 mapreduce.map.memory/mapreduce.reduce.memory**
+**步骤2：设置 mapreduce. .map/mapreduce. 降低内存**
 
 在此示例中，我们要运行 I/O 密集型作业，并确定将 3GB 的内存用于映射任务完全足够。
 
-    mapreduce.map.memory = 3GB
+mapreduce .map = 3GB
 
 **步骤 3：确定总 YARN 内存量**
 
-    Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
-**步骤 4：计算 # YARN 容器数**
+群集中的总内存为8个节点 * 96 GB of YARN memory for D14 = 768GB
 
-    # of YARN containers = 768GB of available memory / 3 GB of memory =   256
+**步骤 4：计算 YARN 容器数**
+
+\#YARN 容器 = 768GB 可用内存/3 GB 内存 = 256
 
 **步骤 5：设置 mapreduce.job.maps/mapreduce.job.reduces**
 
-    mapreduce.map.jobs = 256
+mapreduce.map.jobs = 256
 
 ## <a name="examples-to-run"></a>要运行的示例
 
@@ -108,12 +110,18 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 **Teragen**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```
 
 **Terasort**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```
 
 **Teravalidate**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```

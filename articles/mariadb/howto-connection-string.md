@@ -4,14 +4,15 @@ description: 本文档列出了目前支持用于将应用程序连接到 Azure 
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 18e3f2ab7c581a1ff93a65e410e83739564b5be5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3afa43f4db04b8289dea8e3d2d6511efb27b3d28
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558302"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104633"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>如何将应用程序连接到 Azure Database for MariaDB
 本主题列出了 Azure Database for MariaDB 支持的连接字符串类型，并收录了模板和示例。 你可能会在连接字符串中使用不同的参数和设置。

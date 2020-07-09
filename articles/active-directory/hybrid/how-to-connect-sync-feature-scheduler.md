@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357386"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103545"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
 本主题介绍 Azure AD Connect 同步（同步引擎）中的内置计划程序。
@@ -39,6 +39,10 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 * **维护任务**。 续订用于密码重置和设备注册服务 (DRS) 的密钥和证书。 清除操作日志中的旧条目。
 
 计划程序本身始终运行，但可以将它配置为仅运行其中一个任务或一个任务都不运行。 例如，如果需要运行自己的同步周期过程，则可以在计划程序中禁用此任务，但仍运行维护任务。
+
+>[!IMPORTANT]
+>你将需要确保至少每7天运行一次同步循环。 如果不这样做，可能会导致同步问题，这将要求你运行完全同步来解决问题。
+
 
 ## <a name="scheduler-configuration"></a>计划程序配置
 若要查看当前配置设置，请转到 PowerShell 并运行 `Get-ADSyncScheduler`。 它显示的内容如此图所示：

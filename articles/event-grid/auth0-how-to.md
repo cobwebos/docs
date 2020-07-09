@@ -1,17 +1,14 @@
 ---
 title: 如何使用 Azure 事件网格将事件从 Auth0 发送到 Azure
 description: 如何使用 Azure 事件网格将事件从 Auth0 发送到 Azure 服务。
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: femila
-ms.openlocfilehash: bd8cebaad27857dbd2fe3c5ed61be63d3700a688
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 6cd440075c6400b58c23f879b53da26abe4f9e75
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560754"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103273"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>将 Azure 事件网格与 Auth0 集成
 

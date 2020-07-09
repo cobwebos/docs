@@ -1,21 +1,14 @@
 ---
 title: 充当事件网格源的 Azure 媒体服务
 description: 介绍为 Azure 事件网格中的媒体服务事件提供的属性
-services: media-services
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: event-grid
-ms.workload: ''
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: spelluru
-ms.openlocfilehash: d5d50bbde927efd4aee0cedd69486a52ab8c328b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81394327"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105925"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>充当事件网格源的 Azure 媒体服务
 

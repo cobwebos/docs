@@ -1,19 +1,16 @@
 ---
-title: 异步操作的状态
-description: 介绍如何在 Azure 中跟踪异步操作。 它显示用于获取长时间运行操作的状态的值。
-services: event-grid
-author: spelluru
-ms.service: event-grid
+title: 事件网格异步操作的状态
+description: 介绍如何在 Azure 中跟踪事件网格异步操作。 它显示用于获取长时间运行操作的状态的值。
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.author: spelluru
-ms.openlocfilehash: fb3479271733ee218da8a842956f3a8996e07f61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892012"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103324"
 ---
-# <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
+# <a name="track-event-grid-asynchronous-azure-operations"></a>跟踪事件网格异步 Azure 操作
 某些 Azure REST 操作以异步方式运行，因为操作无法快速完成。 本文介绍如何通过响应中返回的值跟踪异步操作的状态。  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>异步操作的状态代码

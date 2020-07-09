@@ -1,18 +1,18 @@
 ---
 title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委托活动。
-ms.date: 03/30/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b30cbc025f97ab76be55f0f83e15603b40092ce3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919133"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105160"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
-作为服务提供商，你可能想要知道客户订阅或资源组是通过[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)委托给你的租户，还是在删除以前委派的资源时。
+作为服务提供商，你可能想要知道客户订阅或资源组通过[Azure Lighthouse](../overview.md)委托给你的租户，或者在删除之前委派的资源时。
 
 在管理租户中， [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)在租户级别跟踪委托活动。 此记录的活动包含所有客户租户中添加或删除的委派。
 
@@ -158,5 +158,5 @@ else
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何将客户加入[Azure 委托的资源管理](../concepts/azure-delegated-resource-management.md)。
+- 了解如何将客户加入[Azure Lighthouse](../concepts/azure-delegated-resource-management.md)。
 - 了解[Azure Monitor](../../azure-monitor/index.yml)和[Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)。

@@ -1,55 +1,72 @@
 ---
 title: 文本分析 API 中的新增功能
 titleSuffix: Text Analytics - Azure Cognitive Services
-description: 本文提供了有关 Azure 认知服务文本分析的新版本和功能的信息。
+description: 本文介绍了 Azure 认知服务文本分析的新版本和新功能。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7ab886b65e665bdd38e2461e49fa051213602f0e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462782"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103392"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
-文本分析 API 会持续更新。 为了及时了解最新的发展，本文提供了有关新版本和功能的信息。
+文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="text-analytics-for-health-container-public-gated-preview"></a>用于运行状况容器公共封闭预览的文本分析
+
+运行状况容器的文本分析现在处于公共封闭预览版中，可让你从临床文档中的非结构化英语文本中提取信息，例如：患者进气窗体、医生说明、研究论文和解雇汇总。 目前，你不会对运行状况容器使用情况的文本分析计费。 
+
+容器提供以下功能：
+
+* 命名实体识别
+* 关系提取
+* 实体链接
+* 否定
+
+
+> [!div class="nextstepaction"]
+> [了解有关运行状况容器文本分析的详细信息](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 
-### <a name="text-analytics-api-v3-general-availability"></a>文本分析 API v3 公开上市
+### <a name="text-analytics-api-v3-general-availability"></a>文本分析 API v3 正式发布
 
 文本分析 API v3 现已正式发布，具有以下更新：
 
-* 模型版本`2020-04-01`
+* 模型版本 `2020-04-01`
 * 每个功能的新[数据限制](concepts/data-limits.md)
-* [情绪分析（SA） v3](how-tos/text-analytics-how-to-sentiment-analysis.md)的更新[语言支持](language-support.md)
+* 更新了[情绪分析 (SA) v3](how-tos/text-analytics-how-to-sentiment-analysis.md) 的[语言支持](language-support.md)
 * 用于实体链接的单独终结点 
-* [命名实体识别（NER） v3](how-tos/text-analytics-how-to-entity-linking.md)中的新 "Address" 实体类别。
+* [命名实体识别 (NER) v3](how-tos/text-analytics-how-to-entity-linking.md) 中的新“Address”实体类别。
 * NER v3 中的新子类别：
-   * 位置-地理
-   * 位置-结构
-   * 组织-股票
-   * 组织-医疗
-   * 组织-体育
-   * 事件-文化
-   * 事件-自然
-   * 活动-体育
+   * 位置 - 地理
+   * 位置 - 结构
+   * 组织 - 证券交易所
+   * 组织 - 医疗
+   * 组织 - 体育
+   * 事件 - 文化
+   * 事件 - 自然
+   * 事件 - 体育
 
-已添加 JSON 响应中的以下属性：
-   * `SentenceText`在情绪分析
-   * `Warnings`对于每个文档 
+已在 JSON 响应中添加了以下属性：
+   * 情绪分析中的 `SentenceText`
+   * 每个文档的 `Warnings` 
 
-JSON 响应中以下属性的名称已更改，如果适用：
+JSON 响应中以下属性的名称已更改（如果适用）：
 
 * `score` 已重名为 `confidenceScore`
-    * `confidenceScore`具有两个小数点精度点。 
+    * `confidenceScore` 的精度为小数点后两位。 
 * `type` 已重名为 `category`
 * `subtype` 已重名为 `subcategory`
 
@@ -61,18 +78,15 @@ JSON 响应中以下属性的名称已更改，如果适用：
 ### <a name="text-analytics-api-v31-public-preview"></a>文本分析 API 3.1 公共预览版
    * 新情绪分析功能-[观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
    * 用于受保护的运行状况信息的新[个人（ `PII` ）域筛选器](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)（ `PHI` ）。
-   * 新的个人（ `PII` ）类别：
-      * 疾病的国际分类（ICD-9-CM）
-      * 疾病的国际分类（ICD-10-CM）
 
 > [!div class="nextstepaction"]
-> [详细了解文本分析 API 3.1 Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
+> [详细了解文本分析 API v3.1 预览版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
 
 ## <a name="february-2020"></a>2020 年 2 月
 
 ### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>SDK 对文本分析 API v3 公共预览版的支持
 
-作为[统一的 AZURE SDK 版本](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)的一部分，文本分析 API v3 SDK 现已作为以下编程语言的公共预览版提供：
+作为[统一 Azure SDK 版本](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)的一部分，文本分析 API v3 SDK 现已作为以下编程语言的公共预览版提供：
    * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
    * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
    * [JavaScript (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)

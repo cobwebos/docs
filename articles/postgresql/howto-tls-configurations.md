@@ -4,14 +4,14 @@ description: 了解如何为 Azure Database for PostgreSQL 单一服务器使用
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: ed5d46bbb5a520ee28013210ba44045ad59c2cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cf491a27fbe53a5f5bf0e8351e5bb684b3492f1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705674"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101981"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-postgresql-single---server-using-azure-portal"></a>使用 Azure 门户在 Azure Database for PostgreSQL 单服务器中配置 TLS 设置
 

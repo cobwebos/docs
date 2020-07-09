@@ -1,18 +1,14 @@
 ---
 title: Azure 事件网格中的异地灾难恢复 | Microsoft Docs
 description: 介绍 Azure 事件网格如何自动支持异地灾难恢复 (GeoDR)。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: spelluru
-ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66307312"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105840"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure 事件网格中的服务器端异地灾难恢复
 现在，事件网格不仅可以针对新的，而且还能针对现有的所有域、主题和事件订阅提供元数据的自动异地灾难恢复 (GeoDR)。 在整个 Azure 区域出现故障时，事件网格已将所有与事件相关的基础结构元数据同步到配对的区域。 无需你的干预，新事件就能再次开始流动。 

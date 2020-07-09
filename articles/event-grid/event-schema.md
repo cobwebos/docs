@@ -1,18 +1,14 @@
 ---
 title: Azure 事件网格事件架构
 description: 介绍所有事件都存在的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。
-services: event-grid
-author: femila
-manager: timlt
-ms.service: event-grid
 ms.topic: reference
-ms.date: 01/21/2020
-ms.author: femila
-ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559414"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105874"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 

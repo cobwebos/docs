@@ -1,18 +1,16 @@
 ---
 title: 测试驱动器的类型，Microsoft 商业应用商店
 description: 商业应用商店中的测试驱动器类型
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.author: dsindona
-ms.openlocfilehash: a2d12a372f773a4a389ea7e7f2b3d2811ba889d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 401ffaaa0fa8c8e298a3a1891d93f2c9039d7820
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801217"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102933"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器测试驱动器
 
@@ -70,7 +68,7 @@ ms.locfileid: "85801217"
 
 ### <a name="accepted-parameter-metadata-types"></a>接受的参数元数据类型
 
-| 元数据类型   | 参数类型  | 描述     | 示例值    |
+| 元数据类型   | 参数类型  | 说明     | 示例值    |
 |---|---|---|---|
 | **baseuri**     | 字符串          | 部署包的基 URI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
 | **username**    | 字符串          | 随机的新用户名。| admin68876      |
@@ -237,7 +235,7 @@ Test drive 使用部署包的**基本 Uri**初始化此参数，因此可以使�
 
 确保允许订阅在所选的每个区域中部署所需的所有资源。 此外，请确保你的虚拟机映像在你将启用的所有区域中都可用，否则你的部署模板将不能用于某些区域。
 
-### <a name="outputs"></a>Outputs
+### <a name="outputs"></a>输出
 
 正常情况下，可以部署资源管理器模板，而无需生成任何输出。 因为你知道用于填充模板参数的所有值，并且始终可以手动检查任意资源的属性。
 

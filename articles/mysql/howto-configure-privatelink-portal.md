@@ -4,14 +4,14 @@ description: 了解如何从 Azure 门户配置 Azure Database for MySQL 的专�
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: b4ac25d6fca78962e9da4f7dd79476b8e8b9c2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5547c78007d38788d71e84f8fbf3ca8b60dc1576
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738254"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101743"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用门户创建和管理 Azure Database for MySQL 的专用链接
 
@@ -53,7 +53,7 @@ ms.locfileid: "84738254"
 
 2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -103,7 +103,7 @@ ms.locfileid: "84738254"
 
 1. 在**Azure Database for MySQL**提供以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -113,7 +113,7 @@ ms.locfileid: "84738254"
     | 管理员用户名| 输入所选的管理员名称。 |
     | 密码 | 输入所选密码。 密码长度必须至少为 8 个字符，且符合定义的要求。 |
     | 位置 | 选择要在其中保存 MySQL 服务器的 Azure 区域。 |
-    |Version  | 选择所需的 MySQL 服务器的数据库版本。|
+    |版本  | 选择所需的 MySQL 服务器的数据库版本。|
     | 计算 + 存储| 根据工作负荷选择服务器需要的定价层。 |
     |||
  
@@ -138,7 +138,7 @@ ms.locfileid: "84738254"
 
 1. 在 "**创建专用终结点-基础知识**" 中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -151,7 +151,7 @@ ms.locfileid: "84738254"
 5. 在完成时选择“下一步:资源”。
 6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |

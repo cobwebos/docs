@@ -1,37 +1,37 @@
 ---
 title: Azure Lighthouse 方案中的租户、角色和用户
 description: 了解 Azure Active Directory 租户、用户和角色的概念，以及如何在 Azure Lighthouse 方案中使用它们。
-ms.date: 04/03/2020
+ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7ed5af18efbb0f5b97dcab20093cc45e8bed1d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bcfd1603469ba27971fffa8e7c46f0f696bb6a2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144919"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105381"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 方案中的租户、角色和用户
 
-在将客户加入 [Azure 委派资源管理](azure-delegated-resource-management.md)之前，请务必了解 Azure Active Directory (Azure AD) 租户、用户和角色的工作原理以及如何在 Azure Lighthouse 方案中使用它们。
+在为[Azure Lighthouse](../overview.md)加入客户之前，请务必了解 Azure Active Directory （Azure AD）租户、用户和角色如何工作，以及如何在 azure Lighthouse 方案中使用它们。
 
-租户是 Azure AD 的专用受信任的实例**。 通常，每个租户表示一个组织。 通过 Azure 委派资源管理，可以将资源从一个租户逻辑投影到另一个租户。 这样一来，管理租户中的用户（例如属于服务提供商的用户）可以访问客户租户中的委派资源，或者让[具有多个租户的企业集中其管理操作](enterprise.md)。
+租户是 Azure AD 的专用受信任的实例**。 通常，每个租户表示一个组织。 [Azure 委托的资源管理](azure-delegated-resource-management.md)可将资源从一个租户逻辑投影到另一个租户。 这样一来，管理租户中的用户（例如属于服务提供商的用户）可以访问客户租户中的委派资源，或者让[具有多个租户的企业集中其管理操作](enterprise.md)。
 
 为了实现此逻辑投影，必须加入客户租户中的订阅（或订阅中的一个或多个资源组）以进行 Azure 委派资源管理**。 可以[通过 Azure 资源管理器模板](../how-to/onboard-customer.md)或[将公共或私有产品/服务发布到 Azure 市场](../how-to/publish-managed-services-offers.md)来完成此加入过程。
 
 无论选择哪种加入方法，都需要定义授权**。 每个授权在管理租户中指定可以访问委派资源的用户帐户，还指定用于设置其中每个用户对这些资源的权限的内置角色。
 
-## <a name="role-support-for-azure-delegated-resource-management"></a>Azure 委派资源管理的角色支持
+## <a name="role-support-for-azure-lighthouse"></a>Azure Lighthouse 的角色支持
 
 定义授权时，必须为每个用户帐户分配其中某个[基于角色的访问控制 (RBAC) 内置角色](../../role-based-access-control/built-in-roles.md)。 不支持自定义角色和[经典订阅管理员角色](../../role-based-access-control/classic-administrators.md)。
 
-Azure 委派资源管理目前支持所有[内置角色](../../role-based-access-control/built-in-roles.md)，但有以下例外：
+Azure Lighthouse 当前支持所有[内置角色](../../role-based-access-control/built-in-roles.md)，但有以下例外：
 
 - 不支持[所有者](../../role-based-access-control/built-in-roles.md#owner)角色。
 - 不支持具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 权限的任何内置角色。
 - 支持[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)内置角色，但仅限用于[向客户租户中的托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)。 此角色通常会授予的其他权限不适用。 如果定义具有此角色的用户，则还必须指定该用户可以分配给托管标识的内置角色。
 
 > [!NOTE]
-> 将适用的新内置角色添加到 Azure 后，可以在[使用 azure 资源管理器模板加入客户](../how-to/onboard-customer.md)时分配该角色。 [发布托管服务产品/服务](../how-to/publish-managed-services-offers.md)时，在新添加的角色云合作伙伴门户中，可能会有延迟。
+> 向 Azure 添加新的适用内置角色后，可以在[使用 azure 资源管理器模板加入客户](../how-to/onboard-customer.md)时分配该角色。 [发布托管服务产品/服务](../how-to/publish-managed-services-offers.md)时，在新添加的角色云合作伙伴门户中，可能会有延迟。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>定义用户和角色的最佳做法
 
@@ -47,5 +47,5 @@ Azure 委派资源管理目前支持所有[内置角色](../../role-based-access
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关 [Azure 委派资源管理的推荐安全做法](recommended-security-practices.md)。
-- 要将客户加入 Azure 委派资源管理，可以[使用 Azure 资源管理器模板](../how-to/onboard-customer.md)，或[将专用或公共托管服务发布到 Microsoft Azure 市场](../how-to/publish-managed-services-offers.md)。
+- 了解[Azure Lighthouse 的建议安全实践](recommended-security-practices.md)。
+- 通过[使用 azure 资源管理器模板](../how-to/onboard-customer.md)或[向 azure Marketplace 发布专用或公共托管服务产品/服务](../how-to/publish-managed-services-offers.md)，将客户加入 azure Lighthouse。

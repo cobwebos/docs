@@ -1,17 +1,18 @@
 ---
 title: 市场宣传服务-如何在 marketplace 中获取功能 |Azure Marketplace
 description: 市场推广服务 - 本部分介绍如何在 Azure 市场中推广商品
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: aac3f87c642559b0dfa13c38da448e425df3ffa2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 09f5d61984d5802184d70867f94815fac8fe2b7d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957794"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103562"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>如何在 AppSource 和 Azure 市场中推广
 

@@ -1,17 +1,18 @@
 ---
 title: 合作伙伴中心的共同销售选项 |Azure Marketplace
 description: Microsoft 销售团队将使用你在产品/服务的 "共同销售" 选项卡上提供的信息来详细了解你的解决方案是否适合客户需求。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201454"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104225"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作伙伴中心的联合销售选项
 

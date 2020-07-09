@@ -105,12 +105,8 @@
       items:
         - name: 添加云应用
           items:
-            - name: 添加库应用
-              href: add-gallery-app.md
             - name: 添加非库应用
               href: add-non-gallery-app.md
-            - name: 更改应用名称或徽标
-              href: change-name-or-logo-portal.md
         - name: 配置单一登录
           items:
             - name: 配置基于 SAML 的单一登录

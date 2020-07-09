@@ -1,17 +1,18 @@
 ---
 title: 将 Microsoft 商业市场产品/服务与 Azure Active Directory 集成
 description: 使用 Azure Active Directory 实现 Microsoft AppSource 和 Azure 市场产品/服务的身份验证。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: e2fff55fd9161aa41411dcb1abbf8ae0c1bae49c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957828"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103617"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>将商业市场列表与 Azure Active Directory 集成
 
@@ -36,7 +37,7 @@ Microsoft AppSource 和 Azure 市场客户使用产品内体验来搜索店面�
 | Azure 应用（解决方案模板）  | 不适用 | 空值 | 空值 | 空值 |
 | 托管应用  | 不适用 | 空值 | 空值 | 否 |
 | SaaS  | No | 是 | 是 | 是 |
-| 容器  | 不适用 | 空值 | 空值 | 否 |
+| 容器  | 空值 | 空值 | 空值 | 否 |
 | 咨询服务  | 否 | 不适用 | 空值 | 空值 |
 
 有关 SaaS 技术需求的详细信息，请参阅 [SaaS 应用程序产品/服务发布指南](marketplace-saas-applications-technical-publishing-guide.md)。

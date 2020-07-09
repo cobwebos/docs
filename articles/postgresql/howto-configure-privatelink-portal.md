@@ -4,14 +4,14 @@ description: 了解如何从 Azure 门户配置 Azure Database for PostgreSQL �
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 40e30d4011a52342c6fb610b19f70c8523a0331f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6986d5882e4d62ffc2e25b7ea998f46f41c67330
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736707"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102457"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>使用门户创建和管理 Azure Database for PostgreSQL 单一服务器的专用链接
 
@@ -53,7 +53,7 @@ ms.locfileid: "84736707"
 
 2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -107,7 +107,7 @@ ms.locfileid: "84736707"
 
 1. 在**Azure Database for PostgreSQL 部署 "选项**中，选择"**单一服务器**"并提供以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -117,7 +117,7 @@ ms.locfileid: "84736707"
     | 管理员用户名| 输入所选的管理员名称。 |
     | 密码 | 输入所选密码。 密码长度必须至少为 8 个字符，且符合定义的要求。 |
     | 位置 | 选择要在其中保存 PostgreSQL 服务器的 Azure 区域。 |
-    |Version  | 选择所需的 PostgreSQL 服务器的数据库版本。|
+    |版本  | 选择所需的 PostgreSQL 服务器的数据库版本。|
     | 计算 + 存储| 根据工作负荷选择服务器需要的定价层。 |
     |||
  
@@ -137,7 +137,7 @@ ms.locfileid: "84736707"
 
 1. 在 "**创建专用终结点-基础知识**" 中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -149,7 +149,7 @@ ms.locfileid: "84736707"
 5. 在完成时选择“下一步:资源”。
 6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |

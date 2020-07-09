@@ -1,17 +1,16 @@
 ---
 title: Microsoft 商业市场的咨询服务
 description: 本文介绍 Microsoft AppSource 和 Azure 市场中新咨询服务产品的合格条件和发布要求。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 1267225f6b8557efc7ce36a973daef0a46aaba2d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957981"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103749"
 ---
 # <a name="consulting-service-offers"></a>咨询服务产品
 

@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9a54565f320ae45a4a8297a40027c5e6b3b25202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465960"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106305"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：Hive、HDInsight 和 Azure Data Lake Storage Gen2
 
@@ -56,17 +57,18 @@ ms.locfileid: "84465960"
 
 正在运行的并发任务数或平行度将受到总 YARN 内存量的限制。  YARN 容器数将决定可运行多少个并发任务。  若要查找每个节点的 YARN 内存量，可以转到 Ambari。  导航到 YARN 并查看“配置”选项卡。YARN 内存量会显示在此窗口中。  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+- Total YARN memory = node * 每个节点的 YARN 内存
+- \#YARN 容器 = Total YARN memory/Tez 容器 size
+
 提高使用 Data Lake Storage Gen2 的性能的关键是尽可能多地增加并发性。  Tez 会自动计算应创建的任务数，因此无需设置它。   
 
 ## <a name="example-calculation"></a>示例计算
 
 让我们假设你有一个由 8 个节点组成的 D14 群集。  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+- Total YARN memory = node * 每个节点的 YARN 内存
+- Total YARN memory = 8 个节点 * 96 GB = 768GB
+- \#YARN 容器 = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>有关 Hive 优化的详细信息
 

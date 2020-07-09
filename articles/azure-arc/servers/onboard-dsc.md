@@ -8,15 +8,16 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79164678"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104003"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 安装连接的计算机代理
 
-使用[Windows PowerShell Desired State Configuration](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) （DSC），可以自动安装和配置 windows 计算机的软件。 本文介绍如何在混合 Windows 计算机上使用 DSC 为连接的计算机代理安装 Azure Arc。
+使用[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) （DSC），可以自动安装和配置 windows 计算机的软件。 本文介绍如何在混合 Windows 计算机上使用 DSC 为连接的计算机代理安装 Azure Arc。
 
 ## <a name="requirements"></a>要求
 
@@ -72,7 +73,7 @@ ms.locfileid: "79164678"
 
 1. 在 PowerShell 控制台中，导航到保存该文件的文件夹 `.ps1` 。
 
-2. 运行以下 PowerShell 命令来编译 MOF 文档（有关编译 DSC 配置的信息，请参阅 [DSC 配置](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7)：
+2. 运行以下 PowerShell 命令来编译 MOF 文档（有关编译 DSC 配置的信息，请参阅 [DSC 配置](/powershell/scripting/dsc/configurations/configurations?view=powershell-7)：
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -86,7 +87,7 @@ ms.locfileid: "79164678"
 
 可以将此资源添加到现有 DSC 配置，以表示计算机的端到端配置。 例如，你可能希望将此资源添加到设置安全操作系统设置的配置中。
 
-PowerShell 库中的[CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0)模块可用于创建示例配置的[复合资源](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7)，以进一步简化组合配置。
+PowerShell 库中的[CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0)模块可用于创建示例配置的[复合资源](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7)，以进一步简化组合配置。
 
 ## <a name="next-steps"></a>后续步骤
 

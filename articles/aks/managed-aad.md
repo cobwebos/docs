@@ -7,19 +7,25 @@ author: mlearned
 ms.topic: article
 ms.date: 06/25/2020
 ms.author: mlearned
-ms.openlocfilehash: bf635d37559d09e887a67be27c412bff7899127b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f22b79cb8a730fb9c28dd1a208ab672473218b79
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023391"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105942"
 ---
-# <a name="integrate-aks-managed-azure-ad-preview"></a>集成 AKS 托管 Azure AD （预览版）
+# <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-托管 Azure Active Directory 集成（预览版）
 
-> [!Note]
+> [!NOTE]
 > 具有 Azure Active Directory （Azure AD）集成的现有 AKS （Azure Kubernetes Service）群集不受新的 AKS 管理的 Azure AD 体验的影响。
 
-与 AKS 管理的 Azure AD Azure AD 集成旨在简化 Azure AD 集成体验，其中用户以前需要创建客户端应用、服务器应用，并需要 Azure AD 租户授予目录读取权限。 在新版本中，AKS 资源提供程序为你管理客户端应用和服务器应用。
+AKS 托管 Azure AD 集成旨在简化 Azure AD 集成体验，其中用户以前需要创建客户端应用、服务器应用，并需要 Azure AD 租户授予目录读取权限。 在新版本中，AKS 资源提供程序为你管理客户端应用和服务器应用。
+
+## <a name="azure-ad-authentication-overview"></a>Azure AD 身份验证概述
+
+群集管理员可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (RBAC)。 使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅[OPEN ID connect 文档][open-id-connect]。
+
+有关详细信息，请参阅[Azure Active Directory 集成概念文档](concepts-identity.md#azure-active-directory-integration)中的 AAD 集成流。
 
 ## <a name="limitations"></a>限制
 
@@ -80,30 +86,6 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/A
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
-## <a name="azure-ad-authentication-overview"></a>Azure AD 身份验证概述
-
-群集管理员可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (RBAC)。 使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅[OPEN ID connect 文档][open-id-connect]。
-
-在 Kubernetes 群集内部，使用 Webhook 令牌身份验证来验证身份验证令牌。 Webhook 令牌身份验证作为 AKS 群集的一部分进行配置和管理。
-
-## <a name="webhook-and-api-server"></a>Webhook 和 API 服务器
-
-:::image type="content" source="media/aad-integration/auth-flow.png" alt-text="Webhook 和 API 服务器身份验证流":::
-
-如上图所示，API 服务器调用 AKS webhook 服务器并执行以下步骤：
-
-1. Kubectl 使用 Azure AD 客户端应用程序，通过[OAuth 2.0 设备授权流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)登录用户。
-2. Azure AD 提供 access_token、id_token 和 refresh_token。
-3. 用户使用来自 kubeconfig 的 access_token 向 kubectl 发出请求。
-4. Kubectl 将 access_token 发送到 APIServer。
-5. API 服务器配置了 Auth WebHook 服务器来执行验证。
-6. 身份验证 webhook 服务器通过检查 Azure AD 的公共签名密钥，确认 JSON Web 令牌签名有效。
-7. 服务器应用程序使用用户提供的凭据从 MS 图形 API 查询登录用户的组成员身份。
-8. 将使用用户信息（例如访问令牌的用户主体名称（UPN）声明）和用户的组成员身份（基于对象 ID）将响应发送到 APIServer。
-9. API 基于 Kubernetes Role/RoleBinding 执行授权决定。
-10. 获得授权后，API 服务器会将响应返回到 kubectl。
-11. Kubectl 为用户提供反馈。
-
 
 ## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>创建已启用 Azure AD 的 AKS 群集
 
@@ -123,7 +105,7 @@ az group create --name myResourceGroup --location centralus
 az ad group list
 ```
 
-若要为群集管理员创建 & 新的 Azure AD 组，请使用以下命令：
+若要为群集管理员创建新的 Azure AD 组，请使用以下命令：
 
 ```azurecli-interactive
 # Create an Azure AD group
@@ -139,7 +121,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
 
 成功创建 AKS 托管 Azure AD 群集的响应正文中包含以下部分
 ```
-"Azure ADProfile": {
+"AADProfile": {
     "adminGroupObjectIds": null,
     "clientAppId": null,
     "managed": true,
@@ -179,7 +161,7 @@ aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 > [!Important]
 > 下面所述的步骤将绕过普通 Azure AD 组身份验证。 仅在紧急情况下使用它们。
 
-如果你被永久阻止，但不能访问具有群集访问权限的有效 Azure AD 组，则仍可获取管理员凭据以直接访问群集。
+如果你被永久阻止，不能访问具有群集访问权限的有效 Azure AD 组，你仍可以获取管理员凭据以直接访问群集。
 
 若要执行这些步骤，你需要具有[Azure Kubernetes Service 群集管理员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role)内置角色的访问权限。
 
@@ -187,14 +169,16 @@ aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
 ```
 
-## <a name="non-interactive-login-with-kubelogin"></a>具有 kubelogin 的非交互式登录
+## <a name="non-interactive-sign-in-with-kubelogin"></a>Kubelogin 中的非交互式登录
 
-有一些非交互式方案，如持续集成管道，它们目前不适用于 kubectl。 你可以使用[kubelogin](https://github.com/Azure/kubelogin)来访问具有非交互式服务主体登录名的群集。
+有一些非交互式方案，如持续集成管道，当前不适用于 kubectl。 你可以使用 [`kubelogin`](https://github.com/Azure/kubelogin) 来访问包含非交互式服务主体登录的群集。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [Azure AD 基于角色的访问控制][azure-ad-rbac]。
-* 使用 [kubelogin](https://github.com/Azure/kubelogin) 来访问在 kubectl 中不可用的 Azure 身份验证功能。
+* 了解[适用于 Kubernetes 授权的 AZURE RBAC 集成][azure-rbac-integration]
+* 了解[Azure AD 与 KUBERNETES RBAC 集成][azure-ad-rbac]。
+* 使用[kubelogin](https://github.com/Azure/kubelogin)访问 kubectl 中不可用的 Azure 身份验证功能。
+* 了解有关[AKS 和 Kubernetes 标识概念][aks-concepts-identity]的详细信息。
 * 使用[Azure 资源管理器（ARM）模板][aks-arm-template]创建启用了 AKS 的 Azure AD 启用群集。
 
 <!-- LINKS - external -->
@@ -203,6 +187,8 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 [aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
+[azure-rbac-integration]: manage-azure-rbac.md
+[aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

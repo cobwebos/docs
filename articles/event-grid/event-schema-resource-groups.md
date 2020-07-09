@@ -1,18 +1,14 @@
 ---
 title: 充当事件网格源的 Azure 资源组
 description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ed01bfdb67d9b8a3dd5875ec3fd8c6edf8922520
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393254"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105908"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>充当事件网格源的 Azure 资源组
 

@@ -1,17 +1,18 @@
 ---
 title: 如何在 AppSource 上购买软件 | Azure 市场
 description: 在 AppSource 上购买软件的步骤 | Azure 市场。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 0271bd08e01cdbd442e64db0c04184995f7d8d09
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e3faad025a794b0ae9905fa73b090b55799f3279
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958440"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103032"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>如何在 Microsoft AppSource 上购买软件
 

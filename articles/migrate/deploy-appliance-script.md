@@ -3,15 +3,16 @@ title: 使用脚本设置 Azure Migrate 设备
 description: 了解如何使用脚本设置 Azure Migrate 设备
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: d5603aaef0a1c3e784f455777302c23e6724fbe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052457"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102440"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用脚本设置设备
 
-按照本文所述，为 VMware Vm 和 Hyper-v Vm 的评估/迁移创建一个[Azure Migrate 的设备](deploy-appliance.md)。 运行脚本来创建设备，并验证它是否可以连接到 Azure。 
+按照本文所述，为 VMware Vm 和 Hyper-v Vm 的评估/迁移创建一个[Azure Migrate 的设备](./migrate-appliance-architecture.md)。 运行脚本来创建设备，并验证它是否可以连接到 Azure。 
 
 你可以使用脚本部署适用于 VMware 和 Hyper-v Vm 的设备，或使用从 Azure 门户下载的模板。 如果无法使用下载的模板创建 VM，则使用脚本会很有用。
 
@@ -45,7 +46,7 @@ Hyper-V | Windows Server 2016，具有 16 GB 内存，8个个 vcpu，大约 80 G
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 3. 验证 Azure 公有云的最新设备版本和脚本：
 
     **算法** | **下载** | **SHA256**
@@ -93,7 +94,7 @@ Hyper-V | Windows Server 2016，具有 16 GB 内存，8个个 vcpu，大约 80 G
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 
 3. 验证 Azure 公有云的最新设备版本和脚本：
 

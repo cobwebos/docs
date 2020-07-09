@@ -3,11 +3,12 @@ title: 准备 Azure Migrate 来使用 ISV 工具/Movere
 description: 本文介绍了如何准备 Azure Migrate 以使用 ISV 工具或 Movere，然后介绍如何开始使用该工具。
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103919"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>准备使用 ISV 工具或 Movere
 
@@ -35,7 +36,7 @@ ms.locfileid: "84770367"
 1. 在 Azure 门户中，打开 **订阅**。
 2. 选择相关订阅。 如果看不到它，请选择“全局订阅筛选器”。 
 3. 选择“我的权限”。 然后，选择“单击此处查看此订阅的完整访问详细信息”。
-4. 在“角色分配” > “视图中查看权限” 。 如果你的帐户没有权限，请让订阅管理员将你添加到[用户访问管理员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)角色和[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)角色。
+4. 在“角色分配” > “视图中查看权限” 。 如果你的帐户没有权限，请让订阅管理员将你添加到[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)角色和[所有者](../role-based-access-control/built-in-roles.md#owner)角色。
 
 ## <a name="allow-access-to-urls"></a>允许访问 URL
 

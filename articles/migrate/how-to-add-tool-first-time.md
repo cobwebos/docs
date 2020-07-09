@@ -3,15 +3,16 @@ title: 在 Azure Migrate 中添加评估/迁移工具
 description: 介绍如何创建 Azure Migrate 项目并添加评估/迁移工具。
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a94e3cc18f46c457d6ed54ef88c62adefb07c5b9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82901192"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102525"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>第一次添加评估/迁移工具
 
-本文介绍如何首次将评估或迁移工具添加到[Azure Migrate](migrate-overview.md)项目。  
+本文介绍如何首次将评估或迁移工具添加到[Azure Migrate](./migrate-services-overview.md)项目。  
 Azure Migrate 提供了一个中心，用于跟踪对 Azure 的本地应用程序、工作负荷以及专用/公有云 Vm 的发现、评估和迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及其他工具和独立软件供应商（ISV）[产品](migrate-services-overview.md#isv-integration)。 
 
 ## <a name="check-permissions-to-create-project"></a>检查创建项目的权限
