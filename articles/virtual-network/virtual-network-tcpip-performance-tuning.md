@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68297784"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120273"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>适用于 Azure VM 的 TCP/IP 性能优化
 
@@ -136,7 +136,7 @@ PMTUD 过程的效率低下，会影响网络性能。 如果发送的数据包�
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-可以使用 200 作为传播速度。 这是光在 1 毫秒内传播的距离（以米为单位）。
+可以使用 200 作为传播速度。 这是光在1毫秒内的距离，以公里为单位。
 
 接下来，我们将纽约转到旧金山。 两者之间的直线距离为 4,148 公里。 将该值插入公式，会得到以下结果：
 

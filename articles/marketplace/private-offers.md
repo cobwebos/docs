@@ -1,17 +1,18 @@
 ---
 title: Microsoft 商业应用商店中的专用产品/服务
 description: 适用于应用和服务发布者的 Microsoft 商用 marketplace 中的私有产品/服务。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/19/2020
-ms.author: dsindona
-ms.openlocfilehash: e449f65ca65a679aa6c6823938fa561b84e38368
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b558cbc53ba09a86f7277df0ee5d45a9bdac56e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82872380"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121004"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的专用产品/服务
 

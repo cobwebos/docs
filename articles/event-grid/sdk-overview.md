@@ -1,19 +1,14 @@
 ---
 title: Azure 事件网格 SDK
 description: 介绍 Azure 事件网格的 SDK。 这些 SDK 提供管理、发布和使用功能。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: reference
-ms.date: 01/19/2019
-ms.author: spelluru
-ms.openlocfilehash: 7f05665f4bcc5449c1a81fa24582b333b0a944e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2019
+ms.openlocfilehash: 2b21d8bf2c393b096e9046765e6cfadc76baffbf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60822844"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119100"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用于管理和发布的事件网格 SDK
 

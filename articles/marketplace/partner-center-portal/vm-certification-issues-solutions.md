@@ -1,18 +1,18 @@
 ---
 title: 虚拟机认证 - 问题和解决方案
 description: 本文说明了 VM 映像的常见错误消息。 它还讨论相关解决方案
-author: v-miegge
-ms.author: v-krmall
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
+author: v-miegge
+ms.author: v-krmall
 ms.date: 06/16/2020
-ms.openlocfilehash: 71577a52ed1b528bc330d4c8e1f4c34ab6e1d81f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087038"
+ms.locfileid: "86120647"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>虚拟机认证过程中的问题和解决方案 
 
@@ -94,7 +94,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Linux 测试用例。 说明中说明了测试验证。
 
-|方案|测试用例|描述|
+|方案|测试用例|说明|
 |---|---|---|
 |1|Bash 历史记录|在创建 VM 映像之前，应清除 Bash 历史记录文件。|
 |2|Linux 代理版本|应安装 Azure Linux 代理2.2.41 或更高版本。|
@@ -122,7 +122,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Windows 测试用例，以及测试验证的说明：
 
-|方案 |测试事例|描述|
+|方案 |测试事例|说明|
 |---|---|---|---|
 |1|OS 体系结构|Azure 仅支持64位操作系统。|
 |2|用户帐户依赖项|应用程序的执行不应依赖于管理员帐户。|
@@ -186,7 +186,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |Windows Server 2012|6.2.9200.22099|
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
-|Windows Server 2019|不可用|
+|Windows Server 2019|NA|
 
 ## <a name="sack-vulnerability-patch-verification"></a>SACK 漏洞修补程序验证
 
@@ -200,7 +200,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 - CVE-2019-11478 
 - CVE-2019-11479
 
-|OS 系列|Version|内核|
+|OS 系列|版本|内核|
 |---|---|---|
 |Ubuntu|14.04 LTS|4.4.0-151| 
 ||14.04 LTS|4.15.0-1049-*-azure|

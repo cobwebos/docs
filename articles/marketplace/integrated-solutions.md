@@ -1,17 +1,18 @@
 ---
 title: 集成的解决方案 - Microsoft 商业市场
 description: 了解在商业市场中提供集成的解决方案的优点、资源和后续步骤。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657996"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119508"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>商业市场中集成的解决方案
 集成的解决方案将 Microsoft 合作伙伴提供的同类最佳技术与专家服务合作伙伴提供的咨询、部署和支持结合在一起。

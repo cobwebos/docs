@@ -1,18 +1,18 @@
 ---
 title: Azure 市场产品和服务列表要求
 description: 本文介绍了在 Azure 市场上列出新产品和服务的要求和准则。
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 06/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 6c95f510ce83f924a58b0844285f4142131db3eb
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2b0954941ba6b6b7ce3697889305dc5bbd299590
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027131"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119372"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure 市场列表准则
 
@@ -28,7 +28,7 @@ ms.locfileid: "86027131"
 
 ## <a name="listing-requirements-for-all-offers"></a>关于列出所有产品/服务的要求
 
-|  | 列表元素 | 基本要求 | 最佳要求 |
+| Number | 列表元素 | 基本要求 | 最佳要求 |
 |:--- |:--- |:--- |:--- |
 | 1 | 潜在客户目标 | 已配置潜在顾客目标。| One Commercial Partner (OCP) 目录具有合作伙伴解决方案选项卡中也列有的潜在客户目标 CRM 信息。 | 
 | 2 | 套餐标题 | 简要介绍解决方案产品/服务。 与合作伙伴网站上解决方案的在线推广信息相匹配。 | 包含搜索关键字。 |
@@ -47,15 +47,15 @@ ms.locfileid: "86027131"
 
 ## <a name="trial-offer-requirements"></a>试用套餐要求
 
-|  | 列表元素 | 基本要求 | 最佳要求 | 
+| Number | 列表元素 | 基本要求 | 最佳要求 | 
 |:--- |:--- |:--- |:--- |
-|  | 列表状态（行动号召） | 链接必须指向客户导向型试用体验。 | 还可以使用其他号召方式（例如“立即购买”）。 | 
+| 1 | 列表状态（行动号召） | 链接必须指向客户导向型试用体验。 | 还可以使用其他号召方式（例如“立即购买”）。 | 
 
 ---
 
 ## <a name="saas-application-requirements"></a>SaaS 应用程序要求
 
-|  | 列表元素 | 基本要求 | 最佳要求 | 
+| Number | 列表元素 | 基本要求 | 最佳要求 | 
 |:--- |:--- |:--- |:--- |
 | 1 | 套餐标题 |<ul><li>只能包含小写的字母、字母数字字符、短划线或下划线。 标题在发布后无法修改。</li><li>描述解决方案产品/服务。</li><li>匹配合作伙伴网站中的解决方案在线推广。 | 包含搜索关键字。 |
 | 2 | 技术信息：配置 |<ul><li>对于软件即服务 (SaaS) 应用，请选择是仅列出应用，还是要让客户通过 Azure 购买应用。</li><li>选择要在产品/服务购买按钮上显示的文本：“免费”、“免费试用”或“与我联系”  。</li><li>在弹出框口中，如果应用利用该技术，请仅选择一个适用产品：Cortana Intelligence、Power BI 解决方案模板或 Power Apps。 |  |
@@ -73,7 +73,7 @@ ms.locfileid: "86027131"
 
 ## <a name="container-offer-requirements"></a>容器套餐要求
 
-|  | 列表元素 | 基本要求 | 最佳要求 | 
+| Number | 列表元素 | 基本要求 | 最佳要求 | 
 |:--- |:--- |:--- |:--- |
 |1 |产品/服务设置 | <ul><li>产品/服务 ID：最大 50 个字符。</li><li>发布者 ID：从下拉列表中选择它。</li><li>姓名：最大 50 个字符。 | 采用说明中所用的相同标题样式。 避免使用长标题。 | 
 | 2 | SKU | 合作伙伴选择新 SKU。| 标题采用说明中所用的相同标题样式。 避免使用长标题。  |
@@ -84,7 +84,7 @@ ms.locfileid: "86027131"
 
 ## <a name="consulting-offer-requirements"></a>咨询套餐要求
 
-|  | 列表元素 | 基本要求 | 最佳要求 |
+| Number | 列表元素 | 基本要求 | 最佳要求 |
 |:--- |:--- |:--- |:--- |
 | 1 | 套餐标题  |  必须使用“名称：持续时间类型”格式明确列出服务类型和持续时间（例如，“产品/服务参与：1 周概念证明”）。  | <ul><li>不要重复输入发布者名称。</li><li>标题采用说明中所用的相同标题样式。 避免使用长标题。 | 
 | 2 | 套餐说明  |<ul><li>确保正确使用 [Microsoft 产品名称](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)。</li><li>标记为“价格：估价”的产品/服务必须在产品/服务顶部或底部提供一条注释来解释变数（传输到客户端、要迁移的服务器数等）。</li><li>每种产品/服务类型必须提供如下所述的说明： <ul><li>简报至少需要四个或五个项目符号，其中包含有关要涵盖的主题的信息。</li><li>所有研讨会都需要议程。</li><li>所有议程必须根据研讨会的持续时间按天或按周划分。</li><li>评估、概念证明、非培训研讨会和实施产品/服务需要交付件。</li><li>培训研讨会不需要交付件，但需要更详细的议程以及涵盖的主题。</li></ul></ul> | <ul><li>任何产品/服务都有议程和交付件。</li><li>产品/服务在第一个部分包含一个段落，描述有关提供该服务的公司的上下文。</li><li>产品/服务在第一个部分包含一个描述服务本身价值的段落。 |

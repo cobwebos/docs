@@ -1,17 +1,16 @@
 ---
 title: 市场见解 - Microsoft 商业市场
 description: 访问市场 Web 分析摘要，它可以让你衡量客户在 Microsoft AppSource 和 Azure 市场中的参与度。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 2d9691279b987f9d45f755ab340ff70671d350c0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745656"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120392"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>合作伙伴中心内的市场见解仪仪表板
 

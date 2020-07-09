@@ -1,17 +1,14 @@
 ---
 title: 为 Azure 事件网格指标和活动日志操作设置警报
 description: 本文介绍如何创建有关 Azure 事件网格指标和活动日志操作的警报。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 1a2eacb5fa03ea2a5a8ba2d38d9b3e7dea315890
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 615ebef749be49822a09470eb0d47d8eb31b9a5a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412832"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119134"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>针对 Azure 事件网格指标和活动日志设置警报
 本文介绍如何创建有关 Azure 事件网格指标和活动日志操作的警报。 可以针对 Azure 事件网格资源（主题和域）的发布和传递指标创建警报。 对于系统主题，[使用 "**指标**" 页创建警报](#create-alerts-using-the-metrics-page)。

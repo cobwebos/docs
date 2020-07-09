@@ -3,12 +3,12 @@ title: Azure Lighthouse 和 Azure 托管应用程序
 description: Azure Lighthouse 和 Azure 托管应用程序 .。。
 ms.date: 05/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9923d31e78675927b4ca235607b2a61b24ccc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82783625"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121599"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 托管应用程序
 
@@ -47,4 +47,4 @@ Azure 托管应用程序通常用于特定客户需求，可通过完全由服�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[Azure 托管应用程序](../../azure-resource-manager/managed-applications/overview.md)。
-- 了解如何[加入 Azure 委派资源管理的订阅](../how-to/onboard-customer.md)。
+- 了解如何[在 Azure Lighthouse](../how-to/onboard-customer.md)中加入订阅。

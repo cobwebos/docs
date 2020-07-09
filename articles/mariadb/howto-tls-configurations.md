@@ -4,14 +4,14 @@ description: 了解如何使用 Azure 门户为 Azure Database for MariaDB 设�
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 9ebaca8720eb923c2373c45ac605146bbcdbc4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fac719daf05e8b319db7c86d0dbc61c2814b0a0c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847994"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120341"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mariadb-using-azure-portal"></a>使用 Azure 门户在 Azure Database for MariaDB 中配置 TLS 设置
 

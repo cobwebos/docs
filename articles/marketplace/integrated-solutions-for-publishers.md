@@ -1,17 +1,18 @@
 ---
 title: 发布集成解决方案 - Microsoft 商业市场
 description: 了解将集成解决方案发布到 Microsoft AppSource 和 Azure 市场的要求和步骤。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800605"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119525"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 

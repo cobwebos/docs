@@ -1,17 +1,18 @@
 ---
 title: 更新现有的商业市场优惠
 description: 如何更新现有的商业 Marketplace 产品/服务，包括编辑、删除草稿、取消发布请求、停止销售产品/服务或计划以及同步专用受众。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: eca054d2db5eca1948d1085e105e91af19fc132e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 62170df567f552699304710902a1f83b84728af2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057953"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120698"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>在商业市场中更新现有的套餐
 

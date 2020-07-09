@@ -1,17 +1,18 @@
 ---
 title: 联合销售合作伙伴参与 - Microsoft 商业市场
 description: 面向合作伙伴的 Microsoft 合作伙伴中心联合销售计划可以帮助你赢得广泛的客户群并创造新的销售机会。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 05/19/2020
-ms.openlocfilehash: 86ff08ed01ea09497c14e91b4c891988569e2df1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: abd5308d965ba35f63fcef1e286a6989be4a0453
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657934"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119456"
 ---
 # <a name="co-sell-partner-engagement"></a>联合销售合作伙伴参与
 

@@ -5,14 +5,14 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: ba0311da88f1fe0cbc0bf885197785db10b1bac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d389c433cb8a049671668cb58b3d80691ff0d16
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121429"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>访问 Azure Data Lake Analytics 的诊断日志
 
@@ -142,7 +142,7 @@ ms.locfileid: "85564855"
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
 
-| 名称 | 类型 | 描述 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
 | HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
 | 路径 |String |操作执行所在的路径 |
@@ -186,7 +186,7 @@ ms.locfileid: "85564855"
 | operationName |String |被记录的操作的名称。 例如，JobSubmitted。 |
 | resultType |String |作业状态的字状态 (operationName)。 |
 | resultSignature |String |作业状态的其他详细信息 (operationName)。 |
-| 标识 |String |请求操作的用户。 例如 susan@contoso.com。 |
+| 标识 |String |请求操作的用户。 例如，susan@contoso.com。 |
 | properties |JSON |请参阅下节（审核日志属性架构），了解详细信息 |
 
 > [!NOTE]
@@ -196,7 +196,7 @@ ms.locfileid: "85564855"
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
 
-| 名称 | 类型 | 描述 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
 | JobId |String |分配给作业的 ID |
 | JobName |String |提供给作业的名称 |

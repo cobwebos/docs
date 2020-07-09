@@ -1,18 +1,14 @@
 ---
 title: 通过门户创建 Azure 事件网格订阅
 description: 本文介绍如何使用 Azure 门户为支持的源（如 Azure Blob 存储）创建事件网格订阅。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 2890f57e50e508f85579a2b1198de536fa9a9013
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393178"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119984"
 ---
 # <a name="subscribe-to-events-through-portal"></a>通过门户订阅事件
 

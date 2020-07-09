@@ -7,15 +7,15 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 782933550dbde51dcf6fd9fa42d7a4ac086f643f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd696539cda5b24d801da692822b13de143249dd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564939"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121514"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何为 Azure Data Lake Analytics 设置 CI/CD 管道  
 
@@ -453,22 +453,22 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 #### <a name="common-parameters"></a>通用参数
 
-| 参数 | 说明 | 默认值 | 必需 |
+| 参数 | 说明 | 默认值 | 必选 |
 |---------|-----------|-------------|--------|
-|程序包|要部署的 U-SQL 数据库部署包的路径。|null|true|
+|包|要部署的 U-SQL 数据库部署包的路径。|null|true|
 |数据库|要部署到或创建的数据库名称。|主|false|
 |LogFile|日志记录文件的路径。 默认为标准输出（控制台）。|null|false|
 |LogLevel|日志级别：Verbose、Normal、Warning 或 Error|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>本地部署的参数
 
-|参数|说明|默认值|必需|
+|参数|说明|默认值|必选|
 |---------|-----------|-------------|--------|
 |DataRoot|本地数据根文件夹的路径。|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics 部署的参数
 
-|参数|说明|默认值|必需|
+|参数|说明|默认值|必选|
 |---------|-----------|-------------|--------|
 |帐户|按帐户名称指定部署到哪个 Azure Data Lake Analytics 帐户。|null|true|
 |ResourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|null|true|

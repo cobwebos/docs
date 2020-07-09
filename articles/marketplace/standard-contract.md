@@ -1,17 +1,18 @@
 ---
 title: Microsoft 商业市场的标准协定
 description: 合作伙伴中心的 Azure 市场和 AppSource 的标准协定
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/20/2020
-ms.author: dsindona
-ms.openlocfilehash: 53a22140fe62ce0db18c1d02d816eb31b12a381b
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: f7327079e365bcd8a99a8274828f7c14e2337a34
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714145"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121548"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft 商业市场的标准协定
 

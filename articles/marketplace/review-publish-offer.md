@@ -1,19 +1,19 @@
 ---
 title: 查看产品/服务并将其发布到 Microsoft 商业应用商店
 description: 使用合作伙伴中心提交你的产品/服务进行预览，预览你的产品/服务，然后将其发布到 Microsoft 商用 marketplace。
-author: mingshen-ms
-ms.author: mingshen
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/05/2020
-ms.openlocfilehash: 910a886f02b386d7242bdd5e85f0710baa25408e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 34e56e5d92526cbf46408c670127e87781e342cd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090890"
+ms.locfileid: "86119729"
 ---
 # <a name="review-and-publish-an-offer-to-commercial-marketplace"></a>查看产品/服务并将其发布到商业应用商店
 

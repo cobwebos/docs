@@ -1,18 +1,16 @@
 ---
 title: 使用 marketplace 计量服务的托管应用程序的计费计费 |Azure Marketplace
 description: 本文档介绍了如何使用灵活的计费模式为 Isv 发布 Azure 应用程序。
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 5a867243e57790bf72cef6991d6d8ac06639be49
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963914"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118930"
 ---
 # <a name="managed-application-metered-billing"></a>托管应用程序计费计费 
 
@@ -67,7 +65,7 @@ ms.locfileid: "85963914"
 定义维度本身的属性在产品/服务的所有计划中共享。 在发布产品/服务之前，从任何计划的上下文中对这些属性所做的更改将影响所有计划的维度定义。 发布产品/服务后，将无法再编辑这些属性。 这些属性为：
 
 * 标识符
-* “属性”
+* 名称
 * 度量单位
 
 维度的其他属性特定于每个计划，并且可以有不同于计划的值。  在发布计划之前，你可以编辑这些值，只有此计划会受到影响。 发布计划后，这些属性将不再可编辑。 这些属性为：
@@ -93,7 +91,7 @@ ms.locfileid: "85963914"
 使用维度发布产品/服务后，将无法再更改该维度的产品/服务详细信息：
 
 * 标识符
-* “属性”
+* 名称
 * 度量单位
 
 发布计划后，将无法再更改计划级别的详细信息：

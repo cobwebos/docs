@@ -1,17 +1,18 @@
 ---
 title: 使用 HTTPS 终结点进行潜在顾客管理 - Microsoft 商业市场
 description: 了解如何使用 Power Automate 和 HTTPS 终结点管理来自 Microsoft AppSource 和 Azure 市场的潜在顾客。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: a2be74f6c9178577f86e5522e37e7c210643dd07
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847801"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120358"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>使用 HTTPS 终结点管理商业市场潜在顾客
 

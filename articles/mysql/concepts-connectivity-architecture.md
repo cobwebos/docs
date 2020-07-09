@@ -6,11 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 661cfb4798ef553918ddc238a5388b11a54e23f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4d90693f2cd3bdd440b7cb914e7fc037103d362
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120987"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的连接体系结构
 本文介绍 Azure Database for MySQL 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MySQL 实例。
@@ -40,7 +41,7 @@ ms.locfileid: "84298680"
 | 中国北部 | 139.219.15.17    |
 | 中国北部 2 | 40.73.50.0     |
 | 东亚 | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
-| 美国东部 | 40.121.158.30, 191.238.6.43  |
+| 美国东部 | 40.121.158.30, 191.238.6.43, 40.71.8.203, 40.71.83.113 |
 | 美国东部 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | 法国中部 | 40.79.137.0, 40.79.129.1  |
 | 法国南部 | 40.79.177.0     |

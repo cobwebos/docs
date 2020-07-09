@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 200a6ba333d283b6a82f1eb228a0fc586b5b1fab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567077"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118811"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate 中的 AVS 评估：服务器评估
 
@@ -29,7 +29,7 @@ ms.locfileid: "85567077"
 **评估类型** | **详细信息**
 --- | --- 
 Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可以使用此评估类型评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)，以便迁移到 Azure。[了解更多](concepts-assessment-calculation.md)
-**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。[了解更多](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](../azure-vmware/introduction.md)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。[了解更多](concepts-azure-vmware-solution-assessment-calculation.md)
 
 服务器评估中的 Azure VMware 解决方案（AVS）评估提供两个大小调整条件选项：
 
@@ -121,7 +121,7 @@ Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><
 | **目标位置** | 指定要迁移到的 AVS 私有云位置。<br/><br/> 服务器评估中的 AVS 评估目前支持以下目标区域：美国东部、西欧、美国西部。 
 | **存储类型** | 指定要在 AVS 中使用的存储引擎。<br/><br/> AVS 评估只支持使用 vSAN 作为默认存储类型。 
 **预订实例（RIs）** | 此属性可帮助你在 AVS 中指定保留实例。 当前 AVS 节点不支持 RIs。 
-**节点类型** | 指定用于映射本地 Vm 的[AVS 节点类型](https://docs.microsoft.com/azure/azure-vmware/concepts-private-clouds-clusters)。 默认节点类型为 AV36。 <br/><br/> Azure Migrate 将建议将 Vm 迁移到 AVS 所需的节点数。 
+**节点类型** | 指定用于映射本地 Vm 的[AVS 节点类型](../azure-vmware/concepts-private-clouds-clusters.md)。 默认节点类型为 AV36。 <br/><br/> Azure Migrate 将建议将 Vm 迁移到 AVS 所需的节点数。 
 **FTT 设置，RAID 级别** | 指定适用于容忍和 Raid 组合的失败。 选择的 FTT 选项与本地 VM 磁盘要求一起决定了 AVS 中所需的总 vSAN 存储空间。 
 **“大小调整”条件** | 设置要用于 AVS 的虚拟机*大小*的条件。 你可以选择*基于性能*的大小调整，也可以选择*在本地*进行调整，而无需考虑性能历史记录。 
 **性能历史记录** | 设置评估计算机性能数据时要考虑的持续时间。 仅当大小调整条件*基于性能*时，此属性才适用。 
@@ -249,14 +249,14 @@ Azure Migrate 中的每个基于性能的评估都与一个（最低）到5星�
 - 它在所有节点上聚合成本，以计算每月总成本。
 - 成本以在评估设置中指定的币种显示。
 
-由于 Azure VMware 解决方案（AVS）的定价是每个节点的，因此总成本不会产生计算成本和存储成本分布。 [了解详细信息](https://docs.microsoft.com/azure/azure-vmware/introduction)
+由于 Azure VMware 解决方案（AVS）的定价是每个节点的，因此总成本不会产生计算成本和存储成本分布。 [了解详细信息](../azure-vmware/introduction.md)
 
 请注意，由于 Azure VMware 解决方案（AVS）处于预览阶段，评估中的节点价格是预览版价格。 请联系你的本地 MSFT AVS GBB 团队以获得指导。
 
 ## <a name="migration-tool-guidance"></a>迁移工具指南
 
 在 azure VMware 解决方案（AVS）评估的 Azure 就绪状态报告中，可以看到以下建议的工具： 
-- **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展（HCX）解决方案是将本地工作负荷迁移到 Azure VMware 解决方案（AVS）私有云的建议迁移工具。 [了解详细信息](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
+- **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展（HCX）解决方案是将本地工作负荷迁移到 Azure VMware 解决方案（AVS）私有云的建议迁移工具。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
 - **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。
 
 ## <a name="next-steps"></a>后续步骤

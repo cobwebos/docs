@@ -1,17 +1,16 @@
 ---
 title: Microsoft 商业市场分析中的使用情况仪表板
 description: 了解如何访问所有 VM 套餐使用情况和按流量计费指标。 在合作伙伴中心内转到商业市场下的使用情况仪表板。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746665"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120664"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft 商业市场分析中的使用情况仪表板
 

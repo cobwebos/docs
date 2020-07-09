@@ -1,18 +1,18 @@
 ---
 title: 使用合作伙伴中心在 Azure 市场中创建 Azure IoT Edge 模块产品/服务
 description: 了解如何使用合作伙伴中心在 Azure 市场中创建、配置和发布 IoT Edge 模块产品/服务
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: 8accb29907bde53baf7f175dd1d36a9a2e1fe66b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984681"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119287"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>在 Azure 市场中创建、配置和发布 IoT Edge 模块产品/服务
 
@@ -229,9 +229,9 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 3. 支持地址（链接）
 4. 条款和条件
 5. 隐私策略地址（链接）
-6. “属性”
+6. 名称
 7. 总结
-8. 描述
+8. 说明
 9. 有用链接
 10. 屏幕截图/视频
 
@@ -251,8 +251,8 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. “属性”
-2. 描述
+1. 名称
+2. 说明
 3. 有用链接
 4. 屏幕截图
 

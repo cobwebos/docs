@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: f9f05eb73c2fa12c9625c8e26d1c86431bcb8f6a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e9891e3ac12de3f8735407c603ff59b61f4eb05d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087055"
+ms.locfileid: "86118964"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>如何配置虚拟中心路由
 
@@ -22,7 +22,9 @@ ms.locfileid: "86087055"
 有关详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
 > [!NOTE]
-> 其中一些功能可能仍在推出，并应在8月3日的第几周完成。
+> 其中一些功能可能仍在推出。如果你所在的区域中尚未发生此推出，请使用以下文章中的步骤：
+>* [Azure 门户文章](virtual-wan-route-table-nva-portal.md)
+>* [PowerShell 文章](virtual-wan-route-table-nva.md)
 >
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>创建路由表

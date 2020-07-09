@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121667"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
@@ -36,10 +36,10 @@ ms.locfileid: "85611367"
 找不到所需存储性能的 VM | 计算机所需的存储性能（每秒输入/输出操作数 [IOPS] 和吞吐量）超过了 Azure VM 支持。 在迁移之前，减少计算机的存储需求。
 找不到所需网络性能的 VM | 计算机所需的网络性能（输入/输出）超出了 Azure VM 支持。 减少计算机的网络要求。
 在指定位置找不到 VM | 在迁移之前使用不同目标位置。
-一个或多个不合适的磁盘 | 附加到 VM 的一个或多个磁盘不满足 Azure 要求。的<br/><br/> Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并根据高级托管磁盘（32 TB）的磁盘限制来评估磁盘。<br/><br/> 对于附加到 VM 的每个磁盘，请确保磁盘大小为 < 64 TB （超级 SSD 磁盘支持）。<br/><br/> 如果不是这样，请在迁移到 Azure 之前减小磁盘大小，或者在 Azure 中使用多个磁盘并将它们放在[一起](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping)，以获得更高的存储限制。 确保 Azure[托管的虚拟机磁盘](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits)支持每个磁盘所需的性能（IOPS 和吞吐量）。
+一个或多个不合适的磁盘 | 附加到 VM 的一个或多个磁盘不满足 Azure 要求。的<br/><br/> Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并根据高级托管磁盘（32 TB）的磁盘限制来评估磁盘。<br/><br/> 对于附加到 VM 的每个磁盘，请确保磁盘大小为 < 64 TB （超级 SSD 磁盘支持）。<br/><br/> 如果不是这样，请在迁移到 Azure 之前减小磁盘大小，或者在 Azure 中使用多个磁盘并将它们放在[一起](../virtual-machines/windows/premium-storage-performance.md#disk-striping)，以获得更高的存储限制。 确保 Azure[托管的虚拟机磁盘](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)支持每个磁盘所需的性能（IOPS 和吞吐量）。
 存在一个或多个不合适网络适配器。 | 在迁移之前从计算机中删除未使用的网络适配器。
 磁盘计数超过限制 | 在迁移之前从计算机中删除未使用的磁盘。
-磁盘大小超过限制 | Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并基于高级磁盘限制（32 TB）评估磁盘。<br/><br/> 但是，Azure 支持最大为 64 TB 大小的磁盘（超级 SSD 磁盘支持）。 在迁移之前将磁盘缩减为小于 64 TB，或在 Azure 中使用多个磁盘并将它们放在[一起](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping)，以获得更高的存储限制。
+磁盘大小超过限制 | Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并基于高级磁盘限制（32 TB）评估磁盘。<br/><br/> 但是，Azure 支持最大为 64 TB 大小的磁盘（超级 SSD 磁盘支持）。 在迁移之前将磁盘缩减为小于 64 TB，或在 Azure 中使用多个磁盘并将它们放在[一起](../virtual-machines/windows/premium-storage-performance.md#disk-striping)，以获得更高的存储限制。
 指定位置中磁盘不可用 | 在迁移之前请确保磁盘已在目标位置。
 不可用于指定冗余的磁盘 | 磁盘应使用在评估设置中定义的冗余存储类型（默认为 LRS）。
 由于内部错误，无法确定磁盘的适用性 | 请尝试为组创建一个新评估。
@@ -52,7 +52,7 @@ ms.locfileid: "85611367"
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>在基于导入的 AVS 评估中标记为未知的建议迁移工具
 
-对于通过 CSV 文件导入的计算机，和 AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。 [了解详细信息](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
+对于通过 CSV 文件导入的计算机，和 AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux Vm 在 Azure VM 评估中 "有条件地就绪"
 
@@ -64,7 +64,7 @@ ms.locfileid: "85611367"
 - 可以通过查看[Azure Linux 支持](https://aka.ms/migrate/selfhost/azureendorseddistros)来确定本地 VM 上运行的 Linux 操作系统是否已在 azure 中认可。
 -  验证了认可的分发后，可以忽略此警告。
 
-可以通过在 VMware Vm 上启用[应用程序发现](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)来解决这种缺口。 服务器评估使用提供的来宾凭据从虚拟机中检测到的操作系统。 在 Windows 和 Linux Vm 情况下，此操作系统数据会标识正确的操作系统信息。
+可以通过在 VMware Vm 上启用[应用程序发现](./how-to-discover-applications.md)来解决这种缺口。 服务器评估使用提供的来宾凭据从虚拟机中检测到的操作系统。 在 Windows 和 Linux Vm 情况下，此操作系统数据会标识正确的操作系统信息。
 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure Sku 大于本地的 Azure VM 评估
@@ -101,7 +101,7 @@ Azure Migrate Server 评估可能会根据评估类型建议更大的磁盘。
 - 如果 Vm 在评估期间关闭，则会发生这种情况。 当 VM 关闭时，它无法收集 VM 的性能数据。
 - 如果仅缺少内存计数器，而你要尝试评估 Hyper-v Vm，请检查是否已在这些 Vm 上启用动态内存。 Hyper-v Vm 仅有一个已知问题，在这种情况下，Azure Migrate 设备无法为未启用动态内存的 Vm 收集内存使用率数据。
 - 如果缺少任何性能计数器，Azure Migrate 服务器评估将回退到分配的内核和内存，并建议相应的 VM 大小。
-- 如果所有性能计数器都丢失，请确保满足评估的端口访问要求。 详细了解[VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access)、 [hyper-v](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access)和[物理](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access)服务器评估的端口访问要求。
+- 如果所有性能计数器都丢失，请确保满足评估的端口访问要求。 详细了解[VMware](./migrate-support-matrix-vmware.md#port-access-requirements)、 [hyper-v](./migrate-support-matrix-hyper-v.md#port-access)和[物理](./migrate-support-matrix-physical.md#port-access)服务器评估的端口访问要求。
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Azure VM 评估中是否包含操作系统许可证？
 
@@ -120,11 +120,11 @@ Azure Migrate Server 评估目前只考虑 Windows 计算机的操作系统许�
 
 ## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>物理服务器的建议 Azure VM SKU 太大
 
-如果物理服务器启用了 Hyper-v 虚拟化，则会发生这种情况。 在这些服务器上，Azure Migrate 当前同时发现物理和虚拟网络适配器。 因此，不会。 发现的网络适配器的数量高于实际值。 服务器评估选择的 Azure VM 可支持所需数量的网络适配器，这可能会导致超大 VM。 [了解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing)有关 "否" 的影响的详细信息。 大小上的网络适配器。 这是未来将解决的产品缺口。
+如果物理服务器启用了 Hyper-v 虚拟化，则会发生这种情况。 在这些服务器上，Azure Migrate 当前同时发现物理和虚拟网络适配器。 因此，不会。 发现的网络适配器的数量高于实际值。 服务器评估选择的 Azure VM 可支持所需数量的网络适配器，这可能会导致超大 VM。 [了解](./concepts-assessment-calculation.md#calculating-sizing)有关 "否" 的影响的详细信息。 大小上的网络适配器。 这是未来将解决的产品缺口。
 
 ## <a name="readiness-category-not-ready-for-my-physical-server"></a>适用于物理服务器的准备情况类别 "未就绪"
 
-如果启用了 Hyper-v 虚拟化的物理服务器，则准备情况类别可能会错误地标记为 "未就绪"。 在这些服务器上，由于产品缺口，Azure Migrate 当前同时发现物理适配器和虚拟适配器。 因此，不会。 发现的网络适配器的数量高于实际值。 在本地和基于性能的评估中，服务器评估将选择可支持所需数量的网络适配器的 Azure VM。 如果发现的网络适配器数量大于32，则最大值为 "否"。 对于 Azure Vm 支持的 Nic，该计算机将被标记为 "未就绪"。  [了解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing)有关 "否" 的影响的详细信息。 大小的 Nic。
+如果启用了 Hyper-v 虚拟化的物理服务器，则准备情况类别可能会错误地标记为 "未就绪"。 在这些服务器上，由于产品缺口，Azure Migrate 当前同时发现物理适配器和虚拟适配器。 因此，不会。 发现的网络适配器的数量高于实际值。 在本地和基于性能的评估中，服务器评估将选择可支持所需数量的网络适配器的 Azure VM。 如果发现的网络适配器数量大于32，则最大值为 "否"。 对于 Azure Vm 支持的 Nic，该计算机将被标记为 "未就绪"。  [了解](./concepts-assessment-calculation.md#calculating-sizing)有关 "否" 的影响的详细信息。 大小的 Nic。
 
 
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>已发现的 Nic 数高于物理服务器的实际 Nic 数
@@ -154,18 +154,18 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-- **MMS 代理**：查看支持的[Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)和[Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)操作系统。
+- **MMS 代理**：查看支持的[Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)和[Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)操作系统。
 - **依赖关系代理**：支持的[Windows 和 Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)操作系统。
 
 ## <a name="visualize-dependencies-for--hour"></a>可视化 > 小时的依赖项
 
 使用无代理依赖项分析时，可以可视化依赖项或将其导出到地图中，持续时间最长为30天。
 
-使用基于代理的依赖项分析时，尽管 Azure Migrate 允许您返回到上个月的特定日期，但您可以可视化依赖项的最长持续时间为一小时。 例如，你可以使用 "依赖关系映射" 中的 "持续时间" 功能来查看昨天的依赖项，但你可以仅查看一小时的时间段。 但是，可以使用 Azure Monitor 日志来查询更长时间[的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
+使用基于代理的依赖项分析时，尽管 Azure Migrate 允许您返回到上个月的特定日期，但您可以可视化依赖项的最长持续时间为一小时。 例如，你可以使用 "依赖关系映射" 中的 "持续时间" 功能来查看昨天的依赖项，但你可以仅查看一小时的时间段。 但是，可以使用 Azure Monitor 日志来查询更长时间[的依赖项数据](./how-to-create-group-machine-dependencies.md)。
 
 ## <a name="visualized-dependencies-for--10-machines"></a>可视化 > 10 计算机的依赖项
 
-在 Azure Migrate 服务器评估中，通过基于代理的依赖项分析，可以可视化最多包含10个 Vm[的组的依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 对于更大的组，我们建议将 Vm 拆分为较小的组，以可视化依赖项。
+在 Azure Migrate 服务器评估中，通过基于代理的依赖项分析，可以可视化最多包含10个 Vm[的组的依赖项](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping)。 对于更大的组，我们建议将 Vm 拆分为较小的组，以可视化依赖项。
 
 
 ## <a name="machines-show-install-agent"></a>计算机显示 "安装代理"

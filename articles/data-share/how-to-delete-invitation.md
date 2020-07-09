@@ -4,14 +4,14 @@ description: 了解如何删除 Azure 数据共享中的数据共享收件人邀
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.openlocfilehash: 97068ce652881818527557dd63a186b5d63a9363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 040e1c02913291c31865a0b2e1e03e28040b8d40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73490488"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120205"
 ---
 # <a name="how-to-delete-an-invitation-to-a-recipient-in-azure-data-share"></a>如何在 Azure 数据共享中删除收件人的邀请
 

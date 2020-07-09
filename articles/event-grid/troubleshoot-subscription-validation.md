@@ -1,17 +1,14 @@
 ---
 title: Azure 事件网格 - 订阅验证疑难解答
 description: 本文介绍如何解决订阅验证问题。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.author: spelluru
-ms.openlocfilehash: f292d70eaaca29e714ea35b4f61a141b2d5cd2b6
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 07/07/2020
+ms.openlocfilehash: 48844859013507ab684ef8879b7b85dd6b6fe8cd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778720"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118981"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>排查 Azure 事件网格订阅验证问题
 本文介绍有关如何解决订阅验证问题的信息。 
@@ -66,16 +63,16 @@ curl -X POST -d '[{"id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66","topic": "/subsc
 
 ![通过使用 Postman 实现的云事件订阅验证](./media/troubleshoot-subscription-validation/cloud-event-subscription-validation-postman.png)
 
-使用 HTTP OPTIONS 方法执行云事件验证。 若要详细了解 webhook 云事件验证，请参阅[云事件的终结点验证](webhook-event-delivery.md#endpoint-validation-with-event-grid-events)。
+使用 HTTP OPTIONS 方法执行云事件验证****。 若要详细了解 webhook 云事件验证，请参阅[云事件的终结点验证](webhook-event-delivery.md#endpoint-validation-with-event-grid-events)。
 
 ## <a name="error-code-403"></a>错误代码:403
 如果 webhook 在响应中返回 403（禁止访问），请检查是否在 webhook 前面配置了 Azure 应用程序网关或 Web 应用程序防火墙。 如果是这样，需要禁用以下防火墙规则，并再次执行 HTTP POST：
 
   - 920300（请求缺少 Accept 标头，我们可解决此问题）
-  - 942430（受限 SQL 字符异常情况检测 (args)：特殊字符数已超出 (12)）
+  - 942430（受限 SQL 字符异常情况检测 (args)：已超出特殊字符数 (12)）
   - 920230（检测到多个 URL 编码）
   - 942130（SQL 注入攻击：检测到 SQL 同义反复。）
   - 931130（可能的远程文件包含 (RFI) 攻击 = 域外引用/链接）
 
 ## <a name="next-steps"></a>后续步骤
-如需更多帮助，请将你的问题发布到 [Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-eventgrid)或开立[支持票证](https://azure.microsoft.com/support/options/)。 
+如需更多帮助，请在 [Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-eventgrid)中发布问题，或开具[支持票证](https://azure.microsoft.com/support/options/)。 

@@ -1,17 +1,18 @@
 ---
 title: Azure 委派资源管理
-description: 服务提供商可借助托管服务产品向 Azure 市场中的客户销售资源管理服务。
+description: Azure 委派的资源管理是 Azure Lighthouse 的关键部分，允许服务提供商以灵活性和精度在大规模管理委派的资源。
 ms.date: 05/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbe3c28cdcd252755b8350eaa5d2e72044981174
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219074"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120885"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure 委派资源管理
 
-Azure 委派资源管理是 Azure Lighthouse 的关键组成部分之一。 借助 Azure 委托资源管理，服务提供商可以简化客户参与和载入体验，同时灵活精确地管理大规模委托资源。
+Azure 委托资源管理是[Azure Lighthouse](../overview.md)的关键组件之一。 借助 Azure 委托资源管理，服务提供商可以简化客户参与和载入体验，同时灵活精确地管理大规模委托资源。
 
 ## <a name="what-is-azure-delegated-resource-management"></a>什么是 Azure 委派资源管理？
 
@@ -24,7 +25,7 @@ Azure 委派资源管理是 Azure Lighthouse 的关键组成部分之一。 借�
 
 [跨租户管理体验](cross-tenant-management-experience.md)有助于你使用 Azure Policy、Azure 安全中心等 Azure 管理服务更有效率地工作。 在活动日志中跟踪所有服务提供程序活动，该活动存储在客户的租户中（并且可以由管理租户中的用户查看）。 这意味着客户和服务提供商可以轻松地识别与任何更改关联的用户。
 
-将客户加入 Azure 委派的资源管理时，他们将有权访问 "Azure 门户中的" 新建**服务提供商**"页面，用户可在其中[确认和管理其产品/服务、服务提供商和委派的资源](../how-to/view-manage-service-providers.md)。 如果客户想撤销服务提供商的访问权限，则可在此处随时撤销。
+将客户加入 Azure 委派的资源管理时，他们将有权访问 Azure 门户中的**服务提供商**页面，用户可在其中[确认和管理其产品/服务、服务提供商和委派的资源](../how-to/view-manage-service-providers.md)。 如果客户想撤销服务提供商的访问权限，则可在此处随时撤销。
 
 你可以将[新的托管服务产品类型发布到 Azure Marketplace](../how-to/publish-managed-services-offers.md) ，以便轻松地将客户加入 azure 委托资源管理。 或者，可以[通过部署 Azure 资源管理器模板来完成载入过程](../how-to/onboard-customer.md)。
 

@@ -1,18 +1,14 @@
 ---
 title: WebHook 事件传送
 description: 本文介绍如何在使用 Webhook 时进行 WebHook 事件传送和终结点验证。
-services: event-grid
-author: femila
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.author: femila
-ms.openlocfilehash: cf298156fe7a347799afced8bb065cb3a02bc49a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: b616c82092ad896da82d0f98f37e3c45f3ba1014
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558439"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118947"
 ---
 # <a name="webhook-event-delivery"></a>Webhook 事件传送
 Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，事件网格服务会向已配置的终结点 POST HTTP 请求，并在请求正文中包含该事件。

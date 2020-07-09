@@ -1,18 +1,18 @@
 ---
 title: Microsoft 商业市场发布者常见问题解答
 description: 获取有关 Azure 市场和 Microsoft AppSource 的常见问题的解答。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 985a8ac83d48de11ac134bc9a942c766e4ff5d32
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad4e80c98097955703e4a6fb3c64e93a338f2720
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963591"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121157"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>有关 Microsoft 商业市场的常见问题
 

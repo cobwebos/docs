@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 44923a124b864083b1badfc617ce0303be66a10e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84985347"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119202"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>详细步骤：创建和管理 Azure 中的 Linux VM 用于身份验证的 SSH 密钥 
 使用安全外壳 (SSH) 密钥对，可在 Azure 上创建默认使用 SSH 密钥进行身份验证的 Linux 虚拟机，从而无需密码即可登录。 使用 Azure 门户、Azure CLI、资源管理器模板或其他工具创建的 VM 可在部署中包含 SSH 公钥，为 SSH 连接设置 SSH 密钥身份验证。 
@@ -41,7 +41,7 @@ SSH 密钥默认保留在 `~/.ssh` 目录中。  如果没有 `~/.ssh` 目录，
 
 ### <a name="basic-example"></a>基本示例
 
-以下 `ssh-keygen` 命令默认在 `~/.ssh` 目录中生成 2048 位 SSH RSA 公钥和私钥文件。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。
+以下 `ssh-keygen` 命令默认在目录中生成4096位 SSH RSA 公钥和私钥文件 `~/.ssh` 。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096

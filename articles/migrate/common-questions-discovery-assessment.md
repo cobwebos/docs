@@ -3,12 +3,12 @@ title: Azure Migrate 中的发现、评估和依赖项分析问题
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7d42de52d35d5a3c5e9a54673d8cd933fbee04aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610296"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118828"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>发现、评估和依赖关系分析-常见问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "85610296"
 
 - 若要评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)以迁移到 AZURE vm，请使用**Azure VM 评估**。 [了解详细信息](concepts-assessment-calculation.md)
 
-- 若要评估使用此评估类型迁移到[Azure VMware 解决方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的本地[VMware vm](how-to-set-up-appliance-vmware.md) ，请使用**Azure VMware 解决方案（avs）** 评估。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
+- 若要评估使用此评估类型迁移到[Azure VMware 解决方案（AVS）](../azure-vmware/introduction.md)的本地[VMware vm](how-to-set-up-appliance-vmware.md) ，请使用**Azure VMware 解决方案（avs）** 评估。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - 仅可将一个公用组用于 VMware 计算机来运行这两种类型的评估。 请注意，如果你是首次在 Azure Migrate 中运行 AVS 评估，则建议创建一组新的 VMware 虚拟机。
 
@@ -113,7 +113,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>为什么基于导入的 AVS 评估中建议的迁移工具标记为未知？
 
-对于通过 CSV 文件导入的计算机，AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。 [了解详细信息](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
+对于通过 CSV 文件导入的计算机，AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
 
 
 ## <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
@@ -130,9 +130,9 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 要求 | **无代理** | **基于代理**
 --- | --- | ---
 支持 | 此选项目前为预览版，仅适用于 VMware Vm。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支持的操作系统。 | 公开上市（GA）。
-Agent | 无需在要交叉检查的计算机上安装代理。 | 要在要分析的每台本地计算机上安装的代理： [Microsoft Monitoring agent （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)和[依赖项代理](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
+Agent | 无需在要交叉检查的计算机上安装代理。 | 要在要分析的每台本地计算机上安装的代理： [Microsoft Monitoring agent （MMA）](../azure-monitor/platform/agent-windows.md)和[依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
 先决条件 | [查看](concepts-dependency-visualization.md#agentless-analysis)先决条件和部署要求。 | [查看](concepts-dependency-visualization.md#agent-based-analysis)先决条件和部署要求。
-Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中使用[服务映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解决方案来进行依赖关系可视化。 [了解详细信息](concepts-dependency-visualization.md#agent-based-analysis)。
+Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中使用[服务映射](../azure-monitor/insights/service-map.md)解决方案来进行依赖关系可视化。 [了解详细信息](concepts-dependency-visualization.md#agent-based-analysis)。
 工作原理 | 捕获启用了依赖关系可视化的计算机上的 TCP 连接数据。 发现后，它会按五分钟的间隔收集数据。 | 计算机上安装的服务映射代理收集有关每个进程的 TCP 进程和入站/出站连接的数据。
 数据 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。<br/><br/> 为 Log Analytics 查询收集和提供连接、延迟和数据传输信息的数目。 
 可视化 | 可在一小时到30天内查看单服务器的依赖关系图。 | 单个服务器的依赖关系图。<br/><br/> 仅可在一小时内查看地图。<br/><br/> 一组服务器的依赖关系图。<br/><br/> 在映射视图中添加和删除组中的服务器。
@@ -151,7 +151,7 @@ Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](https://
 
 若要使用基于代理的依赖项可视化，请在要评估的每台本地计算机上下载并安装代理：
 
-- [Microsoft Monitoring Agent （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)
+- [Microsoft Monitoring Agent （MMA）](../azure-monitor/platform/agent-windows.md)
 - [依赖关系代理](../azure-monitor/platform/agents-overview.md#dependency-agent)
 - 如果计算机未建立 internet 连接，请下载并在其上安装 Log Analytics 网关。
 
@@ -163,7 +163,7 @@ Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](https://
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>是否可以导出依赖项可视化报表？
 
-不能，不能导出基于代理的可视化对象中的依赖关系可视化报告。 但 Azure Migrate 使用服务映射，你可以使用[服务映射 REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections)来检索 JSON 格式的依赖项。
+不能，不能导出基于代理的可视化对象中的依赖关系可视化报告。 但 Azure Migrate 使用服务映射，你可以使用[服务映射 REST API](/rest/api/servicemap/machines/listconnections)来检索 JSON 格式的依赖项。
 
 ## <a name="can-i-automate-agent-installation"></a>我可以自动安装代理吗？
 
@@ -175,18 +175,18 @@ Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](https://
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA 支持哪些操作系统？
 
-- 查看[MMA 支持的 Windows 操作系统](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)的列表。
-- 查看[MMA 支持的 Linux 操作系统](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)的列表。
+- 查看[MMA 支持的 Windows 操作系统](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)的列表。
+- 查看[MMA 支持的 Linux 操作系统](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)的列表。
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>是否可将依赖项显示超过一小时？
 
-对于基于代理的可视化效果，可将依赖项可视化最多一小时。 您可以返回到历史记录中的某一特定日期，但可视化效果的最大持续时间为一小时。 例如，你可以在依赖关系映射中使用时间段来查看昨天的依赖项，但你只能查看一个小时窗口的依赖关系。 不过，您可以使用 Azure Monitor 日志来[查询依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)的持续时间较长。
+对于基于代理的可视化效果，可将依赖项可视化最多一小时。 您可以返回到历史记录中的某一特定日期，但可视化效果的最大持续时间为一小时。 例如，你可以在依赖关系映射中使用时间段来查看昨天的依赖项，但你只能查看一个小时窗口的依赖关系。 不过，您可以使用 Azure Monitor 日志来[查询依赖项数据](./how-to-create-group-machine-dependencies.md)的持续时间较长。
 
 对于无代理可视化，你可以查看单个服务器的依赖关系映射，持续时间为1小时到30天之间。
 
 ## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>能否直观显示超过10个 Vm 的组的依赖项？
 
-可以可视化最多为10个 Vm 的组的[依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果组具有10个以上的 Vm，则建议将组拆分为较小的组，然后将依赖项可视化。
+可以可视化最多为10个 Vm 的组的[依赖项](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping)。 如果组具有10个以上的 Vm，则建议将组拆分为较小的组，然后将依赖项可视化。
 
 ## <a name="next-steps"></a>后续步骤
 

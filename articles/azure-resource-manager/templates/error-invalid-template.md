@@ -3,11 +3,12 @@ title: 无效模板错误
 description: 说明如何在部署 Azure 资源管理器模板时解决无效模板错误。
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324056"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118879"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解决无效模板错误
 
@@ -47,7 +48,7 @@ Message=Deployment template validation failed
 
 如果未提供匹配的语法，该模板会生成一个不同于所需的值。
 
-收到此类错误时，请仔细检查表达式语法。 考虑使用 [Visual Studio](create-visual-studio-deployment-project.md) 或 [Visual Studio Code](use-vs-code-to-create-template.md) 等 JSON 编辑器，此类编辑器在出现语法错误时可以发出警告。
+收到此类错误时，请仔细检查表达式语法。 考虑使用 [Visual Studio](create-visual-studio-deployment-project.md) 或 [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) 等 JSON 编辑器，此类编辑器在出现语法错误时可以发出警告。
 
 <a id="incorrect-segment-lengths"></a>
 

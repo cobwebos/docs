@@ -1,18 +1,18 @@
 ---
 title: 在 Microsoft 商业市场中创建托管服务产品/服务
 description: 如何使用合作伙伴中心的商业市场门户创建新的托管服务产品/服务，以在 Azure 市场中列出。
-author: JnHs
-ms.author: jenhayes
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 3099c73849a63ebf490d026db95cedfd1278d735
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+author: JnHs
+ms.author: jenhayes
+ms.date: 07/07/2020
+ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957573"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121786"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
@@ -85,8 +85,8 @@ ms.locfileid: "85957573"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
-2. 描述
+1. 标题
+2. 说明
 3. 有用链接
 4. 屏幕截图
 
@@ -230,7 +230,7 @@ ms.locfileid: "85957573"
 
 - **Azure AD 对象 ID**：要向其授予客户资源特定权限（如角色定义所定义）的用户、用户组或应用程序的 Azure AD 标识符。
 - **Azure AD 对象显示名称**：一个易记名称，可帮助客户了解此授权的目的。 在委派资源时，客户将看到此名称。
-- **角色定义**：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限。 有关这些角色的说明，请参阅[内置角色](../../role-based-access-control/built-in-roles.md)和 [Azure 委派资源管理的角色支持](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)。
+- **角色定义**：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限。 有关这些角色的说明，请参阅[Azure Lighthouse 的](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)[内置角色](../../role-based-access-control/built-in-roles.md)和角色支持。
   > [!NOTE]
   > 将适用的新内置角色添加到 Azure 后，它们将在此处可用，但在它们显示前可能会有一些延迟。
 - **可分配角色**：仅当在“角色定义”中为此授权选择了“用户访问管理员”时，此选项才会显示。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些角色分配给[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](../../lighthouse/how-to/deploy-policy-remediation.md)所必需的。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。

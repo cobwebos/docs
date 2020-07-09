@@ -1,19 +1,14 @@
 ---
 title: 配额和限制 - Azure 事件网格 | Microsoft Docs
 description: 本文介绍了 Azure 事件网格的限制和配额。 例如，主题的订阅数、每个订阅的自定义主题数等。
-services: event-grid
-author: spelluru
-editor: ''
-ms.service: event-grid
-ms.devlang: na
 ms.topic: reference
-ms.date: 05/12/2020
-ms.author: shvija
-ms.openlocfilehash: decfc6659ea38ea35ab41615ff5077492cfa03b5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/07/2020
+ms.openlocfilehash: 78fb18f579eb1fa0c032b72c6d32bf56a7f0c8f4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595636"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120426"
 ---
 # <a name="azure-event-grid-quotas-and-limits"></a>Azure 事件网格的配额和限制
 本文列出了 Azure 事件网格的配额和限制。 

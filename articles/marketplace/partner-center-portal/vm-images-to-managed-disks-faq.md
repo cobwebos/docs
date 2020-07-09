@@ -1,18 +1,16 @@
 ---
 title: 我们正在将虚拟机（VM）映像迁移到 Azure Marketplace 中的托管磁盘存储
 description: 若要为新的 marketplace 特性和功能提供更快、更可靠的存储和支持，我们要将 marketplace VM 映像迁移到托管磁盘存储。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 17b418ab82cc88b4368efe247b06c0c8bbb27453
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d64bb176f79a0c15c15e425df18a22c9c4f423e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80285106"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120613"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>我们正在将 Azure Marketplace 中的虚拟机（VM）映像迁移到托管磁盘存储
 
@@ -38,11 +36,11 @@ VM 映像的用户将不会遇到中断。
 
 ### <a name="do-i-need-to-take-any-action"></a>是否需要执行任何操作？
 
-否。 发布者或使用者不需要执行任何操作。
+不能。 发布者或使用者不需要执行任何操作。
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>是否必须将系统更新为以不同方式调用云门户 Api，然后再将其移动到托管磁盘存储？
 
-否。 你的现有 API 调用将继续工作。
+不能。 你的现有 API 调用将继续工作。
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>是否所有 VM 映像都同时移动到托管磁盘？
 

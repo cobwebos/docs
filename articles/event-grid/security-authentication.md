@@ -1,17 +1,14 @@
 ---
 title: 对事件处理程序的事件传递进行身份验证（Azure 事件网格）
 description: 本文介绍了在 Azure 事件网格中验证传递到事件处理程序的不同方式。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 46b1aa500f00046dd4d6e318b270982e8b747a79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: d48930ac9cfdd1ecd3e7d6c64067d5389323f8bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412815"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119933"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>对事件处理程序的事件传递进行身份验证（Azure 事件网格）
 本文介绍了如何对事件处理程序的事件传递进行身份验证。 它还演示了如何使用 Azure Active Directory （Azure AD）或共享机密来保护用于从事件网格接收事件的 webhook 终结点。

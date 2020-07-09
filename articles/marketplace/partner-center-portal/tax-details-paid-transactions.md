@@ -2,15 +2,14 @@
 title: Microsoft 商业市场的税务详细信息
 Description: 若要了解选择价格时的税务注意事项、实际付款和税务责任，请参阅下表中的版本所在国家/地区。
 ms.topic: conceptual
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.date: 05/04/2020
-ms.openlocfilehash: c58f66ac06cca7146a28813406e74932046f6ee4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0949bd1234b28a9683e194d3b3f08511f7f17a26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120681"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>商业市场发布者的税务详细信息
 

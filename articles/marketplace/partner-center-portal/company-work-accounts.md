@@ -1,18 +1,18 @@
 ---
 title: 公司工作帐户和合作伙伴中心
 description: 如何检查你的公司是否有设置了 Microsoft 的工作帐户、创建新的工作帐户，或设置了多个工作帐户以与合作伙伴中心一起使用。
-author: dsindona
-ms.author: parthp
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 27a51a1203b0c25474bdb292c467a40b67309757
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964424"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119746"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>公司工作帐户和合作伙伴中心
 

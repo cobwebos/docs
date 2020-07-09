@@ -1,18 +1,14 @@
 ---
 title: Azure 事件网格中的系统主题
 description: 介绍 Azure 事件网格中的系统主题。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 190c6ccb13a0853913c96ac5d2d3f5faf4594433
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887916"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119916"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件网格中的系统主题
 事件网格中的 "系统" 主题表示由 azure 服务（如 Azure 存储和 Azure 事件中心）发布的一个或多个事件。 例如，系统主题可能表示**所有 blob 事件**，或仅为**特定存储帐户**发布的 blob 已**创建**和**blob 删除**事件。 在此示例中，当某个 blob 上传到存储帐户时，Azure 存储服务会将一个**blob 创建**事件发布到事件网格中的系统主题，然后将该事件转发给接收并处理该事件的主题[订户](event-handlers.md)。 

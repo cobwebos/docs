@@ -1,17 +1,18 @@
 ---
 title: 将帐户从云合作伙伴门户迁移到 Microsoft 商业市场
 description: 了解如何将帐户从云合作伙伴门户迁移到 Microsoft Azure 商业市场中的合作伙伴中心
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: fb6fe624248a9098f37b94773b7162052b94b5ae
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 24ce0ff2fa5e0b023f2a0d6b92e657299518c044
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800399"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120494"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>如何将帐户从云合作伙伴门户迁移到合作伙伴中心
 

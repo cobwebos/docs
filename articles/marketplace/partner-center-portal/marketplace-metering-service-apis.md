@@ -1,18 +1,16 @@
 ---
 title: 计量服务 API - Microsoft 商业市场
 description: 通过使用事件 API，可以发出 Microsoft AppSource 和 Azure 市场中 SaaS 产品/服务的使用事件。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 7bc5dc0e21bc9218c0e67b4e8e96299d73628e97
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8a6636b0fc6c3e67ec171d738efb3fd8a93de30c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963166"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120766"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace 计费 Api
 
