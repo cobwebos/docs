@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043234"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107693"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>使用 Azure Migrate 构建迁移计划
 
@@ -24,7 +24,7 @@ ms.locfileid: "86043234"
 
 ## <a name="define-the-goals-of-cloud-migration"></a>定义云迁移的目标
 
-构建迁移计划之前，请务必了解并评估要迁移到云的[动机](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/motivations)，从而帮助生成更成功的业务成果。 作为[Azure 的云采用框架](https://docs.microsoft.com/azure/cloud-adoption-framework)说明，可能存在适用于你的业务的不同触发器和迁移方法：  
+构建迁移计划之前，请务必了解并评估要迁移到云的[动机](/azure/cloud-adoption-framework/strategy/motivations)，从而帮助生成更成功的业务成果。 作为[Azure 的云采用框架](/azure/cloud-adoption-framework)说明，可能存在适用于你的业务的不同触发器和迁移方法：  
 
 **关键业务事件** | **迁移结果**
 --- | ---
@@ -147,7 +147,7 @@ ms.locfileid: "86043234"
 
 - 查看建议的 Azure 权限以及你的服务器/数据库访问角色和迁移所需的权限模型。
 
-- 准备你的组织，确保员工与数字转换保持一致。 坚实的培训基础对于成功的组织变化非常重要。 查看 [Microsoft Learn](https://docs.microsoft.com/learn/azure/?ocid=CM_Discovery_Checklist_PDF)上提供的免费培训，其中包括有关 Azure 基础、解决方案体系结构和安全性的课程。 鼓励你的团队也可以探索 [Azure 认证](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)   。  
+- 准备你的组织，确保员工与数字转换保持一致。 坚实的培训基础对于成功的组织变化非常重要。 查看 [Microsoft Learn](/learn/azure/?ocid=CM_Discovery_Checklist_PDF)上提供的免费培训，其中包括有关 Azure 基础、解决方案体系结构和安全性的课程。 鼓励你的团队也可以探索 [Azure 认证](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)   。  
 
 - 如果需要，获取实现支持。 许多组织选择外部帮助来支持云迁移。 若要使用个性化协助快速、自信地迁移到 Azure，请考虑使用 [Azure 专家托管服务提供商](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   或 [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF)。  
 
@@ -164,6 +164,6 @@ ms.locfileid: "86043234"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 Azure 云采用框架中调查 [云迁移旅程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)   。
+- 在 Azure 云采用框架中调查 [云迁移旅程](/azure/architecture/cloud-adoption/getting-started/migrate)   。
 - Azure Migrate[入门](https://youtu.be/wFfq3YPxYHE)。
 - 为[VMware vm](tutorial-assess-vmware.md)或[hyper-v vm](tutorial-assess-hyper-v.md)创建评估。

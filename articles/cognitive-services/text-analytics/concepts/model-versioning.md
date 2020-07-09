@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/21/2020
 ms.author: aahi
-ms.openlocfilehash: 9431ff862dd987a1a806087053014e7c880bf801
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: c9c598d385768e604d9b42e3ea055629e6ae2866
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143300"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108543"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>文本分析 API 中的模型版本控制
 
-使用版本3的文本分析 API 可以选择用于数据的模型版本。 使用可选 `model-version` 参数在 API 请求中选择模型的版本。 例如： `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01` 。 如果未指定此参数，则 API 将默认为最新稳定版本。 
+使用版本3的文本分析 API 可以选择用于数据的模型版本。 使用可选 `model-version` 参数在 API 请求中选择模型的版本。 例如：`<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01`。 如果未指定此参数，则 API 将默认为最新稳定版本。 
 
 ## <a name="available-versions"></a>可用版本
 
@@ -37,6 +37,19 @@ ms.locfileid: "84143300"
 
 
 可在[新增功能](../whats-new.md)中找到有关这些模型的更新的详细信息。
+
+## <a name="text-analytics-for-health"></a>运行状况文本分析
+
+[运行状况](../how-tos/text-analytics-for-health.md)容器的文本分析使用不同于上述 API 终结点的模型版本控制。  请注意，每个容器映像仅有一个可用的模型版本。
+
+| 终结点                        | 容器映像标记                     | 模型版本 |
+|---------------------------------|-----------------------------------------|---------------|
+| `/domains/health`               | `1.1.012640001-amd64-preview`或最新 | `2020-05-08`  |
+| `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
+| `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

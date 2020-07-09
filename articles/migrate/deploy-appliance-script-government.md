@@ -3,15 +3,16 @@ title: 在 Azure 政府版中设置 Azure Migrate 设备
 description: 了解如何在 Azure 政府版中设置 Azure Migrate 设备
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ebc882646b5ff3f62ddddf91cffc85cb5e0da6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052480"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109971"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>在 Azure 政府版中设置设备 
 
-按照本文中的步骤，在 Azure 政府版云中为 VMware Vm、Hyper-v Vm 和物理服务器部署[Azure Migrate 的设备](deploy-appliance.md)。 运行脚本来创建设备，并验证它是否可以连接到 Azure。 如果要在公有云中设置设备，请遵循[此文](deploy-appliance-script.md)。
+按照本文中的步骤，在 Azure 政府版云中为 VMware Vm、Hyper-v Vm 和物理服务器部署[Azure Migrate 的设备](./migrate-appliance-architecture.md)。 运行脚本来创建设备，并验证它是否可以连接到 Azure。 如果要在公有云中设置设备，请遵循[此文](deploy-appliance-script.md)。
 
 
 > [!NOTE]
@@ -44,7 +45,7 @@ ms.locfileid: "85052480"
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
 3. 验证最新的设备版本和哈希值：
 
@@ -96,7 +97,7 @@ ms.locfileid: "85052480"
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
 3. 验证最新的设备版本和哈希值：
 
@@ -149,7 +150,7 @@ ms.locfileid: "85052480"
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
 3. 验证最新的设备版本和哈希值：
 

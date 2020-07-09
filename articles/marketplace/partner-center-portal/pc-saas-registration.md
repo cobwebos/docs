@@ -1,18 +1,16 @@
 ---
 title: 注册 SaaS 应用程序-Azure Marketplace
 description: 了解如何使用 Azure 门户注册 SaaS 应用程序并接收 Azure Active Directory 的安全令牌。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.author: dsindona
-ms.openlocfilehash: 630dceedcac36cf6d37d54612d73fabe676d74f6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963710"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109257"
 ---
 # <a name="register-a-saas-application"></a>注册 SaaS 应用程序
 
@@ -68,19 +66,19 @@ Azure Marketplace 不会对你的 SaaS 服务用于最终用户的身份验证�
 
 ##### <a name="uri-parameter"></a>*URI 参数*
 
-|  参数名称    |  必需         |  描述 |
+|  参数名称    |  必选         |  描述 |
 |  ---------------   |  ---------------  | ------------ |
 |  `tenantId`        |  True      |  已注册 AAD 应用程序的租户 ID。 |
 
 ##### <a name="request-header"></a>请求标头
 
-|  标头名称       |  必需         |  描述 |
+|  标头名称       |  必选         |  描述 |
 |  ---------------   |  ---------------  | ------------ |
 |  `content-type`    |  True      |  与请求关联的内容类型。 默认值是 `application/x-www-form-urlencoded`。 |
 
 ##### <a name="request-body"></a>*请求正文*
 
-|  属性名称     |  必需         |  描述 |
+|  属性名称     |  必选         |  描述 |
 |  ---------------   |  ---------------  | ------------ |
 |  `grant-type`      |  True      |  授权类型。 改用 `"client_credentials"` |
 |  `client_id`       |  True      |  与 Azure AD 应用关联的客户端/应用标识符。 |

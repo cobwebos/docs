@@ -9,11 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 9c5b1d38e32ff0a0d0954064c8a2511d898d16e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462917"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109444"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
 
@@ -45,7 +46,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="create-a-container"></a>创建容器
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
+`hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
 * 将 `<container-name>` 占位符替换为你要为容器指定的名称。
 
@@ -53,7 +54,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="get-a-list-of-files-or-directories"></a>获取文件或目录列表
 
-    hdfs dfs -ls <path>
+`hdfs dfs -ls <path>`
 
 将 `<path>` 占位符替换为容器或容器文件夹的 URI。
 
@@ -61,7 +62,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="create-a-directory"></a>创建目录
 
-    hdfs dfs -mkdir [-p] <path>
+`hdfs dfs -mkdir [-p] <path>`
 
 将 `<path>` 占位符替换为根容器名称或容器中的文件夹。
 
@@ -69,7 +70,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="delete-a-file-or-directory"></a>删除文件或目录
 
-    hdfs dfs -rm <path>
+`hdfs dfs -rm <path>`
 
 将 `<path>` 占位符替换为要删除的文件或文件夹的 URI。
 
@@ -77,7 +78,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>显示文件和目录的访问控制列表 (ACL)
 
-    hdfs dfs -getfacl [-R] <path>
+`hdfs dfs -getfacl [-R] <path>`
 
 示例：
 
@@ -87,7 +88,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="set-acls-of-files-and-directories"></a>设置文件和目录的 ACL
 
-    hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
+`hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]`
 
 示例：
 
@@ -97,19 +98,19 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="change-the-owner-of-files"></a>更改文件的所有者
 
-    hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
+`hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>`
 
 请参阅 [chown](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)
 
 ## <a name="change-group-association-of-files"></a>更改文件的组关联
 
-    hdfs dfs -chgrp [-R] <group> <URI>
+`hdfs dfs -chgrp [-R] <group> <URI>`
 
 请参阅 [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
 
 ## <a name="change-the-permissions-of-files"></a>更改文件的权限
 
-    hdfs dfs -chmod [-R] <mode> <URI>
+`hdfs dfs -chmod [-R] <mode> <URI>`
 
 请参阅 [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod)
 

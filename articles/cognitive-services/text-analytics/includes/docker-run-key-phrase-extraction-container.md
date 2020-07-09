@@ -9,14 +9,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 7c7344b7cc9253ef761061b769644a363492d4bd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5929a34ea8fbcbb89f3738ac2a10b14353324b6c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588360"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108891"
 ---
-若要运行*关键短语提取*容器，请执行以下 `docker run` 命令。
+若要运行*关键短语提取*容器，请执行以下 `docker run` 命令。 将下面的占位符替换为你自己的值：
+
+| 占位符 | Value | 格式或示例 |
+|-------------|-------|---|
+| **{API_KEY}** | 文本分析资源的键。 可以在资源的 "**密钥和终结点**" 页上的 "Azure 门户中找到它。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | 用于访问文本分析 API 的终结点。 可以在资源的 "**密钥和终结点**" 页上的 "Azure 门户中找到它。 | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
+
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

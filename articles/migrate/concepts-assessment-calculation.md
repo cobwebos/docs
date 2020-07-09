@@ -3,12 +3,12 @@ title: Azure Migrate 服务器评估中的 Azure VM 评估
 description: 了解 Azure Migrate 服务器评估中的评估
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 33051fbcfb792d3fa9734a818d293775486de647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52cdd6bb9cb062b5c36e10c67524fa4d266ca6e0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549954"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107995"
 ---
 # <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate 中的 Azure VM 评估：服务器评估
 
@@ -28,7 +28,7 @@ ms.locfileid: "85549954"
 **评估类型** | **详细信息**
 --- | --- 
 Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可以使用此评估类型评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)，以便迁移到 Azure。
-**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。[了解更多](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](../azure-vmware/introduction.md)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。[了解更多](concepts-azure-vmware-solution-assessment-calculation.md)
 
 使用服务器评估创建的评估是数据的时间点快照。 服务器评估中的 Azure VM 评估提供两个大小调整条件选项：
 
@@ -148,11 +148,11 @@ Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><
 
 对于 Azure VM 评估，服务器评估会查看本地 VM 的以下属性，以确定它是否可以在 Azure Vm 上运行。
 
-Property | 详细信息 | Azure 迁移就绪性状态
+properties | 详细信息 | Azure 迁移就绪性状态
 --- | --- | ---
 **启动类型** | Azure 支持启动类型为 BIOS 而不是 UEFI 的 Vm。 | 如果启动类型为 UEFI，则有条件地准备就绪
 **核心数** | 每台计算机的核心数不得超过128个，这是 Azure VM 支持的最大数量。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果评估设置指定了舒适的因素，则使用的内核数乘以舒适系数。<br/><br/> 如果没有性能历史记录，Azure Migrate 将使用已分配的内核，而不应用舒适因子。 | 如果内核数在限制范围内，则已准备就绪
-**RAM** | 每台计算机都必须具有超过 3892 GB 的 RAM，这是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支持的最大大小。 [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会将使用的 RAM 视为比较。 如果指定了舒适的因素，则使用的 RAM 将乘以舒适系数。<br/><br/> 如果没有历史记录，则使用分配的 RAM，而不应用舒适因子。<br/><br/> | 如果 RAM 量在限制范围内，则已准备就绪
+**RAM** | 每台计算机都必须具有超过 3892 GB 的 RAM，这是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支持的最大大小。 [了解详细信息](../virtual-machines/windows/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会将使用的 RAM 视为比较。 如果指定了舒适的因素，则使用的 RAM 将乘以舒适系数。<br/><br/> 如果没有历史记录，则使用分配的 RAM，而不应用舒适因子。<br/><br/> | 如果 RAM 量在限制范围内，则已准备就绪
 **存储磁盘** | 分配的磁盘大小不得超过 32 TB。 尽管 Azure 支持 64 TB 磁盘和 Azure 超级 SSD 磁盘，Azure Migrate：服务器评估目前检查 32 TB 作为磁盘大小限制，因为它尚不支持超级 SSD。 <br/><br/> 附加到计算机的磁盘数（包括 OS 磁盘）必须是65或更少。 | 如果磁盘大小和数量处于限制范围内，则已准备就绪
 **网络** | 计算机上必须附加超过32个网络接口（Nic）。 | 如果 Nic 数在限制范围内，则已准备就绪
 
@@ -161,7 +161,7 @@ Property | 详细信息 | Azure 迁移就绪性状态
 对于 Azure VM 评估以及查看 VM 属性，服务器评估会查看计算机的来宾操作系统，以确定它是否可在 Azure 上运行。
 
 > [!NOTE]
-> 为了处理 VMware Vm 的来宾分析，服务器评估使用在 vCenter Server 中为 VM 指定的操作系统。 但 vCenter Server 不提供 Linux VM 操作系统的内核版本。 若要发现版本，需要设置[应用程序发现](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)。 然后，设备会使用在设置应用发现时指定的来宾凭据来发现版本信息。
+> 为了处理 VMware Vm 的来宾分析，服务器评估使用在 vCenter Server 中为 VM 指定的操作系统。 但 vCenter Server 不提供 Linux VM 操作系统的内核版本。 若要发现版本，需要设置[应用程序发现](./how-to-discover-applications.md)。 然后，设备会使用在设置应用发现时指定的来宾凭据来发现版本信息。
 
 
 服务器评估使用以下逻辑来识别基于操作系统的 Azure 准备情况：
@@ -175,8 +175,8 @@ Windows Server 2008 R2 和所有 SP | Azure 提供完全支持。| 适用于 Azu
 Windows Server 2008（32 位和 64 位） | Azure 提供完全支持。 | 适用于 Azure。
 Windows Server 2003 和 Windows Server 2003 R2 | 这些操作系统已超过其支持终止日期，需要[自定义支持协议（CSA）](https://aka.ms/WSosstatement)以支持 Azure 中的支持。 | Azure 有条件的就绪。 请考虑在迁移到 Azure 之前升级 OS。
 Windows 2000、Windows 98、Windows 95、Windows NT、Windows 3.1 和 MS-DOS | 这些操作系统已超过其支持结束日期。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前升级 OS。
-Windows 7、Windows 8 和 Windows 10 | Azure[仅支持 Visual Studio 订阅。](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Azure 有条件的就绪。
-Windows 10 专业版 | Azure 提供了对[多租户托管权限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)的支持。 | Azure 有条件的就绪。
+Windows 7、Windows 8 和 Windows 10 | Azure[仅支持 Visual Studio 订阅。](../virtual-machines/windows/client-images.md) | Azure 有条件的就绪。
+Windows 10 专业版 | Azure 提供了对[多租户托管权限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)的支持。 | Azure 有条件的就绪。
 Windows Vista 和 Windows XP Professional | 这些操作系统已超过其支持结束日期。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前升级 OS。
 Linux | 请参阅 Azure 予以认可的[Linux 操作系统](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 操作系统可能会在 Azure 中启动。 但建议你在迁移到 Azure 之前，将 OS 升级到认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本未认可，则有条件地准备就绪。
 Oracle Solaris、Apple macOS 和 FreeBSD 等其他操作系统 | Azure 不认可这些操作系统。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前安装受支持的操作系统。  

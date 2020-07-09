@@ -1,17 +1,16 @@
 ---
 title: 在合作伙伴中心创建商业 marketplace 帐户
 description: 了解如何在合作伙伴中心创建 Microsoft 商业 marketplace 帐户。
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
-ms.openlocfilehash: 2a1a6963a540f3e7384f73067af336b53b29134d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82856689"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110004"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业 marketplace 帐户
 

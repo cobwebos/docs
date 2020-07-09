@@ -4,12 +4,12 @@ ms.author: dapine
 ms.date: 08/22/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 081155c8984f39cc9cc8e905eb108c07dee98d2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b3d856d255968b4a6736db908ce3999cbd56193
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70034429"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108889"
 ---
 ## <a name="validate-that-a-container-is-running"></a>验证容器是否正在运行 
 
@@ -18,7 +18,8 @@ ms.locfileid: "70034429"
 | 请求 URL | 目的 |
 |--|--|
 | `http://localhost:5000/` | 容器提供主页。 |
-| `http://localhost:5000/status` | 使用 HTTP GET 进行请求，以便在不会导致终结点查询的情况下验证容器是否正在运行。 此请求可用于 Kubernetes [运行情况和就绪情况探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)。 |
+| `http://localhost:5000/ready` | 通过 GET 请求，这提供了一种验证，指示容器已准备好接受针对模型的查询。  此请求可用于 Kubernetes [运行情况和就绪情况探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)。 |
+| `http://localhost:5000/status` | 还请求了 GET，这将验证用于启动容器的 api 密钥是否有效，且不会导致终结点查询。 此请求可用于 Kubernetes [运行情况和就绪情况探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)。 |
 | `http://localhost:5000/swagger` | 容器针对终结点及**试用**功能提供了一整套文档。 使用此功能可以将设置输入到基于 Web 的 HTML 表单并进行查询，而无需编写任何代码。 查询返回后，将提供示例 CURL 命令，用于演示所需的 HTTP 标头和正文格式。 |
 
 ![容器的主页](./media/cognitive-services-containers-api-documentation/container-webpage.png)

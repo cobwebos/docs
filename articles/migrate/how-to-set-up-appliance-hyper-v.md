@@ -3,11 +3,12 @@ title: 为 Hyper-v 设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备来评估和迁移 Hyper-v Vm。
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56b034709309a3afe9d18df7af9ababc74a24cee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81538284"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109699"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
 
@@ -49,7 +50,7 @@ ms.locfileid: "81538284"
 2. 运行以下命令以生成 VHD 的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  对于设备版本2.19.11.12，生成的哈希应与这些[设置](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)相符。
+3.  对于设备版本2.19.11.12，生成的哈希应与这些[设置](./tutorial-assess-hyper-v.md#verify-security)相符。
 
 
 

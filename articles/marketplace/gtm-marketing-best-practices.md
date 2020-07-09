@@ -1,17 +1,18 @@
 ---
 title: 营销最佳做法 - Microsoft 商业市场
 description: 获取有关合作伙伴向 Microsoft AppSource 和 Azure 市场发布 产品/服务的市场营销最佳做法的资源。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: 1955dd9dda75906e52007958fe7b4385e657444c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dbe43bac3155290ea809b47f7c280cabc51fc73d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658019"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106877"
 ---
 # <a name="marketing-best-practices"></a>市场营销最佳做法
 

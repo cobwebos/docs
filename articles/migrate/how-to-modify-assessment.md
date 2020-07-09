@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: de526da255d0ffb2d4c8f13d87d9b9e230c8bbd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561816"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109716"
 ---
 # <a name="customize-an-assessment"></a>自定义评估
 
@@ -28,7 +28,7 @@ ms.locfileid: "85561816"
 **评估类型** | **详细信息**
 --- | --- 
 Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可以使用此评估类型评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)，以便迁移到 Azure。（concepts-assessment-calculation.md）
-**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。[了解更多](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](../azure-vmware/introduction.md)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。[了解更多](concepts-azure-vmware-solution-assessment-calculation.md)
 
 服务器评估中的 Azure VM 评估提供两个大小调整条件选项：
 
@@ -40,7 +40,7 @@ Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><
 
 ## <a name="how-is-an-assessment-done"></a>评估的完成方式是什么？
 
-Azure Migrate Server 评估中进行的评估分为三个阶段。 评估的第一步是适用性分析，第二步是大小估计，最后一步是每月成本估计。 如果一台计算机通过了前一个阶段，则只能按顺序进入下一个阶段。 例如，如果一台计算机未通过 Azure 适用性检查，将被标记为不适合迁移到 Azure，并且不会进行大小调整和成本估算。 [了解详细信息。](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)
+Azure Migrate Server 评估中进行的评估分为三个阶段。 评估的第一步是适用性分析，第二步是大小估计，最后一步是每月成本估计。 如果一台计算机通过了前一个阶段，则只能按顺序进入下一个阶段。 例如，如果一台计算机未通过 Azure 适用性检查，将被标记为不适合迁移到 Azure，并且不会进行大小调整和成本估算。 [了解详细信息。](./concepts-assessment-calculation.md)
 
 ## <a name="whats-in-an-azure-vm-assessment"></a>Azure VM 评估有哪些？
 
@@ -70,7 +70,7 @@ Azure Migrate Server 评估中进行的评估分为三个阶段。 评估的第�
 | **目标位置** | 指定要迁移到的 AVS 私有云位置。<br/><br/> 服务器评估中的 AVS 评估目前支持以下目标区域：美国东部、西欧、美国西部。 |
 | **存储类型** | 指定要在 AVS 中使用的存储引擎。<br/><br/> 请注意，AVS 评估只支持使用 vSAN 作为默认存储类型。 |
 **预订实例（RIs）** | 此属性可帮助你在 AVS 中指定保留实例。 当前 AVS 节点不支持 RIs。 |
-**节点类型** | 指定用于映射本地 Vm 的[AVS 节点类型](https://docs.microsoft.com/azure/azure-vmware/concepts-private-clouds-clusters)。 请注意，默认节点类型为 AV36。 <br/><br/> Azure Migrate 将建议将 Vm 迁移到 AVS 所需的节点数。 |
+**节点类型** | 指定用于映射本地 Vm 的[AVS 节点类型](../azure-vmware/concepts-private-clouds-clusters.md)。 请注意，默认节点类型为 AV36。 <br/><br/> Azure Migrate 将建议将 Vm 迁移到 AVS 所需的节点数。 |
 **FTT 设置，RAID 级别** | 指定适用于容忍和 Raid 组合的失败。 选择的 FTT 选项与本地 VM 磁盘要求一起决定了 AVS 中所需的总 vSAN 存储空间。 |
 **“大小调整”条件** | 设置要用于 AVS 的虚拟机_大小_的条件。 你可以选择_基于性能_的大小调整，也可以选择_在本地_进行调整，而无需考虑性能历史记录。 |
 **性能历史记录** | 设置评估计算机性能数据时要考虑的持续时间。 仅当大小调整条件_基于性能_时，此属性才适用。 |

@@ -1,17 +1,16 @@
 ---
 title: Microsoft 商业应用商店中的 SaaS 履单 Api
 description: 介绍实现 Api，使你能够在 Microsoft AppSource 和 Azure Marketplace 中集成 SaaS 产品。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: dsindona
-ms.openlocfilehash: 70515ca04e870fa435f8e9f46122a8e0dcb9b588
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218a0624f7e4adc1aa188dbd62db217bf79202f8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109291"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的 SaaS 履单 Api
 

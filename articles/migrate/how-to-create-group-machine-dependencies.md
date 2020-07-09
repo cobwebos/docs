@@ -3,11 +3,12 @@ title: 在 Azure Migrate 服务器评估中设置基于代理的依赖项分析
 description: 本文介绍如何在 Azure Migrate 服务器评估中设置基于代理的依赖项分析。
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770571"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109988"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
@@ -56,7 +57,7 @@ ms.locfileid: "84770571"
 在要分析的每台计算机上，安装代理。
 
 > [!NOTE]
-> 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机，无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 [遵循](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)集成指南。
+> 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机，无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 [遵循](../azure-monitor/insights/service-map-scom.md#prerequisites)集成指南。
 
 1. 在**Azure Migrate：服务器评估**中，单击 "**发现的服务器**"。
 2. 对于要通过依赖关系可视化进行分析的每台计算机，在 "**依赖项**" 列中，单击 "**需要代理安装**"。
@@ -83,7 +84,7 @@ ms.locfileid: "84770571"
 你可以从命令行安装代理，也可以使用自动方法（如 Configuration Manager 或[Intigua](https://www.intigua.com/intigua-for-azure-migration)）来安装代理。
 - [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)如何使用这些方法安装 MMA 代理。
 - 还可使用此[脚本](https://go.microsoft.com/fwlink/?linkid=2104394)安装 MMA 代理。
-- [了解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems)有关 MMA 支持的 Windows 操作系统的详细信息。
+- [了解](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)有关 MMA 支持的 Windows 操作系统的详细信息。
 
 ### <a name="install-mma-on-a-linux-machine"></a>在 Linux 计算机上安装 MMA
 
@@ -94,7 +95,7 @@ ms.locfileid: "84770571"
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[详细了解 MMA 支持的 Linux 操作系统的列表](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems)。 
+[详细了解 MMA 支持的 Linux 操作系统的列表](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)。 
 
 ## <a name="install-the-dependency-agent"></a>安装依赖项代理
 
@@ -103,8 +104,8 @@ ms.locfileid: "84770571"
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [详细了解](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples)如何使用脚本来安装依赖项代理。
-- [详细了解](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems)依赖关系代理支持的操作系统。
+- [详细了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用脚本来安装依赖项代理。
+- [详细了解](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)依赖关系代理支持的操作系统。
 
 
 ## <a name="create-a-group-using-dependency-visualization"></a>使用依赖项可视化创建组
@@ -161,8 +162,8 @@ ms.locfileid: "84770571"
 下面是一些可用于提取依赖关系数据的示例查询。
 
 - 可修改查询以提取首选数据点。
-- [查看](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)依赖关系数据记录的完整列表。
-- [查看](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)其他示例查询。
+- [查看](../azure-monitor/insights/service-map.md#log-analytics-records)依赖关系数据记录的完整列表。
+- [查看](../azure-monitor/insights/service-map.md#sample-log-searches)其他示例查询。
 
 #### <a name="sample-review-inbound-connections"></a>示例：查看入站连接
 
@@ -170,7 +171,7 @@ ms.locfileid: "84770571"
 
 - 表中的连接指标（VMConnection）的记录并不表示单独的物理网络连接。
 - 多个物理网络连接分组到一个逻辑连接中。
-- [详细了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)如何在 VMConnection 中聚合物理网络连接数据。
+- [详细了解](../azure-monitor/insights/service-map.md#connections)如何在 VMConnection 中聚合物理网络连接数据。
 
 ```
 // the machines of interest

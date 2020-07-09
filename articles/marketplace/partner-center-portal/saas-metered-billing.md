@@ -1,18 +1,16 @@
 ---
 title: 使用 marketplace 计量服务计量计费 |Azure Marketplace
 description: 此文档是使用灵活计费模型的 Isv 发布 SaaS 产品/服务的指南。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 19854f0c91ea7c7548a01e930748757ce041f0c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09d9ed5e008acd5354cc673e39365f59ab7f64e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887949"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109172"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>使用 marketplace 计量服务的计费计费
 

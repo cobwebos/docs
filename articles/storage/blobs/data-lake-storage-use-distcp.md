@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 602053f7a52b9a46fa797bd1146cf63c02bb60d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4930d99c4175126ffba65598bd6b33e973ba1c44
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465348"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109495"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 
@@ -36,25 +37,33 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
 2. 验证是否可以访问现有的常规用途 V2 帐户（未启用分层命名空间）。
 
-        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```bash
+    hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```
 
    输出应提供容器中内容的列表。
 
 3. 同样，验证是否可从此群集访问启用分层命名空间的存储帐户。 运行以下命令：
 
-        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```bash
+    hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```
 
     输出会提供 Data Lake Storage 帐户中文件/文件夹的列表。
 
 4. 使用 DistCp 从 WASB 将数据复制到 Data Lake Storage 帐户。
 
-        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```bash
+    hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```
 
     该命令会将 Blob 存储中 /example/data/gutenberg/ 文件夹的内容复制到 Data Lake Storage 帐户中的 /myfolder 。
 
 5. 同样，使用 DistCp 从 Data Lake Storage 帐户将数据复制到 Blob 存储 (WASB)。
 
-        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```bash
+    hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```
 
     该命令会将 Data Lake Store 帐户中 /myfolder 的内容复制到 WASB 中的 /example/data/gutenberg/ 文件夹 。
 
@@ -64,7 +73,9 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
 **示例**
 
-    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```bash
+hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>如何确定要使用的映射器数？
 
@@ -74,7 +85,7 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
 * **步骤 2：计算映射器数** - m 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
 
-        m = (number of nodes * YARN memory for each node) / YARN container size
+    m = （节点数 * 每个节点的 YARN 内存）/YARN 容器大小
 
 **示例**
 
@@ -82,11 +93,11 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
 * **总 YARN 内存**：从 Ambari 门户确定一个 D14 节点的 YARN 内存为 96 GB。 因此，具有 4 个节点的群集的总 YARN 内存是： 
 
-        YARN memory = 4 * 96GB = 384GB
+    YARN memory = 4 * 96 GB = 384GB
 
 * **映射器数**：从 Ambari 门户确定一个 D14 群集节点的 YARN 容器大小为 3,072 MB。 因此，映射器数为：
 
-        m = (4 nodes * 96GB) / 3072MB = 128 mappers
+    m = （4个节点 * 96 GB）/3072MB = 128 映射器
 
 如果其他应用程序正在使用内存，则可以选择仅将群集的部分 YARN 内存用于 DistCp。
 

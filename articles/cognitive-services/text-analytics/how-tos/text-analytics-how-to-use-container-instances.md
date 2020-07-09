@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: e4b61c6fe2f62745d0f5268221cbb5c84803eb10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1dde59456126ce1221bdb71f09957c0fd3609427
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876389"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108697"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>将文本分析容器部署到 Azure 容器实例
 
@@ -41,12 +41,16 @@ ms.locfileid: "80876389"
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
+#### <a name="text-analytics-for-health"></a>[运行状况文本分析](#tab/health)
+
+[!INCLUDE [Verify the health container instance](../includes/verify-health-container.md)]
+
 ***
 
 ## <a name="next-steps"></a>后续步骤 
 
 * 使用更多[认知服务容器](../../cognitive-services-container-support.md)
-* 使用[文本分析连接的服务](../vs-text-connected-service.md)
+* 使用[文本分析连接服务](../vs-text-connected-service.md)
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Micro
 description: 在不重新部署网站的情况下监视网站性能。 使用托管在本地或 VM 中的 ASP.NET Web 应用。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 2892cb40f0b00b468ef0b8a4ffe60c1158ad068a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30700deaa0121fbe473580d868a79d75a899a1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807258"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107472"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
@@ -98,7 +98,8 @@ ms.locfileid: "85807258"
   ```
 
 - 如果需要确认已成功附加 Application Insights，可以在命令窗口中运行[Sysinternals 句柄](https://docs.microsoft.com/sysinternals/downloads/handle)以确认 applicationinsights.dll 是否已由 IIS 加载。
-  ```cmd
+
+  ```console
   handle.exe /p w3wp.exe
   ```
 
@@ -109,7 +110,7 @@ ms.locfileid: "85807258"
 
 ### <a name="unable-to-login"></a>无法登录
 
-* 如果不能登录状态监视器，请改为安装命令行。 状态监视器尝试登录以收集 ikey，但可使用以下命令手动提供该信息：
+如果不能登录状态监视器，请改为安装命令行。 状态监视器尝试登录以收集 ikey，但可使用以下命令手动提供该信息：
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
@@ -192,7 +193,9 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 首先导入 Application Insights 模块：
 
-`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+```powershell
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
+```
 
 找出受监视的应用：
 
@@ -221,12 +224,14 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
     若要下载最新版本，请使用 Update-ApplicationInsightsVersion。
 * 成功时返回 `ApplicationInsightsApplication` 。 如果失败，则向 stderr 记录跟踪。
 
-          Name                      : Default Web Site/WebApp1
-          InstrumentationKey        : 00000000-0000-0000-0000-000000000000
-          ProfilerState             : ApplicationInsights
-          SdkState                  : EnabledAfterDeployment
-          SdkVersion                : 1.2.1
-          LatestAvailableSdkVersion : 1.2.3
+   ```output
+   Name                      : Default Web Site/WebApp1
+   InstrumentationKey        : 00000000-0000-0000-0000-000000000000
+   ProfilerState             : ApplicationInsights
+   SdkState                  : EnabledAfterDeployment
+   SdkVersion                : 1.2.1
+   LatestAvailableSdkVersion : 1.2.3
+   ```
 
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 

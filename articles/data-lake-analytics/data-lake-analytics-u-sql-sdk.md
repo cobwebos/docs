@@ -6,14 +6,14 @@ ms.service: data-lake-analytics
 author: yanacai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 481b17651afbd2c0e0cf7a683ae0838a7f3fd88f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555591"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110464"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 运行和测试 U-SQL
 
@@ -65,7 +65,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 
 本地运行 U-SQL 脚本时，在编译期间，会在当前运行目录下创建一个工作目录。 除编译输出外，本地执行所需的运行时文件也以卷影形式复制到此工作目录。 工作目录根文件夹名为“ScopeWorkDir”，该工作目录下的文件如下所示：
 
-|目录/文件|目录/文件|目录/文件|定义|描述|
+|目录/文件|目录/文件|目录/文件|定义|说明|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |运行时版本的哈希字符串|本地执行所需的运行时文件卷影副本|
 | |Script_66AE4909AA0ED06C| |脚本名称 + 脚本路径的哈希字符串|编译输出和执行步骤日志记录|
@@ -174,7 +174,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 以下是用于 **compile** 的可选参数：
 
-|参数|描述|
+|参数|说明|
 |--------|-----------|
 | -CodeBehind [default value 'False']|该脚本具有 .cs 代码隐藏|
 | -CppSDK [default value '']|CppSDK 目录|
@@ -332,13 +332,13 @@ LocalRunHelper.exe 提供了用于进行 U SQL 本地编译、运行等的编程
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|参数|类型|描述|
+|参数|类型|说明|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|对于输出消息，设置为 null 以使用控制台|
 
 ### <a name="properties"></a>属性
 
-|Property|类型|描述|
+|properties|类型|说明|
 |--------|----|-----------|
 |AlgebraPath|字符串|代数文件的路径（代数文件是某个编译结果）|
 |CodeBehindReferences|字符串|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|
@@ -363,7 +363,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
 ### <a name="method"></a>方法
 
-|方法|描述|返回|参数|
+|方法|说明|返回|参数|
 |------|-----------|------|---------|
 |public bool DoCompile()|编译 U-SQL 脚本|如果成功，则返回 true| |
 |public bool DoExec()|执行编译结果|如果成功，则返回 true| |

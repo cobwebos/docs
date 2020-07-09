@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: 775992d090b951c8de6fce36377dc91d6e017399
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558080"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106979"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -52,7 +52,7 @@ AKS 不是完全托管的群集解决方案。 某些组件（例如工作器节
 Microsoft 为以下各项提供技术支持：
 
 > [!NOTE]
-> Microsoft 支持所执行的任何群集操作都是以名称的内置 Kubernetes ["edit"](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)角色进行用户同意 `aks-support-rolebinding` 。 启用此角色后，AKS 支持编辑群集配置和资源，以便对群集问题进行故障排除和诊断，但该角色不能修改权限，也不能创建角色或角色绑定。 仅在具有实时（JIT）访问权限的活动支持票证下启用角色访问。
+> Microsoft/AKS 采取的任何群集操作都是以内置 Kubernetes 角色 `aks-service` 和内置角色绑定来进行的 `aks-service-rolebinding` 。 此角色允许 AKS 对群集问题进行故障排除，但是不能修改权限，也不能创建角色或角色绑定，或其他高权限操作。 仅在具有实时（JIT）访问权限的活动支持票证下启用角色访问。
 
 * 到 Kubernetes 服务提供并支持的所有 Kubernetes 组件（例如 API 服务器）的连接。
 * Kubernetes 控制平面服务（例如 Kubernetes 主节点、API 服务器、etcd 和 kube-dns）的管理、运行时间、QoS 和操作。

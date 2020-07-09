@@ -4,15 +4,16 @@ description: 汇总了 Azure Migrate 服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: 51f797ad80886669a8734af6898164737d16971a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8350f557efd9224d92388835f55871cb861eda25
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770180"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108747"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
-可以使用 [Azure Migrate 服务](migrate-overview.md)来评估计算机并将其迁移到 Microsoft Azure 云。 本文汇总了 Azure Migrate 方案和部署的一般支持设置和限制。
+可以使用 [Azure Migrate 服务](./migrate-services-overview.md)来评估计算机并将其迁移到 Microsoft Azure 云。 本文汇总了 Azure Migrate 方案和部署的一般支持设置和限制。
 
 ## <a name="supported-assessmentmigration-scenarios"></a>支持的评估/迁移方案
 
@@ -39,8 +40,8 @@ Azure Migrate 服务器迁移 | NA | 迁移 [VMware VM](tutorial-migrate-vmware.
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| 评估 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。 | NA
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | 评估和迁移 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。 |  迁移 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。
 [设备 42](https://go.microsoft.com/fwlink/?linkid=2097158) | 评估 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。| NA
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 评估 SQL Server 的数据库。 | NA
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
+[DMA](/sql/dma/dma-overview?view=sql-server-2017) | 评估 SQL Server 的数据库。 | NA
+[DMS](../dms/dms-overview.md) | NA | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构 (VDI) | NA
 [Movere](https://www.movere.io/) | 评估 VMWare VM、Hyper-V VM、Xen VM、物理计算机、工作站（包括 VDI）、公有云工作负荷 | NA
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | 迁移 VMware VM、Hyper-V VM、Xen VM、KVM VM、物理计算机、公有云工作负荷 
@@ -119,4 +120,3 @@ United States | 美国中部或美国西部 2
 
 - [评估 VMware VM](tutorial-assess-vmware.md) 以进行迁移。
 - [评估 HYPER-V VM](tutorial-assess-hyper-v.md) 以进行迁移。
-
