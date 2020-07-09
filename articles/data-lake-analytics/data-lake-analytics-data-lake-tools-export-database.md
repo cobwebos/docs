@@ -7,14 +7,14 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/27/2017
-ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 364682f6bcf2edeecc7af2da6c91e4bfd1de98a4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71315792"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117281"
 ---
 # <a name="export-a-u-sql-database"></a>导出 U-SQL 数据库
 

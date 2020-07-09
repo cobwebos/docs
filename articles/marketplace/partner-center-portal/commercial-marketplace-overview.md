@@ -1,17 +1,18 @@
 ---
 title: 合作伙伴中心内的商业市场门户概述
 description: 详细了解合作伙伴中心中的商业市场门户，以及如何通过 Azure 市场、AppSource 和云解决方案提供商 (CSP) 计划列出和销售产品/服务。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 2d506656343df6eaa58975bfeb921423c2e3314b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954125"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116686"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作伙伴中心内的商业市场门户概述
 

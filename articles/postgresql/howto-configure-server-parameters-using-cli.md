@@ -5,13 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 4e029428a3709bacdbcd50a6ac3714e730377242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e95987621a7f821e8e63b36dbb719baaed7823c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74763617"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117961"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>使用 Azure CLI 自定义 Azure Database for PostgreSQL（单一服务器）的服务器配置参数
 可以使用命令行接口 (Azure CLI) 列出、显示和更新 Azure PostgreSQL 服务器的配置参数。 会在服务器级别公开引擎配置的一个子集，并且可以进行修改。 

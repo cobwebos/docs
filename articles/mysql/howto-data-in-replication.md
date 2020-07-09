@@ -4,14 +4,14 @@ description: 本文介绍如何为 Azure Database for MySQL 设置复制中数�
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: 7b66f227469328767f23c6858fda15803832704b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1012a2afa84270089ae44b1c5d224e65a2e01ae
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118556"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的数据传入复制
 

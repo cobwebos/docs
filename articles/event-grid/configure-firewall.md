@@ -1,18 +1,14 @@
 ---
 title: 为 Azure 事件网格主题或域配置 IP 防火墙（预览版）
 description: 本文介绍如何配置事件网格主题或域的防火墙设置。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.author: spelluru
-ms.openlocfilehash: c64d947c13cf067d4ffc2b32ed655960143ad1c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1cb285af6a463b2e0f413b1f876df96f82bb7f93
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391768"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116465"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>为 Azure 事件网格主题或域配置 IP 防火墙（预览版）
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问主题和域。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。 来自任何其他 IP 地址的发布者都将被拒绝，并将收到 403（禁止）响应。 有关事件网格支持的网络安全功能的详细信息，请参阅[事件网格的网络安全](network-security.md)。

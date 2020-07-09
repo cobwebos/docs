@@ -5,13 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1346d1402b46088ce0bed015c723cf817d982317
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74763566"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118097"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
 可以使用命令行接口 (Azure CLI) 下载 PostgreSQL 服务器错误日志。 但是，访问事务日志不受支持。 

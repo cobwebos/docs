@@ -1,17 +1,14 @@
 ---
 title: 验证客户端将事件发布到事件网格自定义主题或域
 description: 本文介绍了对客户端将事件发布到事件网格自定义主题进行身份验证的不同方法。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 7805c9b9096cb52fcef3dad8eb0bdd9509cbce47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1e147830a4b37a8603df8e4ce29953acab2345bd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414824"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115870"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>对发布客户端进行身份验证（Azure 事件网格）
 本文介绍如何使用**访问密钥**或**共享访问签名（SAS）** 令牌对将事件发布到 Azure 事件网格主题或域的客户端进行身份验证。 建议使用 SAS 令牌，但密钥身份验证提供简单的编程，并且与许多现有 webhook 发布服务器兼容。  

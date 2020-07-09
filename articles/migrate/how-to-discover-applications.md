@@ -3,11 +3,12 @@ title: 在本地服务器上发现应用、角色和功能，并提供 Azure Mig
 description: 了解如何通过 Azure Migrate Server 评估发现本地服务器上的应用、角色和功能。
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: ae00e390bb49f3a54f7f7ce7d6491cf7ee882491
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770503"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118641"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>发现计算机应用、角色和功能
 
@@ -79,4 +80,4 @@ ms.locfileid: "84770503"
 ## <a name="next-steps"></a>后续步骤
 
 - 为发现的服务器[创建评估](how-to-create-assessment.md)。
-- 使用 Azure Migrate 评估 SQL Server 数据库[：数据库评估](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017)。
+- 使用 Azure Migrate 评估 SQL Server 数据库[：数据库评估](/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017)。

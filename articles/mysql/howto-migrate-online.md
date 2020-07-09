@@ -4,14 +4,14 @@ description: 本文介绍如何使用 Azure 数据库迁移服务执行 MySQL �
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: df818fa4106aec341607d8142b2a672699b8e9d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 587e50393102d1d7791f5ddac904d525f1af36a3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063344"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118250"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>在最短的停机时间内迁移到 Azure Database for MySQL
 可以使用为 [Azure 数据库迁移服务](https://aka.ms/get-dms) (DMS) 新引入的**连续同步功能**以最短停机时间执行 MySQL 到 Azure Database for MySQL 的迁移。 此功能可限制应用程序引起的停机时间量。

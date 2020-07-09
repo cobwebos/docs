@@ -1,17 +1,14 @@
 ---
 title: 作为事件网格源 Azure 应用配置
 description: 本文介绍如何使用 Azure 应用配置作为事件网格事件源。 其中提供了架构，以及教程和操作指南文章的链接。
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: femila
-ms.openlocfilehash: e233b5d27df3e25c2d7c1464aea9a1e80dfbffb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: bdd077c291bd1e1c441217740daf39c8bcaad732
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84553156"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116992"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>将配置作为事件网格源 Azure 应用
 本文提供 Azure 应用程序配置事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 它还提供了一个快速入门和教程列表，以将 Azure 应用配置作为事件来源。
@@ -71,7 +68,7 @@ Azure 应用程序配置会发出以下事件类型：
 
 事件具有以下顶级数据：
 
-| Property | 类型 | 描述 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |

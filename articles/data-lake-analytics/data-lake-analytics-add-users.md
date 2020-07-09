@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 16c503fe2d584d5f8256c65bfc49825b300f6a36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16ec54bb2a41927a92d953586af59ae3653a29c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71672725"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117451"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>在 Azure 门户中添加用户
 
@@ -24,7 +24,7 @@ ms.locfileid: "71672725"
 3. 在“选择用户”**** 步骤中，找到想要添加的用户。 单击“选择”。
 4. 在“选择角色”**** 步骤中，选取“Data Lake Analytics 开发人员”****。 此角色具有提交/监视/管理 U-SQL 作业所需的最小权限集。 如果组不旨在管理 Azure 服务，则分配给此角色。
 5. 在“选择目录权限”**** 步骤中，选择用户需要访问的任何其他数据库。 若要提交作业，需要拥有对 master 数据库的读写权限。 完成后，请单击“确定”****。
-6. 在名为“分配所选权限”**** 的最后一步，查看向导将进行的更改。 单击" **确定**"。
+6. 在名为“分配所选权限”**** 的最后一步，查看向导将进行的更改。 单击“确定”。
 
 
 ## <a name="configure-acls-for-data-folders"></a>为数据文件夹配置 ACL
@@ -34,11 +34,11 @@ ms.locfileid: "71672725"
 ## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>（可选）将用户添加到 Azure Data Lake Storage Gen1 角色“读者”角色****。
 1.  找到自己的 Azure Data Lake Storage Gen1 帐户。
 2.  单击“用户”****。
-3. 单击“添加” 。
+3. 单击“添加”。
 4.  选择“Azure RBAC”角色以分配此组。
 5.  分配给“读者”角色。 此角色具有浏览/管理存储在 ADLSGen1 中的数据所需的最小权限集。 如果组不旨在管理 Azure 服务，则分配给此角色。
 6.  键入组的名称。
-7.  单击" **确定**"。
+7.  单击“确定”。
 
 ## <a name="adding-a-user-using-powershell"></a>使用 PowerShell 添加用户
 

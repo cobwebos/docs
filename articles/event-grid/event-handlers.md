@@ -1,17 +1,14 @@
 ---
 title: Azure 事件网格事件处理程序
 description: 介绍了 Azure 事件网格支持的事件处理程序。 Azure 自动化, Functions, 事件中心, 混合连接, 逻辑应用, 服务总线, 队列存储, Webhook。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: c29526bdee5ad70b3acb23117ee003877f52a55e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/07/2020
+ms.openlocfilehash: 76f7fff3e0a3e1c0c554e452987bf944503358b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592451"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117009"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure 事件网格中的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 会自动将多个 Azure 服务配置为处理事件。 也可以使用任意 Webhook 来处理事件。 Webhook 不需要托管在 Azure 中来处理事件。 事件网格仅支持 HTTPS Webhook 终结点。

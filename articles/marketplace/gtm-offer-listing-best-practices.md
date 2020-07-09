@@ -1,18 +1,18 @@
 ---
 title: 产品/服务展示最佳做法 - Microsoft 商业市场
 description: 了解适用于 Microsoft AppSource 和 Azure 市场产品/服务的上市展示最佳做法。
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 60f9630b58250bdae4c382e61697f7abd53e036d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027063"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118386"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
@@ -31,7 +31,7 @@ ms.locfileid: "86027063"
 
 不同店面的类别和行业将适用于不同的产品/服务类型。
 
-|  | **<br>按店面分类** |  | **<br>AppSource 的行业** |
+| 店面 | 类别 <br>通过店面 | 类别 <br>通过店面 | 行业 <br> 对于 AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **产品类型**   |  **Azure 市场**  | **AppSource**  |
 | Azure 应用 | X | |
@@ -144,7 +144,7 @@ Microsoft AppSource 和 Azure Marketplace 是用于满足独特客户需求的�
 
 请参阅 "[产品/服务类型](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)" 中的指南，了解有关使用情况的详细信息。 对于 SaaS 产品/服务，产品/服务的交易功能以及类别选择将确定发布产品/服务的店面：
 
-| SaaS 产品/服务    |     |          |           |    |    |     | 适用店面 |              |
+| SaaS 产品/服务    | SaaS 产品/服务   | SaaS 产品/服务  | SaaS 产品/服务   | SaaS 产品/服务   | SaaS 产品/服务   | SaaS 产品/服务    | 适用店面 | 适用店面 |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | 计费计费 | Microsoft 365 外接程序 | 与我联系 | Transact-sql （至少1个计划） | 仅私有计划 | 仅限公用计划 | 公用 & 专用计划 | AppSource | Azure 市场 |
 |  | X |  |  |  |  |  | X |  |
@@ -175,7 +175,7 @@ Microsoft AppSource 和 Azure Marketplace 是用于满足独特客户需求的�
 | **分布** | 家 <br> 包裹 & 包裹寄送 |  
 | **教育** | 高等教育 <br> 主 & 辅助 Edu/K-12 <br> 博物馆 & 库 |
 | **金融服务** | 银行 & 资本市场 <br> 保险 | 
-| **Government** |  防御 & 情报 <br> 民用政府 <br> 公共安全 & 司法 |
+| **政府机关** |  防御 & 情报 <br> 民用政府 <br> 公共安全 & 司法 |
 | **医疗保健** | 运行状况 Payor <br> 运行状况提供程序 <br> 医药业 | 
 | **宾馆 & 旅行** | 旅游和运输业 <br> 宾馆 & 休闲 <br> 餐厅 & 食物服务 | 
 | **制造 & 资源** | 化学 & Agrochemical <br> 离散制造业 <br> 能源 | 

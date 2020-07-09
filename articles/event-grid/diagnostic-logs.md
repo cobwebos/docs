@@ -1,18 +1,14 @@
 ---
 title: Azure 事件网格 - 主题或域的诊断日志
 description: 本文提供了有关 Azure 事件网格主题或域的诊断日志的概念信息。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 93e7e47cbcc1ab9542ba333b89f7dd655a412489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: c8f6734d9d43887d0eb0bb90bb08f727732feac3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82630247"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116737"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Azure 事件网格主题/域的诊断日志
 诊断设置允许事件网格用户在以下任一位置捕获和查看“发布和传递失败”日志：存储帐户、事件中心或 Log Analytics 工作区****。 本文提供了日志的架构和示例日志条目。

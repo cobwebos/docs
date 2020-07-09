@@ -1,17 +1,14 @@
 ---
 title: Azure 事件网格合作伙伴主题
 description: 通过 Azure 事件网格将第三方事件网格 SaaS 和 PaaS 合作伙伴的事件直接发送到 Azure 服务。
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: femila
-ms.openlocfilehash: 5327efea8af734c723ba76d1a00b72c08f5c88b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 97829f262a00e2353624b2a3fa9df210518ad3a0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560277"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115989"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Azure 事件网格中的合作伙伴主题（预览）
 通过使用合作伙伴主题，你可以将第三方事件源直接连接到 Azure 事件网格。 通过这种集成，你可以订阅合作伙伴的事件，并且订阅方式与 Azure 服务相同。 

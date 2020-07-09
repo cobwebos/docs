@@ -3,11 +3,12 @@ title: Azure Migrate 服务器评估中的依赖关系分析
 description: 介绍如何使用依赖关系分析来使用 Azure Migrate Server 评估进行评估。
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: ff563668666207f35fa2ea796d6c909a59df245f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 386a8cefce722c4bff09e2a7fe6d25957630ff61
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771336"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118794"
 ---
 # <a name="dependency-analysis"></a>依赖项分析
 
@@ -74,7 +75,7 @@ ms.locfileid: "84771336"
 --- | --- | ---
 **支持** | 仅适用于 VMware Vm 的预览。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支持的操作系统。 | 公开上市（GA）。
 **代理** | 你要分析的计算机上无需代理。 | 需要在要分析的每台本地计算机上安装代理。
-**Log Analytics** | 不需要。 | Azure Migrate 使用[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服务映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解决方案进行依赖项分析。 
+**Log Analytics** | 不需要。 | Azure Migrate 使用[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中的[服务映射](../azure-monitor/insights/service-map.md)解决方案进行依赖项分析。 
 **Process** | 捕获 TCP 连接数据。 发现后，它会按五分钟的间隔收集数据。 | 计算机上安装的服务映射代理收集有关 TCP 进程的数据以及每个进程的入站/出站连接。
 **Data** | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。<br/><br/> 为 Log Analytics 查询收集和提供连接、延迟和数据传输信息的数目。 
 **可视化** | 可在一小时到30天内查看单服务器的依赖关系图。 | 单个服务器的依赖关系图。<br/><br/> 一组服务器的依赖关系图。<br/><br/>  仅可在一小时内查看地图。<br/><br/> 在映射视图中添加和删除组中的服务器。
@@ -87,5 +88,3 @@ ms.locfileid: "84771336"
 - [设置](how-to-create-group-machine-dependencies.md)基于代理的依赖项可视化。
 - [试用](how-to-create-group-machine-dependencies-agentless.md)VMware vm 的无代理依赖项可视化。
 - 查看有关依赖关系可视化的[常见问题](common-questions-discovery-assessment.md#what-is-dependency-visualization)。
-
-

@@ -3,12 +3,12 @@ title: 模板结构和语法
 description: 使用声明性 JSON 语法描述 Azure Resource Manager 模板的结构和属性。
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 4fdf386aa3b17f46589183706b2a91637acacdb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae2c5a5fe1440c3adbae475cd4c7652a3b01c285
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208818"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116533"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
@@ -35,7 +35,7 @@ ms.locfileid: "85208818"
 
 | 元素名称 | 必须 | 说明 |
 |:--- |:--- |:--- |
-| $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。 所用版本号取决于部署范围和 JSON 编辑器。<br><br>如果使用的是[具有 Azure 资源管理器工具扩展的 VS Code](use-vs-code-to-create-template.md)，请使用最新版本进行资源组部署：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他编辑器（包括 Visual Studio）可能无法处理此架构。 对于这些编辑器，请使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>对于管理组部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>对于租户部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。 所用版本号取决于部署范围和 JSON 编辑器。<br><br>如果使用的是[具有 Azure 资源管理器工具扩展的 VS Code](quickstart-create-templates-use-visual-studio-code.md)，请使用最新版本进行资源组部署：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他编辑器（包括 Visual Studio）可能无法处理此架构。 对于这些编辑器，请使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>对于管理组部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>对于租户部署，请使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
 | apiProfile |否 | 用作资源类型 API 版本集合的 API 版本。 使用此值可以避免为模板中的每个资源指定 API 版本。 如果你指定 API 配置文件版本但不指定资源类型的 API 版本，则资源管理器将使用配置文件中为该资源类型定义的 API 版本。<br><br>将模板部署到不同的环境（例如 Azure Stack 和全球 Azure）时，API 配置文件属性非常有用。 使用 API 配置文件版本可确保模板自动使用两个环境均支持的版本。 有关最新 API 配置文件版本以及配置文件中定义的资源 API 版本的列表，请参阅 [API 配置文件](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)。<br><br>有关详细信息，请参阅[使用 API 配置文件跟踪版本](templates-cloud-consistency.md#track-versions-using-api-profiles)。 |
 | [parameters](#parameters) |否 |执行部署以自定义资源部署时提供的值。 |
@@ -307,7 +307,7 @@ ms.locfileid: "85208818"
   ],
 ```
 
-在 Visual Studio Code 中，[Azure 资源管理器工具扩展](use-vs-code-to-create-template.md#install-resource-manager-tools-extension)可以自动检测资源管理器模板并相应地更改语言模式。 如果在 VS Code 右下角看到 **Azure 资源管理器模板**，则可使用内联注释。 内联注释不再标记为无效。
+在 Visual Studio Code 中，[Azure 资源管理器工具扩展](quickstart-create-templates-use-visual-studio-code.md)可以自动检测资源管理器模板并相应地更改语言模式。 如果在 VS Code 右下角看到 **Azure 资源管理器模板**，则可使用内联注释。 内联注释不再标记为无效。
 
 ![Visual Studio Code Azure 资源管理器模板模式](./media/template-syntax/resource-manager-template-editor-mode.png)
 

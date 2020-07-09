@@ -4,14 +4,14 @@ description: 了解如何从 Azure CLI 配置 Azure Database for PostgreSQL 单�
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 7edb8efb8a4ff509287565888a24b69b0dd0ca4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec4c40430f2cfe04a86ec5f3304aeebd00e4f658
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367797"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118267"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单服务器的专用链接
 

@@ -4,14 +4,15 @@ description: 本文档中列出了目前支持的用于将应用程序连接到 
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 1683fba2d8f085569c7cc62a06d0fe95803d4346
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5fb5819c1f88cab959be0d1256584174db5c57a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559197"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118607"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>如何将应用程序连接到 Azure Database for MySQL
 本主题列出了 Azure Database for MySQL 支持的连接字符串以及模板和示例。 你可能会在连接字符串中使用不同的参数和设置。

@@ -3,12 +3,12 @@ title: Azure 备份中的加密
 description: 了解 Azure 备份中的加密功能如何帮助你保护备份数据并满足企业的安全需求。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0a3f4db4d248d2534cfebd617be0f3ccc9647f15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca570cfdc6e78e712715ba075168f4b06c55e4af
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807730"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116550"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure 备份中的加密
 
@@ -32,6 +32,13 @@ ms.locfileid: "84807730"
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>备份使用客户托管密钥加密的托管磁盘 VM
 
 Azure 备份还允许备份使用密钥进行[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)的 azure vm。 用于加密磁盘的密钥存储在 Azure 密钥保管库中，并由你进行管理。 使用客户托管密钥的存储服务加密（SSE）不同于 Azure 磁盘加密，因为 ADE 利用 BitLocker （适用于 Windows）和 DM Dm-crypt （适用于 Linux）来执行来宾内加密，所以 SSE 会对存储服务中的数据进行加密，使你能够为 Vm 使用任何 OS 或映像。 有关更多详细信息，请参阅[使用客户托管密钥加密托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)。
+
+## <a name="infrastructure-level-encryption-for-backup-data"></a>备份数据的基础结构级别的加密
+
+除了使用客户管理的密钥对恢复服务保管库中的数据进行加密以外，还可以选择在存储基础结构上配置额外一层的加密。 此基础结构加密由平台和静态加密使用客户管理的密钥进行管理，它允许对备份数据进行两层加密。 应注意的是，只有在您首次选择使用自己的密钥进行静态加密时，才可以配置基础结构加密。 基础结构加密使用平台托管密钥来加密数据。
+
+>[!NOTE]
+>基础结构加密目前处于有限预览版中，仅在美国东部、美国 West2 和美国中南部区域提供。 如果要在任何这些区域中使用该功能，请填写[此表格](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u)，并通过电子邮件发送电子邮件 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>备份使用 ADE 加密的 VM
 

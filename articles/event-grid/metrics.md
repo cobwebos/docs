@@ -1,18 +1,14 @@
 ---
 title: Azure 事件网格支持的指标
 description: 本文提供 Azure 事件网格服务支持的 Azure Monitor 指标。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 643df2f4cc6347e0fd56f9124b68f1888ab85e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 3b22beafc9f88d2d95b25fd7ad2f2308a4df9097
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82630130"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116414"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Azure 事件网格支持的指标
 本文提供按命名空间分类的事件网格指标的列表。 

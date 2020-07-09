@@ -4,14 +4,14 @@ description: 本文介绍了如何在 Azure Database for PostgreSQL - 单一服�
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848198"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116346"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中优化 autovacuum
 本文介绍如何在 Azure Database for PostgreSQL 服务器中有效优化 autovacuum。
@@ -22,20 +22,25 @@ PostgreSQL 使用多版本并发控制 (MVCC) 实现更高的数据库并发性�
 清扫作业可以手动触发或自动触发。 在数据库进行大量更新或删除操作时，死元组会更多。 数据库空闲时，死元组较少。 数据库负载过大时，需要更频繁地运行清扫作业，因此手动运行清扫作业会有所不便  。
 
 可以配置 autovacuum 并从优化中获益。 PostgreSQL 附带的默认值尝试确保产品在所有类型的设备上正常运行。 这些设备包括 Raspberry Pi。 理想的配置值取决于：
+
 - 可用资源总数，例如 SKU 和存储大小。
 - 资源使用情况。
 - 单独对象特征。
 
 ## <a name="autovacuum-benefits"></a>Autovacuum 的优势
+
 如果不时常运行清扫作业，累积的死元组可能会导致以下问题：
+
 - 数据膨胀，例如数据库和表变大。
 - 更大的非最优索引。
 - I/O 增加。
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>使用 autovacuum 查询监视膨胀情况
 以下示例查询的目的是确定名为 XYZ 的表中的非活动元组和活动元组的数量：
- 
-    'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+
+```sql
+SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;
+```
 
 ## <a name="autovacuum-configurations"></a>Autovacuum 配置
 控制 autovacuum 的配置参数基于两个关键问题的答案：
@@ -56,6 +61,7 @@ autovacuum_max_workers|指定在任何时候可能运行的 autovacuum 进程（
 若要替代单个表的设置，请更改表存储参数。 
 
 ## <a name="autovacuum-cost"></a>Autovacuum 成本
+
 以下是运行清扫操作的“成本”：
 
 - 锁定运行清扫作业的数据页面。
@@ -64,6 +70,7 @@ autovacuum_max_workers|指定在任何时候可能运行的 autovacuum 进程（
 因此，清扫作业的运行频率不宜过高或过低。 清扫作业需要适应工作负荷。 由于不同的 autovacuum 参数存在利弊，请对所有参数更改进行测试。
 
 ## <a name="autovacuum-start-trigger"></a>Autovacuum 启动触发器
+
 当死元组的数量超过 autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * reltuples 时，会触发 autovacuum。 此处的 reltuples 为一个常数。
 
 通过 autovacuum 进行的清理工作必须与数据库负载保持一致。 否则可能会耗尽存储并导致查询速度普遍下降。 在随时间分摊后，清扫操作清理死元组的速率应该等于创建死元组的速率。
@@ -91,7 +98,9 @@ autovacuum_max_workers 参数确定能同时运行的最大 autovacuum 进程数
 使用 PostgreSQL，可以在表级别或实例级别设置这些参数。 目前，只能在 Azure Database for PostgreSQL 中的表级别设置这些参数。
 
 ## <a name="optimize-autovacuum-per-table"></a>优化每个表的 autovacuum
+
 可以针对每个表配置上述所有配置参数。 下面是一个示例：
+
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);
@@ -102,7 +111,8 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 Autovacuum 一个针对每个表的同步进程。 死元组在一个表中的占比越高，执行 autovacuum 的“成本”就越高。 可将更新和删除内容占比较高的表拆分为多个表。 拆分表有助于并行化 autovacuum，并降低在一个表上完成 autovacuum 的“成本”。 还可以增加并行 autovacuum 辅助角色，从而确保安排了充足的辅助角色。
 
 ## <a name="next-steps"></a>后续步骤
+
 若要详细了解如何使用和优化 autovacuum，请参阅以下 PostgreSQL 文档：
 
- - [第 18 章：服务器配置](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
- - [第 24 章：日常数据库维护任务](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)
+- [第 18 章：服务器配置](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
+- [第 24 章：日常数据库维护任务](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

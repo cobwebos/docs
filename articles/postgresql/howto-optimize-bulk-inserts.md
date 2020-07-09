@@ -4,13 +4,14 @@ description: 本文介绍了如何优化 Azure Database for PostgreSQL - 单一�
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d10f06577738364e3f4a0ea40221d37ebfb31c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74770129"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116278"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>优化 Azure Database for PostgreSQL - 单一服务器中的批量插入和使用瞬态数据 
 本文介绍如何优化 Azure Database for PostgreSQL 服务器中的批量插入操作以及使用瞬态数据。

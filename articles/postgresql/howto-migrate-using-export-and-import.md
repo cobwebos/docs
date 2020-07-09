@@ -4,13 +4,14 @@ description: 介绍了如何将 PostgreSQL 数据库解压到脚本文件，以�
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
-ms.openlocfilehash: f7cf5d245383b8a58f03e2e3610750866a2f4b5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d97f7b976ef1dfcf0493a8bef6ddcdd2cd63960
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74770197"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116356"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>使用导入和导出功能迁移 PostgreSQL 数据库
 可以使用 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 将 PostgreSQL 数据库解压到脚本文件，并使用 [psql](https://www.postgresql.org/docs/current/static/app-psql.html) 将数据从该文件导入目标数据库。

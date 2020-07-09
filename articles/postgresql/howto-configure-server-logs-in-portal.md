@@ -4,13 +4,14 @@ description: 本文介绍如何在 Azure 门户中配置和访问 Azure Database
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 3da48a9b6d3acb1f2811bc279de7963fa1d83918
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2be89f9263c71b7c9d7bc32edd0b1fc7cb2cfbce
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74763680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118148"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问 Azure Database for PostgreSQL（单一服务器）日志
 

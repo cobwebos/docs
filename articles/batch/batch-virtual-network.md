@@ -4,12 +4,12 @@ description: 如何在 Azure 虚拟网络中创建 Batch 池，以便计算节�
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ff8995217521199436e0924acc691dab7c4baef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506580"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115405"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -62,7 +62,7 @@ ms.locfileid: "85506580"
 ![用户定义的路由](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
-> Batch 服务 IP 地址随时可能会更改。 若要防止 IP 地址更改，请创建一个进程来自动刷新 Batch 服务 IP 地址，并在路由表中使它们保持最新。 或者，可以[使用指定的 IP 地址来创建池](create-pool-public-ip.md)。
+> Batch 服务 IP 地址随时可能会更改。 若要防止 IP 地址更改，请创建一个进程来自动刷新 Batch 服务 IP 地址，并在路由表中使它们保持最新。
 
 ## <a name="next-steps"></a>后续步骤
 
