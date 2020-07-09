@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68841387"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135949"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>在 IBM zD&T v1 中设置应用程序开发人员受控分发（ADCD）
 
@@ -75,7 +76,7 @@ ms.locfileid: "68841387"
 
 4. 登录时，创建一个目录来上传 IBM 包。 请记住，Linux 区分大小写。 例如，此演示假定将包上传到：
 
-        /home/MyUserID/ZDT/adcd/nov2017/volumes
+    `/home/MyUserID/ZDT/adcd/nov2017/volumes`
 
 5. 使用 SSH 客户端（如[WinSCP](https://winscp.net/eng/index.php)）上传文件。 由于 SCP 是 SSH 的一部分，因此它使用 SSH 使用的端口22。 如果本地计算机不是 Windows，则可以在 SSH 会话中键入[scp 命令](http://man7.org/linux/man-pages/man1/scp.1.html)。
 
@@ -88,8 +89,8 @@ ms.locfileid: "68841387"
 
 8. 上载完成后，导航到 "卷" 目录并解压缩所有**gz**卷：
 
-    ```
-        gunzip \*.gz
+    ```console
+    gunzip \*.gz
     ```
     
 ![显示解压缩的 gz 卷的文件资源管理器](media/01-gunzip.png)
@@ -99,9 +100,9 @@ ms.locfileid: "68841387"
 下一步是将&zD 配置为使用上传的包。 ZD 中的映像存储进程&T 允许装入和使用映像。 它可以使用 SSH 或 FTP。
 
 1. 启动**zDTServer**。 为此，必须在根级别。 按顺序输入以下两个命令：
-    ```
-        sudo su -
-        /opt/ibm/zDT/bin/startServer
+    ```console
+    sudo su -
+    /opt/ibm/zDT/bin/startServer
     ```
 2. 记下命令的 URL 输出，并使用此 URL 来访问 web 服务器。 如下所示：
      > https：//（你的 VM 名称或 IP 地址）： 9443/ZDTMC/index.html
@@ -185,11 +186,11 @@ ms.locfileid: "68841387"
 
 祝贺你！ 你现在正在 Azure 上运行 IBM 主机环境。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 - [大型机迁移：误解和事实](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 上的 IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [疑难解答](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [揭密大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->
