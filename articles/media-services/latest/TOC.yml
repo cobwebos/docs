@@ -1,7 +1,5 @@
 - name: 媒体服务文档
   href: ./index.yml
-- name: 切换到“IoT Edge 上的实时视频分析”文档
-  href: ../live-video-analytics-edge/overview.md
 - name: 概述
   items:
     - name: 关于媒体服务

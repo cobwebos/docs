@@ -1,18 +1,18 @@
 ---
 title: include 文件
 description: 文件
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
+author: anbene
+ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: 744d7f49ee12e5f74eb2ae599d640ed658680c6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf56e9760970a0d9a71d1e94949c36baeb278ee9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84752538"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121823"
 ---
 要使产品/服务说明更具吸引力，请使用 RTF 编辑器应用格式设置。
 

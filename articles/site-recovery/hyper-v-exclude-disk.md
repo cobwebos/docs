@@ -6,11 +6,12 @@ manager: rochakm
 ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
-ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 373cffe96119af4a2fc0d74e2090e6cc24dcaf8f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498130"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131256"
 ---
 # <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 
@@ -40,7 +41,7 @@ ms.locfileid: "75498130"
 
 ## <a name="exclude-disks"></a>排除磁盘
 
-1. 若要在对 Hyper-V VM [启用复制](site-recovery-hyper-v-site-to-azure.md)时排除磁盘，请选择要复制的 VM，然后在“启用复制” > “属性” > “配置属性”页上，查看“要复制的磁盘”列     。 默认情况下，选择所有磁盘进行复制。
+1. 若要在对 Hyper-V VM [启用复制](./hyper-v-azure-tutorial.md)时排除磁盘，请选择要复制的 VM，然后在“启用复制” > “属性” > “配置属性”页上，查看“要复制的磁盘”列     。 默认情况下，选择所有磁盘进行复制。
 2. 如果不想复制特定磁盘，请在“要复制的磁盘”中取消选择要排除的任何磁盘  。 
 
     ![从复制中排除磁盘](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)

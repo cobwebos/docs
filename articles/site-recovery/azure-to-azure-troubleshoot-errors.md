@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738110"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130453"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>解决问题
 
-联系 [Azure 计费支持](/azure/azure-portal/supportability/resource-manager-core-quotas-request)启用订阅，以便在目标位置中创建所需大小的 VM。 然后重试失败的操作。
+联系 [Azure 计费支持](../azure-portal/supportability/resource-manager-core-quotas-request.md)启用订阅，以便在目标位置中创建所需大小的 VM。 然后重试失败的操作。
 
 如果目标位置存在容量约束，请禁用到该位置的复制。 然后在订阅具有足够配额的其他位置启用复制，以创建所需大小的 VM。
 
@@ -202,7 +202,7 @@ Site Recovery configuration failed.
 #### <a name="fix-the-problem"></a>解决问题
 
 Azure Site Recovery 需要具有对 Office 365 IP 范围的访问权限才能进行身份验证。
-如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理控制 VM 的出站网络连接，请确保使用基于 [Azure Active Directory (AAD) 服务标记](/azure/virtual-network/security-overview#service-tags)的 NSG 规则来允许访问 AAD。 我们不再支持基于 IP 地址的 NSG 规则。
+如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理控制 VM 的出站网络连接，请确保使用基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则来允许访问 AAD。 我们不再支持基于 IP 地址的 NSG 规则。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
 
@@ -260,8 +260,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 确保数据磁盘已初始化，然后重试该操作。
 
-- **Windows**：[附加并初始化新的磁盘](/azure/virtual-machines/windows/attach-managed-disk-portal)。
-- Linux：[在 Linux 中初始化新的数据磁盘](/azure/virtual-machines/linux/add-disk)。
+- **Windows**：[附加并初始化新的磁盘](../virtual-machines/windows/attach-managed-disk-portal.md)。
+- Linux：[在 Linux 中初始化新的数据磁盘](../virtual-machines/linux/add-disk.md)。
 
 如果问题仍然存在，请联系支持部门。
 

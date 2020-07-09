@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设备。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a57ca67c89078143eba42d94e8d96e004200041a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99b29839028432a6b760265b641d35cdf33ee57f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106562"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122126"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -48,7 +48,7 @@ Azure Migrate 设备用于以下应用场景。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
 **发现限制** | 一个设备最多可在 vCenter Server 上发现 10,000 个 VMware VM。<br/> 设备可以连接到单个 vCenter Server。
 **OVA 模板** | 从门户或 https://aka.ms/migrate/appliance/vmware 下载。<br/><br/> 下载大小为 10.9 GB。<br/><br/> 下载的设备模板附带有效期为 180 天的 Windows Server 2016 评估许可证。 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
-**PowerShell 脚本** | 请参阅此[文](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-vmware)。<br/><br/> 
+**PowerShell 脚本** | 请参阅此[文](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)。<br/><br/> 
 **软件/硬件** |  设备应在具有 Windows Server 2016、32-GB RAM、8 个 vCPU、约 80 GB 磁盘存储和一个外部虚拟交换机的计算机上运行。<br/> 设备需要直接访问或通过代理访问 Internet。<br/><br/> 如果在 VMware VM 上运行设备，vCenter Server 上需要有足够的资源来分配给满足要求的 VM。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。
 **VMware 要求** | 如果将设备部署为 VMware VM，必须将其部署在运行版本 5.5 或更高版本的 ESXi 主机上。<br/><br/> 运行 5.5、6.0、6.5 或 6.7 的 vCenter Server。
 **VDDK（无代理迁移）** | 如果将设备部署为 VMware VM，并且运行的是无代理迁移，则必须在设备 VM 上安装 VMware vSphere VDDK。
@@ -68,7 +68,7 @@ Azure Migrate 设备用于以下应用场景。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
 **发现限制** | 一个设备最多可发现 5000 个 Hyper-V VM。<br/> 一个设备最多可连接到 300 个 Hyper-V 主机。
 **VHD 模板** | 包含 VHD 的压缩文件夹。 从门户或 https://aka.ms/migrate/appliance/hyperv 下载。<br/><br/> 下载大小为 10 GB。<br/><br/> 下载的设备模板附带有效期为 180 天的 Windows Server 2016 评估许可证。 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
-**PowerShell 脚本** | 请参阅此[文](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-hyper-v)。<br/><br/> 
+**PowerShell 脚本** | 请参阅此[文](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/><br/> 
 **软件/硬件***   |  设备应在 Windows Server 2016、16 GB RAM、8个 vcpu、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接访问或通过代理访问 Internet。<br/><br/> 如果将设备作为 Hyper-V VM 运行，Hyper-V 主机上需要有足够的资源来分配 16-GB RAM、8 个 vCPU、约 80 GB 的存储空间，以及设备 VM 的一个外部交换机。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。 
 **Hyper-V 要求** | 如果使用 VHD 模板部署设备，那么 Azure Migrate 提供的设备 VM 是 Hyper-V VM 版本 5.0。<br/><br/> Hyper-V 主机必须运行 Windows Server 2012 R2 或更高版本。 
 **哈希值 - VHD** | [验证](tutorial-assess-hyper-v.md#verify-security) VHD 模板哈希值。
@@ -218,7 +218,7 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 **数据** | **注册表位置** | **Key**
 --- | --- | ---
 应用程序名称  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
-Version  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
 提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能数据
@@ -227,7 +227,7 @@ Version  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/
 
 **数据**  | **PowerShell cmdlet** | **属性**
 --- | --- | ---
-“属性”  | Get-help  | “属性”
+名称  | Get-help  | 名称
 特征类型 | Get-help  | FeatureType
 Parent  | Get-help  | Parent
 
@@ -237,10 +237,10 @@ Parent  | Get-help  | Parent
 
 **数据**  | **注册表位置**  | **Key**
 --- | --- | ---
-“属性”  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 服务器 \ 实例 Names\SQL  | installedInstance
+名称  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 服务器 \ 实例 Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
-Version  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Version 
+版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 
 #### <a name="windows-vm-operating-system-data"></a>Windows VM 操作系统数据
 
@@ -248,8 +248,8 @@ Version  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> 
 
 数据  | WMI 类  | WMI 类属性
 --- | --- | ---
-“属性”  | Win32_operatingsystem  | Caption
-Version  | Win32_operatingsystem  | Version
+名称  | Win32_operatingsystem  | Caption
+版本  | Win32_operatingsystem  | 版本
 体系结构  | Win32_operatingsystem  | OSArchitecture
 
 #### <a name="linux-vm-apps-data"></a>Linux VM 应用数据
@@ -258,8 +258,8 @@ Version  | Win32_operatingsystem  | Version
 
 数据  | Command
 --- | --- 
-“属性” | rpm，dpkg，对齐
-Version | rpm，dpkg，对齐
+名称 | rpm，dpkg，对齐
+版本 | rpm，dpkg，对齐
 提供程序 | rpm，dpkg，对齐
 
 #### <a name="linux-vm-operating-system-data"></a>Linux VM 操作系统数据
@@ -268,7 +268,7 @@ Version | rpm，dpkg，对齐
 
 **数据**  | **命令** 
 --- | --- | ---
-“属性” <br/> 版本 | 从以下一个或多个文件收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+名称 <br/> 版本 | 从以下一个或多个文件收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 体系结构 | uname
 
 

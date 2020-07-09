@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2a64f42c8672972939bb2870ba40876e5cc8d855
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591941"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131657"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>故障排除：无法在 Azure 中删除虚拟网络
 
@@ -57,7 +58,7 @@ ms.locfileid: "83591941"
 
 ![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
-如果存在应用程序网关，则必须将其删除，然后才能删除虚拟网络。
+如果存在应用程序网关，则必须先将其删除，然后才能删除虚拟网络。
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>检查 Azure Active Directory 域服务是否已在虚拟网络中启用
 
@@ -87,9 +88,11 @@ ms.locfileid: "83591941"
 
 如果虚拟网络停滞在迁移状态，则无法将其删除。 请运行以下命令中止迁移，然后删除虚拟网络。
 
-    Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
+```azurepowershell
+Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
+```
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 虚拟网络](virtual-networks-overview.md)
-- [Azure 虚拟网络常见问题 (FAQ)](virtual-networks-faq.md)
+- [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md)

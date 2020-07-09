@@ -1,18 +1,18 @@
 ---
 title: 比较 Microsoft AppSource 和 Azure Marketplace
 description: 本文介绍 Microsoft 商用 marketplace 店面-Microsoft AppSource 和 Azure Marketplace 之间的差异。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 78d77ce176c07aed22433f29365b2d338ea32c03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc0a03871ee3191f24a886cc1b9d7f90e8d54b62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414556"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121803"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>比较 Microsoft AppSource 和 Azure Marketplace
 
@@ -28,7 +28,7 @@ Microsoft 商用 marketplace 包括[Microsoft AppSource](https://appsource.micro
 
 下表介绍了使用店面的好处：
 
-| 优点 | Azure 市场 | AppSource |
+| 好处 | Azure 市场 | AppSource |
 |:--- |:--- | :--- |
 | **灵活计费** | Azure Marketplace 支持免费的、试用版、BYOL 的产品/服务类型。 事务提供是基于消耗的，也可以基于订阅。 基于消费的产品/服务按小时使用情况计费，并可提供初始免费期限。 基于订阅的服务按每个座位或按费率计费，按月或按年计费。| AppSource 支持免费的、试用版、BYOL 和 transact-sql 产品/服务类型。 事务提供是基于订阅的 SaaS 产品，每月或每年都可以按每个客户或按费率计费。 |
 |**与其他合作伙伴的连接**  | 目前无法将服务提供商或交付合作伙伴链接到你的产品/服务。 | 可将独立软件供应商、系统集成商和托管服务提供商链接到特定的实现方案。 你能以协作方式销售给新客户。 |

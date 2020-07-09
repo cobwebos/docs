@@ -9,11 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa6e3edf2c02cad34cbe9b1f9ac82517823caa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891467"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130557"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
 
@@ -321,7 +322,7 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 
 ### <a name="security-updates"></a>安全更新
 
-重大安全漏洞的修补程序和修复程序将在 Azul Systems 提供后立即发布。 “重大”漏洞是根据 [NIST 常见漏洞评分系统版本 2](https://nvd.nist.gov/cvss.cfm) 提供的基本评分 9.0 或以上来定义的。
+重大安全漏洞的修补程序和修复程序将在 Azul Systems 提供后立即发布。 “重大”漏洞是根据 [NIST 常见漏洞评分系统版本 2](https://nvd.nist.gov/vuln-metrics/cvss) 提供的基本评分 9.0 或以上来定义的。
 
 Tomcat 8.0 [已经在 2018 年 9 月 30 日生命周期终止 (EOL)。](https://tomcat.apache.org/tomcat-80-eol.html) 尽管该运行时在 Azure 应用服务上仍然可用，但 Azure 不会为 Tomcat 8.0 应用安全更新。 如果可能，请将你的应用程序迁移到 Tomcat 8.5 或 9.0。 Tomcat 8.5 和 9.0 在 Azure 应用服务上都可用。 有关详细信息，请查看 [Tomcat 官方网站](https://tomcat.apache.org/whichversion.html)。 
 

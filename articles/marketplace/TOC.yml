@@ -216,8 +216,8 @@
               href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
             - name: 状态代码
               href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 发布状态
-      href: ./partner-center-portal/publishing-status.md
+    - name: 审阅和发布
+      href: review-publish-offer.md
     - name: 更新现有产品/服务
       href: ./partner-center-portal/update-existing-offer.md
     - name: 激活权益

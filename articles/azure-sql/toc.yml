@@ -57,7 +57,11 @@
             - name: 动态数据掩码
               href: database/dynamic-data-masking-overview.md
             - name: SQL 漏洞评估
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: SQL 漏洞评估
+                  href: database/sql-vulnerability-assessment.md
+                - name: 漏洞评估规则
+                  href: database/sql-database-vulnerability-assessment-rules.md
             - name: 登录名、用户帐户、角色和权限
               href: database/logins-create-manage.md
             - name: Azure AD 身份验证
@@ -606,6 +610,9 @@
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Azure Policy 内置策略定义
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL 托管实例 (SQL MI)
@@ -833,6 +840,9 @@
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Azure Policy 内置策略定义
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Azure VM 上的 SQL Server
@@ -974,8 +984,6 @@
                       items:
                         - name: 为 FCI 创建 DNN
                           href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: 具有与 DNN 的互操作性
-                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                         - name: FCI DNN 和 SQL Server 功能
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                 - name: 配置连接

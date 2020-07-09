@@ -222,12 +222,6 @@
         - name: 在部署管理器中使用运行状况检查
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-- name: 示例
-  items:
-    - name: Azure 快速入门模板
-      href: 'https://azure.microsoft.com/resources/templates/'
-    - name: 模板示例
-      href: template-samples.md
 - name: 概念
   items:
     - name: 模板最佳实践
@@ -299,16 +293,6 @@
             - name: Outputs
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: 使用创作工具
-      items:
-        - name: VS Code
-          href: use-vs-code-to-create-template.md
-        - name: Visual Studio
-          href: create-visual-studio-deployment-project.md
-        - name: 将 VS 部署脚本更新到 Az 模块
-          href: update-visual-studio-deployment-script.md
-        - name: IntelliJ IDEA
-          href: create-templates-use-intellij.md
     - name: 发现模板属性
       items:
         - name: 导出模板
@@ -344,6 +328,8 @@
           href: rollback-on-error.md
         - name: 使用 SAS 令牌保护模板
           href: secure-template-with-sas-token.md
+        - name: 查看部署历史记录
+          href: deployment-history.md
     - name: 作用域内部署
       items:
         - name: 订阅
@@ -367,8 +353,14 @@
           href: add-template-to-azure-pipelines.md
         - name: 部署 - GitHub Actions
           href: deploy-github-actions.md
-    - name: 查看部署历史记录
-      href: deployment-history.md
+    - name: 使用创作工具
+      items:
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: 将 VS 部署脚本更新到 Az 模块
+          href: update-visual-studio-deployment-script.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: 对部署进行故障排除
       items:
         - name: 排查部署错误
@@ -441,6 +433,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: 资源
   items:
+    - name: Azure 快速入门模板
+      href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: 定价计算器

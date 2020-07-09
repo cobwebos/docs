@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73936047"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129966"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>为 Hyper-V VM 灾难恢复规划容量 
 
@@ -38,7 +39,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 ## <a name="before-you-start"></a>开始之前
 
 * 收集环境信息，包括 VM 数、每个 VM 的磁盘数、每个磁盘的存储。
-* 确定已复制数据的每日更改（改动）率。 下载 [Hyper-V 容量计划工具](https://www.microsoft.com/download/details.aspx?id=39057)以获取更改率。 [详细了解](site-recovery-capacity-planning-for-hyper-v-replication.md)此工具。 我们建议运行此工具一周以上的时间以获取平均值。
+* 确定已复制数据的每日更改（改动）率。 下载 [Hyper-V 容量计划工具](https://www.microsoft.com/download/details.aspx?id=39057)以获取更改率。 [详细了解](./hyper-v-deployment-planner-overview.md)此工具。 我们建议运行此工具一周以上的时间以获取平均值。
 
 
 ## <a name="run-the-quick-planner"></a>运行快速规划器
@@ -52,7 +53,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 
    a. 在“选择你的方案”  中，选择“Hyper-V 到 Azure”  或“VMware/物理设备到 Azure”  .
 
-   b. 在“平均每日数据更改率(%)”中输入使用 [Hyper-V 容量计划工具](site-recovery-capacity-planning-for-hyper-v-replication.md)或 [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) 收集的信息。 
+   b. 在“平均每日数据更改率(%)”中输入使用 [Hyper-V 容量计划工具](./hyper-v-deployment-planner-overview.md)或 [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) 收集的信息。 
 
    c. 将 Hyper-V VM 复制到 Azure 时，不使用“压缩”设置。  对于压缩，请使用第三方应用程序（例如 Riverbed）。
 
@@ -146,4 +147,4 @@ AA 到 AE 列为输出，提供的是每个 VM 的信息。
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>后续步骤
-[了解如何运行](site-recovery-capacity-planning-for-hyper-v-replication.md)容量计划工具。
+[了解如何运行](./hyper-v-deployment-planner-overview.md)容量计划工具。

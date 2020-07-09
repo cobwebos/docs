@@ -7,11 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048618"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130221"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
 
@@ -22,9 +23,9 @@ ms.locfileid: "77048618"
 ## <a name="prerequisites"></a>必备条件
 
 - 查看[方案体系结构和组件](hyper-v-vmm-architecture.md)。
-- 查看所有组件的[支持要求](site-recovery-support-matrix-to-sec-site.md)。
-- 确保 Virtual Machine Manager 服务器和 Hyper-V 主机符合[支持要求](site-recovery-support-matrix-to-sec-site.md)。
-- 确保要复制的 VM 符合[复制计算机支持](site-recovery-support-matrix-to-sec-site.md)。
+- 查看所有组件的[支持要求](./vmware-physical-secondary-support-matrix.md)。
+- 确保 Virtual Machine Manager 服务器和 Hyper-V 主机符合[支持要求](./vmware-physical-secondary-support-matrix.md)。
+- 确保要复制的 VM 符合[复制计算机支持](./vmware-physical-secondary-support-matrix.md)。
 
 ## <a name="prepare-for-network-mapping"></a>准备网络映射
 
@@ -36,10 +37,10 @@ ms.locfileid: "77048618"
 
 如下所述准备 Virtual Machine Manager：
 
-- 确保源服务器和目标 Virtual Machine Manager 服务器上具有 [Virtual Machine Manager 逻辑网络](https://docs.microsoft.com/system-center/vmm/network-logical)：
+- 确保源服务器和目标 Virtual Machine Manager 服务器上具有 [Virtual Machine Manager 逻辑网络](/system-center/vmm/network-logical)：
   - 源服务器上的逻辑网络应与 Hyper-V 主机所在的源云相关联。
   - 目标服务器上的逻辑网络应与目标云相关联。
-- 确保源服务器和目标 Virtual Machine Manager 服务器上具有 [VM 逻辑网络](https://docs.microsoft.com/system-center/vmm/network-virtual)。 VM 网络应链接到每个位置中的逻辑网络。
+- 确保源服务器和目标 Virtual Machine Manager 服务器上具有 [VM 逻辑网络](/system-center/vmm/network-virtual)。 VM 网络应链接到每个位置中的逻辑网络。
 - 将源 Hyper-V 主机上的 VM 连接到源 VM 网络。
 
 ## <a name="prepare-for-powershell"></a>为 PowerShell 做准备

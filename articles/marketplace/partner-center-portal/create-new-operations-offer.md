@@ -1,18 +1,18 @@
 ---
 title: 在商业市场中创建 Dynamics 365 for Operations 产品/服务
 description: 如何使用 Microsoft 合作伙伴中心内的商业市场门户来新建 Dynamics 365 for Operations 产品/服务，以供在 Azure 市场、AppSource 中或通过云解决方案提供商 (CSP) 计划列出或销售。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: navits09
+ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 0a2696da70a785fc1da6bfd2c7b0cabae1a89197
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 621d657f527e5307ed3a0b583e4c9171005d4f8c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980685"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121824"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations 产品/服务
 
@@ -134,7 +134,7 @@ ms.locfileid: "85980685"
 7. 隐私策略
 8. 产品名称
 9. 屏幕截图/视频
-10. 描述
+10. 说明
 
 ### <a name="name"></a>名称
 

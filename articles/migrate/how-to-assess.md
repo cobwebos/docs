@@ -3,15 +3,16 @@ title: 在 Azure Migrate 中添加评估工具
 description: 了解如何在 Azure Migrate 中添加评估工具。
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195635"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122109"
 ---
 # <a name="add-assessment-tools"></a>添加评估工具
 
-本文介绍如何在[Azure Migrate](migrate-overview.md)中添加评估工具。 
+本文介绍如何在[Azure Migrate](./migrate-services-overview.md)中添加评估工具。 
 
 - 如果你想要添加一个评估工具，但还没有 Azure Migrate 项目，请遵循此[文](how-to-add-tool-first-time.md)。
 - 如果已添加 ISV 工具或 Movere，请[按照步骤](prepare-isv-movere.md)进行操作以准备使用该工具。

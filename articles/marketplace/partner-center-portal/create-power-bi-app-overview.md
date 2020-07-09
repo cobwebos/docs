@@ -1,18 +1,18 @@
 ---
 title: Power BI 应用创建概述-Microsoft AppSource
 description: 本文介绍将 Power BI 应用程序发布到 Microsoft AppSource 的高级步骤。 还提供了 Power BI 应用必须满足的技术和业务要求才能发布到商业市场。
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/02/2020
-ms.openlocfilehash: 82e131b0e6209089b658c622b415e997b40e9e4b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9bf02fe6552b47070d4f79c4c497830ac2bfad84
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964645"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121769"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 应用创建概述
 

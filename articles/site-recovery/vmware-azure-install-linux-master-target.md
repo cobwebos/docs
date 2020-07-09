@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829777"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130141"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -26,7 +27,7 @@ ms.locfileid: "83829777"
 ## <a name="overview"></a>概述
 本文提供 Linux 主目标的相关安装说明。
 
-请在本文末尾或者在 [Azure 恢复服务论坛](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)中发表评论或问题。
+请在本文末尾或者在 [Azure 恢复服务论坛](/answers/topics/azure-site-recovery.html)中发表评论或问题。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,6 +37,9 @@ ms.locfileid: "83829777"
 * 主目标应在可与进程服务器和配置服务器通信的网络中。
 * 主目标版本应该低于或等于进程服务器和配置服务器的版本。 例如，如果配置服务器版本为 9.4，则主目标的版本可以是 9.4 或 9.3，而不能是 9.5。
 * 主目标只能是 VMware 虚拟机，而不能是物理服务器。
+
+> [!NOTE]
+> 切勿在主目标等任何管理组件上打开存储 vMotion。 如果重新保护成功后移动主目标，将无法分离虚拟机磁盘 (VMDK)。 此情况下，故障回复将失败。
 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>创建主目标服务器时的大小调整准则
 
@@ -243,7 +247,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
     ![多路径 ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. 格式化驱动器，然后在新驱动器上创建文件系统：mkfs.ext4 /dev/mapper/\<保留磁盘的多路径 id>。
+3. 格式化驱动器，然后在新驱动器上创建文件系统： **mkfs. ext4/dev/mapper/ \<Retention disk's multipath id> **。
     
     ![文件系统](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -260,7 +264,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
     
     按 Insert 开始编辑文件。 创建新行并插入以下文本。 根据前一命令中突出显示的多路径 ID 编辑磁盘多路径 ID。
 
-    /dev/mapper/\<保留磁盘的多路径 id> /mnt/retention ext4 rw 0 0
+    **/dev/mapper/\<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
     按 Esc，键入 :wq（写入并退出）来关闭编辑器窗口。 
 
@@ -273,16 +277,22 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 > [!NOTE]
 > 安装主目标服务器之前，请检查虚拟机上的 /etc/hosts 文件是否包含用于将本地主机名映射到所有网络适配器关联的 IP 地址的条目。
 
-1. 在配置服务器上从 C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase 复制通行短语。 然后运行以下命令，将其作为 passphrase.txt 保留在同一本地目录中：
+1. 运行以下命令安装主目标。
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. 在配置服务器上从 C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase 复制通行短语。 然后运行以下命令，将其作为 passphrase.txt 保留在同一本地目录中：
 
     `echo <passphrase> >passphrase.txt`
 
     示例： 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. 记下配置服务器的 IP 地址， 运行以下命令安装主目标服务器并将它注册到配置服务器。
+3. 记下配置服务器的 IP 地址， 运行以下命令，将服务器注册到配置服务器。
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -313,16 +323,10 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
 1. 请注意配置服务器的 IP 地址。 因为下一步骤需要用到。
 
-2. 运行以下命令安装主目标服务器并将它注册到配置服务器。
+2. 运行以下命令，将服务器注册到配置服务器。
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    示例： 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      等到脚本执行完成。 如果成功注册主目标，门户中的“Site Recovery 基础结构”页上会列出该主目标。
@@ -347,9 +351,13 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
 * 主目标不应在虚拟机上留下任何快照。 如果有快照，故障回复会失败。
 
-* 由于使用某些自定义 NIC 配置，网络接口已在启动期间被禁用，因此主目标代理无法初始化。 请确保正确设置以下属性。 在以太网卡文件 /etc/sysconfig/network-scripts/ifcfg-eth* 中检查这些属性。
-    * BOOTPROTO=dhcp
-    * ONBOOT=yes
+* 由于使用某些自定义 NIC 配置，网络接口已在启动期间被禁用，因此主目标代理无法初始化。 请确保正确设置以下属性。 检查 Ethernet 卡文件的/etc/network/interfaces. 中的这些属性
+    * auto eth0
+    * iface eth0 inet dhcp <br>
+
+    使用以下命令重启网络服务： <br>
+
+`sudo systemctl restart networking`
 
 
 ## <a name="next-steps"></a>后续步骤

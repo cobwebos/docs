@@ -1,18 +1,16 @@
 ---
 title: 创建面向 Microsoft 商业市场的新 SaaS 产品/服务
 description: 如何使用 Microsoft 合作伙伴中心的 Microsoft 商业市场计划创建新的软件即服务 (SaaS) 产品/服务，以在 Microsoft AppSource、Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 3393fb6e33cbf80db68c49ac31edb54de35bae64
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a233f3594ace74a6bfeca90ffccfbcb233e5d890
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980590"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121873"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>在商业市场中创建新的 SaaS 产品/服务
 
@@ -108,7 +106,7 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 
 #### <a name="get-it-now-free"></a>立即获取（免费）
 
-通过提供有效的地址（以*http*或*https*开头）向客户免费列出你的产品/服务，用户可以通过[使用 Azure Active Directory （Azure AD））通过一键式身份验证](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)获得试用。 例如 `https://contoso.com/saas-app`。
+通过提供有效的地址（以*http*或*https*开头）向客户免费列出你的产品/服务，用户可以通过[使用 Azure Active Directory （Azure AD））通过一键式身份验证](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)获得试用。 例如，`https://contoso.com/saas-app`。
 
 #### <a name="free-trial-listing"></a>免费试用版（列出）
 

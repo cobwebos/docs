@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699900"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130178"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -119,7 +119,7 @@ ms.locfileid: "84699900"
 开始之前，请执行以下操作： 
 
 #### <a name="verify-time-accuracy"></a>验证时间准确性
-在配置服务器计算机上，确保将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
+在配置服务器计算机上，确保将系统时钟与[时间服务器](/windows-server/networking/windows-time-service/windows-time-service-top)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
 
 #### <a name="verify-connectivity"></a>验证连接性
 确保计算机可以根据你的环境访问这些 URL： 
@@ -172,7 +172,7 @@ ms.locfileid: "84699900"
 1. 单击“复制应用程序” > “源”。 
 2. 在“源”中选择配置服务器。****
 3. 在“计算机类型”中，选择“物理计算机”********。
-4. 选择进程服务器（配置服务器）。 。
+4. 选择进程服务器（配置服务器）。 然后单击“确定”。
 5. 在 "**目标**" 中，选择在故障转移后要在其中创建 Azure vm 的订阅和资源组。 选择要在 Azure 中使用的部署模型（经典或资源管理）。
 6. 选择要用于复制数据的 Azure 存储帐户。 
 7. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。

@@ -1,13 +1,14 @@
 ---
 title: 云解决方案提供商计划注意事项
 description: 对于 CSP 合作伙伴，Azure 委派资源管理通过启用细化权限来帮助提高安全性和控制力。
-ms.date: 12/18/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 15b66568ae468d772c0fb7141a10e336cd94afc3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 8dd40c5c4f7131554dcc3249777de9f0d92c35bb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921624"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131514"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse 和云解决方案提供商计划
 
@@ -26,19 +27,19 @@ ms.locfileid: "85921624"
 
 ## <a name="azure-delegated-resource-management"></a>Azure 委派资源管理
 
-使用 Azure 委派资源管理，可以将不同的组分配给不同的客户或角色，如下图所示。 由于用户将通过 Azure 委托的资源管理获取适当的访问级别，因此你可以减少具有“管理员代理”角色的用户数量（因此拥有完全 AOBO 访问权限）。 这有助于通过限制对客户资源的不必要访问来提高安全性。 此外，它还可以让你更灵活地大规模管理多个客户。
+使用 Azure Lighthouse，你可以将不同的组分配给不同的客户或角色，如下图所示。 由于用户将通过 Azure 委托的资源管理获取适当的访问级别，因此你可以减少具有“管理员代理”角色的用户数量（因此拥有完全 AOBO 访问权限）。 这有助于通过限制对客户资源的不必要访问来提高安全性。 此外，它还可以让你更灵活地大规模管理多个客户。
 
-按照[将订阅加入到 Azure 委派资源管理](../how-to/onboard-customer.md)中所述的步骤，加入通过 CSP 计划创建的订阅。 租户中具有管理员代理角色的任何用户都可以执行此加入过程。
+载入通过 CSP 计划创建的订阅，并遵循在[Azure Lighthouse 订阅](../how-to/onboard-customer.md)中所述的步骤。 租户中具有管理员代理角色的任何用户都可以执行此加入过程。
 
 ![使用 AOBO 和 Azure 委派资源管理进行租户管理](../media/csp-2.jpg)
 
 > [!NOTE]
-> Azure 门户中的 " [**我的客户**" 页面](../how-to/view-manage-customers.md)现在包含一个 "**云解决方案提供商（预览版）** " 部分，该部分显示已[签署 Microsoft 客户协议（MCA）](/partner-center/confirm-customer-agreement)并位于[Azure 计划下](/partner-center/azure-plan-get-started)的 CSP 客户的帐单信息和资源。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](../../billing/mpa-overview.md)。
+> Azure 门户中的 " [**我的客户**" 页面](../how-to/view-manage-customers.md)现在包含一个 "**云解决方案提供商（预览版）** " 部分，该部分显示已[签署 Microsoft 客户协议（MCA）](/partner-center/confirm-customer-agreement)并位于[Azure 计划下](/partner-center/azure-plan-get-started)的 CSP 客户的帐单信息和资源。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](../../cost-management-billing/understand/mpa-overview.md)。
 >
 > CSP 客户可能会在此部分中出现，无论他们是否已载入 Azure 委托资源管理。 如果有，则它们也会显示在**customers**节中，如[查看和管理客户和委派的资源](../how-to/view-manage-customers.md)中所述。 同样，CSP 客户无需显示在 "**我的客户**的**云解决方案提供商（预览版）** " 部分中，即可将它们加入 Azure 委托资源管理。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[跨租户管理体验](cross-tenant-management-experience.md)。
-- 了解如何[加入 Azure 委派资源管理的订阅](../how-to/onboard-customer.md)。
+- 了解如何[在 Azure Lighthouse](../how-to/onboard-customer.md)中加入订阅。
 - 详细了解[云解决方案提供商计划](/partner-center/csp-overview)。

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921447"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129863"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝色屏幕上显示“关键服务失败”
 本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误。 并提供用于解决问题的故障排除步骤。 
@@ -83,11 +84,15 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 
 1. 在恢复 VM 上，在提升的命令提示符下运行以下命令。 此命令将受影响的 OS 磁盘设置为在下次启动时以安全模式启动：
 
-        bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```
 
     例如，如果附加的 OS 磁盘是驱动器 F，则运行以下命令：
 
-        bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```
 
 2. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。 VM 会以安全模式启动。 如果仍然遇到错误，请转到可选步骤。
 3. 打开“运行”  框，运行 **verifier** 来启动驱动程序验证程序管理器工具。
@@ -97,7 +102,10 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 
 7. 删除安全启动设置：
 
-        bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```console
+    bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```
+
 8.  重启 VM。 
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>可选：在故障转储模式下分析转储日志

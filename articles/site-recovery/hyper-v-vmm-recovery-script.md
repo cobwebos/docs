@@ -7,17 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826275"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130138"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>将 VMM 脚本添加到还原计划
 
 本文介绍了如何创建 System Center Virtual Machine Manager (VMM) 脚本且如何在 [Azure Site Recovery](site-recovery-overview.md) 中将其添加到还原计划中。
 
-请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务 Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)。
+请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务 Microsoft Q&A 问题页](/answers/topics/azure-site-recovery.html)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +38,7 @@ ms.locfileid: "83826275"
 
     `Import-Module -Name virtualmachinemanager`
 
-    有关详细信息，请参阅 [Windows PowerShell 和 VMM 入门](https://technet.microsoft.com/library/hh875013.aspx)。
+    有关详细信息，请参阅 [Windows PowerShell 和 VMM 入门](/previous-versions/system-center/system-center-2012-R2/hh875013(v=sc.12))。
 * 确保 VMM 部署中至少有一个库服务器。 VMM 服务器的库共享路径默认位于本地的 VMM 服务器。 其文件夹名称为 MSCVMMLibrary。
 
   如果库共享路径在远程位置（或在本地但不与 MSCVMMLibrary 共享），请按如下所示配置共享（例如使用 \\libserver2.contoso.com\share\）：
@@ -50,7 +51,7 @@ ms.locfileid: "83826275"
 
      a. 以管理员身份打开 64 位 Windows PowerShell 控制台。
      
-     b. 输入 Set-executionpolicy bypass。 有关详细信息，请参阅[使用 Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
+     b. 输入 Set-executionpolicy bypass。 有关详细信息，请参阅[使用 Set-ExecutionPolicy cmdlet](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))。
 
      > [!IMPORTANT]
      > 仅在 64 位 PowerShell 控制台中设置 Set-executionpolicy bypass。 若为 32 位 PowerShell 控制台设置此项，脚本不会运行。
@@ -59,9 +60,9 @@ ms.locfileid: "83826275"
 
 如果具备 VMM 源站点，即可在 VMM 服务器上创建脚本。 然后，将脚本置于还原计划中。
 
-1. 在库共享中新建文件夹。 例如 \<VMM server name>\MSSCVMMLibrary\RPScripts。 将文件夹放到源和目标 VMM 服务器上。
+1. 在库共享中新建文件夹。 例如， \<VMM server name> \MSSCVMMLibrary\RPScripts。 将文件夹放到源和目标 VMM 服务器上。
 1. 创建脚本。 例如，将脚本命名为 RPScript。 验证脚本是否按预期运行。
-1. 将脚本放到源和目标 VMM 服务器的 \<VMM server name>\MSSCVMMLibrary 文件夹中。
+1. 将该脚本放在 \<VMM server name> 源和目标 VMM 服务器上的 \MSSCVMMLibrary 文件夹中。
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>将脚本添加到恢复计划
 

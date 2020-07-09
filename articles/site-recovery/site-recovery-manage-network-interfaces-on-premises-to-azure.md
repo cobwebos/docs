@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954591"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129899"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理用于本地灾难恢复到 Azure 的 VM 网络接口
 
@@ -25,7 +26,7 @@ Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以�
 
 ## <a name="select-the-target-network"></a>选择目标网络
 
-对于 VMware 和物理机，以及 Hyper-V（不带 System Center Virtual Machine Manager）虚拟机，可为单个虚拟机指定目标虚拟网络。 对于带 Virtual Machine Manager 的 Hyper-V 虚拟机，使用[网络映射](site-recovery-network-mapping.md)映射某个源 Virtual Machine Manager 服务器上的 VM 网络，并以 Azure 网络为定向目标。
+对于 VMware 和物理机，以及 Hyper-V（不带 System Center Virtual Machine Manager）虚拟机，可为单个虚拟机指定目标虚拟网络。 对于带 Virtual Machine Manager 的 Hyper-V 虚拟机，使用[网络映射](./hyper-v-vmm-network-mapping.md)映射某个源 Virtual Machine Manager 服务器上的 VM 网络，并以 Azure 网络为定向目标。
 
 1. 在恢复服务保管库中的“复制的项”  下，选择任何复制的项以访问其设置。
 

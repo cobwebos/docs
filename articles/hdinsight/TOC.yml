@@ -428,8 +428,6 @@
               href: ./spark/apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
             - name: Apache Spark 作业失败 - InvalidClassException
               href: ./spark/apache-spark-troubleshoot-job-fails-invalidclassexception.md
-            - name: 缓慢 Apache Spark 作业 - listStatus
-              href: ./spark/apache-spark-troubleshoot-job-slowness-liststatus.md
             - name: 缓慢 Apache Spark 作业 - 存储容器
               href: ./spark/apache-spark-troubleshoot-job-slowness-container.md
             - name: IllegalArgumentException 异常
@@ -723,8 +721,6 @@
               href: ./hbase/hbase-troubleshoot-pegged-cpu-region-server.md
             - name: “hbase hbck”命令超时
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
-            - name: 排查 Apache HBase 故障
-              href: ./hbase/apache-troubleshoot-hbase.md
             - name: 用于查询 Apache HBase 的 REST API
               href: ./hbase/troubleshoot-rest-api.md
 - name: 交互式查询

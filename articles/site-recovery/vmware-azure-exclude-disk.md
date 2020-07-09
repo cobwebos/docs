@@ -6,11 +6,12 @@ manager: rochakm
 ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: cd54da5ee01206e576157435135065189bfb8035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4842172ff181b5cdbe7f6fecf69da8755ae43fa
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75495364"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129868"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>从目标为 Azure 的 VMware VM 复制中排除磁盘
 
@@ -41,7 +42,7 @@ ms.locfileid: "75495364"
 
 ## <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 
-1. 为 VMware VM [启用复制](site-recovery-hyper-v-site-to-azure.md)时，请选择要复制的 VM，然后在“启用复制” > “属性” > “配置属性”页上查看“要复制的磁盘”列     。 默认情况下，选择所有磁盘进行复制。
+1. 为 VMware VM [启用复制](./hyper-v-azure-tutorial.md)时，请选择要复制的 VM，然后在“启用复制” > “属性” > “配置属性”页上查看“要复制的磁盘”列     。 默认情况下，选择所有磁盘进行复制。
 2. 如果不想复制特定磁盘，请在“要复制的磁盘”中取消选择要排除的任何磁盘  。 
 
     ![从复制中排除磁盘](./media/vmware-azure-exclude-disk/enable-replication-exclude-disk1.png)

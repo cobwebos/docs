@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584145"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129923"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -106,9 +106,9 @@ ms.locfileid: "80584145"
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="“计算和网络属性”窗口":::
 
    - **Azure VM 名称**：根据需要修改名称以使其符合 Azure 要求。
-   - **目标 VM 大小或 VM 类型**：基于一些参数选择默认 VM 大小，这些参数包括目标 Azure 区域中的磁盘计数、NIC 计数、CPU 核心计数、内存和可用 VM 角色大小。 Azure Site Recovery 将选取满足所有条件的第一个可用 VM 大小。 在故障转移之前，随时可以根据需要选择不同的 VM 大小。 VM 磁盘大小还取决于源磁盘大小，并且它只能在故障转移后进行更改。 在 [Windows 上的 VM 磁盘的可伸缩性和性能目标](/azure/virtual-machines/windows/disk-scalability-targets)中了解磁盘大小和 IOPS 速率。
-   - **资源组**：可以选择虚拟机会在故障转移后成为其中一部分的[资源组](/azure/azure-resource-manager/management/overview#resource-groups)。 在故障转移之前，随时可以更改此设置。 故障转移之后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
-   - **可用性集**：如果需要虚拟机在故障转移后成为某个[可用性集](/azure/virtual-machines/windows/tutorial-availability-sets)的一部分，可以选择一个可用性集。 选择可用性集时，请注意以下信息：
+   - **目标 VM 大小或 VM 类型**：基于一些参数选择默认 VM 大小，这些参数包括目标 Azure 区域中的磁盘计数、NIC 计数、CPU 核心计数、内存和可用 VM 角色大小。 Azure Site Recovery 将选取满足所有条件的第一个可用 VM 大小。 在故障转移之前，随时可以根据需要选择不同的 VM 大小。 VM 磁盘大小还取决于源磁盘大小，并且它只能在故障转移后进行更改。 在 [Windows 上的 VM 磁盘的可伸缩性和性能目标](../virtual-machines/windows/disk-scalability-targets.md)中了解磁盘大小和 IOPS 速率。
+   - **资源组**：可以选择虚拟机会在故障转移后成为其中一部分的[资源组](../azure-resource-manager/management/overview.md#resource-groups)。 在故障转移之前，随时可以更改此设置。 故障转移之后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
+   - **可用性集**：如果需要虚拟机在故障转移后成为某个[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)的一部分，可以选择一个可用性集。 选择可用性集时，请注意以下信息：
      - 仅会列出属于指定资源组的可用性集。
      - 位于不同虚拟网络中的 VM 不能属于同一个可用性集。
      - 仅大小相同的虚拟机可以属于同一可用性集。

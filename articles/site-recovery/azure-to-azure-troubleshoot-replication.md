@@ -5,15 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196093"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130403"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
 
-本文介绍了在不同区域之间复制和恢复 Azure 虚拟机 (VM) 时在 Azure Site Recovery 中经常出现的问题。 另外还介绍了如何排查常见问题。 有关支持的配置的详细信息，请参阅 [support matrix for replicating Azure VMs](site-recovery-support-matrix-azure-to-azure.md)（复制 Azure VM 的支持矩阵）。
+本文介绍了在不同区域之间复制和恢复 Azure 虚拟机 (VM) 时在 Azure Site Recovery 中经常出现的问题。 另外还介绍了如何排查常见问题。 有关支持的配置的详细信息，请参阅 [support matrix for replicating Azure VMs](./azure-to-azure-support-matrix.md)（复制 Azure VM 的支持矩阵）。
 
 Azure Site Recovery 以一致的方式将数据从源区域复制到灾难恢复区域。 它还每隔 5 分钟创建崩溃一致性恢复点。 如果 Site Recovery 在 60 分钟内无法创建恢复点，它会通过以下信息向你发出警报：
 
@@ -77,7 +78,7 @@ Azure Site Recovery 根据磁盘类型实施数据更改率限制。 若要确�
 
 Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数据从虚拟机上传到缓存存储帐户时的速度有 3 秒低于 4 MB，则可能是遇到了网络延迟。
 
-若要检查延迟相关的问题，请使用 [AzCopy](/azure/storage/common/storage-use-azcopy)。 可以使用此命令行实用工具将数据从虚拟机上传到缓存存储帐户。 如果延迟较高，请检查你是否在使用网络虚拟设备 (NVA) 控制来自 VM 的出站网络流量。 如果所有复制流量都通过 NVA，设备可能会受到限制。
+若要检查延迟相关的问题，请使用 [AzCopy](../storage/common/storage-use-azcopy-v10.md)。 可以使用此命令行实用工具将数据从虚拟机上传到缓存存储帐户。 如果延迟较高，请检查你是否在使用网络虚拟设备 (NVA) 控制来自 VM 的出站网络流量。 如果所有复制流量都通过 NVA，设备可能会受到限制。
 
 建议在虚拟网络中为“存储”创建一个网络服务终结点，这样复制流量就不会经过 NVA。 有关详细信息，请参阅[网络虚拟设备配置](azure-to-azure-about-networking.md#network-virtual-appliance-configuration)。
 
@@ -107,7 +108,7 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 ### <a name="app-consistency-not-enabled-on-linux-servers"></a>Linux 服务器上未启用应用一致性
 
-**如何修复**：针对 Linux 操作系统的 Azure Site Recovery 支持应用程序自定义脚本以实现应用程序一致性。 使用 pre 和 post 选项的自定义脚本将由 Azure Site Recovery 移动代理用于应用程序一致性。 [下面](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)是启用该方法的步骤。
+**如何修复**：针对 Linux 操作系统的 Azure Site Recovery 支持应用程序自定义脚本以实现应用程序一致性。 使用 pre 和 post 选项的自定义脚本将由 Azure Site Recovery 移动代理用于应用程序一致性。 [下面](./site-recovery-faq.md#replication)是启用该方法的步骤。
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>更多的原因在于 VSS 相关的问题：
 

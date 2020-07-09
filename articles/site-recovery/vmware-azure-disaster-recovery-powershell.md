@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704363"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129901"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
 
@@ -36,7 +36,7 @@ ms.locfileid: "84704363"
 开始之前：
 
 - 请确保了解[方案体系结构和组件](vmware-azure-architecture.md)。
-- 查看所有组件的[支持要求](site-recovery-support-matrix-to-azure.md)。
+- 查看所有组件的[支持要求](./vmware-physical-azure-support-matrix.md)。
 - 设置 Azure PowerShell `Az` 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
 
 ## <a name="log-into-azure"></a>登录到 Azure
@@ -497,4 +497,4 @@ Errors           : {}
 2. 故障转移成功后，可提交故障转移操作并设置从 Azure 到本地 VMware 站点的反向复制。
 
 ## <a name="next-steps"></a>后续步骤
-了解如何使用 [Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/Az.RecoveryServices)自动执行更多任务。
+了解如何使用 [Azure Site Recovery PowerShell 参考](/powershell/module/Az.RecoveryServices)自动执行更多任务。

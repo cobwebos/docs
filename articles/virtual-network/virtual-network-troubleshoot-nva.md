@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 353ab1f15a6df8700a9abda22233dc052aa10095
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71056834"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130711"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的网络虚拟设备问题
 
@@ -103,11 +103,15 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 
     对于 Windows：
 
-        netstat -an
+    ```console
+   netstat -an
+    ```
 
     对于 Linux：
 
-        netstat -an | grep -i listen
+    ```console
+   netstat -an | grep -i listen
+    ```
 2. 如果未看到结果中列出的 NVA 软件使用的 TCP 端口，则必须在 NVA 和 VM 上配置应用程序，以侦听并响应到达这些端口的流量。 [如有需要，请联系 NVA 供应商以获取帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
 ## <a name="check-nva-performance"></a>检查 NVA 性能
