@@ -116,6 +116,12 @@
           href: how-to-virtual-hub-routing.md
         - name: 如何查看虚拟中心有效路由
           href: effective-routes-virtual-hub.md
+        - name: 将流量从虚拟中心路由到 NVA（旧版）
+          items:
+            - name: Azure 门户
+              href: virtual-wan-route-table-nva-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table-nva.md
     - name: 安全性
       items:
         - name: 在中心安装 Azure 防火墙

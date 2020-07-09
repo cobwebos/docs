@@ -88,7 +88,7 @@
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: 机器学习 UDF
           href: machine-learning-udf.md
-        - name: 调试 UDF 和更新
+        - name: 调试 UDF
           href: debug-user-defined-functions.md
     - name: 优化流分析作业
       items:

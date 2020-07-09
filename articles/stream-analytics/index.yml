@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure 流分析文档
-summary: Azure 流分析是一项完全托管的实时分析服务，旨在帮助你分析和处理可用于触发警报和操作的快速移动数据流。 参考我们的快速入门、教程和示例，了解如何使用 Azure 流分析。
+summary: Azure 流分析是一项完全托管的实时分析服务，旨在帮助你分析和处理可用于获取见解、生成报表或触发警报和操作的快速移动数据流。 参考我们的快速入门、教程和示例，了解如何使用 Azure 流分析。
 metadata:
   title: Azure 流分析文档
-  description: Azure 流分析是一项完全托管的实时分析服务，旨在帮助你分析和处理可用于触发警报和操作的快速移动数据流。 参考我们的快速入门、教程和示例，了解如何使用 Azure 流分析。
+  description: Azure 流分析是一项完全托管的实时分析服务，旨在帮助你分析和处理可用于获取见解、生成报表或触发警报和操作的快速移动数据流。 参考我们的快速入门、教程和示例，了解如何使用 Azure 流分析。
   services: service
   ms.service: stream-analytics
   ms.topic: landing-page
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 757c60487e4c4c7fedca4824cd40e86cbd9ca465
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82130956"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86119644"
 landingContent:
 - title: 关于 Azure 流分析
   linkLists:

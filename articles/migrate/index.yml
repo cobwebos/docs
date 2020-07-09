@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Migrate 文档
-summary: Azure Migrate 提供了一个工具中心，用于发现、评估本地工作负荷以及将本地工作负荷迁移到 Azure。
+summary: 查找相关文章，了解如何使用 Azure Migrate 中心内的工具来发现、评估和迁移本地环境。
 metadata:
   title: Azure Migrate 文档
-  description: 使用 Azure Migrate 将本地工作负荷迁移到 Azure。
+  description: 了解如何使用 Azure Migrate 中心内的工具来发现、评估本地环境并将它迁移到 Azure。
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 11/19/2019
-  ms.openlocfilehash: 3f1d89d7e9c4c8a57c08d6b5880f707a01b7fcb2
-  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+  ms.date: 07/08/2020
+  ms.openlocfilehash: a3c9be5e123892d5d1b8d8e4a0677eb520e34dc6
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/25/2020
-  ms.locfileid: "83835183"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86112657"
 landingContent:
 - title: 关于 Azure Migrate
   linkLists:
@@ -96,6 +96,6 @@ landingContent:
     - text: 请求服务功能
       url: https://feedback.azure.com/forums/907195-azure-migrate
     - text: 在论坛上提问
-      url: https://docs.microsoft.com/answers/topics/azure-migrate.html
+      url: /answers/topics/azure-migrate.html
     - text: Azure Tech Community
       url: https://techcommunity.microsoft.com/t5/Azure-Migration/bd-p/AzureMigration

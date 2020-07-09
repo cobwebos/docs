@@ -41,7 +41,7 @@
       href: ./concepts/managed-applications.md
 - name: 操作指南
   items:
-    - name: 将客户载入到 Azure 委派资源管理
+    - name: 将客户加入 Azure Lighthouse
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: 向 Azure 市场发布托管服务产品

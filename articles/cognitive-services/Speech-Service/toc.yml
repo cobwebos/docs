@@ -520,6 +520,8 @@
         - name: 配置语音容器
           displayName: 'containers,configure containers,container config,configuration'
           href: speech-container-configuration.md
+        - name: 使用语音容器进行批处理
+          href: speech-container-batch-processing.md
         - name: 使用 Kubernetes 和 Helm 的语音容器
           displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
           href: speech-container-howto-on-premises.md

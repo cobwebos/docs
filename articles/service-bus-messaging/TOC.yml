@@ -182,6 +182,10 @@
           href: service-bus-nodejs-how-to-use-queues.md
         - name: 发布和订阅消息（旧版 azure-sb）
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+    - name: 迁移
+      items:
+        - name: 从 ActiveMQ 迁移到 Azure 服务总线
+          href: migrate-jms-activemq-to-servicebus.md
     - name: 集成
       items:
         - name: 与 RabbitMQ 集成

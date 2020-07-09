@@ -68,6 +68,8 @@
       href: How-tos/text-analytics-how-to-keyword-extraction.md
     - name: 命名实体识别
       href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: 运行状况文本分析
+      href: How-tos/text-analytics-for-health.md
     - name: 使用容器
       items:
         - name: 安装和运行容器

@@ -12,18 +12,21 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: 创建负载均衡器 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: 创建负载均衡器 - PowerShell
+    - name: 创建负载均衡器 - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: 创建负载均衡器 - ARM 模板
-      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
+    - name: 创建内部负载均衡器 - 门户
+      href: tutorial-load-balancer-standard-internal-portal.md
+    - name: 创建内部负载均衡器 - Azure CLI
+      href: load-balancer-get-started-ilb-arm-cli.md
+    - name: 创建内部负载均衡器 - Azure PowerShell
+      href: load-balancer-get-started-ilb-arm-ps.md
+    - name: 创建内部负载均衡器 - ARM 模板
+      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: 教程
   items:
-    - name: 对传入 VM 的 Internet 流量进行负载均衡
-      href: tutorial-load-balancer-standard-manage-portal.md
-    - name: 对传入 VM 的内部流量进行负载均衡
-      href: tutorial-load-balancer-standard-internal-portal.md
     - name: 跨可用性区域对 VM 进行负载均衡
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定的可用性区域中对 VM 进行负载均衡
@@ -78,17 +81,17 @@
           href: configure-vm-scale-set-powershell.md
         - name: 与现有的 Azure 负载均衡器配合使用 - CLI
           href: configure-vm-scale-set-cli.md
-    - name: 将基本负载均衡器升级到标准负载均衡器
+    - name: 从“基本”升级到“标准”负载均衡器
       items:
         - name: 升级基本公共负载均衡器
           href: upgrade-basic-standard.md
-        - name: 升级基本内部负载均衡器 - 无需出站连接
+        - name: 升级内部负载均衡器 - 无需出站连接
           href: upgrade-basicInternal-standard.md
-        - name: 升级基本内部负载均衡器 - 需要出站连接
+        - name: 升级内部负载均衡器 - 需要出站连接
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: 配置出站规则
       items:
-        - name: Azure 门户
+        - name: 门户
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
@@ -103,35 +106,25 @@
         - name: Azure 资源管理器模板
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: 配置内部负载均衡器
-      items:
-        - name: Azure 门户
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Azure 资源管理器模板
-          href: load-balancer-get-started-ilb-arm-template.md
-          displayName: ARM
     - name: 配置负载均衡器的 TCP 空闲超时
       href: load-balancer-tcp-idle-timeout.md
     - name: 配置负载均衡器的分布模式
       href: load-balancer-distribution-mode.md
     - name: 使用多个 IP 配置
-      href: load-balancer-multiple-ip.md
       items:
+        - name: 门户
+          href: load-balancer-multiple-ip.md
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
     - name: 跨区域移动
       items:
-        - name: 外部负载均衡器 - 门户
+        - name: 公共负载均衡器 - 门户
           href: move-across-regions-external-load-balancer-portal.md
-        - name: 外部负载均衡器 - PowerShell
+        - name: 公共负载均衡器 - PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
-        - name: 内部负载均衡器 - 门户
+        - name: 公共负载均衡器 - 门户
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部负载均衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
