@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704431"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132157"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -39,7 +39,7 @@ ms.locfileid: "84704431"
 1. 创建应用程序的用户必须拥有应用程序开发人员角色。
     - 若要验证角色，请登录到 Azure 门户。</br>
     - 转到“Azure Active Directory” > “角色和管理员”。</br>
-    - 检查应用程序开发人员角色是否已分配到该用户。 如果没有，请使用拥有此权限的用户，或[联系管理员启用该权限](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)。
+    - 检查应用程序开发人员角色是否已分配到该用户。 如果没有，请使用拥有此权限的用户，或[联系管理员启用该权限](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles)。
     
 2. 如果无法分配应用程序开发人员角色，请确保“用户可以注册应用程序”标志设置为 **true**，使该用户能够创建标识。 若要启用这些权限：
     - 登录到 Azure 门户。
@@ -49,7 +49,7 @@ ms.locfileid: "84704431"
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> 不支持 Active Directory 联合身份验证服务。  请使用通过 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 管理的帐户。
+> 不支持 Active Directory 联合身份验证服务。  请使用通过 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 管理的帐户。
 
 ## <a name="download-the-template"></a>下载模板
 

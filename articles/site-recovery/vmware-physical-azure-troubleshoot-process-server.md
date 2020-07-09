@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835795"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131981"
 ---
 # <a name="troubleshoot-the-process-server"></a>进程服务器故障排除
 
@@ -95,7 +96,7 @@ IP 地址 | 确保进程服务器具有静态 IPv4 地址，而未配置 NAT。
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>步骤 4：验证源计算机上的时间同步
 
-确保复制计算机的系统日期/时间处于同步状态。[了解详细信息](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+确保复制计算机的系统日期/时间处于同步状态。[了解详细信息](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>步骤 5：检查源计算机上的防病毒软件
 
@@ -104,7 +105,7 @@ IP 地址 | 确保进程服务器具有静态 IPv4 地址，而未配置 NAT。
 ## <a name="step-6-check-connectivity-from-source-machine"></a>步骤 6：检查来自源计算机的连接
 
 
-1. 如果需要，在源计算机上安装 [Telnet 客户端](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)。 请勿使用 Ping。
+1. 如果需要，在源计算机上安装 [Telnet 客户端](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10))。 请勿使用 Ping。
 2. 在源计算机上，使用 Telnet 在 HTTPS 端口上对进程服务器执行 ping 操作。 默认情况下，9443 是用于复制流量的 HTTPS 端口。
 
     `telnet <process server IP address> <port>`
@@ -245,7 +246,7 @@ IP 地址 | 确保进程服务器具有静态 IPv4 地址，而未配置 NAT。
 
 ## <a name="next-steps"></a>后续步骤
 
-如需更多帮助，请在[有关 Azure Site Recovery 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)中提问。 
+如需更多帮助，请在[有关 Azure Site Recovery 的 Microsoft Q&A 问题页面](/answers/topics/azure-site-recovery.html)中提问。 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

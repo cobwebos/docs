@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6a284d13d0d737eca65b2593813b3d1b999cfdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361381"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133150"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -211,6 +211,7 @@ ms.locfileid: "85361381"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (在 Azure 存储帐户之间复制磁盘)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (SAP 部署的 VM/VHD 结构)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (为附加的磁盘设置自动装载)
+[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (适用于 SAP 的 Azure 监视解决方案)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -913,7 +914,7 @@ az --version
 > 常规支持声明：若要支持适用于 SAP 的 Azure 扩展，请始终使用适用于 Windows 的 BC-OP-NT-AZR for Windows 或业务连续性-组件 BC-OP-LNX-AZR 创建-BC-OP-NT-AZR 在 SAP 上打开一个事件。
 > SAP 支持系统中有专门的 Microsoft 支持工程师，可帮助我们的共同客户。
 
-根据 [Azure 上的 SAP 的 VM 部署方案][deployment-guide-3]所述准备好 VM 之后，Azure VM 代理就已安装在虚拟机上了。 下一个步骤是部署 Azure 全球数据中心内的 Azure 扩展存储库中提供的适用于 SAP 的 Azure 扩展。 有关详细信息，请参阅 [适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施] [规划指南-9.1]。
+根据 [Azure 上的 SAP 的 VM 部署方案][deployment-guide-3]所述准备好 VM 之后，Azure VM 代理就已安装在虚拟机上了。 下一个步骤是部署 Azure 全球数据中心内的 Azure 扩展存储库中提供的适用于 SAP 的 Azure 扩展。 有关详细信息，请参阅 [SAP NetWeaver 的 Azure 虚拟机规划和实施指南][planning-guide-9.1]。
 
 我们正在发布适用于 SAP 的 Azure 扩展的新版本。 新扩展使用系统分配的虚拟机标识来获取有关连接的磁盘、网络接口和虚拟机本身的信息。 为了能够访问这些资源，虚拟机的系统标识需要针对虚拟机、OS 磁盘、数据磁盘和网络接口的读取器权限。 我们目前建议仅在以下方案中安装新扩展：
 

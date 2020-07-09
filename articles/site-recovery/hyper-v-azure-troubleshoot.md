@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 6ba1568e5fb05954313f50e63364a2e475dfbab7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b3fdd93902709541f4a22e652c34973158ad9c7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195282"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132449"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -27,12 +28,12 @@ ms.locfileid: "84195282"
 3. 检查 Hyper-V 虚拟机管理服务是否在 Hyper-V 主机上运行。
 4. 检查 VM 的 Hyper-V-VMMS\Admin 登录中显示的问题。 此日志位于“应用程序和服务日志” > “Microsoft” > “Windows”中。
 5. 在来宾 VM 上，验证 WMI 是否已启用并可访问。
-   - [了解](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)基本 WMI 测试。
+   - [了解](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)基本 WMI 测试。
    - [排查](https://aka.ms/WMiTshooting) WMI 问题。
-   - [排查](https://technet.microsoft.com/library/ff406382.aspx#H22) WMI 脚本和服务的问题。
+   - [排查](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) WMI 脚本和服务的问题。
 6. 在来宾 VM 上，确保运行最新版本的 Integration Services。
-    - [检查](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)是否安装了最新版本。
-    - [始终使用](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)最新的 Integration Services。
+    - [检查](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)是否安装了最新版本。
+    - [始终使用](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)最新的 Integration Services。
     
 ## <a name="replication-issues"></a>复制问题
 
@@ -65,7 +66,7 @@ ms.locfileid: "84195282"
 3. 运行探查器后，遵循[带宽](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)和[存储](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)方面的建议。
 4. 检查[数据变动限制](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)。 如果发现 VM 上的数据变动率较高，请执行以下操作：
    - 检查 VM 是否标记为重新同步。
-   - 遵循[这些步骤](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/)来调查变动的起源。
+   - 遵循[这些步骤](https://techcommunity.microsoft.com/t5/virtualization/bg-p/Virtualization)来调查变动的起源。
    - 当 HRL 日志文件超过可用磁盘空间的 50% 时，可能会发生数据变动。 如果这是问题所在，请为出现问题的所有 VM 预配更多的存储空间。
    - 检查并确认复制未暂停。 如果已暂停，则它会继续将更改写入 HRL 文件，从而可能导致其大小增加。
  
@@ -114,8 +115,8 @@ ms.locfileid: "84195282"
         - 计数器：“Write Bytes / Sec”</br>
         - 根据 VM 或其应用的繁忙程度，此数据变动率将会提高或保持在较高级别。
         - 对于 Site Recovery 的标准存储，平均源磁盘数据变动率为 2 MB/秒。 [了解详细信息](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - 此外，可以[验证存储可伸缩性目标](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)。
-8. 如果你使用的是基于 Linux 的服务器，请确保在其上启用了应用程序一致性。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)
+    - 此外，可以[验证存储可伸缩性目标](../storage/common/scalability-targets-standard-account.md)。
+8. 如果你使用的是基于 Linux 的服务器，请确保在其上启用了应用程序一致性。 [了解详细信息](./site-recovery-faq.md#replication)
 9. 运行[部署规划器](hyper-v-deployment-planner-run.md)。
 10. 查看有关[网络](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)和[存储](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)的建议。
 
@@ -129,7 +130,7 @@ ms.locfileid: "84195282"
 
 2. 若要为 VM 生成 VSS 快照，请检查 VM 上是否已安装 Hyper-V Integration Services，并已启用备份 (VSS) 集成服务。
     - 确保 Integration Services VSS 服务/守护程序在来宾上运行，并处于“正常”状态。****
-    - 你可以通过命令**enable-vmintegrationservice- \<VMName> Name VSS**从 hyper-v 主机上的提升的 PowerShell 会话中进行检查，还可以通过登录到来宾 VM 来获取此信息。 [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
+    - 你可以通过命令**enable-vmintegrationservice- \<VMName> Name VSS**从 hyper-v 主机上的提升的 PowerShell 会话中进行检查，还可以通过登录到来宾 VM 来获取此信息。 [了解详细信息](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - 确保 VM 上的备份/VSS Integration Services 正在运行且处于正常状态。 否则，请重启这些服务，并重启 Hyper-V 主机服务器上的 Hyper-V 卷影复制请求程序服务。
 
 ### <a name="common-errors"></a>常见错误
@@ -137,7 +138,7 @@ ms.locfileid: "84195282"
 **错误代码** | **消息** | **详细信息**
 --- | --- | ---
 **0x800700EA** | “Hyper-V 无法为虚拟机生成 VSS 快照集: 更多数据可用。 (0x800700EA)。 如果备份操作正在进行，VSS 快照集生成可能失败。<br/><br/> 虚拟机复制操作失败: 更多数据可用。” | 检查是否在 VM 上启用了动态磁盘。 不支持此操作。
-**0x80070032** | “由于版本与 Hyper-V 预期的版本不匹配，Hyper-V 卷影复制请求程序无法连接到虚拟机 <./VMname>” | 检查是否安装了最新的 Windows 更新。<br/><br/> [升级](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)到最新版本的 Integration Services。
+**0x80070032** | “由于版本与 Hyper-V 预期的版本不匹配，Hyper-V 卷影复制请求程序无法连接到虚拟机 <./VMname>” | 检查是否安装了最新的 Windows 更新。<br/><br/> [升级](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)到最新版本的 Integration Services。
 
 
 
@@ -169,4 +170,3 @@ ms.locfileid: "84195282"
 
 -   对于 VMM，请使用[支持诊断平台 (SDP) 工具](https://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx)执行 Site Recovery 日志收集。
 -   对于不带 VMM 的 Hyper-V，请[下载此工具](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab)，并在 Hyper-V 主机上运行该工具来收集日志。
-

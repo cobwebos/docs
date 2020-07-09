@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 5f9774dd65587c364c90d346f17ed508a263c954
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c729645eadc192dba4d7bb4f2c346d7b9d36434a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961265"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132688"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -70,7 +70,7 @@ Azure Government    | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚�
 --- | --- | ---
 常规用途 V2 存储帐户（热存储层和冷存储层） | 支持 | 建议不要使用 GPv2，因为 V2 的事务成本远高于 V1 存储帐户。
 高级存储 | 不支持 | 标准存储帐户用于缓存存储，有助于优化成本。
-虚拟网络的 Azure 存储防火墙  | 支持 | 如果你使用的是启用了防火墙的缓存存储帐户或目标存储帐户，请确保“[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)”。<br></br>同时，确保允许访问至少一个源 Vnet 子网。
+虚拟网络的 Azure 存储防火墙  | 支持 | 如果你使用的是启用了防火墙的缓存存储帐户或目标存储帐户，请确保“[允许受信任的 Microsoft 服务](../storage/common/storage-network-security.md#exceptions)”。<br></br>同时，确保允许访问至少一个源 Vnet 子网。
 
 
 ## <a name="replicated-machine-operating-systems"></a>复制的计算机操作系统
@@ -229,7 +229,7 @@ GRS | 支持 |
 RA-GRS | 支持 |
 ZRS | 不支持 |
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持虚拟机磁盘
-虚拟网络的 Azure 存储防火墙  | 支持 | 如果限制通过虚拟网络访问存储帐户，请启用[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
+虚拟网络的 Azure 存储防火墙  | 支持 | 如果限制通过虚拟网络访问存储帐户，请启用[允许受信任的 Microsoft 服务](../storage/common/storage-network-security.md#exceptions)。
 常规用途 V2 存储帐户（冷热存储层） | 支持 | 与常规用途 V1 存储帐户相比，事务成本显著增加
 第 2 代（UEFI 启动） | 支持
 NVMe 磁盘 | 不支持
@@ -270,10 +270,10 @@ NIC 上的 NSG | 支持 | 在恢复计划中使用 Azure 自动化脚本将 NSG 
 流量管理器     | 支持 | 可以预配置流量管理器，这样在正常情况下，流量路由到源区域中的终结点；发生故障转移时，流量路由到目标区域中的终结点。
 Azure DNS | 支持 |
 自定义 DNS    | 支持 |
-未经身份验证的代理 | 支持 | [了解详细信息](site-recovery-azure-to-azure-networking-guidance.md)
+未经身份验证的代理 | 支持 | [了解详细信息](./azure-to-azure-about-networking.md)
 经过身份验证的代理 | 不支持 | 如果 VM 对出站连接使用经过身份验证的代理，则不能使用 Azure Site Recovery 复制该 VM。
-与本地建立 VPN 站点到站点连接<br/><br/>（使用或不使用 ExpressRoute）| 支持 | 配置 UDR 和 NSG 时，请确保 Site Recovery 流量不会路由到本地。 [了解详细信息](site-recovery-azure-to-azure-networking-guidance.md)
-VNET 到 VNET 连接    | 支持 | [了解详细信息](site-recovery-azure-to-azure-networking-guidance.md)
+与本地建立 VPN 站点到站点连接<br/><br/>（使用或不使用 ExpressRoute）| 支持 | 配置 UDR 和 NSG 时，请确保 Site Recovery 流量不会路由到本地。 [了解详细信息](./azure-to-azure-about-networking.md)
+VNET 到 VNET 连接    | 支持 | [了解详细信息](./azure-to-azure-about-networking.md)
 虚拟网络服务终结点 | 支持 | 若要限制对存储帐户的虚拟网络访问，请确保允许受信任的 Microsoft 服务访问存储帐户。
 加速网络 | 支持 | 必须在源 VM 上启用加速网络。 [了解详细信息](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 Palo Alto 网络设备 | 不支持 | 使用第三方设备时，虚拟机内部通常存在提供商施加的一些限制。 要使 Azure Site Recovery 可用，需在其上安装代理、扩展并为其提供出站连接。 但是，该设备不允许在虚拟机内部配置任何出站活动。
@@ -282,5 +282,5 @@ IPv6  | 不支持 | 此外，不支持同时包含 IPv4 和 IPv6 的混合配置
 
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读[网络指南](site-recovery-azure-to-azure-networking-guidance.md)，了解如何复制 Azure VM。
-- 通过[复制 Azure VM](site-recovery-azure-to-azure.md) 来部署灾难恢复。
+- 阅读[网络指南](./azure-to-azure-about-networking.md)，了解如何复制 Azure VM。
+- 通过[复制 Azure VM](./azure-to-azure-quickstart.md) 来部署灾难恢复。

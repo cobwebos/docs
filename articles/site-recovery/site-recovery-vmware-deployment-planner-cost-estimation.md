@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953343"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132200"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>查看 VMware 中的成本估算部署规划器 
 
@@ -149,7 +150,7 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>支持的货币
 Azure Site Recovery 部署规划器可以使用以下任何货币生成成本报表。
 
-|货币|“属性”||货币|“属性”||货币|“属性”|
+|货币|名称||货币|名称||货币|名称|
 |---|---|---|---|---|---|---|---|
 |ARS|阿根廷比索 ($)||AUD|澳大利亚元 ($)||BRL|巴西雷亚尔 (R$)|
 |CAD|加拿大元 ($)||CHF|瑞士法郎 (chf)||DKK|丹麦克朗 (kr)|
@@ -161,4 +162,4 @@ Azure Site Recovery 部署规划器可以使用以下任何货币生成成本报
 |TRY|土耳其里拉 (TL)||USD| 美元 ($)||ZAR|南非兰特 (R)|
 
 ## <a name="next-steps"></a>后续步骤
-详细了解如何[使用 Azure Site Recovery 将 VMware VM 转移到 Azure 进行保护](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure)。
+详细了解如何[使用 Azure Site Recovery 将 VMware VM 转移到 Azure 进行保护](./vmware-azure-tutorial.md)。

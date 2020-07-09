@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954388"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132117"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>关于 VMware VM 到 Azure 的灾难恢复
 
@@ -20,7 +21,7 @@ ms.locfileid: "73954388"
 
 业务连续性和灾难恢复 (BCDR) 策略有助于保持业务正常运行。 在计划的停机和意外故障期间，BCDR 可确保数据安全可用，并确保应用继续运行。 除了区域配对和高可用性存储等平台 BCDR 功能外，Azure 还提供恢复服务作为 BCDR 解决方案的一个主要部分。 恢复服务包括以下功能： 
 
-- [Azure 备份](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup)可备份用户的本地和 Azure VM 数据。 用户可以备份文件和文件夹、特定工作负载或整个 VM。 
+- [Azure 备份](../backup/backup-overview.md)可备份用户的本地和 Azure VM 数据。 用户可以备份文件和文件夹、特定工作负载或整个 VM。 
 - [Azure Site Recovery](site-recovery-overview.md) 为在本地计算机或 Azure IaaS VM 上运行的应用和工作负载提供恢复能力和灾难恢复。 Site Recovery 协调复制，并在发生中断时处理到 Azure 的故障转移。 它还处理从 Azure 到主站点的恢复。 
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Site Recovery 如何进行灾难恢复？
