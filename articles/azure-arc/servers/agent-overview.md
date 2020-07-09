@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74ac991eb40864aeb4ac42d4774d9ab61fb14c36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807665"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111246"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Azure Arc for servers 代理概述
 
@@ -59,7 +60,7 @@ Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
 
 * 安装期间将创建以下安装文件夹。
 
-    |Folder |描述 |
+    |Folder |说明 |
     |-------|------------|
     |C:\Program Files\AzureConnectedMachineAgent |包含代理支持文件的默认安装路径。|
     |%ProgramData%\AzureConnectedMachineAgent |包含代理配置文件。|
@@ -78,7 +79,7 @@ Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
 
 * 安装代理期间，将创建以下环境变量。
 
-    |名称 |默认值 |描述 |
+    |名称 |默认值 |说明 |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -140,7 +141,7 @@ Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
 
 * 安装代理期间，将创建以下环境变量。 这些变量在 `/lib/systemd/system.conf.d/azcmagent.conf` 中设置。
 
-    |名称 |默认值 |描述 |
+    |名称 |默认值 |说明 |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -184,7 +185,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 |平台/语言 | 支持 | 更多信息 |
 | --- | --- | --- |
 |Linux | Linux 分发版往往依赖于 [OpenSSL](https://www.openssl.org) 来提供 TLS 1.2 支持。 | 请检查 [OpenSSL 变更日志](https://www.openssl.org/news/changelog.html)，确认你的 OpenSSL 版本是否受支持。|
-| Windows Server 2012 R2 和更高版本 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。|
+| Windows Server 2012 R2 和更高版本 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](/windows-server/security/tls/tls-registry-settings)。|
 
 ### <a name="networking-configuration"></a>网络配置
 
@@ -199,7 +200,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 URL：
 
-| 代理资源 | 描述 |
+| 代理资源 | 说明 |
 |---------|---------|
 |management.azure.com|Azure 资源管理器|
 |login.windows.net|Azure Active Directory|
@@ -208,7 +209,7 @@ URL：
 |*-agentservice-prod-1.azure-automation.net|来宾配置|
 |*.his.arc.azure.com|混合标识服务|
 
-有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 有关详细信息，请查看[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
+有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 有关详细信息，请查看[服务标记](../../virtual-network/security-overview.md#service-tags)。
 
 除了上表中列出的 URL 以外，还需要服务标记 IP 地址范围信息，因为大多数服务当前没有服务标记注册。 因此，IP 地址可能会变化。 如果防火墙配置需要 IP 地址范围，则应使用 **AzureCloud** 服务标记允许对所有 Azure 服务的访问。 请勿禁用对这些 URL 的安全监视或检查，但就像允许其他 Internet 流量一样允许这些 URL。
 

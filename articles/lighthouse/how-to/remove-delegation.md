@@ -1,17 +1,18 @@
 ---
 title: 删除对委派的访问权限
-description: 了解如何删除已委派给 Azure 委派的资源管理的服务提供商的资源的访问权限。
-ms.date: 04/24/2020
+description: 了解如何删除已委派给 Azure Lighthouse 服务提供商的资源的访问权限。
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 2a8024a47b3f7ea461e4ea7648db7003889552cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636489"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111722"
 ---
 # <a name="remove-access-to-a-delegation"></a>删除对委派的访问权限
 
-将客户的订阅或资源组委托给[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)的服务提供商后，可以根据需要删除委派。 删除委派后，以前授予给服务提供商租户中的用户的访问权限将不再适用。
+将客户的订阅或资源组委托给[Azure Lighthouse](../overview.md)的服务提供商后，可以根据需要删除委派。 删除委派后，以前向服务提供商租户中的用户授予的[Azure 委托资源管理](../concepts/azure-delegated-resource-management.md)访问权限将不再适用。
 
 只要用户具有适当的权限，就可以在客户租户或服务提供商租户中删除委托。
 

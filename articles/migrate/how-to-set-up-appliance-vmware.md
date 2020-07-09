@@ -3,11 +3,12 @@ title: 为 VMware 设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备来评估和迁移 VMware Vm。
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81538250"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112810"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>为 VMware Vm 设置设备
 
@@ -46,7 +47,7 @@ ms.locfileid: "81538250"
 2. 运行以下命令，生成 .OVA 的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 对于最新的设备版本，生成的哈希应与这些[设置](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)相符。
+3. 对于最新的设备版本，生成的哈希应与这些[设置](./tutorial-assess-vmware.md#verify-security)相符。
 
 
 
@@ -114,7 +115,7 @@ ms.locfileid: "81538250"
 3. 单击“验证连接”，确保设备可以连接到 vCenter Server。****
 
 ### <a name="specify-vm-credentials"></a>指定 VM 凭据
-为发现应用程序、角色和功能并可视化 VM 的依赖关系，可以提供可访问 VMware VM 的 VM 凭据。 可以分别为 Windows VM 和 Linux VM 添加一个凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)所需的访问特权。
+为发现应用程序、角色和功能并可视化 VM 的依赖关系，可以提供可访问 VMware VM 的 VM 凭据。 可以分别为 Windows VM 和 Linux VM 添加一个凭据。 [详细了解](./migrate-support-matrix-vmware.md)所需的访问特权。
 
 > [!NOTE]
 > 此输入是可选的，但需要此输入才能发现应用程序和可视化无代理依赖关系。
@@ -123,7 +124,7 @@ ms.locfileid: "81538250"
 2. 选择“操作系统”****。
 3. 提供凭据的易记名称。
 4. 在“用户名”和“密码”中，指定在 VM 上至少具有来宾访问权限的帐户********。
-5. 单击“添加” 。
+5. 单击“添加”。
 
 指定 vCenter Server 和 VM 凭据（可选）后，单击“保存并开始发现”，开始发现本地环境****。
 

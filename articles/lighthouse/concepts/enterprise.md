@@ -1,13 +1,14 @@
 ---
 title: 企业应用场景中的 Azure Lighthouse
 description: Azure Lighthouse 的功能可以简化使用多个 Azure AD 租户的企业中的跨租户管理。
-ms.date: 09/25/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f9a7aa81772a1edda5fd1915918b547a3066455
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749212"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114136"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>企业应用场景中的 Azure Lighthouse
 
@@ -17,7 +18,7 @@ Azure Lighthouse 的最常见应用场景包括：服务提供商使用 [Azure L
 
 对于大多数组织而言，单个 Azure AD 租户的管理比较轻松。 将所有资源部署在一个租户中可按该租户中的指定用户、用户组或服务主体来集中处理管理任务。 我们建议尽量对组织使用一个租户。
 
-同时，在某些情况下，组织可能需要维护多个 Azure AD 租户。 这种情况有时是暂时性的，例如，在发生企业并购后，需要花费一定的时间来制定长期租户整合策略。 组织也可能需要持续维护多个租户（出于子公司完全独立、满足地理或法律要求等原因）。 如果需要多租户体系结构，可以使用 Azure 委托的资源管理来集中处理和简化管理操作。 可以登记多个租户中的订阅来实现 [Azure 委托的资源管理](azure-delegated-resource-management.md)，使管理租户中的指定用户能够以集中的可缩放方式执行[跨租户管理功能](cross-tenant-management-experience.md)。
+同时，在某些情况下，组织可能需要维护多个 Azure AD 租户。 这种情况有时是暂时性的，例如，在发生企业并购后，需要花费一定的时间来制定长期租户整合策略。 组织也可能需要持续维护多个租户（出于子公司完全独立、满足地理或法律要求等原因）。 在需要多租户体系结构的情况下，可以使用 Azure Lighthouse 来集中和简化管理操作。 可以登记多个租户中的订阅来实现 [Azure 委托的资源管理](azure-delegated-resource-management.md)，使管理租户中的指定用户能够以集中的可缩放方式执行[跨租户管理功能](cross-tenant-management-experience.md)。
 
 ## <a name="tenant-management-architecture"></a>租户管理体系结构
 
@@ -31,17 +32,17 @@ Azure Lighthouse 的最常见应用场景包括：服务提供商使用 [Azure L
 
 ## <a name="security-and-access-considerations"></a>安全和访问注意事项
 
-在大多数企业应用场景中，需要为 Azure 委托的资源管理委托整个订阅，不过，你也可以仅委托订阅中的特定资源组。
+在大多数企业方案中，你将需要将完整订阅委托给 Azure Lighthouse，但你也可以仅委托订阅中的特定资源组。
 
 无论采用哪种方式，都需要确保[在定义哪些用户拥有资源访问权限时遵循最低特权的原则](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege)。 这有助于确保用户只拥有执行所需任务而需要的权限，并可以减少意外出错的可能性。
 
-Azure Lighthouse 和 Azure 委托的资源管理只在管理租户和被管理租户之间提供逻辑链接，而不会以物理方式移动数据或资源。 此外，访问始终只朝一个方向进行，即，从管理租户访问被管理租户。  在对被管理租户的资源执行管理操作时，管理租户中的用户和组应继续使用多重身份验证。
+Azure Lighthouse 仅提供管理租户和托管租户之间的逻辑链接，而不是物理移动数据或资源。 此外，访问始终只朝一个方向进行，即，从管理租户访问被管理租户。  在对被管理租户的资源执行管理操作时，管理租户中的用户和组应继续使用多重身份验证。
 
 实施内部或外部监管与合规性准则的企业可以使用 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)来满足其透明性要求。 如果企业租户已在管理租户与被管理租户之间建立了关系，则每个租户中的用户可以通过查看记录的活动，来监视和洞察另一租户中的用户所执行的操作。
 
 ## <a name="onboarding-process-considerations"></a>登记过程注意事项
 
-可以通过部署 Azure 资源管理器模板，或者通过发布到 Azure 市场的托管服务套餐，以私密或公开方式将订阅（或订阅中的资源组）登记到 Azure 委托的资源管理。
+订阅（或订阅中的资源组）可通过部署 Azure 资源管理器模板或发布到 Azure Marketplace （私下或公共）的托管服务载入到 Azure Lighthouse。
 
 由于企业用户通常可以获取企业租户的直接访问权限，并且无需营销或促销管理套餐，因此，直接使用 Azure 资源管理器模板进行部署通常速度更快且更简单。 尽管[登记指南](../how-to/onboard-customer.md)中提到的受众是服务提供商和客户，但企业也可以使用相同的过程。
 

@@ -4,14 +4,14 @@ description: 本文介绍如何从 Azure CLI 配置和访问 Azure Database for 
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 813e86e8446932d1618fff1853cee8972570f43f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a26f3c1b57fd750cbb59f32ddc8bd0ea85293ca
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85363013"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112708"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中配置和访问审核日志
 

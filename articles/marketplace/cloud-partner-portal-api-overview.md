@@ -1,18 +1,16 @@
 ---
 title: 云合作伙伴门户 API 参考-Microsoft 商用 marketplace
 description: 市场 API 操作的说明、要使用的先决条件和列表。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 2f79dea4baaa2589333af4e15aece06c1d86b9c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515863"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113575"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>云合作伙伴门户 API 参考
 

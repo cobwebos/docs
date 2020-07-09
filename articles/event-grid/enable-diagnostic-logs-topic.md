@@ -1,17 +1,14 @@
 ---
 title: Azure 事件网格 - 为主题或域启用诊断日志
 description: 本文提供了有关如何为 Azure 事件网格主题启用诊断日志的分步说明。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 06/10/2020
-ms.author: spelluru
-ms.openlocfilehash: 253d1fb933c32735f68cf6a2d471a7687caf5301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84670093"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114697"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域启用诊断日志
 诊断设置允许事件网格用户在以下任一位置捕获和查看“发布和传递失败”**** 日志：存储帐户、事件中心或 Log Analytics 工作区。 本文提供了有关如何为事件网格主题启用这些设置的分步说明。

@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: e4782213b38ad9e265cc66c3073dc5f357c50561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc261c31a1190536f3128ed6472d9ca76dfce7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321649"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112183"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 访问和 Azure 堡垒
 
@@ -41,10 +41,16 @@ Azure 堡垒专门部署到***AzureBastionSubnet***。
    * **从公共 Internet 传输流量：** Azure 堡垒会创建一个公共 IP，要求在公共 IP 上为入口通信启用端口443。 不需要在 AzureBastionSubnet 上打开端口3389/22。
    * **从 Azure 堡垒控制平面传输流量：** 对于控制平面连接，请启用**GatewayManager**服务标记中的端口443入站。 这将启用控制平面，即网关管理器能够与 Azure 堡垒通信。
 
+
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="入站":::
+
 * **出口流量：**
 
    * 流向**目标 vm 的出口流量：** Azure 堡垒将通过专用 IP 到达目标 Vm。 Nsg 需要允许传出流量发送到其他目标 VM 子网，以获得端口3389和22。
    * 传入**Azure 中其他公共终结点的流量：** Azure 堡垒需要能够连接到 Azure 中的各种公共终结点（例如，用于存储诊断日志和计量日志）。 出于此原因，Azure 堡垒需要出站到443的**AzureCloud**服务标记。
+
+
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="出站":::
 
 ### <a name="target-vm-subnet"></a>目标 VM 子网
 这是包含要 RDP/SSH 连接到的目标虚拟机的子网。

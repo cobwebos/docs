@@ -1,18 +1,16 @@
 ---
 title: 检索提供 API-Azure Marketplace
 description: 用于检索发布服务器命名空间下的产品/服务的汇总列表的 API。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 04/08/2020
-ms.author: dsindona
-ms.openlocfilehash: ee8d0c773a5ec4d362eae66e289838b9646247e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab5f09d0d81d8a6aa526576faea0b11a6536381a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113473"
 ---
 <a name="retrieve-offers"></a>检索产品/服务
 ===============

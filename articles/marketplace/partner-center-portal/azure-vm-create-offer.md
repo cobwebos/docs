@@ -1,18 +1,18 @@
 ---
 title: 在 Azure 市场创建 Azure 虚拟机产品/服务
 description: 了解如何在 Azure 市场上使用所需 SKU 创建虚拟机产品/服务。
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: emuench
+ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: 499c7e9e4ca4ab5db02c566830738f0ceb07e40d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984643"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110968"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -180,7 +180,7 @@ ms.locfileid: "85984643"
 
 ### <a name="marketplace-details"></a>市场详细信息
 
-#### <a name="name"></a>“属性”
+#### <a name="name"></a>名称
 
 在此处输入的名称作为产品/服务列表的标题向客户显示。 此字段自动填充了在创建产品/服务时在“产品/服务别名”框中输入的名称。 可以稍后更改此名称。 名称：
 
@@ -535,7 +535,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 4. 条款和条件
 5. 隐私策略地址（链接）
 6. 产品名称
-7. 描述
+7. 说明
 8. 有用链接
 9. 屏幕截图/视频
 
@@ -566,8 +566,8 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. “属性”
-2. 描述
+1. 名称
+2. 说明
 3. 有用链接
 4. 屏幕截图/视频
 

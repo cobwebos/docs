@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 488f273336da05738609333f911fe3a90ba59496
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186418"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111977"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor 中的 Linux 代理上通过 CollectD 收集数据
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文介绍了如何在 Azure Monitor 中通过 CollectD 收集性能数据。
@@ -24,26 +24,30 @@ Log Analytics Linux 代理中包括了以下 CollectD 配置，用以将 Collect
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-    LoadPlugin write_http
+```xml
+LoadPlugin write_http
 
-    <Plugin write_http>
-         <Node "oms">
-         URL "127.0.0.1:26000/oms.collectd"
-         Format "JSON"
-         StoreRates true
-         </Node>
-    </Plugin>
+<Plugin write_http>
+   <Node "oms">
+      URL "127.0.0.1:26000/oms.collectd"
+      Format "JSON"
+      StoreRates true
+   </Node>
+</Plugin>
+```
 
 此外，如果使用的是 5.5 之前的某个 collectD 版本，请改用以下配置。
 
-    LoadPlugin write_http
+```xml
+LoadPlugin write_http
 
-    <Plugin write_http>
-       <URL "127.0.0.1:26000/oms.collectd">
-        Format "JSON"
-         StoreRates true
-       </URL>
-    </Plugin>
+<Plugin write_http>
+   <URL "127.0.0.1:26000/oms.collectd">
+      Format "JSON"
+      StoreRates true
+   </URL>
+</Plugin>
+```
 
 CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能指标数据发送到 Log Analytics Linux 代理。 
 
@@ -52,15 +56,17 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 
 适用于 Linux 的 Log Analytics 代理也在端口 26000 上侦听 CollectD 指标，然后将其转换为 Azure Monitor 架构指标。 下面是 Log Analytics Linux 代理配置 `collectd.conf`。
 
-    <source>
-      type http
-      port 26000
-      bind 127.0.0.1
-    </source>
+```xml
+<source>
+   type http
+   port 26000
+   bind 127.0.0.1
+</source>
 
-    <filter oms.collectd>
-      type filter_collectd
-    </filter>
+<filter oms.collectd>
+   type filter_collectd
+</filter>
+```
 
 > [!NOTE]
 > 默认情况下，CollectD 设置为以 10 秒的[间隔](https://collectd.org/wiki/index.php/Interval)读取值。 由于这会直接影响发送到 Azure Monitor 日志的数据量，因此你可能需要在 CollectD 配置中调整此时间间隔，以便在监视要求与 Azure Monitor 日志的相关成本和使用量之间取得良好的平衡。
@@ -83,11 +89,15 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 
     如果 CollectD 配置目录位于 /etc/collectd.d/ 中：
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
+    ```
 
     如果 CollectD 配置目录位于 /etc/collectd/collectd.conf.d/ 中：
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
+    ```
 
     >[!NOTE]
     >对于 5.5 之前的 CollectD 版本，必须如上所示修改 `oms.conf` 中的标记。
@@ -95,13 +105,17 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 
 2. 将 collectd.conf 复制到所需工作区的 omsagent 配置目录中。
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
-        sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
+    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
+    ```
 
 3. 使用以下命令重新启动 CollectD 和 Log Analytics Linux 代理。
 
-        sudo service collectd restart
-        sudo /opt/microsoft/omsagent/bin/service_control restart
+    ```console
+    sudo service collectd restart
+    sudo /opt/microsoft/omsagent/bin/service_control restart
+    ```
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD 指标到 Azure Monitor 架构的转换
 为了在 Log Analytics Linux 代理已收集的基础结构指标与 CollectD 收集的新指标之间维护一个熟悉的模型，将使用以下架构映射：

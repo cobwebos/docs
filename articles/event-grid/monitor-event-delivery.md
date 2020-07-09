@@ -1,19 +1,14 @@
 ---
 title: 查看 Azure 事件网格指标并设置警报
 description: 本文介绍如何使用 Azure 门户查看 Azure 事件网格主题和订阅的指标，并对其创建警报。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390595"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114877"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 
 本文介绍如何使用门户查看事件网格主题和订阅的指标，并为其创建警报。 

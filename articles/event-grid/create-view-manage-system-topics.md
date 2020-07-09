@@ -1,17 +1,14 @@
 ---
 title: 在 Azure 事件网格中创建、查看和管理系统主题（门户）
 description: 本文介绍如何使用 Azure 门户查看现有系统主题如何创建 Azure 事件网格系统主题。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.author: spelluru
-ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457229"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115105"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>创建、查看和管理 Azure 门户中的事件网格系统主题
 本文说明如何使用 Azure 门户创建和管理系统主题。 有关系统主题的概述，请参阅[系统主题](system-topics.md)。

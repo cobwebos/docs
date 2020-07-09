@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 07/06/2020
-ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042622"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114374"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -35,7 +35,7 @@ Azure 数据工厂中的映射数据流提供一个无代码界面，用于大�
 
 ![数据流监视](media/data-flow/mon003.png "数据流监视器 3")
 
- 对于管道调试运行，大约需要占用总体性能计算结果中的大约 1 分钟群集设置时间来预热群集。 如果你正在初始化默认的 Azure Integration Runtime，则运转时间可能需要大约 5 分钟。
+ 对于管道调试运行，大约需要占用总体性能计算结果中的大约 1 分钟群集设置时间来预热群集。 如果正在初始化默认 Azure Integration Runtime，则加速启动时间可能需要大约4分钟。
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>在 Azure Integration Runtime 中增大计算大小
 
@@ -55,7 +55,7 @@ Azure 数据工厂中的映射数据流提供一个无代码界面，用于大�
 
 ### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>使用 TTL 减少群集计算启动时间
 
-在 Azure IR 中，“数据流属性”下的某个属性可让你为工厂建立群集计算资源池。 使用此池可按顺序提交要执行的数据流活动。 建立池后，每个后续作业将花费 1-2 分钟时间，让按需 Spark 群集执行作业。 资源池的初始设置需要花费大约 6 分钟。 在生存时间 (TTL) 设置中指定你希望保留资源池的时间长短。
+在 Azure IR 中，“数据流属性”下的某个属性可让你为工厂建立群集计算资源池。 使用此池可按顺序提交要执行的数据流活动。 建立池后，每个后续作业将花费 1-2 分钟时间，让按需 Spark 群集执行作业。 资源池的初始设置需要大约4分钟。 在生存时间 (TTL) 设置中指定你希望保留资源池的时间长短。
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>对 Azure SQL 数据库和 Azure SQL 数据仓库 Synapse 进行优化
 
@@ -145,7 +145,7 @@ Azure 数据工厂中的映射数据流提供一个无代码界面，用于大�
 
 处于并行模式的管道 For Each 针对每个已执行的数据流活动运转作业群集，因此会衍生多个群集。 这可能会导致 Azure 服务限制以及大量的并发执行。 但是，在管道中设置 Sequential 的情况下，在 For Each 内部使用“执行数据流”可以避免发生限制和资源耗尽。 这会强制数据工厂按顺序针对数据流执行每个文件。
 
-如果按顺序对数据流使用 For Each，我们建议利用 Azure Integration Runtime 中的 TTL 设置。 这是因为，每个文件将在迭代器内部造成满满 5 分钟的群集启动时间。
+如果按顺序对数据流使用 For Each，我们建议利用 Azure Integration Runtime 中的 TTL 设置。 这是因为，每个文件都将在迭代器内部产生一个完整的4分钟群集启动时间。
 
 ### <a name="optimizing-for-cosmosdb"></a>对 CosmosDB 进行优化
 

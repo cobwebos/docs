@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure 策略大规模应用群集配置
 keywords: Kubernetes、Arc、Azure、K8s、容器
-ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341378"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111263"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>使用 Azure 策略大规模应用群集配置（预览版）
 
@@ -30,11 +31,11 @@ ms.locfileid: "85341378"
 4. 如果要从策略范围中排除任何资源，请设置“排除”。
 5. 为策略分配提供可以用于轻松识别它的“名称”和“说明”。
 6. 确保“策略实施”设置为“已启用”。
-7. 选择“下一步”。
+7. 选择“**下一页**”。
 8. 设置将在 `sourceControlConfiguration` 创建过程中使用的参数值。
 9. 选择“**下一页**”。
 10. 启用“创建修正任务”。
-11. 确保选中“创建托管标识”，并确保标识具有“参与者”权限。 有关所需权限的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)和[此文档中的注释](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)。
+11. 确保选中“创建托管标识”，并确保标识具有“参与者”权限。 有关所需权限的详细信息，请参阅[此文档](../../governance/policy/assign-policy-portal.md)和[此文档中的注释](../../governance/policy/how-to/remediate-resources.md)。
 12. 选择“查看 + 创建”。
 
 创建策略分配之后，对于在分配范围内加载的任何新 `connectedCluster` 资源（或安装了 GitOps 代理的 `managedCluster` 资源），将应用 `sourceControlConfiguration`。 对于现有群集，需要手动运行修正任务。 策略分配通常需要 10-20 分钟才能生效。
@@ -50,4 +51,4 @@ ms.locfileid: "85341378"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用已启用 Arc 的 Kubernetes 群集设置适用于容器的 Azure Monitor](./deploy-azure-monitor-for-containers.md)
+* [使用已启用 Arc 的 Kubernetes 群集设置适用于容器的 Azure Monitor](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)

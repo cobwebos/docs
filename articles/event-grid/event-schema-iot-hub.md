@@ -1,20 +1,14 @@
 ---
 title: 充当事件网格源的 Azure IoT 中心
 description: 本文提供 Azure IoT 中心事件的属性和架构。 它列出了可用的事件类型、示例事件和事件属性。
-services: iot-hub
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393329"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113643"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>充当事件网格源的 Azure IoT 中心
 本文提供 Azure IoT 中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 
@@ -171,7 +165,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | moduleId | 字符串 | 模块的唯一标识符。 此字段是仅适用于模块设备的输出。 此区分大小写的字符串最多可长达 128 个字符，并支持 ASCII 7 位字母数字字符加上以下特殊字符：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
-| deviceConnectionStateEventInfo | object | 设备连接状态事件信息
+| deviceConnectionStateEventInfo | 对象 (object) | 设备连接状态事件信息
 | sequenceNumber | 字符串 | 一个数字，有助于指示设备已连接或设备已断开连接事件的顺序。 最新事件的序列号将大于上一个事件。 此数字可能会变化超过 1，但严格地说，是在增加。 请参阅[如何使用序列号](../iot-hub/iot-hub-how-to-order-connection-state-events.md)。 |
 
 对于**设备遥测** IoT 中心事件，数据对象包含 [IoT 中心消息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的设备到云消息，并具有以下属性：
@@ -200,7 +194,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | primaryThumbprint | 字符串 | x509 证书的主要指纹。 |
 | secondaryThumbprint | 字符串 | x509 证书的次要指纹。 | 
 | 版本 | integer | 一个整数，每次更新设备孪生时递增 1。 |
-| desired | object | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
+| desired | 对象 (object) | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
 | reported | object | 只能由设备写入并且由应用程序后端读取的属性部分。 |
 | lastUpdated | string | 上次设备孪生属性更新的 ISO8601 时间戳。 | 
 

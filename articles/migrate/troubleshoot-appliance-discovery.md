@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 92a8e129188f2790a3e46162b207373b5d6e6ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114051"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "85611350"
 
 如果收到错误消息 "提供的清单文件无效：无效的 OVF 清单条目"，请执行以下操作：
 
-1. 通过检查 Azure Migrate 的设备的哈希值，验证是否已正确下载了设备 .OVA 文件。 [了解详细信息](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware)。 如果哈希值不匹配，请重新下载 .OVA 文件，然后重试部署。
+1. 通过检查 Azure Migrate 的设备的哈希值，验证是否已正确下载了设备 .OVA 文件。 [了解详细信息](./tutorial-prepare-vmware.md)。 如果哈希值不匹配，请重新下载 .OVA 文件，然后重试部署。
 2. 如果部署仍失败，并且你正在使用 VMware vSphere 客户端部署 OVF 文件，请尝试通过 vSphere web 客户端进行部署。 如果部署仍失败，请尝试使用不同的 web 浏览器。
 3. 如果你使用的是 vSphere web 客户端并尝试在 vCenter Server 6.5 或6.7 上部署它，请尝试直接在 ESXi 主机上部署 .OVA：
    - 直接连接到 ESXi 主机（而不是 vCenter Server）与 web 客户端（https://<*主机 IP 地址*>/ui）。
@@ -40,7 +40,7 @@ ms.locfileid: "85611350"
 
 - 如果代理需要，请确保提供身份验证凭据。
 - 如果使用基于 URL 的防火墙代理控制出站连接，请将[这些 url](migrate-appliance.md#url-access)添加到允许列表中。
-- 如果使用截取代理连接到 internet，请使用[以下步骤](https://docs.microsoft.com/azure/migrate/concepts-collector)将代理证书导入到设备 VM。
+- 如果使用截取代理连接到 internet，请使用[以下步骤](./migrate-appliance.md)将代理证书导入到设备 VM。
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>无法从设备 web 应用登录 Azure
 
@@ -64,7 +64,7 @@ ms.locfileid: "85611350"
 
 如果出现此连接错误，则可能无法连接到 vCenter Server *Servername*. .com：9443。 错误详细信息指示没有侦听方 `https://\*servername*.com:9443/sdk` 可以接受消息的终结点。
 
-- 检查是否正在运行最新版本的设备。 如果不是，请将该设备升级到[最新版本](https://docs.microsoft.com/azure/migrate/concepts-collector)。
+- 检查是否正在运行最新版本的设备。 如果不是，请将该设备升级到[最新版本](./migrate-appliance.md)。
 - 如果此问题仍然出现在最新版本中，则设备可能无法解析指定的 vCenter Server 名称，或者指定的端口可能是错误的。 默认情况下，如果未指定端口，收集器会尝试连接到端口号443。
 
     1. 从设备 Ping *Servername*.com。
@@ -77,10 +77,10 @@ ms.locfileid: "85611350"
 
 - 如果用于注册设备的 Azure 帐户没有足够的权限，则会出现错误 60052 "该设备可能未成功注册到 Azure Migrate 项目"。
     - 请确保用于注册设备的 Azure 用户帐户至少具有订阅的参与者权限。
-    - [详细了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)所需的 Azure 角色和权限。
+    - [详细了解](./migrate-appliance.md#appliance---vmware)所需的 Azure 角色和权限。
 - 如果注册失败，因为找不到用于注册设备的 Azure Migrate 项目，所以如果注册失败，则会出现 "设备可能未成功注册到 Azure Migrate 项目" 错误60039。
     - 在 Azure 门户中，检查该项目是否存在于资源组中。
-    - 如果项目不存在，请在资源组中创建新的 Azure Migrate 项目，并再次注册设备。 [了解如何](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool)创建新项目。
+    - 如果项目不存在，请在资源组中创建新的 Azure Migrate 项目，并再次注册设备。 [了解如何](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool)创建新项目。
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>错误60030/60031： Key Vault 管理操作失败
 
@@ -88,7 +88,7 @@ ms.locfileid: "85611350"
 - 请确保用于注册设备的 Azure 用户帐户至少具有订阅的参与者权限。
 - 请确保该帐户具有对错误消息中指定的密钥保管库的访问权限，然后重试该操作。
 - 如果问题持续出现，请联系 Microsoft 支持。
-- [详细了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)所需的 Azure 角色和权限。
+- [详细了解](./migrate-appliance.md#appliance---vmware)所需的 Azure 角色和权限。
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>错误60028：无法启动发现
 
@@ -103,7 +103,7 @@ ms.locfileid: "85611350"
 - 确保启动发现的用户帐户与用于注册设备的用户帐户相同。
 - 为发现操作失败的用户帐户提供 Azure Active Directory 应用程序访问权限。
 - 删除先前为 Azure Migrate 项目创建的资源组。 创建另一个资源组以重新开始。
-- [了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)有关 Azure Active Directory 应用程序权限的详细信息。
+- [了解](./migrate-appliance.md#appliance---vmware)有关 Azure Active Directory 应用程序权限的详细信息。
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>错误50004：无法连接到主机或群集

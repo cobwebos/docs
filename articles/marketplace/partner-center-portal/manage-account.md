@@ -1,18 +1,18 @@
 ---
 title: 如何在 Microsoft 合作伙伴中心管理商业市场帐户
 description: 了解如何在 Microsoft 合作伙伴中心管理商业市场帐户。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/27/2020
-ms.openlocfilehash: 6dbadee427abfa82fb32ebb7db85adf627dd5e0a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 90ce9e48515213460fdb3db4fed57fd6f5d2688a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964832"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112844"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
 

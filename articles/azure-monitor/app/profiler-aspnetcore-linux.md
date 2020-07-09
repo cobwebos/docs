@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640974"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111059"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
@@ -34,17 +35,17 @@ ms.locfileid: "81640974"
 
 1. 创建 ASP.NET Core MVC Web 应用程序：
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. 将工作目录切换到项目的根文件夹。
 
 1. 添加用于收集探查器跟踪的 NuGet 包：
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
 1. 在 Program.cs 中启用 Application Insights：
 
@@ -54,7 +55,7 @@ ms.locfileid: "81640974"
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
+
 1. 在 Startup.cs 中启用 Profiler：
 
     ```csharp
@@ -68,24 +69,24 @@ ms.locfileid: "81640974"
 1. 在 **HomeController.cs** 节中添加用于随机延迟几秒钟的一行代码：
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. 保存并提交对本地存储库的更改：
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>创建用于托管项目的 Linux Web 应用
@@ -111,7 +112,7 @@ ms.locfileid: "81640974"
 
 1. 在命令提示符窗口中，浏览到项目的根文件夹。 添加 Git 远程存储库以指向应用服务上的存储库：
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -120,13 +121,13 @@ ms.locfileid: "81640974"
 
 2. 通过将更改推送到 Azure 来部署项目：
 
-    ```
+    ```console
     git push azure master
     ```
 
-应会看到与如下示例类似的输出：
+    应会看到与如下示例类似的输出：
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
@@ -143,8 +144,7 @@ ms.locfileid: "81640974"
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>添加 Application Insights 来监视 Web 应用
@@ -153,9 +153,7 @@ ms.locfileid: "81640974"
 
 2. 复制 Application Insights 资源的 **iKey** 并在 Web 应用中指定以下设置：
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     更改应用设置时，站点会自动重启。 应用新设置后，探查器会立即运行两分钟。 然后，探查器每隔一小时运行两分钟。
 

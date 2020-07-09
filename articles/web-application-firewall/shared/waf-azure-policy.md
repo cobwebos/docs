@@ -5,14 +5,14 @@ author: tremansdoerfer
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 4c1fd53eb6ebf1f1aebdfba99b736e26bd6cff2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12ad18edbb434bdfaec2ae817ea079a843661ef6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85306694"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111332"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web 应用程序防火墙和 Azure 策略
 
@@ -22,9 +22,13 @@ Azure Web 应用程序防火墙（WAF）与 Azure 策略结合在一起，可帮
 
 有几个内置的 Azure 策略可用于管理 WAF 资源。 策略及其功能的细分如下：
 
-1. **应为 Azure 前门服务或应用程序网关启用 Web 应用程序防火墙**：如果在创建资源时存在 WAF，则会评估 Azure 前门服务和应用程序网关。 策略具有三个效果：审核、拒绝和禁用。 审核跟踪： Azure 前门服务或应用程序网关没有 WAF，并允许用户查看 Azure 前门服务或应用程序网关当前不符合的情况。 如果未连接 WAF，则 Deny 会阻止创建任何 Azure 前门服务或应用程序网关。 禁用关闭此策略。
+1. **应为 Azure 前门服务启用 Web 应用程序防火墙（WAF）**：如果在创建资源时存在 WAF，将对 Azure 前门服务进行评估。 策略具有三个效果：审核、拒绝和禁用。 审核跟踪： Azure 前门服务没有 WAF，并允许用户查看 Azure 前门服务不符合的情况。 如果未连接 WAF，则 Deny 会阻止创建任何 Azure 前门服务。 禁用关闭此策略。
 
-2. **对于应用程序网关和 Azure 前门服务，Web 应用程序防火墙应为设定模式**：对 Web 应用程序防火墙进行评估，使其受到保护或检测。 此策略可确保跨 Web 应用程序防火墙的模式一致性。 策略具有三个效果：审核、拒绝和禁用。 WAF 不适合指定模式时的审核跟踪。 如果未在正确模式下，Deny 会阻止创建任何 WAF。 禁用关闭此策略。
+2. **应为应用程序网关启用 Web 应用程序防火墙（WAF）**：如果在创建资源时存在 WAF，将对应用程序网关进行评估。 策略具有三个效果：审核、拒绝和禁用。 当应用程序网关没有 WAF，并允许用户查看应用程序网关不符合的情况时，审核跟踪。 如果未附加 WAF，则 Deny 会阻止创建任何应用程序网关。 禁用关闭此策略。
+
+3. **Web 应用程序防火墙（WAF）应使用指定的 Azure 前门服务模式**：要求在 Azure 前门服务的所有 Web 应用程序防火墙策略上使用 "检测" 或 "防护" 模式。 策略具有三个效果：审核、拒绝和禁用。 WAF 不适合指定模式时的审核跟踪。 如果未在正确模式下，Deny 会阻止创建任何 WAF。 禁用关闭此策略。
+
+4. **Web 应用程序防火墙（WAF）应使用应用程序网关的指定模式**：要求在应用程序网关的所有 Web 应用程序防火墙策略上使用 "检测" 或 "防护" 模式。 策略具有三个效果：审核、拒绝和禁用。 WAF 不适合指定模式时的审核跟踪。 如果未在正确模式下，Deny 会阻止创建任何 WAF。 禁用关闭此策略。
 
 
 ## <a name="launch-an-azure-policy"></a>启动 Azure 策略
@@ -45,7 +49,7 @@ Azure Web 应用程序防火墙（WAF）与 Azure 策略结合在一起，可帮
     2.  **排除**：从策略中选择要排除的作用域中的任何资源 
     3.  **策略定义**：选择要应用于包含排除项的作用域的 Azure 策略。 在搜索栏中键入 "Web 应用程序防火墙"，选择相关的 Web 应用程序防火墙 "Azure 策略"。
 
-![Azure Web 应用程序防火墙](../media/waf-azure-policy/policy-listings.png)
+![Azure Web 应用程序防火墙](../media/waf-azure-policy/policy-listing.png)
 
 
 5.  选择 "**参数**" 选项卡，然后更新策略参数。 若要进一步阐明参数的作用，请将鼠标悬停在参数名称旁边的信息图标上，以便进一步澄清。

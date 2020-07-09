@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322057"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110991"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和要求 
 
@@ -30,9 +30,8 @@ ms.locfileid: "85322057"
 
 下面是分配给数据共享资源的托管标识的角色的摘要：
 
-| |  |  |
-|---|---|---|
 |**数据存储类型**|**数据访问接口源数据存储**|**数据使用者目标数据存储**|
+|---|---|---|
 |Azure Blob 存储| 存储 Blob 数据读取者 | 存储 Blob 数据参与者
 |Azure Data Lake Gen1 | 所有者 | 不支持
 |Azure Data Lake Gen2 | 存储 Blob 数据读取者 | 存储 Blob 数据参与者
@@ -42,9 +41,8 @@ ms.locfileid: "85322057"
 
 对于基于 SQL 的共享，需要在 Azure SQL 数据库中使用与 Azure 数据共享资源相同的外部提供程序创建 SQL 用户。 下面汇总了 SQL 用户所需的权限。
 
-| |  |  |
-|---|---|---|
 |**SQL 数据库类型**|**数据访问接口 SQL 用户权限**|**数据使用者 SQL 用户权限**|
+|---|---|---|
 |Azure SQL Database | db_datareader | db_datareader、db_datawriter db_ddladmin
 |Azure Synapse Analytics（以前称为 SQL DW） | db_datareader | db_datareader、db_datawriter db_ddladmin
 |
@@ -103,4 +101,3 @@ ms.locfileid: "85322057"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 Azure 中的角色 - [了解角色定义](../role-based-access-control/role-definitions.md)
-

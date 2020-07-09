@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086276"
+ms.locfileid: "86112980"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -24,7 +24,7 @@ ms.locfileid: "86086276"
 
 ### <a name="new-features"></a>新增功能
 
-* **神经 tts，15个新的神经语音**：添加到神经 tts 公文包中的新语音为阿拉伯语（埃及）、Zariyah （Salma）、（西班牙）、Alba in 加泰罗尼亚语（西班牙）、Christel In 丹麦语（丹麦）、英语（印度）印地语（印度） Swara，Colette in 荷兰语（荷兰），Zofia In 波兰语（波兰），Fernanda in 葡萄牙语（葡萄牙），，俄罗斯语（俄罗斯），Dariya in 瑞典语（瑞典），Hillevi in，Achara，Iselin，HiuGaai，Hongkong，HsiaoYu，，中文（台湾）。 检查所有[支持的语言](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)。  
+* **神经 tts，15个新的神经语音**：添加到神经 tts 公文包中的新语音为 `ar-EG` 阿拉伯语（埃及）、Zariyah （Salma）、（西班牙）、 `ar-SA` Alba In 加泰罗尼亚语（西班牙）、 `ca-ES` Christel in `da-DK` 丹麦语（丹麦）、 `es-IN` 英语（印度） `fi-FI` 芬兰语（芬兰）中的 Noora，Swara，印度 `hi-IN` 语（印度）， `nl-NL` 荷兰语（Netherland）中的 Colette， `pl-PL` 波兰语（波兰），Zofia， `pt-PT` 葡萄牙语（葡萄牙），Fernanda， `ru-RU` 俄罗斯语（俄罗斯），Dariya in `sv-SE` 瑞典语（瑞典），中文 `th-TH` `zh-HK` （Hillevi，繁体），Achara， `zh-TW` 中文（台湾 HiuGaai）。 检查所有[支持的语言](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)。  
 
 * **自定义语音、使用训练流简化语音测试以简化用户体验**：借助新的测试功能，每个语音都将自动使用针对每种语言进行了优化的预定义测试集来覆盖一般和语音助手方案。 这些测试集经过仔细选择并经过测试，可在语言中包含典型用例和音素。 除此之外，用户还可以选择在训练模型时上传自己的测试脚本。
 
@@ -46,23 +46,23 @@ ms.locfileid: "86086276"
 
 * 改进了的 TTS vocoder 以提高保真度并降低延迟。
 
-    * 使用意大利语将 Elsa 更新为新的 vocoder，它实现 + 0.464 CMOS （比较平均观点），合成速度提高40%，在首次字节延迟时速度提高30%。 
-    * 已将中文版中的 Xiaoxiao 更新为新的 0148 vocoder，并将其用于常规域，+ 0.348 用于 newscast 样式，+ 0.195 适用于 lyrical 样式。 
+    * 已将 Elsa 更新 `it-IT` 为新的 vocoder，它实现 + 0.464 CMOS （比较平均观点），合成速度提高40%，在首次字节延迟时速度提高30%。 
+    * 将 Xiaoxiao 中的 `zh-CN` vocoder 更新到了适用于常规域的 + 0148 CMOS 增益的新，+ 0.348 的 newscast 样式，+ 0.195 适用于 lyrical 样式。 
 
 * 更新 `de-DE` 和 `ja-JP` 语音模型，使 TTS 输出更自然。
     
-    * 通过最新的诗体论建模方法更新了德语的 Katja，MOS （平均观点评分）收益为 + 0.13。 
-    * 使用全新的音调强调诗体论模型更新了日语的 Nanami，MOS （平均观点评分）收益为 + 0.19;  
+    * 已 `de-DE` 通过最新的诗体论建模方法更新了中的 Katja，MOS （平均观点评分）收益为 + 0.13。 
+    * `ja-JP`使用新的音调强调诗体论模型更新了 Nanami，MOS （平均观点评分）增益为 + 0.19;  
 
 * 5种语言改进了单词级别的读音准确性。
 
     | 语言 | 读音错误缩减 |
     |---|---|
-    | en-GB | 51% |
-    | ko-KR | 17% |
-    | pt-BR | 39% |
-    | pt-PT | 77% |
-    | id-ID | 46% |
+    | `en-GB` | 51% |
+    | `ko-KR` | 17% |
+    | `pt-BR` | 39% |
+    | `pt-PT` | 77% |
+    | `id-ID` | 46% |
 
 ### <a name="bug-fixes"></a>Bug 修复
 
@@ -71,8 +71,8 @@ ms.locfileid: "86086276"
      
     | 语言 | 输入 | 改进后读出 |
     |---|---|---|
-    | es-MX | $1.58 | un 比索 cincuenta y ocho centavos |
-    | es-ES | $1.58 | 取消 dólar cincuenta y ocho centavos |
+    | `es-MX` | $1.58 | un 比索 cincuenta y ocho centavos |
+    | `es-ES` | $1.58 | 取消 dólar cincuenta y ocho centavos |
 
     * 支持以下区域设置中的负货币（如 "-€325"）： `en-US` 、 `en-GB` 、、、 `fr-FR` `it-IT` `en-AU` 和 `en-CA` 。
 
