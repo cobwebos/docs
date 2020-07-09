@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72789713"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050353"
 ---
 物联网 (IoT) 使全球企业面临独特的安全、隐私权与合规性挑战。 不同于传统网络技术（这些问题是以软件及其实现方式为中心），IoT 在意的是当网络与物理世界融合时会发生什么情况。 保护 IoT 解决方案要求确保安全预配设备，保护这些设备与云之间的连接，以及在处理和存储期间保护云中数据的安全。 但是，针对此类功能运行的是资源受限的设备、根据地理位置分布的部署，以及解决方案中的大量设备。
 
@@ -89,7 +89,7 @@ Microsoft 的系统提供持续的入侵检测和防护、服务攻击预防、�
 
 将数据移到云中之后，可以在任何用户定义工作流中处理和存储数据。 访问数据的每个部分根据所用的存储服务通过 Azure Active Directory 来控制。
 
-IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有滚动更新能力，以防密钥需要重新预配。 数据可以存储在 [Azure Cosmos DB](../articles/cosmos-db/introduction.md) 或 [SQL 数据库](../articles/sql-database/sql-database-faq.md)中，启用对所需安全级别的定义。 此外，Azure 提供一种方式用于监视和审核对数据的所有访问权限，以提醒有任何入侵或未经授权的访问。
+IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有滚动更新能力，以防密钥需要重新预配。 数据可以存储在[Azure Cosmos DB](../articles/cosmos-db/introduction.md)或[SQL 数据库](../articles/sql-database/sql-database-faq.md)中，启用所需安全级别的定义。 此外，Azure 提供一种方式用于监视和审核对数据的所有访问权限，以提醒有任何入侵或未经授权的访问。
 
 ## <a name="conclusion"></a>结束语
 
