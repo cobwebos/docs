@@ -8,11 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711878"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135144"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
 
@@ -85,7 +86,7 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 **存储（主机）** | **支持** 
 --- | --- 
 NFS | 是 
-SMB 3.0 | 不适用 
+SMB 3.0 | 空值 
 SAN (ISCSI) | 是 
 多路径 (MPIO) | 是 
 
@@ -94,8 +95,8 @@ SAN (ISCSI) | 是
 **配置** | **支持** 
 --- | --- 
 VMDK | 是 
-VHD/VHDX | 不适用 
-第 2 代 VM | 不适用 
+VHD/VHDX | 空值 
+第 2 代 VM | 空值 
 共享群集磁盘 | 是 
 加密磁盘 | 否 
 UEFI| 是 
@@ -107,7 +108,7 @@ RDM | 是
 存储空间 | 否 
 热添加/移除磁盘 | 是 
 排除磁盘 | 是 
-多路径 (MPIO) | 不适用 
+多路径 (MPIO) | 空值 
 
 ## <a name="vaults"></a>保管库
 
@@ -130,5 +131,5 @@ RDM | 是
 
 下载 [InMage Scout 用户指南](https://aka.ms/asr-scout-user-guide)
 
-- [将 VMM 云中的 Hyper-V VM 复制到辅助站点](tutorial-vmm-to-vmm.md)
-- [将 VMware VM 和物理服务器复制到辅助站点](tutorial-vmware-to-vmware.md)
+- [将 VMM 云中的 Hyper-V VM 复制到辅助站点](./hyper-v-vmm-disaster-recovery.md)
+- [将 VMware VM 和物理服务器复制到辅助站点](./vmware-physical-secondary-disaster-recovery.md)

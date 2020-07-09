@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 607f622bc484883ecbeae0552eecc9561cf4c3ef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969596"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134615"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -461,26 +461,27 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
 
 进行密钥轮换操作后，所有数据都将保持可访问，因为数据始终使用帐户加密密钥 (AEK) 进行加密，而 AEK 目前使用 Key Vault 中的新密钥加密密钥 (KEK) 版本进行加密。
 
-## <a name="saving-queries-protected-with-cmk"></a>保存受 CMK 保护的查询
+## <a name="cmk-for-queries"></a>查询的 CMK
 
-Log Analytics 中使用的查询语言是有意义的，可以在添加到查询或查询语法中的注释中包含敏感信息。 某些组织要求将此类信息作为 CMK 策略的一部分进行保护，并且需要保存用密钥加密的查询。 Azure Monitor 使你能够将*保存的搜索*和*日志警报*查询存储到你自己的存储帐户中，并将其连接到工作区。 
+Log Analytics 中使用的查询语言是有意义的，可以在添加到查询或查询语法中的注释中包含敏感信息。 某些组织要求将此类信息作为 CMK 策略的一部分进行保护，并且需要保存用密钥加密的查询。 Azure Monitor 使你能够在连接到工作区时，将*已保存的搜索*和*日志警报*查询存储在你自己的存储帐户中。 
 
-> 请注意，尚不支持用于工作簿和 Azure 仪表板中的查询的 CMK。 这些查询仍将通过 Microsoft 密钥进行加密。  
+> [!NOTE]
+> 尚不支持用于工作簿和 Azure 仪表板中的查询的 CMK。 这些查询仍将通过 Microsoft 密钥进行加密。  
 
-利用自带存储（BYOS），服务会将查询上传到你控制的存储帐户。 这意味着，你可以使用与加密 Log Analytics 群集中的数据相同的密钥或不同的密钥来控制[静态加密策略](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 但是，你将负责与该存储帐户关联的成本。 
+当你将[自己的存储](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage)（BYOS）和关联到工作区时，该服务会将*已保存的搜索*和*日志警报*查询上载到你的存储帐户。 这意味着，你可以使用与加密 Log Analytics 群集中的数据或其他密钥相同的密钥来控制存储帐户和[静态加密策略](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 但是，你将负责与该存储帐户关联的成本。 
 
 **为查询设置 CMK 前的注意事项**
 * 你需要对工作区和存储帐户具有 "写入" 权限
 * 请确保在 Log Analytics 工作区所在的同一区域中创建存储帐户
 * 存储中的*保存搜索*被视为服务项目，其格式可能会更改
-* 现有的*保存搜索*将从工作区中删除。 复制并在配置之前保存所需的任何*搜索*。 你可以使用此[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch?view=azps-4.2.0)查看*已保存的搜索*
+* 现有的*保存搜索*将从工作区中删除。 复制并在配置之前保存所需的任何*搜索*。 可以使用[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch)查看*已保存的搜索*
 * 查询历史记录不受支持，您将无法看到您运行的查询
 * 出于保存查询的目的，可以将单个存储帐户关联到工作区，但可用于*保存的搜索*和*日志警报*查询
 * 不支持固定到仪表板
 
-**查询的 BYOS 配置**
+**为保存的搜索查询配置 BYOS**
 
-将存储帐户与*查询*dataSourceType 关联到工作区。 
+将*查询*的存储帐户关联到工作区-*保存-搜索*查询保存在存储帐户中。 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
@@ -505,9 +506,9 @@ Content-type: application/json
 
 配置完成后，任何新*保存的搜索*查询都将保存在存储中。
 
-**日志的 BYOS 配置-警报**
+**配置 BYOS 查询的日志记录**
 
-将包含*警报*dataSourceType 的存储帐户与工作区关联。 
+将*警报*的存储帐户关联到工作区--*日志警报*查询保存在存储帐户中。 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"

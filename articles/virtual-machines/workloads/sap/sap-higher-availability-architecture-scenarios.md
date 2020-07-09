@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86094fd7ff9550946e1b1c13e0773f025a0e977c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77623816"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134538"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>利用 Azure 基础结构 VM 重启来实现 SAP 系统的“更高可用性”
 
@@ -266,7 +267,7 @@ SAP 提供了一项设置，用于在启动 VM 中的 OS 后立即启动 SAP 实
 
 假设这是一个 VM 中有一个 SAP 应用程序服务器实例的典型 Azure 方案，并且最终重启了单个 VM，则 Autostart 并不重要。 不过，可以通过适当方式来启用它，只需将以下参数添加到 SAP 高级业务应用程序编程 (ABAP) 或 Java 实例的启动配置文件中即可：
 
-      Autostart = 1
+`Autostart = 1`
 
 
   > [!NOTE]

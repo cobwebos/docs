@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197037"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135370"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -94,16 +95,16 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
    - InMage Scout 应用程序服务
 4. 在源计算机上，检查位于以下位置的日志以查看错误详细信息：
 
-       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    *C:\Program Files （X86） \Microsoft Azure \* Site Recovery\agent\svagents*
 
 ### <a name="process-server-with-no-heartbeat-error-806"></a>进程服务器无检测信号 [错误 806]
 如果进程服务器 (PS) 未发出检测信号，请检查：
 1. PS VM 已启动并正在运行
 2. 检查 PS 上的以下日志以查看错误详细信息：
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    *C:\ProgramData\ASR\home\svsystems\eventmanager \**\
+    与
+    *C:\ProgramData\ASR\home\svsystems\ monitor_protection \* .log*
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>主目标服务器无检测信号 [错误 78022]
 
@@ -116,7 +117,7 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
     - 验证 svagents 服务是否正在运行。 如果正在运行，请重启服务
     - 检查位于以下位置的日志以查看错误详细信息：
 
-          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+        *C:\Program Files （X86） \Microsoft Azure \* Site Recovery\agent\svagents*
 3. 若要将主目标注册到配置服务器，请导航到文件夹“%PROGRAMDATA%\ASR\Agent”，并在命令提示符上运行以下命令：
    ```
    cmd
@@ -146,25 +147,25 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 **如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
 #### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因4：在 Linux 服务器上未启用应用一致性
-**如何修复**：针对 Linux 操作系统的 Azure Site Recovery 支持应用程序自定义脚本以实现应用程序一致性。 使用 pre 和 post 选项的自定义脚本将由 Azure Site Recovery 移动代理用于应用程序一致性。 [下面](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)是启用该方法的步骤。
+**如何修复**：针对 Linux 操作系统的 Azure Site Recovery 支持应用程序自定义脚本以实现应用程序一致性。 使用 pre 和 post 选项的自定义脚本将由 Azure Site Recovery 移动代理用于应用程序一致性。 [下面](./site-recovery-faq.md#replication)是启用该方法的步骤。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS 相关问题的更多原因：
 
 若要进一步排除故障，请检查源计算机上的文件，获取故障的具体错误代码：
 
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+*C:\Program Files （x86） \Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
 
 如何在文件中查找错误？
 在编辑器中打开 vacp.log 文件，搜索字符串“vacpError”
 
-    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+`Ex: `**`vacpError`**`:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|`
 
 在上面的示例中，“2147754994”是介绍故障情况的错误代码，如下所示
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164
 
 *如何解决*：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果未安装 VSS 提供程序服务，应用程序一致性快照创建将失败，并出现错误 ID 0x80040154 "类未注册"。 </br>
-请参阅[有关 VSS 编写器安装故障排除的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)
+请参阅[有关 VSS 编写器安装故障排除的文章](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用 - 错误 2147943458
 
@@ -194,4 +195,4 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 ## <a name="next-steps"></a>后续步骤
 
-如需更多帮助，请在[有关 Azure Site Recovery 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)中发布问题。 我们的社区非常活跃，将有一位工程师为你提供帮助。
+如需更多帮助，请在[有关 Azure Site Recovery 的 Microsoft Q&A 问题页面](/answers/topics/azure-site-recovery.html)中发布问题。 我们的社区非常活跃，将有一位工程师为你提供帮助。

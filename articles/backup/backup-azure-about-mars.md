@@ -4,12 +4,12 @@ description: 了解 MARS 代理如何支持备份方案
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611477"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134981"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>关于 Microsoft Azure 恢复服务（MARS）代理
 
@@ -42,7 +42,7 @@ MARS 代理支持以下还原方案：
 1. 在 Azure 门户中创建[恢复服务保管库](install-mars-agent.md#create-a-recovery-services-vault)，并从“备份目标”中选择文件、文件夹和系统状态****。
 2. [将恢复服务保管库凭据和代理安装程序下载](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)到本地计算机。
 
-3. [安装代理](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)并使用下载的保管库凭据将计算机注册到恢复服务保管库。
+3. [安装代理](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)，并使用下载的保管库凭据将计算机注册到恢复服务保管库。
 4. 从客户端上的代理控制台中，[配置备份](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)，指定要备份的内容、何时备份（计划）、备份应在 Azure 中保留多长时间（保留策略）并开始保护。
 
 ![Azure 备份代理示意图](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
@@ -53,7 +53,7 @@ MARS 代理支持以下还原方案：
 
 - “增量备份”（后续备份）根据指定的计划运行****。 在增量备份期间，将会标识已更改的文件，并创建新的 VHD。 该 VHD 经过压缩和加密，然后发送到保管库。 增量备份完成后，新 VHD 将与初始复制后创建的 VHD 合并。 此合并的 VHD 提供最新状态，用于对现行备份进行比较。
 
-- MARS 代理可以使用 USN（更新序列号）变更日志在优化模式下运行备份作业，也可以通过扫描整个卷来检查目录或文件的更改，在未优化模式下运行备份作业**** ****。 未优化模式的速度较慢，因为代理必须扫描卷上的每个文件，并与元数据进行比较以确定更改的文件。  “初始备份”始终在未优化模式下运行****。 如果上一个备份失败，则下一个计划的备份作业将在未优化模式下运行。
+- MARS 代理可以使用 USN（更新序列号）变更日志在优化模式下运行备份作业，也可以通过扫描整个卷来检查目录或文件的更改，在未优化模式下运行备份作业**** ****。 未优化模式的速度较慢，因为代理必须扫描卷上的每个文件，并与元数据进行比较以确定更改的文件。  “初始备份”始终在未优化模式下运行****。 如果上一个备份失败，则下一个计划的备份作业将在未优化模式下运行。 若要详细了解这些模式以及如何验证它们，请参阅[此文](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode)。
 
 ### <a name="additional-scenarios"></a>其他方案
 

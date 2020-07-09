@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 501cf161a22aaa1ec37abda2b750106b6eaf3dc4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77661664"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135213"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客户管理的站点（包含 VMM）之间进行灾难恢复功能的弃用
 
@@ -38,7 +39,7 @@ ms.locfileid: "77661664"
 - 选项 1（推荐使用）：选择[开始使用 Azure 作为 DR 目标](hyper-v-vmm-azure-tutorial.md)。
 
 
-- 选项 2：选择继续使用站点到站点复制并利用基础的 [Hyper-V 副本解决方案](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)，但你将无法在 Azure 门户中使用 Azure Site Recovery 来管理 DR 配置。 
+- 选项 2：选择继续使用站点到站点复制并利用基础的 [Hyper-V 副本解决方案](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)，但你将无法在 Azure 门户中使用 Azure Site Recovery 来管理 DR 配置。 
 
 
 ## <a name="remediation-steps"></a>修正步骤

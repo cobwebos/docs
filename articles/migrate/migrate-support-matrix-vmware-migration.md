@@ -3,11 +3,12 @@ title: Azure Migrate 中的 VMware 迁移支持
 description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: c4184628739b6c47b35263fe99285b05b9e0a190
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b026d07c6ac1630048d8aee6778215f3a99dddb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769721"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134989"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -50,7 +51,7 @@ ms.locfileid: "84769721"
 
 **支持** | **详细信息**
 --- | ---
-**受支持的操作系统** | 你可以迁移 Azure 支持的[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统。
+**受支持的操作系统** | 你可以迁移 Azure 支持的[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](../virtual-machines/linux/endorsed-distros.md)操作系统。
 **Azure 中的 Windows Vm** | 在迁移之前，你可能需要对 Vm[进行一些更改](prepare-for-migration.md#verify-required-changes-before-migrating)。 
 **Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8。 对于其他操作系统，请手动进行[所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating)。
 **Linux 启动** | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根（/）分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。
@@ -85,7 +86,7 @@ ms.locfileid: "84769721"
 --- | ---
 设备 | 端口443上的出站连接，将复制的数据上传到 Azure，并与 Azure Migrate 服务进行通信协调复制和迁移。
 vCenter 服务器 | 端口443上的入站连接，使设备能够协调复制-创建快照、复制数据、发布快照
-vSphere/EXSI 主机 | TCP 端口902上的入站，用于从快照复制数据。
+vSphere/ESXI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 
 ## <a name="agent-based-migration"></a>基于代理的迁移 
 

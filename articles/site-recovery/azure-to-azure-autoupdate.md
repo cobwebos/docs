@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: b2f5faea3df695500ea245d1dc71cb96a84c3643
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b57ce89979225015dc87bbfb17f9603897ef6d6b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985595"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135840"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制的自动更新移动服务
 
@@ -90,7 +90,7 @@ Site Recovery 可以通过多种方式来管理扩展更新：
 
 - **错误**：没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。
 
-  **建议的操作**：确保已将登录的帐户分配为投稿方，然后重试。 有关分配权限的详细信息，请参阅[如何：使用门户创建 Azure AD 应用程序以及可访问资源的服务主体](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)的 "所需权限" 部分。
+  **建议的操作**：确保已将登录的帐户分配为投稿方，然后重试。 有关分配权限的详细信息，请参阅[如何：使用门户创建 Azure AD 应用程序以及可访问资源的服务主体](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)的 "所需权限" 部分。
 
   若要在启用自动更新后解决大多数问题，请选择 "**修复**"。 如果 "修复" 按钮不可用，请参阅 "扩展更新设置" 窗格中显示的错误消息。
 
@@ -98,11 +98,11 @@ Site Recovery 可以通过多种方式来管理扩展更新：
 
 - **错误**：运行方式帐户没有访问恢复服务资源的权限。
 
-  **建议的操作**：删除[运行方式帐户，然后重新创建该帐户](/azure/automation/automation-create-runas-account)。 或者，确保自动化运行方式帐户的 Azure Active Directory 应用程序可以访问恢复服务资源。
+  **建议的操作**：删除[运行方式帐户，然后重新创建该帐户](../automation/manage-runas-account.md)。 或者，确保自动化运行方式帐户的 Azure Active Directory 应用程序可以访问恢复服务资源。
 
 - **错误**：找不到运行方式帐户。 以下某一内容已删除或未创建 - Azure Active Directory 应用程序、服务主体、角色、自动化证书资产、自动化连接资产；或者证书和连接的指纹不同。
 
-  **建议的操作**：删除[运行方式帐户，然后重新创建该帐户](/azure/automation/automation-create-runas-account)。
+  **建议的操作**：删除[运行方式帐户，然后重新创建该帐户](../automation/manage-runas-account.md)。
 
 - **错误**： automation 帐户使用的 Azure 运行方式证书即将过期。
 

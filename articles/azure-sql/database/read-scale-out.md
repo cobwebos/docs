@@ -1,54 +1,58 @@
 ---
 title: 副本上的读取查询
-description: 使用 Azure SQL 数据库，可以使用只读副本的容量（称为读取横向扩展）对只读工作负荷进行负载均衡。
+description: Azure SQL 提供使用只读副本的容量的功能，这些工作负荷称为读横向扩展。
 services: sql-database
-ms.service: sql-db-mi
-ms.subservice: high-availability
-titleSuffix: Azure SQL Database & SQL Managed Instance
+ms.service: sql-database
+ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 06/03/2019
-ms.openlocfilehash: a043eb5eed8f5554e42a113a3d7963be94da8a49
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 06/26/2020
+ms.openlocfilehash: cf9f48b0907d3bfe1d07dcffcc0d0b9534f74c83
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985561"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135886"
 ---
-# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>使用只读副本对只读的查询工作负荷进行负载均衡
+# <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>使用只读副本卸载只读查询工作负荷
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+作为[高可用性体系结构](high-availability-sla.md#premium-and-business-critical-service-tier-availability)的一部分，"高级" 和 "业务关键" 服务层中的每个数据库和托管实例都是使用主读写副本和多个辅助只读副本自动预配的。 为次要副本预配的计算大小与主要副本相同。 使用*读取横向扩展*功能，您可以使用一个只读副本的计算能力来卸载只读工作负荷，而无需在读写副本上运行这些工作负荷。 这样，某些只读工作负载可以与读写工作负荷隔离，而不会影响它们的性能。 该功能适用于包含逻辑隔离的只读工作负荷（例如分析）的应用程序。 在“高级”和“业务关键”服务层级中，应用程序可以使用此额外的容量获得性能优势，而无需额外付费。
 
-作为[高可用性体系结构](high-availability-sla.md#premium-and-business-critical-service-tier-availability)的一部分，"高级" 和 "业务关键" 服务层中的每个数据库都是使用主副本和多个辅助副本自动预配的。 为次要副本预配的计算大小与主要副本相同。 使用*读取横向扩展*功能，你可以使用一个只读副本的容量（而不是共享读写副本）对 SQL 数据库只读工作负荷进行负载均衡。 这样一来，只读工作负荷将与主要读写工作负荷隔离，并且不会影响其性能。 该功能适用于包含逻辑隔离的只读工作负荷（例如分析）的应用程序。 在“高级”和“业务关键”服务层级中，应用程序可以使用此额外的容量获得性能优势，而无需额外付费。
+如果至少创建了一个辅助副本，则还可以在超大规模服务层中使用*读取横向扩展*功能。 多个辅助副本可用于负载均衡的只读工作负载，这些工作负荷需要的资源比在一个辅助副本上提供的资源多。
 
-如果至少创建了一个辅助副本，则还可以在超大规模服务层中使用读取横向扩展功能。 如果只读工作负荷需要的资源比一个辅助副本上可用的资源多，则可以使用多个辅助副本。 "基本"、"标准" 和 "常规用途" 服务层的高可用性体系结构不包含任何副本。 读取横向扩展功能在这些服务层中不可用。
+“基本”、“标准”和“常规用途”服务层级的高可用性体系结构不包含任何副本。 *读取横向扩展*功能在这些服务层中不可用。
 
-下图演示了使用“业务关键”数据库的应用程序。
+下图说明了该功能。
 
 ![只读副本](./media/read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-默认情况下，在新的 Premium、业务关键和超大规模数据库上启用 "读取横向扩展" 功能。 对于超大规模，默认情况下，为新数据库创建一个次要副本。 如果在 SQL 连接字符串中配置了 `ApplicationIntent=ReadOnly`，则网关会将应用程序重定向到该数据库的只读副本。 有关如何使用属性的信息 `ApplicationIntent` ，请参阅[指定应用程序意向](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
+默认情况下，在新的 Premium、业务关键和超大规模数据库上启用 "*读取横向扩展*" 功能。 对于超大规模，默认情况下，为新数据库创建一个次要副本。 
+
+> [!NOTE]
+> 在托管实例的 "业务关键服务" 层中，"读取" 扩展始终处于启用状态。
+
+如果你的 SQL 连接字符串配置为 `ApplicationIntent=ReadOnly` ，则应用程序将重定向到该数据库或托管实例的只读副本。 有关如何使用 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
 
 如果你希望确保应用程序始终连接到主要副本，而不管 SQL 连接字符串中的 `ApplicationIntent` 设置如何，则必须在创建数据库或更改其配置时显式禁用读取扩展。 例如，如果你将数据库从标准层或常规用途层升级到 Premium、业务关键或超大规模层，并且想要确保所有连接继续转到主副本，请禁用读取横向扩展。有关如何禁用它的详细信息，请参阅[启用和禁用读取横向扩展](#enable-and-disable-read-scale-out)。
 
 > [!NOTE]
-> 只读副本不支持查询数据存储、扩展事件和 SQL Profiler 功能。
+> 查询存储和 SQL Profiler 功能在只读副本上不受支持。 
 
 ## <a name="data-consistency"></a>数据一致性
 
-副本的优势之一是，它始终处于事务一致性状态，但在不同的时间点，不同的副本之间可能会有一些较小的延迟。 读取横向扩展支持会话级一致性。 这意味着，如果只读会话在由于副本不可用而导致的连接错误后重新连接，则可能会将其重定向到与读写副本不是100% 的副本。 同样，如果应用程序使用读写会话写入数据，并立即使用只读会话读取该数据，则可能不会在副本上立即看到最新的更新。 延迟是由异步事务日志重做操作导致的。
+副本的优势之一是，它始终处于事务一致性状态，但在不同的时间点，不同的副本之间可能会有一些较小的延迟。 读取横向扩展支持会话级一致性。 这意味着，如果只读会话在由于副本不可用而出现连接错误后重新连接，可以使用读写副本将其重定向到并非完全处于最新状态的副本。 同样，如果应用程序使用读写会话写入数据，并立即使用只读会话读取该数据，则最新的更新可能不会在副本中立即可见。 延迟是由异步事务日志重做操作导致的。
 
 > [!NOTE]
-> 区域内的复制延迟较低，这种情况极少出现。
+> 区域内的复制延迟较低，这种情况极少出现。 若要监视复制滞后时间，请参阅对[只读副本进行监视和故障排除](#monitoring-and-troubleshooting-read-only-replicas)。
 
 ## <a name="connect-to-a-read-only-replica"></a>连接到只读副本
 
-为数据库启用读取横向扩展时， `ApplicationIntent` 客户端提供的连接字符串中的选项会指示连接是路由到写入副本还是只读副本。 具体而言，如果 `ApplicationIntent` 值为 `ReadWrite`（默认值），则连接会定向到数据库的读写副本。 这与现有行为相同。 如果 `ApplicationIntent` 值为 `ReadOnly`，则连接将路由到只读副本。
+为数据库启用读取横向扩展时， `ApplicationIntent` 客户端提供的连接字符串中的选项会指示连接是路由到写入副本还是只读副本。 具体而言，如果 `ApplicationIntent` 值为 `ReadWrite` （默认值），则连接将被定向到读写副本。 这与 `ApplicationIntent` 连接字符串中未包含的行为相同。 如果 `ApplicationIntent` 值为 `ReadOnly`，则连接将路由到只读副本。
 
 例如，以下连接字符串将客户端连接到只读副本（请将尖括号中的项替换为环境的正确值，并删除尖括号）：
 
@@ -66,30 +70,70 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>
 
 ## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>验证连接到只读副本
 
-可通过运行以下查询来验证是否连接到只读副本。 当你连接到只读副本时，它将返回 READ_ONLY。
+您可以通过在数据库的上下文中运行以下查询来验证是否已连接到只读副本。 当你连接到只读副本时，它将返回 READ_ONLY。
 
 ```sql
-SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
+SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 ```
 
 > [!NOTE]
-> 在任意给定时间，只读会话仅可访问其中一个 AlwaysON 副本。
+> 在 "高级" 和 "业务关键" 服务层中，在任何给定时间只能访问一个只读副本。 超大规模支持多个只读副本。
 
-## <a name="monitor-and-troubleshoot-a-read-only-replica"></a>监视只读副本并对其进行故障排除
+## <a name="monitoring-and-troubleshooting-read-only-replicas"></a>只读副本的监视和故障排除
 
-连接到只读副本后，可以使用 `sys.dm_db_resource_stats` DMV 访问性能指标。 若要访问查询计划统计信息，请使用 `sys.dm_exec_query_stats`、`sys.dm_exec_query_plan` 和 `sys.dm_exec_sql_text` DMV。
+当连接到只读副本时，动态管理视图（Dmv）会反映副本的状态，并且可以查询以进行监视和故障排除。 数据库引擎提供了多个视图来公开多种监视数据。 
+
+常用视图如下：
+
+| 名称 | 目的 |
+|:---|:---|
+|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 提供最近一小时内的资源利用率指标，包括相对于服务目标限制的 CPU、数据 IO 和日志写入使用率。|
+|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| 提供数据库引擎实例的聚合等待统计信息。 |
+|[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| 提供副本运行状况状态和同步统计信息。 重做队列大小和重做速率用作只读副本上数据延迟的指示器。 |
+|[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| 提供数据库引擎性能计数器。|
+|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| 提供按查询执行的统计信息，例如执行次数、已用 CPU 时间，等等。|
+|[sys. dm_exec_query_plan （）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| 提供缓存查询计划。 |
+|[sys. dm_exec_sql_text （）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| 提供缓存查询计划的查询文本。|
+|[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 在执行查询时提供实时查询进度。|
+|[sys. dm_exec_query_plan_stats （）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供最近已知的实际执行计划，包括查询的运行时统计信息。|
+|[sys. dm_io_virtual_file_stats （）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| 提供所有数据库文件的存储 IOPS、吞吐量和延迟统计信息。 |
 
 > [!NOTE]
-> 逻辑 master 数据库中的 DMV `sys.resource_stats` 返回主要副本的 CPU 使用率和存储数据。
+> `sys.resource_stats` `sys.elastic_pool_resource_stats` 逻辑 master 数据库中的和 dmv 返回主副本的资源利用率数据。
+
+### <a name="monitoring-read-only-replicas-with-extended-events"></a>监视具有扩展事件的只读副本
+
+连接到只读副本时，无法创建扩展事件会话。 但是，在 Azure SQL 数据库中，在主副本上创建和更改的数据库范围[扩展事件](xevent-db-diff-from-svr.md)会话的定义将复制到只读副本上，包括异地副本，并捕获只读副本上的事件。
+
+基于主副本中的会话定义的只读副本上的扩展事件会话可独立于主副本启动和停止。 在主副本上删除扩展事件会话时，它也会在所有只读副本上被删除。
+
+### <a name="transaction-isolation-level-on-read-only-replicas"></a>只读副本上的事务隔离级别
+
+在只读副本上运行的查询始终映射到[快照](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)事务隔离级别。 快照隔离使用行版本控制，以避免在读者阻止写入器的情况下发生阻塞。
+
+在极少数情况下，如果快照隔离事务访问已在另一并发事务中修改的对象元数据，则可能会收到错误[3961](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)，"数据库 '%. * ls ' 中的快照隔离事务失败，因为该语句所访问的对象已由其他并发事务中的 DDL 语句修改。 禁用它是因为元数据未进行版本控制。 如果与快照隔离混合，对元数据的并发更新可能导致不一致。 "
+
+### <a name="long-running-queries-on-read-only-replicas"></a>针对只读副本的长时间运行的查询
+
+在只读副本上运行的查询需要访问查询中引用的对象的元数据（表、索引、统计信息等）在极少数情况下，如果在主副本上修改元数据对象，而查询持有对只读副本上的同一对象的锁定，则该查询可以[阻止](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK)将更改从主副本应用到只读副本的过程。 如果此类查询长时间运行，则会导致只读副本与主要副本的同步明显不同步。 
+
+如果针对只读副本的长时间运行的查询导致此类阻塞，则它将被自动终止，并且会话将收到错误 1219 "由于高优先级 DDL 操作，会话已断开连接"。
+
+> [!NOTE]
+> 如果在对只读副本运行查询时收到错误3961或错误1219，请重试查询。
+
+> [!TIP]
+> 在高级和业务关键服务层中，当连接到只读副本时， `redo_queue_size` `redo_rate` [dm_database_replica_states sys.databases](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)中的和列可用于监视数据同步过程，作为只读副本上数据延迟的指示器。
+> 
 
 ## <a name="enable-and-disable-read-scale-out"></a>启用和禁用读取横向扩展
 
 默认情况下，"高级"、"业务关键" 和 "超大规模" 服务层上已启用 "读取"。 无法在基本、标准或常规用途服务层中启用读取横向扩展。 在配置了零副本的超大规模数据库上，将自动禁用读取横向扩展。
 
-您可以使用以下方法在高级服务层或业务关键服务层中的单一数据库和弹性池数据库上禁用并重新启用读取横向扩展。
+您可以使用以下方法在高级或业务关键服务层中禁用和重新启用单个数据库和弹性池数据库上的读取横向扩展。
 
 > [!NOTE]
-> 为了向后兼容，提供了禁用读取横向扩展功能的功能。
+> 对于单一数据库和弹性池数据库，提供了禁用读取横向扩展的功能，以便向后兼容。 无法在业务关键托管实例上禁用读取横向扩展。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -138,19 +182,19 @@ Body: {
 
 有关详细信息，请参阅[数据库-创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)。
 
-## <a name="using-tempdb-on-a-read-only-replica"></a>对只读副本使用 TempDB
+## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>`tempdb`在只读副本上使用数据库
 
-TempDB 数据库不会复制到只读副本。 每个副本具有自身的 TempDB 数据库版本，该版本是创建该副本时创建的。 它可确保在执行查询的过程中更新和修改 TempDB。 如果只读工作负荷依赖于使用 TempDB 对象，则应创建这些对象作为查询脚本的一部分。
+`tempdb`主副本上的数据库不会复制到只读副本。 每个副本都有其自己的 `tempdb` 数据库，该数据库是在创建副本时创建的。 这可确保在 `tempdb` 执行查询期间可更新和修改。 如果你的只读工作负荷依赖于使用 `tempdb` 对象，则应在查询脚本中创建这些对象。
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>使用异地复制的数据库的读取横向扩展
 
-如果使用 "读取横向扩展" 对异地复制的数据库（例如，作为故障转移组的成员）的只读工作负荷进行负载平衡，请确保在主要和异地复制的辅助数据库上启用 "读取" 扩展。 此配置可确保应用程序在故障转移后连接到新的主数据库时，相同的负载均衡体验能够继续。 
+异地复制的辅助数据库具有与主数据库相同的高可用性体系结构。 如果要连接到启用了读取横向扩展的异地复制的辅助数据库，则中的会话 `ApplicationIntent=ReadOnly` 将路由到高可用性副本之一，其方式与在主可写数据库上路由它们的方式相同。 而未设为 `ApplicationIntent=ReadOnly` 的会话将路由到异地复制辅助数据库的主要副本，该副本也为只读。 
 
-如果要连接到启用了读取规模的异地复制辅助数据库，则与 `ApplicationIntent=ReadOnly` 的会话将路由到其中一个副本，就像我们在主数据库上路由连接一样。  而未设为 `ApplicationIntent=ReadOnly` 的会话将路由到异地复制辅助数据库的主要副本，该副本也为只读。 因为异地复制的辅助数据库具有与主数据库不同的终结点，所以，在这种情况下，不需要设置它 `ApplicationIntent=ReadOnly` 。 为确保后向兼容性，`sys.geo_replication_links` DMV 显示`secondary_allow_connections=2`（允许的任何客户端连接）。
+通过这种方式，创建异地副本将为读写主数据库提供两个以上的只读副本，总计三个只读副本。 其他每个地域副本提供另一对只读副本。 可在任何 Azure 区域（包括主数据库的区域）中创建地理副本。
 
 > [!NOTE]
-> 不支持在辅助数据库的本地副本之间执行轮循机制或任何其他负载均衡路由。
+> 异地复制的辅助数据库的副本之间没有自动轮循机制或任何其他负载均衡路由。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 SQL 数据库超大规模产品/服务的信息，请参阅[超大规模服务层](service-tier-hyperscale.md)。
+- 若要了解 SQL 数据库的“超大规模”套餐，请参阅[“超大规模”服务层级](service-tier-hyperscale.md)。

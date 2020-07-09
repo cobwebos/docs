@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672741"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134819"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理配置服务器以便进行 VMware VM/物理服务器灾难恢复
 
@@ -21,7 +22,7 @@ ms.locfileid: "80672741"
 
 ## <a name="update-windows-license"></a>更新 Windows 许可证
 
-通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 为确保不间断使用，必须使用采购的许可证来激活 Windows。 可以通过独立的密钥或 KMS 标准密钥来完成许可证更新。 若要获取相关指导，请参阅[用于运行 OS 的 DISM Windows 命令行](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)。 若要获取密钥，请参阅 [KMS 客户端设置](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)。
+通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 为确保不间断使用，必须使用采购的许可证来激活 Windows。 可以通过独立的密钥或 KMS 标准密钥来完成许可证更新。 若要获取相关指导，请参阅[用于运行 OS 的 DISM Windows 命令行](/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)。 若要获取密钥，请参阅 [KMS 客户端设置](/windows-server/get-started/kmsclientkeys)。
 
 ## <a name="access-configuration-server"></a>访问配置服务器
 
@@ -265,7 +266,7 @@ ProxyPassword="Password"
 
 还可以选择使用 PowerShell 删除配置服务器。
 
-1. [安装](https://docs.microsoft.com/powershell/azure/install-Az-ps) Azure PowerShell 模块。
+1. [安装](/powershell/azure/install-Az-ps) Azure PowerShell 模块。
 2. 使用以下命令登录到 Azure 帐户：
 
     `Connect-AzAccount`

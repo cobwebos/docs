@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
-ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 429ffcab147142ae2e96de13b7c9e1e5ee1ac7ba
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79503122"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133222"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>配置 Azure 到 Azure 灾难恢复的移动服务代理设置
 
@@ -54,5 +54,5 @@ ms.locfileid: "79503122"
 ProxyInfo 包含以下模板 [proxy] Address = http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure.storage，，，.net. .net。 BypassList 不支持通配符，如 "*. windows.net"，但赋予 windows.net 的效果足以绕过。 
 
 ## <a name="next-steps"></a>后续步骤：
-- 请参阅有关复制 Azure VM 复制的[网络指南](site-recovery-azure-to-azure-networking-guidance.md)。
-- 通过[复制 Azure VM](site-recovery-azure-to-azure.md) 来部署灾难恢复。
+- 请参阅有关复制 Azure VM 复制的[网络指南](./azure-to-azure-about-networking.md)。
+- 通过[复制 Azure VM](./azure-to-azure-quickstart.md) 来部署灾难恢复。

@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a82aa3aca55622308cae5816c95df9766048da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: baa132589f5242ab480c9caa55ca793e0652ad6e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049771"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135004"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>流式引入吞吐量限制
 
 Azure 时序见解流式传输数据引入限制如下所述。
 
 > [!TIP]
-> 有关所有预览版限制的综合列表，请阅读[规划预览版环境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits)。 如果项目标题已更新，则**TODO**将删除 "预览" 一词。
+> 有关所有预览版限制的综合列表，请阅读[规划预览版环境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits)。
 
 ## <a name="per-environment-limitations"></a>基于环境的限制
 

@@ -10,19 +10,18 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt
-ms.openlocfilehash: 620e0213733d278a28ec1bcad4b031f5764ccda9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91cebee1196dc38af8ece4086b6e6ab66fdc14da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733134"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135556"
 ---
 # <a name="get-started-with-device-twins-net"></a>设备孪生入门 (.NET)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 在本教程中，将创建以下 .NET 控制台应用：
-
-* CreateDeviceIdentity。 此应用创建设备标识和关联的安全密钥以连接模拟设备应用。
 
 * AddTagsAndQuery。 此后端应用添加标记并查询设备孪生。
 

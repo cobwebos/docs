@@ -138,7 +138,7 @@
       items:
         - name: 将 Key Vault 与 Azure Policy 集成
           displayName: 'key vault, certificate, key'
-          href: ../../key-vault/azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../key-vault/general/azure-policy.md?bc=/azure/governance/policy/breadcrumb/toc.json&toc=/azure/governance/policy/toc.json
     - name: Azure Lighthouse 集成
       items:
         - name: 大规模部署策略

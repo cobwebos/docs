@@ -1,27 +1,30 @@
 ---
-title: 将客户载入到 Azure 委派资源管理
-description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
+title: 将客户加入 Azure Lighthouse
+description: 了解如何将客户加入 Azure Lighthouse，从而允许使用 Azure 委派的资源管理通过自己的租户访问和管理其资源。
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 149398a822d5aa21335be4122e92c96800d94255
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920925"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133484"
 ---
-# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
+# <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
-本文介绍了服务提供商可如何将客户载入到 Azure 委托资源管理，使其能够通过自己的 Azure Active Directory (Azure AD) 租户访问和管理他们委托的资源（订阅和/或资源组）。 虽然我们在此处提到的是服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)可以使用相同的过程来设置 Azure Lighthouse 并整合其管理体验。
+本文介绍你作为服务提供商如何将客户加入 Azure Lighthouse。 当你执行此操作时，可以使用[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)通过你自己的 Azure Active Directory （Azure AD）租户访问和管理客户的委托资源（订阅和/或资源组）。
 
-如果要为多位客户管理资源，可重复此过程。 随后，当授权用户登录到你的租户时，可跨客户租赁范围向此用户授权，使其无需登录到每个单独的客户租户即可执行管理操作。
+如果要为多位客户管理资源，可重复此过程。 然后，当已授权的用户登录到你的租户时，可以在客户租户范围内授权该用户执行管理操作，而无需登录到每个单独的客户租户。
 
-若要跟踪你对客户互动的影响并获得认可，请将你的 Microsoft 合作伙伴网络 (MPN) ID 与至少一个有权访问你加入的每个订阅的用户帐户相关联。 请注意，你需要在服务提供商租户中执行此关联。 简单起见，我们建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并向其授予对你加入的每个客户的“读取者”访问权限。 有关详细信息，请参阅[将合作伙伴 ID 链接到 Azure 帐户](../../billing/billing-partner-admin-link-started.md)。 
+若要跟踪你对客户互动的影响并获得认可，请将你的 Microsoft 合作伙伴网络 (MPN) ID 与至少一个有权访问你加入的每个订阅的用户帐户相关联。 请注意，你需要在服务提供商租户中执行此关联。 简单起见，我们建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并向其授予对你加入的每个客户的“读取者”访问权限。 有关详细信息，请参阅[将合作伙伴 ID 链接到 Azure 帐户](../../cost-management-billing/manage/link-partner-id.md)。 
 
 > [!NOTE]
-> 在客户购买你发布到 Azure 市场的托管服务产品（公共或专用）时也可将其加入。 有关详细信息，请参阅[将托管服务产品发布到 Azure 市场](publish-managed-services-offers.md)。 还可以结合已发布到 Azure 市场的产品/服务使用此处所述的流程。
+> 客户购买发布到 Azure Marketplace 的托管服务产品/服务（公共或私有）时，也可以载入 Azure Lighthouse。 有关详细信息，请参阅[将托管服务产品发布到 Azure 市场](publish-managed-services-offers.md)。 还可以结合已发布到 Azure 市场的产品/服务使用此处所述的流程。
 
 载入过程要求从服务提供商的租户和客户的租户中执行操作。 上述所有步骤均可参见本文。
+
+> [!TIP]
+> 即使我们引用本主题中的服务提供商和客户，[管理多个租户的企业](../concepts/enterprise.md)也可以使用相同的过程来设置 Azure Lighthouse 并合并其管理体验。
 
 ## <a name="gather-tenant-and-subscription-details"></a>收集租户和订阅详细信息
 
@@ -193,7 +196,7 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure 资源管理器模板
 
-更新参数文件后，客户租户中的某个用户必须在其租户中将 Azure 资源管理器模板部署为订阅级部署。 对于要载入 Azure 委托资源管理的每个订阅（或者包含要载入的资源组的每个订阅），需要单独进行部署。
+更新参数文件后，客户租户中的某个用户必须在其租户中将 Azure 资源管理器模板部署为订阅级部署。 需要为你要加入的每个订阅（或包含你要加入的资源组的每个订阅）执行单独的部署。
 
 由于这是订阅级部署，因此无法在 Azure 门户中启动。 可以使用 PowerShell 或 Azure CLI 来完成部署，如下所示。
 
@@ -244,7 +247,7 @@ az deployment create --name <deploymentName> \
 
 ## <a name="confirm-successful-onboarding"></a>确认成功载入
 
-客户订阅成功载入 Azure 委托资源管理后，服务提供商租户中的用户将能够查看订阅及其资源（前提是通过上述过程单独或者作为具有相应权限的 Azure AD 组的成员向这些用户授予了访问此内容的权限）。 要确认此信息，请查看确保订阅以下列方式之一显示。  
+当客户订阅已成功载入到 Azure Lighthouse 时，服务提供商的租户中的用户将能够查看订阅及其资源（如果已通过上述过程向其授予了对它的访问权限，可以单独使用，也可以作为具有适当权限的 Azure AD 组的成员）。 要确认此信息，请查看确保订阅以下列方式之一显示。  
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -255,7 +258,7 @@ az deployment create --name <deploymentName> \
 3. 确认可使用在资源管理器模板中提供的产品/服务名称查看订阅。
 
 > [!IMPORTANT]
-> 若要在[我的客户](view-manage-customers.md)中查看委派的订阅，在为 Azure 委派资源管理加入订阅时，必须向服务提供商租户中的用户授予[读者](../../role-based-access-control/built-in-roles.md#reader)角色（或其他包括读者访问权限的内置角色）。
+> 若要在 "[我的客户](view-manage-customers.md)" 中查看委派的订阅，在载入订阅时，必须已向服务提供商的租户中的用户授予 "[读取](../../role-based-access-control/built-in-roles.md#reader)者" 角色（或其他内置角色，包括读者访问权限）。
 
 在客户的租户中：
 

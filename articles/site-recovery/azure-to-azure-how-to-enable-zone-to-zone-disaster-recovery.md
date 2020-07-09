@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488930"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135727"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>启用区域以对 Azure 虚拟机进行灾难恢复
 
@@ -64,7 +65,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 
 在将区域部署到 Vm 的区域灾难恢复之前，请务必确保 VM 上启用的其他功能可与区域进行互操作，以便进行灾难恢复。
 
-|功能  | 支持声明  |
+|Feature  | 支持声明  |
 |---------|---------|
 |经典 VM   |     不支持    |
 |ARM Vm    |    支持    |
@@ -97,7 +98,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 
 5. 如果要对复制设置进行更改，请单击 "下一步：高级设置"。
 
-6. 在适当的位置将设置远离默认值。 对于 Azure 到 Azure 灾难恢复的用户，此页可能很熟悉。 有关此边栏选项卡上显示的选项的更多详细信息，请参阅[此处](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)
+6. 在适当的位置将设置远离默认值。 对于 Azure 到 Azure 灾难恢复的用户，此页可能很熟悉。 有关此边栏选项卡上显示的选项的更多详细信息，请参阅[此处](./azure-to-azure-tutorial-enable-replication.md)
 
     ![高级设置页面](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
@@ -115,7 +116,7 @@ RTO SLA 与 Site Recovery 整体相同。 我们承诺最多2小时的 RTO。 �
 Site Recovery 团队和 Azure 容量管理团队计划了足够的基础结构容量。 启动故障转移时，团队还有助于确保受 Site Recovery 保护的 VM 实例将部署到目标区域。
 
 **4. 支持哪些操作系统？**
-区域到区域的灾难恢复支持与 Azure 到 Azure 灾难恢复相同的操作系统。 请参阅[此处](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)的支持矩阵。
+区域到区域的灾难恢复支持与 Azure 到 Azure 灾难恢复相同的操作系统。 请参阅[此处](./azure-to-azure-support-matrix.md)的支持矩阵。
 
 **5. 源和目标资源组是否可以相同？**
 否，必须故障转移到不同的资源组。
@@ -124,8 +125,8 @@ Site Recovery 团队和 Azure 容量管理团队计划了足够的基础结构�
 
 运行灾难恢复演练、故障转移、重新保护和故障回复时需要遵循的步骤与 Azure 到 Azure 灾难恢复方案中的步骤相同。
 
-若要执行灾难恢复演练，请执行[此处](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-dr-drill)概述的步骤。
+若要执行灾难恢复演练，请执行[此处](./azure-to-azure-tutorial-dr-drill.md)概述的步骤。
 
-若要执行故障转移并重新保护辅助区域中的 Vm，请按照[此处](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)概述的步骤进行操作。
+若要执行故障转移并重新保护辅助区域中的 Vm，请按照[此处](./azure-to-azure-tutorial-failover-failback.md)概述的步骤进行操作。
 
-若要故障回复到主要区域，请执行[此处](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failback)概述的步骤。
+若要故障回复到主要区域，请执行[此处](./azure-to-azure-tutorial-failback.md)概述的步骤。

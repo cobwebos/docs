@@ -3,12 +3,12 @@ title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 SDK 和外接程序时遇到的问题。
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 868b8c53a120ebdb6a35806538e02af39e25c338
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 6d23a148521506adf0c0fc16913a32aab5eb7a30
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970835"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135577"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>使用 Azure 策略排查错误
 
@@ -95,7 +95,7 @@ Azure 策略预期会处理的资源不存在， [Azure 活动日志](../../../a
 
 #### <a name="resolution"></a>解决方法
 
-拒绝策略分配中的错误消息包括策略定义和策略分配 Id。 如果消息中的错误信息丢失，则也可在[活动日志](../../../azure-monitor/platform/activity-log-view.md)中找到。 使用此信息可获取更多详细信息，以了解资源限制并调整请求中的资源属性以匹配允许的值。
+拒绝策略分配中的错误消息包括策略定义和策略分配 Id。 如果消息中的错误信息丢失，则也可在[活动日志](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)中找到。 使用此信息可获取更多详细信息，以了解资源限制并调整请求中的资源属性以匹配允许的值。
 
 ## <a name="template-errors"></a>模板错误
 

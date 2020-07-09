@@ -1,5 +1,5 @@
 ---
-title: 配置 Azure 专用链接
+title: 配置专用终结点（预览）
 titleSuffix: Azure Machine Learning
 description: 使用 Azure 专用链接从虚拟网络安全地访问 Azure 机器学习工作区。
 services: machine-learning
@@ -10,13 +10,14 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 49565624cee70e40141ca7e8b57b2c26b950d20b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84666923"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134880"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>为 Azure 机器学习工作区配置 Azure 专用链接（预览版）
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>为 Azure 机器学习工作区配置 Azure 专用链接（预览）
 
 本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 此功能目前以预览版形式在“美国东部”、“美国西部 2”、“美国中南部”区域提供。 
 

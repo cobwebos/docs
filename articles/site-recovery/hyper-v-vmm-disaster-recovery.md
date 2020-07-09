@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437512"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134013"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
 
@@ -48,10 +48,10 @@ ms.locfileid: "80437512"
 
 准备 VMM，如下所示：
 
-1. 确保源服务器和目标 VMM 服务器上具有 [VMM 逻辑网络](https://docs.microsoft.com/system-center/vmm/network-logical)。
+1. 确保源服务器和目标 VMM 服务器上具有 [VMM 逻辑网络](/system-center/vmm/network-logical)。
     - 源服务器上的逻辑网络应与 Hyper-V 主机所在的源云相关联。
     - 目标服务器上的逻辑网络应与目标云相关联。
-1. 确保源服务器和目标 VMM 服务器上具有 [VM 网络](https://docs.microsoft.com/system-center/vmm/network-virtual)。 VM 网络应链接到每个位置中的逻辑网络。
+1. 确保源服务器和目标 VMM 服务器上具有 [VM 网络](/system-center/vmm/network-virtual)。 VM 网络应链接到每个位置中的逻辑网络。
 2. 将源 Hyper-V 主机上的 VM 连接到源 VM 网络。 
 
 

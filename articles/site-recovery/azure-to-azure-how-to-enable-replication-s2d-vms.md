@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75973668"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135760"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>将运行存储空间直通的 Azure VM 复制到另一区域
 
@@ -19,7 +20,7 @@ ms.locfileid: "75973668"
 >存储空间直通群集仅支持故障一致恢复点。
 >
 
-[存储空间直通 (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) 是软件定义的存储，可便于在 Azure 上创建[来宾群集](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)。  Microsoft Azure 中的来宾群集是由 IaaS Vm 组成的故障转移群集。 这样一来，托管的 VM 工作负载可以跨来宾群集进行故障转移，从而实现更高的应用程序可用性 SLA（与单一 Azure VM 相比）。 它适用于 VM 托管关键应用程序（如 SQL 或横向扩展文件服务器）的方案。
+[存储空间直通 (S2D)](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) 是软件定义的存储，可便于在 Azure 上创建[来宾群集](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering)。  Microsoft Azure 中的来宾群集是由 IaaS Vm 组成的故障转移群集。 这样一来，托管的 VM 工作负载可以跨来宾群集进行故障转移，从而实现更高的应用程序可用性 SLA（与单一 Azure VM 相比）。 它适用于 VM 托管关键应用程序（如 SQL 或横向扩展文件服务器）的方案。
 
 ## <a name="disaster-recovery-with-storage-spaces-direct"></a>利用存储空间直通进行灾难恢复
 
@@ -37,14 +38,14 @@ ms.locfileid: "75973668"
 
 **灾难恢复注意事项**
 
-1. 为群集设置[云见证](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)时，请让见证一直位于灾难恢复区域中。
-2. 若要将虚拟机故障转移到与源区域不同的 DR 区域上的子网，那么需要在执行故障转移后更改群集 IP 地址。  必须使用 Site Recovery [恢复计划脚本](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)，才能更改群集 IP。</br>
+1. 为群集设置[云见证](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)时，请让见证一直位于灾难恢复区域中。
+2. 若要将虚拟机故障转移到与源区域不同的 DR 区域上的子网，那么需要在执行故障转移后更改群集 IP 地址。  必须使用 Site Recovery [恢复计划脚本](./site-recovery-runbook-automation.md)，才能更改群集 IP。</br>
 [示例脚本](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1)使用自定义脚本扩展在 VM 中执行命令 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>为 S2D 群集启用 Site Recovery：
 
 1. 在恢复服务保管库中，单击“+复制”
-1. 选择群集中的所有节点，并将它们归入[多 VM 一致性组](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)
+1. 选择群集中的所有节点，并将它们归入[多 VM 一致性组](./azure-to-azure-common-questions.md#multi-vm-consistency)
 1. 选择复制策略，同时禁用应用程序一致性*（仅支持故障一致性）
 1. 启用复制
 
@@ -69,7 +70,7 @@ ms.locfileid: "75973668"
 
 
 ### <a name="failover-of-the-virtual-machines"></a>虚拟机故障转移 
-VM 的两个节点都需要使用 [Site Recovery 恢复计划](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)进行故障转移 
+VM 的两个节点都需要使用 [Site Recovery 恢复计划](./site-recovery-create-recovery-plans.md)进行故障转移 
 
 ![storagespacesdirect 保护](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
@@ -93,4 +94,4 @@ VM 的两个节点都需要使用 [Site Recovery 恢复计划](https://docs.micr
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。
 ## <a name="next-steps"></a>后续步骤
 
-[详细了解](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)如何运行故障回复。
+[详细了解](./azure-to-azure-tutorial-failover-failback.md)如何运行故障回复。

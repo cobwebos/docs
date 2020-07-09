@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74706366"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135400"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
 
@@ -37,8 +38,8 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 在开始之前，请确保了解以下知识：
 
-1. [将虚拟机复制到 Azure](site-recovery-vmware-to-azure.md)
-2. 如何[设计恢复网络](site-recovery-network-design.md)
+1. [将虚拟机复制到 Azure](./vmware-azure-tutorial.md)
+2. 如何[设计恢复网络](./concepts-on-premises-to-azure-networking.md)
 3. [执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)
 4. [执行到 Azure 的故障转移](site-recovery-failover.md)
 5. 如何[复制域控制器](site-recovery-active-directory.md)
@@ -46,7 +47,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 ## <a name="sharepoint-architecture"></a>SharePoint 体系结构
 
-可以使用分层拓扑和服务器角色在一个或多个服务器上部署 SharePoint，实现符合特定目标的场设计。 支持大量并发用户和大量内容项的典型大型高要求 SharePoint 服务器场使用服务分组作为可伸缩性策略的一部分。 此方法涉及到在专用服务器上运行服务，将这些服务组合在一起，然后将服务器扩展为一个组。 以下拓扑演示了三层 SharePoint 服务器场的服务和服务器分组。 请参阅 SharePoint 文档和产品线体系结构，了解有关不同 SharePoint 拓扑的详细指导。 可在[此文档](https://technet.microsoft.com/library/cc303422.aspx)中找到有关 SharePoint 2013 部署的更多详细信息。
+可以使用分层拓扑和服务器角色在一个或多个服务器上部署 SharePoint，实现符合特定目标的场设计。 支持大量并发用户和大量内容项的典型大型高要求 SharePoint 服务器场使用服务分组作为可伸缩性策略的一部分。 此方法涉及到在专用服务器上运行服务，将这些服务组合在一起，然后将服务器扩展为一个组。 以下拓扑演示了三层 SharePoint 服务器场的服务和服务器分组。 请参阅 SharePoint 文档和产品线体系结构，了解有关不同 SharePoint 拓扑的详细指导。 可在[此文档](/SharePoint/sharepoint-server)中找到有关 SharePoint 2013 部署的更多详细信息。
 
 
 
@@ -64,7 +65,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 **Hyper-V** | 是 | 是
 **VMware** | 是 | 是
 **物理服务器** | 是 | 是
-**Azure** | 不可用 | 是
+**Azure** | NA | 是
 
 
 ### <a name="things-to-keep-in-mind"></a>要点
@@ -73,7 +74,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 ## <a name="replicating-virtual-machines"></a>复制虚拟机
 
-请遵循[此指南](site-recovery-vmware-to-azure.md)开始将虚拟机复制到 Azure。
+请遵循[此指南](./vmware-azure-tutorial.md)开始将虚拟机复制到 Azure。
 
 * 复制完成后，请务必转到每个层的每个虚拟机，并在“已复制的项”>“设置”>“属性”>“计算和网络”中选择相同的可用性集。 例如，如果 Web 层包含 3 个 VM，请确保将所有 3 个 VM 配置为属于 Azure 中的同一个可用性集。
 
@@ -98,7 +99,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 ### <a name="dns-and-traffic-routing"></a>DNS 和流量路由
 
-用于面向 Internet 的站点，请在 Azure 订阅中[创建“优先级”类型的流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。 然后按以下方式配置 DNS 和流量管理器配置文件。
+用于面向 Internet 的站点，请在 Azure 订阅中[创建“优先级”类型的流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。 然后按以下方式配置 DNS 和流量管理器配置文件。
 
 
 | **其中** | **源** | **Target**|
@@ -162,7 +163,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
     * 此方法假设发生灾难性事件之前已执行搜索服务应用程序的备份，并且 DR 站点上提供了备份。
     * 计划备份（例如，每天一次）并使用复制过程在 DR 站点上放置备份，即可轻松实现此目的。 复制过程可以融入 AzCopy（Azure 复制）等脚本程序，或设置 DFSR（分布式文件服务复制）。
     * 运行 SharePoint 场后，请在管理中心导航到“备份和还原”，并选择“还原”。 还原过程会查询指定的备份位置（可能需要更新该值）。 选择要还原的搜索服务应用程序备份。
-    * 随后即会还原搜索应用程序。 请记住，还原过程预期会查找相同的拓扑（相同的服务器数目）以及分配给这些服务器的相同驱动器号。 有关详细信息，请参阅[在 SharePoint 2013 中还原搜索服务应用程序](https://technet.microsoft.com/library/ee748654.aspx)文档。
+    * 随后即会还原搜索应用程序。 请记住，还原过程预期会查找相同的拓扑（相同的服务器数目）以及分配给这些服务器的相同驱动器号。 有关详细信息，请参阅[在 SharePoint 2013 中还原搜索服务应用程序](/SharePoint/administration/restore-a-search-service-application)文档。
 
 
 6. 若要在新的搜索服务应用程序中开始复制，请遵循以下步骤。

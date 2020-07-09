@@ -3,11 +3,12 @@ title: 有关使用 Azure Site Recovery 进行 VMware 灾难恢复的常见问�
 description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复到 Azure 时出现的常见问题的解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259504"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135163"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -121,7 +122,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>计算机受保护后，是否可以更改托管磁盘类型？
 
-是的，可以轻松针对正在进行的复制[更改托管磁盘的类型](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)。 在更改类型之前，请确保未在托管磁盘上生成任何共享访问签名 URL：
+是的，可以轻松针对正在进行的复制[更改托管磁盘的类型](../virtual-machines/windows/convert-disk-storage.md)。 在更改类型之前，请确保未在托管磁盘上生成任何共享访问签名 URL：
 
 1. 在 Azure 门户中转到“托管磁盘”资源，并检查“概述”边栏选项卡上是否出现了共享访问签名 URL 横幅。 
 1. 如果出现了横幅，请选择它以取消正在进行的导出。
@@ -253,7 +254,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>设置配置服务器时，是否可以手动下载并安装 MySQL？
 
-是的。 请下载 MySQL 并将其置于 C:\Temp\ASRSetup 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。 
+是。 请下载 MySQL 并将其置于 C:\Temp\ASRSetup 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。 
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>我是否可以避免下载 MySQL 但让 Site Recovery 安装它？
 
@@ -337,7 +338,7 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure 服务级别协议 
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>是否可以故障回复到不同位置？
 
-是的。 故障转移到 Azure 后，如果原始位置不可用，可以故障回复到不同的位置。 [了解详细信息](concepts-types-of-failback.md#alternate-location-recovery-alr)。
+是。 故障转移到 Azure 后，如果原始位置不可用，可以故障回复到不同的位置。 [了解详细信息](concepts-types-of-failback.md#alternate-location-recovery-alr)。
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>为何需要配合专用对等互连使用 VPN 或 ExpressRoute 进行故障回复？
 
@@ -348,7 +349,7 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure 服务级别协议 
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>是否可以使用脚本设置复制？
 
-是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。 [了解详细信息](vmware-azure-disaster-recovery-powershell.md)。
+是。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。 [了解详细信息](vmware-azure-disaster-recovery-powershell.md)。
 
 ## <a name="performance-and-capacity"></a>性能和容量
 

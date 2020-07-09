@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: site-recovery
 ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417848"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133802"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery 部署规划器版本历史记录
 
@@ -168,7 +169,7 @@ ms.locfileid: "84417848"
 
 **已知限制：**
 
-- 仅支持 VMware 到 Azure 的灾难恢复方案。 对于 Hyper-V 到 Azure 的灾难恢复方案，请使用 [Hyper-V 容量规划器工具](./site-recovery-capacity-planning-for-hyper-v-replication.md)。
+- 仅支持 VMware 到 Azure 的灾难恢复方案。 对于 Hyper-V 到 Azure 的灾难恢复方案，请使用 [Hyper-V 容量规划器工具](./hyper-v-deployment-planner-overview.md)。
 - 不支持美国政府和中国 Microsoft Azure 地区的 GetThroughput 操作。
 - 如果 vCenter 服务器中有两个或更多个 VM 跨不同的 ESXi 主机使用相同的名称或 IP 地址，则该工具无法分析 VM。
 在此版本中，该工具将跳过 VMListFile 中针对重复 VM 名称或 IP 地址的分析。 解决方法是使用 ESXi 主机而不是 vCenter 服务器来分析 VM。 确保运行每个 ESXi 主机的一个实例。

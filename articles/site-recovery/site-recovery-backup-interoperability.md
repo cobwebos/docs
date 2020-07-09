@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: sideeksh
-ms.openlocfilehash: d8c896bc655339fbd7d51f738fb629450e8c12ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c334eee34eb878135d3d81ab15d03618c6604846
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72376215"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135171"
 ---
 # <a name="support-for-using-site-recovery-with-azure-backup"></a>支持将 Site Recovery 与 Azure 备份配合使用
 
-本文总结了对将 [Site Recovery 服务](site-recovery-overview.md)与 [Azure 备份服务](https://docs.microsoft.com/azure/backup/backup-overview)一起使用的支持。
+本文总结了对将 [Site Recovery 服务](site-recovery-overview.md)与 [Azure 备份服务](../backup/backup-overview.md)一起使用的支持。
 
 **Action** | **Site Recovery 支持** | **详细信息**
 --- | --- | ---

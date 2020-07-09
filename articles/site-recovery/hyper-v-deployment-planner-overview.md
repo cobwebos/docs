@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db3d619118be74ec1429ace70f580558c0a6c9d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79368717"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134355"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>关于用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
@@ -139,4 +140,4 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 
 ## <a name="next-steps"></a>后续步骤
-* [运行部署规划器](site-recovery-hyper-v-deployment-planner-run.md)。
+* [运行部署规划器](./hyper-v-deployment-planner-run.md)。

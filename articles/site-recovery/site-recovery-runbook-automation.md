@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345132"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134802"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 
@@ -128,7 +129,7 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
 
 您可以通过使用外部变量，在多个恢复计划中使用单个 runbook 脚本。 
 
-- 使用[Azure 自动化变量](../automation/automation-variables.md)来存储用于运行恢复计划的参数。
+- 使用[Azure 自动化变量](../automation/shared-resources/variables.md)来存储用于运行恢复计划的参数。
 - 通过将恢复计划名称作为前缀添加到变量，可以为每个恢复计划单独创建变量。 然后，将变量用作参数。
 - 可以在不更改脚本的情况下更改参数，但仍会改变脚本的工作方式。
 
@@ -198,7 +199,7 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
 - 例如，SharePoint 恢复有两个前端。 基本业务线 (LOB) 应用程序只有一个前端。
 - 在此方案中，无法为每个恢复计划创建单独的变量。
 
-在下面的示例中，我们在 Azure 自动化帐户中创建一个[复杂变量](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable)。
+在下面的示例中，我们在 Azure 自动化帐户中创建一个[复杂变量](/powershell/module/servicemanagement/azure/set-azureautomationvariable)。
 
 为此，请使用 Azure PowerShell 指定多个值。
 
@@ -263,9 +264,6 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[Azure 自动化运行方式帐户](../automation/automation-create-runas-account.md)
+- 了解[Azure 自动化运行方式帐户](../automation/manage-runas-account.md)
 - 查看[Azure 自动化示例脚本](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team)。
 - [详细了解](site-recovery-failover.md)如何运行故障转移。
-
-
-

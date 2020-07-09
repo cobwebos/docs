@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207203"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135106"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>自定义主机池远程桌面协议属性
 
@@ -37,7 +37,7 @@ ms.locfileid: "85207203"
 
 |RDP 属性 | 台式机 | RemoteApps |
 |---|---| --- |
-| 多监视器模式 | Enabled | 不适用 |
+| 多监视器模式 | Enabled | 空值 |
 | 已启用驱动器重定向 | 驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡| 驱动器、剪贴板和打印机 |
 | 远程音频模式 | 本地播放 | 本地播放 |
 
@@ -53,7 +53,7 @@ ms.locfileid: "85207203"
 4. 在 Windows 虚拟桌面页面上，在屏幕左侧的菜单中选择 "**主机池**"。
 5. 选择要更新的**主机池的名称**。
 6. 在屏幕左侧的菜单中选择 "**属性**"。
-7. 在 "**属性**" 选项卡上，中转到 " **rdp 设置**" 开始编辑 rdp 属性。 属性应采用逗号分隔格式，如 PowerShell 示例。
+7. 在 "**属性**" 选项卡上，中转到 " **rdp 设置**" 开始编辑 rdp 属性。 属性应采用分号分隔的格式，如 PowerShell 示例。
 8. 完成后，选择 "**保存**" 以保存所做的更改。
 
 后续部分将介绍如何在 PowerShell 中手动编辑自定义 RDP 属性。

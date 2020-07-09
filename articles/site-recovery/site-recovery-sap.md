@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190797"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133708"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
 
@@ -27,9 +28,9 @@ ms.locfileid: "77190797"
 
 开始之前，请确保自己知道如何执行以下任务：
 
-* [将虚拟机复制到 Azure](azure-to-azure-walkthrough-enable-replication.md)
-* [设计恢复网络](site-recovery-azure-to-azure-networking-guidance.md)
-* [执行到 Azure 的测试故障转移](azure-to-azure-walkthrough-test-failover.md)
+* [将虚拟机复制到 Azure](./azure-to-azure-tutorial-enable-replication.md)
+* [设计恢复网络](./azure-to-azure-about-networking.md)
+* [执行到 Azure 的测试故障转移](./azure-to-azure-tutorial-dr-drill.md)
 * [执行到 Azure 的故障转移](site-recovery-failover.md)
 * [复制域控制器](site-recovery-active-directory.md)
 * [复制 SQL Server 实例](site-recovery-sql.md)
@@ -110,7 +111,7 @@ SMLG 事务管理 ABAP 应用程序服务器的登录组。 该事务使用 Cent
 
 ## <a name="replicate-virtual-machines"></a>复制虚拟机
 
-若要开始将所有 SAP 应用程序虚拟机复制到 Azure 灾难恢复数据中心，请遵照[将虚拟机复制到 Azure](azure-to-azure-walkthrough-enable-replication.md) 中的指导。
+若要开始将所有 SAP 应用程序虚拟机复制到 Azure 灾难恢复数据中心，请遵照[将虚拟机复制到 Azure](./azure-to-azure-tutorial-enable-replication.md) 中的指导。
 
 * 有关保护 Active Directory 和 DNS 的指导，请参阅[如何保护 Active Directory 和 DNS](site-recovery-active-directory.md)。
 

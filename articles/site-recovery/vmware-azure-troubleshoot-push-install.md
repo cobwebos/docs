@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656326"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133533"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>排查移动服务推送安装问题
 
@@ -169,7 +170,7 @@ ms.locfileid: "80656326"
 
 可以在以下文章中找到其他 WMI 故障排除文章。
 
-* [基本 WMI 测试](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
+* [基本 WMI 测试](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)
 * [WMI 故障排除](/windows/win32/wmisdk/wmi-troubleshooting)
 * [使用 WMI 脚本和 WMI 服务排查问题](/previous-versions/tn-archive/ff406382(v=msdn.10))
 

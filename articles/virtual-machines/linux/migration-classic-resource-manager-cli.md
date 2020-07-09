@@ -8,11 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: c41292a05e5c857cd0b1c120784a400f2f5410ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5a9ace105e56d9db61470c35f665954812c3825
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945359"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134258"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型
 
@@ -49,11 +50,15 @@ ms.locfileid: "78945359"
 
 登录到帐户。
 
-    azure login
+```azurecli
+azure login
+```
 
 使用以下命令选择 Azure 订阅。
 
-    azure account set "<azure-subscription-name>"
+```azurecli
+azure account set "<azure-subscription-name>"
+```
 
 > [!NOTE]
 > 注册是一次性步骤，但必须在尝试迁移之前完成。 如果不注册，会看到以下错误消息 
@@ -64,42 +69,53 @@ ms.locfileid: "78945359"
 
 使用以下命令向迁移资源提供程序注册。 请注意，在某些情况下，此命令会超时。但是，注册会成功。
 
-    azure provider register Microsoft.ClassicInfrastructureMigrate
+```azurecli
+azure provider register Microsoft.ClassicInfrastructureMigrate
+```
 
 请等五分钟让注册完成。 可以使用以下命令来检查审批状态。 请确保在继续操作之前，RegistrationState 为 `Registered` 。
 
-    azure provider show Microsoft.ClassicInfrastructureMigrate
+```azurecli
+azure provider show Microsoft.ClassicInfrastructureMigrate
+```
 
 现在请将 CLI 切换到 `asm` 模式。
 
-    azure config mode asm
+```azurecli
+azure config mode asm
+```
 
 ## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>步骤 3：确保在当前部署或 VNET 的 Azure 区域中有足够的 Azure 资源管理器虚拟机 vCPU
 要执行此步骤，需要切换到 `arm` 模式。 使用以下命令执行此操作。
 
-```
+```azurecli
 azure config mode arm
 ```
 
 可以使用以下 CLI 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)。
 
-```
+```azurecli
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
 验证完此步骤后，可以切换回 `asm` 模式。
 
-    azure config mode asm
-
+```azurecli
+azure config mode asm
+```
 
 ## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>步骤 4：选项 1 - 迁移云服务中的虚拟机
 使用以下命令获取云服务列表，并选取要迁移的云服务。 请注意，如果云服务中的 VM 在虚拟网络中或者具有 Web/辅助角色，会收到错误消息。
 
-    azure service list
+```azurecli
+azure service list
+```
 
 运行以下命令，从详细输出中获取云服务的部署名称。 在大多数情况下，部署名称与云服务名称相同。
 
-    azure service show <serviceName> -vv
+```azurecli
+azure service show <serviceName> -vv
+```
 
 首先，使用以下命令验证用户是否可以迁移云服务：
 
@@ -111,32 +127,42 @@ azure service deployment validate-migration <serviceName> <deploymentName> new "
 
 如果想要将 VM 迁移到平台所创建的虚拟网络上，请使用以下命令。
 
-    azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
+```azurecli
+azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
+```
 
 如果想要迁移到 Resource Manager 部署模型中的现有虚拟网络，请使用以下命令。
 
-    azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
+```azurecli
+azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
+```
 
 准备操作成功后，可以查看详细输出，以获取 VM 的迁移状态，并确保其处于 `Prepared` 状态。
 
-    azure vm show <vmName> -vv
+```azurecli
+azure vm show <vmName> -vv
+```
 
 使用 CLI 或 Azure 门户查看准备好的资源的配置。 如果尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令。
 
-    azure service deployment abort-migration <serviceName> <deploymentName>
+```azurecli
+azure service deployment abort-migration <serviceName> <deploymentName>
+```
 
 如果准备好的配置看起来没问题，则可继续进行，使用以下命令提交资源。
 
-    azure service deployment commit-migration <serviceName> <deploymentName>
-
-
+```azurecli
+azure service deployment commit-migration <serviceName> <deploymentName>
+```
 
 ## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>步骤 4：选项 2 - 迁移虚拟网络中的虚拟机
 选取要迁移的虚拟网络。 请注意，如果虚拟网络包含的 Web/辅助角色或 VM 的配置不受支持，会收到验证错误消息。
 
 使用以下命令获取订阅中的所有虚拟网络。
 
-    azure network vnet list
+```azurecli
+azure network vnet list
+```
 
 输出将如下所示：
 
@@ -152,30 +178,42 @@ azure network vnet validate-migration <virtualNetworkName>
 
 使用以下命令来准备要迁移的所选虚拟网络。
 
-    azure network vnet prepare-migration <virtualNetworkName>
+```azurecli
+azure network vnet prepare-migration <virtualNetworkName>
+```
 
 使用 CLI 或 Azure 门户查看准备好的虚拟机的配置。 如果尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令。
 
-    azure network vnet abort-migration <virtualNetworkName>
+```azurecli
+azure network vnet abort-migration <virtualNetworkName>
+```
 
 如果准备好的配置看起来没问题，则可继续进行，使用以下命令提交资源。
 
-    azure network vnet commit-migration <virtualNetworkName>
+```azurecli
+azure network vnet commit-migration <virtualNetworkName>
+```
 
 ## <a name="step-5-migrate-a-storage-account"></a>步骤 5：迁移存储帐户
 完成虚拟机迁移之后，建议迁移存储帐户。
 
 使用以下命令来准备要迁移的存储帐户
 
-    azure storage account prepare-migration <storageAccountName>
+```azurecli
+azure storage account prepare-migration <storageAccountName>
+```
 
 使用 CLI 或 Azure 门户查看准备就绪的存储帐户的配置。 如果尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令。
 
-    azure storage account abort-migration <storageAccountName>
+```azurecli
+azure storage account abort-migration <storageAccountName>
+```
 
 如果准备好的配置看起来没问题，则可继续进行，使用以下命令提交资源。
 
-    azure storage account commit-migration <storageAccountName>
+```azurecli
+azure storage account commit-migration <storageAccountName>
+```
 
 ## <a name="next-steps"></a>后续步骤
 

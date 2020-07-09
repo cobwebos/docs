@@ -65,6 +65,10 @@
     - name: 针对受限制请求的指南
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
+    - name: 安全性
+      items:
+        - name: Azure 安全基准的安全基线
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: 操作指南
   items:
     - name: 获取资源更改

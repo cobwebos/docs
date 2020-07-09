@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190721"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133744"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>排查 Azure VM 扩展问题
 
@@ -68,14 +69,14 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 1. 检查服务中是否显示了“Windows Azure 来宾代理”服务。
 1. 重启保护作业。
 
-此外，检查是否在 VM 中[安装了 Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)。 需要具有 .NET 4.5，VM 代理才能与该服务进行通信。
+此外，检查是否在 VM 中[安装了 Microsoft .NET 4.5](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)。 需要具有 .NET 4.5，VM 代理才能与该服务进行通信。
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安装的代理已过时（针对 Linux VM）
 
 #### <a name="solution"></a>解决方案
 对于 Linux VM，与代理或扩展相关的大多数失败都是由于影响过时的 VM 代理的问题所造成的。 若要解决此问题，请遵循以下通用准则：
 
-1. 按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md)的说明进行操作。
+1. 按照[更新 Linux VM 代理](../virtual-machines/extensions/update-linux-agent.md)的说明进行操作。
 
    > [!NOTE]
    > *强烈建议* 只通过分发存储库更新代理。 建议不要直接从 GitHub 下载代理代码并将其更新。 如果你的分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
@@ -106,6 +107,6 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 1. 选择“Site Recovery 扩展”  。
 1. 选择“卸载”  。
 
-对于 Linux VM，如果 VMSnapshot 扩展未显示在 Azure 门户中，请[更新 Azure Linux 代理](../virtual-machines/linux/update-agent.md)。 然后运行保护。
+对于 Linux VM，如果 VMSnapshot 扩展未显示在 Azure 门户中，请[更新 Azure Linux 代理](../virtual-machines/extensions/update-linux-agent.md)。 然后运行保护。
 
 完成这些步骤后，会在保护期间重新安装扩展。

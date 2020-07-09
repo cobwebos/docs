@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75941592"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133817"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复   
 
@@ -68,7 +69,7 @@ ms.locfileid: "75941592"
 有关保护 SQL 层的建议选项的技术指导，请参阅[使用 SQL Server 和 Azure Site Recovery 复制应用程序](site-recovery-sql.md)。
 
 ### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3.为 Dynamics AX 客户端和应用程序对象服务器 VM 启用保护
-根据 VM 是在 [Hyper-V](site-recovery-hyper-v-site-to-azure.md) 还是在 [VMware](site-recovery-vmware-to-azure.md) 上部署的，执行相关的 Site Recovery 配置。
+根据 VM 是在 [Hyper-V](./hyper-v-azure-tutorial.md) 还是在 [VMware](./vmware-azure-tutorial.md) 上部署的，执行相关的 Site Recovery 配置。
 
 > [!TIP]
 > 建议将“崩溃时一致”频率配置为 15 分钟。
@@ -175,7 +176,7 @@ ms.locfileid: "75941592"
 6. 选择 ✓  开始执行故障回复过程。
 
 
-有关执行故障回复的详细信息，请参阅[将 VMware VM 从 Azure 故障回复到本地](site-recovery-failback-azure-to-vmware.md)。
+有关执行故障回复的详细信息，请参阅[将 VMware VM 从 Azure 故障回复到本地](./vmware-azure-failback.md)。
 
 ## <a name="summary"></a>摘要
 使用 Site Recovery 可为 Dynamics AX 应用程序创建一个完整的自动化灾难恢复计划。 发生服务中断时，可在数秒内从任何位置启动故障转移，在数分钟内启动和运行应用程序。

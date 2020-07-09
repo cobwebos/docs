@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88c8ea458aade44f5a3d789a15369718bc38ea35
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72299996"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134522"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure 表存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -42,154 +42,176 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 
 1. 请确保 C# 文件顶部的命名空间声明包括以下 **using** 语句。
    
-        using Microsoft.Framework.Configuration;
-        using Microsoft.WindowsAzure.Storage;
-        using Microsoft.WindowsAzure.Storage.Table;
-        using System.Threading.Tasks;
-        using LogLevel = Microsoft.Framework.Logging.LogLevel;
+    ```csharp
+    using Microsoft.Framework.Configuration;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Table;
+    using System.Threading.Tasks;
+    using LogLevel = Microsoft.Framework.Logging.LogLevel;
+    ```
 2. 获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用下面的代码获取存储连接字符串和 Azure 服务配置中的存储帐户信息。
    
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage account name>
-         _AzureStorageConnectionString"));
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("<storage account name>
+    _AzureStorageConnectionString"));
+    ```
    > [!NOTE]
    > 在下列示例中，在代码的前面使用上述全部代码。
    > 
    > 
 3. 获取 **CloudTableClient** 对象，以引用存储帐户中的表对象。
    
-         // Create the table client.
-         CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```csharp
+    // Create the table client.
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```
 4. 获取 **CloudTable** 引用对象，以引用特定的表和实体。
    
-        // Get a reference to a table named "peopleTable".
-        CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
+    ```csharp
+    // Get a reference to a table named "peopleTable".
+    CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
+    ```
 
 ## <a name="create-a-table-in-code"></a>使用代码创建表
 若要创建 Azure 表，只需在获取 **CloudTable** 对象后添加对 **CreateIfNotExistsAsync** 的调用，如“使用代码访问表”部分中所述。
 
-    // Create the CloudTable if it does not exist.
-    await peopleTable.CreateIfNotExistsAsync();
+```csharp
+// Create the CloudTable if it does not exist.
+await peopleTable.CreateIfNotExistsAsync();
+```
 
 ## <a name="add-an-entity-to-a-table"></a>将实体添加到表
 要将实体添加到表，请创建用于定义实体的属性的类。 以下代码定义了将客户的名字和姓氏分别用作行键和分区键的 **CustomerEntity** 实体类。
 
-    public class CustomerEntity : TableEntity
+```csharp
+public class CustomerEntity : TableEntity
+{
+    public CustomerEntity(string lastName, string firstName)
     {
-        public CustomerEntity(string lastName, string firstName)
-        {
-            this.PartitionKey = lastName;
-            this.RowKey = firstName;
-        }
-
-        public CustomerEntity() { }
-
-        public string Email { get; set; }
-
-        public string PhoneNumber { get; set; }
+        this.PartitionKey = lastName;
+        this.RowKey = firstName;
     }
+
+    public CustomerEntity() { }
+
+    public string Email { get; set; }
+
+    public string PhoneNumber { get; set; }
+}
+```
 
 将使用之前在“使用代码访问表”中创建的 **CloudTable** 对象完成涉及实体的表操作。 **TableOperation** 对象表示将完成的操作。 以下代码示例演示如何创建 **CloudTable** 对象和 **CustomerEntity** 对象。 为准备此操作，会创建一个 **TableOperation** 以将客户实体插入该表中。 最后，通过调用**CloudTable.ExecuteAsync**来执行该操作。
 
-    // Create a new customer entity.
-    CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
-    customer1.Email = "Walter@contoso.com";
-    customer1.PhoneNumber = "425-555-0101";
+```csharp
+// Create a new customer entity.
+CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
+customer1.Email = "Walter@contoso.com";
+customer1.PhoneNumber = "425-555-0101";
 
-    // Create the TableOperation that inserts the customer entity.
-    TableOperation insertOperation = TableOperation.Insert(customer1);
+// Create the TableOperation that inserts the customer entity.
+TableOperation insertOperation = TableOperation.Insert(customer1);
 
-    // Execute the insert operation.
-    await peopleTable.ExecuteAsync(insertOperation);
+// Execute the insert operation.
+await peopleTable.ExecuteAsync(insertOperation);
+```
 
 
 ## <a name="insert-a-batch-of-entities"></a>插入一批实体
 可以通过单个写入操作将多个实体插入表中。 以下代码示例将创建两个实体对象（“Jeff Smith”和“Ben Smith”），使用 Insert 方法将它们添加到 **TableBatchOperation** 对象，并通过调用 **CloudTable.ExecuteBatchAsync** 启动操作。
 
-    // Create the batch operation.
-    TableBatchOperation batchOperation = new TableBatchOperation();
+```csharp
+// Create the batch operation.
+TableBatchOperation batchOperation = new TableBatchOperation();
 
-    // Create a customer entity and add it to the table.
-    CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
-    customer1.Email = "Jeff@contoso.com";
-    customer1.PhoneNumber = "425-555-0104";
+// Create a customer entity and add it to the table.
+CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
+customer1.Email = "Jeff@contoso.com";
+customer1.PhoneNumber = "425-555-0104";
 
-    // Create another customer entity and add it to the table.
-    CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
-    customer2.Email = "Ben@contoso.com";
-    customer2.PhoneNumber = "425-555-0102";
+// Create another customer entity and add it to the table.
+CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
+customer2.Email = "Ben@contoso.com";
+customer2.PhoneNumber = "425-555-0102";
 
-    // Add both customer entities to the batch insert operation.
-    batchOperation.Insert(customer1);
-    batchOperation.Insert(customer2);
+// Add both customer entities to the batch insert operation.
+batchOperation.Insert(customer1);
+batchOperation.Insert(customer2);
 
-    // Execute the batch operation.
-    await peopleTable.ExecuteBatchAsync(batchOperation);
+// Execute the batch operation.
+await peopleTable.ExecuteBatchAsync(batchOperation);
+```
 
 ## <a name="get-all-of-the-entities-in-a-partition"></a>获取分区中的所有实体
 若要查询表以获取某个分区中的所有实体，请使用 **TableQuery** 对象。 以下代码示例指定了一个筛选器，以筛选分区键为“Smith”的实体。 此示例会将查询结果中每个实体的字段输出到控制台。
 
-    // Construct the query operation for all customer entities where PartitionKey="Smith".
-    TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
-        .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
+```csharp
+// Construct the query operation for all customer entities where PartitionKey="Smith".
+TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
+    .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
 
-    // Print the fields for each customer.
-    TableContinuationToken token = null;
-    do
+// Print the fields for each customer.
+TableContinuationToken token = null;
+do
+{
+    TableQuerySegment<CustomerEntity> resultSegment = await peopleTable.ExecuteQuerySegmentedAsync(query, token);
+    token = resultSegment.ContinuationToken;
+
+    foreach (CustomerEntity entity in resultSegment.Results)
     {
-        TableQuerySegment<CustomerEntity> resultSegment = await peopleTable.ExecuteQuerySegmentedAsync(query, token);
-        token = resultSegment.ContinuationToken;
+        Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
+        entity.Email, entity.PhoneNumber);
+    }
+} while (token != null);
 
-        foreach (CustomerEntity entity in resultSegment.Results)
-        {
-            Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
-            entity.Email, entity.PhoneNumber);
-        }
-    } while (token != null);
-
-    return View();
+return View();
+```
 
 
 ## <a name="get-a-single-entity"></a>获取单个实体
 可以编写查询以获取单个特定实体。 以下代码使用 **TableOperation** 对象来指定名为“Ben Smith”的客户。 此方法只返回一个实体，而不是一个集合，并且**tableresult.result**中的返回值是一个**CustomerEntity**对象。 在查询中指定分区键和行键是从**表**服务中检索单个实体的最快方法。
 
-    // Create a retrieve operation that takes a customer entity.
-    TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+```csharp
+// Create a retrieve operation that takes a customer entity.
+TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute the retrieve operation.
-    TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
+// Execute the retrieve operation.
+TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
 
-    // Print the phone number of the result.
-    if (retrievedResult.Result != null)
-       Console.WriteLine(((CustomerEntity)retrievedResult.Result).PhoneNumber);
-    else
-       Console.WriteLine("The phone number could not be retrieved.");
+// Print the phone number of the result.
+if (retrievedResult.Result != null)
+    Console.WriteLine(((CustomerEntity)retrievedResult.Result).PhoneNumber);
+else
+    Console.WriteLine("The phone number could not be retrieved.");
+```
 
 ## <a name="delete-an-entity"></a>删除实体
 可以在找到实体后将其删除。 以下代码查找名为“Ben Smith”的客户实体，如果找到，会将其删除。
 
-    // Create a retrieve operation that expects a customer entity.
-    TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+```csharp
+// Create a retrieve operation that expects a customer entity.
+TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+
+// Execute the operation.
+TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
+
+// Assign the result to a CustomerEntity object.
+CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;
+
+// Create the Delete TableOperation and then execute it.
+if (deleteEntity != null)
+{
+    TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
 
     // Execute the operation.
-    TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
+    await peopleTable.ExecuteAsync(deleteOperation);
 
-    // Assign the result to a CustomerEntity object.
-    CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;
+    Console.WriteLine("Entity deleted.");
+}
 
-    // Create the Delete TableOperation and then execute it.
-    if (deleteEntity != null)
-    {
-       TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
-
-       // Execute the operation.
-       await peopleTable.ExecuteAsync(deleteOperation);
-
-       Console.WriteLine("Entity deleted.");
-    }
-
-    else
-       Console.WriteLine("Couldn't delete the entity.");
+else
+    Console.WriteLine("Couldn't delete the entity.");
+```
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]

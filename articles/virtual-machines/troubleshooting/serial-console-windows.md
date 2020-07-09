@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309775"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135252"
 ---
 # <a name="azure-serial-console-for-windows"></a>适用于 Windows 的 Azure 串行控制台
 
@@ -101,15 +102,15 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
     ![连接到 SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    输入 `cmd` 以创建具有 CMD 实例的通道。
+1. 输入 `cmd` 以创建具有 CMD 实例的通道。
 
-1.    输入 `ch -si 1` 或按 `<esc>+<tab>` 快捷键以切换到正在运行 CMD 实例的通道。
+1. 输入 `ch -si 1` 或按 `<esc>+<tab>` 快捷键以切换到正在运行 CMD 实例的通道。
 
-1.    按 Enter，然后输入具有管理权限的登录凭据。
+1. 按 Enter，然后输入具有管理权限的登录凭据。
 
-1.    输入有效凭据后，CMD 实例随即打开。
+1. 输入有效凭据后，CMD 实例随即打开。
 
-1.    要启动 PowerShell 实例，请在 CMD 实例中输入 `PowerShell`，然后按 Enter。
+1. 要启动 PowerShell 实例，请在 CMD 实例中输入 `PowerShell`，然后按 Enter。
 
     ![打开 PowerShell 实例](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

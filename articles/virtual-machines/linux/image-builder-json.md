@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263307"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135080"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -391,7 +391,8 @@ Windows 目录和 Linux 路径支持此操作，但存在一些差别：
 
 ### <a name="windows-update-customizer"></a>Windows Update 定制器
 此定制器是基于适用于 Packer 的[社区 Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html)（由 Packer 社区维护的一个开源项目）生成的。 Microsoft 使用映像生成器服务来测试和验证该预配程序，支持使用该服务来调查问题，并会努力解决问题，但该开源项目不受 Microsoft 官方支持。 如需 Windows Update Provisioner 的详细文档和帮助，请参阅项目存储库。
- 
+
+```json
      "customize": [
             {
                 "type": "WindowsUpdate",
@@ -403,7 +404,8 @@ Windows 目录和 Linux 路径支持此操作，但存在一些差别：
                 "updateLimit": 20
             }
                ], 
-OS 支持：Windows
+OS support: Windows
+```
 
 Customize 属性：
 - **type** - WindowsUpdate。

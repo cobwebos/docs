@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299776"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134037"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复
 
@@ -88,7 +89,7 @@ Site Recovery 不支持从已复制 VM 中“热删除”磁盘。 如果删除 
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 
-将 Azure VM 复制到另一个 Azure 区域时，复制是持续性的。 有关详细信息，请参阅 [Azure 到 Azure 复制体系结构](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process)。
+将 Azure VM 复制到另一个 Azure 区域时，复制是持续性的。 有关详细信息，请参阅 [Azure 到 Azure 复制体系结构](./azure-to-azure-architecture.md#replication-process)。
 
 ### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-functionality-to-migrate-vms"></a>是否可以在某个区域中复制虚拟机？ 我需要此功能来迁移 VM。
 
@@ -96,17 +97,17 @@ Site Recovery 不支持从已复制 VM 中“热删除”磁盘。 如果删除 
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>能否将 VM 实例复制到任意 Azure 区域？
 
-使用 Site Recovery，可以在同一个地理群集中的任意两个区域之间复制和恢复 VM。 地理群集的定义考虑到了数据延迟和主权。 有关详细信息，请参阅 Site Recovery 的[区域支持矩阵](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)。
+使用 Site Recovery，可以在同一个地理群集中的任意两个区域之间复制和恢复 VM。 地理群集的定义考虑到了数据延迟和主权。 有关详细信息，请参阅 Site Recovery 的[区域支持矩阵](./azure-to-azure-support-matrix.md#region-support)。
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Site Recovery 需要建立 Internet 连接？
 
-否，Site Recovery 不需要连接到 Internet。 但它需要能够访问 Site Recovery URL 和 IP 范围，如 [Azure VM 灾难恢复中的网络](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)中所述。
+否，Site Recovery 不需要连接到 Internet。 但它需要能够访问 Site Recovery URL 和 IP 范围，如 [Azure VM 灾难恢复中的网络](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls)中所述。
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>能否复制对各个层有不同资源组的应用？
 
 能，可以复制应用，且灾难恢复配置也保留在单独的资源组中。
 
-例如，如果应用将每一层的应用、数据库和 Web 放置在不同的资源组中，那么你必须选择[复制向导](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)三次，才能保护所有层。 Site Recovery 会将这三个层复制到三个不同的资源组中。
+例如，如果应用将每一层的应用、数据库和 Web 放置在不同的资源组中，那么你必须选择[复制向导](./azure-to-azure-how-to-enable-replication.md#enable-replication)三次，才能保护所有层。 Site Recovery 会将这三个层复制到三个不同的资源组中。
 
 ### <a name="can-i-move-storage-accounts-across-resource-groups"></a>能否跨资源组移动存储帐户？
 
@@ -121,7 +122,7 @@ Site Recovery 不支持从已复制 VM 中“热删除”磁盘。 如果删除 
 - 恢复点历史记录的保留期为 24 小时。
 - 应用一致性快照的频率为 60 分钟。
 
-[详细了解复制设置](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings)。
+[详细了解复制设置](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings)。
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>什么是崩溃一致性恢复点？
 
@@ -182,7 +183,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 你无法更改�
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>能否在 Linux 服务器中使用应用一致性启用复制？
 
-是的。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
+是。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [了解详细信息](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>多 VM 一致性
 
@@ -194,7 +195,7 @@ Site Recovery 提供了“多 VM 一致性”选项，用于创建所有虚拟�
 
 如果你对虚拟机进行故障转移，它们会共用故障一致性恢复点和应用一致性恢复点。
 
-请阅读关于如何[启用多 VM 一致性](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm)的整个教程。
+请阅读关于如何[启用多 VM 一致性](./azure-to-azure-tutorial-enable-replication.md#enable-replication-for-a-vm)的整个教程。
 
 ### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>能否对多 VM 一致性复制组中的单个虚拟机进行故障转移？
 
@@ -290,11 +291,11 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>我从主要区域故障转移到了灾难恢复区域。 DR 区域中的 VM 是否自动受到保护？
 
-否。 将 Azure VM 从一个区域[故障转移](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)次要区域中的 VM。
+否。 将 Azure VM 从一个区域[故障转移](./azure-to-azure-tutorial-failover-failback.md)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](./azure-to-azure-how-to-reprotect.md)次要区域中的 VM。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>重新保护时，Site Recovery 是否将完整的数据从次要区域复制到主要区域？
 
-这取决于具体的情况。 如果源区域 VM 存在，那么只同步源磁盘与目标磁盘之间的更改。 Site Recovery 将通过比较磁盘来计算差异，然后传输数据。 此过程通常需要几个小时。 若要详细了解重新保护期间所发生的情况，请参阅[在主要区域中重新保护已故障转移的 Azure VM 实例](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)。
+这取决于具体的情况。 如果源区域 VM 存在，那么只同步源磁盘与目标磁盘之间的更改。 Site Recovery 将通过比较磁盘来计算差异，然后传输数据。 此过程通常需要几个小时。 若要详细了解重新保护期间所发生的情况，请参阅[在主要区域中重新保护已故障转移的 Azure VM 实例](./azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection)。
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>故障回复需要多长时间？
 
@@ -320,10 +321,10 @@ Site Recovery 获得了 ISO 27001:2013、27018、HIPAA 和 DPA 认证。 此服�
 
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
 
-是，Azure 中的传输中加密和[静态加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)均受支持。
+是，Azure 中的传输中加密和[静态加密](../storage/common/storage-service-encryption.md)均受支持。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [查阅 Azure 到 Azure 支持要求](azure-to-azure-support-matrix.md)。
 - [设置 Azure 到 Azure 复制](azure-to-azure-tutorial-enable-replication.md)。
-- 如果在阅读本文后有任何疑问，请将它们发布在[关于 Azure 恢复服务的 Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)上。
+- 如果在阅读本文后有任何疑问，请将它们发布在[关于 Azure 恢复服务的 Microsoft Q&A 问题页](/answers/topics/azure-site-recovery.html)上。

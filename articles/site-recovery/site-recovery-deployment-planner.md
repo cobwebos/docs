@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71f4209b4af9c5bb5f171cf3c8e35b0fbc05fac9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366290"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134791"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>关于用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery 部署规划器用户指南。
@@ -119,7 +120,7 @@ ms.locfileid: "79366290"
 
 ## <a name="version-history"></a>版本历史记录
 最新的 Site Recovery 部署规划器工具版本为 2.5。
-请参阅 [Site Recovery 部署规划器版本历史记录](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history)页，了解每个更新中增加的修补程序。
+请参阅 [Site Recovery 部署规划器版本历史记录](./site-recovery-deployment-planner-history.md)页，了解每个更新中增加的修补程序。
 
 ## <a name="next-steps"></a>后续步骤
 [运行 Site Recovery 部署规划器](site-recovery-vmware-deployment-planner-run.md)

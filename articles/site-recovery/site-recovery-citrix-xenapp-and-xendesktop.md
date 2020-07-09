@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74084555"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134835"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>为多层 Citrix XenApp 和 XenDesktop 部署设置灾难恢复
 
@@ -29,8 +30,8 @@ Citrix XenApp 暂不提供任何灾难恢复功能。
 
 在开始之前，请确保了解以下知识：
 
-1. [将虚拟机复制到 Azure](site-recovery-vmware-to-azure.md)
-1. 如何[设计恢复网络](site-recovery-network-design.md)
+1. [将虚拟机复制到 Azure](./vmware-azure-tutorial.md)
+1. 如何[设计恢复网络](./concepts-on-premises-to-azure-networking.md)
 1. [执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)
 1. [执行到 Azure 的故障转移](site-recovery-failover.md)
 1. 如何[复制域控制器](site-recovery-active-directory.md)
@@ -95,7 +96,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 有关用于保护 SQL 服务器的推荐选项的详细技术指南，请参阅[使用 SQL Server 灾难恢复和 Azure Site Recovery 来保护 SQL Server](site-recovery-sql.md)。
 
-遵循[此指南](site-recovery-vmware-to-azure.md)，开始将其他组件虚拟机复制到 Azure。
+遵循[此指南](./vmware-azure-tutorial.md)，开始将其他组件虚拟机复制到 Azure。
 
 ![保护 XenApp 组件](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 

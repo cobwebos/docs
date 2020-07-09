@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629695"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135857"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -166,11 +167,11 @@ Site Recovery 按如下所述创建快照：
 
 #### <a name="control-access-with-nsg-rules"></a>使用 NSG 规则控制访问
 
-如果使用 [NSG 规则](https://docs.microsoft.com/azure/virtual-network/security-overview)通过筛选传入和传出 Azure 网络/子网的网络流量来控制 VM 连接，请注意以下要求：
+如果使用 [NSG 规则](../virtual-network/security-overview.md)通过筛选传入和传出 Azure 网络/子网的网络流量来控制 VM 连接，请注意以下要求：
 
 - 源 Azure 区域的 NSG 规则应允许复制流量进行出站访问。
 - 我们建议先在测试环境中创建规则，然后在生产环境中实施这些规则。
-- 使用[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，而不要允许单个 IP 地址。
+- 使用[服务标记](../virtual-network/security-overview.md#service-tags)，而不要允许单个 IP 地址。
     - 服务标记表示集合在一起的一组 IP 地址前缀，可以最大程度地降低安全规则创建过程的复杂性。
     - Microsoft 会不断地自动更新服务标记。 
  

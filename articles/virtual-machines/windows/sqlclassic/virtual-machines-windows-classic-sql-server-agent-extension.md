@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd913b597e52f81c19b9c6bb20e83be23e5b35bd
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338401"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134706"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>使用 SQL Server 代理扩展（经典）在 Azure 虚拟机上自动完成管理任务
 > [!div class="op_single_selector"]
@@ -60,20 +61,28 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 
 启动 Windows PowerShell，并通过 **Add-AzureAccount** 命令将其连接到 Azure 订阅。
 
-    Add-AzureAccount
+```azurepowershell
+Add-AzureAccount
+```
 
 若有多个订阅，请使用 **Select-AzureSubscription** 选择含有目标经典 VM 的订阅。
 
-    Select-AzureSubscription -SubscriptionName <subscriptionname>
+```azurepowershell
+Select-AzureSubscription -SubscriptionName <subscriptionname>
+```
 
 此时，可以通过 **Get AzureVM** 命令获得一个列表，其中会列出经典虚拟机及其关联服务名称。
 
-    Get-AzureVM
+```azurepowershell
+Get-AzureVM
+```
 
 ## <a name="installation"></a>安装
 对于经典 VM，必须使用 PowerShell 安装 SQL Server IaaS 代理扩展并配置关联服务。 使用 **Set-AzureVMSqlServerExtension** PowerShell cmdlet 安装扩展。 例如，以下命令在 Windows Server VM（经典）上安装扩展并将其命名为“SQLIaaSExtension”。
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+```azurepowershell
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+```
 
 如果要更新到最新版本的 SQL IaaS 代理扩展，则必须在更新该扩展后重启虚拟机。
 
@@ -90,7 +99,9 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 
 还可使用 **Get-AzureVMSqlServerExtension** Azure Powershell cmdlet。
 
-    Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
+```azurepowershell
+Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
+```
 
 ## <a name="removal"></a>删除
 在 Azure 门户中，可以通过单击虚拟机属性的“扩展”边栏选项卡中的省略号来卸载扩展。 Then click <bpt id="p1">**</bpt>Uninstall<ept id="p1">**</ept>.
@@ -99,7 +110,9 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 
 还可使用 **Remove-AzureVMSqlServerExtension** Powershell cmdlet。
 
-    Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
+```azurepowershell
+Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
+```
 
 ## <a name="next-steps"></a>后续步骤
 开始使用扩展支持的服务之一。 有关详细信息，请参阅本文的 [支持的服务](#supported-services) 部分中提到的主题。

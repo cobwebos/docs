@@ -4,12 +4,12 @@ description: 本文讨论有关 Azure Site Recovery 的常见问题。
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057426"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133671"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -53,10 +53,10 @@ Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议�
 不需要，数据会复制到订阅中的 Azure 存储。 执行测试故障转移（灾难恢复演练）或实际的故障转移时，站点恢复会在订阅中自动创建虚拟机。
 
 ### <a name="do-you-ensure-tenant-level-isolation-when-i-replicate-to-azure"></a>当我复制到 Azure 时，们确保提供租户级的隔离吗？
-是的。
+是。
 
 ### <a name="what-platforms-do-you-currently-support"></a>目前支持哪些平台？
-我们支持 Azure Pack、云平台系统和基于 System Center 的（2012 和更高版本）的部署。 [了解更多](https://technet.microsoft.com/library/dn850370.aspx)有关 Azure Pack 和 Site Recovery 集成的信息。
+我们支持 Azure Pack、云平台系统和基于 System Center 的（2012 和更高版本）的部署。 [了解更多](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10))有关 Azure Pack 和 Site Recovery 集成的信息。
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>是否支持单一 Azure Pack 和单一 VMM 服务器部署？
 是，可以复制 Hyper-V 虚拟机到 Azure，或者在服务提供商站点之间复制。  请注意，如果在服务提供商站点之间复制，将无法使用 Azure Runbook 集成。
@@ -80,7 +80,7 @@ Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议�
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>我已成为 Azure Site Recovery 用户一个多月。 对于每个受保护的实例，是否仍享受前 31 天免费？
 
-是的。 在前 31 天内，每个受保护的实例不会产生任何 Azure Site Recovery 费用。 例如，你在过去 6 个月内保护了 10 个实例，现在你将第 11 个实例连接到 Azure Site Recovery，在连接后的前 31 天内，第 11 个实例不会产生任何费用。 而前 10 个实例将继续产生 Azure Site Recovery 费用，因为它们受到保护的时间已超过 31 天。
+是。 在前 31 天内，每个受保护的实例不会产生任何 Azure Site Recovery 费用。 例如，你在过去 6 个月内保护了 10 个实例，现在你将第 11 个实例连接到 Azure Site Recovery，在连接后的前 31 天内，第 11 个实例不会产生任何费用。 而前 10 个实例将继续产生 Azure Site Recovery 费用，因为它们受到保护的时间已超过 31 天。
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
 
@@ -102,10 +102,10 @@ DR 演练没有单独的费用。 如果在测试故障转移后创建 VM，则�
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
 ### <a name="for-compliance-reasons-even-our-on-premises-metadata-must-remain-within-the-same-geographic-region-can-site-recovery-help-us"></a>为了遵从法规，即使是本地元数据也必须保留在同一个地理区域。 站点恢复可以帮助我们吗？
-是的。 在某个区域中创建站点恢复保管库时，我们确保启用和协调复制与故障转移时所需的一切元数据都保留在该区域的地理边界范围内。
+是。 在某个区域中创建站点恢复保管库时，我们确保启用和协调复制与故障转移时所需的一切元数据都保留在该区域的地理边界范围内。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
-在本地站点之间复制虚拟机和物理服务器时，支持传输中加密。 将虚拟机和物理服务器复制到 Azure 时，同时支持传输中加密和[静态加密（Azure 中）](https://docs.microsoft.com/azure/storage/storage-service-encryption)。
+在本地站点之间复制虚拟机和物理服务器时，支持传输中加密。 将虚拟机和物理服务器复制到 Azure 时，同时支持传输中加密和[静态加密（Azure 中）](../storage/common/storage-service-encryption.md)。
 
 ### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Azure 到 Azure Site Recovery 是否使用 TLS 1.2 进行 Azure 微服务之间的所有通信？
 是，对于 Azure 到 Azure Site Recovery 方案，默认强制实施 TLS 1.2 协议。 
@@ -198,10 +198,10 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 是的。 可从以下文章详细了解如何限制带宽：
 
 * [复制 VMware VM 和物理服务器的容量规划](site-recovery-plan-capacity-vmware.md)
-* [将 Hyper-V VM 复制到 Azure 的容量规划](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [将 Hyper-V VM 复制到 Azure 的容量规划](./hyper-v-deployment-planner-overview.md)
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>能否在 Linux 服务器中使用应用一致性启用复制？ 
-是的。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 下面是启用该方法的步骤。
+是。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 下面是启用该方法的步骤。
 
 1. 以 root 身份登录计算机。
 2. 将目录更改为 Azure Site Recovery 移动代理安装位置。 默认值为 "/usr/local/ASR"<br>
@@ -254,7 +254,7 @@ Azure 具有复原能力。 Site Recovery 已能够根据 Azure SLA 故障转移
 
 * [详细了解](site-recovery-create-recovery-plans.md)恢复计划。
 * [详细了解](site-recovery-failover.md)故障转移。
-* [详细了解](site-recovery-failback-azure-to-vmware.md) VMware VM 和物理服务器故障回复的信息
+* [详细了解](./vmware-azure-failback.md) VMware VM 和物理服务器故障回复的信息
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>如果我的本地主机未响应或崩溃，我是否可以故障回复到另一个主机？
 是，可以使用备用位置恢复从 Azure 故障回复到另一个主机。
@@ -279,4 +279,3 @@ Azure 具有复原能力。 Site Recovery 已能够根据 Azure SLA 故障转移
 
 ## <a name="next-steps"></a>后续步骤
 * 阅读 [站点恢复概述](site-recovery-overview.md)
-

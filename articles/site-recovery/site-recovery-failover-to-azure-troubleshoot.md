@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971073"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133769"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 
@@ -90,7 +90,7 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>无法连接/RDP/SSH - VM 的“连接”按钮可用
 
-如果 Azure 中已故障转移的 VM 的“连接”按钮可用（未灰显），则请检查虚拟机上的“启动诊断”，查看是否有[此文](../virtual-machines/windows/boot-diagnostics.md)中所列的错误。 
+如果 Azure 中已故障转移的 VM 的“连接”按钮可用（未灰显），则请检查虚拟机上的“启动诊断”，查看是否有[此文](../virtual-machines/troubleshooting/boot-diagnostics.md)中所列的错误。 
 
 1. 如果虚拟机尚未启动，请尝试故障转移到以前的恢复点。
 2. 如果虚拟机中的应用程序未启动，请尝试故障转移到应用一致的恢复点。
@@ -174,7 +174,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 
 ## <a name="next-steps"></a>后续步骤
-- 排查[通过 RDP 连接到 Windows VM](../virtual-machines/windows/troubleshoot-rdp-connection.md) 的问题
-- 排查[通过 SSH 连接到 Linux VM](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md) 的问题
+- 排查[通过 RDP 连接到 Windows VM](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) 的问题
+- 排查[通过 SSH 连接到 Linux VM](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) 的问题
 
-如需更多帮助，请将疑问发布到 [有关 Site Recovery 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)，或在本文档结尾处留下注释。 我们的活动社区应能够为你提供帮助。
+如需更多帮助，请将疑问发布到 [有关 Site Recovery 的 Microsoft Q&A 问题页面](/answers/topics/azure-site-recovery.html)，或在本文档结尾处留下注释。 我们的活动社区应能够为你提供帮助。
