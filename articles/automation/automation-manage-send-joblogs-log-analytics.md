@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba498fe9f70664a801172a6ff3705ac41a6371ef
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835235"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186191"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>将 Azure 自动化作业数据转发到 Azure Monitor 日志
 
@@ -27,8 +28,8 @@ Azure 自动化可将 Runbook 作业状态和作业流发送到 Log Analytics �
 
 要开始将自动化日志发送到 Azure Monitor 日志，需要：
 
-* 最新版本的 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)。
-* Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 日志入门](../log-analytics/log-analytics-get-started.md)。
+* 最新版本的 [Azure PowerShell](/powershell/azureps-cmdlets-docs/)。
+* Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 日志入门](../azure-monitor/overview.md)。
 * Azure 自动化帐户的资源 ID。
 
 使用以下命令查找 Azure 自动化帐户的资源 ID：
@@ -185,8 +186,8 @@ Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何使用 Azure Monitor 日志构建搜索查询和查看自动化作业日志，请参阅 [Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)。
+* 若要了解如何使用 Azure Monitor 日志构建搜索查询和查看自动化作业日志，请参阅 [Azure Monitor 日志中的日志搜索](../azure-monitor/log-query/log-query-overview.md)。
 * 若要了解如何从 Runbook 创建和检索输出及错误消息，请参阅[监视 Runbook 输出](automation-runbook-output-and-messages.md)。
 * 若要详细了解 Runbook 执行情况、Runbook 作业的监视方式以及其他技术详细信息，请参阅[在 Azure 自动化中执行 Runbook](automation-runbook-execution.md)。
-* 若要详细了解 Azure Monitor 日志和数据收集源，请参阅[“在 Azure Monitor 日志中收集 Azure 存储数据”概述](../azure-monitor/platform/collect-azure-metrics-logs.md)。
+* 若要详细了解 Azure Monitor 日志和数据收集源，请参阅[“在 Azure Monitor 日志中收集 Azure 存储数据”概述](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。
 * 若在排查 Log Analytics 问题时需要帮助，请参阅[排查 Log Analytics 不再收集数据的原因](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data)。

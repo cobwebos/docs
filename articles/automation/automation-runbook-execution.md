@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f62a94c8ed8baa9979aa1469e785d26781af7f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6db4ceed0121f072104312ac24abb13fb241737b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361619"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186038"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -56,12 +56,12 @@ Azure 自动化中的 runbook 可以在 Azure 沙盒上运行，也可以在[混
 |使用具有特定要求的模块| 混合 Runbook 辅助角色|一些示例如下：</br> WinSCP - winscp.exe 上的依赖项 </br> IIS 管理 - 用于启用或管理 IIS 的依赖项|
 |使用安装程序安装模块|混合 Runbook 辅助角色|沙盒模块必须支持复制。|
 |使用需要 4.7.2 以外版本的 .NET Framework 的 runbook 或模块|混合 Runbook 辅助角色|Azure 沙盒支持 .NET Framework 4.7.2，并且不支持升级到其他版本。|
-|运行需要提升的脚本|混合 Runbook 辅助角色|沙盒不允许提升。 借助混合 Runbook 辅助角色，可以在运行需要提升的命令时关闭 UAC 并使用 [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。|
+|运行需要提升的脚本|混合 Runbook 辅助角色|沙盒不允许提升。 借助混合 Runbook 辅助角色，可以在运行需要提升的命令时关闭 UAC 并使用 [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。|
 |运行需要访问 Windows Management Instrumentation (WMI) 的脚本|混合 Runbook 辅助角色|在云中的沙盒中运行的作业无法访问 WMI 提供程序。 |
 
 ## <a name="resources"></a>资源
 
-Runbook 必须包含用于处理[资源](https://docs.microsoft.com/rest/api/resources/resources)（例如，VM、网络和网络上的资源）的逻辑。 资源绑定到 Azure 订阅，且 runbook 需要适当的凭据才能访问任何资源。 有关在 runbook 中处理资源的示例，请参阅[处理资源](manage-runbooks.md#handle-resources)。 
+Runbook 必须包含用于处理[资源](/rest/api/resources/resources)（例如，VM、网络和网络上的资源）的逻辑。 资源绑定到 Azure 订阅，且 runbook 需要适当的凭据才能访问任何资源。 有关在 runbook 中处理资源的示例，请参阅[处理资源](manage-runbooks.md#handle-resources)。 
 
 ## <a name="security"></a>安全性
 
@@ -71,7 +71,7 @@ ASC 对可以在 VM 上运行任何签名或未签名脚本的用户施加限制
 
 ## <a name="subscriptions"></a>订阅
 
-Azure [订阅](https://docs.microsoft.com/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings)是与 Microsoft 达成的使用一项或多项基于云的服务的协议，并会为此向你收费。 对于 Azure 自动化，每个订阅都链接到一个 Azure 自动化帐户，你可以在帐户中[创建多个订阅](manage-runbooks.md#work-with-multiple-subscriptions)。
+Azure [订阅](/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings)是与 Microsoft 达成的使用一项或多项基于云的服务的协议，并会为此向你收费。 对于 Azure 自动化，每个订阅都链接到一个 Azure 自动化帐户，你可以在帐户中[创建多个订阅](manage-runbooks.md#work-with-multiple-subscriptions)。
 
 ## <a name="credentials"></a>凭据
 
@@ -79,18 +79,18 @@ Runbook 需要适当[凭据](shared-resources/credentials.md)才能访问任何�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Automation 利用[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)来监视其计算机操作。 这些操作需要 Log Analytics 工作区和 [Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
+Azure Automation 利用[Azure Monitor](../azure-monitor/overview.md)来监视其计算机操作。 这些操作需要 Log Analytics 工作区和 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)。
 
 ### <a name="log-analytics-agent-for-windows"></a>适用于 Windows 的 Log Analytics 代理
 
-[适用于 Windows 的 Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)可与 Azure Monitor 配合使用，用于管理 Windows VM 和物理计算机。 这些计算机可以在 Azure 或非 Azure 环境（例如本地数据中心）中运行。 必须将代理配置为向一个或多个 Log Analytics 工作区报告。 
+[适用于 Windows 的 Log Analytics 代理](../azure-monitor/platform/agent-windows.md)可与 Azure Monitor 配合使用，用于管理 Windows VM 和物理计算机。 这些计算机可以在 Azure 或非 Azure 环境（例如本地数据中心）中运行。 必须将代理配置为向一个或多个 Log Analytics 工作区报告。 
 
 >[!NOTE]
 >适用于 Windows 的 Log Analytics 代理之前称为 Microsoft Monitoring Agent (MMA)。
 
 ### <a name="log-analytics-agent-for-linux"></a>适用于 Linux 的 Log Analytics 代理
 
-[适用于 Linux 的 Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux)与适用于 Windows 的代理工作原理类似，但它将 Linux 计算机连接到 Azure Monitor。 代理安装有 nxautomation 用户帐户，该帐户允许执行需要根权限的命令，例如在混合 Runbook 辅助角色上执行。 nxautomation 帐户是不需要密码的系统帐户。 
+[适用于 Linux 的 Log Analytics 代理](../azure-monitor/platform/agent-linux.md)与适用于 Windows 的代理工作原理类似，但它将 Linux 计算机连接到 Azure Monitor。 代理安装有 nxautomation 用户帐户，该帐户允许执行需要根权限的命令，例如在混合 Runbook 辅助角色上执行。 nxautomation 帐户是不需要密码的系统帐户。 
 
 在[安装 Linux 混合 Runbook 辅助角色](automation-linux-hrw-install.md)期间，必须存在具有相应 sudo 权限的 nxautomation 帐户。 如果尝试安装辅助角色，但该帐户不存在或没有相应权限，则安装会失败。
 
@@ -120,7 +120,7 @@ Runbook 可以使用未经证书颁发机构 (CA) 签名的自签名证书。 �
 
 Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 runbook 可以同时运行多个作业。 同时运行的作业越多，就越可能将其分派到同一个沙盒中。 
 
-在同一沙盒进程中运行的作业可能相互影响。 一个示例就是运行 [Disconnect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) cmdlet。 执行此 cmdlet 会断开共享沙盒进程中每个 runbook 作业的连接。 有关使用此方案的示例，请参阅[阻止并发作业](manage-runbooks.md#prevent-concurrent-jobs)。
+在同一沙盒进程中运行的作业可能相互影响。 一个示例就是运行 [Disconnect-AzAccount](/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) cmdlet。 执行此 cmdlet 会断开共享沙盒进程中每个 runbook 作业的连接。 有关使用此方案的示例，请参阅[阻止并发作业](manage-runbooks.md#prevent-concurrent-jobs)。
 
 >[!NOTE]
 >从 Azure 中运行的 runbook 启动的 PowerShell 作业可能无法在完整 [PowerShell 语言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)下运行。 
@@ -156,7 +156,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 
 [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) 变量确定 PowerShell 如何响应非终止错误。 终止错误始终会终止，并且不受 `ErrorActionPreference` 影响。
 
-当 runbook 使用 `ErrorActionPreference` 时，通常发生的非终止错误（例如 [Get-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) cmdlet 中的 `PathNotFound`）会阻止 runbook 完成。 以下示例演示如何使用 `ErrorActionPreference`。 由于脚本停止，最后的 [Write-Output](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) 命令从不执行。
+当 runbook 使用 `ErrorActionPreference` 时，通常发生的非终止错误（例如 [Get-ChildItem](/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) cmdlet 中的 `PathNotFound`）会阻止 runbook 完成。 以下示例演示如何使用 `ErrorActionPreference`。 由于脚本停止，最后的 [Write-Output](/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) 命令从不执行。
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -222,14 +222,13 @@ Azure 沙盒中的 runbook 作业无法访问任何设备或应用程序特征�
 
 对于长时间运行的 Azure 自动化任务，建议使用混合 Runbook 辅助角色。 混合 Runbook 辅助角色不受公平份额限制，并且不会限制 runbook 的执行时间。 其他作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)适用于 Azure 沙盒和混合 Runbook 辅助角色。 虽然混合 Runbook 辅助角色不受 3 小时公平份额限制的限制，但仍应开发在辅助角色上运行的 runbook，以便在出现意外的本地基础结构问题时支持重启。
 
-另一种选择是通过使用子 runbook 来优化 runbook。 例如，runbook 可能会在多个资源上循环访问同一函数（例如，对多个数据库执行某个数据库操作）。 可将此函数移至[子 runbook](automation-child-runbooks.md)，并让 runbook 使用 [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) 对其进行调用。 子 runbook 在单独的进程中并行执行。
+另一种选择是通过使用子 runbook 来优化 runbook。 例如，runbook 可能会在多个资源上循环访问同一函数（例如，对多个数据库执行某个数据库操作）。 可将此函数移至[子 runbook](automation-child-runbooks.md)，并让 runbook 使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) 对其进行调用。 子 runbook 在单独的进程中并行执行。
 
-使用子 runbook 可减少完成父 runbook 所需的时间总量。 Runbook 可以使用 [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) cmdlet 检查子 runbook 的作业状态（如果其在子 runbook 完成后仍有更多操作需要执行）。
+使用子 runbook 可减少完成父 runbook 所需的时间总量。 Runbook 可以使用 [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) cmdlet 检查子 runbook 的作业状态（如果其在子 runbook 完成后仍有更多操作需要执行）。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要开始使用 PowerShell runbook，请参阅[教程：创建 PowerShell runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
 * 若要使用 runbook，请参阅[在 Azure 自动化中管理 runbook](manage-runbooks.md)。
-* 有关 PowerShell 的详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
-* * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+* 有关 PowerShell 的详细信息，请参阅 [PowerShell 文档](/powershell/scripting/overview)。
+* * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

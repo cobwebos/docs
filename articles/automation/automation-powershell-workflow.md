@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 741569740713fef72f714f7cbce38a3c6f075684
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836679"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185988"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>了解 Azure 自动化的 PowerShell 工作流
 
@@ -20,7 +21,7 @@ Azure 自动化中的 runbook 实现为 Windows PowerShell 工作流，即使用
 > [!NOTE]
 > PowerShell 工作流脚本类似于 Windows PowerShell 脚本，但包括一些可能会让新用户产生混淆的重大差异。 因此，建议仅在需要使用[检查点](#use-checkpoints-in-a-workflow)时，才使用 PowerShell 工作流编写 runbook。 
 
-有关本文中主题的完整详细信息，请参阅 [Windows PowerShell 工作流入门](https://technet.microsoft.com/library/jj134242.aspx)。
+有关本文中主题的完整详细信息，请参阅 [Windows PowerShell 工作流入门](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11))。
 
 ## <a name="use-workflow-keyword"></a>使用 Workflow 关键字
 
@@ -45,9 +46,9 @@ Workflow Test-Workflow
 
 活动是按顺序执行的工作流中的特定任务。 Windows PowerShell 工作流在运行工作流时，会自动将许多 Windows PowerShell cmdlet 转换为活动。 在 Runbook 中指定其中的某个 cmdlet 时，相应的活动由 Windows Workflow Foundation 运行。 
 
-如果 cmdlet 没有相应的活动，Windows PowerShell 工作流会自动在 [InlineScript](#use-inlinescript) 活动中运行该 cmdlet。 某些 cmdlet 已被排除，不能在工作流中使用，除非显式将它们包含在 InlineScript 块中。 有关详细信息，请参阅[在脚本工作流中使用活动](https://technet.microsoft.com/library/jj574194.aspx)。
+如果 cmdlet 没有相应的活动，Windows PowerShell 工作流会自动在 [InlineScript](#use-inlinescript) 活动中运行该 cmdlet。 某些 cmdlet 已被排除，不能在工作流中使用，除非显式将它们包含在 InlineScript 块中。 有关详细信息，请参阅[在脚本工作流中使用活动](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11))。
 
-工作流活动共享一组公用参数来配置其操作。 请参阅 [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx)。
+工作流活动共享一组公用参数来配置其操作。 请参阅 [about_WorkflowCommonParameters](/powershell/module/psworkflow/about/about_workflowcommonparameters)。
 
 ### <a name="positional-parameters"></a>位置参数
 
@@ -150,7 +151,7 @@ Workflow Stop-MyService
 * 不能在 InlineScript 块内部使用[并行执行](#use-parallel-processing)。
 * 因为 InlineScript 会在 InlineScript 块的整个长度内占有 Windows PowerShell 会话，因此会影响工作流的可伸缩性。
 
-有关使用 InlineScript 的详细信息，请参阅[在工作流中运行 Windows PowerShell 命令](https://technet.microsoft.com/library/jj574197.aspx)和 [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx)。
+有关使用 InlineScript 的详细信息，请参阅[在工作流中运行 Windows PowerShell 命令](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11))和 [about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript)。
 
 ## <a name="use-parallel-processing"></a>使用并行处理
 
@@ -260,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-由于调用 [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) 活动后或在最后一个检查点之后，将不保留用户名凭据，所以需要在调用 `Suspend-Workflow` 或检查点后将凭据设置为 null，然后再从资产存储重新检索凭据。  否则，可能会收到以下错误消息：`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+由于调用 [Suspend-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) 活动后或在最后一个检查点之后，将不保留用户名凭据，所以需要在调用 `Suspend-Workflow` 或检查点后将凭据设置为 null，然后再从资产存储重新检索凭据。  否则，可能会收到以下错误消息：`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 下面的相同代码演示如何在 PowerShell 工作流 runbook 中处理这种情况。
 
@@ -289,9 +290,9 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> 对于非图形 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) 的别名。 可以使用这些 cmdlet，也可以在自动化帐户中[将模块更新](automation-update-azure-modules.md)为最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新你的模块。 如果使用配置了服务主体的运行方式帐户进行身份验证，则不一定要使用这些 cmdlet。
+> 对于非图形 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) 的别名。 可以使用这些 cmdlet，也可以在自动化帐户中[将模块更新](automation-update-azure-modules.md)为最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新你的模块。 如果使用配置了服务主体的运行方式帐户进行身份验证，则不一定要使用这些 cmdlet。
 
-关于检查点的详细信息，请参阅[向脚本工作流添加检查点](https://technet.microsoft.com/library/jj574114.aspx)。
+关于检查点的详细信息，请参阅[向脚本工作流添加检查点](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))。
 
 ## <a name="next-steps"></a>后续步骤
 

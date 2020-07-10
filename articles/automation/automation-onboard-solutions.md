@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: d55a47e4eb921c71ff3539d34b6db514684da073
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204066"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186123"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>从 runbook 启用“更新管理”
 
@@ -22,7 +22,7 @@ ms.locfileid: "84204066"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 用于管理计算机的[自动化帐户](automation-offering-get-started.md)。
+* 用于管理计算机的[自动化帐户](./index.yml)。
 * [虚拟机](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="enable-update-management"></a>启用更新管理
@@ -50,7 +50,7 @@ ms.locfileid: "84204066"
 
 ## <a name="install-and-update-modules"></a>安装和更新模块
 
-必须更新到最新的 Azure 模块并导入 [Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) 模块才能成功为 VM 启用更新管理。
+必须更新到最新的 Azure 模块并导入 [Az.OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) 模块才能成功为 VM 启用更新管理。
 
 1. 在你的自动化帐户中的“共享资源”下选择“模块” 。 
 2. 选择“更新 Azure 模块”以更新到最新版本的 Azure 模块。 

@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3cfc63b29b51b70cb41c476c49bc17f5e9cbd308
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746624"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185545"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>将 Azure 自动化帐户移到另一个订阅
 
@@ -40,7 +41,7 @@ Azure 自动化允许将一些资源移到新的资源组或订阅。 可通过 
 
     ![从 Azure 门户删除功能资源的屏幕截图](../media/move-account/delete-solutions.png)
 
-如果愿意，可以使用 [Remove-AzResource](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) cmdlet 来删除资源：
+如果愿意，可以使用 [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) cmdlet 来删除资源：
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -79,7 +80,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 
     ![操作组页的屏幕截图](../media/move-account/delete-action-group.png)
 
-如果愿意，可使用 [Remove-AzActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) cmdlet 删除操作组：
+如果愿意，可使用 [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) cmdlet 删除操作组：
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification

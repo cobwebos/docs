@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1feadeaf2a905abee396c09829dab5e06c46d99c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: acf31af6d3ba3d78a6435210fa17562aaddac0a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837104"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186599"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
@@ -44,7 +45,7 @@ ms.locfileid: "83837104"
 
 此示例使用来自 VM 的警报。 它从有效负载中检索 VM 数据，然后使用该信息停止运行 VM。 必须在运行该 Runbook 的自动化帐户中建立连接。 使用警报触发 runbook 时，必须检查触发的 runbook 中的警报状态。 每次警报更改状态时，都会触发 runbook。 警报有多个状态，其中两个最常见的状态为“已激活”和“已解决”。 检查 runbook 逻辑的状态，以确保 runbook 不会运行多次。 本文中的示例仅演示了如何查找状态为“已激活”的警报。
 
-该 runbook 使用连接资产 `AzureRunAsConnection` [运行方式帐户](automation-create-runas-account.md)在 Azure 中进行身份验证，以便对 VM 执行管理操作。
+该 runbook 使用连接资产 `AzureRunAsConnection` [运行方式帐户](./manage-runas-account.md)在 Azure 中进行身份验证，以便对 VM 执行管理操作。
 
 使用此示例可以创建名为 **Stop-AzureVmInResponsetoVMAlert** 的 Runbook。 可以修改此 PowerShell 脚本，并将其用于许多不同的资源。
 
@@ -191,7 +192,7 @@ ms.locfileid: "83837104"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要使用 Webhook 启动 runbook，请参阅 [从 Webhook 启动 runbook](automation-webhooks.md)。
-* 如需了解启动 runbook 的各种方式，请参阅[启动 runbook](automation-starting-a-runbook.md)。
+* 如需了解启动 runbook 的各种方式，请参阅[启动 runbook](./start-runbooks.md)。
 * 若要创建活动日志警报，请参阅[创建活动日志警报](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)。
 * 若要了解如何创建准实时警报，请参阅[在 Azure 门户中创建警报规则](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

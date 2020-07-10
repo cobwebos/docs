@@ -11,17 +11,17 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/30/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 94a2f77326487aa4bb180dd62ec05f4e23ca6218
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057783"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186854"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>在定型过程中进行网络隔离 & 专用虚拟网络的推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何通过在 Azure 虚拟网络（vnet）中隔离 Azure 机器学习定型和推理作业来保护机器学习生命周期。 Azure 机器学习依赖于用于计算资源的其他 Azure 服务（也称为[计算目标](concept-compute-target.md)）来定型和部署模型。 可以在虚拟网络中创建这些目标。 例如，可以使用 Azure 机器学习计算来训练模型，然后将模型部署到 Azure Kubernetes 服务 (AKS)。 
+在本文中，你将了解如何通过在 Azure 虚拟网络 (vnet) 内隔离 Azure 机器学习定型和推理作业来保护机器学习生命周期。 Azure 机器学习依赖于用于计算资源的其他 Azure 服务（也称为[计算目标](concept-compute-target.md)）来定型和部署模型。 可以在虚拟网络中创建这些目标。 例如，可以使用 Azure 机器学习计算来训练模型，然后将模型部署到 Azure Kubernetes 服务 (AKS)。 
 
 虚拟网络起到安全边界的作用，将你的 Azure 资源与公共 Internet 隔离开来。 你也可以将 Azure 虚拟网络加入本地网络。 通过联接网络，可以安全地训练模型，并访问已部署的模型来进行推理。
 
@@ -67,6 +67,9 @@ ms.locfileid: "86057783"
 
 如果你的数据存储在虚拟网络中，则必须使用工作区[托管标识](../active-directory/managed-identities-azure-resources/overview.md)授予工作室对你的数据的访问权限。
 
+> [!IMPORTANT]
+> 尽管大多数 studio 都适用于虚拟网络中存储的数据，但集成笔记本不__会__。 集成笔记本不支持使用虚拟网络中的存储。 相反，可以使用来自计算实例的 Jupyter 笔记本。 有关详细信息，请参阅[访问计算实例笔记本中的数据](#access-data-in-a-compute-instance-notebook)部分。
+
 如果无法授予 studio 访问权限，你将收到此错误， `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` 并禁用以下操作：
 
 * 预览 studio 中的数据。
@@ -79,19 +82,19 @@ Studio 支持从虚拟网络中的以下数据存储类型读取数据：
 * Azure Blob
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
-* Azure SQL Database
+* Azure SQL 数据库
 
 ### <a name="add-resources-to-the-virtual-network"></a>向虚拟网络添加资源 
 
 将你的工作区和存储帐户添加到相同的虚拟网络，以便它们可以相互访问。
 
-1. 若要将工作区连接到虚拟网络，请[启用 Azure Private Link](how-to-configure-private-link.md)。
+1. 若要将工作区连接到虚拟网络，请[启用 Azure Private Link](how-to-configure-private-link.md)。 此功能目前以预览版形式在“美国东部”、“美国西部 2”、“美国中南部”区域提供。
 
 1. 若要将存储帐户连接到虚拟网络，请[配置防火墙和虚拟网络设置](#use-a-storage-account-for-your-workspace)。
 
 ### <a name="configure-a-datastore-to-use-managed-identity"></a>将数据存储配置为使用托管标识
 
-将工作区和存储服务帐户添加到虚拟网络后，需要将数据存储配置为使用托管标识访问数据。 这些步骤使用 Azure 基于资源的访问控制（RBAC）将工作区托管标识作为__读取器__添加到存储服务。 __读取__者访问权限允许工作区检索防火墙设置，并确保数据不会离开虚拟网络。
+将工作区和存储服务帐户添加到虚拟网络后，需要将数据存储配置为使用托管标识访问数据。 这些步骤使用基于 Azure 资源的访问控制 (RBAC) 将工作区托管标识作为__读取器__添加到存储服务。 __读取__者访问权限允许工作区检索防火墙设置，并确保数据不会离开虚拟网络。
 
 1. 在工作室中，选择 "__数据存储__"。
 
@@ -109,7 +112,7 @@ Studio 支持从虚拟网络中的以下数据存储类型读取数据：
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 访问控制
 
-可以使用 RBAC 和 POSIX 样式的访问控制列表（Acl）来控制虚拟网络内的数据访问。
+可以使用 RBAC 和 POSIX 样式的访问控制列表 (Acl) 来控制虚拟网络内的数据访问。
 
 若要使用 RBAC，请将工作区托管标识添加到[Blob 数据读取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色。 有关详细信息，请参阅[基于角色的访问控制](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control)。
 
@@ -129,9 +132,9 @@ Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可�
 
 ### <a name="connect-to-the-studio"></a>连接到工作室
 
-如果要从虚拟网络内部的资源（例如，计算实例或虚拟机）访问 studio，则必须允许从虚拟网络到工作室的出站流量。 
+如果要从虚拟网络内部的资源访问工作室 (例如，计算实例或虚拟机) ，则必须允许来自虚拟网络的出站流量发送到工作室。 
 
-例如，如果使用网络安全组（NSG）来限制出站流量，请将规则添加到__AzureFrontDoor__的__服务标记__目标。
+例如，如果使用网络安全组 (NSG) 来限制出站流量，请将规则添加到__AzureFrontDoor__的__服务标记__目标。
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>使用工作区的存储帐户
 
@@ -158,7 +161,7 @@ Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可�
 
 1. 在“防火墙和虚拟网络”页上，执行以下操作：
     - 选择“所选网络”。
-    - 在“虚拟网络”下，选择“添加现有虚拟网络”链接。 此操作将添加计算所在的虚拟网络（请参阅步骤1）。
+    - 在“虚拟网络”下，选择“添加现有虚拟网络”链接。 此操作将添加计算所在的虚拟网络 (参见步骤 1) 。
 
         > [!IMPORTANT]
         > 存储帐户必须与用于训练或推理的计算实例或群集位于同一虚拟网络和子网中。
@@ -185,7 +188,7 @@ Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可�
 - Azure Blob 存储
 - Azure 文件共享
 - PostgreSQL
-- Azure SQL Database
+- Azure SQL 数据库
 
 下面的代码示例创建一个新的 Azure Blob 数据存储和集 `skip_validation=True` 。
 
@@ -570,7 +573,7 @@ aks_target.wait_for_completion(show_output = True)
 __网络参与者角色__
 
 > [!IMPORTANT]
-> 如果通过提供先前创建的虚拟网络来创建或附加 AKS 群集，则_必须将 AKS 群集的服务_主体（SP）或托管标识授予包含虚拟网络的资源组。 必须在尝试将内部负载均衡器更改为专用 IP 之前完成此操作。
+> 如果通过提供先前创建的虚拟网络来创建或附加 AKS 群集，则必须向 AKS 群集的服务主体 (SP) 或托管标识授予对包含虚拟网络的资源组的 "_网络参与者_" 角色。 必须在尝试将内部负载均衡器更改为专用 IP 之前完成此操作。
 >
 > 若要将标识作为网络参与者添加，请执行以下步骤：
 
@@ -606,7 +609,7 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 > [!WARNING]
 > 在虚拟网络中使用 Azure 容器实例时，虚拟网络必须与 Azure 机器学习工作区位于同一资源组中。
 >
-> 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表（ACR）也不能在虚拟网络中。
+> 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表 (ACR) 也不能在虚拟网络中。
 
 若要将虚拟网络中的 ACI 用于工作区，请按照以下步骤操作：
 

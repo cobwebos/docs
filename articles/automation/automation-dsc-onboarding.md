@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: f30d15615e4f3c738d969d068bf2864df23e7cdb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae268534a18a921cca012881fa172261c7ba1063
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836900"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186395"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>启用 Azure Automation State Configuration
 
@@ -56,7 +57,7 @@ Azure Automation State Configuration 让你能够使用 Azure 门户、Azure 资
 
 ### <a name="register-vms-across-azure-subscriptions"></a>在各 Azure 订阅中注册 VM
 
-从其他 Azure 订阅中注册 VM 的最佳方式是使用 Azure 资源管理器部署模板中的 DSC 扩展。 [Desired State Configuration 扩展与 Azure 资源管理器模板](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)中提供了相关示例。
+从其他 Azure 订阅中注册 VM 的最佳方式是使用 Azure 资源管理器部署模板中的 DSC 扩展。 [Desired State Configuration 扩展与 Azure 资源管理器模板](../virtual-machines/extensions/dsc-template.md)中提供了相关示例。
 
 若要查找注册密钥和注册 URL 以作为模板中的参数，请参阅[使用注册安全启用计算机](#enable-machines-securely-using-registration)。
 
@@ -72,7 +73,7 @@ Azure Automation State Configuration 让你能够使用 Azure 门户、Azure 资
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. 如果无法从远程应用 PowerShell DSC 元配置，请将“元配置”文件夹复制到要启用的计算机。 然后添加代码以在计算机上本地调用 [Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1)。
+1. 如果无法从远程应用 PowerShell DSC 元配置，请将“元配置”文件夹复制到要启用的计算机。 然后添加代码以在计算机上本地调用 [Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1)。
 1. 使用 Azure 门户或 cmdlet，验证计算机是否显示为在 Azure 自动化帐户中注册的“State Configuration”节点。
 
 ## <a name="enable-physicalvirtual-linux-machines"></a>启用 Linux 物理/虚拟计算机
@@ -122,7 +123,7 @@ Azure Automation State Configuration 让你能够使用 Azure 门户、Azure 资
 > [!NOTE]
 > DSC 元配置包含在自动化帐户中启用计算机以便进行管理所需的机密。 请务必适当保护所创建的任何 DSC 元配置，或者在使用后将其删除。
 
-元配置的代理支持由[本地配置管理器](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7)（即 Windows PowerShell DSC 引擎）控制。 LCM 在所有的目标节点上运行，负责调用 DSC 元配置脚本中包含的配置资源。 通过在 `ConfigurationRepositoryWeb`、`ResourceRepositoryWeb` 和 `ReportServerWeb` 块中根据需要包含 `ProxyURL` 和 `ProxyCredential` 属性的定义，可以在元配置中包含代理支持。 例如，URL 设置为 `ProxyURL = "http://172.16.3.6:3128";`。 `ProxyCredential` 属性设置为 `PSCredential` 对象，如[在 Azure 自动化中管理凭据](shared-resources/credentials.md)中所述。 
+元配置的代理支持由[本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7)（即 Windows PowerShell DSC 引擎）控制。 LCM 在所有的目标节点上运行，负责调用 DSC 元配置脚本中包含的配置资源。 通过在 `ConfigurationRepositoryWeb`、`ResourceRepositoryWeb` 和 `ReportServerWeb` 块中根据需要包含 `ProxyURL` 和 `ProxyCredential` 属性的定义，可以在元配置中包含代理支持。 例如，URL 设置为 `ProxyURL = "http://172.16.3.6:3128";`。 `ProxyCredential` 属性设置为 `PSCredential` 对象，如[在 Azure 自动化中管理凭据](shared-resources/credentials.md)中所述。 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>使用 DSC 配置生成 DSC 元配置
 
@@ -259,7 +260,7 @@ Azure Automation State Configuration 让你能够使用 Azure 门户、Azure 资
 如果 PowerShell DSC LCM 默认值与用例匹配，并且你希望计算机能同时从 Azure Automation State Configuration 提取配置并向其报告状态信息，则可以使用 Azure 自动化 cmdlet 更轻松地生成所需的 DSC 元配置。
 
 1. 在本地环境中，以计算机管理员身份打开 PowerShell 控制台或 VSCode。
-2. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) 连接到 Azure 资源管理器。
+2. 使用 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) 连接到 Azure 资源管理器。
 3. 从要设置节点的目标自动化帐户下载想要启用的计算机的 PowerShell DSC 元配置。
 
    ```powershell
@@ -324,8 +325,7 @@ State Configuration 可让你轻松启用 Azure Windows VM 以进行配置管理
 
 - 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)。
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译 DSC 配置](automation-dsc-compile.md)。
-- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)。
 - 若要查看在持续部署管道中使用 Azure Automation State Configuration 的示例，请参阅[使用 Chocolatey 设置持续部署](automation-dsc-cd-chocolatey.md)。
 - 有关疑难解答信息，请参阅 [Azure Automation State Configuration 疑难解答](./troubleshoot/desired-state-configuration.md)。

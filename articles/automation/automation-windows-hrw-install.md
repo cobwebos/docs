@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e1262aedda95f3feb7cf5604644d938bf4d00a53
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854919"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185613"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -18,7 +18,7 @@ ms.locfileid: "85854919"
 
 成功部署 Runbook 辅助角色后，请查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 在开始之前，请确保你具有以下各项。
 
@@ -84,7 +84,7 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 有关启用使用 Azure 自动化状态配置进行管理的计算机的信息，请参阅[启用虚拟机以通过 Azure Automation 状态配置进行管理](automation-dsc-onboarding.md)。
 
 > [!NOTE]
-> 若要管理支持混合 Runbook 辅助角色和所需状态配置（DSC）的计算机的配置，你必须将计算机添加为 DSC 节点。
+> 若要管理支持混合 Runbook 辅助角色的计算机的配置 (DSC) ，你必须将计算机添加为 DSC 节点。
 
 ## <a name="windows-hybrid-runbook-worker-installation-options"></a>Windows 混合 Runbook Worker 安装选项
 
@@ -206,9 +206,9 @@ Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 
 Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任何活动和 cmdlet。 由于这些模块不会自动部署到本地计算机，因此必须手动安装它们。 例外情况是 Azure 模块。 此模块是默认安装的，并可用于访问所有 Azure 服务的 cmdlet 以及 Azure 自动化的活动。
 
-由于混合 Runbook 辅助角色的主要用途是管理本地资源，很可能需要安装支持这些资源的模块，尤其是 `PowerShellGet` 模块。 有关安装 Windows PowerShell 模块的信息，请参阅 [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)。
+由于混合 Runbook 辅助角色的主要用途是管理本地资源，很可能需要安装支持这些资源的模块，尤其是 `PowerShellGet` 模块。 有关安装 Windows PowerShell 模块的信息，请参阅 [Windows PowerShell](/powershell/scripting/developer/windows-powershell)。
 
-安装的模块必须位于 `PSModulePath` 环境变量所引用的位置，以便混合辅助角色自动将其导入。 有关详细信息，请参阅[在 PSModulePath 中安装模块](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
+安装的模块必须位于 `PSModulePath` 环境变量所引用的位置，以便混合辅助角色自动将其导入。 有关详细信息，请参阅[在 PSModulePath 中安装模块](/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
 
 ## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>从本地 Windows 计算机删除混合 Runbook 辅助角色
 

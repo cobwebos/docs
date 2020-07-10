@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74073852"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186820"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
 
@@ -133,36 +134,36 @@ Linux 代理的正常运行依赖一些系统程序包：
 ## <a name="configuration"></a>配置
 配置文件 (/etc/waagent.conf) 可控制 waagent 的操作。 下面显示了示例配置文件：
 
-    ```
-    Provisioning.Enabled=y
-    Provisioning.DeleteRootPassword=n
-    Provisioning.RegenerateSshHostKeyPair=y
-    Provisioning.SshHostKeyPairType=rsa
-    Provisioning.MonitorHostName=y
-    Provisioning.DecodeCustomData=n
-    Provisioning.ExecuteCustomData=n
-    Provisioning.AllowResetSysUser=n
-    Provisioning.PasswordCryptId=6
-    Provisioning.PasswordCryptSaltLength=10
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.MountOptions=None
-    ResourceDisk.EnableSwap=n
-    ResourceDisk.SwapSizeMB=0
-    LBProbeResponder=y
-    Logs.Verbose=n
-    OS.RootDeviceScsiTimeout=300
-    OS.OpensslPath=None
-    HttpProxy.Host=None
-    HttpProxy.Port=None
-    AutoUpdate.Enabled=y
-    ```
+```config
+Provisioning.Enabled=y
+Provisioning.DeleteRootPassword=n
+Provisioning.RegenerateSshHostKeyPair=y
+Provisioning.SshHostKeyPairType=rsa
+Provisioning.MonitorHostName=y
+Provisioning.DecodeCustomData=n
+Provisioning.ExecuteCustomData=n
+Provisioning.AllowResetSysUser=n
+Provisioning.PasswordCryptId=6
+Provisioning.PasswordCryptSaltLength=10
+ResourceDisk.Format=y
+ResourceDisk.Filesystem=ext4
+ResourceDisk.MountPoint=/mnt/resource
+ResourceDisk.MountOptions=None
+ResourceDisk.EnableSwap=n
+ResourceDisk.SwapSizeMB=0
+LBProbeResponder=y
+Logs.Verbose=n
+OS.RootDeviceScsiTimeout=300
+OS.OpensslPath=None
+HttpProxy.Host=None
+HttpProxy.Port=None
+AutoUpdate.Enabled=y
+```
 
 下面描述了各种配置选项。 配置选项分为三种类型：布尔值、字符串或整数。 布尔配置选项可指定为“y”或“n”。 特殊关键字“无”可用于某些字符串类型配置条目，详细信息如下所示：
 
 **Provisioning.Enabled：**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -174,14 +175,14 @@ Default: y
 > 
 
 **Provisioning.DeleteRootPassword：**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，则会在设置过程中清除 /etc/shadow 文件中的根密码。
 
 **Provisioning.RegenerateSshHostKeyPair：**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -190,42 +191,42 @@ Default: y
 此全新密钥对的加密类型可由 Provisioning.SshHostKeyPairType 项进行配置。 重启 SSH 守护程序时（例如，重启时），某些分发将为任何缺失的加密类型重新创建 SSH 密钥对。
 
 **Provisioning.SshHostKeyPairType：**  
-```
+```txt
 Type: String  
 Default: rsa
 ```
 可将其设置为虚拟机上的 SSH 监控程序支持的加密算法类型。 通常支持的值为“rsa”、“dsa”和“ecdsa”。 Windows 上的“putty.exe”不支持“ecdsa”。 因此，若要在 Windows 上使用 putty.exe 连接到 Linux 部署，使用“rsa”或“dsa”。
 
 **Provisioning.MonitorHostName：**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 如果设置此参数，waagent 监视 Linux 虚拟机的主机名更改情况（由“hostname”命令返回），并自动更新映像中的网络配置以反映此更改。 要将名称更改推送到 DNS 服务器，可在虚拟机中重启网络。 这会导致 Internet 连接暂时中断。
 
 **Provisioning.DecodeCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，waagent 从 Base64 解码 CustomData。
 
 **Provisioning.ExecuteCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，waagent 在预配后执行 CustomData。
 
 **Provisioning.AllowResetSysUser**
-```
+```txt
 Type: Boolean
 Default: n
 ```
 此选项允许重置 sys 用户的密码；默认为禁用。
 
 **Provisioning.PasswordCryptId**  
-```
+```txt
 Type: String  
 Default: 6
 ```
@@ -236,91 +237,91 @@ Default: 6
  6 - SHA-512  
 
 **Provisioning.PasswordCryptSaltLength**  
-```
+```txt
 Type: String  
 Default: 10
 ```
 生成密码哈希时使用的随机 salt 长度。
 
 **Resourcedisk.filesystem：**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 如果设置此参数，则当“ResourceDisk.Filesystem”中用户请求的 filesystem 类型是“ntfs”之外的任何值时，平台提供的资源磁盘通过 waagent 进行格式化和安装。 在磁盘上提供类型 Linux (83) 的单个分区。 如果可以成功安装此分区，不会对其进行格式化。
 
 **Resourcedisk.filesystem：**  
-```
+```txt
 Type: String  
 Default: ext4
 ```
 这会指定资源磁盘的 filesystem 类型。 支持的值随 Linux 分发的不同而不同。 如果字符串为 X，则 mkfs.X 应呈现在 Linux 映像上。 SLES 11 映像通常应使用“ext3”。 FreeBSD 映像在此处应使用“ufs2”。
 
 **ResourceDisk.MountPoint：**  
-```
+```txt
 Type: String  
 Default: /mnt/resource 
 ```
 这会指定资源磁盘的安装路径。 资源磁盘是临时** 磁盘，可能在取消预配 VM 时被清空。
 
 **ResourceDisk.MountOptions**  
-```
+```txt
 Type: String  
 Default: None
 ```
 指定要传递给 mount -o 命令的磁盘装载选项。 这是一个逗号分隔值列表，例如 “nodev,nosuid”。 有关详细信息，请参阅 mount(8)。
 
 **ResourceDisk.EnableSwap：**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，则会在资源磁盘上创建交换文件 (/swapfile) 并将该文件添加到系统交换空间。
 
 **ResourceDisk.SwapSizeMB：**  
-```
+```txt
 Type: Integer  
 Default: 0
 ```
 交换文件的大小，以兆字节为单位。
 
 **Logs.Verbose：**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，则将增大日志的详细程度。 Waagent 将日志记录到 /var/log/waagent.log 并利用系统 logrotate 功能来循环日志。
 
 **OS.EnableRDMA**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，代理将尝试安装然后加载与底层硬件上的固件版本匹配的 RDMA 内核驱动程序。
 
 **OS.RootDeviceScsiTimeout：**  
-```
+```txt
 Type: Integer  
 Default: 300
 ```
 此设置将配置 OS 磁盘和数据驱动器上的 SCSI 超时（以秒为单位）。 如果未设置此参数，则使用系统默认值。
 
 **OS.OpensslPath：**  
-```
+```txt
 Type: String  
 Default: None
 ```
 此设置可用于指定要用于加密操作的 openssl 二进制文件的替代路径。
 
 **HttpProxy.Host、HttpProxy.Port**  
-```
+```txt
 Type: String  
 Default: None
 ```
 如果设置此参数，代理将使用此代理服务器访问 Internet。 
 
 **AutoUpdate.Enabled**
-```
+```txt
 Type: Boolean
 Default: y
 ```

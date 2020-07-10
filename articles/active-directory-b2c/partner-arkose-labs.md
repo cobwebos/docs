@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4e5dfe26af7e1d92c20cf15e3519563e600b256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385699"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170218"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>有关配置 Arkose 实验室与 Azure Active Directory B2C 的教程
 
 在本教程中，了解如何将 Azure AD B2C authentication 与 Arkose 实验室集成。 Arkose 实验室可帮助组织防范机器人攻击、帐户接管攻击和欺诈性帐户空缺。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 
@@ -35,7 +35,7 @@ ms.locfileid: "85385699"
 
 ![Arkose 实验室体系结构图](media/partner-arkose-labs/arkose-architecture-diagram.png)
 
-|   |   |
+| 步骤  | 说明 |
 |---|---|
 |1     | 用户使用以前创建的帐户登录。 当用户选择 "提交" 时，会出现 "Arkose 实验强制" 的质询。 用户完成质询后，状态将发送到 Arkose 实验室以生成令牌。        |
 |2     |  Arkose 实验室会将令牌发送回 Azure AD B2C。       |
@@ -80,9 +80,9 @@ ms.locfileid: "85385699"
 
 1. 在存储帐户的 "概述" 页上，选择 "  **blob**"。
 
-2. 选择 "  **容器**"，为容器输入名称，选择 "  **blob** " （仅限 blob 的匿名读取访问），然后选择 **"确定"**。
+2. 选择 "  **容器**"，为容器输入名称，选择 "  **blob** (仅限 blob 的匿名读取访问) "，然后选择 **"确定"**。
 
-#### <a name="enable-cross-origin-resource-sharing-cors"></a>启用跨域资源共享（CORS）
+#### <a name="enable-cross-origin-resource-sharing-cors"></a> (CORS) 启用跨域资源共享
 
 浏览器中的 Azure AD B2C 代码使用新式标准方法从用户流中指定的 URL 加载自定义内容。 CORS 允许从其他域请求网页上的受限资源。
 
@@ -94,7 +94,7 @@ ms.locfileid: "85385699"
 
 4. 对于“允许的标头”，请输入一个星号 (*)。
 
-5. 对于 " **公开标头**"，请输入一个星号（*）。
+5. 对于 " **公开标头**"，请输入星号 ( * ) 。
 
 6. 对于“最大期限”，请输入 200。
 
@@ -128,7 +128,7 @@ ms.locfileid: "85385699"
 
 1. 打开存储在[GitHub 存储库](https://github.com/ArkoseLabs/Azure-AD-B2C)中的 index.html 文件。
 
-2. 将的所有实例替换 `<tenantname>` 为 b2C 租户名称（即 `<tenantname>.b2clogin.com` ）。 应有四个实例。
+2. 将的所有实例替换 `<tenantname>` 为 b2C 租户名称 (换言之， `<tenantname>.b2clogin.com`) 。 应有四个实例。
 
 3. 将替换为 `<appname>` 在第2部分 "步骤 1" 中创建的应用名称。
 
@@ -162,7 +162,7 @@ ms.locfileid: "85385699"
 
 3. 选择 "**运行用户流**"，然后选择设置：
 
-   a. **应用程序**-选择注册的应用（示例为 JWT）。
+   a. **应用程序**-选择注册的应用 (示例为 JWT) 。
 
    b. **回复 url** -选择 "重定向 url"。
 

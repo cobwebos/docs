@@ -4,11 +4,12 @@ description: 使用 Azure 存储帐户创建传输管道，将映像集合或其
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006321"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186922"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>将项目传输到另一个注册表
 
@@ -57,7 +58,7 @@ ms.locfileid: "83006321"
 * **[PipelineRun](#create-pipelinerun-for-export-with-resource-manager)** - 用于调用 ExportPipeline 或 ImportPipeline 资源的资源。  
   * 创建 PipelineRun 资源并指定要导出的项目可手动运行 ExportPipeline。  
   * 如果启用了导入触发器，ImportPipeline 则会自动运行。 还可以使用 PipelineRun 手动运行。 
-  * 当前每个 PipelineRun 最多可传输 10 个项目。
+  * 目前，每个 PipelineRun 最多可传输**50 个项目**。
 
 ### <a name="things-to-know"></a>使用须知
 * ExportPipeline 和 ImportPipeline 通常位于与源和目标云关联的不同 Active Directory 租户中。 此方案需要单独的托管标识和密钥保管库，以用于导出和导入资源。 出于测试目的，可以将这些资源放在同一个云中，以共享标识。
@@ -336,7 +337,7 @@ az deployment group delete \
 * **AzCopy 问题**
   * 请参阅 [AzCopy 问题疑难解答](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues)。  
 * **项目传输问题**
-  * 并未传输所有项目或者根本未传输任何项目。 确认导出运行中的项目拼写，以及导出和导入运行中的 blob 名称。 确认最多传输 10 个项目。
+  * 并未传输所有项目或者根本未传输任何项目。 确认导出运行中的项目拼写，以及导出和导入运行中的 blob 名称。 确认正在传输的项目最多为50。
   * 管道运行可能未完成。 导出或导入运行可能需要一些时间。 
   * 对于其他管道问题，请向 Azure 容器注册表团队提供导出运行或导入运行的部署[相关 ID](../azure-resource-manager/templates/deployment-history.md)。
 

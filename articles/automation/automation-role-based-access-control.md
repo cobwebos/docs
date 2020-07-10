@@ -6,11 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100007"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186140"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
 
@@ -310,7 +311,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 还可以使用以下 [Azure PowerShell cmdlet](../role-based-access-control/role-assignments-powershell.md) 为自动化帐户配置基于角色的访问权限：
 
-[Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) 列出 Azure Active Directory 中提供的所有 RBAC 角色。 可以将此 cmdlet 与 `Name` 参数一起使用来列出特定角色可以执行的所有操作。
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) 列出 Azure Active Directory 中提供的所有 RBAC 角色。 可以将此 cmdlet 与 `Name` 参数一起使用来列出特定角色可以执行的所有操作。
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -329,7 +330,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) 列出指定范围内的 Azure AD RBAC 角色分配。 在没有任何参数的情况下，此 cmdlet 返回在订阅下进行的所有角色分配。 使用 `ExpandPrincipalGroups` 参数可列出针对指定用户和该用户所在组的访问权限分配。
+[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) 列出指定范围内的 Azure AD RBAC 角色分配。 在没有任何参数的情况下，此 cmdlet 返回在订阅下进行的所有角色分配。 使用 `ExpandPrincipalGroups` 参数可列出针对指定用户和该用户所在组的访问权限分配。
 
 **示例：** 使用以下 cmdlet 列出自动化帐户中的所有用户及其角色。
 
@@ -351,7 +352,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) 为特定范围内的用户、组和应用程序分配访问权限。
+使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) 为特定范围内的用户、组和应用程序分配访问权限。
     
 **示例：** 使用以下命令为“自动化帐户”范围中的用户分配“自动化操作员”角色。
 
@@ -373,7 +374,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-使用 [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) 从特定范围中删除指定用户、组或应用程序的访问权限。
+使用 [Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) 从特定范围中删除指定用户、组或应用程序的访问权限。
 
 **示例：** 使用以下命令从自动化帐户范围的自动化操作员角色中删除用户。
 

@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: 清单, 自动化, 更改, 跟踪
 ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603105"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185715"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>管理 VM 上的清单收集
 
@@ -131,5 +131,5 @@ Azure 自动化更改跟踪和清单提供基于浏览器的用户界面，可�
 ## <a name="next-steps"></a>后续步骤
 
 * 有关使用此功能的详细信息，请参阅[管理更改跟踪和清单](change-tracking-file-contents.md)。
-* 若要详细了解如何跟踪软件更改，请参阅[使用更改跟踪来跟踪环境中的软件更改](../log-analytics/log-analytics-change-tracking.md)。
+* 若要详细了解如何跟踪软件更改，请参阅[使用更改跟踪来跟踪环境中的软件更改](./change-tracking.md)。
 * 若要排查该功能的常见问题，请参阅[排查更改跟踪和清单问题](troubleshoot/change-tracking.md)。

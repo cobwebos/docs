@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf2a60e1387ccdfb24ff5c5e166780c00506bac8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f2bf058ddce81ab9f04e97787a4dc93e44036b1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832293"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186106"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>使用 PowerShell 库中的 Runbook 和模块
 
@@ -100,12 +101,11 @@ Microsoft 建议将 Runbook 添加到你认为对其他客户有用的 PowerShel
 
 ## <a name="request-a-runbook-or-module"></a>请求 Runbook 或模块
 
-可以将请求发送到[用户之声](https://feedback.azure.com/forums/246290-azure-automation/)。  如果编写 Runbook 时需要帮助，或对 PowerShell 存有疑问，请将问题发布到我们的 [Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-automation.html)。
+可以将请求发送到[用户之声](https://feedback.azure.com/forums/246290-azure-automation/)。  如果编写 Runbook 时需要帮助，或对 PowerShell 存有疑问，请将问题发布到我们的 [Microsoft 问答页面](/answers/topics/azure-automation.html)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
 * 若要使用 Runbook，请参阅[在 Azure 自动化中管理 Runbook](manage-runbooks.md)。
-* 有关 PowerShell 的详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
-* * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+* 有关 PowerShell 的详细信息，请参阅 [PowerShell 文档](/powershell/scripting/overview)。
+* * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

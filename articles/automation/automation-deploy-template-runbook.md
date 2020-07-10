@@ -6,24 +6,25 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: powershell, runbook, json, azure 自动化
-ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 10eadd7b8ee6c2e954f40469a02d42dc77c2bf41
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837070"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186548"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>在 PowerShell Runbook 中部署 Azure 资源管理器模板
 
-可以编写一个 [Azure 自动化 PowerShell Runbook](automation-first-runbook-textual-powershell.md)，用于通过 [Azure 资源管理模板](../azure-resource-manager/resource-manager-create-first-template.md)部署 Azure 资源。 借助模板可以通过 Azure 自动化和 Azure 存储来自动部署 Azure 资源。 可以在一个安全的中心位置（例如 Azure 存储）维护资源管理器模板。
+可以编写一个 [Azure 自动化 PowerShell Runbook](./learn/automation-tutorial-runbook-textual-powershell.md)，用于通过 [Azure 资源管理模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)部署 Azure 资源。 借助模板可以通过 Azure 自动化和 Azure 存储来自动部署 Azure 资源。 可以在一个安全的中心位置（例如 Azure 存储）维护资源管理器模板。
 
 本文创建一个 PowerShell Runbook，该 Runbook 使用 [Azure 存储](../storage/common/storage-introduction.md)中存储的资源管理器模板部署新的 Azure 存储帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有帐户，则可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或[注册免费帐户](https://azure.microsoft.com/free/)。
-* [自动化帐户](automation-sec-configure-azure-runas-account.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。  此帐户必须有权启动和停止虚拟机。
-* 要在其中存储资源管理器模板的 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)
-* 安装在本地计算机上的 Azure PowerShell。 若要详细了解如何获得 Azure PowerShell，请参阅[安装 Azure Powershell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。
+* [自动化帐户](./manage-runas-account.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。  此帐户必须有权启动和停止虚拟机。
+* 要在其中存储资源管理器模板的 [Azure 存储帐户](../storage/common/storage-account-create.md)
+* 安装在本地计算机上的 Azure PowerShell。 若要详细了解如何获得 Azure PowerShell，请参阅[安装 Azure Powershell 模块](/powershell/azure/install-az-ps?view=azps-3.5.0)。
 
 ## <a name="create-the-resource-manager-template"></a>创建 资源管理器模板
 
@@ -191,8 +192,7 @@ Publish-AzAutomationRunbook @publishParams
 
 ## <a name="start-the-runbook"></a>启动 Runbook
 
-现在，通过调用 [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0
-) cmdlet 来启动该 Runbook。 有关如何在 Azure 门户中启动 Runbook 的信息，请参阅[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md)。
+现在，通过调用 [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) cmdlet 来启动该 Runbook。 有关如何在 Azure 门户中启动 Runbook 的信息，请参阅[在 Azure 自动化中启动 Runbook](./start-runbooks.md)。
 
 在 PowerShell 控制台中运行以下命令：
 
@@ -232,4 +232,4 @@ Get-AzStorageAccount
 * 若要开始使用 Azure 存储，请参阅 [Azure 存储简介](../storage/common/storage-introduction.md)。
 * 若要查找其他有用的 Azure 自动化 Runbook，请参阅[在 Azure 自动化中使用 Runbook 和模块](automation-runbook-gallery.md)。
 * 若要查找其他有用的资源管理器模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

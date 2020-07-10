@@ -5,11 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 481d59bd2a06103629dee88868d9e33de810fdab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1fe48b8bc776faf98f71eb882720e8180a2c573
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204899"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186021"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>从 Azure VM 启用“更新管理”
 
@@ -21,7 +22,7 @@ ms.locfileid: "84204899"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 用于管理计算机的[自动化帐户](automation-offering-get-started.md)。
+* 用于管理计算机的[自动化帐户](./index.yml)。
 * [虚拟机](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure

@@ -10,11 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d1b05f9e77d3530f3e883aa3f9d98de09c8f54c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 113a6a259f0c69bdcc3b1684803af54ed7ecbddf
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836985"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186480"
 ---
 # <a name="configure-data-based-on-stig"></a>基于 STIG 配置数据
 
@@ -35,8 +36,8 @@ ms.locfileid: "83836985"
 许多组织需要[记录规则例外](https://github.com/microsoft/powerstig#powerstigdata)并大规模管理该数据。
 PowerSTIG 通过提供[复合资源](https://github.com/microsoft/powerstig#powerstigdsc)来处理配置的每个领域，而不是尝试在一个大文件中处理整个设置范围，从而解决了此问题。
 
-生成配置后，可以使用 [DSC 配置脚本](/powershell/scripting/dsc/configurations/configurations)生成 MOF 文件，并[将 MOF 文件上传到 Azure 自动化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然后从[本地](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)或[在 Azure 中](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms)注册服务器以拉取配置。
+生成配置后，可以使用 [DSC 配置脚本](/powershell/scripting/dsc/configurations/configurations)生成 MOF 文件，并[将 MOF 文件上传到 Azure 自动化](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation)。
+然后从[本地](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines)或[在 Azure 中](./automation-dsc-onboarding.md#enable-azure-vms)注册服务器以拉取配置。
 
 若要试用 PowerSTIG，请访问 [PowerShell 库](https://www.powershellgallery.com)并下载解决方案，或者单击“项目站点”以查看[文档](https://github.com/microsoft/powerstig)。
 

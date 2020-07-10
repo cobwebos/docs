@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836560"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185919"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
@@ -67,15 +68,15 @@ ms.locfileid: "83836560"
 * 你必须熟悉 PowerShell 脚本。
 * Runbook 无法使用[并行处理](automation-powershell-workflow.md#use-parallel-processing)并行执行多个操作。
 * 出现错误时，Runbook 无法使用[检查点](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)恢复 Runbook。
-* 你可以使用 [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)（用于创建新作业）仅将 PowerShell 工作流 Runbook 和图形 Runbook 以子 Runbook 的形式包括在内。
+* 你可以使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)（用于创建新作业）仅将 PowerShell 工作流 Runbook 和图形 Runbook 以子 Runbook 的形式包括在内。
 
 ### <a name="known-issues"></a>已知问题
 
 以下是当前 PowerShell Runbook 的已知问题：
 
-* PowerShell Runbook 无法检索未加密且值为 Null 的[变量资产](automation-variables.md)。
+* PowerShell Runbook 无法检索未加密且值为 Null 的[变量资产](./shared-resources/variables.md)。
 * PowerShell Runbook 无法检索名称中包含 `*~*` 的变量资产。
-* 在 PowerShell Runbook 中，处于循环状态的 [Get-Process](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) 操作在经历大约 80 次迭代后可能会崩溃。
+* 在 PowerShell Runbook 中，处于循环状态的 [Get-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) 操作在经历大约 80 次迭代后可能会崩溃。
 * 如果 PowerShell Runbook 尝试一次性将大量数据写入输出流中，则可能会发生故障。 通常情况下，通过使 Runbook 仅输出处理大型对象所需的信息可以避免出现这种问题。 例如，可以让 cmdlet 仅输出所需的参数，如在 `Get-Process | Select ProcessName, CPU` 中那样，而不是不受限地使用 `Get-Process`。
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell 工作流 Runbook

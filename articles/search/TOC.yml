@@ -72,6 +72,8 @@
           href: cognitive-search-tutorial-blob-python.md
     - name: 调试技能集
       href: cognitive-search-tutorial-debug-sessions.md
+    - name: 创建自定义分析器
+      href: tutorial-create-custom-analyzer.md
     - name: 从 Power Apps 查询
       href: search-howto-powerapps.md
 - name: 示例

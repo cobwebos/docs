@@ -5,18 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 387e100a05cb51eb034f737b259bad4e5812465c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4be7934002730253b77b1c129165ad9f19f23b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557872"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185970"
 ---
 # <a name="monitor-runbook-output"></a>监视 runbook 输出
 
 大多数 Azure 自动化 runbook 都有某种形式的输出。 此输出可能是发给用户的错误消息，也可能是你打算用于另一个 runbook 的复杂对象。 Windows PowerShell 提供[多个流](/powershell/module/microsoft.powershell.core/about/about_redirection)，以便从脚本或工作流发送输出。 Azure 自动化以不同方式处理每个流。 在创建 runbook 时，应遵循使用流的最佳实践。
 
-下表简要介绍了发布的 Runbook 以及[测试 Runbook](automation-testing-runbook.md) 期间每个流及其在 Azure 门户的行为。 输出流是用于 Runbook 间通信的主流。 其他流分类为消息流，旨在向用户传递信息。 
+下表简要介绍了发布的 Runbook 以及[测试 Runbook](./manage-runbooks.md) 期间每个流及其在 Azure 门户的行为。 输出流是用于 Runbook 间通信的主流。 其他流分类为消息流，旨在向用户传递信息。 
 
 | Stream | 说明 | 已发布 | 测试 |
 |:--- |:--- |:--- |:--- |
@@ -33,7 +33,7 @@ ms.locfileid: "85557872"
 
 仅当某个 runbook 永不会被其他 runbook 调用时，该 runbook 才使用输出流向客户端传递常规信息。 但是，最佳做法是 Runbook 通常使用[详细流](#monitor-verbose-stream)向用户传递常规信息。
 
-让 runbook 使用 [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) 将数据写入输出流。 或者，你可以在脚本中将对象放置在其自己的行上。
+让 runbook 使用 [Write-Output](/powershell/module/microsoft.powershell.utility/write-output) 将数据写入输出流。 或者，你可以在脚本中将对象放置在其自己的行上。
 
 ```powershell
 #The following lines both write an object to the output stream.
@@ -133,7 +133,7 @@ Runbook 包括输出类型 `Microsoft.Azure.Commands.Profile.Models.PSAzureConte
 
 默认情况下，在出现警告或错误后，Runbook 将继续执行。 创建消息之前，可以通过在 Runbook 中设置[首选项变量](#work-with-preference-variables)，指定应在出现警告或错误时挂起 Runbook。 例如，要使 Runbook 在出现错误时挂起（就像发生异常时那样），请将 `ErrorActionPreference` 变量设置为 Stop。
 
-使用 [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) 或 [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) cmdlet 创建警告或错误消息。 活动还可以写入警告和错误流。
+使用 [Write-Warning](/powershell/module/microsoft.powershell.utility/write-warning) 或 [Write-Error](/powershell/module/microsoft.powershell.utility/write-error) cmdlet 创建警告或错误消息。 活动还可以写入警告和错误流。
 
 ```powershell
 #The following lines create a warning message and then an error message that will suspend the runbook.
@@ -153,9 +153,9 @@ Azure 自动化对交互式用户使用调试消息流。 不应在 Runbook 中�
 
 出于性能方面的原因，默认情况下，作业历史记录不会存储来自已发布 Runbook 的详细消息。 若要存储详细消息，请使用 Azure 门户“配置”选项卡和“日志详细记录”设置，将已发布的 Runbook 配置为记录详细消息。 启用此选项的目的只是为了排查 Runbook 的问题或对它进行调试。 在大多数情况下，应该保留默认设置，即，不记录详细记录。
 
-[测试 runbook](automation-testing-runbook.md) 时，即使已将该 runbook 配置为记录详细记录，详细消息也不会显示。 若要在[测试 Runbook](automation-testing-runbook.md) 时显示详细消息，必须将 `VerbosePreference` 变量设置为 Continue。 设置该变量后，Azure 门户的测试输出窗格中会显示详细消息。
+[测试 runbook](./manage-runbooks.md) 时，即使已将该 runbook 配置为记录详细记录，详细消息也不会显示。 若要在[测试 Runbook](./manage-runbooks.md) 时显示详细消息，必须将 `VerbosePreference` 变量设置为 Continue。 设置该变量后，Azure 门户的测试输出窗格中会显示详细消息。
 
-以下代码使用 [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) cmdlet 创建详细消息。
+以下代码使用 [Write-Verbose](/powershell/module/microsoft.powershell.utility/write-verbose) cmdlet 创建详细消息。
 
 ```powershell
 #The following line creates a verbose message.
@@ -170,11 +170,11 @@ Write-Verbose –Message "This is a verbose message."
 如果启用进度记录的日志记录，Runbook 会在每个活动运行前后向作业历史记录中写入一条记录。 测试 Runbook 不会显示进度消息，即使已将该 Runbook 配置为记录进度记录也不显示。
 
 >[!NOTE]
->[Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) cmdlet 在 runbook 中无效，因为此 cmdlet 旨在供交互式用户使用。
+>[Write-Progress](/powershell/module/microsoft.powershell.utility/write-progress) cmdlet 在 runbook 中无效，因为此 cmdlet 旨在供交互式用户使用。
 
 ## <a name="work-with-preference-variables"></a>使用首选项变量
 
-你可以在 runbook 中设置某些 Windows PowerShell [首选项变量](https://technet.microsoft.com/library/hh847796.aspx)，以控制发送到不同输出流的数据的响应。 下表列出了可在 Runbook 中使用的首选项变量及其默认值和有效值。 在 Azure 自动化外部的 Windows PowerShell 中使用时，首选项变量可使用其他值。
+你可以在 runbook 中设置某些 Windows PowerShell [首选项变量](/powershell/module/microsoft.powershell.core/about/about_preference_variables)，以控制发送到不同输出流的数据的响应。 下表列出了可在 Runbook 中使用的首选项变量及其默认值和有效值。 在 Azure 自动化外部的 Windows PowerShell 中使用时，首选项变量可使用其他值。
 
 | 变量 | 默认值 | 有效值 |
 |:--- |:--- |:--- |
@@ -198,7 +198,7 @@ Write-Verbose –Message "This is a verbose message."
 
 ### <a name="retrieve-runbook-output-and-messages-in-windows-powershell"></a>在 Windows PowerShell 中检索 Runbook 输出和消息
 
-在 Windows PowerShell 中，可以使用 [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) cmdlet 检索 Runbook 的输出和消息。 此 cmdlet 需要作业的 ID，还有一个名为 `Stream` 的参数（用于指定要检索的流）。 可以为此参数指定 Any 值，以检索作业的所有流。
+在 Windows PowerShell 中，可以使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) cmdlet 检索 Runbook 的输出和消息。 此 cmdlet 需要作业的 ID，还有一个名为 `Stream` 的参数（用于指定要检索的流）。 可以为此参数指定 Any 值，以检索作业的所有流。
 
 以下示例将启动一个示例 Runbook，然后等待该 Runbook 完成。 Runbook 执行完毕后，该脚本将从作业收集 Runbook 输出流。
 
@@ -260,6 +260,5 @@ Azure 自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics
 ## <a name="next-steps"></a>后续步骤
 
 * 若要使用 runbook，请参阅[在 Azure 自动化中管理 runbook](manage-runbooks.md)。
-* 有关 PowerShell 的详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
-* * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+* 有关 PowerShell 的详细信息，请参阅 [PowerShell 文档](/powershell/scripting/overview)。
+* * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

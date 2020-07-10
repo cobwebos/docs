@@ -5,11 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 2728964d5bbf83b42251068ffbdea223ff6bd85e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 92149289c6c422179ddb3562274020acf779f10b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171083"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186276"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>从 runbook“启用更改跟踪和清单”
 
@@ -21,7 +22,7 @@ ms.locfileid: "84171083"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 用于管理计算机的[自动化帐户](automation-offering-get-started.md)。
+* 用于管理计算机的[自动化帐户](./index.yml)。
 * [虚拟机](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和库存 
@@ -50,7 +51,7 @@ ms.locfileid: "84171083"
 
 ## <a name="install-and-update-modules"></a>安装和更新模块
 
-必须更新到最新的 Azure 模块并导入 [Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) 模块才能成功为 VM 启用更改跟踪和库存。
+必须更新到最新的 Azure 模块并导入 [Az.OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) 模块才能成功为 VM 启用更改跟踪和库存。
 
 1. 在你的自动化帐户中的“共享资源”下选择“模块” 。 
 2. 选择“更新 Azure 模块”以更新到最新版本的 Azure 模块。 

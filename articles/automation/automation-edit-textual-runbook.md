@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836832"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186344"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>在 Azure 自动化中编辑文本 runbook
 
@@ -56,7 +57,7 @@ Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布�
 1. 在文本编辑器的“画布”控件中，将光标置于要放置子 runbook 代码的位置。
 2. 展开“库”控件中的“资产”节点。
 3. 展开所需资产类型的节点。
-4. 右键单击要插入的资产名称，并选择“添加到画布”。 对于[变量资产](automation-variables.md)，请选择“将‘获取变量’添加到画布”或“将‘设置变量’添加到画布”，具体取决于是要获取变量还是要设置变量 。
+4. 右键单击要插入的资产名称，并选择“添加到画布”。 对于[变量资产](./shared-resources/variables.md)，请选择“将‘获取变量’添加到画布”或“将‘设置变量’添加到画布”，具体取决于是要获取变量还是要设置变量 。
 5. 请注意，此时会将资产的代码插入到 runbook 中。
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>使用 Windows PowerShell 编辑 Azure 自动化 runbook
@@ -95,9 +96,9 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [在 Azure 自动化中管理 runbook](manage-runbooks.md)。
 * [了解 PowerShell 工作流](automation-powershell-workflow.md)。
 * [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
-* [证书](automation-certificates.md)。
+* [证书](./shared-resources/certificates.md)。
 * [连接](automation-connections.md)。
-* [凭据](automation-credentials.md)。
-* [计划](automation-schedules.md)。
-* [变量](automation-variables.md)。
-* [PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* [凭据](./shared-resources/credentials.md)。
+* [计划](./shared-resources/schedules.md)。
+* [变量](./shared-resources/variables.md)。
+* [PowerShell cmdlet 参考](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

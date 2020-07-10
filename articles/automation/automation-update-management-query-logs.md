@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 146cf01d99ccc00a972c98128d8e93e1ed5fb690
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830763"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185698"
 ---
 # <a name="query-update-management-logs"></a>查询更新管理日志
 
@@ -193,7 +194,7 @@ Heartbeat
 1. 在控制面板中，打开 **Microsoft Monitoring Agent**。 在“Azure Log Analytics”选项卡上，代理会显示以下消息：“Microsoft Monitoring Agent 已成功连接到 Log Analytics。”
 2. 打开“Windows 事件日志”。 转到“应用程序和服务日志\Operations Manager”，搜索来自“服务连接器”源的事件 ID 3000 和事件 ID 5002。  这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
 
-如果代理无法与 Azure Monitor 日志通信且已配置为通过防火墙或代理服务器与 Internet 通信，请确认是否正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)。
+如果代理无法与 Azure Monitor 日志通信且已配置为通过防火墙或代理服务器与 Internet 通信，请确认是否正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../azure-monitor/learn/quick-collect-linux-computer.md)。
 
 > [!NOTE]
 > 如果 Linux 系统配置为与代理或 Log Analytics 网关通信，并且你要启用更新管理，请使用以下命令更新 `proxy.conf` 权限，以向 omiuser 组授予对文件的读取权限：
@@ -408,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure Monitor 日志的详细信息，请参阅 [Azure Monitor 日志](../log-analytics/log-analytics-log-searches.md)。
+* 有关 Azure Monitor 日志的详细信息，请参阅 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)。
 * 如需警报方面的帮助，请参阅[配置警报](automation-tutorial-update-management.md#configure-alerts)。

@@ -3,12 +3,12 @@ title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Microsoft
 description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337896"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186905"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -77,7 +77,7 @@ Azure 服务总线目前只对每个连接使用一个会话。 服务总线标�
 
 ![目标端口列表][4]
 
-如果防火墙阻止这些端口，.NET 客户端将失败，并出现 SocketException （"以某种方式，尝试通过其访问权限禁止访问套接字"）。 可以通过在连接字符串中设置来禁用该功能 `EnableAmqpLinkRedirect=false` ，这会强制客户端通过端口5671与远程服务进行通信。
+.NET 客户端将失败，并出现 SocketException ( "以其访问权限所禁止的方式尝试访问套接字" ) 如果这些端口被防火墙阻止。 可以通过在连接字符串中设置来禁用该功能 `EnableAmqpLinkRedirect=false` ，这会强制客户端通过端口5671与远程服务进行通信。
 
 
 ### <a name="links"></a>链接
@@ -222,10 +222,10 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”**），其
 | --- | --- | --- |
 | message-id |应用程序为此消息定义的自由格式标识符。 用于重复检测。 |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |应用程序定义的用户标识符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
-| to |应用程序定义的目标标识符，服务总线无法进行解释。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| to |应用程序定义的目标标识符，服务总线无法进行解释。 |[收件人](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[标签](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |应用程序定义的回复路径指示符，服务总线无法进行解释。 |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[Id](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-type |应用程序定义的内容类型指示符，服务总线无法进行解释。 |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |应用程序定义的内容编码指示符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
 | absolute-expiry-time |声明消息过期的绝对时刻。 在输入时忽略（观察到标头 TTL），在输出时授权具权威性。 |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -264,8 +264,8 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”**），其
 
 开始事务性工作。 控制器必须从协调器获取一个 `txn-id`。 通过发送 `declare` 类型消息完成此操作。 如果声明成功，协调器使用处置结果响应，其中包含分配的 `txn-id`。
 
-| 客户端（控制器） | | 服务总线（协调器） |
-| --- | --- | --- |
+| 客户端（控制器） | 方向 | 服务总线（协调器） |
+| :--- | :---: | :--- |
 | attach(<br/>name={link name},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
 |  | <------ | attach(<br/>name={link name},<br/>... ,<br/>target=Coordinator()<br/>) |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()**)}| ------> |  |
@@ -277,20 +277,20 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”**），其
 
 > 请注意：fail=true 表示事务回滚，fail=false 表示提交。
 
-| 客户端（控制器） | | 服务总线（协调器） |
-| --- | --- | --- |
+| 客户端（控制器） | 方向 | 服务总线（协调器） |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | . . . <br/>其他链接上的<br/>事务性工作<br/> . . . |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
-| | <------ | disposition( <br/> first=57, last=57, <br/>state = 已**接受（）**）|
+| | <------ | disposition( <br/> first=57, last=57, <br/>state =** ( # B1**) |
 
 #### <a name="sending-a-message-in-a-transaction"></a>在事务中发送消息
 
 所有事务工作都是使用携带 txn id 的事务传递状态完成的 `transactional-state` 。如果发送消息，则消息的传输帧会传输事务状态。 
 
-| 客户端（控制器） | | 服务总线（协调器） |
-| --- | --- | --- |
+| 客户端（控制器） | 方向 | 服务总线（协调器） |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{ payload }| ------> |  |
@@ -300,8 +300,8 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”**），其
 
 消息处置包括类似 `Complete` / `Abandon` / `DeadLetter` / `Defer` 的操作。 若要在事务中执行这些操作，请通过 disposition 传递 `transactional-state`。
 
-| 客户端（控制器） | | 服务总线（协调器） |
-| --- | --- | --- |
+| 客户端（控制器） | 方向 | 服务总线（协调器） |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ payload }|  
@@ -357,16 +357,16 @@ CBS 定义由消息传送基础结构所提供的虚拟管理节点（名为 $cb
 
 请求消息具有以下应用程序属性：
 
-| 键 | 可选 | 值类型 | 值内容 |
+| 密钥 | 可选 | 值类型 | 值内容 |
 | --- | --- | --- | --- |
-| operation |否 |字符串 |**put-token** |
-| 类型 |否 |字符串 |正在放置的令牌类型。 |
-| name |否 |字符串 |令牌应用到的“受众”。 |
+| operation |否 |string |**put-token** |
+| 类型 |否 |string |正在放置的令牌类型。 |
+| name |否 |string |令牌应用到的“受众”。 |
 | expiration |是 |timestamp |令牌过期时间。 |
 
 name ** 属性标识应与此令牌关联的实体。 在服务总线中，这是队列或主题/订阅的路径。 type ** 属性标识令牌类型：
 
-| 令牌类型 | 令牌说明 | 正文类型 | 说明 |
+| 令牌类型 | 令牌说明 | 正文类型 | 备注 |
 | --- | --- | --- | --- |
 | amqp:jwt |JSON Web 令牌 (JWT) |AMQP 值（字符串） |尚不可用。 |
 | amqp:swt |简单 Web 令牌 (SWT) |AMQP 值（字符串） |仅支持 AAD/ACS 颁发的 SWT 令牌 |
@@ -376,10 +376,10 @@ name ** 属性标识应与此令牌关联的实体。 在服务总线中，这�
 
 回复消息具有以下 application-properties** 值
 
-| 键 | 可选 | 值类型 | 值内容 |
+| 密钥 | 可选 | 值类型 | 值内容 |
 | --- | --- | --- | --- |
 | status-code |否 |int |HTTP 响应代码 **[RFC2616]**。 |
-| status-description |是 |字符串 |状态的说明。 |
+| status-description |是 |string |状态的说明。 |
 
 客户端可以针对消息传送基础结构中的任何实体重复调用 put-token**。 令牌的范围是当前客户端且定位点为当前连接，这意味着服务器在删除连接时会删除所有保留的令牌。
 
@@ -399,8 +399,8 @@ name ** 属性标识应与此令牌关联的实体。 在服务总线中，这�
 
 > 请注意：在建立此链接前，via-entity 和 destination-entity 都需要通过身份验证****。
 
-| 客户端 | | 服务总线 |
-| --- | --- | --- |
+| 客户端 | 方向 | 服务总线 |
+| :--- | :---: | :--- |
 | attach(<br/>name={link name},<br/>role=sender,<br/>source={client link ID},<br/>target =**{via-entity}**，<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
 | | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: c440862f1379983d4644fe99f33207456f747d23
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 25a306b3281079e8476a67ee70c2ca2cfffdd30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830933"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185732"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>将动态组与更新管理配合使用
 
@@ -20,7 +21,7 @@ ms.locfileid: "83830933"
 
 你可以通过 Azure 门户中的更新管理为 Azure 或非 Azure 计算机定义动态组。 请参阅[管理多个 Azure 虚拟机的更新](manage-update-multi.md)。
 
-动态组由 Azure 自动化在部署时计算的查询定义。 即使动态组查询检索到大量计算机，Azure 自动化一次最多只能处理 1000 台计算机。 请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#update-management)。 
+动态组由 Azure 自动化在部署时计算的查询定义。 即使动态组查询检索到大量计算机，Azure 自动化一次最多只能处理 1000 台计算机。 请参阅 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#update-management)。 
 
 > [!NOTE]
 > 如果希望更新 1000 台以上计算机，我们建议将更新拆分为多个更新计划。 

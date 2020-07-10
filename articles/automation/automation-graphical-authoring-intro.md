@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849750"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186327"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自动化中创作图形 Runbook
 
@@ -60,7 +61,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 参数集用于定义会接受特定 cmdlet 的值的必需参数和可选参数。 所有 cmdlet 都至少有一个参数集，有些有多个参数集。 如果 cmdlet 有多个参数集，必须先选择要使用的参数集，然后才能配置参数。 通过依次选择“参数集”和另一个参数集，可以更改活动使用的参数集。 在这种情况下，你已经配置的任何参数值都会丢失。
 
-在下面的示例中，[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 有三个参数集。 此示例使用一个名为 ListVirtualMachineInResourceGroupParamSet 的参数集（其中带有一个可选参数），用于返回资源组中的所有虚拟机。 此示例还使用 GetVirtualMachineInResourceGroupParamSet 参数集，用于指定要返回的虚拟机。 此参数集有两个强制参数和一个可选参数。
+在下面的示例中，[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 有三个参数集。 此示例使用一个名为 ListVirtualMachineInResourceGroupParamSet 的参数集（其中带有一个可选参数），用于返回资源组中的所有虚拟机。 此示例还使用 GetVirtualMachineInResourceGroupParamSet 参数集，用于指定要返回的虚拟机。 此参数集有两个强制参数和一个可选参数。
 
 ![参数集](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -263,11 +264,11 @@ Runbook 通过定义一个或多个输入参数来接受输入。 用户在 Runb
 
 ## <a name="handle-runbook-output"></a>处理 Runbook 输出
 
-图形创作将由任何没有传出链接的活动所创建的数据都保存到 [Runbook 输出](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages)。 输出将与 Runbook 作业一起保存，在该 Runbook 作为子 Runbook 使用的情况下，还可供父 Runbook 使用。
+图形创作将由任何没有传出链接的活动所创建的数据都保存到 [Runbook 输出](./automation-runbook-output-and-messages.md)。 输出将与 Runbook 作业一起保存，在该 Runbook 作为子 Runbook 使用的情况下，还可供父 Runbook 使用。
 
 ## <a name="work-with-powershell-expressions"></a>使用 PowerShell 表达式
 
-图形创作的一个优点是，你可以在对 PowerShell 了解最少的情况下创建 Runbook。 但目前，确实需要了解一点 PowerShell，以便填充某些[参数值](#use-activities)和设置[链接条件](#use-links-for-workflow)。 此部分快速介绍了 PowerShell 表达式。 [使用 Windows PowerShell 编写脚本](https://docs.microsoft.com/powershell/scripting/overview)中提供了 PowerShell 的完整详细信息。
+图形创作的一个优点是，你可以在对 PowerShell 了解最少的情况下创建 Runbook。 但目前，确实需要了解一点 PowerShell，以便填充某些[参数值](#use-activities)和设置[链接条件](#use-links-for-workflow)。 此部分快速介绍了 PowerShell 表达式。 [使用 Windows PowerShell 编写脚本](/powershell/scripting/overview)中提供了 PowerShell 的完整详细信息。
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>使用 PowerShell 表达式作为数据源
 
@@ -322,7 +323,7 @@ Runbook 可以在更复杂的表达式中使用活动输出，如下所示。 �
 
 ### <a name="compare-values"></a>比较值
 
-使用[比较运算符](https://technet.microsoft.com/library/hh847759.aspx)来比较值或确定值是否与指定的模式匹配。 比较操作返回 True 或 False 值。
+使用[比较运算符](/powershell/module/microsoft.powershell.core/about/about_comparison_operators)来比较值或确定值是否与指定的模式匹配。 比较操作返回 True 或 False 值。
 
 例如，以下条件确定活动 `Get-AzureVM` 中的虚拟机目前是否已停止。
 
@@ -336,7 +337,7 @@ $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-可以使用[逻辑运算符](https://technet.microsoft.com/library/hh847789.aspx)（如 `-and` 或 `-or`）在 Runbook 中联接多个条件。 例如，以下条件检查上一示例中的虚拟机是处于“已停止”状态，还是处于“正在停止”状态。
+可以使用[逻辑运算符](/powershell/module/microsoft.powershell.core/about/about_logical_operators)（如 `-and` 或 `-or`）在 Runbook 中联接多个条件。 例如，以下条件检查上一示例中的虚拟机是处于“已停止”状态，还是处于“正在停止”状态。
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -344,7 +345,7 @@ $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 
 ### <a name="use-hashtables"></a>使用哈希表
 
-[哈希表](https://technet.microsoft.com/library/hh847780.aspx)是名称/值对，对于返回一组值很有用。 你可能还会发现，哈希表有时亦称为“字典”。 某些活动的属性需要使用哈希表，而不是简单的值。
+[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)是名称/值对，对于返回一组值很有用。 你可能还会发现，哈希表有时亦称为“字典”。 某些活动的属性需要使用哈希表，而不是简单的值。
 
 使用以下语法创建哈希表。 它可以包含任意数量的条目，但每个条目都由名称和值定义。
 
@@ -372,7 +373,7 @@ $h
 
 ## <a name="authenticate-to-azure-resources"></a>访问 Azure 资源所需的身份验证
 
-Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](automation-create-runas-account.md)（亦称为“服务主体”）是自动化 Runbook 用于访问订阅中的 Azure 资源管理器资源的默认机制。 通过向画布添加使用 PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) cmdlet 的 `AzureRunAsConnection` 连接资产，可以将此功能添加到图形 Runbook。 还可以添加 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。 以下示例展示了此方案。
+Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](./manage-runas-account.md)（亦称为“服务主体”）是自动化 Runbook 用于访问订阅中的 Azure 资源管理器资源的默认机制。 通过向画布添加使用 PowerShell [Get-AutomationConnection](/system-center/sma/manage-global-assets) cmdlet 的 `AzureRunAsConnection` 连接资产，可以将此功能添加到图形 Runbook。 还可以添加 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。 以下示例展示了此方案。
 
 ![运行方式身份验证活动](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
@@ -389,7 +390,7 @@ Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进
 
 对于参数字段 APPLICATIONID、CERTIFICATETHUMBPRINT 和 TENANTID，指定字段路径的属性名，因为活动输出的是包含多个属性的对象。 否则，当 Runbook 执行时，它会在尝试进行身份验证时失败。 这是你在通过运行方式帐户对 Runbook 进行身份验证时必须满足的最低要求。
 
-一些订阅者使用 [Azure AD 用户帐户](automation-create-aduser-account.md)创建自动化帐户，用于管理 Azure 经典部署，或用于 Azure 资源管理器资源。 为了保持这些订阅者的向后兼容性，Runbook 中使用的身份验证机制是包含[凭据资产](automation-credentials.md)的 `Add-AzureAccount` cmdlet。 资产表示有权访问 Azure 帐户的 Active Directory 用户。
+一些订阅者使用 [Azure AD 用户帐户](./shared-resources/credentials.md)创建自动化帐户，用于管理 Azure 经典部署，或用于 Azure 资源管理器资源。 为了保持这些订阅者的向后兼容性，Runbook 中使用的身份验证机制是包含[凭据资产](./shared-resources/credentials.md)的 `Add-AzureAccount` cmdlet。 资产表示有权访问 Azure 帐户的 Active Directory 用户。
 
 可以为图形 Runbook 启用此功能，具体方法是将凭据资产添加到画布中，后加使用凭据资产作为输入的 `Add-AzureAccount` 活动。 请参阅以下示例。
 
@@ -434,4 +435,4 @@ Azure 自动化中的每个图形 Runbook 都有草稿版和发布版。 只能�
 * 若要开始使用图形 Runbook，请参阅[教程：创建图形 Runbook](learn/automation-tutorial-runbook-graphical.md)。
 * 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)。
 * 若要了解如何使用自动化运行方式帐户进行身份验证，请参阅[运行方式帐户](automation-security-overview.md#run-as-account)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

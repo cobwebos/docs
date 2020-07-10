@@ -5,11 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343048"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186157"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自动化数据
 
@@ -17,7 +18,7 @@ ms.locfileid: "84343048"
 
 ## <a name="tls-12-enforcement-for-azure-automation"></a>Azure 自动化的 TLS 1.2 强制实施
 
-为了确保传输到 Azure 自动化的数据的安全性，我们强烈建议你配置传输层安全性（TLS）1.2 的使用。 下面列出了通过 HTTPS 与自动化服务进行通信的方法或客户端：
+为了保证数据在传输到 Azure 自动化时的安全性，我们强烈建议你配置 (TLS) 1.2 的传输层安全性。 下面列出了通过 HTTPS 与自动化服务进行通信的方法或客户端：
 
 * Webhook 调用
 
@@ -36,9 +37,9 @@ ms.locfileid: "84343048"
 |平台/语言 | 支持 | 更多信息 |
 | --- | --- | --- |
 |Linux | Linux 分发版往往依赖于 [OpenSSL](https://www.openssl.org) 来提供 TLS 1.2 支持。  | 请检查 [OpenSSL 变更日志](https://www.openssl.org/news/changelog.html)，确认你的 OpenSSL 版本是否受支持。|
-| Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
-| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认你仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 默认情况下支持但不启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
+| Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](/windows-server/security/tls/tls-registry-settings)。  |
+| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认你仍在使用[默认设置](/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 默认情况下支持但不启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](/windows-server/security/tls/tls-registry-settings)页。  |
 
 ## <a name="data-retention"></a>数据保留
 
@@ -50,7 +51,7 @@ ms.locfileid: "84343048"
 |:--- |:--- |
 | 帐户 |在帐户被用户删除 30 天后将其永久删除。 |
 | 资产 |在资产被用户删除 30 天后或者在包含该资产的帐户被用户删除 30 天后将其永久删除。 |
-| DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 从自动化帐户中取消注册 DSC 节点 30 天后，将永久删除该节点。 在用户删除保存节点的帐户 30 天后，也会永久删除该节点。 |
+| DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 从自动化帐户中取消注册 DSC 节点 30 天后，将永久删除该节点。 在用户删除保存节点的帐户 30 天后，也会永久删除该节点。 |
 | 作业 |作业在修改之后（例如在作业完成、停止或暂停之后）删除，并在 30 天后永久删除。 |
 | 模块 |在模块被用户删除 30 天后或者在包含该模块的帐户被用户删除 30 天后将其永久删除。 |
 | 节点配置/MOF 文件 |生成新节点配置 30 天后，将永久删除旧节点配置。 |
@@ -65,7 +66,7 @@ ms.locfileid: "84343048"
 
 ### <a name="runbooks"></a>Runbook
 
-可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 将 Runbook 导出到脚本文件。 可以将这些脚本文件导入到另一个自动化帐户中，如 [在 Azure 自动化中管理 runbook](manage-runbooks.md) 中所述。
+可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 将 Runbook 导出到脚本文件。 可以将这些脚本文件导入到另一个自动化帐户中，如 [在 Azure 自动化中管理 runbook](manage-runbooks.md) 中所述。
 
 ### <a name="integration-modules"></a>集成模块
 
@@ -79,8 +80,7 @@ ms.locfileid: "84343048"
 
 ### <a name="dsc-configurations"></a>DSC 配置
 
-可以使用 Azure 门户或 Windows PowerShell 中的 [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
-) cmdlet 将 DSC 配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
+可以使用 Azure 门户或 Windows PowerShell 中的 [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) cmdlet 将 DSC 配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure 自动化中的异地复制
 
@@ -102,4 +102,4 @@ ms.locfileid: "84343048"
 
 * 若要了解有关 Azure 自动化中的安全资产的详细信息，请参阅[加密 Azure 自动化中的安全资产](automation-secure-asset-encryption.md)。
 
-* 若要了解有关地域复制的详细信息，请参阅[创建和使用活动异地复制](../sql-database/sql-database-active-geo-replication.md)。
+* 若要了解有关地域复制的详细信息，请参阅[创建和使用活动异地复制](../azure-sql/database/active-geo-replication-overview.md)。

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: de46f4e2fd53b888981076256fda28a2a14995af
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837036"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186531"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>在 Azure Automation State Configuration 中编译 DSC 配置
 
@@ -26,7 +27,7 @@ ms.locfileid: "83837036"
   - 大规模使用节点和非节点数据
   - 性能显著提高
 
-还可以将 Azure 资源管理器模板与 Azure Desired State Configuration (DSC) 扩展结合使用，将配置推送到 Azure VM。 Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM 上运行的 DSC 配置。 有关使用 Azure 资源管理器模板的编译详细信息，请参阅 [Desired State Configuration 扩展与 Azure 资源管理器模板](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)。 
+还可以将 Azure 资源管理器模板与 Azure Desired State Configuration (DSC) 扩展结合使用，将配置推送到 Azure VM。 Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM 上运行的 DSC 配置。 有关使用 Azure 资源管理器模板的编译详细信息，请参阅 [Desired State Configuration 扩展与 Azure 资源管理器模板](../virtual-machines/extensions/dsc-template.md#details)。 
 
 ## <a name="compile-a-dsc-configuration-in-azure-state-configuration"></a>在 Azure State Configuration 中编译 DSC 配置
 
@@ -62,7 +63,7 @@ $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 
 ### <a name="declare-basic-parameters"></a>声明基本参数
 
-DSC 配置中的参数声明（包括参数类型和属性）的工作方式与 Azure 自动化 Runbook 中相同。 若要了解有关 Runbook 参数的详细信息，请参阅 [Starting a runbook in Azure Automation](automation-starting-a-runbook.md)（在 Azure 自动化中启动 Runbook）。
+DSC 配置中的参数声明（包括参数类型和属性）的工作方式与 Azure 自动化 Runbook 中相同。 若要了解有关 Runbook 参数的详细信息，请参阅 [Starting a runbook in Azure Automation](./start-runbooks.md)（在 Azure 自动化中启动 Runbook）。
 
 以下示例使用 `FeatureName` 和 `IsPresent` 参数来确定编译期间在 ParametersExample.sample 节点配置中生成的属性值。
 
@@ -122,7 +123,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 借助复合资源功能，可将 DSC 配置用作某个配置中的嵌套资源。 使用此功能可以将多个配置应用于单个资源。 请参阅[复合资源：将 DSC 配置用作资源](/powershell/scripting/dsc/resources/authoringresourcecomposite)，了解有关复合资源的详细信息。
 
 > [!NOTE]
-> 为了正确编译包含复合资源的配置，必须先将复合所依赖的任何 DSC 资源导入到 Azure 自动化中。 添加 DSC 复合资源与将任何 PowerShell 模块添加到 Azure 自动化无差异。 [管理 Azure 自动化中的模块](/azure/automation/shared-resources/modules)一文中介绍了此过程。
+> 为了正确编译包含复合资源的配置，必须先将复合所依赖的任何 DSC 资源导入到 Azure 自动化中。 添加 DSC 复合资源与将任何 PowerShell 模块添加到 Azure 自动化无差异。 [管理 Azure 自动化中的模块](./shared-resources/modules.md)一文中介绍了此过程。
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>在 Azure 自动化中编译配置的同时管理 ConfigurationData
 
@@ -183,10 +184,10 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 Azure Automation State Configuration 和 Runbook 中的资产引用是相同的。 有关详细信息，请参阅以下主题：
 
-- [证书](automation-certificates.md)
+- [证书](./shared-resources/certificates.md)
 - [连接](automation-connections.md)
-- [凭据](automation-credentials.md)
-- [变量](automation-variables.md)
+- [凭据](./shared-resources/credentials.md)
+- [变量](./shared-resources/variables.md)
 
 #### <a name="credential-assets"></a>凭据资产
 
@@ -277,7 +278,6 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)。
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译 DSC 配置](automation-dsc-compile.md)。
-- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)。
 - 有关如何在持续部署管道中使用 State Configuration 的示例，请参阅[使用 Chocolatey 设置持续部署](automation-dsc-cd-chocolatey.md)。

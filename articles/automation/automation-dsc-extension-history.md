@@ -9,11 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836917"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186412"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>使用 Azure Desired State Configuration 扩展版本历史记录
 
@@ -98,7 +99,7 @@ ms.locfileid: "83836917"
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
 - **新功能：**
-  - 进行了 Bug 修复和改进，简化了通过门户 UI 以及资源管理器模板使用 DSC Azure 自动化的过程。 有关详细信息，请参阅 DSC 扩展文档中的[默认配置脚本](/azure/virtual-machines/extensions/dsc-overview)。
+  - 进行了 Bug 修复和改进，简化了通过门户 UI 以及资源管理器模板使用 DSC Azure 自动化的过程。 有关详细信息，请参阅 DSC 扩展文档中的[默认配置脚本](../virtual-machines/extensions/dsc-overview.md)。
 
 ### <a name="version-226"></a>版本 2.26
 
@@ -249,6 +250,6 @@ ms.locfileid: "83836917"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 PowerShell DSC 的详细信息，请查看 [PowerShell 文档中心](/powershell/scripting/dsc/overview/overview)。
-- 查看[适用于 DSC 扩展的资源管理器模板](/azure/virtual-machines/extensions/dsc-template)。
+- 查看[适用于 DSC 扩展的资源管理器模板](../virtual-machines/extensions/dsc-template.md)。
 - 要查看可使用 PowerShell DSC 管理的更多功能和资源，请浏览 [PowerShell 库](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)。
-- 有关将敏感参数传入配置的详细信息，请参阅[使用 DSC 扩展处理程序安全管理凭据](/azure/virtual-machines/extensions/dsc-credentials)。
+- 有关将敏感参数传入配置的详细信息，请参阅[使用 DSC 扩展处理程序安全管理凭据](../virtual-machines/extensions/dsc-credentials.md)。

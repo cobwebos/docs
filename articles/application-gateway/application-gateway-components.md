@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 46ef67e5ede1ea41469a8dcc78244e74c0bffc45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254321"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186752"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -144,7 +144,7 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 
 默认情况下，应用程序网关会监视其后端池中所有资源的运行状况，并自动删除不正常的资源。 然后，它会监视不正常的实例，当这些实例恢复可用状态并能响应运行状况探测时，应用程序网关就会将它们添加回到正常的后端池中。
 
-除了使用默认的运行状况探测监视以外，还可以根据应用程序的要求自定义运行状况探测。 使用自定义探测可以更精细地控制运行状况监视。 使用自定义探测时，可以配置探测间隔、要测试的 URL 和路径，以及在将后端池实例标记为不正常之前可接受的失败响应次数。 我们建议配置自定义探测来监视每个后端池的运行状况。
+除了使用默认的运行状况探测监视以外，还可以根据应用程序的要求自定义运行状况探测。 使用自定义探测可以更精细地控制运行状况监视。 使用自定义探测时，可以配置自定义主机名、URL 路径、探测间隔，以及在将后端池实例标记为不正常之前可接受的失败响应数、自定义状态代码和响应正文匹配等。建议你将自定义探测配置为监视每个后端池的运行状况。
 
 有关详细信息，请参阅[监视应用程序网关的运行状况](../application-gateway/application-gateway-probe-overview.md)。
 

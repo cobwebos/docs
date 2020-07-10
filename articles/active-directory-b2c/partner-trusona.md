@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78de242cb6fd1d670dc9564a2725070b7424b5b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385546"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170099"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>将 Trusona 与 Azure Active Directory B2C 集成
 
-Trusona 是独立的软件供应商（ISV）提供商，可通过启用无密码 authentication、多重身份验证和数字许可扫描来帮助保护登录。 本文介绍如何在 Azure AD B2C 中将 Trusona 添加为标识提供程序，以启用无密码 authentication。
+Trusona 是独立的软件供应商 (ISV) 提供商，可通过启用无密码 authentication、多重身份验证和数字许可扫描来帮助保护登录。 本文介绍如何在 Azure AD B2C 中将 Trusona 添加为标识提供程序，以启用无密码 authentication。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 
@@ -40,15 +40,14 @@ Trusona 是独立的软件供应商（ISV）提供商，可通过启用无密码
 
 ![Trusona 体系结构图](media/partner-trusona/trusona-architecture-diagram.png)
 
-
-|  |  |
+| 步骤 | 说明 |
 |------|------|
 |1     | 用户尝试登录或注册应用程序。 用户通过 Azure AD B2C 注册和登录策略进行身份验证。 注册过程中，将使用用户以前在 Trusona 应用中验证的电子邮件地址。     |
-|2     | Azure B2C 使用隐式流将用户重定向到 Trusona OpenID Connect （OIDC）标识提供者。     |
+|2     | Azure B2C 使用隐式流将用户重定向到 Trusona OpenID Connect (OIDC) 标识提供者。     |
 |3     | 对于基于桌面 PC 的登录，Trusona 显示唯一的无状态、动态和动态 QR 码，以便使用 Trusona 应用进行扫描。 对于基于移动的登录名，Trusona 使用 "深层链接" 打开 Trusona 应用。 这两种方法用于设备，最终用户发现。     |
 |4     | 用户通过 Trusona 应用扫描显示的 QR 码。     |
 |5     | 用户的帐户位于 Trusona 云服务中，并已准备好身份验证。     |
-|6     | Trusona 云服务通过发送到 Trusona 应用的推送通知向用户发出身份验证质询：<br>a. 系统将提示用户提供身份验证质询。 <br> b. 用户选择接受或拒绝质询。 <br> c. 要求用户使用 OS 安全（例如，生物识别、密码、PIN 或模式），通过安全 Enclave/受信任执行环境中的私钥来确认并签署质询。 <br> d. Trusona 应用程序会实时基于身份验证的参数生成动态抗重播有效负载。 <br> e. 整个响应通过安全 Enclave/受信任执行环境中的私钥进行签名，并返回到 Trusona 云服务进行验证。      |
+|6     | Trusona 云服务通过发送到 Trusona 应用的推送通知向用户发出身份验证质询：<br>a. 系统将提示用户提供身份验证质询。 <br> b. 用户选择接受或拒绝质询。 <br> c. 要求用户使用 OS security (例如，生物识别、密码、PIN 或模式) ，通过安全 Enclave/受信任执行环境中的私钥来确认和签署质询。 <br> d. Trusona 应用程序会实时基于身份验证的参数生成动态抗重播有效负载。 <br> e. 整个响应 (通过安全 Enclave/受信任执行环境中的私钥) ，并返回到 Trusona 云服务进行验证。      |
 |7     |  Trusona 云服务将用户重定向回使用 id_token 的启动应用程序。 Azure AD B2C 使用标识提供程序安装过程中配置的 Trusona 的已发布 OpenID 配置验证 id_token。    |
 |  |  |
 
@@ -68,12 +67,12 @@ Trusona 是独立的软件供应商（ISV）提供商，可通过启用无密码
 
 7. 选择 "**创建 OpenID Connect 集成**"。
 
-8. 提供所选的**名称**，并在 "**客户端重定向主机" 字段**中使用以前提供的域信息（例如 Contoso）。  
+8. 提供你选择的**名称**，并使用之前提供的域信息 (例如，Contoso) **客户端重定向主机 "字段**中。  
 
    > [!NOTE]
    > Azure Active Directory 的初始域名用作客户端重定向主机。
 
-9. 按照[Trusona 集成指南](https://docs.trusona.com/integrations/aad-b2c-integration/)中的说明进行操作。 出现提示时，请使用上一步中提到的初始域名（例如 Contoso）。  
+9. 按照[Trusona 集成指南](https://docs.trusona.com/integrations/aad-b2c-integration/)中的说明进行操作。 出现提示时，使用初始域名 (例如，Contoso) 在上一步中引用。  
 
 ## <a name="integrate-with-azure-ad-b2c"></a>与 Azure AD B2C 集成
 
@@ -92,15 +91,15 @@ Trusona 是独立的软件供应商（ISV）提供商，可通过启用无密码
 
 3. 选择 "**标识提供者**"。
 
-4. 选择 **添加** 。
+4. 选择“添加”。
 
 ### <a name="configure-an-identity-provider"></a>配置标识提供者  
 
-1. 选择**标识提供者类型**  >  **OpenID connect （预览版）**。
+1. 选择 "**标识提供者类型**  >  **OpenID 连接 (预览") **。
 
 2. 填写表单以设置标识提供者：  
 
-   | Property | “值”  |
+   | 属性 | 值  |
    | :--- | :--- |
    | 元数据 URL | `https://gateway.trusona.net/oidc/.well-known/openid-configuration`|
    | 客户端 ID | 将通过电子邮件发送给你的 Trusona |
@@ -114,7 +113,7 @@ Trusona 是独立的软件供应商（ISV）提供商，可通过启用无密码
 
 5. 填写表单以映射标识提供者：
 
-   | Property | “值”  |
+   | 属性 | 值  |
    | :--- | :--- |
    | UserID | Sub  |
    | 显示名称 | nickname |
@@ -128,7 +127,7 @@ Trusona 是独立的软件供应商（ISV）提供商，可通过启用无密码
 
 1. 现在，应会看到 Trusona 作为 B2C 标识提供者中列出的**新 OpenID Connect 标识提供者**。
 
-2. 从左侧导航窗格中选择 "**用户流（策略）** "。
+2. 从左侧导航窗格中选择 "**用户流" (策略 ") ** 。
 
 3. 选择 "**添加**  >  **新用户流**  >  **注册并登录"**。
 

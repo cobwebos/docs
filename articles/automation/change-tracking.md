@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555028"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185579"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>更改跟踪和库存概述
 
@@ -48,11 +49,11 @@ ms.locfileid: "84555028"
 
 - 不会在 Windows Server 2016 Core RS3 计算机上收集修补程序更新。
 
-- 即使未发生任何更改，Linux 守护程序也可能会显示已更改的状态。 发生此问题的原因 `SvcRunLevels` 是捕获 Azure Monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange)日志中的数据的方式。
+- 即使未发生任何更改，Linux 守护程序也可能会显示已更改的状态。 发生此问题的原因 `SvcRunLevels` 是捕获 Azure Monitor [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange)日志中的数据的方式。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-满足 Log Analytics 代理要求的所有操作系统都支持更改跟踪和库存。 官方操作系统版本为 Windows Server 2008 SP1 或更高版本以及 Windows 7 SP1 或更高版本。 许多 Linux 操作系统也支持此功能。 有关支持 Log Analytics 的操作系统，请参阅[Log Analytics 代理概述](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
+满足 Log Analytics 代理要求的所有操作系统都支持更改跟踪和库存。 官方操作系统版本为 Windows Server 2008 SP1 或更高版本以及 Windows 7 SP1 或更高版本。 许多 Linux 操作系统也支持此功能。 有关支持 Log Analytics 的操作系统，请参阅[Log Analytics 代理概述](../azure-monitor/platform/log-analytics-agent.md)。
 
 若要了解 TLS 1.2 的客户端要求，请参阅[Azure 自动化的 TLS 1.2 强制执行](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
@@ -90,7 +91,7 @@ ms.locfileid: "84555028"
 
 ## <a name="fim-support-in-azure-security-center"></a>Azure 安全中心中的 FIM 支持
 
-更改跟踪和库存功能可利用 [Azure 安全中心文件完整性监视 (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)。 虽然 FIM 仅监视文件和注册表，但完整的更改跟踪和库存功能还包括以下内容的跟踪：
+更改跟踪和库存功能可利用 [Azure 安全中心文件完整性监视 (FIM)](../security-center/security-center-file-integrity-monitoring.md)。 虽然 FIM 仅监视文件和注册表，但完整的更改跟踪和库存功能还包括以下内容的跟踪：
 
 - 软件更改
 - Microsoft 服务
@@ -105,7 +106,7 @@ ms.locfileid: "84555028"
 
 ## <a name="tracking-of-file-content-changes"></a>跟踪文件内容更改
 
-更改跟踪和清单允许您查看 Windows 或 Linux 文件的内容。 对于文件的每个更改，更改跟踪和库存功能将文件内容存储在 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)中。 跟踪文件时，可以在更改前后查看其内容。 文件内容可以是内联的，也可以并排查看。 
+更改跟踪和清单允许您查看 Windows 或 Linux 文件的内容。 对于文件的每个更改，更改跟踪和库存功能将文件内容存储在 [Azure 存储帐户](../storage/common/storage-account-create.md)中。 跟踪文件时，可以在更改前后查看其内容。 文件内容可以是内联的，也可以并排查看。 
 
 ![查看文件中的更改](./media/change-tracking/view-file-changes.png)
 
@@ -170,7 +171,7 @@ ms.locfileid: "84555028"
 |服务|250|
 |守护程序|250|
 
-使用更改跟踪和库存的计算机的平均 Log Analytics 数据用量为每月大约 40 MB，具体取决于环境。 使用 "Log Analytics" 工作区的 "使用情况和估计成本" 功能，可以在使用情况图表中查看更改跟踪和库存的数据引入。 使用此数据视图可以评估你的数据使用情况，并确定它如何影响你的帐单。 请参阅[了解自己的使用情况和预估成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)
+使用更改跟踪和库存的计算机的平均 Log Analytics 数据用量为每月大约 40 MB，具体取决于环境。 使用 "Log Analytics" 工作区的 "使用情况和估计成本" 功能，可以在使用情况图表中查看更改跟踪和库存的数据引入。 使用此数据视图可以评估你的数据使用情况，并确定它如何影响你的帐单。 请参阅[了解自己的使用情况和预估成本](../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs)
 
 ### <a name="microsoft-service-data"></a>Microsoft 服务数据
 

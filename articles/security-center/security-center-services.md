@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: memildin
-ms.openlocfilehash: 4d048bb348b8093db7d3bf92ef0fc93aead35055
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 060db99cf0163876b68eeee2cff8ef2d03e2b5b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762286"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187007"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -41,12 +41,11 @@ ms.locfileid: "84762286"
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|标准|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|标准|
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|标准|
-|自适应网络控制|✔|✔|-|标准|
 |[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|标准|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|-|-|-|标准|
-|缺少 OS 修补程序评估|✔|✔|✔|免费|
-|安全配置错误评估|✔|✔|✔|免费|
-|[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|免费|
+|缺少 OS 修补程序评估|✔|✔|✔|Free|
+|安全配置错误评估|✔|✔|✔|Free|
+|[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Free|
 |磁盘加密评估|✔|✔|-|免费|
 |第三方漏洞评估|✔|-|-|免费|
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|免费|
@@ -70,8 +69,8 @@ ms.locfileid: "84762286"
 |自适应网络控制|✔|✔|-|标准|
 |[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|标准|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|✔|✔|✔|标准|
-|缺少 OS 修补程序评估|✔|✔|✔|免费|
-|安全配置错误评估|✔|✔|✔|免费|
+|缺少 OS 修补程序评估|✔|✔|✔|Free|
+|安全配置错误评估|✔|✔|✔|Free|
 |[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|免费|
 |磁盘加密评估|✔|✔|-|免费|
 |第三方漏洞评估|✔|-|-|免费|
@@ -106,7 +105,7 @@ ms.locfileid: "84762286"
  **\*** 覆盖状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中提供。 这些数据不会在 Azure 安全中心门户中反映。
 
 > [!NOTE]
-> Windows Server 2008 R2 虚拟机上的 System Center Endpoint Protection （SCEP）检测要求在 PowerShell （3.0 或更高版本）后安装 SCEP。
+> Windows Server 2008 R2 虚拟机上的 System Center Endpoint Protection (SCEP) 检测要求在 PowerShell (3.0 版或更高版本的) 后安装 SCEP。
 
 
 ## <a name="next-steps"></a>后续步骤

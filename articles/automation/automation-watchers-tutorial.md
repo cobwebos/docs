@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830576"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185647"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>通过观察程序任务跟踪更新的文件
 
@@ -19,7 +20,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务查找事件并
 > Azure 中国世纪互联不支持观察程序任务。
 
 > [!IMPORTANT]
-> 从 2020 年 5 月开始，支持使用 Azure 逻辑应用监视事件，计划定期任务和触发操作。 请参阅[使用 Azure 逻辑应用计划和运行反复出现的自动化任务、流程和工作流](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows)。
+> 从 2020 年 5 月开始，支持使用 Azure 逻辑应用监视事件，计划定期任务和触发操作。 请参阅[使用 Azure 逻辑应用计划和运行反复出现的自动化任务、流程和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
 本教程引导你创建一个观察程序任务来监视何时向目录中添加了新文件。 学习如何：
 
@@ -36,7 +37,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务查找事件并
 完成本教程需要以下各项：
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [自动化帐户](automation-offering-get-started.md)，用于保存观察程序、操作 runbook 和观察程序任务。
+* [自动化帐户](./index.yml)，用于保存观察程序、操作 runbook 和观察程序任务。
 * 一个[混合 runbook 辅助角色](automation-hybrid-runbook-worker.md)，观察程序任务在其中运行。
 * PowerShell Runbook。 观察程序任务不支持 PowerShell 工作流 Runbook。
 
@@ -60,7 +61,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务查找事件并
 
 ## <a name="create-an-automation-variable"></a>创建自动化变量
 
-使用一个[自动化变量](automation-variables.md)来存储前面的 runbook 从每个文件读取和存储的时间戳。
+使用一个[自动化变量](./shared-resources/variables.md)来存储前面的 runbook 从每个文件读取和存储的时间戳。
 
 1. 在“共享资源”下选择“变量”，并单击“+ 添加变量”  。
 1. 输入“Watch-NewFileTimestamp”作为名称。

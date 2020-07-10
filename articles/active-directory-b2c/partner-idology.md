@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d34bb14dd0f474ff9350fec513c02fbb470d6738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7567302be8d717cda3627af303128bfb704bd014
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385648"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170133"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>有关配置 IDology 与 Azure Active Directory B2C 的教程 
 
 在此示例教程中，我们提供了有关如何将 Azure AD B2C 与[IDology](https://www.idology.com/solutions/)集成的指导。 IDology 是具有多个解决方案的标识验证和校对提供程序。 在此示例中，我们将通过 IDology 介绍 ExpectID 解决方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 
@@ -41,7 +41,7 @@ IDology 集成包括以下组件：
 
 ![IDology 体系结构图](media/partner-idology/idology-architecture-diagram.png)
 
-|      |      |
+| 步骤 | 说明 |
 |------|------|
 |1     | 用户进入登录页。 |
 |2     | 用户选择注册选项以创建新帐户，并将信息输入到页面中。 Azure AD B2C 收集用户属性。 |
@@ -75,7 +75,7 @@ IDology 集成包括以下组件：
 
 可以[在 Azure 中的应用服务中配置](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)应用程序设置。 使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
 
-| 应用程序设置 | 源 | 说明 |
+| 应用程序设置 | 源 | 备注 |
 | :-------- | :------------| :-----------|
 |IdologySettings:ApiUsername | IDology 帐户配置 |     |
 |IdologySettings:ApiPassword | IDology 帐户配置 |     |
@@ -125,7 +125,7 @@ IDology 集成包括以下组件：
 
 3. 选择 "**运行用户流**"，然后选择设置：
 
-   1. **应用程序**-选择注册的应用（示例为 JWT）。
+   1. **应用程序**-选择注册的应用 (示例为 JWT) 。
 
    1. **回复 url** -选择 "**重定向 url**"。
 

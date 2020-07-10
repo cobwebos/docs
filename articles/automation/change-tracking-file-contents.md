@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781185"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185596"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>管理更改跟踪和清单
 
@@ -78,10 +79,10 @@ ms.locfileid: "84781185"
 
 ## <a name="track-file-contents"></a>跟踪文件内容
 
-使用文件内容跟踪可以在发生跟踪的更改之前和之后查看文件的内容。 每次更改后，该功能会将文件内容保存到[存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。 下面是跟踪文件内容所要遵循的一些规则：
+使用文件内容跟踪可以在发生跟踪的更改之前和之后查看文件的内容。 每次更改后，该功能会将文件内容保存到[存储帐户](../storage/common/storage-account-overview.md)。 下面是跟踪文件内容所要遵循的一些规则：
 
 * 若要存储文件内容，需要有一个使用资源管理器部署模型的标准存储帐户。 
-* 不要使用高级和经典部署模型存储帐户。 请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
+* 不要使用高级和经典部署模型存储帐户。 请参阅[关于 Azure 存储帐户](../storage/common/storage-account-create.md)。
 * 只能将存储帐户连接到一个自动化帐户。
 * 必须在自动化帐户中启用[更改跟踪和清单](change-tracking.md)。
 
@@ -129,7 +130,7 @@ ms.locfileid: "84781185"
 4. 单击“+ 添加”以添加要跟踪的新注册表项。
 5. 在“添加要进行更改跟踪的 Windows 注册表”窗格中，输入要跟踪的项的信息，然后单击“保存”。 下表定义了可在信息中使用的属性。
 
-    |properties  |描述  |
+    |properties  |说明  |
     |---------|---------|
     |已启用     | 如果应用了设置，则为 True，否则为 False。        |
     |项名称     | 要跟踪的注册表项的易记名称。        |
@@ -169,7 +170,7 @@ ms.locfileid: "84781185"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关作用域配置的信息，请参阅[限制更改跟踪和清单部署范围](automation-scope-configurations-change-tracking.md)。
-* 如果需要搜索存储在 Log Analytics 工作区中的日志，请参阅 [Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)。
+* 如果需要搜索存储在 Log Analytics 工作区中的日志，请参阅 [Azure Monitor 日志中的日志搜索](../azure-monitor/log-query/log-query-overview.md)。
 * 如果已完成部署，请参阅[取消工作区与自动化帐户的关联更改跟踪和清单](automation-unlink-workspace-change-tracking.md)。
 * 若要从更改跟踪和清单中删除 Vm，请参阅[从更改跟踪和清单中删除 vm](automation-remove-vms-from-change-tracking.md)。
 * 若要排查功能错误，请参阅[排查更改跟踪和库存的问题](troubleshoot/change-tracking.md)。

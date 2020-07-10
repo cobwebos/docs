@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361670"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185630"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>从 Webhook 启动 Runbook
 
-使用 Webhook 可使外部服务在 Azure 自动化中通过单个 HTTP 请求启动特定的 Runbook。 外部服务包括 Azure DevOps Services、GitHub、Azure Monitor 日志和自定义应用程序。 此类服务可以使用 Webhook 启动 Runbook，而无需实现完整的 Azure 自动化 API。 可以将 Webhook 与[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md) 中其他启动 Runbook 的方法进行比较。
+使用 Webhook 可使外部服务在 Azure 自动化中通过单个 HTTP 请求启动特定的 Runbook。 外部服务包括 Azure DevOps Services、GitHub、Azure Monitor 日志和自定义应用程序。 此类服务可以使用 Webhook 启动 Runbook，而无需实现完整的 Azure 自动化 API。 可以将 Webhook 与[在 Azure 自动化中启动 Runbook](./start-runbooks.md) 中其他启动 Runbook 的方法进行比较。
 
 > [!NOTE]
 > 不支持使用 Webhook 来启动 Python Runbook。
@@ -27,7 +27,7 @@ ms.locfileid: "85361670"
 
 下表介绍了必须为 webhook 配置的属性。
 
-| Property | 描述 |
+| 属性 | 描述 |
 |:--- |:--- |
 | 名称 |Webhook 的名称。 可以提供任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
 | URL |Webhook 的 URL。 这是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应该将 URL 视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
@@ -44,7 +44,7 @@ Webhook 可以定义 Runbook 参数的值，当 Runbook 启动时会用到这些
 
 `WebhookData` 参数具有以下属性：
 
-| properties | 描述 |
+| 属性 | 描述 |
 |:--- |:--- |
 | `WebhookName` | Webhook 的名称。 |
 | `RequestHeader` | 包含传入 POST 请求标头的哈希表。 |
@@ -133,7 +133,7 @@ http://<Webhook Server>/token?=<Token Value>
 {"JobIds":["<JobId>"]}
 ```
 
-客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。 可以使用作业 ID 并配合其他机制（例如 [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) 或 [Azure 自动化 API](/rest/api/automation/job)）来了解此信息。
+客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。 可以使用作业 ID 并配合其他机制（例如 [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) 或 [Azure 自动化 API](/rest/api/automation/job)）来了解此信息。
 
 ## <a name="renew-a-webhook"></a>续订 Webhook
 
@@ -151,7 +151,7 @@ http://<Webhook Server>/token?=<Token Value>
 以下示例 Runbook 将接受 Webhook 数据，并启动请求正文中指定的虚拟机。 若要在“Runbook”下的自动化帐户中测试此 Runbook，请单击“创建 Runbook” 。 如果不知道如何创建 Runbook，请参阅[创建 Runbook](automation-quickstart-create-runbook.md)。
 
 > [!NOTE]
-> 对于非图形 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) 的别名。 可以使用这些 cmdlet，也可以在自动化帐户中[将模块更新](automation-update-azure-modules.md)为最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新你的模块。
+> 对于非图形 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) 的别名。 可以使用这些 cmdlet，也可以在自动化帐户中[将模块更新](automation-update-azure-modules.md)为最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新你的模块。
 
 ```powershell
 param

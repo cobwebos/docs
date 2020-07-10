@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206880"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186378"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
@@ -77,7 +77,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 ### <a name="dsc-requirements"></a>DSC 要求
 
-对于在 Azure 中运行的所有 Windows 节点，在启用计算机时会安装 [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure)。 对于运行 Windows 服务器 2012 和 Windows 7 的节点，会启用 [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency)。
+对于在 Azure 中运行的所有 Windows 节点，在启用计算机时会安装 [WMF 5.1](/powershell/scripting/wmf/setup/install-configure)。 对于运行 Windows 服务器 2012 和 Windows 7 的节点，会启用 [WinRM](/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency)。
 
 对于在 Azure 中运行的所有 Linux 节点，将在启用计算机时安装 [PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux)。
 
@@ -90,7 +90,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 * US Gov 弗吉尼亚州的全局 URL：*.azure-automation.us
 * 代理服务： **https:// \<workspaceId\> . agentsvc.azure-automation.net**
 
-如果使用在节点之间传递的 DSC 资源（如 [WaitFor* 资源](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)），还需要允许节点之间产生流量。 请参阅每个 DSC 资源的文档以了解这些网络要求。
+如果使用在节点之间传递的 DSC 资源（如 [WaitFor* 资源](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)），还需要允许节点之间产生流量。 请参阅每个 DSC 资源的文档以了解这些网络要求。
 
 若要了解 TLS 1.2 的客户端要求，请参阅[Azure 自动化的 TLS 1.2 强制执行](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
@@ -114,5 +114,4 @@ Windows 版本 1809 及更高版本中提供了对 DSC 代理的代理支持。 
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译 DSC 配置](automation-dsc-compile.md)。
 - 若要查看在持续部署管道中使用 Azure Automation State Configuration 的示例，请参阅[使用 Chocolatey 设置持续部署](automation-dsc-cd-chocolatey.md)。
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)。
-- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

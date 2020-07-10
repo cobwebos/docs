@@ -9,11 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836849"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186361"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>修正不符合条件的 Azure 自动化 State Configuration 服务器
 
@@ -24,7 +25,7 @@ Azure 计算提供了一项名为“Run 命令”的功能，客户可通过它�
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>使用 PowerShell 更正 Windows 虚拟机的偏离情况
 
-可使用 `Run` 命令功能更正 Windows 虚拟机的偏离情况。 请参阅[使用 Run 命令在 Windows VM 中运行 PowerShell 脚本](/azure/virtual-machines/windows/run-command)。
+可使用 `Run` 命令功能更正 Windows 虚拟机的偏离情况。 请参阅[使用 Run 命令在 Windows VM 中运行 PowerShell 脚本](../virtual-machines/windows/run-command.md)。
 
 若要强制 Azure 自动化 State Configuration 节点下载并应用最新配置，请使用 [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) cmdlet。
 
@@ -42,5 +43,5 @@ Update-DscConfiguration -Wait -Verbose
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
 - 若要查看在持续部署管道中使用 Azure Automation State Configuration 的示例，请参阅[使用 Chocolatey 设置持续部署](automation-dsc-cd-chocolatey.md)。

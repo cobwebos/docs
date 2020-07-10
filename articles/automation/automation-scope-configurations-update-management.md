@@ -5,19 +5,20 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8770762fa2d2ae6bc0584d75397829298a62e8c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117405"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185885"
 ---
 # <a name="limit-update-management-deployment-scope"></a>限制更新管理部署范围
 
-本文介绍如何在使用[更新管理](automation-update-management.md)功能向 vm 部署更新和修补程序时使用作用域配置。 有关详细信息，请参阅[以 Azure Monitor （预览版）中的监视解决方案为目标](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。 
+本文介绍如何在使用[更新管理](automation-update-management.md)功能向 vm 部署更新和修补程序时使用作用域配置。 有关详细信息，请参阅将[监视解决方案定位到 Azure Monitor (预览版) ](../azure-monitor/insights/solution-targeting.md)。 
 
 ## <a name="about-scope-configurations"></a>关于作用域配置
 
-作用域配置是一个或多个已保存搜索的组（查询），用于将更新管理的作用域限制为特定的计算机。 作用域配置在 "Log Analytics" 工作区中使用，以面向要启用的计算机。 添加计算机以接收更新管理中的更新时，还会将计算机添加到工作区中的已保存搜索。
+作用域配置是一个或多个已保存搜索的组， (查询) 用于将更新管理范围限制为特定的计算机。 作用域配置在 "Log Analytics" 工作区中使用，以面向要启用的计算机。 添加计算机以接收更新管理中的更新时，还会将计算机添加到工作区中的已保存搜索。
 
 ## <a name="set-the-scope-limit"></a>设置作用域限制
 
@@ -27,7 +28,7 @@ ms.locfileid: "84117405"
 
 2. 单击 "**前往工作区**"。
 
-3. 选择 "**工作区数据源**" 下的 "**作用域配置（预览）** "。
+3. 在 "**工作区数据源**" 下** (预览) 选择 "作用域配置**"。
 
 4. 选择 `MicrosoftDefaultScopeConfig-Updates` 作用域配置右侧的省略号，然后单击 "**编辑**"。 
 
