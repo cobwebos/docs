@@ -4,11 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730741"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170371"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -427,17 +428,15 @@ pip install -r requirements.txt
 
 发布中排除的项目文件和文件夹（包括虚拟环境文件夹）列在 .funcignore 文件中。
 
-将 Python 项目发布到 Azure 时，支持三种生成操作：
+有三个生成操作支持将 Python 项目发布到 Azure：远程生成、本地生成和使用自定义依赖项的生成。
 
-+ 远程生成：依赖项根据 requirements.txt 文件的内容远程获取。 [远程生成](functions-deployment-technologies.md#remote-build)是推荐的生成方法。 远程也是 Azure 工具的默认生成选项。
-+ 本地生成：依赖项根据 requirements.txt 文件的内容在本地获取。
-+ 自定义依赖项：你的项目使用未向我们的工具公开发布的软件包。 （需要 Docker。）
-
-若要生成依赖项并使用持续交付 (CD) 系统发布，请[使用 Azure Pipelines](functions-how-to-azure-devops.md)。
+你还可以使用 Azure Pipelines 来构建依赖项，并使用持续交付 (CD) 发布。 若要了解详细信息，请参阅[使用 Azure DevOps 持续交付](functions-how-to-azure-devops.md)。
 
 ### <a name="remote-build"></a>远程生成
 
-默认情况下，使用下面的 [func azure functionapp publish](functions-run-local.md#publish) 命令将 Python 项目发布到 Azure 时，Azure Functions Core Tools 会请求远程生成。
+使用远程生成时，在服务器上还原的依赖项和本机依赖项与生产环境匹配。 这会生成较小的部署包。 在 Windows 上开发 Python 应用时使用远程生成。 如果你的项目具有自定义依赖项，则可以[将远程生成用于额外的索引 URL](#remote-build-with-extra-index-url)。 
+ 
+依赖项是根据 requirements.txt 文件的内容远程获取的。 [远程生成](functions-deployment-technologies.md#remote-build)是推荐的生成方法。 默认情况下，使用下面的 [func azure functionapp publish](functions-run-local.md#publish) 命令将 Python 项目发布到 Azure 时，Azure Functions Core Tools 会请求远程生成。
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -449,7 +448,7 @@ func azure functionapp publish <APP_NAME>
 
 ### <a name="local-build"></a>本地生成
 
-可以使用下面的 [func azure functionapp publish](functions-run-local.md#publish) 命令发布本地生成，从而防止执行远程生成。
+依赖项是根据 requirements.txt 文件的内容在本地获取的。 可以使用下面的 [func azure functionapp publish](functions-run-local.md#publish) 命令发布本地生成，从而防止执行远程生成。
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -457,9 +456,21 @@ func azure functionapp publish <APP_NAME> --build local
 
 请记住将 `<APP_NAME>` 替换为 Azure 中的函数应用名称。
 
-使用 `--build local` 选项，从 requirements.txt 文件中读取项目依赖项，同时在本地下载并安装这些依赖包。 项目文件和依赖项从本地计算机部署到 Azure。 这会将较大的部署包上传到 Azure。 如果由于某种原因，Core Tools 无法获取 requirements.txt 文件中的依赖项，则必须使用自定义依赖项选项进行发布。
+使用 `--build local` 选项，从 requirements.txt 文件中读取项目依赖项，同时在本地下载并安装这些依赖包。 项目文件和依赖项从本地计算机部署到 Azure。 这会将较大的部署包上传到 Azure。 如果由于某种原因，Core Tools 无法获取 requirements.txt 文件中的依赖项，则必须使用自定义依赖项选项进行发布。 
+
+在 Windows 上进行本地开发时，不建议使用本地生成。
 
 ### <a name="custom-dependencies"></a>自定义依赖项
+
+如果你的项目在[Python 包索引](https://pypi.org/)中找不到依赖项，则可以通过两种方式生成项目。 生成方法取决于生成项目的方式。
+
+#### <a name="remote-build-with-extra-index-url"></a>具有额外索引 URL 的远程生成
+
+如果包可从可访问的自定义包索引中获取，请使用远程生成。 在发布之前，请确保[创建一个](functions-how-to-use-azure-function-app-settings.md#settings)名为的应用设置 `PIP_EXTRA_INDEX_URL` 。 此设置的值为自定义包索引的 URL。 使用此设置可告诉远程生成 `pip install` 使用 `--extra-index-url` 选项运行。 若要了解详细信息，请参阅[Python pip 安装文档](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)。 
+
+你还可以将基本身份验证凭据用于额外的包索引 Url。 若要了解详细信息，请参阅 Python 文档中的[基本身份验证凭据](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials)。
+
+#### <a name="install-local-packages"></a>安装本地包
 
 如果你的项目使用未向我们的工具公开发布的包，则可以通过将包放在 \_\_app\_\_/.python_packages 目录中，使其可供应用使用。 发布之前，运行以下命令以在本地安装依赖项：
 
@@ -467,7 +478,7 @@ func azure functionapp publish <APP_NAME> --build local
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-使用自定义依赖项时，应使用 `--no-build` 发布选项，因为你已安装依赖项。
+使用自定义依赖项时，应使用 `--no-build` 发布选项，因为已将依赖项安装到项目文件夹中。
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build
@@ -649,7 +660,7 @@ Python 标准库包含每个 Python 分发附带的内置 Python 模块列表。
 
 ### <a name="azure-functions-python-library"></a>Azure Functions Python 库
 
-每个 Python 辅助角色更新包括新版本的[Azure Functions Python 库（函数）](https://github.com/Azure/azure-functions-python-library)。 由于每个更新都是向后兼容的，因此这种方法可以更轻松地持续更新 Python 函数应用。 可以在[azure 功能 PyPi](https://pypi.org/project/azure-functions/#history)中找到此库的版本列表。
+每个 Python 辅助角色更新包括[Azure Functions Python 库 (](https://github.com/Azure/azure-functions-python-library)的新版本) 。 由于每个更新都是向后兼容的，因此这种方法可以更轻松地持续更新 Python 函数应用。 可以在[azure 功能 PyPi](https://pypi.org/project/azure-functions/#history)中找到此库的版本列表。
 
 运行时库版本由 Azure 修复，不能通过 requirements.txt 重写。 `azure-functions`requirements.txt 中的条目仅适用于 linting 和客户认知。 
 

@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207001"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170405"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -264,7 +264,7 @@ Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，�
 }
 ```
 
-在版本2.x 中，可以从采样中排除某些类型的遥测数据。 在上面的示例中，类型的数据 `Request` 从采样中排除。 这可确保记录*所有*函数执行（请求），而其他类型的遥测仍会受到采样的限制。
+在版本2.x 中，可以从采样中排除某些类型的遥测数据。 在上面的示例中，类型的数据 `Request` 从采样中排除。 这可确保记录)  (请求的*所有*函数执行，而其他类型的遥测仍会受到采样的限制。
 
 ### <a name="version-1x"></a>版本 1.x 
 
@@ -537,7 +537,7 @@ namespace functionapp0915
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>在 JavaScript 函数中记录自定义遥测
 
-下面是使用 [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) 发送自定义遥测的示例代码片段：
+下面是用[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)发送自定义遥测数据的示例代码片段：
 
 ### <a name="version-2x-and-later"></a>版本 2.x 和更高版本
 
@@ -626,7 +626,7 @@ Functions v2 自动收集 HTTP 请求、ServiceBus、EventHub 和 SQL 的依赖�
 
 ## <a name="streaming-logs"></a>流式处理日志
 
-开发应用程序时，通常需要了解在 Azure 中运行时近实时地写入日志的内容。
+开发应用程序时，通常需要了解在 Azure 中运行时，以近乎实时的速度写入日志的内容。
 
 可以通过两种方式查看由函数执行生成的日志文件流。
 
@@ -688,27 +688,41 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
-## <a name="scale-controller-logs"></a>缩放控制器日志
+## <a name="scale-controller-logs-preview"></a> (预览缩放控制器日志) 
 
-[Azure Functions 缩放控制器](./functions-scale.md#runtime-scaling)监视运行应用程序的函数主机实例，并做出有关何时添加或删除函数主机实例的决策。 如果需要了解规模控制器在你的应用程序中所做的决策，你可以将其配置为将日志发送到 Application Insights 或 Blob 存储。
+此功能为预览版。 
 
-> [!WARNING]
-> 此功能为预览版。 建议你不要无限期地启用此功能，并且应在需要收集的信息后再禁用它来启用它。
+[Azure Functions 缩放控制器](./functions-scale.md#runtime-scaling)监视运行应用的 Azure Functions 主机的实例。 此控制器根据当前性能决定何时添加或删除实例。 可以让规模控制器发出日志 Application Insights 或 Blob 存储，以便更好地了解规模控制器为 function app 做出的决策。
 
-若要启用此功能，请添加一个名为的新应用程序设置 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 此设置的值必须采用 `{Destination}:{Verbosity}` 以下格式：
-* `{Destination}`指定日志要发送到的目标，并且必须是 `AppInsights` 或 `Blob` 。
-* `{Verbosity}`指定所需的日志记录级别，必须为 `None` 、 `Warning` 或之一 `Verbose` 。
+若要启用此功能，请添加一个名为的新应用程序设置 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 此设置的值必须采用 `<DESTINATION>:<VERBOSITY>` 以下格式：
 
-例如，要将详细信息从规模控制器记录到 Application Insights，请使用值 `AppInsights:Verbose` 。
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
-> [!NOTE]
-> 如果启用 `AppInsights` 目标类型，则必须确保[为函数应用配置 Application Insights](#enable-application-insights-integration)。
+例如，以下 Azure CLI 命令将启用从规模控制器到 Application Insights 的详细日志记录：
 
-如果将目标设置为 `Blob` ，则会在 `azure-functions-scale-controller` `AzureWebJobsStorage` 应用程序设置中设置的存储帐户中创建一个名为的 blob 容器中的日志。
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
 
-如果将详细级别设置为 `Verbose` ，则缩放控制器将记录辅助角色计数中每次更改的原因，以及有关参与规模控制器决策的触发器的信息。 例如，日志将包含触发器警告，并运行缩放控制器前后触发器使用的哈希。
+在此示例中， `<FUNCTION_APP_NAME>` 请 `<RESOURCE_GROUP_NAME>` 将和分别替换为函数应用的名称和资源组名称。 
 
-若要禁用缩放控制器日志记录，请将的值设置 `{Verbosity}` 为 `None` 或删除 `SCALE_CONTROLLER_LOGGING_ENABLED` 应用程序设置。
+以下 Azure CLI 命令通过将详细级别设置为来禁用日志记录 `None` ：
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+还可以通过 `SCALE_CONTROLLER_LOGGING_ENABLED` 使用以下 Azure CLI 命令删除设置来禁用日志记录：
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
+```
 
 ## <a name="disable-built-in-logging"></a>禁用内置日志记录
 

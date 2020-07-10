@@ -5,11 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5e4c4d89a1119b0f59aa15885406cd7261d2f69
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75967380"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169997"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
 本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](https://en.wikipedia.org/wiki/Microservices)中由[微服务](https://azure.microsoft.com/services/app-service/)构成的应用程序设置并部署为单个单元。 
@@ -53,19 +54,19 @@ ms.locfileid: "75967380"
 2. 在 readme.md 中，单击“部署到 Azure”****。
 3. 会转到[部署到 Azure](https://deploy.azure.com) 站点并需要输入部署参数。 请注意大多数字段将填充以存储库名称和某些随机字符串。 可以更改所有字段（如果想），但唯一一项必须输入的内容是 SQL Server 管理登录名和密码，并单击“下一步”****。
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
+   ![显示 "部署到 azure" 站点上的输入部署参数。](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
 4. 接下来，单击“部署”**** 启动部署进程。 进程运行至完成时，请单击 http://todoapp*XXXX*.azurewebsites.net 链接以浏览部署的应用程序。 
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
+   ![显示应用程序的部署过程。](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
    首次浏览到 UI 时它的显示会慢些，因为应用刚刚启动，但应确信它是一个功能齐全运行正常的应用程序。
 5. 返回到“部署”页，单击**管理**链接以查看 Azure 门户中的新应用程序。
 6. 在“必备”**** 下拉列表中，单击资源组链接。 还要注意，应用已连接到“外部项目”下的 GitHub 存储库****。 
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
+   ![显示 "Essentials" 下拉菜单中的 "资源组" 链接。](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
 7. 在资源组边栏选项卡中，请注意资源组中已存在两个应用和一个 SQL 数据库。
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
+   ![显示资源组中可用的资源。](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
 
 刚才在几分钟内看到的全部内容就是一个经过完全部署的由两个微服务构成的应用程序，以及所有组件、依赖项、设置、数据库和连续发布，均由 Azure 资源管理器中的自动化协调所设置。 所有这一切均是通过两项内容完成：
 
@@ -79,10 +80,10 @@ ms.locfileid: "75967380"
 
 1. 使用最喜欢的 git 工具克隆 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 存储库。 在下面的屏幕快照中，我会在 Visual Studio 2013 的团队资源管理器中执行此操作。
    
-   ![](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
+   ![演示如何使用 git 工具克隆 ToDoApp 存储库。](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
 2. 在 Visual Studio 中从存储库根打开 azuredeploy.json。 如果没有看到“JSON 概要”窗格，则需要安装 Azure.NET SDK。
    
-   ![](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
+   ![在 Visual Studio 中显示 JSON 大纲窗格。](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
 
 我不打算介绍 JSON 格式的每个细节，但[更多资源](#resources)部分包含可用于学习资源组模板语言的链接。 在这里，我只打算向你展示有趣的功能，可帮助你开始制作自己的自定义模板来部署应用。
 
@@ -95,7 +96,7 @@ ms.locfileid: "75967380"
 #### <a name="app-service-plan"></a>应用服务计划
 让我们以 JSON 中简单的根级别资源开始。 在“JSON 概要”中，单击名为 **[hostingPlanName]** 的应用服务计划以突出显示相应的 JSON 代码。 
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
+![显示 JSON 代码的 [hostingPlanName] 部分。](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
 
 请注意，`type` 元素指定应用服务计划（很久很久以前它被称之为服务器场）的字符串，而其他元素和属性使用 JSON 文件中定义的参数填写，并且此资源不具有任何嵌套的资源。
 
@@ -107,7 +108,7 @@ ms.locfileid: "75967380"
 #### <a name="sql-server"></a>SQL Server
 接下来，单击“JSON 概要”中名为 **SQLServer** 的 SQL Server 资源。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
+![显示 JSON 大纲中名为 SQLServer 的 SQL Server 资源。](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
 
 请注意以下有关突出显示的 JSON 代码的内容：
 
@@ -127,12 +128,12 @@ ms.locfileid: "75967380"
 ##### <a name="root-resource"></a>根资源
 应用依赖于两个不同的资源。 这意味着只有在创建应用服务计划和 SQL Server 实例后，Azure 资源管理器才会创建应用。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
+![显示应用服务计划和 SQL Server 实例上的应用程序依赖关系。](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
 ##### <a name="app-settings"></a>应用设置
 应用设置也被定义为嵌套资源。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
+![显示在 JSON 代码中定义为嵌套资源的应用设置。](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
 在 `config/appsettings` 的 `properties` 元素中，具有两个 `"<name>" : "<value>"` 格式的应用设置。
 
@@ -142,7 +143,7 @@ ms.locfileid: "75967380"
 ##### <a name="connection-strings"></a>连接字符串
 连接字符串也被定义为嵌套资源。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
+![演示如何在 JSON 代码中将连接字符串定义为嵌套资源。](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
 在 `config/connectionstrings` 的 `properties` 元素中，每个连接字符串也定义为具有特定的 `"<name>" : {"value": "…", "type": "…"}` 格式的 name:value 对。 对于 `type` 元素，可能的值为 `MySql`、`SQLServer`、`SQLAzure` 和 `Custom`。
 
@@ -154,7 +155,7 @@ ms.locfileid: "75967380"
 ##### <a name="source-control"></a>源代码管理
 源代码管理设置也被定义为嵌套资源。 Azure 资源管理器使用此资源来配置连续发布（稍后请参阅 `IsManualIntegration` 上的注意事项），并且还可在 JSON 文件的处理过程中自动启动应用程序代码的部署。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
+![演示如何在 JSON 代码中将源代码管理设置定义为嵌套资源。](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
 `RepoUrl` 和 `branch` 应该是非常直观的，且应指向 Git 存储库和分支（从其发布）的名称。 同样，这些由输入参数定义。 
 
@@ -170,11 +171,11 @@ ms.locfileid: "75967380"
 
 例如，当我转到 [Azure 资源浏览器](https://resources.azure.com)工具并在浏览器中展开节点时，可以看到资源组和收集在其各自资源类型下的根级别资源。
 
-![](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
+![在扩展的 Azure 资源浏览器工具中查看资源组和根级别资源。](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
 
 如果向下钻取应用，应能够看到类似于以下屏幕快照的应用配置详细信息：
 
-![](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
+![向下钻取以查看应用中的配置详细信息。](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
 
 再次重申，嵌套资源的层次结构应非常类似于 JSON 模板文件中的层次结构，并且应看到应用设置、连接字符串等正确反映在 JSON 窗格中。 如果此处的设置不存在，则可能指示 JSON 文件存在问题，可借此排查 JSON 模板文件的问题。
 
@@ -184,44 +185,44 @@ ms.locfileid: "75967380"
 1. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
 2. 单击 " **Visual c #**  >  **Cloud**  >  **Azure 资源组**"，然后单击 **"确定"**。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
+   ![在 Azure .NET SDK 中，将新项目创建为 Azure 资源组。](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. 在“选择 Azure 模板”**** 中，选择“空白模板”****，并单击“确定”****。
 4. 将 azuredeploy.json 拖动到新项目的“模板”**** 文件夹。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
+   ![显示将文件 azuredeploy.js拖动到项目的模板文件夹中的结果。](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
 5. 从解决方案资源管理器中打开复制的 azuredeploy.json。
 6. 为了进行演示，让我们通过单击“添加资源”****，将一些标准 Application Insight 资源添加到我们的 JSON 文件。 如果只对部署 JSON 文件感兴趣，请跳至部署步骤。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
+   ![显示 "添加资源" 按钮，您可以使用该按钮将标准 Application insights 资源添加到 JSON 文件。](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
 7. 选择“适用于 Web 应用的 Application Insights”，确保选择了现有应用服务计划和应用，并单击“添加”********。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
+   ![显示 Web 应用的 Application Insights 选择、名称、应用服务计划和 Web 应用。](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
    
    现在即可看到在应用服务计划或应用上具有依赖项的几个新资源，具体取决于该资源及它的作用。 这些资源不由其现有定义启用，而要对此进行更改。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
+   ![查看与应用服务计划或应用有依赖关系的新资源。](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
 8. 在“JSON 概要”中，单击“appInsights AutoScale”**** 以突出显示其 JSON 代码。 这是针对应用服务计划的缩放设置。
 9. 在突出显示的 JSON 代码中，找到 `location` 和 `enabled` 属性并对其进行如下设置。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
+   ![显示 appInsights 自动缩放 JSON 代码中的位置和已启用属性以及应将这些属性设置为的值。](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
 10. 在“JSON 概要”中，单击“CPUHigh appInsights”**** 以突出显示其 JSON 代码。 这是一个警报。
 11. 找到 `location` 和 `isEnabled` 属性并对其进行如下设置。 对其他三个警报（紫色警报）执行相同的操作。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
+    ![显示 CPUHigh appInsights JSON 代码中的 location 和 isEnabled 属性以及应将这些属性设置为的值。](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
 12. 现在可以开始部署了。 右键单击该项目，然后选择 "**部署**  >  **新的部署**"。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
+    ![演示如何部署新项目。](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. 如果尚未执行该操作，则登录到 Azure 帐户。
 14. 选择订阅中的现有资源组或创建一个新资源组，选择“azuredeploy.json”****，并单击“编辑参数”****。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
+    ![演示如何编辑文件 azuredeploy.js上的参数。](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
     现在即可在一张不错的表中编辑在模板文件中定义的所有参数。 定义默认值的参数将已具有其默认值，并且定义允许值的列表的参数会显示为下拉列表。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
+    ![显示定义允许值列表作为下拉列表的参数。](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
 15. 填写所有空参数，并使用 **repoUrl** 中的 [ToDoApp 的 GitHub 存储库地址](https://github.com/azure-appservice-samples/ToDoApp.git)。 然后单击“保存” 。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
+    ![显示文件 azuredeploy.js的新填充参数。](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
     > [!NOTE]
     > 自动缩放是**标准**层或更高层中提供的一项功能，而计划级别警报是**基本**层或更高层中提供的功能，需要将 **sku** 参数设置为**标准**或**高级**，使所有新 App Insights 资源亮起。
@@ -239,7 +240,7 @@ ms.locfileid: "75967380"
 
 最后一步通过 PowerShell cmdlet 轻松完成。 若要查看当 Visual Studio 部署应用程序时所执行的操作，请打开 Scripts\Deploy-AzureResourceGroup.ps1。 存在大量的代码，但我只突出显示使用参数文件部署模板文件所需的所有相关代码。
 
-![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
+![显示脚本中的相关代码，你需要使用该脚本来使用参数文件部署模板文件。](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
 最后一个 cmdlet，`New-AzureResourceGroup`，实际执行了该操作。 所有这一切向你展示了，借助工具可相对简单地以可预见的方式部署云应用程序。 每使用相同的参数文件在相同的模板上运行该 cmdlet 时，都会获得相同的结果。
 
@@ -261,9 +262,9 @@ ms.locfileid: "75967380"
 要了解本文中部署的资源类型的 JSON 语法和属性，请参阅：
 
 * [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
-* [Microsoft .Sql/服务器/数据库](/azure/templates/microsoft.sql/servers/databases)
+* [Microsoft.Sql/servers/databases](/azure/templates/microsoft.sql/servers/databases)
 * [Sql-dmo/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
-* [System.web/serverfarms](/azure/templates/microsoft.web/serverfarms)
+* [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
 * [Microsoft. Web/站点](/azure/templates/microsoft.web/sites)
-* [Microsoft. Web/站点/槽](/azure/templates/microsoft.web/sites/slots)
+* [Microsoft.Web/sites/slots](/azure/templates/microsoft.web/sites/slots)
 * [Microsoft Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)

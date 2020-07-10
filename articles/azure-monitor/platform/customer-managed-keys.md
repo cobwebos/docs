@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134615"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170337"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -23,7 +23,7 @@ ms.locfileid: "86134615"
 
 [静态加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)是组织中常见的隐私和安全要求。 可以让 Azure 完全管理静态加密，同时可以使用各种选项严格管理加密或加密密钥。
 
-Azure Monitor 可确保使用 Azure 托管的密钥对所有数据进行静态加密。 Azure Monitor 还可以使用你自己的密钥进行数据加密，该密钥存储在  [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 中，并且存储可通过系统分配的 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)身份验证对其进行访问。 此密钥可以 [受软件保护或受硬件 HSM 保护](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+Azure Monitor 确保所有数据和保存的查询都使用 Microsoft 托管的密钥 (MMK) 进行静态加密。 Azure Monitor 还提供了使用自己的密钥进行加密的选项，该密钥存储在你的[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)中，并由存储使用系统分配的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)身份验证来访问。 此密钥 (CMK) 可以是[软件或硬件 HSM 保护的](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
 
 Azure Monitor 进行加密的操作与 [Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)的操作相同。
 
@@ -100,7 +100,7 @@ Authorization: Bearer eyJ0eXAiO....
 
 ### <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
-此配置过程中的某些操作是异步运行的，因为它们无法快速完成。 在配置中使用 REST 请求时，响应最初在接受时返回 HTTP 状态代码200（OK）和标头*AsyncOperation*属性：
+此配置过程中的某些操作是异步运行的，因为它们无法快速完成。 在配置中使用 REST 请求时，响应最初返回 HTTP 状态代码 200 (OK) 并在接受时使用*Azure AsyncOperation*属性标头：
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
@@ -196,7 +196,7 @@ CMK 功能是在专用 Log Analytics 群集上提供的。若要验证在你的�
 创建群集资源时，必须指定容量预留级别 (sku) 。 容量预留级别可以在每天 1,000 到 2,000 GB 范围内，后续你可以以 100 为幅度对其进行更新。 如果你需要的容量预留级别高于每天 2,000 GB，请通过 LAIngestionRate@microsoft.com 与我们联系。 [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
 billingType 属性可确定群集资源及其数据的计费归属 ：
-- *群集*（默认值）-群集的容量保留成本属于*群集*资源。
+- *群集* (默认) --群集的容量保留成本与*群集*资源有关。
 - *工作区*-群集的容量保留成本与群集中的工作区按比例进行了分类，如果一天的总引入数据低于容量预留，则会对该*群集资源进行*计费。 请参阅[Log Analytics 专用群集](manage-cost-storage.md#log-analytics-dedicated-clusters)，了解群集定价模型的详细信息。 
 
 > [!NOTE]
@@ -235,7 +235,7 @@ Content-type: application/json
 
 标识会在创建时分配到群集资源。
 
-**响应**
+Response
 
 200 OK 和标头。
 
@@ -249,7 +249,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 Authorization: Bearer <token>
 ```
 
-**响应**
+Response
 
 ```json
 {
@@ -334,7 +334,7 @@ Content-type: application/json
 
 “KeyVaultProperties”包含 Key Vault 密钥标识符详细信息。
 
-**响应**
+Response
 
 200 OK 和标头。
 完成密钥标识符的传播需要几分钟。 可以通过两种方式检查更新状态：
@@ -468,7 +468,7 @@ Log Analytics 中使用的查询语言是有意义的，可以在添加到查询
 > [!NOTE]
 > 尚不支持用于工作簿和 Azure 仪表板中的查询的 CMK。 这些查询仍将通过 Microsoft 密钥进行加密。  
 
-当你将[自己的存储](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage)（BYOS）和关联到工作区时，该服务会将*已保存的搜索*和*日志警报*查询上载到你的存储帐户。 这意味着，你可以使用与加密 Log Analytics 群集中的数据或其他密钥相同的密钥来控制存储帐户和[静态加密策略](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 但是，你将负责与该存储帐户关联的成本。 
+当你将[自己的存储](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) 并将其关联到你的工作区时，该服务会将*已保存的搜索*和*日志警报*查询上载到你的存储帐户。 这意味着，你可以使用与加密 Log Analytics 群集中的数据或其他密钥相同的密钥来控制存储帐户和[静态加密策略](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 但是，你将负责与该存储帐户关联的成本。 
 
 **为查询设置 CMK 前的注意事项**
 * 你需要对工作区和存储帐户具有 "写入" 权限
@@ -546,7 +546,7 @@ Content-type: application/json
   Authorization: Bearer <token>
   ```
 
-  **响应**
+  Response
   
   ```json
   {
@@ -652,7 +652,7 @@ Content-type: application/json
   Authorization: Bearer <token>
   ```
 
-  **响应**
+  Response
 
   200 OK 和标头。
 

@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430569"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169970"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
@@ -169,7 +170,7 @@ http.createServer(function (req, res) {
 
 进入 site/wwwroot 目录。 将会看到一个命令提示符，如以下示例所示：
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![显示 site/wwwroot 目录和命令提示符的屏幕截图。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 运行命令 `npm install v8-profiler`。
 
@@ -202,11 +203,11 @@ http.createServer(function (req, res) {
 
 上述代码将会分析 WriteConsoleLog 函数，然后将配置文件输出写入站点 wwwroot 下的“profile.cpuprofile”文件。 将请求发送到应用程序。 站点 wwwroot 下会显示所创建的“profile.cpuprofile”文件。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![显示 profile.cpuprofile 文件的屏幕截图。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 中按 F12，并选择“配置文件”选项卡。  单击“加载”按钮。  选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
+请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 上按 F12，然后选择 "**配置文件**" 选项卡。选择 "**加载**" 按钮。 选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![显示已加载的 profile.cpuprofile 文件的屏幕截图。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 可以看到，WriteConsoleLog 函数已耗用 95% 的时间。 输出中还会显示造成此问题的具体行号和源文件。
 
@@ -231,9 +232,9 @@ node.exe 随机关闭的原因有多种：
 如果应用程序在启动时返回 500 错误，可能有几个原因：
 
 1. Node.exe 未出现在正确的位置。 检查 nodeProcessCommandLine 设置。
-2. 主要脚本文件未出现在正确的位置。 检查 web.config，确保处理程序节中的主要脚本文件名与主要脚本文件匹配。
+2. 主要脚本文件未出现在正确的位置。 检查 web.config，并确保处理程序节中的主要脚本文件名与主要脚本文件匹配。
 3. Web.config 配置不正确 – 检查设置名称/值。
-4. 冷启动 – 应用程序的启动时间太长。 如果应用程序所花的时间超过 (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000 秒，则 iisnode 会返回 500 错误。 增加这些设置的值，使其与应用程序启动时间匹配，防止 iisnode 超时并返回 500 错误。
+4. 冷启动 – 应用程序的启动时间太长。 如果应用程序所花的时间超过 (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000 秒，则 iisnode 会返回 500 错误。 增加这些设置的值，以便与应用程序启动时间匹配，从而防止 iisnode 超时并返回 500 错误。
 
 ### <a name="my-node-application-crashed"></a>节点应用程序崩溃
 
@@ -246,7 +247,7 @@ node.exe 随机关闭的原因有多种：
 
 1. 使用 npm3 来安装模块，确保采用平面依赖关系结构，并且没有重复的依赖项。
 2. 尝试延迟加载 node\_modules，而不要在应用程序启动时加载所有模块。 若要延迟加载模块，应在首次执行模块代码之前，在函数中真正需要该模块时调用 require('module')。
-3. Azure 应用服务提供一项称为本地缓存的功能。 此功能会将内容从网络共享复制到 VM 上的本地磁盘。 由于文件位于本地，因此 node\_modules 的加载速度要快很多。
+3. Azure 应用服务提供一项称为本地缓存的功能。 此功能会将内容从网络共享复制到 VM 上的本地磁盘。 由于文件位于本地，因此，node\_modules 的加载时间快很多。
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http 状态和子状态
 
@@ -261,7 +262,7 @@ node.exe 随机关闭的原因有多种：
 | 500 |1002 |Node.exe 崩溃 – 检查 d:\\home\\LogFiles\\logging-errors.txt 中的堆栈跟踪。 |
 | 500 |1003 |管道配置问题 – 命名管道配置不正确。 |
 | 500 |1004-1018 |发送请求或处理 node.exe 的相关响应时发生某个错误。 检查 node.exe 是否已崩溃。 检查 d:\\home\\LogFiles\\logging-errors.txt 中的堆栈跟踪。 |
-| 503 |1000 |内存不足，无法分配更多命名管道连接。 检查应用为何耗用大量内存。 检查 maxConcurrentRequestsPerProcess 设置值。 如果此值并非无限，而且有许多请求，请增大此值来防止此错误。 |
+| 503 |1000 |内存不足，无法分配更多命名管道连接。 检查应用为何耗用这么多内存。 检查 maxConcurrentRequestsPerProcess 设置值。 如果此值并非无限，而且有许多请求，请增大此值来防止此错误。 |
 | 503 |1001 |无法将请求分派至 node.exe，因为应用程序正在回收。 应用程序回收之后，应该会正常处理请求。 |
 | 503 |1002 |检查 win32 错误代码的实际原因 – 无法将请求分派到 node.exe。 |
 | 503 |1003 |命名管道太忙 – 验证 node.exe 是否正在消耗过多的 CPU |
@@ -270,10 +271,10 @@ NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应�
 
 ## <a name="more-resources"></a>更多资源
 
-请访问以下链接，详细了解 Azure App Service 上的 node.js 应用程序。
+请访问以下链接，了解有关 Azure 应用服务上的 node.js 应用程序的详细信息。
 
 * [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
-* [如何在 Azure App Service 中调试 Node.js Web 应用](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [如何在 Azure 应用服务中调试 Node.js Web 应用](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js 开发人员中心](../nodejs-use-node-modules-azure-apps.md)

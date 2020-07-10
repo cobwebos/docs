@@ -3,11 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235351"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169897"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -32,6 +33,42 @@ Application Insights 的连接字符串。 `APPLICATIONINSIGHTS_CONNECTION_STRIN
 |键|示例值|
 |---|------------|
 |APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey = [key]; IngestionEndpoint = [url];LiveEndpoint = [url];ProfilerEndpoint = [url];SnapshotEndpoint = [url];|
+
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+默认情况下，[函数代理](functions-proxies.md)使用快捷方式将 API 调用从代理直接发送到相同函数应用中的函数。 使用此快捷方式，而不是创建新的 HTTP 请求。 此设置允许您禁用该快捷方式行为。
+
+|密钥|值|说明|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|使用指向本地函数应用中的函数的后端 URL 的调用不会直接发送到函数。 相反，请求会定向回函数应用的 HTTP 前端。|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|使用指向本地函数应用中的函数的后端 URL 的调用将直接转发给函数。 这是默认值。 |
+
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+此设置控制 `%2F` 将字符插入后端 URL 时是否将这些字符解码为路由参数中的斜杠。 
+
+|密钥|值|说明|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|是|编码的斜杠的路由参数已解码。 |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|所有路由参数都将按未更改的方式传递，这是默认行为。 |
+
+例如，请考虑域上函数应用的文件 proxies.js`myfunction.com` 。
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+
+当 `AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` 设置为时 `true` ，URL `example.com/api%2ftest` 解析为 `example.com/api/test` 。 默认情况下，URL 保持不变 `example.com/test%2fapi` 。 有关详细信息，请参阅[函数代理](functions-proxies.md)。
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
@@ -131,7 +168,7 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 |键|示例值|
 |---|------------|
-|FUNCTIONS\_V2\_COMPATIBILITY\_MODE|true|
+|FUNCTIONS\_V2\_COMPATIBILITY\_MODE|是|
 
 ## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
 
@@ -150,7 +187,31 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
-## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="pip_extra_index_url"></a>PIP \_ 额外 \_ 索引 \_ URL
+
+此设置的值指示 Python 应用的自定义包索引 URL。 如果需要使用在额外的包索引中找到的自定义依赖项运行远程生成，请使用此设置。   
+
+|键|示例值|
+|---|------------|
+|PIP \_ 额外 \_ 索引 \_ URL|http://my.custom.package.repo/simple |
+
+若要了解详细信息，请参阅 Python 开发人员参考中的[自定义依赖项](functions-reference-python.md#remote-build-with-extra-index-url)。
+
+## <a name="scale_controller_logging_enable"></a>\_启用缩放控制器 \_ 日志记录 \_
+
+_此设置当前处于预览状态。_  
+
+此设置控制来自 Azure Functions 缩放控制器的日志记录。 有关详细信息，请参阅[缩放控制器日志](functions-monitoring.md#scale-controller-logs-preview)。
+
+|键|示例值|
+|-|-|
+|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights：详细|
+
+此键的值以格式提供 `<DESTINATION>:<VERBOSITY>` ，其定义如下：
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+## <a name="website_contentazurefileconnectionstring"></a>网站 \_ CONTENTAZUREFILECONNECTIONSTRING
 
 仅限 & 高级计划。 存储函数应用代码和配置的存储帐户的连接字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
 
@@ -196,47 +257,16 @@ _仅限 Windows_。
 
 有效值是解析为部署包文件位置的 URL 或 `1`。 设置为 `1` 时，包必须位于 `d:\home\data\SitePackages` 文件夹中。 使用此设置的 zip 部署时，包将自动上传到此位置。 在预览版中，此设置名为 `WEBSITE_RUN_FROM_ZIP`。 有关详细信息，请参阅[从包文件运行函数](run-functions-from-deployment-package.md)。
 
-## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="website_time_zone"></a>网站 \_ 时区 \_
 
-默认情况下，Functions 代理将使用快捷方式从代理直接将 API 调用发送到同一 Function App 中的函数，而不是创建新的 HTTP 请求。 此设置让你能够禁用该行为。
+允许您设置 function app 的时区。 
 
-|Key|“值”|描述|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|具有指向本地函数应用中函数的后端 URL 的调用将不再直接发送到该函数，而是定向回函数应用的 HTTP 前端|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|这是默认值。 具有指向本地函数应用中函数的后端 URL 的调用将直接转发到该函数|
+|键|OS|示例值|
+|---|--|------------|
+|网站 \_ 时区 \_|Windows|东部标准时间|
+|网站 \_ 时区 \_|Linux|美洲/New_York|
 
-
-## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
-
-此设置控制 %2F 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。 
-
-|键|“值”|说明|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|是|包含编码斜杠的路由参数会将其解码。 `example.com/api%2ftest` 将成为 `example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|这是默认行为。 所有路由参数在传递时将保持不变|
-
-### <a name="example"></a>示例
-
-以下是位于 URL myfunction.com 上的函数应用中的示例 proxies.json
-
-```JSON
-{
-    "$schema": "http://json.schemastore.org/proxies",
-    "proxies": {
-        "root": {
-            "matchCondition": {
-                "route": "/{*all}"
-            },
-            "backendUri": "example.com/{all}"
-        }
-    }
-}
-```
-|URL 解码|输入|输出|
-|-|-|-|
-|是|myfunction.com/test%2fapi|example.com/test/api
-|false|myfunction.com/test%2fapi|example.com/test%2fapi|
-
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

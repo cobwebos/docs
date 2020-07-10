@@ -3,12 +3,12 @@ title: Azure 资源-QnA Maker
 description: QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何单独使用这些功能，可以规划和选择正确的定价层，或者知道何时更改定价层。 了解如何结合使用它们，可以在出现问题时查找并解决问题。
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 7d6598510ae75a76e0a4fcaff59297b4c724ba78
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236086"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171068"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -34,7 +34,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
     * 根据需要为应用服务选择合适的[应用计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。 可以[纵向扩展](https://docs.microsoft.com/azure/app-service/manage-scale-up)或收缩应用。
     * 这还会影响 Azure**认知搜索**SKU 选择，有关详细信息，请参阅[此处](https://docs.microsoft.com/azure/search/search-sku-tier)。 此外，你可能还需要用副本调整认知搜索[容量](../../../search/search-capacity-planning.md)。
 
-* **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，根据不同的使用者域的数量决定所需的知识库数。 一旦使用者域（适用于一种语言）应在一个知识库中。
+* **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，根据不同的使用者域的数量决定所需的知识库数。 一旦使用者域 (适用于一种语言) 应在一个知识库中。
 
     可以在特定的层中发布 N-1 个知识库，其中，N 是该层中允许的最大索引数。 还需要检查每个层允许的文档最大大小和数量。
 
@@ -44,11 +44,11 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 
 下表提供了一些概要准则。
 
-|                        | QnA Maker 管理 | 应用服务 | Azure 认知搜索 | 限制                      |
-| ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| 试验        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
-| 开发/测试环境   | 标准 SKU         | 共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
-| 生产环境 | 标准 SKU         | 基本       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
+|                            | QnA Maker 管理 | 应用服务 | Azure 认知搜索 | 限制                      |
+| -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
+| **试验**        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
+| **开发/测试环境**   | 标准 SKU         | 共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
+| **生产环境** | 标准 SKU         | 基本       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
 
 ## <a name="recommended-settings"></a>建议的设置
 
@@ -106,7 +106,7 @@ QnA Maker 资源的资源名称（如 `qna-westus-f0-b` ）还用于命名其他
 [认知搜索](../../../search/index.yml)资源用于：
 
 * 存储 QnA 对
-* 在运行时提供 QnA 对的初始排名（ranker #1）
+* 在运行时提供 QnA 对的初始排名 (ranker #1) 
 
 #### <a name="index-usage"></a>索引使用情况
 
@@ -120,7 +120,7 @@ QnA Maker 资源的资源名称（如 `qna-westus-f0-b` ）还用于命名其他
 
 ### <a name="qna-maker-resource"></a>QnA Maker 资源
 
-使用 QnA Maker 资源，可以在运行时访问 QnA 对的创作和发布 Api 以及基于自然语言处理（NLP）的第二排名层（ranker #2）。
+QnA Maker 资源提供对创作和发布 Api 的访问，以及自然语言处理 (NLP) 的第二排名层 (在运行时 QnA 对的 ranker #2) 。
 
 第二个排名适用于智能筛选器，这些筛选器可以包含元数据和跟进提示。
 
@@ -154,7 +154,7 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 
 ### <a name="using-a-single-cognitive-search-service"></a>使用单个认知搜索服务
 
-如果通过门户创建 QnA 服务及其依赖项（如搜索），将为你创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用以前存在的搜索服务，并删除刚刚创建的搜索服务。
+如果通过门户创建 QnA 服务及其依赖项 (如搜索) ，系统会为您创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用以前存在的搜索服务，并删除刚刚创建的搜索服务。
 
 了解[如何将 QnA Maker 配置](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)为使用不同的认知服务资源，而不是创建 QnA Maker 资源创建过程的一部分。
 
@@ -179,16 +179,16 @@ QnA Maker 服务处理两种类型的密钥：**创作密钥**和用于在应用
 
 ### <a name="subscription-keys"></a>订阅密钥
 
-术语 "创作" 和 "查询" 终结点是纠正条款。 以前的术语是**订阅密钥**。 如果你看到其他文档引用订阅密钥，则这些文档等效于创作和查询终结点密钥（在运行时中使用）。
+术语 "创作" 和 "查询" 终结点是纠正条款。 以前的术语是**订阅密钥**。 如果你看到其他文档引用订阅密钥，则这些文档等效于运行时)  (使用的创作和查询终结点密钥。
 
 您必须知道该密钥所访问的内容、知识库管理或知识库查询，才能知道您需要找到哪个密钥。
 
 ## <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置
 
 * 通过[配置虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)来保护认知服务资源免受公共访问。
-* 保护应用服务（QnA 运行时）与公共访问：
-    * 仅允许来自认知服务 Ip 的流量。 服务标记 "CognitiveServicesManagement" 中已包含这些项。 这对于创作 Api （Create/Update KB）以调用应用服务和相应更新 Azure 搜索服务是必需的。
-    * 确保还允许其他入口点（如机器人服务）、QnA Maker 门户（可能是你的公司网络）等。
+* 从公共访问中保护应用服务 (QnA 运行时) ：
+    * 仅允许来自认知服务 Ip 的流量。 服务标记 "CognitiveServicesManagement" 中已包含这些项。 这对于创作 Api (创建/更新 KB) ，以相应地调用应用服务和更新 Azure 搜索服务是必需的。
+    * 确保还允许使用其他入口点（如机器人服务） QnA Maker 门户 (可以是你的公司网络) 等。
     * 查看[有关服务标记的详细信息。](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
 ## <a name="next-steps"></a>后续步骤

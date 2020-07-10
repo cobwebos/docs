@@ -3,11 +3,12 @@ title: YAML 参考 - ACR 任务
 description: 有关在 YAML 中为 ACR 任务定义任务的参考，包括任务属性、步骤类型、步骤属性和内置变量。
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: 9558f698b4a9dbca46431fc02ced6ae30de29121
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11771c32db3b3d7c975c0262bda228903a58978f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79246976"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171051"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -140,16 +141,16 @@ steps:
 
 `build` 步骤类型支持以下属性。 可在本文的[任务步骤属性](#task-step-properties)部分找到这些属性的详细信息。
 
-| | | |
+| 属性 | 类型 | 必需 |
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | 字符串 | 可选 |
+| `entryPoint` | string | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | 字符串 | 可选 |
+| `isolation` | string | 可选 |
 | `keep` | bool | 可选 |
 | `network` | 对象 (object) | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
@@ -161,7 +162,7 @@ steps:
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
-| `workingDirectory` | 字符串 | 可选 |
+| `workingDirectory` | string | 可选 |
 
 ### <a name="examples-build"></a>示例：build
 
@@ -212,10 +213,10 @@ steps:
 
 `push` 步骤类型支持以下属性。 可在本文的[任务步骤属性](#task-step-properties)部分找到这些属性的详细信息。
 
-| | | |
+| 属性 | 类型 | 必需 |
 | -------- | ---- | -------- |
 | `env` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
@@ -257,16 +258,16 @@ steps:
 
 `cmd` 步骤类型支持以下属性：
 
-| | | |
+| 属性 | 类型 | 必需 |
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | 字符串 | 可选 |
+| `entryPoint` | string | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | 字符串 | 可选 |
+| `isolation` | string | 可选 |
 | `keep` | bool | 可选 |
 | `network` | 对象 (object) | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
@@ -278,7 +279,7 @@ steps:
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
-| `workingDirectory` | 字符串 | 可选 |
+| `workingDirectory` | string | 可选 |
 
 可在本文的[任务步骤属性](#task-step-properties)部分找到这些属性的详细信息。
 
@@ -355,36 +356,36 @@ steps:
 
 每个步骤类型支持适用于其类型的多个属性。 下表定义了所有可用的步骤属性。 并非所有步骤类型都支持所有属性。 若要查看其中的哪些属性可用于每个步骤类型，请参阅 [cmd](#cmd)、[build](#build) 和 [push](#push) 步骤类型参考部分。
 
-| properties | 类型 | 可选 | 说明 | 默认值 |
+| 属性 | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | 是 | 在运行时是否应分离容器。 | `false` |
 | `disableWorkingDirectoryOverride` | bool | 是 | 是否禁用 `workingDirectory` 重写功能。 将此属性与 `workingDirectory` 结合使用可以全面控制容器的工作目录。 | `false` |
-| `entryPoint` | 字符串 | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | 无 |
+| `entryPoint` | string | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | 无 |
 | `env` | [字符串, 字符串, ...] | 是 | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | 无 |
 | `expose` | [字符串, 字符串, ...] | 是 | 从容器公开的端口的数组。 |  无 |
-| [`id`](#example-id) | 字符串 | 是 | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`，其中，`%d` 是 YAML 文件中的步骤的从 0 开始的索引（按从上到下的顺序排列）。 |
+| [`id`](#example-id) | string | 是 | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`，其中，`%d` 是 YAML 文件中的步骤的从 0 开始的索引（按从上到下的顺序排列）。 |
 | `ignoreErrors` | bool | 是 | 是否将步骤标记为成功（无论容器执行过程中是否发生了错误）。 | `false` |
-| `isolation` | 字符串 | 是 | 容器的隔离级别。 | `default` |
+| `isolation` | string | 是 | 容器的隔离级别。 | `default` |
 | `keep` | bool | 是 | 执行后是否应保留该步骤的容器。 | `false` |
-| `network` | 对象 (object) | 是 | 标识运行容器的网络。 | 无 |
+| `network` | object | 是 | 标识运行容器的网络。 | 无 |
 | `ports` | [字符串, 字符串, ...] | 是 | 从容器发布到主机的端口的数组。 |  无 |
 | `pull` | bool | 是 | 在执行容器之前是否强制提取容器以防止任何缓存行为。 | `false` |
 | `privileged` | bool | 是 | 是否在特权模式下运行容器。 | `false` |
 | `repeat` | int | 是 | 尝试重复执行容器的次数。 | 0 |
 | `retries` | int | 是 | 容器执行失败时的重试次数。 仅当容器的退出代码非零时才重试。 | 0 |
 | `retryDelay` | 整数（秒） | 是 | 重试容器执行的间隔延迟（以秒为单位）。 | 0 |
-| `secret` | 对象 (object) | 是 | 标识 Azure Key Vault 机密或 [Azure 资源的托管标识](container-registry-tasks-authentication-managed-identity.md)。 | 无 |
+| `secret` | object | 是 | 标识 Azure Key Vault 机密或 [Azure 资源的托管标识](container-registry-tasks-authentication-managed-identity.md)。 | 无 |
 | `startDelay` | 整数（秒） | 是 | 将容器执行延迟的秒数。 | 0 |
 | `timeout` | 整数（秒） | 是 | 步骤在终止之前可以执行的最大秒数。 | 600 |
 | [`when`](#example-when) | [字符串, 字符串, ...] | 是 | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | 无 |
-| `user` | 字符串 | 是 | 容器的用户名或 UID | 无 |
-| `workingDirectory` | 字符串 | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `/workspace` |
+| `user` | string | 是 | 容器的用户名或 UID | 无 |
+| `workingDirectory` | string | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>示例：任务步骤属性
 
 #### <a name="example-id"></a>示例：id
 
-生成两个映像，并实例化功能测试映像。 每个步骤由任务中的其他步骤在其 `id` 属性中引用的唯一 `when` 进行标识。
+生成两个映像，并实例化功能测试映像。 每个步骤由任务中的其他步骤在其 `when` 属性中引用的唯一 `id` 进行标识。
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -453,7 +454,7 @@ ACR 任务包含一组在执行时可供任务步骤使用的默认变量。 可
 * `Run.Branch`
 * `Run.TaskName`
 
-变量名称通常是自释性的。 常用的变量会附带详细信息。 从 YAML 版本 `v1.1.0` 开始，可以使用缩写的预定义[任务别名](#aliases)来代替大部分 run 变量。 例如，可以使用 `{{.Run.Registry}}` 别名来代替 `$Registry`。
+变量名称通常是自释性的。 常用的变量会附带详细信息。 从 YAML 版本 `v1.1.0` 开始，可以使用缩写的预定义[任务别名](#aliases)来代替大部分 run 变量。 例如，可以使用 `$Registry` 别名来代替 `{{.Run.Registry}}`。
 
 ### <a name="runid"></a>Run.ID
 
@@ -535,9 +536,9 @@ steps:
 
 ### <a name="image-aliases"></a>映像别名
 
-以下每个别名指向 Microsoft 容器注册表（MCR）中的稳定映像。 可以在任务文件的 `cmd` 节中引用其中的每个别名，而无需使用指令。
+以下每个别名都指向 Microsoft 容器注册表 (MCR) 中的稳定映像。 可以在任务文件的 `cmd` 节中引用其中的每个别名，而无需使用指令。
 
-| Alias | 映像 |
+| Alias | 图像 |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
 | `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |

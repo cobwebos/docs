@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382527"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170388"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -26,12 +26,12 @@ ms.locfileid: "81382527"
 
 Azure Functions 部署通常包括以下资源：
 
-| 资源                                                                           | 要求 | 语法和属性参考                                                         |   |
-|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 函数应用                                                                     | 必选    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure 存储](../storage/index.yml)帐户                                   | 必选    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md)组件 | 可选    | [Microsoft Insights/组件](/azure/templates/microsoft.insights/components)         |   |
-| [托管计划](./functions-scale.md)                                             | 可选<sup>1</sup>    | [System.web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| 资源                                                                           | 要求 | 语法和属性参考                                                         |
+|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
+| 函数应用                                                                     | 必选    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |
+| [Azure 存储](../storage/index.yml)帐户                                   | 必选    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md)组件 | 可选    | [Microsoft Insights/组件](/azure/templates/microsoft.insights/components)         |
+| [托管计划](./functions-scale.md)                                             | 可选<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup>仅当您选择在[高级计划](./functions-premium-plan.md)或[应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，才需要托管计划。
 
@@ -641,7 +641,7 @@ Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果�
 }
 ```
 > [!TIP]
-> 此模板使用[Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file)应用设置值，此值设置函数部署引擎（Kudu）在其中查找可部署代码的基目录。 在存储库内，函数位于 **src** 文件夹的子文件夹中。 因此，在前一个示例中，将应用设置值设置为 `src`。 如果函数位于存储库的根目录中，或者不从源代码管理进行部署，则可删除此应用设置值。
+> 此模板使用[Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file)应用设置值，此值将函数部署引擎 (的基目录设置) 查找可部署代码。 在存储库内，函数位于 **src** 文件夹的子文件夹中。 因此，在前一个示例中，将应用设置值设置为 `src`。 如果函数位于存储库的根目录中，或者不从源代码管理进行部署，则可删除此应用设置值。
 
 ## <a name="deploy-your-template"></a>部署模板
 

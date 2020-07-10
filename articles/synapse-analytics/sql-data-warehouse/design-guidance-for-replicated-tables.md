@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201695"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181329"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>有关在 Synapse SQL 池中使用复制表的设计指南
 
@@ -149,9 +149,9 @@ SQL 池通过维护表的主版本来实现复制表。 它将主版本复制到
 
 例如，以下加载模式从四个源加载数据并调用四个重新生成。
 
-        Load from source 1.
+- 从源 1 进行加载。
 - Select 语句触发重新生成 1。
-        从源 2 进行加载。
+- 从源 2 进行加载。
 - Select 语句触发重新生成 2。
 - 从源 3 进行加载。
 - Select 语句触发重新生成 3。

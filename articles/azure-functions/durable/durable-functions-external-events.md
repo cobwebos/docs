@@ -4,11 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处�
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76262956"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165543"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
 
@@ -19,7 +20,7 @@ ms.locfileid: "76262956"
 
 ## <a name="wait-for-events"></a>等待事件
 
-业务流程协调程序函数使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 `WaitForExternalEvent` (.NET) 和 `waitForExternalEvent` (JavaScript) 方法可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
+"业务流程触发器绑定" 的[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) ( .net) 和 `waitForExternalEvent` (JavaScript) 方法允许[业务流程](durable-functions-bindings.md#orchestration-trigger)协调程序函数以异步方式等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -172,7 +173,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>发送事件
 
-[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 方法发送 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 等待的事件。  `RaiseEventAsync` 方法采用 *eventName* 和 *eventData* 作为参数。 事件数据必须是 JSON 可序列化的。
+可以使用[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) ( .net) 或 `raiseEventAsync` (JavaScript) 方法将外部事件发送到业务流程。 这些方法由[业务流程客户端](durable-functions-bindings.md#orchestration-client)绑定公开。 你还可以使用内置的 "[引发" 事件 HTTP API](durable-functions-http-api.md#raise-event)将外部事件发送到业务流程。
+
+引发的事件包括*实例 ID*、*事件名称*和*eventData*作为参数。 业务流程协调程序函数使用 `WaitForExternalEvent` ( .net) 或 `waitForExternalEvent` (JavaScript) api 来处理这些事件。 对于要处理的事件，该事件*名称*在发送和接收端上必须匹配。 事件数据还必须是 JSON 可序列化的。
+
+在内部，"raise 事件" 机制将排队由等待协调器函数选取的消息。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列**。 如果业务流程实例稍后开始侦听该事件名称，** 它将检查队列中的事件消息。
+
+> [!NOTE]
+> 如果没有具有指定*实例 ID* 的业务流程实例，则丢弃事件消息。
 
 下面是一个示例队列触发的函数，它将“Approval”事件发送到一个业务流程协调程序函数实例。 业务流程实例 ID 来自队列消息的正文。
 
@@ -189,7 +197,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型，而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -204,10 +212,23 @@ module.exports = async function(context, instanceId) {
 
 ---
 
-在内部，`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 将正在等待的业务流程协调程序函数选取的消息排入队列。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列  。 如果业务流程实例稍后开始侦听该事件名称，  它将检查队列中的事件消息。
+在内部，`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 将正在等待的业务流程协调程序函数选取的消息排入队列。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列**。 如果业务流程实例稍后开始侦听该事件名称，** 它将检查队列中的事件消息。
 
 > [!NOTE]
 > 如果没有具有指定*实例 ID* 的业务流程实例，则丢弃事件消息。
+
+### <a name="http"></a>HTTP
+
+下面是向业务流程实例引发 "批准" 事件的 HTTP 请求的示例。 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+在这种情况下，实例 ID 硬编码为*MyInstanceId*。
 
 ## <a name="next-steps"></a>后续步骤
 

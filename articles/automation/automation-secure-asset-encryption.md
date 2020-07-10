@@ -9,11 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830117"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185834"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>加密 Azure 自动化中的安全资产
 
@@ -51,12 +52,12 @@ Azure 自动化中的安全资产包括凭据、证书、连接和加密的变�
 
  - 客户管理的密钥存储在 Azure Key Vault 中。 
  - 同时在密钥保管库上启用“软删除”和“不清除”属性 。 在意外删除了密钥的情况下需要这些功能才能恢复密钥。
- - Azure 自动化加密仅支持 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)。
+ - Azure 自动化加密仅支持 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../key-vault/general/about-keys-secrets-certificates.md)。
 - 自动化帐户和密钥保管库可以位于不同的订阅中，但它们需要位于同一个 Azure Active Directory 租户中。
 
 ### <a name="assignment-of-an-identity-to-the-automation-account"></a>将标识分配给自动化帐户
 
-若要将客户管理的密钥用于自动化帐户，你的自动化帐户需要对存储客户管理的密钥的密钥保管库进行身份验证。 Azure 自动化使用系统分配的托管标识来对 Azure Key Vault 的帐户进行身份验证。 有关托管标识的详细信息，请参阅[什么是 Azure 资源托管标识？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+若要将客户管理的密钥用于自动化帐户，你的自动化帐户需要对存储客户管理的密钥的密钥保管库进行身份验证。 Azure 自动化使用系统分配的托管标识来对 Azure Key Vault 的帐户进行身份验证。 有关托管标识的详细信息，请参阅[什么是 Azure 资源托管标识？](../active-directory/managed-identities-azure-resources/overview.md)
 
 使用以下 REST API 调用向自动化帐户配置系统分配的托管标识：
 
@@ -184,7 +185,7 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 
 ## <a name="revocation-of-access-to-a-customer-managed-key"></a>撤销对客户管理的密钥的访问
 
-若要撤销对客户管理的密钥的访问，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) 或 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤销访问可有效阻止对自动化帐户中所有安全资产的访问，因为 Azure 自动化无法访问加密密钥。
+若要撤销对客户管理的密钥的访问，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅 [Azure Key Vault PowerShell](/powershell/module/az.keyvault/) 或 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤销访问可有效阻止对自动化帐户中所有安全资产的访问，因为 Azure 自动化无法访问加密密钥。
 
 ## <a name="next-steps"></a>后续步骤
 
