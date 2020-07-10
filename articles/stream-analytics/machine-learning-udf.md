@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488743"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141950"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>将 Azure 流分析与 Azure 机器学习集成（预览版）
 
@@ -27,7 +28,7 @@ ms.locfileid: "84488743"
 
 3. 确保 Web 服务接受并返回 JSON 序列化的数据。
 
-4. 在 [Azure Kubernetes 服务](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target)中部署模型，以进行大规模生产部署。 如果 Web 服务无法处理来自作业的请求数，流分析作业的性能将会下降，从而影响延迟。 仅当你使用 Azure 门户时，Azure 容器实例中部署的模型才受支持。
+4. 在 [Azure Kubernetes 服务](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target)中部署模型，以进行大规模生产部署。 如果 Web 服务无法处理来自作业的请求数，流分析作业的性能将会下降，从而影响延迟。 仅当你使用 Azure 门户时，Azure 容器实例中部署的模型才受支持。 流分析中尚不支持使用[Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer)生成的模型。
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>将机器学习模型添加到作业
 

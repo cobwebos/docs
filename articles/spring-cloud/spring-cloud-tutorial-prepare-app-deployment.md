@@ -1,17 +1,17 @@
 ---
-title: 操作说明 - 准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
-description: 在本主题中，我们准备一个要部署到 Azure Spring Cloud 的 Java Spring 应用程序。
+title: 如何在 Azure 春季云中为部署准备 Java 弹簧应用程序
+description: 了解如何准备 Java 弹簧应用程序以部署到 Azure 春季 Cloud。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1840979fc1380f1e0d14f3a0a74eef5fa6df6538
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833377"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141860"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
 
@@ -253,7 +253,7 @@ public class GatewayApplication {
 </dependency>
 ```
 
- 还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 阅读[有关分布式跟踪的教程](spring-cloud-tutorial-distributed-tracing.md)，了解如何将 Application Insights 与 Azure Spring Cloud 配合使用。
+ 还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 有关如何将 Application Insights 与 Azure 春季云一起使用的信息，请参阅有关[分布式跟踪的文档](spring-cloud-tutorial-distributed-tracing.md)。
 
 ## <a name="see-also"></a>另请参阅
 * [分析应用程序日志和指标](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
@@ -264,9 +264,6 @@ public class GatewayApplication {
 
 ## <a name="next-steps"></a>后续步骤
 
-本主题介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 若要了解如何设置配置服务器实例，请参阅以下文章。
-
-> [!div class="nextstepaction"]
-> [了解如何设置配置服务器实例](spring-cloud-tutorial-config-server.md)
+本主题介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 若要了解如何设置配置服务器实例，请参阅[设置配置服务器实例](spring-cloud-tutorial-config-server.md)。
 
 GitHub 中提供了更多示例：[Azure Spring Cloud 示例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)。
