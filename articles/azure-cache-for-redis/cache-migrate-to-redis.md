@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 909329a4326354a890c3c4645002f7248f30e8fa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74122689"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184780"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>从托管缓存服务迁移到 Azure Redis 缓存
 在将使用 Azure 托管缓存服务的应用程序迁移到 Azure Redis 缓存时，只需对应用程序略做更改，具体情况取决于缓存应用程序所使用的托管缓存服务功能。 API 虽非完全相同，但却极为类似，而且使用托管缓存服务来访问缓存的多数现有代码，只需略做更改即可重复使用。 本文介绍了为迁移托管缓存服务应用程序以使用 Azure Redis 缓存，如何进行必要的配置和应用程序更改；还介绍了如何使用 Azure Redis 缓存的某些功能实现托管缓存服务缓存功能。
@@ -39,7 +40,7 @@ Azure 托管缓存服务与 Azure Redis 缓存类似，但两者在实现某些�
 | 托管缓存服务功能 | 托管缓存服务支持 | Azure Redis 缓存支持 |
 | --- | --- | --- |
 | 命名缓存 |系统会配置默认缓存，而在标准和高级缓存产品/服务中，还可以根据需要额外配置多达 9 个命名缓存。 |Azure Redis 缓存具有可配置数量的数据库（默认值为 16 个），可用于实现与命名缓存类似的功能。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。 |
-| 高可用性 |在标准和高级缓存产品/服务中，为缓存中的项提供高可用性。 如果因为故障而导致项丢失，缓存中的项仍有备份副本可供使用。 辅助缓存的写入操作以同步方式进行。 |标准和高级缓存产品/服务提供高可用性，它们具有双节点的主要/副本配置（高级缓存的每个分片都有主要/副本对）。 副本的写入操作以异步方式进行。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。 |
+| 高可用性 |在标准和高级缓存产品/服务中，为缓存中的项提供高可用性。 如果因为故障而导致项丢失，缓存中的项仍有备份副本可供使用。 写入副本缓存的操作将以同步方式进行。 |标准和高级缓存产品/服务提供高可用性，它们具有双节点的主要/副本配置（高级缓存的每个分片都有主要/副本对）。 副本的写入操作以异步方式进行。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。 |
 | 通知 |当命名缓存上发生各种缓存操作时，允许客户端接收异步通知。 |客户端应用程序可以使用 Redis pub/sub 或[密钥空间通知](cache-configure.md#keyspace-notifications-advanced-settings)来实现与通知类似的功能。 |
 | 本地缓存 |在客户端本地存储缓存对象的副本，以实现超快访问。 |客户端应用程序需使用字典或类似的数据结构来实现此功能。 |
 | 逐出策略 |无或 LRU。 默认策略是 LRU。 |Azure Redis 缓存支持以下逐出策略：volatile-lru、allkeys-lru、volatile-random、allkeys-random、volatile-ttl、noeviction。 默认策略是 volatile-lru。 有关详细信息，请参阅[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。 |

@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fe61cf2a53b8e128a6cb58465cbb4785faa89d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6e66dc05ac2b6e54a1be94576b8686390949145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562048"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171833"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为复杂数据类型建模
 
@@ -111,7 +111,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 如果使用多个字词或运算符，并且某些字词指定了字段名（可以使用 [Lucene 语法](query-lucene-syntax.md)来指定），则查询会变得更微妙。 例如，此查询尝试将两个字词“Portland”和“OR”与 Address 字段的两个子字段相匹配：
 
-    search=Address/City:Portland AND Address/State:OR
+> `search=Address/City:Portland AND Address/State:OR`
 
 此类查询对于全文搜索是不相关联的，这与筛选器不同。  在筛选器中，基于复杂集合子字段的查询将通过 [`any` 或 `all`](search-query-odata-collection-operators.md) 中的范围变量相关联。 上述 Lucene 查询返回包含“Portland, Maine”和“Portland, Oregon”以及 Oregon 中其他城市的文档。 之所以返回此结果，是因为每个子句将应用到其在整个文档中的字段的所有值，因此没有“当前子文档”的概念。 有关此方面内容的详细信息，请参阅[了解 Azure 认知搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
 
@@ -119,7 +119,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 `$select` 参数用于选择要在搜索结果中返回哪些字段。 若要使用此参数来选择复杂字段的特定子字段，请包含斜杠 (`/`) 分隔的父字段和子字段。
 
-    $select=HotelName, Address/City, Rooms/BaseRate
+> `$select=HotelName, Address/City, Rooms/BaseRate`
 
 如果希望这些字段在搜索结果中出现，必须在索引中将其标记为可检索。 只有标记为可检索的字段才能在 `$select` 语句中使用。
 
@@ -143,11 +143,11 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 可以在筛选表达式中引用复杂字段的子字段。 只需使用对分面、排序和选择字段所用的相同 [OData 路径语法](query-odata-filter-orderby-syntax.md)。 例如，以下筛选器将返回位于加拿大的所有酒店：
 
-    $filter=Address/Country eq 'Canada'
+> `$filter=Address/Country eq 'Canada'`
 
 若要根据复杂集合字段进行筛选，可以结合 [`any` 和 `all` 运算符](search-query-odata-collection-operators.md)使用 **Lambda 表达式**。 在这种情况下，Lambda 表达式的**范围变量**是包含子字段的对象。 可以使用标准 OData 路径语法来引用这些子字段。 例如，以下筛选器将返回至少提供一间豪华客房，且所有客房都禁止吸烟的所有酒店：
 
-    $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
+> `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 
 与顶级简单字段一样，仅当已在索引定义中将复杂字段的简单子字段的 **filterable** 属性设置为 `true` 时，才能在筛选器中包含这些子字段。 有关详细信息，请参阅[创建索引 API 参考](/rest/api/searchservice/create-index)。
 

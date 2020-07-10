@@ -5,15 +5,14 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841741"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171629"
 ---
 # <a name="output-batching"></a>输出批处理
 
@@ -50,7 +49,7 @@ ms.locfileid: "76841741"
 
 * 默认值
 
-  创建事件订阅时，无需同时指定设置（每批的最大事件数和近似的批大小）。 如果仅设置了一个设置，则事件网格将使用（可配置）默认值。 请参阅以下各节以了解默认值，以及如何替代它们。
+  创建事件订阅时，无需同时指定设置 (每批的最大事件数和以 kb 为单位的近似批大小) 。 如果只设置一个设置，事件网格将使用 (可配置) 默认值。 请参阅以下各节以了解默认值，以及如何替代它们。
 
 ## <a name="turn-on-output-batching"></a>打开输出批处理
 
@@ -76,7 +75,7 @@ ms.locfileid: "76841741"
 
 以下部署时间设置控制创建事件订阅时允许的最大值。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | ------------- | ----------- | 
 | `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | 旋钮允许的最大值 `PreferredBatchSizeInKilobytes` 。 默认值 `1033` 。
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | 旋钮允许的最大值 `MaxEventsPerBatch` 。 默认值 `50` 。
@@ -85,7 +84,7 @@ ms.locfileid: "76841741"
 
 以下部署时间设置控制每个旋钮在事件订阅中未指定时的运行时默认值。 重申一遍，必须在事件订阅上设置至少一个旋钮才能打开批处理行为。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | ------------- | ----------- |
 | `broker__defaultMaxBatchSizeInBytes` | 仅指定时的最大传递请求大小 `MaxEventsPerBatch` 。 默认值 `1_058_576` 。
 | `broker__defaultMaxEventsPerBatch` | 仅指定了时要添加到批的最大事件数 `MaxBatchSizeInBytes` 。 默认值 `10` 。

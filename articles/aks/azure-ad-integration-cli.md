@@ -2,14 +2,16 @@
 title: 将 Azure Active Directory 与 Azure Kubernetes Service 集成
 description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory 的 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
+author: TomGeske
 ms.topic: article
-ms.date: 04/16/2019
-ms.openlocfilehash: 85441b53b22b4d33ee2ff967d777cc3267e171da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 0465c54df2095cff7647e974765e61fa9b9ff3e1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106095"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169453"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
@@ -19,11 +21,11 @@ ms.locfileid: "86106095"
 
 有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - AKS 与 Azure AD 集成][complete-script]。
 
-存在以下限制：
+## <a name="the-following-limitations-apply"></a>存在以下限制：
 
-- 只有在创建新的启用 RBAC 的群集时，才能启用 Azure AD。 不能在现有 AKS 群集上启用 Azure AD。
+- 只能在启用 RBAC 的群集上启用 Azure AD。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -37,7 +39,7 @@ aksname="myakscluster"
 
 ## <a name="azure-ad-authentication-overview"></a>Azure AD 身份验证概述
 
-使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅 [Open ID Connect 文档][open-id-connect]。
+使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅[OPEN ID connect 文档][open-id-connect]。
 
 在 Kubernetes 群集内部，使用 Webhook 令牌身份验证来验证身份验证令牌。 Webhook 令牌身份验证作为 AKS 群集的一部分进行配置和管理。 有关 Webhook 令牌身份验证的详细信息，请参阅 [Webhook 身份验证文档][kubernetes-webhook]。
 
@@ -77,7 +79,7 @@ serverApplicationSecret=$(az ad sp credential reset \
 Azure AD 需要执行以下操作的有权：
 
 * 读取目录数据
-* 登录并读取用户配置文件
+* 登录和读取用户配置文件
 
 使用 [az ad app permission add][az-ad-app-permission-add] 命令分配这些权限：
 
@@ -88,7 +90,7 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-最后，使用 [az ad app permission grant][az-ad-app-permission-grant] 命令授予在上一步骤中为服务器应用程序分配的权限。 如果当前帐户不是租户管理员，此步骤将会失败。还需要添加对 Azure AD 应用程序的权限来请求信息，否则可能需要使用 [az ad app permission admin-consent][az-ad-app-permission-admin-consent] 来请求管理许可：
+最后，使用 [az ad app permission grant][az-ad-app-permission-grant] 命令授予在上一步骤中为服务器应用程序分配的权限。 如果当前帐户不是租户管理员，则此步骤将失败。还需要为 Azure AD 应用程序添加权限，以便请求可能需要使用[az AD app 权限管理员同意][az-ad-app-permission-admin-consent]进行管理许可的信息：
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
@@ -152,7 +154,7 @@ az aks create \
     --aad-tenant-id $tenantId
 ```
 
-最后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下步骤之一中，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。 
+最后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下步骤之一中，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。**
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
@@ -160,7 +162,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 ## <a name="create-rbac-binding"></a>创建 RBAC 绑定
 
-在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户   。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
+在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 *角色*定义要授予的权限，*绑定*将它们应用到所需的用户。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
 
 使用 [az ad signed-in-user show][az-ad-signed-in-user-show] 命令获取用户当前登录用户的用户主体名称 (UPN)。 在下一步骤中，将为 Azure AD 集成启用此用户帐户。
 
@@ -169,7 +171,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 ```
 
 > [!IMPORTANT]
-> 如果为其授予 RBAC 绑定的用户在同一个 Azure AD 租户中，请根据 *userPrincipalName* 分配权限。 如果该用户位于不同的 Azure AD 租户中，请查询并改用 *objectId* 属性。
+> 如果为其授予 RBAC 绑定的用户在同一 Azure AD 租户中，请根据*userPrincipalName*分配权限。 如果该用户位于不同的 Azure AD 租户中，请查询并改用 *objectId* 属性。
 
 创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，请将 *userPrincipalName_or_objectId* 替换为前一命令的 UPN 或对象 ID 输出：
 

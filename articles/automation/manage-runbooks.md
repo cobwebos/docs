@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9202eae49175615c4fffcd0b006ddda6e8281292
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718302"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185239"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
@@ -34,7 +35,7 @@ ms.locfileid: "84718302"
 
 ### <a name="create-a-runbook-with-powershell"></a>通过 PowerShell 创建 Runbook
 
-使用 [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) cmdlet 创建空的 Runbook。 使用 `Type` 参数指定为 `New-AzAutomationRunbook` 定义的其中一种 Runbook 类型。
+使用 [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) cmdlet 创建空的 Runbook。 使用 `Type` 参数指定为 `New-AzAutomationRunbook` 定义的其中一种 Runbook 类型。
 
 以下示例演示了如何创建新的空 Runbook。
 
@@ -76,7 +77,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ### <a name="import-a-runbook-with-windows-powershell"></a>使用 Windows PowerShell 导入 Runbook
 
-使用 [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) cmdlet 将脚本文件作为草稿 Runbook 导入。 如果该 Runbook 已存在，则导入将失败，除非你将 `Force` 参数与 cmdlet 一起使用。
+使用 [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) cmdlet 将脚本文件作为草稿 Runbook 导入。 如果该 Runbook 已存在，则导入将失败，除非你将 `Force` 参数与 cmdlet 一起使用。
 
 以下示例演示了如何将脚本文件导入到 Runbook 中。
 
@@ -191,7 +192,7 @@ Runbook 必须可靠且能够处理[错误](automation-runbook-execution.md#erro
 
 ## <a name="work-with-multiple-subscriptions"></a>使用多个订阅
 
-Runbook 必须能够处理[订阅](automation-runbook-execution.md#subscriptions)。 例如，Runbook 会使用 [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) cmdlet 来处理多个订阅。 该 cmdlet 可确保不从正在同一沙盒中运行的另一 Runbook 中检索身份验证上下文。 Runbook 还使用 `Get-AzContext` cmdlet 检索当前会话的上下文，并将其分配给变量 `$AzureContext` 。
+Runbook 必须能够处理[订阅](automation-runbook-execution.md#subscriptions)。 例如，Runbook 会使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) cmdlet 来处理多个订阅。 该 cmdlet 可确保不从正在同一沙盒中运行的另一 Runbook 中检索身份验证上下文。 Runbook 还使用 `Get-AzContext` cmdlet 检索当前会话的上下文，并将其分配给变量 `$AzureContext` 。
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -256,7 +257,7 @@ Start-AzAutomationRunbook `
 
 ### <a name="publish-a-runbook-using-powershell"></a>使用 PowerShell 运行 Runbook
 
-使用 [Publish-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) cmdlet 发布 Runbook。 
+使用 [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) cmdlet 发布 Runbook。 
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -304,7 +305,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>使用 PowerShell 检索作业状态
 
-使用 [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) cmdlet 检索为 Runbook 创建的作业和特定作业的详细信息。 如果使用 `Start-AzAutomationRunbook` 启动 Runbook，它会返回生成的作业。 使用 [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) 检索作业输出。
+使用 [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) cmdlet 检索为 Runbook 创建的作业和特定作业的详细信息。 如果使用 `Start-AzAutomationRunbook` 启动 Runbook，它会返回生成的作业。 使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) 检索作业输出。
 
 以下示例会获取示例 Runbook 的最后一项作业，并显示它的状态、为 Runbook 参数提供的值以及作业的输出内容。
 

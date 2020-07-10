@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856974"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185001"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -41,6 +41,7 @@ ms.locfileid: "85856974"
 * [我应使用哪种 Azure Redis 缓存产品/服务和大小？](#what-azure-cache-for-redis-offering-and-size-should-i-use)
 * [Azure Redis 缓存性能](#azure-cache-for-redis-performance)
 * [我应该将缓存放在哪个区域？](#in-what-region-should-i-locate-my-cache)
+* [缓存数据驻留在何处？](#where-do-my-cached-data-reside)
 * [Azure Redis 缓存如何计费？](#how-am-i-billed-for-azure-cache-for-redis)
 * [能否将 Azure Redis 缓存用于 Azure 政府云、Azure 中国云或 Microsoft Azure 德国？](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
@@ -100,7 +101,7 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 * **网络性能**：如果工作负荷需要较高的吞吐量，则可使用高级层，该层可提供比标准层或基本层更高的带宽。 另外，在每个层中，缓存大小越大，带宽越高，因为是由基础 VM 托管缓存。 有关详细信息，请参阅[下表](#cache-performance)。
 * **吞吐量**：高级级别提供的可用吞吐量最大。 如果缓存服务器或客户端达到带宽限制，客户端可能会出现超时。 有关详细信息，请参阅下表。
 * **高可用性/SLA**：Azure Redis 缓存保证标准/高级缓存在至少 99.9% 的时间内都可用。 若要了解有关 SLA 的详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)。 SLA 仅涉及与缓存终结点的连接。 SLA 不涉及对数据丢失的防护。 我们建议使用高级层中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。
-* **Redis 数据持久性**：高级层允许你将缓存数据暂留在 Azure 存储帐户中。 在基本/标准缓存中，所有数据只存储在内存中。 底层基础结构问题可能会导致潜在的数据丢失。 我们建议使用高级层中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。 适用于 Redis 的 Azure Cache 在 Redis 持久性中提供 RDB 和 AOF （预览版）选项。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](cache-how-to-premium-persistence.md)。
+* **Redis 数据持久性**：高级层允许你将缓存数据暂留在 Azure 存储帐户中。 在基本/标准缓存中，所有数据只存储在内存中。 底层基础结构问题可能会导致潜在的数据丢失。 我们建议使用高级层中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。 适用于 Redis 的 Azure Cache 提供 RDB 和 AOF (预览) Redis 暂留中的选项。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](cache-how-to-premium-persistence.md)。
 * **Redis 群集**：若要创建大于 120 GB 的缓存，或要将数据通过分片的方式分散到多个 Redis 节点，可以使用在高级层中提供的 Redis 群集功能。 每个节点都包含一个主/副缓存对，目的是提高可用性。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
 * **增强的安全性和网络隔离**：Azure 虚拟网络 (VNET) 部署为 Azure Redis 缓存提供增强的安全性和隔离性，并提供子网、访问控制策略以及其他进一步限制访问的功能。 有关详细信息，请参阅 [如何为高级 Azure Redis 缓存配置虚拟网络支持](cache-how-to-premium-vnet.md)。
 * **配置 Redis**：在标准级别和高级级别，都可以针对 Keyspace 通知来配置 Redis。
@@ -148,6 +149,13 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 
 ### <a name="in-what-region-should-i-locate-my-cache"></a>应该将缓存放在哪个区域？
 为了获得最佳性能并最大程度地降低延迟，请在缓存客户端应用程序所在的区域放置 Azure Redis 缓存。
+
+### <a name="where-do-my-cached-data-reside"></a>缓存数据驻留在何处？
+适用于 Redis 的 Azure 缓存将应用程序数据存储在 VM 或 Vm 的 RAM 中，具体取决于托管缓存的层。 你的数据完全驻留在你默认选择的 Azure 区域中。 在以下两种情况下，你的数据可能会离开某个区域：
+  1. 当你在缓存上启用暂留时，适用于 Redis 的 Azure Cache 会将你的数据备份到你拥有的 Azure 存储帐户。 如果您提供的存储帐户在另一个区域中，则您的数据副本将在该区域结束。
+  1. 如果设置了异地复制，而辅助缓存位于不同的区域（通常情况下是这种情况），则会将数据复制到该区域。
+
+需要显式配置 Redis 的 Azure 缓存，才能使用这些功能。 你还可以完全控制存储帐户或辅助缓存所在的区域。
 
 <a name="cache-billing"></a>
 
@@ -215,20 +223,20 @@ Azure Redis 缓存没有本地模拟器，但可以在本地计算机上从 [Red
 
 ```csharp
 private static Lazy<ConnectionMultiplexer>
-      lazyConnection = new Lazy<ConnectionMultiplexer>
-    (() =>
+    lazyConnection = new Lazy<ConnectionMultiplexer> (() =>
     {
-        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        // Connect to a locally running instance of Redis to simulate
+        // a local cache emulator experience.
         return ConnectionMultiplexer.Connect("127.0.0.1:6379");
     });
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
 ```
 
 如果需要，可以选择配置 [redis.conf](https://redis.io/topics/config) 文件，以更好地匹配联机 Azure Redis 缓存的[默认缓存设置](cache-configure.md#default-redis-server-configuration)。
@@ -367,11 +375,11 @@ CLR 线程池具有两种类型的线程 -“辅助角色”和“I/O 完成端�
 
 如果我们考虑一个来自 StackExchange.Redis（内部版本 1.0.450 或更高版本）的示例错误消息，会看到它现在会打印 ThreadPool 统计信息（请参阅下面的 IOCP 和辅助角色详细信息）。
 
-```output
-    System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
-    queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
-    IOCP: (Busy=6,Free=994,Min=4,Max=1000),
-    WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
+System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
+queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
+IOCP: (Busy=6,Free=994,Min=4,Max=1000),
+WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 ```
 
 在上面的示例中，可以看到对于 IOCP 线程有 6 个忙碌线程，而系统配置为允许最少 4 个线程。 在这种情况下，客户端可能会遇到两个 500 毫秒延迟，因为 6 > 4。
@@ -386,20 +394,20 @@ CLR 线程池具有两种类型的线程 -“辅助角色”和“I/O 完成端�
 
 * 建议使用 `global.asax.cs` 中的 [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) 方法，以编程方式更改此设置。 例如：
 
-```cs
-private readonly int minThreads = 200;
-void Application_Start(object sender, EventArgs e)
-{
-    // Code that runs on application startup
-    AreaRegistration.RegisterAllAreas();
-    RouteConfig.RegisterRoutes(RouteTable.Routes);
-    BundleConfig.RegisterBundles(BundleTable.Bundles);
-    ThreadPool.SetMinThreads(minThreads, minThreads);
-}
-```
+    ```csharp
+    private readonly int minThreads = 200;
+    void Application_Start(object sender, EventArgs e)
+    {
+        // Code that runs on application startup
+        AreaRegistration.RegisterAllAreas();
+        RouteConfig.RegisterRoutes(RouteTable.Routes);
+        BundleConfig.RegisterBundles(BundleTable.Bundles);
+        ThreadPool.SetMinThreads(minThreads, minThreads);
+    }
+    ```
 
-  > [!NOTE]
-  > 此 方法指定的值是全局设置，将影响整个 AppDomain。 例如，如果已有 4 核计算机，并想要在运行时将 *minWorkerThreads* 和 *minIoThreads* 设置为 50（每个 CPU），可使用 **ThreadPool.SetMinThreads(200, 200)** 。
+    > [!NOTE]
+    > 此 方法指定的值是全局设置，将影响整个 AppDomain。 例如，如果已有 4 核计算机，并想要在运行时将 *minWorkerThreads* 和 *minIoThreads* 设置为 50（每个 CPU），可使用 **ThreadPool.SetMinThreads(200, 200)** 。
 
 * 也可指定最小线程数设置，方法是在 `Machine.config`（通常位于 `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`）中的 `<processModel>` 配置元素下使用 [*minIoThreads* 或 *minWorkerThreads* 配置设置](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx)。 **通常不建议以这种方式设置最小线程数，因为它是系统范围的设置。**
 
@@ -455,7 +463,7 @@ Azure Redis 缓存**资源菜单**中还包含了用于对缓存进行监视和�
   * 已达到带宽阈值限制。
   * 占用大量 CPU 的操作花费了太长时间才完成。
 * 服务器端的原因
-  * 在标准缓存产品上，Azure Redis 缓存服务启动了从主节点到辅助节点的故障转移。
+  * 在标准缓存产品上，用于 Redis 的 Azure Cache 服务启动了从主节点到副本节点的故障转移。
   * Azure 正在修补已部署缓存的实例
     * 原因可能是 Redis 服务器更新或常规 VM 维护。
 

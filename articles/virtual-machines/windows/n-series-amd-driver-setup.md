@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: c4ab6f8dd1c2484ca560fd570f88476f31897b28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4693ad8b168ce1ddd7c07afe650a89fc1888ccd7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975175"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183318"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序
 
@@ -31,7 +31,7 @@ NVv4 VM 仅支持 Microsoft 发布的 GPU 驱动程序。 请勿从任何其他�
 
 | OS | 驱动程序 |
 | -------- |------------- |
-| Windows 10 EVD - 版本 1903 <br/><br/>Windows 10 - 版本 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
+| Windows 10 企业多会话-内部版本1903 <br/><br/>Windows 10 - 版本 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
 
 
 ## <a name="driver-installation"></a>驱动程序安装

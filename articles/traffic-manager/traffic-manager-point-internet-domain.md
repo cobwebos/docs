@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: rohink
-ms.openlocfilehash: 6c5c5c185063caf8ca258ad70a70903c9b583e07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b0f79ba072c813a7639e87025c19a34e65df023
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294846"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183454"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>将公司 Internet 域指向 Azure 流量管理器域
 
@@ -23,7 +23,7 @@ ms.locfileid: "80294846"
 
 例如，若要将名称 `www.contoso.com` 指向流量管理器 DNS 名称 `contoso.trafficmanager.net`，请创建以下 DNS 资源记录：
 
-    `www.contoso.com IN CNAME contoso.trafficmanager.net`
+`www.contoso.com IN CNAME contoso.trafficmanager.net`
 
 向*www \. contoso.com*发出的所有流量请求都将定向到*contoso.trafficmanager.net*。
 

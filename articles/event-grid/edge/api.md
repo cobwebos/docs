@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841823"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171748"
 ---
 # <a name="rest-api"></a>REST API
 本文介绍 IoT Edge 上的 Azure 事件网格的 REST Api
@@ -21,7 +20,7 @@ ms.locfileid: "76841823"
 ## <a name="common-api-behavior"></a>常见 API 行为
 
 ### <a name="base-url"></a>基 URL
-IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口4438）公开的以下 Api。
+IoT Edge 上的事件网格通过 HTTP (端口 5888) 和 HTTPS (端口 4438) 公开了以下 Api。
 
 * HTTP 的基 URL：http://eventgridmodule:5888
 * HTTPS 的基本 URL：https://eventgridmodule:4438
@@ -71,7 +70,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
 
 ## <a name="manage-topics"></a>管理主题
 
-### <a name="put-topic-create--update"></a>Put 主题（创建/更新）
+### <a name="put-topic-create--update"></a>将主题 (创建/更新) 
 
 **请求**：``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
@@ -165,7 +164,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
 ## <a name="manage-event-subscriptions"></a>管理事件订阅
 本部分中的示例使用 `EndpointType=Webhook;` 。 下一节中提供了的 json 示例 `EndpointType=EdgeHub / EndpointType=EventGrid` 。 
 
-### <a name="put-event-subscription-create--update"></a>Put 事件订阅（创建/更新）
+### <a name="put-event-subscription-create--update"></a>将事件订阅 (创建/更新) 
 
 **请求**：``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
@@ -502,7 +501,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
 
 ## <a name="publish-events-api"></a>发布事件 API
 
-### <a name="send-batch-of-events-in-event-grid-schema"></a>发送事件批（在事件网格架构中）
+### <a name="send-batch-of-events-in-event-grid-schema"></a>在事件网格架构) 中发送事件批处理 (
 
 **请求**：``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
@@ -533,9 +532,9 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
 - ```EventTime```是必需的，它不会进行验证，但应为正确的日期时间。
 - ```DataVersion``` 是必需的
 - ```MetadataVersion```是可选的，如果指定，则它必须是值为的字符串```"1"```
-- ```Data```是可选的，可以是任何 JSON 标记（number、string、boolean、array、object）
+- ```Data```是可选的，可以为任何 JSON 标记 (number、string、boolean、array、object) 
 
-### <a name="send-batch-of-events-in-custom-schema"></a>发送事件批（在自定义架构中）
+### <a name="send-batch-of-events-in-custom-schema"></a>在自定义架构) 中发送事件批处理 (
 
 **请求**：``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
@@ -553,7 +552,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
 **负载限制**
 - 必须是事件的数组。
 - 每个数组项必须是一个 JSON 对象。
-- 无其他约束（负载大小除外）。
+- 除了负载大小) 以外，没有其他约束 (。
 
 ## <a name="examples"></a>示例
 
@@ -597,7 +596,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
 ```
 
 ### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>将 WebHook 设置为目标，要在 eventgridschema 中传递的事件
-使用此目标类型可将事件发送到网络/internet 上的任何其他模块（托管 HTTP 终结点）或任何 HTTP 可寻址终结点。
+使用此目标类型可将事件发送到托管 HTTP 终结点) 或网络/internet 上任何 HTTP 可寻址终结点的任何其他模块 (。
 
 ```json
 {
@@ -648,7 +647,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
 
 ### <a name="set-up-event-grid-cloud-as-destination"></a>设置事件网格云作为目标
 
-使用此目标可将事件发送到云（Azure）中的事件网格。 在边缘上创建事件订阅之前，你需要先在云中设置要向其发送事件的用户主题。
+使用此目标可将事件发送到云中 (Azure) 中的事件网格。 在边缘上创建事件订阅之前，你需要先在云中设置要向其发送事件的用户主题。
 
 ```json
 {
@@ -673,9 +672,9 @@ EndpointUrl
 - 它必须是绝对 URL。
 - `/api/events`必须在请求 URL 路径中定义路径。
 - 它必须 `api-version=2018-01-01` 在查询字符串中。
-- 如果在 EventGridModule 设置中将 outbound__eventgrid__httpsOnly 设置为 true （默认值为 true），则它必须仅为 HTTPS。
+- 如果在 EventGridModule 设置中 outbound__eventgrid__httpsOnly 设置为 true (默认情况下) 为 true，则它必须仅为 HTTPS。
 - 如果 outbound__eventgrid__httpsOnly 设置为 "false"，则它可以是 HTTP 或 HTTPS。
-- 如果 outbound__eventgrid__allowInvalidHostnames 设置为 false （默认值为 false），则它必须面向以下终结点之一：
+- 如果 outbound__eventgrid__allowInvalidHostnames 默认设置为 false (false) ，则它必须面向以下终结点之一：
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
    - `eventgrid.azure.cn`

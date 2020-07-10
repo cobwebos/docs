@@ -3,12 +3,12 @@ title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 574aefa4d554be7b0027c921289d8d15cffb8e49
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733436"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169929"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -58,7 +58,7 @@ ms.locfileid: "82733436"
  
  下面是针对每个路由收集的数据的摘要：
         
-|  | .NET 基本集合 | .NET 建议集合 |
+| 数据 | .NET 基本集合 | .NET 建议集合 |
 | --- | --- | --- |
 | 添加 CPU、内存和 I/O 使用情况趋势 |是 |是 |
 | 收集使用情况趋势，并启用从可用性结果到事务的关联 | 是 |是 |

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: b0585c755e8dd9a6625a8259dc71ca521f156afb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88c2536ad53be0beb583dc64e633322b2a531d15
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704057"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183437"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 
@@ -55,9 +56,11 @@ Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirectio
 
 示例输出：
 
-    StatusCode StatusDescription
-    ---------- -----------------
-           301 Moved Permanently
+```output
+StatusCode StatusDescription
+---------- -----------------
+        301 Moved Permanently
+```
 
 请注意我们收到了重定向响应。 如前所述，任何非 200 状态代码都被视为失败。 流量管理器将终结点状态更改为“脱机”。 若要解决该问题，请检查网站配置，确保可以从探测路径返回正确的状态代码。 将流量管理器探测重新配置为指向返回 200 的路径。
 

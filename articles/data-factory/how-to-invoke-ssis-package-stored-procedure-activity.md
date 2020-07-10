@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 07/09/2020
 ms.author: sawinark
-ms.openlocfilehash: 95f29331c723e584cdecdd27a714f22377dfd26d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7729318e6121b0072546b8e111a8b782e95906d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253573"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183386"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SSIS 包。 
 
@@ -80,7 +80,7 @@ ms.locfileid: "85253573"
 2. 在“活动”工具箱中展开“常规”，将**存储过程**活动拖放到管道设计器图面。 
 
     ![拖放存储过程活动](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
-3. 在存储过程活动的属性窗口中切换到“SQL 帐户”选项卡，然后单击“+ 新建”。 在 Azure SQL 数据库中创建连接到托管 SSIS 目录（SSIDB 数据库）的数据库的连接。 
+3. 在存储过程活动的属性窗口中切换到“SQL 帐户”选项卡，然后单击“+ 新建”。 在 Azure SQL 数据库中创建一个与数据库的连接，该数据库承载 (SSIDB 数据库) 的 SSIS 目录。 
    
     ![“新建链接服务”按钮](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
 4. 在“新建链接服务”窗口中执行以下步骤： 

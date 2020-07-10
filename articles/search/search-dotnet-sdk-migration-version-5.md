@@ -9,11 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 32749037ac0abe3c55878c3adaaeff48183ae685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81159b1d19c4c5d46b223158df3ba2c81665c7d7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080407"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171901"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>升级到 Azure 搜索 .NET SDK 版本 5
 
@@ -47,7 +48,9 @@ Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式�
 
 如果生成失败，应该会看到如下所示的生成错误：
 
-    The name 'SuggesterSearchMode' does not exist in the current context
+```output
+The name 'SuggesterSearchMode' does not exist in the current context
+```
 
 下一步是修复生成错误。 有关出错原因和修复方法的详细信息，请参阅[版本 5 中的重大更改](#ListOfChanges)。
 

@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36dc7d098892fb2be7c2ba3d75de7c7adef1a4f1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844694"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171544"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>教程：将事件转发到 IoTHub
 
@@ -27,7 +26,7 @@ ms.locfileid: "76844694"
 - [事件网格概念](concepts.md)
 - [IoT Edge 中心](../../iot-edge/module-composition.md) 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备知识 
 若要完成本教程，您需要：
 
 * **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 

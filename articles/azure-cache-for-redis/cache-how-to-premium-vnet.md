@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: dae829336c5328bec4b620217c34c69fa5931b3a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f07e18498138d29497fa6ba85c5930a5a5f7ec4e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856846"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184763"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
@@ -60,10 +60,11 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 若要在使用 VNet 时连接到 Azure Redis 缓存实例，请在连接字符串中指定缓存的主机名，如以下示例所示：
 
 ```csharp
-private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-{
-    return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
-});
+private static Lazy<ConnectionMultiplexer>
+    lazyConnection = new Lazy<ConnectionMultiplexer> (() =>
+    {
+        return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+    });
 
 public static ConnectionMultiplexer Connection
 {
@@ -98,7 +99,7 @@ public static ConnectionMultiplexer Connection
 
 #### <a name="outbound-port-requirements"></a>出站端口要求
 
-出站端口有九个要求。 这些范围内的出站请求要么出站到缓存运行所需的其他服务，要么在 Redis 子网内部进行节点间通信。 对于异地复制，主缓存和辅助缓存的子网之间的通信存在其他出站需求。
+出站端口有九个要求。 这些范围内的出站请求要么出站到缓存运行所需的其他服务，要么在 Redis 子网内部进行节点间通信。 对于地域复制，存在用于在主缓存和副本缓存的子网之间进行通信的额外出站要求。
 
 | 端口 | 方向 | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |

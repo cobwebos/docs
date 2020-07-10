@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73242467"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171561"
 ---
 # <a name="event-schemas"></a>事件架构
 
@@ -54,16 +52,16 @@ EventGrid 架构包含发布实体必须符合的一组必需的属性。 每个
 
 所有事件都具有以下顶级数据：
 
-| 属性 | 类型 | 必须 | 说明 |
+| 属性 | 类型 | 必需 | 说明 |
 | -------- | ---- | ----------- |-----------
 | 主题 | 字符串型 | 否 | 应与其发布的主题匹配。 如果未指定，事件网格将用其发布的主题的名称进行填充。 |
 | subject | string | 是 | 事件主题的发布者定义路径。 |
 | eventType | string | 是 | 此事件源的事件类型，例如，BlobCreated。 |
 | EventTime | string | 是 | 基于提供程序 UTC 时间的事件生成时间。 |
 | ID | 字符串型 | 否 | 事件的唯一标识符。 |
-| data | object | 否 | 用于捕获特定于发布实体的事件数据。 |
+| 数据 | object | 否 | 用于捕获特定于发布实体的事件数据。 |
 | dataVersion | string | 是 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 否 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| metadataVersion | string | 否 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 ### <a name="example--eventgrid-schema-event"></a>示例-EventGrid schema 事件
 

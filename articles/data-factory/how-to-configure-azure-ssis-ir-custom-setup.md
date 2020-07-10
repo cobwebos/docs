@@ -11,16 +11,17 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 576861265771977f7e13140dd595f47bf556e585
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: c3f3e7540f837722d4dd730c5635ac30c699ccd3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331893"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184277"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS Integration Runtime 的安装
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure 数据工厂 (ADF) 中 Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) 的自定义安装程序提供了一个界面，用于在预配或重新配置 Azure-SSIS IR 期间添加你自己的步骤。 
 

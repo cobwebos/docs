@@ -3,12 +3,12 @@ title: 作为事件网格源的 Azure 机器学习
 description: 介绍为 Azure 事件网格中的机器学习工作区事件提供的属性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102491"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181516"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>作为事件网格源的 Azure 机器学习
 
@@ -26,7 +26,7 @@ Azure 机器学习发出以下事件类型：
 | Microsoft.MachineLearningServices.ModelDeployed | 将模型成功部署到终结点时引发。 |
 | Microsoft.MachineLearningServices.RunCompleted | 在成功完成运行时引发。 |
 | Microsoft.MachineLearningServices.DatasetDriftDetected | 当数据集偏移监视器检测到偏移时引发。 |
-| Microsoft.MachineLearningServices.RunStatusChanged | 当运行状态更改为“failed”时引发。 |
+| Microsoft.MachineLearningServices.RunStatusChanged | 当运行状态更改时引发。 |
 
 ### <a name="the-contents-of-an-event-response"></a>事件响应的内容
 

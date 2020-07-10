@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 73309e10e88c11e639e6ac6fd3bb061e1b5c685b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72992543"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171731"
 ---
 # <a name="event-grid-concepts"></a>事件网格概念
 
@@ -62,4 +60,4 @@ ms.locfileid: "72992543"
 
 ## <a name="batching"></a>批处理
 
-使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，数组将只有一个值。 对于大容量用例，我们建议你按 "发布" 将多个事件分批分批，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件都应不超过 1 MB （预览）。
+使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，数组将只有一个值。 对于大容量用例，我们建议你按 "发布" 将多个事件分批分批，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件的 (预览) 不应超过 1 MB。

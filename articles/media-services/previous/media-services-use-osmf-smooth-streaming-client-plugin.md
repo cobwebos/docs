@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63b534f67aa5cf39f7549a467be28ec1212897d2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84265312"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86172003"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>如何使用适用于 Adobe Open Source Media Framework 的 Microsoft 平滑流式处理插件  
 ## <a name="overview"></a>概述
@@ -59,7 +60,7 @@ SS for OSMF 包括两个版本的插件：
 ### <a name="ss-for-osmf-static-loading"></a>SS for OSMF 静态加载
 以下代码段演示如何静态加载 SS for OSMF 插件以及如何使用 OSMF MediaFactory 类播放基本视频。 在包含 SS for OSMF 代码之前，请确保项目引用包含“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc”静态插件。
 
-```
+```csharp
 package 
 {
 
@@ -195,7 +196,9 @@ package
 ### <a name="ss-for-osmf-dynamic-loading"></a>SS for OSMF 动态加载
 以下代码段演示如何动态加载 SS for OSMF 插件以及如何使用 OSMF MediaFactory 类播放基本视频。 在包含 SS for OSMF 代码之前，如果要使用 FILE 协议进行加载，请将“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf”动态插件复制到项目文件夹；如果要进行 HTTP 加载，请将该插件复制到 Web 服务器下。 不需要在项目引用中包含“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc”。
 
-package {
+```csharp
+package 
+{
 
     import flash.display.*;
     import org.osmf.media.*;
@@ -325,64 +328,69 @@ package {
 
     }
 }
+```
 
-## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe Media Playback 与 SS OSMF 动态插件
-适用于 OSMF 的平滑流式处理动态插件与 [Strobe Media Playback (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/) 兼容。 可以使用 SS for OSMF 插件向 SMP 添加平滑流式处理内容播放功能。 为此，请在进行 HTTP 加载时，使用以下步骤将“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf”复制到 Web 服务器下：
+## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe Media Playback 与 SS ODMF 动态插件
+适用于 OSMF 的平滑流式处理动态插件与 [Strobe Media Playback (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/) 兼容。 可以使用 SS for OSMF 插件向 SMP 添加平滑流式处理内容播放功能。 为此，对于 HTTP 加载，请按以下步骤将“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf”复制到 Web 服务器下：
 
 1. 浏览 [Strobe Media Playback 设置页](http://osmf.org/dev/2.0gm/setup.html)。 
-2. 将 src 设置为平滑流式处理源，例如 http： \/ /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest） 
+2. 将 src 设置为平滑流式处理源， (例如 http： \/ /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest)  
 3. 进行所需的配置更改，并单击“Preview and Update”（预览并更新）。
    
-   **注意** 内容 Web 服务器需要有效的 crossdomain.xml。 
+   **注意**：内容 Web 服务器需要有效的 crossdomain.xml。 
 4. 使用常用的文本编辑器将该代码复制并粘贴到一个简单的 HTML 页，如以下示例所示：
 
-        <html>
-        <body>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
-        </embed>
-        </object>
-        </body>
-        </html>
-
+    ```html
+    <html>
+    <body>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
+    </embed>
+    </object>
+    </body>
+    </html>
+    ```
 
 
 1. 将平滑流式处理 OSMF 插件添加到 embed 代码中，然后保存。
    
-        <html>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
-        </embed>
-        </object>
-        </html>
-2. 保存 HTML 页，并发布到 Web 服务器。 使用最常用的、已启用 Internet 浏览器（Internet Explorer、Chrome、Firefox 等）的 Flash&reg; Player 浏览到已发布的网页。
-3. 在 Adobe&reg; Flash&reg; Player 中欣赏平滑流式处理内容。
+    ```html
+    <html>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
+    </embed>
+    </object>
+    </html>
+    ```
 
-有关一般性 OSMF 开发的详细信息，请参阅官方的 [OSMF 开发页](http://osmf.org/resources.html)。
+2. 保存 HTML 页，并发布到 Web 服务器。 使用最常用的、已启用 Flash&reg; Player 的 Internet 浏览器（Internet Explorer、Chrome、Firefox 等）浏览到已发布的网页。
+3. 在 Adobe&reg; Flash&reg; Player 内欣赏平滑流式处理内容。
+
+有关常规 OSMF 开发的详细信息，请参阅官方的 [OSMF 开发页](http://osmf.org/resources.html)。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

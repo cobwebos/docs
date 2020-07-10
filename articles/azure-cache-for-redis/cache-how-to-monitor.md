@@ -6,11 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 86cbeddba699e89ce1127dbac72dac81dcc41449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd228add317b5c4cd19f1d0daefa90ce3c937b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76547483"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184865"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>如何监视用于 Redis 的 Azure 缓存
 
@@ -102,7 +103,7 @@ ms.locfileid: "76547483"
 | 缓存写入量 |指定报告间隔期间，写入缓存中的数据量，以每秒兆字节数（MB/秒）为单位。 此值来源于支持虚拟机的网络接口卡，该虚拟机托管缓存，但并不特定于 Redis。 此值对应于从客户端发送到缓存的数据的网络带宽。 |
 | 连接的客户端数 |指定的报告间隔期间，客间户端与缓存的连接数。 此数目映射到 Redis INFO 命令输出中的 `connected_clients`。 一旦达到了[连接限制](cache-configure.md#default-redis-server-configuration)，则对缓存的后续连接尝试将失败。 即使没有任何活动的客户端应用程序，由于内部进程和连接，仍可能存在一些连接的客户端的实例。 |
 | CPU |指定报告间隔期间，用于 Redis 的 Azure 缓存服务器的 CPU 使用率（以百分比表示）。 此值映射到操作系统 `\Processor(_Total)\% Processor Time` 性能计数器。 |
-| 错误 | 在指定的报告间隔期间，缓存可能会出现的特定故障和性能问题。 该指标具有八个维度，表示不同的错误类型，但在将来可能会添加更多维度。 现在所代表的错误类型如下所示： <br/><ul><li>**故障转移**–当缓存发生故障转移时（从属升级为 master）</li><li>**数据丢失**–缓存上存在数据丢失时</li><li>**UnresponsiveClients** - 客户端从服务器读取数据的速度不够快时</li><li>**AOF** - 存在与 AOF 持久化有关的问题时</li><li>**RDB** - 存在与 RDB 持久化有关的问题时</li><li>**Import** - 存在与导入 RDB 有关的问题时</li><li>**Export** - 存在与导出 RDB 有关的问题时</li></ul> |
+| 错误 | 在指定的报告间隔期间，缓存可能会出现的特定故障和性能问题。 该指标具有八个维度，表示不同的错误类型，但在将来可能会添加更多维度。 现在所代表的错误类型如下所示： <br/><ul><li>**故障转移**–当缓存故障转移时 (从属升级到主) </li><li>**数据丢失**–缓存上存在数据丢失时</li><li>**UnresponsiveClients** - 客户端从服务器读取数据的速度不够快时</li><li>**AOF** - 存在与 AOF 持久化有关的问题时</li><li>**RDB** - 存在与 RDB 持久化有关的问题时</li><li>**Import** - 存在与导入 RDB 有关的问题时</li><li>**Export** - 存在与导出 RDB 有关的问题时</li></ul> |
 | 逐出的密钥数 |由于 `maxmemory` 限制，指定的报告间隔期间从缓存中逐出的项目数。 此数目映射到 Redis INFO 命令输出中的 `evicted_keys`。 |
 | 过期的密钥数 |指定的报告间隔期间，缓存中过期的项目数。 此值映射到 Redis INFO 命令输出中的 `expired_keys` 。|
 | 获取数 |指定的报告间隔期间，缓存中的获取操作数。 此值是以下 Redis INFO 所有命令中的值的总和：`cmdstat_get`、`cmdstat_hget`、`cmdstat_hgetall`、`cmdstat_hmget`、`cmdstat_mget`、`cmdstat_getbit` 和 `cmdstat_getrange`，并且等效于报告间隔期间缓存命中和未命中数的总和。 |

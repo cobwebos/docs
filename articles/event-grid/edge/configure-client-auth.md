@@ -5,21 +5,20 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 3363db4557dd19e8d72747ccd62bb535abb7b1e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0bba9559c2a0b4ff6c8a4e5f2287692e27f8a1a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841785"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171697"
 ---
 # <a name="configure-client-authentication-of-incoming-calls"></a>配置传入呼叫的客户端身份验证
 
 本指南提供事件网格模块的可能的客户端身份验证配置示例。 事件网格模块支持两种类型的客户端身份验证：
 
-* 基于共享访问签名（SAS）密钥
+*  (SAS) 基于密钥的共享访问签名
 * 基于证书
 
 有关所有可能的配置，请参阅[安全性和身份验证](security-authentication.md)指南。
@@ -51,7 +50,7 @@ ms.locfileid: "76841785"
 ```
 
 >[!NOTE]
->仅在测试环境中将属性**inbound__clientAuth__clientCert__allowUnknownCA**设置为**true** ，因为通常可以使用自签名证书。 对于生产工作负荷，我们建议将此属性设置为**false** ，并将证书颁发机构（CA）。
+>仅在测试环境中将属性**inbound__clientAuth__clientCert__allowUnknownCA**设置为**true** ，因为通常可以使用自签名证书。 对于生产工作负荷，我们建议将此属性设置为**false** ，并将证书颁发机构的证书 (CA) 。
 
 ## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>启用基于证书和基于 sas 密钥的客户端身份验证
 

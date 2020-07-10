@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844711"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171595"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>教程：向事件网格云转发事件
 
@@ -24,7 +23,7 @@ ms.locfileid: "76844711"
 
  若要完成本教程，你需要了解有关[边缘](concepts.md)和[Azure](../concepts.md)的事件网格概念。 有关其他目标类型，请参阅[事件处理程序](event-handlers.md)。 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备知识 
 若要完成本教程，您需要：
 
 * **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
@@ -174,7 +173,7 @@ ms.locfileid: "76844711"
         ]
     ```
 
-1. 运行下面的命令：
+1. 运行以下命令：
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/events?api-version=2019-01-01-preview
@@ -192,7 +191,7 @@ ms.locfileid: "76844711"
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
 
-* 删除在云（Azure 事件网格）中创建的主题和订阅。
+* 删除在云中创建的主题和订阅 (Azure 事件网格) 。
 
 ## <a name="next-steps"></a>后续步骤
 

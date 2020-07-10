@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff49e9baf83d52ba7c40d0c0a9efbd72cee66cd9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844577"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171493"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教程：在云中发布、订阅事件
 
@@ -21,7 +20,7 @@ ms.locfileid: "76844577"
 
 在继续之前，请参阅[事件网格概念](concepts.md)，以了解什么是事件网格主题和订阅。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备知识 
 若要完成本教程，您需要：
 
 * **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
@@ -57,7 +56,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-在新函数中，选择右上角的 "**获取函数 URL** "，选择 "默认（**函数密钥**）"，然后选择 "**复制**"。 您将在本教程的后面部分使用 "函数 URL" 值。
+在新函数中，选择右上角的 "**获取函数 URL** "，选择 "默认 (**功能键**") ，然后选择 "**复制**"。 您将在本教程的后面部分使用 "函数 URL" 值。
 
 > [!NOTE]
 > 有关使用 EventGrid 事件触发器响应事件的更多示例和教程，请参阅[Azure Functions](../../azure-functions/functions-overview.md)文档。

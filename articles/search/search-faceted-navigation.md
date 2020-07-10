@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836084"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171935"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中实现分面导航
 
@@ -283,10 +284,12 @@ if (businessTitleFacet != "")
 
 分面结果是在匹配分面词语的搜索结果中找到的记录。 在以下示例中，在*云计算*的搜索结果中，254 个项还具有*内部规范*作为内容类型。 项不一定互相排斥。 如果某个项满足这两个筛选条件，它将分别计入每一个。 针对通常用于实现记录标记的 `Collection(Edm.String)` 字段进行分面时，可能会出现这种重复。
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 一般情况下，如果发现分面结果持续很大，我们建议添加更多筛选器，以便为用户提供更多缩小搜索范围的选项。
 
@@ -344,7 +347,7 @@ Azure 认知搜索通过提供两种用于计算范围的方法，简化范围�
 
 若要根据上面的屏幕截图中所示指定分面范围，请使用值列表：
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
 通过以下方式生成每个范围：使用 0 作为起点、使用列表中的某个值作为终结点，并剪裁上一个范围以创建离散间隔。 Azure 认知搜索将执行这些操作作为分面导航的一部分。 无需编写用于结构化每个间隔的代码。
 

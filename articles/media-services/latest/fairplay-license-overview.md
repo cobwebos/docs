@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995869"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183029"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 许可要求和配置 
 
@@ -60,10 +61,13 @@ ms.locfileid: "82995869"
   * .der 文件
   * .pfx 文件
   * .pfx 的密码
+  
+> [!NOTE]
+> Azure 媒体服务不会在打包或密钥传递过程中检查证书的过期日期。 证书过期后，它将继续工作。
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay 和播放器应用
 
-使用 Apple FairPlay 对内容进行加密时，各视频和音频示例都使用 AES-128 CBC 模式进行加密   。 **FairPlay 流式处理** (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能。 OS X 上的 Safari 使用加密媒体扩展 (EME) 接口支持启用 FPS。
+使用 Apple FairPlay 对内容进行加密时，各视频和音频示例都使用 AES-128 CBC 模式进行加密********。 **FairPlay 流式处理** (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能。 OS X 上的 Safari 使用加密媒体扩展 (EME) 接口支持启用 FPS。
 
 Azure Media Player 还支持 FairPlay 播放。 有关详细信息，请参阅 [Azure Media Player 文档](https://amp.azure.net/libs/amp/latest/docs/index.html)。
 

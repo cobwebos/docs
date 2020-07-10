@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/24/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73100161"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171340"
 ---
 # <a name="common-issues"></a>常见问题
 
@@ -92,7 +90,7 @@ sudo docker logs eventgridmodule
 
 这种情况的典型原因如下：
 
-* 此事件从未成功发布。 将事件发布到事件网格模块时，应收到200（正常）的 HTTP 状态。
+* 此事件从未成功发布。 将事件发布到事件网格模块时，应收到 200 (确定) 的 HTTP StatusCode。
 
 * 检查事件订阅以验证：
     * 终结点 URL 有效

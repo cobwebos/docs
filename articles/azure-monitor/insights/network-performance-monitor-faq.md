@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 191c6d411418229d40b10704ea14d5a536c0d5f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110617"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184542"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -95,7 +95,7 @@ NPM 使用基于跟踪路由的专属算法来发现源与目标之间的所有�
 NPM 根据每个网络路径、网段和构成网络跃点所属的不正常路径数，使用概率机制向它们分配故障概率。 随着网段和跃点属于越来越多的不正常路径，与之关联的故障概率将会增大。 如果有许多包含 NPM 代理的节点相互连接，因此增加了用于计算故障概率的数据点，则此算法的效果最佳。
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>如何在 NPM 中创建警报？
-请参阅[文档中的警报部分](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts)获取分步说明。
+由于问题，当前无法通过 NPM UI 创建警报。 请手动创建警报。
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>哪个是针对警报的默认 Log Analytics 查询？
 性能监视器查询
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM 只能识别源与目标 IP 之间的底层网络跃点（交换机、路由器、服务器等）的 IP 和主机名。 此外，它还能识别这些已识别的跃点之间的延迟。 它不会单独监视这些底层跃点。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>是否可以使用 NPM 来监视 Azure 与 AWS 之间的网络连接？
-是。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文。
+正确。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute 带宽用量是指传入还是传出带宽？
 带宽用量是传入和传出带宽的总计。 它以“位/秒”为单位表示。
@@ -190,7 +190,7 @@ NPM 可以通过某个[受支持区域](../../azure-monitor/insights/network-per
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>NPM 的 ExpressRoute 监视器支持哪些区域？
 NPM 可以监视任何 Azure 区域中的 ExpressRoute 线路。 若要载入到 NPM，必须需要某个[受支持区域](/azure/expressroute/how-to-npm)中托管的 Log Analytics 工作区
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>网络拓扑视图中为何有些跃点标记为不可识别？
 NPM 使用跟踪路由的修改版来发现从源代理到目标的拓扑。 不可识别的跃点表示该网络跃点未响应源代理的跟踪路由请求。 如果三个连续的网络跃点未响应代理的跟踪路由，解决方案会将无响应的跃点标记为不可识别，且不会尝试发现其他跃点。
@@ -255,7 +255,7 @@ NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线�
 * 监视配置中选择用来监视 ExpressRoute 线路的本地和 Azure 节点未通过所需的 ExpressRoute 线路相互建立连接。 确保选择正确的节点，并通过所要监视的 ExpressRoute 线路让它们相互建立连接。
 
 ### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>为什么 ExpressRoute 监视器在可用和传递数据时将线路/对等互连报告为不正常。
-ExpressRoute 监视器会将代理/服务报告的网络性能值（丢失、延迟和带宽使用率）与配置过程中设置的阈值进行比较。 对于线路，如果所报告的带宽使用率超过配置中设置的阈值，则线路会被标记为不正常。 对于对等互连，如果报告的丢失、延迟或带宽使用率大于配置中设置的阈值，则对等互连将标记为不正常。 NPM 不利用度量值或任何其他形式的数据到 deicde 的运行状况状态。
+ExpressRoute 监视器会将代理/服务报告的网络性能值 () 丢失、延迟和带宽使用率，并在配置期间设置的阈值进行比较。 对于线路，如果所报告的带宽使用率超过配置中设置的阈值，则线路会被标记为不正常。 对于对等互连，如果报告的丢失、延迟或带宽使用率大于配置中设置的阈值，则对等互连将标记为不正常。 NPM 不利用度量值或任何其他形式的数据到 deicde 的运行状况状态。
 
 ### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>ExpressRoute Monitor'bandwidth 使用率为什么会从指标位 in/out 报告值其他
 对于 ExpressRoute 监视器，带宽 utiliation 是过去20分钟的传入和传出带宽的平均值，以每秒位数表示。对于快速路由指标，位输入/输出是每分钟数据点。在内部，用于两者的数据集是相同的，但在 NPM 与 ER 指标之间进行聚合 valies。 对于精确、按分钟的监视和快速警报，建议直接在 ER 指标上设置警报
@@ -283,7 +283,7 @@ ExpressRoute 监视器会将代理/服务报告的网络性能值（丢失、延
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>在服务连接监视器功能中，服务响应时间为“不适用”，但网络丢包和延迟有效
 如果目标服务不是 Web 应用程序，但测试配置为 Web 测试，则可能会发生这种情况。 编辑测试配置，选择“网络”而不是“Web”作为测试类型。
 
-## <a name="miscellaneous"></a>杂项
+## <a name="miscellaneous"></a>其他
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>用于监视的节点的性能是否受影响？
 NPM 进程配置为当它的主机 CPU 资源利用率超过 5% 时停止。 这是为了确保可以持续使用这些节点来处理其常规工作负荷，而不会影响性能。

@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 3114c19ecff1a8ae70012592592078302d4a6222
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800017"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184049"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
 
@@ -25,7 +25,7 @@ ms.locfileid: "85800017"
 
 下面列出了必应图像搜索 API 的可能响应头。
 
-| `Attribute`         | `Description` |
+| 属性           | 说明   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |必应分配给用户的唯一 ID |
 | `BingAPIs-Market`   |用于完成请求的市场 |
@@ -66,6 +66,6 @@ cors-proxy-server
 
 问题是否与缺少功能相关？ 不妨在我们的 [用户之声网站](https://cognitive.uservoice.com/forums/555907-bing-search)上申请或投票支持相应功能。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
  [Stack Overflow：认知服务](https://stackoverflow.com/questions/tagged/bing-api)

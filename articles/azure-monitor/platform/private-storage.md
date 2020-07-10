@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610060"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184491"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor 上客户拥有的用于日志引入的存储帐户
 
@@ -39,7 +40,7 @@ Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志
 
 - 可以访问写入日志进行存储的 VNet 中的资源。
 - 必须与其所链接到的工作区位于同一区域。
-- 选择“允许受信任的 MS 服务访问此存储帐户”，明确允许 Log Analytics 从存储帐户中读取日志。
+- 允许 Azure Monitor 访问-如果选择限制存储帐户访问选择网络，请确保允许此例外：*允许受信任的 Microsoft 服务访问此存储帐户*。
 
 ## <a name="process-to-configure-customer-owned-storage"></a>配置客户所有的存储的过程
 使用自己的存储帐户进行数据引入的基本过程如下所示：
@@ -50,7 +51,12 @@ Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志
 
 创建和删除链接的唯一方法是通过 REST API。 以下各章节提供了每个进程所需的特定 API 请求详细信息。
 
-## <a name="api-request-values"></a>API 请求值
+## <a name="command-line-and-rest-api"></a>命令行和 REST API
+
+### <a name="command-line"></a>命令行
+若要创建和管理链接存储帐户，请使用[az monitor log analytics 工作区链接存储](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可以链接和取消链接工作区中的存储帐户，并列出链接的存储帐户。
+
+### <a name="request-and-cli-values"></a>请求和 CLI 值
 
 #### <a name="datasourcetype"></a>dataSourceType 
 
@@ -72,37 +78,7 @@ subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Mic
 ```
 
 
-
-## <a name="get-current-links"></a>获取当前链接
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>获取特定数据源类型的链接存储帐户
-
-#### <a name="api-request"></a>API 请求
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>响应 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-### <a name="get-all-linked-storage-accounts"></a>获取所有链接存储帐户
+### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>获取所有数据源类型的链接存储帐户
 
 #### <a name="api-request"></a>API 请求
 
@@ -144,6 +120,34 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
         }
     ]
+}
+```
+
+
+### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>获取特定数据源类型的链接存储帐户
+
+#### <a name="api-request"></a>API 请求
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
+```
+
+#### <a name="response"></a>响应 
+
+```json
+{
+    "properties":
+    {
+        "dataSourceType": "CustomLogs",
+        "storageAccountIds  ": 
+        [  
+            "<storage_account_resource_id_1>",
+            "<storage_account_resource_id_2>"
+        ],
+    },
+    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
+    "name": "CustomLogs",
+    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
 }
 ```
 

@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 94fef951bf1c5c9d69a9b49cd9465d7d248c74a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9668307047771304c2d3785dc7ff3f760171a43f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099229"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181992"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -76,7 +76,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 ### <a name="client-app-initialization"></a>客户端应用初始化
 
-* 开发人员可以使用 [Microsoft 身份验证库（MSAL）对 Azure 时序见解进行身份验证。
+* 开发人员可以使用 [Microsoft 身份验证库 (MSAL) 使用 Azure 时序见解进行身份验证。
 
 * 使用 ADAL 进行身份验证：
 
@@ -89,9 +89,9 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
    1. 随后可在应用程序调用时序见解 API 时，将令牌传入 `Authorization` 标头。
 
 > [!IMPORTANT]
-> 如果使用[Azure Active Directory 身份验证库（ADAL）](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) ，请阅读有关[迁移到 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)的信息。
+> 如果使用[Azure Active Directory Authentication Library (ADAL) ](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries)了解[迁移到 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)。
 
-    See our [Manage GA reference data for an Azure Time Series Insights environment using C#](time-series-insights-manage-reference-data-csharp.md) article to learn more.
+   有关详细信息，请参阅[使用 c # 管理 Azure 时序见解环境的 GA 引用数据一](time-series-insights-manage-reference-data-csharp.md)文。
 
 ## <a name="common-headers-and-parameters"></a>常见标头和参数
 
@@ -111,7 +111,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 必需的请求标头如下所述。
 
-| 必需的请求标头 | 描述 |
+| 必需的请求标头 | 说明 |
 | --- | --- |
 | 授权 | 若要使用时序见解进行身份验证，必须在 Authorization 标头中传递有效的 OAuth 2.0 持有者令牌。 |
 

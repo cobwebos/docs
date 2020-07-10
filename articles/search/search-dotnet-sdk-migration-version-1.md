@@ -9,11 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cecb7b2a669b47bb79b022df786add65f5648f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6c30cb7abffc7e25e78eeabf5fb43fc8c1f682
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080964"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171952"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>升级到 Azure 搜索 .NET SDK 版本 1.1
 
@@ -33,10 +34,12 @@ ms.locfileid: "85080964"
 
 如果之前使用的是版本 0.13.0-preview 或更早版本，应该会看到如下所示的生成错误：
 
-    Program.cs(137,56,137,62): error CS0117: 'Microsoft.Azure.Search.Models.IndexBatch' does not contain a definition for 'Create'
-    Program.cs(137,99,137,105): error CS0117: 'Microsoft.Azure.Search.Models.IndexAction' does not contain a definition for 'Create'
-    Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
-    Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
+```output
+Program.cs(137,56,137,62): error CS0117: 'Microsoft.Azure.Search.Models.IndexBatch' does not contain a definition for 'Create'
+Program.cs(137,99,137,105): error CS0117: 'Microsoft.Azure.Search.Models.IndexAction' does not contain a definition for 'Create'
+Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
+Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
+```
 
 下一步是逐个修复生成错误。 大多数修复需要更改 SDK 中已重命名的一些类和方法名称。 [版本 1.1 中的重大更改列表](#ListOfChangesV1)含有这些名称更改的列表。
 
@@ -57,18 +60,24 @@ ms.locfileid: "85080964"
 #### <a name="example"></a>示例
 如果代码如下所示：
 
-    var batch = IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc)));
-    indexClient.Documents.Index(batch);
+```csharp
+var batch = IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc)));
+indexClient.Documents.Index(batch);
+```
 
 若要修复任何生成错误，可以更改为如下所示的代码：
 
-    var batch = IndexBatch.New(documents.Select(doc => IndexAction.Upload(doc)));
-    indexClient.Documents.Index(batch);
+```csharp
+var batch = IndexBatch.New(documents.Select(doc => IndexAction.Upload(doc)));
+indexClient.Documents.Index(batch);
+```
 
 如有需要，可以进一步简化为如下所示的代码：
 
-    var batch = IndexBatch.Upload(documents);
-    indexClient.Documents.Index(batch);
+```csharp
+var batch = IndexBatch.Upload(documents);
+indexClient.Documents.Index(batch);
+```
 
 ### <a name="indexbatchexception-changes"></a>IndexBatchException 更改
 `IndexBatchException.IndexResponse` 属性已重命名为 `IndexingResults`，且其类型现为 `IList<IndexingResult>`。
@@ -76,21 +85,25 @@ ms.locfileid: "85080964"
 #### <a name="example"></a>示例
 如果代码如下所示：
 
-    catch (IndexBatchException e)
-    {
-        Console.WriteLine(
-            "Failed to index some of the documents: {0}",
-            String.Join(", ", e.IndexResponse.Results.Where(r => !r.Succeeded).Select(r => r.Key)));
-    }
+```csharp
+catch (IndexBatchException e)
+{
+    Console.WriteLine(
+        "Failed to index some of the documents: {0}",
+        String.Join(", ", e.IndexResponse.Results.Where(r => !r.Succeeded).Select(r => r.Key)));
+}
+```
 
 若要修复任何生成错误，可以更改为如下所示的代码：
 
-    catch (IndexBatchException e)
-    {
-        Console.WriteLine(
-            "Failed to index some of the documents: {0}",
-            String.Join(", ", e.IndexingResults.Where(r => !r.Succeeded).Select(r => r.Key)));
-    }
+```csharp
+catch (IndexBatchException e)
+{
+    Console.WriteLine(
+        "Failed to index some of the documents: {0}",
+        String.Join(", ", e.IndexingResults.Where(r => !r.Succeeded).Select(r => r.Key)));
+}
+```
 
 <a name="OperationMethodChanges"></a>
 
@@ -101,48 +114,56 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 在 `IIndexOperations` 中：
 
-    // Asynchronous operation with all parameters
-    Task<IndexGetStatisticsResponse> GetStatisticsAsync(
-        string indexName,
-        CancellationToken cancellationToken);
+```csharp
+// Asynchronous operation with all parameters
+Task<IndexGetStatisticsResponse> GetStatisticsAsync(
+    string indexName,
+    CancellationToken cancellationToken);
+```
 
 在 `IndexOperationsExtensions` 中：
 
-    // Asynchronous operation with only required parameters
-    public static Task<IndexGetStatisticsResponse> GetStatisticsAsync(
-        this IIndexOperations operations,
-        string indexName);
+```csharp
+// Asynchronous operation with only required parameters
+public static Task<IndexGetStatisticsResponse> GetStatisticsAsync(
+    this IIndexOperations operations,
+    string indexName);
 
-    // Synchronous operation with only required parameters
-    public static IndexGetStatisticsResponse GetStatistics(
-        this IIndexOperations operations,
-        string indexName);
+// Synchronous operation with only required parameters
+public static IndexGetStatisticsResponse GetStatistics(
+    this IIndexOperations operations,
+    string indexName);
+```
 
 版本 1.1 中同一操作的方法签名如下所示：
 
 在 `IIndexesOperations` 中：
 
-    // Asynchronous operation with lower-level HTTP features exposed
-    Task<AzureOperationResponse<IndexGetStatisticsResult>> GetStatisticsWithHttpMessagesAsync(
-        string indexName,
-        SearchRequestOptions searchRequestOptions = default(SearchRequestOptions),
-        Dictionary<string, List<string>> customHeaders = null,
-        CancellationToken cancellationToken = default(CancellationToken));
+```csharp
+// Asynchronous operation with lower-level HTTP features exposed
+Task<AzureOperationResponse<IndexGetStatisticsResult>> GetStatisticsWithHttpMessagesAsync(
+    string indexName,
+    SearchRequestOptions searchRequestOptions = default(SearchRequestOptions),
+    Dictionary<string, List<string>> customHeaders = null,
+    CancellationToken cancellationToken = default(CancellationToken));
+```
 
 在 `IndexesOperationsExtensions` 中：
 
-    // Simplified asynchronous operation
-    public static Task<IndexGetStatisticsResult> GetStatisticsAsync(
-        this IIndexesOperations operations,
-        string indexName,
-        SearchRequestOptions searchRequestOptions = default(SearchRequestOptions),
-        CancellationToken cancellationToken = default(CancellationToken));
+```csharp
+// Simplified asynchronous operation
+public static Task<IndexGetStatisticsResult> GetStatisticsAsync(
+    this IIndexesOperations operations,
+    string indexName,
+    SearchRequestOptions searchRequestOptions = default(SearchRequestOptions),
+    CancellationToken cancellationToken = default(CancellationToken));
 
-    // Simplified synchronous operation
-    public static IndexGetStatisticsResult GetStatistics(
-        this IIndexesOperations operations,
-        string indexName,
-        SearchRequestOptions searchRequestOptions = default(SearchRequestOptions));
+// Simplified synchronous operation
+public static IndexGetStatisticsResult GetStatistics(
+    this IIndexesOperations operations,
+    string indexName,
+    SearchRequestOptions searchRequestOptions = default(SearchRequestOptions));
+```
 
 从版本 1.1 开始，Azure 搜索 .NET SDK 以不同方式组织操作方法：
 
@@ -156,20 +177,24 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 #### <a name="example"></a>示例
 如果代码如下所示：
 
-    var sp = new SearchParameters();
-    sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
-    sp.ScoringParameters = new[] { "featuredParam-featured", "mapCenterParam-" + lon + "," + lat };
+```csharp
+var sp = new SearchParameters();
+sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
+sp.ScoringParameters = new[] { "featuredParam-featured", "mapCenterParam-" + lon + "," + lat };
+```
 
 若要修复任何生成错误，可以更改为如下所示的代码： 
 
-    var sp = new SearchParameters();
-    sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
-    sp.ScoringParameters =
-        new[]
-        {
-            new ScoringParameter("featuredParam", new[] { "featured" }),
-            new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
-        };
+```csharp
+var sp = new SearchParameters();
+sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
+sp.ScoringParameters =
+    new[]
+    {
+        new ScoringParameter("featuredParam", new[] { "featured" }),
+        new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
+    };
+```
 
 ### <a name="model-class-changes"></a>模型类更改
 由于[操作方法更改](#OperationMethodChanges)中描述的签名更改，`Microsoft.Azure.Search.Models` 命名空间中的许多类已重命名或已删除。 例如：
@@ -186,83 +211,95 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 #### <a name="example"></a>示例
 如果代码如下所示：
 
-    IndexerGetStatusResponse statusResponse = null;
+```csharp
+IndexerGetStatusResponse statusResponse = null;
 
-    try
-    {
-        statusResponse = _searchClient.Indexers.GetStatus(indexer.Name);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("Error polling for indexer status: {0}", ex.Message);
-        return;
-    }
+try
+{
+    statusResponse = _searchClient.Indexers.GetStatus(indexer.Name);
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Error polling for indexer status: {0}", ex.Message);
+    return;
+}
 
-    IndexerExecutionResult lastResult = statusResponse.ExecutionInfo.LastResult;
+IndexerExecutionResult lastResult = statusResponse.ExecutionInfo.LastResult;
+```
 
 若要修复任何生成错误，可以更改为如下所示的代码：
 
-    IndexerExecutionInfo status = null;
+```csharp
+IndexerExecutionInfo status = null;
 
-    try
-    {
-        status = _searchClient.Indexers.GetStatus(indexer.Name);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("Error polling for indexer status: {0}", ex.Message);
-        return;
-    }
+try
+{
+    status = _searchClient.Indexers.GetStatus(indexer.Name);
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Error polling for indexer status: {0}", ex.Message);
+    return;
+}
 
-    IndexerExecutionResult lastResult = status.LastResult;
+IndexerExecutionResult lastResult = status.LastResult;
+```
 
 #### <a name="response-classes-and-ienumerable"></a>响应类和 IEnumerable
 可能影响代码的其他更改是：保留集合的响应类不再实现 `IEnumerable<T>`。 相反，可以直接访问集合属性。 例如，如果代码如下所示：
 
-    DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
-    foreach (SearchResult<Hotel> result in response)
-    {
-        Console.WriteLine(result.Document);
-    }
+```csharp
+DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
+foreach (SearchResult<Hotel> result in response)
+{
+    Console.WriteLine(result.Document);
+}
+```
 
 若要修复任何生成错误，可以更改为如下所示的代码：
 
-    DocumentSearchResult<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
-    foreach (SearchResult<Hotel> result in response.Results)
-    {
-        Console.WriteLine(result.Document);
-    }
+```csharp
+DocumentSearchResult<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
+foreach (SearchResult<Hotel> result in response.Results)
+{
+    Console.WriteLine(result.Document);
+}
+```
 
 #### <a name="special-case-for-web-applications"></a>Web 应用程序的特例
 如果有一个直接序列化 `DocumentSearchResponse` 以向浏览器发送搜索结果的 Web 应用程序，将需要更改代码，否则结果将不会正确序列化。 例如，如果代码如下所示：
 
-    public ActionResult Search(string q = "")
-    {
-        // If blank search, assume they want to search everything
-        if (string.IsNullOrWhiteSpace(q))
-            q = "*";
+```csharp
+public ActionResult Search(string q = "")
+{
+    // If blank search, assume they want to search everything
+    if (string.IsNullOrWhiteSpace(q))
+        q = "*";
 
-        return new JsonResult
-        {
-            JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-            Data = _featuresSearch.Search(q)
-        };
-    }
+    return new JsonResult
+    {
+        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+        Data = _featuresSearch.Search(q)
+    };
+}
+```
 
 可以通过获取搜索响应的 `.Results` 属性来更改代码，以修复结果呈现：
 
-    public ActionResult Search(string q = "")
-    {
-        // If blank search, assume they want to search everything
-        if (string.IsNullOrWhiteSpace(q))
-            q = "*";
+```csharp
+public ActionResult Search(string q = "")
+{
+    // If blank search, assume they want to search everything
+    if (string.IsNullOrWhiteSpace(q))
+        q = "*";
 
-        return new JsonResult
-        {
-            JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-            Data = _featuresSearch.Search(q).Results
-        };
-    }
+    return new JsonResult
+    {
+        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+        Data = _featuresSearch.Search(q).Results
+    };
+}
+```
 
 必须自己在代码中查找此类情况；**编译器不会警告你**，因为 `JsonResult.Data` 属于类型 `object`。
 
@@ -276,17 +313,21 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 最后，需要 `Uri` 和 `SearchCredentials` 的构造函数已更改。 例如，如果代码如下所示：
 
-    var client =
-        new SearchServiceClient(
-            new SearchCredentials("abc123"),
-            new Uri("http://myservice.search.windows.net"));
+```csharp
+var client =
+    new SearchServiceClient(
+        new SearchCredentials("abc123"),
+        new Uri("http://myservice.search.windows.net"));
+```
 
 若要修复任何生成错误，可以更改为如下所示的代码：
 
-    var client =
-        new SearchServiceClient(
-            new Uri("http://myservice.search.windows.net"),
-            new SearchCredentials("abc123"));
+```csharp
+var client =
+    new SearchServiceClient(
+        new Uri("http://myservice.search.windows.net"),
+        new SearchCredentials("abc123"));
+```
 
 另请注意，凭据参数的类型已更改为 `ServiceClientCredentials`。 由于 `SearchCredentials` 派生自 `ServiceClientCredentials`，所以这不太可能影响代码。
 
@@ -301,13 +342,17 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 ### <a name="example"></a>示例
 如果代码如下所示：
 
-    client.SetClientRequestId(Guid.NewGuid());
-    ...
-    long count = client.Documents.Count();
+```csharp
+client.SetClientRequestId(Guid.NewGuid());
+...
+long count = client.Documents.Count();
+```
 
 若要修复任何生成错误，可以更改为如下所示的代码：
 
-    long count = client.Documents.Count(new SearchRequestOptions(requestId: Guid.NewGuid()));
+```csharp
+long count = client.Documents.Count(new SearchRequestOptions(requestId: Guid.NewGuid()));
+```
 
 ### <a name="interface-name-changes"></a>接口名称更改
 操作组接口名称已全部更改，与其相应的属性名称保持一致：
@@ -334,12 +379,14 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 ### <a name="fix-details"></a>修复详细信息
 我们修复了版本 1.1 的 SDK 中存在的此问题。 现在，如果模型类如下所示：
 
-    public class Model
-    {
-        public string Key { get; set; }
+```csharp
+public class Model
+{
+    public string Key { get; set; }
 
-        public int IntValue { get; set; }
-    }
+    public int IntValue { get; set; }
+}
+```
 
 将 `IntValue` 设置为 0，该值现在线路上正确序列化为 0，并在索引中存储为 0。 往返过程也按预期工作。
 
@@ -347,7 +394,9 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 这不只是假想的问题：假设将新字段添加到 `Edm.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
 
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```output
+Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```
 
 由于此原因，最佳做法仍建议在模型类中使用可以为 null 的类型。
 

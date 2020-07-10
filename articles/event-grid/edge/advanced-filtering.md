@@ -5,23 +5,21 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72992556"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171765"
 ---
 # <a name="advanced-filtering"></a>高级筛选
 事件网格允许在 json 有效负载中的任何属性上指定筛选器。 这些筛选器将建模为 `AND` 条件集，每个外部条件都有可选的内部 `OR` 条件。 对于每个 `AND` 条件，请指定以下值：
 
 * `OperatorType`-比较的类型。
 * `Key`-要对其应用筛选器的属性的 json 路径。
-* `Value`-运行筛选器时所依据的引用值（或） `Values` -将对其运行筛选器的引用值集。
+* `Value`-运行筛选器所依据的引用值 (或) `Values` -对其运行筛选器的引用值集。
 
 ## <a name="json-syntax"></a>JSON 语法
 
@@ -52,7 +50,7 @@ ms.locfileid: "72992556"
 
 请注意，在前面给出的 json 示例中， `AdvancedFilters` 是一个数组。 将每个 `AdvancedFilter` 数组元素视为一个 `AND` 条件。
 
-对于支持多个值（如、、等 `NumberIn` ）的运算符 `NumberNotIn` `StringIn` ，每个值都被视为一个 `OR` 条件。 因此， `StringBeginsWith("a", "b", "c")` 将匹配以或或开头的任何字符串值 `a` `b` `c` 。
+对于支持多个值的运算符 (如 `NumberIn` 、 `NumberNotIn` 、 `StringIn` 等 ) ，每个值都被视为一个 `OR` 条件。 因此， `StringBeginsWith("a", "b", "c")` 将匹配以或或开头的任何字符串值 `a` `b` `c` 。
 
 > [!CAUTION]
 > NOT 运算符- `NumberNotIn` 并 `StringNotIn` 在字段中给定的每个值上表现为和条件 `Values` 。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4c4884b643c436eae377b294b2981aa61aa4689d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86137580"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171799"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure 资源关系图 Azure 安全性基准
 
@@ -22,11 +22,11 @@ ms.locfileid: "86137580"
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-有关详细信息，请参阅[安全控制：标识和访问控制](/azure/security/benchmarks/security-control-identity-access-control)。
+有关详细信息，请参阅[安全控制：标识和访问控制](../../../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**： Azure 资源关系图基于基于角色的访问控制（RBAC）提供对资源类型和属性的访问。 定期审核并查看授予安全主体（用户、组和服务帐户）的访问权限，以确保查询返回相应资源的结果。
+**指南**： Azure 资源关系图基于基于角色的访问控制 (RBAC) 提供对资源类型和属性的访问权限。 定期审核并查看授予安全主体的访问权限 (用户、组和服务帐户定期) ，确保查询返回相应资源的结果。
 
 * [Azure Resource Graph 中的权限](../overview.md#permissions-in-azure-resource-graph)
 
@@ -39,11 +39,11 @@ ms.locfileid: "86137580"
 
 ## <a name="data-protection"></a>数据保护
 
-有关详细信息，请参阅[安全控制：数据保护](/azure/security/benchmarks/security-control-data-protection)。
+有关详细信息，请参阅[安全控制：数据保护](../../../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
 
-**指南**：使用基于角色的访问控制（RBAC）来控制对数据和资源的访问。 若要使用 Azure 资源关系图，还必须对要查询的资源具有适当的访问权限。 此访问权限的范围应为只读，并且仅授予所需人员。
+**指南**：使用基于角色的访问控制 (RBAC) 来控制对数据和资源的访问。 若要使用 Azure 资源关系图，还必须对要查询的资源具有适当的访问权限。 此访问权限的范围应为只读，并且仅授予所需人员。
 
 * [Azure Resource Graph 中的权限](../overview.md#permissions-in-azure-resource-graph)
 
@@ -56,7 +56,7 @@ ms.locfileid: "86137580"
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-有关详细信息，请参阅[安全控制：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。
+有关详细信息，请参阅[安全控制：清单和资产管理](../../../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
 
@@ -73,7 +73,7 @@ ms.locfileid: "86137580"
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义和维护已批准的 Azure 资源的清单
 
-**指南**：根据组织需求为计算资源创建已批准的 Azure 资源和批准的软件的清单。 使用 Azure 资源关系图查询已批准的 Azure 资源并更改历史记录（预览版），以查看快照并查看更改的内容。
+**指南**：根据组织需求为计算资源创建已批准的 Azure 资源和批准的软件的清单。 使用 Azure 资源关系图查询已批准的 Azure 资源并更改历史记录 (预览) 以查看快照并查看更改的内容。
 
 * [用 Azure 资源图查询 Azure 资源](../first-query-portal.md)
 
@@ -99,5 +99,5 @@ ms.locfileid: "86137580"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../../../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../../../security/benchmarks/security-baselines-overview.md)

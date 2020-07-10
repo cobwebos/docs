@@ -5,11 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801880"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183148"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -52,13 +53,13 @@ Error details: Failed to enable the Update solution
 
 ### <a name="issue"></a>问题
 
-旧更新即使已被取代，在自动化帐户中仍会显示为缺失。 被取代的更新是指不必安装的更新，因为推出的后续更新可纠正相同的漏洞。 为了支持取代旧更新的更新，“更新管理”会忽略被取代的更新，并使其“不适用”。 若需了解相关问题的信息，请参阅[更新被取代](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)。
+旧更新即使已被取代，在自动化帐户中仍会显示为缺失。 被取代的更新是指不必安装的更新，因为推出的后续更新可纠正相同的漏洞。 为了支持取代旧更新的更新，“更新管理”会忽略被取代的更新，并使其“不适用”。 若需了解相关问题的信息，请参阅[更新被取代](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)。
 
 ### <a name="cause"></a>原因
 
 被取代的更新未正确指示为“已拒绝”，因此无法将其视为“不适用”。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
 如果被取代的更新变得 100% 不适用，则应将该更新的审批状态更改为 `Declined`。 若要更改所有更新的审批状态，请执行以下操作：
 
@@ -98,7 +99,7 @@ Error details: Failed to enable the Update solution
 
 * 可能在工作区中定义的配额已满，导致无法继续存储数据。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
 1. 根据操作系统，运行适用于 [Windows](update-agent-issues.md#troubleshoot-offline) 或 [Linux](update-agent-issues-linux.md#troubleshoot-offline) 的故障排除程序。
 
@@ -143,7 +144,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 未在订阅中注册自动化资源提供程序。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
 若要注册自动化资源提供程序，请在 Azure 门户中执行以下步骤。
 
@@ -155,7 +156,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 4. 在资源提供程序列表中，验证是否注册了 Microsoft.Automation 资源提供程序。
 
-5. 如果未列出该提供程序，请按照[解决资源提供程序注册错误](/azure/azure-resource-manager/resource-manager-register-provider-errors)中的步骤操作，注册 Microsoft.Automation 提供程序。
+5. 如果未列出该提供程序，请按照[解决资源提供程序注册错误](../../azure-resource-manager/templates/error-register-resource-provider.md)中的步骤操作，注册 Microsoft.Automation 提供程序。
 
 ## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>场景：设置了动态计划的计划更新缺失了某些计算机
 
@@ -177,7 +178,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 如果未为自动化资源提供程序配置订阅，则无法查询或获取该订阅中关于计算机的信息。 使用以下步骤验证订阅的注册情况。
 
-1. 在 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)中，访问 Azure 服务列表。
+1. 在 [Azure 门户](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)中，访问 Azure 服务列表。
 
 2. 在“常规”服务组中，依次选择“所有服务”和“订阅” 。 
 
@@ -187,7 +188,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 5. 验证是否注册了 Microsoft.Automation 资源提供程序。
 
-6. 如果未列出该提供程序，请按照[解决资源提供程序注册错误](/azure/azure-resource-manager/resource-manager-register-provider-errors)中的步骤操作，注册 Microsoft.Automation 提供程序。
+6. 如果未列出该提供程序，请按照[解决资源提供程序注册错误](../../azure-resource-manager/templates/error-register-resource-provider.md)中的步骤操作，注册 Microsoft.Automation 提供程序。
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>执行计划时，计算机不可用或标记不当
 
@@ -195,9 +196,9 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 1. 在 Azure 门户中，打开自动化帐户，然后选择“更新管理”。
 
-2. 检查[更新管理历史记录](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment)，以确定运行更新部署的确切时间。 
+2. 检查[更新管理历史记录](../manage-update-multi.md#view-results-of-an-update-deployment)，以确定运行更新部署的确切时间。 
 
-3. 对于可能是更新管理所缺失的计算机，请使用 Azure Resource Graph (ARG) [查找计算机更改](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details)。 
+3. 对于可能是更新管理所缺失的计算机，请使用 Azure Resource Graph (ARG) [查找计算机更改](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details)。 
 
 4. 搜索运行更新部署之前的某个时间段（不要太短，例如一天）内的更改。
 
@@ -221,17 +222,17 @@ Azure 门户预览列表中未显示动态组的所选作用域的 VM。 此列�
 * ARG 查询未检索到预期的计算机。
 * 计算机未安装混合 Runbook 辅助角色。
 
-### <a name="resolution"></a>解决方法 
+### <a name="resolution"></a>解决方案 
 
 #### <a name="incorrect-access-on-selected-scopes"></a>对所选作用域的访问权限不正确
 
-Azure 门户仅显示你在给定作用域内具有写入访问权限的计算机。 如果没有对作用域的正确访问权限，请参阅[教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
+Azure 门户仅显示你在给定作用域内具有写入访问权限的计算机。 如果没有对作用域的正确访问权限，请参阅[教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限](../../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>ARG 查询未返回预期的计算机
 
 按照以下步骤操作，查看查询是否正常工作。
 
-1. 运行 ARG 查询，格式如下方 Azure 门户的 Resource Graph 资源管理器边栏选项卡中所示。 此查询模拟在更新管理中创建动态组时所选的筛选器。 请参阅[将动态组与更新管理配合使用](https://docs.microsoft.com/azure/automation/automation-update-management-groups)。 
+1. 运行 ARG 查询，格式如下方 Azure 门户的 Resource Graph 资源管理器边栏选项卡中所示。 此查询模拟在更新管理中创建动态组时所选的筛选器。 请参阅[将动态组与更新管理配合使用](../automation-update-management-groups.md)。 
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -266,7 +267,7 @@ ARG 查询结果中确实显示了计算机，但动态组预览中仍未显示�
 
 4. 验证是否为该计算机显示了混合辅助角色。
 
-5. 如果计算机未设置为混合辅助角色，请按照[使用混合 Runbook 辅助角色自动执行数据中心或云中的资源](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)中的说明进行调整。
+5. 如果计算机未设置为混合辅助角色，请按照[使用混合 Runbook 辅助角色自动执行数据中心或云中的资源](../automation-hybrid-runbook-worker.md)中的说明进行调整。
 
 6. 将计算机加入到混合 Runbook 辅助角色组。
 
@@ -340,9 +341,9 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 当创建的更新部署包含另一个租户中的 Azure VM 时会发生此错误。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
-使用以下解决方法来安排这些项。 可以将 [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) cmdlet 与 `ForUpdateConfiguration` 参数一起使用来创建计划。 然后，使用 [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet，并将另一个租户中的计算机传递给 `NonAzureComputer` 参数。 以下示例介绍如何执行此操作：
+使用以下解决方法来安排这些项。 可以将 [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) cmdlet 与 `ForUpdateConfiguration` 参数一起使用来创建计划。 然后，使用 [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet，并将另一个租户中的计算机传递给 `NonAzureComputer` 参数。 以下示例介绍如何执行此操作：
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -364,7 +365,7 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 多个注册表项都可以修改 Windows 更新，其中任何一个都可以修改重启行为。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
 查看[通过编辑注册表来配置自动更新](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)和[用于管理重启的注册表项](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)下列出的注册表项，确保计算机配置正确。
 
@@ -414,13 +415,13 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 在 Windows 上，更新一旦可用就会自动安装。 如果未计划将更新部署到计算机，则此行为可能会导致混淆。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` 注册表项默认设置为 4：`auto download and install`。
 
 对于更新管理客户端，建议将此项设置为 3：`auto download but do not auto install`。
 
-有关详细信息，请参阅[配置自动更新](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates)。
+有关详细信息，请参阅[配置自动更新](/windows/deployment/update/waas-wu-settings#configure-automatic-updates)。
 
 ## <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>场景：计算机已注册到其他帐户
 
@@ -467,7 +468,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 可能是因为代理、网关或防火墙阻止了网络通信。 
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
 检查网络并确保允许适当的端口和地址。 有关更新管理和混合 Runbook 辅助角色所需的端口和地址列表，请参阅[网络要求](../automation-hybrid-runbook-worker.md#network-planning)。
 
@@ -485,7 +486,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 混合 Runbook 辅助角色无法生成自签名证书。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
 请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试。
 
@@ -495,7 +496,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 更新的默认维护时段为 120 分钟。 最多可将维护时段增至 6 小时，即 360 分钟。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
 编辑任何失败的计划更新部署，并增加维护时段。
 
@@ -512,7 +513,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 未正确配置更新代理（Windows 上的 Windows 更新代理；Linux 分发的包管理器）。 更新管理依赖于计算机的更新代理来提供所需的更新、修补程序的状态，以及所部署的修补程序的结果。 如果没有该信息，则更新管理无法正确报告所需的或已安装的修补程序。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解决方案
 
 尝试在计算机上本地执行更新。 如果此操作失败，则通常表示存在更新代理配置错误。
 
@@ -574,9 +575,9 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="machines-dont-install-updates"></a>计算机未安装更新
 
-请尝试直接在计算机上运行更新。 如果计算机无法应用更新，请查阅[故障排除指南中的潜在错误列表](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult)。
+请尝试直接在计算机上运行更新。 如果计算机无法应用更新，请查阅[故障排除指南中的潜在错误列表](#hresult)。
 
-如果更新在本地运行，请尝试按照[从更新管理中删除 VM](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources) 中的指南在计算机上删除并重新安装代理。
+如果更新在本地运行，请尝试按照[从更新管理中删除 VM](../automation-remove-vms-from-update-management.md) 中的指南在计算机上删除并重新安装代理。
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>我知道有可用更新，但更新并未在计算机上显示为可用
 
@@ -592,11 +593,11 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>更新显示为已安装，但我在计算机上找不到它们
 
-更新通常会被其他更新替代。 有关详细信息，请参阅 Windows 更新疑难解答指南中的[“更新被替代”](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)。
+更新通常会被其他更新替代。 有关详细信息，请参阅 Windows 更新疑难解答指南中的[“更新被替代”](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)。
 
 ### <a name="installing-updates-by-classification-on-linux"></a>按 Linux 上的分类安装更新
 
-按分类（“关键更新和安全更新”）将更新部署到 Linux 有重要的注意事项，尤其是对 CentOS 来说。 这些[限制记录在“更新管理”概览页上](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2)。
+按分类（“关键更新和安全更新”）将更新部署到 Linux 有重要的注意事项，尤其是对 CentOS 来说。 这些[限制记录在“更新管理”概览页上](../automation-update-management.md#linux)。
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 始终缺失
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 89a5fa0be104c3a7b7e035f82d2fed80d4781701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca7aca1c11158e396c27d3f0ac37e18a9cbea361
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511997"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182723"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -46,7 +46,7 @@ Windows 8、Windows Server 2012 及更高版本的每次系统协商均要求其
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>原因3：使用基于身份的身份验证时，共享级权限不正确
 
-如果用户使用 Active Directory （AD）或 Azure Active Directory 域服务（Azure AD DS）身份验证访问 Azure 文件共享，则访问文件共享将失败，并出现 "拒绝访问" 错误（如果共享级别权限不正确）。 
+如果用户使用 Active Directory (AD) 或 Azure Active Directory 域服务 (Azure AD DS) 身份验证访问 Azure 文件共享，则访问文件共享将失败，并出现 "拒绝访问" 错误（如果共享级权限不正确）。 
 
 ### <a name="solution-for-cause-3"></a>原因 3 的解决方案
 
@@ -70,27 +70,31 @@ Windows 8、Windows Server 2012 及更高版本的每次系统协商均要求其
 若要使用 `Test-NetConnection` cmdlet，则必须安装 Azure PowerShell 模块。有关详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
 
    
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
+```azurepowershell
+$resourceGroupName = "<your-resource-group-name>"
+$storageAccountName = "<your-storage-account-name>"
 
-    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+# This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
+# already logged in.
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
+# The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
+# $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
+# or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
+Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
+```
     
 如果连接成功，则会看到以下输出：
     
   
-    ComputerName     : <your-storage-account-name>
-    RemoteAddress    : <storage-account-ip-address>
-    RemotePort       : 445
-    InterfaceAlias   : <your-network-interface>
-    SourceAddress    : <your-ip-address>
-    TcpTestSucceeded : True
+```azurepowershell
+ComputerName     : <your-storage-account-name>
+RemoteAddress    : <storage-account-ip-address>
+RemotePort       : 445
+InterfaceAlias   : <your-network-interface>
+SourceAddress    : <your-ip-address>
+TcpTestSucceeded : True
+```
  
 
 > [!Note]  
@@ -301,11 +305,11 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
  
 例如，可将其设置为 0x100000，并查看性能是否有所提高。
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>为 Azure 文件启用 Azure Active Directory 域服务（AAD DS）身份验证时出错 AadDsTenantNotFound 找不到租户 Id 为 aad-id 的活动租户
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>启用 Azure Active Directory 域服务 (AAD DS) Azure 文件的身份验证 "中的错误 AadDsTenantNotFound 找不到租户 Id 为" aad-租户-id "的活动租户
 
 ### <a name="cause"></a>原因
 
-当你尝试在存储帐户上[启用对 Azure 文件的 Azure Active Directory 域服务（AZURE AD DS）身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)时，会发生错误 AadDsTenantNotFound，在该帐户上，不会在关联订阅的 aad 租户上创建[aad 域服务（aad ds）](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) 。  
+尝试启用 Azure Active Directory 域服务时出现错误 AadDsTenantNotFound (在存储帐户上[AZURE AD DS) 身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)，其中[aad 域服务 (aad DS) ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)不是在关联订阅的 aad 租户上创建的。  
 
 ### <a name="solution"></a>解决方案
 
@@ -313,7 +317,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>出现错误 "系统错误1359。 在启用 Azure Active Directory 域服务（AAD DS）身份验证的情况对文件共享的 SMB 访问接收到的内部错误
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>出现错误 "系统错误1359。 使用 Azure Active Directory 域服务对文件共享接收到的内部错误 " (AAD DS) 身份验证已启用
 
 ### <a name="cause"></a>原因
 
@@ -342,14 +346,14 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 Cmdlet 按顺序执行以下检查，并为故障提供指导：
 1. CheckPort445Connectivity：检查是否已为 SMB 连接打开端口445
 2. CheckDomainJoined：验证客户端计算机是否已加入 AD
-3. CheckADObject：确认 Active Directory 中存在表示存储帐户并且具有正确 SPN （服务主体名称）的对象。
+3. CheckADObject：确认 Active Directory 中有一个表示存储帐户并且具有正确 SPN (服务主体名称) 的对象。
 4. CheckGetKerberosTicket：尝试获取用于连接到存储帐户的 Kerberos 票证 
 5. CheckADObjectPasswordIsCorrect：确保表示存储帐户的 AD 标识上配置的密码与存储帐户 kerb1 或 kerb2 密钥的密码匹配
 6. CheckSidHasAadUser：检查登录 AD 用户是否已同步到 Azure AD。 如果要查找特定 AD 用户是否已同步到 Azure AD，可以在输入参数中指定-UserName 和-Domain。
 7. CheckAadUserHasSid：检查 Azure AD 用户在 AD 中是否有 SID，此检查要求用户输入具有参数-ObjectId 的 Azure AD 用户的对象 Id。 
 8. CheckStorageAccountDomainJoined：检查存储帐户的属性，以查看是否已启用 AD 身份验证，并填充该帐户的 AD 属性。
 
-## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>无法通过 Windows 文件资源管理器配置目录/文件级权限（Windows Acl）
+## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>无法在 windows 文件资源管理器) 配置目录/文件级别权限 (
 
 ### <a name="symptom"></a>症状
 

@@ -5,18 +5,16 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72992140"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171323"
 ---
-# <a name="module-twin-json-schema"></a>模块克隆 JSON 架构
+# <a name="module-twin-json-schema-azure-event-grid"></a>Azure 事件网格 (的模块克隆 JSON 架构) 
 
 IoT Edge 上的事件网格与 IoT Edge 生态系统集成，并支持通过模块克隆创建主题和订阅。 它还将报告所有主题和事件订阅的当前状态报告给模块克隆上的报告属性。
 
@@ -85,7 +83,7 @@ IoT Edge 上的事件网格与 IoT Edge 生态系统集成，并支持通过模�
 
 * 模块的存储区中存在的主题和订阅集
 * 创建所需的主题/事件订阅时遇到的任何错误
-* 任何启动错误（如所需属性 JSON 分析失败）
+* 任何启动错误 (如所需属性 JSON 分析失败) 
 
 ```json
 {

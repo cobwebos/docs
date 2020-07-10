@@ -1,18 +1,14 @@
 ---
 title: 发行说明-Azure 事件网格 IoT Edge |Microsoft Docs
 description: IoT Edge 发行说明中的 Azure 事件网格
-author: femila
-ms.author: femila
-ms.reviewer: spelluru
-ms.date: 01/09/2020
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 71c3df1f990f7cbe4cb4d7dda581f355ca0d518a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7582750f5230f02c784b14f50dfc6efa7af8698
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560419"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171408"
 ---
 # <a name="release-notes-azure-event-grid-on-iot-edge"></a>发行说明： IoT Edge 上的 Azure 事件网格
 

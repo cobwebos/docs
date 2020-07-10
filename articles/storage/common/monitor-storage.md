@@ -9,19 +9,19 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955159"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182706"
 ---
 # <a name="monitor-azure-storage"></a>监视 Azure 存储
 
 如果你有依赖 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍 Azure 存储生成的监视数据，以及如何使用 Azure Monitor 的各种功能分析这些数据的相关警报。
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 若要注册预览版，请参阅[此页](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 经典存储帐户不受支持。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 若要注册预览版，请参阅[此页](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此预览版启用 blob 的日志 (包括 Azure Data Lake Storage Gen2) 、文件、队列和表。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅[存储帐户概述](../common/storage-account-overview.md)。
 
 ## <a name="monitor-overview"></a>Monitor 概述
 
@@ -35,7 +35,7 @@ Azure 存储使用 [Azure Monitor](../../azure-monitor/overview.md) 来创建监
 - 说明是 Azure Monitor？
 - 与监视相关的成本
 - 监视 Azure 中收集的数据
-- 配置数据集合
+- 配置数据收集
 - Azure 中用于分析监视数据并就其发出警报的标准工具
 
 本文中的以下各部分将介绍从 Azure 存储收集的特定数据。 其中的示例演示了如何配置数据收集并通过 Azure 工具分析这些数据。
@@ -84,7 +84,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 此外，还必须指定要为其收集日志的操作的类别。 此表列出了 Azure 存储的类别。
 
-| 类别 | 描述 |
+| 类别 | 说明 |
 |:---|:---|
 | StorageRead | 对 blob 的读取操作。 |
 | StorageWrite | 对 blob 的写入操作。 |
