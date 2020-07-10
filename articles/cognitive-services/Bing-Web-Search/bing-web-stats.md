@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85609463"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147401"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>将分析添加到必应搜索 API
 
@@ -34,7 +34,7 @@ ms.locfileid: "85609463"
 
 ## <a name="access-your-analytics"></a>访问分析
 
-必应更新分析数据每24小时一次，并保留最多13个月的历史记录，可从[分析仪表板](https://bingapistatistics.com)进行访问。 请确保使用用于注册必应统计信息的相同 Microsoft 帐户（MSA）登录。
+必应更新分析数据每24小时一次，并保留最多13个月的历史记录，可从[分析仪表板](https://bingapistatistics.com)进行访问。 请确保使用与用于注册必应统计信息 (MSA) 相同的 Microsoft 帐户来登录。
 
 > [!NOTE]  
 > * 最长可能需要在 24 小时后，指标才会显示在仪表板上。 仪表板显示上次更新数据的日期和时间。  
@@ -86,11 +86,11 @@ For example, if you don't include the User-Agent header in your calls, the dashb
   > [!NOTE]  
   > 可以抑制一些查询字词，以删除电子邮件、电话号码、SSN 等机密信息。
 
-- **地理分布**：搜索结果源自的市场。 例如 `en-us` （英语、美国）。 必应使用 `mkt` 查询参数来确定市场（如果已指定）。 否则，必应使用调用方 IP 地址等信号来确定市场。
+- **地理分布**：搜索结果源自的市场。 例如， `en-us` (美国) 。 必应使用 `mkt` 查询参数来确定市场（如果已指定）。 否则，必应使用调用方 IP 地址等信号来确定市场。
 
 - **响应代码分布**：在报告时段发出的所有调用的 HTTP 状态代码。
 
-- **调用来源分布**：用户使用的浏览器类型。 例如 Microsoft Edge、Chrome、Safari 和 FireFox。 从浏览器外部进行的调用（如 bot、Postman 或从控制台应用程序中使用卷）将在 "库" 下进行分组。 来源是使用请求的 User-Agent 标头值确定的。 如果请求不包含 User-Agent 标头，则必应会尝试从其他信号派生来源。  
+- **调用来源分布**：用户使用的浏览器类型。 例如 Microsoft Edge、Chrome、Safari 和 FireFox。 从浏览器外进行的调用 (如 bot、Postman 或从控制台应用程序中使用卷) 会在库中进行分组。 来源是使用请求的 User-Agent 标头值确定的。 如果请求不包含 User-Agent 标头，则必应会尝试从其他信号派生来源。  
 
 - **安全搜索分布**：安全搜索值的分布。 例如 off、moderate 或 strict。 `safeSearch` 查询参数包含该值（如果已指定）。 否则，必应使用默认值 moderate。  
 

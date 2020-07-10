@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98f35d0b3f37a7bb181f83b83a48ef113e02f1e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ee0c659cf510eb0a438ae0c78a554c98dccffa89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344129"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144273"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
 
@@ -24,17 +24,9 @@ ms.locfileid: "84344129"
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-
-## <a name="create-first-key-for-bing-spell-check-v7"></a>为必应拼写检查 V7 创建第一个密钥
-
-[第一个必应拼写检查 API v7 密钥](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)是免费的。
-
-![创建免费密钥](./media/luis-tutorial-bing-spellcheck/free-key.png)
-
-<a name="create-subscription-key"></a>
-
 ## <a name="create-endpoint-key"></a>创建终结点密钥
-如果免费密钥已过期，请创建一个终结点密钥。
+
+若要在 Azure 门户中创建必应拼写检查资源，请按照以下说明操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 

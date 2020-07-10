@@ -8,23 +8,21 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: e9891e3ac12de3f8735407c603ff59b61f4eb05d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6d14094edc7ae21ca0d56b544fb9c2b19f1f0582
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118964"
+ms.locfileid: "86144998"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>如何配置虚拟中心路由
 
-一个虚拟中心可包含多个网关，例如站点到站点 VPN 网关、ExpressRoute 网关、点到站点网关和 Azure 防火墙。 虚拟中心中的路由功能由路由器提供，用于管理所有路由，包括传输路由、使用边界网关协议（BGP）的网关。 此路由器还提供连接到虚拟中心的虚拟网络之间的传输连接，并且最多可支持 50 Gbps 的聚合吞吐量。 这些路由功能适用于标准虚拟 WAN 客户。
+一个虚拟中心可包含多个网关，例如站点到站点 VPN 网关、ExpressRoute 网关、点到站点网关和 Azure 防火墙。 虚拟中心中的路由功能由路由器提供，用于管理所有路由，包括传输路由、使用边界网关协议 (BGP) 的网关。 此路由器还提供连接到虚拟中心的虚拟网络之间的传输连接，并且最多可支持 50 Gbps 的聚合吞吐量。 这些路由功能适用于标准虚拟 WAN 客户。
 
 有关详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
 > [!NOTE]
-> 其中一些功能可能仍在推出。如果你所在的区域中尚未发生此推出，请使用以下文章中的步骤：
->* [Azure 门户文章](virtual-wan-route-table-nva-portal.md)
->* [PowerShell 文章](virtual-wan-route-table-nva.md)
+> 其中一些功能可能仍在推出。这预计会在8月3日完成。
 >
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>创建路由表
@@ -85,7 +83,7 @@ ms.locfileid: "86118964"
 1. 从下拉列表中选择虚拟网络。
 1. 设置要与路由表关联的路由配置。 对于**关联路由表**，请从下拉列表中选择路由表。
 1. 设置路由配置以传播到一个或多个路由表。 对于**传播到路由表**，请从下拉列表中选择。
-1. 对于**静态路由**，配置网络虚拟设备的静态路由（如果适用）。 虚拟 WAN 支持一个用于虚拟网络连接中的静态路由的下一个跃点 IP。 例如，如果你有一个单独的虚拟设备用于入口和出口流量，则最好将虚拟设备放在单独的 Vnet 中，并将 Vnet 附加到虚拟中心。
+1. 对于**静态路由**，为网络虚拟设备配置静态路由 (如适用) 。 虚拟 WAN 支持一个用于虚拟网络连接中的静态路由的下一个跃点 IP。 例如，如果你有一个单独的虚拟设备用于入口和出口流量，则最好将虚拟设备放在单独的 Vnet 中，并将 Vnet 附加到虚拟中心。
 
 
 :::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="设置路由配置" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::

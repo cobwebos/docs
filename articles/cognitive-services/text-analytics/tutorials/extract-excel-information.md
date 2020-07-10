@@ -1,5 +1,5 @@
 ---
-title: 使用文本分析和电源自动功能在 Excel 中提取信息
+title: 使用文本分析和 Power Automate 在 Excel 中提取信息
 titleSuffix: Azure Cognitive Services
 description: 了解如何在不编写代码的情况下提取 Excel 文本，使用文本分析和电源自动化。
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201184"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145710"
 ---
-# <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>使用文本分析和电源自动功能在 Excel 中提取信息 
+# <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>使用文本分析和 Power Automate 在 Excel 中提取信息 
 
 在本教程中，您将创建一个电源自动流，以便在 Excel 电子表格中提取文本，而无需编写代码。 
 
 此流程将获取有关单元复杂情况所报告的问题的电子表格，并将其分类为两个类别： "管道" 和 "其他"。 它还将提取发送它们的租户的姓名和电话号码。 最后，此流程会将此信息追加到 Excel 工作表。 
 
-在本教程中，你将学习如何执行以下操作：
+本教程介绍以下操作：
 
 > [!div class="checklist"]
 > * 使用 Power 自动化创建流
@@ -33,7 +33,7 @@ ms.locfileid: "78201184"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 Microsoft Azure 帐户。 [启动免费试用版](https://azure.microsoft.com/free/)或[登录](https://portal.azure.com/)。
+- 一个 Microsoft Azure 帐户。 [创建免费帐户](https://azure.microsoft.com/free/cognitive-services/)或[登录](https://portal.azure.com/)。
 - 文本分析资源。 如果没有，可以[在 Azure 门户中创建一个](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)，并使用免费层完成本教程。
 - 注册过程中生成的[密钥和终结点](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - 包含租户问题的电子表格。 GitHub 上提供的示例数据
@@ -58,11 +58,11 @@ ms.locfileid: "78201184"
 
 在 "**生成计划的流**" 页上，使用以下字段初始化流：
 
-|字段 |“值”  |
+|字段 |值  |
 |---------|---------|
 |**流名称**     | **计划的审阅**或其他名称。         |
 |**正在启动**     |  输入当前日期和时间。       |
-|**重复间隔**     | 1 小时****        |
+|**重复间隔**     | **1小时**        |
 
 ## <a name="add-variables-to-the-flow"></a>向流中添加变量
 
@@ -78,10 +78,10 @@ ms.locfileid: "78201184"
 
 | 操作 |名称   | 类型 | 值 |
 |---------|---------|---|---|
-| 初始化变量 | var_person | String | 人员 |
-| 初始化变量2 | var_phone | String | Phone_Number |
-| 初始化变量3 | var_plumbing | String | 管线 |
-| 初始化变量4 | var_other | String | 其他 | 
+| 初始化变量 | var_person | 字符串 | 人员 |
+| 初始化变量2 | var_phone | 字符串 | Phone_Number |
+| 初始化变量3 | var_plumbing | 字符串 | 管线 |
+| 初始化变量4 | var_other | 字符串 | 其他 | 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="流变量中包含的信息":::
@@ -121,9 +121,9 @@ ms.locfileid: "78201184"
 > [!NOTE]
 > 如果已创建文本分析连接并想要更改连接详细信息，请单击右上角的省略号，并单击 " **+ 添加新连接**"。
 
-| 字段           | “值”                                                                                                             |
+| 字段           | 值                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
-| 连接名称 | 与文本分析资源的连接的名称。 例如，`TAforPowerAutomate` 。 |
+| 连接名称 | 与文本分析资源的连接的名称。 例如，`TAforPowerAutomate`。 |
 | 帐户密钥     | 文本分析资源的键。                                                                                   |
 | 站点 URL        | 文本分析资源的终结点。                                                       |
 
@@ -137,7 +137,7 @@ ms.locfileid: "78201184"
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="将文本分析凭据添加到流中。":::
 
-在**文本**字段中单击，并从显示的动态内容窗口中选择 "**说明**"。 输入`en`语言。 （如果看不到语言，请单击 "显示高级选项"）
+在**文本**字段中单击，并从显示的动态内容窗口中选择 "**说明**"。 输入 `en` 语言。 如果看不到 Language) ， (单击 "显示高级选项"
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="将文本分析凭据添加到流中。":::
@@ -160,7 +160,7 @@ ms.locfileid: "78201184"
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="将文本分析凭据添加到流中。":::
 
-确保第二个框的设置为**等于**。 然后选择第三个框， `var_person`在动态内容窗口中搜索。 
+确保第二个框的设置为**等于**。 然后选择第三个框， `var_person` 在动态内容窗口中搜索。 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="将文本分析凭据添加到流中。":::
@@ -182,7 +182,7 @@ ms.locfileid: "78201184"
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="将文本分析凭据添加到流中。":::
 
-在 "**应用到每个**" 中，添加 "**条件**" 控件。 它名为**Condition 2**。 在第一个文本框中，搜索并从动态内容窗口中添加**实体类型**。 确保将中心框的设置为**等于**。 然后，在右侧的文本框中，输入`var_phone`。 
+在 "**应用到每个**" 中，添加 "**条件**" 控件。 它名为**Condition 2**。 在第一个文本框中，搜索并从动态内容窗口中添加**实体类型**。 确保将中心框的设置为**等于**。 然后，在右侧的文本框中，输入 `var_phone` 。 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="将文本分析凭据添加到流中。":::
@@ -203,15 +203,15 @@ ms.locfileid: "78201184"
 
 接下来，流将检查 Excel 表行中的问题说明是否包含 "管道" 一词。 如果是，它将在 IssueType 列中添加 "检测"。 如果没有，我们将输入 "其他"。
 
-在 "**应用到每个 4** " 操作中，添加 "**条件**" 控件。 它将被命名为**条件 3**。 在第一个文本框中，使用动态内容窗口搜索，并从 Excel 文件添加**说明**。 请确保中心框显示 "**包含**"。 然后，在右侧的文本框中，查找并选择`var_plumbing`。 
+在 "**应用到每个 4** " 操作中，添加 "**条件**" 控件。 它将被命名为**条件 3**。 在第一个文本框中，使用动态内容窗口搜索，并从 Excel 文件添加**说明**。 请确保中心框显示 "**包含**"。 然后，在右侧的文本框中，查找并选择 `var_plumbing` 。 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="将文本分析凭据添加到流中。":::
 
 
-在 "**如果是"** 条件下，单击 "**添加操作**"，然后选择 "**更新行**"。 然后输入与之前类似的信息。 在 IssueType 列中，选择`var_plumbing`。 这会将 "管道" 标签应用到该行。
+在 "**如果是"** 条件下，单击 "**添加操作**"，然后选择 "**更新行**"。 然后输入与之前类似的信息。 在 IssueType 列中，选择 `var_plumbing` 。 这会将 "管道" 标签应用到该行。
 
-在 "**如果没有**条件" 中单击 "**添加操作**"，然后选择 "**更新行**"。 然后输入与之前类似的信息。 在 IssueType 列中，选择`var_other`。 这会将 "其他" 标签应用于该行。
+在 "**如果没有**条件" 中单击 "**添加操作**"，然后选择 "**更新行**"。 然后输入与之前类似的信息。 在 IssueType 列中，选择 `var_other` 。 这会将 "其他" 标签应用于该行。
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="将文本分析凭据添加到流中。":::

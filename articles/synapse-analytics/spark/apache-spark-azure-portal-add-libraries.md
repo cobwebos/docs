@@ -8,23 +8,24 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cf78a2f7d909fb260c5ff99f80c9d1482f2cd08b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 85635ff3a52236d0c53b72c68eda0d71debe1f61
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027301"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145907"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中添加和管理 Apache Spark 库
 
 Apache Spark 依赖于许多库来提供功能。 可以扩充这些库，或将其替换为其他库或旧版本的更新版本。
 
-可以在 Spark 池（预览版）级别添加 Python 包，也可以在 Spark 作业定义级别添加基于 .jar 的包。
+可以在 Spark 池 (预览) 级别添加 Python 包，也可以在 Spark 作业定义级别添加基于 .jar 的包。
 
 ## <a name="adding-or-updating-python-libraries"></a>添加或更新 Python 库
 
 Azure Synapse Analytics 中的 Apache Spark 包含完整的 Anacondas 安装和其他库。 可以在[Apache Spark 版本支持](apache-spark-version-support.md)中找到 "完整库" 列表。
 
-当 Spark 实例启动时，将使用此安装作为基础来创建新的虚拟环境。 此外，还可以使用*requirements.txt*文件（命令的输出 `pip freeze` ）来升级虚拟环境。 在群集启动时，将从 PyPi 下载此文件中列出的用于安装或升级的包。 每次从该 Spark 池中创建 Spark 实例时，都会使用此要求文件。
+当 Spark 实例启动时，将使用此安装作为基础来创建新的虚拟环境。 此外，可以使用命令) 的*requirements.txt*文件 (输出来 `pip freeze` 升级虚拟环境。 在群集启动时，将从 PyPi 下载此文件中列出的用于安装或升级的包。 每次从该 Spark 池中创建 Spark 实例时，都会使用此要求文件。
 
 > [!IMPORTANT]
 >
@@ -34,7 +35,7 @@ Azure Synapse Analytics 中的 Apache Spark 包含完整的 Anacondas 安装和�
 
 ### <a name="requirements-format"></a>需求格式
 
-以下代码片段显示了要求文件的格式。 PyPi 包名称与精确版本一起列出。 此文件遵循[pip 冻结](https://pip.pypa.io/en/stable/reference/pip_freeze/)参考文档中所述的格式。 此示例固定特定版本。 你还可以在此文件中指定 "不大于" 和 "小于" 版本。
+以下代码片段显示了要求文件的格式。 PyPi 包名称与精确版本一起列出。 此文件遵循[pip 冻结](https://pip.pypa.io/en/stable/reference/pip_freeze/)参考文档中所述的格式。 此示例固定特定版本。 
 
 ```
 absl-py==0.7.0

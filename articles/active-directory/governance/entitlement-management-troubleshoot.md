@@ -16,11 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338171"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145753"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
 
@@ -28,7 +29,7 @@ ms.locfileid: "85338171"
 
 ## <a name="administration"></a>管理
 
-* 如果在配置授权管理时收到 "访问被拒绝" 消息，并且你是全局管理员，请确保目录具有[Azure AD Premium P2 （或 EMS E5）许可证](entitlement-management-overview.md#license-requirements)。
+* 如果在配置授权管理时收到 "拒绝访问" 消息，并且你是全局管理员，请确保目录中有[Azure AD Premium P2 (或 EMS E5) 许可证](entitlement-management-overview.md#license-requirements)。
 
 * 如果在创建或查看访问包时收到 "访问被拒绝" 消息，并且您是目录创建者组的成员，则必须在创建第一个访问包之前[创建目录](entitlement-management-catalog-create.md)。
 
@@ -60,7 +61,7 @@ ms.locfileid: "85338171"
 
 * 如果以前未在目录中登录的新外部用户接收到包含 SharePoint Online 站点的访问包，则其访问包将显示为未完全传递，直到其帐户在 SharePoint Online 中设置。 有关共享设置的详细信息，请参阅[查看 SharePoint Online 外部共享设置](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
 
-## <a name="requests"></a>Requests
+## <a name="requests"></a>请求
 
 * 当用户要请求访问包的访问权限时，请确保他们使用访问包的 "**我的访问门户" 链接**。 有关详细信息，请参阅 "[共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。
 
@@ -94,7 +95,9 @@ ms.locfileid: "85338171"
 
 如果在触发访问包重新处理请求后遇到错误，则必须等待系统重新处理请求。 系统多次尝试重新处理几个小时，因此在这段时间内不能强制重新处理。 
 
-您只能重新处理状态为 "传递" 的请求已**失败**或**部分传递**且完成时间不到一周。
+您只能重新处理状态为 "传递" 的请求已**失败**或**部分传递**且完成时间不到一周。 否则 **，"重新**处理" 按钮将灰显。
+
+![重新处理按钮灰显](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
 - 如果在试用时段内修复错误，请求状态将更改为 "正在**传递**"。 该请求将重新处理，而不需要用户执行其他操作。
 
@@ -116,7 +119,7 @@ ms.locfileid: "85338171"
 
 ### <a name="cancel-a-pending-request"></a>取消挂起的请求
 
-您只能取消尚未传递或传递失败的挂起的请求。
+您只能取消尚未传递或传递失败的挂起的请求。否则，"**取消**" 按钮将灰显。
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
@@ -141,9 +144,9 @@ ms.locfileid: "85338171"
     | 策略优先级 | 范围 |
     | --- | --- |
     | P1 | 目录或特定连接的组织中的特定用户和组 |
-    | P2 | 目录中的所有成员（不包括来宾） |
-    | P3 | 目录中的所有用户（包括来宾）或特定的已连接组织 |
-    | P4 | 所有连接的组织或所有用户（所有连接的组织 + 所有新的外部用户） |
+    | P2 | 目录中的所有成员 (不包括来宾)  |
+    | P3 | 目录中的所有用户 (包括来宾) 或特定连接的组织 |
+    | P4 | 所有连接的组织或所有用户 (所有连接的组织 + 任何新的外部用户)  |
     
     如果任何策略的优先级较高，则会忽略低优先级类别。 有关如何向请求者显示多个具有相同优先级的策略的示例，请参阅[选择策略](entitlement-management-request-access.md#select-a-policy)。
 

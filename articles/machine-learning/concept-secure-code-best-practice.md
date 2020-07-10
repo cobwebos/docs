@@ -9,37 +9,38 @@ ms.topic: conceptual
 ms.author: larryfr
 author: larryfr
 ms.date: 11/12/2019
-ms.openlocfilehash: 8932640a69ad68e0fd30b8577ba95768dbf8b9b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e41323d05f1a81fbc73a9158cf30c2b0f7953f3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660750"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147063"
 ---
 # <a name="secure-code-best-practices-with-azure-machine-learning"></a>Azure 机器学习的安全代码最佳做法
 
-在 Azure 机器学习中，可以上传任何源中的文件和内容。 Jupyter 笔记本或脚本中的内容可能会从会话中读取数据、在 Azure 中访问组织中的数据或代表你运行恶意进程。
+在 Azure 机器学习中，可以将任何源中的文件和内容上传到 Azure。 你加载的 Jupyter 笔记本或脚本中的内容可能会从会话中读取数据、在 Azure 中访问组织中的数据或代表你运行恶意进程。
 
 > [!IMPORTANT]
 > 仅从受信任的源运行笔记本或脚本。 例如，你或安全团队已查看笔记本或脚本。
 
 ## <a name="potential-threats"></a>潜在威胁
 
-开发 Azure 机器学习通常涉及基于 web 的开发环境（笔记本 & Azure ML studio）。 使用基于 web 的开发环境时，潜在的威胁如下：
+开发 Azure 机器学习通常涉及 & Azure ML studio)  (笔记本的基于 web 的开发环境。 使用基于 web 的开发环境时，潜在的威胁如下：
 
-* [跨站点脚本（XSS）](https://owasp.org/www-community/attacks/xss/)
+* [跨站点脚本 (XSS) ](https://owasp.org/www-community/attacks/xss/)
 
     * __DOM 注入__：这种类型的攻击可以修改浏览器中显示的 UI。 例如，通过更改 "运行" 按钮在 Jupyter Notebook 中的行为方式。
-    * __访问令牌/cookie__： XSS 攻击还可以访问本地存储和浏览器 cookie。 Azure Active Directory （AAD）身份验证令牌存储在本地存储中。 XSS 攻击可以使用此令牌代表您进行 API 调用，然后将数据发送到外部系统或 API。
+    * __访问令牌/cookie__： XSS 攻击还可以访问本地存储和浏览器 cookie。 Azure Active Directory (AAD) 身份验证令牌存储在本地存储中。 XSS 攻击可以使用此令牌代表您进行 API 调用，然后将数据发送到外部系统或 API。
 
-* [跨站点请求伪造（CSRF）](https://owasp.org/www-community/attacks/csrf)：这种攻击可能会将映像或链接的 url 替换为恶意脚本或 API 的 url。 加载图像或单击链接时，会调用 URL。
+* [跨站点请求伪造 (CSRF) ](https://owasp.org/www-community/attacks/csrf)：此攻击可能会将映像或链接的 url 替换为恶意脚本或 API 的 url。 加载图像或单击链接时，会调用 URL。
 
 ## <a name="azure-ml-studio-notebooks"></a>Azure ML studio 笔记本
 
 Azure 机器学习 studio 在你的浏览器中提供托管的笔记本体验。 笔记本中的单元可输出包含恶意代码的 HTML 文档或片段。  呈现输出时，可以执行该代码。
 
 __可能的威胁__：
-* 跨站点脚本（XSS）
-* 跨站点请求伪造（CSRF）
+* 跨站点脚本 (XSS) 
+* 跨站点请求伪造 (CSRF) 
 
 __Azure 机器学习提供的缓解措施__：
 * __代码单元输出__在 iframe 中进行沙盒处理。 Iframe 阻止脚本访问父 DOM、cookie 或会话存储。
@@ -55,8 +56,8 @@ __建议的操作__：
 Azure 机器学习计算实例承载__Jupyter__和__Jupyter 实验室__。 使用时，笔记本中的单元或中的代码可以输出包含恶意代码的 HTML 文档或片段。 呈现输出时，可以执行该代码。 使用在计算实例上托管的__RStudio__时也适用相同的威胁。
 
 __可能的威胁__：
-* 跨站点脚本（XSS）
-* 跨站点请求伪造（CSRF）
+* 跨站点脚本 (XSS) 
+* 跨站点请求伪造 (CSRF) 
 
 __Azure 机器学习提供的缓解措施__：
 * 无。 Jupyter 和 Jupyter 实验室是在 Azure 机器学习计算实例上托管的开源应用程序。
