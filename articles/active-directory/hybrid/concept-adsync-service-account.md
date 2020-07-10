@@ -15,15 +15,15 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9614def5310bdc6fa8c6f37d7cdcc0a5f081a96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360293"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144726"
 ---
 # <a name="adsync-service-account"></a>ADSync 服务帐户
-Azure AD Connect 会安装一个本地服务用于协调 Active Directory 与 Azure Active Directory 之间的同步。  Microsoft Azure AD 同步同步服务（ADSync）在本地环境中的服务器上运行。  默认会在“快速”安装中设置该服务的凭据，不过，用户也可以根据组织的安全要求自定义凭据。  这些凭据不会用于连接到本地林或 Azure Active Directory。
+Azure AD Connect 会安装一个本地服务用于协调 Active Directory 与 Azure Active Directory 之间的同步。  Microsoft Azure AD 同步同步服务 (ADSync) 在本地环境中的服务器上运行。  默认会在“快速”安装中设置该服务的凭据，不过，用户也可以根据组织的安全要求自定义凭据。  这些凭据不会用于连接到本地林或 Azure Active Directory。
 
 选择 ADSync 服务帐户是在安装 Azure AD Connect 之前要做出的一项重要规划决策。  安装后尝试更改凭据会导致服务无法启动、无法访问同步数据库，以及无法在连接的目录（Azure 和 AD DS）中进行身份验证。  在还原原始凭据之前无法进行同步。
 
@@ -46,9 +46,9 @@ Microsoft 建议在虚拟服务帐户或者独立或组托管服务帐户的上�
 - 托管服务帐户–使用管理员预配的独立或组 MSA
 - 域帐户–使用管理员预配的域服务帐户
 
-![](media/concept-adsync-service-account/adsync1.png)
+!["Azure AD Connect 快速设置" 页的屏幕截图，其中包含 "自定义" 或 "使用快速设置" 选项按钮。](media/concept-adsync-service-account/adsync1.png)
 
-![](media/concept-adsync-service-account/adsync2.png)
+![Azure AD Connect "安装所需组件" 页的屏幕截图，其中选择了 "使用现有托管服务帐户" 选项。](media/concept-adsync-service-account/adsync2.png)
 
 ## <a name="diagnosing-adsync-service-account-changes"></a>诊断 ADSync 服务帐户更改
 安装后更改 ADSync 服务的凭据会导致服务无法启动、无法访问同步数据库，以及无法在连接的目录（Azure 和 AD DS）中进行身份验证。  为数据库授予对新 ADSync 服务帐户的访问权限并不足以从此问题恢复。 在还原原始凭据之前无法进行同步。

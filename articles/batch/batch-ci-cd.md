@@ -5,11 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3569e5cc25491fd408f7aec57a51d11f56dbd1fe
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956655"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145267"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 生成和部署 HPC 解决方案
 
@@ -188,7 +189,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 
 最后，我们有一个类似于业务流程协调程序的模板。 此模板负责部署功能模板。
 
-还可以通过单独的文章了解有关[创建链接 Azure 资源管理器模板](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md)的详细信息。
+还可以通过单独的文章了解有关[创建链接 Azure 资源管理器模板](../azure-resource-manager/templates/deployment-tutorial-linked-template.md)的详细信息。
 
 ```json
 {

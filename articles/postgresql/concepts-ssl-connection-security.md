@@ -1,17 +1,17 @@
 ---
-title: SSL/TLS-Azure Database for PostgreSQL-单服务器
+title: SSL/TLS - Azure Database for PostgreSQL - 单一服务器
 description: 有关如何为 Azure Database for PostgreSQL（单一服务器）配置 TLS 连接的说明和信息。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 6660c5d40ffb8ecb338dd9cdf53f24cfe2911713
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/08/2020
+ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043829"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142711"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL（单一服务器）中配置 TLS 连接
 
@@ -51,7 +51,9 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>需要证书验证才可启用 TLS 连接性的应用程序
 
-在某些情况下，应用程序需要从受信任的证书颁发机构（CA）证书文件生成的本地证书文件才能安全连接。 要连接到 Azure Database for PostgreSQL 服务器的证书位于上 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem 。 下载证书文件并将其保存到首选位置。 （有关主权云中服务器的证书，请参阅以下链接： [Azure 政府](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)版、 [azure 中国](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)版和[azure 德国](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)版。） 
+在某些情况下，应用程序需要从受信任的证书颁发机构生成的本地证书文件 (CA) 证书文件安全地进行连接。 要连接到 Azure Database for PostgreSQL 服务器的证书位于上 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem 。 下载证书文件并将其保存到首选位置。 
+
+请参阅以下链接，了解主权云中服务器的证书： [Azure 政府](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)版、 [azure 中国](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)版和[azure 德国](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)版。
 
 ### <a name="connect-using-psql"></a>使用 psql 进行连接
 
@@ -68,28 +70,28 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 
 ## <a name="tls-enforcement-in-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 单一服务器中的 TLS 强制
 
-Azure Database for PostgreSQL 单服务器支持使用传输层安全性（TLS）连接到数据库服务器的客户端加密。 TLS 是一种行业标准协议，可确保数据库服务器和客户端应用程序之间的安全网络连接，使你能够遵守符合性要求。
+对于使用传输层安全性 (TLS) 连接到数据库服务器的客户端，Azure Database for PostgreSQL - 单一服务器支持加密。 TLS 是一种行业标准协议，可确保在数据库服务器与客户端应用程序之间实现安全的网络连接，使你能够满足合规性要求。
 
 ### <a name="tls-settings"></a>TLS 设置
 
-Azure Database for PostgreSQL 单服务器可为客户端连接强制执行 TLS 版本。 若要强制使用 TLS 版本，请使用 "**最小 tls 版本**" 选项设置。 此选项设置允许以下值：
+Azure Database for PostgreSQL 单一服务器提供了为客户端连接强制使用 TLS 版本的功能。 若要强制使用 TLS 版本，请使用“最低 TLS 版本”选项设置。 此选项设置允许以下值：
 
-|  最小 TLS 设置             | 支持的客户端 TLS 版本                |
+|  最低 TLS 设置             | 支持的客户端 TLS 版本                |
 |:---------------------------------|-------------------------------------:|
-| TLSEnforcementDisabled （默认值） | 无需 TLS                      |
-| TLS1_0                           | TLS 1.0，TLS 1.1，TLS 1.2 及更高版本 |
-| TLS1_1                           | TLS 1.1，TLS 1.2 及更高版本          |
-| TLS1_2                           | TLS 版本1.2 及更高版本           |
+| TLSEnforcementDisabled（默认值） | 不需要 TLS                      |
+| TLS1_0                           | TLS 1.0、TLS 1.1、TLS 1.2 及更高版本 |
+| TLS1_1                           | TLS 1.1、TLS 1.2 及更高版本          |
+| TLS1_2                           | TLS 版本 1.2 及更高版本           |
 
 
-例如，将此最低 TLS 设置版本设置为 TLS 1.0 意味着服务器将允许使用 TLS 1.0、1.1 和 1.2 + 的客户端连接。 或者，将此选项设置为1.2 意味着仅允许使用 TLS 1.2 + 的客户端进行连接，并且将拒绝 TLS 1.0 和 TLS 1.1 的所有连接。
+例如，将此最低 TLS 设置版本设置为 TLS 1.0 意味着服务器将允许使用 TLS 1.0、1.1 和 1.2 + 的客户端进行连接。 也可将此选项设置为 1.2，这意味着仅允许那些使用 TLS 1.2+ 的客户端进行连接，将拒绝使用 TLS 1.0 和 TLS 1.1 进行的所有连接。
 
 > [!Note] 
-> 默认情况下，Azure Database for PostgreSQL 不强制执行最低 TLS 版本（设置 `TLSEnforcementDisabled` ）。
+> 默认情况下，Azure Database for PostgreSQL 不会强制) 设置 (最低 TLS 版本 `TLSEnforcementDisabled` 。
 >
 > 强制执行最低 TLS 版本后，你将无法在以后禁用最小版本强制。
 
-若要了解如何为 Azure Database for PostgreSQL 单个服务器设置 TLS 设置，请参阅[如何配置 TLS 设置](howto-tls-configurations.md)。
+若要了解如何为 Azure Database for PostgreSQL 单一服务器指定 TLS 设置，请参阅[如何配置 TLS 设置](howto-tls-configurations.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

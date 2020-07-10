@@ -11,11 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: aa8fa9ff6973e908d6af700f7c2965a844e87b04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170968"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145656"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL 数据库的 DNS 别名
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -111,6 +112,8 @@ Azure SQL 数据库的 DNS 别名功能有助于实现以下方案：
 ## <a name="related-resources"></a>相关资源
 
 - [使用 Azure SQL 数据库实现业务连续性的概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)，其中包括灾难恢复方案。
+- [Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)
+- [服务器 Dns 别名 API](https://docs.microsoft.com/rest/api/sql/serverdnsaliases)
 
 ## <a name="next-steps"></a>后续步骤
 

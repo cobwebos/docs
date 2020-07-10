@@ -1,7 +1,7 @@
 ---
 title: 迁移到 Azure 资源创作密钥
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何将语言理解（LUIS）创作身份验证从电子邮件帐户迁移到 Azure 资源。
+description: 本文介绍如何将语言理解 (LUIS) 创作身份验证从电子邮件帐户迁移到 Azure 资源。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055454"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145620"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -25,7 +25,7 @@ ms.locfileid: "86055454"
 
 ## <a name="what-is-migration"></a>什么是迁移？
 
-迁移是将创作身份验证从电子邮件帐户更改为 Azure 资源的过程。 迁移后，你的帐户将链接到 Azure 订阅和 Azure 创作资源。 *所有 LUIS 用户（所有者或合作者）最终都需要迁移。*
+迁移是将创作身份验证从电子邮件帐户更改为 Azure 资源的过程。 迁移后，你的帐户将链接到 Azure 订阅和 Azure 创作资源。 *最终需要迁移 (所有者或协作者) 的所有 LUIS 用户。*
 
 必须从 LUIS 门户完成迁移。 例如，如果使用 LUIS CLI 创建创作密钥，则需要在 LUIS 门户中完成迁移过程。 迁移后，你仍可以对应用程序进行 coauthors，但这些将添加到 Azure 资源级别，而不是应用程序级别。
 
@@ -110,7 +110,7 @@ ms.locfileid: "86055454"
 
 ### <a name="create-new-authoring-resource-from-luis-to-migrate"></a>从 LUIS 创建新的创作资源以进行迁移
 
-如果要创建新的创作资源，请选择 "**创建新的创作资源**"，并在下一个窗口中提供以下信息。 然后选择“完成”****。
+如果要创建新的创作资源，请选择 "**创建新的创作资源**"，并在下一个窗口中提供以下信息。 然后选择“完成”。
 
 > [!div class="mx-imgBorder"]
 > ![用于创建创作资源的窗口](./media/migrate-authoring-key/create-new-authoring-resource-2.png)
@@ -175,7 +175,7 @@ ms.locfileid: "86055454"
 
 了解如何在创作资源上[添加参与者](luis-how-to-collaborate.md)。 参与者将有权访问该资源下的所有应用程序。
 
-您可以在该资源的 "**访问控制（IAM）** " 页上，将参与者添加到 Azure 门户中的创作资源。 有关详细信息，请参阅[添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
+可以在该资源的 "**访问控制" (IAM ") **页上，将参与者添加到 Azure 门户中的创作资源。 有关详细信息，请参阅[添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
 > [!Note]
 > 如果 LUIS 应用的所有者将协作者迁移到并添加为 Azure 资源上的参与者，协作者将仍无法访问该应用，除非他们自己也进行迁移。
@@ -207,7 +207,7 @@ ms.locfileid: "86055454"
 * 执行迁移过程，如果手动删除协作者，应会成功。
 * 为新的创作资源分配合作者作为参与者。 协作者将预测资源迁移并重新分配给应用程序。 请注意，这将导致暂时中断应用程序，直到重新分配预测资源。
 
-这里有另一个可能的解决方案。 在所有者迁移之前，协作者可以在 Azure 门户的 Azure 订阅中添加应用程序所有者作为参与者。 此步骤将授予所有者对运行时预测资源的访问权限。 如果所有者使用已添加到的新订阅（位于新租户下）迁移所有者，则此步骤不会直接取消阻止协作者和应用所有者的迁移过程。 它还允许对应用进行平滑迁移，并为其分配预测密钥，而不会中断应用。
+这里有另一个可能的解决方案。 在所有者迁移之前，协作者可以在 Azure 门户的 Azure 订阅中添加应用程序所有者作为参与者。 此步骤将授予所有者对运行时预测资源的访问权限。 如果所有者通过使用新的订阅进行迁移，则会将其添加到 (在新租户) 下，此步骤不会立即取消阻止协作者和应用所有者的迁移过程。 它还允许对应用进行平滑迁移，并为其分配预测密钥，而不会中断应用。
 
 
 ### <a name="recommended-steps-if-youre-a-collaborator-on-an-app"></a>如果你是应用的协作者，建议的步骤
@@ -226,7 +226,7 @@ ms.locfileid: "86055454"
 ## <a name="troubleshooting-the-migration-process"></a>迁移过程疑难解答
 
 尝试在下拉列表中进行迁移但找不到 Azure 订阅时：
-* 确保你有一个有效的 Azure 订阅，该订阅有权创建认知服务资源。 中转到[Azure 门户](https://ms.portal.azure.com)并检查订阅的状态。 如果没有，请创建一个[免费试用版](https://azure.microsoft.com/free/)。
+* 确保你有一个有效的 Azure 订阅，该订阅有权创建认知服务资源。 中转到[Azure 门户](https://ms.portal.azure.com)并检查订阅的状态。 如果没有，请[创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)。
 * 确保你处于与有效订阅关联的正确租户中。 你可以在此工具栏上将租户从你姓名首字母的左侧的头像切换到你 ![ 可以切换租户的工具栏](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 如果有现成的创作资源，但在选择 "**使用现有创作资源**" 选项时找不到该资源：

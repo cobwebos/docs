@@ -4,12 +4,12 @@ description: 了解如何使用 Batch 服务 API 将 Batch 任务和作业输出
 ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9d8eab5b4f4b89a613f5ffc3a7f9c9d9d53dcfc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965121"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143515"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服务 API 将任务数据保存到 Azure 存储
 
@@ -43,7 +43,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>获取容器的共享访问签名
 
-创建容器后，请获取对容器拥有写入访问权限的共享访问签名 (SAS)。 SAS 提供对容器的委派访问权限。 SAS 使用一组指定的权限授予在指定时间间隔内的访问权限。 Batch 服务需要一个拥有写入权限的 SAS 才能将任务输出写入到容器。 有关 SAS 的详细信息，请参阅[在 Azure 存储中使用共享访问签名 \(SAS\)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+创建容器后，请获取对容器拥有写入访问权限的共享访问签名 (SAS)。 SAS 提供对容器的委派访问权限。 SAS 使用一组指定的权限授予在指定时间间隔内的访问权限。 Batch 服务需要一个拥有写入权限的 SAS 才能将任务输出写入到容器。 有关 SAS 的详细信息，请参阅[在 Azure 存储中使用共享访问签名 \(SAS\)](../storage/common/storage-sas-overview.md)。
 
 使用 Azure 存储 API 获取 SAS 时，API 将返回 SAS 令牌字符串。 此令牌字符串包含 SAS 的所有参数，其中包括权限以及 SAS 的生效间隔。 若要使用 SAS 访问 Azure 存储中的容器，需要将 SAS 令牌字符串追加到资源 URI。 资源 URI 连同追加的 SAS 令牌中提供对 Azure 存储的经过身份验证的访问权限。
 

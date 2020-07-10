@@ -3,12 +3,12 @@ title: Azure Batch 中的节点和池
 description: 从开发的角度来了解计算节点和池及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5707d834a7d99e147a81ee2b39952863a63ed695
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964036"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144925"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的节点和池
 
@@ -28,7 +28,7 @@ Batch 中的所有计算节点还包括：
 - **防火墙** 设置。
 - [远程访问](error-handling.md#connect-to-compute-nodes) Windows（远程桌面协议 (RDP)）和 Linux（安全外壳 (SSH)）节点。
 
-默认情况下，节点可以彼此通信，但它们无法与不属于同一池的虚拟机进行通信。 若要允许节点与其他虚拟机或本地网络进行安全通信，可以[在 Azure 虚拟网络（VNet）的子网中](batch-virtual-network.md)预配该池。 当你这样做时，可以通过公共 IP 地址访问节点。 这些公共 IP 地址是通过 Batch 创建的，并且可能会在池的生存期内更改。 你还可以[创建一个包含你控制的静态公共 IP 地址的池](create-pool-public-ip.md)，这样可确保它们不会意外更改。
+默认情况下，节点可以彼此通信，但它们无法与不属于同一池的虚拟机进行通信。 若要允许节点与其他虚拟机或本地网络进行安全通信，可以[在 Azure 虚拟网络的子网中](batch-virtual-network.md)预配该池 (VNet) 。 当你这样做时，可以通过公共 IP 地址访问节点。 这些公共 IP 地址是通过 Batch 创建的，并且可能会在池的生存期内更改。 你还可以[创建一个包含你控制的静态公共 IP 地址的池](create-pool-public-ip.md)，这样可确保它们不会意外更改。
 
 ## <a name="pools"></a>池
 
@@ -111,7 +111,7 @@ Batch 中提供了两种类型的池配置。
 
 ## <a name="node-size"></a>节点大小
 
-创建 Azure Batch 池时，可以在 Azure 提供的几乎所有 VM 系列和大小中进行选择。 Azure 提供一系列适用于不同工作负荷的 VM 大小，包括专用 [HPC](../virtual-machines/linux/sizes-hpc.md) 或[启用了 GPU](../virtual-machines/linux/sizes-gpu.md) 的 VM 大小。 
+创建 Azure Batch 池时，可以在 Azure 提供的几乎所有 VM 系列和大小中进行选择。 Azure 提供一系列适用于不同工作负荷的 VM 大小，包括专用 [HPC](../virtual-machines/sizes-hpc.md) 或[启用了 GPU](../virtual-machines/sizes-gpu.md) 的 VM 大小。 
 
 有关详细信息，请参阅[在 Azure Batch 池中选择适用于计算节点的 VM 大小](batch-pool-vm-sizes.md)。
 

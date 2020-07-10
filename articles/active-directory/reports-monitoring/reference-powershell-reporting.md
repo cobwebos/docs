@@ -13,15 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/12/2019
+ms.date: 08/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2192c472e00d123780ec6bc5574e7b9fe326258b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0510184e2471d61c8911b5fcd484fd5dec0bce28
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75495313"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144489"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>用于报告的 Azure AD PowerShell cmdlet
 
@@ -49,9 +50,9 @@ Install-module AzureADPreview
 | 场景                      | PowerShell 命令 |
 | :--                           | :--                |
 | 应用程序显示名称      | Get-AzureADAuditDirectoryLogs -Filter "initiatedBy/app/displayName eq 'Azure AD Cloud Sync'" |
-| 类别                      | Get-AzureADAuditDirectoryLogs -Filter "category eq 'Application Management'" |
+| 类别                      | AzureADAuditDirectoryLogs-Filter "category eq ' ApplicationManagement '" |
 | 活动日期时间            | Get-AzureADAuditDirectoryLogs -Filter "activityDateTime gt 2019-04-18" |
-| 以上都是              | Get-AzureADAuditDirectoryLogs -Filter "initiatedBy/app/displayName eq 'Azure AD Cloud Sync' and category eq 'Application Management' and activityDateTime gt 2019-04-18"|
+| 以上都是              | AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName eq" Azure AD Cloud Sync "和 category eq" ApplicationManagement "和 activityDateTime gt 2019-04-18"|
 
 
 下图显示了此命令的一个示例。 

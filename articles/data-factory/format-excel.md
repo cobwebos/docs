@@ -7,13 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 07/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 8b4876377501209e19ac496d605d228208d2323d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46108ed06659d234907c6eaa6841dc18022c73bf
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84670840"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144123"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure 数据工厂中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -94,6 +95,54 @@ ms.locfileid: "84670840"
         ...
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+在映射数据流时，可以在以下数据存储中读取 Excel 格式： [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 您可以使用 Excel 数据集或使用[内联数据集](data-flow-source.md#inline-datasets)指向 excel 文件。
+
+### <a name="source-properties"></a>源属性
+
+下表列出了 Excel 源支持的属性。 可以在 "**源选项**" 选项卡中编辑这些属性。使用内联数据集时，你将看到与 "[数据集属性](#dataset-properties)" 部分所述的属性相同的其他文件设置。
+
+| 名称                      | 说明                                                  | 必需 | 允许的值                                            | 数据流脚本属性         |
+| ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
+| 通配符路径           | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否       | String[]                                                  | wildcardPaths                     |
+| 分区根路径       | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否       | String                                                    | partitionRootPath                 |
+| 文件列表             | 你的源是否指向列出要处理的文件的文本文件 | 否       | `true` 或 `false`                                         | fileList                          |
+| 要存储文件名的列 | 使用源文件名称和路径创建新列       | 否       | String                                                    | rowUrlColumn                      |
+| 完成后          | 在处理后删除或移动文件。 文件路径从容器根开始 | 否       | 删除： `true` 或`false` <br> 移动`['<from>', '<to>']` | purgeFiles <br> moveFiles         |
+| 按上次修改时间筛选   | 选择根据文件上次更改时间筛选文件 | 否       | 时间戳                                                 | ModifiedAfter <br> modifiedBefore |
+
+### <a name="source-example"></a>源示例
+
+下图是使用数据集模式映射数据流的 Excel 源配置示例。
+
+![Excel 源](media/data-flow/excel-source.png)
+
+关联的数据流脚本为：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    wildcardPaths:['*.xls']) ~> ExcelSource
+```
+
+如果使用内联数据集，则会在映射数据流时看到以下源选项。
+
+![Excel 源内联数据集](media/data-flow/excel-source-inline-dataset.png)
+
+关联的数据流脚本为：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'excel',
+    fileSystem: 'container',
+    folderPath: 'path',
+    fileName: 'sample.xls',
+    sheetName: 'worksheet',
+    firstRowAsHeader: true) ~> ExcelSourceInlineDataset
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -9,17 +9,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 8fdcad18ccec2748761cf35f2cd0b8efe9749958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159f3c63a647ff565e838b01dbaaadf947fb8ada
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466130"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142627"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
 本文介绍如何使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 在具有分层命名空间的存储帐户中创建和管理目录、文件和权限。 
 
-[Gen1 到 Gen2 的映射](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
+[示例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  | [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,39 +65,39 @@ ms.locfileid: "84466130"
 > [!NOTE]
 > 本文中提供的示例演示 Azure Active Directory (AD) 授权。 若要详细了解身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](../common/authorize-data-operations-cli.md)。
 
-## <a name="create-a-file-system"></a>创建文件系统
+## <a name="create-a-container"></a>创建容器
 
-文件系统充当文件的容器。 可以使用 `az storage fs create` 命令创建文件系统。 
+容器充当文件的文件系统。 可以使用 `az storage fs create` 命令创建文件系统。 
 
-下面的示例创建名为 `my-file-system` 的文件系统。
+此示例创建一个名为的容器 `my-file-system` 。
 
 ```azurecli
 az storage fs create -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="show-file-system-properties"></a>显示文件系统属性
+## <a name="show-container-properties"></a>显示容器属性
 
-可以使用 `az storage fs show` 命令将文件系统属性打印到控制台。
+您可以使用命令将容器的属性打印到控制台 `az storage fs show` 。
 
 ```azurecli
 az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="list-file-system-contents"></a>列出文件系统内容
+## <a name="list-container-contents"></a>列出容器内容
 
 使用 `az storage fs file list` 命令列出目录内容。
 
-下面的示例列出了名为 `my-file-system` 的文件系统的内容。
+此示例列出了名为的容器的内容 `my-file-system` 。
 
 ```azurecli
 az storage fs file list -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="delete-a-file-system"></a>删除文件系统
+## <a name="delete-a-container"></a>删除容器
 
-使用 `az storage fs delete` 命令删除文件系统。
+使用命令删除容器 `az storage fs delete` 。
 
-下面的示例删除名为 `my-file-system` 的文件系统。 
+此示例删除名为的容器 `my-file-system` 。 
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -106,7 +107,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 使用 `az storage fs directory create` 命令创建目录引用。 
 
-下面的示例将名为 `my-directory` 的目录添加到名为 `my-file-system` 的文件系统，该文件系统位于 `mystorageaccount` 帐户中。
+此示例将一个名为的目录添加到名为 `my-directory` `my-file-system` 的容器，该容器位于名为的帐户中 `mystorageaccount` 。
 
 ```azurecli
 az storage fs directory create -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -124,13 +125,13 @@ az storage fs directory show -n my-directory -f my-file-system --account-name my
 
 使用 `az storage fs directory move` 命令重命名或移动目录。
 
-下面的示例在同一文件系统中将目录名称 `my-directory` 重命名为名称 `my-new-directory`。
+此示例将目录从名称重命名 `my-directory` 为 `my-new-directory` 同一容器中的名称。
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
 ```
 
-下面的示例将目录移到名为 `my-second-file-system` 的文件系统。
+此示例将目录移动到名为的容器 `my-second-file-system` 。
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-second-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
@@ -148,9 +149,9 @@ az storage fs directory delete -n my-directory -f my-file-system  --account-name
 
 ## <a name="check-if-a-directory-exists"></a>检查目录是否存在
 
-使用 `az storage fs directory exists` 命令确定文件系统中是否存在特定目录。
+使用命令确定容器中是否存在特定的目录 `az storage fs directory exists` 。
 
-下面的示例展示 `my-file-system` 文件系统中是否存在名为 `my-directory` 的目录。 
+此示例显示容器中是否存在名为的目录 `my-directory` `my-file-system` 。 
 
 ```azurecli
 az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
@@ -170,7 +171,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 使用 `az storage fs file list` 命令列出目录内容。
 
-下面的示例列出名为 `my-directory` 的目录的内容，该目录位于名为 `mystorageaccount` 的存储帐户的 `my-file-system` 文件系统中。 
+此示例列出名为的目录的内容 `my-directory` ，该目录位于 `my-file-system` 名为的存储帐户的容器中 `mystorageaccount` 。 
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -309,7 +310,7 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ## <a name="see-also"></a>另请参阅
 
-* [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [示例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
 * [已知问题](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961194"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142541"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -81,11 +81,11 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-file-system"></a>创建文件系统
+## <a name="create-a-container"></a>创建容器
 
-文件系统充当文件的容器。 可以使用 `New-AzStorageContainer` cmdlet 创建一个文件系统。 
+容器充当文件的文件系统。 可以使用 `New-AzStorageContainer` cmdlet 创建一个文件系统。 
 
-此示例创建名为 `my-file-system` 的文件系统。
+此示例创建一个名为的容器 `my-file-system` 。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 使用 `New-AzDataLakeGen2Item` cmdlet 创建目录引用。 
 
-此示例将名为 `my-directory` 的目录添加到文件系统。
+此示例将一个名为 `my-directory` 的目录添加到容器中。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -202,7 +202,7 @@ $properties.Group
 $properties.Owner
 ```
 
-若要列出文件系统的内容，请在命令中省略 `-Path` 参数。
+若要列出容器的内容，请 `-Path` 从命令中省略参数。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
@@ -270,7 +270,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 使用 `Get-AzDataLakeGen2Item` cmdlet 获取目录或文件的 ACL。
 
-此示例获取**文件系统**根目录的 acl，然后将 acl 打印到控制台。
+此示例获取**容器**的根目录的 acl，然后将 acl 打印到控制台。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ $file.ACL
 
 使用 `set-AzDataLakeGen2ItemAclObject` cmdlet 为所有者用户、所有者组或其他用户创建 ACL。 然后使用 `Update-AzDataLakeGen2Item` cmdlet 提交 ACL。
 
-此示例在**文件系统**的根目录中为所属用户、拥有组或其他用户设置 acl，然后将 acl 打印到控制台。
+此示例在**容器**的根目录中为所属用户、拥有组或其他用户设置 acl，然后将 acl 打印到控制台。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -349,9 +349,9 @@ $file.ACL
 在此示例中，所有者用户和所有者组只拥有读取和写入权限。 所有其他用户拥有写入和执行权限。 有关这些访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
 
 
-### <a name="set-acls-on-all-items-in-a-file-system"></a>对文件系统中的所有项设置 ACL
+### <a name="set-acls-on-all-items-in-a-container"></a>在容器中的所有项目上设置 Acl
 
-可以在 `Update-AzDataLakeGen2Item` cmdlet 中结合使用 `Get-AzDataLakeGen2Item` 和 `-Recurse` 参数，以递归方式为文件系统中的目录和文件设置 ACL。 
+可以将 `Get-AzDataLakeGen2Item` 和 `-Recurse` 参数与 cmdlet 一起使用以 `Update-AzDataLakeGen2Item` 递归方式设置容器中的目录和文件的 ACL。 
 
 ```powershell
 $filesystemName = "my-file-system"

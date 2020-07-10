@@ -3,11 +3,12 @@ title: 在池上装载虚拟文件系统
 description: 了解如何在 Batch 池上装载虚拟文件系统。
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3f948f8441208f4a8741949e65afc8032f0a5080
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954666"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144415"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 池上装载虚拟文件系统
 
@@ -76,7 +77,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure Blob 文件系统
 
-另一种选择方案是通过 [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) 使用 Azure Blob 存储。 装载 Blob 文件系统需要为存储帐户使用 `AccountKey` 或 `SasKey`。 有关获取这些密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)或[使用共享访问签名 (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 有关使用 blobfuse 的详细信息，请参阅 blobfuse [故障排除常见问题解答](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)。 要获得对 blobfuse 装载目录的默认访问权限，请以管理员身份运行任务。 Blobfuse 在用户空间处将装载目录，在创建池时将其作为根装载。 在 Linux 中，所有管理员任务都是根。 [FUSE 参考页](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)中介绍了 FUSE 模块的所有选择方案。
+另一种选择方案是通过 [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) 使用 Azure Blob 存储。 装载 Blob 文件系统需要为存储帐户使用 `AccountKey` 或 `SasKey`。 有关获取这些密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)或[使用共享访问签名 (SAS)](../storage/common/storage-sas-overview.md)。 有关使用 blobfuse 的详细信息，请参阅 blobfuse [故障排除常见问题解答](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)。 要获得对 blobfuse 装载目录的默认访问权限，请以管理员身份运行任务。 Blobfuse 在用户空间处将装载目录，在创建池时将其作为根装载。 在 Linux 中，所有管理员任务都是根。 [FUSE 参考页](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)中介绍了 FUSE 模块的所有选择方案。
 
 除了故障排除指南之外，还可借助 blobfuse 存储库中的“GitHub 问题”来检查当前的 blobfuse 问题以及解决方案。 有关详细信息，请参阅 [blobfuse 问题](https://github.com/Azure/azure-storage-fuse/issues)。
 

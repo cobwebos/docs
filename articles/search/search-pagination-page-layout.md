@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561583"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146181"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
@@ -55,20 +55,26 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
  
 以下示例展示了如何获取重复项。 假设某个索引包含四个文档：
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
-    { "id": "4", "rating": 1 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+{ "id": "4", "rating": 1 }
+```
  
 现在假设你希望每次返回按评级排序的两个结果。 你将执行此查询来获取第一页结果：`$top=2&$skip=0&$orderby=rating desc`，将生成以下结果：
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+```
  
 在服务上，假设在两次查询调用之间将第五个文档添加到索引中：`{ "id": "5", "rating": 4 }`。  片刻之后，你执行查询来提取第二页：`$top=2&$skip=2&$orderby=rating desc`，将获得以下结果：
 
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
+```text
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+```
  
 请注意，文档 2 提取了两次。 这是因为，新文档 5 的评级值较大，因此它排在文档 2 的前面，并出现在第一页中。 尽管这种行为可能让人意外，但它却是搜索引擎的典型行为。
 

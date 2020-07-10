@@ -1,25 +1,25 @@
 ---
-title: Azure Web 应用程序防火墙（WAF）策略概述
-description: 本文概述了 Web 应用程序防火墙（WAF）全局、每个站点和每个 URI 策略。
+title: Azure Web 应用程序防火墙 (WAF) 策略概述
+description: 本文概述 (WAF) 全局、每个站点和每个 URI 策略的 Web 应用程序防火墙。
 services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060268"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143844"
 ---
-# <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 应用程序防火墙（WAF）策略概述
+# <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 应用程序防火墙 (WAF) 策略概述
 
-Web 应用程序防火墙策略包含所有 WAF 设置和配置。 这包括排除、自定义规则、托管规则等。 然后，将这些策略关联到应用程序网关（全局）、侦听器（每个站点）或基于路径的规则（每个 URI）以使其生效。
+Web 应用程序防火墙策略包含所有 WAF 设置和配置。 这包括排除、自定义规则、托管规则等。 然后，将这些策略关联到应用程序网关 (全局) 、侦听器 (每站点) ，或 (每个 URI 的基于路径的规则) 使其生效。
 
 > [!NOTE]
-> Azure Web 应用程序防火墙（WAF）每个站点和每个 URI 的策略均为公共预览版。
+> Azure Web 应用程序防火墙 (WAF) 的每个 URI 策略均为公共预览版。
 > 
 > 此公共预览版在提供时没有附带服务级别协议，不应该用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -33,7 +33,7 @@ Web 应用程序防火墙策略包含所有 WAF 设置和配置。 这包括排�
 
 ## <a name="per-site-waf-policy"></a>每站点 WAF 策略
 
-使用基于站点的 WAF 策略，你可以通过使用每个站点策略来保护具有不同安全需求的多个站点。 例如，如果 WAF 有五个站点，则可以使用五个单独的 WAF 策略（每个侦听器一个）来自定义排除项、自定义规则、托管规则集以及每个站点的所有其他 WAF 设置。
+使用基于站点的 WAF 策略，你可以通过使用每个站点策略来保护具有不同安全需求的多个站点。 例如，如果 WAF 有五个站点，则可以为每个侦听器使用5个单独的 WAF (策略，) 为每个站点自定义排除项、自定义规则、托管规则集和所有其他 WAF 设置。
 
 假设应用程序网关应用了全局策略。 然后，将不同的策略应用到该应用程序网关上的侦听器。 侦听器的策略现在只对该侦听器生效。 应用程序网关的全局策略仍适用于未分配特定策略的所有其他侦听器和基于路径的规则。
 
@@ -53,11 +53,11 @@ Web 应用程序防火墙策略包含所有 WAF 设置和配置。 这包括排�
 
 Adatum.com/payments URI 是需要注意的地方。 因此，请在该 URI 上应用另一个策略并使所有规则保持启用状态，同时删除所有排除项。
 
-在此示例中，你有一个适用于两个站点的全局策略。 你有一个适用于单个站点的每个站点策略，然后是适用于一个基于路径的特定规则的每个 URI 策略。 有关此示例，请参阅 "（在此处插入链接）如何为相应的 PowerShell 创建每个站点和每个 URI 的策略"。
+在此示例中，你有一个适用于两个站点的全局策略。 你有一个适用于单个站点的每个站点策略，然后是适用于一个基于路径的特定规则的每个 URI 策略。 有关此示例，请参阅此处 (插入链接，) 如何为相应的 PowerShell 创建每个站点和每个 URI 的策略。
 
 ## <a name="existing-waf-configurations"></a>现有的 WAF 配置
 
-所有新的 Web 应用程序防火墙的 WAF 设置（自定义规则、托管规则集配置、排除项等）都在 WAF 策略中存在。 如果你有现有的 WAF，则这些设置可能仍存在于你的 WAF 配置中。 有关移动到新 WAF 策略的详细信息，请将[WAF Config 迁移到 WAF 策略](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)。 
+所有新的 Web 应用程序防火墙的 WAF 设置 (自定义规则、托管规则集配置、排除项等。 ) 存在于 WAF 策略中。 如果你有现有的 WAF，则这些设置可能仍存在于你的 WAF 配置中。 有关移动到新 WAF 策略的详细信息，请将[WAF Config 迁移到 WAF 策略](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)。 
 
 
 ## <a name="next-steps"></a>后续步骤
