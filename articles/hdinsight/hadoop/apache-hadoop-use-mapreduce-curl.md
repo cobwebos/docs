@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: a1d411662fd7afe57c714b97ab67b9d490acd40d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076362"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207721"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
@@ -61,7 +61,7 @@ ms.locfileid: "86076362"
 
     将收到类似于以下 JSON 的响应：
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -83,11 +83,9 @@ ms.locfileid: "86076362"
      * **class**：包含 MapReduce 逻辑的类
      * **arg**：要传递到 MapReduce 作业的参数。 在此示例中是用于输出的输入文本文件和目录
 
-    此命令应会返回可用来检查作业状态的作业 ID：
+    此命令应返回可用来检查作业状态的作业 ID： `job_1415651640909_0026` 。
 
-       job_1415651640909_0026
-
-1. 若要检查作业的状态，请使用以下命令。 将 `JOBID` 的值替换为上一步返回的**实际**值。 根据需要修改 **jq** 的位置。
+1. 若要检查作业的状态，请使用以下命令。 将的值替换为 `JOBID` 上一步中返回的**实际**值。 根据需要修改**jq**的位置。
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -98,14 +96,14 @@ ms.locfileid: "86076362"
 
 ### <a name="powershell"></a>PowerShell
 
-1. 为方便使用，请设置以下变量。 将 `CLUSTERNAME` 替换为实际群集名称。 执行命令，并在出现提示时输入群集登录密码。
+1. 为方便使用，请设置以下变量。 `CLUSTERNAME`将替换为实际的群集名称。 执行命令，并在出现提示时输入群集登录密码。
 
     ```powershell
     $clusterName="CLUSTERNAME"
     $creds = Get-Credential -UserName admin -Message "Enter the cluster login password"
     ```
 
-1. 使用以下命令验证你是否可以连接到 HDInsight 群集。
+1. 使用以下命令验证是否可以连接到 HDInsight 群集：
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clustername.azurehdinsight.net/templeton/v1/status" `
@@ -116,7 +114,7 @@ ms.locfileid: "86076362"
 
     将收到类似于以下 JSON 的响应：
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -146,9 +144,7 @@ ms.locfileid: "86076362"
     * **class**：包含 MapReduce 逻辑的类
     * **arg**：要传递到 MapReduce 作业的参数。 在此示例中是用于输出的输入文本文件和目录
 
-   此命令应会返回可用来检查作业状态的作业 ID：
-
-       job_1415651640909_0026
+   此命令应返回可用来检查作业状态的作业 ID： `job_1415651640909_0026` 。
 
 1. 若要检查作业的状态，请使用以下命令：
 

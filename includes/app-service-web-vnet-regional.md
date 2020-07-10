@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488778"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218318"
 ---
 通过使用区域 VNet 集成，你的应用程序可以访问：
 
@@ -23,25 +23,25 @@ ms.locfileid: "84488778"
 
 在同一区域中使用 VNet 与 Vnet 的集成时，可以使用以下 Azure 网络功能：
 
-* **网络安全组（nsg）**：可以使用放置在集成子网上的 NSG 阻止出站流量。 由于无法使用 VNet 集成来提供应用程序的入站访问权限，因此不会应用入站规则。
-* **路由表（udr）**：可以将路由表放置在集成子网上，以便发送出站流量。
+* **网络安全组 (nsg) **：可以使用放置在集成子网上的 NSG 阻止出站流量。 由于无法使用 VNet 集成来提供应用程序的入站访问权限，因此不会应用入站规则。
+* **路由表 (udr) **：可将路由表放置在集成子网上，以便发送出站流量。
 
 默认情况下，应用仅将流量路由到 VNet 中。 如果要将所有出站流量路由到 VNet，请将应用设置 WEBSITE_VNET_ROUTE_ALL 应用到应用。 配置应用设置：
 
-1. 在应用门户中转到**配置**UI。 选择“新应用程序设置”****。
+1. 在应用门户中转到**配置**UI。 选择“新应用程序设置”。
 1. 在 "**名称**" 框中输入**WEBSITE_VNET_ROUTE_ALL** ，然后在 "**值**" 框中输入**1** 。
 
    ![提供应用程序设置][4]
 
-1. 选择“确定”  。
-1. 选择“保存”。 
+1. 选择“确定”。
+1. 选择“保存”。
 
 如果将所有出站流量路由到 VNet，则会受到应用于集成子网的 Nsg 和 Udr 的限制。 当你将所有出站流量路由到 VNet 中时，你的出站地址仍是你的应用程序属性中列出的出站地址，除非你提供将流量发送到其他位置的路由。
 
 在同一区域中使用 VNet 与 Vnet 的集成存在一些限制：
 
 * 不能跨全局对等互连连接访问资源。
-* 此功能仅可用于支持 PremiumV2 应用服务计划的更新的 Azure App Service 缩放单位。
+* 此功能仅可用于支持 PremiumV2 应用服务计划的更新的 Azure App Service 缩放单位。 请注意，*这并不意味着你的应用程序必须在 PremiumV2 定价层上运行*，只是它必须在 PremiumV2 选项可用 (应用服务计划上运行，这意味着它是一个较新的缩放单位，此时还) 提供此 VNet 集成功能。
 * 集成子网只能由一个应用服务计划使用。
 * 此功能不能由处于应用服务环境中的独立计划应用程序使用。
 * 此功能需要一个在 Azure 资源管理器 VNet 中具有32地址或更大地址的未使用的子网。
@@ -77,7 +77,7 @@ Windows 和 Linux web 应用程序完全支持此功能。 所有行为在 Windo
 
 如果要将所有出站流量路由到本地，可以使用路由表将所有出站流量发送到 ExpressRoute 网关。 如果你确实要将流量路由到网关，请确保在外部网络中设置路由以发送任何回复。
 
-边界网关协议（BGP）路由也会影响应用程序流量。 如果你有来自 ExpressRoute 网关之类的 BGP 路由，你的应用程序出站流量将受到影响。 默认情况下，BGP 路由仅影响 RFC1918 目标流量。 如果 WEBSITE_VNET_ROUTE_ALL 设置为1，则可能会受到 BGP 路由的影响的所有出站流量。
+边界网关协议 (BGP) 路由也会影响应用程序流量。 如果你有来自 ExpressRoute 网关之类的 BGP 路由，你的应用程序出站流量将受到影响。 默认情况下，BGP 路由仅影响 RFC1918 目标流量。 如果 WEBSITE_VNET_ROUTE_ALL 设置为1，则可能会受到 BGP 路由的影响的所有出站流量。
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS 专用区域 
 
