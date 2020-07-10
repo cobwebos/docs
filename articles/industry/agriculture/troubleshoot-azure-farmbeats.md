@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656817"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187704"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -109,7 +110,7 @@ ms.locfileid: "83656817"
 > [!NOTE]
 > 你感兴趣的传感器合作伙伴的 ID。
 
-3. 返回到合作伙伴 API，然后选择“Get/\<ID>”。
+3. 返回到合作伙伴 API，然后选择 "**获取/ \<ID> **"。
 4. 指定步骤 3 中的合作伙伴 ID，然后选择“执行”。
 
    API 响应应包含事件中心连接字符串。
@@ -249,7 +250,7 @@ ms.locfileid: "83656817"
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel：达到最大连接数
 
-**作业失败消息**：“用户 \<username> 已达到两个并发流的最大数量。”
+**作业失败消息**： "用户 ' ' 实现的两个并发流的最大数目 \<username> 。"
 
 **含义**：如果作业由于已达到最大连接数而失败，则表示同一 Sentinel 帐户正在多个作业中使用。
 
@@ -313,3 +314,39 @@ ms.locfileid: "83656817"
 1. 请转到“FarmBeats 数据中心”资源组。
 2. 选择“应用服务”。  
 3. 转到按比例放大的[“应用服务定价”页面](https://azure.microsoft.com/pricing/details/app-service/windows/)，然后选择适当的定价层。
+
+## <a name="weather-data-job-failures"></a>天气数据作业失败
+
+**错误**：您运行作业以获取天气数据，但该作业失败
+
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>收集用于排查天气数据失败的日志
+
+1. 在 Azure 门户中，请参阅 FarmBeats 资源组。
+2. 单击属于资源组的数据工厂服务。 该服务将有标记 "sku： Datahub"
+
+> [!NOTE]
+> 若要查看资源组中服务的标记，请单击 "编辑列" 并向资源组视图添加 "标记"。
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="FarmBeats 项目":::
+
+3. 在数据工厂的 "概述" 页上，单击 "**创作和监视**"。 此时会在浏览器中打开一个新选项卡。 单击**监视器**
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="FarmBeats 项目":::
+
+4. 你将看到一个管道运行列表，其中包含天气作业执行的一部分。 单击要为其收集日志的作业
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="FarmBeats 项目":::
+
+5. 在 "管道概述" 页上，你将看到活动运行的列表。 记下要为其收集日志的活动的运行 Id
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="FarmBeats 项目":::
+
+6. 返回到 Azure 门户中的 FarmBeats 资源组，并单击名为**datahublogs**的存储帐户
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="FarmBeats 项目":::
+
+7. 单击 "**容器**  ->  **adfjobs**"。 在搜索框中，输入前面步骤5中记下的作业运行 ID。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats 项目":::
+
+8. 搜索结果将包含包含与作业相关的日志的文件夹。 下载日志并将其发送到， farmbeatssupport@microsoft.com 以便在调试问题时获得帮助。

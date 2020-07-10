@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: de637bc30420ce494e553100a9f1126e88027bd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af19586807bf676f1f449f7402b364a054721eec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704125"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187585"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
@@ -30,7 +30,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 每个流量管理器配置文件以一个“TrafficManagerProfiles”类型的资源表示。 在 REST API 级别，每个配置文件的 URI 如下：
 
-    https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
+`https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}`
 
 ## <a name="setting-up-azure-powershell"></a>设置 Azure PowerShell
 

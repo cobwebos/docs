@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703989"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201037"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>导出包含 VM 扩展的资源组
 
@@ -32,18 +33,7 @@ ms.locfileid: "84703989"
 
 以下扩展可以使用自动化脚本功能导出。
 
-| 分机 ||||
-|---|---|---|---|
-| Acronis 备份 | Datadog Windows 代理 | 针对 Linux 进行的 OS 修补 | VM 快照 Linux
-| Acronis 备份 Linux | Docker 扩展 | Puppet 代理 |
-| Bg 信息 | DSC 扩展 | 站点全天候运行 Apm Insight |
-| BMC CTM 代理 Linux | Dynatrace Linux | 站点全天候运行 Linux 服务器 |
-| BMC CTM 代理 Windows | Dynatrace Windows | 站点全天候运行 Windows Server |
-| Chef 客户端 | HPE Security Application Defender | Trend Micro DSA |
-| 自定义脚本 | IaaS 反恶意软件 | Trend Micro DSA Linux |
-| 自定义脚本扩展 | IaaS 诊断 | 适用于 Linux 的 VM 访问权限 |
-| 适用于 Linux 的自定义脚本 | Linux Chef 客户端 | 适用于 Linux 的 VM 访问权限 |
-| Datadog Linux 代理 | Linux 诊断 | VM 快照 |
+> Acronis 备份，Acronis 备份 Linux，Bg Info，BMC CTM 代理 Linux，BMC CTM Agent Windows，Chef 客户端，自定义脚本，自定义脚本扩展，适用于 Linux 的自定义脚本，Datadog Linux Agent，Datadog Windows 代理，Docker 扩展，DSC 扩展，Dynatrace Linux，Dynatrace Windows，HPE 安全应用程序，Linux 诊断，适用于 Linux 的 OS 修补程序，、Site 24x7 Linux 服务器、站点 24x7 Windows Server、趋势微 DSA、趋势微 DSA Linux、适用于 Linux 的 VM 访问、适用于 Linux 的 VM 访问、VM 快照、vm 快照 Linux
 
 ## <a name="export-the-resource-group"></a>导出资源组
 

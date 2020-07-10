@@ -8,11 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78196920"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202576"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 
@@ -51,11 +52,11 @@ ms.locfileid: "78196920"
 2. 选择 " **CLUSTERNAME_Hive**"，然后单击 " **Hive**"。 应会看到两个预配置策略。
 3. 选择 "**添加新策略**"，然后输入以下值：
 
-    |Property |“值” |
+    |属性 |值 |
     |---|---|
     |策略名称|hivesampletable-all|
     |Hive 数据库|默认值|
-    |表|hivesampletable|
+    |table|hivesampletable|
     |Hive 列|*|
     |选择用户|hiveuser1|
     |权限|select|
@@ -69,11 +70,11 @@ ms.locfileid: "78196920"
 
 5. 重复最后两个步骤，创建具有以下属性的另一个策略：
 
-    |Property |“值” |
+    |属性 |值 |
     |---|---|
     |策略名称|hivesampletable-devicemake|
     |Hive 数据库|默认值|
-    |表|hivesampletable|
+    |table|hivesampletable|
     |Hive 列|clientid，devicemake|
     |选择用户|hiveuser2|
     |权限|select|
@@ -82,7 +83,7 @@ ms.locfileid: "78196920"
 
 可以在 [Create Hive ODBC data source](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（创建 Hive ODBC 数据源）中找到说明。  
 
- | Property  |说明 |
+ | 属性  |说明 |
  | --- | --- |
  | 数据源名称 | 为数据源提供名称 |
  | 主机 | 输入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
@@ -91,7 +92,7 @@ ms.locfileid: "78196920"
  | Hive 服务器类型 | 选择“Hive Server 2”**** |
  | 机制 | 选择“Azure HDInsight 服务”**** |
  | HTTP 路径 | 将此字段留空。 |
- | 用户名 | 输入 hiveuser1@contoso158.onmicrosoft.com。 如果域名不同，请更新域名。 |
+ | 用户名 | 输入“hiveuser1@contoso158.onmicrosoft.com”。 如果域名不同，请更新域名。 |
  | 密码 | 输入 hiveuser1 的密码。 |
 
 在保存数据源之前，请务必单击“测试”。****
@@ -120,7 +121,9 @@ ms.locfileid: "78196920"
 
 1. 选择 "**定义**" 选项卡。命令文本为：
 
-       SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"`
+    ```
 
    根据定义的 Ranger 策略，hiveuser1 对所有列拥有 select 权限。  因此，此查询适用于 hiveuser1 凭据，但此查询不适用于 hiveuser2 凭据。
 
@@ -135,15 +138,21 @@ ms.locfileid: "78196920"
 1. 在 Excel 中添加一个新工作表。
 2. 遵循上一过程导入数据。  所做的唯一更改是使用 hiveuser2 的凭据，而不是 hiveuser1 的凭据。 此查询失败，因为 hiveuser2 仅有权查看两个列。 此时会出现以下错误：
 
-        [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
-        
+    ```output
+    [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
+    ```
+
 3. 请遵循相同的过程导入数据。 这一次，请使用 hiveuser2 的凭据，同时，将以下 select 语句：
 
-        SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```
 
     更改为：
 
-        SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```
 
     完成后，应会看到导入的两个数据列。
 

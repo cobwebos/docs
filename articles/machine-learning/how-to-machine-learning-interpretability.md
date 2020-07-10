@@ -1,5 +1,5 @@
 ---
-title: Azure 机器学习中的模型可解释性
+title: '模型 interpretability Azure 机器学习 (预览版) '
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习 SDK 解释模型做出预测的原因。 可以在训练和推理期间使用该 SDK 来了解模型做出预测的原因。
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: 97401b2bdbcc2dc1379505f8dade443a4f1eb318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 83fc13362a373686ee027fd642f03003b411cd63
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601677"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201437"
 ---
-# <a name="model-interpretability-in-azure-machine-learning"></a>Azure 机器学习中的模型可解释性
+# <a name="model-interpretability-in-azure-machine-learning-preview"></a>模型 interpretability Azure 机器学习 (预览版) 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 ## <a name="overview-of-model-interpretability"></a>模型可解释性概述

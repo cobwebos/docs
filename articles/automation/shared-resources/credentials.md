@@ -9,15 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 540ae25b22b2c134a47f91ad5b8b19089c7f2acb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744998"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187398"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
 
-自动化凭据资产包含一个对象，该对象包含用户名和密码等安全凭据。 Runbook 和 DSC 配置使用接受 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) 对象的 cmdlet 进行身份验证。 或者，他们可以提取 `PSCredential` 对象的用户名和密码，以便提供给某些需要进行身份验证的应用程序或服务。 
+自动化凭据资产包含一个对象，该对象包含用户名和密码等安全凭据。 Runbook 和 DSC 配置使用接受 [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) 对象的 cmdlet 进行身份验证。 或者，他们可以提取 `PSCredential` 对象的用户名和密码，以便提供给某些需要进行身份验证的应用程序或服务。 
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥进行加密并存储在 Azure 自动化中。 Azure 自动化将密钥存储在系统管理的 Key Vault 中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。 
@@ -30,7 +31,7 @@ ms.locfileid: "83744998"
 
 | Cmdlet | 说明 |
 |:--- |:--- |
-| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |检索包含有关凭据的元数据的 [CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) 对象。 该 cmdlet 不检索 `PSCredential` 对象本身。  |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |检索包含有关凭据的元数据的 [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) 对象。 该 cmdlet 不检索 `PSCredential` 对象本身。  |
 | [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |创建新的自动化凭据。 |
 | [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |删除自动化凭据。 |
 | [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |设置现有自动化凭据的属性。 |
@@ -42,8 +43,8 @@ ms.locfileid: "83744998"
 | Cmdlet | 说明 |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |获取要在 Runbook 或 DSC 配置中使用的 `PSCredential` 对象。 大多数情况下，应使用此 [内部 cmdlet](modules.md#internal-cmdlets) 而不是 `Get-AzAutomationCredential` cmdlet，因为后者仅检索凭据信息。 此信息通常对传递到另一个 cmdlet 没有帮助。 |
-| [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |通过提示输入用户名和密码来获取凭据。 此 cmdlet 是默认 Microsoft.PowerShell.Security 模块的一部分。 请参阅[默认模块](modules.md#default-modules)。|
-| [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | 创建凭据资产。 此 cmdlet 是默认 Azure 模块的一部分。 请参阅[默认模块](modules.md#default-modules)。|
+| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |通过提示输入用户名和密码来获取凭据。 此 cmdlet 是默认 Microsoft.PowerShell.Security 模块的一部分。 请参阅[默认模块](modules.md#default-modules)。|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | 创建凭据资产。 此 cmdlet 是默认 Azure 模块的一部分。 请参阅[默认模块](modules.md#default-modules)。|
 
 若要在代码中检索 `PSCredential` 对象，必须导入 `Orchestrator.AssetManagement.Cmdlets` 模块。 有关详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 
@@ -103,7 +104,7 @@ Runbook 或 DSC 配置使用内部 `Get-AutomationPSCredential` cmdlet 检索凭
 > [!NOTE]
 > `Get-AzAutomationCredential` cmdlet 不检索可用于身份验证的 `PSCredential` 对象。 它仅提供有关凭据的信息。 如果需要在 Runbook 中使用凭据，则必须使用 `Get-AutomationPSCredential` 将它作为 `PSCredential` 对象进行检索。
 
-或者，可以使用 [GetNetworkCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) 方法检索表示不安全的密码版本的 [NetworkCredential](/dotnet/api/system.net.networkcredential) 对象。
+或者，可以使用 [GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) 方法检索表示不安全的密码版本的 [NetworkCredential](/dotnet/api/system.net.networkcredential) 对象。
 
 ### <a name="textual-runbook-example"></a>文本 Runbook 示例
 

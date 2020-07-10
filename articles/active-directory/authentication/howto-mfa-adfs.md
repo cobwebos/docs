@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5949fdce9d591a9c02c5c6c4fb2f1dde94c45d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9dac17c8592530c06dd761914e7f556b35c3674b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80654025"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202996"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>将 Azure 多重身份验证与 AD FS 配合使用来保护云资源
 
@@ -72,19 +73,22 @@ ms.locfileid: "80654025"
 11. 在“声明规则名称”下的框中：输入“保持用户登录状态”**。
 12. 在“自定义规则”框中，输入：
 
+```ad-fs-claim-rule
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![创建自定义声明，使用户保持登录](./media/howto-mfa-adfs/trustedip5.png)
+    ![Create custom claim to keep users signed in](./media/howto-mfa-adfs/trustedip5.png)
+```
+
 13. 单击“完成”。
 14. 单击“应用”。
-15. 单击“确定”  。
+15. 单击“确定”。
 16. 关闭“AD FS 管理”。
 
 ### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>配置联合用户的 Azure 多重身份验证受信任 IP
 
 创建声明后，可以开始配置受信任的 IP。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择**Azure Active Directory**  >  **安全**  >  **条件性访问**  >  **命名位置**"。
 3. 在 "**条件访问-命名位置**" 边栏选项卡中，选择 "**配置 MFA 受信任的 ip** "
 

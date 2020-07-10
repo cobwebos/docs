@@ -12,13 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 07/09/2020
 ms.author: juliako
-ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e5f1e38461b7f229f9eb7559aeb6203563fceb6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974166"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200209"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>教程：使用 AES-128 来加密视频以及使用密钥传送服务
 
@@ -112,7 +113,7 @@ ms.locfileid: "74974166"
 
 内容密钥提供对资产的安全访问。 你需要创建一个**内容密钥策略**，用于配置如何将内容密钥传递到最终客户端。 内容密钥与**流定位器**相关联。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。
 
-当播放器请求流时，媒体服务将使用指定的密钥来动态加密你的内容（在这种情况下，使用 AES 加密。）为了解密流，播放器将从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
+当播放器请求流时，媒体服务将使用指定的密钥来动态加密你的内容，在这种情况下，使用 AES 加密 (。 ) 解密流，播放机从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
@@ -148,7 +149,7 @@ ms.locfileid: "74974166"
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清理媒体服务帐户中的资源
 
-一般来说，除了打算重用的对象之外，应该清除所有对象（通常，将重用转换、流式处理定位符等）。 如果希望帐户在试验后保持干净状态，则删除不打算重复使用的资源。 例如，以下代码可删除作业：
+一般来说，除了打算重用的对象之外，应该清除所有对象（通常，将重用转换、流式处理定位符等）。 如果希望帐户在试验后保持干净状态，则删除不打算重复使用的资源。 例如，以下代码将删除已创建的资产和内容密钥策略：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 

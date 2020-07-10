@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84606881"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187177"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -203,7 +204,7 @@ The subscription named <subscription name> cannot be found.
 执行以下步骤来确定是否已在 Azure 中完成身份验证并有权访问你尝试选择的订阅：
 
 1. 为确保脚本可单独正常运行，请在 Azure 自动化外部对其进行测试。
-1. 确保脚本先运行 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet，再运行 `Select-*` cmdlet。
+1. 确保脚本先运行 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet，再运行 `Select-*` cmdlet。
 1. 将 `Disable-AzContextAutosave –Scope Process` 添加到 runbook 的开头。 此 cmdlet 可以确保任何凭据都仅适用于当前 runbook 的执行。
 1. 如果仍看到该错误消息，请通过为 `Connect-AzAccount` 添加 `AzContext` 参数来修改代码，然后执行代码。
 
@@ -400,7 +401,7 @@ Object reference not set to an instance of an object
 
 ### <a name="resolution"></a>解决方法
 
-实现轮询逻辑，并使用 [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 检索输出。 下面定义了此逻辑的示例：
+实现轮询逻辑，并使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 检索输出。 下面定义了此逻辑的示例：
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -485,7 +486,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 执行以下操作之一来解决此错误：
 
 * 编辑 Runbook，并减少它发出的作业流数量。
-* 减少运行 cmdlet 时要检索的流数量。 为此，可以设置 [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 的 `Stream` 参数值，以仅检索输出流。 
+* 减少运行 cmdlet 时要检索的流数量。 为此，可以设置 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 的 `Stream` 参数值，以仅检索输出流。 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>场景：Runbook 作业因超过了分配的配额而失败
 
@@ -558,7 +559,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 可通过两种方法来解决此错误：
 
-* 若要启动 Runbook，请不要使用 [Start-Job](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)，而要使用 [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)。
+* 若要启动 Runbook，请不要使用 [Start-Job](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)，而要使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)。
 * 尝试在混合 Runbook 辅助角色中运行 Runbook。
 
 若要详细了解 Azure 自动化 Runbook 的此行为和其他行为，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
@@ -587,8 +588,8 @@ Runbook 运行时间超出了 Azure 沙盒中公平份额允许的三小时限�
 
 启用子 runbook 方案的 PowerShell cmdlet 是：
 
-* [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0)。 此 cmdlet 用于启动 Runbook 并将参数传递给该 Runbook。
-* [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0)。 如果在子 Runbook 完成后需要执行操作，可使用此 cmdlet 检查每个子 Runbook 的作业状态。
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0)。 此 cmdlet 用于启动 Runbook 并将参数传递给该 Runbook。
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0)。 如果在子 Runbook 完成后需要执行操作，可使用此 cmdlet 检查每个子 Runbook 的作业状态。
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>场景：作业流中出现有关 get_SerializationSettings 方法的错误
 
@@ -651,7 +652,7 @@ Operation returned an invalid status code 'Forbidden'
 
 #### <a name="not-using-a-run-as-account"></a>未使用运行方式帐户
 
-执行[步骤 5 - 添加身份验证来管理 Azure 资源](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources)，以确保使用运行方式帐户访问 Key Vault。
+执行[步骤 5 - 添加身份验证来管理 Azure 资源](../learn/automation-tutorial-runbook-textual-powershell.md#step-5---add-authentication-to-manage-azure-resources)，以确保使用运行方式帐户访问 Key Vault。
 
 #### <a name="insufficient-permissions"></a>权限不足
 
@@ -660,7 +661,7 @@ Operation returned an invalid status code 'Forbidden'
 ## <a name="recommended-documents"></a>建议的文档
 
 * [在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)
-* [在 Azure 自动化中启动 Runbook](../automation-starting-a-runbook.md)
+* [在 Azure 自动化中启动 Runbook](../start-runbooks.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 519d9f25276ea54fbfd49970ba3c288245ce9653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833683"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202597"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,7 +129,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="custom-validation-dataset"></a>自定义验证数据集
 
-如果随机拆分不可接受，请使用自定义验证数据集（通常是时序数据或不平衡数据）。 可以指定自己的验证数据集。 将会根据指定的验证数据集而不是随机数据集来评估模型。
+如果随机拆分不可接受，请使用自定义验证数据集（通常是时序数据或不平衡数据）。 可以指定自己的验证数据集。 将会根据指定的验证数据集而不是随机数据集来评估模型。 了解有关[如何使用 SDK 配置自定义验证集的](how-to-configure-cross-validation-data-splits.md#provide-validation-data)详细信息。
 
 ## <a name="compute-to-run-experiment"></a>用于运行试验的计算环境
 
@@ -433,7 +433,7 @@ best_run, fitted_model = automl_run.get_output()
    |转换|应用于输入特征以生成工程特征的转换列表。|
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>缩放/规范化以及具有超参数值的算法：
 
-若要了解管道的缩放/规范化和算法/超参数值，请使用 fitted_model.steps。 [详细了解缩放/规范化]()。 下面是示例输出：
+若要了解管道的缩放/规范化和算法/超参数值，请使用 fitted_model.steps。 [详细了解缩放/规范化](how-to-configure-auto-features.md)。 下面是示例输出：
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))

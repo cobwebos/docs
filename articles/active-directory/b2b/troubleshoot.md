@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f8bafb04d0a5d9c6d25a7ed7e155888d492e9fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a835872d4a4fedfb5ef72a1cb9499e4f969adcd3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80050778"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202111"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
@@ -87,7 +87,9 @@ ms.locfileid: "80050778"
 
 具有来宾帐户的某个用户无法登录，并收到以下错误消息：
 
+```plaintext
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
+```
 
 该用户具有 Azure 用户帐户，是已被放弃的或非托管的病毒性租户。 此外，租户中没有全局或公司管理员。
 

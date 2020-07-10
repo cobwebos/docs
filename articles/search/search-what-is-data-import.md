@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554258"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202301"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>数据导入概述 - Azure 认知搜索
 
@@ -22,7 +22,7 @@ ms.locfileid: "85554258"
 不管使用哪种方法，目的都是将数据从外部数据源加载到 Azure 认知搜索索引中。 Azure 认知搜索会允许你创建空索引，但在你将数据推送到其中或从其拉取数据之前，该索引是不可查询的。
 
 > [!NOTE]
-> 如果[AI 扩充](cognitive-search-concept-intro.md)是解决方案要求，则必须使用请求模型（索引器）来加载索引。 仅通过附加到索引器的技能集支持外部处理。
+> 如果[AI 扩充](cognitive-search-concept-intro.md)是解决方案要求，则必须使用请求 (模型) 索引器来加载索引。 仅通过附加到索引器的技能集支持外部处理。
 
 ## <a name="pushing-data-to-an-index"></a>将数据推送至索引
 
@@ -52,7 +52,7 @@ ms.locfileid: "85554258"
 在 .NET SDK 中，请将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 认知搜索对该文档执行什么操作。 有关代码示例，请参阅 [C# 快速入门](search-get-started-dotnet.md)。
 
 
-| @search.action | 描述 | 每个文档必需的字段 | 说明 |
+| @search.action | 说明 | 每个文档必需的字段 | 备注 |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |键，以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
 | `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |键，以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 在 .NET SDK 中，这包括 `DataType.Collection(DataType.String)` 类型的字段。 在 REST API 中，这包括 `Collection(Edm.String)` 类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
@@ -67,7 +67,9 @@ ms.locfileid: "85554258"
 
 GET 的 URL 末尾为*查询字符串*，用于提供查询参数。 有关 URL 格式，请参见以下内容：
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
+```http
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+```
 
 POST 的格式相同，但 `api-version` 在查询字符串参数中为。
 

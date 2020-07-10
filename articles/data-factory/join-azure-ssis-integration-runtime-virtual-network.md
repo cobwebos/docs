@@ -6,26 +6,27 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: b0e18ec4665ede783145cd1aedf38c907f6f2905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118484"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187806"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在 Azure 数据工厂中使用 SQL Server Integration Services (SSIS) 时，对于以下情况，应将 Azure SSIS 集成运行时 (IR) 加入 Azure 虚拟网络：
 
 - 希望在不配置或管理用作代理的自承载 IR 的情况下，从 Azure-SSIS IR 中运行的 SSIS 包连接到本地数据存储。 
 
-- 你想要在 Azure SQL 数据库中宿主 SSIS 目录数据库（SSISDB），其中包含 IP 防火墙规则/虚拟网络服务终结点，或者包含在具有专用终结点的 SQL 托管实例中。 
+- 你需要在 Azure SQL 数据库中 (SSISDB) 宿主 SSIS 目录数据库，并在 Azure SQL 数据库中包含 IP 防火墙规则/虚拟网络服务终结点，或在 SQL 托管实例中包含专用终结点。 
 
 - 想要从 Azure-SSIS IR 中运行的 SSIS 包连接到配置了虚拟网络服务终结点的 Azure 资源。
 
@@ -64,7 +65,7 @@ ms.locfileid: "84118484"
 
 如果将 SSIS 目录承载在具有虚拟网络服务终结点的 Azure SQL 数据库中，请确保将 Azure-SSIS IR 加入到同一虚拟网络和子网中。
 
-如果在 SQL 托管实例中使用专用终结点托管 SSIS 目录，请确保将 Azure-SSIS IR 加入到同一个虚拟网络中，但在不同于托管实例的子网中。 若要将 Azure-SSIS IR 加入到与 SQL 托管实例不同的虚拟网络，我们建议将虚拟网络对等互连（限制为同一区域）或从虚拟网络到虚拟网络的连接。 有关详细信息，请参阅[将应用程序连接到 AZURE SQL 托管实例](../azure-sql/managed-instance/connect-application-instance.md)。
+如果在 SQL 托管实例中使用专用终结点托管 SSIS 目录，请确保将 Azure-SSIS IR 加入到同一个虚拟网络中，但在不同于托管实例的子网中。 若要将 Azure-SSIS IR 加入到与 SQL 托管实例不同的虚拟网络，我们建议使用限制为同一区域的虚拟网络对等互连 () 或从虚拟网络到虚拟网络的连接。 有关详细信息，请参阅[将应用程序连接到 AZURE SQL 托管实例](../azure-sql/managed-instance/connect-application-instance.md)。
 
 ## <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 
@@ -124,7 +125,7 @@ ms.locfileid: "84118484"
 
 - 确保选择的子网具有足够的可用地址空间以供 Azure-SSIS IR 使用。 将可用 IP 地址数保持为 IR 节点数的至少两倍。 Azure 会保留每个子网中的某些 IP 地址。 不能使用这些地址。 子网的第一个和最后一个 IP 地址仅为协议一致性而保留，其他三个地址用于 Azure 服务。 有关详细信息，请参阅[使用这些子网中的 IP 地址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) 
 
-- 请勿使用由其他 Azure 服务独占使用的子网（例如，SQL 数据库 SQL 托管实例、应用服务等）。 
+- 请勿使用由其他 Azure 服务独占的子网 (例如，SQL 数据库 SQL 托管实例、应用服务等) 。 
 
 ### <a name="select-the-static-public-ip-addresses"></a><a name="publicIP"></a>选择静态公共 IP 地址
 
@@ -141,7 +142,7 @@ ms.locfileid: "84118484"
 - 这些 IP 地址和虚拟网络应位于同一区域中的同一订阅下。
 
 ### <a name="set-up-the-dns-server"></a><a name="dns_server"></a> 设置 DNS 服务器 
-如果你需要在由 Azure-SSIS IR 联接的虚拟网络中使用你自己的 DNS 服务器来解析你的专用主机名，请确保它还可以解析全局 Azure 主机名（例如，名为的 Azure 存储 blob `<your storage account>.blob.core.windows.net` ）。 
+如果你需要在由 Azure-SSIS IR 联接的虚拟网络中使用你自己的 DNS 服务器来解析你的专用主机名，请确保它还可以解析全局 Azure 主机名 (例如，名为) 的 Azure 存储 blob `<your storage account>.blob.core.windows.net` 。 
 
 下面是建议的一种方法： 
 
@@ -170,7 +171,7 @@ ms.locfileid: "84118484"
 | 出站 | TCP | VirtualNetwork | * | AzureCloud | 443 | 虚拟网络中 Azure-SSIS IR 的节点使用此端口来访问 Azure 服务，例如 Azure 存储和 Azure 事件中心。 |
 | 出站 | TCP | VirtualNetwork | * | Internet | 80 | （可选）虚拟网络中的 Azure-SSIS IR 节点使用此端口从 Internet 下载证书吊销列表。 如果阻止此流量，在启动 IR 时可能会出现性能下降，并且无法在证书吊销列表中检查证书的使用情况。 若要进一步将目标范围缩小为特定的 FQDN，请参阅**使用 Azure ExpressRoute 或 UDR** 部分|
 | 出站 | TCP | VirtualNetwork | * | Sql | 1433、11000-11999 | （可选）仅当虚拟网络中 Azure-SSIS IR 的节点访问服务器托管的 SSISDB 时，才需要此规则。 如果服务器连接策略设置为“代理”而不是“重定向”，则只需使用端口 1433。  <br/><br/> 此出站安全规则不适用于通过专用终结点配置的虚拟网络或 SQL 数据库中的 SQL 托管实例的 SSISDB。 |
-| 出站 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 | 可有可无仅当虚拟网络中 Azure-SSIS IR 的节点访问虚拟网络中的 SQL 托管实例或使用专用终结点配置的 SQL 数据库中的 SSISDB 时，才需要此规则。 如果服务器连接策略设置为“代理”而不是“重定向”，则只需使用端口 1433。  |
+| 出站 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 |  (可选) 仅当虚拟网络中 Azure-SSIS IR 的节点访问虚拟网络中的 SQL 托管实例或使用专用终结点配置的 SQL 数据库中的 SSISDB 时，才需要此规则。 如果服务器连接策略设置为“代理”而不是“重定向”，则只需使用端口 1433。  |
 | 出站 | TCP | VirtualNetwork | * | 存储 | 445 | （可选）仅当你要执行 Azure 文件存储中存储的 SSIS 包时，才需要此规则。 |
 ||||||||
 

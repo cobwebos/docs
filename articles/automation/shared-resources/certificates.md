@@ -9,15 +9,16 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ebd4bf0ff91342229edb4295489f0cbd0970699a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745026"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187381"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>在 Azure 自动化中管理证书
 
-Azure 自动化使用适用于 Azure 资源管理器资源的 [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet 安全地存储可供 runbook 和 DSC 配置访问的证书。 通过安全的证书存储，可以创建使用证书进行身份验证的 runbook 和 DSC 配置，也可以将证书添加到 Azure 或第三方资源。
+Azure 自动化使用适用于 Azure 资源管理器资源的 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet 安全地存储可供 runbook 和 DSC 配置访问的证书。 通过安全的证书存储，可以创建使用证书进行身份验证的 runbook 和 DSC 配置，也可以将证书添加到 Azure 或第三方资源。
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密，并存储在自动化中。 自动化将密钥存储在系统管理的 Key Vault 服务中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。 
@@ -28,10 +29,10 @@ Azure 自动化使用适用于 Azure 资源管理器资源的 [Get-AzAutomationC
 
 |Cmdlet |说明|
 | --- | ---|
-|[Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能使用内部 `Get-AutomationCertificate` cmdlet 来检索证书。|
-|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|在自动化中创建新证书。|
-|[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|从自动化中删除证书。|
-|[Set-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|设置现有证书的属性，包括上传证书文件和设置 .pfx 文件的密码。|
+|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能使用内部 `Get-AutomationCertificate` cmdlet 来检索证书。|
+|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|在自动化中创建新证书。|
+|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|从自动化中删除证书。|
+|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|设置现有证书的属性，包括上传证书文件和设置 .pfx 文件的密码。|
 
 还可以使用 [Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) cmdlet 为指定的云服务上传服务证书。
 
@@ -126,7 +127,7 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -Te
 
 ## <a name="get-a-certificate"></a>获取证书
 
-若要检索证书，请使用内部 `Get-AutomationCertificate` cmdlet。 不能使用 [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet，因为它会返回有关证书资产的信息，而不是证书本身的信息。
+若要检索证书，请使用内部 `Get-AutomationCertificate` cmdlet。 不能使用 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet，因为它会返回有关证书资产的信息，而不是证书本身的信息。
 
 ### <a name="textual-runbook-example"></a>文本 runbook 示例
 

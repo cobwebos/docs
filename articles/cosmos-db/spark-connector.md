@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262219"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203158"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析
 
@@ -233,7 +233,7 @@ df
 按照 Azure Databricks 指南中的指南 >[使用 Azure Cosmos DB Spark 连接器](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)，使用 Databricks 工作区创建库
 
 > [!NOTE]
-> 请注意，"**使用 Azure Cosmos DB Spark 连接器**" 页当前不是最新的。 可以从 maven 下载 uber jar 并将其 https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) 安装到一个 jar/库，而不是将六个单独的 jar 下载到六个不同的库中。
+> "**使用 Azure Cosmos DB Spark 连接器**" 页当前不是最新的。 你可以从[spark_lkg_version azure](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG)中的 maven 下载 uber jar，而不是将这6个单独的 jar 下载到六个不同的库中，而是将其安装为 jar/库。
 > 
 
 ### <a name="using-spark-cli"></a>使用 spark-cli

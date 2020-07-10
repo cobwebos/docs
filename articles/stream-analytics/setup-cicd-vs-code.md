@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 75db20bdb746e7d15bef56ce7ac0a064993d3f3a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045818"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187755"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>使用 CI/CD npm 包部署 Azure 流分析作业 
 
@@ -41,15 +41,11 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
 * 资源管理器模板文件
 
-   ```
-   [ProjectName].JobTemplate.json 
-   ```
+   `[ProjectName].JobTemplate.json`
 
 * 资源管理器参数文件
 
-   ```
-   [ProjectName].JobTemplate.parameters.json
-   ```   
+   `[ProjectName].JobTemplate.parameters.json`   
 
 parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 
@@ -112,7 +108,7 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
 
    |参数|输入|
    |-|-|
-   |显示名称|将文件复制到： $ （artifactstagingdirectory）|
+   |显示名称|将文件复制到： $ (artifactstagingdirectory) |
    |源文件夹|`$(system.defaultworkingdirectory)`| 
    |目录| `**\Deploy\**` |
    |目标文件夹| `$(build.artifactstagingdirectory)`|
@@ -151,7 +147,7 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
 
 2. 选择 " **+** **代理作业**" 旁边的，搜索 " *Azure 资源组部署*"。 输入以下参数：
 
-   |设置|“值”|
+   |设置|值|
    |-|-|
    |显示名称| *部署 myASAJob*|
    |Azure 订阅| 选择订阅。|
@@ -159,16 +155,16 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
    |资源组| 选择将包含流分析作业的测试资源组的名称。|
    |位置|选择测试资源组的位置。|
    |模板位置| *链接的项目*|
-   |模板| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.js |
-   |模板参数|（$ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.js|
-   |重写模板参数|-Input_IoTHub1_iotHubNamespace $ （test_eventhubname）|
+   |模板| $ (ArtifactStagingDirectory) # B0 on |
+   |模板参数| ($ (ArtifactStagingDirectory) # B0 on|
+   |重写模板参数|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname) |
    |部署模式|增量|
 
 3. 从 "任务" 下拉列表中，选择 "**将作业部署到生产环境**"。
 
 4. 选择 " **+** **代理作业**" 旁边的，搜索 " *Azure 资源组部署*"。 输入以下参数：
 
-   |设置|“值”|
+   |设置|值|
    |-|-|
    |显示名称| *部署 myASAJob*|
    |Azure 订阅| 选择订阅。|
@@ -176,9 +172,9 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
    |资源组| 选择将包含流分析作业的生产资源组的名称。|
    |位置|选择生产资源组的位置。|
    |模板位置| *链接的项目*|
-   |模板| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.js |
-   |模板参数|（$ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.js|
-   |重写模板参数|-Input_IoTHub1_iotHubNamespace $ （eventhubname）|
+   |模板| $ (ArtifactStagingDirectory) # B0 on |
+   |模板参数| ($ (ArtifactStagingDirectory) # B0 on|
+   |重写模板参数|-Input_IoTHub1_iotHubNamespace $ (eventhubname) |
    |部署模式|增量|
 
 ### <a name="create-release"></a>创建发布
@@ -194,6 +190,6 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [快速入门：在 Visual Studio Code 中创建 Azure 流分析云作业（预览）](quick-create-vs-code.md)
+* [快速入门：在 Visual Studio Code (预览中创建 Azure 流分析云作业) ](quick-create-vs-code.md)
 * [使用 Visual Studio Code（预览版）在本地测试流分析查询](visual-studio-code-local-run.md)
 * [使用 Visual Studio Code（预览版）浏览 Azure 流分析](visual-studio-code-explore-jobs.md)

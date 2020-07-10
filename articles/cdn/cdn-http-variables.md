@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84340668"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203563"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 HTTP 变量
 HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后可使用此元数据动态更改请求或响应。 以下规则引擎功能对 HTTP 变量的使用具有一定的限制：
@@ -186,7 +187,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 下表说明了此语法的工作原理。
 
-| 示例语法 | 结果 | |
+| 示例语法 | 结果 | 说明 |
 | ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=zh-CN | 由于变量以此模式开头，因此该变量已被替换。 |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=zh-CN | 该变量未以此模式结尾，因此未进行任何更改。|

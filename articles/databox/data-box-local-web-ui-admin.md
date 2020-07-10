@@ -5,14 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 06/03/2019
+ms.topic: article
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608241"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202540"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理 Data Box 和 Data Box Heavy
 
@@ -27,6 +28,8 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 - 下载 BOM 或清单文件
 - 查看设备的可用容量
 - 跳过校验和验证
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>生成支持包
 
@@ -79,9 +82,9 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 
 ## <a name="download-bom-or-manifest-files"></a>下载 BOM 或清单文件
 
-物料清单 (BOM) 或清单文件包含要复制到 Data Box 或 Data Box Heavy 的文件列表。 这些文件是在准备要寄送的设备时生成的。
+物料清单 (BOM) 或清单文件包含要复制到 Data Box 或 Data Box Heavy 的文件列表。 当您准备要装运的设备时，将生成导入顺序的这些文件。
 
-在开始之前，请确保设备已完成“准备寄送”步骤。  遵循以下步骤下载 BOM 或清单文件：
+在开始之前，请确保设备已完成“准备寄送”步骤。  按照以下步骤下载导入顺序的 BOM 或清单文件：
 
 1. 转到设备的本地 Web UI。 可以看到，设备已完成“准备寄送”步骤。 设备准备完成后，设备状态将显示为“已准备好寄送”。 
 
@@ -167,16 +170,19 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 
 准备寄送时，默认会生成数据的校验和。 在某些罕见的情况下，根据所用的数据类型（小型文件），性能可能较慢。 在这种情况，则可以跳过校验和。
 
+准备发货期间的校验和计算仅适用于进口订单，不适用于出口订单。 
+
 我们强烈建议仅在性能受到严重影响的情况下禁用校验和。
 
-1. 在设备本地 Web UI 的右上角，转到“设置”。 
+1. 在设备的本地 web UI 的右上角，单击 "**设置**"。
 
     ![禁用校验和](media/data-box-local-web-ui-admin/disable-checksum.png)
 
-2. 禁用校验和验证 
-3. 单击“应用”  。
+2. 禁用校验和验证****
+3. 单击“应用”。
 
-## <a name="next-steps"></a>后续步骤
+> [!NOTE]
+> "跳过校验和计算" 选项仅在 Azure Data Box 处于解锁状态时才可用。 锁定设备时，不会显示此选项。
 
 - 了解如何[通过 Azure 门户管理 Data Box 和 Azure Data Box Heavy](data-box-portal-admin.md)。
 

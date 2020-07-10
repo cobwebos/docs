@@ -8,11 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680882"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187160"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>排查共享资源问题
 
@@ -32,7 +33,7 @@ ms.locfileid: "83680882"
 
 #### <a name="resolution"></a>解决方法
 
-若要解决此问题，必须使用 [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) cmdlet 删除处于停滞状态的模块。 然后，可以重试导入模块。
+若要解决此问题，必须使用 [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) cmdlet 删除处于停滞状态的模块。 然后，可以重试导入模块。
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -69,7 +70,7 @@ Azure modules are being updated
 * 结构与自动化所需的结构不匹配。
 * 该模块依赖于其他模块，而后者尚未部署到自动化帐户。
 * 该模块的文件夹中缺少依赖项。
-* 使用了 [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) cmdlet 来上传该模块，但你未提供完整的存储路径，或者未使用可公开访问的 URL 来加载该模块。
+* 使用了 [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) cmdlet 来上传该模块，但你未提供完整的存储路径，或者未使用可公开访问的 URL 来加载该模块。
 
 #### <a name="resolution"></a>解决方法
 

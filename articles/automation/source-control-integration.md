@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 37df5ae8e88bf7832fbbeae37555d60943fca446
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828876"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187296"
 ---
 # <a name="use-source-control-integration"></a>使用源代码管理集成
 
@@ -72,8 +73,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 ### <a name="configure-source-control-in-powershell"></a>在 PowerShell 中配置源代码管理
 
-还可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 要使用 PowerShell cmdlet 执行此操作，需要个人访问令牌 (PAT)。 使用 [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
-) cmdlet 创建源代码管理连接。 此 cmdlet 需要 PAT 的安全字符串。 要了解如何创建安全字符串，请参阅 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
+还可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 要使用 PowerShell cmdlet 执行此操作，需要个人访问令牌 (PAT)。 使用 [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) cmdlet 创建源代码管理连接。 此 cmdlet 需要 PAT 的安全字符串。 要了解如何创建安全字符串，请参阅 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
 
 以下小节说明如何使用 PowerShell 创建适用于 GitHub、Azure Repos (Git) 和 Azure Repos (TFVC) 的源代码管理连接。 
 
@@ -122,7 +122,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Repos 的最低 PAT 权限
 
-下表定义了 Azure Repos 所需的最低 PAT 权限。 如需详细了解如何在 Azure Repos 中创建 PAT，请参阅[使用个人访问令牌进行身份验证访问](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page)。
+下表定义了 Azure Repos 所需的最低 PAT 权限。 如需详细了解如何在 Azure Repos 中创建 PAT，请参阅[使用个人访问令牌进行身份验证访问](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page)。
 
 | 范围  |  访问类型  |
 |---------| ----------|
@@ -195,14 +195,14 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 ## <a name="handle-encoding-issues"></a>处理编码问题
 
-如果多人使用不同的编辑器在源代码管理存储库中编辑 Runbook，则可能发生编码问题。 如需详细了解此情况，请参阅[编码问题的常见原因](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues)。
+如果多人使用不同的编辑器在源代码管理存储库中编辑 Runbook，则可能发生编码问题。 如需详细了解此情况，请参阅[编码问题的常见原因](/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues)。
 
 ## <a name="update-the-pat"></a>更新 PAT
 
 目前，不能使用 Azure 门户在源代码管理中更新 PAT。 当 PAT 过期或吊销时，可以通过以下方式之一使用新的访问令牌更新源代码管理：
 
-* 使用 [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)。
-* 使用 [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet。
+* 使用 [REST API](/rest/api/automation/sourcecontrol/update)。
+* 使用 [Update-AzAutomationSourceControl](//powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 

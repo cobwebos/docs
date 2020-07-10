@@ -3,18 +3,19 @@ title: DPM 和 Azure 备份服务器的脱机备份
 description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文说明 DPM 和 Azure 备份服务器的脱机备份工作流。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 0ff6198eed4e3e365b443a51e5c63534c2cf0973
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921266"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187789"
 ---
-# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 备份服务器的脱机备份工作流（MABS）
+# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 备份服务器的脱机备份工作流 (MABS) 
 
 >[!IMPORTANT]
-> 这些步骤适用于 DPM 2019 UR1 （或更高版本）和 MABS v3 UR1 （或更高版本）。
+> 这些步骤适用于 DPM 2019 UR1 (或更高版本) 和 MABS v3 UR1 (或更高版本) 。
 
-System Center Data Protection Manager 和 Azure 备份服务器（MABS）与 Azure 备份集成，并使用多个内置效率，在将数据初始完整备份到 Azure 期间节省网络和存储成本。 与仅传输增量/增量的后续备份相比，初始完整备份通常传输大量数据，并且需要更多的网络带宽。 Azure 备份会压缩初始备份。 通过脱机种子设定过程，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。
+System Center Data Protection Manager 和 Azure 备份服务器 (MABS) 与 Azure 备份集成，并使用多个内置效率，在将数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常会传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输差异/增量部分。 Azure 备份会压缩初始备份。 通过脱机种子设定过程，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。
 
 Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)紧密集成。 可以借助此服务使用磁盘将数据传输到 Azure。 如果要通过高延迟、低带宽网络传输 TB 计的初始备份数据，可以使用脱机种子设定工作流将一个或多个硬盘驱动器中的初始备份副本传送到 Azure 数据中心。 本文将会概述如何对 System Center Data Protection Manager (DPM) 和 Azure 备份服务器 (MABS) 完成此工作流，并提供其他相关步骤。
 
@@ -39,7 +40,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
 确保在启动脱机备份工作流之前满足以下先决条件：
 
-* 已创建[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)。 若要创建一个，请按照[创建恢复服务保管库](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)教程--------server-azure #
+* 已创建[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)。 若要创建一个，请按照[创建恢复服务保管库](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)教程--------server-azure #) 中的步骤进行创建。
 * 确保仅在 SC DPM 或 MABS 上安装了[最新版本的 Microsoft Azure 恢复服务代理](https://aka.ms/azurebackup_agent)，并将其注册到了恢复服务保管库。
 * 更新汇总1安装在 SC DPM 2019 或 MABS v3 上。
 
@@ -59,7 +60,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
 * 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，若要备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少）。
 * 对于发送到 Azure 的磁盘，请确保仅使用 2.5 英寸 SSD 或 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
-* SATA 驱动器必须连接到一台计算机（称为“副本计算机”），将在这台计算机上完成将备份数据从暂存位置复制到 SATA 驱动器的过程。 确保已在副本计算机上启用 BitLocker。
+* SATA 驱动器必须连接到一台计算机（称为“副本计算机”），将在这台计算机上完成将备份数据从暂存位置复制到 SATA 驱动器的过程。 请确保已在副本计算机上启用 BitLocker。
 
 ## <a name="workflow"></a>工作流
 
@@ -81,8 +82,8 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
    输入说明如下所示：
 
-   * **暂存位置**：写入初始备份副本的临时存储位置。 暂存位置可以是网络共享或本地计算机。 如果副本计算机与源计算机不同，请指定暂存位置的完整网络路径。
-   * **Azure 资源管理器存储帐户**：任何 Azure 订阅中的资源管理器类型存储帐户（常规用途 v1 或常规用途 v2）的名称。
+   * **暂存位置**：初始备份副本写入到的临时存储位置。 暂存位置可以是网络共享或本地计算机。 如果副本计算机与源计算机不同，请指定暂存位置的完整网络路径。
+   * **Azure 资源管理器存储帐户**：任一 Azure 订阅中的资源管理器类型存储帐户（常规用途 v1 或常规用途 v2）的名称。
    * **Azure 存储容器**：导入备份数据的 Azure 存储帐户中目标 blob 存储容器的名称。
    * **Azure 订阅 ID**：在其中创建 Azure 存储帐户的 Azure 订阅的 ID。
    * **Azure 导入作业名称**：Azure 导入服务和 Azure 备份用来跟踪在磁盘上发送到 Azure 的数据传输的唯一名称。
@@ -101,13 +102,13 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>准备好 SATA 驱动器并寄送到 Azure
 
-AzureOfflineBackupDiskPrep 实用工具准备好要发送到最近的 Azure 数据中心的 SATA 驱动器。 此实用程序在 Azure 备份代理安装目录（位于以下路径中）中提供：`*\Microsoft Azure Recovery Services Agent\Utils\\*`
+*AzureOfflineBackupDiskPrep* 实用工具会准备送到最近 Azure 数据中心的 SATA 驱动器。 此实用程序在 Azure 备份代理安装目录中提供 (在以下路径) ：`*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. 转到目录，将 AzureOfflineBackupDiskPrep 目录复制到连接 SATA 驱动器的另一台计算机上。 在连接了 SATA 驱动器的计算机上，确保：
 
    * 副本计算机可以使用“启动脱机备份”部分的工作流中提供的相同网络路径，来访问脱机种子设定工作流的暂存位置。
    * 已在副本计算机上启用 BitLocker。
-   * Azure PowerShell 3.7.0 安装在复制计算机上（如果你在 DPM 或 MABS 服务器上运行 AzureOfflineBackupDiskPrep 实用工具，则不需要）。
+   * Azure PowerShell 3.7.0 安装在复制计算机上 (如果在 DPM 或 MABS 服务器) 上运行 AzureOfflineBackupDiskPrep 实用程序，则不需要此功能。
    * 安装最新的兼容浏览器（Microsoft Edge 或 Internet Explorer 11）并启用 JavaScript。
    * 复制计算机可以访问 Azure 门户。 必要时，副本计算机可与源计算机相同。
 
@@ -123,21 +124,21 @@ AzureOfflineBackupDiskPrep 实用工具准备好要发送到最近的 Azure 数�
     | 参数 | 说明 |
     | --- | --- |
     | s:&lt;*Staging Location Path*&gt; |此项必需的输入用于提供在“启动脱机备份”部分的工作流中所输入的暂存位置的路径。 |
-    | p:&lt;*Path to PublishSettingsFile*&gt; |此可选输入用于提供在“启动脱机备份”部分的工作流中所输入的 Azure 发布设置文件的路径。 |
+    | p:&lt;*Path to PublishSettingsFile*&gt; |此可选输入用于提供 Azure 发布设置文件的路径。 |
 
     运行命令时，该实用工具会请求选择与需要准备的驱动器相对应的 Azure 导入作业。 如果仅单个导入作业与提供的暂存位置相关联，则会看到类似下面的屏幕。
 
       ![磁盘准备控制台](./media/backup-azure-backup-server-import-export/disk-prep-console.png)
 
-1. 输入要准备传输到 Azure 的载入磁盘的驱动器号，不包含尾随冒号。
-1. 提示时，请确认驱动器的格式。
+1. 输入想要准备传输到 Azure 的已装载磁盘的驱动器号（不要包含尾部的冒号）。
+1. 出现提示时，确认格式化驱动器。
 1. 系统将提示登录到 Azure 订阅。 提供你的凭据。
 
     ![Azure 登录屏幕](./media/backup-azure-backup-server-import-export/signin-disk-prep.png)
 
     该工具随后便开始准备磁盘和复制备份数据。 可能需要根据工具的提示附加其他磁盘，以防提供的磁盘没有足够空间来容纳备份数据。 <br/>
 
-    成功执行该工具后，命令提示符将提供三条信息：
+    成功结束该工具的执行时，命令提示符会提供三段信息：
     * 所提供的一个或多个磁盘已准备好寄送到 Azure。
     * 你会收到确认已创建导入作业。 导入作业使用你提供的名称。
     * 该工具显示 Azure 数据中心的送货地址。

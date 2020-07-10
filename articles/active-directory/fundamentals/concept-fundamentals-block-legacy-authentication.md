@@ -12,11 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196390"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200541"
 ---
 # <a name="blocking-legacy-authentication"></a>阻止旧式身份验证
  
@@ -31,9 +32,9 @@ ms.locfileid: "83196390"
 
 在目录中阻止旧式身份验证之前，需要先了解用户是否有使用旧式身份验证的应用，以及它如何影响整个目录。 可以使用 Azure AD 登录日志来了解是否正在使用旧式身份验证。
 
-1. 导航到“Azure 门户”>“Azure Active Directory”>“登录”。 ****   ****   ****
+1. 导航到“Azure 门户” > “Azure Active Directory” > “登录”。  
 1. 如果未显示“客户端应用”列，请单击“列”>“客户端应用”添加该列。 ****   ****
-1. 按“客户端应用”进行筛选，然后选中显示的所有“旧式身份验证客户端”选项。 ****  
+1. 按**客户端应用**筛选 > 检查显示的所有**旧版身份验证客户端**选项。
 1. 按“状态” > “成功”进行筛选。  
 1. 如果需要，请使用“日期”筛选器扩展日期范围。
 

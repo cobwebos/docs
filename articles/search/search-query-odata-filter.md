@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 959adec9f74a8cda7fde941ccea7db75e981a650
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692795"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201542"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $filter 语法
 
@@ -83,20 +84,28 @@ variable ::= identifier | field_path
 
 上表中优先顺序较高的运算符与其操作数之间的绑定密切性高于其他运算符。 例如，`and` 的优先顺序高于 `or`，而比较运算符的优先顺序又高于两者中的任何一个，因此，以下两个表达式是等效的：
 
+```odata-filter-expr
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
+```
 
 `not` 运算符的优先顺序最高 -- 甚至高于比较运算符。 正因如此，你会尝试编写如下所示的筛选器：
 
+```odata-filter-expr
     not Rating gt 5
+```
 
 将出现以下错误消息：
 
+```text
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
+```
 
 发生此错误的原因是，运算符仅与 `Rating` 类型的 `Edm.Int32` 字段相关联，而不与整个比较表达式相关联。 解决方法是将 `not` 的操作数括在括号中：
 
+```odata-filter-expr
     not (Rating gt 5)
+```
 
 <a name="bkmk_limits"></a>
 
@@ -111,87 +120,129 @@ variable ::= identifier | field_path
 
 查找至少有一间客房的基本价格低于 200 美元且评分为 4 分或以上的所有酒店：
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/BaseRate lt 200.0) and Rating ge 4
+```
 
 查找除“Sea View Motel”以外的自 2010 年以来经过翻修的所有酒店：
 
+```odata-filter-expr
     $filter=HotelName ne 'Sea View Motel' and LastRenovationDate ge 2010-01-01T00:00:00Z
+```
 
 查找在 2010 年或以后经过翻修的所有酒店。 日期时间文本包括太平洋标准时间的时区信息：  
 
+```odata-filter-expr
     $filter=LastRenovationDate ge 2010-01-01T00:00:00-08:00
+```
 
 查找提供停车位并且所有客房禁止吸烟的所有酒店：
 
+```odata-filter-expr
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
+```
 
  \- 或 -  
 
+```odata-filter-expr
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
+```
 
 查找等级为豪华或包含停车场且评分为 5 分的所有酒店：  
 
+```odata-filter-expr
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
+```
 
 查找至少有一间客房提供“wifi”标记的所有酒店（每间客房的标记存储在 `Collection(Edm.String)` 字段中）：  
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
+```
 
 查找提供任何客房的所有酒店：  
 
+```odata-filter-expr
     $filter=Rooms/any()
+```
 
 查找不提供客房的所有酒店：
 
+```odata-filter-expr
     $filter=not Rooms/any()
+```
 
 查找与给定参考点的距离在 10 公里范围内的所有酒店（其中 `Location` 是 `Edm.GeographyPoint` 类型的字段）：
 
+```odata-filter-expr
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
 查找描述为多边形的给定视区内的所有酒店（其中 `Location` 是 Edm.GeographyPoint 类型的字段）。 多边形必须处于闭合状态，这意味着第一个点集和最后一个点集必须相同。 此外，[点必须以逆时针顺序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
 
+```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 查找“描述”字段为 null 的所有酒店。 如果未曾设置该字段，或者显式将其设置为 null，则该字段为 null：  
 
+```odata-filter-expr
     $filter=Description eq null
+```
 
 查找名称为“Sea View motel”或“Budget hotel”的所有酒店。 这些短语包含空格，而空格是默认的分隔符。 可将单引号中的备用分隔符指定为第三个字符串参数：  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 查找名称为“Sea View motel”或“Budget hotel”并以“|”分隔的所有酒店：  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 查找所有客房具有“wifi”或“浴缸”标记的所有酒店：
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub'))
+```
 
 在集合中查找短语匹配项，例如标记中的“heated towel racks”或“hairdryer included”。
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 查找包含“waterfront”一词的文档。 此筛选器查询与包含 [ 的](https://docs.microsoft.com/rest/api/searchservice/search-documents)搜索请求`search=waterfront`相同。
 
+```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
+```
 
 查找带有“hostel”一词且评分大于或等于 4 分的文档，或带有“motel”一词且评分等于 5 分的文档。 在不使用 `search.ismatchscoring` 函数的情况下无法表达此请求，因为它使用 `or` 将全文搜索与筛选操作合并在一起。
 
+```odata-filter-expr
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+```
 
 查找没有“luxury”一词的文档。
 
+```odata-filter-expr
     $filter=not search.ismatch('luxury')
+```
 
 查找包含短语“ocean view”或评分等于 5 分的文档。 `search.ismatchscoring` 查询仅针对 `HotelName` 和 `Description` 字段执行。 仅与析取的第二个子句匹配的文档也将被返回，即 `Rating` 等于 5 的酒店。 为了清楚地表明这些文档与表达式的任何评分部分都不匹配，它们返回的分数等于零。
 
+```odata-filter-expr
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
+```
 
 查找除描述以外，其他位置的“酒店”和“机场”描述内容不超过五个单词，且所有客房都禁止吸烟的酒店。 此查询使用[完整 Lucene 查询语言](query-lucene-syntax.md)。
 
+```odata-filter-expr
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>后续步骤  
 

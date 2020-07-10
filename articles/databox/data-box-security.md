@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817719"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200411"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
 
@@ -30,11 +30,14 @@ Microsoft Azure Data Box 解决方案由四个彼此交互的主要组件构成�
 - **连接到设备的客户端/主机** – 基础结构中的客户端，它们连接到 Data Box 设备，并包含需要保护的数据。
 - **云存储** – Azure 云中存储数据的位置。 这通常是链接到所创建的 Azure Data Box 资源的存储帐户。
 
-下图指示了通过 Azure Data Box 解决方案运行的从本地到 Azure 的数据流。
+下图指示了通过 Azure Data Box 解决方案运行的从本地到 Azure 的数据流。 此流适用于你的 Data Box 的导入顺序。
 
 ![Data Box 安全性](media/data-box-security/data-box-security-2.png)
 
-在数据流经此解决方案时，将会记录事件并生成日志。 有关详细信息，请转到 [Azure Data Box 的跟踪和事件日志记录](data-box-logs.md)。
+在数据流经此解决方案时，将会记录事件并生成日志。 有关详细信息，请转到：
+
+- [Azure Data Box 导入订单的跟踪和事件日志记录](data-box-logs.md)。
+- [Azure Data Box 导出订单的跟踪和事件日志记录](data-box-export-logs.md)
 
 ## <a name="security-features"></a>安全功能
 

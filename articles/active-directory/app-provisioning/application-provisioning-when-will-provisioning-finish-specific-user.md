@@ -11,11 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782018"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203003"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>检查用户设置的状态
 
@@ -26,11 +27,11 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
  在应用的 "**设置**" 页上，你可以查看 Azure AD 预配服务的状态。 页面底部的 "**当前状态**" 部分显示预配周期是否已开始预配用户帐户。 您可以查看周期的进度，查看已设置的用户和组的数量，并查看已创建的角色数。
 
 首次配置自动预配时，页面底部的 "**当前状态**" 部分会显示初始预配周期的状态。 此部分将在每次运行增量循环时更新。 将显示以下详细信息：
-- 当前正在运行或最后完成的预配周期（初始或增量）的类型。
+- 当前正在运行或最后完成的初始或增量)  (的预配周期类型。
 - 显示已完成的预配周期百分比的**进度栏**。 百分比反映预配的页的计数。 请注意，每个页面可能包含多个用户或组，因此该百分比并不与预配的用户、组或角色的数目直接相关。
 - 可以使用 "**刷新**" 按钮来更新视图。
 - 连接器数据存储中的**用户**和**组**的数目。 当将对象添加到预配的作用域时，计数将增加。 如果用户已软删除或硬删除，则计数不会关闭，因为这样不会从连接器数据存储中删除对象。 在 CD[重置](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)后，将重新计算第一次同步 
-- "**查看审核日志**" 链接，可打开 Azure AD 预配日志，以获取有关用户预配服务运行的所有操作的详细信息，包括每个用户的预配状态（请参阅下面的[使用预配日志](#use-provisioning-logs-to-check-a-users-provisioning-status)部分）。
+- "**查看审核日志**" 链接，可打开 Azure AD 设置日志，以获取有关用户预配服务运行的所有操作的详细信息（包括单个用户的预配状态） (参阅下面) 的 "[使用预配日志](#use-provisioning-logs-to-check-a-users-provisioning-status)" 部分。
 
 设置周期完成后，"**统计信息截止日期**" 部分显示已设置为 "日期" 的用户和组的累计数量，以及最后一个周期的完成日期和持续时间。 **活动 ID**唯一标识最新的设置周期。 **作业 ID**是预配作业的唯一标识符，特定于租户中的应用。
 
@@ -40,9 +41,9 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 
 ## <a name="use-provisioning-logs-to-check-a-users-provisioning-status"></a>使用设置日志检查用户的预配状态
 
-若要查看所选用户的预配状态，请参阅 Azure AD 中的[预配日志（预览）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 用户预配服务运行的所有操作都记录在 Azure AD 预配日志中。 这包括对源系统和目标系统执行的所有读取和写入操作，以及每个操作期间读取或写入的用户数据。
+若要查看所选用户的预配状态，请参阅 Azure AD 中[ (预览) 的设置日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 用户预配服务运行的所有操作都记录在 Azure AD 预配日志中。 这包括对源系统和目标系统执行的所有读取和写入操作，以及每个操作期间读取或写入的用户数据。
 
-可以通过在**Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory**企业应用** &gt; **预配日志（预览版）** **Activity** " 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅[预配日志（预览）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
+可以通过在**Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory**企业应用**" "设置" " &gt; ** (预览**" **Activity**) 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅[预配日志 (预览) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
 
 预配日志记录预配服务执行的所有操作，包括：
 
@@ -60,7 +61,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 
 - 对于**初始周期**，作业时间取决于许多因素，包括用于预配的作用域中的用户和组的数量，以及源系统中的用户和组的总数。 Azure AD 和应用之间的首次同步可能会持续 20 分钟至几小时，具体取决于 Azure AD 目录的大小与作用域中的预配用户数量。 本部分稍后将概述影响初始周期性能的因素的综合列表。
 
-- 对于初始周期后的**增量循环**，作业时间往往更快（例如，在10分钟内），因为预配服务在初始周期后存储表示这两个系统状态的水印，从而提高后续同步的性能。 作业时间取决于在该预配周期中检测到的更改的数量。 如果用户或组成员身份更改少于5000，则作业可以在单个增量预配周期内完成。 
+- 对于初始周期后的**增量循环**，作业时间往往更快 (例如，在10分钟内) ，因为预配服务在初始周期后存储表示这两个系统状态的水印，从而提高后续同步的性能。 作业时间取决于在该预配周期中检测到的更改的数量。 如果用户或组成员身份更改少于5000，则作业可以在单个增量预配周期内完成。 
 
 下表总结了常见的预配方案的同步时间。 在这些方案中，源系统是 Azure AD，目标系统是 SaaS 应用程序。 同步时间是从 SaaS 应用程序 ServiceNow、工作区、Salesforce 和 G Suite 的同步作业的统计分析派生而来的。
 
@@ -76,12 +77,11 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 | 同步 Azure AD 中的所有用户|  < 1,000  | < 30 分钟 | < 30 分钟 |
 | 同步 Azure AD 中的所有用户 | 1,000 - 10,000  | 43 - 86 分钟 | < 30 分钟 |
 
-
 对于**仅限配置同步分配的用户和组**，可以使用以下公式来确定预计的最小和最大预计**初始周期**时间：
 
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
+- 最小分钟数 = 0.01 x [分配的用户、组和组成员的数目]
+- 最大分钟数 = 0.08 x [分配的用户、组和组成员的数目]
+
 影响完成**初始周期**所花费时间的因素的摘要：
 
 - 预配范围内用户和组的总数。

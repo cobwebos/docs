@@ -1,14 +1,15 @@
 ---
 title: 了解指标警报在 Azure Monitor 中的工作原理。
 description: 获取指标警报功能的概述，以及它们在 Azure Monitor 中的工作原理。
-ms.date: 03/17/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248815"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187517"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -134,9 +135,13 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 可以通过以下三种方式之一指定单个指标警报规则的监视范围。 例如，对于虚拟机，可以将范围指定为：  
 
-- 单个订阅中单个 Azure 区域中的虚拟机列表
+- 订阅中的一个 Azure 区域)  (虚拟机列表
 - 指定为单个订阅中一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）
-- 指定为单个订阅中的所有虚拟机（在单个 Azure 区域中）
+- 订阅中的一个 Azure 区域)  (所有虚拟机
+
+> [!NOTE]
+>
+> 多资源指标警报规则的作用域必须包含至少一个所选资源类型的资源。
 
 创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每个受监视资源，你将收到单独的通知。
 

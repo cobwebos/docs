@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 53a7e113d64ea4cf7018d51a44f9488342f1470f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715624"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187143"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>排查在空闲时间启动/停止 VM 的问题
 
@@ -98,7 +99,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 查看下面的列表以找到可能的解决方案：
 
-* 检查是否为“在空闲时间启动/停止 VM”正确配置了计划。 要了解如何配置计划，请参阅[计划](../automation-schedules.md)。
+* 检查是否为“在空闲时间启动/停止 VM”正确配置了计划。 要了解如何配置计划，请参阅[计划](../shared-resources/schedules.md)。
 
 * 检查[作业流](../automation-runbook-execution.md#job-statuses)以查看是否有任何错误。 从以下某个 Runbook 中查找作业：
 

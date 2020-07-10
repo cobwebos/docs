@@ -1,5 +1,5 @@
 ---
-title: 交互式调试：VS Code 和 ML 计算实例
+title: '交互式调试： VS Code & ML 计算实例 (预览) '
 titleSuffix: Azure Machine Learning
 description: 设置 VS Code Remote，使用 Azure 机器学习对代码进行交互式调试。
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 12/09/2019
-ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 46aefa62ab00c0b3bc2b90467a9fafd61439a10e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433137"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203451"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>使用 VS Code Remote 对 Azure 机器学习计算实例进行交互式调试
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>使用 VS Code 远程 (预览版以交互方式在 Azure 机器学习计算实例上调试) 
 
 本文介绍如何在 Azure 机器学习计算实例上设置 Visual Studio Code Remote，从而通过 VS Code 对代码进行交互式调试  。 
 

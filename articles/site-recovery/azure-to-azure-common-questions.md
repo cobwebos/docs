@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134037"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201208"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复
 
@@ -120,7 +120,7 @@ Site Recovery 不支持从已复制 VM 中“热删除”磁盘。 如果删除 
 复制策略定义了恢复点的保留历史记录设置。 此策略还定义了应用一致性快照的频率。 默认情况下，Azure Site Recovery 使用以下默认设置创建新的复制策略：
 
 - 恢复点历史记录的保留期为 24 小时。
-- 应用一致性快照的频率为 60 分钟。
+- 应用一致的快照的频率为4小时。
 
 [详细了解复制设置](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings)。
 
@@ -183,7 +183,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 你无法更改�
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>能否在 Linux 服务器中使用应用一致性启用复制？
 
-是。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [了解详细信息](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
+正确。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [了解详细信息](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>多 VM 一致性
 
@@ -291,7 +291,7 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>我从主要区域故障转移到了灾难恢复区域。 DR 区域中的 VM 是否自动受到保护？
 
-否。 将 Azure VM 从一个区域[故障转移](./azure-to-azure-tutorial-failover-failback.md)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](./azure-to-azure-how-to-reprotect.md)次要区域中的 VM。
+不是。 将 Azure VM 从一个区域[故障转移](./azure-to-azure-tutorial-failover-failback.md)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](./azure-to-azure-how-to-reprotect.md)次要区域中的 VM。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>重新保护时，Site Recovery 是否将完整的数据从次要区域复制到主要区域？
 

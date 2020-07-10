@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 194610845d9625139ff826711fc361bd9670a426
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445519"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202659"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Windows 虚拟机映像
 Azure 中的每个虚拟机 (VM) 都是基于定义 Windows 分发和操作系统版本的映像创建的。 映像可以包括预安装的应用程序和配置。 Azure 市场为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
@@ -111,6 +111,9 @@ Get-AzSubscription
     "type": "powershell",
     "inline": [
       "Add-WindowsFeature Web-Server",
+      "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
+      "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
+      "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
       "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
       "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
     ]
@@ -119,6 +122,8 @@ Get-AzSubscription
 ```
 
 此模板将生成 Windows Server 2016 VM，安装 IIS，然后用 Sysprep 一般化 VM。 IIS 安装展示了如何使用 PowerShell 预配程序来运行其他命令。 最终的 Packer 映像包括必需的软件安装和配置。
+
+Windows 来宾代理参与 Sysprep 进程。 必须完全安装代理，然后才能执行 sysprep VM。 若要确保这一点属实，所有代理服务都必须在执行 sysprep.exe 之前运行。 上述 JSON 代码片段演示了在 PowerShell 配置程序中执行此操作的一种方法。 仅当 VM 配置为安装代理（默认值）时，才需要此代码段。
 
 
 ## <a name="build-packer-image"></a>生成 Packer 映像

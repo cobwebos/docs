@@ -6,13 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 496069ebf64340bc55f03df8dc15304b4888bec0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79259950"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200301"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box 系统要求
 
@@ -32,13 +33,19 @@ ms.locfileid: "79259950"
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Linux 客户端支持的文件系统
+
+### <a name="supported-filesystems-for-linux-clients"></a>适用于 Linux 客户端的受支持的文件系统
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
+
+
+> [!IMPORTANT] 
+> 对于出口订单，不支持通过 REST 连接到 Data Box 共享。 
 
 ### <a name="supported-storage-accounts"></a>支持的存储帐户
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
+
 
 ### <a name="supported-storage-types"></a>受支持的存储类型
 
@@ -54,7 +61,7 @@ ms.locfileid: "79259950"
 
 ### <a name="port-requirements"></a>端口要求
 
-下表列出了需要在防火墙中打开以允许 SMB 或 NFS 流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。  
+下表列出了需要在防火墙中打开以允许 SMB 或 NFS 流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。****
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

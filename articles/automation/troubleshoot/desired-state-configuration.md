@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681371"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187211"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>排查 Azure 自动化状态配置问题
 
@@ -25,7 +26,7 @@ ms.locfileid: "83681371"
 
 ### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1.确保配置在本地计算机上成功编译
 
-Azure 自动化状态配置基于 PowerShell 所需状态配置 (DSC) 生成。 可以在 [PowerShell DSC 文档](https://docs.microsoft.com/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
+Azure 自动化状态配置基于 PowerShell 所需状态配置 (DSC) 生成。 可以在 [PowerShell DSC 文档](/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
 
 通过在本地计算机上编译 DSC 配置，可以发现和解决常见错误，例如：
 
@@ -41,7 +42,7 @@ Azure 自动化状态配置基于 PowerShell 所需状态配置 (DSC) 生成。 
 
 可以按照[安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中的说明在本地计算机上安装 `xDscDiagnostics` 模块。
 
-若要在 Azure 计算机上安装 `xDscDiagnostics` 模块，请使用 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)。 还可以按照[使用“运行命令”在 Windows VM 中运行 PowerShell 脚本](../../virtual-machines/windows/run-command.md)中的步骤使用 Azure 门户中的“运行命令”选项。
+若要在 Azure 计算机上安装 `xDscDiagnostics` 模块，请使用 [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)。 还可以按照[使用“运行命令”在 Windows VM 中运行 PowerShell 脚本](../../virtual-machines/windows/run-command.md)中的步骤使用 Azure 门户中的“运行命令”选项。
 
 有关使用 xDscDiagnostics 的信息，请参阅[使用 xDscDiagnostics 分析 DSC 日志](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)。 另请参阅 [xDscDiagnostics Cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
 
@@ -65,13 +66,13 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 ### <a name="resolution"></a>解决方法
 
-使用 [Remove-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 cmdlet 删除配置。
+使用[AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0) cmdlet 删除配置。
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>场景：未能注册 DSC 代理
 
 ### <a name="issue"></a>问题
 
-若为 [Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) 或其他 DSC cmdlet，则会收到以下错误：
+若为 [Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) 或其他 DSC cmdlet，则会收到以下错误：
 
 ```error
 Registration of the Dsc Agent with the server
@@ -176,7 +177,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 * 可以使用 Azure 门户或 PowerShell cmdlet 将节点配置分配给节点。
 
   * 在 Azure 门户中，转到“主页” > “自动化帐户”>“（你的自动化帐户）”>“状态配置(DSC)”  。 然后选择一个节点并选择“分配节点配置”。
-  * 使用 [Set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) cmdlet。
+  * 使用 [Set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) cmdlet。
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>场景：编译配置时未生成节点配置（MOF 文件）
 
@@ -215,7 +216,7 @@ No instance found with given property values
 
 ### <a name="resolution"></a>解决方法
 
-按照 [DSC 已知问题和限制](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)中的说明进行操作。
+按照 [DSC 已知问题和限制](/powershell/scripting/wmf/known-issues/known-issues-dsc)中的说明进行操作。
 
 ## <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>场景：无法在 DSC 配置中使用凭据
 
@@ -258,7 +259,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 ### <a name="issue"></a>问题
 
-使用 [Register-AzAutomationDSCNode](https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) 或 [Register-AzureRMAutomationDSCNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0) 注册节点时，会收到以下错误：
+使用 [Register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) 或 [Register-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0) 注册节点时，会收到以下错误：
 
 ```error
 One or more errors occurred.
@@ -337,7 +338,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 ### <a name="resolution"></a>解决方法
 
-可以通过显式包括任何 [Import-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) 调用的 `ModuleName` 参数来更快地分析 DSC 配置。
+可以通过显式包括任何 [Import-DSCResource](/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) 调用的 `ModuleName` 参数来更快地分析 DSC 配置。
 
 ## <a name="next-steps"></a>后续步骤
 

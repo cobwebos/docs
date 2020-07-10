@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 3c6a5e011a536cc9c34565d4f72a9bee6c6a5254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cda729779c333064c91152e8427ce1a05227396e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945164"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201974"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>有关 Linux 虚拟机的常见问题
 本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。 有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -29,13 +30,13 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 ## <a name="how-can-i-access-my-virtual-machine"></a>如何访问我的虚拟机？
 使用安全外壳 (SSH) 建立远程连接，以登录到虚拟机。 请参阅如何[从 Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或[从 Linux 和 Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 进行连接的相关说明。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增加此数量。
 
-如果遇到问题，请查看[安全外壳（SSH）连接故障排除](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如果遇到问题，请查看[安全外壳 (SSH) 连接的疑难解答](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>我是否可以使用临时磁盘 (/dev/sdb1) 存储数据？
 不要使用临时磁盘 (/dev/sdb1) 存储数据。 它只是用于临时存储。 有丢失无法恢复的数据的风险。
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>可否复制或克隆现有的 Azure VM？
-是的。 有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+正确。 有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>为什么在 Azure Resource Manager 中看不到加拿大中部和加拿大东部区域？
 针对现有 Azure 订阅创建的虚拟机不会自动注册到加拿大中部和加拿大东部这两个新区域。 通过 Azure 门户使用 Azure Resource Manager 将虚拟机部署到其他任何区域时，将自动完成此注册。 将虚拟机部署到其他任何 Azure 区域后，新区域可供后续虚拟机使用。
@@ -44,7 +45,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 能，目前可行。 首先需停止解除分配 VM。 然后便可添加或删除 NIC（除非它是 VM 上的最后一个 NIC）。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>是否有任何计算机名称要求？
-是的。 计算机名称的最大长度为 64 个字符。 有关命名资源的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。
+正确。 计算机名称的最大长度为 64 个字符。 有关命名资源的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>是否存在资源组名称要求？
 是的。 资源组名称的最大长度为 90 个字符。 有关资源组的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。
@@ -55,31 +56,55 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 
 不允许使用以下用户名：
 
-| | | | |
-|-----------------|-----------|--------------------|----------|
-| `administrator` | `admin`   | `user`             | `user1`  |
-| `test`          | `user2`   | `test1`            | `user3`  |
-| `admin1`        | `1`       | `123`              | `a`      |
-| `actuser`       | `adm`     | `admin2`           | `aspnet` |
-| `backup`        | `console` | `david`            | `guest`  |
-| `john`          | `owner`   | `root`             | `server` |
-| `sql`           | `support` | `support_388945a0` | `sys`    |
-| `test2`         | `test3`   | `user4`            | `user5`  |
-| `video`         |
+- `1`
+- `123`
+- `a`
+- `actuser`
+- `adm`
+- `admin`
+- `admin1`
+- `admin2`
+-`administrator`
+- `aspnet`
+- `backup`
+- `console`
+- `david`
+- `guest`
+- `john`
+- `owner`
+- `root`
+- `server`
+- `sql`
+- `support_388945a0`
+- `support`
+- `sys`
+- `test`
+- `test1`
+- `test2`
+- `test3`
+- `user`
+- `user1`
+- `user2`
+- `user3`
+- `user4`
+- `user5`
+- `video`
+
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>创建 VM 时，密码有什么要求？
 
 根据所使用的工具，有不同的密码长度要求：
  - 门户 - 12 到 72 个字符之间
  - PowerShell - 8 到 123 个字符之间
- - CLI - 12 到 123 个字符之间
+ - CLI-介于 12-123 个字符之间
+ - Azure 资源管理器 (ARM) 模板-不允许使用 12-72 字符和控制字符
  
 
 密码还必须满足以下 4 个复杂性要求中的 3 个要求：
 
 * 具有小写字符
-* 具有大写字符
-* 具有数字
+* 包含大写字符
+* 包含一个数字
 * 具有特殊字符（正则表达式匹配 [\W_]）
 
 不允许使用以下密码：

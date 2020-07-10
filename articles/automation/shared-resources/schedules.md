@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 557dc3ad48f8f21d8898e2beb5d940d66058e90c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744980"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187347"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>管理 Azure 自动化中的计划
 
@@ -31,13 +32,13 @@ ms.locfileid: "83744980"
 
 | Cmdlet | 说明 |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |检索计划。 |
-| [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |检索计划 Runbook。 |
-| [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |创建新计划。 |
-| [Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |将 Runbook 与计划相关联。 |
-| [Remove-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |删除计划。 |
-| [Set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |设置现有计划的属性。 |
-| [Unregister-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |将 Runbook 与计划取消关联。 |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |检索计划。 |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |检索计划 Runbook。 |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |创建新计划。 |
+| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |将 Runbook 与计划相关联。 |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |删除计划。 |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |设置现有计划的属性。 |
+| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |将 Runbook 与计划取消关联。 |
 
 ## <a name="create-a-schedule"></a>创建计划
 
@@ -64,7 +65,7 @@ ms.locfileid: "83744980"
 
 ### <a name="create-a-new-schedule-with-powershell"></a>使用 PowerShell 创建新计划
 
-使用 [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) cmdlet 创建计划。 必须指定计划的开始时间以及运行频率。 以下示例演示如何创建许多不同的计划场景。
+使用 [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) cmdlet 创建计划。 必须指定计划的开始时间以及运行频率。 以下示例演示如何创建许多不同的计划场景。
 
 #### <a name="create-a-one-time-schedule"></a>创建一次性计划
 
@@ -127,7 +128,7 @@ New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>使用 PowerShell 将计划链接到 runbook
 
-使用 [Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) cmdlet 链接计划。 可以使用 Parameters 参数指定 Runbook 参数的值。 有关如何指定参数值的详细信息，请参阅[在 Azure 自动化中启动 Runbook](../automation-starting-a-runbook.md)。
+使用 [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) cmdlet 链接计划。 可以使用 Parameters 参数指定 Runbook 参数的值。 有关如何指定参数值的详细信息，请参阅[在 Azure 自动化中启动 Runbook](../start-runbooks.md)。
 以下示例演示了如何使用带参数的 Azure 资源管理器 cmdlet 将计划链接到 runbook。
 
 ```azurepowershell-interactive
@@ -163,7 +164,7 @@ Register-AzAutomationScheduledRunbook –AutomationAccountName $automationAccoun
 
 ### <a name="disable-a-schedule-with-powershell"></a>使用 PowerShell 禁用计划
 
-可使用 [Set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) cmdlet 更改现有计划的属性。 若要禁用计划，请为 `IsEnabled` 参数指定 False。
+可使用 [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) cmdlet 更改现有计划的属性。 若要禁用计划，请为 `IsEnabled` 参数指定 False。
 
 以下示例演示了如何使用 Azure 资源管理器 cmdlet 禁用 runbook 的计划。
 

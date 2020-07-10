@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113184"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201988"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure 认知搜索中的 OData 逻辑运算符 - `and`、`or`、`not`
 
@@ -92,19 +93,27 @@ logical_expression ::=
 
 匹配 `rating` 字段为 3 到 5（含）的文档：
 
+```odata-filter-expr
     rating ge 3 and rating le 5
+```
 
 匹配 `ratings` 字段的所有元素都小于 3 或大于 5 的文档：
 
+```odata-filter-expr
     ratings/all(r: r lt 3 or r gt 5)
+```
 
 匹配 `location` 字段在给定的多边形之内的文档，文档不含“public”一词。
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
+```
 
 匹配加拿大温哥华酒店的文档，此类酒店存在基础费率不到 160 加元的豪华客房：
 
+```odata-filter-expr
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
+```
 
 ## <a name="next-steps"></a>后续步骤  
 

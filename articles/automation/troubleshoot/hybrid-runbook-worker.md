@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681002"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187194"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>排查混合 Runbook 辅助角色问题
 
@@ -57,7 +58,7 @@ Runbook 在尝试执行三次后很快暂停。 在某些情况下，Runbook 可
 
 #### <a name="issue"></a>问题
 
-混合 Runbook 辅助角色收到表示查询结果无效的事件 15011。 当辅助角色尝试与 [SignalR 服务器](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.1)建立连接时出现以下错误。
+混合 Runbook 辅助角色收到表示查询结果无效的事件 15011。 当辅助角色尝试与 [SignalR 服务器](/aspnet/core/signalr/introduction?view=aspnetcore-3.1)建立连接时出现以下错误。
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -237,7 +238,7 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 #### <a name="issue"></a>问题
 
-Windows 混合 Runbook 辅助角色上运行的脚本无法按预期方式连接到业务流程协调程序沙盒中的 Office 365。 脚本使用 [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 进行连接。 
+Windows 混合 Runbook 辅助角色上运行的脚本无法按预期方式连接到业务流程协调程序沙盒中的 Office 365。 脚本使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 进行连接。 
 
 即使调整 **Orchestrator.Sandbox.exe.config** 来设置代理和“绕过列表”，沙盒仍然无法正常连接。 包含相同代理和“绕过列表”设置的某个 **Powershell_ise.exe.config** 文件看起来却能按预期方式工作。 Service Management Automation (SMA) 日志和 PowerShell 日志未提供有关代理的任何信息。
 
@@ -247,9 +248,9 @@ Windows 混合 Runbook 辅助角色上运行的脚本无法按预期方式连接
 
 #### <a name="resolution"></a>解决方法
 
-可以通过迁移脚本以使用 Azure Active Directory 模块而不是使用 PowerShell cmdlet 的 MSOnline 模块，来解决业务流程协调程序沙盒的问题。 有关详细信息，请参阅[从业务流程协调程序迁移到 Azure 自动化 (Beta)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration)。
+可以通过迁移脚本以使用 Azure Active Directory 模块而不是使用 PowerShell cmdlet 的 MSOnline 模块，来解决业务流程协调程序沙盒的问题。 有关详细信息，请参阅[从业务流程协调程序迁移到 Azure 自动化 (Beta)](../automation-orchestrator-migration.md)。
 
-若要继续使用 MSOnline 模块 cmdlet，请将脚本更改为使用 [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。 指定 `ComputerName` 和 `Credential` 参数的值。 
+若要继续使用 MSOnline 模块 cmdlet，请将脚本更改为使用 [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。 指定 `ComputerName` 和 `Credential` 参数的值。 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

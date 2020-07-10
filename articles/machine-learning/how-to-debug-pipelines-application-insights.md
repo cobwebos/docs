@@ -3,19 +3,19 @@ title: 监视 &收集管道日志文件
 titleSuffix: Azure Machine Learning
 description: 将日志记录添加到训练和批量评分管道，并在 Application Insights 中查看记录的结果。
 services: machine-learning
-author: sanpil
-ms.author: sanpil
+author: NilsPohlmann
+ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 01/16/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: a87ceb5a216b05f3fae6d570bbfed1c4a622c911
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6a4a32db18b881b702aacf7bb669ffa14f9d103e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055709"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201248"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>收集用于警报和调试 Application Insights 中的机器学习管道日志文件
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 05/21/2019
+ms.date: 06/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 036e99a193d539bdcb204b5b062de261c30dffc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1935e6a95906473fdb4c1c25039cfbca5bace526
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66244665"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202687"
 ---
 本部分介绍了应用于 Data Box 服务的 Azure 存储服务限制，以及 Azure 文件、Azure 块 blob 和 Azure 页 blob 的必需命名约定。 请仔细查看存储限制并遵循所有建议。
 

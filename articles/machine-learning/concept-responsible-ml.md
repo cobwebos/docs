@@ -1,5 +1,5 @@
 ---
-title: 负责机器学习 (ML)
+title: " (ML) 预览的责任机器学习"
 titleSuffix: Azure Machine Learning
 description: 了解什么是负责 ML，以及如何使用 Azure 机器学习将其付诸实践
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 05/08/2020
-ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.date: 07/09/2020
+ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920364"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201936"
 ---
-# <a name="responsible-machine-learning-ml"></a>负责机器学习 (ML)
+# <a name="responsible-machine-learning-ml-preview"></a> (ML) 预览的责任机器学习
 
 本文介绍了什么是负责 ML，以及如何使用 Azure 机器学习将其付诸实践。
 

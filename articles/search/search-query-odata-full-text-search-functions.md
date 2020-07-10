@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72793345"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201399"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure 认知搜索中的 OData 全文搜索函数 - `search.ismatch` 和 `search.ismatchscoring`
 
@@ -35,7 +35,7 @@ Azure 认知搜索支持使用 `search.ismatch` 和 `search.ismatchscoring` 函�
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 `search.ismatch` 和函数的语法 `search.ismatchscoring` ：
+以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 `search.ismatch` 和函数的语法 `search.ismatchscoring` ：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -98,25 +98,35 @@ search_mode ::= "'any'" | "'all'"
 
 查找包含“waterfront”一词的文档。 此筛选器查询与包含 `search=waterfront` 的[搜索请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)相同。
 
+```odata-filter-expr
     search.ismatchscoring('waterfront')
+```
 
 查找带有“hostel”一词且评分大于或等于 4 分的文档，或带有“motel”一词且评分等于 5 分的文档。 请注意，如果没有 `search.ismatchscoring` 函数，则无法表达此请求。
 
+```odata-filter-expr
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
+```
 
 查找没有“luxury”一词的文档。
 
+```odata-filter-expr
     not search.ismatch('luxury')
+```
 
 查找包含短语“ocean view”或评分等于 5 分的文档。 `search.ismatchscoring` 查询仅针对 `HotelName` 和 `Rooms/Description` 字段执行。
 
 仅与析取的第二个子句匹配的文档也将被返回，即 `Rating` 等于 5 分的酒店。 为了清楚地表明这些文档与表达式的任何得分部分都不匹配，它们返回的分数将为零。
 
+```odata-filter-expr
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
+```
 
 在酒店描述中查找词条“hotel”和“airport”相距不超过 5 个字词且不允许吸烟（至少部分房间是这样）的文档。 此查询使用[完整 Lucene 查询语言](query-lucene-syntax.md)。
 
+```odata-filter-expr
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>后续步骤  
 

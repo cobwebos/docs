@@ -10,11 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 47f0502226e4227c6b94920da6f040004beb41f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42dcbf693b6ec685849b1523480506e9c8f5b54b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781661"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202890"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>如何：在 Azure AD 中编写属性映射的表达式
 
@@ -25,13 +26,13 @@ ms.locfileid: "84781661"
 属性映射的表达式语法让人联想到 Visual Basic for Applications (VBA) 函数。
 
 * 必须定义整个表达式的函数，函数中的名称后跟带括号的参数： <br>
-  *FunctionName （ `<<argument 1>>` ， `<<argument N>>` ）*
-* 函数之间可以相互嵌套。 例如： <br> *FunctionOne （FunctionTwo （ `<<argument1>>` ））*
+  *FunctionName (`<<argument 1>>` ， `<<argument N>>`) *
+* 函数之间可以相互嵌套。 例如： <br> *FunctionOne (FunctionTwo (`<<argument1>>`) # B3*
 * 可以将三种不同类型的参数传递给函数：
   
   1. 属性，必须括在方括号中。 例如：[attributeName]
   2. 字符串常量必须括在双引号内。 例如："美国"
-  3. 其他函数。 例如： FunctionOne （ `<<argument1>>` ，FunctionTwo （ `<<argument2>>` ））
+  3. 其他函数。 例如： FunctionOne (`<<argument1>>` ，FunctionTwo (`<<argument2>>`) # A3
 * 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如： "公司名称： \\ " Contoso \\ ""
 
 ## <a name="list-of-functions"></a>函数列表
@@ -39,7 +40,7 @@ ms.locfileid: "84781661"
 [Append](#append) &nbsp; &nbsp; 追加 &nbsp; &nbsp;[BitAnd](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[Coalesce](#coalesce) &nbsp; &nbsp; 合并 &nbsp; &nbsp;[ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[Count](#count) &nbsp; &nbsp; 计数 &nbsp; &nbsp;[CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[Guid](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[IIF](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[InStr](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[IsPresent](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[IsString](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[Item](#item) &nbsp; &nbsp; 项 &nbsp; &nbsp;[Join](#join) &nbsp; &nbsp; 联接 &nbsp; &nbsp;[Left](#left) &nbsp; &nbsp; 左 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word) StripSpaces ToLower ToUpper Word
 
 ---
-### <a name="append"></a>追加
+### <a name="append"></a>Append
 
 **才能**<br> Append(source, suffix)
 
@@ -47,14 +48,14 @@ ms.locfileid: "84781661"
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称。 |
 | **后缀** |必须 |String |要附加到源值末尾的字符串。 |
 
 ---
 ### <a name="bitand"></a>BitAnd
-**才能**<br> BitAnd （value1，value2）
+**才能**<br> BitAnd (value1，value2) 
 
 **描述:**<br> 此函数将两个参数转换为二进制表示形式，并将位设置为：
 
@@ -65,7 +66,7 @@ ms.locfileid: "84781661"
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **value1** |必需 |num |应与 value2 一起个的数值|
 | **value2** |必需 |num |应为 value1 个的数字值|
@@ -76,44 +77,44 @@ BitAnd(&HF, &HF7)
 
 ---
 ### <a name="cbool"></a>CBool
-**才能**<br> CBool （Expression）
+**才能**<br> CBool (表达式) 
 
 **描述:**<br> CBool 基于计算的表达式返回布尔值。 如果表达式的计算结果为非零值，则 CBool 返回 True，否则返回 False。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必需 | 表达式 | 任何有效的表达式 |
 
 **示例：**<br>
-CBool （[attribute1] = [attribute2]）                                                                    
+CBool ( [attribute1] = [attribute2] )                                                                     
 如果两个属性具有相同的值，则返回 True。
 
 ---
 ### <a name="coalesce"></a>Coalesce
-**才能**<br> 合并（source1，source2，...，defaultValue）
+**才能**<br> 合并 (source1，source2，...，defaultValue) 
 
 **描述:**<br> 返回不为 NULL 的第一个源值。 如果所有参数均为 NULL，并且 defaultValue 存在，则将返回 defaultValue。 如果所有参数均为 NULL，并且 defaultValue 不存在，则合并将返回 NULL。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source1 .。。sourceN** | 必须 | String |必需，次数可变。 通常是来自源对象的属性的名称。 |
-| **defaultValue** | 可选 | String | 所有源值为 NULL 时要使用的默认值。 可以是空字符串 ("")。
+| **defaultValue** | 可选 | 字符串 | 所有源值为 NULL 时要使用的默认值。 可以是空字符串 ("")。
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
-**才能**<br> ConvertToBase64 （源）
+**才能**<br> ConvertToBase64 (源) 
 
 **描述:**<br> ConvertToBase64 函数将字符串转换为 Unicode base64 字符串。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必须 |String |要转换为 base 64 的字符串|
+| **source** |必须 |字符串 |要转换为 base 64 的字符串|
 
 **示例：**<br>
 ConvertToBase64("Hello world!")                                                                                                        
@@ -121,15 +122,15 @@ ConvertToBase64("Hello world!")
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
-**才能**<br> ConvertToUTF8Hex （源）
+**才能**<br> ConvertToUTF8Hex (源) 
 
 **描述:**<br> ConvertToUTF8Hex 函数将字符串转换为 UTF8 Hex 编码的值。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必须 |String |要转换为 UTF8 Hex 的字符串|
+| **source** |必须 |字符串 |要转换为 UTF8 Hex 的字符串|
 
 **示例：**<br>
 ConvertToUTF8Hex("Hello world!")                                                                                                         
@@ -137,25 +138,25 @@ ConvertToUTF8Hex("Hello world!")
 
 ---
 ### <a name="count"></a>计数
-**才能**<br> Count （特性）
+**才能**<br> 计数 (特性) 
 
 **描述:**<br> Count 函数返回多值属性中的元素数量
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **attribute** |必需 |attribute |将计算元素的多值属性|
 
 ---
 ### <a name="cstr"></a>CStr
-**才能**<br> CStr （值）
+**才能**<br> CStr (值) 
 
 **描述:**<br> CStr 函数将值转换为字符串数据类型。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **value** |必需 | numeric、reference 或 boolean | 可以是数字值、引用属性或布尔值。 |
 
@@ -165,13 +166,13 @@ CStr([dn])
 
 ---
 ### <a name="datefromnum"></a>DateFromNum
-**才能**<br> DateFromNum （值）
+**才能**<br> DateFromNum (值) 
 
 **描述:**<br> DateFromNum 函数将 AD 的日期格式的值转换为 DateTime 类型。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **value** |必需 | 日期 | 要转换为 DateTime 类型的广告日期 |
 
@@ -188,7 +189,7 @@ DateFromNum(129699324000000000)
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称。 |
 | **inputFormat** |必须 |String |源值的预期格式。 有关支持的格式，请参阅 [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) 。 |
@@ -202,30 +203,30 @@ DateFromNum(129699324000000000)
 
 ---
 ### <a name="iif"></a>IIF
-**才能**<br> IIF （condition，valueIfTrue，valueIfFalse）
+**才能**<br> IIF (condition、valueIfTrue、valueIfFalse) 
 
 **描述:**<br> IIF 函数基于指定的条件返回一组可能值中的其中一个值。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **状态** |必需 |变量或表达式 |计算结果为 true 或 false 的任何值或表达式。 |
 | **valueIfTrue** |必需 |变量或字符串 | 如果条件计算结果为 true，则为返回值。 |
 | **valueIfFalse** |必需 |变量或字符串 |如果条件计算结果为 false，则为返回值。|
 
 **示例：**<br>
-IIF （[国家/地区] = "USA"，[country]，[部门]）
+IIF ( [country] = "USA"、"国家/地区"、"部门" ) 
 
 ---
 ### <a name="instr"></a>InStr
-**才能**<br> InStr （value1，value2，start，compareType）
+**才能**<br> InStr (value1，value2，start，compareType) 
 
 **描述:**<br> InStr 函数查找字符串中第一次出现的子字符串
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **value1** |必须 |String |要搜索的字符串 |
 | **value2** |必须 |String |要查找的字符串 |
@@ -241,13 +242,13 @@ InStr("repEated","e",3,vbBinaryCompare)
 
 ---
 ### <a name="isnull"></a>IsNull
-**才能**<br> IsNull （Expression）
+**才能**<br> IsNull (表达式) 
 
 **描述:**<br> 如果表达式的计算结果为 Null，则 IsNull 函数返回 true。 对于属性，Null 表示缺少属性。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必需 |表达式 |要计算的表达式 |
 
@@ -257,30 +258,30 @@ IsNull([displayName])
 
 ---
 ### <a name="isnullorempty"></a>IsNullorEmpty
-**才能**<br> IsNullOrEmpty （Expression）
+**才能**<br> IsNullOrEmpty (表达式) 
 
 **描述:**<br> 如果表达式为 null 或空字符串，则 IsNullOrEmpty 函数返回 true。 对于属性，如果属性不存在，或存在但为空字符串，此语法计算结果则为 True。
 此函数的逆函数被命名为 IsPresent。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必需 |表达式 |要计算的表达式 |
 
 **示例：**<br>
-IsNullOrEmpty （[displayName]）                                               
+IsNullOrEmpty ( [displayName] )                                                
 如果该属性不存在或为空字符串，则返回 True
 
 ---
 ### <a name="ispresent"></a>IsPresent
-**才能**<br> IsPresent （Expression）
+**才能**<br> IsPresent (表达式) 
 
 **描述:**<br> 如果表达式的计算结果为字符串，该字符串不是 Null 且不为空，则 IsPresent 函数返回 true。 此函数的逆函数被命名为 IsNullOrEmpty。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必需 |表达式 |要计算的表达式 |
 
@@ -289,34 +290,34 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 ---
 ### <a name="isstring"></a>IsString
-**才能**<br> IsString （Expression）
+**才能**<br> IsString (表达式) 
 
 **描述:**<br> 如果表达式可以计算为字符串类型，则 IsString 函数计算结果为 True。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **expression** |必需 |表达式 |要计算的表达式 |
 
 ---
-### <a name="item"></a>项
-**才能**<br> Item （attribute，index）
+### <a name="item"></a>Item
+**才能**<br> Item (属性，index) 
 
 **描述:**<br> Item 函数返回多值字符串/属性中的一个项。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必需 |特性 |要搜索的多值属性 |
+| **attribute** |必需 |属性 |要搜索的多值属性 |
 | **index** |必需 |整数 | 多值字符串中的项的索引|
 
 **示例：**<br>
-Item （[proxyAddresses]，1）
+Item ( [proxyAddresses]，1) 
 
 ---
-### <a name="join"></a>联接
+### <a name="join"></a>Join
 **才能**<br> Join(separator, source1, source2, …)
 
 **描述:**<br> Join() 类似于 Append()，不同的是，它可以将多个 **source** 字符串值组合成单个字符串，每个值将由 **separator** 字符串分隔。
@@ -325,14 +326,14 @@ Item （[proxyAddresses]，1）
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | separator  |必须 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
-| **source1 .。。sourceN** |必选，次数可变 |String |要联接在一起的字符串值。 |
+| **source1 .。。sourceN** |必选，次数可变 |字符串 |要联接在一起的字符串值。 |
 
 ---
 ### <a name="left"></a>左
-**才能**<br> Left （String，NumChars）
+**才能**<br> Left (String，NumChars) 
 
 **描述:**<br> Left 函数从字符串左侧起返回指定的字符数。 如果 numChar = 0，则返回空字符串。
 如果 numChar < 0，则返回输入字符串。
@@ -341,13 +342,13 @@ Item （[proxyAddresses]，1）
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **字符串** |必需 |特性 | 要从其返回字符的字符串 |
-| **NumChars** |必需 |整数 | 标识从字符串开头（左侧）起返回的字符数的数字|
+| **字符串** |必需 |属性 | 要从其返回字符的字符串 |
+| **NumChars** |必需 |整数 | 标识从字符串的开头开始)  (的字符数的数字|
 
 **示例：**<br>
-Left （"John Doe"，3）                                                            
+左 ( "John Doe"，3)                                                             
 返回 "Joh"
 
 ---
@@ -358,7 +359,7 @@ Left （"John Doe"，3）
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是属性的名称。 |
 | **start** |必需 |integer |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
@@ -372,7 +373,7 @@ Left （"John Doe"，3）
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String | 通常是名字或姓氏属性。 |
 
@@ -384,19 +385,19 @@ Left （"John Doe"，3）
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必需 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
-**才能**<br> NumFromDate （值）
+**才能**<br> NumFromDate (值) 
 
 **描述:**<br> NumFromDate 函数将 DateTime 值转换为设置属性（如[accountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires)）所需的 Active Directory 格式。 使用此函数将从 Workday 和 SuccessFactors 之类的云 HR 应用接收的日期时间值转换为其等效的 AD 表示形式。 
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **value** |必须 | String | 支持的格式的日期时间字符串。 有关支持的格式，请参阅 https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx。 |
 
@@ -412,13 +413,13 @@ Left （"John Doe"，3）
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
-**才能**<br> RemoveDuplicates （属性）
+**才能**<br> RemoveDuplicates (特性) 
 
 **描述:**<br> RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值。
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **attribute** |必需 |多值属性 |将删除重复项的多值属性|
 
@@ -452,15 +453,15 @@ RemoveDuplicates([proxyAddresses])
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必须 |String |通常是来自**源**对象的属性的名称。 |
-| **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
-| **regexPattern** |可选 |String |**source** 中要替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
-| **regexGroupName** |可选 |String |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
-| **replacementValue** |可选 |String |用于替换旧值的新值。 |
-| **replacementAttributeName** |可选 |String |用于替换值的属性的名称 |
-| **模版** |可选 |String |提供**模板**值后，我们将在模板中查找**oldValue** ，并将其替换为**source**值。 |
+| **source** |必须 |字符串 |通常是来自**源**对象的属性的名称。 |
+| **oldValue** |可选 |字符串 |要在 **source** 或 **template** 中替换的值。 |
+| **regexPattern** |可选 |字符串 |**source** 中要替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
+| **regexGroupName** |可选 |字符串 |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
+| **replacementValue** |可选 |字符串 |用于替换旧值的新值。 |
+| **replacementAttributeName** |可选 |字符串 |用于替换值的属性的名称 |
+| **模版** |可选 |字符串 |提供**模板**值后，我们将在模板中查找**oldValue** ，并将其替换为**source**值。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -477,9 +478,9 @@ RemoveDuplicates([proxyAddresses])
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表。 |
+| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |字符串 | 要评估的唯一值生成规则的列表。 |
 
 
 ---
@@ -490,9 +491,9 @@ RemoveDuplicates([proxyAddresses])
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |必须 |String |**[appRoleAssignments]** 对象。 |
+| **[appRoleAssignments]** |必须 |字符串 |**[appRoleAssignments]** 对象。 |
 
 ---
 ### <a name="split"></a>拆分
@@ -502,10 +503,10 @@ RemoveDuplicates([proxyAddresses])
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必须 |String |要更新的 **source** 值。 |
-| **delimiter** |必须 |String |指定将用来拆分字符串的字符（示例：“,”） |
+| **source** |必须 |字符串 |要更新的 **source** 值。 |
+| **delimiter** |必须 |字符串 |指定将用来拆分字符串的字符（示例：“,”） |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -515,9 +516,9 @@ RemoveDuplicates([proxyAddresses])
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必须 |String |要更新的 **source** 值。 |
+| **source** |必须 |字符串 |要更新的 **source** 值。 |
 
 ---
 ### <a name="switch"></a>开关
@@ -527,12 +528,12 @@ RemoveDuplicates([proxyAddresses])
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必须 |String |要更新的 **source** 值。 |
-| **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
-| **key** |必须 |String |用来比较 **source** 值的 **key**。 |
-| **value** |必须 |String |与该 key 匹配的 **source** 的替换值。 |
+| **source** |必须 |字符串 |要更新的 **source** 值。 |
+| **defaultValue** |可选 |字符串 |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
+| **key** |必须 |字符串 |用来比较 **source** 值的 **key**。 |
+| **value** |必须 |字符串 |与该 key 匹配的 **source** 的替换值。 |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -542,10 +543,10 @@ RemoveDuplicates([proxyAddresses])
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必须 |String |通常是来自源对象的属性的名称 |
-| **culture** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2**，其中 languagecode2** 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码**。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **source** |必须 |字符串 |通常是来自源对象的属性的名称 |
+| **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2**，其中 languagecode2** 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码**。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -555,14 +556,14 @@ RemoveDuplicates([proxyAddresses])
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必须 |String |通常是来自源对象的属性的名称。 |
-| **culture** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2**，其中 languagecode2** 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码**。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **source** |必须 |字符串 |通常是来自源对象的属性的名称。 |
+| **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2**，其中 languagecode2** 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码**。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ---
-### <a name="word"></a>字
-**才能**<br> Word （String，WordNumber，分隔符）
+### <a name="word"></a>Word
+**才能**<br> Word (String，WordNumber，分隔符) 
 
 **描述:**<br> 基于描述要使用的分隔符与要返回的单词数的参数，Word 函数返回字符串中包含的单词。 字符串中的字符由分隔符中其中一个字符分隔的每个字符串被标识为单词：
 
@@ -572,17 +573,17 @@ RemoveDuplicates([proxyAddresses])
 
 **Parameters**<br> 
 
-| “属性” | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **字符串** |必需 |多值属性 |要从中返回单词的字符串。|
 | **WordNumber** |必需 | 整数 | 标识应返回的单词编号的数字|
-| **限定符** |必须 |String| 表示应该用于标识单词的分隔符的字符串|
+| **限定符** |必须 |String| 一个字符串，表示应用于标识单词的分隔符 (s) |
 
 **示例：**<br>
-Word （"quick 棕色 fox"，3，""）                                                                                       
+Word ( "快速棕色 fox"、"3" )                                                                                        
 返回“brown”
 
-Word （"This，string！有&多个分隔符"，3，"，！ & #"）                                                                       
+Word ( "This，string！&多个分隔符"，3，"，！ & #" )                                                                        
 返回 "has"
 
 ---
@@ -642,7 +643,7 @@ Split([extensionAttribute5], ",")
 
 **示例输入/输出：** <br>
 
-* **INPUT** （extensionAttribute5）： "PermissionSetOne，PermisionSetTwo"
+* **输入** (extensionAttribute5) ： "PermissionSetOne，PermisionSetTwo"
 * **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
@@ -699,11 +700,13 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **表达式** <br>
 
+```ad-attr-mapping-expr
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
+```
 
 **示例输入/输出：**
 
@@ -721,8 +724,8 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **示例输入/输出：** <br>
 
-* **输入**（邮件）： NULL
-* **输入**（userPrincipalName）： " John.Doe@contoso.com "
+* **输入** (mail) ： NULL
+* **输入** (userPrincipalName) ： " John.Doe@contoso.com "
 * **输出**： " John.Doe@contoso.com "
 
 ## <a name="related-articles"></a>相关文章

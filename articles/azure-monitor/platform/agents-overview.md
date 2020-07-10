@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75394768cc41d3ca73398c2691b9ec0feb8c17f8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686658"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202566"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -30,20 +31,20 @@ ms.locfileid: "84686658"
 
 | | 诊断<br>扩展 (WAD) | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|
-| 支持的环境 | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | 
-| 代理要求  | 无 | 无 | 需要 Log Analytics 代理 |
-| 收集的数据 | 事件日志<br>ETW 事件<br>性能<br>基于文件的日志<br>IIS 日志<br>.NET 应用日志<br>故障转储<br>代理诊断日志 | 事件日志<br>性能<IIS logs><br>基于文件的日志<br>见解和解决方案<br>其他服务 | 进程详细信息和依赖项<br>网络连接指标 |
-| 数据发送目标 | Azure 存储<br>Azure Monitor 指标<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志 |
+| **支持的环境** | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | 
+| **代理要求**  | 无 | 无 | 需要 Log Analytics 代理 |
+| **收集的数据** | 事件日志<br>ETW 事件<br>性能<br>基于文件的日志<br>IIS 日志<br>.NET 应用日志<br>故障转储<br>代理诊断日志 | 事件日志<br>性能<IIS logs><br>基于文件的日志<br>见解和解决方案<br>其他服务 | 进程详细信息和依赖项<br>网络连接指标 |
+| **数据发送目标** | Azure 存储<br>Azure Monitor 指标<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志 |
 
 
 ### <a name="linux-agents"></a>Linux 代理
 
 | | 诊断<br>扩展 (LAD) | Telegraf<br>代理 | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|:---|
-| 支持的环境 | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 |
-| 代理要求  | 无 | 无 | 无 | 需要 Log Analytics 代理 |
-| 收集的数据 | Syslog<br>性能 | 性能 | Syslog<br>性能| 进程详细信息和依赖项<br>网络连接指标 |
-| 数据发送目标 | Azure 存储<br>事件中心 | Azure Monitor 指标 | Azure Monitor 日志 | Azure Monitor 日志 |
+| **支持的环境** | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 |
+| **代理要求**  | 无 | 无 | 无 | 需要 Log Analytics 代理 |
+| **收集的数据** | Syslog<br>性能 | 性能 | Syslog<br>性能| 进程详细信息和依赖项<br>网络连接指标 |
+| **数据发送目标** | Azure 存储<br>事件中心 | Azure Monitor 指标 | Azure Monitor 日志 | Azure Monitor 日志 |
 
 ## <a name="log-analytics-agent"></a>Log Analytics 代理
 
@@ -70,18 +71,18 @@ Log Analytics 代理的限制包括：
 
 ## <a name="azure-diagnostics-extension"></a>Azure 诊断扩展
 
-[Azure 诊断扩展](diagnostics-extension-overview.md)收集来宾操作系统中的监视数据以及 Azure 虚拟机和其他计算资源的工作负荷。 它主要收集 Azure 存储中的数据，还允许你定义数据接收器，同时将数据发送到其他目标（例如 Azure Monitor 度量值和 Azure 事件中心）。
+[Azure 诊断扩展](diagnostics-extension-overview.md)从 Azure 虚拟机和其他计算资源的来宾操作系统和工作负载收集监视数据。 它主要将数据收集到 Azure 存储中，但也允许你通过定义数据接收器将数据同时发送到其他目标（例如 Azure Monitor 指标和 Azure 事件中心）。
 
-如果需要，请使用 Azure 诊断扩展：
+如果需要执行以下操作，请使用 Azure 诊断扩展：
 
-- 将数据发送到 Azure 存储以进行存档，或者将数据与[Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)之类的工具进行分析。
-- 使用[指标资源管理器](metrics-getting-started.md)将数据发送到[Azure Monitor 度量值](data-platform-metrics.md)，并利用准实时[指标警报](../../azure-monitor/platform/alerts-metric-overview.md)和[自动缩放](autoscale-overview.md)等功能（仅限 Windows）。
-- 使用[Azure 事件中心](diagnostics-extension-stream-event-hubs.md)将数据发送到第三方工具。
-- 收集[启动诊断](../../virtual-machines/troubleshooting/boot-diagnostics.md)以调查 VM 启动问题。
+- 将数据发送到 Azure 存储进行存档，或使用 [Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)之类的工具对其进行分析。
+- 将数据发送到 [Azure Monitor 指标](data-platform-metrics.md)，以便使用[指标资源管理器](metrics-getting-started.md)对其进行分析，并利用准实时[指标警报](../../azure-monitor/platform/alerts-metric-overview.md)和[自动缩放](autoscale-overview.md)之类的功能（仅限 Windows）。
+- 使用 [Azure 事件中心](diagnostics-extension-stream-event-hubs.md)将数据发送到第三方工具。
+- 收集[启动诊断](../../virtual-machines/troubleshooting/boot-diagnostics.md)数据，调查 VM 启动问题。
 
 Azure 诊断扩展的限制包括：
 
-- 只能与 Azure 资源一起使用。
+- 只能与 Azure 资源配合使用。
 - 将数据发送到 Azure Monitor 日志的功能有限。
 
 ## <a name="telegraf-agent"></a>Telegraf 代理
@@ -90,31 +91,31 @@ Azure 诊断扩展的限制包括：
 
 如果需要执行以下操作，请使用 Telegraf 代理：
 
-* 使用[指标资源管理器](metrics-getting-started.md)将数据发送到[Azure Monitor 度量值](data-platform-metrics.md)，并利用准实时[指标警报](../../azure-monitor/platform/alerts-metric-overview.md)和[自动缩放](autoscale-overview.md)等功能（仅适用于 Linux）。 
+* 将数据发送到 [Azure Monitor 指标](data-platform-metrics.md)，以便使用[指标资源管理器](metrics-getting-started.md)对其进行分析，并利用准实时[指标警报](../../azure-monitor/platform/alerts-metric-overview.md)和[自动缩放](autoscale-overview.md)之类的功能（仅限 Linux）。 
 
 
 
 ## <a name="dependency-agent"></a>依赖关系代理
 
-依赖关系代理收集有关在虚拟机上运行的进程和外部进程依赖关系的发现数据。 
+依赖关系代理用于收集在虚拟机上运行的进程的已发现数据，以及外部进程依赖项的已发现数据。 
 
-如果需要，请使用依赖关系代理：
+如果需要执行以下操作，请使用 Dependency Agent：
 
 * 使用地图功能[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md)或[服务映射](../insights/service-map.md)解决方案。
 
-使用依赖关系代理时，请注意以下事项：
+使用 Dependency Agent 时，请注意以下事项：
 
 - 依赖项代理要求在同一个虚拟机上安装 Log Analytics 代理。
 - 在 Linux VM 上，必须先安装 Log Analytics 代理，然后再安装 Azure 诊断扩展。
 
-## <a name="extensions-compared-to-agents"></a>与代理比较的扩展
+## <a name="extensions-compared-to-agents"></a>相较于代理的扩展
 
-适用于[Windows](../../virtual-machines/extensions/oms-windows.md)和[Linux](../../virtual-machines/extensions/oms-linux.md)的 Log Analytics 扩展在 Azure 虚拟机上安装 Log Analytics 代理。 适用于[Windows](../../virtual-machines/extensions/agent-dependency-windows.md)和[Linux](../../virtual-machines/extensions/agent-dependency-linux.md)的 Azure Monitor 依赖项扩展在 Azure 虚拟机上安装依赖关系代理。 这两个代理是上述相同的代理，但允许你通过[虚拟机扩展](../../virtual-machines/extensions/overview.md)对其进行管理。 应尽可能使用扩展安装和管理代理。
+[Windows](../../virtual-machines/extensions/oms-windows.md) 和 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics 扩展在 Azure 虚拟机上安装 Log Analytics 代理。 适用于[Windows](../../virtual-machines/extensions/agent-dependency-windows.md)和[Linux](../../virtual-machines/extensions/agent-dependency-linux.md)的 Azure Monitor 依赖项扩展在 Azure 虚拟机上安装依赖关系代理。 它们是如上所述的代理，但你可以通过[虚拟机扩展](../../virtual-machines/extensions/overview.md)对它们进行管理。 应尽可能使用扩展来安装和管理代理。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-在以下各项中获取有关每个代理的详细信息：
+在以下站点获取每个代理的更多详细信息：
 
 - [Log Analytics 代理概述](log-analytics-agent.md)
 - [Azure 诊断扩展概述](diagnostics-extension-overview.md)

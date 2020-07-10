@@ -9,11 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: dae72454cd9c0b3cb7370873619595840b770ed3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 17536f49e24da8c508da17c4c2ff5fb2f9bead62
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799981"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200888"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor 中的日志
 
@@ -38,13 +39,13 @@ Azure Monitor 中的日志包含不同类型的已经整理成记录的数据，
 下表列出了 Azure Monitor 中的日志的不同使用方式。
 
 
-|  |  |
+|  | 说明 |
 |:---|:---|
-| 分析 | 使用 Azure 门户中的 [Log Analytics](../log-query/get-started-portal.md) 编写[日志查询](../log-query/log-query-overview.md)，并使用功能强大的数据资源管理器分析引擎以交互方式分析日志数据。<br>使用 Azure 门户中的 [Application Insights 分析控制台](../app/analytics.md)来编写日志查询并以交互方式分析 Application Insights 中的日志数据。 |
-| 可视化 | 将以表格或图表形式呈现的查询结果固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)。<br>创建一个[工作簿](../platform/workbooks-overview.md)以与交互式报表中的多组数据合并。 <br>将查询结果导出到 [Power BI](powerbi.md)，以使用不同的可视化效果并与 Azure 外部的用户共享。<br>将查询结果导出到 [Grafana](grafana-plugin.md) 以利用其仪表板并与其他数据源合并。|
-| 警报 | 配置[日志警报规则](alerts-log.md)，以便在查询结果与特定的结果匹配时发送通知或执行[自动化操作](action-groups.md)。<br>对提取为指标的某些日志数据日志配置[指标警报规则](alerts-metric-logs.md)。 |
-| 检索 | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) 从命令行访问日志查询结果。<br>使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights) 从命令行访问日志查询结果。<br>使用 [REST API](https://dev.loganalytics.io/) 从自定义应用程序访问日志查询结果。 |
-| 导出 | 构建一个工作流来检索日志数据，并使用[逻辑应用](~/articles/logic-apps/index.yml)将其复制到外部位置。 |
+| **分析** | 使用 Azure 门户中的 [Log Analytics](../log-query/get-started-portal.md) 编写[日志查询](../log-query/log-query-overview.md)，并使用功能强大的数据资源管理器分析引擎以交互方式分析日志数据。<br>使用 Azure 门户中的 [Application Insights 分析控制台](../app/analytics.md)来编写日志查询并以交互方式分析 Application Insights 中的日志数据。 |
+| **可视化** | 将以表格或图表形式呈现的查询结果固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)。<br>创建一个[工作簿](../platform/workbooks-overview.md)以与交互式报表中的多组数据合并。 <br>将查询结果导出到 [Power BI](powerbi.md)，以使用不同的可视化效果并与 Azure 外部的用户共享。<br>将查询结果导出到 [Grafana](grafana-plugin.md) 以利用其仪表板并与其他数据源合并。|
+| **警报** | 配置[日志警报规则](alerts-log.md)，以便在查询结果与特定的结果匹配时发送通知或执行[自动化操作](action-groups.md)。<br>对提取为指标的某些日志数据日志配置[指标警报规则](alerts-metric-logs.md)。 |
+| **检索** | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) 从命令行访问日志查询结果。<br>使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights) 从命令行访问日志查询结果。<br>使用 [REST API](https://dev.loganalytics.io/) 从自定义应用程序访问日志查询结果。 |
+| **导出** | 构建一个工作流来检索日志数据，并使用[逻辑应用](~/articles/logic-apps/index.yml)将其复制到外部位置。 |
 
 
 ## <a name="how-is-data-in-azure-monitor-logs-structured"></a>Azure Monitor 日志中的数据结构是怎样的？
@@ -83,7 +84,7 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 | 数据 | 说明 |
 |:---|:---|
 | 资源诊断 | 配置诊断设置以写入诊断数据，包括写入 Log Analytics 工作区的指标。 请参阅[将 Azure 资源日志流式传输到 Log Analytics](resource-logs-collect-workspace.md)。 |
-| 监视解决方案 | 监视解决方案将收集的数据写入其 Log Analytics 工作区。 如需查看解决方案列表，请参阅 [Azure 中的管理解决方案的数据收集详细信息](../insights/solutions-inventory.md)。 要详细了解如何安装和使用解决方案，请参阅 [Azure Monitor 中的监视解决方案](../insights/solutions.md)。 |
+| 监视解决方案 | 监视解决方案将收集的数据写入其 Log Analytics 工作区。 如需查看解决方案列表，请参阅 [Azure 中的管理解决方案的数据收集详细信息](../insights/solutions-inventory.md)。 有关安装和使用解决方案的详细信息，请参阅 [Azure Monitor 中的监视解决方案](../insights/solutions.md)。 |
 | 指标 | 将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区，以便在较长时间内保留日志数据，并使用 [Kusto 查询语言](/azure/kusto/query/)对其他数据类型执行复杂分析。 请参阅[将 Azure 资源日志流式传输到 Log Analytics](resource-logs-collect-storage.md)。 |
 | Azure 表存储 | 从某些 Azure 资源写入监视数据的 Azure 存储中收集数据。 请参阅[将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Log Analytics 配合使用](diagnostics-extension-logs.md)。 |
 
@@ -129,6 +130,6 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Azure Monitor 数据平台](data-platform.md)的详细信息。
+- 详细了解 [Azure Monitor 数据平台](data-platform.md)。
 - 了解 [Azure Monitor 中的指标](data-platform-metrics.md)。
 - 了解适用于 Azure 中不同资源的[监视数据](data-sources.md)。

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 56fb677ca80c047fb90c58a3e0aedb41e6d4a3f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045087"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187653"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 流分析 CI/CD NuGet 包进行集成和开发 
 本文介绍如何使用 Azure 流分析 CI/CD NuGet 包设置持续集成和部署过程。
@@ -36,15 +36,11 @@ ms.locfileid: "86045087"
 
 * 资源管理器模板文件
 
-   ```
-   [ProjectName].JobTemplate.json 
-   ```
+   `[ProjectName].JobTemplate.json`
 
 * 资源管理器参数文件
    
-   ```
-   [ProjectName].JobTemplate.parameters.json
-   ```
+   `[ProjectName].JobTemplate.parameters.json`
 
 parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 

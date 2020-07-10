@@ -5,13 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 6/2/2020
+ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299292"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187568"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -1520,7 +1521,9 @@ az group deployment create \
 
 > [!NOTE]
 >
-> 在监视多个资源的指标警报规则中，仅允许包含一个条件。
+> 在监视多个资源的指标警报规则中，以下限制适用：
+> - 警报规则的作用域必须包含至少一个所选资源类型的资源。
+> - 警报规则只能包含一个条件。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>一个或多个资源组中所有虚拟机上的静态阈值警报
 

@@ -1,5 +1,5 @@
 ---
-title: Apache Hive Azure HDInsight 的 Java 用户定义函数（UDF）
+title: Java 用户定义函数 (UDF) 与 Apache Hive Azure HDInsight
 description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
-ms.openlocfilehash: 5af8f2ed1a910e559393796102f0853c4f3f1fd8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8bb5f69bc43a6af27aa71d4cf1fe054d693cc085
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082040"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201222"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用
 
@@ -234,26 +234,30 @@ cd C:\HDI
 
     此查询将从表中选择状态，并将字符串转换为小写字符串，然后将它们与未修改的名称一起显示。 显示的输出类似于以下文本：
 
-        +---------------+---------------+--+
-        |  exampleudf   |     state     |
-        +---------------+---------------+--+
-        | california    | California    |
-        | pennsylvania  | Pennsylvania  |
-        | pennsylvania  | Pennsylvania  |
-        | pennsylvania  | Pennsylvania  |
-        | colorado      | Colorado      |
-        | colorado      | Colorado      |
-        | colorado      | Colorado      |
-        | utah          | Utah          |
-        | utah          | Utah          |
-        | colorado      | Colorado      |
-        +---------------+---------------+--+
+    ```output
+    +---------------+---------------+--+
+    |  exampleudf   |     state     |
+    +---------------+---------------+--+
+    | california    | California    |
+    | pennsylvania  | Pennsylvania  |
+    | pennsylvania  | Pennsylvania  |
+    | pennsylvania  | Pennsylvania  |
+    | colorado      | Colorado      |
+    | colorado      | Colorado      |
+    | colorado      | Colorado      |
+    | utah          | Utah          |
+    | utah          | Utah          |
+    | colorado      | Colorado      |
+    +---------------+---------------+--+
+    ```
 
 ## <a name="troubleshooting"></a>疑难解答
 
 运行 hive 作业时，可能会遇到类似于以下文本的错误：
 
-    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```output
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```
 
 此问题可能是由 Python 文件中的行尾结束符号导致的。 许多 Windows 编辑器默认为使用 CRLF 作为行尾结束符号，但 Linux 应用程序通常应使用 LF。
 

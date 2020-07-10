@@ -8,11 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 71df5aa22eb93df6c98eb15f97ab017457946b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099069"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203515"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
@@ -59,11 +60,11 @@ ms.locfileid: "85099069"
 
 ## <a name="azure-storage-account-size-limits"></a>Azure 存储帐户大小限制
 
-下面是对复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 有关这些限制的最新信息，请转到 [Azure blob 存储规模目标](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)和 [Azure 文件规模目标](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)。
+下面是可以复制到存储帐户中的数据大小限制。 请确保上传的数据符合这些限制。 
 
-| 复制到 Azure 存储帐户的数据的大小                      | 默认限制          |
-|---------------------------------------------------------------------|------------------------|
-| 块 Blob 和页 blob                                            | 每个存储帐户 500 TB。 <br> 这包括来自包括 Data Box 磁盘的所有源的数据。|
+| 数据类型             | 默认限制          |
+|--------------------------|------------------------|
+| 块 blob，页 blob    | 有关这些限制的最新信息，请参阅[Azure Blob 存储缩放](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)目标、 [azure 标准存储缩放](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)目标和[azure 文件缩放目标](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)。 <br /><br /> 此限制包括来自所有源的数据，包括 Data Box Disk。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure 对象大小限制

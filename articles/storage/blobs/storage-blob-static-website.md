@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccad51d18a5e76f68633103af64e9ba6cc3f19c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833340"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203376"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -76,13 +76,15 @@ $web 容器中的文件区分大小写，通过匿名访问请求提供，并且
 
 以下屏幕截图显示了 Azure 门户中的公共访问级别设置：
 
-![显示如何在门户中设置公共访问级别的屏幕截图](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![显示如何在门户中设置公共访问级别的屏幕截图](./media/anonymous-read-access-configure/configure-public-access-container.png)
 
 虽然主静态网站终结点不会受到影响，但对公共访问级别的更改会影响主 blob 服务终结点。
 
 例如，如果将 $web 容器的公共访问级别从“专用(无匿名访问)”更改为“Blob (仅匿名读取访问 blob)”，主静态网站终结点 `https://contosoblobaccount.z22.web.core.windows.net/index.html` 的公共访问级别不会更改  。
 
 但是，主 blob 服务终结点 `https://contosoblobaccount.blob.core.windows.net/$web/index.html` 的公共访问权限会从专用更改为公共。 现在，用户可以使用这两个终结点中的任意一个来打开该文件。
+
+在存储帐户上禁用公共访问不会影响该存储帐户中托管的静态网站。 有关详细信息，请参阅[配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>将自定义域映射到静态网站 URL
 

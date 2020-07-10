@@ -1,21 +1,22 @@
 ---
-title: 通过 WhiteNoise 包实现差异隐私
+title: " (预览版中的 WhiteNoise 包实现差异保密) "
 titleSuffix: Azure Machine Learning
 description: 了解什么是差异隐私，以及 WhiteNoise 包如何帮助你实现保留数据隐私的差异隐私系统。
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/03/2020
+ms.date: 07/09/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982656"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199800"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>使用差异隐私和 WhiteNoise 包来保留数据隐私
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>使用差异隐私和 WhiteNoise 包 (预览来保留数据隐私) 
 
 了解什么是差异隐私，以及 WhiteNoise 包如何帮助你实现差异隐私系统。
 
@@ -62,7 +63,7 @@ epsilon 值为非负数。 小于 1 的值提供了完全合理的可否认性�
 
 核心库包含以下用于实现差异隐私系统的隐私机制：
 
-|组件  |说明  |
+|组件  |描述  |
 |---------|---------|
 |分析     | 任意计算的图形说明。 |
 |验证程序     | 一个包含一组工具的 Rust 库，这些工具用于检查和派生使分析具有差异隐私性的必要条件。          |

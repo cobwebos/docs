@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: 2eb5817a3339494417bb426bfdccb09ae3ac7230
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bd6d02ce1cd60a6d54047139f06fa59f359f9da9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087769"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202406"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>使用 PowerShell 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
@@ -49,21 +49,25 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
 2. 打开一个新的 **Azure PowerShell** 命令提示符。 将目录更改为 **mapreducejob.ps1** 文件所在位置，并使用以下命令来运行脚本：
 
-        .\mapreducejob.ps1
+    ```azurepowershell
+    .\mapreducejob.ps1
+    ```
 
     运行该脚本时，系统会提示输入 HDInsight 群集的名称和群集登录名。 还会提示针对 Azure 订阅进行身份验证。
 
 3. 作业完成后，将收到类似于以下文本的输出：
 
-        Cluster         : CLUSTERNAME
-        ExitCode        : 0
-        Name            : wordcount
-        PercentComplete : map 100% reduce 100%
-        Query           :
-        State           : Completed
-        StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
-        SubmissionTime  : 12/5/2014 8:34:09 PM
-        JobId           : job_1415949758166_0071
+    ```output
+    Cluster         : CLUSTERNAME
+    ExitCode        : 0
+    Name            : wordcount
+    PercentComplete : map 100% reduce 100%
+    Query           :
+    State           : Completed
+    StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
+    SubmissionTime  : 12/5/2014 8:34:09 PM
+    JobId           : job_1415949758166_0071
+    ```
 
     此输出指示作业已成功完成。
 

@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113148"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203118"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $orderby 语法
 
@@ -31,7 +32,7 @@ ms.locfileid: "74113148"
 
 ## <a name="syntax"></a>语法
 
-**$orderby** 参数接受最多 32 个 **order-by 子句**的逗号分隔列表。 下面的 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）描述了 order by 子句的语法：
+**$orderby** 参数接受最多 32 个 **order-by 子句**的逗号分隔列表。 Order by 子句的语法由以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 描述：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -63,19 +64,27 @@ sortable_function ::= geo_distance_call | 'search.score()'
 
 按基准费率对酒店进行升序排序：
 
+```odata-filter-expr
     $orderby=BaseRate asc
+```
 
 按评分对酒店进行降序排序，然后按基准费率对酒店进行升序排序（请记住，升序是默认值）：
 
+```odata-filter-expr
     $orderby=Rating desc,BaseRate
+```
 
 按评分对酒店进行降序排序，然后按距给定坐标的距离进行升序排序：
 
+```odata-filter-expr
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 按 search.score 和评分对酒店进行降序排序，然后按距给定坐标的距离进行升序排序。 在相关性评分和评分相同的两家酒店之间，将距离最近的酒店列在前面：
 
+```odata-filter-expr
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>后续步骤  
 

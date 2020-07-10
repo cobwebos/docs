@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 07/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558537"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200128"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>排查 Azure Data Box 和 Azure Data Box Heavy 的相关问题
 
-本文详细说明如何排查使用 Azure Data Box 或 Azure Data Box Heavy 时可能出现的问题。 本文包含在将数据复制到 Data Box 时或从 Data Box 上传数据时可能出现的错误列表。
+本文详细介绍了如何排查使用 Azure Data Box 或 Azure Data Box Heavy 导入订单时可能会出现的问题。 本文包含在将数据复制到 Data Box 时或从导入订单 Data Box 上传数据时可能出现的错误列表。
+
+本文中的信息不适用于为 Data Box 创建的导出订单。
 
 ## <a name="error-classes"></a>错误类
 

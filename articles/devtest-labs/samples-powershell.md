@@ -3,18 +3,18 @@ title: 用于 Azure 实验室服务的 Azure PowerShell 示例 | Microsoft Docs
 description: Azure PowerShell 示例 - 可帮助你管理 Azure 实验室服务中的实验室的脚本
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d94074acdd4aeef87f322f8e7a9734e5da9a1c32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce7a4f77aa0ea309afb81a54fd2f8f0a8f373e58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483221"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187721"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>用于 Azure 实验室服务的 Azure PowerShell 示例
 
 下表包括用于 Azure 实验室服务的示例 Azure PowerShell 脚本的链接。
 
-| |  |
+| 脚本 | 说明 |
 |---|---|
 |[将外部用户添加到实验室](scripts/add-external-user-to-lab.md)| 此 PowerShell 脚本将外部用户添加到 Azure 开发测试实验室中的实验室。 |
 |[将市场映像添加到实验室](scripts/add-marketplace-images-to-lab.md)| 此 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。 |

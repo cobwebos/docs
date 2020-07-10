@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9658175b0d42db9acfc94d39e4ab226bfe2cfc4b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744956"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187313"
 ---
 # <a name="manage-variables-in-azure-automation"></a>在 Azure 自动化中管理变量
 
@@ -44,14 +45,14 @@ Azure 自动化会安全存储每个加密的变量。 创建变量时，可以�
 * Boolean
 * Null
 
-该变量并不局限于指定的数据类型。 但如果要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指示 `Not defined`，则变量的值将设置为 Null。 必须使用 [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet 或内部 `Set-AutomationVariable` cmdlet 来设置值。
+该变量并不局限于指定的数据类型。 但如果要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指示 `Not defined`，则变量的值将设置为 Null。 必须使用 [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet 或内部 `Set-AutomationVariable` cmdlet 来设置值。
 
 不能使用 Azure 门户来创建或更改复杂变量类型的值。 但是，可以使用 Windows PowerShell 提供任何类型的值。 复杂类型将作为 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) 检索。
 
 可以通过创建一个数组或哈希表并将其保存到变量，来将多个值存储到单一变量。
 
 >[!NOTE]
->VM 名称变量最多可以包含 80 个字符。 资源组变量最多可以包含 90 个字符。 请参阅 [Azure 资源的命名规则和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)。
+>VM 名称变量最多可以包含 80 个字符。 资源组变量最多可以包含 90 个字符。 请参阅 [Azure 资源的命名规则和限制](../../azure-resource-manager/management/resource-name-rules.md)。
 
 ## <a name="powershell-cmdlets-to-access-variables"></a>用于访问变量的 PowerShell cmdlet
 
@@ -59,10 +60,10 @@ Azure 自动化会安全存储每个加密的变量。 创建变量时，可以�
 
 | Cmdlet | 说明 |
 |:---|:---|
-|[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | 检索现有变量的值。 如果该值为简单类型，则检索相同的类型。 如果为复杂类型，则检索 `PSCustomObject` 类型。 <br>**注意：** 不能使用此 cmdlet 检索已加密变量的值。 只能在 runbook 或 DSC 配置中使用内部 `Get-AutomationVariable` cmdlet 来执行此操作。 请参阅[用于访问变量的内部 cmdlet](#internal-cmdlets-to-access-variables)。 |
-|[New-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | 创建新变量并设置变量值。|
-|[Remove-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| 删除现有变量。|
-|[Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| 设置现有变量的值。 |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | 检索现有变量的值。 如果该值为简单类型，则检索相同的类型。 如果为复杂类型，则检索 `PSCustomObject` 类型。 <br>**注意：** 不能使用此 cmdlet 检索已加密变量的值。 只能在 runbook 或 DSC 配置中使用内部 `Get-AutomationVariable` cmdlet 来执行此操作。 请参阅[用于访问变量的内部 cmdlet](#internal-cmdlets-to-access-variables)。 |
+|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | 创建新变量并设置变量值。|
+|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| 删除现有变量。|
+|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| 设置现有变量的值。 |
 
 ## <a name="internal-cmdlets-to-access-variables"></a>用于访问变量的内部 cmdlet
 
@@ -126,7 +127,7 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-下面的示例演示如何创建复杂类型的变量，并检索其属性。 在本示例中，使用了 [Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) 中的虚拟机对象。
+下面的示例演示如何创建复杂类型的变量，并检索其属性。 在本示例中，使用了 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) 中的虚拟机对象。
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"

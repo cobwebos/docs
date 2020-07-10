@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 217b15b4004b1f06ef63414adc25890d4d87b027
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557584"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203132"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
@@ -41,7 +41,7 @@ ms.locfileid: "85557584"
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程感知依赖关系
 
-### <a name="discovery"></a>发现
+### <a name="discovery"></a>发现 (Discovery)
 
 服务映射自动在服务器、进程和第三方服务上生成依赖关系的常见引用映射。 它可发现并映射所有 TCP 依赖关系，从而将意外连接、依赖的远程第三方系统和依赖关系标识到网络的传统深色区域（如 Active Directory）。 服务映射可发现托管系统尝试进行的失败网络连接，帮助标识潜在服务器配置错误、服务中断和网络问题。
 
@@ -154,7 +154,7 @@ ms.locfileid: "85557584"
 
 某些进程在计算机上充当特定角色：Web 服务器、应用程序服务器、数据库等。 “服务映射”可批注进程和计算机设备，包含的角色图标有助于以显眼的方式标识进程或服务器扮演的角色。
 
-| 角色图标 | 描述 |
+| 角色图标 | 说明 |
 |:--|:--|
 | ![Web 服务器](media/service-map/role-web-server.png) | Web 服务器 |
 | ![应用服务器](media/service-map/role-application-server.png) | 应用程序服务器 |
@@ -314,7 +314,7 @@ Linux：
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
 - 计算机：使用 *ResourceId* 或 *ResourceName_s* 唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s*在运行进程的计算机的上下文中是唯一的（MachineResourceName_s） 
+- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s*在运行进程的计算机的上下文中是唯一的 (MachineResourceName_s)  
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
@@ -326,7 +326,7 @@ Linux：
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内共享以下属性相同值的物理网络连接将聚合到 *VMConnection* 中的单个逻辑记录内。 
 
-| Property | 描述 |
+| 属性 | 说明 |
 |:--|:--|
 | `Direction` |连接方向，值为 *inbound* 或 *outbound* |
 | `Machine` |计算机 FQDN |
@@ -338,7 +338,7 @@ Linux：
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| Property | 描述 |
+| 属性 | 说明 |
 |:--|:--|
 | `LinksEstablished` |在报告时间范围内建立的物理网络连接数 |
 | `LinksTerminated` |在报告时间范围内终止的物理网络连接数 |
@@ -349,7 +349,7 @@ Linux：
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| Property | 描述 |
+| 属性 | 说明 |
 |:--|:--|
 | `BytesSent` |在报告时间范围内发送的字节总数 |
 | `BytesReceived` |在报告时间范围内接收的字节总数 |
@@ -377,7 +377,7 @@ Linux：
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| Property | 描述 |
+| 属性 | 说明 |
 |:--|:--|
 | `RemoteCountry` |托管 RemoteIp 的国家/地区的名称。  例如，*美国* |
 | `RemoteLatitude` |地理位置的纬度。  例如 *47.68* |
@@ -387,7 +387,7 @@ Linux：
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| Property | 描述 |
+| 属性 | 说明 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 地址 |
 | `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet**、C2**、CryptoMining**、Darknet**、DDos**、MaliciousUrl**、Malware**、Phishing**、Proxy**、PUA** 和 Watchlist**。   |
@@ -405,7 +405,7 @@ Linux：
 
 类型为 *ServiceMapComputer_CL* 的记录包含具有服务映射代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 描述 |
+| 属性 | 说明 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -431,7 +431,7 @@ Linux：
 
 类型为 *ServiceMapProcess_CL* 的记录包含具有服务映射代理的服务器上 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 描述 |
+| 属性 | 说明 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -457,43 +457,43 @@ Linux：
 
 ### <a name="list-all-known-machines"></a>列出所有已知计算机
 
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>列出所有托管计算机的物理内存容量。
 
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>列出计算机名称、DNS、IP 和 OS。
 
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>在命令行中查找带有“sql”的所有进程
 
-ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>按资源名称查找计算机（最新记录）
 
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>按 IP 地址查找计算机（最新记录）
 
-search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>列出指定计算机上的所有已知进程
 
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>列出所有运行 SQL 的计算机
 
-ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>在我的数据中心列出 curl 的所有唯一产品版本
 
-ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>创建由运行 CentOS 的所有计算机组成的计算机组
 
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>汇总一组计算机的出站连接
 
@@ -598,7 +598,7 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 
 如果你在服务映射中看到你的计算机，但它没有进程或连接数据，则表明依赖关系代理已安装并正在运行，但内核驱动程序未加载。 
 
-检查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或 `/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
+检查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` Windows) 或 `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux)  (。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
 
 ## <a name="suggestions"></a>建议
 

@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e1dc68aba4ba294bccca6da278d3e30e51f056
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 722b3fcb2bc533e396a35feb4c755de99c375b10
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360447"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201857"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 配置云预配时，可以指定的属性映射类型之一是表达式映射。 
@@ -769,11 +769,13 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **表达式：** <br>
 
+```ad-attr-mapping-expr
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
+```
 
 **示例输入/输出：**
 

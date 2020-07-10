@@ -8,18 +8,19 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82bec23ac35f4f0e6c65720d0c3a36355fa4224d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713448"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187364"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
 
 Azure 自动化使用许多 PowerShell 模块在 runbook DSC 配置中启用 runbook 和 DSC 资源中的 cmdlet。 支持的模块包括：
 
 * [Azure PowerShell Az.Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
-* [Azure PowerShell AzureRM.Automation](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)。
+* [Azure PowerShell AzureRM.Automation](/powershell/module/azurerm.automation/?view=azurermps-6.13.0)。
 * 其他 PowerShell 模块。
 * 内部 `Orchestrator.AssetManagement.Cmdlets` 模块。
 * Python 2 模块。
@@ -105,7 +106,7 @@ Azure 自动化可以导入自定义模块以提供其 cmdlet。 它可以在后
 
 ## <a name="migrate-to-az-modules"></a>迁移到 Az 模块
 
-本部分介绍如何迁移到自动化中的 Az 模块。 有关详细信息，请参阅[将 Azure PowerShell 从 AzureRM 迁移到 Az](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)。 
+本部分介绍如何迁移到自动化中的 Az 模块。 有关详细信息，请参阅[将 Azure PowerShell 从 AzureRM 迁移到 Az](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)。 
 
 我们不建议在同一自动化帐户中运行 AzureRM 模块和 Az 模块。 当确定要从 AzureRM 迁移到 Az 时，最好完全采用完整迁移。 自动化通常会重复使用自动化帐户中的沙盒，以节省启动时间。 如果不进行完整模块迁移，则可以启动仅使用 AzureRM 模块的作业，然后启动另一个仅使用 Az 模块的作业。 沙盒即将崩溃，你会收到一个错误，指出模块不兼容。 这种情况会导致任何特定 runbook 或配置的随机崩溃。 
 
@@ -120,18 +121,18 @@ Azure 自动化可以导入自定义模块以提供其 cmdlet。 它可以在后
 
 要确保不运行任何使用 AzureRM 模块的现有 runbook 或 DSC 配置，必须停止并取消计划所有受影响的 runbook 和配置。 首先，请确保分别查看每个 runbook 或 DSC 配置及其计划，以确保将来可以根据需要重新计划项目。 
 
-准备好删除计划时，可以使用 Azure 门户或 [Remove-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) cmdlet。 请参阅[删除计划](schedules.md#remove-a-schedule)。
+准备好删除计划时，可以使用 Azure 门户或 [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) cmdlet。 请参阅[删除计划](schedules.md#remove-a-schedule)。
 
 ### <a name="remove-azurerm-modules"></a>删除 AzureRM 模块
 
-在导入 Az 模块之前，可以删除 AzureRM 模块。 但如果这样做，则可以中断源代码管理同步并导致任何仍在计划的脚本失败。 如果决定删除模块，请参阅[卸载 AzureRM](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm)。
+在导入 Az 模块之前，可以删除 AzureRM 模块。 但如果这样做，则可以中断源代码管理同步并导致任何仍在计划的脚本失败。 如果决定删除模块，请参阅[卸载 AzureRM](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm)。
 
 ### <a name="import-az-modules"></a>导入 Az 模块
 
 在自动化帐户中导入 Az 模块的行为不会在 runbook 使用的 PowerShell 会话中自动导入该模块。 在以下情况中，模块会导入到 PowerShell 会话中：
 
 * runbook 从模块中调用 cmdlet 时。
-* runbook 使用 [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) cmdlet 显式导入模块时。
+* runbook 使用 [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) cmdlet 显式导入模块时。
 * runbook 导入另一个依赖模块时。
 
 可以在 Azure 门户中导入 Az 模块。 请记住仅导入所需的 Az 模块，而不是导入整个 Az.Automation 模块。 由于 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) 是其他 Az 模块的依赖项，因此请确保在其他模块之前先将其导入。
@@ -155,7 +156,7 @@ Azure 自动化可以导入自定义模块以提供其 cmdlet。 它可以在后
 
 当创作用于 Azure 自动化的自定义 PowerShell 模块时，建议遵循本部分中的注意事项。 要准备要导入的模块，必须至少创建一个名称与模块文件夹的名称相同的 psd1、psm1 或 PowerShell 模块 .dll 文件。 然后压缩模块文件夹，以便 Azure 自动化可以将其作为单个文件导入。 .zip 包的名称应与包含的模块文件夹的名称相同。 
 
-要详细了解如何创作 PowerShell 模块，请参阅[如何编写 PowerShell 脚本模块](https://docs.microsoft.com/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7)。
+要详细了解如何创作 PowerShell 模块，请参阅[如何编写 PowerShell 脚本模块](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7)。
 
 ### <a name="version-folder"></a>版本文件夹
 
@@ -314,7 +315,7 @@ myModule
 
 ### <a name="import-modules-by-using-powershell"></a>使用 PowerShell 导入模块
 
-可以使用 [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) cmdlet 将模块导入自动化帐户。 cmdlet 会获取模块 .zip 包的 URL。
+可以使用 [New-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) cmdlet 将模块导入自动化帐户。 cmdlet 会获取模块 .zip 包的 URL。
 
 ```azurepowershell-interactive
 New-AzAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -371,5 +372,5 @@ Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationA
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-3.7.0)
-* [编写 Windows PowerShell 模块](https://docs.microsoft.com/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)
+* 有关使用 Azure PowerShell 模块的详细信息，请参阅[Azure PowerShell 入门](/powershell/azure/get-started-azureps?view=azps-3.7.0)。
+* 若要详细了解如何创建 PowerShell 模块，请参阅[编写 Windows PowerShell 模块](/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)。

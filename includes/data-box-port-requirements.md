@@ -5,15 +5,15 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 4a3925752d1af5e43d5984b06c0a68aa9faa214b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 948f5399ceb931d701341c2cf378482ede94979d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67839770"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200328"
 ---
-| 端口号。| 入或出 | 端口范围| 必选| 说明 |   |
-|--------|-----|-----|-----------|----------|-----------|
+| 端口号。| 入或出 | 端口范围| 必选| 说明 |
+|--------|-----|-----|-----------|----------|
 | TCP 80 (HTTP)|In|LAN|是|此端口用于通过 HTTP 连接到 Data Box Blog 存储 REST API。 如果未连接到 REST API，则此端口会通过 8443 自动重定向到本地 Web UI。 |
 | TCP 443 (HTTPS)|In|LAN|是|此端口用于通过 HTTPS 连接到 Data Box Blog 存储 REST API。 如果未连接到 REST API，则此端口会通过 8443 自动重定向到本地 Web UI。 |
 | TCP 8443 (HTTPS-Alt)|In|LAN|是|这是 HTTPS 的替代端口，在连接到本地 Web UI 进行设备管理时使用。 |

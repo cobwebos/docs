@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09e492ae950003f97ed86355257c97777cd71c1a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113175"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201991"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure 认知搜索中的 OData 地理空间函数 - `geo.distance` 和 `geo.intersects`
 
@@ -36,7 +37,7 @@ Azure 认知搜索支持使用 `geo.distance` 和 `geo.intersects` 函数通过 
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 `geo.distance` 和函数的语法 `geo.intersects` ，以及它们运行时所在的地理空间值：
+以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 `geo.distance` 和函数的语法 `geo.intersects` ，以及它们运行时所在的地理空间值：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -104,21 +105,29 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 
 查找与给定参考点的距离在 10 公里范围内的所有酒店（其中 location 是 `Edm.GeographyPoint` 类型的字段）：
 
+```odata-filter-expr
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
 查找描述为多边形的给定视区内的所有酒店（其中 location 是 `Edm.GeographyPoint` 类型的字段）。 请注意，多边形是闭合的（第一个点集和最后一个点集必须相同），且[这些点必须按逆时针顺序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 ### <a name="order-by-examples"></a>Order-by 示例
 
 按 `rating` 对酒店进行降序排序，然后按距给定坐标的距离进行升序排序：
 
+```odata-filter-expr
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 按 `search.score` 和 `rating` 对酒店进行降序排序，然后按距给定坐标的距离进行升序排序，以便在两个具有相同评分的酒店中，将距离最近的酒店列在前面：
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>后续步骤  
 

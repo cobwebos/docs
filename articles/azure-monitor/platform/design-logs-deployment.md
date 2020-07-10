@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82165682"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201287"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -97,7 +97,7 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 
 下表汇总了访问模式：
 
-| | 工作区上下文 | 资源上下文 |
+| 问题 | 工作区上下文 | 资源上下文 |
 |:---|:---|:---|
 | 每种模式适合哪类用户？ | 集中管理。 需要配置数据收集的管理员，以及需要访问各种资源的用户。 此外，需要访问 Azure 外部资源的日志的用户目前也需要使用此模式。 | 应用程序团队。 受监视 Azure 资源的管理员。 |
 | 用户需要哪些权限才能查看日志？ | 对工作区的权限。 请参阅[使用工作区权限管理访问权限](manage-access.md#manage-access-using-workspace-permissions)中的**工作区权限**。 | 对资源的读取访问权限。 请参阅[使用 Azure 权限管理访问权限](manage-access.md#manage-access-using-azure-permissions)中的**资源权限**。 权限可以继承（例如，从包含资源组继承），也可以直接分配给资源。 系统会自动分配对资源日志的权限。 |

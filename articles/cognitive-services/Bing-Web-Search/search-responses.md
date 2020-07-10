@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800522"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202251"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
@@ -298,7 +298,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |*|乘法|
 |^|强力|
 |!|阶乘|
-|.|Decimal|
+|.|小数|
 |()|优先级分组|
 |[]|函数|
 
@@ -431,11 +431,11 @@ Query: What time is it in the U.S.
 }, ...
 ```
 
-## <a name="response-headers"></a>响应头
+## <a name="response-headers"></a>响应标头
 
 来自必应 Web 搜索 API 的响应可能包含以下标头：
 
-|||
+| 标头 | 描述 |
 |-|-|
 |`X-MSEdge-ClientID`|必应分配给用户的唯一 ID|
 |`BingAPIs-Market`|用于完成请求的市场|
@@ -480,6 +480,6 @@ cors-proxy-server
 
 * 查看[请求限制](throttling-requests.md)文档。  
 
-## <a name="see-also"></a>请参阅  
+## <a name="see-also"></a>另请参阅  
 
 * [必应 Web 搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
