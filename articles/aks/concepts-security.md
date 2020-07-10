@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0fe0803b0961b3aaa89627823b4867fac0d5d61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831533"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206310"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -19,11 +19,16 @@ ms.locfileid: "85831533"
 
 本文介绍用于保护 AKS 中应用程序的核心概念：
 
-- [主组件安全性](#master-security)
-- [节点安全性](#node-security)
-- [群集升级](#cluster-upgrades)
-- [网络安全](#network-security)
-- [Kubernetes 机密](#kubernetes-secrets)
+- [Azure Kubernetes Service (AKS) 中的应用程序和群集的安全性概念](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+  - [主组件安全](#master-security)
+  - [节点安全性](#node-security)
+    - [计算隔离](#compute-isolation)
+  - [群集升级](#cluster-upgrades)
+    - [隔离和排空](#cordon-and-drain)
+  - [网络安全](#network-security)
+    - [Azure 网络安全组](#azure-network-security-groups)
+  - [Kubernetes 机密](#kubernetes-secrets)
+  - [后续步骤](#next-steps)
 
 ## <a name="master-security"></a>主组件安全
 
@@ -39,13 +44,20 @@ AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点通过 Moby
 
 Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。 如果 Linux OS 安全更新需要重启主机，系统不会自动执行重启操作。 可以手动重启 Linux 节点，或使用常用的方法，即使用 [Kured][kured]，这是一个适用于 Kubernetes 的开源重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
 
-对于 Windows Server 节点，Windows 更新不会自动运行和应用最新的更新。 在围绕 Windows 更新发布周期和你自己的验证过程的定期计划中，你应在 AKS 群集中的 Windows Server 节点池上执行升级。 此升级过程会创建运行最新 Windows Server 映像和修补程序的节点，然后删除旧节点。 有关此过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+对于 Windows Server 节点，Windows 更新不会自动运行和应用最新的更新。 在围绕 Windows 更新发布周期和你自己的验证过程的定期计划中，你应在 AKS 群集中的 Windows Server 节点池 (s) 上执行升级。 此升级过程会创建运行最新 Windows Server 映像和修补程序的节点，然后删除旧节点。 有关此过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 系统将节点部署到专用虚拟网络子网中，且不分配公共 IP 地址。 出于故障排除和管理的目的，会默认启用 SSH。 只能使用内部 IP 地址访问此 SSH。
 
 为提供存储，节点使用 Azure 托管磁盘。 这些是由高性能固态硬盘支持的高级磁盘，适用于大多数规模的 VM 节点。 托管磁盘上存储的数据在 Azure 平台内会自动静态加密。 为提高冗余，还会在 Azure 数据中心内安全复制这些磁盘。
 
-目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（例如 *Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关如何隔离工作负荷的详细信息，请参阅 [AKS 中的群集隔离最佳做法][cluster-isolation]。
+目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（例如 *Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关隔离工作负荷的方法的详细信息，请参阅[AKS 中群集隔离的最佳实践][cluster-isolation]。
+
+### <a name="compute-isolation"></a>计算隔离
+
+ 由于符合性或法规要求，某些工作负荷可能需要与其他客户工作负荷进行高程度的隔离。 对于这些工作负荷，Azure 提供[隔离的虚拟机，这些虚拟机](../virtual-machines/linux/isolation.md)可用作 AKS 群集中的代理节点。 这些隔离的虚拟机隔离到特定的硬件类型，并专用于单个客户。 
+
+ 若要将这些独立的虚拟机与 AKS 群集配合使用，请在创建 AKS 群集或添加节点池时选择[此处](../virtual-machines/linux/isolation.md)所列的隔离虚拟机大小之一作为**节点大小**。
+
 
 ## <a name="cluster-upgrades"></a>群集升级
 

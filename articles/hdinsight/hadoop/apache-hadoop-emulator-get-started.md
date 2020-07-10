@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: e918740c884f377048febfe2177e2fe956b1d552
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085049"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207473"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>开始使用 Apache Hadoop 沙盒，它是虚拟机上的模拟器
 
@@ -57,7 +57,9 @@ ms.locfileid: "86085049"
 
 2. 登录后，请输入以下命令：
 
-        ambari-admin-password-reset
+    ```bash
+    ambari-admin-password-reset
+    ```
 
     出现提示时，请提供 Ambari 管理员帐户的密码。 访问 Ambari Web UI 时使用此密码。
 
@@ -65,13 +67,21 @@ ms.locfileid: "86085049"
 
 1. 与沙盒建立 SSH 连接后，使用以下命令启动 Hive shell：
 
-        hive
+    ```bash
+    hive
+    ```
+
 2. 启动 shell 后，使用以下命令查看随沙盒一起提供的表：
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
+
 3. 使用以下命令检索 `sample_07` 表中的 10 行数据：
 
-        select * from sample_07 limit 10;
+    ```hiveql
+    select * from sample_07 limit 10;
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

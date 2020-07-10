@@ -9,20 +9,21 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/08/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 7cfcb42093aeb9e323527dea7def7a5b65d2dce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9ddc498fdcfe3d1b6da57e012166066feec933e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558416"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207016"
 ---
-# <a name="reuse-environments-for-training-and-deployment-by-using-azure-machine-learning"></a>通过 Azure 机器学习重复使用用于训练和部署的环境
+# <a name="how-to-use-environments-in-azure-machine-learning"></a>如何在 Azure 机器学习中使用环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何创建和管理 Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)。 使用环境可以在项目软件依赖项演化时对其进行跟踪和再现。
 
-软件依赖项管理是开发人员的常见任务。 你希望在无需进行大量手动软件配置的情况下，确保版本可以再现。 Azure 机器学习 `Environment` 类会考虑本地开发解决方案（例如 pip 和 Conda），并为本地开发和分布式云开发提供解决方案。
+软件依赖项管理是开发人员的常见任务。 你希望在无需进行大量手动软件配置的情况下，确保版本可以再现。 Azure 机器学习 `Environment` 类通过 Docker 功能实现本地开发解决方案，如 pip 和 Conda 以及分布式云开发。
 
 本文中的示例演示如何执行以下操作：
 
@@ -44,15 +45,15 @@ ms.locfileid: "84558416"
 
 ### <a name="use-a-curated-environment"></a>使用特选环境
 
-可以先选择一个特选的环境： 
+特选环境包含 Python 包的集合，并在默认情况下在工作区中可用。 这些环境由缓存的 Docker 映像支持，减少了运行准备成本。 你可以从以下项中选择一个常用的特选环境： 
 
 * _AzureML-Minimal_ 环境包含最小的一组包，用于启用运行跟踪和资产上传。 在创建自己的环境时，可以将其作为起点。
 
-* _AzureML-Tutorial_ 环境包含常用的数据科学包。 这些包包括 Scikit-learn、Pandas 和 Matplotlib，以及更大的 azureml-sdk 包集。
+* _AzureML 教程_环境包含常见的数据科学包。 这些包包括 Scikit-learn、Pandas、Matplotlib 和更大的一组 azureml sdk 包。
 
-特选环境由缓存的 Docker 映像支持。 这种支持降低了运行准备成本。
+有关特选环境的列表，请参阅[特选环境一文](resource-curated-environments.md)。
 
-使用 `Environment.get` 方法选择一个特选环境：
+使用 `Environment.get` 方法选择特选环境之一：
 
 ```python
 from azureml.core import Workspace, Environment
@@ -61,6 +62,11 @@ ws = Workspace.from_config()
 env = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```
 
+若要修改特选环境，必须复制该环境：
+
+```python
+env = Environment.get(workspace=ws, name="AzureML-Tutorial").clone("new_env")
+```
 可以使用以下代码列出特选环境及其包：
 
 ```python
@@ -73,20 +79,23 @@ for env in envs:
 ```
 
 > [!WARNING]
->  请不要在自己的环境名称的开头使用 _AzureML_ 前缀。 此前缀专用于特选环境。
+>  不要启动自己的环境名称和_AzureML_前缀。 此前缀是为特选环境保留的。
+
 
 ### <a name="instantiate-an-environment-object"></a>实例化环境对象
 
-若要手动创建环境，请从 SDK 导入 `Environment` 类。 然后使用以下代码实例化某个环境对象。
+若要手动创建环境，请 `Environment` 从 SDK 导入类。 然后使用以下代码实例化环境对象。
 
 ```python
 from azureml.core.environment import Environment
 Environment(name="myenv")
 ```
 
-### <a name="use-conda-and-pip-specification-files"></a>使用 Conda 和 pip 规范文件
+如果要定义自己的环境，则必须 `azureml-defaults` 使用版本 >= 1.0.45 作为 pip 依赖项列出。 此包包含将模型作为 Web 服务托管时所需的功能。
 
-还可以通过 Conda 规范或 pip 要求文件创建环境。 使用 [`from_conda_specification()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-conda-specification-name--file-path-) 方法或 [`from_pip_requirements()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-pip-requirements-name--file-path-) 方法。 在方法参数中包含所需文件的环境名称和文件路径。
+### <a name="use-conda-pip-and-docker-files"></a>使用 Conda、pip 和 Docker 文件
+
+可以从 Conda 规范或 pip 要求文件创建环境。 使用 [`from_conda_specification()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-conda-specification-name--file-path-) 方法或 [`from_pip_requirements()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-pip-requirements-name--file-path-) 方法。 在方法参数中，包含你的环境名称和所需文件的文件路径。 还可以使用方法从 Docker 文件创建环境 [`load_from_directory()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#load-from-directory-path-) 。 在方法参数中，包括包含 Docker 文件的源目录的路径。 
 
 ```python
 # From a Conda specification file
@@ -96,24 +105,35 @@ myenv = Environment.from_conda_specification(name = "myenv",
 # From a pip requirements file
 myenv = Environment.from_pip_requirements(name = "myenv"
                                           file_path = "path-to-pip-requirements-file")
+                                          
+# From a Docker file
+myenv = Environment.load_from_directory(path = "path-to-dockerfile-directory")
 ```
 
-### <a name="use-existing-conda-environments"></a>使用现有的 Conda 环境
+### <a name="use-existing-environments"></a>使用现有环境
 
-如果本地计算机上存在现有的 Conda 环境，则可以使用服务创建环境对象。 采用这种策略可以在远程运行中重复使用本地交互式环境。
+如果本地计算机上已有 Conda 环境，则可以使用该服务创建环境对象。 通过使用此策略，你可以在远程运行上重用本地交互式环境。
 
-以下代码从现有的 Conda 环境 `mycondaenv` 创建环境对象。 它使用 [`from_existing_conda_environment()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-) 方法。
+下面的代码从现有的 Conda 环境创建环境对象 `mycondaenv` 。 它使用 [`from_existing_conda_environment()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-) 方法。
 
 ``` python
 myenv = Environment.from_existing_conda_environment(name = "myenv",
                                                     conda_environment_name = "mycondaenv")
 ```
 
+使用方法，可以轻松地将环境定义保存到可编辑格式的目录中 [`save_to_directory()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#save-to-directory-path--overwrite-false-) 。 修改后，可以通过从目录加载文件来实例化新的环境。
+
+```python
+myenv = Environment.save_to_directory(path = "path-to-destination-directory", overwrite = False)
+# modify the environment definition
+newenv = Environment.load_from_directory(path = "path-to-source-directory")
+```
+
 ### <a name="create-environments-automatically"></a>自动创建环境
 
-通过提交训练运行来自动创建环境。 使用 `submit()` 方法提交运行。 提交训练运行时，生成新环境可能需要几分钟时间。 生成持续时间取决于所需依赖项的大小。 
+通过提交定型运行来自动创建环境。 使用方法提交运行 `submit()` 。 提交训练运行时，构建新环境可能需要几分钟时间。 生成持续时间取决于所需依赖项的大小。 
 
-如果在提交运行之前未在运行配置中指定环境，系统会自动创建一个默认环境。
+如果在提交运行之前未在运行配置中指定环境，则系统会为你创建一个默认环境。
 
 ```python
 from azureml.core import ScriptRunConfig, Experiment, Environment
@@ -131,17 +151,17 @@ run = myexp.submit(config=runconfig)
 run.wait_for_completion(show_output=True)
 ```
 
-同样，如果使用 [`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) 对象进行训练，可以直接将估算器实例提交为运行，而无需指定环境。 `Estimator` 对象已封装环境和计算目标。
+同样，如果使用 [`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) 对象进行定型，则可以在不指定环境的情况下直接在运行中提交估计器实例。 `Estimator`对象已经封装了环境和计算目标。
 
 ## <a name="add-packages-to-an-environment"></a>将包添加到环境
 
-使用 Conda、pip 或专用 wheel 文件将包添加到环境。 使用 [`CondaDependency`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) 类指定每个包依赖项。 将此依赖项添加到环境的 `PythonSection`。
+使用 Conda、pip 或专用 wheel 文件将包添加到环境。 使用类指定每个包依赖项 [`CondaDependency`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) 。 将其添加到环境的 `PythonSection` 。
 
 ### <a name="conda-and-pip-packages"></a>Conda 和 pip 包
 
-如果某个包已在 Conda 包存储库中提供，则相较于 pip 安装，我们更建议使用 Conda 安装。 Conda 包通常附带预生成的二进制文件，能提高安装的可靠性。
+如果 Conda 包存储库中提供了包，则建议使用 Conda 安装而不是 pip 安装。 Conda 包通常附带预生成的二进制文件，使安装更可靠。
 
-以下示例将包添加到环境。 它添加了 1.17.0 版的 `numpy`。 它还添加 `pillow` 包 `myenv`。 该示例分别使用 [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) 方法和 [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) 方法。
+以下示例将包添加到环境。 它添加了 1.17.0 版的 `numpy`。 它还会添加 `pillow` 包 `myenv` 。 该示例分别使用 [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) 方法和 [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) 方法。
 
 ```python
 from azureml.core.environment import Environment
@@ -163,18 +183,9 @@ myenv.python.conda_dependencies=conda_dep
 >[!IMPORTANT]
 > 如果对另一次运行使用相同的环境定义，则 Azure 机器学习服务将重复使用您的环境的缓存映像。 如果创建了一个包含未固定包依赖项（例如 ```numpy```）的环境，该环境将继续使用创建环境时安装的包版本。 此外，将来包含匹配定义的任何环境将继续使用旧版本。 有关详细信息，请参阅[环境构建、缓存和重复使用](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)。
 
-### <a name="private-wheel-files"></a>专用 wheel 文件
+### <a name="private-python-packages"></a>专用 Python 包
 
-您可以通过先将专用 pip 轮文件上传到您的工作区存储区来使用这些文件。 使用静态方法上载它们 [`add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) 。 然后捕获存储 URL，并将 URL 传递给 `add_pip_package()` 方法。
-
-```python
-# During environment creation the service replaces the URL by secure SAS URL, so your wheel file is kept private and secure
-whl_url = Environment.add_private_pip_wheel(workspace=ws,file_path = "my-custom.whl")
-myenv = Environment(name="myenv")
-conda_dep = CondaDependencies()
-conda_dep.add_pip_package(whl_url)
-myenv.python.conda_dependencies=conda_dep
-```
+若要在不将 Python 包公开到公共 internet 的情况下安全地使用它，请参阅[如何使用专用 Python 包](how-to-use-private-python-packages.md)一文。
 
 ## <a name="manage-environments"></a>管理环境
 
@@ -219,7 +230,7 @@ Run.get_environment()
 
 ### <a name="update-an-existing-environment"></a>更新现有环境
 
-假设你更改了现有环境，例如，通过添加 Python 包。 然后，在提交运行、部署模型或手动注册环境时，将创建新版本的环境。 版本控制允许你查看随时间变化的环境更改。
+假设你更改了现有环境，例如，通过添加 Python 包。 这将需要一些时间作为新版本的环境生成，然后在提交运行、部署模型或手动注册环境时创建。 版本控制允许你查看随时间变化的环境更改。 
 
 若要更新现有环境中的 Python 包版本，请指定该包的版本号。 如果不使用确切的版本号，Azure 机器学习将使用现有的环境及其原始包版本。
 
@@ -233,9 +244,11 @@ build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
+首先使用方法在本地生成图像非常有用 [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) 。 设置可选参数 `pushImageToWorkspaceAcr = True` 会将生成的映像推送到 AZURE ML 工作区容器注册表中。 
+
 ## <a name="enable-docker"></a>启用 Docker
 
- [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py)通过 Azure 机器学习类的，你可以精确 `Environment` 地自定义和控制运行定型的来宾操作系统。
+[`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py)通过 Azure 机器学习类的，你可以精确 `Environment` 地自定义和控制运行定型的来宾操作系统。 `arguments`变量可用于指定要传递到 Docker run 命令的额外参数。
 
 启用 Docker 后，服务将生成一个 Docker 映像。 它还会创建一个 Python 环境，该环境使用该 Docker 容器中的规范。 此功能为您的培训运行提供额外的隔离和可再现性。
 
@@ -244,9 +257,9 @@ build.wait_for_completion(show_output=True)
 myenv.docker.enabled = True
 ```
 
-默认情况下，新生成的 Docker 映像会出现在与工作区关联的容器注册表中。  存储库名称的形式为*azureml/azureml_ \<uuid\> *。 名称的唯一标识符（*uuid*）部分对应于从环境配置计算所得的哈希值。 此函件允许服务确定是否已存在给定环境的映像以供重用。
+默认情况下，新生成的 Docker 映像会出现在与工作区关联的容器注册表中。  存储库名称的形式为*azureml/azureml_ \<uuid\> *。 名称 (*uuid*) 部分的唯一标识符对应于从环境配置计算的哈希值。 此函件允许服务确定是否已存在给定环境的映像以供重用。
 
-此外，服务会自动使用一个基于 Ubuntu Linux 的[基础映像](https://github.com/Azure/AzureML-Containers)。 它将安装指定的 Python 包。 基本映像具有 CPU 版本和 GPU 版本。 Azure 机器学习会自动检测要使用的版本。
+此外，服务会自动使用一个基于 Ubuntu Linux 的[基础映像](https://github.com/Azure/AzureML-Containers)。 它将安装指定的 Python 包。 基本映像具有 CPU 版本和 GPU 版本。 Azure 机器学习会自动检测要使用的版本。 还可以使用[自定义 Docker 基本映像](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -254,7 +267,7 @@ myenv.docker.base_image="your_base-image"
 myenv.docker.base_image_registry="your_registry_location"
 ```
 
-还可以指定自定义 Dockerfile。 最简单的方法是使用 Docker 命令从一个 Azure 机器学习基础映像开始 ```FROM``` ，然后添加自己的自定义步骤。 如果需要将非 Python 包作为依赖项安装，请使用此方法。
+还可以指定自定义 Dockerfile。 最简单的方法是使用 Docker 命令从一个 Azure 机器学习基础映像开始 ```FROM``` ，然后添加自己的自定义步骤。 如果需要将非 Python 包作为依赖项安装，请使用此方法。 请记住将基本映像设置为 "无"。
 
 ```python
 # Specify docker steps as a string. Alternatively, load the string from a file.
@@ -272,9 +285,9 @@ myenv.docker.base_dockerfile = dockerfile
 
 在某些情况下，自定义基本映像可能已包含包含要使用的包的 Python 环境。
 
-默认情况下，Azure 机器学习服务将生成具有指定的依赖项的 Conda 环境，并将在该环境中执行运行，而不是使用在基础映像上安装的任何 Python 库。 
+默认情况下，Azure 机器学习服务将生成具有指定的依赖项的 Conda 环境，并将在该环境中执行运行，而不是使用在基础映像上安装的任何 Python 库。 由于 Conda 环境与自定义基本映像隔离，因此不会包括在其他位置安装的包。
 
-若要使用自己安装的包，请设置参数 `Environment.python.user_managed_dependencies = True` 。 确保基本映像包含 Python 解释器，并具有您的培训脚本所需的包。
+若要使用自己安装的包并禁用 Conda，请设置参数 `Environment.python.user_managed_dependencies = True` 。 确保基本映像包含 Python 解释器，并具有您的培训脚本所需的包。
 
 例如，若要在安装了 NumPy 包的基本 Miniconda) 环境中运行，请首先指定 Dockerfile，其中包含安装包的步骤。 然后将用户管理的依赖项设置为 `True` 。 
 

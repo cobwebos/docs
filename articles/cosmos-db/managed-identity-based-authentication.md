@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: dfce18674f382cb683fa74a1bed964e9f86d72c2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970954"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206107"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系统分配的托管标识访问 Azure Cosmos DB 数据
 
@@ -53,6 +53,8 @@ ms.locfileid: "85970954"
 
 在此方案中，函数应用将读取水族箱的温度，然后将此数据写回到 Azure Cosmos DB 中的容器。 由于函数应用必须写入数据，因此你需要分配“DocumentDB 帐户参与者”角色  。 
 
+### <a name="assign-the-role-using-azure-portal"></a>使用 Azure 门户分配角色
+
 1. 登录到 Azure 门户并转到你的 Azure Cosmos DB 帐户。 依次打开“访问控制(IAM)”窗格和“角色分配”选项卡   ：
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="显示了“访问控制”窗格和“角色分配”选项卡的屏幕截图。":::
@@ -70,6 +72,18 @@ ms.locfileid: "85970954"
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="显示了由示例填充的“添加角色分配”窗格的屏幕截图。":::
 
 1. 选择函数应用后，选择“保存”  。
+
+### <a name="assign-the-role-using-azure-cli"></a>使用 Azure CLI 分配角色
+
+若要使用 Azure CLI 分配角色，请使用以下命令：
+
+```azurecli-interactive
+$scope = az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id
+
+$principalId = az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId
+
+az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
+```
 
 ## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>以编程方式访问 Azure Cosmos DB 密钥
 

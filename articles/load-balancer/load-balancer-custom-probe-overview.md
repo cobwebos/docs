@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a96e22ee8d2f9565ae676574e263beae96b5c1f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e00d6b674453f12f94a2859f9b0533aea0e7332c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809408"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207548"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -29,8 +29,8 @@ ms.locfileid: "84809408"
 
 | | 标准 SKU | 基本 SKU |
 | --- | --- | --- |
-| [探测类型](#types) | TCP、HTTP、HTTPS | TCP、HTTP |
-| [探测停止行为](#probedown) | 所有探测停止，所有 TCP 流继续。 | 所有探测停止，所有 TCP 流过期。 | 
+| **[探测类型](#types)** | TCP、HTTP、HTTPS | TCP、HTTP |
+| **[探测停止行为](#probedown)** | 所有探测停止，所有 TCP 流继续。 | 所有探测停止，所有 TCP 流过期。 | 
 
 
 >[!IMPORTANT]
@@ -92,8 +92,8 @@ ms.locfileid: "84809408"
 
 || TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
-| 标准 SKU |    &#9989; |   &#9989; |   &#9989; |
-| 基本 SKU |   &#9989; |   &#9989; | &#10060; |
+| **标准 SKU** |    &#9989; |   &#9989; |   &#9989; |
+| **基本 SKU** |   &#9989; |   &#9989; | &#10060; |
 
 ### <a name="tcp-probe"></a><a name="tcpprobe"></a>TCP 探测
 

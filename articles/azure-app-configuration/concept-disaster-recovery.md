@@ -6,11 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523758"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207199"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>复原能力和灾难恢复
 
@@ -63,7 +64,11 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ## <a name="synchronization-between-configuration-stores"></a>配置存储之间的同步
 
-所有异地冗余的配置存储必须包含相同的数据集，这一点非常重要。 可以按需使用应用配置中的“导出”功能将数据从主要存储复制到辅助存储****。 可通过 Azure 门户和 CLI 使用此功能。
+所有异地冗余的配置存储必须包含相同的数据集，这一点非常重要。 可通过两种方式实现此目的：
+
+### <a name="backup-manually-using-the-export-function"></a>使用 Export 函数手动备份
+
+可以按需使用应用配置中的“导出”功能将数据从主要存储复制到辅助存储****。 可通过 Azure 门户和 CLI 使用此功能。
 
 在 Azure 门户中，可以按照以下步骤将更改推送到另一个配置存储。
 
@@ -71,15 +76,19 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 1. 在打开的新边栏选项卡中，指定辅助存储的订阅、资源组和资源名称，然后选择 "**应用**"。
 
-1. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 您可以按原样保留默认时间值 **，并将两个**值都**设置为相同**的值。 选择“应用”。
+1. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 您可以按原样保留默认时间值，并将它们**从标签**和**标签**设置为相同的值。 选择“应用”。 对主存储中的所有标签重复此操作。
 
-1. 针对所有配置更改重复执行上述步骤。
+1. 在配置更改时重复前面的步骤。
 
-若要自动执行此导出过程，请使用 Azure CLI。 以下命令演示如何将单个配置更改从主要存储导出到辅助存储：
+还可以使用 Azure CLI 来实现导出过程。 以下命令显示了如何将所有配置从主存储导出到辅助副本：
 
 ```azurecli
-    az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+    az appconfig kv export --destination appconfig --name {PrimaryStore} --dest-name {SecondaryStore} --label * --preserve-labels -y
 ```
+
+### <a name="backup-automatically-using-azure-functions"></a>使用 Azure Functions 自动备份
+
+可以使用 Azure Functions 自动执行备份过程。 它利用了在应用配置中与 Azure 事件网格集成。 设置后，应用配置会将事件发布到事件网格，以获取对配置存储区中的键值所做的任何更改。 因此，Azure Functions 应用可以相应地侦听这些事件和备份数据。 有关详细信息，请参阅教程，了解[如何自动备份应用配置存储](./howto-backup-config-store.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

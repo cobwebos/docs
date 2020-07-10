@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 29f8a7823207f5571acc345bc6234a318342b173
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207849"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207154"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>排查入口控制器的常见问题
 
@@ -26,7 +26,7 @@ ms.locfileid: "85207849"
 以下步骤假设：
   - 已有一个启用了高级网络的 AKS 群集
   - 已在 AKS 群集上安装 AGIC
-  - VNET 上已有一个与 AKS 群集共享的应用程序网关
+  - 与 AKS 群集共享的 VNET 上已有应用程序网关
 
 若要验证是否正确设置了应用程序网关 + AKS + AGIC 安装，请部署一个尽量简单的应用：
 
@@ -128,7 +128,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ## <a name="inspect-kubernetes-installation"></a>检查 Kubernetes 安装
 
 ### <a name="pods-services-ingress"></a>Pod、服务、入口
-应用程序网关入口控制器（AGIC）持续监视以下 Kubernetes 资源：[部署](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment)或[Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod)、[服务](https://kubernetes.io/docs/concepts/services-networking/service/)、[入口](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+应用程序网关入口控制器 (AGIC) 持续监视以下 Kubernetes 资源：[部署](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment)或[Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod)、[服务](https://kubernetes.io/docs/concepts/services-networking/service/)、[入口](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 
 
 必须符合以下要求才能让 AGIC 按预期正常工作：
@@ -236,7 +236,7 @@ AGIC 提供 3 个日志记录级别。 第 1 级别是默认级别，显示的�
 Kubernetes 社区已经为 [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) 工具建立了 9 个日志记录级别。 在此存储库中，我们使用了其中 3 个语义类似的级别：
 
 
-| 详细级别 | 描述 |
+| 详细级别 | 说明 |
 |-----------|-------------|
 |  1        | 默认日志级别；显示启动详细信息、警告和错误 |
 |  3        | 有关事件和更改的扩展信息；创建的对象列表 |

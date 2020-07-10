@@ -1,5 +1,5 @@
 ---
-title: 评估和缓解机器学习模型中的公平问题
+title: " (预览) 评估和缓解机器学习模型中的公平问题"
 titleSuffix: Azure Machine Learning
 description: 了解机器学习模型中的公平性以及 Fairlearn Python 包如何帮助你构建更公平的模型。
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: c4e9b8386c8341d076a69e2e81b5e92f296153ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611775"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207300"
 ---
-# <a name="build-fairer-machine-learning-models"></a>构建 fairer 机器学习模型
+# <a name="build-fairer-machine-learning-models-preview"></a> (预览生成 fairer 机器学习模型) 
 
 了解机器学习和[Fairlearn](https://fairlearn.github.io/)的开源 Python 包如何帮助您构建更公平的模型。 如果你不想要了解公平问题，并在构建机器学习模型时评估公平，则可以构建产生不公平结果的模型。 
 
@@ -96,7 +96,7 @@ Fairlearn 开源包支持以下类型的奇偶校验约束：
 
 Fairlearn 开源包提供了后处理和缩减 unfairness 缓解算法：
 
-- 减少：这些算法采用标准的黑色机箱机器学习估计器（例如，LightGBM 模型），并使用一系列重新加权的定型数据集生成一组重新训练模型。 例如，某一性别的申请者可能会被提高或降低权重，然后重新训练模型，降低不同性别群体之间的差异。 然后，用户可以选择一个模型，该模型在准确性（或其他性能指标）与差异之间提供最佳的权衡，这一权衡通常需要基于业务规则和成本计算。  
+- 减少：这些算法采用标准的黑色机箱机器学习估计器 (例如，LightGBM 模型) 并使用一系列重新加权的定型数据集生成一组重新训练模型。 例如，某一性别的申请者可能会被提高或降低权重，然后重新训练模型，降低不同性别群体之间的差异。 然后，用户可以选择一个模型，该模型在准确性（或其他性能指标）与差异之间提供最佳的权衡，这一权衡通常需要基于业务规则和成本计算。  
 - 后期处理：这些算法采用现有分类器和敏感特征作为输入。 然后，它们将派生分类器的预测转换，以强制实施指定的公平性约束。 阈值优化的最大优势在于其简易性和灵活性，因为它不需要重新训练模型。 
 
 | 算法 | 说明 | 机器学习任务 | 敏感特征 | 支持的奇偶校验约束 | 算法类型 |

@@ -5,11 +5,12 @@ description: 了解如何创建和使用 Azure Kubernetes 服务 (AKS) 群集中
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80803376"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205780"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的出口流量使用静态公共 IP 地址
 
@@ -22,6 +23,9 @@ ms.locfileid: "80803376"
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+
+> [!IMPORTANT]
+> 本文使用带有单一节点池的*基本*SKU 负载均衡器。 此配置不可用于多个节点池，因为多个节点池不支持*基本*SKU 负载均衡器。 有关使用*标准*SKU 负载均衡器的更多详细信息，请参阅[使用 Azure Kubernetes Service 中的公共标准负载均衡器 (AKS) ][slb] 。
 
 ## <a name="egress-traffic-overview"></a>出口流量概述
 
@@ -92,7 +96,7 @@ spec:
 kubectl apply -f egress-service.yaml
 ```
 
-此服务将在 Azure 负载均衡器上配置一个新的前端 IP。 如果没有配置任何其他 IP，则**所有**出口流量现在都应当使用此地址。 当在 Azure 负载均衡器上配置了多个地址时，出口将使用该负载均衡器上的第一个 IP。
+此服务将在 Azure 负载均衡器上配置一个新的前端 IP。 如果没有配置任何其他 IP，则**所有**出口流量现在都应当使用此地址。 在 Azure 负载均衡器上配置多个地址时，所有这些公共 IP 地址都是出站流的候选项，并且会随机选择一个。
 
 ## <a name="verify-egress-address"></a>验证出口地址
 
@@ -133,3 +137,4 @@ $ curl -s checkip.dyndns.org
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

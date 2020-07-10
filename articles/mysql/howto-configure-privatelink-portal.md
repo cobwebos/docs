@@ -6,28 +6,28 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 5547c78007d38788d71e84f8fbf3ca8b60dc1576
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cdefca11131a16630e600385bf350465fccc228f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101743"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206663"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用门户创建和管理 Azure Database for MySQL 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure 门户在 Azure 虚拟网络中创建 VM，并使用 Azure 私有终结点在 Azure Database for MySQL 服务器中创建 VM。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 此功能适用于所有 Azure Database for MySQL 支持常规用途和内存优化定价层的 Azure 区域。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-an-azure-vm"></a>创建 Azure VM
 
-在本部分中，你将创建虚拟网络和子网来托管用于访问专用链接资源（Azure 中的 MySQL 服务器）的 VM。
+在本部分中，将创建虚拟网络和子网来托管用于访问 Azure) 中的 MySQL 服务器 (专用链接资源的 VM。
 
 ### <a name="create-the-virtual-network"></a>创建虚拟网络
 在本部分，你将创建虚拟网络和子网来托管用于访问专用链接资源的 VM。
@@ -166,10 +166,10 @@ ms.locfileid: "86101743"
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。** |
-    | 子网 | 选择“mySubnet”。 ** |
+    | 子网 | 选择“mySubnet”**。 |
     |**专用 DNS 集成**||
     |与专用 DNS 区域集成 |请选择“是”。 |
-    |专用 DNS 区域 |选择 *（新的） privatelink* |
+    |专用 DNS 区域 |选择* (新建) privatelink.mysql.database.azure.com* |
     |||
 
     > [!Note] 
@@ -211,7 +211,7 @@ ms.locfileid: "86101743"
 
 ## <a name="access-the-mysql-server-privately-from-the-vm"></a>从 VM 私下访问 MySQL 服务器
 
-1. 在  *myVM* 的远程桌面中打开 PowerShell。
+1. 在 *myVM* 的远程桌面中，打开 PowerShell。
 
 2. 输入  `nslookup  myServer.privatelink.mysql.database.azure.com`。 
 
@@ -241,14 +241,14 @@ ms.locfileid: "86101743"
 
 6. 浏览左侧菜单中的数据库。
 
-7. 同时从 MySQL 服务器创建或查询信息。
+7.  (可以选择) 创建或查询 MySQL 服务器中的信息。
 
 8. 关闭与 myVm 的远程桌面连接。
 
 ## <a name="clean-up-resources"></a>清理资源
 使用完专用终结点、MySQL 服务器和 VM 后，请删除资源组及其包含的所有资源：
 
-1.  *myResourceGroup*   在门户顶部的**搜索**框中输入 "myResourceGroup"，然后 *myResourceGroup*   从搜索结果中选择 "myResourceGroup"。
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”********。
 2. 选择“删除资源组”。
 3. 输入 myResourceGroup 作为 **"资源组名称"** ，然后选择 "**删除**"。
 

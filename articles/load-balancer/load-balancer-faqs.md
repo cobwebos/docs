@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2b547dbc8671481275952f4c3eae5683e9e3a06c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848213"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207538"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>负载均衡器常见问题
 
@@ -37,7 +37,7 @@ NAT 规则用于指定要将流量路由到其中的后端资源。 例如，将
 标记为 Azure 基础结构负载均衡器的主机的虚拟 IP 地址，从其进行 Azure 运行状况探测。 配置后端实例时，这些实例必须允许来自此 IP 地址的流量才能成功响应运行状况探测。 此规则不与负载均衡器前端的访问交互。 如果不使用 Azure 负载均衡器，则可重写此规则。 可在[此处](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)详细了解服务标记。
 
 ## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>是否可以将全局 VNET 对等互连用于基本负载均衡器？
-不能。 基本负载均衡器不支持全局 VNET 对等互连。 可以改用标准负载均衡器。 有关无缝升级，请参阅[从基本到标准的升级](upgrade-basic-standard.md)。
+错误。 基本负载均衡器不支持全局 VNET 对等互连。 可以改用标准负载均衡器。 有关无缝升级，请参阅[从基本到标准的升级](upgrade-basic-standard.md)。
 
 ## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>如何发现 Azure VM 使用的公共 IP？
 
@@ -49,5 +49,9 @@ NAT 规则用于指定要将流量路由到其中的后端资源。 例如，将
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>如何连接到同一区域中的 Azure 存储？
 通过上述方案进行出站连接时不一定要连接到与 VM 位于同一区域的存储。 如果不想这样做，请按上述说明使用网络安全组 (NSG)。 若要连接到其他区域的存储，则需要使用出站连接。 请注意，当从同一区域中的虚拟机连接到存储时，存储诊断日志中的源 IP 地址将是内部提供程序地址，而不是虚拟机的公共 IP 地址。 如果要将对存储帐户的访问限制至同一区域中一个或多个虚拟网络子网中的 VM，请在配置存储帐户防火墙时使用[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，而不是公共 IP 地址。 配置了服务终结点后，将在存储诊断日志中看到虚拟网络专用 IP 地址，而不是内部提供程序地址。
 
+## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>对于出站连接，最佳方案是什么？
+标准负载均衡器和标准公共 IP 向出站连接引入了功能和不同的行为。 它们不同于基本 SKU。 如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。 这包括在使用内部标准负载均衡器时创建出站连接。 建议始终使用标准公共负载均衡器上的出站规则。 这意味着使用内部标准负载均衡器时，如果需要出站连接，则需要采取步骤为后端池中的 VM 创建出站连接。 在出站连接、单个独立 VM、可用性集中的所有虚拟机的上下文中，VMSS 中的所有实例都作为一个组运行。 这意味着，如果可用性集中的单个 VM 与标准 SKU 关联，则该可用性集中的所有 VM 实例现在都遵循相同的规则，就好像这些 VM 实例与标准 SKU 相关联一样，即使单个实例与标准 SKU 没有直接关联。 如果独立 VM 有连接到负载均衡器的多个网络接口卡，也会出现此行为。 如果将一个 NIC 添加为独立 NIC，也会有相同的行为。 请仔细查看整个文档以了解整体概念，查看[标准负载均衡器](load-balancer-standard-overview.md)了解 SKU 之间的差异，并查看[出站规则](load-balancer-outbound-connections.md#outboundrules)。
+使用出站规则可以对出站连接的所有方面进行细化管理控制。
+ 
 ## <a name="next-steps"></a>后续步骤
 如果上面未列出你的问题，请与你的问题一起发送有关本页的反馈。 这会为产品团队创建 GitHub 问题，以确保所有有价值的客户问题都得到了回答。

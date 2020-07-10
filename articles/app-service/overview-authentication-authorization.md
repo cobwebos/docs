@@ -3,14 +3,15 @@ title: 身份验证和授权
 description: 了解 Azure 应用服务和 Azure Functions 中内置的身份验证和授权支持，并了解它如何保护应用，防止未经授权的访问。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196440"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206747"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure Functions 中的身份验证和授权
 
@@ -20,7 +21,7 @@ ms.locfileid: "83196440"
 
 Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。
 
-安全身份验证和授权需要深入了解安全性，包括联合身份验证、加密、 [JSON web 令牌（JWT）](https://wikipedia.org/wiki/JSON_Web_Token)管理、[授予类型](https://oauth.net/2/grant-types/)，等等。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
+安全身份验证和授权需要深入了解安全性，包括联合身份验证、加密、 [JSON web 令牌 (JWT) ](https://wikipedia.org/wiki/JSON_Web_Token)管理、[授予类型](https://oauth.net/2/grant-types/)，等等。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
 
 > [!IMPORTANT]
 > 你并非必须使用此功能进行身份验证和授权。 可以在所选的 Web 框架中使用捆绑的安全功能，也可以编写自己的实用程序。 但请记住，[Chrome 80 针对 Cookie 对其实现 SameSite 的方式进行了中断性变更](https://www.chromestatus.com/feature/5088147346030592)（发布日期在 2020 年 3 月左右）；自定义远程身份验证或依赖于跨站点 Cookie 发布的其他方案可能会在客户端 Chrome 浏览器更新时中断。 解决方法很复杂，因为需要针对不同的浏览器支持不同的 SameSite 行为。 
@@ -34,7 +35,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 身份验证和授权模块在应用程序代码所在的同一沙盒中运行。 启用后，每个传入的 HTTP 请求将通过此模块，然后由应用程序代码处理。
 
-![](media/app-service-authentication-overview/architecture.png)
+![显示请求被站点沙盒中的进程截获的体系结构关系图，该进程在允许流量发送到部署的站点之前与标识提供者交互](media/app-service-authentication-overview/architecture.png)
 
 此模块为应用处理多项操作：
 
@@ -62,7 +63,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 通常，必须编写代码才能在应用程序中收集、存储和刷新这些令牌。 使用令牌存储，只需在需要令牌时才[检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)；当令牌失效时，可以[告知应用服务刷新令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。 
 
-将为经过身份验证的会话缓存 ID 令牌、访问令牌和刷新令牌，它们只能由关联的用户访问。  
+为经过身份验证的会话缓存 ID 令牌、访问令牌和刷新令牌，并且只能由关联的用户访问。  
 
 如果不需要在应用中使用令牌，可以禁用令牌存储。
 
@@ -81,8 +82,11 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
+| 任何[OpenID connect](https://openid.net/connect/)提供程序 (预览)  | `/.auth/login/<providerName>` |
 
-对其中一个提供程序启用身份验证和授权时，其登录终结点可用于用户身份验证，以及验证来自提供程序的身份验证令牌。 可以轻松为用户提供其中任意数量的登录选项。 还可以集成其他标识提供者或[自己的自定义标识解决方案][custom-auth]。
+对其中一个提供程序启用身份验证和授权时，其登录终结点可用于用户身份验证，以及验证来自提供程序的身份验证令牌。 可以轻松为用户提供其中任意数量的登录选项。
+
+存在用于与其他标识提供者或自定义身份验证解决方案集成的[旧扩展路径][custom-auth]，但不建议这样做。 请考虑使用 OpenID Connect 支持。
 
 ## <a name="authentication-flow"></a>身份验证流
 
@@ -112,7 +116,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 在 [Azure 门户](https://portal.azure.com)中，当传入请求未经过身份验证时，可以使用多种行为配置应用服务授权。
 
-![](media/app-service-authentication-overview/authorization-flow.png)
+![显示 "请求未经身份验证时要执行的操作" 下拉列表的屏幕截图](media/app-service-authentication-overview/authorization-flow.png)
 
 以下标题介绍了选项。
 
@@ -140,8 +144,8 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 [教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)  
 [教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](containers/tutorial-auth-aad.md)  
 [在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md) 
-[Azure AppService EasyAuth 的 .Net Core 集成（第三方）](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
-使用[.Net Core 进行 Azure App Service 身份验证（第三方）](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+[Azure AppService EasyAuth (第三方的 .Net Core 集成) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
+使用[.Net Core (第三方进行 Azure App Service 身份验证) ](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 特定于提供程序的操作方法指南：
 
@@ -150,13 +154,14 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 * [如何将应用配置为使用 Google 登录][Google]
 * [How to configure your app to use Microsoft Account login][MSA]
 * [如何将应用配置为使用 Twitter 登录][Twitter]
-* [如何：对应用程序使用自定义身份验证][custom-auth]
+* [如何将应用配置为使用 OpenID Connect 提供程序进行登录 (预览) ][OIDC]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
 [Google]: configure-authentication-provider-google.md
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
+[OIDC]: configure-authentication-provider-openid-connect.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: f226e240a59b33c2913919495410b1a4923b4902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261663"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206017"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>适用于 Windows 的网络观察程序代理虚拟机扩展
 
@@ -33,7 +34,7 @@ ms.locfileid: "81261663"
 
 ### <a name="operating-system"></a>操作系统
 
-可以在 Windows Server 2008 R2、2012、2012 R2 和 2016 版本中运行适用于 Windows 的网络观察程序代理扩展。 目前不支持 Nano Server。
+适用于 Windows 的网络观察程序代理扩展可以针对 Windows Server 2008 R2、2012、2012 R2、2016和2019版本运行。 目前不支持 Nano Server。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 

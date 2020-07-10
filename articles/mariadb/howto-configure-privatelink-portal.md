@@ -6,28 +6,28 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: db2fa377cc10759fc57c3e4a27bd7815a5724bd7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 08e146ebde34c6d85e258c93a1ed1780bb97727b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114731"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206452"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>使用门户创建和管理 Azure Database for MariaDB 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。  在本文中，你将了解如何使用 Azure 门户在 Azure 虚拟网络中创建 VM，并使用 Azure 私有终结点在 Azure Database for MariaDB 服务器中创建 VM。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 此功能适用于所有 Azure Database for MariaDB 支持常规用途和内存优化定价层的 Azure 区域。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-an-azure-vm"></a>创建 Azure VM
 
-在本部分中，你将创建虚拟网络和子网来托管用于访问专用链接资源的 VM （Azure 中的 MariaDB 服务器）。
+在本部分中，将创建虚拟网络和子网来托管用于访问专用链接资源的 VM， (Azure) 中的 MariaDB 服务器。
 
 ### <a name="create-the-virtual-network"></a>创建虚拟网络
 在本部分，你将创建虚拟网络和子网来托管用于访问专用链接资源的 VM。
@@ -167,7 +167,7 @@ ms.locfileid: "86114731"
     | 子网 | 选择“mySubnet”。 ** |
     |**专用 DNS 集成**||
     |与专用 DNS 区域集成 |请选择“是”。 |
-    |专用 DNS 区域 |选择 *（新的） privatelink* |
+    |专用 DNS 区域 |选择* (新建) privatelink.mariadb.database.azure.com* |
     |||
 
     > [!Note] 
@@ -209,7 +209,7 @@ ms.locfileid: "86114731"
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>从 VM 私下访问 MariaDB 服务器
 
-1. 在  *myVM* 的远程桌面中打开 PowerShell。
+1. 在 *myVM* 的远程桌面中，打开 PowerShell。
 
 2. 输入  `nslookup mydemomserver.privatelink.mariadb.database.azure.com`。 
 
@@ -238,7 +238,7 @@ ms.locfileid: "86114731"
 
 5. 选择 "**测试连接** **" 或 "确定"**。
 
-6. 同时从左侧菜单浏览数据库，并从 MariaDB 数据库创建或查询信息
+6.  (可以选择) 从左菜单浏览数据库，并从 MariaDB 数据库创建或查询信息
 
 7. 关闭与 myVm 的远程桌面连接。
 

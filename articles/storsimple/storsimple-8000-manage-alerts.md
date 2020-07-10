@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830037"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207792"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 设备管理器服务查看和管理 StorSimple 警报
 
@@ -199,8 +199,8 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 ### <a name="performance-alerts"></a>性能警报
 
-| 警报文本 | 事件 | 详细信息/建议的操作 | |
-|:--- |:--- |:--- | --- |
+| 警报文本 | 事件 | 详细信息/建议的操作 |
+|:--- |:--- |:--- |
 | 设备负载已超过 <*阈值*>。 |响应时间比预期慢。 |设备会报告重度输入/输出负载下的利用率。 这可能导致设备不按预期工作。 检查已附加到设备的工作负荷，确定是否可将任何工作负荷转移到另一个设备，或者是否有不再需要的工作负荷。|
 | 无法启动 StorSimple 服务。 |数据路径错误 |如果问题持续出现，请联系 Microsoft 支持。 |
 

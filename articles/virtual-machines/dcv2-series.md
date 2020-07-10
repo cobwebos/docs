@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: e5a4c9d1afcc4caa0f9ac0db8b59274006ab3097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88aaa10bf84d0195cc22d11d7fa1cfdcd639d475
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676550"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207430"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -40,7 +41,7 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128                                                                                         | 2   | 168                                         |
 
 - DCsv2 系列 VM 是[第 2 代 VM](./linux/generation-2.md#creating-a-generation-2-vm)，仅支持 `Gen2` 映像。
-- 目前仅在英国南部、加拿大中部和美国东部提供。
+- 当前在[此处](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)列出的区域中可用。
 - 上一代机密计算 VM：[DC 系列](sizes-previous-gen.md#preview-dc-series)
 - 使用 [Azure 门户](./linux/quick-create-portal.md)或 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)创建 DCsv2 VM
 

@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3017be90e84441ad84c6a5a9d54498028388dffe
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131089"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206396"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -27,14 +27,13 @@ ms.locfileid: "86131089"
 [汇总 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [汇总 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [汇总 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
-[汇总 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 
 [详细了解](service-updates-how-to.md)更新安装和支持。
 
 > [!NOTE]
 > 该表中未显示更新汇总 44，因为它不包括对 Site Recovery 提供程序和代理的更新。
 
-## <a name="updates-june-2020"></a>更新（2020年6月）
+## <a name="updates-july-2020"></a>2020年7月 (更新) 
 
 ### <a name="update-rollup-47"></a>更新汇总47
 
@@ -45,7 +44,7 @@ ms.locfileid: "86131089"
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
 **问题修复/改进** | 汇总中详细说明的一些修复和改进。
 
-## <a name="updates-june-2020"></a>更新（2020年6月）
+## <a name="updates-june-2020"></a>2020年6月 (更新) 
 
 ### <a name="update-rollup-46"></a>更新汇总46
 

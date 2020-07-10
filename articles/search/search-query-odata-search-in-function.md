@@ -19,21 +19,26 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113118"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206927"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData `search.in` 函数
 
 在 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)中，一种常见情景是检查每个文档中的单个字段是否等于许多可能值中的一个。 例如，某些应用程序会这样进行[安全修整](search-security-trimming-for-azure-search.md)：根据一个包含主 ID（代表发出查询的用户）的列表，检查字段是否包含一个或多个主 ID。 若要编写这样的查询，一种方法是使用 [`eq`](search-query-odata-comparison-operators.md) 和 [`or`](search-query-odata-logical-operators.md) 运算符：
 
+```odata-filter-expr
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
+```
 
 不过，有一种更简便的编写方法，这就是使用 `search.in` 函数：
 
+```odata-filter-expr
     group_ids/any(g: search.in(g, '123, 456, 789'))
+```
 
 > [!IMPORTANT]
 > 除了更简便且更易读，使用 `search.in` 还具有[性能优势](#bkmk_performance)，并且在需要在筛选器中包含数百甚至数千个值的情况下，可以避免某些[筛选器大小限制](search-query-odata-filter.md#bkmk_limits)。 因此，我们强烈建议使用 `search.in`，而不要使用更复杂的相等表达式析取。
@@ -43,7 +48,7 @@ ms.locfileid: "74113118"
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义函数的语法 `search.in` ：
+以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义函数的语法 `search.in` ：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -85,23 +90,33 @@ search_in_call ::=
 
 查找名称为“Sea View motel”或“Budget hotel”的所有酒店。 包含空格（默认分隔符）的短语。 可以将单引号中的备用分隔符指定为第三个字符串参数：  
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 查找名称为“Sea View motel”或“Budget hotel”并以“|”分隔的所有酒店：
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 查找其房间带有“wifi”或“tub”标签的所有酒店：
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub')))
+```
 
 在集合中查找短语匹配项，例如标记中的“heated towel racks”或“hairdryer included”。
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 查找没有“motel”或“cabin”标签的所有酒店：
 
+```odata-filter-expr
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
+```
 
 ## <a name="next-steps"></a>后续步骤  
 

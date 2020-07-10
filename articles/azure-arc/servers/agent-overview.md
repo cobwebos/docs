@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/01/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 38c487928f15e953a1c660c5007398bc5c2b3f7d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111246"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206621"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Azure Arc for servers 代理概述
 
@@ -23,7 +23,7 @@ ms.locfileid: "86111246"
 
 Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
 
-* 混合实例元数据服务（HIMDS）管理到 Azure 和连接的计算机的 Azure 标识的连接。
+* 混合实例元数据服务 (HIMDS) 管理与 Azure 的连接和连接的计算机的 Azure 标识。
 
 * 来宾配置代理提供来宾内策略和来宾配置功能，如评估计算机是否符合所需的策略。
 
@@ -67,14 +67,14 @@ Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |包含获取的令牌。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |包含代理配置文件 `agentconfig.json`，该文件记录其在服务中的注册信息。|
     |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | 包含来宾配置代理文件的安装路径。 |
-    |%ProgramData%\GuestConfig |包含 Azure 中的（应用）策略。|
+    |%ProgramData%\GuestConfig |包含应用于 Azure) 策略的 (。|
     |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | 将从 Azure 下载扩展，并在此处复制。|
 
 * 安装代理期间，将在目标计算机上创建以下 Windows 服务。
 
     |Service name |显示名称 |进程名称 |说明 |
     |-------------|-------------|-------------|------------|
-    |himds |Azure 混合实例元数据服务 |himds.exe |此服务实现 Azure 实例元数据服务（IMDS）以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
+    |himds |Azure 混合实例元数据服务 |himds.exe |此服务 (IMDS) 实现 Azure 实例元数据服务，以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
     |DscService |来宾配置服务 |dsc_service.exe |这是 Azure 中用于实现来宾内策略的 Desired State Configuration (DSC v2) 代码库。|
 
 * 安装代理期间，将创建以下环境变量。
@@ -88,7 +88,7 @@ Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
 
     |日志 |说明 |
     |----|------------|
-    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |记录代理（HIMDS）服务的详细信息以及与 Azure 的交互。|
+    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |记录代理 (HIMDS) 服务的详细信息以及与 Azure 的交互。|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |当使用 verbose (-v) 参数时，包含 azcmagent 工具命令的输出。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |记录 DSC 服务活动的详细信息，<br> 尤其是 HIMDS 服务和 Azure 策略之间的连接。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |记录有关 DSC 服务遥测和详细日志记录的详细信息。|
@@ -118,21 +118,21 @@ Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
     |/opt/GC_Ext | 包含来宾配置代理文件的安装路径。|
     |/opt/DSC/ |
     |/var/opt/azcmagent/tokens |包含获取的令牌。|
-    |/var/lib/GuestConfig |包含 Azure 中的（应用）策略。|
+    |/var/lib/GuestConfig |包含应用于 Azure) 策略的 (。|
     |/opt/GC_Ext/downloads|将从 Azure 下载扩展，并在此处复制。|
 
 * 安装代理期间，将在目标计算机上创建以下守护程序。
 
     |Service name |显示名称 |进程名称 |说明 |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure 混合实例元数据服务 |/opt/azcmagent/bin/himds |此服务实现 Azure 实例元数据服务（IMDS）以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
+    |himdsd.service |Azure 混合实例元数据服务 |/opt/azcmagent/bin/himds |此服务 (IMDS) 实现 Azure 实例元数据服务，以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
     |dscd.service |来宾配置服务 |/opt/DSC/dsc_linux_service |这是 Azure 中用于实现来宾内策略的 Desired State Configuration (DSC v2) 代码库。|
 
 * 有几个日志文件可用于故障排除。 下表对它们进行了说明。
 
     |日志 |说明 |
     |----|------------|
-    |/var/opt/azcmagent/log/himds.log |记录代理（HIMDS）服务的详细信息以及与 Azure 的交互。|
+    |/var/opt/azcmagent/log/himds.log |记录代理 (HIMDS) 服务的详细信息以及与 Azure 的交互。|
     |/var/opt/azcmagent/log/azcmagent.log |当使用 verbose (-v) 参数时，包含 azcmagent 工具命令的输出。|
     |/opt/logs/dsc.log |记录 DSC 服务活动的详细信息，<br> 特别是 himds 服务与 Azure Policy 之间的连接。|
     |/opt/logs/dsc.telemetry.txt |记录有关 DSC 服务遥测和详细日志记录的详细信息。|
@@ -158,11 +158,11 @@ Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
 Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操作系统： 
 
 - Windows Server 2012 R2 及更高版本（包括 Windows Server Core）
-- Ubuntu 16.04 和18.04 （x64）
-- CentOS Linux 7 （x64）
-- SUSE Linux Enterprise Server （SLES）15（x64）
-- Red Hat Enterprise Linux （RHEL）7（x64）
-- Amazon Linux 2 （x64）
+- Ubuntu 16.04 和 18.04 (x64) 
+- CentOS Linux 7 (x64) 
+- SUSE Linux Enterprise Server (SLES) 15 (x64) 
+- Red Hat Enterprise Linux (RHEL) 7 (x64) 
+- Amazon Linux 2 (x64) 
 
 >[!NOTE]
 >适用于 Windows 的 Connected Machine 代理预览版仅支持配置为使用英语的 Windows Server。
@@ -202,12 +202,13 @@ URL：
 
 | 代理资源 | 说明 |
 |---------|---------|
-|management.azure.com|Azure 资源管理器|
-|login.windows.net|Azure Active Directory|
-|dc.services.visualstudio.com|Application Insights|
-|agentserviceapi.azure-automation.net|来宾配置|
-|*-agentservice-prod-1.azure-automation.net|来宾配置|
-|*.his.arc.azure.com|混合标识服务|
+|`management.azure.com`|Azure 资源管理器|
+|`login.windows.net`|Azure Active Directory|
+|`dc.services.visualstudio.com`|Application Insights|
+|`agentserviceapi.azure-automation.net`|来宾配置|
+|`*-agentservice-prod-1.azure-automation.net`|来宾配置|
+|`*.guestconfiguration.azure.com` |来宾配置|
+|`*.his.arc.azure.com`|混合标识服务|
 
 有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 有关详细信息，请查看[服务标记](../../virtual-network/security-overview.md#service-tags)。
 

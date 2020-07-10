@@ -5,11 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feeef1773ffe68f3ff88175b413cd40ba618b8d9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639796"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207223"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
@@ -190,15 +191,14 @@ ms.locfileid: "75639796"
  
 3. 仅对于 Windows 群集，请使用以下值设置 Azure 网络安全组 (NSG) 规则，以便为虚拟网络打开端口 UDP/53：
 
-   |设置 |值 | |
-   | --- | --- | --- |
-   |优先度 |2000 | |
-   |名称 |Custom_Dns  | |
-   |源 |VirtualNetwork | |
-   |目标 | VirtualNetwork | |
-   |服务 | DNS (UDP/53) | |
-   |操作 | Allow  | |
-   | | |
+   |设置 |值 |
+   | --- | --- |
+   |优先度 |2000 |
+   |名称 |Custom_Dns  |
+   |源 |VirtualNetwork |
+   |目标 | VirtualNetwork |
+   |服务 | DNS (UDP/53) |
+   |操作 | Allow  |
 
 4. 在应用程序清单中为每个服务指定网络模式 `<NetworkConfig NetworkType="Open">`。 开放网络模式使服务获得专用 IP 地址  。 如果未指定模式，服务默认使用 nat 模式  。 在以下清单示例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服务均可在相同端口上进行侦听（这两个服务都在 `Endpoint1` 上进行侦听）。 如果指定了开放网络模式，便无法指定 `PortBinding` 配置。
 

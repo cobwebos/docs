@@ -1,7 +1,7 @@
 ---
-title: 光学字符识别（OCR）-计算机视觉
+title: 光学字符识别 (OCR) -计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 与使用计算机视觉 API 通过打印文本和手写文本打印的图像和文档中的光学字符识别（OCR）相关的概念。
+description: 与光学字符识别相关的概念 (通过使用计算机视觉 API 使用打印文本和手写文本) 从图像和文档进行 OCR。
 services: cognitive-services
 author: msbbonsu
 manager: netahw
@@ -11,30 +11,86 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: d1c642a660b24cfc54c9c4308b8956582e13d50a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6bc118145bec30085c2d9fbf726c40a20b312430
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954734"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207055"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
-计算机视觉包括新的基于深度学习的光学字符识别（OCR）功能，这些功能可从图像和 PDF 文档中提取打印文本或手写文本。 计算机视觉从模拟文档（图像、扫描的文档）和数字化的文档中提取文本。 你可以从图像中提取文本（例如，具有序列号的许可印版照片或包含序列号的容器），也可以从文档-发票、帐单、财务报表、文章等。 此 OCR 功能作为云中或本地（容器）的托管服务的一部分提供。 此外，它还支持虚拟网络和专用终结点，以满足企业级符合性和隐私需求。
+Microsoft 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功能可从图像和 PDF 文档中提取打印文本或手写文本。 OCR Api 从两个模拟文档中提取文本 (图像、扫描的文档) 和数字化的文档。 你可以从图像中提取文本（例如，具有序列号的许可印版照片或包含序列号的容器），也可以从文档-发票、帐单、财务报表、文章等。 新的读取 OCR API 作为云中或本地 (容器) 中托管服务的一部分提供。 此外，它还支持虚拟网络和专用终结点，以满足企业级符合性和隐私需求。
 
 ## <a name="read-api"></a>读取 API 
 
-计算机视觉的[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是 Microsoft 的最新 OCR 技术，可从图像和多页面 PDF 文档中提取打印文本（七种语言）、手写文本（仅英语）、数字和货币符号。 它经过优化，可以从通配符文本和混合语言的多页面 PDF 文档中提取文本。 它支持在同一图像或文档中检测打印文本和手写文本（仅英语）。 有关支持的语言的完整列表，请参阅计算机视觉页面的[语言支持](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)。
+计算机视觉的[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是 Microsoft 的最新 OCR 技术，它将打印的文本 (七种语言) ，手写文本) 仅 (英语格式的图像和多页面 PDF 文档中的货币符号。 它经过优化，可以从通配符文本和混合语言的多页面 PDF 文档中提取文本。 它支持检测 (仅) 同一图像或文档中的打印和手写文本。 请参阅[OCR 支持的语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)的完整列表页。
 
-### <a name="how-it-works"></a>工作原理
+### <a name="how-ocr-works"></a>OCR 的工作方式
 
 [读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)支持最大为2000页的文本繁重的文档，因此以异步方式执行。 第一步是调用读取操作。 读取操作采用图像或 PDF 文档作为输入，并返回操作 ID。 
 
-第二步是调用[获取结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)操作。 此操作采用读取操作创建的操作 ID。 然后，它将从图像或文档中以 JSON 格式返回提取的文本内容。 JSON 响应维护已识别单词的原始行组。 它包括提取的文本行及其边界框坐标。 每个文本行都包含带有坐标和置信度分数的所有已提取单词。
+第二步是调用[获取结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)操作。 此操作采用读取操作创建的操作 ID。 然后，它将从图像或文档中以 JSON 格式返回提取的文本内容。 JSON 响应维护已识别单词的原始行组。 它包括提取的文本行及其边界框坐标。 每个文本行都包含其坐标和置信度分数的所有提取单词。
 
 如有必要，请阅读通过返回相对于水平图像轴的旋转偏移量来更正已识别页面的旋转，如下图所示。
 
-![正在旋转的图像及其正在读取和画出的文本](./Images/vision-overview-ocr-read.png)
+![OCR 如何通过提取的文本将图像和文档转换为结构化输出](./Images/how-ocr-works.svg)
+
+### <a name="sample-ocr-output"></a>示例 OCR 输出
+
+成功的响应会以 JSON 格式返回，如以下示例中所示：
+
+```json
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-05-28T05:13:21Z",
+  "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
+  "analyzeResult": {
+    "version": "3.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "language": "en",
+        "angle": 0.8551,
+        "width": 2661,
+        "height": 1901,
+        "unit": "pixel",
+        "lines": [
+          {
+            "boundingBox": [
+              67,
+              646,
+              2582,
+              713,
+              2580,
+              876,
+              67,
+              821
+            ],
+            "text": "The quick brown fox jumps",
+            "words": [
+              {
+                "boundingBox": [
+                  143,
+                  650,
+                  435,
+                  661,
+                  436,
+                  823,
+                  144,
+                  824
+                ],
+                "text": "The",
+                "confidence": 0.958
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 
 按照 "[提取打印文本和手写文本](./QuickStarts/CSharp-hand-text.md)" 快速入门，使用 c # 和 REST API 实现 OCR。
 
@@ -45,7 +101,6 @@ ms.locfileid: "85954734"
 * 对于 PDF 和 TIFF，最多处理2000页。 对于免费层订阅服务器，只处理前两页。
 * 文件大小必须小于 50 MB 且至少为 50 x 50 像素到 10000 x 10000 像素。
 * PDF 尺寸必须最大为 17 x 17 英寸，对应于法律或 A3 纸张大小和更小的尺寸。
-
 
 ### <a name="text-from-images"></a>图像中的文本
 
@@ -68,7 +123,7 @@ ms.locfileid: "85954734"
 
 ### <a name="printed-text-in-supported-languages"></a>支持的语言中的打印文本
 
-Read API 支持以英语、西班牙语、德语、法语、意大利语、葡萄牙语和荷兰语语言提取打印文本。 如果你的方案需要支持更多语言，请参阅本文档中的 OCR API 概述。 请参阅所有[支持的语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)的列表
+Read API 支持以英语、西班牙语、德语、法语、意大利语、葡萄牙语和荷兰语语言提取打印文本。 如果你的方案需要支持更多语言，请参阅本文档中的 OCR API 概述。 请参阅所有[OCR 支持的语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)的列表
 
 ![正在旋转的图像及其正在读取和画出的文本](./Images/supported-languages-example.png)
 
@@ -84,12 +139,12 @@ Read API 支持以英语、西班牙语、德语、法语、意大利语、葡�
 
 ### <a name="deploy-on-premises"></a>本地部署
 
-作为 Docker 容器（预览）还提供了读取功能，使你能够在自己的环境中部署新的 OCR 功能。 容器非常适合用于满足特定的安全性和数据管理要求。 请参阅[如何安装和运行读取容器。](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
+还可作为 Docker 容器 (预览) ，使你能够在自己的环境中部署新的 OCR 功能。 容器非常适合用于满足特定的安全性和数据管理要求。 请参阅[如何安装和运行读取容器。](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
 
 ## <a name="ocr-api"></a>OCR API
 
-[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)使用较旧的识别模式，仅支持图像，并以同步方式执行，并立即返回检测到的文本。 它比读取 API 支持[更多语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)。
+[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)使用较旧的识别模式，仅支持图像，并以同步方式执行，并立即返回检测到的文本。 请参阅[OCR 支持的语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)，而不是读取 API。
 
 ## <a name="next-steps"></a>后续步骤
 

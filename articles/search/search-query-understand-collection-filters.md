@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113071"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206180"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>了解 Azure 认知搜索中的 OData 集合筛选器
 
@@ -49,13 +50,17 @@ ms.locfileid: "74113071"
 
 对复杂对象集合应用多个筛选条件时，这些条件是**关联的**，因为它们将应用到*集合中的每个对象*。 例如，以下筛选器将返回至少提供一间价格低于 100 的豪华客房的酒店：
 
+```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
+```
 
 如果筛选*不相关联*，上述筛选器可能会返回提供一间豪华客房并提供基本价格低于 100 的另一间客房的酒店。 该结果没有任何意义，因为 Lambda 表达式的两个子句将应用到同一个范围变量，即 `room`。 这就是此类筛选器相关联的原因。
 
 但是，对于全文搜索，无法引用特定的范围变量。 如果使用字段搜索发出如下所示的[完整 Lucene 查询](query-lucene-syntax.md)：
 
+```odata-filter-expr
     Rooms/Type:deluxe AND Rooms/Description:"city view"
+```
 
 可能会返回提供一间豪华客房，并在另一间客房的描述中提到“市景”的酒店。 例如，以下 `Id` 为 `1` 的文档将与查询相匹配：
 
@@ -148,19 +153,27 @@ ms.locfileid: "74113071"
 
 基于相等性，接下来我们将探讨如何使用 `or` 来合并多个针对同一范围变量执行的相等性检查。 它的工作方式得益于代数和[限定符的分配律](https://en.wikipedia.org/wiki/Existential_quantification#Negation)。 此表达式：
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 等效于：
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
+```
 
 可以使用倒排索引有效执行两个 `any` 子表达式中的每一个。 另外，由于[限定符的求反定律](https://en.wikipedia.org/wiki/Existential_quantification#Negation)，此表达式如下所示：
 
+```odata-filter-expr
     seasons/all(s: s ne 'winter' and s ne 'fall')
+```
 
 等效于：
 
+```odata-filter-expr
     not seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 正因如此，我们可以将 `all` 与 `ne` 和 `and` 一起使用。
 
@@ -173,7 +186,7 @@ ms.locfileid: "74113071"
 >
 > 相反的规则适用于 `all`。
 
-在对支持 `lt`、`gt`、`le` 和 `ge` 运算符的数据类型集合进行筛选时，可以使用更多种表达式，例如 `Collection(Edm.Int32)`。 具体而言，可以在 `any` 中使用 `and` 以及 `or`，前提是使用 `and` 将基础比较表达式合并到**范围比较**，然后使用 `or` 进一步合并。 此布尔表达式的结构称为[析取范式 Normal Form （DNF）](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，也称为 "Or of ANDs"。 相反， `all` 针对这些数据类型的 lambda 表达式必须是[联合 Normal 形式（.cnf）](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，也称为 "ANDs of or"。 Azure 认知搜索之所以允许此类范围比较，是因为它可以有效地使用倒排索引执行这些比较，就像它可以针对字符串执行快速字词查找一样。
+在对支持 `lt`、`gt`、`le` 和 `ge` 运算符的数据类型集合进行筛选时，可以使用更多种表达式，例如 `Collection(Edm.Int32)`。 具体而言，可以在 `any` 中使用 `and` 以及 `or`，前提是使用 `and` 将基础比较表达式合并到**范围比较**，然后使用 `or` 进一步合并。 这种布尔表达式结构称为[析取范式 Normal 形式 (DNF) ](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，也称为 "Or of ANDs"。 相反， `all` 针对这些数据类型的 lambda 表达式必须是[联合 Normal 形式 (.cnf) ](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，也称为 "ANDs of or"。 Azure 认知搜索之所以允许此类范围比较，是因为它可以有效地使用倒排索引执行这些比较，就像它可以针对字符串执行快速字词查找一样。
 
 下面汇总了有关 Lambda 表达式中允许的元素的经验法则：
 

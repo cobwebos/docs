@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 85d347c45e1ca2cd39c7504e44bd3ea063f788d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013433d60b9f3e7f251f8d80d7b9b8f24b2395b3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708411"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206186"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 托管实例资源限制概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,11 +33,11 @@ SQL 托管实例具有依赖于底层基础结构和体系结构的特性和资�
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器和 Intel SP-8160 (Skylake) 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
-| vCore 数目 | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
-| 最大内存（内存/核心比） | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
-| 最大内存中 OLTP 内存 | 实例限制：每个 vCore 1 - 1.5 GB| 实例限制：每个 vCore 0.8 - 1.65 GB |
-| 最大实例预留存储 |  常规用途：8 TB<br/>业务关键：1 TB | 常规用途：8 TB<br/> 业务关键型 1 TB、2 TB 或 4 TB，具体取决于核心数 |
+| **硬件** | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器和 Intel SP-8160 (Skylake) 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
+| **vCore 数目** | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
+| **最大内存（内存/核心比）** | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
+| **最大内存中 OLTP 内存** | 实例限制：每个 vCore 1 - 1.5 GB| 实例限制：每个 vCore 0.8 - 1.65 GB |
+| **最大实例预留存储** |  常规用途：8 TB<br/>业务关键：1 TB | 常规用途：8 TB<br/> 业务关键型 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
 > [!IMPORTANT]
 > - Gen4 硬件正在被淘汰，不再适用于新部署。 所有 SQL 托管实例的新实例都必须部署在 Gen5 硬件上。
@@ -63,12 +63,12 @@ SQL 托管实例具有依赖于底层基础结构和体系结构的特性和资�
 SQL 托管实例有两个服务层：[常规用途](../database/service-tier-general-purpose.md)和[业务关键](../database/service-tier-business-critical.md)。 这些层级提供[不同的功能](../database/service-tiers-general-purpose-business-critical.md)，如下表中所述。
 
 > [!Important]
-> 业务关键 service 层提供了可用于只读工作负荷的 SQL 托管实例（辅助副本）的附加内置副本。 如果可以分离读写查询和只读/分析/报告查询，则会获得相同价格的 Vcore 和内存的两倍。 辅助副本可能会在主实例之后滞后几秒钟，因此它旨在卸载不需要精确数据状态的报表/分析工作负荷。 在下表中，**只读查询**是在次要副本上执行的查询。
+> 业务关键 service 层提供了 SQL 托管实例的附加内置副本 (辅助副本) ，可用于只读工作负荷。 如果可以分离读写查询和只读/分析/报告查询，则会获得相同价格的 Vcore 和内存的两倍。 辅助副本可能会在主实例之后滞后几秒钟，因此它旨在卸载不需要精确数据状态的报表/分析工作负荷。 在下表中，**只读查询**是在次要副本上执行的查询。
 
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
 | vCore 数目\* | Gen4：8、16、24<br/>Gen5：4、8、16、24、32、40、64、80 | Gen4：8、16、24 <br/> Gen5：4、8、16、24、32、40、64、80 <br/>\*相同数量的 vCore 专用于只读查询。 |
-| 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB - 408 GB (5.1GB/vCore)<br/>添加更多 vCore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5： 20.4 GB-408 GB （5.1 GB/vCore）用于读写查询<br/>为只读查询额外提供 20.4 GB - 408 GB (5.1GB/vCore)。<br/>添加更多 vCore 以获得更多内存。 |
+| 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB - 408 GB (5.1GB/vCore)<br/>添加更多 vCore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5： 20.4 GB-408 GB (5.1 GB/vCore) 用于读写查询<br/>为只读查询额外提供 20.4 GB - 408 GB (5.1GB/vCore)。<br/>添加更多 vCore 以获得更多内存。 |
 | 最大实例存储大小（预留） | - 2 TB，适用于 4 个 vCore（仅限 Gen5）<br/>- 8 TB，适用于其他大小 | Gen4：1 TB <br/> Gen5： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 2 TB（适用于 24 个 vCore）<br/>- 32、40、64、80 个 vCore 4 TB |
 | 最大数据库大小 | 不超过当前可用的实例大小（最大为 2 TB - 8 TB，具体取决于 vCore 数）。 | 不超过当前可用的实例大小（最大为 1 TB - 4 TB，具体取决于 vCore 数）。 |
 | 最大 tempDB 大小 | 限制为 24 GB/vCore (96 - 1,920 GB) 和当前可用的实例存储大小。<br/>添加更多 vCore 以获得更多 TempDB 空间。<br/> 日志文件大小限制为 120 GB。| 不超过当前可用的实例存储大小。 |
@@ -108,7 +108,7 @@ SQL 托管实例有两个服务层：[常规用途](../database/service-tier-gen
 
 如果注意到某个数据库文件的 IO 延迟较高，或者发现 IOPS/吞吐量即将达到限制，可以通过[增大文件大小](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)来提高性能。
 
-在最大日志写入吞吐量（即 22 MB/s）上也有一个实例级限制，因此您可能无法在整个日志文件中到达最大文件，因为您已达到实例吞吐量限制。
+"最大日志写入吞吐量" 的实例级别限制 (为 22 MB/s) ，因此您可能无法在整个日志文件中到达最大文件，因为您已达到实例吞吐量限制。
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -130,7 +130,7 @@ SQL 托管实例当前仅支持以下类型的订阅上的部署：
 > [!Note]
 > 有关订阅的地区可用性的最新信息，请先查看[官方 COVID-19 博客文章](https://aka.ms/sqlcapacity)。
 
-支持的订阅类型可以包含每个区域的有限数量的资源。 对于每个 Azure 区域，SQL 托管实例有两个默认限制（可以根据订阅类型的类型，在[Azure 门户中创建特殊支持请求](../database/quota-increase-request.md)来按需增加此值：
+支持的订阅类型可以包含每个区域的有限数量的资源。 对于每个 Azure 区域，SQL 托管实例有两个默认的限制 (根据订阅类型的类型，可以通过在 Azure 门户中创建特殊的[支持请求](../database/quota-increase-request.md)来提高按需增加的数量：
 
 - **子网限制**：在单个区域中部署 SQL 托管实例实例的子网的最大数目。
 - **vCore 单元限制**：可跨单一区域的所有实例部署的 vCore 单元数上限。 一个 GP vCore 使用一个 vCore 单元，一个 BC vCore 采用 4 个 vCore 单位。 实例总数不受限制，只要在 vCore 单元限制内即可。
@@ -143,14 +143,14 @@ SQL 托管实例当前仅支持以下类型的订阅上的部署：
 |订阅类型| SQL 托管实例子网的最大数目 | vCore 单元数目上限* |
 | :---| :--- | :--- |
 |即用即付|3|320|
-|CSP |8（在某些区域中为 15 * *）|960（在某些区域中为 1440 * *）|
+|CSP |8 (15 在某些区域中 * * ) |960 (1440 在某些地区 * * ) |
 |即用即付开发/测试|3|320|
 |Enterprise 开发/测试|3|320|
-|EA|8（在某些区域中为 15 * *）|960（在某些区域中为 1440 * *）|
+|EA|8 (15 在某些区域中 * * ) |960 (1440 在某些地区 * * ) |
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平台|2|32|
 
-\*在规划部署时，请考虑业务关键（BC）服务层需要四（4）倍于常规用途（GP）服务层的 vCore。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析，请汇总部署了 SQL 托管实例的区域中所有子网的 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量**适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于**vCore 单元的最大数目**。
+\*在规划部署时，请考虑业务关键 (BC) 服务层需要四 (4) 倍于常规用途 (GP) 服务层的容量。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析，请汇总部署了 SQL 托管实例的区域中所有子网的 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量**适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于**vCore 单元的最大数目**。
 
 \*\*以下区域提供了更大的子网和 vCore 限制：澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧、美国西部2。
 

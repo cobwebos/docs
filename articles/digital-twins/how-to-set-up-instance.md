@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4cac7a3f663d9ede966b8d6e5753c48629049dcd
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fecacbd2c7c6549a1321367157bb179321779ca9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057477"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206518"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>设置 Azure 数字孪生实例
 
-本文将指导你完成设置新的 Azure 数字孪生实例的基本步骤。 这包括创建实例，并为自己将[Azure Active Directory （AAD）](../active-directory/fundamentals/active-directory-whatis.md)权限分配给实例。
+本文将指导你完成设置新的 Azure 数字孪生实例的基本步骤。 这包括创建实例，并为自己将[Azure Active Directory (AAD) ](../active-directory/fundamentals/active-directory-whatis.md)权限分配给实例。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "86057477"
 你还需要为你的实例提供一个名称，并为部署选择一个区域。 若要查看哪些区域支持 Azure 数字孪生，请访问[按区域提供的 azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
 
 >[!NOTE]
-> 新实例的名称在该区域中必须是唯一的（也就是说，如果该区域中的另一个 Azure 数字孪生实例已在使用所选的名称，则必须选择其他名称）。
+> 新实例的名称在该区域中必须是唯一的 (这意味着，如果该区域中的另一个 Azure 数字孪生实例已在使用所选的名称，则必须选择不同的名称) 。
 
 用以下命令创建资源组和实例：
 
@@ -49,23 +49,23 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 
 ### <a name="assign-azure-active-directory-permissions"></a>分配 Azure Active Directory 权限
 
-Azure 数字孪生使用[Azure Active Directory （AAD）](../active-directory/fundamentals/active-directory-whatis.md)进行基于角色的访问控制（RBAC）。 这意味着，在对 Azure 数字孪生实例进行数据平面调用之前，必须先为自己分配具有这些权限的角色。
+Azure 数字孪生使用[Azure Active Directory (AAD) ](../active-directory/fundamentals/active-directory-whatis.md)用于基于角色的访问控制 (RBAC) 。 这意味着，在对 Azure 数字孪生实例进行数据平面调用之前，必须先为自己分配具有这些权限的角色。
 
-若要将 Azure 数字孪生用于客户端应用程序，你还需要确保客户端应用可以针对 Azure 数字孪生进行身份验证。 这是通过设置 Azure Active Directory （AAD）应用注册来完成的，你可以在[如何：验证客户端应用程序](how-to-authenticate-client.md)中了解相关信息。
+若要将 Azure 数字孪生用于客户端应用程序，你还需要确保客户端应用可以针对 Azure 数字孪生进行身份验证。 这是通过设置 Azure Active Directory (AAD) 应用注册来完成的，你可以在[如何：验证客户端应用程序](how-to-authenticate-client.md)中了解相关信息。
 
 #### <a name="assign-yourself-a-role"></a>为自己分配角色
 
 使用与 Azure 订阅上的 AAD 租户关联的电子邮件，在 Azure 数字孪生实例中为自己创建角色分配。 
 
-若要实现此目的，需要在 Azure 订阅中将其作为所有者进行分类。 可以通过运行命令来检查此项 `az role assignment list --assignee <your-Azure-email>` ，并在输出中验证*roleDefinitionName*值是否为 "*所有者*"。 如果发现值为 "*参与者*" 或 "*所有者*" 以外的其他值，请与订阅管理员联系，以在订阅中授予权限，以便提升角色。
+若要实现此目的，需要在 Azure 订阅中将其作为所有者进行分类。 可以通过运行命令来检查此项 `az role assignment list --assignee <your-Azure-email>` ，并在输出中验证*roleDefinitionName*值是否为 "*所有者*"。 如果发现值为 "*参与者*" 或 "*所有者*" 以外的其他值，请与订阅管理员联系，以在订阅中授予权限。 它们可以提升你对整个订阅的角色，以便可以运行以下命令，或者所有者可以代表你运行以下命令，为你设置 Azure 数字孪生权限。
 
-作为订阅的所有者，你可以使用以下命令将你的用户分配给 Azure 数字孪生实例的所有者角色：
+若要在 Azure 数字孪生实例中分配用户 "所有者" 权限，请使用以下命令 (必须由 Azure 订阅) 的所有者运行：
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-此命令的结果是已创建的角色分配的输出信息。
+此命令的结果将输出有关已创建的角色分配的信息。
 
 > [!TIP]
 > 如果改为收到*400： BadRequest*错误，请运行以下命令获取用户的*ObjectID* ：
@@ -74,7 +74,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 > ```
 > 然后，使用用户的*对象 ID*和电子邮件重复角色分配命令。
 
-现已准备好使用 Azure 数字孪生实例。
+现在，你已准备好可供使用的 Azure 数字孪生实例，以及管理该实例的权限。
 
 ## <a name="next-steps"></a>后续步骤
 

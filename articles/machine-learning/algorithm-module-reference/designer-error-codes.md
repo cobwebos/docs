@@ -1,7 +1,7 @@
 ---
-title: 对模块错误进行故障排除
+title: 设计器 (预览疑难解答) 模块错误
 titleSuffix: Azure Machine Learning
-description: 使用错误代码对 Azure 机器学习设计器中的模块异常进行故障排除
+description: 'Azure 机器学习设计器中的模块错误代码疑难解答 (预览版) '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,11 +9,12 @@ ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b477fbf0744304b28b3f4ef06271ce7728800bf
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213748"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206989"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>设计器的异常和错误代码（预览）
 

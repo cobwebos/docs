@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188920"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205711"
 ---
 # <a name="configure-application-insights-profiler"></a>配置 Application Insights Profiler
 
@@ -32,7 +32,7 @@ ms.locfileid: "82188920"
 
 “配置 Application Insights Profiler”页包含以下功能：
 
-| | |
+| 功能 | 描述 |
 |-|-|
 立即探查 | 启动与此 Application Insights 实例链接的所有应用的分析会话。
 触发器 | 用于配置使 Profiler 运行的触发器。 
@@ -48,7 +48,7 @@ ms.locfileid: "82188920"
 
 单击菜单栏上的“触发器”按钮会打开“触发器设置”框。 可将触发器设置为在 CPU 或内存使用百分比达到设置的级别时启动探查。
 
-| | |
+| 设置 | 说明 |
 |-|-|
 开/关按钮 | 开：Profiler 可由此触发器启动；关：探查器不会由此触发器启动。
 内存阈值 | 内存使用率达到此百分比时，将启动 Profiler。
@@ -58,7 +58,7 @@ ms.locfileid: "82188920"
 ## <a name="recent-profiling-sessions"></a>最近的探查会话
 此页面部分显示有关最近建立的探查会话的信息。 探查会话代表 Profiler 代理探查托管应用程序的某台计算机的时间段。 单击其中一个行可从会话打开探查数据。 对于每个会话，此部分会显示：
 
-| | |
+| 设置 | 说明 |
 |-|-|
 触发者 | 会话的启动方式：由触发器启动、由“立即探查”操作启动，或由默认采样启动。 
 应用程序名称 | 已探查的应用程序的名称。

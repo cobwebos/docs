@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfe438f6940d3ccd5632a47be1389a30748716b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113101"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206881"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $select 语法
 
@@ -31,7 +32,7 @@ ms.locfileid: "74113101"
 
 ## <a name="syntax"></a>语法
 
-**$select** 参数确定在查询结果集中返回每个文档的哪些字段。 以下 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 **$select**参数的语法：
+**$select** 参数确定在查询结果集中返回每个文档的哪些字段。 以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$select**参数的语法：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -62,7 +63,9 @@ field_path ::= identifier('/'identifier)*
 
 在结果中包括 `HotelId`、`HotelName` 和 `Rating` 顶级字段，以及 `Address` 的 `City` 子字段：
 
+```odata-filter-expr
     $select=HotelId, HotelName, Rating, Address/City
+```
 
 示例结果可能如下所示：
 
@@ -79,7 +82,9 @@ field_path ::= identifier('/'identifier)*
 
 在结果中包括 `HotelName` 顶级字段，以及 `Address` 的所有子字段，以及 `Rooms` 集合中每个对象的 `Type` 和 `BaseRate` 子字段：
 
+```odata-filter-expr
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
+```
 
 示例结果可能如下所示：
 

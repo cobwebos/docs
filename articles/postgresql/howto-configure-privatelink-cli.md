@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: ec4c40430f2cfe04a86ec5f3304aeebd00e4f658
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c957e2ee1d1e596ca8e3525e0f4a9802c4039107
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118267"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206812"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单服务器的专用链接
 
@@ -154,7 +154,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 ## <a name="access-the-postgresql-server-privately-from-the-vm"></a>从 VM 私下访问 PostgreSQL 服务器
 
-1. 在  *myVM* 的远程桌面中打开 PowerShell。
+1. 在 *myVM* 的远程桌面中，打开 PowerShell。
 
 2. 输入  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`。 
 
@@ -184,7 +184,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 6. 浏览左侧菜单中的数据库。
 
-7. 同时创建或查询来自 postgreSQL 服务器的信息。
+7.  (可以选择) 通过 postgreSQL 服务器创建或查询信息。
 
 8. 关闭与 myVm 的远程桌面连接。
 

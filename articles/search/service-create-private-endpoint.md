@@ -8,11 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466164"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206909"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>创建用于与 Azure 认知搜索建立安全连接的专用终结点
 
@@ -21,7 +22,7 @@ ms.locfileid: "84466164"
 专用终结点由[Azure 专用链接](../private-link/private-link-overview.md)作为单独的服务提供。 有关成本的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/private-link/)。
 
 > [!Important]
-> 可以使用 Azure 门户或[管理 REST API 版本 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/)来配置 Azure 认知搜索的专用终结点支持。 当服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别信息，但出于安全考虑，出于安全原因，对索引数据和服务中的各种组件（如索引、索引器和技能组合定义）的门户访问是受限的。
+> 可以使用 Azure 门户或[管理 REST API 版本 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/)来配置 Azure 认知搜索的专用终结点支持。 当服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别信息，但出于安全方面的考虑，已限制对索引数据以及此服务中的各种组件（如索引、索引器和技能集定义）的门户访问。
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>为什么使用私有终结点进行安全访问？
 
@@ -45,7 +46,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | ------- | ----- |
     | 订阅 | 选择订阅|
     | 资源组 | 选择 "**新建**"，输入*myResourceGroup*，然后选择 **"确定"** |
-    | “属性” | 输入*MyVirtualNetwork* |
+    | 名称 | 输入*MyVirtualNetwork* |
     | 区域 | 选择所需的区域 |
     |||
 
@@ -67,14 +68,14 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | **实例详细信息** |  |
     | URL | 输入唯一名称。 |
     | 位置 | 选择所需的区域。 |
-    | 定价层 | 选择 "**更改定价层**"，并选择所需的服务层。 （不支持**免费**级别。 必须为**Basic**或更高版本。） |
+    | 定价层 | 选择 "**更改定价层**"，并选择所需的服务层。  (在**免费**层上不支持。 必须为**Basic**或更高版本。 )  |
     |||
   
 1. 选择**下一步：缩放**。
 
 1. 将值保留为默认值，然后选择 "**下一步：网络**"。
 
-1. 在 "**新建搜索服务-网络**" 中，选择 "**专用**" 作为**终结点连接（数据）**。
+1. 在 "**新建搜索服务-网络**" 中，选择 "**专用**" 作为**终结点连接 (数据) **。
 
 1. 在 "**新建搜索服务**" 中，选择 "在**私有终结点**下**添加 +** "。 
 
@@ -85,14 +86,14 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。**** 已在上一部分创建此内容。|
     | 位置 | 选择“美国西部”****。|
-    | “属性” | 输入  *myPrivateEndpoint*。  |
+    | 名称 | 输入“myPrivateEndpoint”**。  |
     | 目标子资源 | 保留默认**searchService**。 |
     | **网络** |  |
-    | 虚拟网络  | 从资源组“myResourceGroup”** 中选择“MyVirtualNetwork” **。 |
-    | 子网 | 选择“mySubnet”。 ** |
+    | 虚拟网络  | 从资源组“myResourceGroup”中选择“MyVirtualNetwork”。 |
+    | 子网 | 选择“mySubnet”**。 |
     | **专用 DNS 集成** |  |
     | 与专用 DNS 区域集成  | 保留默认值“是”。 |
-    | 专用 DNS 区域  | 保留默认值 * * （New） privatelink.search.windows.net * *。 |
+    | 专用 DNS 区域  | 保留默认值 * * (New) privatelink.search.windows.net * *。 |
     |||
 
 1. 选择“确定”。 
@@ -130,7 +131,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
     | 公共入站端口 | 保留默认**允许所选端口**。 |
-    | 选择入站端口 | 保留默认**RDP （3389）**。 |
+    | 选择入站端口 | 保留默认的**RDP (3389) **。 |
     | **节省资金** |  |
     | 已有 Windows 许可证？ | 保留默认值“否”****。 |
     |||
@@ -188,7 +189,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 当搜索服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别设置，但出于安全原因，对索引数据和服务中的各种其他组件（如索引、索引器和技能组合定义）的门户访问是受限的。
 
-1. 在  *myVM* 的远程桌面中打开 PowerShell。
+1. 在 *myVM* 的远程桌面中，打开 PowerShell。
 
 1. 输入 "nslookup [search service name]. search. net"
 
@@ -202,11 +203,11 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     Aliases:  [search service name].search.windows.net
     ```
 
-1. 在 VM 中，连接到搜索服务并创建索引。 可以按照本[快速入门](search-get-started-postman.md)教程使用 REST API 在 Postman 中的服务中创建新的搜索索引。 若要从 Postman 设置请求，需要搜索服务终结点（https：//[search service name]）和在上一步中复制的管理 api 密钥。
+1. 在 VM 中，连接到搜索服务并创建索引。 可以按照本[快速入门](search-get-started-postman.md)教程使用 REST API 在 Postman 中的服务中创建新的搜索索引。 若要从 Postman 设置请求，需要搜索服务终结点 (https：//[search service name].) ，以及在上一步中复制的管理 api 密钥。
 
 1. 从 VM 完成快速入门是确认服务是否完全正常运行。
 
-1. 关闭与 *myVM*的远程桌面连接。 
+1. 关闭与 *myVM* 的远程桌面连接。 
 
 1. 若要验证你的服务在公共终结点上是否不可访问，请在本地工作站上打开 Postman，并尝试快速入门中的前几个任务。 如果收到一条错误消息，指出远程服务器不存在，则表明已成功配置了搜索服务的专用终结点。
 

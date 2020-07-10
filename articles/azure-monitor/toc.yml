@@ -81,6 +81,10 @@
               href: samples/resource-manager-alerts-metric.md
             - name: 操作组
               href: samples/resource-manager-action-groups.md
+        - name: Application Insights
+          items:
+            - name: 创建资源
+              href: samples/resource-manager-app-resource.md
         - name: 诊断设置
           href: samples/resource-manager-diagnostic-settings.md
         - name: Log Analytics 工作区

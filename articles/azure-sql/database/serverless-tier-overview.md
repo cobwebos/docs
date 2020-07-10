@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/6/2020
-ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 7/9/2020
+ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045954"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206931"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -325,6 +325,19 @@ vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据
 
 此数量每秒计算一次，按 1 分钟进行汇总。
 
+### <a name="minimum-compute-bill"></a>最小计算帐单
+
+如果暂停无服务器数据库，则计算帐单为零。  如果未暂停无服务器数据库，则最小计算费用将不会低于最大 (最小值 Vcore，最小内存 GB * 1/3) 的 Vcore 量。
+
+示例：
+
+- 假设无服务器数据库被暂停并配置为具有8个最大 Vcore，1分钟 vCore 对应于 3.0 GB 的最小内存。  然后，最小计算帐单基于 max (1 vCore，3.0 GB * 1 vCore/3 GB) = 1 vCore。
+- 假设无服务器数据库被暂停并配置为具有最大 4 GB Vcore 和0.5 分钟 Vcore，对应于 2.1 GB 的最小内存。  然后，最小计算帐单基于 max (0.5 Vcore，2.1 GB * 1 vCore/3 GB) = 0.7 Vcore。
+
+用于无服务器的[AZURE SQL 数据库定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)可用于根据配置的最大和最小 vcore 数确定可配置的最小内存。  作为一种规则，如果 Vcore 配置的最小值为大于 0.5 Vcore，则最小计算帐单将独立于配置的最小内存数量和仅基于已配置的最小值。
+
+### <a name="example-scenario"></a>示例方案
+
 假设为某个无服务器数据库配置了最小 vCore 数 1 和最大 vCore 数 4。  这相当于最小内存大约为 3 GB，最大内存大约为 12 GB。  假设自动暂停延迟设置为 6 小时，数据库工作负荷在 24 小时内的前 2 小时处于活动状态，在其他时间处于非活动状态。    
 
 在这种情况下，将会计收数据库在前 8 小时内的计算和存储费用。  尽管数据库在 2 小时后处于非活动状态，但仍会根据预配的最小计算资源，计收数据库联机时的后续 6 小时的计算费用。  当数据库暂停时，只会计收 24 小时时段的剩余时间内的存储费用。
@@ -347,7 +360,7 @@ Azure 混合权益 (AHB) 和预留容量折扣不适用于无服务器计算层�
 
 ## <a name="available-regions"></a>可用区域
 
-无服务器计算层在全球范围内可用，但以下区域除外：中国东部、中国北部、德国中部、德国东北部和 US Gov Central （爱荷华）。
+无服务器计算层在全球范围内可用，但以下区域除外：中国东部、中国北部、德国中部、德国东北部和 US Gov 中央 (爱荷华) 。
 
 ## <a name="next-steps"></a>后续步骤
 

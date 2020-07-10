@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601373"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206164"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
@@ -394,7 +394,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 
-- 对基本层 VM 或通过经典 VM 创建方法创建的 VM 进行加密。
+- 加密通过经典 VM 创建方法创建的基本层 VM。
 - 在已加密 OS 驱动器的情况下，在 Linux VM 的 OS 驱动器或数据驱动器上禁用加密。
 - 正在为 Linux 虚拟机规模集加密 OS 驱动器。
 - 加密 Linux VM 上的自定义映像。
@@ -413,6 +413,8 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - 具有“嵌套装入点”的 VM，即一个路径中有多个装入点（例如“/1stmountpoint/data/2stmountpoint”）。
 - 一个 VM，其中的数据驱动器装载在 OS 文件夹之上。
 - 带有写入加速器磁盘的 M 系列 Vm。
+- 将[使用客户托管密钥的服务器端加密](disk-encryption.md)应用到由 ADE 加密的 vm，反之亦然。
+- 将使用 ADE 加密的 VM 迁移到[使用客户托管密钥的服务器端加密](disk-encryption.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
