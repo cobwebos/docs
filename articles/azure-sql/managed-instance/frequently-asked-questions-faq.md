@@ -1,7 +1,7 @@
 ---
 title: 常见问题 (FAQ)
 titleSuffix: Azure SQL Managed Instance
-description: Azure SQL 托管实例常见问题（FAQ）
+description: 'Azure SQL 托管实例常见问题解答 (常见问题) '
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -12,14 +12,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 88f92117dc07fc241ca714851956e386cd10d617
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d2e4b07c97e09fce5cdaa034e2fe67a18ef0d7f1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135028"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171153"
 ---
-# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题（FAQ）
+# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (常见问题) 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 本文包含有关[AZURE SQL 托管实例](sql-managed-instance-paas-overview.md)的最常见问题。
@@ -33,12 +33,38 @@ ms.locfileid: "86135028"
 有关 Azure SQL 托管实例和 SQL Server 之间的语法和行为的差异，请参阅[与 SQL Server 的 t-sql 差异](transact-sql-tsql-differences-sql-server.md)。
 
 
-## <a name="tech-spec--resource-limits"></a>技术规范和资源限制
+## <a name="technical-specification-resource-limits-and-other-limitations"></a>技术规范、资源限制和其他限制
  
 **在哪里可以找到 SQL 托管实例的技术特性和资源限制？**
 
 有关可用的硬件生成特性，请参阅[硬件生成中的技术差异](resource-limits.md#hardware-generation-characteristics)。
 有关可用的服务层及其特征，请参阅[服务层之间的技术差异](resource-limits.md#service-tier-characteristics)。
+
+**我有资格获得哪些服务层？**
+
+任何客户都有资格获得任何服务层。 但是，如果你想要通过使用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)在 Azure SQL 托管实例上交换现有的折扣率，请记住，具有软件保障的 SQL Server Enterprise Edition 客户有资格使用[常规用途](../database/service-tier-general-purpose.md)或[业务关键](../database/service-tier-business-critical.md)的性能层，并且具有软件保障的 SQL Server Standard Edition 客户仅适用于常规用途性能层。 有关更多详细信息，请参阅[AHB 的特定权限](../azure-hybrid-benefit.md?tabs=azure-powershell#what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server)。
+
+**SQL 托管实例支持哪些订阅类型？**
+
+有关支持的订阅类型的列表，请参阅[支持的订阅类型](resource-limits.md#supported-subscription-types)。 
+
+**支持哪些 Azure 区域？**
+
+可以在大多数 Azure 区域中创建托管实例;请参阅[SQL 托管实例支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)。 如果你需要当前不受支持的区域中的托管实例，请[通过 Azure 门户发送支持请求](../database/quota-increase-request.md)。
+
+**SQL 托管实例部署是否有任何配额限制？**
+
+托管实例有两个默认限制：限制你可以使用的子网数量，以及可预配的 Vcore 数的限制。 各个订阅类型和区域的限制各不相同。 有关按订阅类型列出的区域资源限制列表，请参阅[区域资源限制](resource-limits.md#regional-resource-limitations)中的表。 这些是可以按需增加的软限制。 如果需要在当前区域中预配更多托管实例，则发送支持请求以使用 Azure 门户增加配额。 有关详细信息，请参阅[AZURE SQL 数据库的请求配额增加](../database/quota-increase-request.md)。
+
+**我是否可以根据需要增加托管实例上的数据库数限制 (100) ？**
+
+否，当前没有已提交的计划来增加 SQL 托管实例上的数据库数。 
+
+**如果我有超过8TB 的数据，可以迁移到何处？**
+可以考虑迁移到符合工作负荷的其他 Azure 风格： [AZURE SQL 数据库超大规模](../database/service-tier-hyperscale.md)或[azure 虚拟机上的 SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
+
+**如果我有特定的硬件要求（如更大的 RAM）到 vCore 或更多 Cpu，可以迁移到何处？**
+可以考虑迁移到 Azure 虚拟机或[AZURE SQL 数据库](../database/sql-database-paas-overview.md)内存/cpu[上的 SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) 。
 
 ## <a name="known-issues--bugs"></a>已知问题和 bug
 
@@ -52,22 +78,48 @@ ms.locfileid: "86135028"
 
 对于新功能和预览功能，请参阅[发行说明](../database/doc-changes-updates-release-notes.md?tabs=managed-instance)。
 
-## <a name="deployment-times"></a>部署时间 
+## <a name="create-update-delete-or-move-sql-managed-instance"></a>创建、更新、删除或移动 SQL 托管实例
+
+**如何预配 SQL 托管实例？**
+
+可以通过[Azure 门户](instance-create-quickstart.md)、 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、 [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281)和[ARM 模板](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)设置实例。
+
+**能否在现有订阅中预配托管实例？**
+
+是的，如果订阅属于所[支持的订阅类型](resource-limits.md#supported-subscription-types)，则可以在现有订阅中设置托管实例。
+
+**为什么无法在子网中设置名称以数字开头的托管实例？**
+
+这是对基于 regex ^ [a zA-Z_] [^ \\ \/ \: \* \? \" \<\> \| \` \' \^ ] * (？ <！ \. 的基本组件的当前限制\s] ) $。 所有通过 regex 的名称和都是有效的子网名称。
+
+**如何缩放托管实例？**
+
+可以通过[Azure 门户](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、 [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、 [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update)或[ARM 模板](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)缩放托管实例。
+
+**是否可以将托管实例从一个区域移到另一个区域？**
+
+可以。 有关说明，请参阅[跨区域移动资源](../database/move-resources-across-regions.md)。
+
+**如何删除托管实例？**
+
+可以通过 Azure 门户、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete)或[资源管理器 REST api](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)删除托管实例。
 
 **创建或更新实例或还原数据库需要多长时间？**
 
-创建托管实例或更改服务层（Vcore，存储）所需的时间取决于多个因素。 请参阅[管理操作](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations)。 
-
+需要创建新的托管实例或更改服务层 (Vcore，存储) 的时间取决于多个因素。 请参阅[管理操作](sql-managed-instance-paas-overview.md#management-operations)。
+ 
 ## <a name="naming-conventions"></a>命名约定
 
 **托管实例是否可以与 SQL Server 本地实例同名？**
 
 不支持更改托管实例的名称。
 
-可以更改托管实例的默认 DNS 区域*database.windows.net* 。 
+**能否更改 DNS 区域前缀？**
+
+是，托管实例默认 DNS 区域 *。 database.windows.net*可以更改。 
 
 若要使用其他 DNS 区域而不是默认区域（例如“.contoso.com”**），请执行以下操作： 
-- 使用 CliConfig 定义别名。 该工具只是一个注册表设置包装器，因此也可以使用组策略或脚本完成此操作。
+- 使用 CliConfig 定义别名。 该工具只是一个注册表设置包装，因此也可以使用组策略或脚本完成此操作。
 - 将*CNAME*与*TrustServerCertificate = true*选项一起使用。
 
 ## <a name="move-a-database-from-sql-managed-instance"></a>将数据库从 SQL 托管实例 
@@ -102,7 +154,7 @@ ms.locfileid: "86135028"
 
 **如果没有足够的 IP 地址来执行更新操作，该怎么办？**
 
-如果在预配托管实例的子网中没有足够的 IP 地址，则必须在其中创建新的子网和新的托管实例。 此外，我们还建议创建新的子网，并分配更多的 IP 地址，以便将来的更新操作将避免类似情况。 （为正确的子网大小，请查看[如何确定 VNet 子网的大小](vnet-subnet-determine-size.md)。）预配新实例后，可以在新实例和新实例之间手动备份和还原数据，或执行跨实例[时间点还原](point-in-time-restore.md?tabs=azure-powershell)。 
+如果在预配托管实例的子网中没有足够的 IP 地址，则必须在其中创建新的子网和新的托管实例。 此外，我们还建议创建新的子网，并分配更多的 IP 地址，以便将来的更新操作将避免类似情况。  (为适当的子网大小，请查看[如何确定 VNet 子网的大小](vnet-subnet-determine-size.md)。 ) 预配新实例后，可以在旧实例与新实例之间手动备份和还原数据，或执行跨实例[时间点还原](point-in-time-restore.md?tabs=azure-powershell)。 
 
 
 ## <a name="tune-performance"></a>调整性能
@@ -117,7 +169,7 @@ ms.locfileid: "86135028"
 
 **SQL 托管实例的最大存储大小是多少？**
 
-SQL 托管实例的存储大小取决于所选的服务层（常规用途或业务关键）。 有关这些服务层的存储限制，请参阅[服务层特性](../database/service-tiers-general-purpose-business-critical.md)。
+SQL 托管实例的存储大小取决于所选的服务层 (常规用途或业务关键) 。 有关这些服务层的存储限制，请参阅[服务层特性](../database/service-tiers-general-purpose-business-critical.md)。
 
   
 ## <a name="networking-requirements"></a>网络要求 
@@ -134,22 +186,22 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为[服务�
 
 **能否获取用于入站管理流量的源 IP 范围？**
 
-是的。 可以通过[配置网络观察程序流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)来分析通过网络安全组传入的流量。
+正确。 可以通过[配置网络观察程序流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)来分析通过网络安全组传入的流量。
 
-**是否可以将 NSG 设置为控制对数据终结点（端口1433）的访问？**
+**是否可以将 NSG 设置为控制对 (端口 1433) 的数据终结点的访问？**
 
-是的。 设置托管实例后，可以设置控制对端口1433的入站访问的 NSG。 建议尽可能缩小其 IP 范围。
+正确。 设置托管实例后，可以设置控制对端口1433的入站访问的 NSG。 建议尽可能缩小其 IP 范围。
 
 **是否可以设置 NVA 或本地防火墙以根据 Fqdn 筛选出站管理流量？**
 
-不能。 由于以下几个原因，不支持此操作：
+错误。 由于以下几个原因，不支持此操作：
 -   表示对入站管理请求的响应的路由流量将是非对称的，因此无法运行。
 -   转到存储的路由流量将受到吞吐量限制和延迟的影响，因此，我们无法提供预期的服务质量和可用性。
 -   根据经验，这些配置容易出错并且不受支持。
 
 **能否为出站非管理流量设置 NVA 或防火墙？**
 
-是的。 实现此目的的最简单方法是将0/0 规则添加到与托管实例子网关联的 UDR，以通过 NVA 路由流量。
+正确。 实现此目的的最简单方法是将0/0 规则添加到与托管实例子网关联的 UDR，以通过 NVA 路由流量。
  
 **托管实例需要多少 IP 地址？**
 
@@ -161,7 +213,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为[服务�
 
 **是否需要空的子网来创建托管实例？**
 
-不能。 你可以使用已包含托管实例的空子网或子网。 
+错误。 你可以使用已包含托管实例 (s) 的空子网或子网。 
 
 **能否更改子网地址范围？**
 
@@ -169,7 +221,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为[服务�
 
 **是否可以将托管实例移到另一个子网？**
 
-不能。 这是当前托管实例的设计限制。 但是，你可以在另一个子网中预配新的实例，并在旧实例与新实例之间手动备份和还原数据，或执行跨实例[时间点还原](point-in-time-restore.md?tabs=azure-powershell)。
+错误。 这是当前托管实例的设计限制。 但是，你可以在另一个子网中预配新的实例，并在旧实例与新实例之间手动备份和还原数据，或执行跨实例[时间点还原](point-in-time-restore.md?tabs=azure-powershell)。
 
 **是否需要空虚拟网络来创建托管实例？**
 
@@ -177,46 +229,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为[服务�
 
 **是否可以将托管实例与其他服务一起放入子网？**
 
-不能。 目前，我们不支持将托管实例放置在已包含其他资源类型的子网中。
-
-## <a name="connectivity"></a>连接 
-
-**是否可以使用 IP 地址连接到托管实例？**
-
-否，不支持这样做。 托管实例的主机名映射到托管实例虚拟群集前面的负载均衡器。 由于一个虚拟群集可以托管多个托管实例，因此无法将连接路由到正确的托管实例，无需指定其名称。
-有关 SQL 托管实例虚拟群集体系结构的详细信息，请参阅[虚拟群集连接体系结构](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)。
-
-**托管实例是否可以使用静态 IP 地址？**
-
-目前不支持。
-
-在罕见但必要的情况下，我们可能需要将托管实例联机迁移到新的虚拟群集。 需要进行这种迁移的原因是，我们的技术堆栈发生了变化，旨在提高服务的安全性和可靠性。 迁移到新的虚拟群集会导致映射到托管实例主机名的 IP 地址发生变化。 托管实例服务不会提出静态 IP 地址支持，且有权在不另行通知的情况下，在定期维护周期更改此 IP 地址。
-
-出于此原因，我们强烈反对依赖于 IP 地址的不可变性，因为这可能会导致不必要的停机时间。
-
-**托管实例是否有公用终结点？**
-
-是的。 托管实例具有一个公共终结点，该终结点默认仅用于服务管理，但客户也可以启用它来访问数据。 有关更多详细信息，请参阅[将 SQL 托管实例与公共终结点一起使用](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要配置公共终结点，请参阅[在 SQL 托管实例中配置公共终结点](public-endpoint-configure.md)。
-
-**托管实例如何控制对公共终结点的访问？**
-
-托管实例控制在网络和应用程序级别对公共终结点的访问。
-
-管理和部署服务使用映射到外部负载均衡器的[管理终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint)连接到托管实例。 仅当流量是在一组专用于托管实例管理组件的预定义端口上收到的时，才将流量路由到节点。 节点上的内置防火墙设置为只允许来自 Microsoft IP 范围的流量。 证书将对管理组件与管理平面之间的所有通信进行相互身份验证。 有关更多详细信息，请参阅[SQL 托管实例的连接体系结构](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture)。
-
-**是否可以使用公共终结点来访问托管实例数据库中的数据？**
-
-是的。 客户需要从[Azure 门户](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)PowerShell/ARM 启用公共终结点数据访问  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ，并将 NSG 配置为锁定对数据端口（端口号3342）的访问。 有关详细信息，请参阅[在 AZURE sql 托管实例中配置公共终结点](public-endpoint-configure.md)和通过[公共终结点安全使用 Azure SQL 托管实例](public-endpoint-overview.md)。 
-
-**能否为 SQL 数据终结点指定自定义端口？**
-
-否，此选项不可用。  对于专用数据终结点，托管实例使用默认端口号1433，对于公共数据终结点，托管实例使用默认端口号3342。
-
-**将托管实例连接到不同区域的建议方法是什么？**
-
-快速路由线路对等互连是执行此操作的首选方式。 这不会与跨区域虚拟网络对等互连，因为与内部负载均衡器相关的[约束](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)不受支持。
-
-如果无法实现快速路由线路对等互连，则唯一的另一种方法是创建站点到站点 VPN 连接（[Azure 门户](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、 [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell) [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)）。
+错误。 目前，我们不支持将托管实例放置在已包含其他资源类型的子网中。
 
 
 ## <a name="mitigate-data-exfiltration-risks"></a>缓解数据透露风险  
@@ -227,11 +240,11 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为[服务�
 
 - 针对所有数据库启用[透明数据加密 (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql)。
 - 禁用公共语言运行时 (CLR)。 也建议在本地禁用 CLR。
-- 仅使用 Azure Active Directory （Azure AD）身份验证。
+- 使用 Azure Active Directory (仅 Azure AD) 身份验证。
 - 使用低权限 DBA 帐户访问实例。
 - 为 sysadmin 帐户配置 JIT jumpbox 访问权限。
 - 启用 [SQL 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)，并将其与警报机制相集成。
-- 启用[高级数据安全（ADS）](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)套件中的[威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)。
+- 从[高级数据安全 (ADS) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)套件中打开[威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)。
 
 
 ## <a name="cost-saving-use-cases"></a>节约成本的用例
@@ -252,7 +265,7 @@ SQL 托管实例案例研究：
 
 **能否为 SQL 托管实例配置自定义 DNS？**
 
-是的。 请参阅[如何为 AZURE SQL 托管实例配置自定义 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
+正确。 请参阅[如何为 AZURE SQL 托管实例配置自定义 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 
 **是否可以执行 DNS 刷新？**
 
@@ -266,6 +279,20 @@ DNS 配置最终会刷新：
 一种解决方法是，将 SQL 托管实例降级到 4 Vcore 并在以后再升级。 这样刷新 DNS 配置会产生一种负面影响。
 
 
+## <a name="ip-address"></a>IP 地址
+
+**能否使用 IP 地址连接到 SQL 托管实例？**
+
+不支持使用 IP 地址连接到 SQL 托管实例。 SQL 托管实例主机名映射到 SQL 托管实例虚拟群集前面的负载均衡器。 由于一个虚拟群集可以托管多个托管实例，因此无法将连接路由到适当的托管实例，无需显式指定名称。
+
+有关 SQL 托管实例虚拟群集体系结构的详细信息，请参阅[虚拟群集连接体系结构](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)。
+
+**SQL 托管实例是否可以有静态 IP 地址？**
+
+在极少数情况下，可能需要将 SQL 托管实例联机迁移到新的虚拟群集。 需要进行这种迁移的原因是，我们的技术堆栈发生了变化，旨在提高服务的安全性和可靠性。 迁移到新的虚拟群集会导致更改映射到 SQL 托管实例主机名的 IP 地址。 SQL 托管实例服务不会声明静态 IP 地址支持，并保留在不另行通知的情况下将其更改为定期维护周期的权限。
+
+出于此原因，我们强烈反对依赖于 IP 地址的不可变性，因为这可能会导致不必要的停机时间。
+
 ## <a name="change-time-zone"></a>更改时区
 
 **是否可以更改现有托管实例的时区？**
@@ -275,23 +302,36 @@ DNS 配置最终会刷新：
 解决方法包括使用适当的时区创建新的托管实例，然后执行手动备份和还原，或执行 "[跨实例时间点还原](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)"。
 
 
-## <a name="resolve-performance-issues"></a>解决性能问题
+## <a name="security-and-database-encryption"></a>安全性和数据库加密
 
-**如何实现解决 SQL 托管实例的性能问题？**
+**Sysadmin 服务器角色是否可用于 SQL 托管实例？**
 
-对于 SQL 托管实例和 SQL Server 之间的性能比较，好的起点是[AZURE SQL 托管实例与 SQL Server 之间性能比较的最佳实践](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210)。
+是，客户可以创建作为 sysadmin 角色成员的登录名。  假定 sysadmin 权限的客户也被认为是操作实例的责任，这会对 SLA 承诺产生负面影响。 若要将登录名添加到 sysadmin 服务器角色，请参阅[Azure AD authentication](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-aad-security-tutorial#azure-ad-authentication)。
 
-由于必需的完整恢复模式和对事务日志写入吞吐量的[限制](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)，SQL 托管实例上的数据加载通常比 SQL Server 中的更慢。 有时，通过将暂时性数据加载到 tempdb 而不是用户数据库中，或者通过使用聚集列存储或内存优化表，可以解决这种情况。
+**SQL 托管实例是否支持透明数据加密？**
 
+是的，SQL 托管实例支持透明数据加密。 有关详细信息，请参阅[SQL 托管实例透明数据加密](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal)。
 
-## <a name="restore-encrypted-backup"></a>还原已加密的备份
+**能否对 TDE 使用 "自带密钥" 模型？**
+
+是的，适用于 BYOK 方案 Azure Key Vault 适用于 Azure SQL 托管实例。 有关详细信息，请参阅[与客户托管的密钥透明数据加密](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)。
+
+**是否可以迁移加密的 SQL Server 数据库？**
+
+可以。 要迁移加密的 SQL Server 数据库，需要将现有证书导出并导入到托管实例中，然后执行完整数据库备份并将其还原到托管实例中。 
+
+你还可以使用[Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/)迁移 TDE 加密数据库。
+
+**如何为 SQL 托管实例配置 TDE 保护程序轮换？**
+
+您可以使用 Azure Cloud Shell 来旋转托管实例的 TDE 保护程序。 有关说明，请参阅[SQL 托管实例中的透明数据加密 Azure Key Vault 使用你自己的密钥](scripts/transparent-data-encryption-byok-powershell.md)。
 
 **是否可以将加密的数据库还原到 SQL 托管实例？**
 
 是的，无需解密数据库即可将其还原到 SQL 托管实例。 你确实需要提供一个证书/密钥，将其用作源系统上的加密密钥保护程序托管实例，以便能够从加密的备份文件中读取数据。 要运行此操作有两个可行的方式：
 
 - *将证书保护程序上载到 SQL 托管实例*。 只能使用 PowerShell 执行此操作。 [示例脚本](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate)描述了整个过程。
-- 将*非对称密钥保护程序上载到 Azure Key Vault 并将 SQL 托管实例点到它*。 这种方法类似于自带密钥（BYOK） TDE 用例，该用例也使用 Key Vault 集成来存储加密密钥。 如果你不想使用密钥作为加密密钥保护程序，只想让 SQL 托管实例提供密钥来还原加密的数据库，请按照[设置 BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)的说明进行操作，并不要选中 "**将所选密钥设为默认的 TDE 保护**程序" 复选框。
+- 将*非对称密钥保护程序上载到 Azure Key Vault 并将 SQL 托管实例点到它*。 此方法类似于自带密钥 (BYOK) TDE 用例，该用例也使用 Key Vault 集成来存储加密密钥。 如果你不想使用密钥作为加密密钥保护程序，只想让 SQL 托管实例使用该密钥来还原加密数据库 (s) ，请按照[设置 BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)的说明进行操作，并不要选中 "**将所选密钥设为默认 TDE 保护**程序" 复选框。
 
 使加密保护程序可供 SQL 托管实例使用后，可以继续执行标准数据库还原过程。
 
@@ -310,7 +350,7 @@ SQL 托管实例提供[基于 vCore 的购买模型](sql-managed-instance-paas-o
 
 **谁有资格获得预订实例权益？**
 
-若要获得预订实例权益的资格，订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或采用即用即付定价的个人协议（产品/服务： MS-BC-OP-NT-AZR-Ms-azr-0003p 或-bc-op-nt-azr）。 有关预订的详细信息，请参阅[保留实例权益](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)。 
+若要获得预订实例权益的资格，订阅类型必须是企业协议 (产品/服务（BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) ）或使用即用即付定价 (产品/服务的个人协议产品/服务) 。 有关预订的详细信息，请参阅[保留实例权益](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)。 
 
 **是否可以取消、交换或退款预留？**
 
@@ -376,7 +416,7 @@ ALTER LOGIN <login_name> WITH CHECK_POLICY = OFF;
 ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
-（将 "test" 替换为所需的登录名，并调整策略和过期值）
+ (将 "test" 替换为所需的登录名，并调整策略和过期值) 
 
 ## <a name="azure-feedback-and-support"></a>Azure 反馈和支持
 

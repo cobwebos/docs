@@ -9,26 +9,30 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84904586"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171136"
 ---
 # <a name="convert-to-image-directory"></a>转换为图像目录
 
-本文介绍如何使用 "转换为映像目录" 模块来帮助将图像数据集转换为 "Image Directory" 数据类型，该数据类型是图像相关任务中的标准化数据格式，如 Azure 机器学习设计器（预览）中的图像分类。
+本文介绍如何使用 "转换为映像目录" 模块来帮助将图像数据集转换为 "Image Directory" 数据类型，该数据类型是图像相关任务中的标准化数据格式，如 Azure 机器学习设计器中的图像分类 (预览版) 。
 
 ## <a name="how-to-use-convert-to-image-directory"></a>如何使用“转换为图像目录”模块  
 
 1.  将“转换为图像目录”**** 模块添加到试验中。 可以在模块列表的“计算机视觉/图像数据转换”类别中找到此模块。 
 
-2.  将图像数据集作为输入进行连接。 请确保输入数据集中有图像。
+2.  [注册图像数据集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)，并将其连接到模块输入端口。 请确保输入数据集中有图像。 
     支持以下数据集格式：
 
     - 具有以下扩展名的压缩文件：“.zip”、“.tar”、“.gz”、“.bz2”。
     - 包含图像的文件夹。 **强烈建议先压缩此类文件夹，然后使用压缩文件作为数据集**。
+
+    > [!WARNING]
+    > 您**无法**使用 "**导入数据**" 模块导入图像数据集，因为**导入数据**模块的输出类型为数据帧 Directory，其中仅包含文件路径字符串。
+    
 
     > [!NOTE]
     > 如果在监督式学习中使用映像数据集，则需要标签。
@@ -54,7 +58,7 @@ ms.locfileid: "84904586"
 
 ###  <a name="expected-inputs"></a>预期输入  
 
-| 名称          | 类型                  | 描述   |
+| 名称          | 类型                  | 说明   |
 | ------------- | --------------------- | ------------- |
 | 输入数据集 | AnyDirectory、ZipFile | 输入数据集 |
 
