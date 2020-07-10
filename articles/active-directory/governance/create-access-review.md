@@ -11,15 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 06/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661339545f2c3f01ffd2e07b0fad08de8ac90278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078879"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204043"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建对组和应用程序的访问评审
 
@@ -105,7 +106,7 @@ ms.locfileid: "85078879"
 
 1. 若要指定其他设置，请展开“高级设置”部分。 
 
-    ![创建访问评审 - 高级设置](./media/create-access-review/advanced-settings.png)
+    ![创建访问评审 - 高级设置](./media/create-access-review/advanced-settings-preview.png)
 
 1. 将“显示建议”设置为“启用”，以基于用户的访问权限信息向评审者显示系统建议。  
 
@@ -113,13 +114,18 @@ ms.locfileid: "85078879"
 
 1. 将“邮件通知”设置为“启用”，以便在访问评审开始时让 Azure AD 向评审者发送电子邮件通知，并在评审完成时向管理员发送电子邮件通知。  
 
-1. 将“提醒”设置为“启用”，让 Azure AD 向尚未完成其审阅的审阅者发送访问评审正在进行的提醒。  
+1. 将“提醒”设置为“启用”，让 Azure AD 向尚未完成其审阅的审阅者发送访问评审正在进行的提醒。   
 
-    默认情况下，Azure AD 自动在中途向还未作出回复的审阅者发送结束日期提醒。
+    >[!NOTE]
+    > 默认情况下，Azure AD 自动向尚未回复的审阅者发送结束日期的提醒
+
+1.  (预览) 发送给审阅者的电子邮件的内容是根据审阅详细信息自动生成的，例如审阅名称、资源名称、截止日期等。如果你需要一种方式来传达其他信息（如其他说明或联系人信息），则可以在审阅者电子邮件的其他内容中指定这些详细信息，该电子邮件将包含在发送给分配的审阅者的邀请和提醒电子邮件中。 下面突出显示的部分是将显示此信息的位置。
+
+    ![查看用户对组的访问权限](./media/create-access-review/review-users-access-group.png)
 
 ## <a name="start-the-access-review"></a>启动访问评审
 
-指定访问评审的设置后，单击“启动”。  访问评审将显示在列表中，并带有其状态指示器。
+指定访问评审的设置后，单击“启动”。**** 访问评审将显示在列表中，并带有其状态指示器。
 
 ![访问评审及其状态的列表](./media/create-access-review/access-reviews-list.png)
 
@@ -133,17 +139,17 @@ ms.locfileid: "85078879"
 |--------|------------|
 |NotStarted | 已创建评审，用户发现正在等待启动。 |
 |正在初始化   | 正在进行用户发现，以标识属于评审的所有用户。 |
-|正在启动 | 正在启动评审。 如果启用电子邮件通知，则会将电子邮件发送给评审者。 |
-|正在进行 | 已开始评审。 如果启用电子邮件通知，则电子邮件已发送给评审者。 评审者可以在截止日期之前提交决定。 |
-|正在完成 | 评审正在完成，电子邮件将发送到评审所有者。 |
-|正在自动评审 | 评审处于系统评审阶段。 系统正在为未根据建议或预先配置的决定评审的用户记录决定。 |
-|已自动评审 | 系统已为未评审的所有用户记录了决定。 如果启用了“自动应用”，则评审可以进入“正在应用”阶段了  。 |
-|正在应用 | 对于已批准的用户，访问权限不会更改。 |
-|已应用 | 已经从源或目录删除拒绝的用户（如果有）。 |
+|正在启动 | 正在启动审阅。 如果启用电子邮件通知，则会将电子邮件发送给审阅者。 |
+|正在进行 | 已开始评审。 如果已启用电子邮件通知，则电子邮件已发送给审阅者。 审阅者可以在截止日期之前提交决策。 |
+|完善 | 评审正在完成，电子邮件将发送到审核所有者。 |
+|AutoReviewing | 查看在系统检查阶段中。 系统正在记录基于建议或预先配置的决策未查看的用户的决策。 |
+|AutoReviewed | 系统已为未查看的所有用户记录了决策。 如果启用了自动应用，请查看已准备好进行**应用**。 |
+|应用 | 对于批准的用户，访问权限不会更改。 |
+|已应用 | 拒绝的用户（如果有）已从资源或目录中删除。 |
 
 ## <a name="create-reviews-via-apis"></a>通过 API 创建评审
 
-也可以使用 API 创建访问评审。 在 Azure 门户中管理组和应用程序用户的访问评审的方法也可以使用 Microsoft Graph API 来实现。 有关详细信息，请参阅 [Azure AD 访问评审 API 参考](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)。 有关代码示例，请参阅[通过 Microsoft Graph 检索 Azure AD 访问评审的示例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
+也可以使用 API 创建访问评审。 在 Azure 门户中管理组和应用程序用户的访问评审的方法也可以使用 Microsoft Graph API 来实现。 有关详细信息，请参阅[Azure AD 访问评审 API 参考](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)。 有关代码示例，请参阅[通过 Microsoft Graph 检索 Azure AD 访问评审的示例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
 
 ## <a name="next-steps"></a>后续步骤
 

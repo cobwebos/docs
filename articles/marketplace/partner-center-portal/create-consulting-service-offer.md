@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984264"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203807"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
 
@@ -77,8 +77,8 @@ ms.locfileid: "85984264"
 下面是一些其他潜在客户管理资源：
 
 - [潜在客户管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常见潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常见的潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
 
 选择“保存草稿”，然后继续。
@@ -98,19 +98,29 @@ ms.locfileid: "85984264"
 
 3. 如果选择了 " **Azure**作为主要产品"，请选择最多三个**解决方案区域**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 如果未选择 Azure，请跳过此步骤。
 
-    | 解决方案领域 | | | |
-    | --- | --- | --- | --- |
-    | Analytics | 备份 | DevOps | 迁移 |
-    | 应用现代化 | 大数据 | 灾难恢复 | 网络 |
-    | Archive | 数据平台 | 标识 | 安全性 |
-    | AI + 机器学习 | 数据中心管理 | 物联网 | 存储 |
+    - 分析
+    - 应用现代化
+    - 存档
+    - AI + 机器学习
+    - 备份
+    - 大数据
+    - 数据平台
+    - 数据中心管理
+    - DevOps
+    - 灾难恢复
+    - 标识
+    - 物联网
+    - 迁移
+    - 网络
+    - 安全性
+    - 存储
 
 1. 如果选择了 " **Azure**作为主要产品"，则可以选择最多六个**行业**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业完整列表。 如果未选择 "Azure"，请跳过此步骤。
 1. 如果选择了除 Azure 之外的主产品，则最多选择三个适用的产品。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF)。
 1. 如果选择了除*Azure 之外的主要产品，* 可以选择最多选择**两个行业和两****个行业**。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业和纵向完整列表。
 1. 最多添加贵公司已赢得的三个资格，以显示在咨询服务产品列表中。 至少需要一个资格，Azure 专家 MSP 和 Azure 网络 MSP 除外。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
@@ -119,7 +129,7 @@ ms.locfileid: "85984264"
 > [!NOTE]
 > 如果产品/服务说明的开头是“此应用程序仅以 [非英语语言] 推出”，则产品/服务详细信息不必是英语。&quot;&quot;还可以提供一个有用的链接，来使用与产品/服务列表详细信息中所使用的语言不同的语言提供内容。
 
-下面是一个示例，说明如何在 Azure Marketplace 中显示提供信息（任何列出的价格仅用于举例目的，而不打算反映实际成本）：
+下面是一个示例，说明如何在 Azure Marketplace 中显示产品/服务 (任何列出的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-consulting-service-offer.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
@@ -131,10 +141,10 @@ ms.locfileid: "85984264"
 4. 行业
 5. 产品名称
 6. 总结
-7. 描述
+7. 说明
 8. 屏幕截图/视频
 
-<br>以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式（任何列出的价格仅用于举例目的，不打算反映实际成本）：
+<br>以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式， (所有的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
@@ -146,7 +156,7 @@ ms.locfileid: "85984264"
 4. 行业
 5. 产品名称
 6. 总结
-7. 描述
+7. 说明
 8. 屏幕截图/视频
 9. 文档
 
@@ -212,7 +222,7 @@ ms.locfileid: "85984264"
 
 最多添加四个演示产品/服务的视频。 输入视频的名称及其 Web 地址 (URL) 和视频的缩略图 PNG 图像（大小为 1280 x 720 像素）。
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ## <a name="pricing-and-availability"></a>定价和可用性
 

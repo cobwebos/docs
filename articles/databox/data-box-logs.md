@@ -1,26 +1,27 @@
 ---
-title: 跟踪和记录 Azure Data Box 与 Azure Data Box Heavy 事件 | Microsoft Docs
-description: 介绍如何在 Azure Data Box 与 Azure Data Box Heavy 订单的各个处理阶段跟踪和记录事件。
+title: 跟踪和记录 Azure Data Box，Azure Data Box Heavy 导入顺序的事件 |Microsoft Docs
+description: 介绍如何在 Azure Data Box 的各个阶段跟踪和记录事件，并 Azure Data Box Heavy 导入顺序。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676404"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204298"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box 和 Azure Data Box Heavy 的跟踪与事件日志记录
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box 和 Azure Data Box Heavy 导入顺序的跟踪和事件日志记录
 
-Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数据复制、寄回、上传到 Azure、验证和数据擦除。 对于每个订单步骤，可以采取多种措施来控制对订单的访问、审核事件、跟踪订单，以及解释生成的各种日志。
+Data Box 或 Data Box Heavy 导入顺序完成以下步骤：订单、设置、数据复制、返回、上传到 Azure 并验证和数据擦除。 对于每个订单步骤，可以采取多种措施来控制对订单的访问、审核事件、跟踪订单，以及解释生成的各种日志。
 
-下表汇总了 Data Box 或 Data Box Heavy 订单步骤，以及在每个步骤中可用于跟踪和审核订单的工具。
+下表显示了 Data Box 或 Data Box Heavy 导入订单步骤的摘要，以及在每个步骤中可用于跟踪和审核订单的工具。
 
-| Data Box 订单阶段       | 用于跟踪和审核的工具                                                                        |
+| Data Box 导入订单阶段       | 用于跟踪和审核的工具                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | 创建订单               | [通过 RBAC 对订单设置访问控制](#set-up-access-control-on-the-order)                                                    |
 | 订单已处理            | 通过以下方式[跟踪订单](#track-the-order) <ul><li> Azure 门户 </li><li> 承运商网站 </li><li>电子邮件通知</ul> |
@@ -30,7 +31,7 @@ Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数�
 | 将数据上传到 Azure       | [检查复制日志](#review-copy-log-during-upload-to-azure)，确定在 Azure 数据中心上传数据期间是否出错                         |
 | 从设备中擦除数据   | [查看监护日志链](#get-chain-of-custody-logs-after-data-erasure)，包括审核日志和订单历史记录                |
 
-本文将详细介绍用于跟踪和审核 Data Box 或 Data Box Heavy 订单的各种机制或工具。 本文中的信息同时适用于 Data Box 和 Data Box Heavy。 在后续部分，有关 Data Box 的任何参考信息也适用于 Data Box Heavy。
+本文详细介绍了可用于跟踪和审核 Data Box 或 Data Box Heavy 导入顺序的各种机制或工具。 本文中的信息适用于、Data Box 和 Data Box Heavy 导入订单。 在后续部分，有关 Data Box 的任何参考信息也适用于 Data Box Heavy。
 
 ## <a name="set-up-access-control-on-the-order"></a>针对订单设置访问控制
 

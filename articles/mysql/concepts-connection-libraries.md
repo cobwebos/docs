@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5f83f937b8d9ec50ec7dc6ec781bff1f435eb45a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5520072ba16b117c33c2ad172030807e51c7cf7a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537187"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203899"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQL 的连接库
 本文列出了客户端程序连接到 Azure Database for MySQL 时可以使用的每个库或驱动程序。
@@ -35,5 +35,11 @@ MySQL 提供标准数据库驱动程序连接，以将 MySQL 与符合行业标�
 ## <a name="next-steps"></a>后续步骤
 阅读这些快速入门，了解如何使用所选语言连接和查询 Azure Database for MySQL：
 
-[PHP](./connect-php.md)  | [Java](./connect-java.md)  |  [.NET （C #）](./connect-csharp.md)  | [Python](./connect-python.md)  | [Node.JS](./connect-nodejs.md)  | [Ruby](./connect-ruby.md)  | [C + +](connect-cpp.md)  | [开始](./connect-go.md)
-
+- [PHP](./connect-php.md)
+- [Java](./connect-java.md)
+- [.NET (C # ) ](./connect-csharp.md)
+- [Python](./connect-python.md)
+- [Node.JS](./connect-nodejs.md)
+- [Ruby](./connect-ruby.md)
+- [C++](connect-cpp.md)
+- [Go](./connect-go.md)

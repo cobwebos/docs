@@ -8,16 +8,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ac76ef5eeebd278dc10e03d661bb21469c8f4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610553"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203676"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁盘加密方案
 
-适用于 Windows 虚拟机（Vm）的 Azure 磁盘加密使用 Windows 的 BitLocker 功能提供操作系统磁盘和数据磁盘的完整磁盘加密。 此外，VolumeType 参数为 All 时，它提供临时磁盘加密。
+适用于 Windows 虚拟机 (VM) 的 Azure 磁盘加密使用 Windows 的 BitLocker 功能对 OS 磁盘和数据磁盘进行完整的磁盘加密。 此外，VolumeType 参数为 All 时，它提供临时磁盘加密。
 
 Azure 磁盘加密[与 Azure Key Vault 集成](disk-encryption-key-vault.md)，帮助你控制和管理磁盘加密密钥与机密。 有关该服务的概述，请参阅[适用于 Windows VM 的 Azure 磁盘加密](disk-encryption-overview.md)。
 
@@ -236,8 +236,11 @@ Azure 磁盘加密不支持以下方案、功能和技术：
 - 将已加密的 Vm 移动到其他订阅或区域。
 - 创建加密 VM 的映像或快照，并使用它来部署更多 Vm。
 - Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）
-- Lsv2 系列 Vm （请参阅： [Lsv2 系列](../lsv2-series.md)）
+- Lsv2 系列 Vm (参阅： [Lsv2 系列](../lsv2-series.md)) 
 - 带有写入加速器磁盘的 M 系列 Vm。
+- 将[使用客户托管密钥的服务器端加密](disk-encryption.md)应用到由 ADE 加密的 vm，反之亦然。
+- 将使用 ADE 加密的 VM 迁移到[使用客户托管密钥的服务器端加密](disk-encryption.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

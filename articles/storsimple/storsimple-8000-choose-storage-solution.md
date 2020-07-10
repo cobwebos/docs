@@ -7,11 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68965358"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203970"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple 与 Azure 文件同步和 Data Box Edge 数据传输选项的比较 
 
@@ -27,14 +28,14 @@ ms.locfileid: "68965358"
 
 |                           |StorSimple 8000   |Azure 文件同步   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|概述         |分层混合存储和存档|支持云分层和多站点同步的常规文件服务器存储。  |用于预处理数据并通过网络将其发送到 Azure 的存储解决方案。        |
-|方案        |文件服务器、存档、备份目标 |文件服务器、存档（多站点）   |数据传输、数据预处理，包括机器学习推断、IoT、存档    |
-|Edge 计算     |不可用 |不可用 |支持使用 Azure IoT Edge 运行容器    |
-|外形规格      |物理设备   |在 Windows Server 上安装的代理 |物理设备   |
-|硬件         |Microsoft 作为服务的一部分提供的物理设备 | 由客户提供 |Microsoft 作为服务的一部分提供的物理设备  |
-|数据格式      |自定义格式   |文件         |Blob 或文件    |
-|协议支持 |iSCSI          |SMB、NFS    | SMB 或 NFS      |
-|定价          |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure 文件同步](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
+|**概述**     |分层混合存储和存档|支持云分层和多站点同步的常规文件服务器存储。  |用于预处理数据并通过网络将其发送到 Azure 的存储解决方案。        |
+|**方案**    |文件服务器、存档、备份目标 |文件服务器、存档（多站点）   |数据传输、数据预处理，包括机器学习推断、IoT、存档    |
+|**Edge 计算** |不可用 |不可用 |支持使用 Azure IoT Edge 运行容器    |
+|**外形规格**  |物理设备   |在 Windows Server 上安装的代理 |物理设备   |
+|**硬件**     |Microsoft 作为服务的一部分提供的物理设备 | 由客户提供 |Microsoft 作为服务的一部分提供的物理设备  |
+|**数据格式**  |自定义格式   |文件         |Blob 或文件    |
+|**协议支持** |iSCSI          |SMB、NFS    | SMB 或 NFS      |
+|**定价**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure 文件同步](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
 ## <a name="next-steps"></a>后续步骤
 

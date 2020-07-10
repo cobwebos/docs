@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864360"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204162"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
 本页从较高层面引导完成服务预配和路由配置工作流。
@@ -54,33 +55,37 @@ ms.locfileid: "75864360"
 
 ExpressRoute 线路会在资源创建时报告以下状态。
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 **连接服务提供商正在预配线路时**
 
 当连接服务提供商正在进行线路预配时，ExpressRoute 线路将报告以下状态。
 
-    ServiceProviderProvisioningState : Provisioning
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioning
+Status                           : Enabled
+```
 
 **连接服务提供商完成预配过程时**
 
 连接服务提供商成功预配线路后，ExpressRoute 线路将报告以下状态。
 
-    ServiceProviderProvisioningState : Provisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioned
+Status                           : Enabled
+```
 
 **连接服务提供商正在取消预配线路时**
 
 如果需要取消预配 ExpressRoute 线路，在服务提供商完成取消预配过程后，线路将报告以下状态。
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 如果需要，可以选择重新启用线路，或运行 PowerShell cmdlet 删除线路。  
 
