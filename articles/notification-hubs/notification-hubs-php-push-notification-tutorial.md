@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 1c4bf0569d6e2e595eb03c85abba7224b25b1864
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb2d2d33d380819a88da57a78c449e22256bf41b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255443"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169521"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何通过 PHP 使用通知中心
 
@@ -40,16 +40,16 @@ ms.locfileid: "85255443"
 
 例如，创建客户端：
 
-    ```php
-    $hub = new NotificationHub("connection string", "hubname");
-    ```
+```php
+$hub = new NotificationHub("connection string", "hubname");
+```
 
 发送 iOS 本机通知：
 
-    ```php
-    $notification = new Notification("apple", '{"aps":{"alert": "Hello!"}}');
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$notification = new Notification("apple", '{"aps":{"alert": "Hello!"}}');
+$hub->sendNotification($notification, null);
+```
 
 ## <a name="implementation"></a>实现
 
@@ -66,39 +66,39 @@ ms.locfileid: "85255443"
 
 下面是实现客户端的主类，其构造函数将解析连接字符串：
 
-    ```php
-    class NotificationHub {
-        const API_VERSION = "?api-version=2013-10";
+```php
+class NotificationHub {
+    const API_VERSION = "?api-version=2013-10";
 
-        private $endpoint;
-        private $hubPath;
-        private $sasKeyName;
-        private $sasKeyValue;
+    private $endpoint;
+    private $hubPath;
+    private $sasKeyName;
+    private $sasKeyValue;
 
-        function __construct($connectionString, $hubPath) {
-            $this->hubPath = $hubPath;
+    function __construct($connectionString, $hubPath) {
+        $this->hubPath = $hubPath;
 
-            $this->parseConnectionString($connectionString);
+        $this->parseConnectionString($connectionString);
+    }
+
+    private function parseConnectionString($connectionString) {
+        $parts = explode(";", $connectionString);
+        if (sizeof($parts) != 3) {
+            throw new Exception("Error parsing connection string: " . $connectionString);
         }
 
-        private function parseConnectionString($connectionString) {
-            $parts = explode(";", $connectionString);
-            if (sizeof($parts) != 3) {
-                throw new Exception("Error parsing connection string: " . $connectionString);
-            }
-
-            foreach ($parts as $part) {
-                if (strpos($part, "Endpoint") === 0) {
-                    $this->endpoint = "https" . substr($part, 11);
-                } else if (strpos($part, "SharedAccessKeyName") === 0) {
-                    $this->sasKeyName = substr($part, 20);
-                } else if (strpos($part, "SharedAccessKey") === 0) {
-                    $this->sasKeyValue = substr($part, 16);
-                }
+        foreach ($parts as $part) {
+            if (strpos($part, "Endpoint") === 0) {
+                $this->endpoint = "https" . substr($part, 11);
+            } else if (strpos($part, "SharedAccessKeyName") === 0) {
+                $this->sasKeyName = substr($part, 20);
+            } else if (strpos($part, "SharedAccessKey") === 0) {
+                $this->sasKeyValue = substr($part, 16);
             }
         }
     }
-    ```
+}
+```
 
 ### <a name="create-a-security-token"></a>创建安全令牌
 
@@ -106,48 +106,48 @@ ms.locfileid: "85255443"
 
 将 `generateSasToken` 方法添加到 `NotificationHub` 类，以便根据当前请求的 URI 和提取自连接字符串的凭据创建令牌。
 
-    ```php
-    private function generateSasToken($uri) {
-        $targetUri = strtolower(rawurlencode(strtolower($uri)));
+```php
+private function generateSasToken($uri) {
+    $targetUri = strtolower(rawurlencode(strtolower($uri)));
 
-        $expires = time();
-        $expiresInMins = 60;
-        $expires = $expires + $expiresInMins * 60;
-        $toSign = $targetUri . "\n" . $expires;
+    $expires = time();
+    $expiresInMins = 60;
+    $expires = $expires + $expiresInMins * 60;
+    $toSign = $targetUri . "\n" . $expires;
 
-        $signature = rawurlencode(base64_encode(hash_hmac('sha256', $toSign, $this->sasKeyValue, TRUE)));
+    $signature = rawurlencode(base64_encode(hash_hmac('sha256', $toSign, $this->sasKeyValue, TRUE)));
 
-        $token = "SharedAccessSignature sr=" . $targetUri . "&sig="
-                    . $signature . "&se=" . $expires . "&skn=" . $this->sasKeyName;
+    $token = "SharedAccessSignature sr=" . $targetUri . "&sig="
+                . $signature . "&se=" . $expires . "&skn=" . $this->sasKeyName;
 
-        return $token;
-    }
-    ```
+    return $token;
+}
+```
 
 ### <a name="send-a-notification"></a>发送通知
 
 首先，让我们定义表示通知的类。
 
-    ```php
-    class Notification {
-        public $format;
-        public $payload;
+```php
+class Notification {
+    public $format;
+    public $payload;
 
-        # array with keynames for headers
-        # Note: Some headers are mandatory: Windows: X-WNS-Type, WindowsPhone: X-NotificationType
-        # Note: For Apple you can set Expiry with header: ServiceBusNotification-ApnsExpiry in W3C DTF, YYYY-MM-DDThh:mmTZD (for example, 1997-07-16T19:20+01:00).
-        public $headers;
+    # array with keynames for headers
+    # Note: Some headers are mandatory: Windows: X-WNS-Type, WindowsPhone: X-NotificationType
+    # Note: For Apple you can set Expiry with header: ServiceBusNotification-ApnsExpiry in W3C DTF, YYYY-MM-DDThh:mmTZD (for example, 1997-07-16T19:20+01:00).
+    public $headers;
 
-        function __construct($format, $payload) {
-            if (!in_array($format, ["template", "apple", "windows", "fcm", "windowsphone"])) {
-                throw new Exception('Invalid format: ' . $format);
-            }
-
-            $this->format = $format;
-            $this->payload = $payload;
+    function __construct($format, $payload) {
+        if (!in_array($format, ["template", "apple", "windows", "fcm", "windowsphone"])) {
+            throw new Exception('Invalid format: ' . $format);
         }
+
+        $this->format = $format;
+        $this->payload = $payload;
     }
-    ```
+}
+```
 
 此类是一个容器，其中包含本机通知正文或一组模板通知上的属性，以及一组包含格式（本机平台或模板）和平台特定属性（如 Apple 过期属性和 WNS 标头）的标头。
 
@@ -155,64 +155,64 @@ ms.locfileid: "85255443"
 
 具备了此类后，我们现在可以在 `NotificationHub` 类中编写发送通知方法了：
 
-    ```php
-    public function sendNotification($notification, $tagsOrTagExpression="") {
-        if (is_array($tagsOrTagExpression)) {
-            $tagExpression = implode(" || ", $tagsOrTagExpression);
-        } else {
-            $tagExpression = $tagsOrTagExpression;
-        }
+```php
+public function sendNotification($notification, $tagsOrTagExpression="") {
+    if (is_array($tagsOrTagExpression)) {
+        $tagExpression = implode(" || ", $tagsOrTagExpression);
+    } else {
+        $tagExpression = $tagsOrTagExpression;
+    }
 
-        # build uri
-        $uri = $this->endpoint . $this->hubPath . "/messages" . NotificationHub::API_VERSION;
-        $ch = curl_init($uri);
+    # build uri
+    $uri = $this->endpoint . $this->hubPath . "/messages" . NotificationHub::API_VERSION;
+    $ch = curl_init($uri);
 
-        if (in_array($notification->format, ["template", "apple", "fcm"])) {
-            $contentType = "application/json";
-        } else {
-            $contentType = "application/xml";
-        }
+    if (in_array($notification->format, ["template", "apple", "fcm"])) {
+        $contentType = "application/json";
+    } else {
+        $contentType = "application/xml";
+    }
 
-        $token = $this->generateSasToken($uri);
+    $token = $this->generateSasToken($uri);
 
-        $headers = [
-            'Authorization: '.$token,
-            'Content-Type: '.$contentType,
-            'ServiceBusNotification-Format: '.$notification->format
-        ];
+    $headers = [
+        'Authorization: '.$token,
+        'Content-Type: '.$contentType,
+        'ServiceBusNotification-Format: '.$notification->format
+    ];
 
-        if ("" !== $tagExpression) {
-            $headers[] = 'ServiceBusNotification-Tags: '.$tagExpression;
-        }
+    if ("" !== $tagExpression) {
+        $headers[] = 'ServiceBusNotification-Tags: '.$tagExpression;
+    }
 
-        # add headers for other platforms
-        if (is_array($notification->headers)) {
-            $headers = array_merge($headers, $notification->headers);
-        }
+    # add headers for other platforms
+    if (is_array($notification->headers)) {
+        $headers = array_merge($headers, $notification->headers);
+    }
 
-        curl_setopt_array($ch, array(
-            CURLOPT_POST => TRUE,
-            CURLOPT_RETURNTRANSFER => TRUE,
-            CURLOPT_SSL_VERIFYPEER => FALSE,
-            CURLOPT_HTTPHEADER => $headers,
-            CURLOPT_POSTFIELDS => $notification->payload
-        ));
+    curl_setopt_array($ch, array(
+        CURLOPT_POST => TRUE,
+        CURLOPT_RETURNTRANSFER => TRUE,
+        CURLOPT_SSL_VERIFYPEER => FALSE,
+        CURLOPT_HTTPHEADER => $headers,
+        CURLOPT_POSTFIELDS => $notification->payload
+    ));
 
-        // Send the request
-        $response = curl_exec($ch);
+    // Send the request
+    $response = curl_exec($ch);
 
-        // Check for errors
-        if($response === FALSE){
-            throw new Exception(curl_error($ch));
-        }
+    // Check for errors
+    if($response === FALSE){
+        throw new Exception(curl_error($ch));
+    }
 
-        $info = curl_getinfo($ch);
+    $info = curl_getinfo($ch);
 
-        if ($info['http_code'] <> 201) {
-            throw new Exception('Error sending notification: '. $info['http_code'] . ' msg: ' . $response);
-        }
-    } 
-    ```
+    if ($info['http_code'] <> 201) {
+        throw new Exception('Error sending notification: '. $info['http_code'] . ' msg: ' . $response);
+    }
+} 
+```
 
 以上方法将 HTTP POST 请求发送到通知中心的 `/messages` 终结点，该请求具有发送通知的正确正文和标头。
 
@@ -220,61 +220,61 @@ ms.locfileid: "85255443"
 
 现在，可以通过从 PHP 后端发送通知来完成该入门教程。
 
-初始化通知中心客户端（如 [入门教程] 中所述，替代连接字符串和中心名称）：
+初始化通知中心客户端 (按 [入门教程] ) 中所述替换连接字符串和中心名称：
 
-    ```php
-    $hub = new NotificationHub("connection string", "hubname");
-    ```
+```php
+$hub = new NotificationHub("connection string", "hubname");
+```
 
 然后，根据目标移动平台添加发送代码。
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows 应用商店和 Windows Phone 8.1（非 Silverlight）
 
-    ```php
-    $toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
-    $notification = new Notification("windows", $toast);
-    $notification->headers[] = 'X-WNS-Type: wns/toast';
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
+$notification = new Notification("windows", $toast);
+$notification->headers[] = 'X-WNS-Type: wns/toast';
+$hub->sendNotification($notification, null);
+```
 
 ### <a name="ios"></a>iOS
 
-    ```php
-    $alert = '{"aps":{"alert":"Hello from PHP!"}}';
-    $notification = new Notification("apple", $alert);
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$alert = '{"aps":{"alert":"Hello from PHP!"}}';
+$notification = new Notification("apple", $alert);
+$hub->sendNotification($notification, null);
+```
 
 ### <a name="android"></a>Android
 
-    ```php
-    $message = '{"data":{"msg":"Hello from PHP!"}}';
-    $notification = new Notification("fcm", $message);
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$message = '{"data":{"msg":"Hello from PHP!"}}';
+$notification = new Notification("fcm", $message);
+$hub->sendNotification($notification, null);
+```
 
 ### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone 8.0 和 8.1 Silverlight
 
-    ```php
-    $toast = '<?xml version="1.0" encoding="utf-8"?>' .
-                '<wp:Notification xmlns:wp="WPNotification">' .
-                   '<wp:Toast>' .
-                        '<wp:Text1>Hello from PHP!</wp:Text1>' .
-                   '</wp:Toast> ' .
-                '</wp:Notification>';
-    $notification = new Notification("windowsphone", $toast);
-    $notification->headers[] = 'X-WindowsPhone-Target : toast';
-    $notification->headers[] = 'X-NotificationClass : 2';
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$toast = '<?xml version="1.0" encoding="utf-8"?>' .
+            '<wp:Notification xmlns:wp="WPNotification">' .
+               '<wp:Toast>' .
+                    '<wp:Text1>Hello from PHP!</wp:Text1>' .
+               '</wp:Toast> ' .
+            '</wp:Notification>';
+$notification = new Notification("windowsphone", $toast);
+$notification->headers[] = 'X-WindowsPhone-Target : toast';
+$notification->headers[] = 'X-NotificationClass : 2';
+$hub->sendNotification($notification, null);
+```
 
 ### <a name="kindle-fire"></a>Kindle Fire
 
-    ```php
-    $message = '{"data":{"msg":"Hello from PHP!"}}';
-    $notification = new Notification("adm", $message);
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$message = '{"data":{"msg":"Hello from PHP!"}}';
+$notification = new Notification("adm", $message);
+$hub->sendNotification($notification, null);
+```
 
 运行 PHP 代码，现在应该生成显示在目标设备上的通知。
 

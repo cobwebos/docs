@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a56e815e3a4ac04d20b29163139ab40332c4bec4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445536"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146962"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
@@ -22,13 +22,13 @@ ms.locfileid: "85445536"
 
 * 使用[单个服务](#authenticate-with-a-single-service-subscription-key)或[多服务](#authenticate-with-a-multi-service-subscription-key)订阅密钥进行身份验证
 * 使用[令牌](#authenticate-with-an-authentication-token)进行身份验证
-* 在[Azure Active Directory （AAD）](#authenticate-with-azure-active-directory)中进行身份验证
+* [ (AAD) Azure Active Directory](#authenticate-with-azure-active-directory)进行身份验证
 
 ## <a name="prerequisites"></a>先决条件
 
 在发出请求之前，需要具有 Azure 帐户和 Azure 认知服务订阅。 如果已有帐户，请继续并跳到下一节。 如果还没有帐户，我们会提供指南，可在几分钟内完成设置：[创建 Azure 认知服务帐户](cognitive-services-apis-create-account.md)。
 
-创建帐户或激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/my-apis)后，可以从[Azure 门户](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)获取订阅密钥。
+[创建帐户](https://azure.microsoft.com/free/cognitive-services/)后，可以从[Azure 门户](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)获取订阅密钥。
 
 ## <a name="authentication-headers"></a>身份验证标头
 

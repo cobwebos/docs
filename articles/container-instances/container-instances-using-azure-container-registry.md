@@ -3,15 +3,15 @@ title: 从 Azure 容器注册表部署容器映像
 description: 了解如何通过从 Azure 容器注册表拉取容器映像在 Azure 容器实例中部署容器。
 services: container-instances
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81453517"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169606"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
@@ -136,7 +136,7 @@ az container create \
 [...]
 ```
 
-有关完整的容器组设置，请参阅[资源管理器的模板参考](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)。    
+有关完整的容器组设置，请参阅[资源管理器的模板参考](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups)。    
 
 有关在资源管理器模板中引用 Azure Key Vault 机密的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)。
 

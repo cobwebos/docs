@@ -4,12 +4,12 @@ description: 了解如何在 Azure Batch 中使用多实例任务类型执行消
 ms.topic: how-to
 ms.date: 03/13/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1bdfdb4ef0dbf7e80d264c8059ae0a86bd29ad87
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 66cedc4cdb7c55401b7dbbc892687d08f56eb875
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961687"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147368"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序
 
@@ -86,7 +86,7 @@ await myCloudPool.CommitAsync();
 ```
 
 ### <a name="remote-direct-memory-access-rdma"></a>远程直接内存访问 (RDMA)
-在批处理池中为计算节点选择[支持 RDMA 的大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（例如 A9）时，MPI 应用程序可以使用 Azure 的高性能、低延迟的远程直接内存访问 (RDMA) 网络。
+在批处理池中为计算节点选择[支持 RDMA 的大小](../virtual-machines/sizes-hpc.md?toc=/azure/virtual-machines/windows/toc.json)（例如 A9）时，MPI 应用程序可以使用 Azure 的高性能、低延迟的远程直接内存访问 (RDMA) 网络。
 
 在以下文章中查找指定为“支持 RDMA”的大小：
 
@@ -334,7 +334,7 @@ Sample complete, hit ENTER to exit...
 [msdn_env_var]: ./batch-compute-node-environment-variables.md
 [msmpi_msdn]: /message-passing-interface/microsoft-mpi
 [msmpi_sdk]: https://go.microsoft.com/FWLink/p/?LinkID=389556
-[msmpi_howto]: https://blogs.technet.com/b/windowshpc/archive/2015/02/02/how-to-compile-and-run-a-simple-ms-mpi-program.aspx
+[msmpi_howto]: /archive/blogs/windowshpc/how-to-compile-and-run-a-simple-ms-mpi-program
 [openfoam]: http://www.openfoam.com/
 [visual_studio]: https://www.visualstudio.com/vs/community/
 

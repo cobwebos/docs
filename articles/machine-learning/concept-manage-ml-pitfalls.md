@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210178"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147103"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>通过自动化机器学习防止过度拟合和不均衡数据
 
@@ -71,7 +71,7 @@ ms.locfileid: "85210178"
 交叉验证 (CV) 是从完整定型数据提取许多子集并针对每个子集定型一个模型的过程。 其思路是，针对某个子集时，模型可能会“幸运地”具有高准确度，但在使用多个子集时，模型不会每次都实现这种高准确度。 当执行 CV 时，你需要提供一个验证维持数据集并指定你的 CV 折叠数（子集数），自动化 ML 将定型你的模型并调整超参数以最大程度地减少验证集上的错误。 单个 CV 折叠可能会过度拟合，但使用多个折叠则可降低最终模型过度拟合的概率。 缺点是 CV 确实会导致定型时间变长，从而导致成本增加，因为你不是对一个模型进行一次定型，而是针对 n 个 CV 子集对它进行一次定型。 
 
 > [!NOTE]
-> 默认情况下不启用交叉验证；它必须在自动化 ML 设置中进行配置。 但是，在配置交叉验证并提供验证数据集后，此过程将自动执行。 请参阅 
+> 默认情况下不启用交叉验证；它必须在自动化 ML 设置中进行配置。 但是，在配置交叉验证并提供验证数据集后，此过程将自动执行。 详细了解[自动 ML 中的交叉验证配置](how-to-configure-cross-validation-data-splits.md)
 
 <a name="imbalance"></a>
 
@@ -93,7 +93,7 @@ ms.locfileid: "85210178"
 
 - **权重列**：自动 ML 支持将权重列作为输入，导致数据中的行增加或减少，这可用于使类更多或更少 "重要"。
 
-- 自动化 ML 使用的算法可正确处理高达 20:1 的不均衡，这意味着最常见的类在数据中的行数可以是最不常见的类的 20 倍。
+- 当少数类中的样本数等于或小于多数类中样本数的20% 时，自动 ML 使用的算法将检测不平衡，其中少数类引用包含最少样本和多数类的样本。 然后，AutoML 将使用子采样的数据运行试验，以检查使用类权重是否可以纠正此问题并提高性能。 如果通过此试验 ascertains 更好的性能，则会应用此补偿。
 
 - 使用可更好地处理不均衡数据的性能指标。 例如，AUC_weighted 是一种主要指标，它基于表示该类的样本的相对数量计算每个类的贡献，因此更可靠地应对不平衡。
 
@@ -110,7 +110,7 @@ ms.locfileid: "85210178"
 + 按照[教程：使用 Azure 机器学习自动定型回归模型](tutorial-auto-train-models.md)进行操作
 
 + 为自动训练实验配置设置：
-  + 在 Azure 机器学习工作室中，[使用这些步骤](how-to-use-automated-ml-for-ml-models.md)。
+  + 在 Azure 机器学习工作室中[使用这些步骤](how-to-use-automated-ml-for-ml-models.md)。
   + 通过 Python SDK，[使用这些步骤](how-to-configure-auto-train.md)。
 
 

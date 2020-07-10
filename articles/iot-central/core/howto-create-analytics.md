@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29605fc2a9094f70c26487691e74a4dd72a85813
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158276"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147266"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>如何使用分析功能来分析设备数据
 
@@ -86,10 +86,12 @@ Analytics 用户界面由三个主要组件构成：
 
   ![放大数据](media/howto-create-analytics/zoom.png)
 
-省略号图标下面提供了用于与数据交互的其他图表控件。
+省略号下有更多的图表控件用于与数据进行交互：
 
 - **显示网格：** 以表格格式显示结果，这样可以查看每个数据点的特定值。
 
-- **放置标记：** 使用“放置标记”控件可以在图表上锚定某些数据点。 当你尝试跨不同的时间段比较多个线条的数据时，此控件非常有用。
+- **下载为 CSV：** 你的结果可作为逗号分隔值 (CSV) 文件导出。 CSV 文件包含每个设备的数据。 将使用指定的时间间隔和时间范围导出结果。 
+
+- **删除标记：**"放置标记" 控件提供了一种在图表上定位某些数据点的方法。 当你尝试跨不同的时间段比较多个线条的数据时，此控件非常有用。
 
   ![显示分析数据的网格视图](media/howto-create-analytics/additionalchartcontrols.png)

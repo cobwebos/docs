@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9448b7df8855f7cf2883f6cf8bd7f2ce465038cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e1efb1f93910f311ad5df898152d71158003244
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563560"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146843"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的 Blob 索引器为 JSON Blob 编制索引
 
@@ -149,6 +149,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组�
 
 请将服务名称、管理密钥、存储帐户和帐户密钥占位符替换为有效值。
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -159,6 +160,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组�
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
+```
 
 ### <a name="3---create-a-target-search-index"></a>3 - 创建目标搜索索引 
 
@@ -168,6 +170,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组�
 
 以下示例演示了一个[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)请求。 该索引包含一个可搜索的 `content` 字段，该字段存储从 Blob 提取的文本：   
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -179,12 +182,14 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组�
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 - 配置并运行索引器
 
 与索引和数据源一样，索引器也是你创建的、可在 Azure 认知搜索服务中重复使用的命名对象。 完全指定的用于创建索引器的请求可能如下所示：
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -196,6 +201,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组�
       "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "parsingMode" : "json" } }
     }
+```
 
 索引器配置位于请求的正文中。 它要求提供一个数据源，以及已在 Azure 认知搜索中存在的一个空目标索引。 
 
@@ -212,6 +218,7 @@ schedule 和 parameters 是可选的。 如果将其省略，索引器将使用 
 
 所有索引器都需要一个提供现有数据连接信息的数据源对象。 
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -222,12 +229,13 @@ schedule 和 parameters 是可选的。 如果将其省略，索引器将使用 
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }  
-
+```
 
 ### <a name="index-request"></a>索引请求
 
 所有索引器都需要一个接收数据的目标索引。 请求的正文定义索引架构，该架构由字段构成，帮助支持可搜索索引中的所需行为。 运行索引器时，此索引应该是空的。 
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -239,7 +247,7 @@ schedule 和 parameters 是可选的。 如果将其省略，索引器将使用 
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
-
+```
 
 ### <a name="indexer-request"></a>索引器请求
 
@@ -247,6 +255,7 @@ schedule 和 parameters 是可选的。 如果将其省略，索引器将使用 
 
 在 Azure 认知搜索中创建索引器会触发数据导入。 索引器会立即运行，然后按计划运行（如果提供了计划）。
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -263,7 +272,7 @@ schedule 和 parameters 是可选的。 如果将其省略，索引器将使用 
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
         ]
     }
-
+```
 
 <a name="json-indexer-dotnet"></a>
 
@@ -302,6 +311,7 @@ JSON Blob 可以采用多个表单。 JSON 索引器中的 **parsingMode** 参�
 
 默认情况下，[Azure 认知搜索 Blob 索引器](search-howto-indexing-azure-blob-storage.md)会将 JSON Blob 分析为单个文本块。 通常会希望保留 JSON 文档的结构。 例如，假设 Azure Blob 存储中包含以下 JSON 文档：
 
+```http
     {
         "article" : {
             "text" : "A hopefully useful article explaining how to parse JSON blobs",
@@ -309,6 +319,7 @@ JSON Blob 可以采用多个表单。 JSON 索引器中的 **parsingMode** 参�
             "tags" : [ "search", "storage", "howto" ]    
         }
     }
+```
 
 Blob 索引器将 JSON 文档分析成单个 Azure 认知搜索文档。 索引器通过将源中的“text”、“datePublished”和“tags”与同名且类型相同的目标索引字段进行匹配，来加载索引。
 
@@ -320,14 +331,17 @@ Blob 索引器将 JSON 文档分析成单个 Azure 认知搜索文档。 索引�
 
 或者，可以使用 JSON 数组选项。 如果 Blob 包含正确格式的 JSON 对象的数组，并且你希望每个元素都成为单独的 Azure 认知搜索文档时，则此选项非常有用。  例如，对于以下 JSON Blob，可以使用三个单独的文档（每个文档包含“id”和“text”字段）填充 Azure 认知搜索。  
 
+```text
     [
         { "id" : "1", "text" : "example 1" },
         { "id" : "2", "text" : "example 2" },
         { "id" : "3", "text" : "example 3" }
     ]
+```
 
 对于 JSON 数组，索引器定义应如以下示例所示。 请注意，parsingMode 参数指定 `jsonArray` 分析器。 指定适当的分析器和提供适当的数据输入，是为 JSON Blob 编制索引所要满足的，专门与数组相关的唯一两项要求。
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -339,6 +353,7 @@ Blob 索引器将 JSON 文档分析成单个 Azure 认知搜索文档。 索引�
       "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "parsingMode" : "jsonArray" } }
     }
+```
 
 同样请注意，可以省略字段映射。 假设某个索引包含同名的“id”和“text”字段，则无需显式字段映射列表，Blob 索引器就能推断正确的映射。
 
@@ -347,6 +362,7 @@ Blob 索引器将 JSON 文档分析成单个 Azure 认知搜索文档。 索引�
 ## <a name="parse-nested-arrays"></a>分析嵌套数组
 对于包含嵌套元素的 JSON 数组，可以指定 `documentRoot` 来指示多级别结构。 例如，如果 blob 如下所示：
 
+```http
     {
         "level1" : {
             "level2" : [
@@ -356,25 +372,31 @@ Blob 索引器将 JSON 文档分析成单个 Azure 认知搜索文档。 索引�
             ]
         }
     }
+```
 
 使用此配置可为 `level2` 属性中包含的数组编制索引：
 
+```http
     {
         "name" : "my-json-array-indexer",
         ... other indexer properties
         "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
     }
+```
 
 ## <a name="parse-blobs-separated-by-newlines"></a>分析换行符分隔的 Blob
 
 如果 Blob 包含以换行符分隔的多个 JSON 实体，并且你希望每个元素成为独立的 Azure 认知搜索文档，则可以选择“JSON 行”选项。 例如，对于以下 Blob（其中包含三个不同的 JSON 实体），可以使用三个独立的文档（每个文档包含“id”和“text”字段）填充 Azure 认知搜索索引。
 
-    { "id" : "1", "text" : "example 1" }
-    { "id" : "2", "text" : "example 2" }
-    { "id" : "3", "text" : "example 3" }
+```text
+{ "id" : "1", "text" : "example 1" }
+{ "id" : "2", "text" : "example 2" }
+{ "id" : "3", "text" : "example 3" }
+```
 
 对于 JSON 行，索引器定义应如以下示例所示。 请注意，parsingMode 参数指定 `jsonLines` 分析器。 
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -386,6 +408,7 @@ Blob 索引器将 JSON 文档分析成单个 Azure 认知搜索文档。 索引�
       "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
     }
+```
 
 同样请注意，与 `jsonArray` 分析模式一样，可以省略字段映射。
 
@@ -397,6 +420,7 @@ Blob 索引器将 JSON 文档分析成单个 Azure 认知搜索文档。 索引�
 
 回到前面的示例 JSON 文档：
 
+```http
     {
         "article" : {
             "text" : "A hopefully useful article explaining how to parse JSON blobs",
@@ -404,20 +428,25 @@ Blob 索引器将 JSON 文档分析成单个 Azure 认知搜索文档。 索引�
             "tags" : [ "search", "storage", "howto" ]    
         }
     }
+```
 
 假设某个搜索索引包含以下字段：`Edm.String` 类型的 `text`、`Edm.DateTimeOffset` 类型的 `date`，以及 `Collection(Edm.String)` 类型的 `tags`。 请注意源中“datePublished”与索引中 `date` 字段之间的差异。 要将 JSON 映射到所需形状，请使用以下字段映射：
 
+```http
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
         { "sourceFieldName" : "/article/datePublished", "targetFieldName" : "date" },
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
       ]
+```
 
 使用 [JSON 指针](https://tools.ietf.org/html/rfc6901)表示法指定映射中的源字段名称。 以正斜杠开头引用 JSON 文档的根，并通过使用正斜杠分隔的路径选取所需属性（任意层级的嵌套）。
 
 还可以通过使用从零开始的索引来引用个别数组元素。 例如，若要选取上述示例中“tags”数组的第一个元素，请使用如下所示的字段映射：
 
+```http
     { "sourceFieldName" : "/article/tags/0", "targetFieldName" : "firstTag" }
+```
 
 > [!NOTE]
 > 如果字段映射路径中的源字段名称引用了 JSON 中不存在的属性，则会跳过该映射，不会出错。 如此，我们便可以支持具有不同架构的文档（这是一个常见用例）。 因为没有任何验证，所以需要注意避免字段映射规范中出现拼写错误。

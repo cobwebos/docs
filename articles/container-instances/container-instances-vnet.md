@@ -2,14 +2,14 @@
 title: 将容器组部署到 Azure 虚拟网络
 description: 了解如何使用 Azure 命令行接口将容器组部署到新的或现有的 Azure 虚拟网络。
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: 7e54690efc7955eaaa88ca87a6f7a086dd3e19a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5a0e15b2e65be45e7f77e401b912ef7b784519b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583642"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169589"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -142,7 +142,7 @@ az network profile list --resource-group myResourceGroup \
 获取网络配置文件 ID 后，将以下 YAML 复制到名为 *vnet-deploy-aci.yaml* 的新文件中。 在 `networkProfile` 下，将 `id` 值替换为刚刚检索到的 ID，然后保存文件。 此 YAML 会在虚拟网络中创建名为 *appcontaineryaml* 的容器组。
 
 ```YAML
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: westus
 name: appcontaineryaml
 properties:

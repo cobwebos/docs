@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 253d2c80f5a6ff96ba9249eddd127abb74f79a33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c87812e665617f3ccfe48db3a0cca2ceac67f0bc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515812"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147443"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -138,7 +138,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 1. **创建和附加**： 
     
-    [！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb？ name = create_instance）]
+    [！笔记本-python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb？ name = create_instance) ]
 
 1. **配置**：创建运行配置。
     
@@ -389,7 +389,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ## <a name="set-up-with-vs-code"></a>使用 VS Code 进行设置
 
-可以使用适用于 Azure 机器学习的 [VS Code 扩展](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets)访问、创建和管理与工作区关联的计算目标。
+可以使用适用于 Azure 机器学习的 [VS Code 扩展](how-to-manage-resources-vscode.md#compute-clusters)访问、创建和管理与工作区关联的计算目标。
 
 ## <a name="submit-training-run-using-azure-machine-learning-sdk"></a><a id="submit"></a>使用 Azure 机器学习 SDK 提交训练运行
 

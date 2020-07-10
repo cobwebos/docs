@@ -3,21 +3,21 @@ title: 在 Azure Kubernetes 服务中使用 Azure AD
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure AD
 services: container-service
 manager: gwallace
-author: mlearned
+author: TomGeske
 ms.topic: article
-ms.date: 06/25/2020
-ms.author: mlearned
-ms.openlocfilehash: f22b79cb8a730fb9c28dd1a208ab672473218b79
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105942"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166495"
 ---
-# <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-托管 Azure Active Directory 集成（预览版）
+# <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-managed Azure Active Directory integration (预览版) 
 
 > [!NOTE]
-> 具有 Azure Active Directory （Azure AD）集成的现有 AKS （Azure Kubernetes Service）群集不受新的 AKS 管理的 Azure AD 体验的影响。
+> 现有的 AKS (Azure Kubernetes Service) 具有 Azure Active Directory (Azure AD) 集成的群集不受新的 AKS 托管 Azure AD 体验的影响。
 
 AKS 托管 Azure AD 集成旨在简化 Azure AD 集成体验，其中用户以前需要创建客户端应用、服务器应用，并需要 Azure AD 租户授予目录读取权限。 在新版本中，AKS 资源提供程序为你管理客户端应用和服务器应用。
 
@@ -26,10 +26,6 @@ AKS 托管 Azure AD 集成旨在简化 Azure AD 集成体验，其中用户以�
 群集管理员可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (RBAC)。 使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅[OPEN ID connect 文档][open-id-connect]。
 
 有关详细信息，请参阅[Azure Active Directory 集成概念文档](concepts-identity.md#azure-active-directory-integration)中的 AAD 集成流。
-
-## <a name="limitations"></a>限制
-
-* 目前不能将现有的 AKS Azure AD 集成的群集升级到新的 AKS 管理的 Azure AD 体验。
 
 > [!IMPORTANT]
 > AKS 预览功能是可选择启用的自助功能。 预览功能是“按现状”和“按可用”提供的，不包括在服务级别协议和有限保证中。 AKS 预览功能是由客户支持尽最大努力部分覆盖。 因此，这些功能并不适合用于生产。 有关详细信息，请参阅以下支持文章：
@@ -154,7 +150,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-配置[基于角色的访问控制（RBAC）](https://docs.microsoft.com/azure/aks/azure-ad-rbac) ，为群集配置其他安全组。
+配置[基于角色的访问控制 (RBAC) ](https://docs.microsoft.com/azure/aks/azure-ad-rbac)为群集配置其他安全组。
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>排查 Azure AD 的访问问题
 
@@ -179,7 +175,7 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 * 了解[Azure AD 与 KUBERNETES RBAC 集成][azure-ad-rbac]。
 * 使用[kubelogin](https://github.com/Azure/kubelogin)访问 kubectl 中不可用的 Azure 身份验证功能。
 * 了解有关[AKS 和 Kubernetes 标识概念][aks-concepts-identity]的详细信息。
-* 使用[Azure 资源管理器（ARM）模板][aks-arm-template]创建启用了 AKS 的 Azure AD 启用群集。
+* 使用[Azure 资源管理器 (ARM) 模板][aks-arm-template]来创建启用 AKS Azure AD 管理的群集。
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

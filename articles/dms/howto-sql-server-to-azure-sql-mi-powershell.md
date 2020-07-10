@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 35e6690726750e6c9e6dfb0cb62a6732603c3610
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb8ec09646fa3f3c226edbe957e19d079fd2607c
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083655"
+ms.locfileid: "86147431"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>使用 PowerShell 和 Azure 数据库迁移服务将 SQL Server 迁移到 SQL 托管实例
 
@@ -121,13 +121,11 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-下一个示例演示如何使用 SQL 身份验证创建名为 "targetmanagedinstance.database.windows.net" 的 Azure SQL 托管实例的连接信息：
+下一个示例演示如何创建名为 "targetmanagedinstance" 的 Azure SQL 托管实例的连接信息：
 
 ```powershell
-$targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
-  -DataSource "targetmanagedinstance.database.windows.net" `
-  -AuthType SqlAuthentication `
-  -TrustServerCertificate:$false
+$targetResourceId = (Get-AzSqlInstance -Name "targetmanagedinstance").Id
+$targetConnInfo = New-AzDmsConnInfo -ServerType SQLMI -MiResourceId $targetResourceId
 ```
 
 ### <a name="provide-databases-for-the-migration-project"></a>为迁移项目提供数据库
@@ -420,7 +418,7 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 ## <a name="additional-resources"></a>其他资源
 
-有关其他迁移方案（源/目标对）的信息，请参阅 Microsoft[数据库迁移指南](https://datamigration.microsoft.com/)。
+有关其他迁移方案 (源/目标对) 的信息，请参阅 Microsoft[数据库迁移指南](https://datamigration.microsoft.com/)。
 
 ## <a name="next-steps"></a>后续步骤
 

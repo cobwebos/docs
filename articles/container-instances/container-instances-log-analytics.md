@@ -2,13 +2,14 @@
 title: 收集和分析资源日志
 description: 了解如何从 Azure 容器实例中的容器组将资源日志和事件数据发送到 Azure Monitor 日志
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892387"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169725"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录
 
@@ -38,7 +39,7 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
 1. 在“设置”下，选择“高级设置” 
-1. 选择**连接的源**  >  **Windows 服务器**（或**Linux 服务器**--这两个服务器的 ID 和密钥相同）
+1. 选择 "**连接的源**" "  >  **Windows 服务器** (或**Linux 服务器**"--ID 和密钥对于这两个服务器都是相同的) 
 1. 记下以下内容：
    * **工作区 ID**
    * **主密钥**
@@ -67,7 +68,7 @@ az container create \
 如果喜欢使用 YAML 部署容器组，请使用此方法。 下面的 YAML 定义包含单个容器的容器组。 将 YAML 复制到一个新文件中，然后将 `LOG_ANALYTICS_WORKSPACE_ID` 和 `LOG_ANALYTICS_WORKSPACE_KEY` 替换为在前面的步骤中获得的值。 将该文件保存为 **deploy-aci.yaml**。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: mycontainergroup001
 properties:

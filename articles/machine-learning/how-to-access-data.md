@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 03/24/2020
+ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: cb52935b731a507d2408d174a5aa571fb2bfc973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609259"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146731"
 ---
 # <a name="connect-to-azure-storage-services"></a>连接到 Azure 存储服务
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,16 +52,16 @@ ms.locfileid: "85609259"
 
 数据存储目前支持将连接信息存储到下表中列出的存储服务。
 
-| 存储类型 | 身份验证类型 | [Azure 机器学习工作室](https://ml.azure.com/) | [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure 机器学习 CLI](reference-azure-machine-learning-cli.md) | [Azure 机器学习 Rest API](https://docs.microsoft.com/rest/api/azureml/)
----|---|---|---|---|---
-[Azure&nbsp;Blob&nbsp;存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| 帐户密钥 <br> SAS 令牌 | ✓ | ✓ | ✓ |✓
-[Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| 帐户密钥 <br> SAS 令牌 | ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| 服务主体| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| 服务主体| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;SQL&nbsp;数据库](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL 身份验证 <br>服务主体| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL 身份验证| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Database&nbsp;for&nbsp;MySQL](https://docs.microsoft.com/azure/mysql/overview) | SQL 身份验证|  | ✓* | ✓* |✓*
-[Databricks&nbsp;文件系统](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| 无身份验证 | | ✓** | ✓ ** |✓** 
+| 存储类型 | 身份验证类型 | [Azure 机器学习工作室](https://ml.azure.com/) | [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure 机器学习 CLI](reference-azure-machine-learning-cli.md) | [Azure 机器学习 Rest API](https://docs.microsoft.com/rest/api/azureml/) | VS Code
+---|---|---|---|---|---|---
+[Azure&nbsp;Blob&nbsp;存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| 帐户密钥 <br> SAS 令牌 | ✓ | ✓ | ✓ |✓ |✓
+[Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| 帐户密钥 <br> SAS 令牌 | ✓ | ✓ | ✓ |✓|✓
+[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| 服务主体| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| 服务主体| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;SQL&nbsp;数据库](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL 身份验证 <br>服务主体| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL 身份验证| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;Database&nbsp;for&nbsp;MySQL](https://docs.microsoft.com/azure/mysql/overview) | SQL 身份验证|  | ✓* | ✓* |✓*|
+[Databricks&nbsp;文件系统](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| 无身份验证 | | ✓** | ✓ ** |✓** |
 
 *仅管道 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) 支持 MySQL。 <br>
 **仅管道 [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) 支持 Databricks
@@ -185,7 +185,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 在 Azure 机器学习工作室中，通过几个步骤创建新的数据存储：
 
 > [!IMPORTANT]
-> 如果你的数据存储帐户位于虚拟网络中，则需要执行其他配置步骤以确保 studio 可以访问你的数据。 若要确保应用适当的配置步骤，请参阅 [网络隔离 & 隐私] （操作方法-虚拟网络）。 
+> 如果你的数据存储帐户位于虚拟网络中，则需要执行其他配置步骤以确保 studio 可以访问你的数据。 请参阅 [网络隔离 & 隐私] (操作方法 "操作方法" "操作方法"。) ，以确保应用适当的配置步骤。 
 
 1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 1. 在左窗格中的“管理”下，选择“数据存储” 。
@@ -205,6 +205,9 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
     
 ![新数据存储的表单](media/how-to-access-data/new-datastore-form.png)
 
+### <a name="vs-code"></a>VS Code
+
+可以使用 Azure 机器学习 VS Code 扩展来创建和管理数据存储。 请访问[VS Code 资源管理操作方法指南](how-to-manage-resources-vscode.md#datastores)，了解详细信息。
 
 <a name="get"></a>
 
@@ -244,7 +247,7 @@ datastore = ws.get_default_datastore()
 > [!NOTE]
 > 目前不支持上传到 AzureDataLakeGen2 数据存储。
 
-### <a name="upload"></a>上传
+### <a name="upload"></a>上载
 
 使用 Python SDK 将目录或独立文件上传到数据存储：
 

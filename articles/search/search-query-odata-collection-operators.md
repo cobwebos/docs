@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47e7e09bae082141efd872d3a90ecc30a3be04e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113232"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146059"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure 认知搜索中的 OData 集合运算符 - `any` 和 `all`
 
@@ -31,7 +32,7 @@ ms.locfileid: "74113232"
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF （[扩展巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义使用或的 OData 表达式的语法 `any` `all` 。
+下面的 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义使用或的 OData 表达式的 `any` 语法 `all` 。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -65,23 +66,33 @@ lambda_expression ::= identifier ':' boolean_expression
 
 匹配 `tags` 字段恰好包含字符串“wifi”的文档：
 
-    tags/any(t: t eq 'wifi')
+```text
+tags/any(t: t eq 'wifi')
+```
 
 匹配其中 `ratings` 字段的每个元素介于 3 和 5 之间（包括 3 和 5）的文档：
 
-    ratings/all(r: r ge 3 and r le 5)
+```text
+ratings/all(r: r ge 3 and r le 5)
+```
 
 匹配其中 `locations` 字段中任何地理坐标在给定多边形内的文档：
 
-    locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```text
+locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```
 
 匹配其中 `rooms` 字段为空的文档：
 
-    not rooms/any()
+```text
+not rooms/any()
+```
 
 匹配对于所有房间 `rooms/amenities` 字段包含“tv”且 `rooms/baseRate` 小于 100 的文档：
 
-    rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```text
+rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```
 
 ## <a name="limitations"></a>限制
 

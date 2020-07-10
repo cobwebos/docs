@@ -10,11 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 679e44a8949f283c0e01c47ca3e602ae6fc0eacf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cc7c70f6db31568f671a0172c569f912cb677c3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433800"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146678"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,6 +143,11 @@ except ComputeTargetException:
 TensorFlow 估算器是通过泛型 [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) 类实现的，该类可用于支持任何框架。 有关使用泛型估算器训练模型的详细信息，请参阅[通过估算器使用 Azure 机器学习训练模型](how-to-train-ml-models.md)
 
 如果你的训练脚本需要额外的 pip 或 conda 包才能运行，则可以通过使用 `pip_packages` 和 `conda_packages` 参数传递其名称在生成的 Docker 映像中安装这些包。
+
+
+> [!WARNING]
+> Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想要上传的敏感数据，请使用[. ignore file](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不要将其包含在源目录中。 而是使用数据[存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)访问数据。
+
 
 ```python
 script_params = {

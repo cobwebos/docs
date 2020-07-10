@@ -2,12 +2,13 @@
 title: 部署已启用 GPU 的容器实例
 description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行计算密集型容器应用。
 ms.topic: article
-ms.date: 02/19/2020
-ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77525280"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169742"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
 
@@ -72,7 +73,7 @@ ms.locfileid: "77525280"
 
 ```YAML
 additional_properties: {}
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 name: gpucontainergroup
 properties:
   containers:
@@ -138,7 +139,7 @@ Done
       {
         "name": "[parameters('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2018-10-01",
+        "apiVersion": "2019-12-01",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [
@@ -167,10 +168,10 @@ Done
 }
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令部署模板。 需要提供支持 GPU 资源的在区域（例如 eastus）中创建的资源组的名称**。
+使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 需要提供支持 GPU 资源的在区域（例如 eastus）中创建的资源组的名称**。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
+az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
 部署需要数分钟才能完成。 然后，容器启动并运行 TensorFlow 作业。 运行 [az container logs][az-container-logs] 命令，查看日志输出：
@@ -239,4 +240,4 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [az-container-show]: /cli/azure/container#az-container-show
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

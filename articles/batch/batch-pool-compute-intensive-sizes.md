@@ -3,12 +3,12 @@ title: 在 Batch 中使用计算密集型 Azure VM
 description: 如何在 Azure Batch 池中利用 HPC 和 GPU 虚拟机大小 了解 OS 依赖关系并查看几个方案示例。
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: acc56679d8be157541b0d7c056e57659584645be
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962503"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147346"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>在 Batch 池中使用 RDMA 或 GPU 实例
 
@@ -20,9 +20,9 @@ ms.locfileid: "85962503"
 
 本文介绍了在 Batch 池中使用 Azure 的某些专用大小的指南和示例。 有关规格和背景的信息，请参阅：
 
-* 高性能计算 VM 大小（[Linux](../virtual-machines/linux/sizes-hpc.md)、[Windows](../virtual-machines/windows/sizes-hpc.md)） 
+* 高性能计算 VM 大小（[Linux](../virtual-machines/sizes-hpc.md)、[Windows](../virtual-machines/sizes-hpc.md)） 
 
-* 启用 GPU 的 VM 大小（[Linux](../virtual-machines/linux/sizes-gpu.md)、[Windows](../virtual-machines/windows/sizes-gpu.md)） 
+* 启用 GPU 的 VM 大小（[Linux](../virtual-machines/sizes-gpu.md)、[Windows](../virtual-machines/sizes-gpu.md)） 
 
 > [!NOTE]
 > 某些 VM 大小在创建批处理帐户的区域中可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)以及[选择 Batch 池的 VM 大小](batch-pool-vm-sizes.md)。
@@ -35,7 +35,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS 或<br/>基于 CentO 的 HPC<br/>（Azure 市场） | Intel MPI 5<br/><br/>Linux RDMA 驱动程序 | 启用节点间通信，禁用并发任务执行 |
+| [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS 或<br/>基于 CentO 的 HPC<br/>（Azure 市场） | Intel MPI 5<br/><br/>Linux RDMA 驱动程序 | 启用节点间通信，禁用并发任务执行 |
 | [NC、NCv2、NCv3、NDv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS 或<br/>CentOS 7.3 或 7.4<br/>（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序 | 空值 | 
 | [NV、NVv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS 或<br/>CentOS 7.3<br/>（Azure 市场） | NVIDIA GRID 驱动程序 | 空值 |
 

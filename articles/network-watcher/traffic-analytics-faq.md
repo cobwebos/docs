@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 87b4f0573fbcc73573c508a7f8e39acadcfa05af
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056457"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165322"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -86,7 +86,7 @@ ms.locfileid: "86056457"
 - 韩国中部
 - 印度中部
 - 印度南部
-- 日本东部
+- Japan East
 - 日本西部
 - US Gov 弗吉尼亚州
 - 中国东部 2
@@ -122,7 +122,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>是否可以在单个工作区中配置多个 NSG？
 
-是的。
+是。
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
@@ -134,7 +134,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
-是的。 你可以将 NSG 流日志配置为发送到位于不同订阅中的存储帐户，前提是你具有适当的权限，并且该存储帐户与 NSG 位于同一区域。 NSG 和目标存储帐户还必须共享同一个 Azure Active Directory 租户。
+是。 你可以将 NSG 流日志配置为发送到位于不同订阅中的存储帐户，前提是你具有适当的权限，并且该存储帐户与 NSG 位于同一区域。 NSG 和目标存储帐户还必须共享同一个 Azure Active Directory 租户。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>如果由于“未找到”错误而无法为流量分析配置 NSG，该如何解决？
 
@@ -266,59 +266,68 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何实现检查哪些 Vm 正在接收大多数本地流量？
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
-            | where <Scoping condition>
-            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
-            | where isnotempty(vm) 
-             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
-            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
-            | render timechart
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+| where <Scoping condition>
+| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+| where isnotempty(vm) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+| render timechart
+```
 
   对于 IP：
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
-            //| where <Scoping condition>
-            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
-            | where isnotempty(IP) 
-            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
-            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
-            | render timechart
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+| where isnotempty(IP) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+| render timechart
+```
 
 对于时间，请使用格式：yyyy-mm-dd 00:00:00
 
 ## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>如何实现检查我的 Vm 从本地计算机接收的流量的标准偏差吗？
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
-            //| where <Scoping condition>
-            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
-            | where isnotempty(vm) 
-            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
-            | summarize deviation = stdev(traffic)  by vm
-
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+| where isnotempty(vm) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + utboundBytes_d
+| summarize deviation = stdev(traffic)  by vm
+```
 
 对于 IP：
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
-            //| where <Scoping condition>
-            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
-            | where isnotempty(IP) 
-            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
-            | summarize deviation = stdev(traffic)  by IP
-            
-## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何实现检查是否可通过 NSG 规则在 IP 对之间访问（或阻止）哪些端口？
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+| where isnotempty(IP) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+| summarize deviation = stdev(traffic)  by IP
+```
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
-            | extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
-            destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
-            | mvexpand SourceIp = sourceIPs to typeof(string)
-            | mvexpand DestIp = destIPs to typeof(string)
-            | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
-            | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何实现检查哪些端口是可访问的 (还是阻止了 IP 对与 NSG 规则之间的) ？
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+| extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+| mvexpand SourceIp = sourceIPs to typeof(string)
+| mvexpand DestIp = destIPs to typeof(string)
+| project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+| summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
+```
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>如何在地图视图中使用键盘导航？
 

@@ -2,13 +2,13 @@
 title: 在容器组中启用托管标识
 description: 了解如何在 Azure 容器实例中启用可使用其他 Azure 服务进行身份验证的托管标识
 ms.topic: article
-ms.date: 04/15/2020
-ms.openlocfilehash: 31dc198bfb2023684f3a9022bec5a5f50f0d9a72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82115714"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169776"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -24,7 +24,7 @@ ms.locfileid: "82115714"
 调整示例，以启用并使用 Azure 容器实例中的标识来访问其他 Azure 服务。 这些示例是交互式的。 但实际上，容器映像将运行代码来访问 Azure 服务。
  
 > [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。 目前，仅 Linux 容器支持 Azure 容器实例的托管标识，而 Windows 容器尚不支持。
+> 此功能目前以预览版提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。 目前，仅 Linux 容器支持 Azure 容器实例的托管标识，而 Windows 容器尚不支持。
 
 ## <a name="why-use-a-managed-identity"></a>为什么使用托管标识？
 
@@ -38,7 +38,7 @@ Azure 容器实例支持以下两种类型的 Azure 托管标识：用户分配�
 
 ### <a name="use-a-managed-identity"></a>使用托管标识
 
-要使用托管标识，必须向该标识授予对订阅中的一个或多个 Azure 服务资源（例如 web 应用、密钥保管库或存储帐户）的访问权限。 在正在运行的容器中使用托管标识类似于在 Azure VM 中使用标识。 请参阅有关使用[令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)、[Azure PowerShell 或 Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) 或 [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) 的 VM 指南。
+若要使用托管标识，必须向标识授予对一个或多个 Azure 服务资源的访问权限， (例如 web 应用、密钥保管库或订阅中) 存储帐户。 在正在运行的容器中使用托管标识类似于在 Azure VM 中使用标识。 请参阅有关使用[令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)、[Azure PowerShell 或 Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) 或 [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) 的 VM 指南。
 
 ### <a name="limitations"></a>限制
 
@@ -190,7 +190,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-现在使用访问令牌向密钥保管库进行身份验证并读取机密。 请务必在 URL 中替换密钥保管库的名称（*https： \/ /mykeyvault.vault.azure.net/*）：
+现在使用访问令牌向密钥保管库进行身份验证并读取机密。 请确保将 URL 中的密钥保管库名称替换 (*https： \/ /mykeyvault.vault.azure.net/*) ：
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

@@ -1,7 +1,7 @@
 ---
 title: 包含多个文档的索引 blob
 titleSuffix: Azure Cognitive Search
-description: 使用 Azure 认知搜索 Blob 索引器抓取 Azure Blob 以获取文本内容，该索引器中的每个 blob 可能会生成一个或多个搜索索引文档。
+description: 使用 Azure 认知搜索 Blob 索引器对用于文本内容的 Azure blob 进行爬网，其中每个 blob 可能会生成一个或多个搜索索引文档。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,11 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f93ae8a017c889f6c465b3ccbbb66382577e871
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74112264"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146790"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>为可以生成多个搜索文档的 Blob 编制索引
 默认情况下，Blob 索引器将一个 Blob 的内容视为单个搜索文档。 某些 **parsingMode** 值支持单个 Blob 导致多个搜索文档的方案。 允许索引器从一个 Blob 提取多个搜索文档的不同类型的 **parsingMode** 包括：
@@ -41,21 +42,27 @@ Blob 容器包含采用以下结构的 Blob：
 
 _Blob1.json_
 
+```json
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
+```
 
 _Blob2.json_
 
+```json
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
+```
 
 创建索引器并将 **parsingMode** 设置为 `jsonLines`（未指定键字段的任何显式字段映射）时，将隐式应用以下映射
-    
+
+```http
     {
         "sourceFieldName" : "AzureSearch_DocumentKey",
         "targetFieldName": "id",
         "mappingFunction": { "name" : "base64Encode" }
     }
+```
 
 此设置会生成包含以下信息的 Azure 认知搜索索引（为简洁起见，base64 编码的 ID 已缩短）
 
@@ -72,22 +79,28 @@ _Blob2.json_
 
 _Blob1.json_
 
+```json
     recordid, temperature, pressure, timestamp
     1, 100, 100,"2019-02-13T00:00:00Z" 
     2, 33, 30,"2019-02-14T00:00:00Z" 
+```
 
 _Blob2.json_
 
+```json
     recordid, temperature, pressure, timestamp
     1, 1, 1,"2018-01-12T00:00:00Z" 
     2, 120, 3,"2013-05-11T00:00:00Z" 
+```
 
 使用 `delimitedText` **parsingMode** 创建索引器时，可能会自然而然地将字段映射函数设置为如下所示的键字段：
 
+```http
     {
         "sourceFieldName" : "recordid",
         "targetFieldName": "id"
     }
+```
 
 但是，此映射不会生成索引中显示的 4 个文档，因为 `recordid` 字段在各 Blob 中不是唯一的。   因此，我们建议对“一对多”分析模式，应用从 `AzureSearch_DocumentKey` 属性到键索引字段的隐式字段映射。
 

@@ -12,11 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db7a1489b877544cd36627f3962b6b4e1b8c462
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433265"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146434"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>保存和写入 Azure 机器学习试验文件的位置
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +30,9 @@ ms.locfileid: "84433265"
 
 在对计算目标或本地计算机启动试验之前，必须确保所需文件对该计算目标可用，例如需要运行的代码的依赖项文件和数据文件。
 
-Azure 机器学习通过将整个脚本文件夹复制到目标计算上下文来运行训练脚本，然后拍摄快照。 试验快照的存储空间上限为 300 MB 和/或 2000 个文件。
+Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想要上传的敏感数据，请使用[. ignore file](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不要将其包含在源目录中。 而是使用数据[存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)访问数据。
+
+试验快照的存储空间上限为 300 MB 和/或 2000 个文件。
 
 因此，我们建议：
 

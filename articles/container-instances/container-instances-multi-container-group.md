@@ -2,13 +2,14 @@
 title: 教程 - 部署多容器组 - 模板
 description: 本教程介绍如何通过 Azure CLI 使用 Azure 资源管理器模板在 Azure 容器实例中部署包含多个容器的容器组。
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: b08a974cbbdc9e4bdf1594672f82748bfabe88b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 48068659d99fc060aa0c0580eb781e10c434c597
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653530"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169708"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>教程：使用资源管理器模板部署多容器组
 
@@ -67,7 +68,7 @@ code azuredeploy.json
     {
       "name": "[parameters('containerGroupName')]",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-12-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [
@@ -150,7 +151,7 @@ code azuredeploy.json
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令部署模板。
+使用 [az deployment group create][az-deployment-group-create] 命令部署模板。
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file azuredeploy.json
@@ -186,9 +187,9 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 
 ```bash
 listening on port 80
-::1 - - [21/Mar/2019:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [21/Mar/2019:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
 若要查看 Sidecar 容器的日志，请运行指定 `aci-tutorial-sidecar` 容器的类似命令。
@@ -200,7 +201,7 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 输出：
 
 ```bash
-Every 3s: curl -I http://localhost                          2019-03-21 20:36:41
+Every 3s: curl -I http://localhost                          2020-07-02 20:36:41
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -213,7 +214,7 @@ Last-Modified: Wed, 29 Nov 2017 06:40:40 GMT
 ETag: W/"67f-16006818640"
 Content-Type: text/html; charset=UTF-8
 Content-Length: 1663
-Date: Thu, 21 Mar 2019 20:36:41 GMT
+Date: Thu, 02 Jul 2020 20:36:41 GMT
 Connection: keep-alive
 ```
 
@@ -238,5 +239,5 @@ Connection: keep-alive
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
 [template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups

@@ -11,11 +11,12 @@ author: peterclu
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: df49a8e5a183f56c8584e9d85fe9cfa73bc17491
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25343c22eab743fa0b1341a85c00a452dbb81e56
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433833"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146402"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 Pytorch 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -147,6 +148,9 @@ estimator = PyTorch(source_directory=project_folder,
                     pip_packages=['pillow==5.4.1'])
 ```
 
+> [!WARNING]
+> Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想要上传的敏感数据，请使用[. ignore file](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不要将其包含在源目录中。 而是使用数据[存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)访问数据。
+
 有关自定义 Python 环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。
 
 ## <a name="submit-a-run"></a>提交运行
@@ -160,7 +164,7 @@ run.wait_for_completion(show_output=True)
 
 执行运行时，会经历以下阶段：
 
-- **准备**：根据 PyTorch 估算器创建 Docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 还会将日志流式传输到运行历史记录，可以查看日志以监视进度。
+- **准备**：按 PyTorch 估计器创建 docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 还会将日志流式传输到运行历史记录，可以查看日志以监视进度。
 
 - **缩放**：如果 Batch AI 群集执行运行所需的节点多于当前可用节点，则群集将尝试纵向扩展。
 
@@ -199,7 +203,7 @@ for f in run.get_file_names():
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) 是 Uber 开发的用于分布式训练的开放源代码 all reduce 框架。 它提供了通向分布式 GPU PyTorch 作业的简单路径。
 
-若要使用 Horovod，请在 PyTorch 构造函数中为 `distributed_training` 参数指定一个 [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) 对象。 此参数可确保为你安装 Horovod 库，以便在训练脚本中使用。
+若要使用 Horovod，请 [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) `distributed_training` 在 PyTorch 构造函数中为参数指定一个对象。 此参数可确保为你安装 Horovod 库，以便在训练脚本中使用。
 
 
 ```Python

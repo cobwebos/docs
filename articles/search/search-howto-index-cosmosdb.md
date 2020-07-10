@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: 13c55f2a7470a0d33e12e9e6f0da9df3421242fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f4ed9940c70ed479c3108f3637aa55f2a42811
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556254"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146892"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的索引器为 Cosmos DB 数据编制索引 
 
@@ -33,9 +33,9 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 + 对于通常可用的[SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)，可以使用[门户](#cosmos-indexer-portal)、 [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)或[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)来创建数据源和索引器。
 
-+ 对于[MONGODB API （预览版）](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)，可以使用[门户](#cosmos-indexer-portal)或[REST API 版本 2020-06-30-preview](search-api-preview.md)来创建数据源和索引器。
++ 对于[MONGODB API (预览) ](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)，可以使用[门户](#cosmos-indexer-portal)或[REST API 版本 2020-06-30-preview](search-api-preview.md)来创建数据源和索引器。
 
-+ 对于[Cassandra API （预览版）](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)和[Gremlin API （预览版）](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，只能使用[REST API 版本 2020-06-30-preview](search-api-preview.md)来创建数据源和索引器。
++ 对于[Cassandra API (preview) ](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)和[Gremlin API (预览版) ](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，只能使用[REST API 版本 2020-06-30-preview](search-api-preview.md)来创建数据源和索引器。
 
 
 > [!Note]
@@ -83,7 +83,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 - 跳过向导中的“扩充内容”页
 
-添加认知技能（或扩充）不是一种导入需求。 除非有特定需要[将 AI 扩充添加](cognitive-search-concept-intro.md)到索引管道，否则应跳过此步骤。
+添加认知技能 (或扩充) 并不是一种进口要求。 除非有特定需要[将 AI 扩充添加](cognitive-search-concept-intro.md)到索引管道，否则应跳过此步骤。
 
 若要跳过该步骤，请单击页面底部的“下一步”和“跳过”蓝色按钮。
 
@@ -154,6 +154,8 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 若要创建数据源，请构建 POST 请求：
 
+```http
+
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -170,10 +172,11 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
             "highWaterMarkColumnName": "_ts"
         }
     }
+```
 
 请求正文包含数据源定义，其中应包括以下字段：
 
-| 字段   | 描述 |
+| 字段   | 说明 |
 |---------|-------------|
 | name | 必需。 选择任意名称来表示你的数据源对象。 |
 |type| 必需。 必须是 `cosmosdb`。 |
@@ -190,6 +193,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 示例文档：
 
+```http
     {
         "userId": 10001,
         "contact": {
@@ -199,30 +203,37 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
         "company": "microsoft",
         "tags": ["azure", "cosmosdb", "search"]
     }
+```
 
 筛选查询：
 
-    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```sql
+SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 平展查询：
 
-    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-    
-    
+```sql
+SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
+
 投影查询：
 
-    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 数组平展查询：
 
-    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 ### <a name="3---create-a-target-search-index"></a>3 - 创建目标搜索索引 
 
 [创建目标 Azure 认知搜索索引](/rest/api/searchservice/create-index)（如果没有）。 以下示例创建带有 ID 和说明字段的索引：
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -243,6 +254,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
          "suggestions": true
        }]
      }
+```
 
 确保目标索引的架构与源 JSON 文档的架构或自定义查询投影的输出的架构兼容。
 
@@ -267,6 +279,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 创建索引和数据源后，就可以准备创建索引器了：
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -277,6 +290,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 此索引器每两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
@@ -297,12 +311,14 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 ## <a name="indexing-changed-documents"></a>为已更改的文档编制索引
 
-数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一受支持的策略是 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) 使用 `_ts` Azure Cosmos DB 提供的（时间戳）属性，如下所示：
+数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一受支持的策略是 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) 使用 `_ts` Azure Cosmos DB 提供的 (时间戳) 属性，按如下所示指定：
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
         "highWaterMarkColumnName" : "_ts"
     }
+```
 
 强烈建议使用此策略，以确保索引器性能良好。 
 
@@ -318,11 +334,13 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 在某些情况下，即使查询包含 `ORDER BY [collection alias]._ts` 子句，Azure 认知搜索也可能不会推断出查询是按照 `_ts` 进行排序的。 可以告知 Azure 认知搜索，结果是通过使用 `assumeOrderByHighWaterMarkColumn` 配置属性进行排序的。 要指定此提示，请按如下所示创建或更新索引器： 
 
+```http
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "assumeOrderByHighWaterMarkColumn" : true } }
     } 
+```
 
 <a name="DataDeletionDetectionPolicy"></a>
 
@@ -330,16 +348,19 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 从集合中删除行时，通常还需要从搜索索引中删除这些行。 数据删除检测策略旨在有效识别已删除的数据项。 目前，唯一支持的策略是 `Soft Delete` 策略（删除标有某种类型的标志），它按如下所示指定：
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
         "softDeleteColumnName" : "the property that specifies whether a document was deleted",
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
+```
 
 如果使用自定义查询，请确保查询投影由 `softDeleteColumnName` 引用的属性。
 
 下面的示例创建具有软删除策略的数据源：
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -361,10 +382,11 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
             "softDeleteMarkerValue": "true"
         }
     }
+```
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>后续步骤
 
-祝贺你！ 你已了解如何使用索引器将 Azure Cosmos DB 与 Azure 认知搜索集成。
+恭喜！ 你已了解如何使用索引器将 Azure Cosmos DB 与 Azure 认知搜索集成。
 
 * 若要详细了解 Azure Cosmos DB，请参阅 [Azure Cosmos DB 服务页](https://azure.microsoft.com/services/cosmos-db/)。
 * 若要详细了解 Azure 认知搜索，请参阅[搜索服务页](https://azure.microsoft.com/services/search/)。

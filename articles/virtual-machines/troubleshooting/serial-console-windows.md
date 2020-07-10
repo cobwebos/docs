@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135252"
+ms.locfileid: "86146643"
 ---
 # <a name="azure-serial-console-for-windows"></a>适用于 Windows 的 Azure 串行控制台
 
@@ -100,11 +100,10 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 1. 连接到串行控制台。 如果已成功连接，则提示符为“SAC>”：
 
-    ![连接到 SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
-
+   ![连接到 SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 1. 输入 `cmd` 以创建具有 CMD 实例的通道。
 
-1. 输入 `ch -si 1` 或按 `<esc>+<tab>` 快捷键以切换到正在运行 CMD 实例的通道。
+1. 输入 `ch -si 1` 或按 `<esc>+<tab>` 快捷键，切换到运行 CMD 实例的通道。
 
 1. 按 Enter，然后输入具有管理权限的登录凭据。
 
@@ -112,7 +111,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 1. 要启动 PowerShell 实例，请在 CMD 实例中输入 `PowerShell`，然后按 Enter。
 
-    ![打开 PowerShell 实例](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+   ![打开 PowerShell 实例](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
 ### <a name="use-the-serial-console-for-nmi-calls"></a>使用串行控制台进行 NMI 调用
 不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。 现在，程序员和系统管理员通常使用 NMI 作为用来对未响应的系统进行调试或故障排除的机制。

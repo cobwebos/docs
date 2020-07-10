@@ -2,12 +2,13 @@
 title: 将机密卷装载到容器组
 description: 了解如何装载机密卷以存储供容器实例访问的敏感信息
 ms.topic: article
-ms.date: 04/03/2020
-ms.openlocfilehash: 756828e71174246450245938595c8872afc62961
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: ea82ba5994feaf102d4622eada284df431e004d0
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657151"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169555"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载机密卷
 
@@ -61,7 +62,7 @@ Bye.
 以下 YAML 模板定义了一个容器组，其中包含一个容器，该容器在 `/mnt/secrets` 处装载了一个机密卷。 机密卷有两个包含机密“mysecret1”和“mysecret2”的文件。
 
 ```yaml
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: eastus
 name: secret-volume-demo
 properties:

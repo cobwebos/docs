@@ -2,12 +2,13 @@
 title: 使用挎斗容器启用 TLS
 description: 通过在挎斗中运行 Nginx 为 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80984600"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169844"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>在挎斗容器中启用 TLS 终结点
 
@@ -146,7 +147,7 @@ code deploy-aci.yaml
 输入 base64 编码文件的内容（在 `secret` 下指示）。 例如，对每个 base64 编码的文件运行 `cat` 以查看其内容。 在部署期间，这些文件将添加到容器组中的[机密卷](container-instances-volume-secret.md)。 在本示例中，机密卷已装载到 Nginx 容器。
 
 ```YAML
-api-version: 2018-10-01
+api-version: 2019-12-01
 location: westus
 name: app-with-ssl
 properties:

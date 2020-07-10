@@ -2,13 +2,14 @@
 title: 将 Azure 文件卷装载到容器组
 description: 了解如何装载 Azure 文件卷以保持 Azure 容器实例的状态
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 593400f67db5018f1533dd37eed88ece7fd596c6
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75561331"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169572"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器实例中装载 Azure 文件共享
 
@@ -102,7 +103,7 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP \
 与 CLI 示例中一样，`dnsNameLabel` 值在创建容器实例的 Azure 区域中必须是唯一的。 如果需要，请在 YAML 文件中更新该值。
 
 ```yaml
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: eastus
 name: file-share-demo
 properties:
@@ -167,7 +168,7 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
     {
       "name": "file-share-demo",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-12-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [

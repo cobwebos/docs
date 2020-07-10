@@ -3,11 +3,12 @@ title: Azure 资源管理器模板示例
 description: 查找 Azure 资源管理器模板示例以在不同配置中部署 Azure 容器实例
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299751"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169640"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>适用于 Azure 容器实例的 Azure 资源管理器模板
 
@@ -17,7 +18,7 @@ ms.locfileid: "84299751"
 
 ## <a name="sample-templates"></a>示例模板
 
-| | |
+| 模板 | 说明 |
 |-|-|
 | **应用程序** ||
 | [WordPress][app-wp] | 在容器组中创建 WordPress 网站及其 MySQL 数据库。 WordPress 站点内容和 MySQL 数据库会保存到 Azure 文件共享中。 还创建一个应用程序网关，以公开对 WordPress 的公用网络访问。 |
@@ -26,7 +27,7 @@ ms.locfileid: "84299751"
 | [emptyDir][vol-emptydir] | 部署两个共享 emptyDir 卷的 Linux 容器。 |
 | [gitRepo][vol-gitrepo] | 部署一个克隆 GitHub 存储库的 Linux 容器并将其作为卷装入。 |
 | [secret][vol-secret] | 部署装有 PFX 证书的 Linux 容器作为机密卷。 |
-| **网络** ||
+| **联网** ||
 | [公开 UDP 的容器][net-udp] | 部署公开 UDP 端口的 Windows 或 Linux 容器。 |
 | [具有公共 IP 的 Linux 容器][net-publicip] | 部署可通过公共 IP 访问的单个 Linux 容器。 |
 | [使用虚拟网络部署容器组][net-vnet] | 部署新的虚拟网络、子网、网络配置文件和容器组。 |

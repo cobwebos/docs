@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a728eff7addc7f835f82e795457e722fd60d2e30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 253cd8174ec523f6c8a6aae2b94f7ed367701fec
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564595"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146782"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -58,7 +58,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 索引器可提供数据源独有的功能。 因此，索引器或数据源配置的某些方面会因索引器类型而不同。 但是，所有索引器的基本构成元素和要求都相同。 下面介绍所有索引器都适用的共同步骤。
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
-索引器从数据源  对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [DataSource 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)以创建资源。
+索引器从数据源对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [DataSource 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)以创建资源。
 
 数据源的配置和管理独立于使用数据源的索引器，这意味着多个索引器可使用一个数据源，同时加载多个索引。
 
@@ -77,8 +77,10 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 
 虽然通常会对索引操作进行计划，但也可使用 [Run 命令](https://docs.microsoft.com/rest/api/searchservice/run-indexer)按需调用索引器：
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 > [!NOTE]
 > “运行 API”成功返回时，已计划索引器调用，但实际处理过程以异步方式发生。 
@@ -91,37 +93,40 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 
 可以通过[“获取索引器状态”命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
 
-
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 响应包含总体索引器状态、最后一次（或正在进行的）索引器调用以及最近索引器调用的历史记录。
 
-    {
-        "status":"running",
-        "lastResult": {
-            "status":"success",
-            "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-         },
-        "executionHistory":[ {
-            "status":"success",
-             "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-        }]
-    }
+```output
+{
+    "status":"running",
+    "lastResult": {
+        "status":"success",
+        "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+     },
+    "executionHistory":[ {
+        "status":"success",
+         "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+    }]
+}
+```
 
 执行历史记录包含最多 50 个最近完成的执行，它们被按反向时间顺序排序（因此，最新执行出现在响应中的第一个）。
 

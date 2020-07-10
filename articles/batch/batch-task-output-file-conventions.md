@@ -4,12 +4,12 @@ description: 了解如何使用适用于 .NET 的 Azure Batch 文件约定库将
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965189"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147167"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 
@@ -55,7 +55,7 @@ Azure Batch 提供多种方式来保存任务输出。 文件约定最适合以�
 
 若要使用文件约定库保存作业和任务输出数据，请在 Azure 存储中创建一个容器，然后将输出保存到该容器。 在任务代码中使用[适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)将任务输出上传到该容器。
 
-有关在 Azure 存储中使用容器和 Blob 的详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。
+有关在 Azure 存储中使用容器和 Blob 的详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 
 > [!WARNING]
 > 使用文件约定库保存的所有作业和任务输出存储在同一个容器中。 如果大量的任务同时尝试保留文件，可能会强制实施 Azure 存储限制。 有关限制的详细信息，请参阅 [Blob 存储的性能与可伸缩性核对清单](../storage/blobs/storage-performance-checklist.md)。

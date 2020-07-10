@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
-ms.date: 03/18/2020
-ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: 437db3e1ad367a75d6c8d3a77b138bce79b5f61e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80064192"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147139"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什么是 Azure 机器学习环境？
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,6 +48,7 @@ Azure 机器学习环境指定与训练和评分脚本有关的 Python 包、环
 * 使用工作区中的现有 `Environment` 对象。 此方法可以确保你的依赖项的一致性和可再现性。
 * 从现有 Anaconda 环境定义中进行导入。
 * 使用 Azure 机器学习 CLI
+* [使用 VS Code 扩展](how-to-manage-resources-vscode.md#create-environment)
 
 有关特定的代码示例，请参阅[重用环境进行训练和部署](how-to-use-environments.md#create-an-environment)中的“创建环境”部分。 还可以通过工作区轻松管理环境。 它们包括以下功能：
 

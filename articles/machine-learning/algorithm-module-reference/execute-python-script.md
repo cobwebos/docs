@@ -10,18 +10,18 @@ ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
 ms.date: 06/16/2020
-ms.openlocfilehash: f64c79a970ec54c07c2934a92a9ca349ea56ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2115a0bae8b26113fc10648db2584210809441de
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907544"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147245"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
 本文介绍 Azure 机器学习设计器（预览版）中的“执行 Python 脚本”模块。
 
-使用此模块可以运行 Python 代码。 有关 Python 的体系结构和设计原则的详细信息，请参阅[本文](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)。
+使用此模块可以运行 Python 代码。 有关 Python 的体系结构和设计原则的详细信息，请参阅[如何在 Azure 机器学习设计器中运行 python 代码](../how-to-designer-python.md)。
 
 使用 Python，可以执行现有模块不支持的任务，例如：
 

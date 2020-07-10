@@ -3,18 +3,18 @@ title: 用于 Azure 实验室服务的 Azure CLI 示例 | Microsoft Docs
 description: 本文提供了可帮助你管理 Azure 实验室服务中的实验室 Azure CLI 脚本示例的列表。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4b4b917224e60c68aa8d1421af011503a7453735
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f184d6753fc0280eae1d46b676f160778070fa3a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483238"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166087"
 ---
 # <a name="azure-cli-samples-for-azure-lab-services"></a>用于 Azure 实验室服务的 Azure CLI 示例
 
 下表包含指向使用用于 Azure 实验室服务的 Azure CLI 脚本生成的 bash 脚本的链接。 
 
-| | |
+| 脚本 | 说明 |
 |---|---|
 | [创建并验证 VM 的可用性](scripts/create-verify-virtual-machine-in-lab-cli.md) | 使用最小配置创建 Windows 虚拟机。 |
 | [启动 VM](scripts/start-connect-virtual-machine-in-lab-cli.md) | 启动 VM。 |

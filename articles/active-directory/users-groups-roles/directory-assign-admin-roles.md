@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b1e648058e866be57deaf8dd159c89fc08141b68
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921754"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166665"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -208,7 +209,7 @@ In | 有权执行的操作
 
 ### <a name="external-id-user-flow-administrator"></a>[外部 ID 用户流管理员](#external-id-user-flow-administrator-permissions)
 
-具有此角色的用户可以在 Azure 门户中创建和管理用户流（也称为 "内置" 策略）。 这些用户可以自定义 HTML/CSS/JavaScript 内容、更改 MFA 要求，在令牌中选择声明，管理 API 连接器，并为 Azure AD 组织中的所有用户流配置会话设置。 另一方面，此角色不包括查看用户数据或对组织架构中包含的属性进行更改的功能。 对标识体验框架策略（也称为自定义策略）的更改也不在此角色的作用域内。
+具有此角色的用户可以创建和管理用户流 (也称为 "内置" 策略) 在 Azure 门户中。 这些用户可以自定义 HTML/CSS/JavaScript 内容、更改 MFA 要求，在令牌中选择声明，管理 API 连接器，并为 Azure AD 组织中的所有用户流配置会话设置。 另一方面，此角色不包括查看用户数据或对组织架构中包含的属性进行更改的功能。 更改标识体验框架策略 (也称为自定义策略) 也不在此角色的作用域内。
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[外部 ID 用户流属性管理员](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -488,7 +489,7 @@ Windows Defender ATP 和 EDR | 查看和调查警报。 在 Windows Defender ATP
 
 具有此角色的用户可以创建用户、管理用户的所有方面（但存在一些限制，见下），以及更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
 
-| | |
+| 权限 | 有权执行的操作 |
 | --- | --- |
 |常规权限|<p>创建用户和组</p><p>创建和管理用户视图</p><p>管理 Office 支持票证<p>更新密码过期策略|
 |<p>适用于所有用户，包括所有管理员</p>|<p>管理许可证</p><p>管理除用户主体名称之外的所有用户属性</p>
@@ -1933,7 +1934,7 @@ CRM 服务管理员 | Dynamics 365 管理员 | [反映当前产品品牌](direct
 Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
 合作伙伴层 1 支持 | 不显示，因为不应使用它 | [合作伙伴一线支持人员文档](directory-assign-admin-roles.md#partner-tier1-support)
 合作伙伴层 2 支持 | 不显示，因为不应使用它 | [合作伙伴二线支持人员文档](directory-assign-admin-roles.md#partner-tier2-support)
-受限来宾用户 | 不显示，因为无法使用它 | 不可用
+受限来宾用户 | 不显示，因为无法使用它 | NA
 User | 不显示，因为无法使用它 | 不可用
 工作区设备联接 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 

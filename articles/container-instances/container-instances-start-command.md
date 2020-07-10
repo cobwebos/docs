@@ -3,11 +3,12 @@ title: 替代容器实例中的入口点
 description: 部署 Azure 容器实例时，设置一个命令行来替代容器映像中的入口点
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84693050"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169623"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器实例中设置命令行来替代默认的命令行操作
 
@@ -53,8 +54,8 @@ ms.locfileid: "84693050"
 
 |    |  Azure CLI   | 门户 | 模板 | 
 | ---- | ---- | --- | --- |
-| 单个命令 | `--command-line "python myscript.py arg1 arg2"` | **命令替代**：`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| 多个命令 | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**命令替代**：`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| **单个命令** | `--command-line "python myscript.py arg1 arg2"` | **命令替代**：`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| **多个命令** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**命令替代**：`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLI 示例
 

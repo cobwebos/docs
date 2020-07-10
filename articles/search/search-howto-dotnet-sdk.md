@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4714fbb5d9f08e0b02dbc8f6cb32845642911e51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556295"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146909"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>如何通过 .NET 应用程序使用 Azure 认知搜索
 
@@ -171,46 +171,49 @@ private static SearchIndexClient CreateSearchIndexClient(string indexName, IConf
 
 如果使用有效服务名称和 API 密钥运行此应用程序，输出应如以下示例所示：（为方便演示，某些控制台输出已替换为“...”。）
 
-    Deleting index...
+```output
 
-    Creating index...
+Deleting index...
 
-    Uploading documents...
+Creating index...
 
-    Waiting for documents to be indexed...
+Uploading documents...
 
-    Search the entire index for the term 'motel' and return only the HotelName field:
+Waiting for documents to be indexed...
 
-    Name: Secret Point Motel
+Search the entire index for the term 'motel' and return only the HotelName field:
 
-    Name: Twin Dome Motel
+Name: Secret Point Motel
 
-
-    Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
-
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
-
-    HotelId: 2
-    Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
+Name: Twin Dome Motel
 
 
-    Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
+Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
 
-    Name: Triple Landscape Hotel
-    Last renovated on: 9/20/2015 12:00:00 AM +00:00
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
 
-    Name: Twin Dome Motel
-    Last renovated on: 2/18/1979 12:00:00 AM +00:00
+HotelId: 2
+Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
 
 
-    Search the hotel names for the term 'hotel':
+Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
 
-    HotelId: 3
-    Name: Triple Landscape Hotel
-    ...
+Name: Triple Landscape Hotel
+Last renovated on: 9/20/2015 12:00:00 AM +00:00
 
-    Complete.  Press any key to end application... 
+Name: Twin Dome Motel
+Last renovated on: 2/18/1979 12:00:00 AM +00:00
+
+
+Search the hotel names for the term 'hotel':
+
+HotelId: 3
+Name: Triple Landscape Hotel
+...
+
+Complete.  Press any key to end application... 
+```
 
 本文末尾处提供了应用程序的完整源代码。
 
@@ -566,7 +569,9 @@ namespace AzureSearch.SDKHowTo
 
 这不只是假想的问题：假设将新字段添加到 `Edm.Int32` 类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 认知搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
 
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```output
+Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```
 
 由于此原因，最佳做法是建议在模型类中使用可以为 null 的类型。
 
@@ -680,9 +685,11 @@ WriteDocuments(results);
 
 在本例中，我们将在任何可搜索字段中搜索“motel”一词的整个索引，并且我们只检索 `Select` 参数指定的酒店名称。 结果如下：
 
-    Name: Secret Point Motel
+```output
+Name: Secret Point Motel
 
-    Name: Twin Dome Motel
+Name: Twin Dome Motel
+```
 
 下一个查询更有趣一点。  我们想要查找客房价格不超过 100 美元的任何酒店，并仅返回酒店 ID 和说明：
 
@@ -703,11 +710,13 @@ WriteDocuments(results);
 
 下面是查询的结果：
 
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
+```output
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
 
-    HotelId: 2
-    Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+HotelId: 2
+Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+```
 
 接下来，我们想要查找最近翻修的前两个酒店，并显示酒店名称和上次翻修日期。 代码如下： 
 
@@ -729,8 +738,10 @@ WriteDocuments(results);
 
 结果如下：
 
-    Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
-    Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```output
+Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
+Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```
 
 最后，我们想要查找与“motel”一词匹配的所有酒店名称：
 
@@ -746,9 +757,11 @@ WriteDocuments(results);
 
 以下是结果，它包含所有字段，因为我们未指定 `Select` 属性：
 
+```output
     HotelId: 3
     Name: Triple Landscape Hotel
     ...
+```
 
 本教程到此步骤结束，但不要就此打住。 **后续步骤提供了详细了解 Azure 认知搜索的其他资源。
 

@@ -5,11 +5,13 @@ author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74231251"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165696"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停机时间部署
 
@@ -18,9 +20,6 @@ Durable Functions 的[可靠执行模型](durable-functions-checkpointing-and-re
 为了防止发生这些故障，可以执行两个选项： 
 - 延迟部署，直到所有正在运行的业务流程实例都已完成。
 - 确保任何正在运行的业务流程实例使用现有的函数版本。 
-
-> [!NOTE]
-> 本文提供了针对 Durable Functions 1.x 的函数应用的指南。 它尚未针对 Durable Functions 2.x 中引入的更改进行更新。 有关扩展版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)。
 
 下图比较了实现 Durable Functions 零停机时间部署的三个主要策略： 
 
@@ -96,7 +95,7 @@ Durable Functions 的[可靠执行模型](durable-functions-checkpointing-and-re
 [FunctionName("StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient client,
+    [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
     var runtimeStatus = new List<OrchestrationRuntimeStatus>();
@@ -104,8 +103,8 @@ public static async Task<IActionResult> StatusCheck(
     runtimeStatus.Add(OrchestrationRuntimeStatus.Pending);
     runtimeStatus.Add(OrchestrationRuntimeStatus.Running);
 
-    var status = await client.GetStatusAsync(new DateTime(2015,10,10), null, runtimeStatus);
-    return (ActionResult) new OkObjectResult(new Status() {HasRunning = (status.Count != 0)});
+    var result = await client.ListInstancesAsync(new OrchestrationStatusQueryCondition() { RuntimeStatus = runtimeStatus }, CancellationToken.None);
+    return (ActionResult)new OkObjectResult(new { HasRunning = result.DurableOrchestrationState.Any() });
 }
 ```
 

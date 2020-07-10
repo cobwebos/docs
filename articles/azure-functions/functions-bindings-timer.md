@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: e1dd20514fcb14e411fbb7efee4157b670d462b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a832fe4e212ce39ca423263ed2554c2682455002
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389694"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165647"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -38,7 +38,7 @@ ms.locfileid: "85389694"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-下面的示例演示了一个[c # 函数](functions-dotnet-class-library.md)，该函数在每次该分钟的值可被五整除时执行（例如，如果函数从18:57:00 开始，则下一个性能将是19:00:00）。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)对象传递到函数中。
+下面的示例演示了一个[c # 函数](functions-dotnet-class-library.md)，每次在分钟包含一个可被五个 (整除的值时（例如，如果该函数从18:57:00 开始），下一个性能将为 19:00:00) 。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)对象传递到函数中。
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -231,7 +231,7 @@ public void keepAlive(
 > [!CAUTION]
 > 在生产中不建议将 runOnStartup**** 设置为 `true`。 使用此设置会使代码在非常不可预测的时间执行。 在某些生产设置中，这些额外执行可能会导致消耗计划中托管的应用产生明显更高的成本。 例如，启用 **runOnStartup** 后，只要缩放函数应用，就会调用触发器。 在生产中启用 runOnStartup**** 之前，请确保完全了解函数的生产行为。   
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 调用计时器触发器函数时，计时器对象将传递到函数中。 以下 JSON 是计时器对象的示例表示形式。
 
@@ -264,7 +264,7 @@ Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来�
 |所有值 (`*`)|<nobr>"0 * 5 * * *"</nobr>|在每天的 5:mm:00，其中 mm 表示该小时的每分钟（一天 60 次）|
 |一个范围（`-` 运算符）|<nobr>"5-7 * * * * *"</nobr>|在 hh:mm:05、hh:mm:06 和 hh:mm:07，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|
 |一组值（`,` 运算符）|<nobr>"5,8,10 * * * * *"</nobr>|在 hh:mm:05、hh:mm:08 和 hh:mm:10，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|
-|一个间隔值（`/` 运算符）|<nobr>"0 */5 * * * *"</nobr>|在 hh：00：00，hh：05：00，hh：10：00，依此类推，到 hh：55：00，其中 hh 为每小时（每小时12次）|
+|一个间隔值（`/` 运算符）|<nobr>"0 */5 * * * *"</nobr>|在 hh：00：00，hh：05：00，hh：10：00，依此类推，到 hh：55：00，其中 hh 每小时 (12 次) |
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -287,24 +287,7 @@ Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来�
 
 CRON 表达式中的数字指的是时间和日期，而不是时间跨度。 例如，`hour` 字段中的 5 指的是 5:00 AM，而不是每 5 小时。
 
-CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON 表达式基于其他时区，请为你的函数应用创建一个名为 `WEBSITE_TIME_ZONE` 的应用设置。 将值设置为所需时区的名称，如 [Microsoft 时区索引](https://technet.microsoft.com/library/cc749073)中所示。
-
-  > [!NOTE]
-  > `WEBSITE_TIME_ZONE`Linux 消耗计划当前不支持。
-
-例如，东部标准时间** 是 UTC-05:00。 若要让计时器触发器每天在美国东部时间上午 10:00 触发，可使用表示 UTC 时区的以下 NCRONTAB 表达式：
-
-```
-"0 0 15 * * *"
-``` 
-
-或者为你的函数应用创建一个名为 `WEBSITE_TIME_ZONE` 的应用设置并将值设置为 **Eastern Standard Time**。  然后使用以下 NCRONTAB 表达式： 
-
-```
-"0 0 10 * * *"
-``` 
-
-当使用 `WEBSITE_TIME_ZONE`，时间将针对特定时区中的时间更改进行调整，例如夏令时。 
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="timespan"></a>TimeSpan
 

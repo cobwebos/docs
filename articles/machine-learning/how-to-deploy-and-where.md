@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
+ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: aa961cb94816b50aa515532e69454fce9b370c54
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083073"
+ms.locfileid: "86146560"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ ms.locfileid: "86083073"
 
 + **使用 Visual Studio Code**
 
-   使用 Visual Studio Code 时，可以使用图形界面选择工作区。 有关详细信息，请参阅 Visual Studio Code 扩展文档中的[部署和管理模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
+   使用 Visual Studio Code 时，可以使用图形界面选择工作区。 有关详细信息，请参阅 Visual Studio Code 扩展文档中的[部署和管理模型](how-to-manage-resources-vscode.md#endpoints)。
 
 ## <a name="register-your-model"></a><a id="registermodel"></a> 注册模型
 

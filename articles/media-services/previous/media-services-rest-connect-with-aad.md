@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b4980ee8ea252b4ce13601501e4bf1f7af97d1b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295442"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166359"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问媒体服务 API
 
@@ -137,8 +137,10 @@ ms.locfileid: "80295442"
 
     或者，单击 Postman 窗口右侧的“批量编辑”链接，然后粘贴以下代码****。
 
-        Content-Type:application/x-www-form-urlencoded
-        Keep-Alive:true
+    ```javascript
+    Content-Type:application/x-www-form-urlencoded
+    Keep-Alive:true
+    ```
 
 6. 按“正文”选项卡****。
 7. 使用“密钥/值”数据网格输入正文信息（替换客户端 ID 和密钥值）。 
@@ -147,10 +149,12 @@ ms.locfileid: "80295442"
 
     或者，单击 Postman 窗口右侧的“批量编辑”，然后粘贴以下正文（替换客户端 ID 和密钥值）****：
 
-        grant_type:client_credentials
-        client_id:{Your Client ID that you got from your Azure AD Application}
-        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
-        resource:https://rest.media.azure.net
+    ```javascript
+    grant_type:client_credentials
+    client_id:{Your Client ID that you got from your Azure AD Application}
+    client_secret:{Your client secret that you got from your Azure AD Application's Keys}
+    resource:https://rest.media.azure.net
+    ```
 
 8. 按“发送”。
 
@@ -180,11 +184,13 @@ ms.locfileid: "80295442"
 5. 单击 Postman 窗口右侧的“批量编辑”链接****。
 6. 粘贴以下标头：
 
-        x-ms-version:2.19
-        Accept:application/json
-        Content-Type:application/json
-        DataServiceVersion:3.0
-        MaxDataServiceVersion:3.0
+    ```javascript
+    x-ms-version:2.19
+    Accept:application/json
+    Content-Type:application/json
+    DataServiceVersion:3.0
+    MaxDataServiceVersion:3.0
+    ```
 
 7. 按“发送”。
 

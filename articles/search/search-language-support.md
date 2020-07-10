@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 344b3bb30c9a92046a5fbd13c35b0efc7e6f3a23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54def7f03e28acb201d613ab5a13d9077cff121b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560837"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146755"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为多种语言创建索引
 
@@ -52,6 +52,7 @@ Azure 认知搜索提供了大量来自 Lucene 和 Microsoft 的语言分析器�
 
 有时，发出查询的代理的语言未知，在此情况下，可以针对所有字段同时发出查询。 如果需要，可以使用[计分配置文件](index-add-scoring-profiles.md)来定义采用特定语言的结果首选项。 在下面的示例中，与波兰文和法文的匹配项相比，英文描述中提供的匹配项的评分更高：
 
+```http
     "scoringProfiles": [
       {
         "name": "englishFirst",
@@ -60,6 +61,7 @@ Azure 认知搜索提供了大量来自 Lucene 和 Microsoft 的语言分析器�
         }
       }
     ]
+```
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 

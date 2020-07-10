@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985729"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147041"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -131,6 +131,10 @@ R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用�
 
 * [将 CLI 扩展用于 Azure 机器学习](reference-azure-machine-learning-cli.md)
 * [Azure 上的 MLOps](https://github.com/microsoft/MLOps)
+
+## <a name="vs-code"></a>VS Code
+
+您可以使用 VS Code 扩展来运行和管理您的培训作业。 请参阅[VS Code 资源管理操作方法指南](how-to-manage-resources-vscode.md#experiments)，了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

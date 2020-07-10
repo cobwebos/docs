@@ -3,11 +3,12 @@ title: 在容器实例中设置环境变量
 description: 了解如何在 Azure 容器实例的已运行容器中设置环境变量
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686726"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169759"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
 
@@ -165,7 +166,7 @@ Azure:\
 创建包含下面的代码片段的 `secure-env.yaml` 文件。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: securetest
 properties:

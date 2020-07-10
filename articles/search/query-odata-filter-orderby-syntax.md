@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77153870"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165203"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 认知搜索中 `$filter`、`$orderby` 和 `$select` 的 OData 语言概述
 
@@ -45,7 +46,7 @@ Azure 认知搜索支持一组适用于 **$filter**、 **$orderby** 和 **$selec
 
 ## <a name="field-paths"></a>字段路径
 
-以下 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义字段路径的语法。
+下面的 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义字段路径的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -82,7 +83,9 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 以字段路径 `Address/City` 为例。 在筛选器中，此字段路径引用当前文档的单个城市，例如“旧金山”。 相比之下，`Rooms/Type` 引用许多客房的 `Type` 子字段（例如，“标准”表示第一间客房，“豪华”表示第二间客房，等等）。 由于 `Rooms/Type` 不引用子字段 `Type` 的*单个实例*，因此不能直接在筛选器中使用。 若要根据客房类型进行筛选，请使用包含范围变量的 [Lambda 表达式](search-query-odata-collection-operators.md)，如下所示：
 
-    Rooms/any(room: room/Type eq 'deluxe')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
+```
 
 在此示例中，范围变量 `room` 显示在 `room/Type` 字段路径中。 于是，`room/Type` 引用当前文档中当前客房的类型。 这是 `Type` 子字段的单个实例，因此可以直接在筛选器中使用。
 
@@ -132,7 +135,7 @@ OData 中的字符串常量由单引号分隔。 如果需要使用本身可能�
 
 ### <a name="constants-syntax"></a>常量语法
 
-以下 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义上表中所示的大部分常量的语法。 可在 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
+以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 为上表中所示的大部分常量定义语法。 可在 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -208,7 +211,7 @@ boolean_literal ::= 'true' | 'false'
 
 但是，大多数情况下，需要使用更复杂的表达式来引用多个字段和常量。 这些表达式的生成方式根据参数而异。
 
-以下 EBNF （[扩展巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 **$filter**、 **$orderby**和 **$select**参数的语法。 这些表达式是基于引用字段路径和常量的更简单表达式生成的：
+以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$filter**、 **$orderby**和 **$select**参数的语法。 这些表达式是基于引用字段路径和常量的更简单表达式生成的：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

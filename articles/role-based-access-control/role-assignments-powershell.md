@@ -14,11 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 46aea9ab113a0c75ed24497ee39793d08c4f7165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790885"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146666"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 添加或删除 Azure 角色分配
 
@@ -108,7 +109,7 @@ CanDelegate        : False
 若要使用唯一角色 ID 而非角色名称来添加角色分配，请使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)。
 
 ```azurepowershell
-New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
+New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -Scope <resource_group_name/resource/management groups>
 ```
 
 以下示例将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给 *pharma-sales* 资源组范围内的 alain\@example.com 用户。 要获取唯一角色 ID，可以使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)，也可以参阅 [Azure 内置角色](built-in-roles.md)。

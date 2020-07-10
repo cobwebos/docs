@@ -4,12 +4,12 @@ description: 通过自定义指标实时监视 Web 应用，使用实时失败�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 10818a531a43b50b86a6d413c7a504e2c19c3986
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507299"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166478"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
@@ -49,12 +49,12 @@ ms.locfileid: "85507299"
 
 | |实时流 | 指标资源管理器和 Analytics |
 |---|---|---|
-|延迟|在一秒内显示数据|在几分钟聚合|
-|无保留期|当数据在图表上显示时会得到保留，不显示时将被丢弃。|[数据会保留 90 天](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|按需|仅当打开 "实时指标" 窗格时才流式传输数据 |每当安装并启用 SDK 时会发送数据|
-|免费|实时流数据不收取费用|遵从[定价](../../azure-monitor/app/pricing.md)中的标准
-|采样|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](../../azure-monitor/app/api-filtering-sampling.md)|
-|控制通道|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信为单向通信，即通向门户|
+|**延迟**|在一秒内显示数据|在几分钟聚合|
+|**无保留期**|当数据在图表上显示时会得到保留，不显示时将被丢弃。|[数据会保留 90 天](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**“按需”**|仅当打开 "实时指标" 窗格时才流式传输数据 |每当安装并启用 SDK 时会发送数据|
+|**免费**|实时流数据不收取费用|遵从[定价](../../azure-monitor/app/pricing.md)中的标准
+|**采样**|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](../../azure-monitor/app/api-filtering-sampling.md)|
+|**控制通道**|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信为单向通信，即通向门户|
 
 ## <a name="select-and-filter-your-metrics"></a>选择和筛选指标
 
@@ -159,7 +159,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”**** 并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core （需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本）
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本) 
 
 如下所述修改 startup.cs 文件：
 
