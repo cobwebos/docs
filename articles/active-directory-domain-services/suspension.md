@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: b9770e46e8e52d8644143c9912c98e0f7913db9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79b5f4492d05880e263f8d489a64ba0cc218d355
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734276"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223391"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>了解运行状况状态和解决 Azure Active Directory 域服务中挂起的域
 
@@ -39,7 +39,7 @@ ms.locfileid: "84734276"
 
 ## <a name="running-state"></a>运行状态
 
-配置正确且运行不正常的托管域处于 "*正在运行*" 状态。 这是托管域的所需状态。
+已正确配置并且没有问题的托管域处于*运行*状态。 这是托管域的所需状态。
 
 ### <a name="what-to-expect"></a>期望
 
@@ -50,7 +50,9 @@ ms.locfileid: "84734276"
 
 ## <a name="needs-attention-state"></a>需要注意状态
 
-具有一个或多个需要解决的问题的托管域处于 "*需要注意*" 状态。 托管域的 "运行状况" 页列出了警报，并指示出现问题的位置。 某些警报是暂时性的，由 Azure 平台自动解决。 对于其他警报，你可以按照提供的解决方法步骤来解决此问题。 这是一个严重警报，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+具有一个或多个需要解决的问题的托管域处于 "*需要注意*" 状态。 托管域的 "运行状况" 页列出了警报，并指示出现问题的位置。
+
+某些警报是暂时性的，由 Azure 平台自动解决。 对于其他警报，你可以按照提供的解决方法步骤来解决此问题。 这是一个严重警报，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
 
 警报的一个示例就是有一个限制的网络安全组。 在此配置中，Azure 平台可能无法更新和监视托管域。 生成警报后，状态会更改为 "*需要注意*"。
 
@@ -58,7 +60,7 @@ ms.locfileid: "84734276"
 
 ### <a name="what-to-expect"></a>期望
 
-当托管域处于*需要注意*状态时，Azure 平台可能不能定期监视、修补、更新或备份数据。 在某些情况下（如使用无效网络配置），可能无法访问托管域的域控制器。
+当托管域处于*需要注意*状态时，Azure 平台可能不能定期监视、修补、更新或备份数据。 在某些情况下，与无效的网络配置类似，可能无法访问托管域的域控制器。
 
 * 托管域处于不正常状态，并且在警报解决之前，正在进行的运行状况监视可能会停止。
 * 不能修补或更新托管域的域控制器。
@@ -102,7 +104,7 @@ ms.locfileid: "84734276"
 
 托管域只能还原到上次备份的日期。 上次备份的日期显示在托管域的 "**运行状况**" 页上。 系统不会还原上次备份后发生的任何更改。 托管域的备份最多存储 30 天。 超过 30 天的备份将被删除。
 
-当你在托管域处于*挂起*状态时解决了警报之后，请[打开 Azure 支持请求][azure-support]以恢复到正常状态。 如果备份不到30天，Azure 支持人员可以还原托管域。
+当你在托管域处于*挂起*状态时解决了警报之后，请[打开 Azure 支持请求][azure-support]以恢复到正常状态。 如果备份时间少于30天，Azure 支持人员可以还原托管域。
 
 ## <a name="deleted-state"></a>删除状态
 
@@ -113,7 +115,7 @@ ms.locfileid: "84734276"
 当托管域进入*已删除*状态时，将出现以下行为：
 
 * 将删除托管域的所有资源和备份。
-* 不能还原托管域，而需要创建替换托管域以重用 Azure AD DS。
+* 无法还原托管域。 你必须创建一个替代托管域，以便重用 Azure AD DS。
 * 删除后，无需为托管域付费。
 
 ## <a name="next-steps"></a>后续步骤

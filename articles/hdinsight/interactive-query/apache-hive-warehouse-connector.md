@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 3efccc44255067b7e47c468c9a35853def2fce69
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085848"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221011"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Apache Spark 和 Apache Hive 与 Hive Warehouse Connector 集成
 
@@ -37,6 +37,9 @@ Hive Warehouse Connector 支持的部分操作包括：
 * 使用 HiveStreaming 将数据帧或 Spark 流写入到 Hive
 
 ## <a name="hive-warehouse-connector-setup"></a>Hive Warehouse Connector 设置
+
+> [!IMPORTANT]
+> 不支持将 Spark 2.4 企业安全性套餐群集上安装的 HiveServer2 交互实例用于 Hive 仓库连接器。 相反，你必须配置一个单独的 HiveServer2 交互群集来托管 HiveServer2 交互式工作负荷。 不支持使用单一 Spark 2.4 群集的 Hive 仓库连接器配置。
 
 Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要单独的群集。 按照以下步骤在 Azure HDInsight 中设置这些群集。
 
@@ -70,9 +73,9 @@ Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要�
 
 1. 选择“添加属性...”，以添加以下配置：
 
-    | 配置 | Value |
+    | 配置 | 值 |
     |----|----|
-    |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`。 <br> 设置为合适的 HDFS 兼容分段目录。 如果有两个不同的群集，则分段目录应该是 LLAP 群集存储帐户的分段目录中的文件夹，以便 HiveServer2 有权访问它。  将 `STORAGE_ACCOUNT_NAME` 替换为群集使用的存储帐户的名称，并将 `STORAGE_CONTAINER_NAME` 替换为存储容器的名称。 |
+    |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> 设置为合适的 HDFS 兼容分段目录。 如果有两个不同的群集，则分段目录应该是 LLAP 群集存储帐户的分段目录中的文件夹，以便 HiveServer2 有权访问它。  将 `STORAGE_ACCOUNT_NAME` 替换为群集使用的存储帐户的名称，并将 `STORAGE_CONTAINER_NAME` 替换为存储容器的名称。 |
     |`spark.sql.hive.hiveserver2.jdbc.url`| 之前从“HiveServer2 交互式 JDBC URL”获取的值 |
     |`spark.datasource.hive.warehouse.metastoreUri`| 之前从“hive.metastore.uris”获取的值。 |
     |`spark.security.credentials.hiveserver2.enabled`|对于 YARN 群集模式为 `true`，对于 YARN 客户端模式为 `false`。 |
@@ -95,15 +98,15 @@ Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要�
     |----|----|
     | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
-    * 在 web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` 其中 CLUSTERNAME 是您的交互式查询群集的名称。 单击 " **HiveServer2 Interactive**"。 你将看到运行 LLAP 的头节点的完全限定的域名（FQDN），如屏幕截图中所示。 替换 `<llap-headnode>` 为此值。
+    * 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`，其中 CLUSTERNAME 是 Interactive Query 群集的名称。 单击 HiveServer2 Interactive。 将看到运行 LLAP 的头节点的完全限定的域名 (FQDN)，如屏幕截图中所示。 将 `<llap-headnode>` 替换为此值。
 
-        ![hive 仓库连接器头节点](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        ![Hive Warehouse Connector 头节点](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 
-    * 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到交互式查询群集。 `default_realm`在文件中查找参数 `/etc/krb5.conf` 。 替换 `<AAD-DOMAIN>` 为大写字符串形式的此值，否则将找不到凭据。
+    * 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 Interactive Query 群集。 在 `/etc/krb5.conf` 文件中查找 `default_realm` 参数。 以大写字符串的形式使用此值替换 `<AAD-DOMAIN>`，否则会找不到凭据。
 
-        ![hive 仓库连接器 AAD 域](./media/apache-hive-warehouse-connector/aad-domain.png)
+        ![Hive Warehouse Connector AAD 域](./media/apache-hive-warehouse-connector/aad-domain.png)
 
-    * 例如， `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` 。
+    * 例如：`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`。
     
 1. 保存更改并根据需要重启组件。
 
@@ -215,7 +218,7 @@ kinit USERNAME
 
         ![hive warehouse connector ranger hive 策略列表](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    1. 提供所需的策略名称。 从“选择掩码选项”菜单中选择数据库“默认”、Hive 表“演示”、Hive 列“名称”、用户“rsadmin2”、访问类型“选择”和“部分掩码: 显示最后 4 个”。       单击“添加” 。
+    1. 提供所需的策略名称。 从“选择掩码选项”菜单中选择数据库“默认”、Hive 表“演示”、Hive 列“名称”、用户“rsadmin2”、访问类型“选择”和“部分掩码: 显示最后 4 个”。       单击“添加”。
                 ![创建策略](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. 再次查看表的内容。 应用 Ranger 策略之后，我们只能看到该列的最后四个字符。
 

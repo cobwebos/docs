@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144593"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223884"
 ---
 # <a name="what-is-single-sign-on-sso"></a>什么是单一登录 (SSO)？
 
@@ -69,7 +69,7 @@ ms.locfileid: "86144593"
 使用以下任何协议的应用程序支持基于 SAML 的单一登录：
 
 - SAML 2.0
-- WS-Federation
+- WS 联合身份验证
 
 若要为基于 SAML 的单一登录配置 SaaS 应用程序，请参阅[配置基于 saml 的单一登录](configure-single-sign-on-non-gallery-applications.md)。 此外，许多软件即服务 (SaaS) 应用程序都有[特定于应用程序的教程](../saas-apps/tutorial-list.md)，可以让用户详细了解基于 SAML 的单一登录的配置。
 
@@ -89,6 +89,9 @@ ms.locfileid: "86144593"
 
 - 应用程序不支持 SAML 单一登录协议。
 - 应用程序使用用户名和密码而非访问令牌和标头进行身份验证。
+
+>[!NOTE]
+>不能将条件访问策略或多重身份验证应用于基于密码的 SSO。
 
 对于提供了基于 HTML 的登录页面的任何基于云的应用程序都支持基于密码的单一登录。 用户可以使用以下任一浏览器：
 
@@ -136,6 +139,9 @@ Azure AD 管理员管理凭据时：
 在一段时间内迁移应用程序时，链接登录可提供一致的用户体验。 如果要将应用程序迁移到 Azure Active Directory，则可以使用链接登录快速发布指向要迁移的所有应用程序的链接。  用户可以在 [MyApps 门户](../user-help/active-directory-saas-access-panel-introduction.md)或 [Office 365 应用程序启动器](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中查找所有的链接。 用户不会知道他们正在访问链接的应用程序或迁移的应用程序。  
 
 用户通过链接的应用程序进行身份验证后，需要先创建帐户记录，然后才能为最终用户提供单一登录访问权限。 预配此帐户记录可以自动完成，也可以由管理员手动完成。
+
+>[!NOTE]
+>不能将条件访问策略或多重身份验证应用于链接的应用程序。 这是因为，链接应用程序不通过 Azure AD 提供单一登录功能。 在配置链接应用程序时，只需添加将显示在应用程序启动器或 MyApps 门户中的链接。 
 
 ## <a name="disabled-sso"></a>已禁用的 SSO
 

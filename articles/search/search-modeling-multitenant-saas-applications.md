@@ -8,11 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081105"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230751"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>多租户 SaaS 应用程序与 Azure 认知搜索的设计模式
 
@@ -42,12 +43,12 @@ Azure 认知搜索中有一些不同的[定价层](https://azure.microsoft.com/p
 
 |  | 基本 | 标准 1 | 标准 2 | 标准 3 | 标准 3 HD |
 | --- | --- | --- | --- | --- | --- |
-| 每个服务的副本数上限 |3 |12 |12 |12 |12 |
-| 每个服务的分区数上限 |1 |12 |12 |12 |3 |
-| 每个服务的搜索单位数上限（副本*分区） |3 |36 |36 |36 |36（最多 3 个分区） |
-| 每个服务的存储上限 |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |
-| 每个分区的存储上限 |2 GB |25 GB |100 GB |200 GB |200 GB |
-| 每个服务的索引数上限 |5 |50 |200 |200 |3000（最多 1000 个索引/分区） |
+| **每个服务的副本数上限** |3 |12 |12 |12 |12 |
+| **每个服务的分区数上限** |1 |12 |12 |12 |3 |
+| **每个服务的搜索单位数上限（副本*分区）** |3 |36 |36 |36 |36（最多 3 个分区） |
+| **每个服务的存储上限** |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |
+| **每个分区的存储上限** |2 GB |25 GB |100 GB |200 GB |200 GB |
+| **每个服务的索引数上限** |5 |50 |200 |200 |3000（最多 1000 个索引/分区） |
 
 #### <a name="s3-high-density"></a>S3 高密度
 在 Azure 认知搜索的 S3 定价层中，有一个专门为多租户方案设计的高密度 (HD) 模式的选项。 在许多情况下，都有必要支持单个服务下的大量较小租户，从而获得简洁性和成本效益带来的优势。

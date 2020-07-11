@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4959d530e1f7a3c777aa3db21fe577c853fbca13
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855995"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230819"
 ---
 # <a name="key-vault-versions"></a>Key Vault 版本
 
@@ -20,11 +20,11 @@ ms.locfileid: "85855995"
 
 ## <a name="june-2020"></a>2020 年 6 月
 
-Key Vault 的 Azure Monitor 现在为预览版。  Azure Monitor 提供 Key Vault 请求、性能、故障和延迟的统一视图，从而全面监视密钥保管库。 有关详细信息，请参阅[Key Vault 的 Azure Monitor （预览）。](../../azure-monitor/insights/key-vault-insights-overview.md)
+Key Vault 的 Azure Monitor 现在为预览版。  Azure Monitor 提供 Key Vault 请求、性能、故障和延迟的统一视图，从而全面监视密钥保管库。 有关详细信息，请参阅[Key Vault (预览) Azure Monitor。](../../azure-monitor/insights/key-vault-insights-overview.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 
-Key Vault "自带密钥" （BYOK）现已公开发布。 请参阅[AZURE KEY VAULT BYOK 规范](../keys/byok-specification.md)，并了解如何将[受 HSM 保护的密钥导入到 Key Vault （BYOK）](../keys/hsm-protected-keys-byok.md)。
+Key Vault "自带密钥" (BYOK) 现已正式发布。 请参阅[AZURE KEY VAULT BYOK 规范](../keys/byok-specification.md)，并了解如何将[受 HSM 保护的密钥导入到 Key Vault (BYOK) ](../keys/hsm-protected-keys-byok.md)。
 
 ## <a name="march-2020"></a>2020 年 3 月
 
@@ -35,7 +35,7 @@ Key Vault "自带密钥" （BYOK）现已公开发布。 请参阅[AZURE KEY VAU
 - 发布下一代 Azure Key Vault Sdk。 有关其用法的示例，请参阅[Python](../secrets/quick-create-python.md)、 [.net](../secrets/quick-create-net.md)、 [Java](../secrets/quick-create-java.md)和[Node.js](../secrets/quick-create-node.md)的 Azure Key Vault 密钥快速入门
 - 新的 Azure 策略用于管理密钥保管库证书。 请参阅[Key Vault 的 Azure 策略内置定义](../policy-samples.md)。
 - Azure Key Vault 虚拟机扩展现已正式发布。  请参阅[Key Vault 适用于 Linux 的虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md)和[适用于 Windows 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-windows.md)。
-- Azure 事件网格中现提供的 Azure Key Vault 事件驱动的机密管理。 有关详细信息，请参阅 [Azure Key Vault 中事件的事件网格架构] （.。。/../event-grid/event-schema-key-vault.md]，了解如何[通过 Azure 事件网格接收和响应 key vault 通知](event-grid-tutorial.md)。
+- Azure 事件网格中现提供的 Azure Key Vault 事件驱动的机密管理。 有关详细信息，请参阅 [Azure Key Vault 中事件的事件网格架构] (。/../event-grid/event-schema-key-vault.md]，了解如何[通过 Azure 事件网格接收和响应 key vault 通知](event-grid-tutorial.md)。
 
 ## <a name="2018"></a>2018
 
@@ -57,14 +57,14 @@ Key Vault "自带密钥" （BYOK）现已公开发布。 请参阅[AZURE KEY VAU
 本年度发布的新功能：
 - 证书管理。 作为功能添加到了2015-06-01 年9月 26 2016 日 GA 版本。
 
-公开上市（版本2015-06-01）于6月 24 2015 日公布。 此版本进行了以下更改： 
-- 删除密钥 - 删除了“使用”字段。
-- 获取有关密钥的信息 - 删除了“使用”字段。
-- 将密钥导入保管库 - 删除了“使用”字段。
-- 还原密钥 - 删除了“使用”字段。     
-- 将“RSA_OAEP”改为RSA 算法的“RSA-OAEP”。 请参阅[关于密钥、机密和证书](about-keys-secrets-certificates.md)。    
+2015-06-01 年6月 24 2015 日公布 (版本) 。 此版本进行了以下更改： 
+- 删除键-"使用" 字段已删除。
+- 获取有关删除的键-"使用" 字段的信息。
+- 将密钥导入到保管库中删除了 "使用" 字段。
+- 还原密钥-"使用" 字段已删除。     
+- 已将 RSA 算法的 "RSA_OAEP" 更改为 "RSA-OAEP"。 请参阅[关于密钥、机密和证书](about-keys-secrets-certificates.md)。    
  
-第二个预览版本（版本 2015-02-01-预览版）已于年4月 20 2015 日发布。 有关详细信息，请参阅 [REST API 更新](https://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx) 博客文章。 更新了以下任务：
+第二个预览版本 (版本 2015-02-01-预览版) 于年4月 20 2015 日发布。 有关详细信息，请参阅 [REST API 更新](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) 博客文章。 更新了以下任务：
  
 - 列出保管库中的密钥 - 向操作添加了分页支持。
 - 列出密钥版本 - 添加了列出密钥版本的操作。  
@@ -80,7 +80,7 @@ Key Vault "自带密钥" （BYOK）现已公开发布。 请参阅[AZURE KEY VAU
  
 ## <a name="2014"></a>2014
  
-第一版预览版（版本 2014-12-08-预览版）于2015年1月8日发布。  
+第一个预览版 (版本 2014-12-08-预览版) 于2015年1月8日发布。  
  
 ## <a name="next-steps"></a>后续步骤
 

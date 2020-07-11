@@ -1,17 +1,17 @@
 ---
 title: 以编程方式创建 Azure 订阅
 description: 了解如何以编程方式创建其他 Azure 订阅。
-author: amberbhargava
+author: anuragdalmia
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7fac201de2fd623058eb5771e194ae697f879ee8
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170626"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224156"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a> (预览版以编程方式创建 Azure 订阅) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "86170626"
 
 使用以下部分中的信息来创建 EA 订阅。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备知识
 
 若要创建订阅，必须拥有注册帐户的所有者角色。 可以通过两种方式获取角色：
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | 是      | 字符串 | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
 | `owners`      | 否       | 字符串 | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的对象 ID。  |
 
-在响应中，你将获取 `Location` 用于监视的 url。 订阅创建完成后，"获取 `Location` url" 将返回一个 `subscriptionLink` 对象，该对象具有订阅 ID。 有关更多详细信息，请参阅[订阅 API 文档](https://docs.microsoft.com/rest/api/subscription/)
+在响应中，作为标头的一部分 `Location` ，您将获得一个 url，您可以在该 url 上查询订阅创建操作的状态。 订阅创建完成后，"获取 `Location` url" 将返回一个 `subscriptionLink` 对象，该对象具有订阅 ID。 有关更多详细信息，请参阅[订阅 API 文档](https://docs.microsoft.com/rest/api/subscription/)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -212,7 +212,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 ## <a name="create-subscriptions-for-an-mca-account"></a>为 MCA 帐户创建订阅
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备知识
 
 对于某个发票部分，必须有 "所有者"、"参与者" 或 "Azure 订阅创建者" 角色，或者在帐单配置文件中拥有 "所有者" 或 "参与者" 角色或计费帐户才能创建订阅。 有关详细信息，请参阅[订阅计费角色和任务](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks)。
 
@@ -340,7 +340,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| 元素名称  | 必需 | 类型   | 说明                                                                                               |
+| 元素名称  | 必需 | 类型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | 字符串 | 订阅的显示名称。|
 | `billingProfileId`   | 是      | 字符串 | 将按订阅费用计费的计费配置文件的 ID。  |
@@ -353,7 +353,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ## <a name="create-subscriptions-for-an-mpa-billing-account"></a>为 MPA 计费帐户创建订阅
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备知识
 
 你必须在组织的云解决方案提供商帐户中具有全局管理员或管理员代理角色，才能为你的计费帐户创建订阅。 有关详细信息，请参阅[合作伙伴中心-分配用户角色和权限](/partner-center/permissions-overview)。
 
@@ -505,7 +505,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| 元素名称  | 必需 | 类型   | 说明                                                                                               |
+| 元素名称  | 必需 | 类型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | 字符串 | 订阅的显示名称。|
 | `skuId` | 是      | 字符串 | Azure 计划的 sku ID。 使用*0001*作为 Microsoft Azure 计划类型的订阅 |

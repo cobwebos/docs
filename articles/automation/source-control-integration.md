@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 37df5ae8e88bf7832fbbeae37555d60943fca446
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187296"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229612"
 ---
 # <a name="use-source-control-integration"></a>使用源代码管理集成
 
@@ -202,7 +202,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 目前，不能使用 Azure 门户在源代码管理中更新 PAT。 当 PAT 过期或吊销时，可以通过以下方式之一使用新的访问令牌更新源代码管理：
 
 * 使用 [REST API](/rest/api/automation/sourcecontrol/update)。
-* 使用 [Update-AzAutomationSourceControl](//powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet。
+* 使用 [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146886"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230700"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为增量扩充配置缓存
 
@@ -174,7 +174,7 @@ api-key: [YOUR-ADMIN-KEY]
 | [Create 索引器 (2020-06-30-Preview) ](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | 创建并运行首次使用的索引器，包括创建缓存（如果索引器定义指定了缓存）。 |
 | [运行索引器](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | 按需执行扩充管道。 此 API 从缓存中读取（如果存在），如果已将缓存添加到更新索引器定义，则会创建缓存。 当你运行已启用缓存的索引器时，如果可以使用缓存的输出，则索引器将省略步骤。 你可以使用此 API 的公开发布或预览 API 版本。|
 | [重置索引器](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| 清除任何增量索引信息的索引器。 下一索引器将 (按需或计划) 从零开始完全重新处理，包括重新运行所有技能和重新生成缓存。 它在功能上等效于删除索引器并重新创建它。 你可以使用此 API 的公开发布或预览 API 版本。|
-| [重置技能](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | 指定在下次运行索引器时要重新运行的技能，即使您没有修改任何技能也是如此。 缓存会相应地进行更新。 将使用缓存中的可重用数据以及每个更新的技能的新内容来刷新输出，如知识存储或搜索索引。 |
+| [重置技能](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | 指定在下次运行索引器时要重新运行的技能，即使您没有修改任何技能也是如此。 缓存会相应地进行更新。 将使用缓存中的可重用数据以及每个更新的技能的新内容来刷新输出，如知识存储或搜索索引。 |
 
 有关控制缓存发生的情况的详细信息，请参阅[缓存管理](cognitive-search-incremental-indexing-conceptual.md#cache-management)。
 

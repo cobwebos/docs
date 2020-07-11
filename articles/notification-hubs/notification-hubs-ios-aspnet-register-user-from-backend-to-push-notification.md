@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: a36fdbb985711887baa04320bb75e1a85cab84fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0819f5196fffca25a840dc16d1df04cdd0a55029
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253862"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223306"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>通过使用 ASP.NET 注册推送通知的当前用户
 
@@ -44,11 +44,11 @@ ms.locfileid: "85253862"
 
      此时，Storyboard 应与下图类似：
 
-     ![][0]
+     ![添加了组件的 MainStoryboard_iPhone 演示图板应用程序的屏幕截图。][0]
 
 2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“**登录**”按钮的“**操作**”。
 
-    ![][1]
+    ![MainStoryboard_iPhone 中的助手编辑器的屏幕截图][1]
 
     BreakingNewsViewController.h 文件现在应当包含以下代码：
 

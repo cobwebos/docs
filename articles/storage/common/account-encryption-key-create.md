@@ -10,12 +10,12 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 7e47440a54d733d0b5d849123633bf7e067fcd81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf7d72e6f16605827b55e3a460a9b28010842d2f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805698"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220824"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>创建支持表和队列的客户托管密钥的帐户
 
@@ -141,7 +141,7 @@ az provider register --namespace 'Microsoft.Storage'
 - 包括 `-EncryptionKeyTypeForQueue` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密队列存储中的数据。
 - 包括 `-EncryptionKeyTypeForTable` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密表存储中的数据。
 
-下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问异地冗余存储（GRS），并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
+下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -162,7 +162,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 - 包括 `--encryption-key-type-for-queue` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密队列存储中的数据。
 - 包括 `--encryption-key-type-for-table` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密表存储中的数据。
 
-下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问异地冗余存储（GRS），并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
+下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
 
 ```azurecli
 az storage account create \
@@ -177,7 +177,7 @@ az storage account create \
 
 # <a name="template"></a>[模板](#tab/template)
 
-下面的 JSON 示例创建一个常规用途 v2 存储帐户，该帐户配置为读取访问异地冗余存储（GRS），并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换尖括号中的占位符值：
+下面的 JSON 示例创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换尖括号中的占位符值：
 
 ```json
 "resources": [
@@ -237,7 +237,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要验证存储帐户中的服务是否正在使用帐户加密密钥，请调用[az storage account](/cli/azure/storage/account#az-storage-account-show)命令。 此命令返回一组存储帐户属性及其值。 在 `keyType` "加密" 属性中查找每个服务的字段，并验证其是否设置为 `Account` 。
+若要验证存储帐户中的服务是否正在使用帐户加密密钥，请调用[az storage account show](/cli/azure/storage/account#az-storage-account-show)命令。 此命令返回一组存储帐户属性及其值。 在 `keyType` "加密" 属性中查找每个服务的字段，并验证其是否设置为 `Account` 。
 
 ```azurecli
 az storage account show /

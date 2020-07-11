@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2914dfed14360c114476025c74f3dc0c03d82e25
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463716"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224887"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>启用和管理 blob 的软删除
 
@@ -39,31 +40,31 @@ ms.locfileid: "84463716"
 
 5. 选择“保存”按钮以确认数据保护设置
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+![选择了数据保护 blob 服务的 Azure 门户的屏幕截图。](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 若要查看软删除 blob，请选择“显示已删除 blob”复选框。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
+![突出显示 "显示已删除 blob" 选项的 "数据保护 blob 服务" 页的屏幕截图。](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
 若要查看给定 blob 的软删除快照，请选择相应 blob 并单击“查看快照”。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
+![突出显示 "查看快照" 选项的 "数据保护 blob 服务" 页的屏幕截图。](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
 请确保已选择“显示已删除快照”复选框。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
+![突出显示 "显示已删除 blob" 选项的 "视图快照" 页的屏幕截图。](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
 单击软删除 blob 或快照时，请注意新的 blob 属性。 这些属性指示删除对象的时间，以及 blob 或 blob 快照永久过期前的剩余天数。 如果软删除对象不是快照，还可选择撤销删除。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
+![软删除对象的详细信息的屏幕截图。](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
 请记住，撤销删除 blob 还将撤销删除所有相关快照。 若要撤销删除活动 blob 的软删除快照，请单击相应 blob 并选择“撤销删除所有快照”。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
+![软删除 blob 的详细信息的屏幕截图。](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
 撤销删除 blob 的快照后，可单击“提升”将快照复制到根 blob，从而将 blob 还原到快照。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+![突出显示 "升级" 选项的 "视图快照" 页的屏幕截图。](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

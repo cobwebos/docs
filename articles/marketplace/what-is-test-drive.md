@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: 95ca527d8f7912e2c455f94036fe61828b220257
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121463"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229442"
 ---
 # <a name="what-is-a-test-drive"></a>什么是体验版？
 
@@ -24,7 +24,7 @@ ms.locfileid: "86121463"
 
 潜在客户在商业市场上发现你的测试驱动器。 它们提供了其联系信息并同意你的产品/服务的条款和隐私策略，然后在一段固定的时间内访问预配置的环境以试用该服务。 客户可获得对你的产品关键功能和权益的动手、自行指导的试用版，你将获得宝贵的潜在顾客。
 
-## <a name="how-does-it-work"></a>工作原理
+## <a name="how-does-it-work"></a>它是如何工作的？
 
 作为发布者，你可以在合作伙伴中心内管理和配置测试驱动器设置。 安装完成后，它将成为托管实例，该实例将按需为请求它的客户部署。 分配一个测试驱动器实例后，可将其用于一定的时间，然后将其删除以便为另一个客户腾出空间。
 
@@ -74,7 +74,7 @@ ms.locfileid: "86121463"
 
 ## <a name="generate-leads-from-your-test-drive"></a>从测试驱动器生成潜在顾客
 
-商业市场测试驱动器是营销人员的极佳工具。 建议在启动时将其合并到市场推广工作中，以便为业务生成更多的潜在顾客。 有关详细指南，请参阅[商业 marketplace 产品/服务的客户领导](https://github.com/partner-center-portal/commercial-marketplace-get-customer-leads.md)。
+商业市场测试驱动器是营销人员的极佳工具。 建议在启动时将其合并到市场推广工作中，以便为业务生成更多的潜在顾客。 有关详细指南，请参阅[商业 marketplace 产品/服务的客户领导](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
 如果你结束了对测试驱动器的潜在客户的交易，请确保在[Microsoft 合作伙伴销售连接](https://support.microsoft.com/help/3155788/getting-started-with-microsoft-partner-sales-connect)上注册它。 此外，我们还希望知道你的客户入选，其中的测试驱动器扮演了某个角色。
 
@@ -85,6 +85,6 @@ ms.locfileid: "86121463"
 - [技术最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（PDF；确保弹出窗口阻止程序处于禁用状态）
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - [体验版技术配置](test-drive-technical-configuration.md)

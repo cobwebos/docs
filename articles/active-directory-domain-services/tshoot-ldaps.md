@@ -1,6 +1,6 @@
 ---
 title: 排查 Azure AD 域服务中的安全 LDAP 问题 |Microsoft Docs
-description: 了解如何对 Azure Active Directory 域服务托管域的安全 LDAP （LDAPS）进行故障排除
+description: '了解如何排查 Azure Active Directory 域服务托管域的安全 LDAP (LDAPS) '
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -9,17 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 02/10/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 2d2cd98a9af75b5f3a6ca084dbfd4c144e06643d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c339893c12af74b5ecadb182b9aecb8000df65b9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84733783"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86222949"
 ---
 # <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>排查 Azure Active Directory 域服务托管域的安全 LDAP 连接问题
 
-使用轻型目录访问协议（LDAP）与 Azure Active Directory 域服务（Azure AD DS）进行通信的应用程序和服务可以[配置为使用安全 LDAP](tutorial-configure-ldaps.md)。 为了使安全 LDAP 正常工作，必须打开相应的证书和所需的网络端口。
+使用轻型目录访问协议 (LDAP) 的应用程序和服务与 Azure Active Directory 域服务通信 (Azure AD DS) 可以[配置为使用安全 LDAP](tutorial-configure-ldaps.md)。 为了使安全 LDAP 正常工作，必须打开相应的证书和所需的网络端口。
 
 本文将帮助你排查 Azure AD DS 中的安全 LDAP 访问问题。
 
@@ -27,7 +28,7 @@ ms.locfileid: "84733783"
 
 如果在使用安全 LDAP 连接到 Azure AD DS 托管域时遇到问题，请查看以下故障排除步骤。 在每个故障排除步骤之后，尝试再次连接到托管域：
 
-* 安全 LDAP 证书的证书颁发者链在客户端上必须受信任。 可以将根证书颁发机构（CA）添加到客户端上受信任的根证书存储中，以建立信任。
+* 安全 LDAP 证书的证书颁发者链在客户端上必须受信任。 可以将根证书颁发机构 (CA) 添加到客户端上受信任的根证书存储中，以建立信任。
     * 请确保已[导出证书并将其应用于客户端计算机][client-cert]。
 * 验证托管域的安全 LDAP 证书在 "*使用者*" 或 "*使用者备用名称*" 属性中具有 DNS 名称。
     * 查看[安全 LDAP 证书要求][certs-prereqs]，并根据需要创建替换证书。

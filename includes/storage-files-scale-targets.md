@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cf9be653da2dd587b93724b6e319dc4d20686c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c130fb2e032a24384f52f11957632319093e1e3
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536417"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226387"
 ---
 | 资源 | 标准文件共享 | 高级文件共享 |
 |----------|---------------|------------------------------------------|
@@ -22,7 +22,7 @@ ms.locfileid: "81536417"
 | 单个文件共享的目标吞吐量 | 最高 300 MiB/秒*、最高 60 MiB/秒  | 查看高级文件共享流入量和流出量值|
 | 单个文件共享的最大流出量 | 查看标准文件共享目标吞吐量 | 最多 6,204 MiB/秒 |
 | 单个文件共享的最大流入量 | 查看标准文件共享目标吞吐量 | 最多 4,136 MiB/秒 |
-| 每个文件打开图柄的最大数目 | 2,000 个打开句柄 | 2,000 个打开句柄 |
+| 每个文件或目录的最大打开句柄数 | 2,000 个打开句柄 | 2,000 个打开句柄 |
 | 共享快照的最大数目 | 200 个共享快照 | 200 个共享快照 |
 | 最大对象（目录和文件）名称长度 | 2,048 个字符 | 2,048 个字符 |
 | 最大路径名组成部分（在路径 \A\B\C\D 中，每个字母是一个组成部分） | 255 个字符 | 255 个字符 |

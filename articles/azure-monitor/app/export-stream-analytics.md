@@ -3,12 +3,12 @@ title: 使用流分析从 Azure Application Insights 进行导出 | Microsoft Do
 description: 流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110481"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224513"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
@@ -60,7 +60,7 @@ ms.locfileid: "86110481"
     此外，数据将导出到存储。 
 2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![显示如何设置要查看的事件类型的屏幕截图。](./media/export-stream-analytics/04-data.png)
    
     记下派生自应用程序名称和检测密钥的路径名称的共同部分。 
 
@@ -69,21 +69,21 @@ ms.locfileid: "86110481"
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
 
-![](./media/export-stream-analytics/SA001.png)
+![屏幕截图，显示在 Azure 门户中创建流分析作业的主页。](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![显示创建新的流分析作业时所需的详细信息的屏幕截图。](./media/export-stream-analytics/SA002.png)
 
 创建新作业后，选择“转到资源”。
 
-![](./media/export-stream-analytics/SA003.png)
+![显示新的流分析作业部署成功时接收的消息的屏幕截图。](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>添加新输入
 
-![](./media/export-stream-analytics/SA004.png)
+![显示如何向流分析作业添加输入的屏幕截图。](./media/export-stream-analytics/SA004.png)
 
 将此位置设置为从连续导出 Blob 接收输入：
 
-![](./media/export-stream-analytics/SA0005.png)
+![屏幕截图，显示如何配置流分析作业以从连续导出 blob 中获取输入。](./media/export-stream-analytics/SA0005.png)
 
 现在需要使用存储帐户的主访问密钥（前面已记下此密钥）。 将此密钥设置为存储帐户密钥。
 
@@ -109,7 +109,7 @@ ms.locfileid: "86110481"
 ## <a name="add-new-output"></a>添加新输出
 现在选择作业 >“输出” > “添加”。
 
-![](./media/export-stream-analytics/SA006.png)
+![显示选择流分析作业以添加新输出的屏幕截图。](./media/export-stream-analytics/SA006.png)
 
 
 ![选择新通道，并依次单击“输出”、“添加”、“Power BI”](./media/export-stream-analytics/SA010.png)

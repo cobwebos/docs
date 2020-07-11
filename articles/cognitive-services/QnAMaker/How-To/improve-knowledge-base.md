@@ -3,12 +3,12 @@ title: 改进知识库 - QnA Maker
 description: 通过主动学习提高知识库的质量。 查看、接受或拒绝，添加时不删除或更改现有问题。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650773"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231771"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知识库中的活动学习建议问题
 
@@ -71,7 +71,7 @@ ms.locfileid: "83650773"
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用评分属性以及业务逻辑获取显示用户的答案列表
 
-当客户端应用程序（如聊天机器人）收到响应时，将返回前3个问题。 使用 `score` 属性可分析分数之间的邻近性。 此邻近范围取决于你自己的业务逻辑。
+当客户端应用程序 (如聊天机器人) 接收响应时，将返回前3个问题。 使用 `score` 属性可分析分数之间的邻近性。 此邻近范围取决于你自己的业务逻辑。
 
 ```json
 {
@@ -127,21 +127,21 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP 请求属性|名称|类型|目标|
+|HTTP 请求属性|名称|类型|用途|
 |--|--|--|--|
-|URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
-|自定义子域|QnAMaker 资源名称|字符串|资源名称用作 QnA Maker 的自定义子域。 发布知识库后，可以在 "设置" 页上找到此功能。 它作为列出 `host` 。|
-|标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为：`application/json`|
+|URL 路由参数|知识库 ID|string|知识库的 GUID。|
+|自定义子域|QnAMaker 资源名称|string|资源名称用作 QnA Maker 的自定义子域。 发布知识库后，可以在 "设置" 页上找到此功能。 它作为列出 `host` 。|
+|标头|Content-Type|string|发送到 API 的正文的媒体类型。 默认值为：`application/json`|
 |标头|Authorization|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|培训反馈|
 
 JSON 正文具有几个设置：
 
-|JSON 正文属性|类型|目标|
+|JSON 正文属性|类型|用途|
 |--|--|--|--|
 |`feedbackRecords`|array|反馈列表。|
-|`userId`|字符串|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
-|`userQuestion`|字符串|用户查询的确切文本。 必需。|
+|`userId`|string|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
+|`userQuestion`|string|用户查询的确切文本。 必需。|
 |`qnaID`|number|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
 
 示例 JSON 正文如下所示：
@@ -199,7 +199,7 @@ JSON 正文具有几个设置：
 * 确定是否应将查询用于主动学习
 * 将查询发送回用于活动学习 QnA Maker 的训练 API
 
-在[Azure 机器人示例](https://aka.ms/activelearningsamplebot)中，这两个活动都已进行了编程。
+在[Azure 机器人示例](https://github.com/microsoft/BotBuilder-Samples)中，这两个活动都已进行了编程。
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>用 Bot Framework 4.x 训练 API 的示例 c # 代码
 
@@ -264,7 +264,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>用于为 Bot Framework 4.x 定型 API 的示例 Node.js 代码
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>用 Bot Framework 4.x 为训练 API Node.js 代码示例
 
 下面的代码演示如何将信息与训练 API 一起发送回 QnA Maker。
 
@@ -334,7 +334,7 @@ async callTrain(stepContext){
 
 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 有关使用主动学习的最佳做法，请参阅[最佳做法](../Concepts/best-practices.md#active-learning)。
 

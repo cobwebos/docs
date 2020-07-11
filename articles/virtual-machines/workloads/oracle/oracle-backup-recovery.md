@@ -3,7 +3,7 @@ title: 在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
 description: 了解怎样在 Azure 环境中备份和恢复 Oracle Database 12c 数据库。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
+author: rgardler
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687003"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224445"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
 

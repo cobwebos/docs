@@ -1,6 +1,6 @@
 ---
 title: Azure AD 域服务中的安全远程 VM 访问 |Microsoft Docs
-description: 了解如何使用网络策略服务器（NPS）和 Azure 多重身份验证通过 Azure Active Directory 域服务托管域中的远程桌面服务部署来保护对 Vm 的远程访问。
+description: 了解如何通过 Azure Active Directory 域服务托管域中的远程桌面服务部署，使用网络策略服务器 (NPS) 和 Azure 多重身份验证保护对 Vm 的远程访问。
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -8,20 +8,21 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ba64ac6d33f96979a05de383ffc02dd757fc906
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734463"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223408"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>对 Azure Active Directory 域服务中的虚拟机进行安全远程访问
 
-若要保护对 Azure Active Directory 域服务（Azure AD DS）托管域中运行的虚拟机（Vm）的远程访问，你可以使用远程桌面服务（RDS）和网络策略服务器（NPS）。 Azure AD DS 在用户通过 RDS 环境请求访问时对用户进行身份验证。 为了提高安全性，你可以集成 Azure 多重身份验证，以便在登录事件期间提供额外的身份验证提示。 Azure 多重身份验证使用 NPS 扩展来提供此功能。
+若要保护对 (Vm) 的虚拟机的远程访问，这些 Vm 在 Azure Active Directory 的域服务 (Azure AD DS) 托管域中运行，可以使用远程桌面服务 (的 RDS) 和网络策略服务器 (NPS) 。 Azure AD DS 在用户通过 RDS 环境请求访问时对用户进行身份验证。 为了提高安全性，你可以集成 Azure 多重身份验证，以便在登录事件期间提供额外的身份验证提示。 Azure 多重身份验证使用 NPS 扩展来提供此功能。
 
 > [!IMPORTANT]
-> 安全连接到 Azure AD DS 托管域中的 Vm 的建议方法是使用 Azure 堡垒，这是在虚拟网络中预配的完全平台托管的 PaaS 服务。 堡垒主机通过 SSL 直接在 Azure 门户中为 Vm 提供安全且无缝的远程桌面协议（RDP）连接。 通过堡垒主机连接时，Vm 不需要公共 IP 地址，并且无需使用网络安全组来公开对 TCP 端口3389上的 RDP 的访问。
+> 安全连接到 Azure AD DS 托管域中的 Vm 的建议方法是使用 Azure 堡垒，这是在虚拟网络中预配的完全平台托管的 PaaS 服务。 堡垒主机提供安全且无缝 Azure 门户的远程桌面协议 (RDP) 通过 SSL 直接连接到 Vm。 通过堡垒主机连接时，Vm 不需要公共 IP 地址，并且无需使用网络安全组来公开对 TCP 端口3389上的 RDP 的访问。
 >
 > 我们强烈建议你在支持它的所有区域使用 Azure 堡垒。 在没有 Azure 堡垒可用性的区域中，请按照本文中所述的步骤操作，直到 Azure 堡垒可用。 请注意将公共 IP 地址分配给加入到 Azure AD DS 的 Vm，其中允许所有传入的 RDP 流量。
 >
@@ -29,7 +30,7 @@ ms.locfileid: "84734463"
 
 本文介绍如何在 Azure AD DS 中配置 RDS，并选择性地使用 Azure 多重身份验证 NPS 扩展。
 
-![远程桌面服务（RDS）概述](./media/enable-network-policy-server/remote-desktop-services-overview.png)
+![远程桌面服务 (RDS) 概述](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,7 +48,7 @@ ms.locfileid: "84734463"
 
 ## <a name="deploy-and-configure-the-remote-desktop-environment"></a>部署和配置远程桌面环境
 
-若要开始，请至少创建两个运行 Windows Server 2016 或 Windows Server 2019 的 Azure Vm。 为了获得远程桌面（RD）环境的冗余性和高可用性，你可以在以后对其他主机进行添加和负载平衡。
+若要开始，请至少创建两个运行 Windows Server 2016 或 Windows Server 2019 的 Azure Vm。 为了 (RD) 环境的远程桌面的冗余和高可用性，你可以在以后对其他主机进行添加和负载平衡。
 
 建议的 RDS 部署包含以下两个 Vm：
 
@@ -69,7 +70,7 @@ RD 环境部署包含多个步骤。 可以使用现有的 RD 部署指南，而
 
 如果要提高用户登录体验的安全性，可以选择将 RD 环境与 Azure 多重身份验证集成。 使用此配置，用户会在登录过程中收到额外的提示，以确认其身份。
 
-为了提供此功能，将在你的环境中安装附加网络策略服务器（NPS）以及 Azure 多重身份验证 NPS 扩展。 此扩展与 Azure AD 集成，以请求并返回多重身份验证提示的状态。
+为了提供此功能，会随 Azure 多重身份验证 NPS 扩展一起在你的环境中安装 (NPS) 的其他网络策略服务器。 此扩展与 Azure AD 集成，以请求并返回多重身份验证提示的状态。
 
 必须注册用户[才能使用 Azure 多重身份验证][user-mfa-registration]，这可能需要额外的 Azure AD 许可证。
 
@@ -84,7 +85,7 @@ RD 环境部署包含多个步骤。 可以使用现有的 RD 部署指南，而
 
 ## <a name="integrate-remote-desktop-gateway-and-azure-multi-factor-authentication"></a>集成远程桌面网关和 Azure 多重身份验证
 
-若要集成 Azure 多重身份验证 NPS 扩展，请使用现有的操作方法文章，使用[网络策略服务器（NPS）扩展和 Azure AD 集成你的远程桌面网关基础结构][azure-mfa-nps-integration]。
+若要集成 Azure 多重身份验证 NPS 扩展，请使用现有的操作方法文章，将[远程桌面网关基础结构与使用网络策略服务器 (NPS) 扩展和 Azure AD 集成][azure-mfa-nps-integration]。
 
 与托管域集成需要以下附加配置选项：
 

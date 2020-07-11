@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610058"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223452"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -181,7 +181,27 @@ ms.locfileid: "85610058"
 |查看映像时，最近添加标签的映像不显示。     |   若要加载所有带标签的映像，请选择“第一个”按钮。 按下“第一个”按钮会返回到列表的最前面，但会加载所有带标签的数据。      |
 |在为对象检测提供标记时按 Esc 键会在左上角创建大小为零的标签。 在此状态下提交标签会失败。     |   单击标签旁边的打叉标记来删除该标签。  |
 
-### <a name="data-drift-monitors"></a>数据偏移监视器
+### <a name="data-drift-monitors"></a><a name="data-drift"></a>数据偏移监视器
+
+数据偏移监视器的限制和已知问题：
+
+* 分析历史数据的时间范围限制为监视器频率设置的31个间隔。 
+* 除非未指定特征列表（使用所有特征），否则特征限制为 200 个。
+* 计算大小必须足够大才能处理数据。
+* 确保数据集包含处于给定监视器运行的开始和结束日期范围内的数据。
+* 数据集监视器仅适用于包含 50 行或更多行的数据集。
+* 数据集中的列或特征根据下表中的条件划分为分类值或数字值。 如果特征不满足这些条件 - 例如，某个字符串类型的列包含 100 个以上的唯一值 - 则会从数据偏移算法中删除该特征，但仍会对其进行分析。 
+
+    | 特征类型 | 数据类型 | 条件 | 限制 | 
+    | ------------ | --------- | --------- | ----------- |
+    | 分类 | string、bool、int、float | 特征中的唯一值数小于 100，并小于行数的 5%。 | Null 被视为其自身的类别。 | 
+    | 数值 | int、float | 特征中的值为数字数据类型，且不符合分类特征的条件。 | 如果 15% 以上的值为 null，则会删除特征。 | 
+
+* 如果已[创建 datadrift 监视器](how-to-monitor-datasets.md)，但在 Azure 机器学习 studio 中看不到数据**集监视器**页上的数据，请尝试以下。
+
+    1. 检查是否已在页面顶部选择了正确的日期范围。  
+    1. 在 "**数据集监视器**" 选项卡上，选择 "试验" 链接以检查运行状态。  此链接位于表的最右侧。
+    1. 如果运行已成功完成，请检查驱动程序日志以查看已生成的指标数，或者是否有任何警告消息。  单击试验后，在 "**输出 + 日志**" 选项卡中查找驱动程序日志。
 
 * 如果 SDK `backfill()` 函数不生成预期的输出，则可能是由于身份验证问题所致。  创建要传入此函数的计算时，请不要使用 `Run.get_context().experiment.workspace.compute_targets` 。  相反，请使用[ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) （如下所示）创建传递到该函数的计算 `backfill()` ： 
 

@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: dd5d9c721c3e0204a66367b76654f9a917e26ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8e84e845910b8f84a9b3f84ad414f2ecdd250a5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884626"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223782"
 ---
 # <a name="soft-delete-for-blob-storage"></a>适用于 Blob 存储的软删除
 
@@ -27,7 +28,7 @@ ms.locfileid: "82884626"
 
 在存储帐户上启用软删除后，可以在指定的数据保持期内恢复已删除的对象。 此保护可扩展到因覆盖而擦除的所有 blob 数据（块 blob、追加 blob 和页 blob）。
 
-如果在启用软删除的情况下删除了现有 blob 或快照中的数据，但未启用 blob 版本控制（预览），则会生成软删除的快照以保存覆盖的数据的状态。 在指定的保持期到期后，将永久删除该对象。
+如果在启用软删除的情况下删除了现有 blob 或快照中的数据，但未启用 blob 版本控制 (预览) ，则会生成软删除的快照以保存覆盖的数据的状态。 在指定的保持期到期后，将永久删除该对象。
 
 如果在存储帐户上启用了 blob 版本控制和软删除，则删除 blob 会创建新版本，而不是软删除快照。 不会软删除新版本，并且在软删除保留期到期时不会删除。 可以通过调用 "[撤消删除 blob](/rest/api/storageservices/undelete-blob) " 操作在保留期内还原 blob 的软删除版本。 然后，可以通过调用 "[复制 blob](/rest/api/storageservices/copy-blob) " 操作，从它的某个版本中还原 blob。 有关将 blob 版本控制和软删除一起使用的详细信息，请参阅[blob 版本控制和软删除](versioning-overview.md#blob-versioning-and-soft-delete)。
 
@@ -53,7 +54,7 @@ ms.locfileid: "82884626"
 
 使用“放置 Blob”、“放置块列表”或“复制 Blob”覆盖 blob 时，将自动生成写入操作前 blob 的状态的版本或快照  。 除非显式列出，否则软删除对象不可见。 请参阅[恢复](#recovery)部分，了解如何列出软删除对象。
 
-![](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
+![此图显示了如何使用 Put Blob、Put 块列表或复制 Blob 覆盖 blob 的快照。](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
 
 *软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照。
 
@@ -65,13 +66,13 @@ ms.locfileid: "82884626"
 
 对快照调用“删除 Blob”时，该快照会被标记为软删除。 此时不会生成新的快照。
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
+![显示使用 "删除 Blob" 时如何软删除 blob 快照的关系图。](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
 *软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。调用**Snapshot Blob**时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除*。
 
 如果对基础 blob（本身不是快照的任何 blob）调用“删除 Blob”，该 blob 将被标记为软删除。 与以前的行为一致，对具有活动快照的 blob 调用“删除 Blob”将返回错误。 对具有软删除快照的 blob 调用“删除 Blob”不会返回错误。 启用软删除后，仍可在单个操作中删除 blob 及其所有快照。 执行该操作会将基础 blob 和快照标记为软删除。
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
+![此图显示了在基本 blob 上调用删除博客时会发生的情况。](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
 
 *软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除。
 
@@ -104,7 +105,7 @@ ms.locfileid: "82884626"
 
 若要将 blob 还原到特定的软删除快照，可对基础 blob 调用“撤销删除 Blob”。 然后可将该快照复制到现在处于活动状态的 blob。 也可将该快照复制到新的 blob 中。
 
-![](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
+![此图显示了在使用 "撤消删除 blob" 时会发生的情况。](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
 
 *软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处对 blob B 调用了**撤销删除 Blob**，从而将基础 blob B1 和所有相关快照（此处仅为 B0）还原为活动状态。第二步中将 B0 复制到了基础 blob。此复制操作将生成 B1 的软删除快照*。
 

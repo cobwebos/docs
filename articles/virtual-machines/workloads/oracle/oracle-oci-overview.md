@@ -3,8 +3,8 @@ title: 将 Microsoft Azure 与 Oracle 云基础结构集成 | Microsoft Docs
 description: 了解将 Microsoft Azure 上运行的 Oracle 应用与 Oracle 云基础结构 (OCI) 中的数据库集成的解决方案。
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines
@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
-ms.author: borisb
+ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 9fc14a6a8211308ef9f1cd98cd4b831070a99e22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d93446f4db914c736235daeb4e08e82b9ff00e62
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299870"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224496"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>集成 Microsoft Azure 和 Oracle 云基础结构的 Oracle 应用程序解决方案
 

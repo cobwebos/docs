@@ -3,8 +3,8 @@ title: 在 Azure Linux 虚拟机上设置 Oracle ASM | Microsoft Docs
 description: 在 Azure 环境中快速启动并运行 Oracle ASM。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,16 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: aa65b789d02c60ef6042aa62e1c138c0e1bd7224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: a707081aca4a28743bff8bdd1046a5e9aee285f1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676902"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224394"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  您将学习如何：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建并连接到 Oracle 数据库 VM
@@ -567,7 +568,7 @@ Oracle 数据库软件已安装在 Azure 市场映像中。 若要创建数据�
 
 4. 在“摘要”页上查看选定的设置，并单击 `Finish` 创建数据库****。
 
-   ![“摘要”页屏幕截图](./media/oracle-asm/createdb03.png)
+   ![“摘要”页的屏幕截图](./media/oracle-asm/createdb03.png)
 
 5. 数据库已创建。 在“完成”页上，可以选择解锁其他帐户以使用此数据库并更改密码。**** 如果想要这样做，请选择“密码管理”- 否则请单击 `close`。****
 

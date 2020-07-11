@@ -3,8 +3,8 @@ title: 在 Azure Linux VM 上实现 Oracle Golden Gate | Microsoft Docs
 description: 在 Azure 环境中快速建立 Oracle Golden Gate 并运行。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683718"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223068"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
@@ -396,7 +396,7 @@ SQL> EXIT;
 3. 在 PuTTY 密钥生成器中：
 
    - 若要生成密钥，请选择“生成”按钮。****
-   - 复制密钥的内容（**Ctrl + C**）。
+   - 将密钥内容复制 (**Ctrl + C**) 。
    - 选择“保存私钥”按钮。****
    - 忽略显示的警告，并选择“确定”。****
 
@@ -432,7 +432,7 @@ SQL> EXIT;
 
 若要安装 Oracle Golden Gate，请完成以下步骤：
 
-1. 以 oracle 身份登录。 （你应该能够在不提示输入密码的情况下登录。）在开始安装之前，请确保 Xming 正在运行。
+1. 以 oracle 身份登录。  (你应该能够在不提示输入密码的情况下登录。 ) 确保在开始安装之前运行 Xming。
 
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
@@ -443,7 +443,7 @@ SQL> EXIT;
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续操作。
+3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_02.png)
 
@@ -732,7 +732,7 @@ SQL> EXIT;
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>设置复制（myVM1 和 myVM2）
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上设置复制（复制）
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上设置复制 (复制) 
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -755,7 +755,7 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 （主）上设置复制
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 上设置复制 (主) 
 
 启动初始加载，并检查错误：
 
@@ -766,7 +766,7 @@ GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
 
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上设置复制（复制）
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上设置复制 (复制) 
 
 使用之前获取的编号更改 SCN 编号：
 

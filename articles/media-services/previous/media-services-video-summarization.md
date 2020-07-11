@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918308"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231839"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要  
 
@@ -66,10 +67,10 @@ ms.locfileid: "77918308"
 
 下表描述了未使用 **maxMotionThumbnailInSecs** 时的默认持续时间。
 
-|  |  |  |
+|  | Small | 范围 |
 | --- | --- | --- |
-| 视频持续时间 |d < 3 分钟 |3 分钟 < d < 15 分钟 |
-| 缩略图持续时间 |15 秒（2-3 个场景） |30 秒（3-5 个场景） |
+| **视频持续时间** |d < 3 分钟 |3 分钟 < d < 15 分钟 |
+| **缩略图持续时间** |15 秒（2-3 个场景） |30 秒（3-5 个场景） |
 
 下面的 JSON 设置可用的参数。
 
@@ -106,7 +107,7 @@ ms.locfileid: "77918308"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

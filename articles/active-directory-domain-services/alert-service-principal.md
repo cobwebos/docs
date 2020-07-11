@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc665503413d2f022b10ae043aac3315597c6ba4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734990"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221385"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的服务主体警报
 
-[服务主体](../active-directory/develop/app-objects-and-service-principals.md)是 Azure 平台用于管理、更新和维护 Azure Active Directory 域服务（Azure AD DS）托管域的应用程序。 如果删除服务主体，托管域中的功能会受到影响。
+[服务主体](../active-directory/develop/app-objects-and-service-principals.md)是 Azure 平台用于管理、更新和维护 Azure Active Directory 域服务 (Azure AD DS) 托管域的应用程序。 如果删除服务主体，托管域中的功能会受到影响。
 
 本文帮助你发现和解除与服务主体相关的配置警报。
 
@@ -34,11 +34,11 @@ ms.locfileid: "84734990"
 
 ### <a name="check-for-missing-service-principals"></a>检查是否缺少服务主体
 
-若要检查缺失的或需要重新创建的服务主体，请完成以下步骤：
+若要检查缺少的服务主体，必须重新创建，请完成以下步骤：
 
 1. 在 Azure 门户的左侧导航菜单中，选择“Azure Active Directory”。
 1. 选择“企业应用程序”。 在“应用程序类型”下拉菜单中，选择“所有应用程序”，然后选择“应用” 。
-1. 搜索各个应用程序 ID。 如果找不到现有的应用程序，请按照解决步骤创建服务主体或重新注册命名空间。
+1. 搜索以下每个应用程序 Id。 如果找不到现有的应用程序，请按照解决步骤创建服务主体或重新注册命名空间。
 
     | 应用程序 ID | 解决方法 |
     | :--- | :--- |
@@ -49,9 +49,9 @@ ms.locfileid: "84734990"
 
 ### <a name="recreate-a-missing-service-principal"></a>重新创建缺失的服务主体
 
-如果 Azure AD 目录中缺少应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36，请使用 Azure AD PowerShell 完成以下步骤。 有关详细信息，请参阅[安装 Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
+如果 Azure AD 目录中缺少应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36，请使用 Azure AD PowerShell 完成以下步骤。 有关详细信息，请参阅[Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
 
-1. 安装 Azure AD PowerShell 模块并将其导入，如下所示：
+1. 如果需要，请安装 Azure AD PowerShell 模块并将其导入，如下所示：
 
     ```powershell
     Install-Module AzureAD
@@ -81,7 +81,7 @@ ms.locfileid: "84734990"
 
 ### <a name="alert-message"></a>警报消息
 
-*应用程序 ID 为“d87dcbc6-a371-462e-88e3-28ad15ec4e64”的服务主体已删除并重新创建。重新创建会导致在为托管域提供服务所需的 Azure AD 域服务资源上出现不一致的权限。托管域上的密码同步可能会受影响。*
+*应用程序 ID 为 "d87dcbc6-a371-462e-88e3-28ad15ec4e64" 的服务主体已删除，然后重新创建。重新尝试在为托管域服务所需的 Azure AD 域服务资源上留下不一致的权限。托管域上的密码同步可能会受到影响。*
 
 Azure AD DS 自动从 Azure AD 同步用户帐户和凭据。 如果用于此过程的 Azure AD 应用程序有问题，Azure AD DS 和 Azure AD 之间的凭据同步就会失败。
 
@@ -89,7 +89,7 @@ Azure AD DS 自动从 Azure AD 同步用户帐户和凭据。 如果用于此过
 
 若要重新创建用于凭据同步的 Azure AD 应用程序，请使用 Azure AD PowerShell 完成以下步骤。 有关详细信息，请参阅[安装 Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
 
-1. 安装 Azure AD PowerShell 模块并将其导入，如下所示：
+1. 如果需要，请安装 Azure AD PowerShell 模块并将其导入，如下所示：
 
     ```powershell
     Install-Module AzureAD

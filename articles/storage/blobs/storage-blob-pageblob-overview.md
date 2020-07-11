@@ -9,11 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: f54adb54ca842ea389b0d3ea203d747df0071ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792024"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223289"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
@@ -53,7 +54,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例演示如何创建对**CloudBlobContainer**对象的引用，然后创建容器（*testvhds*）（如果它尚不存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 blob，请调用[CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
+为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例演示如何创建对**CloudBlobContainer**对象的引用，然后创建该容器 (*Testvhds*) （如果它尚不存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 blob，请调用[CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
 
 ```csharp
 using Microsoft.Azure;
@@ -122,7 +123,7 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 下图显示了 2 种不同的写入操作：
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
+![显示两个单独的写入选项的关系图。](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
 1.  一个写入操作从长度 1024 字节的偏移 0 处开始 
 2.  一个写入操作从长度 1024 字节的偏移 4096 处开始 
@@ -150,7 +151,7 @@ pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSiz
 
 下图显示了偏移量为 256、范围大小为 4352 的读取操作。 返回的数据以橙色突出显示。 为 NUL 页面返回了零。
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
+![显示偏移为256、范围大小为4352的读取操作的关系图](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
 如果使用稀疏填充的 Blob，可以只下载有效的页面区域，以避免支付零字节的传出费用，并降低下载延迟。  
 

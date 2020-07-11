@@ -8,22 +8,24 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 8109b7b1f6cd8477d49bafd114be24b91530d123
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51f277827ac0865eaede141e5817962b04d2bd49
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734956"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221421"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>更改现有 Azure Active Directory 域服务托管域的 SKU
 
-在 Azure Active Directory 域服务（Azure AD DS）中，可用的性能和功能基于 SKU 类型。 这些功能差异包括备份频率或单向出站林信任的最大数量（当前为预览版）。 当你创建托管域时，你可以选择 SKU，你可以在部署托管域后，随着业务需求的变化向上或向下切换 Sku。 业务需求的变化可能包括需要更频繁的备份或创建更多的林信任。 有关不同 Sku 的限制和定价的详细信息，请参阅[AZURE AD DS SKU 的概念][concepts-sku]和[Azure AD ds 定价][pricing]页。
+在 Azure Active Directory 域服务 (Azure AD DS) ，可用的性能和功能基于 SKU 类型。 这些功能差异包括 (当前在预览版) 中的备份频率或最大单向出站林信任数。
+
+当你创建托管域时，你可以选择 SKU，你可以在部署托管域后，随着业务需求的变化向上或向下切换 Sku。 业务需求的变化可能包括需要更频繁的备份或创建更多的林信任。 有关不同 Sku 的限制和定价的详细信息，请参阅[AZURE AD DS SKU 的概念][concepts-sku]和[Azure AD ds 定价][pricing]页。
 
 本文说明如何使用 Azure 门户更改现有 Azure AD DS 托管域的 SKU。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需要拥有以下资源和权限才能完成本文中的操作：
 
@@ -36,7 +38,7 @@ ms.locfileid: "84734956"
 
 ## <a name="sku-change-limitations"></a>SKU 更改限制
 
-部署托管域后，可以向上或向下更改 Sku。 但是，如果使用资源林（当前为预览版），并已创建从 Azure AD DS 到本地 AD DS 环境的单向出站林信任，则 SKU 更改操作有一些限制。 *高级版*和*企业版*sku 定义了可以创建的信任数量限制。 你无法更改到最大限制低于当前配置的 SKU。
+部署托管域后，可以向上或向下更改 Sku。 但是，如果使用资源林 (当前为预览版) 并且已创建从 Azure AD DS 到本地 AD DS 环境的单向出站林信任，则 SKU 更改操作有一些限制。 *高级版*和*企业版*sku 定义了可以创建的信任数量限制。 你无法更改到最大限制低于当前配置的 SKU。
 
 例如：
 
@@ -64,7 +66,7 @@ ms.locfileid: "84734956"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你有一个资源林，并且想要在 SKU 更改后创建其他信任，请参阅[在 AZURE AD DS （预览版）中创建对本地域的出站林信任][create-trust]。
+如果你有一个资源林，并且想要在 SKU 更改后创建其他信任，请参阅[在 AZURE AD DS (preview) 中创建到本地域的出站林信任][create-trust]。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

@@ -11,24 +11,24 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b66ef1a28faf97759045d40ea0f649282b2d837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91360776c50ce514985ad36242606223becbd933
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85397902"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230870"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>通过 Mailjet 进行自定义电子邮件验证
 
-使用 Azure Active Directory B2C （Azure AD B2C）中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用[DisplayControls](display-controls.md) （目前为预览版）和第三方电子邮件提供商 Mailjet，你可以使用自己的电子邮件模板，*从：* 地址和主题，以及支持本地化和自定义一次性密码（OTP）设置。
+使用 Azure Active Directory B2C (Azure AD B2C) 中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用当前在预览版中的[DisplayControls](display-controls.md) () 和第三方电子邮件提供商 Mailjet，你可以使用自己的电子邮件模板，*从：* 地址和主题，以及支持 (OTP) 设置的本地化和自定义一次性密码。
 
-自定义电子邮件验证要求使用第三方电子邮件提供程序，例如[Mailjet](https://Mailjet.com)、 [SendGrid](custom-email.md)或[SparkPost](https://sparkpost.com)、自定义 REST API 或任何基于 HTTP 的电子邮件提供程序（包括你自己的）。 本文介绍如何设置使用 Mailjet 的解决方案。
+自定义电子邮件验证要求使用第三方电子邮件提供程序，例如[Mailjet](https://Mailjet.com)、 [SendGrid](custom-email.md)或[SparkPost](https://sparkpost.com)、自定义 REST API 或任何基于 HTTP 的电子邮件提供程序 (包括你自己的) 。 本文介绍如何设置使用 Mailjet 的解决方案。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-mailjet-account"></a>创建 Mailjet 帐户
 
-如果还没有帐户，请首先设置 Mailjet 帐户（Azure 客户可以解锁6000封电子邮件，限制为200封电子邮件/天）。 
+如果还没有 Mailjet 帐户，请先设置一个帐户， (Azure 客户可以解锁6000封电子邮件，该电子邮件限制为200个电子邮件/天) 。 
 
 1. 按照[创建 Mailjet 帐户](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)中的设置说明进行操作。
 1. 若要能够发送电子邮件，请[注册并验证](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use)发件人电子邮件地址或域。
@@ -38,7 +38,7 @@ ms.locfileid: "85397902"
 
 接下来，将 Mailjet API 密钥存储在 Azure AD B2C 策略密钥中，以供策略参考。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在 "**概述**" 页上，选择 "**标识体验框架**"。
@@ -57,7 +57,7 @@ ms.locfileid: "85397902"
 
 ## <a name="create-a-mailjet-template"></a>创建 Mailjet 模板
 
-创建 Mailjet 帐户并将 Mailjet API 密钥存储在 Azure AD B2C 策略密钥中，创建 Mailjet[动态事务模板](https://Mailjet.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)。
+创建 Mailjet 帐户并将 Mailjet API 密钥存储在 Azure AD B2C 策略密钥中，创建 Mailjet[动态事务模板](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)。
 
 1. 在 Mailjet 站点上，打开 "[事务模板](https://app.mailjet.com/templates/transactional)" 页，然后选择 "**创建新模板**"。
 1. 选择 "**在 HTML 中编码**"，然后选择 "**从头开始编写代码**"。
@@ -171,7 +171,7 @@ ms.locfileid: "85397902"
 
 在策略中，将以下声明类型添加到 `<ClaimsSchema>` 中的元素 `<BuildingBlocks>` 。
 
-这些声明类型是使用一次性密码（OTP）代码生成和验证电子邮件地址所必需的。
+这些声明类型是使用一次性密码 (OTP) 代码生成和验证电子邮件地址所必需的。
 
 ```XML
 <ClaimType Id="Otp">
@@ -326,7 +326,7 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 
 ## <a name="add-a-rest-api-technical-profile"></a>添加 REST API 技术配置文件
 
-此 REST API 技术配置文件生成电子邮件内容（使用 Mailjet 格式）。 有关 RESTful 技术配置文件的详细信息，请参阅[定义 RESTful 技术配置文件](restful-technical-profile.md)。
+此 REST API 技术配置文件使用 Mailjet 格式) 生成 (电子邮件内容。 有关 RESTful 技术配置文件的详细信息，请参阅[定义 RESTful 技术配置文件](restful-technical-profile.md)。
 
 对于 OTP 技术配置文件，请将以下技术配置文件添加到 `<ClaimsProviders>` 元素。
 

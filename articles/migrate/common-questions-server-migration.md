@@ -3,12 +3,12 @@ title: 有关 Azure Migrate 服务器迁移的常见问题
 description: 获取有关使用 Azure Migrate 服务器迁移迁移计算机的常见问题的解答。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744322"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224122"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 迁移：常见问题
 
@@ -25,11 +25,11 @@ ms.locfileid: "82744322"
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>无代理 VMware 复制的工作原理是什么？
 
-VMware 的无代理复制方法使用 VMware 快照和 VMware 更改的阻止跟踪（CBT）。
+VMware 的无代理复制方法使用 VMware 快照和 VMware 更改了 (CBT) 的阻止跟踪。
 
-过程如下：
+下面介绍了该过程：
 
-1. 启动复制时，将安排初始复制循环。 在初始循环中，会创建 VM 的快照。 快照用于复制 Vm Vmdk （磁盘）。 
+1. 启动复制时，将安排初始复制循环。 在初始循环中，会创建 VM 的快照。 快照用于复制 Vm Vmdk (磁盘) 。 
 2. 初始复制周期结束后，将定期计划增量复制循环。
     - 在增量复制过程中，将会创建快照，并复制自上次复制循环以来发生更改的数据块。
     - VMware CBT 用于确定自上次循环后已更改的块。
@@ -47,7 +47,7 @@ VMware 的无代理复制方法使用 VMware 快照和 VMware 更改的阻止跟
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>复制循环计划的频率如何？
 
-计划下一个复制周期的公式为（上一个周期时间/2）或一小时，以较大者为准。
+计划下一个复制周期的公式 (上一个周期时间/2) 或一小时，以较大者为准。
 
 例如，如果某个 VM 的增量周期使用四个小时，则将在两个小时内计划下一个周期，而不是在下一个小时。 此过程在初始复制之后（在立即计划第一个增量周期时）是不同的。
 
@@ -57,15 +57,18 @@ VMware 的无代理复制方法使用 VMware 快照和 VMware 更改的阻止跟
 
 ## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>是否可以进行 UEFI Vm 到 Azure 第2代的无代理迁移？
 
-否。 使用 Azure Site Recovery 将这些虚拟机迁移到第2代 Azure Vm。 
+错误。 使用 Azure Site Recovery 将这些虚拟机迁移到第2代 Azure Vm。 
 
 ## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>迁移时，是否可以将 Vm 固定到 Azure 可用性区域？
 
-否。 Azure Migrate 迁移不支持 Azure 可用性区域。
+错误。 Azure Migrate 迁移不支持 Azure 可用性区域。
 
 ## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>在复制过程中 Azure Migrate 使用哪种传输协议？
 
-Azure Migrate 使用带有 TLS 加密的网络块设备（NBD）协议。
+Azure Migrate 将网络块设备 (NBD) 协议与 TLS 加密配合使用。
+
+## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>如何将数据从本地环境传输到 Azure？ 传输前是否对其进行加密？ 
+无代理复制情况下的 Azure Migrate 设备将压缩数据，并在上传之前加密。 数据通过 https 上的安全通信通道传输并使用 TLS 1.2 或更高版本。 此外，在将数据保存到云 (静态静态) 时，Azure 存储会自动加密数据。  
 
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>迁移需要的最低 vCenter Server 版本是什么？
 
@@ -73,7 +76,7 @@ Azure Migrate 使用带有 TLS 加密的网络块设备（NBD）协议。
 
 ## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>客户是否可以将其虚拟机迁移到非托管磁盘？
 
-否。 Azure Migrate 仅支持对托管磁盘（标准 HDD、高级 SSD）的迁移。
+错误。 Azure Migrate 仅支持迁移到托管磁盘 (标准 HDD 高级 SSD) 。
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>使用无代理迁移，可以一次复制多少个 Vm？
 
@@ -99,11 +102,11 @@ New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWi
 - 如果迁移的是虚拟化的 Vm，请使用诸如 Xen、KVM 等平台。
 - 若要迁移 Hyper-v 或 VMware Vm，如果出于某种原因，你无法使用适用于[hyper-v](tutorial-migrate-hyper-v.md)的标准迁移过程或[vmware](server-migrate-overview.md)迁移。 例如，如果你未运行 VMware vCenter，且仅使用 ESXi 主机。
 - 将当前在私有云中运行的虚拟机迁移到 Azure
-- 如果要将在公有云中运行的 Vm （例如 Amazon Web Services （AWS）或 Google Cloud Platform （GCP））迁移到 Azure。
+- 如果要将在公有云中运行的 Vm （例如 Amazon Web Services (AWS) 或 Google Cloud Platform (GCP) ）迁移到 Azure。
 
-## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>我部署了两个（或多个）设备来发现我的 vCenter Server 中的 Vm。 但是，当我尝试迁移 Vm 时，只会看到与某个设备相关的 Vm。
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>我部署了两个 (或多个) 设备，以便在我的 vCenter Server 中发现 Vm。 但是，当我尝试迁移 Vm 时，只会看到与某个设备相关的 Vm。
 
-虽然这可能是一个很好的用例，但目前不支持这种情况。 部署两个（或多个）设备以发现同一组 Vm 会导致服务问题，其中 VM 所有权在两个设备之间保持切换。 这就是显示 Vm 出现和消失的原因。 在这种情况下，若要解决此问题，你必须删除一个设备并执行硬刷新。
+虽然这可能是一个很好的用例，但目前不支持这种情况。 部署两个 (或多个) 设备以发现相同的 Vm 集会导致服务问题，在这种情况中，VM 所有权在两个设备之间保持切换。 这就是显示 Vm 出现和消失的原因。 在这种情况下，若要解决此问题，你必须删除一个设备并执行硬刷新。
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>是否需要 VMware vCenter 才能迁移 VMware Vm？
 若要使用基于 VMware 代理或无代理迁移迁移[Vmware vm](server-migrate-overview.md) ，则必须通过 VCenter Server 管理 vm 所在的 ESXi 主机。 如果没有 vCenter Server，则可以通过将 VMware Vm 作为物理服务器进行迁移来将其迁移。 [了解详细信息](migrate-support-matrix-physical-migration.md)。

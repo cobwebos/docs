@@ -8,11 +8,12 @@ ms.topic: conceptual
 description: 使用自定义 NuGet 源访问和使用 Azure Dev Space 中的 NuGet 包。
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 manager: gwallace
-ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74325725"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229271"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>使用带有 Azure Dev Spaces 的自定义 NuGet 源
 
@@ -20,7 +21,7 @@ NuGet 源提供了一种方便方式将包源包含在项目中。 Azure Dev Spa
 
 ## <a name="set-up-a-nuget-feed"></a>设置 NuGet 源
 
-将依赖项的[包引用](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)添加到 " `*.csproj` " 节点下的文件中 `PackageReference` 。 例如：
+将依赖项的[包引用](/nuget/consume-packages/package-references-in-project-files)添加到 " `*.csproj` " 节点下的文件中 `PackageReference` 。 例如：
 
 ```xml
 <ItemGroup>
@@ -30,7 +31,7 @@ NuGet 源提供了一种方便方式将包源包含在项目中。 Azure Dev Spa
 </ItemGroup>
 ```
 
-在项目文件夹中创建[NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file)文件，并 `packageSources` `packageSourceCredentials` 为 NuGet 源设置和部分。 `packageSources`部分包含源 url，必须可从 AKS 群集访问该 url。 `packageSourceCredentials`是用于访问源的凭据。 例如：
+在项目文件夹中创建[NuGet.Config](/nuget/reference/nuget-config-file)文件，并 `packageSources` `packageSourceCredentials` 为 NuGet 源设置和部分。 `packageSources`部分包含源 url，必须可从 AKS 群集访问该 url。 `packageSourceCredentials`是用于访问源的凭据。 例如：
 
 ```xml
 <packageSources>
@@ -70,4 +71,4 @@ ignore:
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[NuGet 及其工作原理](https://docs.microsoft.com/nuget/what-is-nuget)。
+详细了解[NuGet 及其工作原理](/nuget/what-is-nuget)。

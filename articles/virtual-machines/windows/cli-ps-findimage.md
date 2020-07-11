@@ -1,28 +1,26 @@
 ---
-title: 在 Azure 中选择 Windows VM 映像
+title: 查找并使用 Azure Marketplace 映像
 description: 使用 Azure PowerSHell 来确定市场 VM 映像的发布者、产品/服务、SKU 和版本。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083359"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224241"
 ---
-# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
+# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中查找和使用 VM 映像
 
-本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，使用 PowerShell、资源管理器模板或其他工具以编程方式创建 VM 时，你可以指定市场映像。
+本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，你可以在创建 VM 时指定 Marketplace 映像。
 
 你还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
- 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -115,7 +113,7 @@ advantys
 ...
 ```
 
-对于“MicrosoftWindowsServer”  发布者：
+对于“MicrosoftWindowsServer”发布者：
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -132,7 +130,7 @@ WindowsServer
 WindowsServerSemiAnnual
 ```
 
-对于“WindowsServer”  产品/服务：
+对于“WindowsServer”产品/服务：
 
 ```powershell
 $offerName="WindowsServer"
@@ -318,7 +316,6 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 
 若要使用基本映像信息通过 `New-AzVM` cmdlet 快速创建虚拟机，请参阅[使用 PowerShell 创建 Windows 虚拟机](quick-create-powershell.md)。
 
-
-参阅 PowerShell 脚本示例来[创建完全配置的虚拟机](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)。
+若要详细了解如何使用 Azure Marketplace 映像在共享映像库中创建自定义映像，请参阅[创建映像时提供 Azure marketplace 购买计划信息](../marketplace-images.md)。
 
 

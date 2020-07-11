@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ca7aca1c11158e396c27d3f0ac37e18a9cbea361
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8a8fff374edab7e307cd6dc8fb9aa4a4f974d09c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182723"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224683"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -131,11 +131,11 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
 <a id="error1816"></a>
-## <a name="error-1816-not-enough-quota-is-available-to-process-this-command-when-you-copy-to-an-azure-file-share"></a>复制到 Azure 文件共享时，出现错误 1816“配额不足，无法处理此命令”
+## <a name="error-1816---not-enough-quota-is-available-to-process-this-command"></a>错误 1816-可用配额不足，无法处理此命令
 
 ### <a name="cause"></a>原因
 
-在要装载文件共享的计算机上，如果达到文件允许的并发打开句柄上限，便会发生错误 1816。
+达到 Azure 文件共享上的文件或目录允许的并发打开句柄上限时，将发生错误1816。 有关详细信息，请参阅 [Azure 文件规模目标](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets)。
 
 ### <a name="solution"></a>解决方案
 

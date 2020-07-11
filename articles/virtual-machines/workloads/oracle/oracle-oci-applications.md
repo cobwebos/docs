@@ -1,29 +1,30 @@
 ---
 title: 用于在 Azure 虚拟机上部署 Oracle 应用程序的体系结构 |Microsoft Docs
-description: 应用程序体系结构，用于将 Oracle 应用（包括电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft）部署在 Azure 中的数据库或 Oracle 云基础结构（OCI）中 Microsoft Azure 虚拟机上。
+description: 应用程序体系结构，用于将 Oracle 应用（包括电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft）部署到 Azure 中的数据库或 Oracle 云基础结构 (OCI) 中 Microsoft Azure 虚拟机。
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 tags: ''
 ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: borisb
+ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: f36dfe0092e3447053871ee0e5b4d659bb443779
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fe6886f368d053af919b326fabf1ad4c3066717
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687482"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224530"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>用于在 Azure 上部署 Oracle 应用程序的体系结构
 
-Microsoft 和 Oracle 共同合作，使客户能够在云中部署 oracle 电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft 等 Oracle 应用程序。 随着在 Microsoft Azure 和 Oracle 云基础结构（OCI）之间引入预览版[专用网络互连](configure-azure-oci-networking.md)，现在可以在 azure 中部署 Oracle 应用程序，并将其后端数据库部署到 AZURE 或 OCI。 Oracle 应用程序也可以与 Azure Active Directory 集成，使你能够设置单一登录，使用户能够使用其 Azure Active Directory （Azure AD）凭据登录到 Oracle 应用程序。
+Microsoft 和 Oracle 共同合作，使客户能够在云中部署 oracle 电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft 等 Oracle 应用程序。 随着在 Microsoft Azure 和 Oracle 云基础结构 (OCI) 之间引入预览版[专用网络互连](configure-azure-oci-networking.md)，现在可以在 azure 中部署 Oracle 应用程序，并将其后端数据库部署在 AZURE 或 OCI 中。 Oracle 应用程序也可以与 Azure Active Directory 集成，使你能够设置单一登录，使用户能够使用其 Azure Active Directory (Azure AD) 凭据登录到 Oracle 应用程序。
 
-OCI 为 Oracle 应用程序提供多个 Oracle 数据库选项，包括 DBaaS、Exadata 云服务、Oracle RAC 和基础结构即服务（IaaS）。 目前，Oracle 应用程序不支持自治数据库后端。
+OCI 提供了针对 Oracle 应用程序的多个 Oracle 数据库选项，包括 DBaaS、Exadata 云服务、Oracle RAC 以及基础结构即服务 (IaaS) 。 目前，Oracle 应用程序不支持自治数据库后端。
 
 可以使用[多个选项](oracle-overview.md)在 Azure 中部署 Oracle 应用程序，包括高度可用且安全的方式。 如果选择完全在 Azure 上运行 Oracle 应用程序，Azure 还提供可部署的[oracle 数据库 VM 映像](oracle-vm-solutions.md)。
 
@@ -45,7 +46,7 @@ Oracle 应用程序由多个服务组成，这些服务可以托管在 Azure 中
 
 ## <a name="e-business-suite"></a>E-Business Suite
 
-Oracle 电子商务套件（EBS）是一套应用程序，包括供应链管理（SCM）和客户关系管理（CRM）。 若要利用 OCI 的托管数据库组合，可以使用 Microsoft Azure 和 OCI 之间的跨云互连来部署 EBS。 在此配置中，表示层和应用层在 Azure 和 OCI 中的数据库层中运行，如以下体系结构关系图所示（图1）。
+Oracle 电子商务套件 (EBS) 是一套应用程序，其中包括 (SCM) 和客户关系管理 (CRM) 的供应链管理。 若要利用 OCI 的托管数据库组合，可以使用 Microsoft Azure 和 OCI 之间的跨云互连来部署 EBS。 在此配置中，表示层和应用层在 Azure 和 OCI 中的数据库层中运行，如以下体系结构关系图 (图 1) 所示。
 
 ![电子商务套件跨云体系结构](media/oracle-oci-applications/ebs-arch-cross-cloud.png)
 
@@ -53,7 +54,7 @@ Oracle 电子商务套件（EBS）是一套应用程序，包括供应链管理�
 
 在此体系结构中，Azure 中的虚拟网络使用跨云互连连接到 OCI 中的虚拟云网络。 应用程序层是在 Azure 中设置的，而数据库是在 OCI 中设置的。 建议使用网络安全组将每个组件部署到其自己的子网，以便仅允许来自特定端口上特定子网的流量。
 
-此外，还可以使用在区域的两个可用性区域中使用 Oracle 数据防护配置的高可用性 Oracle 数据库，对 Azure 中的完全部署进行改编。 下图（图2）是此体系结构模式的示例：
+此外，还可以使用在区域的两个可用性区域中使用 Oracle 数据防护配置的高可用性 Oracle 数据库，对 Azure 中的完全部署进行改编。 下图 (图 2) 是此体系结构模式的示例：
 
 ![电子商务套件仅限 Azure 体系结构](media/oracle-oci-applications/ebs-arch-azure.png)
 
@@ -63,7 +64,7 @@ Oracle 电子商务套件（EBS）是一套应用程序，包括供应链管理�
 
 [!INCLUDE [virtual-machines-oracle-applications-bastion](../../../../includes/virtual-machines-oracle-applications-bastion.md)]
 
-### <a name="application-middle-tier"></a>应用程序（中间）层
+### <a name="application-middle-tier"></a>应用程序 (中间) 层
 
 应用层在其自己的子网中隔离。 为容错和轻松修补管理设置了多个虚拟机。 这些 Vm 可由 Azure NetApp 文件和超 Ssd 提供的共享存储提供支持。 此配置允许在不停机的情况下更轻松地部署修补程序。 应用程序层中的计算机应由公共负载均衡器前端，以便即使该层中的一台计算机由于故障而脱机，也会处理对 EBS 应用程序层的请求。
 
@@ -80,7 +81,7 @@ Microsoft 和 Oracle 建议高可用性设置。 Azure 中的高可用性可以�
 
 ### <a name="identity-tier"></a>标识层
 
-标识层包含 EBS Asserter VM。 EBS Asserter 允许您从 Oracle 标识云服务（IDCS）和 Azure AD 同步标识。 EBS Asserter 是必需的，因为 EBS 不支持单一登录协议（如 SAML 2.0 或 OpenID Connect）。 EBS Asserter 使用 OpenID connect 令牌（由 IDCS 生成），对其进行验证，然后为 EBS 中的用户创建一个会话。 
+标识层包含 EBS Asserter VM。 EBS Asserter 使你可以从 Oracle 标识云服务 (IDCS) 和 Azure AD 同步标识。 EBS Asserter 是必需的，因为 EBS 不支持单一登录协议（如 SAML 2.0 或 OpenID Connect）。 EBS Asserter 使用 OpenID connect 令牌 (由 IDCS) 生成，对其进行验证，然后为 EBS 中的用户创建一个会话。 
 
 尽管此体系结构显示了 IDCS 集成，但也可以使用 oracle Internet 目录或 Oracle 统一目录通过 Oracle Access Manager 启用 Azure AD 统一访问和单一登录。 有关详细信息，请参阅[通过 IDCS 集成部署 ORACLE ebs](https://cloud.oracle.com/iaas/whitepapers/deploy_ebusiness_suite_across_oci_azure_sso_idcs.pdf)或[部署具有 Tld-oa-oam 集成的 oracle ebs](https://cloud.oracle.com/iaas/whitepapers/deploy_ebusiness_suite_across_oci_azure_sso_oam.pdf)白皮书。
 
@@ -92,7 +93,7 @@ Microsoft 和 Oracle 建议高可用性设置。 Azure 中的高可用性可以�
 
 Oracle 的 JD Edwards EnterpriseOne 是综合性企业资源规划软件的集成应用套件。 它是一个多层应用程序，可以使用 Oracle 或 SQL Server 数据库后端进行设置。 本部分介绍有关在 OCI 或 Azure 中使用 Oracle 数据库后端部署 JD Edwards EnterpriseOne 的详细信息。
 
-在以下建议的体系结构（图3）中，管理层、表示层和中间层部署到 Azure 中的虚拟网络。 该数据库部署在 OCI 中的虚拟云网络中。
+在以下推荐的体系结构中 (图 3) ，将管理、演示和中间层部署到 Azure 中的虚拟网络。 该数据库部署在 OCI 中的虚拟云网络中。
 
 与电子商务套件一样，你可以设置一个可选的堡垒层来实现安全的管理。 使用堡垒 VM 主机作为跳转服务器来访问应用程序和数据库实例。
 
@@ -102,7 +103,7 @@ Oracle 的 JD Edwards EnterpriseOne 是综合性企业资源规划软件的集�
 
 在此体系结构中，Azure 中的虚拟网络使用跨云互连连接到 OCI 中的虚拟云网络。 应用程序层是在 Azure 中设置的，而数据库是在 OCI 中设置的。 建议使用网络安全组将每个组件部署到其自己的子网，以便仅允许来自特定端口上特定子网的流量。
 
-此外，还可以使用在区域的两个可用性区域中使用 Oracle 数据防护配置的高可用性 Oracle 数据库，对 Azure 中的完全部署进行改编。 下图（图4）是此体系结构模式的示例：
+此外，还可以使用在区域的两个可用性区域中使用 Oracle 数据防护配置的高可用性 Oracle 数据库，对 Azure 中的完全部署进行改编。 下图 (图 4) 是此体系结构模式的示例：
 
 ![仅限 Azure 的 JD Edwards 体系结构](media/oracle-oci-applications/jdedwards-arch-azure.png)
 
@@ -122,18 +123,18 @@ Oracle 的 JD Edwards EnterpriseOne 是综合性企业资源规划软件的集�
  - **部署服务器**-此服务器主要需要安装 JD Edwards EnterpriseOne。 在安装过程中，此服务器充当所需文件和安装包的中央存储库。 该软件会分发或部署到此服务器上的其他服务器和客户端。
  - **开发客户端**-此服务器包含在 web 浏览器和本机应用程序中运行的组件。
 
-### <a name="presentation-tier"></a>表示层
+### <a name="presentation-tier"></a>呈现层
 
-此层包含各种组件，如应用程序接口服务（AIS）、应用程序开发框架（ADF）和 Java 应用程序服务器（JA）。 此层中的服务器与中间层中的服务器进行通信。 它们通过负载均衡器进行前端，该负载均衡器根据接收流量的端口号和 URL 将流量路由到所需的服务器。 建议你部署每个服务器类型的多个实例以实现高可用性。
+此层包含各种组件，如应用程序接口服务 (AIS) 、应用程序开发框架 (ADF) 和 Java 应用程序服务器 (JA) 。 此层中的服务器与中间层中的服务器进行通信。 它们通过负载均衡器进行前端，该负载均衡器根据接收流量的端口号和 URL 将流量路由到所需的服务器。 建议你部署每个服务器类型的多个实例以实现高可用性。
 
 下面是此层中的组件：
     
-- **应用程序接口服务（AIS）** -AIS 服务器在 JD Edwards EnterpriseOne mobile 企业应用程序与 JD Edwards EnterpriseOne 之间提供通信接口。
-- **Java 应用程序服务器（ja）** -ja 接收来自负载均衡器的请求，并将其传递给中间层以执行复杂的任务。 JA 可以执行简单的业务逻辑。
-- **BI 发布服务器（BIP）** -此服务器根据 JD Edwards EnterpriseOne 应用程序收集的数据提供报表。 您可以根据不同的模板来设计和控制报表显示数据的方式。
-- **业务服务服务器（bss）** -BSS 允许信息交换和与其他 Oracle 应用程序的互操作性。
-- **实时事件服务器（rte）** -RTE 服务器允许您设置有关 JDE EnterpriseOne 系统中发生的事务的外部系统通知。 它使用订阅者模型，并允许第三方系统订阅事件。 若要对两个 RTE 服务器的请求进行负载均衡，请确保服务器位于群集中。
-- **应用程序开发框架（adf）服务器**-ADF 服务器用于运行使用 Oracle ADF 开发的 JD Edwards EnterpriseOne 应用程序。 这是使用 ADF 运行时部署在 Oracle WebLogic 服务器上的。
+- **应用程序接口服务 (AIS) ** -ais 服务器在 JD Edwards EnterpriseOne mobile 企业应用程序和 JD Edwards EnterpriseOne 之间提供通信接口。
+- **Java 应用程序服务器 (ja) ** -ja 从负载均衡器接收请求，并将其传递给中间层以执行复杂的任务。 JA 可以执行简单的业务逻辑。
+- **BI Publisher Server (BIP) ** -此服务器根据 JD Edwards EnterpriseOne 应用程序收集的数据提供报表。 您可以根据不同的模板来设计和控制报表显示数据的方式。
+- **业务服务服务器 (BSS) ** -bss 允许信息交换和与其他 Oracle 应用程序的互操作性。
+- **实时事件服务器 (rte) ** -rte 服务器允许您设置 JDE EnterpriseOne 系统中发生的事务的外部系统通知。 它使用订阅者模型，并允许第三方系统订阅事件。 若要对两个 RTE 服务器的请求进行负载均衡，请确保服务器位于群集中。
+- **应用程序开发框架 (adf) 服务器**-adf 服务器用于运行使用 Oracle ADF 开发的 JD Edwards EnterpriseOne 应用程序。 这是使用 ADF 运行时部署在 Oracle WebLogic 服务器上的。
 
 ### <a name="middle-tier"></a>中间层
 
@@ -152,11 +153,11 @@ Oracle 的 JD Edwards EnterpriseOne 是综合性企业资源规划软件的集�
 
 ## <a name="peoplesoft"></a>PeopleSoft
 
-Oracle 的 PeopleSoft 应用程序套件包含用于人力资源和财务管理的软件。 应用程序套件为多层和应用程序，包括人力资源管理系统（HRMS）、客户关系管理（CRM）、财务和供应链管理（FSCM）以及企业性能管理（EPM）。
+Oracle 的 PeopleSoft 应用程序套件包含用于人力资源和财务管理的软件。 应用程序套件为多层和应用程序，包括人力资源管理系统 (HRMS) 、客户关系管理 (CRM) 、财务和供应链管理 (FSCM) ，以及企业性能管理 (EPM) 。
 
 建议将软件套件的每个层部署在其自己的子网中。 需要 Oracle 数据库或 Microsoft SQL Server 作为应用程序的后端数据库。 本部分介绍有关使用 Oracle 数据库后端部署 PeopleSoft 的详细信息。
 
-下面是在跨云体系结构中部署 PeopleSoft 应用程序套件的规范体系结构（图5）。
+下面是在跨云体系结构中部署 PeopleSoft 应用程序套件 (图 5) 的规范体系结构。
 
 ![PeopleSoft 跨云体系结构](media/oracle-oci-applications/peoplesoft-arch-cross-cloud.png)
 
@@ -164,7 +165,7 @@ Oracle 的 PeopleSoft 应用程序套件包含用于人力资源和财务管理�
 
 在此示例结构中，Azure 中的虚拟网络使用跨云互连连接到 OCI 中的虚拟云网络。 应用程序层是在 Azure 中设置的，而数据库是在 OCI 中设置的。 建议使用网络安全组将每个组件部署到其自己的子网，以便仅允许来自特定端口上特定子网的流量。
 
-此外，还可以使用在区域的两个可用性区域中使用 Oracle 数据防护配置的高可用性 Oracle 数据库，对 Azure 中的完全部署进行改编。 下图（图6）是此体系结构模式的示例：
+此外，还可以使用在区域的两个可用性区域中使用 Oracle 数据防护配置的高可用性 Oracle 数据库，对 Azure 中的完全部署进行改编。 下图 (图 6) 是此体系结构模式的示例：
 
 ![PeopleSoft 仅限 Azure 体系结构](media/oracle-oci-applications/peoplesoft-arch-azure.png)
 

@@ -3,7 +3,7 @@ title: Microsoft Azure 上的 Oracle 解决方案 | Microsoft Docs
 description: 了解有关在 Microsoft Azure 上部署 Oracle 应用程序和解决方案的选项，包括完全在 Azure 基础结构上运行，或与 Oracle 云基础结构 (OCI) 跨云连接。
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
+author: rgardler
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -11,12 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
-ms.author: borisb
-ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85098933"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224428"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 应用程序和解决方案概述
 
@@ -46,7 +47,7 @@ ms.locfileid: "85098933"
 
 * Oracle WebLogic Server 12.1.2
 
-* 使用 Unbreakable Enterprise 内核（UEK）6.8、6.9、6.10、7.3 到7.7、8.0、8.1 Oracle Linux。 
+* 使用 Unbreakable Enterprise 内核 (UEK) 6.8、6.9、6.10、7.3 到7.7、8.0、8.1 Oracle Linux。 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>高可用性和灾难恢复选项
 
@@ -54,7 +55,7 @@ ms.locfileid: "85098933"
 
 * 使用[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)来协调和管理 Azure 中的 Oracle Linux vm 和物理服务器的灾难恢复。 
 
-* 使用[Azure VMware 解决方案](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)在 Azure 中启用 Oracle 真正应用程序群集（RAC）。
+* 使用[Azure VMware 解决方案](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)在 azure 中 (RAC) 启用 Oracle 真实应用程序群集。
 
 ## <a name="backup-oracle-workloads"></a>备份 Oracle 工作负载
 
@@ -85,7 +86,7 @@ ms.locfileid: "85098933"
 
 ### <a name="set-up-oracle-databases-in-oci"></a>在 OCI 中设置 Oracle 数据库
 
-结合在 Azure 中运行的 Oracle 软件，使用 Oracle Database 云服务（自主数据库、RAC、Exadata、DBaaS、单一节点）。 详细了解 [OCI 数据库选项](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
+使用 Oracle Database 云服务 (自治数据库、RAC、Exadata、DBaaS、单一节点) 与 Azure 中运行的 Oracle 软件结合使用。 详细了解 [OCI 数据库选项](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
  
 
 ## <a name="licensing"></a>授权

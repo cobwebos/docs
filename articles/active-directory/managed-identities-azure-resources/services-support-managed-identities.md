@@ -4,19 +4,19 @@ description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务�
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 06/11/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 0dc8b77f75cffdd0b2017d8a9b0f7c168fb796cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bf397cac26d3cc46e11f8ac60110629a528cd62
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193764"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229816"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -90,8 +90,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | Linux：预览<br>Windows：不可用 | 不可用 | 不可用 | 不可用 |
-| 用户分配 | Linux：预览<br>Windows：不可用 | 不可用 | 不可用 | 不可用 |
+| 系统分配 | Linux：预览<br>Windows:不可用 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | Linux：预览<br>Windows:不可用 | 不可用 | 不可用 | 不可用 |
 
 请参阅以下列表来配置 Azure 容器实例的托管标识（在可用的区域中）：
 
@@ -107,7 +107,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | ![可用][check] | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
 
-若要（在可用的区域中）为 Azure 容器注册表任务配置托管标识，请参阅以下列表：
+请参阅以下列表来配置 Azure 容器注册表任务的托管标识（在可用的区域中）：
 
 - [Azure CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
@@ -178,15 +178,15 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
-| 系统分配 | 可用于 Azure 导入导出服务的区域 | 预览 | 可用 | 可用 |
+| 系统分配 | 在提供 Azure 导入/导出服务的区域中可用 | 预览 | 可用 | 可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | ![可用][check] | - | - | - | 
-| 用户分配 | ![可用][check] | - | - | - |
+| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] | 
+| 用户分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
 
 
 有关详细信息，请参阅[在 Azure Kubernetes 服务中使用托管标识](https://docs.microsoft.com/azure/aks/use-managed-identity)。
@@ -213,7 +213,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | ![可用][check] | ![可用][check] | ![可用][check] | ![可用][check] |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
-请参阅以下列表，以配置 Azure 策略的托管标识（在可用区域中）：
+请参阅以下列表来配置 Azure Policy 的托管标识（在可用的区域中）：
 
 - [Azure 门户](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
@@ -224,14 +224,14 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-[Service Fabric 应用的托管标识](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)处于预览阶段，在所有区域中都可用。
+[Service Fabric 应用程序的托管标识](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)处于预览状态，并在所有区域中均可用。
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | ![可用][check] | 不可用 | 不可用 | 不可用 |
 | 用户分配 | ![可用][check] | 不可用 | 不可用 |不可用 |
 
-若要在所有区域中为 Azure Service Fabric 应用配置托管标识，请参阅以下列表：
+请参考下表为所有区域中的 Azure Service Fabric 应用程序配置托管标识：
 
 - [Azure Resource Manager 模板](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
@@ -281,12 +281,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-vm-image-builder"></a>Azure VM 映像生成器
 
-| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government  | Azure 德国 | Azure 中国世纪互联 |
+| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | 不可用 | 不可用 | 不可用 | 不可用 | 
-| 用户分配 | [在支持的区域中提供](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | 不可用 | 不可用 | 不可用 |
+| 用户分配 | [在支持的区域中可用](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | 不可用 | 不可用 | 不可用 |
 
-若要了解如何为 Azure VM 映像生成器（在可用的区域中）配置托管标识，请参阅[映像生成器概述](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
+若要了解如何在可用) 的区域中为 Azure VM 映像生成器 (配置托管标识，请参阅[映像生成器概述](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
 ### <a name="azure-signalr-service"></a>Azure SignalR 服务
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government  | Azure 德国 | Azure 中国世纪互联 |
@@ -294,7 +294,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 预览 | 预览 | 不可用 | 预览 |
 | 用户分配 | 预览 | 预览 | 不可用 | 预览 |
 
-请参阅以下列表，为 Azure SignalR 服务配置托管标识（在可用区域中）：
+请参阅以下列表，在可用) 的区域中为 Azure SignalR 服务 (配置托管标识：
 
 - [Azure Resource Manager 模板](../../azure-signalr/howto-use-managed-identity.md)
 
@@ -304,7 +304,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-resource-manager"></a>Azure 资源管理器
 
-若要配置对 Azure 资源管理器的访问权限，请参阅以下列表：
+请参阅以下列表配置对 Azure 资源管理器的访问权限：
 
 - [通过 Azure 门户分配访问权限](howto-assign-access-portal.md)
 - [通过 PowerShell 分配访问权限](howto-assign-access-powershell.md)

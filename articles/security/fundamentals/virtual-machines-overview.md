@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657157"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229357"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -60,7 +61,7 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
 * [下一代保护](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [终结点保护和响应](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [自动调查和补救](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
-* [安全评分](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
+* [安全评分](/windows/security/threat-protection/microsoft-defender-atp/tvm-microsoft-secure-score-devices)
 * [高级追寻](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [管理和 API](/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft 威胁防护](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
@@ -157,9 +158,9 @@ Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关�
 
 ## <a name="confidential-computing"></a>机密计算
 
-虽然机密计算在技术方面不是虚拟机安全性的一部分，但是虚拟机安全性的主题属于“计算”安全性的更高级别的主题。 机密计算属于“计算”安全性类别。
+虽然机密计算在技术上不是虚拟机安全的组成部分，但虚拟机安全的主题属于 "计算" 安全的较高级别的主题。 机密计算属于 "计算" 安全类别。
 
-当数据“采用明文”（这是进行高效处理所必需的）时，机密计算可确保数据在可信执行环境 https://en.wikipedia.org/wiki/Trusted_execution_environment （TEE - 也称为飞地）中受到保护，下图显示了一个这样的示例。  
+机密计算确保当数据 "以明文形式" （这是高效处理所必需的）时，数据会在受信任的执行环境（ https://en.wikipedia.org/wiki/Trusted_execution_environment (t）（也称为 enclave) ）内受到保护，例如下图所示。  
 
 TEE 可以确保无法从外部查看数据或执行操作，即使通过调试程序也不可以。 它们甚至可以确保只有经过授权的代码才能访问数据。 如果代码被更改或篡改，则会拒绝操作并禁用环境。 TEE 会在代码在它中执行的整个过程中实施这些保护。
 

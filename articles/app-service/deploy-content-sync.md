@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77482966"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221130"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>将内容从云文件夹同步到 Azure 应用服务
 本文介绍如何将内容同步到 Dropbox 和 OneDrive 上的 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。 
@@ -23,11 +24,11 @@ ms.locfileid: "77482966"
 
 在左侧菜单中，单击 "**部署中心**  >  **OneDrive**或**Dropbox**  >  **授权**"。 按照授权提示进行操作。 
 
-![](media/app-service-deploy-content-sync/choose-source.png)
+![演示如何在 Azure 门户的部署中心授权 OneDrive 或 Dropbox。](media/app-service-deploy-content-sync/choose-source.png)
 
 只需使用 OneDrive 或 Dropbox 授权一次。 如果已获得授权，只需单击“继续”**** 即可。 可以通过单击“更改帐户”**** 来更改已获得授权的 OneDrive 或 Dropbox 帐户。
 
-![](media/app-service-deploy-content-sync/continue.png)
+![演示如何在 Azure 门户的 "部署中心" 中更改授权的 OneDrive 或 Dropbox 帐户。](media/app-service-deploy-content-sync/continue.png)
 
 在“配置”**** 页上，选择要同步的文件夹。 将在 OneDrive 或 Dropbox 中的以下指定内容路径下创建此文件夹。 
    
@@ -42,7 +43,7 @@ ms.locfileid: "77482966"
 
 如果想要使用应用服务同步云文件夹中的内容，请返回到“部署中心”**** 页，单击“同步”****。
 
-![](media/app-service-deploy-content-sync/synchronize.png)
+![演示如何将云文件夹与应用服务进行同步。](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
    > 由于 API 中存在的基础差异，目前不支持 **OneDrive for Business**。 
@@ -55,7 +56,7 @@ ms.locfileid: "77482966"
 
 在左侧菜单中，单击 "**部署中心**  >  **断开连接**"。
 
-![](media/app-service-deploy-content-sync/disable.png)
+![演示如何将云文件夹同步与 Azure 门户中的应用服务应用断开连接。](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 

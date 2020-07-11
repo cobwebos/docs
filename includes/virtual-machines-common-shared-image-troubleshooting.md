@@ -5,17 +5,17 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75772966"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226404"
 ---
-如果在对共享映像库、映像定义和映像版本执行任何操作时遇到问题，请在调试模式下再次运行失败的命令。 若要激活调试模式，可以通过 CLI 来传递 **-debug** 开关，通过 PowerShell 来传递 **-Debug** 开关。 确定错误的位置以后，请按本文档的说明来排查错误。
+如果在对共享映像库、映像定义和映像版本执行任何操作时遇到问题，请在调试模式下再次运行失败的命令。 调试模式通过 `--debug` 使用 CLI 和 `-Debug` 交换机（使用 PowerShell）传递开关来激活。 确定错误的位置以后，请按本文档的说明来排查错误。
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>无法创建共享的映像库
@@ -43,7 +43,7 @@ ms.locfileid: "75772966"
 
 名称、发布者、套餐、sku 和 OS 类型等属性是必需的。 验证是否传递所有属性。
 
-请确保映像定义的 **OSType**（Linux 或 Windows）与用于创建映像版本的源托管映像相同。 
+请确保映像定义的**OSType**（Linux 或 Windows）与用来创建映像版本的源相同。 
 
 
 ## <a name="unable-to-create-an-image-version"></a>无法创建映像版本 
@@ -84,7 +84,7 @@ ms.locfileid: "75772966"
 
 创建 VM 或虚拟机规模集需要很长的时间。
 
-验证你要尝试从其创建 VM 或虚拟机规模集的映像版本的 **OSType** 与用于创建映像版本的源托管映像的 **OSType** 是否相同。 
+验证你尝试从其创建 VM 或虚拟机规模集的映像版本的**OSType**与用于创建映像版本的源的**OSType**相同。 
 
 ## <a name="unable-to-share-resources"></a>无法共享资源
 

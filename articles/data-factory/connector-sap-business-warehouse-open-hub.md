@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 1413676eb5f3ab6f472648335996c1e607bc8b27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb61a3360ee2514fa6fd61e125ebc345474c62f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771013"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224615"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,10 +38,10 @@ ms.locfileid: "84771013"
 
 具体而言，此 SAP Business Warehouse Open Hub 连接器支持：
 
-- SAP Business Warehouse **7.01 或更高版本（位于最新的 SAP 支持包堆栈中，该堆栈是 2015 年以后发布的）** 。
+- SAP Business Warehouse **7.01 或更高版本（位于最新的 SAP 支持包堆栈中，该堆栈是 2015 年以后发布的）** 。 此连接器不支持 SAP BW4/HANA。
 - 通过 Open Hub Destination 本地表复制数据，该表下方可能是 DSO、InfoCube、MultiProvider、DataSource 等。
 - 使用基本身份验证复制数据。
-- 连接到应用程序服务器。
+- 连接到 SAP 应用程序服务器或 SAP 消息服务器。
 
 ## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub 集成 
 
@@ -104,11 +105,11 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
 
 SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**SapOpenHub** | 是 |
-| server | SAP BW 实例所驻留的服务器的名称。 | 是 |
-| systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
+| type | type 属性必须设置为：**SapOpenHub** | 适合 |
+| server | SAP BW 实例所驻留的服务器的名称。 | 适合 |
+| systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 适合 |
 | messageServer | SAP 消息服务器的主机名。<br/>用于连接到 SAP 消息服务器。 | 否 |
 | messageServerService | 消息服务器的服务名称或端口号。<br/>用于连接到 SAP 消息服务器。 | 否 |
 | systemId | 表所在的 SAP 系统的 ID。<br/>用于连接到 SAP 消息服务器。 | 否 |
@@ -116,8 +117,8 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
 | 语言 | SAP 系统使用的语言。 | 否（默认值为 **EN**）|
 | userName | 有权访问 SAP 服务器的用户名。 | 是 |
-| password | 用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
+| password | 用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 适合 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |适合 |
 
 **示例：**
 
@@ -150,10 +151,10 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从/向 SAP BW Open Hub 复制数据，请将数据集的 type 属性设置为 **SapOpenHubTable**。 支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| properties | 描述 | 必需 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **SapOpenHubTable**。  | 是 |
-| openHubDestinationName | 要从其复制数据的 Open Hub Destination 的名称。 | 是 |
+| type | type 属性必须设置为 **SapOpenHubTable**。  | 适合 |
+| openHubDestinationName | 要从其复制数据的 Open Hub Destination 的名称。 | 适合 |
 
 如果在数据集中设置了 `excludeLastRequest` 和 `baseRequestId`，则仍按原样支持该数据集，但建议你以后在活动源中使用新模型。
 
@@ -234,11 +235,11 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 | SAP ABAP 类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| C (String) | String |
+| C (String) | 字符串 |
 | I (integer) | Int32 |
 | F (Float) | Double |
-| D (Date) | String |
-| T (Time) | String |
+| D (Date) | 字符串 |
+| T (Time) | 字符串 |
 | P（BCD 打包，货币，小数，Qty） | Decimal |
 | N (Numc) | String |
 | X（二进制，原始） | String |

@@ -10,24 +10,26 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 72fecbdc173a6174e54a28e48f983965f397ba6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589646"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224581"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>利用音频内容创建工具改善合成
 
 [音频内容创建](https://aka.ms/audiocontentcreation)是一个在线工具，可用于为应用和产品自定义和微调 Microsoft 的文本到语音输出。 您可以使用此工具来微调公共和自定义语音以获取更准确的自然表达式，并在云中管理输出。
 
-音频内容创建工具基于[语音合成标记语言（SSML）](speech-synthesis-markup.md)。 为了简化自定义和优化，音频内容创建使你能够以可视方式实时检查文本到语音输出。
+音频内容创建工具基于[语音合成标记语言 (SSML) ](speech-synthesis-markup.md)。 为了简化自定义和优化，音频内容创建使你能够以可视方式实时检查文本到语音输出。
 
-## <a name="how-does-it-work"></a>工作原理
+请参阅[视频教程](https://www.youtube.com/watch?v=O1wIJ7mts_w)，了解如何创建音频内容。
+
+## <a name="how-does-it-work"></a>它是如何工作的？
 
 此图显示了微调文本到语音输出所需要执行的步骤。 使用以下链接详细了解每个步骤。
 
-![](media/audio-content-creation/audio-content-creation-diagram.jpg)
+![微调文本到语音输出所用步骤的关系图。](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
 1. [设置 Azure 帐户和语音资源](#set-up-your-azure-account-and-speech-resource)以开始工作。
 2. 使用纯文本或 SSML 脚本[创建音频优化文件](#create-an-audio-tuning-file)。
@@ -62,9 +64,9 @@ ms.locfileid: "83589646"
 2. 如果脚本文件超过20000个字符，请按段落、字符或正则表达式拆分文件。 
 3. 上载文本文件时，请确保该文件满足这些要求。
 
-   | Property | 值/注释 |
+   | 属性 | 值/注释 |
    |----------|---------------|
-   | 文件格式 | 纯文本 (.txt)<br/> SSML 文本（.txt）<br/> 不支持 Zip 文件 |
+   | 文件格式 | 纯文本 (.txt)<br/> SSML 文本 ( .txt) <br/> 不支持 Zip 文件 |
    | 编码格式 | UTF-8 |
    | 文件名 | 每个文件必须具有唯一的名称。 不支持重复项。 |
    | 文本长度 | 文本文件的长度不能超过20000个字符。 |
@@ -94,7 +96,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 2. 选择优化音频的输出格式。 下面提供了支持的格式和采样速率的列表。
 3. 可以在 "**导出任务**" 选项卡上查看任务的状态。如果任务失败，请参阅详细信息页获取完整的报表。
 4. 完成该任务后，可以在 "**音频库**" 选项卡上下载音频。
-5. 单击“下载”  。 现在，你已准备好在你的应用或产品中使用自定义的优化音频。
+5. 单击“下载”。 现在，你已准备好在你的应用或产品中使用自定义的优化音频。
 
 ### <a name="supported-audio-formats"></a>支持的音频格式
 

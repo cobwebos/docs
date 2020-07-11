@@ -7,22 +7,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84733392"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223034"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿查看 Azure Active Directory 域服务中的安全审核事件
 
-为了帮助您了解 Azure Active Directory 域服务（Azure AD DS）托管域的状态，您可以启用安全审核事件。 然后，可以使用将文本、分析查询和参数合并到丰富的交互式报表 Azure Monitor 工作簿来查看这些安全审核事件。 Azure AD DS 包括安全概述和帐户活动的工作簿模板，使你能够深入了解审核事件并管理你的环境。
+为了帮助您了解 Azure Active Directory 域服务 (Azure AD DS) 托管域的状态，您可以启用安全审核事件。 然后，可以使用将文本、分析查询和参数合并到丰富的交互式报表 Azure Monitor 工作簿来查看这些安全审核事件。 Azure AD DS 包括安全概述和帐户活动的工作簿模板，使你能够深入了解审核事件并管理你的环境。
 
 本文介绍如何使用 Azure Monitor 工作簿来查看 Azure AD DS 中的安全审核事件。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需要拥有以下资源和权限才能完成本文中的操作：
 
@@ -32,8 +32,8 @@ ms.locfileid: "84733392"
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请完成[创建和配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]的教程。
-* 为 Azure Active Directory 域服务托管域启用了将数据流式传输到 Log Analytics 工作区的安全审核事件。
-    * 如果需要，[为 Azure Active Directory 域服务启用安全审核][enable-security-audits]。
+* 为托管域启用的将数据流式传输到 Log Analytics 工作区的安全审核事件。
+    * 如果需要，[为 AZURE AD DS 启用安全审核][enable-security-audits]。
 
 ## <a name="azure-monitor-workbooks-overview"></a>Azure Monitor 工作簿概述
 
@@ -61,11 +61,13 @@ Azure AD DS 包含以下两个工作簿模板：
     ![在 Azure 门户中选择 "工作簿" 菜单选项](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. 选择 "**安全概述" 报表**。
-1. 从工作簿顶部的下拉菜单中，选择 Azure 订阅，然后 Azure Monitor "工作区"。 选择**时间范围**，如 "*过去7天*"。
+1. 从工作簿顶部的下拉菜单中，选择 Azure 订阅，然后选择 "Azure Monitor" 工作区。
+
+    选择**时间范围**（例如*过去7天*），如以下示例屏幕截图所示：
 
     ![在 Azure 门户中选择 "工作簿" 菜单选项](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
-    还可以更改 "**磁贴视图**" 和 "**图表视图**" 选项以根据需要对数据进行分析和可视化
+    还可以更改**磁贴视图**和**图表视图**选项，以根据需要分析和可视化数据。
 
 1. 若要向下钻取到特定事件类型，请选择某个**登录结果**卡，如 "*帐户已锁定*"，如以下示例中所示：
 
@@ -85,7 +87,11 @@ Azure AD DS 包含以下两个工作簿模板：
 1. 选择托管域，如*aaddscontoso.com*
 1. 从左侧菜单中选择 "**监视" > 工作簿**
 1. 选择 "**帐户活动" 报表**。
-1. 从工作簿顶部的下拉菜单中，选择 Azure 订阅，然后 Azure Monitor "工作区"。 选择**时间范围**（如 "*过去30天*"），然后选择 "**磁贴" 视图**表示数据的方式。 可以按**帐户用户名**（如*felix*）进行筛选，如以下示例报表所示：
+1. 从工作簿顶部的下拉菜单中，选择 Azure 订阅，然后选择 "Azure Monitor" 工作区。
+
+    选择**时间范围**（如 "*过去30天*"），然后选择 "**磁贴" 视图**表示数据的方式。
+
+    可以按**帐户用户名**（如*felix*）进行筛选，如以下示例报表所示：
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 

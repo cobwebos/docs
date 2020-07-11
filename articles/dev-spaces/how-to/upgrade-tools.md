@@ -5,11 +5,12 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 description: 了解如何升级 Azure Dev Spaces 命令行工具、Visual Studio Code 扩展和 Visual Studio 扩展
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: 1dad455b834bbef046b295b2cba040831a74f757
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: af4ef92d335c350042b74ccfbfaf5266615f92a6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873483"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229255"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>如何升级 Azure Dev Spaces 工具
 
@@ -40,4 +41,4 @@ Azure Dev Spaces 是 Azure 开发工作负载的一部分，包含在所有 Visu
 
 ## <a name="next-steps"></a>后续步骤
 
-通过创建新群集来测试新工具。 在 [Azure Dev Spaces](/azure/dev-spaces) 尝试快速入门和教程。
+通过创建新群集来测试新工具。 在 [Azure Dev Spaces](../index.yml) 尝试快速入门和教程。

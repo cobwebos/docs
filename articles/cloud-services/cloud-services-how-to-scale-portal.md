@@ -7,11 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360831"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223680"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
 
@@ -42,15 +43,15 @@ ms.locfileid: "75360831"
 1. 在云服务边栏选项卡上的“角色和实例”  磁贴中，选择云服务的名称。   
    **重要说明**：请务必单击云服务角色，而不是角色下面的角色实例。
 
-    ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
-2. 选择“缩放”  磁贴。
+    !["角色" 和 "实例" 磁贴的屏幕截图，其中包含 S B Queue 1 选项，以红色列出。](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+2. 选择“缩放”**** 磁贴。
 
-    ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    !["操作" 页的屏幕截图，其中的销售磁贴以红色显示。](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自动缩放
 可以使用**手动**或**自动**模式来配置角色的缩放设置。 顾名思义，“手动”模式可以设置实例的绝对计数。 但是，“自动”模式可让你设置规则来控制缩放的方式和程度。
 
-将“缩放方式”  选项设置为“计划和性能规则”  。
+将“缩放方式”**** 选项设置为“计划和性能规则”****。
 
 ![包含配置文件和规则的云服务缩放设置](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
@@ -58,14 +59,14 @@ ms.locfileid: "75360831"
 2. 添加父配置文件的规则。
 3. 添加另一个配置文件。
 
-选择“添加配置文件”  。 配置文件确定了用于缩放的模式：**始终**、**定期**和**固定日期**。
+选择“添加配置文件”****。 配置文件确定了用于缩放的模式：**始终**、**定期**和**固定日期**。
 
-配置了配置文件和规则之后，请选择顶部的“保存”  图标。
+配置了配置文件和规则之后，请选择顶部的“保存”**** 图标。
 
 #### <a name="profile"></a>配置文件
 配置文件可设置缩放的实例数下限和上限，以及此缩放范围生效的时间。
 
-* **始终**
+* **Always**
 
     始终使此范围的实例数保持可用。  
 
@@ -81,16 +82,16 @@ ms.locfileid: "75360831"
 
     ![使用固定日期的云服务缩放](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
-配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”  按钮。
+配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”**** 按钮。
 
 #### <a name="rule"></a>规则
 规则将添加到配置文件，代表触发缩放的条件。
 
 规则触发器基于云服务的指标（CPU 使用量、磁盘活动或网络活动），可以在其中添加条件值。 此外，也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置触发器。
 
-![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![带有红色 "指标名称" 选项的 "规则" 对话框的屏幕截图。](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
-配置规则之后，请选择规则边栏选项卡底部的“确定”  按钮。
+配置规则之后，请选择规则边栏选项卡底部的“确定”**** 按钮。
 
 ## <a name="back-to-manual-scale"></a>返回到手动缩放
 导航到 [缩放设置](#where-scale-is-located)，并将 **缩放方式** 选项设置为 **手动输入的实例计数**。

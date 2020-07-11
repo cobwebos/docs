@@ -6,6 +6,8 @@
   href: sample-v1-code.md
 - name: 概念
   items:
+    - name: Microsoft 标识平台的发展
+      href: about-microsoft-identity-platform.md
     - name: 为何更新到 v2.0
       href: azure-ad-endpoint-comparison.md
     - name: 应用程序类型

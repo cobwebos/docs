@@ -3,12 +3,12 @@ title: 如何在 Azure Application Insights 中执行... | Microsoft Docs
 description: 有关 Application Insights 的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110226"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224462"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -18,7 +18,7 @@ ms.locfileid: "86110226"
 ### <a name="email-if-my-site-is-overloaded"></a>站点过载时发送电子邮件
 针对“服务器响应时间”设置[警报](../../azure-monitor/platform/alerts-log.md)。 介于 1 和 2 秒之间的阈值应可解决问题。
 
-![](./media/how-do-i/030-server.png)
+![显示如何设置服务器响应时间警报的屏幕截图。](./media/how-do-i/030-server.png)
 
 应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。
 
@@ -53,11 +53,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中创建一个图表来查看警报：
 
-![](./media/how-do-i/010-alarm.png)
+![屏幕截图显示了如何在指标资源管理器中创建图表来查看警报。](./media/how-do-i/010-alarm.png)
 
 现在，将警报设置为在指标超过中间值有一段时间时激发：
 
-![](./media/how-do-i/020-threshold.png)
+![屏幕截图，显示如何设置一个警报，以便在指标超过中间值时触发。](./media/how-do-i/020-threshold.png)
 
 将平均期限设置为最小值。
 
@@ -106,11 +106,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 * 按特定的用户 ID 搜索
 
-![](./media/how-do-i/110-search.png)
+![显示针对特定用户 Id 的 searchin 选项的屏幕截图。](./media/how-do-i/110-search.png)
 
 * 筛选匿名用户或经过身份验证的用户的指标
 
-![](./media/how-do-i/115-metrics.png)
+![显示筛选 metrixs 到匿名用户或经过身份验证的用户的屏幕截图。](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>修改属性名称或值
 创建[筛选器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。 这样，便可以先修改或筛选遥测数据，然后将它从应用程序发送到 Application Insights。

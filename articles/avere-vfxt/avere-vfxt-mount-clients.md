@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: c6a4b2c1d95bc803d10697ce2164ea190f824d96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505437"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229561"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>装载 Avere vFXT 群集
 
@@ -68,7 +68,7 @@ function mount_round_robin() {
 
 装载命令包含三个元素：
 
-* vFXT 路径-群集上的 IP 地址和命名空间接合路径的组合9described）
+* vFXT 路径-群集9described 上的 IP 地址和命名空间接合路径的组合) 
 * 本地路径 - 客户端上的路径
 * 装载命令选项-在[装载命令参数](#mount-command-arguments)中列出
 
@@ -78,7 +78,7 @@ vserver 路径是其 IP 地址加上命名空间交接点的路径的组合****�
 
 如果群集是通过 Blob 存储创建的，则该容器的命名空间路径为`/msazure`
 
-示例：``mount 10.0.0.12:/msazure /mnt/vfxt``
+示例： ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
 如果在创建群集后添加了存储，则命名空间接合路径是在创建联接时在 "**命名空间路径**" 中设置的值。 例如，如果使用 ``/avere/files`` 作为命名空间路径，则客户端会将 IP_address:/avere/files 装载到其本地装载点**。
 
@@ -102,7 +102,7 @@ IP 地址是为 vserver 定义的面向客户端的 IP 地址之一。 可在 Av
 
 ``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| 必需设置 | |
+| 必需设置 | 描述 |
 --- | ---
 ``hard`` | 对 vFXT 群集的软装载与应用程序故障和可能的数据丢失相关联。
 ``proto=netid`` | 此选项支持适当处理 NFS 网络错误。

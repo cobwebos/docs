@@ -4,8 +4,6 @@
   items:
     - name: 什么是 Microsoft 标识平台？
       href: v2-overview.md
-    - name: Microsoft 标识平台的发展
-      href: about-microsoft-identity-platform.md
 - name: 快速入门
   expanded: true
   items:

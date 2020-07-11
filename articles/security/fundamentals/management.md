@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981301"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224700"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多个设备管理他们的云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有特定于任务的权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 在其他情况下，可能存在通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或（以编程方式）通过 Azure 服务管理 API (SMAPI) 从本地系统直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
 
 尽管多种访问和管理功能提供了丰富的选项，但这种变化性可能会让云部署承受巨大风险。 可能难以管理、跟踪和审核管理操作。 这种差异还可能由于用于管理云服务的客户端终结点进行的访问不受管制而带来安全威胁。 使用普通工作站或专用工作站开发和管理基础结构将会打开诸如 Web 浏览（例如水坑攻击）或电子邮件（例如社交工程和网络钓鱼）等不可预测的威胁媒介。
 
-![](./media/management/typical-management-network-topology.png)
+![显示威胁可以装载攻击的不同方法的关系图。](./media/management/typical-management-network-topology.png)
 
 在这种类型的环境中，发生攻击的可能性将会增加，因为难以构造安全策略和机制来适当管理各种终结点对 Azure 接口（例如 SMAPI）的访问。
 
@@ -42,7 +43,7 @@ Azure 订阅者可从多个设备管理他们的云环境，这些设备包括�
 ### <a name="operational-security-fundamentals"></a>操作安全性基础知识
 为了提升管理和操作的安全性，可以减少可能的入口点数目以尽可能缩小客户端的受攻击面。 这可以通过“职责分离”和“环境隔离”安全原则来实现。
 
-让敏感功能彼此隔离以降低某个级别的错误导致另一个级别出现数据泄漏的可能性。 示例:
+让敏感功能彼此隔离以降低某个级别的错误导致另一个级别出现数据泄漏的可能性。 示例：
 
 * 管理任务不应该与可能将造成入侵的活动合并（例如，管理员的电子邮件中有恶意代码，从而感染基础结构服务器）。
 * 用于高敏感性操作的工作站也不应该是用于高风险用途（例如浏览 Internet）的同一系统。
@@ -156,12 +157,12 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 在独立的强化工作站方案中（如下所示），Windows 防火墙（或非 Microsoft 客户端防火墙）的本地实例将配置为阻止入站连接，例如 RDP。 管理员可以登录到强化的工作站，并在与 Azure 虚拟网络建立 VPN 连接之后启动连接到 Azure 的 RDP 会话，但无法登录到企业电脑并使用 RDP 连接到强化的工作站本身。
 
-![](./media/management/stand-alone-hardened-workstation-topology.png)
+![显示独立强化工作站方案的关系图。](./media/management/stand-alone-hardened-workstation-topology.png)
 
 ### <a name="corporate-pc-as-virtual-machine"></a>将企业电脑用作虚拟机
 在部署单个独立强化工作站需要高昂成本或者不方便的情况下，强化的工作站可以托管用于执行非管理任务的虚拟机。
 
-![](./media/management/hardened-workstation-enabled-with-hyper-v.png)
+![显示托管用于执行非管理任务的虚拟机的强化工作站的关系图。](./media/management/hardened-workstation-enabled-with-hyper-v.png)
 
 若要避免使用单一工作站来进行管理和其他日常工作任务所可能引发的诸多安全风险，可以在强化的工作站部署 Windows Hyper-V 虚拟机。 此虚拟机可用作企业电脑。 企业电脑环境可以与主机保持隔离，以减少其受攻击面，并使得用户的日常活动（例如电子邮件）不会与机密的管理任务共存。
 

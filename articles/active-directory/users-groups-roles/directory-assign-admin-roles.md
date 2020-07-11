@@ -1,5 +1,5 @@
 ---
-title: 管理员角色说明和权限 - Azure AD | Microsoft Docs
+title: Azure AD 角色说明和权限-Azure Active Directory |Microsoft Docs
 description: 管理员角色可以添加用户、分配管理角色、重置用户密码、管理用户许可证，或者管理域。
 services: active-directory
 author: curtand
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/29/2020
+ms.date: 06/15/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e648058e866be57deaf8dd159c89fc08141b68
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dd0d17732991fd97b2406c9c5f182408f4746d96
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166665"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223867"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -42,6 +42,11 @@ ms.locfileid: "86166665"
 ## <a name="assign-or-remove-administrator-roles"></a>分配或删除管理员角色
 
 若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 中查看和分配管理员角色](directory-manage-roles-portal.md)。
+
+> [!Note]
+> 如果你有一个 Azure AD 的高级 P2 许可证，并且你已是 (PIM) 用户的 Privileged Identity Management，则所有角色管理任务都是在特权标识管理中执行的，而不是在 Azure AD 中。
+>
+> ![为已使用 PIM 并具有高级 P2 许可证的用户在 PIM 中管理 Azure AD 角色](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
 ## <a name="available-roles"></a>可用的角色
 
@@ -180,6 +185,7 @@ In | 有权执行的操作
 ### <a name="directory-readers"></a>[目录读取者](#directory-readers-permissions)
 
 充当此角色的用户可以读取基本的目录信息。 应将此角色用于：
+
 * 为特定的一组来宾用户授予读取访问权限，而不是将此权限授予所有来宾用户。
 * 当“仅限管理员访问 Azure AD 门户”设置为“是”时，为特定的一组非管理员用户授予对 Azure 门户的访问权限。
 * 当“Directory.Read.All”不是选项时，为服务主体授予对目录的访问权限。
@@ -290,7 +296,7 @@ In | 有权执行的操作
 此角色可创建和管理所有安全组。 但是，Intune 管理员对 Office 组没有管理员权限。 这意味着管理员无法更新组织中所有 Office 组的所有者或成员身份， 但可以管理他们自己创建的 Office 组，这是其最终用户权限的一部分。 因此，他们创建的任何 Office 组（非安全组）都应计入其 250 的配额。
 
 > [!NOTE]
-> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“Intune 管理员”。
+> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为 "Intune 服务管理员"。 它是 [Azure 门户](https://portal.azure.com)中的“Intune 管理员”。
 
 ### <a name="kaizala-administrator"></a>[Kaizala 管理员](#kaizala-administrator-permissions)
 
@@ -309,6 +315,7 @@ In | 有权执行的操作
 具有此角色的用户可以在其组织的 [Office 365 消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)内，监视 Exchange、Intune 和 Microsoft Teams 等已配置服务的通知和公告运行状况更新。 消息中心读者会收到包含帖子和最新动态的每周电子邮件摘要，并能在 Office 365 内共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 此角色无权查看、创建或管理支持票证。
 
 ### <a name="modern-commerce-administrator"></a>[现代商务管理员](#modern-commerce-administrator-permissions)
+
 请勿使用。 此角色是从“商务”自动分配的，不可用于其他任何用途。 请查看下面的详细信息。
 
 “现代商务管理员”角色向特定的用户授予访问 Microsoft 365 管理中心，以及查看左侧导航栏中“主页”、“计费”和“支持”条目的权限。   这些区域中提供的内容由分配给用户的[商务特定角色](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)控制，这些角色可让用户管理他们为自己或者为组织购买的产品。 这可能包括各种任务，例如支付账单，或访问计费帐户和计费配置文件。 
@@ -316,17 +323,17 @@ In | 有权执行的操作
 具有“现代商务管理员”角色的用户通常在其他 Microsoft 购买系统中拥有管理权限，但没有可用于访问管理中心的“全局管理员”或“计费管理员”角色。 
 
 **在什么情况下会分配现代商务管理员角色？**
+
 * **Microsoft 365 管理中心自助购买** – 自助购买使用户有机会通过自行购买或注册新产品来试用这些产品。 这些产品在管理中心进行管理。 进行自助购买的用户将分配到商务系统中的某个角色和现代商务管理员角色，因此他们可以在管理中心管理其购买内容。 管理员可以通过 [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) 阻止自助购买（适用于 Power BI、Power Apps、Power Automate）。 有关详细信息，请参阅[自助购买常见问题解答](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)。  
-* **从 Microsoft 商业市场购买** – 类似于自助购买，当用户从 Microsoft AppSource 或 Azure 市场购买产品或服务时，如果他们没有全局管理员角色或计费管理员角色，则会为他们分配现代商务管理员角色。 在某些情况下，可能会阻止用户进行此类购买。 有关详细信息，请参阅 [Microsoft 商业市场](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)。   
-* **Microsoft 的推荐** – 推荐是 Microsoft 提出的正式建议，让你的组织可以优惠价格购买 Microsoft 产品和服务。 如果接受此推荐的人员在 Azure AD 中没有全局管理员或计费管理员角色，则会将他们分配到商务特定角色来购买推荐商品，同时分配到现代商业管理员角色以访问管理中心。 当他们访问管理中心时，只能使用其商务特定角色授权的功能。 
+* **从 Microsoft 商业市场购买** – 类似于自助购买，当用户从 Microsoft AppSource 或 Azure 市场购买产品或服务时，如果他们没有全局管理员角色或计费管理员角色，则会为他们分配现代商务管理员角色。 在某些情况下，可能会阻止用户进行此类购买。 有关详细信息，请参阅 [Microsoft 商业市场](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)。
+* **Microsoft 的推荐** – 推荐是 Microsoft 提出的正式建议，让你的组织可以优惠价格购买 Microsoft 产品和服务。 如果接受此推荐的人员在 Azure AD 中没有全局管理员或计费管理员角色，则会将他们分配到商务特定角色来购买推荐商品，同时分配到现代商业管理员角色以访问管理中心。 当他们访问管理中心时，只能使用其商务特定角色授权的功能。
 * **商务特定角色** – 会将某些用户分配到商务特定角色。 如果用户不是全局管理员或计费管理员，将为他们分配现代商务管理员角色，使其能够访问管理中心。  
 
-如果取消分配了用户的现代商务管理员角色，他们将失去 Microsoft 365 管理中心的访问权限。 在此情况下，他们无法管理自己或组织的任何产品。 这些任务可能包括分配许可证、更改付款方式、支付账单或其他订阅管理任务。 
+如果取消分配了用户的现代商务管理员角色，他们将失去 Microsoft 365 管理中心的访问权限。 在此情况下，他们无法管理自己或组织的任何产品。 这些任务可能包括分配许可证、更改付款方式、支付账单或其他订阅管理任务。
 
 ### <a name="network-administrator"></a>[网络管理员](#network-administrator-permissions)
 
-充当此角色的用户可以查看 Microsoft 根据其用户位置发出的网络遥测数据提供的网络外围体系结构建议。 Office 365 的网络性能依赖于精心规划的企业客户网络外围体系结构，而该体系结构通常特定于用户位置。 此角色允许编辑已发现的用户位置以及配置这些位置的网络参数，以便改善遥测措施和设计建议。 
-
+充当此角色的用户可以查看 Microsoft 根据其用户位置发出的网络遥测数据提供的网络外围体系结构建议。 Office 365 的网络性能依赖于精心规划的企业客户网络外围体系结构，而该体系结构通常特定于用户位置。 此角色允许编辑已发现的用户位置，并配置这些位置的网络参数以方便改进遥测度量和设计建议
 ### <a name="office-apps-administrator"></a>[Office 应用管理员](#office-apps-administrator-permissions)
 
 充当此角色的用户可以管理 Office 365 应用的云设置。 这包括管理云策略、自助下载管理，以及查看 Office 应用相关报告的功能。 另外，有了此角色，还可以管理支持票证，以及在主管理中心内监视服务运行状况。 分配到此角色的用户还可以在 Office 应用中管理新功能的通信。 
@@ -401,7 +408,7 @@ In | 有权执行的操作
 
 In | 有权执行的操作
 --- | ---
-[Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务监视与安全相关的策略<br>管理安全威胁和警报<br>查看报表
+[Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务监视与安全相关的策略<br>管理安全威胁和警报<br>查看报告
 标识保护中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 安全读取者角色的所有权限<br>**无法**管理 Azure AD 角色分配或设置
 [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理安全策略<br>查看、调查和响应安全威胁<br>查看报表
@@ -460,7 +467,7 @@ Windows Defender ATP 和 EDR | 查看和调查警报。 在 Windows Defender ATP
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“SharePoint 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“SharePoint 管理员”。
 
 > [!NOTE]
-> 此角色还授予对 Microsoft Intune 的 Microsoft Graph API 的作用域内权限，允许管理和配置与 Sharepoint 和 Onedrive 资源相关的策略。
+> 此角色还授予对 Microsoft Intune 的 Microsoft Graph API 的作用域内权限，允许管理和配置与 SharePoint 和 OneDrive 资源相关的策略。
 
 ### <a name="skype-for-business--lync-administrator"></a>[Skype for Business/Lync 管理员](#lync-service-administrator-permissions)
 
@@ -487,13 +494,13 @@ Windows Defender ATP 和 EDR | 查看和调查警报。 在 Windows Defender ATP
 
 ### <a name="user-administrator"></a>[用户管理员](#user-administrator-permissions)
 
-具有此角色的用户可以创建用户、管理用户的所有方面（但存在一些限制，见下），以及更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
+具有此角色的用户可以创建用户，并管理具有某些限制的用户的所有方面 (查看) 的表，并且可以更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
 
-| 权限 | 有权执行的操作 |
+| **权限** | **有权执行的操作** |
 | --- | --- |
 |常规权限|<p>创建用户和组</p><p>创建和管理用户视图</p><p>管理 Office 支持票证<p>更新密码过期策略|
-|<p>适用于所有用户，包括所有管理员</p>|<p>管理许可证</p><p>管理除用户主体名称之外的所有用户属性</p>
-|仅适用于不是管理员或具有以下任一管理员角色（权限有限）的用户：<ul><li>目录读者<li>来宾邀请者<li>支持管理员<li>消息中心读取者<li>报告读者<li>用户管理员|<p>删除和还原</p><p>禁用和启用</p><p>使刷新令牌失效</p><p>管理包括用户主体名称在内的所有用户属性</p><p>重置密码</p><p>更新 (FIDO) 设备密钥</p>|
+| <p>适用于所有用户，包括所有管理员</p>|<p>管理许可证</p><p>管理除用户主体名称之外的所有用户属性</p>
+| 仅适用于不是管理员或具有以下任一管理员角色（权限有限）的用户：<ul><li>目录读者<li>来宾邀请者<li>支持管理员<li>消息中心读取者<li>报告读者<li>用户管理员|<p>删除和还原</p><p>禁用和启用</p><p>使刷新令牌失效</p><p>管理包括用户主体名称在内的所有用户属性</p><p>重置密码</p><p>更新 (FIDO) 设备密钥</p>|
 
 > [!IMPORTANT]
 > 具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的密码。 更改用户的密码可能意味着假定用户标识和权限的能力。 例如：
@@ -1861,7 +1868,7 @@ CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f
 设备用户 | 不推荐使用 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目录读者 | 目录读者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 目录同步帐户 | 不显示，因为不应使用它 | d29b2b05-8046-44ba-8758-1e26182fcf32
-目录编写人员 | 未显示，因为不应使用它 | 9360feb5-f418-4baa-8175-e2a00bac4301
+目录编写人员 | 不显示，因为不应使用它 | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID 用户流管理员 | 外部 ID 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 外部 ID 用户流属性管理员 | 外部 ID 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
@@ -1934,7 +1941,7 @@ CRM 服务管理员 | Dynamics 365 管理员 | [反映当前产品品牌](direct
 Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
 合作伙伴层 1 支持 | 不显示，因为不应使用它 | [合作伙伴一线支持人员文档](directory-assign-admin-roles.md#partner-tier1-support)
 合作伙伴层 2 支持 | 不显示，因为不应使用它 | [合作伙伴二线支持人员文档](directory-assign-admin-roles.md#partner-tier2-support)
-受限来宾用户 | 不显示，因为无法使用它 | NA
+受限来宾用户 | 不显示，因为无法使用它 | 不可用
 User | 不显示，因为无法使用它 | 不可用
 工作区设备联接 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 

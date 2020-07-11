@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: d2e4b07c97e09fce5cdaa034e2fe67a18ef0d7f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171153"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224411"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (常见问题) 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -122,56 +122,121 @@ ms.locfileid: "86171153"
 - 使用 CliConfig 定义别名。 该工具只是一个注册表设置包装，因此也可以使用组策略或脚本完成此操作。
 - 将*CNAME*与*TrustServerCertificate = true*选项一起使用。
 
-## <a name="move-a-database-from-sql-managed-instance"></a>将数据库从 SQL 托管实例 
+## <a name="migration-options"></a>迁移选项
 
-**如何将数据库从 SQL 托管实例移回 SQL Server 或 Azure SQL 数据库？**
+**如何从 Azure SQL Database 单一或弹性池迁移到 SQL 托管实例？**
 
-可以将[数据库导出到 bacpac](../database/database-export.md) ，然后[导入 bacpac 文件](../database/database-import.md)。 如果数据库小于 100 GB，我们建议使用此方法。
+托管实例根据计算和存储大小提供与其他 Azure SQL 数据库部署选项相同的性能级别。 若要在单一实例上合并数据，或者只是需要一种仅在托管实例中受支持的功能，可以使用导出/导入 (BACPAC) 功能来迁移数据。 下面是用于 sql 数据库迁移到 SQL 托管实例的其他方法： 
+- 使用[外部数据源]()
+- 使用[SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182)
+- 使用[BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7)
 
-如果数据库中的所有表具有主键，则可以使用事务复制。
+**如何将实例数据库迁移到单个 Azure SQL 数据库？**
 
-`COPY_ONLY`无法将从 sql 托管实例获取的本机备份还原到 SQL Server，因为 sql 托管实例的数据库版本比 SQL Server 更高。
+一种选择是将[数据库导出到 bacpac](../database/database-export.md) ，然后[导入 bacpac 文件](../database/database-import.md)。 如果数据库小于 100 GB，我们建议使用此方法。
 
-## <a name="migrate-an-instance-database"></a>迁移实例数据库
+如果数据库中的所有表都具有*主键*，并且数据库中没有内存中 OLTP 对象，则可以使用[事务复制](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017)。
 
-**如何将实例数据库迁移到 Azure SQL 数据库？**
+由于托管实例的数据库版本比 SQL Server 更高，因此无法将来自托管实例的本机 COPY_ONLY 备份还原到 SQL Server 中。 有关更多详细信息，请参阅[仅复制备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。
 
-一种做法是[将数据库导出到 BACPAC](../database/database-export.md)，然后[导入 BACPAC 文件](../database/database-import.md)。 
+**如何将 SQL Server 实例迁移到 SQL 托管实例？**
 
-如果数据库小于 100 GB，我们建议使用此方法。 如果数据库中的所有表具有主键，则可以使用事务复制。
+若要迁移 SQL Server 实例，请参阅[SQL Server 实例迁移到 AZURE SQL 托管实例](migrate-to-instance-from-sql-server.md)。
+
+**如何从其他平台迁移到 SQL 托管实例？**
+
+有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
 
 ## <a name="switch-hardware-generation"></a>切换硬件代系 
 
-**能否在第4代和第5代联机之间切换 SQL 托管实例硬件生成？**
+**能否在第 4 代和第 5 代托管实例硬件代系之间联机切换？**
 
-如果在预配 SQL 托管实例的区域中同时提供两个硬件，则可以在硬件生成之间进行自动联机切换。 在这种情况下，可以查看 " [vCore 模型概述" 页](../database/service-tiers-vcore.md)，其中说明了如何在硬件生成之间切换。
+如果在预配托管实例的区域中提供 Gen5 硬件，则可以从 Gen4 到 Gen5 的自动联机切换。 在这种情况下，可以查看[“vCore 模型概述”页](../database/service-tiers-vcore.md)，该页说明了如何在硬件代系之间切换。
 
-这是一个长时间运行的操作，因为新的托管实例将在后台预配，在新实例与新实例之间自动传输，并在进程结束时进行快速故障转移。 
+这是一个长时间运行的操作，因为新托管实例将在后台预配，数据库将在旧实例与新实例之间自动转移，该过程结束时，可以快速故障转移。
 
-**如果同一区域中不支持两个硬件代，会怎么样？**
+注意： Gen4 硬件正在逐步推出，在新部署中不再可用。 所有新数据库都必须部署在 Gen5 硬件上。 从 Gen5 切换到 Gen4 也不可用。
 
-如果同一区域不能同时支持这两种硬件代系，可以更改硬件代系，但必须手动完成该操作。 这要求你在需要提供硬件的区域中预配新的实例，并在新旧实例之间手动备份和还原数据。
+## <a name="performance"></a>性能 
 
-**如果没有足够的 IP 地址来执行更新操作，该怎么办？**
+**如何将托管实例性能进行比较以 SQL Server 性能？**
 
-如果在预配托管实例的子网中没有足够的 IP 地址，则必须在其中创建新的子网和新的托管实例。 此外，我们还建议创建新的子网，并分配更多的 IP 地址，以便将来的更新操作将避免类似情况。  (为适当的子网大小，请查看[如何确定 VNet 子网的大小](vnet-subnet-determine-size.md)。 ) 预配新实例后，可以在旧实例与新实例之间手动备份和还原数据，或执行跨实例[时间点还原](point-in-time-restore.md?tabs=azure-powershell)。 
+若要在托管实例与 SQL Server 之间进行性能比较，可以从[有关 Azure SQL 托管实例与 SQL Server 之间的性能比较的最佳做法](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)一文入手。
 
+**托管实例和 SQL Server 会导致性能差异？**
 
-## <a name="tune-performance"></a>调整性能
+请参阅[SQL 托管实例和 SQL Server 之间性能差异的主要原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)。 有关日志文件大小对常规用途托管实例性能的影响的详细信息，请参阅[常规用途上的日志文件大小的影响](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。
 
-**如何实现 SQL 托管实例的优化性能？**
+**如何优化托管实例的性能？**
 
-常规用途层中的 SQL 托管实例使用远程存储，因此，数据和日志文件的大小对性能很重要。 有关详细信息，请参阅[常规用途 SQL 托管实例性能上的日志文件大小的影响](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。
+可以通过以下方式优化托管实例的性能：
+- [自动优化](../database/automatic-tuning-overview.md)，通过基于 AI 和机器学习的持续性能优化，提供高峰性能和稳定工作负荷。
+-   [内存中 OLTP](../in-memory-oltp-overview.md)可提高事务处理工作负荷的吞吐量和延迟，并提供更快的商业洞察力。 
 
-如果工作负荷包含大量小型事务，请考虑将连接类型从代理切换为重定向模式。
+若要进一步优化性能，请考虑为[应用程序和数据库优化](../database/performance-guidance.md#tune-your-database)应用一些*最佳实践*。
+如果工作负荷包含大量小事务，请考虑将[连接类型从代理切换到重定向模式](connection-types-overview.md#changing-connection-type)，以降低延迟和提高吞吐量。
 
-## <a name="maximum-storage-size"></a>最大存储大小
+## <a name="monitoring-metrics-and-alerts"></a>监视、指标和警报
+
+**对于托管实例，监视和警报有哪些选项？**
+
+有关监视和警报 SQL 托管实例使用情况和性能的所有可能的选项，请参阅[AZURE sql 托管实例监视选项博客文章](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416)。 有关 SQL MI 的实时性能监视，请参阅[AZURE SQL DB 的实时性能监视托管实例](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)。
+
+**是否可以使用 SQL 事件探查器进行性能跟踪？**
+
+是的，支持 SQL 事件探查器或 SQL 托管实例。 有关更多详细信息，请参阅[SQL 事件探查器](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15)。
+
+**托管实例数据库是否支持数据库顾问和 Query Performance Insight？**
+
+不支持，它们不受支持。 可以结合使用[dmv](../database/monitoring-with-dmvs.md)和[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15)与[SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15)和[XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15)来监视数据库。
+
+**能否在 SQL 托管实例上创建指标警报？**
+
+是的。 有关说明，请参阅为[SQL 托管实例创建警报](alerts-create.md)。
+
+**能否在托管实例中的数据库上创建指标警报？**
+
+不能，警报指标仅适用于托管实例。 警报指标不适用于托管实例中的单个数据库。
+
+## <a name="storage-size"></a>存储大小
 
 **SQL 托管实例的最大存储大小是多少？**
 
 SQL 托管实例的存储大小取决于所选的服务层 (常规用途或业务关键) 。 有关这些服务层的存储限制，请参阅[服务层特性](../database/service-tiers-general-purpose-business-critical.md)。
 
-  
+**可用于托管实例的最小存储大小是多少？**
+
+实例中可用的最小存储量为 32 GB。 可以将存储添加为 32 GB 的增量，最大限度地提高存储大小。 第一32GB 是免费的。
+
+**是否可以增加分配给实例的存储空间，而不受计算资源的影响？**
+
+是的，你可以独立于计算将附加存储购买到一定范围。 请参阅[表](resource-limits.md#hardware-generation-characteristics)中的*最大实例保留存储*。
+
+**如何在常规用途服务层中优化存储性能？**
+
+若要优化存储性能，请参阅[常规用途中的存储最佳实践](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)。
+
+## <a name="backup-and-restore"></a>备份和还原
+
+**备份存储是否是从托管实例存储中扣减出来的？**
+
+不是，备份存储不是从托管实例的存储空间中扣减出来的。 备份存储与实例存储空间无关，其大小不受限制。 备份存储限制为保留实例数据库备份的时间段，可配置最多35天。 有关详细信息，请参阅[自动化备份](../database/automated-backups-overview.md)。
+
+**如何查看托管实例上的自动备份？**
+若要跟踪何时对托管实例执行了自动备份，请参阅[如何跟踪 AZURE SQL 托管实例的自动备份](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355)。
+
+**是否支持按需备份？**
+是的，你可以在其 Azure Blob 存储中创建仅复制完整备份，但它只能在托管实例中进行还原。 有关详细信息，请参阅[仅复制备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。 但是，如果数据库由服务托管的 TDE 加密，则不可能进行仅复制备份，因为用于加密的证书不可访问。 在这种情况下，请使用时间点还原功能将数据库移到另一个 SQL 托管实例或切换到客户托管的密钥。
+
+** (从 .bak 文件) 到托管实例受支持的本机还原吗？**
+是的，它受支持，可用于 SQL Server 2005 以上版本。  若要使用本机还原，请将 .bak 文件上传到 Azure blob 存储并执行 T-sql 命令。 有关更多详细信息，请参阅[从 URL 本机还原](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)。
+
+## <a name="business-continuity"></a>业务连续性
+
+**系统数据库是否已复制到故障转移组中的辅助实例？**
+
+系统数据库不会复制到故障转移组中的辅助实例。 因此，除非在辅助实例上手动创建了对象，否则不能在辅助实例上依赖于系统数据库中的对象的方案。 有关解决方法，请参阅[从系统数据库启用依赖于对象的方案](../database/auto-failover-group-overview.md?tabs=azure-powershell#enable-scenarios-dependent-on-objects-from-the-system-databases)。
+ 
 ## <a name="networking-requirements"></a>网络要求 
 
 **托管实例子网上的当前入站/出站 NSG 约束是什么？**
@@ -186,11 +251,11 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为[服务�
 
 **能否获取用于入站管理流量的源 IP 范围？**
 
-正确。 可以通过[配置网络观察程序流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)来分析通过网络安全组传入的流量。
+是的。 可以通过[配置网络观察程序流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)来分析通过网络安全组传入的流量。
 
 **是否可以将 NSG 设置为控制对 (端口 1433) 的数据终结点的访问？**
 
-正确。 设置托管实例后，可以设置控制对端口1433的入站访问的 NSG。 建议尽可能缩小其 IP 范围。
+是的。 设置托管实例后，可以设置控制对端口1433的入站访问的 NSG。 建议尽可能缩小其 IP 范围。
 
 **是否可以设置 NVA 或本地防火墙以根据 Fqdn 筛选出站管理流量？**
 
@@ -201,7 +266,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为[服务�
 
 **能否为出站非管理流量设置 NVA 或防火墙？**
 
-正确。 实现此目的的最简单方法是将0/0 规则添加到与托管实例子网关联的 UDR，以通过 NVA 路由流量。
+是的。 实现此目的的最简单方法是将0/0 规则添加到与托管实例子网关联的 UDR，以通过 NVA 路由流量。
  
 **托管实例需要多少 IP 地址？**
 
@@ -231,6 +296,44 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为[服务�
 
 错误。 目前，我们不支持将托管实例放置在已包含其他资源类型的子网中。
 
+## <a name="connectivity"></a>连接 
+
+**是否可以使用 IP 地址连接到托管实例？**
+
+否，不支持这样做。 托管实例的主机名映射到托管实例虚拟群集前面的负载均衡器。 由于一个虚拟群集可以托管多个托管实例，因此无法将连接路由到正确的托管实例，无需指定其名称。
+有关 SQL 托管实例虚拟群集体系结构的详细信息，请参阅[虚拟群集连接体系结构](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)。
+
+**我的托管实例是否可以使用静态 IP 地址？**
+
+目前不支持。
+
+在罕见但必要的情况下，我们可能需要将托管实例联机迁移到新的虚拟群集。 需要进行这种迁移的原因是，我们的技术堆栈发生了变化，旨在提高服务的安全性和可靠性。 迁移到新的虚拟群集会导致映射到托管实例主机名的 IP 地址发生变化。 托管实例服务不会提出静态 IP 地址支持，且有权在不另行通知的情况下，在定期维护周期更改此 IP 地址。
+
+出于此原因，我们强烈反对依赖于 IP 地址的不可变性，因为这可能会导致不必要的停机时间。
+
+**托管实例是否有公用终结点？**
+
+是的。 托管实例具有一个公共终结点，该终结点默认仅用于服务管理，但客户也可以启用它来访问数据。 有关更多详细信息，请参阅[将 SQL 托管实例与公共终结点一起使用](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要配置公共终结点，请参阅[在 SQL 托管实例中配置公共终结点](public-endpoint-configure.md)。
+
+**托管实例如何控制对公共终结点的访问？**
+
+托管实例控制在网络和应用程序级别对公共终结点的访问。
+
+管理和部署服务使用映射到外部负载均衡器的[管理终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint)连接到托管实例。 仅当流量是在一组专用于托管实例管理组件的预定义端口上收到的时，才将流量路由到节点。 节点上的内置防火墙设置为只允许来自 Microsoft IP 范围的流量。 证书将对管理组件与管理平面之间的所有通信进行相互身份验证。 有关更多详细信息，请参阅[SQL 托管实例的连接体系结构](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture)。
+
+**是否可以使用公共终结点来访问托管实例数据库中的数据？**
+
+是的。 客户需要从[Azure 门户](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)PowerShell/ARM 启用公共终结点数据访问  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ，并将 NSG 配置为锁定对 (端口号 3342) 的数据端口的访问。 有关详细信息，请参阅[在 AZURE sql 托管实例中配置公共终结点](public-endpoint-configure.md)和通过[公共终结点安全使用 Azure SQL 托管实例](public-endpoint-overview.md)。 
+
+**能否为 SQL 数据终结点 (s) 指定自定义端口？**
+
+否，此选项不可用。  对于专用数据终结点，托管实例使用默认端口号1433，对于公共数据终结点，托管实例使用默认端口号3342。
+
+**将托管实例连接到不同区域的建议方法是什么？**
+
+快速路由线路对等互连是执行此操作的首选方式。 这不会与跨区域虚拟网络对等互连，因为与内部负载均衡器相关的[约束](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)不受支持。
+
+如果无法实现快速路由线路对等互连，则唯一的另一种方法是创建站点到站点 VPN 连接 ([Azure 门户](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)， [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)， [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) 。
 
 ## <a name="mitigate-data-exfiltration-risks"></a>缓解数据透露风险  
 
@@ -265,7 +368,7 @@ SQL 托管实例案例研究：
 
 **能否为 SQL 托管实例配置自定义 DNS？**
 
-正确。 请参阅[如何为 AZURE SQL 托管实例配置自定义 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
+是的。 请参阅[如何为 AZURE SQL 托管实例配置自定义 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 
 **是否可以执行 DNS 刷新？**
 
@@ -277,21 +380,6 @@ DNS 配置最终会刷新：
 - 平台升级时。
 
 一种解决方法是，将 SQL 托管实例降级到 4 Vcore 并在以后再升级。 这样刷新 DNS 配置会产生一种负面影响。
-
-
-## <a name="ip-address"></a>IP 地址
-
-**能否使用 IP 地址连接到 SQL 托管实例？**
-
-不支持使用 IP 地址连接到 SQL 托管实例。 SQL 托管实例主机名映射到 SQL 托管实例虚拟群集前面的负载均衡器。 由于一个虚拟群集可以托管多个托管实例，因此无法将连接路由到适当的托管实例，无需显式指定名称。
-
-有关 SQL 托管实例虚拟群集体系结构的详细信息，请参阅[虚拟群集连接体系结构](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)。
-
-**SQL 托管实例是否可以有静态 IP 地址？**
-
-在极少数情况下，可能需要将 SQL 托管实例联机迁移到新的虚拟群集。 需要进行这种迁移的原因是，我们的技术堆栈发生了变化，旨在提高服务的安全性和可靠性。 迁移到新的虚拟群集会导致更改映射到 SQL 托管实例主机名的 IP 地址。 SQL 托管实例服务不会声明静态 IP 地址支持，并保留在不另行通知的情况下将其更改为定期维护周期的权限。
-
-出于此原因，我们强烈反对依赖于 IP 地址的不可变性，因为这可能会导致不必要的停机时间。
 
 ## <a name="change-time-zone"></a>更改时区
 
