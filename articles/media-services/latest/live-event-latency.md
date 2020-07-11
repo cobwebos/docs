@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78199642"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232451"
 ---
 # <a name="live-event-low-latency-settings"></a>直播活动低延迟设置
 
@@ -61,15 +62,15 @@ LiveEvent liveEvent = new LiveEvent(
 
 ||启用 2 秒 GOP 低延迟|启用 1 秒 GOP 低延迟|
 |---|---|---|
-|AMP 中的 DASH|10 秒|8 秒|
-|本机 iOS 播放器上的 HLS|14 秒|10 秒|
+|**AMP 中的 DASH**|10 秒|8 秒|
+|**本机 iOS 播放器上的 HLS**|14 秒|10 秒|
 
 ### <a name="live-encoding"></a>实时编码
 
 ||启用 2 秒 GOP 低延迟|启用 1 秒 GOP 低延迟|
 |---|---|---|
-|AMP 中的 DASH|14 秒|10 秒|
-|本机 iOS 播放器上的 HLS|18 秒|13 秒|
+|**AMP 中的 DASH**|14 秒|10 秒|
+|**本机 iOS 播放器上的 HLS**|18 秒|13 秒|
 
 > [!NOTE]
 > 根据本地网络状况以及是否引入了 CDN 缓存层，端到端延迟可能有所不同。 应当测试你的确切配置。

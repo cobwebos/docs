@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8f100d253dc5ecb321934eb49a1aba60595a5e8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919289"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232570"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒体分析检测面部和情绪
 
@@ -166,8 +167,8 @@ ms.locfileid: "77919289"
 
 || 默认值 | 最大值 | 最小值 |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |1 |0.25|
+| **AggregateEmotionWindowMs** |0.5 |2 |0.25|
+| **AggregateEmotionIntervalMs** |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 输出
 聚合情绪的 JSON 输出（已截断）：

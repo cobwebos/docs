@@ -9,12 +9,12 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 132663ed26eab41747f6fce25bdb2beabe286322
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855077"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232604"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -170,7 +170,7 @@ ms.locfileid: "85855077"
 
     将 {AppId}、{TenantId} 和 {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 *LocalMachine*` 或 *CurrentUser*。
 
-1. 运行该应用程序。
+1. 运行应用程序。
 
 ### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>使用共享机密凭据登录到 Azure AD
 
@@ -226,17 +226,20 @@ ms.locfileid: "85855077"
 
 ## <a name="connection-string-support"></a>连接字符串支持
 
-默认情况下，`AzureServiceTokenProvider` 使用多种方法来检索令牌。
+默认情况下， `AzureServiceTokenProvider` 将按顺序尝试下列身份验证方法来检索令牌：
 
-若要控制此过程，请使用传递到 `AzureServiceTokenProvider` 构造函数或在 AzureServicesAuthConnectionString 环境变量中指定的连接字符串。
+- [Azure 资源的托管标识](../..//active-directory/managed-identities-azure-resources/overview.md)
+- Visual Studio 身份验证
+- [Azure CLI 身份验证](/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [集成的 Windows 身份验证](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
-可以使用以下选项：
+若要控制此过程，请使用传递到 `AzureServiceTokenProvider` 构造函数或在 AzureServicesAuthConnectionString 环境变量中指定的连接字符串。  可以使用以下选项：
 
 | 连接字符串选项 | 方案 | 注释|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本地开发 | `AzureServiceTokenProvider` 使用 AzureCli 获取令牌。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本地开发 | `AzureServiceTokenProvider` 使用 Visual Studio 获取令牌。 |
-| `RunAs=CurrentUser` | 本地开发 | `AzureServiceTokenProvider` 使用 Azure AD 集成身份验证获取令牌。 |
+| `RunAs=CurrentUser` | 本地开发 | 在 .NET Core 中不受支持。 `AzureServiceTokenProvider` 使用 Azure AD 集成身份验证获取令牌。 |
 | `RunAs=App` | [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` 使用托管标识获取令牌。 |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Azure 资源的用户分配标识](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider` 使用用户分配的标识获取令牌。 |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | 自定义服务身份验证 | `KeyVaultCertificateSecretIdentifier` 是证书的机密标识符。 |
@@ -291,7 +294,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 - 将“setProfileEnvironment”配置为“True”。 请在[此处](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)查看详细信息。 
 
     - 转到 %windir%\System32\inetsrv\config\applicationHost.config
-    - 搜索“setProfileEnvironment”。 如果它设置为“False”，请更改为“True”。 如果该元素不存在，请将其作为属性添加到 processModel 元素（ /configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment ），并将其设置为 "True"。
+    - 搜索“setProfileEnvironment”。 如果它设置为“False”，请更改为“True”。 如果该属性不存在，请将其作为属性添加到 processModel 元素 (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) ，并将其设置为 "True"。
 
 - 详细了解 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/index.yml)。
 - 详细了解 [Azure AD 身份验证方案](../../active-directory/develop/active-directory-authentication-scenarios.md)。

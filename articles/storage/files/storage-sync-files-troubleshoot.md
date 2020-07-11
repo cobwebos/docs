@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ec7469210bcfae53407a157a325c749aee2c2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c8f846201553d3cfa9a2d68b8b4a7ab655c378
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512054"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232372"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -690,7 +690,9 @@ PerItemErrorCount: 1006.
 | **HRESULT（十进制）** | -1906441711 |
 | **错误字符串** | JET_errLogDiskFull |
 | **所需的补救措施** | 是 |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c8031a |
 | **HRESULT（十进制）** | -2134375654 |
 | **错误字符串** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
@@ -717,12 +719,16 @@ PerItemErrorCount: 1006.
 | **HRESULT（十进制）** | -2134375877 |
 | **错误字符串** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **所需的补救措施** | 是 |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c8021c |
 | **HRESULT（十进制）** | -2134375908 |
 | **错误字符串** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **所需的补救措施** | 是 |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c80253 |
 | **HRESULT（十进制）** | -2134375853 |
 | **错误字符串** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
@@ -1159,7 +1165,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 如果不满足上述条件，则无法恢复访问，因为服务器上的这些分层文件现已孤立。 按照以下说明删除孤立的分层文件。
 
-**说明**
+备注
 - 当无法访问服务器上的分层文件时，如果直接访问 Azure 文件共享，则完整文件应仍可访问。
 - 若要防止将来出现孤立的分层文件，请在删除服务器终结点时按照[删除服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)中所述的步骤进行操作。
 

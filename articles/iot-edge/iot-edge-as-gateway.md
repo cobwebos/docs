@@ -11,11 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 916eeaa60bc054301af039164ce1c14e77ceb91a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7c924af297d9a315b61351b69d2fe6346bc1178
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733516"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232621"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 
@@ -49,7 +50,7 @@ IoT Edge 解决方案中的网关为 IoT 设备提供了设备连接和边缘分
 
 下面一个速查表，用于在使用透明、不透明（协议）和代理网关时比较 loT 中心基元。
 
-| &nbsp; | 透明网关 | 协议转换 | 标识转换 |
+| 基元 | 透明网关 | 协议转换 | 标识转换 |
 |--------|-------------|--------|--------|
 | 存储在 IoT 中心标识注册表中的标识 | 所有已连接的设备的标识 | 仅网关设备的标识 | 所有已连接的设备的标识 |
 | 设备孪生 | 每个已连接的设备均有自己的设备孪生 | 仅网关具有设备和模块孪生 | 每个已连接的设备均有自己的设备孪生 |
@@ -63,5 +64,5 @@ IoT Edge 解决方案中的网关为 IoT 设备提供了设备连接和边缘分
 了解如何设置透明网关：
 
 * [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)
-* [通过 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)
+* [在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)
 * [将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)

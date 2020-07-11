@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault 托管存储帐户 - PowerShell 版本
+title: 获取代码中的共享访问签名令牌 |Azure Key Vault
 description: 托管存储帐户功能在 Azure Key Vault 与 Azure 存储帐户之间提供无缝集成。
 ms.topic: conceptual
 ms.service: key-vault
@@ -8,36 +8,41 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 7307741e56c7fc912f60d0496979243eb4be77a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e429115ce2624685c413ae252229964feee70137
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431262"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232587"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>通过编写代码提取共享访问签名令牌
 
-可以使用密钥保管库中的[共享访问签名令牌](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)来管理存储帐户。 本文提供了提取 SAS 令牌并对其执行操作的 C# 代码示例。  有关如何创建和存储 SAS 令牌的信息，请参阅[使用密钥保管库和 Azure CLI 管理存储帐户密钥](overview-storage-keys.md)或[使用密钥保管库和 Azure PowerShell 管理存储帐户密钥](overview-storage-keys-powershell.md)。
+你可以使用共享访问签名 (SAS) 存储在密钥保管库中的令牌来管理存储帐户。 有关详细信息，请参阅[使用 SAS 授予对 Azure 存储资源的有限访问权限](../../storage/common/storage-sas-overview.md)。
+
+本文提供了获取 SAS 令牌并对其执行操作的 .NET 代码示例。 有关如何创建和存储 SAS 令牌的信息，请参阅[使用密钥保管库和 Azure CLI 管理存储帐户密钥](overview-storage-keys.md)或[使用密钥保管库和 Azure PowerShell 管理存储帐户密钥](overview-storage-keys-powershell.md)。
 
 ## <a name="code-samples"></a>代码示例
 
-在此示例中，代码从密钥保管库中提取 SAS 令牌，使用它创建新的存储帐户，并创建新的 Blob 服务客户端。  
+在此示例中，代码从密钥保管库中提取 SAS 令牌，使用它创建新的存储帐户，并创建新的 Blob 服务客户端。
 
 ```cs
-// After you get a security token, create KeyVaultClient with vault credentials.
-var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
+// The shared access signature is stored as a secret in keyvault. 
+// After you get a security token, create a new SecretClient with vault credentials and the key vault URI.
+// The format for the key vault URI (kvuri) is https://<YourKeyVaultName>.vault.azure.net
 
-// Get a shared access signature token for your storage from Key Vault.
-// The format for SecretUri is https://<YourKeyVaultName>.vault.azure.net/secrets/<ExamplePassword>
-var sasToken = await kv.GetSecretAsync("SecretUri");
+var kv = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
 
-// Create new storage credentials by using the shared access signature token.
-var accountSasCredential = new StorageCredentials(sasToken.Value);
+// Now retrive your storage SAS token from Key Vault using the name of the secret (secretName).
 
-// Use the storage credentials and the Blob storage endpoint to create a new Blob service client.
-var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("https://myaccount.blob.core.windows.net/"), null, null, null);
+KeyVaultSecret secret = client.GetSecret(secretName);
+var sasToken = secret.Value;
 
-var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
+// Create new storage credentials using the SAS token.
+StorageCredentials accountSAS = new StorageCredentials(sasToken);
+
+// Use these credentials and your storage account name to create a Blob service client.
+CloudStorageAccount accountWithSAS = new CloudStorageAccount(accountSAS, "<storage-account>", endpointSuffix: null, useHttps: true);
+CloudBlobClient blobClientWithSAS = accountWithSAS.CreateCloudBlobClient();
 ```
 
 如果共享访问签名令牌即将过期，则可以从密钥保管库中提取共享访问签名令牌，并更新代码。
@@ -45,12 +50,13 @@ var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
 ```cs
 // If your shared access signature token is about to expire,
 // get the shared access signature token again from Key Vault and update it.
-sasToken = await kv.GetSecretAsync("SecretUri");
-accountSasCredential.UpdateSASToken(sasToken);
+KeyVaultSecret secret = client.GetSecret(secretName);
+var sasToken = secret.Value;
+accountSAS.UpdateSASToken(sasToken);
 ```
 
 
 ## <a name="next-steps"></a>后续步骤
+- 了解如何[使用 SAS 授予对 Azure 存储资源的有限访问权限](../../storage/common/storage-sas-overview.md)。
 - 了解如何[使用密钥保管库和 Azure CLI 管理存储帐户密钥](overview-storage-keys.md)或 [Azure PowerShell](overview-storage-keys-powershell.md)。
 - 请参阅[托管存储帐户密钥示例](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
-- [Key Vault PowerShell 参考](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d32c130205420ef8f20d7ce8cb97f9a2595e978
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481725"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232196"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -44,7 +44,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>是否可以在 VNet 之间或者 VNet 与本地数据中心之间执行 WAN 优化？
 是的。 可以通过 Azure 市场部署许多供应商提供 [WAN 优化网络虚拟设备](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization)。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>要使用哪些工具创建 VNet？
 可以使用以下工具创建或配置 VNet：
@@ -57,7 +57,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>在我的 VNet 中可以使用哪些地址范围？
 建议使用[RFC 1918](https://tools.ietf.org/html/rfc1918)中枚举的地址范围，IETF 已为专用的不可路由地址空间设置了此范围：
 * 10.0.0.0 - 10.255.255.255（10/8 前缀）
-* 172.16.0.0-172.31.255.255 （172.16./12 前缀）
+* 172.16.0.0-172.31.255.255 (172.16./12 前缀) 
 * 192.168.0.0 - 192.168.255.255（192.168/16 前缀）
 
 其他地址空间可能会起作用，但可能会产生意外的副作用。
@@ -86,22 +86,22 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 支持的最小 IPv4 子网为 /29，最大为 /8（使用 CIDR 子网定义）。  IPv6 子网的大小必须是 /64。  
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>是否可以使用 VNet 将 VLAN 引入 Azure 中？
-不能。 VNet 是第 3 层重叠。 Azure 不支持任何第 2 层语义。
+错误。 VNet 是第 3 层重叠。 Azure 不支持任何第 2 层语义。
 
 ### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>是否可以在 VNet 和子网上指定自定义路由策略？
 是的。 你可以创建路由表并将其关联到子网。 有关 Azure 中的路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md#custom-routes)。
 
 ### <a name="do-vnets-support-multicast-or-broadcast"></a>VNet 是否支持多播或广播？
-不能。 不支持多播和广播。
+错误。 不支持多播和广播。
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>在 VNet 中可以使用哪些协议？
 可以在 VNet 中使用 TCP、UDP 和 ICMP TCP/IP 协议。 VNet 内支持单播，但通过单播（源端口 UDP/68/目标端口 UDP/67）和为主机保留的 UDP 源端口 65330 的动态主机配置协议 (DHCP) 除外。 VNet 中会阻止多播、广播、在 IP 里面封装 IP 的数据包以及通用路由封装 (GRE) 数据包。 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>是否可以在 VNet 中 ping 默认路由器？
-不能。
+错误。
 
 ### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>是否可以使用 tracert 诊断连接？
-不能。
+错误。
 
 ### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>创建 VNet 后是否可以添加子网？
 是的。 可以随时向 VNet 中添加子网，只要子网地址范围不是另一子网的一部分并且虚拟网络的地址范围中有剩余的可用空间。
@@ -149,7 +149,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 是的。 可以基于每个 VM 或云服务设置 DNS 服务器，以替代默认网络设置。 但是，建议尽可能使用网络级别的 DNS。
 
 ### <a name="can-i-bring-my-own-dns-suffix"></a>是否可以引入我自己的 DNS 后缀？
-不能。 不能为 VNet 指定自定义的 DNS 后缀。
+错误。 不能为 VNet 指定自定义的 DNS 后缀。
 
 ## <a name="connecting-virtual-machines"></a>连接虚拟机
 
@@ -165,7 +165,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 * **公共：** 选择性地分配给附加到通过 Azure 资源管理器部署模型部署的 VM 的 NIC。 可以使用静态或动态分配方法分配地址。 通过经典部署模型部署的所有 VM 和云服务角色实例位于分配有*动态*公共虚拟 IP (VIP) 地址的云服务中。 可以选择性地将某个公共*静态* IP 地址（称为[保留 IP 地址](virtual-networks-reserved-public-ip.md)）分配为 VIP。 可将公共 IP 地址分配给通过经典部署模型部署的单个 VM 或云服务角色实例。 这些地址称为[实例级公共 IP (ILPIP](virtual-networks-instance-level-public-ip.md) 地址，可动态分配。
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>是否可为以后创建的 VM 保留专用 IP 地址？
-不能。 无法保留专用 IP 地址。 如果某个专用 IP 地址可用，则 DHCP 服务器会将其分配给某个 VM 或角色实例。 该 VM 可能是你希望将专用 IP 地址分配到的 VM，也可能不是。 但是，可将已创建的 VM 的专用 IP 地址更改为任何可用的专用 IP 地址。
+错误。 无法保留专用 IP 地址。 如果某个专用 IP 地址可用，则 DHCP 服务器会将其分配给某个 VM 或角色实例。 该 VM 可能是你希望将专用 IP 地址分配到的 VM，也可能不是。 但是，可将已创建的 VM 的专用 IP 地址更改为任何可用的专用 IP 地址。
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>VNet 中 VM 的专用 IP 地址是否会变化？
 视情况而定。 如果 VM 是通过资源管理器部署的，则无论 IP 地址是使用静态还是动态分配方法分配的，该 IP 地址都不会变化。 如果 VM 是通过经典部署模型部署的，则动态 IP 地址在 VM 处于停止（解除分配）状态后重新启动时可能会变化。 当删除通过任一部署模型部署的 VM 时，会从该 VM 释放地址。
@@ -180,7 +180,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 是的。 可在[如何将 VM 或角色实例移到其他子网](virtual-networks-move-vm-role-to-subnet.md)一文中找到详细信息。
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>是否可以为我的 VM 配置静态 MAC 地址？
-不能。 MAC 地址不能以静态方式配置。
+错误。 MAC 地址不能以静态方式配置。
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>创建 VM 后，其 MAC 地址是否将保持不变？
 是的，通过 Resource Manager 和经典部署模型部署的 VM 在被删除之前，其 MAC 地址将保持不变。 以前，如果停止（解除分配）VM，将会释放 MAC 地址，但现在，即使 VM 处于解除分配状态，也会保留其 MAC 地址。 除非网络接口被删除或者分配给主网络接口的主 IP 配置的专用 IP 地址发生更改，否则该 MAC 地址会始终分配给该网络接口。 
@@ -209,7 +209,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 
 ### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>如何从 VNet 限制对 Azure PaaS 资源的访问？
 
-通过某些 Azure PaaS 服务（例如 Azure 存储和 Azure SQL 数据库）部署的资源，可以使用虚拟网络服务终结点或 Azure 专用链路限制对 VNet 的网络访问。 有关详细信息，请参阅[虚拟网络服务终结点概述](virtual-network-service-endpoints-overview.md)、 [Azure 专用链接概述](../private-link/private-link-overview.md)
+通过某些 Azure PaaS (服务（例如 Azure 存储和 Azure SQL 数据库) ）部署的资源可通过使用虚拟网络服务终结点或 Azure 专用链路限制对 VNet 的网络访问。 有关详细信息，请参阅[虚拟网络服务终结点概述](virtual-network-service-endpoints-overview.md)、 [Azure 专用链接概述](../private-link/private-link-overview.md)
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>是否可以将服务移入和移出 VNet？
 否。 无法将服务移入和移出 VNet。 若要将某个资源移动到另一个 VNet，必须删除并重新部署该资源。
@@ -257,7 +257,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 - Service Fabric
 - SQL MI
 - API 管理
-- Active Directory 域服务（添加）
+- Active Directory 域服务 (添加) 
 - 逻辑应用
 - HDInsight
 -   Azure Batch
@@ -278,13 +278,13 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 是的。 可以跨订阅和跨区域进行 VNet 对等互连。
 
 ### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>是否可以将两个地址范围匹配或重叠的 VNet 对等互连？
-不能。 要启用 VNet 对等互连，地址空间不得重叠。
+错误。 要启用 VNet 对等互连，地址空间不得重叠。
 
 ### <a name="how-much-do-vnet-peering-links-cost"></a>VNet 对等互连链接的费用如何？
 创建 VNet 对等互连连接不收费。 跨对等互连连接进行数据传输收费。 请[参阅此文](https://azure.microsoft.com/pricing/details/virtual-network/)。
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet 对等互连流量是否加密？
-不能。 对等互连 VNet 中的资源之间的流量是专用的，处于隔离状态。 它始终局限在 Microsoft 主干上。
+错误。 对等互连 VNet 中的资源之间的流量是专用的，处于隔离状态。 它始终局限在 Microsoft 主干上。
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>为什么我的对等互连连接处于“已断开连接”** 状态？
 ** 删除某个 VNet 对等互连链接时，VNet 对等互连连接就会进入“已断开”状态。 必须删除两个链接才能重新建立成功的对等互连连接。
@@ -358,7 +358,7 @@ VNet 服务终结点有助于保护 Azure 服务资源。 VNet 资源通过网�
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>如果虚拟网络和 Azure 服务资源属于不同的 AD 租户，是否可打开 VNet 服务终结点并设置 VNet ACL？
 否，AD 租户不支持 VNet 服务终结点和 VNet ACL。
 
-### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>是否可以通过 Azure 虚拟网络网关（VPN）或 ExpressRoute 网关连接到本地设备的 IP 地址通过 VNet 服务终结点访问 Azure PaaS 服务？
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>可以通过 Azure 虚拟网络网关连接的本地设备 IP 地址 (VPN) 或 ExpressRoute 网关通过 VNet 服务终结点访问 Azure PaaS 服务吗？
 默认情况下，无法从本地网络访问在虚拟网络中保护的 Azure 服务资源。 要允许来自本地的流量，还必须允许来自本地或 ExpressRoute 的公共（通常为 NAT）IP 地址。 可通过 Azure 服务资源的 IP 防火墙配置添加这些 IP 地址。
 
 ### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>是否可以使用 VNet 服务终结点功能将对 Azure 服务的访问限定到一个虚拟网络内的多个子网或多个虚拟网络上的多个子网？
@@ -401,14 +401,13 @@ VNet 服务终结点有助于保护 Azure 服务资源。 VNet 资源通过网�
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) 是否支持 VNet 服务终结点？
 
-Azure Active Directory (Azure AD) 不以本机方式支持服务终结点。 可在[此处](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)查看支持 VNet 服务终结点的 Azure 服务的完整列表。 请注意，服务支持服务终结点下列出的“Microsoft.AzureActiveDirectory”标记用于支持 ADLS Gen1 的服务终结点。 对于 ADLS 第1代，Azure Data Lake Storage Gen1 的虚拟网络集成利用虚拟网络和 Azure Active Directory （Azure AD）之间的虚拟网络服务终结点安全，在访问令牌中生成附加的安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。 详细了解[Azure Data Lake Store 第1代 VNet 集成](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Azure Active Directory (Azure AD) 不以本机方式支持服务终结点。 可在[此处](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)查看支持 VNet 服务终结点的 Azure 服务的完整列表。 请注意，服务支持服务终结点下列出的“Microsoft.AzureActiveDirectory”标记用于支持 ADLS Gen1 的服务终结点。 对于 ADLS 第1代，Azure Data Lake Storage Gen1 的虚拟网络集成利用虚拟网络和 Azure Active Directory (Azure AD) 之间的虚拟网络服务终结点安全，在访问令牌中生成附加的安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。 详细了解[Azure Data Lake Store 第1代 VNet 集成](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>对于我可以从 VNet 中设置多少个 VNet 服务终结点有什么限制吗？
 虚拟网络中的 VNet 服务终结点总数没有限制。 对于 Azure 服务资源（例如 Azure 存储帐户），服务可能会对用于保护资源的子网数目强制施加限制。 下表显示了一些示例限制： 
 
-|||
-|---|---|
 |Azure 服务| 对 VNet 规则的限制|
+|---|---|
 |Azure 存储| 100|
 |Azure SQL| 128|
 |Azure SQL 数据仓库|  128|

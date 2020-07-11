@@ -5,11 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何排查和解决在启用和使用 Azure Dev Spaces 时遇到的常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b97bab7182e382801a57bcf7dd6f325e665438b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309639"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232485"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 故障排除
 
@@ -131,7 +132,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 当你在包含用这�
 
 ### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>在对 AKS 虚拟节点执行“正在等待容器映像生成...”步骤时超时
 
-如果你尝试使用 Dev Spaces 运行服务，此服务又配置为在 [AKS 虚拟节点](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上运行，就会发生这种超时。 Dev Spaces 暂不支持在虚拟节点上生成或调试服务。
+如果你尝试使用 Dev Spaces 运行服务，此服务又配置为在 [AKS 虚拟节点](../aks/virtual-nodes-portal.md)上运行，就会发生这种超时。 Dev Spaces 暂不支持在虚拟节点上生成或调试服务。
 
 如果使用 `--verbose` 开关运行 `azds up`，或在 Visual Studio 中启用详细日志记录，便会看到其他详细信息：
 

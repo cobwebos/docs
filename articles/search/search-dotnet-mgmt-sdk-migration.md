@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 74183eafbddada0125f739a1ac4bfed0286f9cd1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 436c2620b83513a2b814e050b2ae6407930b082d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187483"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232043"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>升级 Azure 搜索 .NET 管理 SDK 的版本
 
@@ -27,7 +27,7 @@ ms.locfileid: "86187483"
 | SDK 版本 | 对应的 REST API 版本 | 功能添加或行为更改 |
 |-------------|--------------------------------|-------------------------------------|
 | [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api 版本 = 2020-30-20 | 添加端点安全 (IP 防火墙并与[Azure Private Link](../private-link/private-endpoint-overview.md)集成)  |
-| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api 版本 = 2019-10-01 | 可用性改进 |
+| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api 版本 = 2019-10-01 | 可用性改进。  (GET) 终止的[列表查询密钥](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice)的重大更改。 |
 | [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api 版本 = 2015-08-19  | 第一个版本 |
 
 ## <a name="how-to-upgrade"></a>如何升级

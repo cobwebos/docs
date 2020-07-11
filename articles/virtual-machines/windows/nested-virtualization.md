@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 543ed51cc10cce017e0e57a1a351ce382f1ca35f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083502"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232315"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -155,7 +155,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
   
 3. 输入作用域的名称和说明，然后单击“下一步”  。
   
-4. 定义 DHCP 服务器的 IP 范围（例如，192.168.0.100 到192.168.0.200）。
+4. 为 DHCP 服务器定义 IP 范围 (例如，192.168.0.100 to 192.168.0.200) 。
   
 5. 单击“下一步”  直到出现“默认网关”页。 输入之前创建的 IP 地址（例如，192.168.0.1）作为默认网关，然后单击“添加”  。
   
@@ -181,3 +181,4 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 在来宾虚拟机中，打开浏览器并导航到网页。
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
+有关如何在来宾 VM 和 Azure VM 之间启用透明连接的说明，请参阅[此文档](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)。

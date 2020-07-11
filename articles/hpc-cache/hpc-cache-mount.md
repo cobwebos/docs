@@ -6,11 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: fb3e4fd4935afc4869e50ccbc35c53333d43b1df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10f8e92138878381b5267742b8211df81e0c49d4
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515525"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232672"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>装载 Azure HPC 缓存
 
@@ -18,7 +19,7 @@ ms.locfileid: "85515525"
 
 装载命令由以下元素组成：
 
-* 缓存的装入地址之一（列在 "缓存概述" 页上）
+* 缓存的装入地址之一 (列在缓存概述页上) 
 * 创建存储目标时设置的虚拟命名空间路径
 * 要在客户端上使用的本地路径
 * 优化此类 NFS 安装的成功的命令参数
@@ -33,7 +34,7 @@ ms.locfileid: "85515525"
 
 客户端计算机必须能够访问缓存的虚拟网络和专用子网。
 
-例如，在同一虚拟网络中创建客户端 Vm，或者使用终结点、网关或虚拟网络中的其他解决方案从外部访问。 （请注意，除缓存本身以外的任何内容都应承载在缓存的子网中。）
+例如，在同一虚拟网络中创建客户端 Vm，或者使用终结点、网关或虚拟网络中的其他解决方案从外部访问。  (请注意，除缓存本身以外的任何内容都应托管在缓存的子网中。 ) 
 
 ### <a name="install-utilities"></a>安装实用工具
 
@@ -46,7 +47,7 @@ ms.locfileid: "85515525"
 
 在每个客户端上创建本地目录路径以连接到缓存。 为要装入的每个命名空间路径创建一个路径。
 
-示例：`sudo mkdir -p /mnt/hpc-cache-1/target3`
+示例： `sudo mkdir -p /mnt/hpc-cache-1/target3`
 
 Azure 门户中的 "[装入说明](#use-the-mount-instructions-utility)" 页包含一个可供复制的原型命令。
 
@@ -98,7 +99,7 @@ Azure 门户中的 "[装入说明](#use-the-mount-instructions-utility)" 页包�
 
 > sudo 装载 {*options*} *cache_mount_address*：/*namespace_path* *local_path*
 
-示例：
+例如：
 
 ```bash
 root@test-client:/tmp# mkdir hpccache
@@ -114,7 +115,7 @@ root@test-client:/tmp#
 
 > 装载-o hard，proto = tcp，mountproto = tcp，retry = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| 建议装载命令设置 | |
+| 建议装载命令设置 | 描述 |
 --- | ---
 ``hard`` | 软装载到 Azure HPC 缓存与应用程序故障和可能的数据丢失相关联。
 ``proto=tcp`` | 此选项支持适当处理 NFS 网络错误。
@@ -132,7 +133,7 @@ root@test-client:/tmp#
 
 虚拟命名空间路径显示在每个存储目标的 "详细信息" 页上。 单击单个存储目标名称可查看其详细信息，包括关联的聚合命名空间路径。
 
-![存储目标详细信息页的屏幕截图（标头 "更新存储目标"）。 表的 "虚拟命名空间路径" 列中的条目周围有一个突出显示框](media/hpc-cache-view-namespace-paths.png)
+![ (标头 "更新存储目标" ) 的存储目标详细信息页的屏幕截图。 表的 "虚拟命名空间路径" 列中的条目周围有一个突出显示框](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="next-steps"></a>后续步骤
 

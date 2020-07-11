@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168139"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232519"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
 
@@ -27,11 +27,11 @@ ms.locfileid: "77168139"
 
 建议将以下阵列几何结构用于 Microsoft 音频堆栈。 借助更多的麦克风以及与特定应用程序、用户方案和设备外形规格之间的依赖关系，可以改善音源定位和环境噪声的抑制。
 
-|     | 环形阵列 |     | 线性阵列 |     |
+| Mic & 几何 | 环形阵列 | 环形阵列 | 线性阵列 | 线性阵列 |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \# 麦克风数目 | 7 | 4 | 4 | 2 |
-| Geometry | 6 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 3 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 长度 = 120 毫米，间距 = 40 毫米 | 间距 = 40 毫米 |
+| 几何图形 | 6 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 3 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 长度 = 120 毫米，间距 = 40 毫米 | 间距 = 40 毫米 |
 
 应根据上述每个阵列的编号（从 0 开始递增）排列麦克风声道的顺序。 需要为 Microsoft 音频堆栈提供额外的音频播放参考流才能让它执行回声消除。
 
@@ -103,7 +103,7 @@ ms.locfileid: "77168139"
 
 ## <a name="electrical-architecture-considerations"></a>电力体系结构注意事项
 
-在适用的情况下，阵列可以连接到 USB 主机（例如，运行 Microsoft 音频堆栈的 SoC），并可与语音服务或其他应用程序对接。
+在适用的情况下，阵列可能连接到 USB 主机 (例如，在运行 Microsoft 音频堆栈的 SoC) 并将接口连接到语音服务或其他应用程序。
 
 硬件组件（例如 PDM-TDM 转换组件）应确保在再采样器中保留麦克风的动态范围和信噪比。
 

@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080354"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232434"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署数据
 
@@ -25,10 +26,10 @@ ACI 中的数据是使用 256 位 AES 加密法加密和解密的。 此加密�
 
 |    |    Microsoft 管理的密钥     |     客户管理的密钥     |
 |----|----|----|
-|    加密/解密操作    |    Azure    |    Azure    |
-|    密钥存储    |    Microsoft 密钥存储    |    Azure Key Vault    |
-|    密钥轮换责任    |    Microsoft    |    客户    |
-|    密钥访问权限    |    仅限 Microsoft    |    Microsoft、客户    |
+|    **加密/解密操作**    |    Azure    |    Azure    |
+|    **密钥存储**    |    Microsoft 密钥存储    |    Azure Key Vault    |
+|    **密钥轮换职责**    |    Microsoft    |    客户    |
+|    **密钥访问权限**    |    仅限 Microsoft    |    Microsoft、客户    |
 
 本文档的余下内容将介绍使用你自己的密钥（客户管理的密钥）加密 ACI 部署数据所要执行的步骤。 
 

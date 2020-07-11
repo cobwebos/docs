@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.author: victorh
-ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078419"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232077"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -137,11 +137,11 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火墙资源组限制？
 
-是。 防火墙、VNet 和公共 IP 地址都必须位于同一资源组中。
+是的。 防火墙、VNet 和公共 IP 地址都必须位于同一资源组中。
 
 ## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
-不能。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+错误。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>应用程序规则目标 FQDN 中的通配符有什么作用？
 
@@ -160,7 +160,7 @@ Azure 防火墙包含多个采用主动-主动配置的后端节点。  对于�
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>防火墙名称是否存在字符限制？
 
-是。 防火墙名称有 50 个字符的限制。
+是的。 防火墙名称有 50 个字符的限制。
 
 ## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>为何 Azure 防火墙需要 /26 子网大小？
 
@@ -168,7 +168,7 @@ Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时，防火墙子网大小是否需要更改？
 
-不能。 Azure 防火墙不需要大于 /26 的子网。
+错误。 Azure 防火墙不需要大于 /26 的子网。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙吞吐量？
 
@@ -180,7 +180,7 @@ Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps，可以横向扩展到 30 
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>默认情况下，Azure 防火墙是否允许访问 Active Directory？
 
-否。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+不是。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
 
 ## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>能否从基于 Azure 防火墙威胁情报的筛选中排除 FQDN 或 IP 地址？
 
@@ -223,3 +223,7 @@ TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的�
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以部署没有公共 IP 地址的 Azure 防火墙？
 
 不可以。目前，你必须使用公共 IP 地址部署 Azure 防火墙。
+
+## <a name="where-does-azure-firewall-store-customer-data"></a>Azure 防火墙将客户数据存储在何处？
+
+Azure 防火墙不会将客户数据从其部署到的区域中移出或存储。
