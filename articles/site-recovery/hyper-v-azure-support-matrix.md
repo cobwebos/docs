@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/27/2020
+ms.date: 7/10/2020
 ms.author: raynew
-ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132409"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219872"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -32,8 +32,8 @@ ms.locfileid: "86132409"
 
 **Server** | **要求** | **详细信息**
 --- | --- | ---
-Hyper-V（不使用 Virtual Machine Manager 运行） |  Windows Server 2019、Windows Server 2016、带有最新更新的 Windows Server 2012 R2 （包括这些操作系统的服务器核心安装，Windows Server 2019 除外） | 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。
-Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019，Virtual Machine Manager 2016，Virtual Machine Manager 2012 R2 （包括这些操作系统的服务器核心安装，Virtual Machine Manager 2019 除外） | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中托管。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。
+Hyper-V（不使用 Virtual Machine Manager 运行） |  Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 （含最新更新） (包括这些操作系统的服务器核心安装，Windows Server 2019)  | 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。
+Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019，Virtual Machine Manager 2016，Virtual Machine Manager 2012 R2 (包括这些操作系统的服务器核心安装，但 Virtual Machine Manager 2019)  | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中托管。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。
 
 > [!NOTE]
 >
@@ -45,7 +45,7 @@ Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 201
 
 下表汇总了 VM 支持。 Site Recovery 支持在受支持的操作系统上运行的任何工作负荷。
 
- 组件 | **详细信息**
+ **组件** | **详细信息**
 --- | ---
 VM 配置 | 复制到 Azure 的 VM 必须满足 [Azure 要求](#azure-vm-requirements)。
 来宾操作系统 | [Azure 支持](../cloud-services/cloud-services-guestos-update-matrix.md#family-5-releases)的任何来宾 OS。<br/><br/> 不支持 Windows Server 2016 Nano Server。
@@ -62,17 +62,18 @@ VM 配置 | 复制到 Azure 的 VM 必须满足 [Azure 要求](#azure-vm-require
 
 **组件** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
-主机网络：NIC 组合 | 是 | 是
-主机网络：VLAN | 是 | 是
-主机网络：IPv4 | 是 | 是
-主机网络：IPv6 | 否 | 否
-来宾 VM 网络：NIC 组合 | 否 | 否
-来宾 VM 网络：IPv4 | 是 | 是
+主机网络：NIC 组合 | 是 | 适合
+主机网络：VLAN | 是 | 适合
+主机网络：IPv4 | 是 | 适合
+主机网络：IPv6 | 否 | 不适合
+来宾 VM 网络：NIC 组合 | 否 | 不适合
+来宾 VM 网络：IPv4 | 是 | 适合
 来宾 VM 网络：IPv6 | 否 | 是
-来宾 VM 网络：静态 IP (Windows) | 是 | 是
-来宾 VM 网络：静态 IP (Linux) | 否 | 否
-来宾 VM 网络：多 NIC | 是 | 是
-Https Proxy | 否 | 否
+来宾 VM 网络：静态 IP (Windows) | 是 | 适合
+来宾 VM 网络：静态 IP (Linux) | 否 | 不适合
+来宾 VM 网络：多 NIC | 是 | 适合
+Https Proxy | 否 | 不适合
+
 
 
 
@@ -80,15 +81,15 @@ Https Proxy | 否 | 否
 
 **组件** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
-Azure ExpressRoute | 是 | 是
-ILB | 是 | 是
-ELB | 是 | 是
-Azure 流量管理器 | 是 | 是
-多 NIC | 是 | 是
-保留 IP | 是 | 是
-IPv4 | 是 | 是
-保留源 IP 地址 | 是 | 是
-Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是 | 是
+Azure ExpressRoute | 是 | 适合
+ILB | 是 | 适合
+ELB | 是 | 适合
+Azure 流量管理器 | 是 | 适合
+多 NIC | 是 | 适合
+保留 IP | 是 | 适合
+IPv4 | 是 | 适合
+保留源 IP 地址 | 是 | 适合
+Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是 | 适合
 加速网络 | 否 | 否
 
 
@@ -96,59 +97,61 @@ Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是 
 
 **存储** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | --- 
-NFS | 不可用 | NA
-SMB 3.0 | 是 | 是
-SAN (ISCSI) | 是 | 是
-多路径 (MPIO)。 测试时使用的对象：<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | 是 | 是
+NFS | 不可用 | 不可用
+SMB 3.0 | 是 | 适合
+SAN (ISCSI) | 是 | 适合
+多路径 (MPIO)。 测试时使用的对象：<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | 是 | 适合
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM 来宾存储
 
 **存储** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
 VMDK | 不可用 | 不可用
-VHD/VHDX | 是 | 是
+VHD/VHDX | 是 | 适合
 第 2 代 VM | 是 | 是
-EFI/UEFI<br></br>Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 该 VM 应仅运行 Windows Server 2012 及更高版本。 OS 磁盘应该最多有五个分区或更少，OS 磁盘的大小应该小于 300 GB。| 是 | 是
-共享群集磁盘 | 否 | 否
-加密磁盘 | 否 | 否
-NFS | 不可用 | NA
-SMB 3.0 | 否 | 否
+EFI/UEFI<br></br>Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 该 VM 应仅运行 Windows Server 2012 及更高版本。 OS 磁盘应该最多有五个分区或更少，OS 磁盘的大小应该小于 300 GB。| 是 | 适合
+共享群集磁盘 | 否 | 不适合
+加密磁盘 | 否 | 不适合
+NFS | 不可用 | 不可用
+SMB 3.0 | 否 | 不适合
 RDM | 不可用 | 不可用
 磁盘 > 1 TB | 是，最大 4,095 GB | 是，最大 4,095 GB
 磁盘：4K 逻辑和物理扇区 | 不支持：Gen 1/Gen 2 | 不支持：Gen 1/Gen 2
-磁盘：4K 逻辑扇区和 512 字节物理扇区 | 是 |  是
-逻辑卷管理 (LVM)。 仅数据磁盘支持 LVM。 Azure 仅提供单个 OS 磁盘。 | 是 | 是
-包含条带化磁盘的卷 > 1 TB | 是 | 是
-存储空间 | 否 | 否
-热添加/移除磁盘 | 否 | 否
-排除磁盘 | 是 | 是
-多路径 (MPIO) | 是 | 是
+磁盘：4K 逻辑扇区和 512 字节物理扇区 | 是 |  适合
+逻辑卷管理 (LVM)。 仅数据磁盘支持 LVM。 Azure 仅提供单个 OS 磁盘。 | 是 | 适合
+包含条带化磁盘的卷 > 1 TB | 是 | 适合
+存储空间 | 否 | 不适合
+热添加/移除磁盘 | 否 | 不适合
+排除磁盘 | 是 | 适合
+多路径 (MPIO) | 是 | 适合
 
 ## <a name="azure-storage"></a>Azure 存储
 
 **组件** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
-本地冗余存储 | 是 | 是
-异地冗余存储 | 是 | 是
-读取访问异地冗余存储 | 是 | 是
-冷存储 | 否 | 否
-热存储| 否 | 否
-块 Blob | 否 | 否
-静态加密 (SSE)| 是 | 是
+本地冗余存储 | 是 | 适合
+异地冗余存储 | 是 | 适合
+读取访问异地冗余存储 | 是 | 适合
+冷存储 | 否 | 不适合
+热存储| 否 | 不适合
+块 Blob | 否 | 不适合
+静态加密 (SSE)| 是 | 适合
 静态加密 (CMK) <br></br> （仅用于故障转移到托管磁盘）| 是（通过 PowerShell Az 3.3.0 及更高版本模块） | 是（通过 PowerShell Az 3.3.0 及更高版本模块）
-高级存储 | 是 | 是
-标准存储 | 是 | 是
-导入/导出服务 | 否 | 否
+双静态加密 <br></br> （仅用于故障转移到托管磁盘） <br></br> 了解有关[Windows](../virtual-machines/windows/disk-encryption.md)和[Linux](../virtual-machines/linux/disk-encryption.md)支持的区域的详细信息 | 是（通过 PowerShell Az 3.3.0 及更高版本模块） | 是（通过 PowerShell Az 3.3.0 及更高版本模块）
+高级存储 | 适合 | 适合
+标准存储 | 适合 | 是
+导入/导出服务 | 不适合 | 否
 启用了防火墙的 Azure 存储帐户 | 是的。 适用于目标存储和缓存。 | 是的。 适用于目标存储和缓存。
 修改存储帐户 | 否。 启用复制后，无法修改目标 Azure 存储帐户。 若要修改，请禁用然后重新启用灾难恢复。 | 否
+安全传输选项 | 适合
 
 
 ## <a name="azure-compute-features"></a>Azure 计算功能
 
 **功能** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
-可用性集 | 是 | 是
-HUB | 是 | 是  
+可用性集 | 适合 | 适合
+HUB | 是 | 适合  
 托管磁盘 | 是，用于故障转移。<br/><br/> 不支持托管磁盘的故障回复。 | 是，用于故障转移。<br/><br/> 不支持托管磁盘的故障回复。
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
@@ -175,7 +178,7 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 
 **操作** |  **Hyper-V（有 VMM）** | **不包含 VMM 的 Hyper-V**
 --- | --- | ---
-跨资源组移动保管库<br/><br/> 订阅内和跨订阅移动 | 否 | 否
+跨资源组移动保管库<br/><br/> 订阅内和跨订阅移动 | 否 | 不适合
 跨资源组移动存储、网络和 Azure VM<br/><br/> 订阅内和跨订阅移动 | 否 | 否
 
 > [!NOTE]

@@ -17,11 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561186"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220059"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 
@@ -382,7 +383,7 @@ hub.send_baidu_notification(baidu_payload)
 
 如果在初始化 NotificationHub 时启用调试标志，则会显示详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，可从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：
 
-![][1]
+![控制台的屏幕截图，其中包含 "H T P 请求" 和 "响应转储" 的详细信息以及以红色列出的通知结果消息。][1]
 
 例如会出现详细的通知中心结果。
 
@@ -403,7 +404,7 @@ hub.send_baidu_notification(baidu_payload)
 hub.send_windows_notification(wns_payload)
 ```
 
-![][2]
+![控制台的屏幕截图，其中包含有关 H T P P 请求和服务总线通知格式的详细信息，以及以红色列出的 X W 类型值。][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>发送通知指定标记（或标记表达式）
 
@@ -413,7 +414,7 @@ hub.send_windows_notification(wns_payload)
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![][3]
+![控制台的屏幕截图，其中包含有关 H T P P 请求和服务总线通知格式、服务总线通知标记以及以红色列出的 X W 类型值的详细信息。][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>发送通知指定多个标记
 
@@ -424,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![][4]
+![控制台的屏幕截图，其中包含有关 H T P P 请求和服务总线通知格式、服务总线通知标记以及以红色列出的 X W 类型值的详细信息。][4]
 
 ### <a name="templated-notification"></a>模板通知
 
@@ -443,7 +444,7 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![][5]
+![控制台的屏幕截图，其中包含有关 H T P 请求的详细信息，以及以红色列出的内容类型和服务总线通知格式值的详细信息。][5]
 
 ## <a name="next-steps"></a>后续步骤
 

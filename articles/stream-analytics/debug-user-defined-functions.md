@@ -1,28 +1,28 @@
 ---
 title: 在 Azure 流分析中调试用户定义的函数
 description: 本文介绍如何在 Azure 流分析中调试用户定义的函数。
-author: mamccrea
-ms.author: mamccrea
+author: jenssuessmeyer
+ms.author: jenss
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: a6c2e390af39b496a871ae9b5799288ea3609bca
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 46aa9879af4bda1cd4a5e06894ea2d964f838f32
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981497"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181346"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>在 Azure 流分析中调试用户定义的函数 
 
-如果用户定义函数（UDF）无法按预期工作，则需要对其进行调试来找出问题。 当使用[Visual Studio Code](visual-studio-code-local-run-live-input.md)或[Visual Studio](stream-analytics-vs-tools-local-run.md)在本地运行作业时，可以调试流分析作业的 udf。
+如果用户定义函数 (UDF) 不按预期工作，则需要对其进行调试以找出问题。 当使用[Visual Studio Code](visual-studio-code-local-run-live-input.md)或[Visual Studio](stream-analytics-vs-tools-local-run.md)在本地运行作业时，可以调试流分析作业的 udf。
 
 当你在本地对实时输入流运行作业时，它仅模拟在一个节点上执行云 Azure 流分析引擎的操作。 实时数据本地测试不能替代在云中执行的性能和可伸缩性测试，但在功能测试过程中，无需在每次要测试时将作业提交到云中，从而节省了时间。 此外，还将禁用本地运行的时间策略和本地或示例数据，但支持实时数据测试的时间策略。
 
 ## <a name="pick-your-language"></a>选择语言
 
-可以使用 .NET （c #）或 JavaScript 为 Azure 流分析编写 Udf。 
+可以使用 .NET (c # ) 或 JavaScript 为 Azure 流分析编写 Udf。 
 
 ### <a name="functions-in-c"></a>C 中的函数# 
 
@@ -48,14 +48,14 @@ JavaScript 是用于在流分析中创建函数的另一个选项。 JavaScript 
 
 下面的示例演示如何在[Visual Studio Code](quick-create-vs-code.md)中使用集成运行时环境中的某些限制调试 JavaScript udf。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备知识
 
 在开始之前，请确保 Azure 流分析项目包含以下各项：
 
 * 输入 
 * 输出 
-* 流分析查询（. script.asaql） 
-* 流分析作业配置（JobConfig.js）
+* 流分析查询 ( script.asaql)  
+* 流分析作业配置 ( # B0 on) 
 * JavaScript UDF
 
 ### <a name="prepare-files"></a>准备文件
@@ -94,7 +94,7 @@ exports.data = methods;
 
 ### <a name="debug-user-defined-aggregates"></a>调试用户定义的聚合 
 
-您可以使用 JavaScript Udf 的 debug 方法来调试用户定义聚合（UDA）。 在此示例中，将 UDA 添加到*script.asaql*查询文件和测试文件。
+您可以使用 JavaScript Udf 的 debug 方法，调试 (UDA) 的用户定义聚合。 在此示例中，将 UDA 添加到*script.asaql*查询文件和测试文件。
 
 与 UDF 一样，你包括对 UDA 的调用，以确保在进行更改后将编译项目。 
 

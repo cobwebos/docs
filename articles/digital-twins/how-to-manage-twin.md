@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 707cfb2e9bea3286daa92ea54f7bb9659a455caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390510"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142373"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
-环境中的实体由[数字孪生](concepts-twins-graph.md)表示。 管理数字孪生可能包括创建、修改和删除。 若要执行这些操作，可以使用[**DigitalTwins api**](how-to-use-apis-sdks.md)、 [.Net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 数字孪生 CLI](how-to-use-cli.md)。
+环境中的实体由[数字孪生](concepts-twins-graph.md)表示。 管理数字孪生可能包括创建、修改和删除。 若要执行这些操作，可以使用[**DigitalTwins api**](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 数字孪生 CLI](how-to-use-cli.md)。
 
 本文重点介绍如何管理数字孪生;若要整体处理关系和整数[关系图](concepts-twins-graph.md)，请参阅[操作方法：管理包含关系的双子关系图](how-to-manage-graph.md)。
 
@@ -93,7 +93,7 @@ object result = await client.GetDigitalTwin(id);
 
 若要使用单个 API 调用检索多个孪生，请参阅[如何：查询双子图](how-to-query-graph.md)中的查询 API 示例。
 
-考虑定义*月球*的以下模型（以[数字孪生定义语言（DTDL）](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)编写）：
+请考虑以下模型 (以[数字孪生定义语言编写， (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定义*月球*：
 
 ```json
 {
@@ -122,6 +122,7 @@ object result = await client.GetDigitalTwin(id);
 ```json
 {
   "$dtId": "myMoon-001",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
@@ -146,14 +147,15 @@ object result = await client.GetDigitalTwin(id);
 
 数字克隆的已定义属性在数字克隆上作为顶级属性返回。 不属于 DTDL 定义的元数据或系统信息将以 `$` 前缀返回。 元数据属性包括：
 * 此 Azure 数字孪生实例中数字输出的 ID，如 `$dtId` 。
-* 节中的其他属性 `$metadata` 。 这包括：
+* `$etag`，由 web 服务器分配的标准 HTTP 字段
+* 节中的其他属性 `$metadata` 。 其中包括：
     - 数字克隆的模型的 DTMI。
-    - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，服务和设备有可能会有分叉状态（例如，当设备处于脱机状态时）。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)。
+    - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，在设备处于) 脱机状态时，服务和设备可能会 (分叉状态。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)。
     - 服务特定的元数据，如 IoT 中心或 Azure 数字孪生。 
 
 您可以使用所选的 JSON 分析库（如）分析返回的 JSON `System.Text.Json` 。
 
-你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 以下是示例：
+你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 下面是一个示例：
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);

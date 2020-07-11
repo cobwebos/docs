@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c8cdb75c821f45fe7fcf0f455145beb2b9be2a55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2760f0d91f7ed1066b0020c4aedc7572af095cfb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734854"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220314"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure Active Directory Azure 云解决方案提供商的域服务部署和管理
 
-Azure 云解决方案提供商（CSP）是针对 Microsoft 合作伙伴的计划，并为各种 Microsoft 云服务提供许可证通道。 通过 Azure CSP，合作伙伴可以管理销售、打理自己的账单关系、提供技术和计费支持以及成为客户的单一联系点。 此外，Azure CSP 还会提供一套完整的工具，包括自助服务门户和相应的 API。 这些工具使 CSP 合作伙伴可以轻松地预配和管理 Azure 资源，并提供针对客户及其订阅的计费。
+Azure 云解决方案提供商 (CSP) 是 Microsoft 合作伙伴的计划，并为各种 Microsoft 云服务提供许可证通道。 通过 Azure CSP，合作伙伴可以管理销售、打理自己的账单关系、提供技术和计费支持以及成为客户的单一联系点。 此外，Azure CSP 还会提供一套完整的工具，包括自助服务门户和相应的 API。 这些工具使 CSP 合作伙伴可以轻松地预配和管理 Azure 资源，并提供针对客户及其订阅的计费。
 
 [合作伙伴中心门户](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)是所有 Azure CSP 合作伙伴的入口点，提供丰富的客户管理功能、自动处理等功能。 Azure CSP 合作伙伴可以通过多种方式使用合作伙伴中心功能，包括基于 Web 的 UI、PowerShell 及多种 API 调用。
 
-下图概括说明了 CSP 模型的工作原理。 此处，Contoso 有一个 Azure Active Directory （Azure AD）租户。 他们与一个 CSP 之间有合作伙伴关系，该 CSP 在其 Azure CSP 订阅中部署和管理资源。 Contoso 还可能拥有常规（直接）Azure 订阅，由 Contoso 直接支付费用。
+下图概括说明了 CSP 模型的工作原理。 此处，Contoso 的 Azure Active Directory (Azure AD) 租户。 他们与一个 CSP 之间有合作伙伴关系，该 CSP 在其 Azure CSP 订阅中部署和管理资源。 Contoso 还可能拥有常规（直接）Azure 订阅，由 Contoso 直接支付费用。
 
 ![CSP 模型概述](./media/csp/csp_model_overview.png)
 
@@ -37,9 +37,9 @@ CSP 合作伙伴的租户有三个特殊代理组-*管理*代理、*支持人员
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>在 Azure CSP 订阅中使用 Azure AD DS 的优点
 
-Azure Active Directory 域服务（Azure AD DS）提供与 Windows Server Active Directory 域服务完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 过去几十年出现了众多使用此类功能在 AD 基础上运行的应用程序。 许多独立软件供应商 (ISV) 已在客户本地生成和部署应用程序。 这些应用程序很难支持，因为你通常需要访问应用程序所部署到的不同环境。 利用 Azure CSP 订阅，借助 Azure 的规模和灵活性，解决这个问题变得简单多了。
+Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active Directory 域服务完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 过去几十年出现了众多使用此类功能在 AD 基础上运行的应用程序。 许多独立软件供应商 (ISV) 已在客户本地生成和部署应用程序。 这些应用程序很难支持，因为你通常需要访问应用程序所部署到的不同环境。 利用 Azure CSP 订阅，借助 Azure 的规模和灵活性，解决这个问题变得简单多了。
 
-Azure AD DS 支持 Azure CSP 订阅。 你可以将应用程序部署到与客户的 Azure AD 租户关联的 Azure CSP 订阅中。 因此，你的员工（支持人员）可以使用组织的企业凭据来管理、管理和维护部署了你的应用程序的 Vm。
+Azure AD DS 支持 Azure CSP 订阅。 你可以将应用程序部署到与客户的 Azure AD 租户关联的 Azure CSP 订阅中。 因此，你的员工 (支持人员) 可以使用组织的企业凭据来管理、管理和维护部署了你的应用程序的 Vm。
 
 你还可以在客户的 Azure AD 租户中部署 Azure AD DS 托管域。 然后，应用程序会连接到客户的托管域。 应用程序内依赖于 Kerberos/NTLM、LDAP 或[MICROSOFT.DIRECTORYSERVICES API](/dotnet/api/system.directoryservices)的功能无缝地与客户的域配合工作。 最终客户从使用应用程序即服务中受益，无需担心如何维护部署应用程序的基础结构。
 

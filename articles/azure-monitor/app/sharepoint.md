@@ -3,11 +3,12 @@ title: 使用 Application Insights 监视 SharePoint site 站点
 description: 开始使用新检测密钥监视新应用程序
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671437"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221045"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 监视 SharePoint site 站点
 Azure Application Insights 监视应用的可用性、性能和使用情况。 下面介绍如何为 SharePoint 站点设置它。
@@ -48,18 +49,18 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 签出母版页并使用 SharePoint Designer 或任何其他编辑器编辑它。
 
-![](./media/sharepoint/03-master.png)
+![显示如何使用 Sharepoing 设计器或其他编辑器编辑母版页的屏幕截图。](./media/sharepoint/03-master.png)
 
 将代码添加到 </head> 符. 
 
-![](./media/sharepoint/04-code.png)
+![屏幕截图，显示要将代码添加到网站页的位置。](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>或在个别页面上
 要监视一组有限的页面，请将脚本分别添加到每个页面。 
 
 插入 Web 部分并在其中嵌入代码片段。
 
-![](./media/sharepoint/05-page.png)
+![屏幕截图，显示如何添加脚本来监视一组有限的页面。](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>查看关于应用的数据
 重新部署应用。
@@ -68,7 +69,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 第一批事件会显示在“搜索”中。 
 
-![](./media/sharepoint/09-search.png)
+![显示您可以在应用程序中查看的新数据的屏幕截图。](./media/sharepoint/09-search.png)
 
 如果需要更多数据，在几秒后单击“刷新”。
 
@@ -77,7 +78,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 1. 从 Application Insights 中的 Essentials 下拉列表中复制应用的检测密钥。 
 
-    ![](./media/sharepoint/02-props.png)
+    ![屏幕截图显示了从 Application Insights 中的 Essentials 下拉列表复制应用程序的检测。](./media/sharepoint/02-props.png)
 
 1. 在下面代码片段中将“XXXX”替换为检测密钥。 
 2. 将脚本嵌入 SharePoint 应用，而不是从门户获取的代码片段。

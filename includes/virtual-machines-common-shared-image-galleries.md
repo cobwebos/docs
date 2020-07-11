@@ -4,19 +4,19 @@ description: include 文件
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 1ca9d41134bf33a9e007da4b5a56652ccdbd4e22
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218279"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221624"
 ---
-共享映像库是可以帮助你围绕托管映像生成结构和组织的服务。 共享映像库提供：
+共享映像库是一种服务，可帮助你围绕映像构建结构和组织。 共享映像库提供：
 
-- 对映像进行托管式全局复制。
+- 支持映像全局复制。
 - 对映像进行版本控制和分组，以便于管理。
 - 在支持可用性区域的区域中，具有区域冗余存储 (ZRS) 帐户的高可用性映像。 ZRS 提高了针对区域性故障的恢复能力。
 - 高级存储支持 (Premium_LRS)。
@@ -33,7 +33,7 @@ ms.locfileid: "86218279"
 
 | 资源 | 说明|
 |----------|------------|
-| **映像源** | 这是可用于在映像库中创建“映像版本”的资源。 映像源可以是现有的 Azure VM（可以是[通用或专用](#generalized-and-specialized-images)的）、托管映像、快照或其他映像库中的映像版本。 |
+| **映像源** | 这是可用于在映像库中创建“映像版本”的资源。 映像源可以是[通用或专用](#generalized-and-specialized-images)的现有 Azure VM，也可以是托管映像、快照、VHD 或其他映像库中的映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像定义在库中创建，携带有关该映像以及在内部使用该映像的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
@@ -67,7 +67,8 @@ ms.locfileid: "86218279"
 * 标记 - 可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../articles/azure-resource-manager/management/tag-resources.md)。
 * 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 * 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合标准 HDD 磁盘，请将其添加到禁止列表。
-* Hyper-V 代 - 可以指定映像是从第 1 代还是第 2 代 Hyper-V VHD 创建的。
+* Hyper-V 生成 - 可以指定是从第 1 代还是从第 2 代 Hyper-V VHD 创建映像。
+* Marketplace 映像的购买计划信息： `-PurchasePlanPublisher ` 、 `-PurchasePlanName` 和 `-PurchasePlanProduct` 。 有关购买计划信息的详细信息，请参阅[在 Azure marketplace 中查找映像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在创建映像时提供 azure Marketplace 购买计划信息](../articles/virtual-machines/marketplace-images.md)。
 
 ## <a name="generalized-and-specialized-images"></a>通用和专用映像
 
@@ -82,11 +83,7 @@ ms.locfileid: "86218279"
 
 ## <a name="regional-support"></a>区域支持
 
-下表中列出了源区域。 所有公共区域都可以是目标区域，要复制到澳大利亚中部和澳大利亚中部 2，需要将订阅列入允许列表。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
-
-> 澳大利亚中部、中国东部、印度南部、西欧、澳大利亚中部2、中国东部2、东南亚、英国南部、澳大利亚东部、中国北部、日本东部、英国西部、澳大利亚东南部、中国北部2、日本西部、US DoD 中部、巴西南部、东亚、韩国中部、US DoD 东部、加拿大中部、加拿大东部、韩国南部、US Gov 亚利桑那州、加拿大东部、美国东部2、美国中北部、US Gov 德克萨斯州、印度中部、美国东部 2 EUAP、北欧、US Gov 弗吉尼亚州、美国中部、法国中部、美国中南部、美国西部、美国东部、美国西部、美国西部、美国西部、美国西部、美国西部 2 |
-
-
+所有公共区域都可以是目标区域，要复制到澳大利亚中部和澳大利亚中部 2，需要将订阅列入允许列表。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>限制 
 
@@ -132,8 +129,8 @@ ms.locfileid: "86218279"
 
 | 与用户共享     | 共享的映像库 | 映像定义 | 映像版本 |
 |----------------------|----------------------|--------------|----------------------|
-| 共享的映像库 | 是                  | 是          | 是                  |
-| 映像定义     | 否                   | 是          | 是                  |
+| 共享的映像库 | 是                  | 适合          | 适合                  |
+| 映像定义     | 否                   | 适合          | 是                  |
 
 建议在库级别共享以获得最佳体验。 我们建议不要共享单个映像版本。 有关 RBAC 的详细信息，请参阅[使用 RBAC 管理对 Azure 资源的访问权限](../articles/role-based-access-control/role-assignments-portal.md)。
 
@@ -149,7 +146,7 @@ ms.locfileid: "86218279"
 创建后，可对映像库资源进行一些更改。 限制如下：
  
 共享映像库：
-- 说明
+- 描述
 
 映像定义：
 - 建议的 vCPU 数
@@ -233,13 +230,7 @@ ms.locfileid: "86218279"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-是的，支持专用磁盘，因为映像为预览版。 只能使用门户、PowerShell 和 API 从专用映像创建 VM。 
-
-
-使用 [PowerShell 创建专用 VM 的映像](../articles/virtual-machines/image-version-vm-powershell.md)。
-
-使用门户创建 [Windows](../articles/virtual-machines/linux/shared-images-portal.md) 或 [Linux] (../articles/virtual-machines/linux/shared-images-portal.md) 映像。 
-
+是，可以使用[CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md)、 [PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md)或 API 从专用映像创建 VM。 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可以将其移动到其他订阅中？
 

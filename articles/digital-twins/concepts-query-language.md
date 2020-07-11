@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3196004015046b4d3d2789745c80d323bacdced9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 6da539ccd8ad293aed402a4a6d130b6701e7b9c2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985235"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187109"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>关于 Azure 数字孪生的查询语言
 
@@ -28,12 +28,12 @@ Azure 数字孪生针对大容量图形提供丰富的查询功能。 使用类�
 * 通过数字孪生的属性获取孪生。
 * 通过数字孪生接口获取孪生。
 * 按关系属性获取孪生。
-* 获取对多个关系类型（ `JOIN` 查询）的孪生。 允许的数量有限制 `JOIN` （一个级别用于公共预览版）。
+*  (查询) 的多个关系类型上获取孪生 `JOIN` 。 `JOIN`对于公共预览) ，允许 (一级的数量存在限制。
 * 使用自定义函数 `IS_OF_MODEL(twinCollection, twinTypeName)` ，这允许基于克隆的[模型](concepts-models.md)进行筛选。 它支持继承。
-* 使用上述任意组合（ `AND` 、 `OR` 、 `NOT` 运算符）。
 * 使用标量函数： `IS_BOOL` 、 `IS_DEFINED` 、 `IS_NULL` 、 `IS_NUMBER` 、 `IS_OBJECT` 、 `IS_PRIMITIVE` `IS_STRING` `STARTS_WITH` `ENDS_WITH` 、、和。
-* 使用查询比较运算符： `AND` / `OR` / `NOT` 、 `IN` / `NOT IN` 、 `STARTSWITH` / `ENDSWITH` 、 `=` 、 `!=` `<` `>` `<=` `>=` 、、、和。
-* 使用延续：查询对象使用页面大小（最大为100）实例化。 可以通过重复调用方法，一次检索一页中的数字孪生 `nextAsTwin` 。
+* 使用查询比较运算符： `IN` / `NIN` 、 `=` 、 `!=` 、 `<` 、 `>` 、 `<=` 、 `>=` 。
+* 使用上述任意组合 (`AND` 、 `OR` 、 `NOT` 运算符) 。
+* 使用延续：查询对象的实例化页面大小最多为 100)  (。 可以通过在后续对 API 的调用中提供继续标记，一次检索一页中的数字孪生。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d8229864acc80a27994ae3c795213dc2a65d22db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385563"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170116"
 ---
-# <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>配置 itsme OpenID Connect （OIDC）与 Azure Active Directory B2C
+# <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>配置 itsme OpenID Connect (OIDC) 与 Azure Active Directory B2C
 
-Itsme 数字标识应用允许你安全地登录，无需读卡器、密码、双因素身份验证或多个 PIN 代码。 Itsme 应用使用已验证的标识提供强大的客户身份验证。 本文介绍如何使用客户端机密用户流策略将 Azure AD B2C authentication 与 itsme OpenID Connect （OIDC）集成。
+Itsme 数字标识应用允许你安全地登录，无需读卡器、密码、双因素身份验证或多个 PIN 代码。 Itsme 应用使用已验证的标识提供强大的客户身份验证。 本文介绍如何使用客户端机密用户流策略将 Azure AD B2C authentication 与 itsme OpenID Connect (OIDC) 集成。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 若要开始，你将需要：
 
@@ -40,7 +40,7 @@ Itsme 数字标识应用允许你安全地登录，无需读卡器、密码、�
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-|   |   |
+| 步骤 | 说明 |
 |------|------|
 |1     | 在网站或应用程序中，通过在 Azure AD B2C 用户流中进行调整来包括 "**使用 Itsme 登录**" 按钮。 当用户单击此按钮时，将启动交互流。  |
 |2     | Azure AD B2C 通过向 itsme 客户端密码 API 发送授权请求来启动 OpenID connect 流。 众所周知的/OpenID 配置终结点包含有关端点的信息。  |
@@ -74,20 +74,20 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
 
-2. 在 " **Azure 服务**" 下，选择 " **Azure AD B2C** " （或选择 "**更多服务**"，并使用 "**所有服务**" 搜索框来搜索*Azure AD B2C*）。
+2. 在 " **Azure 服务**" 下，选择 " **Azure AD B2C** (或选择"**更多服务**"，并使用"**所有服务**"搜索框来搜索*Azure AD B2C*) 。
 
 3. 选择“标识提供者”，然后选择“新建 OpenID Connect 提供程序”。
 
 4. 在窗体中填写以下信息：
 
-   |Property | 值 |
+   |属性 | 值 |
    |------------ |------- |
    | 名称 | itsme |
-   | 元数据 URL | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>其中 `<environment>` ，可以是 `e2e` （测试环境）或 `prd` （生产）  |
+   | 元数据 URL | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>其中 `<environment>` `e2e` (测试环境) 或 `prd` (生产)   |
    | ClientID     | 你的**客户端 ID**（也称为**合作伙伴代码**）  |
    | 客户端机密 | 你的**client_secret** |
    | 范围  | openid service： YOURSERVICECODE profile email [phone] [address]  |
-   |响应类型 | 代码 |
+   |响应类型 | code |
    |响应模式 | 查询 |
    |域提示 | *可以将此空* |
    |UserID | sub |
@@ -116,7 +116,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 8. 选择 "**属性**"，并调整以下值：
 
-   * 将**访问权限 & ID 令牌生存期（分钟）** 更改为**5**。
+   * 更改**访问 & ID 令牌生存期 (分钟) **为**5**。
    * 更改**刷新令牌的滑动窗口生存期****不到过期**时间。
 
 ### <a name="register-an-application"></a>注册应用程序

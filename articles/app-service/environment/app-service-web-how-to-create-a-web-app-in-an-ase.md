@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701824"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220688"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
@@ -27,13 +28,13 @@ ms.locfileid: "84701824"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 本教程假设已创建一个应用服务环境。 如果尚未创建，请参阅[创建应用服务环境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 1. 在 [Azure 门户](https://portal.azure.com/)中，单击“创建资源”>“Web + 移动”>“Web 应用”****。 
    
-    ![][1]
+    ![屏幕截图，显示在 Azure 门户中创建 web 应用的位置。][1]
 2. 选择订阅。  
    
     如果有多个订阅，请注意，若要在应用服务环境中创建应用，需要使用创建环境时所用的订阅来创建应用。 
@@ -46,7 +47,7 @@ ms.locfileid: "84701824"
    
     可以通过查看计划名称下注释的位置，来识别 ASE 中的应用服务计划。  
    
-    ![][5]
+    ![屏幕截图显示了如何查看 ASE 中的应用服务计划。][5]
    
     如果想要使用已存在于应用服务环境中的应用服务计划，请选择该计划。 如果想要创建新的应用服务计划，请参阅本教程的以下部分：[在应用服务环境中创建应用服务计划](#createplan)。
 5. 输入 Web 应用的名称，并单击“创建”****。 
@@ -68,18 +69,18 @@ ms.locfileid: "84701824"
    
     由于应用服务环境本质上是专用的部署位置，因此它会显示在“位置”下。 
    
-    ![][2]
+    ![显示用于选择所需 ASE 的位置选取器的屏幕截图。][2]
    
     在位置选择器中选择 ASE 之后，应用服务计划创建 UI 将更新。  位置现在显示 ASE 系统的位置及其所在区域，而辅助角色池选择器将取代定价计划选择器。  
    
-    ![][3]
+    ![在位置选取器中选择 ASE 后显示 ASE 系统详细信息的屏幕截图。][3]
 
 ### <a name="selecting-a-worker-pool"></a>选择辅助角色池
 通常，在 Azure 应用服务中和应用服务环境外，根据所选专用定价计划的不同，共有 3 种计算大小可用。  同理，对于 ASE，最多可以定义 3 个辅助角色池，并指定用于该辅助角色池的计算实例大小。  对 ASE 的租户来说，这意味着他们不是根据应用服务计划的计算实例大小来选择定价计划，而是选择所谓的辅助角色池**。  
 
 辅助角色池选择项 UI 会在名称下方显示用于该辅助角色池的计算实例大小。  可用数量是指该池中可用的计算实例数。  此值仅指未被占用的实例数量，而总池实际上可能具有比此数值更多的实例。  如需调整应用服务环境以添加更多计算资源，请参阅[配置应用服务环境](app-service-web-configure-an-app-service-environment.md)。
 
-![][4]
+![显示 "辅助池" 窗格的屏幕截图，可在其中选择 ASE 的辅助角色池。][4]
 
 在本示例中，只能看到两个可用辅助角色池。 这是因为 ASE 管理员仅将主机分配到了这两个辅助角色池中。  将 VM 分配到第三个辅助池时，则会显示该池。  
 

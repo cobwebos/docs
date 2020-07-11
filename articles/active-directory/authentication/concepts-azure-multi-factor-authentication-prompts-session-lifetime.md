@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77f2e78fa3df6c7ac6a422a03335f93d2a19d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255745"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169334"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>优化重新验证的提示并了解 Azure 多重身份验证的会话生存期
 
-Azure Active Directory （Azure AD）具有多个设置，用于确定用户需要重新进行身份验证的频率。 这种重新验证可能会导致首个因素，如 password、FIDO 或无密码 Microsoft Authenticator 或执行多重身份验证（MFA）。 你可以根据自己的环境和所需的用户体验来配置这些身份验证设置。
+Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要重新进行身份验证的频率。 这种重新验证可能会导致首个因素（如 password、FIDO 或无密码 Microsoft Authenticator）或 (MFA) 执行多重身份验证。 你可以根据自己的环境和所需的用户体验来配置这些身份验证设置。
 
 本文详细介绍了推荐的配置，以及不同的设置的工作方式和相互交互。
 
@@ -29,11 +29,11 @@ Azure Active Directory （Azure AD）具有多个设置，用于确定用户需�
 若要为用户授予正确的安全性和易用性，并要求他们以适当的频率登录，我们建议使用以下配置：
 
 * 如果有 Azure AD Premium：
-    * 使用[托管设备](../devices/overview.md)或[无缝 SSO](../hybrid/how-to-connect-sso.md)跨应用程序启用单一登录（SSO）。
+    * 使用[托管设备](../devices/overview.md)或[无缝 SSO](../hybrid/how-to-connect-sso.md)跨应用程序启用单一登录 (SSO) 。
     * 如果需要重新进行身份验证，请使用条件访问[登录频率策略](../conditional-access/howto-conditional-access-session-lifetime.md)。
     * 对于从非托管设备或移动设备方案登录的用户，使用条件访问来启用持久性浏览器会话和登录频率策略。
 * 如果你有 Office 365 应用许可证或免费 Azure AD 层：
-    * 使用[托管设备](../devices/overview.md)或[无缝 SSO](../hybrid/how-to-connect-sso.md)跨应用程序启用单一登录（SSO）。
+    * 使用[托管设备](../devices/overview.md)或[无缝 SSO](../hybrid/how-to-connect-sso.md)跨应用程序启用单一登录 (SSO) 。
     * 保持启用 "*保持登录*" 选项，并指导用户接受该选项。
 
 我们的研究表明，这些设置适用于大多数租户。 这些设置的一些组合（如 "*记住 MFA* " 和 "*签名*"）可能会导致提示用户进行身份验证。 一般的身份验证提示对于用户工作效率是不正确的，并且可以使其更易受到攻击。
@@ -44,7 +44,7 @@ Azure Active Directory （Azure AD）具有多个设置，用于确定用户需�
 
 ### <a name="evaluate-session-lifetime-policies"></a>评估会话生存期策略
 
-如果没有任何会话生存期设置，则浏览器会话中不存在永久性 cookie。 每次用户关闭并打开浏览器时，都会收到重新进行身份验证的提示。 在 Office 客户端中，默认时间段为90天的滚动窗口。 如果用户已重置了其密码，或在超过90天处于非活动状态，则通过此默认 Office 配置，用户需要通过所有必需的因素（第一个和第二个因素）进行身份验证。
+如果没有任何会话生存期设置，则浏览器会话中不存在永久性 cookie。 每次用户关闭并打开浏览器时，都会收到重新进行身份验证的提示。 在 Office 客户端中，默认时间段为90天的滚动窗口。 如果用户已重置了其密码，或在超过90天处于非活动状态，则对于此默认 Office 配置，用户需要通过)  (第一个和第二个因素的所有必需因素进行身份验证。
 
 在 Azure AD 中，对会话生存期最严格的策略决定用户需要重新进行身份验证的时间。 请参考以下方案：
 
@@ -55,7 +55,7 @@ Azure Active Directory （Azure AD）具有多个设置，用于确定用户需�
 
 ### <a name="managed-devices"></a>托管设备
 
-使用 Azure AD 联接或混合 Azure AD 联接加入到 Azure AD 的设备接收[主刷新令牌（PRT）](../devices/concept-primary-refresh-token.md)以在应用程序中使用单一登录（SSO）。 此 PRT 允许用户在设备上登录一次，并允许 IT 人员确保满足安全和合规性标准。 如果用户需要在已联接的设备上针对某些应用或方案更频繁地登录，可以使用[条件性访问登录频率](../conditional-access/howto-conditional-access-session-lifetime.md)来实现此目的。
+使用 Azure AD 联接或混合 Azure AD 联接加入到 Azure AD 的设备接收[主刷新令牌 (PRT) ](../devices/concept-primary-refresh-token.md) ，以便在应用程序之间使用单一登录 (SSO) 。 此 PRT 允许用户在设备上登录一次，并允许 IT 人员确保满足安全和合规性标准。 如果用户需要在已联接的设备上针对某些应用或方案更频繁地登录，可以使用[条件性访问登录频率](../conditional-access/howto-conditional-access-session-lifetime.md)来实现此目的。
 
 ### <a name="show-option-to-remain-signed-in"></a>显示保持登录的选项
 
@@ -122,10 +122,10 @@ Azure Active Directory （Azure AD）具有多个设置，用于确定用户需�
 
 下表汇总了基于许可证的建议：
 
-|                              | Azure AD Free 和 Office 365 应用 | Azure AD Premium |
+|              | Azure AD Free 和 Office 365 应用 | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
-| SSO                          | 对于非托管设备， [Azure AD 联接](../devices/concept-azure-ad-join.md)或[混合 Azure AD 联接](../devices/concept-azure-ad-join-hybrid.md)或[无缝 SSO](../hybrid/how-to-connect-sso.md) 。 | Azure AD 加入<br />混合 Azure AD 加入 |
-| 重新身份验证设置    | 保持登录                  | 使用条件性访问策略进行登录频率和持续浏览器会话 |
+| **SSO**                      | 对于非托管设备， [Azure AD 联接](../devices/concept-azure-ad-join.md)或[混合 Azure AD 联接](../devices/concept-azure-ad-join-hybrid.md)或[无缝 SSO](../hybrid/how-to-connect-sso.md) 。 | Azure AD 加入<br />混合 Azure AD 加入 |
+| **重新身份验证设置** | 保持登录                  | 使用条件性访问策略进行登录频率和持续浏览器会话 |
 
 ## <a name="next-steps"></a>后续步骤
 

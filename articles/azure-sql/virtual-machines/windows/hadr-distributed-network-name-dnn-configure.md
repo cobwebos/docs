@@ -1,6 +1,6 @@
 ---
-title: 配置分布式网络名称（DNN）
-description: 了解如何配置分布式网络名称（DNN），以将流量路由到 Azure VM 故障转移群集实例（FCI）上的 SQL Server。
+title: " (DNN 配置分布式网络名称) "
+description: 了解如何配置分布式网络名称 (DNN) ，以将流量路由到 Azure VM 故障转移群集实例上的 SQL Server (FCI) 。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,23 +14,23 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae9b6bf41d90b0a9111414302b2eafea3c8332d3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965469"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169810"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>配置 FCI 的分布式网络名称 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-在 Azure 虚拟机上，分布式网络名称（DNN）用于将流量路由到相应的群集资源。 它提供一种更简单的方法来连接到 SQL Server 故障转移群集实例（FCI），而不需要使用 Azure 负载均衡器。 此功能目前以预览版提供，仅适用于 SQL Server 2019 CU2 和更高版本以及 Windows Server 2016 及更高版本。 
+在 Azure 虚拟机上，分布式网络名称 (DNN) 用于将流量路由到相应的群集资源。 它提供一种更简单的方法来连接到 SQL Server 故障转移群集实例 (FCI) ，而不是虚拟网络名称 (VNN) ，无需使用 Azure 负载均衡器。 此功能目前以预览版提供，仅适用于 SQL Server 2019 CU2 和更高版本以及 Windows Server 2016 及更高版本。 
 
-本文介绍如何配置 DNN，以使用 Azure Vm 上的 SQL Server 将流量路由到 Fci，以实现高可用性和灾难恢复（HADR）。 
+本文介绍如何配置 DNN，以使用 Azure Vm 上的 SQL Server 将流量路由到 Fci，以实现高可用性和灾难恢复 (HADR) 。 
 
 ## <a name="prerequisites"></a>先决条件
 
-在完成本文中的步骤之前，应已具备以下条件：
+在完成本文中的步骤之前，应已做好以下准备：
 
 - 确定分布式网络名称是适用[于 HADR 解决方案的连接选项](hadr-cluster-best-practices.md#connectivity)。
 - 已配置[故障转移群集实例](failover-cluster-instance-overview.md)。 
@@ -81,6 +81,10 @@ Set-ClusterParameter -Name DnsName -Value FCIDNN
 
 客户端将 `FCIDNN` 在连接到 SQL SERVER FCI 时输入其连接字符串。 
 
+   > [!WARNING]
+   > 请勿删除当前虚拟网络名称 (VNN) ，因为它是 FCI 基础结构的必需组件。 
+
+
 ### <a name="rename-the-vnn"></a>重命名 VNN 
 
 如果你有现有的虚拟网络名称，并且希望客户端继续使用该值连接到 SQL Server FCI，则必须将当前 VNN 重命名为占位符值。 重命名当前的 VNN 后，可以将 DNN 的 DNS 名称值设置为 VNN。 
@@ -122,7 +126,7 @@ Start-ClusterResource -Name dnn-demo
 
 ## <a name="restart-sql-server-instance"></a>重新启动 SQL Server 实例 
 
-使用故障转移群集管理器重启 SQL Server 实例。 请执行这些步骤：
+使用故障转移群集管理器重启 SQL Server 实例。 执行以下步骤：
 
 1. 在故障转移群集管理器中转到 SQL Server 资源。
 1. 右键单击 SQL Server 资源，并使其脱机。 
@@ -149,7 +153,7 @@ Start-ClusterResource -Name dnn-demo
 
 ## <a name="test-connectivity"></a>测试连接
 
-若要测试连接，请登录到位于同一虚拟网络中的另一个虚拟机。 打开**SQL Server Management Studio** ，并使用 DNN DNS 名称连接到 SQL Server FCI。
+若要测试连接，请登录到同一虚拟网络中的另一个虚拟机。 打开**SQL Server Management Studio** ，并使用 DNN DNS 名称连接到 SQL Server FCI。
 
 如果需要，可以[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
 

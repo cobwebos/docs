@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477849"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201960"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -71,15 +71,21 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 让我们看看应用程序如何验证它从 Microsoft 标识平台接收的令牌。 单租户应用程序通常采用类似于下面的终结点值：
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com
+```
 
 并使用该值构造元数据 URL（在本例中为 OpenID Connect），例如：
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+```
 
 以下载用于验证令牌的两项关键信息：租户的签名密钥和颁发者值。 每个 Azure AD 租户使用以下格式的唯一颁发者值：
 
+```http
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
 
 其中，GUID 值是租户的租户 ID 重命名安全版本。 如果选择上面的 `contoso.onmicrosoft.com` 元数据链接，就可以在文档中看到此颁发者值。
 
@@ -87,7 +93,9 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 由于 /common 终结点既不对应于租户也不是颁发者，因此在检查 /common 的元数据中的颁发者值时，它具有的是一个模板化的 URL 而不是实际值：
 
+```http
     https://sts.windows.net/{tenantid}/
+```
 
 因此，多租户应用程序无法仅通过将元数据中的颁发者值与令牌中的 `issuer` 值进行匹配来验证令牌。 多租户应用程序需要一个逻辑来根据颁发者值的租户 ID 部分来确定哪些颁发者值有效、哪些颁发者值无效。 
 
@@ -135,7 +143,9 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 如果逻辑应用程序包含两个或更多个应用程序注册（例如独立的客户端和资源），这可能造成问题。 如何先将资源添加到客户租户中？ Azure AD 通过实现在单个步骤中连接客户端和资源来涵盖了此情况。 用户在同意页面上会看到由客户端和资源请求的权限的总和。 若要启用此行为，资源的应用程序注册必须在其[应用程序清单][AAD-App-Manifest]中以 `knownClientApplications` 形式包含客户端的应用 ID。 例如：
 
+```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```
 
 在本文末尾的[相关内容](#related-content)部分的多层本机客户端调用 Web API 示例中对此进行了演示。 下图针对在单个租户中注册的多层应用提供了同意概览。
 

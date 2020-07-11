@@ -7,24 +7,25 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6b6da2a15441564ef0b67e76ee5a0e0c85839a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609310"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142411"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生及其克隆图形
 
 在 Azure 数字孪生解决方案中，环境中的实体由 Azure**数字孪生**表示。 数字克隆是一个自定义[模型](concepts-models.md)的实例。 它可以通过**关系**连接到其他数字孪生以形成一个克隆**图形**：此双子图形是整个环境的表示形式。
 
 > [!TIP]
-> "Azure 数字孪生" 是指作为一个整体的 Azure 服务。 "数字克隆" 或仅 "克隆（s）" 指的是服务实例中的各个克隆节点。
+> "Azure 数字孪生" 是指作为一个整体的 Azure 服务。 "数字双子 (s) " 或仅 " () " 的 "克隆" 指的是服务实例中的各个不同的节点。
 
 ## <a name="creating-digital-twins"></a>创建数字孪生
 
 你需要将*模型*上传到服务，然后才能在 Azure 数字孪生实例中创建数字输出。 模型描述了一组属性、遥测消息和特定的非特定克隆可以具有的关系，等等。 有关在模型中定义的信息类型，请参阅[概念：自定义模型](concepts-models.md)。
 
-创建和上载模型后，客户端应用可以创建类型的实例;这是一种数字克隆。 例如，在创建*楼层*模型后，可以创建一个或多个使用此类型的数字孪生（如名为*GroundFloor*的*楼层*类型，另一个称为*Floor2*，等等）。 
+创建和上载模型后，客户端应用可以创建类型的实例;这是一种数字克隆。 例如，在创建*楼层*模型后，可以创建一个或多个使用此 (类型的数字孪生，例如名为*GroundFloor*的*楼层*类型，另一个称为*Floor2*，依此类推。 ) 。 
 
 下面是使用[DigitalTwins api](how-to-use-apis-sdks.md)来实例化类型*空间*的克隆的客户端代码的代码段。
 
@@ -62,7 +63,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 
 孪生通过其关系连接到一个克隆图形中。 克隆可以具有的关系定义为其模型的一部分。  
 
-例如，模型*楼层*可能定义一个*contains*关系，该关系面向孪生的类型*空间*。 借助此定义，Azure 数字孪生将允许你创建*包含*从任何*楼层*到任何*空间*的源（包括*房间*子类型的孪生）的关系。 
+例如，模型*楼层*可能定义一个*contains*关系，该关系面向孪生的类型*空间*。 借助此定义，Azure 数字孪生将允许你创建*包含*从任何*楼层*到任何*空间*的源的关系， (包括) *空间*子类型的孪生。 
 
 下面是一些客户端代码示例，它使用[DigitalTwins api](how-to-use-apis-sdks.md)在名为*GroundFloor*的*楼层*类型数字硬编码与称为*咖啡馆*的*房间*类型数字硬编码之间建立关系。
 
@@ -84,7 +85,7 @@ try
 }
 ```
 
-此过程的结果是在图形中通过边缘（其关系）连接的一组节点（数字孪生）。
+此过程的结果是一组节点 (数字孪生) 通过边缘 (它们在关系图中的关系) 连接的。
 
 ## <a name="json-representations-of-graph-elements"></a>Graph 元素的 JSON 表示形式
 
@@ -97,8 +98,9 @@ try
 | 字段名 | 说明 |
 | --- | --- |
 | `$dtId` | 一个用户提供的字符串，表示数字硬编码的 ID |
-| `$conformance` | 包含此数字克隆的一致性状态的枚举（*符合*、*不符合*、*未知*） |
-| `{propertyName}` | JSON 中的属性的值（ `string` 、数字类型或对象） |
+| `$etag` | Web 服务器分配的标准 HTTP 字段 |
+| `$conformance` | 包含此数字克隆的一致性状态的枚举 (*相容*、*不相容*、*未知*)  |
+| `{propertyName}` | JSON 中的属性的值 (`string` 、数字类型或对象)  |
 | `$relationships` | 关系集合的路径的 URL。 如果数字双子没有传出关系边缘，则不存在此字段。 |
 | `$metadata.$model` | 可有可无表示此数字输出的模型接口 ID |
 | `$metadata.{propertyName}.desiredValue` | [仅用于可写属性]指定属性的所需值。 |
@@ -107,7 +109,7 @@ try
 | `$metadata.{propertyName}.ackCode` | [仅用于可写属性]`ack`实现数字克隆的设备应用返回的代码 |
 | `$metadata.{propertyName}.ackDescription` | [仅用于可写属性]`ack`实现数字克隆的设备应用返回的说明 |
 | `{componentName}` | 一个 JSON 对象，包含组件的属性值和元数据，类似于根对象的属性值和元数据。 即使组件没有属性，此对象也存在。 |
-| `{componentName}.{propertyName}` | JSON 中的组件属性的值（ `string` 、数字类型或对象） |
+| `{componentName}.{propertyName}` | JSON 中的组件属性的值 (`string` 、数字类型或对象)  |
 | `{componentName}.$metadata` | 组件的元数据信息，类似于根级别`$metadata` |
 
 下面是一个 JSON 对象格式的数字克隆示例：
@@ -115,6 +117,7 @@ try
 ```json
 {
   "$dtId": "Cafe",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "Temperature": 72,
   "Location": {
     "x": 101,
@@ -162,10 +165,11 @@ try
 | 字段名 | 说明 |
 | --- | --- |
 | `$relationshipId` | 一个用户提供的表示此关系的 ID 的字符串。 此字符串在源数字克隆的上下文中是唯一的，这也意味着 `sourceId`  +  `relationshipId` 在 Azure 数字孪生实例的上下文中是唯一的。 |
+| `$etag` | Web 服务器分配的标准 HTTP 字段 |
 | `$sourceId` | 源数字克隆的 ID |
 | `$targetId` | 目标数字克隆的 ID |
 | `$relationshipName` | 关系的名称 |
-| `{propertyName}` | 可有可无此关系的属性的值，以 JSON （ `string` ，number 类型或对象）为依据 |
+| `{propertyName}` | 可有可无此关系的属性的值，以 JSON (`string` 、数字类型或对象)  |
 
 下面是格式为 JSON 对象的关系的示例：
 

@@ -32,9 +32,9 @@ ms.locfileid: "79237660"
 
 - 服务管理员
 - 共同管理员
-- “所有者”
+- 所有者
 - 参与者
-- 读取器
+- 读者
 - 计费读者
 
 这些角色可以在 [Azure 门户](https://portal.azure.com/)中访问账单信息。 分配了这些角色的人员也可以使用[计费 API](usage-rate-card-overview.md) 以编程方式获取发票和使用详细信息。
@@ -50,19 +50,19 @@ ms.locfileid: "79237660"
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com/)，
 
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 在“成本管理 + 计费”中进行搜索。
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. 在左侧窗格中选择“订阅”。  根据你的访问权限，可能需要选择计费范围，然后选择“订阅”  。
+1. 在左侧窗格中选择“订阅”。 根据你的访问权限，可能需要选择计费范围，然后选择“订阅”。
 
     ![显示选择订阅的屏幕截图](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. 选择“发票”  ，然后选择“访问发票”  。
+1. 选择“发票”，然后选择“访问发票”。
 
     ![显示如何委托对发票的访问权限的屏幕截图](./media/manage-billing-access/aa-optin01.png)
 
-1. 选择“启用”  ，然后进行保存。
+1. 选择“启用”，然后进行保存。
 
     ![屏幕截图，显示用于委托对发票的访问权限的开关](./media/manage-billing-access/aa-optinallow01.png)
 
@@ -76,28 +76,28 @@ ms.locfileid: "79237660"
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com/)，
 
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 在“成本管理 + 计费”中进行搜索。
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. 在左侧窗格中选择“订阅”。  根据你的访问权限，可能需要选择计费范围，然后选择“订阅”  。
+1. 在左侧窗格中选择“订阅”。 根据你的访问权限，可能需要选择计费范围，然后选择“订阅”。
 
     ![显示选择订阅的屏幕截图](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. 选择“访问控制 (IAM)”  。
-1. 从页面顶部选择“添加”。 
+1. 选择“访问控制 (IAM)”。
+1. 从页面顶部选择“添加”。
 
     ![显示单击“添加角色分配”的屏幕截图](./media/manage-billing-access/billing-click-add-role-assignment.png)
 
-1. 在“角色”  下拉列表中，选择“账单读取者”  。
-1. 在“选择”文本框中，键入要添加的用户的名称或电子邮件。 
+1. 在“角色”下拉列表中，选择“账单读取者”。
+1. 在“选择”文本框中，键入要添加的用户的名称或电子邮件。
 1. 选择用户。
-1. 选择“保存”。 
+1. 选择“保存”。
     ![显示单击“添加角色分配”的屏幕截图](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. 片刻之后，为用户分配了订阅的“账单读取者”角色。
 
-如果你是 EA 客户，则帐户所有者或部门管理员可以将“账单读取者”角色分配给团队成员。 但是，企业管理员必须在企业门户中启用“AO 视图费用”或“DA 视图费用”策略，该账单读取者才能查看部门或帐户的账单信息。  
+如果你是 EA 客户，则帐户所有者或部门管理员可以将“账单读取者”角色分配给团队成员。 但是，企业管理员必须在企业门户中启用“AO 视图费用”或“DA 视图费用”策略，该账单读取者才能查看部门或帐户的账单信息。 
 
 ## <a name="check-the-type-of-your-billing-account"></a>检查计费帐户的类型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]

@@ -1,9 +1,9 @@
 ---
 title: 通过 Oracle 云基础结构连接 Azure ExpressRoute |Microsoft Docs
-description: 使用 Oracle 云基础结构（OCI） FastConnect 连接 Azure ExpressRoute，实现跨云 Oracle 应用程序解决方案
+description: 连接 Azure ExpressRoute 和 Oracle 云基础结构 (OCI) FastConnect 以启用跨云 Oracle 应用程序解决方案
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -12,16 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
-ms.author: borisb
-ms.openlocfilehash: 70556cbbfefd6ad22ef96ee16065209031ea456c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 95f1f7b42b88baaab6d89192f226ca67962544fb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683757"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220467"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>设置 Azure 和 Oracle 云基础结构之间的直接互连  
 
-为了创建[集成的多云体验](oracle-oci-overview.md)，Microsoft 和 Oracle 通过[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)提供 Azure 与 oracle 云基础结构（OCI）之间的直接互连。 通过 ExpressRoute 和 FastConnect 互连，客户可以在两个云之间体验低延迟、高吞吐量、专用直接连接。
+为了创建[集成的多云体验](oracle-oci-overview.md)，Microsoft 和 Oracle 通过[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)在 Azure 和 oracle 云基础结构之间提供直接互连 (OCI) 。 通过 ExpressRoute 和 FastConnect 互连，客户可以在两个云之间体验低延迟、高吞吐量、专用直接连接。
 
 > [!IMPORTANT]
 > 在 2020 年 5 月之前，Oracle 将认证，在使用 Azure/Oracle 云互连解决方案时，这些应用程序可以在 Azure 中运行。
@@ -35,7 +36,7 @@ ms.locfileid: "81683757"
 
 ![跨云网络连接](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 * 若要在 Azure 和 OCI 之间建立连接，必须具有有效的 Azure 订阅和活动的 OCI 租户。
 
@@ -53,10 +54,10 @@ ms.locfileid: "81683757"
     ![ExpressRoute 服务密钥](media/configure-azure-oci-networking/exr-service-key.png)
 
     > [!IMPORTANT]
-    > 预配 ExpressRoute 线路后，将立即对 ExpressRoute 收费计费（即使**未设置****提供程序状态**）。
+    > 预配 ExpressRoute 线路后，将立即为 ExpressRoute 收费计费 (即使**未**) **提供提供程序状态**。
 
 1. 划分2个专用 IP 地址空间/30，它们不会与 Azure 虚拟网络或 OCI 虚拟云网络 IP 地址空间重叠。 我们会将第一个 IP 地址空间称为主地址空间，并将第二个 IP 地址空间引用为辅助地址空间。 记下配置 FastConnect 线路时所需的地址。
-1. 创建动态路由网关（.DRG）。 创建 FastConnect 线路时需要用到它。 有关详细信息，请参阅[动态路由网关](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm)文档。
+1.  (.DRG) 创建动态路由网关。 创建 FastConnect 线路时需要用到它。 有关详细信息，请参阅[动态路由网关](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm)文档。
 1. 在 Oracle 租户下创建 FastConnect 线路。 有关详细信息，请参阅[Oracle 文档](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)。
   
     * 在 "FastConnect 配置" 下，选择 " **Microsoft Azure： ExpressRoute**作为提供程序。
@@ -64,7 +65,7 @@ ms.locfileid: "81683757"
     * 选择要设置的带宽。 为了获得最佳性能，带宽必须与创建 ExpressRoute 线路时选择的带宽匹配。
     * 在 "**提供程序服务密钥**" 中，粘贴 ExpressRoute 服务密钥。
     * 使用前一步骤中的第一个/30 个专用 IP 地址空间来划分**主 BGP Ip 地址**和**辅助 bgp ip**地址的第二/30 个专用 ip 地址空间。
-        * 将 Oracle BGP IP 地址（主要和次要）的两个范围的第一个可用地址分配给客户 BGP IP 地址（来自 FastConnect）。 第一个可用的 IP 地址是/30 地址空间中的第二个 IP 地址（Microsoft 保留第一个 IP 地址）。
+        * 为 Oracle BGP IP 地址分配两个范围的第一个可用地址， (主) 和辅助，以及从 FastConnect 角度)  (的客户 BGP IP 地址的第二个地址。 第一个可用 IP 地址是/30 地址空间中的第二个 IP 地址， (第一个 IP 地址由 Microsoft) 保留。
     * 单击“创建”。
 1. 使用路由表通过动态路由网关完成将 FastConnect 链接到 Oracle 租户下的虚拟云网络。
 1. 导航到 Azure 并确保 ExpressRoute 线路的**提供程序状态**已更改为 "已**设置**"，并确保已设置**Azure 专用**类型的对等互连。 这是以下步骤的先决条件。
@@ -89,7 +90,7 @@ Microsoft 创建了 Terraform 脚本，用于启用网络互连的自动部署�
 
 ## <a name="monitoring"></a>监视
 
-在这两个云上安装代理，你可以利用 Azure[网络性能监视器（NPM）](../../../expressroute/how-to-npm.md)来监视端到端网络的性能。 NPM 可帮助你轻松识别网络问题，并帮助消除这些问题。
+在这两个云上安装代理，你可以利用 Azure[网络性能监视器 (NPM) ](../../../expressroute/how-to-npm.md)来监视端到端网络的性能。 NPM 可帮助你轻松识别网络问题，并帮助消除这些问题。
 
 ## <a name="delete-the-interconnect-link"></a>删除互连链接
 

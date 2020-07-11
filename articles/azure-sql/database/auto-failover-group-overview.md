@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 2/10/2020
-ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/09/2020
+ms.openlocfilehash: a4624d16f29834e8948a7bbc7ef882041727a823
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982973"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171867"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -239,7 +239,7 @@ ms.locfileid: "85982973"
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>在不同订阅中的托管实例之间创建故障转移组
 
-可以在两个不同的订阅中的 SQL 托管实例之间创建故障转移组。 使用 PowerShell API 时，可以通过 `PartnerSubscriptionId` 为辅助 SQL 托管实例指定参数来执行此操作。 使用 REST API 时，`properties.managedInstancePairs` 参数中包含的每个实例 ID 都可以有自己的订阅 ID。
+可以在两个不同订阅中的 SQL 托管实例之间创建故障转移组，前提是订阅与同一个[Azure Active Directory 租户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)相关联。 使用 PowerShell API 时，可以通过 `PartnerSubscriptionId` 为辅助 SQL 托管实例指定参数来执行此操作。 使用 REST API 时，`properties.managedInstancePairs` 参数中包含的每个实例 ID 都可以有自己的订阅 ID。
   
 > [!IMPORTANT]
 > Azure 门户不支持在不同订阅之间创建故障转移组。 此外，对于跨不同订阅和/或资源组的现有故障转移组，故障转移无法通过门户从主 SQL 托管实例中手动启动。 改为从异地辅助实例启动它。
@@ -320,7 +320,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ### <a name="using-failover-groups-and-virtual-network-rules"></a>使用故障转移组和虚拟网络规则
 
-如果使用[虚拟网络服务终结点和规则](vnet-service-endpoint-rule-overview.md)来限制对 sql 数据库或 sql 托管实例中的数据库的访问，请注意，每个虚拟网络服务终结点仅适用于一个 Azure 区域。 终结点不允许其他区域接受来自该子网的通信。 因此，只有部署在同一区域中的客户端应用程序才能连接到主数据库。 由于故障转移导致 SQL 数据库客户端会话重路由到不同（辅助）区域中的服务器，因此，如果来源于该区域之外的客户端，这些会话将会失败。 出于此原因，如果在虚拟网络规则中包含参与的服务器或实例，则无法启用自动故障转移策略。 若要支持手动故障转移，请执行以下步骤：
+如果使用[虚拟网络服务终结点和规则](vnet-service-endpoint-rule-overview.md)来限制对 sql 数据库或 sql 托管实例中的数据库的访问，请注意，每个虚拟网络服务终结点仅适用于一个 Azure 区域。 终结点不允许其他区域接受来自该子网的通信。 因此，只有部署在同一区域中的客户端应用程序才能连接到主数据库。 由于故障转移会导致 SQL 数据库客户端会话重路由到不同 (辅助) 区域中的服务器，因此，如果源自该区域之外的客户端，则这些会话将会失败。 出于此原因，如果在虚拟网络规则中包含参与的服务器或实例，则无法启用自动故障转移策略。 若要支持手动故障转移，请执行以下步骤：
 
 1. 在次要区域中预配应用程序前端组件（Web 服务、虚拟机等）的冗余副本
 2. 为主服务器和辅助服务器分别配置[虚拟网络规则](vnet-service-endpoint-rule-overview.md)
@@ -354,7 +354,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 - SQL 托管实例的两个实例需要在不同的 Azure 区域中。
 - SQL 托管实例的两个实例需要是相同的服务层，并且具有相同的存储大小。
-- SQL 托管实例的辅助实例必须为空（无用户数据库）。
+- SQL 托管实例的第二个实例必须为空 (不) 任何用户数据库。
 - SQL 托管实例实例使用的虚拟网络需要通过[VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或[Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)连接。 当两个虚拟网络通过本地网络连接时，请确保没有任何防火墙规则阻止端口 5022 和 11000-11999。 不支持全局 VNet 对等互连。
 - 两个 SQL 托管实例 Vnet 不能有重叠的 IP 地址。
 - 需要设置网络安全组 (NSG)，使端口 5022 和端口范围 11000~12000 保持打开，以便能够从其他托管实例的子网建立入站和出站连接。 目的是允许实例之间的复制流量。

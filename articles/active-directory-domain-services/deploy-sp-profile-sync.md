@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734786"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220263"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>配置 Azure Active Directory 域服务以支持 SharePoint Server 的用户配置文件同步
 
-SharePoint Server 包括同步用户配置文件的服务。 此功能允许将用户配置文件存储在一个中心位置，并可跨多个 SharePoint 站点和场进行访问。 若要配置 SharePoint Server 用户配置文件服务，必须在 Azure Active Directory 域服务（Azure AD DS）托管域中授予适当的权限。 有关详细信息，请参阅[SharePoint Server 中的用户配置文件同步](https://technet.microsoft.com/library/hh296982.aspx)。
+SharePoint Server 包括同步用户配置文件的服务。 此功能允许将用户配置文件存储在一个中心位置，并可跨多个 SharePoint 站点和场进行访问。 若要配置 SharePoint Server 用户配置文件服务，必须在 Azure Active Directory 域服务中授予适当的权限 (Azure AD DS) 托管域。 有关详细信息，请参阅[SharePoint Server 中的用户配置文件同步](https://technet.microsoft.com/library/hh296982.aspx)。
 
 本文介绍如何配置 Azure AD DS 以允许 SharePoint Server 用户配置文件同步服务。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需要拥有以下资源和权限才能完成本文中的操作：
 
@@ -42,18 +42,18 @@ SharePoint Server 包括同步用户配置文件的服务。 此功能允许将�
 
 ## <a name="service-accounts-overview"></a>服务帐户概述
 
-在托管域中，名为 " **AAD DC 服务帐户**" 的安全组作为 "*用户*" 组织单位（OU）的一部分存在。 此安全组的成员具有以下委托权限：
+在托管域中，名为 " *AAD DC 服务帐户*" 的安全组作为 "*用户*" 组织单位 (OU) 的一部分存在。 此安全组的成员具有以下委托权限：
 
 - 根 DSE 上的 "**复制目录更改**" 特权。
-- 对*配置*命名上下文（容器）的 "**复制目录更改**" 权限 `cn=configuration` 。
+-  (容器) 的*配置*命名上下文中**复制目录更改**特权 `cn=configuration` 。
 
-**AAD DC 服务帐户**安全组也是内置组**Windows 2000 兼容访问权限**的成员。
+*AAD DC 服务帐户*安全组也是内置组*Windows 2000 兼容访问权限*的成员。
 
 添加到此安全组后，将向 SharePoint Server 用户配置文件同步服务的服务帐户授予所需的权限才能正常工作。
 
 ## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>启用 SharePoint Server 用户配置文件同步支持
 
-SharePoint 服务器的服务帐户需要足够的权限来复制对目录所做的更改，并让 SharePoint Server 用户配置文件同步正常工作。 若要提供这些权限，请将用于 SharePoint 用户配置文件同步的服务帐户添加到 " **AAD DC 服务帐户**" 组。
+SharePoint 服务器的服务帐户需要足够的权限来复制对目录所做的更改，并让 SharePoint Server 用户配置文件同步正常工作。 若要提供这些权限，请将用于 SharePoint 用户配置文件同步的服务帐户添加到 " *AAD DC 服务帐户*" 组。
 
 在 Azure AD DS 管理虚拟机中，完成以下步骤：
 

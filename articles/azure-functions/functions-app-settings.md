@@ -38,7 +38,7 @@ Application Insights 的连接字符串。 `APPLICATIONINSIGHTS_CONNECTION_STRIN
 
 默认情况下，[函数代理](functions-proxies.md)使用快捷方式将 API 调用从代理直接发送到相同函数应用中的函数。 使用此快捷方式，而不是创建新的 HTTP 请求。 此设置允许您禁用该快捷方式行为。
 
-|密钥|值|说明|
+|密钥|值|描述|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|使用指向本地函数应用中的函数的后端 URL 的调用不会直接发送到函数。 相反，请求会定向回函数应用的 HTTP 前端。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|使用指向本地函数应用中的函数的后端 URL 的调用将直接转发给函数。 这是默认值。 |
@@ -261,7 +261,7 @@ _仅限 Windows_。
 
 允许您设置 function app 的时区。 
 
-|键|OS|示例值|
+|密钥|OS|示例值|
 |---|--|------------|
 |网站 \_ 时区 \_|Windows|东部标准时间|
 |网站 \_ 时区 \_|Linux|美洲/New_York|

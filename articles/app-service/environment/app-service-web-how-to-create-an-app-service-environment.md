@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477797"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220569"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>如何创建应用服务环境 v1 
 
@@ -40,11 +40,11 @@ ms.locfileid: "80477797"
 
 1. 提供 ASE 的名称。 为 ASE 指定的名称将用于在 ASE 中创建的应用。 如果 ASE 的名称为 appsvcenvdemo，则子域名称将是：*appsvcenvdemo.p.azurewebsites.net*。 因此，如果创建了名为 *mytestapp* 的应用，则可在 *mytestapp.appsvcenvdemo.p.azurewebsites.net* 中访问它。 不能在 ASE 名称中使用空格。 如果在名称中使用大写字符，域名将为该名称的全小写形式。 如果使用 ILB，则不在子域中使用 ASE 名称，但会在 ASE 创建过程中显式声明该名称。
    
-    ![][1]
+    ![显示如何 (ASE) 创建应用服务环境的屏幕截图。][1]
 2. 选择订阅。 用于 ASE 的订阅还将应用于在该 ASE 中创建的所有应用。 不能将 ASE 放入位于其他订阅中的 VNet。
 3. 选择或指定新的资源组。 用于 ASE 的资源组必须与用于 VNet 的资源组相同。 如果选择预先存在的 VNet，则 ASE 的资源组选择会更新，以反映 VNet 的资源组。
    
-    ![][2]
+    ![显示如何选择或修改新资源组的屏幕截图。][2]
 4. 选择虚拟网络和位置。 可以选择创建新的 VNet，也可以选择预先存在的 VNet。 如果选择新的 VNet，则可以指定名称和位置。 新 VNet 的地址范围为 192.168.250.0/23，并拥有定义为 192.168.250.0/24 的名称为 **default** 的子网。 还可以直接选择预先存在的经典或 Resource Manager VNet。 选择的 VIP 类型确定是否可以从 Internet（外部）直接访问 ASE，或 ASE 是否使用内部负载均衡器 (ILB)。 若要了解更多详细信息，请参阅[在应用服务环境中使用内部负载均衡器][ILBASE]。 如果选择 "外部" VIP 类型，则可以选择创建系统时所用的外部 IP 地址数，以便 IP SSL 目的。 如果选择内部，则需要指定 ASE 要使用的子域。 可以将 ASE 部署到使用** 公用地址范围*或* RFC1918 地址空间（即，专用地址）的虚拟网络。 若要使用具有公用地址范围的虚拟网络，需要提前创建 VNet。 如果选择预先存在的 VNet，需要在 ASE 创建期间创建新的子网。 **不能在门户中使用预先创建的子网。如果使用 resource manager 模板创建 ASE，则可以创建具有预先存在的子网的 ASE。** 若要从模板创建 ASE，请使用此处的信息：[从模板创建应用服务环境][ILBAseTemplate]和[从模板创建 ILB 应用服务环境][ASEfromTemplate]。
 
 ### <a name="details"></a>详细信息

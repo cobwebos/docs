@@ -1,17 +1,17 @@
 ---
-title: 管理 StorSimple 卷（Update 3）
+title: " (Update 3) 管理 StorSimple 卷"
 description: 介绍了如何添加、修改、监视和删除 StorSimple 卷，以及在必要时如何使其脱机。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508242"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204448"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 设备管理器服务管理卷（Update 3 或更高版本）
 
@@ -51,7 +51,7 @@ StorSimple 卷可以是：
 
 参阅下表了解每种设备与卷类型的最大预配容量。 （请注意，本地固定卷无法在虚拟设备上使用。）
 
-|  | 分层卷大小上限 | 本地固定卷大小上限 |
+| 类型 | 分层卷大小上限 | 本地固定卷大小上限 |
 | --- | --- | --- |
 | **物理设备** | | |
 | 8100 |64 TB |8 TB |

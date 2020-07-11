@@ -9,24 +9,24 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 285f5aabe32013a629eebb150e55ba343150f589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0880f697ceea9c10a070ede0a73235022ce0529d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734837"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220283"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>部署 Azure AD 应用程序代理以安全访问 Azure Active Directory 域服务托管域中的内部应用程序
 
-通过 Azure AD 域服务（Azure AD DS），可以将本地运行的旧应用程序直接迁移到 Azure。 然后 Azure Active Directory （AD）应用程序代理通过安全地发布 Azure AD DS 托管域的内部应用程序部分来帮助你支持远程辅助角色，以便可以通过 internet 访问它们。
+通过 Azure AD 域服务 (Azure AD DS) ，你可以将本地运行的旧应用程序迁移到 Azure。 Azure Active Directory (AD) 应用程序代理通过安全地发布 Azure AD DS 托管域的内部应用程序部分来帮助你支持远程辅助角色，以便可以通过 internet 访问它们。
 
 如果你不熟悉 Azure AD 应用程序代理并想要了解详细信息，请参阅[如何提供对内部应用程序的安全远程访问](../active-directory/manage-apps/application-proxy.md)。
 
 本文介绍如何创建和配置 Azure AD 应用程序代理连接器，以提供对托管域中的应用程序的安全访问。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需要拥有以下资源和权限才能完成本文中的操作：
 
@@ -40,9 +40,9 @@ ms.locfileid: "84734837"
 
 ## <a name="create-a-domain-joined-windows-vm"></a>创建已加入域的 Windows VM
 
-若要将流量路由到环境中运行的应用程序，请安装 Azure AD 应用程序代理连接器组件。 此 Azure AD 应用程序代理连接器必须安装在加入托管域的 Windows Server 虚拟机（VM）上。 对于某些应用程序，你可以部署多个服务器，每个服务器都安装了连接器。 此部署选项提供更好的可用性，并可帮助处理较重的身份验证负载。
+若要将流量路由到环境中运行的应用程序，请安装 Azure AD 应用程序代理连接器组件。 此 Azure AD 应用程序代理连接器必须安装在加入托管域 (VM) 上的 Windows Server 虚拟机上。 对于某些应用程序，你可以部署多个服务器，每个服务器都安装了连接器。 此部署选项提供更好的可用性，并可帮助处理较重的身份验证负载。
 
-运行 Azure AD 应用程序代理连接器的 VM 必须位于已启用 Azure AD DS 的相同或对等互连虚拟网络上。 然后，承载使用应用程序代理发布的应用程序的 Vm 还必须部署在同一 Azure 虚拟网络上。
+运行 Azure AD 应用程序代理连接器的 VM 必须位于与托管域相同或对等互连的虚拟网络上。 然后，承载使用应用程序代理发布的应用程序的 Vm 还必须部署在同一 Azure 虚拟网络上。
 
 若要为 Azure AD 应用程序代理连接器创建 VM，请完成以下步骤：
 
@@ -72,7 +72,7 @@ ms.locfileid: "84734837"
         > [!NOTE]
         > 用于注册连接器的全局管理员帐户必须属于你启用应用程序代理服务的同一目录。
         >
-        > 例如，如果 Azure AD 域为*aaddscontoso.com*，则全局管理员应为 `admin@aaddscontoso.com` 或该域上的另一个有效别名。
+        > 例如，如果 Azure AD 域为*contoso.com*，则全局管理员应为 `admin@contoso.com` 或该域上的另一个有效别名。
 
    * 如果为安装连接器的 VM 启用了 Internet Explorer 增强的安全配置，则可能会阻止注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作，或在安装过程中关闭 Internet Explorer 增强的安全性。
    * 如果连接器注册失败，请参阅[应用程序代理故障排除](../active-directory/manage-apps/application-proxy-troubleshoot.md)。
@@ -86,9 +86,9 @@ ms.locfileid: "84734837"
 
 ## <a name="enable-resource-based-kerberos-constrained-delegation"></a>启用基于资源的 Kerberos 约束委派
 
-如果要使用集成 Windows 身份验证（IWA）对应用程序使用单一登录，请授予 "Azure AD 应用程序代理连接器" 权限，以模拟用户并代表用户发送和接收令牌。 若要授予这些权限，请为连接器配置 Kerberos 约束委派（KCD）以访问托管域上的资源。 由于托管域中没有域管理员权限，因此不能在托管域上配置传统帐户级 KCD。 相反，请使用基于资源的 KCD。
+如果要使用 (IWA) 的集成 Windows 身份验证对应用程序进行单一登录，请授予 Azure AD 应用程序代理连接器权限来模拟用户并代表用户发送和接收令牌。 若要授予这些权限，请为连接器配置 Kerberos 约束委派 (KCD) ，以访问托管域上的资源。 由于托管域中没有域管理员权限，因此不能在托管域上配置传统帐户级 KCD。 相反，请使用基于资源的 KCD。
 
-有关详细信息，请参阅[Azure Active Directory 域服务中的配置 Kerberos 约束委派（KCD）](deploy-kcd.md)。
+有关详细信息，请参阅[在 Azure Active Directory 域服务中配置 Kerberos 约束委派 (KCD) ](deploy-kcd.md)。
 
 > [!NOTE]
 > 你必须登录到作为 Azure AD 租户中*AZURE AD DC administrators*组的成员的用户帐户，才能运行以下 PowerShell cmdlet。
