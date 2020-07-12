@@ -3,12 +3,12 @@ title: 可靠集合简介
 description: Service Fabric 有状态服务提供可靠集合让你编写高度可用、可缩放且低延迟的云应用程序。
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81398427"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245120"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 有状态服务中的可靠集合简介
 
@@ -40,8 +40,8 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
 
 目前，**Microsoft.ServiceFabric.Data.Collections** 包含三个集合：
 
-* [Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx)：表示可复制、事务性和异步的键/值对集合。 类似于 **ConcurrentDictionary**，键和值都可以是任何类型。
-* [可靠队列](https://msdn.microsoft.com/library/azure/dn971527.aspx)：表示可复制、事务性和异步的严格先进先出 (FIFO) 队列。 类似于 **ConcurrentQueue**，值可以是任何类型。
+* [Reliable Dictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2)：表示可复制、事务性和异步的键/值对集合。 类似于 **ConcurrentDictionary**，键和值都可以是任何类型。
+* [可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)：表示可复制、事务性和异步的严格先进先出 (FIFO) 队列。 类似于 **ConcurrentQueue**，值可以是任何类型。
 * [可靠的并发队列](service-fabric-reliable-services-reliable-concurrent-queue.md)：表示用于实现高吞吐量的可复制、事务性和异步的“尽力排序”队列。 它与 **ConcurrentQueue** 类似，值可以是任意类型。
 
 ## <a name="next-steps"></a>后续步骤
@@ -57,4 +57,4 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
   * [可靠状态管理器和配置](service-fabric-reliable-services-configuration.md)
 * 其他
   * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
-  * [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

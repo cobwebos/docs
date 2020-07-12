@@ -5,11 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75377899"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246684"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中还原备份
 
@@ -51,7 +52,7 @@ ms.locfileid: "75377899"
 
 ### <a name="data-restore-in-the-case-of-disaster-recovery"></a>发生灾难恢复时进行数据还原
 
-如果整个 Service Fabric 群集丢失，你可以恢复可靠有状态服务和 Reliable Actors 的分区数据。 使用[包含备份存储详细信息的 GetBackupAPI](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation) 时，可以从列表中选择所需的备份。 备份枚举适用于应用程序、服务或分区。
+如果整个 Service Fabric 群集丢失，你可以恢复可靠有状态服务和 Reliable Actors 的分区数据。 使用[包含备份存储详细信息的 GetBackupAPI](/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation) 时，可以从列表中选择所需的备份。 备份枚举适用于应用程序、服务或分区。
 
 以下示例假设丢失的群集是[为可靠有状态服务和 Reliable Actors 启用定期备份](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)中所述的同一群集。 在本例中，部署的 `SampleApp` 已启用备份策略，备份配置为存储在 Azure 存储中。
 
@@ -165,7 +166,7 @@ Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -Backup
 
 #### <a name="rest-call-using-powershell"></a>使用 Powershell 进行 Rest 调用
 
-使用以下[还原 API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition) 针对备份群集分区请求还原：
+使用以下[还原 API](/rest/api/servicefabric/sfclient-api-restorepartition) 针对备份群集分区请求还原：
 
 ```powershell
 
@@ -305,7 +306,7 @@ $restoreResponse | Format-List
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **Timeout**：_Timeout_ 还原状态表示请求超时。 请使用更大的 [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 建议新的还原请求。 默认超时为 10 分钟。 在再次请求还原之前，请确保分区不处于数据丢失状态。
+    - **Timeout**：_Timeout_ 还原状态表示请求超时。 请使用更大的 [RestoreTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 建议新的还原请求。 默认超时为 10 分钟。 在再次请求还原之前，请确保分区不处于数据丢失状态。
      
         ```
         RestoreState  : Timeout
@@ -319,12 +320,12 @@ $restoreResponse | Format-List
 可将 Service Fabric 群集中的可靠有状态服务和 Reliable Actors 分区配置为自动还原。__ 在备份策略中，将 `AutoRestore` 设置为 _true_。 启用自动还原可以在报告数据丢失情况时，从最新的分区备份还原数据。  有关详细信息，请参阅：
 
 - [备份策略中的自动还原支持](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
-- [RestorePartition API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
-- [GetPartitionRestoreProgress API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
+- [RestorePartition API 参考](/rest/api/servicefabric/sfclient-api-restorepartition)
+- [GetPartitionRestoreProgress API 参考](/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
 ## <a name="next-steps"></a>后续步骤
 - [了解定期备份配置](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [备份还原 REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [备份还原 REST API 参考](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
 [3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png

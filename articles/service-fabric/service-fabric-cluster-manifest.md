@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458378"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246565"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>独立 Windows 群集的配置设置
 本文介绍可使用 ClusterConfig.json  文件设置的独立 Azure Service Fabric 群集的配置设置。 需要使用该文件指定有关群集节点、安全配置以及有关容错域和升级域的网络拓扑信息。  更改或添加配置设置后，可以[创建一个独立的群集](service-fabric-cluster-creation-for-windows-server.md)，也可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -88,7 +89,7 @@ reliabilityLevel 的概念定义可在群集的主节点上运行的 Service Fab
 }
 ```
 
-metadata 用于描述群集诊断，可以根据具体的情况进行设置。 这些变量有助于收集 ETW 跟踪日志、故障转储和性能计数器。 有关 ETW 跟踪日志的详细信息，请阅读 [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) 和 [ETW 跟踪](https://msdn.microsoft.com/library/ms751538.aspx)。 可将所有日志（包含[故障转储](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)和[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)）定向到计算机上的 connectionString 文件夹。 还可以使用 AzureStorage 来存储诊断信息。 请参阅以下示例代码片段：
+metadata 用于描述群集诊断，可以根据具体的情况进行设置。 这些变量有助于收集 ETW 跟踪日志、故障转储和性能计数器。 有关 ETW 跟踪日志的详细信息，请阅读 [Tracelog](/windows-hardware/drivers/devtest/tracelog) 和 [ETW 跟踪](/dotnet/framework/wcf/samples/etw-tracing)。 可将所有日志（包含[故障转储](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)和[性能计数器](/windows/win32/perfctrs/performance-counters-portal)）定向到计算机上的 connectionString 文件夹。 还可以使用 AzureStorage 来存储诊断信息。 请参阅以下示例代码片段：
 
 ```json
 "diagnosticsStore": {
@@ -192,7 +193,7 @@ name 是此特定节点类型的友好名称。 要创建这种类型的节点�
     ]
 }
 ```
-可在 [Service Fabric REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures)中查看所有可用的附加功能。
+可在 [Service Fabric REST API 参考](/rest/api/servicefabric/sfrp-model-addonfeatures)中查看所有可用的附加功能。
 
 ### <a name="container-support"></a>容器支持
 若要为 Windows Server 容器和独立群集的 Hyper-V 容器启用容器支持，必须启用 DnsService 附加功能。
@@ -203,4 +204,3 @@ name 是此特定节点类型的友好名称。 要创建这种类型的节点�
 如果已部署了独立群集，还可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。 
 
 了解如何[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
-

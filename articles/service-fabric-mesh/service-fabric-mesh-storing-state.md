@@ -5,15 +5,16 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692676"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246820"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric 的状态管理
 
-Service Fabric 支持用于状态存储的许多不同选项。 有关状态管理模式和 Service Fabric 的概念性概述，请参阅 [Service Fabric 概念：状态](/azure/service-fabric/service-fabric-concepts-state)。 无论服务是在 Service Fabric 网格内部还是外部运行，相同的概念均适用。 
+Service Fabric 支持用于状态存储的许多不同选项。 有关状态管理模式和 Service Fabric 的概念性概述，请参阅 [Service Fabric 概念：状态](../service-fabric/service-fabric-concepts-state.md)。 无论服务是在 Service Fabric 网格内部还是外部运行，相同的概念均适用。 
 
 利用 Service Fabric 网格，可以轻松部署新的应用程序，并将其连接到托管在 Azure 中的现有数据存储。 除了使用远程数据库外，还有一些用于存储数据的选项，具体取决于服务需要本地还是远程存储。 
 

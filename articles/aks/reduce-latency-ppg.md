@@ -1,22 +1,23 @@
 ---
-title: 使用邻近组来减少 Azure Kubernetes 服务（AKS）群集的延迟
+title: 使用邻近组来减少 Azure Kubernetes Service (AKS) 群集的延迟
 description: 了解如何使用邻近组来减少 AKS 群集工作负荷的延迟。
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: 095746b9cf3cada9cebf7d169078eff9eb64a52d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444261"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244066"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>通过邻近组（预览）减少延迟
+# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>通过邻近组 (预览降低延迟) 
 
 > [!Note]
 > 使用 AKS 的邻近组时，归置仅适用于代理节点。 节点到节点和对应的托管 pod 到 pod 的延迟得到改进。 归置不会影响群集的控制平面的放置。
 
-在 Azure 中部署应用程序时，跨区域或可用性区域传播虚拟机（VM）实例会产生网络延迟，这可能会影响应用程序的总体性能。 邻近性放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易（HFT））需要较低的延迟和更快完成的任务。 对于这样的高性能计算（HPC）方案，请考虑对群集的节点池使用[邻近放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups)。
+在 Azure 中部署应用程序时，跨区域或可用性区域 (VM) 实例分配虚拟机将产生网络延迟，这可能会影响应用程序的总体性能。 邻近性放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易） (HFT) 需要较低的延迟和快速完成的任务。 为实现高性能计算 (HPC) 方案，请考虑使用群集的节点池的[邻近性放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups)。
 
 ## <a name="limitations"></a>限制
 
@@ -64,7 +65,7 @@ az extension update --name aks-preview
 ```
 ## <a name="node-pools-and-proximity-placement-groups"></a>节点池和邻近位置组
 
-使用邻近位置组部署的第一个资源会附加到特定的数据中心。 部署了相同邻近位置组的其他资源将在同一数据中心中进行定位。 使用邻近位置组的所有资源停止（释放）或删除后，就不再附加。
+使用邻近位置组部署的第一个资源会附加到特定的数据中心。 部署了相同邻近位置组的其他资源将在同一数据中心中进行定位。 使用邻近位置组的所有资源停止 (释放) 或删除后，就不再附加。
 
 * 许多节点池可以与单个邻近布局组相关联。
 * 节点池只能与单个邻近布局组相关联。
@@ -73,7 +74,7 @@ az extension update --name aks-preview
 
 以下示例使用[az group create][az-group-create]命令在*centralus*区域中创建名为*myResourceGroup*的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 
 
-加速网络极大地提高了虚拟机的网络性能。 理想情况下，将邻近组与加速网络结合使用。 默认情况下，AKS 使用支持的[虚拟机实例](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)上的加速网络，其中包含具有两个或更多个 vcpu 的大多数 Azure 虚拟机。
+加速网络极大地提高了虚拟机的网络性能。 理想情况下，将邻近组与加速网络结合使用。 默认情况下，AKS 使用支持的[虚拟机实例](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)上的加速网络，其中包含具有两个或更多个 vcpu 的大多数 Azure 虚拟机。
 
 使用邻近位置组创建新的 AKS 群集：
 
@@ -134,7 +135,7 @@ az aks nodepool add \
     --ppg myPPGResourceID
 ```
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 若要删除群集，请使用 [`az group delete`][az-group-delete] 命令删除 AKS 资源组：
 
@@ -163,4 +164,3 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc19c5ea7a45f78110818bc6c8cea8fbe25981c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70072304"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243437"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 
@@ -58,7 +58,7 @@ ms.locfileid: "70072304"
 </policies> 
 ```
 
-如果在处理请求的过程中出错，则会忽略 `inbound`、`backend` 或 `outbound` 部分中的其余步骤，跳到 `on-error` 部分执行相关语句。 将策略语句置于 `on-error` 部分以后，即可使用 `context.LastError` 属性查看错误、使用 `set-body` 策略检查和自定义错误响应，以及配置发生错误时的应对措施。 错误代码可针对内置步骤，也可针对在处理策略语句的过程中会发生的错误。 有关详细信息，请参阅 [Error handling in API Management policies](/azure/api-management/api-management-error-handling-policies)（API 管理策略中的错误处理）。
+如果在处理请求的过程中出错，则会忽略 `inbound`、`backend` 或 `outbound` 部分中的其余步骤，跳到 `on-error` 部分执行相关语句。 将策略语句置于 `on-error` 部分以后，即可使用 `context.LastError` 属性查看错误、使用 `set-body` 策略检查和自定义错误响应，以及配置发生错误时的应对措施。 错误代码可针对内置步骤，也可针对在处理策略语句的过程中会发生的错误。 有关详细信息，请参阅 [Error handling in API Management policies](./api-management-error-handling-policies.md)（API 管理策略中的错误处理）。
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>如何配置策略
 
@@ -66,7 +66,7 @@ ms.locfileid: "70072304"
 
 ## <a name="policy-reference"></a>策略参考
 
-请参阅[策略参考](api-management-policy-reference.md)了解政策说明完整列表及其设置。
+请参阅[策略参考](./api-management-policies.md)了解政策说明完整列表及其设置。
 
 ## <a name="policy-samples"></a>策略示例
 
@@ -118,17 +118,17 @@ ms.locfileid: "70072304"
 有关如何使用策略的详细信息，请参阅：
 
 + [转换 API](transform-api.md)
-+ [策略参考](api-management-policy-reference.md)，获取策略语句及其设置的完整列表
++ [策略参考](./api-management-policies.md)，获取策略语句及其设置的完整列表
 + [策略示例](policy-samples.md)   
 
-[Policy Reference]: api-management-policy-reference.md
+[Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md
-[Operation]: api-management-howto-add-operations.md
+[Operation]: ./mock-api-responses.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Advanced policies]: ./api-management-advanced-policies.md
+[Control flow]: ./api-management-advanced-policies.md#choose
+[Set variable]: ./api-management-advanced-policies.md#set-variable
+[Policy expressions]: ./api-management-policy-expressions.md
 
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6512edd26b59dac11f046e82940db4877728943c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690313"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243586"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies（API 管理跨域策略）
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -57,7 +58,7 @@ ms.locfileid: "84690313"
 |cross-domain|根元素。 子元素必须符合 [Adobe 跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。|是|
 
 ### <a name="usage"></a>使用情况
-此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[段](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 - **策略段：** 入站
 - **策略范围：** 所有范围
@@ -126,21 +127,21 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 |cors|根元素。|是|空值|
 |allowed-origins|包含的 `origin` 元素说明了跨域请求的允许来源。 `allowed-origins` 可能包含单个 `origin` 元素，该元素指定允许任何源的 `*`，或者包含一个或多个内含 URI 的 `origin` 元素。|是|空值|
 |origin|值可以是允许所有源的 `*`，或者是用于指定单个源的 URI。 URI 必须包括方案、主机和端口。|是|如果 URI 中省略了端口，则端口 80 用于 HTTP，端口 443 用于 HTTPS。|
-|allowed-methods|如果允许 GET 或 POST 之外的方法，则此元素是必需的。 包含 `method` 元素，用于指定支持的 HTTP 谓词。 值 `*` 指示所有方法。|否|如果此部分不存在，则支持 GET 和 POST。|
+|allowed-methods|如果允许 GET 或 POST 之外的方法，则此元素是必需的。 包含 `method` 元素，用于指定支持的 HTTP 谓词。 值 `*` 指示所有方法。|不适合|如果此部分不存在，则支持 GET 和 POST。|
 |method|指定 HTTP 谓词。|如果 `allowed-methods` 部分存在，则至少一个 `method` 元素是必需。|不适用|
-|allowed-headers|此元素包含 `header` 元素，用于指定可以包括在请求中的标头的名称。|否|空值|
-|expose-headers|此元素包含 `header` 元素，用于指定可以通过客户端访问的标头的名称。|否|不适用|
+|allowed-headers|此元素包含 `header` 元素，用于指定可以包括在请求中的标头的名称。|不适合|空值|
+|expose-headers|此元素包含 `header` 元素，用于指定可以通过客户端访问的标头的名称。|不适合|不适用|
 |标头|指定标头名称。|如果节存在，则 `allowed-headers` 或 `expose-headers` 中至少一个 `header` 元素是必需。|不适用|
 
 ### <a name="attributes"></a>属性
 
-|名称|描述|必须|默认|
+|名称|说明|必须|默认|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|`Access-Control-Allow-Credentials`预检响应中的标头将设置为此属性的值，并且会影响客户端在跨域请求中提交凭据的能力。|否|false|
-|preflight-result-max-age|`Access-Control-Max-Age`预检响应中的标头将设置为此属性的值，并且会影响用户代理缓存预处理响应的能力。|否|0|
+|preflight-result-max-age|`Access-Control-Max-Age`预检响应中的标头将设置为此属性的值，并且会影响用户代理缓存预处理响应的能力。|不适合|0|
 
 ### <a name="usage"></a>使用情况
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 - **策略节：** 入站
 - **策略范围：** 所有范围
@@ -166,18 +167,18 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 ### <a name="elements"></a>元素
 
-|“属性”|描述|必需|
+|名称|说明|必需|
 |----------|-----------------|--------------|
 |jsonp|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|描述|必须|默认|
+|名称|说明|必须|默认|
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|以函数所在的完全限定域名为前缀的跨域 JavaScript 函数调用。|是|不适用|
 
 ### <a name="usage"></a>使用情况
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 - **策略段：** 出站
 - **策略范围：** 所有范围
@@ -188,5 +189,5 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 + [API 管理中的策略](api-management-howto-policies.md)
 + [转换 API](transform-api.md)
-+ [策略参考](api-management-policy-reference.md)，获取策略语句及其设置的完整列表
++ [策略参考](./api-management-policies.md)，获取策略语句及其设置的完整列表
 + [策略示例](policy-samples.md)

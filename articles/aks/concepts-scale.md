@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的缩放，包括水平 Po
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223833"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244508"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -26,7 +26,7 @@ ms.locfileid: "86223833"
 
 可以手动缩放副本 (Pod) 和节点，以测试应用程序如何响应可用资源和状态的更改。 手动缩放资源还可以定义用于维持固定成本的设定数量的资源，例如节点数。 若要手动缩放，请定义副本或节点计数。 然后，Kubernetes API 根据该副本或节点计数计划创建其他 Pod 或排空节点。
 
-缩减节点时，Kubernetes API 将调用与群集使用的计算类型绑定的相关 Azure 计算 API。 例如，对于基于 VM 规模集构建的群集，选择要删除的节点的逻辑由 VM 规模集 API 确定。 若要详细了解如何在缩减节点时选择要删除的节点，请参阅 [VMSS 常见问题解答](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
+缩减节点时，Kubernetes API 将调用与群集使用的计算类型绑定的相关 Azure 计算 API。 例如，对于基于 VM 规模集构建的群集，选择要删除的节点的逻辑由 VM 规模集 API 确定。 若要详细了解如何在缩减节点时选择要删除的节点，请参阅 [VMSS 常见问题解答](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
 
 若要开始使用手动缩放 Pod 和节点，请参阅[在 AKS 中缩放应用程序][aks-scale]。
 
@@ -111,7 +111,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 [aks-scale]: tutorial-kubernetes-scale.md
 [aks-manually-scale-pods]: tutorial-kubernetes-scale.md#manually-scale-pods
 [aks-manually-scale-nodes]: tutorial-kubernetes-scale.md#manually-scale-aks-nodes
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-storage]: concepts-storage.md

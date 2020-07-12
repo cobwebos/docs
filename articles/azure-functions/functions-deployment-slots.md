@@ -2,14 +2,15 @@
 title: Azure Functions 部署槽
 description: 了解如何在 Azure Functions 中创建和使用部署槽
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 7cfbd533921ba4d1757e7415a3bb8f70aeb71251
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8abc670535f240d436e90c34f7245a3d176f517
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122409"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242774"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署槽
 
@@ -37,7 +38,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 1. **应用设置：** 目标槽的设置将应用到源槽的所有实例。 例如，生产设置将应用到过渡实例。 应用的设置包括以下类别：
     - [特定于槽的](#manage-settings)应用设置和连接字符串（如果适用）
-    - [持续部署](../app-service/deploy-continuous-deployment.md)设置（如果已启用）
+    - 如果启用) ，则[持续部署](../app-service/deploy-continuous-deployment.md)设置 (
     - [应用服务身份验证](../app-service/overview-authentication-authorization.md)设置（如果已启用）
 
 1. **等待重启和可用性：** 交换操作会等待源槽中的每个实例完成其重启并可用于请求。 如果有任何实例无法重启，交换操作将会还原对源槽所做的所有更改，并停止操作。
@@ -134,7 +135,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="在 Azure 门户中查找槽。" border="true":::
 
-1. 选择“删除” ****。
+1. 选择“删除” 。
 
     :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="在 Azure 门户中删除部署槽。" border="true":::
 

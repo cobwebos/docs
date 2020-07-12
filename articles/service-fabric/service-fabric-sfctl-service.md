@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 696de713129ca71dd7f2451501a7cc9eca0ee9b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 426220f38e6ddfaaf8b24bf4f7d34473d881ae56
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906236"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245596"
 ---
 # <a name="sfctl-service"></a>sfctl service
 创建、删除和管理服务、服务类型与服务包。
@@ -587,4 +588,4 @@ ms.locfileid: "76906236"
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。
-- 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
+- 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

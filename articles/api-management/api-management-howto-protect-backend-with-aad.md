@@ -12,11 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445502"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243403"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -145,7 +146,7 @@ ms.locfileid: "85445502"
 
 1. 如果使用 **v1** 终结点，请添加名为 **resource** 的主体参数。 使用后端应用的“应用程序 ID”作为此参数的值。 
 
-1. 如果使用 **v2** 终结点，请在“默认范围”字段中使用为后端应用创建的范围。 另外，确保在[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)中将 [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) 属性的值设置为 `2`。
+1. 如果使用 **v2** 终结点，请在“默认范围”字段中使用为后端应用创建的范围。 另外，确保在[应用程序清单](../active-directory/develop/reference-app-manifest.md)中将 [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) 属性的值设置为 `2`。
 
 1. 接下来，指定客户端凭据。 这些是 client-app 的凭据。
 
@@ -167,7 +168,7 @@ ms.locfileid: "85445502"
 
 1. 浏览到 API 管理实例，并转到“API”。
 
-1. 选择要保护的 API。 例如 `Echo API`。
+1. 选择要保护的 API。 例如，`Echo API`。
 
 1. 转到“设置”。
 
@@ -202,7 +203,7 @@ ms.locfileid: "85445502"
 
 但是，如果有人调用我们的 API 但未提供令牌或者提供无效的令牌，会发生什么情况？ 例如，如果在不使用 `Authorization` 标头的情况下尝试调用 API，调用仍将继续。 原因是 API 管理暂时不会验证访问令牌。 它只是将 `Authorization` 标头传递给后端 API。
 
-通过验证每个传入请求的访问令牌，在 API 管理中使用[验证 JWT](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#ValidateJWT)策略来预授权请求。 如果某个请求没有有效的令牌，API 管理会阻止该请求。 例如，在 `Echo API` 的 `<inbound>` 策略部分中添加以下策略。 它会检查访问令牌中的受众声明，如果令牌无效，则会返回一条错误消息。 有关如何配置策略的信息，请参阅[设置或编辑策略](https://docs.microsoft.com/azure/api-management/set-edit-policies)。
+通过验证每个传入请求的访问令牌，在 API 管理中使用[验证 JWT](./api-management-access-restriction-policies.md#ValidateJWT)策略来预授权请求。 如果某个请求没有有效的令牌，API 管理会阻止该请求。 例如，在 `Echo API` 的 `<inbound>` 策略部分中添加以下策略。 它会检查访问令牌中的受众声明，如果令牌无效，则会返回一条错误消息。 有关如何配置策略的信息，请参阅[设置或编辑策略](./set-edit-policies.md)。
 
 
 ```xml
@@ -227,7 +228,7 @@ ms.locfileid: "85445502"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure Active Directory 和 OAuth2.0](../active-directory/develop/authentication-scenarios.md)。
+- 详细了解 [Azure Active Directory 和 OAuth2.0](../active-directory/develop/authentication-vs-authorization.md)。
 - 观看有关 API 管理的更多[视频](https://azure.microsoft.com/documentation/videos/index/?services=api-management)。
 - 有关保护后端服务的其他方法，请参阅[使用证书进行相互身份验证](./api-management-howto-mutual-certificates.md)。
 - [创建 API 管理服务实例](./get-started-create-service-instance.md)。

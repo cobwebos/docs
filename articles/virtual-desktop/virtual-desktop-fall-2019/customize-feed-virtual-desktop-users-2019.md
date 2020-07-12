@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 58f05b2f9f15166e161b31578b47cf06afcb13a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248156c403e7e74665ec1c856588d8a2ca76e208
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362571"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244559"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户自定义源
 
@@ -76,5 +76,5 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 
 自定义用户的源后，可以登录到 Windows 虚拟桌面客户端进行测试。为此，请继续阅读连接到 Windows 虚拟桌面的操作指南：
 
- * [从 Windows 10 或 Windows 7 进行连接](../connect-windows-7-and-10.md)
+ * [从 Windows 10 或 Windows 7 进行连接](connect-windows-7-10-2019.md)
  * [从 Web 浏览器进行连接](connect-web-2019.md)

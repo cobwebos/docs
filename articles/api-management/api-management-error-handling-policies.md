@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674255"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243539"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理策略中的错误处理
 
@@ -50,7 +51,7 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 `on-error` 策略节可以在任何范围内使用。 API 发布者可配置自定义行为，例如将错误记录到事件中心，或者创建新的需要返回到调用方的响应。
 
 > [!NOTE]
-> 默认情况下，`on-error` 节不存在于策略中。 要将 `on-error` 节添加到策略，请在策略编辑器中浏览到所需策略，然后将其添加进去。 有关配置策略的详细信息，请参阅 [API 管理中的策略](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)。
+> 默认情况下，`on-error` 节不存在于策略中。 要将 `on-error` 节添加到策略，请在策略编辑器中浏览到所需策略，然后将其添加进去。 有关配置策略的详细信息，请参阅 [API 管理中的策略](./api-management-howto-policies.md)。
 >
 > 如果没有 `on-error` 节，则在出现错误情况时，调用方会收到 400 或 500 HTTP 响应消息。
 
@@ -79,15 +80,15 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 
 发生错误并控制跳转到 `on-error` 策略节时，错误会存储在上下文中[。LastError](api-management-policy-expressions.md#ContextVariables)属性，可通过节中的策略进行访问 `on-error` 。 LastError 具有以下属性。
 
-| 名称       | 类型   | 描述                                                                                               | 必需 |
+| 名称       | 类型   | 说明                                                                                               | 必需 |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | 字符串 | 指定在其中发生错误的元素。 可以是策略或内置管道步骤名称。      | 是      |
-| `Reason`   | 字符串 | 计算机友好错误代码，可以用在错误处理中。                                       | 否       |
-| `Message`  | 字符串 | 用户可读的错误说明。                                                                         | 是      |
+| `Source`   | string | 指定在其中发生错误的元素。 可以是策略或内置管道步骤名称。      | 是      |
+| `Reason`   | string | 计算机友好错误代码，可以用在错误处理中。                                       | 否       |
+| `Message`  | string | 用户可读的错误说明。                                                                         | 是      |
 | `Scope`    | 字符串 | 在其中发生错误的范围的名称，可以是以下值之一：“全局”、“产品”、“API”、“操作” | 否       |
-| `Section`  | 字符串 | 发生错误的节名称。 可能的值：“inbound”、“backend”、“outbound”或“on-error”。      | 否       |
-| `Path`     | 字符串 | 指定嵌套策略，例如“choose[3]/when[2]”。                                                 | 否       |
-| `PolicyId` | 字符串 | 在其中发生错误的策略的 `id` 属性（如果已由客户指定）的值             | 否       |
+| `Section`  | string | 发生错误的节名称。 可能的值：“inbound”、“backend”、“outbound”或“on-error”。      | 否       |
+| `Path`     | string | 指定嵌套策略，例如“choose[3]/when[2]”。                                                 | 否       |
+| `PolicyId` | string | 在其中发生错误的策略的 `id` 属性（如果已由客户指定）的值             | 不适合       |
 
 > [!TIP]
 > 可以通过 context.Response.StatusCode 访问状态代码。
@@ -104,8 +105,8 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 | 配置 | URI 与任何 API 或操作均不匹配 | OperationNotFound       | 无法匹配操作的传入请求。                                                                      |
 | authorization | 未提供订阅密钥             | SubscriptionKeyNotFound | 由于缺少订阅密钥，访问被拒绝。 请确保在向此 API 发出请求时包括订阅密钥。 |
 | authorization | 订阅密钥值无效         | SubscriptionKeyInvalid  | 由于订阅密钥无效，访问被拒绝。 请确保提供活动订阅的有效密钥。            |
-| 多个 | 请求处于挂起状态时，客户端终止了下游连接（从客户端到 API 管理网关） | ClientConnectionFailure | 多个 |
-| 多个 | 上游连接（从 API 管理网关到后端服务）未建立或已被后端中止 | BackendConnectionFailure | 多个 |
+| 多个 | 客户端到 API 管理网关) 的下游连接 (在请求挂起时被客户端中止 | ClientConnectionFailure | 多个 |
+| 多个 | 从 API 管理网关到后端服务的上游连接 () 未建立或已被后端中止 | BackendConnectionFailure | 多个 |
 | 多个 | 计算特定表达式时出现运行时异常 | ExpressionValueEvaluationFailure | 多个 |
 
 ## <a name="predefined-errors-for-policies"></a>针对策略的预定义错误
@@ -188,5 +189,5 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 
 -   [API 管理中的策略](api-management-howto-policies.md)
 -   [转换 API](transform-api.md)
--   [策略参考](api-management-policy-reference.md)，获取策略语句及其设置的完整列表
+-   [策略参考](./api-management-policies.md)，获取策略语句及其设置的完整列表
 -   [策略示例](policy-samples.md)

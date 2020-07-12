@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f473b70d260c552dc67d00715b6ee4bc56b670e0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259467"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246548"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用群集资源管理器描述 Service Fabric 群集
 Azure Service Fabric 的群集资源管理器功能提供多种机制用于描述群集：
@@ -35,7 +36,7 @@ Azure Service Fabric 的群集资源管理器功能提供多种机制用于描�
 > [!WARNING]
 > 请务必确保提供给 Service Fabric 的容错域信息准确无误。 例如，假设 Service Fabric 群集的节点在 5 个物理主机上运行的 10 台虚拟机中运行。 在此情况下，即使有 10 个虚拟机，也只有 5 个不同的（顶层）容错域。 共享同一物理主机会导致 VM 共享同一个根容错域，因此如果物理主机发生故障，共享主机的 VM 也会同时相应发生故障。  
 >
-> Service Fabric 预期节点的容错域不变。 确保实现 VM 高可用性的其他机制（例如 [HA-VM](https://technet.microsoft.com/library/cc967323.aspx)）可能会导致与 Service Fabric 发生冲突。 这些机制使用主机间的 VM 透明迁移。 它们不会重新配置或通知 VM 内运行的代码。 因此，不支持将这些机制用作运行 Service Fabric 群集的环境。  
+> Service Fabric 预期节点的容错域不变。 确保实现 VM 高可用性的其他机制（例如 [HA-VM](/previous-versions/system-center/virtual-machine-manager-2008-r2/cc967323(v=technet.10))）可能会导致与 Service Fabric 发生冲突。 这些机制使用主机间的 VM 透明迁移。 它们不会重新配置或通知 VM 内运行的代码。 因此，不支持将这些机制用作运行 Service Fabric 群集的环境。  
 >
 > 应使用 Service Fabric 作为唯一的高可用性技术。 实时 VM 迁移和 SAN 等机制不是必要的机制。 如果将这些机制与 Service Fabric 一同使用，会降低应用程序的可用性和可靠性。  原因是这些机制会增大复杂性，增加并发性故障来源，并且它们使用的可靠性和可用性策略可能会与 Service Fabric 中的策略相冲突。 
 >
@@ -111,7 +112,7 @@ Azure Service Fabric 的群集资源管理器功能提供多种机制用于描�
 
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>容错域与升级域约束及最终行为
 ### <a name="default-approach"></a>默认方法
-默认情况下，群集资源管理器维持服务在容错域和升级域之间的平衡。 这将建模为[约束](service-fabric-cluster-resource-manager-management-integration.md)。 容错域和升级域的约束： "对于给定的服务分区，同一级别层次结构上的任意两个域之间的服务对象（无状态服务实例或有状态服务副本）数目不应超过1个差异。"
+默认情况下，群集资源管理器维持服务在容错域和升级域之间的平衡。 这将建模为[约束](service-fabric-cluster-resource-manager-management-integration.md)。 容错域和升级域的约束： "对于给定的服务分区，在同一层次结构级别的任意两个域之间的服务对象数不应超过1个 (无状态服务实例或有状态服务副本) 。"
 
 假设此约束提供 "最大差异" 保证。 容错域和升级域的约束会阻止违反该规则的某些移动或排列操作。
 
@@ -166,7 +167,7 @@ Azure Service Fabric 的群集资源管理器功能提供多种机制用于描�
 
 这种有状态副本或无状态实例的分布方法提供了最佳容错能力。 如果某个域关闭，只会丢失极少量的副本/实例。 
 
-另一方面，此方法过于严格，不允许群集使用所有资源。 对于某些群集配置，某些节点不可用。 这可能导致 Service Fabric 无法放置服务，从而出现警告消息。 在上面的示例中，无法使用某些群集节点（示例中的 N6）。 即使已将节点添加到该群集（N7-N10），副本/实例也只会置于 N1 – N5 上，因为对容错域和升级域的约束。 
+另一方面，此方法过于严格，不允许群集使用所有资源。 对于某些群集配置，某些节点不可用。 这可能导致 Service Fabric 无法放置服务，从而出现警告消息。 在上面的示例中，某些群集节点不能在示例)  (N6 中使用。 即使已将节点添加到该群集 (N7-N10) ，副本/实例也只会置于 N1 – N5 上，因为对容错域和升级域的约束。 
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
@@ -230,7 +231,7 @@ Azure Service Fabric 的群集资源管理器功能提供多种机制用于描�
 | **UD4** | | | | |R5 |1 |
 | **FDTotal** |2 |1 |1 |0 |1 |- |
 
-如果服务的 " **TargetReplicaSetSize** " 值减少到 "4" （例如），则群集资源管理器会注意到更改。 它将使用 "最大差值" 逻辑恢复，因为**TargetReplicaSetSize**不会再 dividable 容错域和升级域的数目。 因此，为了将余下的 4 个副本分布在节点 N1-N5 上，将移动部分副本。 这样，就不会违反容错域和升级域逻辑的 "最大差异" 版本。 
+如果服务的**TargetReplicaSetSize**值减小到了四 (例如) ，则群集资源管理器会注意到更改。 它将使用 "最大差值" 逻辑恢复，因为**TargetReplicaSetSize**不会再 dividable 容错域和升级域的数目。 因此，为了将余下的 4 个副本分布在节点 N1-N5 上，将移动部分副本。 这样，就不会违反容错域和升级域逻辑的 "最大差异" 版本。 
 
 在上面的布局中，如果 **TargetReplicaSetSize** 值为 5，并将 N1 从群集中删除，则升级域数将等于 4。 同样，群集资源管理器使用 "最大差异" 逻辑开始，因为升级域的数目不会再平均地划分服务的**TargetReplicaSetSize**值。 因此，再次构建副本 R1 时，它必须位于 N4 上，这样才不会违反容错域和升级域的约束。
 
@@ -246,7 +247,7 @@ Azure Service Fabric 的群集资源管理器功能提供多种机制用于描�
 ## <a name="configuring-fault-and-upgrade-domains"></a>配置容错域和升级域
 在 Azure 托管的 Service Fabric 部署中，容错域和升级域是自动定义的。 Service Fabric 从 Azure 中选择并使用环境信息。
 
-如果要创建自己的群集（或想要在开发环境中运行特定的拓扑），可以自行提供容错域和升级域信息。 在本示例中，我们定义了一个 9 节点本地开发群集，该群集跨 3 个数据中心（每个数据中心有 3 个机架）。 该群集还有跨这三个数据中心条带化的三个升级域。 下面是 ClusterManifest.xml 中的配置示例：
+如果要创建自己的群集 (或想要在开发) 中运行特定拓扑，可以自行提供容错域和升级域信息。 在本示例中，我们定义了一个 9 节点本地开发群集，该群集跨 3 个数据中心（每个数据中心有 3 个机架）。 该群集还有跨这三个数据中心条带化的三个升级域。 下面是 ClusterManifest.xml 中的配置示例：
 
 ```xml
   <Infrastructure>
@@ -342,7 +343,7 @@ Azure Service Fabric 的群集资源管理器功能提供多种机制用于描�
 >
 
 ## <a name="node-properties-and-placement-constraints"></a>节点属性和放置约束
-有时（事实上，在大多数情况下），您需要确保某些工作负荷只能在群集中特定类型的节点上运行。 例如，某些工作负荷可能需要 GPU 或 SSD，而有些则不用。 
+有时 (事实上，在大多数情况下) 你需要确保某些工作负荷仅在群集中特定类型的节点上运行。 例如，某些工作负荷可能需要 GPU 或 SSD，而有些则不用。 
 
 一个有说服力的示例就是，几乎在每个 n 层体系结构，都有专门的硬件来处理特定的工作负荷。 某些计算机充当应用程序的前端或 API 服务端，并向客户端或在 Internet 上公开。 其他一些计算机（通常具有不同的硬件资源）处理计算或存储层的工作。 通常不会直接向客户端或 Internet 公开这些计算机  。 
 

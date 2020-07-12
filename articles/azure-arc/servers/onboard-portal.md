@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 459360e72c2d35cafedb0291642bf081bfcad96c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 077dc0e8048da39253729d56f1e812cccc69500c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103987"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242910"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
 
@@ -32,7 +32,7 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 
 1. 在浏览器中转到 [Azure 门户](https://aka.ms/hybridmachineportal)。
 
-1. 在“计算机 - Azure Arc”页上，选择左上角的“添加”，或者选择中间窗格底部的“创建计算机 - Azure Arc”选项。   
+1. 在“计算机 - Azure Arc”页上，选择左上角的“添加”，或者选择中间窗格底部的“创建计算机 - Azure Arc”选项。  
 
 1. 在“选择方法”页上选择“使用交互式脚本添加计算机”磁贴，然后选择“生成脚本”。  
 
@@ -49,8 +49,8 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 
 1. 在“生成脚本”页上的“操作系统”下拉列表中，选择运行脚本的操作系统。 
 
-1. 如果计算机通过代理服务器连接到 Internet 进行通信，请选择“下一步:代理服务器”。 
-1. 在“代理服务器”选项卡上，指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。 按格式 `http://<proxyURL>:<proxyport>` 输入值。 
+1. 如果计算机通过代理服务器连接到 Internet 进行通信，请选择“下一步:代理服务器”。
+1. 在“代理服务器”选项卡上，指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。 按格式 `http://<proxyURL>:<proxyport>` 输入值。
 1. 选择“查看 + 生成”。
 
 1. 在“查看 + 生成”选项卡上查看摘要信息，然后选择“下载”。  如果仍需进行更改，请选择“上一页”。
@@ -59,17 +59,17 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 
 ### <a name="install-manually"></a>手动安装
 
-可以运行 Windows Installer 包 *AzureConnectedMachineAgent.msi* 来手动安装 Connected Machine 代理。 可以从 Microsoft 下载中心下载最新版本的 [Windows 代理 Windows Installer 包](https://aka.ms/AzureConnectedMachineAgent)。 
+可以运行 Windows Installer 包 *AzureConnectedMachineAgent.msi* 来手动安装 Connected Machine 代理。 可以从 Microsoft 下载中心下载最新版本的 [Windows 代理 Windows Installer 包](https://aka.ms/AzureConnectedMachineAgent)。
 
-> [!NOTE]
-> * 若要安装或卸载代理，必须拥有“管理员”权限。
-> * 必须先下载 Installer 包并将其复制到目标服务器上的某个文件夹，或者从共享网络文件夹下载。 如果在不指定任何选项的情况下运行该 Installer 包，它将启动一个安装向导，以交互方式指导用户安装代理。
+>[!NOTE]
+>* 若要安装或卸载代理，必须拥有“管理员”权限。
+>* 必须先下载 Installer 包并将其复制到目标服务器上的某个文件夹，或者从共享网络文件夹下载。 如果在不指定任何选项的情况下运行该 Installer 包，它将启动一个安装向导，以交互方式指导用户安装代理。
 
 如果计算机需要通过代理服务器来与服务进行通信，则在安装代理后，需要运行本文稍后所述的某个命令。 此命令将设置代理服务器系统环境变量 `https_proxy`。
 
 如果不熟悉 Windows Installer 包的命令行选项，请查看 [Msiexec 标准命令行选项](/windows/win32/msi/standard-installer-command-line-options)和 [Msiexec 命令行选项](/windows/win32/msi/command-line-options)。
 
-例如，若要查看帮助和快速参考选项，请运行包含 `/?` 参数的安装程序。 
+例如，若要查看帮助和快速参考选项，请运行包含 `/?` 参数的安装程序。
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
@@ -113,7 +113,7 @@ Restart-Service -Name himds
 
 安装代理后，需要运行以下命令来配置代理，使其能够与 Azure Arc 服务通信：
 
-`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>在 Linux 上安装并验证代理
 
@@ -124,7 +124,7 @@ Restart-Service -Name himds
 
 （可选）可以通过包含 `--proxy "{proxy-url}:{proxy-port}"` 参数使用代理信息来配置代理。
 
-该脚本还包含用于识别受支持和不受支持分发包的逻辑，并可验证执行安装所需的权限。 
+该脚本还包含用于识别受支持和不受支持分发包的逻辑，并可验证执行安装所需的权限。
 
 以下示例将下载并安装代理：
 
@@ -132,7 +132,7 @@ Restart-Service -Name himds
 # Download the installation package.
 wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
+# Install the connected machine agent.
 bash ~/Install_linux_azcmagent.sh
 ```
 
@@ -150,7 +150,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 安装代理后，请运行以下命令，将其配置为与 Azure Arc 服务通信：
 
-`azcmagent connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="verify-the-connection-with-azure-arc"></a>验证与 Azure Arc 的连接
 

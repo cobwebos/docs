@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc36211eeb58f18546e4eae24ad003c6b2ae761b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71066756"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243165"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>使用 Azure API 管理进行高级请求限制
 限制传入请求是 Azure API 管理的重要功能。 通过控制请求的速率或传输的请求/数据总量，API 管理让 API 提供程序能够保护其 API 不被滥用，为不同的 API 产品层创造价值。
@@ -32,7 +32,7 @@ ms.locfileid: "71066756"
 > [!NOTE]
 > `rate-limit-by-key` `quota-by-key` 当在 Azure API 管理的消耗层中时，和策略不可用。 
 
-新的[基于密钥的速率限制](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey)和[基于密钥的配额](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey)策略提供更灵活的流量控制解决方案。 使用这些新策略可以定义表达式，识别用于跟踪流量使用的密钥。 最好是举一个例子来演示其工作原理。 
+新的[基于密钥的速率限制](./api-management-access-restriction-policies.md#LimitCallRateByKey)和[基于密钥的配额](./api-management-access-restriction-policies.md#SetUsageQuotaByKey)策略提供更灵活的流量控制解决方案。 使用这些新策略可以定义表达式，识别用于跟踪流量使用的密钥。 最好是举一个例子来演示其工作原理。 
 
 ## <a name="ip-address-throttling"></a>IP 地址限制
 以下策略限制单个客户端 IP 地址每一分钟只有 10 个调用，等于每个月总数为 1,000,000 个调用和 10,000 KB 带宽。 
@@ -62,10 +62,10 @@ ms.locfileid: "71066756"
 本示例展示了如何提取授权标头，将它转换为 `JWT` 对象，然后使用令牌的使用者来识别用户，并将它用作速率限制密钥。 如果用户标识作为声明之一存储在 `JWT` 中，可以改用该值。
 
 ## <a name="combined-policies"></a>组合策略
-尽管新限制策略比现有限制策略提供更大的控制度，但仍有组合两种功能的值。 基于产品订阅密钥的限制（[按订阅限制调用率](/azure/api-management/api-management-access-restriction-policies#LimitCallRate)和[按订阅设置使用量配额](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)）根据使用级别收费，是让 API 赚钱的最好方法。 更精细的按用户控制限制与其互补，防止一个用户的行为降低另一个用户的体验。 
+尽管新限制策略比现有限制策略提供更大的控制度，但仍有组合两种功能的值。 基于产品订阅密钥的限制（[按订阅限制调用率](./api-management-access-restriction-policies.md#LimitCallRate)和[按订阅设置使用量配额](./api-management-access-restriction-policies.md#SetUsageQuota)）根据使用级别收费，是让 API 赚钱的最好方法。 更精细的按用户控制限制与其互补，防止一个用户的行为降低另一个用户的体验。 
 
 ## <a name="client-driven-throttling"></a>客户端驱动的限制
-使用[策略表达式](/azure/api-management/api-management-policy-expressions)定义限制密钥时，API 提供程序将选择如何设置限制范围。 但是，开发人员可以控制自己客户的速率限制。 API 提供程序可以通过导入自定义标头来做到这一点，允许开发人员的客户端应用程序向 API 传递密钥。
+使用[策略表达式](./api-management-policy-expressions.md)定义限制密钥时，API 提供程序将选择如何设置限制范围。 但是，开发人员可以控制自己客户的速率限制。 API 提供程序可以通过导入自定义标头来做到这一点，允许开发人员的客户端应用程序向 API 传递密钥。
 
 ```xml
 <rate-limit-by-key calls="100"
@@ -80,4 +80,3 @@ Azure API 管理提供速率和配额限制，不但能保护 API 服务，而�
 
 ## <a name="next-steps"></a>后续步骤
 请将对此主题的反馈作为 GitHub 问题提供给我们。 我们很想知道是否还可以在方案中合理地选择其他可能的密钥值。
-

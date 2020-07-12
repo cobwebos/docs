@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: d98261629f9e1612966bf74084ae0e0fa70d3605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829240"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244440"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用用户定义的路由自定义群集传出
 
@@ -38,7 +38,7 @@ ms.locfileid: "85829240"
 > 出站类型仅影响群集的出口流量。 有关详细信息，请参阅[设置入口控制器](ingress-basic.md)。
 
 > [!NOTE]
-> 可以将自己的[路由表][byo-route-table]与 UDR 和 kubenet 网络一起使用。 请确保群集标识（服务主体或托管标识）具有自定义路由表的参与者权限。
+> 可以将自己的[路由表][byo-route-table]与 UDR 和 kubenet 网络一起使用。 请确保群集标识 (服务主体或托管标识) 具有对自定义路由表的参与者权限。
 
 ### <a name="outbound-type-of-loadbalancer"></a>LoadBalancer 出站类型
 
@@ -60,7 +60,7 @@ ms.locfileid: "85829240"
 
 如果 `userDefinedRouting` 设置了，则 AKS 不会自动配置出口路径。 必须由你完成出口设置。
 
-必须将 AKS 群集部署到具有以前配置的子网的现有虚拟网络，因为使用标准负载均衡器（SLB）体系结构时，必须建立显式传出。 因此，此体系结构需要将传出流量显式发送到设备（例如防火墙、网关、代理），或允许通过分配给标准负载平衡器或设备的公共 IP 来完成网络地址转换（NAT）。
+必须将 AKS 群集部署到具有以前配置的子网的现有虚拟网络，因为使用标准负载均衡器 (SLB) 体系结构时，必须建立显式出口。 因此，此体系结构需要显式将出口流量发送到设备（例如防火墙、网关、代理），或者允许网络地址转换 (NAT) 通过分配给标准负载均衡器或设备的公共 IP 完成。
 
 AKS 资源提供程序将部署标准负载均衡器 (SLB)。 负载均衡器未使用任何规则进行配置，在[下一条规则之前，不会产生任何费用](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS**不**会自动为 SLB 前端预配公共 IP 地址，也不会自动配置负载均衡器后端池。
 
@@ -69,15 +69,15 @@ AKS 资源提供程序将部署标准负载均衡器 (SLB)。 负载均衡器未
 若要说明使用用户定义的路由的出站类型的应用程序，可以在其自己的子网上使用 Azure 防火墙的虚拟网络上配置群集。 请参阅[通过 Azure 防火墙限制传出流量示例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)中的此示例。
 
 > [!IMPORTANT]
-> UDR 的出站类型需要路由表中 NVA （网络虚拟设备）的 0.0.0.0/0 和下一跃点目标的路由。
+> UDR 的出站类型需要路由表中) 的 NVA (网络虚拟设备的路由（0.0.0.0/0 和下一跃点目标）。
 > 路由表已将默认 0.0.0.0/0 设置为 Internet，无需向 SNAT 发送公共 IP，只需添加此路由就不会为你提供出口。 AKS 将验证你是否不会创建指向 Internet，而是改为 NVA 或网关等的 0.0.0.0/0 路由。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [Azure 网络 UDR 概述](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。
+请参阅 [Azure 网络 UDR 概述](../virtual-network/virtual-networks-udr-overview.md)。
 
-请参阅[如何创建、更改或删除路由表](https://docs.microsoft.com/azure/virtual-network/manage-route-table)。
+请参阅[如何创建、更改或删除路由表](../virtual-network/manage-route-table.md)。
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

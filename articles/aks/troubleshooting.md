@@ -4,12 +4,12 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054383"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243675"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -22,7 +22,7 @@ ms.locfileid: "86054383"
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到“超出配额”的错误。 我该怎么办？ 
 
- [请求更多核心](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
+ [请求更多核心](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>对 AKS 而言，每个节点设置的最大 Pod 是多少？
 
@@ -34,9 +34,9 @@ ms.locfileid: "86054383"
 此错误表示某个群集使用的子网在其 CIDR 中不再具有可用的 Ip，因此无法成功分配资源。 对于 Kubenet 群集，要求对于群集中的每个节点都有足够的 IP 空间。 对于 Azure CNI 群集，要求群集中的每个节点和盒的 IP 空间充足。
 详细了解[AZURE CNI 的设计，以便将 ip 分配给](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)pod。
 
-这些错误还会在[AKS 诊断](https://docs.microsoft.com/azure/aks/concepts-diagnostics)中出现，这会主动地显示子网大小不足等问题。
+这些错误还会在[AKS 诊断](./concepts-diagnostics.md)中出现，这会主动地显示子网大小不足等问题。
 
-以下三（3）个事例导致子网大小不足错误：
+以下三个 (3) 情况会导致子网大小不足错误：
 
 1. AKS Scale 或 AKS Nodepool scale
    1. 如果使用的是 Kubenet，则在 `number of free IPs in the subnet` **小于**时，会发生这种情况 `number of new nodes requested` 。
@@ -46,7 +46,7 @@ ms.locfileid: "86054383"
    1. 如果使用的是 Kubenet，则在 `number of free IPs in the subnet` **小于**时，会发生这种情况 `number of buffer nodes needed to upgrade` 。
    1. 如果使用 Azure CNI，则在小于时，会发生这种情况 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 。
    
-   默认情况下，AKS 群集设置一（1）的 max 电涌（升级缓冲器）值，但可以通过设置[节点池的最大电涌值](upgrade-cluster.md#customize-node-surge-upgrade-preview)来自定义此升级行为，此值将增加完成升级所需的可用 ip 的数量。
+   默认情况下，AKS 群集将最大冲击 (升级缓冲区) 一个 (1) 的值，但可以通过设置[节点池的最大浪涌值](upgrade-cluster.md#customize-node-surge-upgrade-preview)来自定义此升级行为，这将增加完成升级所需的可用 ip 的数目。
 
 1. AKS create 或 AKS Nodepool add
    1. 如果使用的是 Kubenet，则在 `number of free IPs in the subnet` **小于**时，会发生这种情况 `number of nodes requested for the node pool` 。
@@ -70,7 +70,7 @@ ms.locfileid: "86054383"
 有关如何对 Pod 的问题进行故障排除的详细信息，请参阅[调试应用程序](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
 ## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`TCP timeouts`当使用 `kubectl` 或其他第三方工具连接到 API 服务器时接收
-AKS 具有 HA 控制平面，可根据内核数垂直缩放，以确保其服务级别目标（Slo）和服务级别协议（Sla）。 如果连接超时，请检查以下内容：
+AKS 有 HA 控制平面，可根据内核数垂直缩放，确保其服务级别目标 (Slo) 和服务级别协议 (Sla) 。 如果连接超时，请检查以下内容：
 
 - **所有 API 命令的超时时间是否一致，或只是几次？** 如果只是少数是 `tunnelfront` pod 或 `aks-link` pod，负责节点 > 的控制平面通信，则可能不处于运行状态。 请确保托管此 pod 的节点不会过度使用或在压力下。 请考虑将它们移动到其自己的[ `system` 节点池](use-system-pools.md)。
 - **是否打开了[AKS 限制传出流量文档](limit-egress-traffic.md)中所述的所有所需端口、Fqdn 和 ip？** 否则，多个命令调用可能会失败。

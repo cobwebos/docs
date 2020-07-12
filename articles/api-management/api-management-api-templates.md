@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: tracking-python
-ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 193dc7a953bc746ec7211433f846343969176c96
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559338"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243692"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 
@@ -39,7 +40,7 @@ ms.locfileid: "84559338"
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](./api-management-developer-portal-templates.md)。  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -344,14 +345,14 @@ ms.locfileid: "84559338"
   
 ### <a name="data-model"></a>数据模型  
   
-|Property|类型|说明|  
+|属性|类型|说明|  
 |--------------|----------|-----------------|  
-|`apiId`|字符串|当前 API 的 ID。|  
-|`apiName`|字符串|API 的名称。|  
-|`apiDescription`|字符串|API 的说明。|  
+|`apiId`|string|当前 API 的 ID。|  
+|`apiName`|string|API 的名称。|  
+|`apiDescription`|string|API 的说明。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  
 |`operation`|[操作](api-management-template-data-model-reference.md#Operation)|当前显示的操作。|  
-|`sampleUrl`|字符串|当前操作的 URL。|  
+|`sampleUrl`|string|当前操作的 URL。|  
 |`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作的菜单。|  
 |`consoleUrl`|URI|“试用”按钮的 URI。****|  
 |`samples`|[代码示例](api-management-template-data-model-reference.md#Sample)实体的集合。|当前操作的代码示例。|  

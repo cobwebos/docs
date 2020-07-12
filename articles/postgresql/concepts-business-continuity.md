@@ -6,11 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981916"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245293"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>有关使用 Azure Database for PostgreSQL - 单一服务器确保业务连续性的概述
 
@@ -51,6 +52,11 @@ Azure 数据中心会罕见地发生中断。 发生中断时，可能仅导致�
 
 ## <a name="cross-region-read-replicas"></a>跨区域只读副本
 可以使用跨区域只读副本来增强业务连续性和灾难恢复规划。 只读副本使用 PostgreSQL 的物理复制技术进行异步更新。 从[只读副本概念文章](concepts-read-replicas.md)详细了解有关只读副本、可用区域以及如何进行故障转移的信息。 
+
+## <a name="faq"></a>常见问题解答
+### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Azure Database for PostgreSQL 将客户数据存储在何处？
+默认情况下，Azure Database for PostgreSQL 不会将客户数据从其部署到的区域中移出或存储。 但是，客户可以选择启用[异地冗余备份](concepts-backup.md#backup-redundancy-options)，或创建[跨区域读取副本](concepts-read-replicas.md#cross-region-replication)以便将数据存储在另一个区域中。
+
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure Database for PostgreSQL 中的自动备份](concepts-backup.md)。 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 5b17b7784691cdf38c45e4f306b2ed14b981a2d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3843ff986fdc37c37690bee9616861f16a334c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751267"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243726"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 
@@ -38,7 +38,7 @@ ms.locfileid: "84751267"
 -   [设置请求方法](#SetRequestMethod) - 允许更改请求的 HTTP 方法。
 -   [设置状态代码](#SetStatus) - 将 HTTP 状态代码更改为指定的值。
 -   [设置变量](api-management-advanced-policies.md#set-variable) - 保存命名[上下文](api-management-policy-expressions.md#ContextVariables)变量中的值供以后访问。
--   [跟踪](#Trace) - 将自定义跟踪添加到 [API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)输出、Application Insights 遥测和资源日志。
+-   [跟踪](#Trace) - 将自定义跟踪添加到 [API 检查器](./api-management-howto-api-inspector.md)输出、Application Insights 遥测和资源日志。
 -   [等待](#Wait) - 在继续下一步之前，等待括住的[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)或[控制流](api-management-advanced-policies.md#choose)策略完成。
 
 ## <a name="control-flow"></a><a name="choose"></a> 控制流
@@ -140,7 +140,7 @@ ms.locfileid: "84751267"
 
 ### <a name="usage"></a><a name="ChooseUsage"></a> 用法
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 
@@ -148,7 +148,7 @@ ms.locfileid: "84751267"
 
 ## <a name="forward-request"></a><a name="ForwardRequest"></a> 转发请求
 
-`forward-request` 策略将传入请求转发到请求[上下文](api-management-policy-expressions.md#ContextVariables)中指定的后端服务。 后端服务 URL 在 API [设置](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)中指定，可以使用[设置后端服务](api-management-transformation-policies.md)策略进行更改。
+`forward-request` 策略将传入请求转发到请求[上下文](api-management-policy-expressions.md#ContextVariables)中指定的后端服务。 后端服务 URL 在 API [设置](./import-and-publish.md)中指定，可以使用[设置后端服务](api-management-transformation-policies.md)策略进行更改。
 
 > [!NOTE]
 > 删除此策略之后，请求就不会转发到后端服务。一旦成功完成入站节中的策略，就会立即对出站节中的策略求值。
@@ -259,7 +259,7 @@ ms.locfileid: "84751267"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 后端
 -   **策略范围：** 所有范围
@@ -309,7 +309,7 @@ ms.locfileid: "84751267"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 
@@ -320,7 +320,7 @@ ms.locfileid: "84751267"
 `log-to-eventhub` 策略将指定格式的消息发送到记录器实体定义的事件中心。 从名称可以看出，此策略用于保存所选请求或响应上下文信息，以便进行联机或脱机分析。
 
 > [!NOTE]
-> 如需配置事件中心和记录事件的分步指南，请参阅[如何在 Azure API 管理中将事件记录到 Azure 事件中心](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/)。
+> 如需配置事件中心和记录事件的分步指南，请参阅[如何在 Azure API 管理中将事件记录到 Azure 事件中心](./api-management-howto-log-event-hubs.md)。
 
 ### <a name="policy-statement"></a>策略语句
 
@@ -363,7 +363,7 @@ ms.locfileid: "84751267"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 
@@ -407,7 +407,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、错误时
 
@@ -475,7 +475,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。 请注意，此策略会继承子策略使用限制。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。 请注意，此策略会继承子策略使用限制。
 
 -   **策略节：** 入站、出站、后端、错误时
 
@@ -525,7 +525,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 
@@ -550,7 +550,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>示例
 
-以下示例策略以示例方式演示了在 HTTP 响应代码大于或等于 500 的情况下，如何使用 `send-one-way-request` 策略将消息发送到 Slack 聊天室。 有关此示例的详细信息，请参阅[通过 Azure API 管理服务使用外部服务](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)。
+以下示例策略以示例方式演示了在 HTTP 响应代码大于或等于 500 的情况下，如何使用 `send-one-way-request` 策略将消息发送到 Slack 聊天室。 有关此示例的详细信息，请参阅[通过 Azure API 管理服务使用外部服务](./api-management-sample-send-request.md)。
 
 ```xml
 <choose>
@@ -599,7 +599,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 
@@ -625,7 +625,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>示例
 
-以下示例演示了如何通过授权服务器验证引用令牌。 有关此示例的详细信息，请参阅[通过 Azure API 管理服务使用外部服务](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)。
+以下示例演示了如何通过授权服务器验证引用令牌。 有关此示例的详细信息，请参阅[通过 Azure API 管理服务使用外部服务](./api-management-sample-send-request.md)。
 
 ```xml
 <inbound>
@@ -686,7 +686,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 
@@ -728,7 +728,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站
 
@@ -747,7 +747,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>示例
 
-以下示例策略使用 `set-method` 策略，以示例方式演示了在 HTTP 响应代码大于或等于 500 的情况下，如何将消息发送到 Slack 聊天室。 有关此示例的详细信息，请参阅[通过 Azure API 管理服务使用外部服务](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)。
+以下示例策略使用 `set-method` 策略，以示例方式演示了在 HTTP 响应代码大于或等于 500 的情况下，如何将消息发送到 Slack 聊天室。 有关此示例的详细信息，请参阅[通过 Azure API 管理服务使用外部服务](./api-management-sample-send-request.md)。
 
 ```xml
 <choose>
@@ -783,7 +783,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、错误时
 
@@ -802,7 +802,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>示例
 
-以下示例演示如何在授权令牌无效的情况下返回 401 响应。 有关详细信息，请参阅[通过 Azure API 管理服务使用外部服务](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)
+以下示例演示如何在授权令牌无效的情况下返回 401 响应。 有关详细信息，请参阅[通过 Azure API 管理服务使用外部服务](./api-management-sample-send-request.md)
 
 ```xml
 <choose>
@@ -833,7 +833,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 出站、后端、错误时
 -   **策略范围：** 所有范围
@@ -871,7 +871,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 -   **策略范围：** 所有范围
@@ -916,9 +916,9 @@ status code and media type. If no example or schema found, the content is empty.
 
 `trace` 策略将自定义跟踪添加到 API 检查器输出、Application Insights 遥测和/或资源日志。
 
--   触发跟踪时，策略将自定义跟踪添加到 [API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)输出，即显示 `Ocp-Apim-Trace` 请求标头且将其设置为“true”，并显示 `Ocp-Apim-Subscription-Key` 请求标头，其中包含允许跟踪的有效密钥。
--   当启用 [Application Insights 集成](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)且在策略中指定的 `severity` 级别等于或高于在诊断设置中指定的 `verbosity` 级别时，此策略在 Application Insights 中创建[跟踪](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)遥测。
--   当启用[资源日志](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)并且策略中指定的严重级别等于或高于诊断设置中指定的详细级别时，策略将在日志条目中添加属性。
+-   触发跟踪时，策略将自定义跟踪添加到 [API 检查器](./api-management-howto-api-inspector.md)输出，即显示 `Ocp-Apim-Trace` 请求标头且将其设置为“true”，并显示 `Ocp-Apim-Subscription-Key` 请求标头，其中包含允许跟踪的有效密钥。
+-   当启用 [Application Insights 集成](./api-management-howto-app-insights.md)且在策略中指定的 `severity` 级别等于或高于在诊断设置中指定的 `verbosity` 级别时，此策略在 Application Insights 中创建[跟踪](../azure-monitor/app/data-model-trace-telemetry.md)遥测。
+-   当启用[资源日志](./api-management-howto-use-azure-monitor.md#activity-logs)并且策略中指定的严重级别等于或高于诊断设置中指定的详细级别时，策略将在日志条目中添加属性。
 
 ### <a name="policy-statement"></a>策略语句
 
@@ -946,7 +946,7 @@ status code and media type. If no example or schema found, the content is empty.
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | trace    | 根元素。                                                                                                                                        | 是      |
 | message  | 要记录的字符串或表达式。                                                                                                                 | 是      |
-| metadata | 将自定义属性添加到 Application Insights [跟踪](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)遥测。 | 否       |
+| metadata | 将自定义属性添加到 Application Insights [跟踪](../azure-monitor/app/data-model-trace-telemetry.md)遥测。 | 否       |
 
 ### <a name="attributes"></a>属性
 
@@ -959,7 +959,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端、错误时
 
@@ -1029,7 +1029,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站、后端
 -   **策略范围：** 所有范围
@@ -1040,5 +1040,5 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   [API 管理中的策略](api-management-howto-policies.md)
 -   [策略表达式](api-management-policy-expressions.md)
--   [策略参考](api-management-policy-reference.md)，获取策略语句及其设置的完整列表
+-   [策略参考](./api-management-policies.md)，获取策略语句及其设置的完整列表
 -   [策略示例](policy-samples.md)

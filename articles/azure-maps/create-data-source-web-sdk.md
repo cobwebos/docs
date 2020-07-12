@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0334e03f2d4f34913f2f96610868b5ffe169013
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207492"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242553"
 ---
 # <a name="create-a-data-source"></a>创建数据源
 
@@ -71,16 +71,69 @@ dataSource.setShapes(geoJsonData);
 
 **矢量磁贴源**
 
-矢量图块源介绍如何访问矢量图块层。 使用[VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)类实例化矢量图块源。 矢量图块层类似于图块层，但它们不同。 图块层是光栅图像。 矢量图块层是压缩文件，采用 PBF 格式。 此压缩文件包含向量映射数据以及一个或多个层。 基于每个层的样式，可以在客户端上呈现并设计文件样式。 矢量磁贴中的数据包含点、线条和多边形格式的地理功能。 使用矢量图块层（而不是光栅图块层）有多种优点：
+矢量图块源介绍如何访问矢量图块层。 使用[VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)类实例化矢量图块源。 矢量图块层类似于图块层，但它们不同。 图块层是光栅图像。 矢量图块层是压缩文件，采用**PBF**格式。 此压缩文件包含向量映射数据以及一个或多个层。 基于每个层的样式，可以在客户端上呈现并设计文件样式。 矢量磁贴中的数据包含点、线条和多边形格式的地理功能。 使用矢量图块层（而不是光栅图块层）有多种优点：
 
  - 矢量磁贴的文件大小通常比等效的光栅磁贴小得多。 因此，使用的带宽更少。 这意味着延迟较低、更快的地图和更好的用户体验。
  - 由于矢量磁贴是在客户端上呈现的，因此它们会适应其所显示的设备的分辨率。 因此，呈现的地图的定义更清晰，并显示 crystal 清晰标签。
  - 更改向量图中的数据样式不需要再次下载数据，因为新样式可应用于客户端。 与此相反，更改光栅图块层的样式通常需要从服务器加载磁贴，然后应用新样式。
  - 由于数据是以矢量形式传递的，因此，进行数据准备需要的服务器端处理就越少。 因此，可以更快地提供较新的数据。
 
-使用向量源的所有层都必须指定一个 `sourceLayer` 值。
+Azure Maps 遵循[Mapbox Vector 磁贴规范](https://github.com/mapbox/vector-tile-spec)，即开放标准。 Azure Maps 在平台中提供以下矢量图块服务：
 
-Azure Maps 遵循[Mapbox Vector 磁贴规范](https://github.com/mapbox/vector-tile-spec)，即开放标准。
+- 路标磁贴[文档](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- 流量事件[文档](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- 流量流[文档](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- Azure Maps Creator 还允许通过[获取磁贴呈现 V2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)创建和访问自定义向量磁贴
+
+> [!TIP]
+> 使用 web SDK Azure Maps 呈现服务中的矢量或光栅图像磁贴时，可以 `atlas.microsoft.com` 将替换为占位符 `{azMapsDomain}` 。 此占位符将替换为映射所使用的相同域，并将自动附加相同的身份验证详细信息。 当使用 Azure Active Directory authentication 时，这大大简化了使用渲染服务进行的身份验证。
+
+若要在地图上显示 vector 磁贴源中的数据，请将源连接到数据呈现层之一。 使用矢量源的所有层都必须 `sourceLayer` 在选项中指定一个值。 该列下面的代码将 Azure Maps 流量向量磁贴服务作为矢量图块源加载，然后使用线条层在地图上显示它。 此向量磁贴源在源层中具有一组称为 "流量流" 的数据。 此数据集中的行数据具有一个名为的属性，该属性 `traffic_level` 在此代码中用于选择颜色并缩放线条大小。
+
+```javascript
+//Create a vector tile source and add it to the map.
+var datasource = new atlas.source.VectorTileSource(null, {
+    tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
+    maxZoom: 22
+});
+map.sources.add(datasource);
+
+//Create a layer for traffic flow lines.
+var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+    //The name of the data layer within the data source to pass into this rendering layer.
+    sourceLayer: 'Traffic flow',
+
+    //Color the roads based on the traffic_level property. 
+    strokeColor: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 'red',
+        0.33, 'orange',
+        0.66, 'green'
+    ],
+
+    //Scale the width of roads based on the traffic_level property. 
+    strokeWidth: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 6,
+        1, 1
+    ]
+});
+
+//Add the traffic flow layer below the labels to make the map clearer.
+map.layers.add(flowLayer, 'labels');
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="矢量磁贴线条层" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅 CodePen 上的 () Azure Maps "笔<a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>矢量平铺线层</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+</iframe>
+
+<br/>
 
 ## <a name="connecting-a-data-source-to-a-layer"></a>将数据源连接到层
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7dfb863da9f06cfc0c81944aa4037933cdd650ad
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 43dc0020f64a80e10f179fd194c4878f2fec41ad
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649184"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243199"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
 
@@ -185,10 +186,10 @@ var signature = digest.toString('base64');
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[请求单一登录 (SSO) 令牌]: https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/User/GenerateSsoUrl
-[创建用户]: https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user/createorupdate
-[为订阅调用 REST API]: https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate
+[请求单一登录 (SSO) 令牌]: /rest/api/apimanagement/2019-12-01/user/generatessourl
+[创建用户]: /rest/api/apimanagement/2019-12-01/user/createorupdate
+[为订阅调用 REST API]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps
 [示例代码在下面提供]: #delegate-example-code
 
-[api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 
+[api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png

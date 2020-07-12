@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 1780cb47696813b5d26035f54e0685969482dba6
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5b311dd9b0cd2c2b007bc19994aee771b2c4360f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058106"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246374"
 ---
 # <a name="scaling-in-service-fabric"></a>在 Service Fabric 中进行缩放
 Azure Service Fabric 通过管理服务、分区以及群集的节点上的副本，让生成可缩放的应用程序更简单。 在同一硬件上运行多个工作负荷不仅可实现最大资源使用率，还可提供在如何选择缩放工作负荷方面的灵活性。 此第 9 频道视频介绍了如何构建可缩放的微服务应用程序：
@@ -63,7 +63,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>通过创建或删除新命名服务进行缩放
 命名服务实例是群集中某命名应用程序实例内的服务类型的特定实例（请参阅 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)）。 
 
-新的命名服务实例可在服务变得更繁忙或不繁忙时进行创建（或删除）。 这使请求可在更多服务实例中进行传播，通常允许减少现有服务上的负载。 创建服务时，Service Fabric 群集资源管理器将以分布式方式放置群集中的服务。 确切的决策受群集中的[指标](service-fabric-cluster-resource-manager-metrics.md)和其他放置规则约束。 可以通过多种不同的方式来创建服务，但最常见的方法是通过管理操作（如用户调用 [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) ）或通过代码调用 [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) 。 `CreateServiceAsync` 甚至可从正在群集中运行的其他服务内进行调用。
+新的命名服务实例可在服务变得更繁忙或不繁忙时进行创建（或删除）。 这使请求可在更多服务实例中进行传播，通常允许减少现有服务上的负载。 创建服务时，Service Fabric 群集资源管理器将以分布式方式放置群集中的服务。 确切的决策受群集中的[指标](service-fabric-cluster-resource-manager-metrics.md)和其他放置规则约束。 可以通过多种不同的方式来创建服务，但最常见的方法是通过管理操作（如用户调用 [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) ）或通过代码调用 [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) 。 `CreateServiceAsync` 甚至可从正在群集中运行的其他服务内进行调用。
 
 动态创建服务可用于各种方案，属于通用模式。 例如，请想一想代表特定工作流的有状态服务。 表示工作的调用将向此服务显示，且此服务将执行该工作流的步骤并记录进度。 
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5f6b4d2d197bbd4f4aff9236837eab062b4a63
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190016"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243301"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>通过 Azure API 管理服务使用外部服务
 Azure API 管理服务中的策略可以单纯根据传入的请求、传出的响应以及基本配置信息执行多种不同的有用工作。 但是，如果能够与 API 管理策略中的外部服务进行交互，则可以使更多的想法成为可能。
@@ -26,7 +27,7 @@ Azure API 管理服务中的策略可以单纯根据传入的请求、传出的�
 你以前见过如何与[用于日志记录、监视及分析的 Azure 事件中心服务](api-management-log-to-eventhub-sample.md)交互。 本文演示可用来与基于 HTTP 的任何外部服务进行交互的策略。 这些策略可用于触发远程事件，或检索可用于以某种方式处理原始请求和响应的信息。
 
 ## <a name="send-one-way-request"></a>Send-One-Way-Request
-最简单的外部交互方式也许是即发即弃，使外部服务能够获得某种重要事件的通知。 可以使用控制流策略 `choose` 来检测自己感兴趣的任何类型的条件。  如果条件满足，可以使用 [send-one-way-request](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) 策略发起外部 HTTP 请求。 这可以是对消息传送系统（例如 Hipchat 或 Slack）的请求，也可能是对邮件 API（例如 SendGrid 或 MailChimp）的请求，或者是针对某些例如 PagerDuty 的重大支持事件的请求。 所有这些消息传送系统都提供可供调用的简单 HTTP API。
+最简单的外部交互方式也许是即发即弃，使外部服务能够获得某种重要事件的通知。 可以使用控制流策略 `choose` 来检测自己感兴趣的任何类型的条件。  如果条件满足，可以使用 [send-one-way-request](./api-management-advanced-policies.md#SendOneWayRequest) 策略发起外部 HTTP 请求。 这可以是对消息传送系统（例如 Hipchat 或 Slack）的请求，也可能是对邮件 API（例如 SendGrid 或 MailChimp）的请求，或者是针对某些例如 PagerDuty 的重大支持事件的请求。 所有这些消息传送系统都提供可供调用的简单 HTTP API。
 
 ### <a name="alerting-with-slack"></a>使用 Slack 发出警报
 以下示例演示当 HTTP 响应状态代码大于或等于 500 时如何将消息发送到 Slack 聊天室。 500 范围错误表示后端 API 发生问题，而 API 的客户端无法解决此类问题。 通常需要在 API 管理部件上进行某种形式的介入。  
@@ -61,7 +62,7 @@ Slack 具有入站 Web Hook 的概念。 配置入站 Web Hook 时，Slack 将�
 ![Slack Web Hook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>即发即弃是否足够好？
-使用请求的即发即弃形式有一些特定的权衡取舍。 如果出于某些原因导致请求失败，系统不会报告失败。 在这种特定情况下，无法保证具有辅助失败报告系统的复杂性，以及等待响应所需的其他性能成本。 如果检查响应很重要，则 [send-request](/azure/api-management/api-management-advanced-policies#SendRequest) 策略是较好的选项。
+使用请求的即发即弃形式有一些特定的权衡取舍。 如果出于某些原因导致请求失败，系统不会报告失败。 在这种特定情况下，无法保证具有辅助失败报告系统的复杂性，以及等待响应所需的其他性能成本。 如果检查响应很重要，则 [send-request](./api-management-advanced-policies.md#SendRequest) 策略是较好的选项。
 
 ## <a name="send-request"></a>Send-Request
 `send-request` 策略能够使用外部服务来执行复杂的处理函数，并将数据返回到 API 管理服务，此服务可用于进一步处理策略。
@@ -103,7 +104,7 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 
 或者，如果授权服务器不包含用于指示令牌是否有效的 "活动" 字段，请使用 Postman 等工具来确定有效令牌中设置的属性。 例如，如果有效的令牌响应中包含一个名为 "expires_in" 的属性，请按照以下方式检查授权服务器响应中是否存在此属性名称：
 
-当条件 = "@ （（IResponse）上下文时，<。变量 ["tokenstate"]）。Body.As <JObject> （）。Property （"expires_in"） = = null） ">
+<条件 = "@ ( # A2 # B3 IResponse) 上下文。变量 ["tokenstate"] ) 。Body.As <JObject> ( # A7。属性 ( "expires_in" ) = = null) ">
 
 ### <a name="reporting-failure"></a>报告失败
 可以使用 `<choose>` 策略来检测令牌是否无效，如果无效，则返回 401 响应。
@@ -212,7 +213,7 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 这些请求按顺序执行，但这不是理想的做法。 
 
 ### <a name="responding"></a>响应
-若要构造复合响应，可以使用 [return-response](/azure/api-management/api-management-advanced-policies#ReturnResponse) 策略。 `set-body` 元素可以使用表达式构造新的 `JObject` 以及嵌入为属性的所有组件表示形式。
+若要构造复合响应，可以使用 [return-response](./api-management-advanced-policies.md#ReturnResponse) 策略。 `set-body` 元素可以使用表达式构造新的 `JObject` 以及嵌入为属性的所有组件表示形式。
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -286,4 +287,3 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 
 ## <a name="summary"></a>总结
 Azure API 管理服务提供可根据需要应用到 HTTP 流量的灵活策略，并支持后端服务的组合。 不管是要使用警报、校验、验证功能还是基于多个后端服务创建新的复合资源来增强 API 网关，`send-request` 和相关策略都能使这种想法成为可能。
-

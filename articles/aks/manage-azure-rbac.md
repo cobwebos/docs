@@ -1,27 +1,27 @@
 ---
 title: 在 Kubernetes 中通过 Azure 管理 RBAC
 titleSuffix: Azure Kubernetes Service
-description: 了解如何使用 azure RBAC 通过 Azure Kubernetes 服务（AKS）进行 Kubernetes 授权。
+description: 了解如何使用 azure RBAC 通过 Azure Kubernetes 服务 (AKS) 进行 Kubernetes 授权。
 services: container-service
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 84800f978790a114b80c415a5e5e3dad77eaf8da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122254"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244254"
 ---
-# <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用 Azure RBAC 进行 Kubernetes 授权（预览版）
+# <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用 Azure RBAC 进行 Kubernetes 授权（预览）
 
-现在，你可以利用[Azure Active Directory （Azure AD）与 AKS 之间的集成身份验证](managed-aad.md)。 启用后，此集成允许客户将 Azure AD 用户、组或服务主体用作 Kubernetes RBAC 中的主题，请参阅[此处](azure-ad-rbac.md)的详细信息。
+现在，你可以在[Azure Active Directory (Azure AD) 和 AKS 之间充分利用集成身份验证](managed-aad.md)。 启用后，此集成允许客户将 Azure AD 用户、组或服务主体用作 Kubernetes RBAC 中的主题，请参阅[此处](azure-ad-rbac.md)的详细信息。
 此功能使你不必单独管理 Kubernetes 的用户标识和凭据。 但是，你仍需要单独设置和管理 Azure RBAC 和 Kubernetes RBAC。 有关 AKS 上的身份验证、授权和 RBAC 的详细信息，请参阅[此处](concepts-identity.md)。
 
 本文档介绍一种新的方法，允许跨 Azure 资源、AKS 和 Kubernetes 资源实现统一的管理和访问控制。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 通过 Azure 管理 Kubernetes 资源的 RBAC 功能，你可以选择使用 Azure 或本机 Kubernetes 机制管理群集资源的 RBAC。 启用后，将由 Azure RBAC 专门验证 Azure AD 主体，同时 Kubernetes RBAC 以独占方式验证常规 Kubernetes 用户和服务帐户。 有关 AKS 上的身份验证、授权和 RBAC 的详细信息，请参阅[此处](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)。
 
@@ -79,7 +79,7 @@ az extension update --name aks-preview
 ### <a name="limitations"></a>限制
 
 - 需要[托管 Azure AD 集成](managed-aad.md)。
-- 预览期间，不能将用于 Kubernetes 授权的 Azure RBAC 集成到现有群集中，但你将能够正式发布（GA）。
+- 预览期间，不能将用于 Kubernetes 授权的 Azure RBAC 集成到现有群集中，但你可以 (GA) 正式上市。
 - 使用[kubectl v 1.18.3 +][az-aks-install-cli]。
 - 在预览期间，只能通过 Azure CLI 添加*命名空间级别*权限。
 - 如果你有 CRDs 并且正在进行自定义角色定义，则现在涵盖 CRDs 的唯一方法是提供 `Microsoft.ContainerService/managedClusters/*/read` 。 AKS 正在努力为 CRDs 提供更精细的权限。 对于剩余的对象，可以使用特定的 API 组，例如： `Microsoft.ContainerService/apps/deployments/read` 。
@@ -124,13 +124,13 @@ AKS 提供下列四种内置角色：
 
 | 角色                                | 说明  |
 |-------------------------------------|--------------|
-| Azure Kubernetes 服务 RBAC 查看器  | 允许只读访问权限查看命名空间中的大多数对象。 它不允许查看角色或角色绑定。 此角色不允许查看 `Secrets` ，因为通过读取机密内容可以访问命名空间中的 ServiceAccount 凭据，这将允许 API 访问命名空间中的任何 ServiceAccount （一种权限提升形式）  |
+| Azure Kubernetes 服务 RBAC 查看器  | 允许只读访问权限查看命名空间中的大多数对象。 它不允许查看角色或角色绑定。 此角色不允许查看 `Secrets` ，因为读取机密内容可以访问命名空间中的 ServiceAccount 凭据，这将允许 API 访问命名空间中的任何 ServiceAccount (一种形式的权限提升)   |
 | Azure Kubernetes 服务 RBAC 编写器 | 允许读/写访问命名空间中的大多数对象。 此角色不允许查看或修改角色或角色绑定。 但是，此角色允许将 pod `Secrets` 作为命名空间中的任何 ServiceAccount 来访问和运行，因此它可用于获取命名空间中任何 ServiceAccount 的 API 访问级别。 |
-| Azure Kubernetes 服务 RBAC 管理员  | 允许在命名空间内授予管理员访问权限。 允许对命名空间（或群集范围）中的大多数资源进行读/写访问，包括在命名空间中创建角色和角色绑定的功能。 此角色不允许对资源配额或命名空间本身具有写入权限。 |
+| Azure Kubernetes 服务 RBAC 管理员  | 允许在命名空间内授予管理员访问权限。 允许读/写访问命名空间中的大多数资源 (或群集范围) ，包括在命名空间中创建角色和角色绑定的能力。 此角色不允许对资源配额或命名空间本身具有写入权限。 |
 | Azure Kubernetes 服务 RBAC 群集管理  | 允许超级用户访问对任何资源执行任何操作。 它可让你完全控制群集中的每个资源和所有命名空间。 |
 
 
-作用域为**整个 AKS 群集**的角色分配可以在 Azure 门户上的群集资源的访问控制（IAM）边栏选项卡上完成，也可以通过使用 Azure CLI 命令来完成，如下所示：
+作用域为**整个 AKS 群集**的角色分配可以在 Azure 门户上群集资源 (IAM) 边栏选项卡上完成，也可以使用 Azure CLI 命令完成，如下所示：
 
 ```bash
 # Get your AKS Resource ID
@@ -141,7 +141,7 @@ AKS_ID=$(az aks show -g MyResourceGroup -n MyManagedCluster --query id -o tsv)
 az role assignment create --role "Azure Kubernetes Service RBAC Admin" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
 ```
 
-其中， `<AAD-ENTITY-ID>` 可以是用户名（例如）， user@contoso.com 甚至是服务主体的 ClientID。
+其中 `<AAD-ENTITY-ID>` ，可以是用户名 (例如， user@contoso.com) 甚至是服务主体的 ClientID。
 
 你还可以创建作用域为群集中特定**命名空间**的角色分配：
 
@@ -215,7 +215,7 @@ az aks get-credentials -g MyResourceGroup -n MyManagedCluster
 ```
 
 > [!IMPORTANT]
-> 需要[Azure Kubernetes Service 群集用户](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role)内置角色才能执行上述步骤。
+> 需要[Azure Kubernetes Service 群集用户](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)内置角色才能执行上述步骤。
 
 现在，你可以使用 kubectl 来列出群集中的节点。 首次运行时，需要登录，并且后续命令将使用各自的访问令牌。
 
@@ -241,7 +241,7 @@ export KUBECONFIG=/path/to/kubeconfig
 kubelogin convert-kubeconfig
 ``` 
 
-首次使用时，你必须使用常规 kubectl 以交互方式登录，但此后你将不再需要（只要你 Azure AD 的令牌仍有效）。
+首次使用时，你必须使用常规 kubectl 以交互方式登录，但此后你将不再需要，即使对于新 Azure AD 群集 (，只要你的令牌仍有效) 。
 
 ```bash
 kubectl get nodes
@@ -254,7 +254,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 ### <a name="clean-role-assignment"></a>清理角色分配
 

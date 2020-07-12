@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b8f97bb27b3eb45c731b20ad51e35fde9b6a394a
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126888"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242961"
 ---
 # <a name="api-management-policy-samples"></a>API 管理策略示例
 
@@ -34,7 +34,7 @@ ms.locfileid: "85126888"
 | [使用外部授权者授权请求](./authorize-request-using-external-authorizer.md)                                                   | 演示如何使用外部授权者保护 API 访问。                                                                                                                                                               |
 | [使用 Google OAuth 令牌授予访问权限](./use-google-as-oauth-token-provider.md)                                            | 演示如何使用 Google 作为 OAuth 令牌提供程序授予对终结点的访问权限。                                                                                                                                    |
 | [使用应用程序网关时筛选 IP 地址](./filter-ip-addresses-when-using-appgw.md) | 说明通过应用程序网关访问 API 管理实例时如何通过策略进行 IP 筛选
-| [生成共享访问签名并将请求转发到 Azure 存储](./generate-shared-access-signature.md)                  | 演示如何使用表达式生成[共享访问签名](../../storage/storage-dotnet-shared-access-signature-part-1.md)并使用 rewrite-uri 策略将请求转发到 Azure 存储。 |
+| [生成共享访问签名并将请求转发到 Azure 存储](./generate-shared-access-signature.md)                  | 演示如何使用表达式生成[共享访问签名](../../storage/common/storage-sas-overview.md)并使用 rewrite-uri 策略将请求转发到 Azure 存储。 |
 | [从 AAD 获取 OAuth2 访问令牌并将其转发到后端](./use-oauth2-for-authorization.md)                             | 提供一个示例用于演示如何使用 OAuth2 在网关与后端之间授权。 该示例演示如何从 AAD 获取访问令牌并将其转发到后端。                                                    |
 | [使用发送请求策略从 SAP 网关获取 X-CSRF 令牌](./get-x-csrf-token-from-sap-gateway.md)                           | 演示如何实现许多 API 所用的 X-CSRF 模式。 此示例特定于 SAP 网关。                                                                                                                           |
 | [基于请求的正文大小路由请求](./route-requests-based-on-size.md)                                            | 演示如何基于请求的正文大小路由请求。                                                                                                                                                       |

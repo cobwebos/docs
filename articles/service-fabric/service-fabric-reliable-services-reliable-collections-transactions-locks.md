@@ -4,11 +4,12 @@ description: Azure Service Fabric 可靠状态管理器和可靠集合事务和�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938912"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245103"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 
@@ -18,7 +19,7 @@ ms.locfileid: "76938912"
 
 * **原子性**：事务必须是原子工作单元。 换而言之，要么执行其所有数据修改，要么一个数据修改也不执行。
 * **一致性**：事务在完成时，必须使所有的数据都保持一致状态。 事务结束时，所有内部数据结构必须都正确。
-* **隔离**：由并发事务所做的修改必须与任何其他并发事务所做的修改隔离。 用于 [ITransaction](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) 中某个操作的隔离级别由执行该操作的 [IReliableState](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) 确定。
+* **隔离**：由并发事务所做的修改必须与任何其他并发事务所做的修改隔离。 用于 [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) 中某个操作的隔离级别由执行该操作的 [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) 确定。
 * **持续性**：事务完成后，其效果永久存在于系统中。 即使系统发生故障，修改也会保留。
 
 ### <a name="isolation-levels"></a>隔离级别
@@ -84,4 +85,4 @@ Reliable Queue 权衡严格事务性 FIFO 属性的并发。
 * [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
 * [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
 * [可靠状态管理器和配置](service-fabric-reliable-services-configuration.md)
-* [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

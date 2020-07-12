@@ -5,11 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f2361bf76bd4f9d297fbe541b950840f13966cc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614479"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246395"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>使用 Eclipse 调试 Java Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -40,5 +41,5 @@ ms.locfileid: "75614479"
 
 ### <a name="next-steps"></a>后续步骤
 
-* [使用 Linux Azure 诊断收集日志](service-fabric-diagnostics-how-to-setup-lad.md)。
+* [使用 Linux Azure 诊断收集日志](./service-fabric-diagnostics-event-aggregation-lad.md)。
 * [在本地监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。

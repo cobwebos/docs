@@ -5,16 +5,17 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f883457c2d6da6d2776bb2119caf5d09565170
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259365"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246412"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
 
-Service Fabric 通过部署固定到特定区域的节点类型来支持跨可用性区域的群集。 这将确保应用程序的高可用性。 Azure 可用性区域仅在选择区域中可用。 有关详细信息，请参阅[Azure 可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。
+Service Fabric 通过部署固定到特定区域的节点类型来支持跨可用性区域的群集。 这将确保应用程序的高可用性。 Azure 可用性区域仅在选择区域中可用。 有关详细信息，请参阅[Azure 可用性区域概述](../availability-zones/az-overview.md)。
 
 示例模板可用： [Service Fabric 跨可用性区域模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
@@ -26,7 +27,7 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 * 群集可靠性级别设置为 "白金"。
 * 三个标记为主节点的节点类型。
     * 每个节点类型都应映射到其自己的虚拟机规模集，位于不同的区域中。
-    * 每个虚拟机规模集应至少具有五个节点（银持续性）。
+    * 每个虚拟机规模集应具有至少五个节点 (银持续性) 。
 * 使用标准 SKU 的单个公共 IP 资源。
 * 使用标准 SKU 的单个负载均衡器资源。
 * 用于部署虚拟机规模集的子网所引用的 NSG。
@@ -135,7 +136,7 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>标准 SKU 负载均衡器出站规则
-与使用基本 Sku 相比，标准负载均衡器和标准公共 IP 向出站连接引入了新功能和不同的行为。 如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。 有关详细信息，请参阅[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust)和[Azure 标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
+与使用基本 Sku 相比，标准负载均衡器和标准公共 IP 向出站连接引入了新功能和不同的行为。 如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。 有关详细信息，请参阅[出站连接](../load-balancer/load-balancer-outbound-connections.md)和[Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md)。
 
 >[!NOTE]
 > 标准模板引用了默认情况下允许所有出站流量的 NSG。 入站流量仅限于 Service Fabric 管理操作所需的端口。 可对 NSG 规则进行修改以满足你的要求。
@@ -259,7 +260,7 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 * 用于部署虚拟机规模集的子网所引用的 NSG。
 * 三个标记为主节点的节点类型。
     * 每个节点类型都应映射到其自己的虚拟机规模集，位于不同的区域中。
-    * 每个虚拟机规模集应至少具有五个节点（银持续性）。
+    * 每个虚拟机规模集应具有至少五个节点 (银持续性) 。
 
 可在[示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure)中找到这些资源的示例。
 

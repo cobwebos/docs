@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169897"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242757"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -17,6 +17,9 @@ ms.locfileid: "86169897"
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 [host.json](functions-host-json.md) 文件和 [local.settings.json](functions-run-local.md#local-settings-file) 文件中提供了其他全局配置选项。
+
+> [!NOTE]  
+> 您可以使用应用程序设置重写设置值 host.js，而不必更改文件本身的 host.js。 这对于需要配置或修改特定环境设置的特定 host.js的情况非常有用。 这还允许更改设置 host.js，而无需重新发布项目。 若要了解详细信息，请参阅[参考文章host.js](functions-host-json.md#override-hostjson-values)。  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -38,7 +41,7 @@ Application Insights 的连接字符串。 `APPLICATIONINSIGHTS_CONNECTION_STRIN
 
 默认情况下，[函数代理](functions-proxies.md)使用快捷方式将 API 调用从代理直接发送到相同函数应用中的函数。 使用此快捷方式，而不是创建新的 HTTP 请求。 此设置允许您禁用该快捷方式行为。
 
-|密钥|值|描述|
+|密钥|值|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|使用指向本地函数应用中的函数的后端 URL 的调用不会直接发送到函数。 相反，请求会定向回函数应用的 HTTP 前端。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|使用指向本地函数应用中的函数的后端 URL 的调用将直接转发给函数。 这是默认值。 |

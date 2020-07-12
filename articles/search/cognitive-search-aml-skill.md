@@ -8,16 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d017472715e8fe924a11080fc837ac837f5bd48f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 598a8383350cae98d61b8ab74f7687161d3d33e8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982146"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245284"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 认知搜索扩充管道中的 AML 技能
 
-**AML**技能使你可以使用自定义[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)（AML）模型扩展 AI 扩充。 一旦[定型并部署](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow)了 aml 模型， **aml**技能就会将其集成到 AI 扩充中。
+> [!IMPORTANT] 
+> 此技能目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前没有 .NET SDK 支持。
+
+**Aml**技能使你可以使用自定义[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AML) 模型来扩展 AI 扩充。 一旦[定型并部署](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow)了 aml 模型， **aml**技能就会将其集成到 AI 扩充中。
 
 与内置技能一样， **AML**技能具有输入和输出。 输入将以 JSON 对象的形式发送到已部署的 AML 服务，该对象将 JSON 负载作为响应以及成功状态代码输出。 响应应包含**AML**技能指定的输出。 其他任何响应都被视为错误，并且不会执行任何扩充。
 
@@ -42,12 +45,12 @@ Microsoft AmlSkill
 
 | 参数名称 | 说明 |
 |--------------------|-------------|
-| `uri` | （无需[身份验证或密钥身份验证](#WhatSkillParametersToUse)时需要）_JSON_有效负载将发送到的[AML 服务的评分 URI](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service) 。 只允许使用**https** URI 方案。 |
-| `key` | （[密钥身份验证](#WhatSkillParametersToUse)必需的）[AML 服务的密钥](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys)。 |
-| `resourceId` | （[令牌身份验证](#WhatSkillParametersToUse)需要）。 AML 服务的 Azure 资源管理器资源 ID。 它应采用 "订阅/{guid}/resourceGroups/{MachineLearningServices/工作区/{工作区名称}/services/{service_name}" 格式。 |
-| `region` | （可选，用于[令牌身份验证](#WhatSkillParametersToUse)）。 AML 服务所部署到的[区域](https://azure.microsoft.com/global-infrastructure/regions/)。 |
+| `uri` |  (无需[身份验证或密钥身份验证](#WhatSkillParametersToUse)，) _JSON_有效负载将发送到的[AML 服务的评分 URI](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service) 。 只允许使用**https** URI 方案。 |
+| `key` | [密钥身份验证](#WhatSkillParametersToUse)所需的 () [AML 服务的密钥](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys)。 |
+| `resourceId` | [令牌身份验证](#WhatSkillParametersToUse)) 需要 (。 AML 服务的 Azure 资源管理器资源 ID。 它应采用 "订阅/{guid}/resourceGroups/{MachineLearningServices/工作区/{工作区名称}/services/{service_name}" 格式。 |
+| `region` | [标记身份验证](#WhatSkillParametersToUse))  (可选。 AML 服务所部署到的[区域](https://azure.microsoft.com/global-infrastructure/regions/)。 |
 | `timeout` | （可选）如果指定，表明执行 API 调用的 http 客户端的超时值。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 例如，`PT60S` 表示 60 秒。 如果未设置，选择的是默认值 30 秒。 超时可以设置为最大 230 秒和最小 1 秒。 |
-| `degreeOfParallelism` | 可有可无如果指定此值，则指示索引器将与提供的终结点并行进行的调用数。 如果终结点的请求负载过高，则可以减小此值，如果终结点能够接受更多的请求，并且需要提高索引器的性能，则可以将其引发。  如果未设置，则使用默认值5。 DegreeOfParallelism 最大可以设置为10，最小值为1。
+| `degreeOfParallelism` |  (可选) 指定时，指示索引器将与提供的终结点并行进行的调用数。 如果终结点的请求负载过高，则可以减小此值，如果终结点能够接受更多的请求，并且需要提高索引器的性能，则可以将其引发。  如果未设置，则使用默认值5。 DegreeOfParallelism 最大可以设置为10，最小值为1。
 
 <a name="WhatSkillParametersToUse"></a>
 
@@ -105,7 +108,7 @@ Microsoft AmlSkill
 
 ## <a name="sample-output-json-structure"></a>示例输出 JSON 结构
 
-输出对应于从 AML 服务返回的响应。 AML 服务只应返回_JSON_有效负载（通过查看 `Content-Type` 响应标头进行验证），并且应为一个对象，其中的字段与中的 "名称" 根据匹配 `output` ，并且其值被视为扩充。
+输出对应于从 AML 服务返回的响应。 AML 服务只应通过查看响应标头来返回 (验证的_JSON_有效负载 `Content-Type`) 并且应为根据与中的 "名称" 匹配 `output` 且值被视为扩充的对象。
 
 ```json
 {

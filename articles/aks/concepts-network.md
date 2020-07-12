@@ -4,11 +4,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的网络，包括 kubenet 
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ae1c2b95a948f2344119af234539b6fab4edaaac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84789491"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244644"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -128,7 +129,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 
 在 AKS 中，可以使用 NGINX 之类的服务器创建入口资源，或使用 AKS HTTP 应用程序路由功能。 为 AKS 群集启用 HTTP 应用程序路由时，Azure 平台会创建入口控制器和 External-DNS 控制器。 在 Kubernetes 中创建新的入口资源时，系统会在特定于群集的 DNS 区域中创建所需的 DNS A 记录。 有关详细信息，请参阅[部署 HTTP 应用程序路由][aks-http-routing]。
 
-应用程序网关入口控制器（AGIC）外接程序允许 AKS 客户使用 Azure 的本机应用程序网关级别7负载均衡器向 Internet 公开云软件。 AGIC 监视托管时所在的 Kubernetes 群集并持续更新应用程序网关，以便向 Internet 公开所选服务。 若要了解有关 AKS 的 AGIC 外接程序的详细信息，请参阅[什么是应用程序网关入口控制器？][agic-overview]
+应用程序网关入口控制器 (AGIC) 外接程序允许 AKS 客户使用 Azure 的本机应用程序网关级别7负载均衡器向 Internet 公开云软件。 AGIC 监视托管时所在的 Kubernetes 群集并持续更新应用程序网关，以便向 Internet 公开所选服务。 若要了解有关 AKS 的 AGIC 外接程序的详细信息，请参阅[什么是应用程序网关入口控制器？][agic-overview]
 
 入口的另一个常见功能是 SSL/TLS 终止。 在通过 HTTPS 访问的大型 Web 应用程序上，TLS 终止可以由入口资源处理，而不是在应用程序自身内部处理。 要提供自动 TLS 认证生成和配置，可以将入口资源配置为使用 Let's Encrypt 之类的提供程序。 有关使用 Let's Encrypt 配置 NGINX 入口控制器的详细信息，请参阅 [Ingress 和 TLS][aks-ingress-tls]。
 
@@ -173,7 +174,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ./ingress-tls.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

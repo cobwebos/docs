@@ -13,11 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857171"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246803"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全的应用程序
 本文介绍了在为云设计应用程序时需要考虑的安全活动和控制措施。 介绍了在 Microsoft [安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 的要求和设计阶段需要考虑的培训资源以及安全问题和概念。 目标是帮助你定义可用于设计更安全应用程序的活动和 Azure 服务。
@@ -44,7 +45,7 @@ ms.locfileid: "82857171"
 
   - [在推送到生产环境前要考虑的前 5 个安全事项](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca)介绍了如何在 Azure 上帮助保护你的 Web 应用程序，并保护你的应用免受最常见和最危险的 Web 应用程序攻击。
 
-  - [适用于 Azure 的 Secure DevOps 工具包](https://azsk.azurewebsites.net/index.html)是一个脚本、工具、扩展和自动化的集合，该集合适用于使用广泛的自动化的 DevOps 团队的综合性 Azure 订阅和资源安全需求。 适用于 Azure 的 Secure DevOps 工具包可以向你展示如何将安全性平稳集成到你的本机 DevOps 工作流中。 工具包提供了安全验证测试（SVTs）等工具，可帮助开发人员编写安全代码，并在编码和早期开发阶段测试云应用程序的安全配置。
+  - [适用于 Azure 的 Secure DevOps 工具包](https://azsk.azurewebsites.net/index.html)是一个脚本、工具、扩展和自动化的集合，该集合适用于使用广泛的自动化的 DevOps 团队的综合性 Azure 订阅和资源安全需求。 适用于 Azure 的 Secure DevOps 工具包可以向你展示如何将安全性平稳集成到你的本机 DevOps 工作流中。 该工具包处理 (SVTs) 等安全验证测试工具，可帮助开发人员编写安全代码，并在编码和早期开发阶段测试云应用程序的安全配置。
 
   - [Azure 解决方案的最佳安全方案](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)提供一系列安全最佳做法，以便在使用 Azure 设计、部署和管理云解决方案时使用。
 
@@ -65,7 +66,7 @@ ms.locfileid: "82857171"
 
   - 我的应用程序是否包含敏感数据？
 
-  - 我的应用程序是收集还是存储需要遵守行业标准和法规遵从性计划[（如联邦金融机构检查委员会（FFIEC）](../blueprints/ffiec-analytics-overview.md)或[支付卡行业数据安全标准（PCI DSS））](../blueprints/pcidss-analytics-overview.md)的数据？
+  - 我的应用程序是收集还是存储需要遵守行业标准和合规性计划的数据（如[联邦金融机构检查委员会） (FFIEC) ](../blueprints/ffiec-analytics-overview.md)还是[支付卡行业数据安全标准 (PCI DSS) ](../blueprints/pcidss-analytics-overview.md)？
 
   - 我的应用程序是否收集或包含敏感的个人或客户数据，这些数据是否可以用来（单独使用或与其他信息一起使用）识别、联系或定位个人？
 
@@ -157,7 +158,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 | 否认性            | 不可否认性       | 启用 Azure [监视和诊断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。|
 | 信息泄露 | 机密性       | 加密[静态](../fundamentals/encryption-atrest.md)和[传输中的](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)敏感数据。 |
 | 拒绝服务      | 可用性          | 监视性能指标，以了解潜在的拒绝服务情况。 实现连接筛选器。 [Azure DDoS 保护](../../virtual-network/ddos-protection-overview.md#next-steps)与应用程序设计最佳做法相结合，提供对 DDoS 攻击的防御。|
-| 特权提升 | 授权         | 使用 Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
+| 权限提升 | 授权         | 使用 Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
 
 ### <a name="reduce-your-attack-surface"></a>减少受攻击面
 
@@ -208,7 +209,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 使用平台提供的身份验证和授权机制，而不要使用自定义代码。 这是因为开发自定义身份验证代码可能容易出错。 商业代码（例如 Microsoft 编写的代码）通常会接受广泛的安全性评审。 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 是用于标识和访问管理的 Azure 解决方案。 这些 Azure AD 工具和服务可帮助进行安全的开发：
 
-- [Azure AD 标识平台（面向开发人员的 Azure AD）](../../active-directory/develop/about-microsoft-identity-platform.md)是一项云标识服务，开发人员使用它来构建将用户安全登录的应用。 Azure AD 可以为需要构建单租户业务线 (LOB) 应用的开发人员和寻求开发多租户应用的开发人员提供帮助。 除了基本登录以外，使用 Azure AD 构建的应用还可以调用 Microsoft API，以及基于 Azure AD 平台构建的自定义 API。 Azure AD 标识平台支持 OAuth 2.0 和 OpenID Connect 之类的行业标准协议。
+- [Microsoft 标识平台](/azure/active-directory/develop/)是一组组件，开发人员可以使用这些组件来构建安全登录用户的应用程序。 该平台可帮助开发人员构建单租户、业务线 (LOB) 应用和开发多租户应用的开发人员。 除了基本登录，使用 Microsoft 标识平台构建的应用还可以调用 Microsoft Api 和自定义 Api。 Microsoft 标识平台支持 OAuth 2.0 和 OpenID Connect 这样的行业标准协议。
 
 - [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) 是一项标识管理服务，可用来自定义和控制客户在使用应用程序时的注册、登录和管理配置文件的方式。 这包括面向 iOS、Android 和 .NET 等系统开发的应用程序。 使用 Azure AD B2C，可以在执行这些操作的同时保护客户标识。
 
@@ -225,7 +226,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 #### <a name="implement-just-in-time-access"></a>实现实时访问
 
-实现*实时*（JIT）访问，进一步降低权限的暴露时间。 使用[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity)执行以下操作：
+实现*实时* (JIT) 访问，进一步降低权限的暴露时间。 使用[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity)执行以下操作：
 
 - 向用户授予仅 JIT 所需的权限。
 - 分配时限更短的角色，确信权限会自动撤消。

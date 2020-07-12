@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690025"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243148"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
 本主题介绍数据模型中常用项目的实体和类型表示形式，这些数据模型适用于 Azure API 管理中的开发人员门户模板。  
   
- 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+ 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](./api-management-developer-portal-templates.md)。  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -66,7 +67,7 @@ ms.locfileid: "84690025"
 |`serviceUrl`|字符串|实现此 API 的后端服务的绝对 URL。|  
 |`path`|字符串|相对 URL，用于唯一标识此 API 及其在 API 管理服务实例中的所有资源路径。 可将其追加到在服务实例创建过程中指定的 API 终结点基 URL，构成此 API 的公共 URL。|  
 |`protocols`|数字数组|说明可在哪些协议上调用此 API 中的操作。 允许的值为 `1 - http` 和/或 `2 - https`。|  
-|`authenticationSettings`|[授权服务器身份验证设置](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|此 API 中包含的身份验证设置的集合。|  
+|`authenticationSettings`|[授权服务器身份验证设置](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|此 API 中包含的身份验证设置的集合。|  
 |`subscriptionKeyParameterNames`|对象 (object)|可选属性，可用于指定包含订阅密钥的查询参数和/或标头参数的自定义名称。 如果存在此属性，则其必须包含以下两个属性中的至少一个。<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a> API 摘要  

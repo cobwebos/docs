@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38c487928f15e953a1c660c5007398bc5c2b3f7d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ed95b902c2c0768f50a0c6dadbfc617292932c2b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206621"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242944"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Azure Arc for servers 代理概述
 
@@ -62,7 +62,7 @@ Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
 
     |Folder |说明 |
     |-------|------------|
-    |C:\Program Files\AzureConnectedMachineAgent |包含代理支持文件的默认安装路径。|
+    |%ProgramFiles%\AzureConnectedMachineAgent |包含代理支持文件的默认安装路径。|
     |%ProgramData%\AzureConnectedMachineAgent |包含代理配置文件。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |包含获取的令牌。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |包含代理配置文件 `agentconfig.json`，该文件记录其在服务中的注册信息。|
@@ -99,7 +99,7 @@ Azure 连接的计算机代理包包含多个捆绑在一起的逻辑组件。
 
 * 卸载代理期间，不会删除以下项目。
 
-    * C:\Program Files\AzureConnectedMachineAgent\Logs
+    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
     * %ProgramData%\AzureConnectedMachineAgent 和子目录
     * %ProgramData%\GuestConfig
 
@@ -170,9 +170,9 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 ### <a name="required-permissions"></a>所需的权限
 
-- 若要将计算机加入，你必须是 **Azure Connected Machine 加入**角色的成员。
+* 若要将计算机加入，你必须是 **Azure Connected Machine 加入**角色的成员。
 
-- 若要读取、修改、重新加入和删除计算机，你必须是 **Azure Connected Machine 资源管理员**角色的成员。 
+* 若要读取、修改、重新加入和删除计算机，你必须是 **Azure Connected Machine 资源管理员**角色的成员。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure 订阅和服务限制
 
@@ -195,8 +195,8 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 服务标记：
 
-- AzureActiveDirectory
-- AzureTrafficManager
+* AzureActiveDirectory
+* AzureTrafficManager
 
 URL：
 
@@ -218,8 +218,8 @@ URL：
 
 Azure Arc for servers（预览版）依赖于通过订阅中的以下 Azure 资源提供程序来使用此服务：
 
-- Microsoft.HybridCompute
-- Microsoft.GuestConfiguration
+* Microsoft.HybridCompute
+* Microsoft.GuestConfiguration
 
 如果未注册这些提供程序，可使用以下命令注册：
 

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649200"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243471"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
 
@@ -33,7 +34,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 ![命名值](./media/api-management-howto-properties/named-values.png)
 
-命名值可以包含文本字符串和[策略表达式](/azure/api-management/api-management-policy-expressions)。 例如，`Expression` 的值是一个策略表达式，其返回的字符串包含当前日期和时间。 命名值 `Credential` 标记为密钥，因此默认情况下不显示其值。
+命名值可以包含文本字符串和[策略表达式](./api-management-policy-expressions.md)。 例如，`Expression` 的值是一个策略表达式，其返回的字符串包含当前日期和时间。 命名值 `Credential` 标记为密钥，因此默认情况下不显示其值。
 
 | 名称       | 值                      | 机密 | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
@@ -109,8 +110,8 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 -   详细了解如何使用策略
     -   [API 管理中的策略](api-management-howto-policies.md)
-    -   [策略参考](/azure/api-management/api-management-policies)
-    -   [策略表达式](/azure/api-management/api-management-policy-expressions)
+    -   [策略参考](./api-management-policies.md)
+    -   [策略表达式](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

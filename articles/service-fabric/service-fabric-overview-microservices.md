@@ -4,11 +4,12 @@ description: 概述了为何使用微服务方法生成云应用程序对于开�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792862"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246014"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>为何使用微服务方法构建应用程序？
 
@@ -130,7 +131,7 @@ ms.locfileid: "82792862"
 
 ## <a name="guidance-for-designing-microservices-on-azure"></a>在 Azure 上设计微服务的指南
 
-请访问 Azure 体系结构中心，获取有关在[Azure 上设计和构建微服务](https://docs.microsoft.com/azure/architecture/microservices/)的指导。
+请访问 Azure 体系结构中心，获取有关在[Azure 上设计和构建微服务](/azure/architecture/microservices/)的指导。
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric 作为微服务平台
 
@@ -190,7 +191,7 @@ Service Fabric 的目标是将构建微服务应用程序的复杂性降低，�
 ## <a name="next-steps"></a>后续步骤
 
 * [微服务：由云支持的应用程序变革](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Azure 体系结构中心：在 Azure 上构建微服务](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Azure 体系结构中心：在 Azure 上构建微服务](/azure/architecture/microservices/)
 * [Azure Service Fabric 应用程序和群集最佳做法](service-fabric-best-practices-overview.md)
 * [Service Fabric 术语概述](service-fabric-technical-overview.md)
 

@@ -3,12 +3,12 @@ title: 扩展或缩减 Service Fabric 群集
 description: 通过为每个节点类型/虚拟机规模集设置自动缩放规则，根据需要扩展或缩减 Service Fabric 群集。 在 Service Fabric 群集中添加或删除节点
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c72f8eca9bc054446ceec35448c930098c5f81fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9393ca4531dea58859a4fc60509524e9c4a0b7f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610245"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246480"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
 
@@ -24,7 +24,7 @@ ms.locfileid: "85610245"
 虚拟机规模集是一种 Azure 计算资源，可用于将一组虚拟机作为一个集进行部署和管理。 在 Service Fabric 群集中定义的每个节点类型将设置为不同的虚拟机规模集。 然后，每个节点类型可以独立缩减或扩展、打开不同的端口集，并可以有不同的容量指标。 可在 [Service Fabric 节点类型](service-fabric-cluster-nodetypes.md)文档中了解有关详细信息。 由于群集中的 Service Fabric 节点类型由后端的虚拟机规模集构成，因此需要为每个节点类型/虚拟机规模集设置自动缩放规则。
 
 > [!NOTE]
-> 订阅必须有足够的核心用于添加构成此群集的新 VM。 当前没有模型验证，因此如果达到任何配额限制，会遇到部署时故障。 此外，对于单个节点类型，每个 VMSS 不能超过 100 个节点。 要实现目标缩放，可能需要添加 VMSS，且自动缩放不会自动添加 VMSS。 将 VMSS 就地添加到实时集群非常具有挑战性务，这通常会导致用户使用创建时预配的相应节点类型来预配新集群。请相应地[计划群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。 
+> 订阅必须有足够的核心用于添加构成此群集的新 VM。 当前没有模型验证，因此如果达到任何配额限制，会遇到部署时故障。 此外，对于单个节点类型，每个 VMSS 不能超过 100 个节点。 要实现目标缩放，可能需要添加 VMSS，且自动缩放不会自动添加 VMSS。 将 VMSS 就地添加到实时集群非常具有挑战性务，这通常会导致用户使用创建时预配的相应节点类型来预配新集群。请相应地[计划群集容量](./service-fabric-cluster-capacity.md)。 
 > 
 > 
 
@@ -52,7 +52,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 按照以下说明[为每个虚拟机规模集设置自动缩放](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)。
 
 > [!NOTE]
-> 在横向缩减方案中，除非节点类型具有金级或银级[持续性级别][durability]，否则需要使用相应节点名称来调用 [Remove-ServiceFabricNodeState cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)。 对于铜牌持久性，不建议一次在多个节点中进行缩放。
+> 在横向缩减方案中，除非节点类型具有金级或银级[持续性级别][durability]，否则需要使用相应节点名称来调用 [Remove-ServiceFabricNodeState cmdlet](/powershell/module/servicefabric/remove-servicefabricnodestate)。 对于铜牌持久性，不建议一次在多个节点中进行缩放。
 > 
 > 
 
@@ -229,7 +229,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>可能会在 Service Fabric Explorer 中观察到的行为
-横向扩展群集时，Service Fabric Explorer 会反映属于群集一部分的节点（虚拟机规模集实例）数。  但是在缩减群集时，会看到已删除的节点/VM 实例显示为不正常状态，除非使用相应节点名称来调用 [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)。   
+横向扩展群集时，Service Fabric Explorer 会反映属于群集一部分的节点（虚拟机规模集实例）数。  但是在缩减群集时，会看到已删除的节点/VM 实例显示为不正常状态，除非使用相应节点名称来调用 [Remove-ServiceFabricNodeState cmd](/powershell/module/servicefabric/remove-servicefabricnodestate)。   
 
 下面是此行为的说明。
 
@@ -240,7 +240,7 @@ Service Fabric Explorer 中列出的节点是 Service Fabric 系统服务（特�
 1. 为群集中的节点类型选择金级或银级持续性级别，这会提供基础结构集成。 这随后会在横向缩减时自动从我们的系统服务 (FM) 状态中删除节点。
 在[此处](service-fabric-cluster-capacity.md)了解有关持续性级别的详细信息
 
-2. 横向缩减 VM 实例之后，需要调用 [Remove-ServiceFabricNodeState cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)。
+2. 横向缩减 VM 实例之后，需要调用 [Remove-ServiceFabricNodeState cmdlet](/powershell/module/servicefabric/remove-servicefabricnodestate)。
 
 > [!NOTE]
 > Service Fabric 群集需要有一定数量的节点可随时启动，以保持可用性和状态 - 称为“维持仲裁”。 因此，除非已事先执行[状态的完整备份](service-fabric-reliable-services-backup-restore.md)，否则关闭群集中的所有计算机通常是不安全的做法。

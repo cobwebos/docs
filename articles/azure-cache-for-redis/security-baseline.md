@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b9568d352b22d9c48789f2648489be0444823fff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea46a42fa8063aaf1d67c4f5ae0d2eef3a83fd5a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195980"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242691"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>适用于 Redis 的 Azure 缓存的 azure 安全基线
 
@@ -28,7 +28,7 @@ ms.locfileid: "82195980"
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
-**指南**：在虚拟网络（VNet）中部署 Azure Cache for Redis 实例。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。
+**指南**：在虚拟网络 (VNet) 中部署 Azure Cache for Redis 实例。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。
 
 你还可以使用开始和结束 IP 地址范围指定防火墙规则。 配置防火墙规则时，仅指定 IP 地址范围内的客户端连接可以连接到缓存。
 
@@ -46,13 +46,13 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：监视和记录 VNet、子网和 NIC 的配置与流量
 
-**指南**：当虚拟机部署在与 Azure Cache for Redis 实例相同的虚拟网络中时，可以使用网络安全组（NSG）来降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：当虚拟机部署在与 Azure Cache for Redis 实例相同的虚拟网络中时，可以使用网络安全组 (NSG) 以降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 如何启用 NSG 流日志：
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-如何启用和使用流量分析： 
+如何启用和使用流量分析：
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
@@ -66,13 +66,13 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
-**指南**： Azure 虚拟网络（VNet）部署为适用于 Redis 的 azure 缓存以及子网、访问控制策略和其他功能提供增强的安全性和隔离，以进一步限制访问。 在 VNet 中部署时，适用于 Redis 的 Azure 缓存不能公开寻址，只能从 VNet 中的虚拟机和应用程序进行访问。
+**指南**： Azure 虚拟网络 (VNet) 部署为适用于 Redis 的 azure 缓存提供增强的安全性和隔离性，并提供子网、访问控制策略和其他功能，以进一步限制访问。 在 VNet 中部署时，适用于 Redis 的 Azure 缓存不能公开寻址，只能从 VNet 中的虚拟机和应用程序进行访问。
 
-为 Redis 实例的 Azure 缓存相关联的 Vnet 启用 DDoS 保护标准，以防范分布式拒绝服务（DDoS）攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
+为 Redis 实例的 Azure 缓存相关联的 Vnet 启用 DDoS 保护标准，以防范分布式拒绝服务 (DDoS) 攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
 如何为 Redis 的高级 Azure 缓存配置虚拟网络支持：
 
@@ -88,13 +88,13 @@ https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：记录网络数据包和流日志
 
-**指南**：当虚拟机部署在与 Azure Cache for Redis 实例相同的虚拟网络中时，可以使用网络安全组（NSG）来降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：当虚拟机部署在与 Azure Cache for Redis 实例相同的虚拟网络中时，可以使用网络安全组 (NSG) 以降低数据渗透的风险。 启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 如何启用 NSG 流日志：
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-如何启用和使用流量分析： 
+如何启用和使用流量分析：
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
@@ -104,7 +104,7 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
-**指南**：将适用于 Redis 的 azure Cache 用于在 Azure App Service 或计算实例上运行的 web 应用程序时，会在 Azure 虚拟网络（VNet）中部署所有资源，并使用 Web 应用程序网关上的 Azure Web 应用程序防火墙（WAF）进行安全。 将 WAF 配置为在 "保护模式" 下运行。 防护模式阻止规则检测到的入侵和攻击。 攻击者会收到“403 未授权访问”异常，且连接会结束。 防护模式会在 WAF 日志中记录此类攻击。
+**指南**：将适用于 Redis 的 azure Cache 用于在 Azure App Service 或计算实例上运行的 web 应用程序时，将 Azure 虚拟网络中的所有资源部署 (VNet) ，并使用 Azure Web 应用程序防火墙 (WAF) 在 Web 应用程序网关上使用。 将 WAF 配置为在 "保护模式" 下运行。 防护模式阻止规则检测到的入侵和攻击。 攻击者会收到“403 未授权访问”异常，且连接会结束。 防护模式会在 WAF 日志中记录此类攻击。
 
 或者，你可以从 Azure Marketplace 中选择一个产品/服务，其中支持具有负载检查和/或异常检测功能的 ID/IPS 功能。
 
@@ -134,9 +134,9 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指南**：使用虚拟网络服务标记定义网络安全组（NSG）或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指南**：使用虚拟网络服务标记来定义网络安全组 (NSG) 或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
-你还可以使用应用程序安全组（ASG）来帮助简化复杂的安全配置。 Asg 使你能够将网络安全性配置为应用程序结构的自然扩展，使你能够对虚拟机进行分组，并基于这些组定义网络安全策略。
+你还可以使用应用程序安全组 (ASG) 来帮助简化复杂的安全配置。 Asg 使你能够将网络安全性配置为应用程序结构的自然扩展，使你能够对虚拟机进行分组，并基于这些组定义网络安全策略。
 
 虚拟网络服务标记：
 
@@ -158,7 +158,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#application-s
 
 应启用 DDoS 防护标准版
 
-你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器（ARM）模板、基于角色的访问控制（RBAC）和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
+你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器 (ARM) 模板、基于角色的访问控制 (RBAC) 和策略）来简化大规模 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
 如何配置和管理 Azure Policy：
 
@@ -198,7 +198,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -214,7 +214,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志可让你深入了解在 Azure Cache for Redis 实例在控制平面级别上执行的操作。 使用 Azure 活动日志数据，可以确定为 Redis 实例在 Azure 缓存的控制平面级别执行的任何写入操作（PUT、POST、DELETE）的 "操作内容、操作人员和操作时间"。
+**指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志可让你深入了解在 Azure Cache for Redis 实例在控制平面级别上执行的操作。 使用 Azure 活动日志数据，可以确定任何写入操作的 "内容、人员和时间"，这些操作 (PUT、POST、DELETE) 在 Azure Cache for Redis 实例的控制平面级别执行。
 
 如何启用 Azure 活动日志的诊断设置： https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
@@ -224,7 +224,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志可让你深入了解在 Azure Cache for Redis 实例在控制平面级别上执行的操作。 使用 Azure 活动日志数据，可以确定为 Redis 实例在 Azure 缓存的控制平面级别执行的任何写入操作（PUT、POST、DELETE）的 "操作内容、操作人员和操作时间"。
+**指南**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 活动日志可让你深入了解在 Azure Cache for Redis 实例在控制平面级别上执行的操作。 使用 Azure 活动日志数据，可以确定任何写入操作的 "内容、人员和时间"，这些操作 (PUT、POST、DELETE) 在 Azure Cache for Redis 实例的控制平面级别执行。
 
 尽管可通过启用诊断设置来使用度量值，但对于 Redis 的 Azure 缓存，数据平面上的审核日志记录不可用。
 
@@ -324,7 +324,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指南**：通过 AZURE ACTIVE DIRECTORY （AD）控制对适用于 Redis 的 Azure 缓存的控制平面访问。 Azure AD 没有默认密码。 
+**指南**：通过 AZURE ACTIVE DIRECTORY (AD) 控制对用于 Redis 的 Azure 缓存的控制平面访问。 Azure AD 没有默认密码。 
 
 通过访问密钥控制对 Redis 的 Azure Cache 的数据平面访问。 这些密钥由连接到缓存的客户端使用，可以随时重新生成。
 
@@ -332,15 +332,15 @@ Azure 安全中心监视：不适用
 
 如何为 Redis 访问密钥重新生成 Azure 缓存：https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：共享
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指导**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识和访问管理来监视管理帐户的数量。
+**指南**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识和访问管理来监视管理帐户的数量。
 
-此外，为帮助跟踪专用管理帐户，可以使用 Azure 安全中心或内置 Azure Policy 中的建议，例如：
+此外，为了帮助你跟踪专用管理帐户，你可以使用 Azure 安全中心或内置的 Azure 策略提供的建议，例如：
 
 - 应该为你的订阅分配了多个所有者
 
@@ -348,7 +348,7 @@ Azure 安全中心监视：不适用
 
 - 应从订阅中删除拥有所有者权限的外部帐户
 
-如何使用 Azure 安全中心来监视标识和访问（预览）：https://docs.microsoft.com/azure/security-center/security-center-identity-access
+如何使用 Azure 安全中心来监视标识和访问 (预览) ：https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 如何使用 Azure 策略：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -359,7 +359,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 
-**指南**：用于 Redis 的 Azure 缓存使用访问密钥对用户进行身份验证，并且不支持数据平面级别的单一登录（SSO）。 可以通过 REST API 获取用于 Redis 的 Azure 缓存的控制平面，并支持 SSO。 若要进行身份验证，请将请求的授权标头设置为从 Azure Active Directory (AAD) 获取的 JSON Web 令牌。
+**指南**：用于 Redis 的 Azure 缓存使用访问密钥对用户进行身份验证，并且不支持数据平面级别的单一登录 (SSO) 。 可以通过 REST API 获取用于 Redis 的 Azure 缓存的控制平面，并支持 SSO。 若要进行身份验证，请将请求的授权标头设置为从 Azure Active Directory (AAD) 获取的 JSON Web 令牌。
 
 了解适用于 Redis 的 Azure 缓存 REST API：https://docs.microsoft.com/rest/api/redis/
 
@@ -414,19 +414,19 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
-**指南**：在 AZURE ACTIVE DIRECTORY （AD）条件访问中配置命名位置，以仅允许从 IP 地址范围或国家/地区的特定逻辑分组访问。
+**指南**：在 AZURE ACTIVE DIRECTORY (AD) 条件访问中配置命名位置，以仅允许从 IP 地址范围或国家/地区的特定逻辑分组访问。
 
 如何在 Azure 中配置命名位置： https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
 指南：使用 Azure Active Directory (AD) 作为中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
-Azure AD 身份验证不能用于直接访问 Azure Cache for Redis "数据平面，但是，可以在控制平面级别（即 Azure 门户）使用 Azure AD 凭据来控制 Azure Cache for Redis 访问密钥。
+Azure AD 身份验证不能用于直接访问 Redis "数据平面的 Azure 缓存，但 Azure AD 凭据可用于在控制平面级别进行管理 (即，Azure 门户) 控制 Redis 访问密钥的 Azure 缓存。
 
 
 **Azure 安全中心监视**：是
@@ -441,13 +441,13 @@ Azure AD 身份验证不能用于直接访问 Azure Cache for Redis "数据平�
 
 如何使用 Azure 标识访问评审： https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-Azure 安全中心监视：是
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
 
-**指南**：你有权访问 AZURE ACTIVE DIRECTORY （AD）登录活动、审核和风险事件日志源，这允许你与 Azure Sentinel 或第三方 SIEM 集成。
+**指南**：你有权访问 AZURE ACTIVE DIRECTORY (AD) 登录活动、审核和风险事件日志源，从而允许你与 Azure Sentinel 或第三方 SIEM 集成。
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 可以在 Log Analytics 中配置所需的日志警报。
 
@@ -461,13 +461,13 @@ Azure 安全中心监视：是
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：对于控制平面上的帐户登录行为偏差，使用 AZURE ACTIVE DIRECTORY （AD） Identity Protection 和风险检测功能来配置自动响应，以检测与用户标识相关的可疑操作。 还可将数据引入 Azure Sentinel 以做进一步调查。
+**指南**：对于控制平面上的帐户登录行为偏差，使用 AZURE ACTIVE DIRECTORY (AD) Identity Protection 和风险检测功能，配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
 
 如何查看 Azure AD 风险登录： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
 如何配置和启用 Identity Protection 风险策略：https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-如何载入 Azure Sentinel：https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+如何加入 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure 安全中心监视**：目前不可用
 
@@ -571,7 +571,7 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AAD）基于角色的访问控制（RBAC）来控制对 Azure Cache for Redis 控制平面（即 Azure 门户）的访问。 
+**指南**：使用 AZURE ACTIVE DIRECTORY (AAD) 基于角色的访问控制 (RBAC) 来控制对 Azure Cache for Redis 控制平面的访问 (即 Azure 门户) 。 
 
 如何在 Azure 中配置 RBAC：
 
@@ -617,7 +617,7 @@ Azure 安全中心监视：不适用
 
 **指南**：将 Azure Monitor 与 azure 活动日志结合使用，以便为 Redis 的生产实例和其他关键或相关资源创建发生更改的警报。
 
-如何针对 Azure 活动日志事件创建警报： 
+如何为 Azure 活动日志事件创建警报：
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
@@ -707,9 +707,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure Cache for Redis 实例和相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
+**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure Cache for Redis 实例和相关资源。 定期协调清单，并确保及时从订阅中删除未经授权的资源。
 
-此外，使用 Azure 策略将对可以使用以下内置策略定义在客户订阅中创建的资源类型进行限制：
+此外，使用 Azure 策略将对可在客户订阅中创建的资源类型的限制 () 使用以下内置策略定义：
 
 - 不允许的资源类型
 
@@ -741,13 +741,13 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 允许的资源类型
 
-此外，使用 Azure 资源关系图查询/发现订阅中的资源。
+此外，使用 Azure 资源关系图可以在)  (中查询/发现订阅中的资源。
 
 如何配置和管理 Azure Policy：
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure Graph 创建查询： 
+如何通过 Azure Graph 创建查询：
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -791,7 +791,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure Policy 拒绝特定的资源类型： 
+如何使用 Azure 策略拒绝特定的资源类型：
 
 https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -801,7 +801,7 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 ### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -809,7 +809,7 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11：限制用户通过脚本来与 Azure 资源管理器交互的功能
 
-**指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，配置 azure 条件性访问，以限制用户与 Azure 资源管理器（ARM）的交互能力。
+**指南**：配置 azure 条件性访问，以限制用户通过为 "Microsoft Azure 管理" 应用配置 "阻止访问" 来与 Azure 资源管理器 (ARM) 交互的能力。
 
 如何配置条件性访问以阻止访问 ARM：
 
@@ -981,7 +981,7 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 如何设置凭据扫描器： https://secdevtools.azurewebsites.net/helpcredscan.html
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 责任：客户
 
@@ -1001,7 +1001,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 azure 服务的基础主机（例如，用于 Redis 的 azure 缓存）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+**指南**：在支持 azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，azure Cache for Redis) ，但它不会在客户内容上运行。
 
 预扫描要上传到非计算 Azure 资源的任何内容，例如应用服务、Data Lake Storage、Blob 存储、Azure Database for PostgreSQL 等。Microsoft 无法访问这些实例中的数据。
 
@@ -1013,7 +1013,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 **指南**：不适用；此建议适用于计算资源。
 
-Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，用于 Redis 的 Azure 缓存）上启用，但是不会在客户内容上运行。
+支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，适用于 Redis) 的 Azure 缓存，但不会在客户内容上运行。
 
 **Azure 安全中心监视**：不适用
 
@@ -1081,7 +1081,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
@@ -1099,13 +1099,13 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保制定书面事件响应计划，其中定义了人员的所有角色，以及从检测到事件后审查的事件处理/管理阶段。
 
 如何在 Azure 安全中心配置工作流自动化：
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-有关生成自己的安全事件响应过程的指南： 
+有关构建你自己的安全事件响应过程的指导：
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
@@ -1113,7 +1113,7 @@ Microsoft 安全响应中心事件解析：
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-客户还可以利用 NIST 的“计算机安全事件处理指南”来制定他们自己的事件响应计划： 
+客户还可以利用 NIST 的计算机安全事件处理指南来帮助创建自己的事件响应计划：
 
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
@@ -1123,9 +1123,9 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。
 
-此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
+此外，应清楚地标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
 Azure 安全中心监视：是
 
@@ -1133,9 +1133,9 @@ Azure 安全中心监视：是
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期练习以测试系统的事件响应能力。 明确薄弱点和差距，并根据需要修订计划。
 
-请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities（IT 规划和功能的测试、培训与演练计划指南）： 
+请参阅 NIST 发布：针对 IT 计划和功能的测试、培训和试验计划指南：
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
@@ -1145,7 +1145,7 @@ https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
-**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。  事后审查事件，确保问题得到解决。
+**指南**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。  事后审查事件，确保问题得到解决。
 
 如何设置 Azure 安全中心安全联系人：
 
@@ -1169,7 +1169,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 

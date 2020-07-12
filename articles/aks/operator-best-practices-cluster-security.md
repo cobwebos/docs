@@ -5,12 +5,12 @@ description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 72808f315f28a996a88e6cc56ae232a136726451
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4f56cf4e04b9df31c8c4204d396ead8073ec526
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298015"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244202"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -230,9 +230,9 @@ Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可�
 [aks-upgrade]: upgrade-cluster.md
 [aks-best-practices-identity]: concepts-identity.md
 [aks-kured]: node-updates-kured.md
-[aks-aad]: azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [best-practices-container-image-management]: operator-best-practices-container-image-management.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
-[security-center-aks]: /azure/security-center/azure-kubernetes-service-integration
+[security-center-aks]: ../security-center/azure-kubernetes-service-integration.md

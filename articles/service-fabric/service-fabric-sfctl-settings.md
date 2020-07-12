@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b805b7047b00f416664a001f02f311f6b387af19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baf4e843eea859fc16ed6e3bcd509785cc4db8bc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76896272"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245579"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 配置此 sfctl 实例的本地设置。
@@ -22,4 +23,4 @@ ms.locfileid: "76896272"
 
 ## <a name="next-steps"></a>后续步骤   
 - [安装](service-fabric-cli.md) Service Fabric CLI。   
-- 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
+- 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

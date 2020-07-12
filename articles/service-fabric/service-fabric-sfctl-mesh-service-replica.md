@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbfdba30663e2aa531ab1db955b0e035a0588709
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905952"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245715"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 获取副本详细信息并列出应用程序资源中给定服务的副本。
@@ -69,4 +70,4 @@ ms.locfileid: "76905952"
 
 ## <a name="next-steps"></a>后续步骤
 - [设置](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
+- 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

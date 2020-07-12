@@ -9,13 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 79f1188665208ec95e5d1d855d2247858e98653c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561652"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242604"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a>数据驱动样式表达式（Web SDK）
+# <a name="data-driven-style-expressions-web-sdk"></a>Web SDK (的数据驱动样式表达式) 
 
 使用表达式可以将业务逻辑应用到样式选项，这些选项可观察数据源中每个形状中定义的属性。 表达式可以筛选数据源或层中的数据。 表达式可以包含条件逻辑，如 if 语句。 而且，它们可用于使用：字符串运算符、逻辑运算符和数学运算符来操作数据。
 
@@ -27,7 +28,7 @@ ms.locfileid: "84561652"
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-表达式表示为 JSON 数组。 数组中表达式的第一个元素是一个字符串，该字符串指定表达式运算符的名称。 例如，"+" 或 "case"。 接下来的元素（如果有）是表达式的参数。 每个参数都是一个文本值（字符串、数字、布尔值或 `null` ）或另一个表达式数组。 以下伪代码定义表达式的基本结构。 
+表达式表示为 JSON 数组。 数组中表达式的第一个元素是一个字符串，该字符串指定表达式运算符的名称。 例如，"+" 或 "case"。 如果任何) 是表达式的参数，则后面的元素 (。 每个参数都是一个文本值 (字符串、数字、布尔值、 `null`) 或其他表达式数组。 以下伪代码定义表达式的基本结构。 
 
 ```javascript
 [ 
@@ -40,7 +41,7 @@ ms.locfileid: "84561652"
 
 Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用，也可以与其他表达式结合使用。
 
-| 表达式的类型 | 描述 |
+| 表达式的类型 | 说明 |
 |---------------------|-------------|
 | [聚合表达式](#aggregate-expression) | 一个表达式，该表达式定义对一组数据进行处理并可与选项一起使用的计算 `clusterProperties` `DataSource` 。 |
 | [布尔表达式](#boolean-expressions) | 布尔表达式提供一组用于计算布尔值比较的布尔运算符表达式。 |
@@ -80,10 +81,10 @@ Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用
 
 数据表达式提供对功能中的属性数据的访问。 
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['at', number, array]` | 对象 (object) | 从数组中检索项。 |
-| `['geometry-type']` | 字符串 | 获取功能的几何图形类型： Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
+| `['at', number, array]` | object | 从数组中检索项。 |
+| `['geometry-type']` | string | 获取功能的几何图形类型： Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
 | `['get', string]` | value | 从当前功能的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `['get', string, object]` | value | 从提供的对象的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `['has', string]` | boolean | 确定功能的属性是否具有指定的属性。 |
@@ -140,7 +141,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 数学表达式提供数学运算符，用于在 expression framework 内执行数据驱动的计算。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | number | 计算指定数字的和。 |
 | `['-', number]` | number | 将0减去指定数字。 |
@@ -195,7 +196,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 比较值时，将严格类型化比较。 不同类型的值始终被视为不相等。 在分析时已知不同类型的情况被视为无效，并将生成分析错误。 
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['! ', boolean]` | boolean | 逻辑求反。 `true`如果输入为，则返回 `false` ; `false` 如果输入为，则返回 `true` 。 |
 | `['!= ', value, value]` | boolean | `true`如果输入值不相等，则返回 `false` ; 否则返回。 |
@@ -398,15 +399,15 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 类型表达式提供了用于测试和转换不同数据类型（如字符串、数字和布尔值）的工具。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| 对象 | 返回文本数组或对象值。 使用此表达式可防止将数组或对象作为表达式进行计算。 当表达式需要返回数组或对象时，这是必需的。 |
-| `['image', string]` | 字符串 | 检查是否已将指定的映像 ID 加载到 maps 图像 sprite。 如果为，则返回 ID，否则返回 null。 |
+| `['image', string]` | string | 检查是否已将指定的映像 ID 加载到 maps 图像 sprite。 如果为，则返回 ID，否则返回 null。 |
 | `['to-boolean', value]` | boolean | 将输入值转换为布尔值。 `false`如果输入为空字符串、、、或，则结果为 `0` `false` `null` `NaN` ; 否则为 `true` 。 |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 将输入值转换为颜色。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | 如果可能，将输入值转换为数字。 如果输入为 `null` 或 `false` ，则结果为0。 如果输入为 `true` ，则结果为1。 如果输入是字符串，则使用 ECMAScript 语言规范的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字符串函数将其转换为数字。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
-| `['to-string', value]` | 字符串 | 将输入值转换为字符串。 如果输入为 `null` ，则结果为 `""` 。 如果输入为布尔值，则结果为 `"true"` 或 `"false"` 。 如果输入是一个数字，则使用 ECMAScript 语言规范的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函数将其转换为字符串。 如果输入是一种颜色，则将其转换为 CSS RGBA 颜色字符串 `"rgba(r,g,b,a)"` 。 否则，使用 ECMAScript 语言规范的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函数将输入转换为字符串。 |
-| `['typeof', value]` | 字符串 | 返回一个字符串，该字符串描述给定值的类型。 |
+| `['to-string', value]` | string | 将输入值转换为字符串。 如果输入为 `null` ，则结果为 `""` 。 如果输入为布尔值，则结果为 `"true"` 或 `"false"` 。 如果输入是一个数字，则使用 ECMAScript 语言规范的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函数将其转换为字符串。 如果输入是一种颜色，则将其转换为 CSS RGBA 颜色字符串 `"rgba(r,g,b,a)"` 。 否则，使用 ECMAScript 语言规范的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函数将输入转换为字符串。 |
+| `['typeof', value]` | string | 返回一个字符串，该字符串描述给定值的类型。 |
 
 > [!TIP]
 > 如果 `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` 浏览器控制台中出现类似于的错误消息，则表示代码中的某个位置有一个数组，该表达式的第一个值没有字符串。 如果希望表达式返回数组，请使用表达式包装数组 `literal` 。 下面的示例 `offset` 通过使用表达式，根据 `match` 点功能的属性的值在两个偏移值之间进行选择，设置符号层的图标选项，该选项必须是包含两个数字的数组 `entityType` 。
@@ -434,7 +435,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 颜色表达式使您可以更轻松地创建和操作颜色值。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | 从*红色*、*绿色*和*蓝色*分量创建颜色值，该颜色值必须介于和之间， `0` `255` 并具有的 alpha 分量 `1` 。 如果任何组件超出范围，则表达式为错误。 |
 | `['rgba', number, number, number, number]` | color | 从*红色*、*绿色*、*蓝色*分量创建颜色值，这些分量必须介于和之间， `0` 并且在 `255` 和范围内的 alpha `0` 分量 `1` 。 如果任何组件超出范围，则表达式为错误。 |
@@ -462,11 +463,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 字符串运算符表达式对字符串执行转换操作，例如连接和转换大小写。 
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | 字符串 | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要，请使用 `to-string` 类型表达式将其他值类型转换为字符串。 |
-| `['downcase', string]` | 字符串 | 将指定的字符串转换为小写。 |
-| `['upcase', string]` | 字符串 | 将指定的字符串转换为大写。 |
+| `['concat', string, string, …]` | string | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要，请使用 `to-string` 类型表达式将其他值类型转换为字符串。 |
+| `['downcase', string]` | string | 将指定的字符串转换为小写。 |
+| `['upcase', string]` | string | 将指定的字符串转换为大写。 |
 
 **示例**
 
@@ -778,7 +779,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency’: 'USD' }
+            { ‘currency': 'USD' }
         ],
 
         offset: [0, 0.75]
@@ -860,7 +861,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 变量绑定表达式将计算结果存储在变量中。 因此，可以多次在表达式中的其他地方引用计算结果。 对于涉及许多计算的表达式，它是一个有用的优化。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"let"，<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1： string，<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1： any、<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2： string，<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2： any，<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | 将一个或多个值作为变量存储，以供 `var` 返回结果的子表达式中的表达式使用。 |
 | `['var', name: string]` | any | 引用使用表达式创建的变量 `let` 。 |

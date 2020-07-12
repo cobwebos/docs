@@ -4,11 +4,12 @@ description: 了解如何在使用 X.509 证书保护的 Service Fabric 群集�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324736"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246701"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric 群集中的证书管理
 
@@ -56,8 +57,8 @@ Service Fabric 自身将承担以下职责：
 让我们快速回顾一下在 Service Fabric 群集环境中证书从颁发到使用的整个过程：
 
   1. 域所有者向 PKI 的 RA 注册要与继而生成的证书关联的域或使用者，而这些证书则构成对上述域或使用者的所有权证明
-  2. 域所有者还在 RA 中指定了有权请求证书注册到指定域或使用者的授权请求方的标识;在 Microsoft Azure 中，默认标识提供者是 Azure Active Directory，授权的请求者由其对应的 AAD 标识（或通过安全组）指定。
-  3. 然后，已获授权的请求者通过密钥管理服务注册到证书;在 Microsoft Azure 中，所选的 SMS 是 Azure Key Vault （AKV），它安全地存储和允许经授权的实体检索机密/证书。 AKV 还会根据已关联证书策略中的配置对证书执行续订/重新生成密钥操作。 （AKV 使用 AAD 作为标识提供者。）
+  2. 域所有者还在 RA 中指定了有权请求证书注册到指定域或使用者的授权请求方的标识;在 Microsoft Azure 中，默认标识提供者是 Azure Active Directory，授权的请求者由其相应的 AAD 标识 (或通过安全组指定) 
+  3. 然后，已获授权的请求者通过密钥管理服务注册到证书;在 Microsoft Azure 中，所选的短信是 Azure Key Vault (AKV) ，它安全地存储和允许经授权的实体检索机密/证书。 AKV 还会根据已关联证书策略中的配置对证书执行续订/重新生成密钥操作。 （AKV 使用 AAD 作为标识提供者。）
   4. 经授权的检索器（我们称之为“预配代理”）会从保管库检索证书（包括其私钥），并将其安装在用于托管群集的计算机上
   5. Service Fabric 服务（在每个节点上以提升的权限运行）将证书访问权限授予那些获得允许的 Service Fabric 实体；这些实体由本地组指定，在 ServiceFabricAdministrators 和 ServiceFabricAllowedUsers 之间进行拆分
   6. Service Fabric 运行时会访问并使用证书来建立联合身份验证，或者对经过授权的客户端发出的入站请求进行身份验证
@@ -75,8 +76,8 @@ Service Fabric 自身将承担以下职责：
 ![预配通过所有者公用名称声明的证书][Image2]
 
 ### <a name="certificate-enrollment"></a>证书注册
-有关本主题的详细介绍，请参阅 Key Vault [文档](../key-vault/create-certificate.md)；我们在此提供一个概要是为了保持连续性，并且也方便你参考。 在继续使用 Azure 的情况下，如果使用 Azure Key Vault 作为机密管理服务，则经授权的证书请求者必须至少在保管库上具有由保管库所有者授予的证书管理权限；然后，请求者会注册到证书中，如下所示：
-    - 在 Azure Key Vault (AKV) 中创建一个证书策略，该策略指定证书的域/所有者、所需颁发者、密钥类型和长度、预期的密钥用法，等等；有关详细信息，请参阅 [Azure Key Vault 中的证书](../key-vault/certificate-scenarios.md)。 
+有关本主题的详细介绍，请参阅 Key Vault [文档](../key-vault/certificates/create-certificate.md)；我们在此提供一个概要是为了保持连续性，并且也方便你参考。 在继续使用 Azure 的情况下，如果使用 Azure Key Vault 作为机密管理服务，则经授权的证书请求者必须至少在保管库上具有由保管库所有者授予的证书管理权限；然后，请求者会注册到证书中，如下所示：
+    - 在 Azure Key Vault (AKV) 中创建一个证书策略，该策略指定证书的域/所有者、所需颁发者、密钥类型和长度、预期的密钥用法，等等；有关详细信息，请参阅 [Azure Key Vault 中的证书](../key-vault/certificates/certificate-scenarios.md)。 
     - 使用上面指定的策略在同一保管库中创建一个证书；该证书接下来会生成一个用作保管库对象的密钥对、一个使用私钥签名的证书签名请求，然后该请求会转发给指定的颁发者进行签名。
     - 颁发者（证书颁发机构）使用签名证书进行答复后，系统会将结果合并到保管库中，然后证书即可用于以下操作：
       - 在 {vaultUri}/certificates/{name} 下：包含公钥和元数据的证书
@@ -209,7 +210,7 @@ Service Fabric 自身将承担以下职责：
 
 所有后续摘录应进行伴随部署 - 它们单个列出，可以以逐个播放的方式进行分析和说明。
 
-首先定义用户分配的标识（默认值作为示例包括）- 有关最新信息，请参阅[官方文档](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)：
+首先定义用户分配的标识（默认值作为示例包括）- 有关最新信息，请参阅[官方文档](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)：
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -240,7 +241,7 @@ Service Fabric 自身将承担以下职责：
   ]}
 ```
 
-然后授予此标识访问保管库机密的权限 - 有关最新信息，请参阅[官方文档](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)：
+然后授予此标识访问保管库机密的权限 - 有关最新信息，请参阅[官方文档](/rest/api/keyvault/vaults/updateaccesspolicy)：
 ```json
   "resources":
   [{
@@ -265,7 +266,7 @@ Service Fabric 自身将承担以下职责：
 在下一步中，我们将执行以下操作：
   - 将用户分配的标识分配给虚拟机规模集
   - 在创建托管标识并向其授予对保管库的访问权限后声明虚拟机规模集的依赖项
-  - 声明 KeyVault VM 扩展，要求它在启动时检索观察到的证书（[官方文档](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)）
+  - 声明 KeyVault VM 扩展，要求它在启动时检索观察到的证书（[官方文档](../virtual-machines/extensions/key-vault-windows.md)）
   - 更新 Service Fabric VM 扩展的定义，使其依赖于 KVVM 扩展，并将群集证书转换为公用名称（我们将在单个步骤中进行这些更改，因为它们属于同一资源的范围。）
 
 ```json
@@ -419,12 +420,12 @@ Service Fabric 自身将承担以下职责：
 #### <a name="certificate-linking-explained"></a>证书链接（已介绍）
 你可能已注意到 KVVM 扩展的“linkOnRenewal”标志，以及它已设置为 false 这一事实。 在这里，我们将深入探讨此标志控制的行为及其对群集功能的影响。 请注意，此行为特定于 Windows。
 
-根据其[定义](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows#extension-schema)：
+根据其[定义](../virtual-machines/extensions/key-vault-windows.md#extension-schema)：
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
 
-用于建立 TLS 连接的证书通常是通过 S 通道安全支持提供商[获取的句柄](https://docs.microsoft.com/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea)，也就是说，客户端不会直接访问证书本身的私钥。 S 通道支持证书扩展（[CERT_RENEWAL_PROP_ID](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)）形式的凭据的重定向（链接）：如果设置此属性，则其值表示 "续订" 证书的指纹，因此 S 通道将改为尝试加载链接的证书。 事实上，它会遍历此链接的（且无需循环的）列表，直到它最终使用 "最终" 证书（一个没有续订标记的证书）。 此功能在谨慎使用的情况下，对因证书过期（此处为举例）而导致的可用性损失是一项很好的缓解措施。 在其他情况下，它可能导致难以诊断和缓解的中断。 S 通道无条件地在其续订属性上执行证书遍历，而不考虑使用者、颁发者或其他任何特定属性，这些属性参与客户端生成的证书的验证。 实际上，可能是生成的证书没有关联的私钥，或者该密钥尚未被 ACL 到其预期使用者。 
+用于建立 TLS 连接的证书通常是通过 S 通道安全支持提供商[获取的句柄](/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea)，也就是说，客户端不会直接访问证书本身的私钥。 S 通道支持重定向 (以证书扩展的形式链接) 凭据 ([CERT_RENEWAL_PROP_ID](/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)) ：如果设置此属性，则其值表示 "续订" 证书的指纹，因此，S 通道将改为尝试加载链接的证书。 事实上，它会遍历此链接的 (，并希望以非循环的方式) 列表，直到它最终成为 "最终" 证书（一个无续订标记）。 此功能在谨慎使用的情况下，对因证书过期（此处为举例）而导致的可用性损失是一项很好的缓解措施。 在其他情况下，它可能导致难以诊断和缓解的中断。 S 通道无条件地在其续订属性上执行证书遍历，而不考虑使用者、颁发者或其他任何特定属性，这些属性参与客户端生成的证书的验证。 实际上，可能是生成的证书没有关联的私钥，或者该密钥尚未被 ACL 到其预期使用者。 
  
 如果启用了链接，则在从保管库检索观测到的证书时，KeyVault VM 扩展会尝试查找匹配的现有证书，以便通过续订扩展属性来链接它们。 匹配完全基于使用者可选名称 (SAN)，其原理如下所示。
 假设有两个现有证书，如下所示： A： CN = "Alice 的附件"，SAN = {"alice.universalexports.com"}，续订 = "" B： CN = "Bob 的位"，SAN = {"bob.universalexports.com"，"bob.universalexports.net"}，续订 = ""
@@ -434,8 +435,8 @@ Service Fabric 自身将承担以下职责：
 A 的 SAN 列表已完全包含在 C 的中，因此续订 = c. 指纹;B 的 SAN 列表与 C 有一个共同的交集，但并不完全包含在其中，因此，b. 续订将保留为空。
  
 在证书 A 上，在此状态下调用 AcquireCredentialsHandle（S 通道）的任何尝试实际上最终都会将 C 发送到远程方。 在 Service Fabric 的情况下，群集的[传输子系统](service-fabric-architecture.md#transport-subsystem)使用 S 通道进行相互身份验证，因此上述行为直接影响群集的基本通信。 让我们继续上面的示例，假设 A 是群集证书，接下来发生的情况取决于：
-  - 如果 C 的私钥不会已纳入 acl 到作为构造运行的帐户，我们将看到获取私钥（SEC_E_UNKNOWN_CREDENTIALS 或类似项）失败
-  - 如果 C 的私钥是可访问的，则会看到其他节点（CertificateNotMatched、未授权等）返回的授权失败。 
+  - 如果 C 的私钥不已纳入 acl 结构正在运行的帐户，则 SEC_E_UNKNOWN_CREDENTIALS 或类似) 获取私钥 (会出现故障
+  - 如果 C 的私钥是可访问的，则会看到其他节点返回的授权失败 (CertificateNotMatched、未授权等 )  
  
 在任一情况下，传输都会失败，群集可能会关闭；症状各不相同。 为了使问题更糟，链接依赖于续订顺序–由 KVVM 扩展的观察证书列表的顺序决定，保管库中的续订计划甚至会改变检索顺序的暂时性错误。
 
@@ -491,4 +492,3 @@ A 的 SAN 列表已完全包含在 C 的中，因此续订 = c. 指纹;B 的 SAN
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png
-

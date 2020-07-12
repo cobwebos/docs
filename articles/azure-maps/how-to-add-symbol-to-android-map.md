@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6b73fef368dc8dec5d8c042cdac1d3cea899450
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335588"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242434"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加符号层 Android SDK
 
@@ -50,7 +50,7 @@ ms.locfileid: "80335588"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到类的**onCreate （）** 方法 `MainActivity.java` 。
+2. 将以下代码片段复制到类的**onCreate ( # B1**方法 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -72,7 +72,7 @@ ms.locfileid: "80335588"
     
     ```
     
-    上面的代码段首先使用**onReady （）** 回调方法获取 Azure Maps 映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后，它将包含点几何图形的功能添加到该**功能**中。 然后，将红色标记图像设置为符号的图标。 **符号层**使用文本或图标将基于点的数据作为地图上的符号在数据源中进行包装。 然后创建一个符号层，然后将数据源传递给它以呈现，然后将其添加到地图的层中。
+    上面的代码段首先使用**onReady ( # B1**回调方法获取 Azure Maps 映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后，它将包含点几何图形的功能添加到该**功能**中。 然后，将红色标记图像设置为符号的图标。 **符号层**使用文本或图标将基于点的数据作为地图上的符号在数据源中进行包装。 然后创建一个符号层，然后将数据源传递给它以呈现，然后将其添加到地图的层中。
     
     添加上述代码片段后，应如下 `MainActivity.java` 所示：
     
@@ -172,6 +172,8 @@ ms.locfileid: "80335588"
 
 ![Android 地图图钉](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
 
+> [!TIP]
+> 默认情况下，符号层通过隐藏重叠的符号来优化符号的呈现。 放大时，隐藏的符号将变为可见。 若要禁用此功能并始终呈现所有符号，请将 `iconAllowOverlap` 选项设置为 `true` 。
 
 ## <a name="next-steps"></a>后续步骤
 
