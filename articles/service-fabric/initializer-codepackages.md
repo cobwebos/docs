@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
-ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430625"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258971"
 ---
 # <a name="initializer-codepackages"></a>Initializer CodePackage
 
@@ -50,7 +50,7 @@ ms.locfileid: "81430625"
 > [!IMPORTANT]
 > 以下示例假定你熟悉如何创建[使用 Service Fabric 和 Docker 的 Windows 容器应用程序][containers-getting-started-link]。
 >
-> 此示例引用了 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器并非在所有主机 OS 版本间都兼容。 若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
+> 此示例引用了 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器并非在所有主机 OS 版本间都兼容。 若要了解详细信息，请参阅 [Windows 容器版本兼容性](/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
 以下 ServiceManifest.xml 在前述 ServiceManifest 代码片段基础上构建。 *InitCodePackage0*、 *InitCodePackage1*和*WorkloadCodePackage*都是表示容器的 codepackage。 激活后，*InitCodePackage0* 先执行。 它将一条消息记录到一个文件中，然后退出。 接下来执行 *InitCodePackage1*，它也将一条消息记录到一个文件中，然后退出。 最后，*WorkloadCodePackage* 开始执行。 它也将一条消息记录到一个文件中，将文件内容输出到 **stdout**，然后一直 ping 下去。
 
@@ -151,4 +151,3 @@ Hi from WorkloadCodePackage.
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
-

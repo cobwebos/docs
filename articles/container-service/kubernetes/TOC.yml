@@ -8,7 +8,7 @@
 - name: 操作指南
   items:
     - name: 使用 Azure 文件持久保存数据
-      href: ../../aks/azure-files.md?toc=%2fazure%2fcontainer-service%2fkubernetes%2ftoc.json
+      href: ../../aks/azure-files-dynamic-pv.md?toc=/azure/container-service/kubernetes/toc.json
     - name: 监视
     - name: 部署 Spring Boot 应用
       items:

@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 11e32c9d1290227e638a314ed8417b1bed906842
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749532"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260531"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 编程模型概述
 
@@ -25,7 +26,7 @@ Service Fabric 提供了多种方法来编写和管理服务。 服务可以选�
 
 默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以在[容器](service-fabric-containers-overview.md)中部署服务。 Service Fabric 支持在 Windows Server 2016 及更高版本上部署 Linux 容器 和 Windows 容器。 可以从任何容器存储库中提取容器映像，并将其部署到计算机上。 可以在容器中将现有应用程序部署为来宾可执行文件、Service Fabric 无状态/有状态可靠服务或 Reliable Actors，并可以将进程中的服务和容器中的服务混用于同一应用程序。
 
-[了解有关在 Windows 或 Linux 中容器化服务的详细信息](service-fabric-deploy-container.md)
+[了解有关在 Windows 或 Linux 中容器化服务的详细信息](./service-fabric-get-started-containers.md)
 
 ## <a name="reliable-services"></a>Reliable Services
 

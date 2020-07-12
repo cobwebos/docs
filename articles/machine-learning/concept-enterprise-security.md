@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392227"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259435"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -111,16 +111,21 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
 
 ## <a name="data-encryption"></a>数据加密
 
+> [!IMPORTANT]
+> 对于__训练__过程中的生产级加密，Microsoft 建议使用 Azure 机器学习计算群集。 对于在__推断__过程中的生产评分加密，Microsoft 建议使用 Azure Kubernetes 服务。
+>
+> Azure 机器学习计算实例是开发/测试环境。 使用此方法时，我们建议您将文件（如笔记本和脚本）存储在文件共享中。 数据应存储在数据存储中。
+
 ### <a name="encryption-at-rest"></a>静态加密
 
 > [!IMPORTANT]
 > 如果工作区包含敏感数据，我们建议在创建工作区时设置 [hbi_workspace 标志](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)。 
 
-`hbi_workspace` 标志控制 Microsoft 为诊断而收集的数据量，并在 Microsoft 托管环境中启用其他加密。 此外，该标志还可启用以下功能：
+该 `hbi_workspace` 标志控制 microsoft 出于诊断目的收集的数据量，并在 microsoft 管理的环境中启用其他加密功能。 此外，它还可实现以下操作：
 
-* 开始加密 Amlcompute 群集中的本地暂存磁盘，前提是尚未在该订阅中创建任何以前的群集。 否则，需要提供支持票证来启用对计算群集的暂存磁盘的加密 
+* 如果你尚未在该订阅中创建任何以前的群集，则会开始加密 Azure 机器学习计算群集中的本地暂存磁盘。 否则，需要提供支持票证来启用对计算群集的暂存磁盘的加密 
 * 在不同运行之间清理本地暂存磁盘
-* 利用密钥保管库，将存储帐户、容器注册表和 SSH 帐户的凭据从执行层安全地传递到计算群集
+* 使用密钥保管库，将存储帐户、容器注册表和 SSH 帐户的凭据从执行层安全传递到计算群集
 * 启用 IP 筛选，以确保基础批处理池不会由除 AzureMachineLearningService 以外的任何外部服务调用
 
 
@@ -228,7 +233,7 @@ Azure Databricks 可在 Azure 机器学习管道中使用。 默认情况下，A
 
 Azure 机器学习使用 TLS 来保护各种 Azure 机器学习微服务之间的内部通信。 所有 Azure 存储访问也都通过安全通道进行。
 
-Azure 机器学习使用 TLS 来保护对评分终结点的外部调用。 有关详细信息，请参阅[使用 TLS 通过 Azure 机器学习来保护 Web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)。
+若要保护对评分终结点进行的外部调用，Azure 机器学习使用 TLS。 有关详细信息，请参阅[使用 TLS 通过 Azure 机器学习来保护 Web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)。
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 
@@ -286,7 +291,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 * RequestUrl
 * StatusCode
 * RequestId
-* 持续时间
+* Duration
 
 > [!IMPORTANT]
 > Azure 机器学习工作区中的一些操作不会将信息记录到活动日志中。 例如，不会记录训练运行的启动和模型的注册。

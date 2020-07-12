@@ -3,11 +3,12 @@ title: 使用托管标识进行身份验证
 description: 通过使用用户分配或系统分配的托管 Azure 标识，提供对专用容器注册表中映像的访问。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456491"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259091"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
 
@@ -238,7 +239,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 > * 授予标识对 Azure 容器注册表的访问权限
 > * 使用托管标识访问注册表并拉取容器映像
 
-* 详细了解 [Azure 资源的托管标识](/azure/active-directory/managed-identities-azure-resources/)。
+* 详细了解 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml)。
 
 
 <!-- LINKS - external -->

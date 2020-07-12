@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392567"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260194"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还会将这些实体组织为层次结构以捕获实体交互。
@@ -73,17 +74,17 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 * **后续步骤**：如果此警告显示在群集中，请按以下说明来修复它：对于运行 Service Fabric 6.5 或更高版本的群集：对于 Azure 上的 Service Fabric 群集，当种子节点发生故障后，Service Fabric 会尝试自动将其更改为非种子节点。 若要实现这一点，请确保主节点类型中的非种子节点数大于或等于“发生故障”的种子节点数。 如果需要，请将更多节点添加到主节点类型以实现这一目标。
 根据群集状态，修复此问题可能需要一定的时间。 修复完以后，会自动清除警告报告。
 
-对于 Service Fabric 独立群集来说，所有种子节点必须变得正常才能清除警告报告。 需要根据种子节点运行不正常的原因采取不同的操作：如果种子节点状态为“停机”，则用户需启动该种子节点；如果种子节点状态为“已删除”或“未知”，则[需从群集中删除](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes)该种子节点。
+对于 Service Fabric 独立群集来说，所有种子节点必须变得正常才能清除警告报告。 需要根据种子节点运行不正常的原因采取不同的操作：如果种子节点状态为“停机”，则用户需启动该种子节点；如果种子节点状态为“已删除”或“未知”，则[需从群集中删除](./service-fabric-cluster-windows-server-add-remove-nodes.md)该种子节点。
 当所有种子节点变得正常以后，会自动清除警告报告。
 
 对于运行低于 6.5 版的 Service Fabric 的群集：在这种情况下，需手动清除警告报告。 **用户在清除报告之前，应确保所有种子节点变得正常**：如果种子节点状态为“停机”，则用户需启动该种子节点；如果种子节点状态为“已删除”或“未知”，则需从群集中删除该种子节点。
-在所有种子节点变得正常以后，请使用以下 Powershell 命令[清除警告报告](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)：
+在所有种子节点变得正常以后，请使用以下 Powershell 命令[清除警告报告](/powershell/module/servicefabric/send-servicefabricclusterhealthreport)：
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
 
 ## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
 
 ### Node up/down
 System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
@@ -644,7 +645,7 @@ HealthEvents          :
 
 - **IStatefulServiceReplica.ChangeRole(S)** 和 **IStatefulServiceReplica.ChangeRole(N)**：最常见的情况是服务不履行传递给 `RunAsync` 的取消令牌。 在这种情况下，最佳解决方案是重启副本。
 
-- **Istatefulservicereplica.changerole. ChangeRole （P）**：最常见的情况是服务尚未从返回任务 `RunAsync` 。
+- **Istatefulservicereplica.changerole. ChangeRole (P) **：最常见的情况是服务尚未从返回任务 `RunAsync` 。
 
 可能会停滞的其他 API 调用位于**IReplicator**接口上。 例如：
 
@@ -661,7 +662,7 @@ HealthEvents          :
 * **后续步骤**：如果报告位于主要副本上，请检查群集中节点间的连接。 如果所有连接都正常，则可能至少有一个慢速次要副本在应用操作时具有高磁盘延迟。 如果报告位于次要副本上，则先检查节点上的磁盘使用情况和性能。 然后检查从慢速节点到主要副本的传出连接。
 
 **RemoteReplicatorConnectionStatus：** 
-主副本上的**系统复制**器会报告在与辅助（远程）复制器的连接不正常时出现的警告。 报告的信息中会显示远程复制器的地址，这样可以更方便地检测是否传入了错误的配置，或者复制器之间是否存在网络问题。
+主副本上的**系统复制**器会报告在与辅助 (远程) 复制器的连接不正常时出现警告。 报告的信息中会显示远程复制器的地址，这样可以更方便地检测是否传入了错误的配置，或者复制器之间是否存在网络问题。
 
 * **SourceId**：System.Replicator
 * **属性**：**RemoteReplicatorConnectionStatus**。
@@ -674,7 +675,7 @@ HealthEvents          :
 * **属性**：**PrimaryReplicationQueueStatus** 或 **SecondaryReplicationQueueStatus**，视副本角色而定。
 
 ### <a name="slow-naming-operations"></a>命名操作速度慢
-如果命名操作耗时超过可接受范围，System.NamingService**** 会报告主要副本的运行状况。 [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) 或 [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) 都是命名操作的示例。 可以在 FabricClient 下找到更多方法。 例如，可在[服务管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)或[属性管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)下找到更多方法。
+如果命名操作耗时超过可接受范围，System.NamingService**** 会报告主要副本的运行状况。 [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) 或 [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) 都是命名操作的示例。 可以在 FabricClient 下找到更多方法。 例如，可在[服务管理方法](/dotnet/api/system.fabric.fabricclient.servicemanagementclient)或[属性管理方法](/dotnet/api/system.fabric.fabricclient.propertymanagementclient)下找到更多方法。
 
 > [!NOTE]
 > 命名服务会将服务名称解析为群集中的某个位置。 用户可以使用它来管理服务名称和属性。 它是 Service Fabric 分区持久化服务。 其中一个分区代表“颁发机构所有者”**，内含与所有 Service Fabric 名称和服务相关的元数据。 Service Fabric 名称映射到不同的分区，这些分区称为“名称所有者”** 分区，因此服务是可扩展的。 有关详细信息，请参阅[命名服务](service-fabric-architecture.md)。
@@ -879,4 +880,3 @@ HealthEvents               :
 * [在本地监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 * [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)
-

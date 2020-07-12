@@ -3,12 +3,12 @@ title: 在 Azure 门户中创建 Service Fabric 群集
 description: 了解如何使用 Azure 门户和 Azure Key Vault 在 Azure 中设置安全的 Service Fabric 群集。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611146"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259316"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "85611146"
 ## <a name="cluster-security"></a>群集安全性 
 证书在 Service Fabric 中用于提供身份验证和加密，为群集及其应用程序提供全方位的保护。 若要详细了解如何在 Service Fabric 中使用证书，请参阅 [Service Fabric 群集安全方案][service-fabric-cluster-security]。
 
-如果这是你第一次创建 service fabric 群集或要为测试工作负荷部署群集，则可以跳到下一节（**在 Azure 门户中创建群集**），并让系统生成运行测试工作负荷的群集所需的证书。 如果要为生产工作负荷设置群集，请继续阅读。
+如果这是你第一次创建 service fabric 群集或要为测试工作负荷部署群集，则可以跳到下一节 (在**Azure 门户) 中创建群集**，并让系统生成运行测试工作负荷的群集所需的证书。 如果要为生产工作负荷设置群集，请继续阅读。
 
 #### <a name="cluster-and-server-certificate-required"></a>群集和服务器证书（必需）
 需要使用此证书来保护群集以及防止未经授权访问群集。 此证书通过多种方式保护群集：
@@ -121,7 +121,7 @@ ms.locfileid: "85611146"
 ### <a name="3-security"></a>3.安全性
 ![Azure 门户上安全配置的屏幕截图。][BasicSecurityConfigs]
 
-为轻松设置安全测试群集，我们提供了“基本”选项。 如果已有证书且已将其上传到 [Key Vault](/azure/key-vault/)（并为部署启用了 Key Vault），则使用“自定义”选项
+为轻松设置安全测试群集，我们提供了“基本”选项。 如果已有证书且已将其上传到 [Key Vault](../key-vault/index.yml)（并为部署启用了 Key Vault），则使用“自定义”选项
 
 #### <a name="basic-option"></a>“基本”选项
 按照屏幕进行操作，以添加或重复使用现有 Key Vault 并添加证书。 添加证书是一个同步过程，因此必须等待证书创建完成。
@@ -202,7 +202,7 @@ ms.locfileid: "85611146"
 此时，已创建一个使用证书进行管理身份验证的安全群集。 接下来，请[连接到该群集](service-fabric-connect-to-secure-cluster.md)，了解如何[管理应用程序机密](service-fabric-application-secret-management.md)。  此外，了解 [Service Fabric 支持选项](service-fabric-support.md)。
 
 <!-- Links -->
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md

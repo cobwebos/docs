@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147393"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259183"
 ---
 # <a name="about-virtual-hub-routing"></a>关于虚拟中心路由
 
@@ -63,6 +63,9 @@ ms.locfileid: "86147393"
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>在虚拟网络连接中配置静态路由
 
 配置静态路由可提供一种机制，用于通过下一个跃点 IP 来控制流量，这可能是网络虚拟设备 (NVA) 在附加到虚拟中心的分支 VNet 中预配。 静态路由由路由名称、目标前缀列表和下一跃点 IP 组成。
+
+## <a name="reset-hub"></a><a name="route"></a>重置集线器
+此选项仅在 Azure 门户中提供，可让用户将任何失败的资源（例如路由表、中心路由器或虚拟中心资源本身）恢复为其合法设置状态。 这是用户在联系 Microsoft 寻求支持之前要考虑的其他选项。 此操作不会重置虚拟中心中的任何网关。 
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>在建立关联和传播功能之前，先在基本和标准虚拟 Wan 中路由表
 

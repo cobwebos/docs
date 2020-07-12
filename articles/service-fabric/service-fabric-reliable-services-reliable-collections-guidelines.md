@@ -3,12 +3,12 @@ title: 有关可靠集合的指导原则
 description: 在 Azure Service Fabric 应用程序中使用 Service Fabric 可靠集合的相关指导原则和建议。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f196df4b58f1acb01a497b5fa08e9af99a4707d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483119"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260919"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
 本部分提供有关使用可靠状态管理器和 Reliable Collections 的指导原则。 目的是帮助用户避免常见错误。
@@ -40,7 +40,7 @@ ms.locfileid: "85483119"
   这意味着从单个辅助副本读取的数据版本可能被错误处理。
   从主副本读取的数据始终是可靠的，绝不会被错误处理。
 * 应用程序在可靠集合中保留的数据的安全性/隐私性是用户决定，并受到存储管理的保护；即 操作系统磁盘加密可用于保护静态数据。
-* `ReliableDictionary`枚举使用按键排序的排序数据结构。 为了使枚举有效，将提交添加到临时哈希表中，然后将其移到主排序的数据结构后检查点。 添加/更新/删除操作具有最佳的 O （1）和最差的 case 运行时（log n），在验证检查是否存在密钥的情况下。 获取的可能是 O （1）或 O （log n），这取决于你是从最近的提交还是从旧的提交中进行读取。
+* `ReliableDictionary`枚举使用按键排序的排序数据结构。 为了使枚举有效，将提交添加到临时哈希表中，然后将其移到主排序的数据结构后检查点。 添加/更新/删除操作具有最佳的 O (1) 和最差情况下 O (log n) ，在验证检查是否存在密钥的情况下，也是如此。 根据您是从最近的提交还是从较旧的提交进行读取，获取可能 (1) 或 O (日志) n。
 
 ## <a name="volatile-reliable-collections"></a>易失可靠集合
 决定使用易失可靠集合时，请考虑以下事项：
@@ -64,4 +64,4 @@ ms.locfileid: "85483119"
   * [可靠状态管理器和配置](service-fabric-reliable-services-configuration.md)
 * 其他
   * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
-  * [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

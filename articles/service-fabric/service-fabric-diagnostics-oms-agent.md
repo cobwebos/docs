@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366732"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258691"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行性能监视
 
@@ -22,7 +23,7 @@ ms.locfileid: "79366732"
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>通过 Azure CLI 添加代理扩展
 
-将 Log Analytics 代理添加到群集的最佳方法是使用 Azure CLI 提供的虚拟机规模集 API。 如果尚未设置 Azure CLI，请转至 Azure 门户并打开 [Cloud Shell](../cloud-shell/overview.md) 实例，或[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+将 Log Analytics 代理添加到群集的最佳方法是使用 Azure CLI 提供的虚拟机规模集 API。 如果尚未设置 Azure CLI，请转至 Azure 门户并打开 [Cloud Shell](../cloud-shell/overview.md) 实例，或[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 请求 Cloud Shell 之后，请确保在资源所在的订阅中工作。 请使用 `az account show` 进行检查，并确保“名称”值与群集订阅的值匹配。
 
@@ -72,7 +73,7 @@ ms.locfileid: "79366732"
 
 3. 单击“高级设置”  。
 
-4. 单击“数据”  ，然后单击“Windows 或 Linux 性能计数器”  。 此时会显示一个可以选择的默认计数器列表，此外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)中介绍了正确的格式。
+4. 单击“数据”  ，然后单击“Windows 或 Linux 性能计数器”  。 此时会显示一个可以选择的默认计数器列表，此外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](/windows/win32/perfctrs/specifying-a-counter-path)中介绍了正确的格式。
 
 5. 单击“保存”，然后单击“确定”   。
 
@@ -91,5 +92,5 @@ ms.locfileid: "79366732"
 ## <a name="next-steps"></a>后续步骤
 
 * 收集相关[性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 若要配置 Log Analytics 代理以收集特定性能计数器，请查看[配置数据源](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)。
-* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../log-analytics/log-analytics-alerts.md)
+* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../azure-monitor/platform/alerts-overview.md)
 * 作为替代方法，可以通过 [Azure 诊断扩展收集性能计数器并将其发送到 Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

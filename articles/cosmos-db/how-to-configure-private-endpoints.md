@@ -4,14 +4,14 @@ description: 了解如何使用虚拟网络中的专用 IP 地址设置 Azure �
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261624"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259103"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure Cosmos 帐户配置 Azure 专用链接
 
@@ -655,8 +655,6 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 * 当你使用具有专用链接的 Azure Cosmos DB 的用于 MongoDB 的 API 帐户时，某些工具或库可能无法工作，因为它们会自动从连接字符串中去掉 `appName` 参数。 此参数是通过专用终结点连接到帐户所必需的。 某些工具（如 Visual Studio Code）不会从连接字符串中删除此参数，因此它们是兼容的。
 
 * 应在 Azure Cosmos 帐户范围内向网络管理员至少授予 `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` 权限，以创建自动批准的专用终结点。
-
-* 基于中国的 Azure 区域目前不支持直接模式。
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>专用 DNS 区域集成的限制
 

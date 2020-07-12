@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 46601fd91fccb5bd0866bd999cc7643c37c6d582
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a02fd489ca0eec61b798db7136f963277f6c82
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551771"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261086"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric 应用程序和群集最佳做法
 
@@ -26,7 +27,7 @@ ms.locfileid: "75551771"
 ## <a name="compute-planning-and-scaling"></a>计算规划和缩放
 
 * [计算缩放最佳做法](service-fabric-best-practices-capacity-scaling.md)
-* [计算容量规划](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
+* [计算容量规划](./service-fabric-cluster-capacity.md)
 
 ## <a name="infrastructure-as-code"></a>基础结构即代码
 
@@ -43,7 +44,7 @@ ms.locfileid: "75551771"
 ## <a name="checklist"></a>清单
 
 实施前面几节中建议的做法后，请确保已将所有最佳做法集成到生产就绪情况核对清单中：
-* [Azure Service Fabric 生产准备情况清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+* [Azure Service Fabric 生产准备情况清单](./service-fabric-production-readiness-checklist.md)
 
 ## <a name="next-steps"></a>后续步骤
 

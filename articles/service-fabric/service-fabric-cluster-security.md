@@ -4,12 +4,12 @@ description: 了解有关 Azure Service Fabric 群集的安全性方案，以及
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080689"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261064"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 
@@ -27,7 +27,7 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 ![节点到节点通信示意图][Node-to-Node]
 
-在 Azure 上运行的群集和在 Windows 上运行的独立群集可以使用[证书安全性](https://msdn.microsoft.com/library/ff649801.aspx)或适用于 Windows Server 计算机的 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。
+在 Azure 上运行的群集和在 Windows 上运行的独立群集可以使用[证书安全性](/previous-versions/msp-n-p/ff649801(v=pandp.10))或适用于 Windows Server 计算机的 [Windows 安全性](/previous-versions/msp-n-p/ff649396(v=pandp.10))。
 
 ### <a name="node-to-node-certificate-security"></a>节点到节点的证书安全性
 
@@ -54,7 +54,7 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 ![客户端到节点通信示意图][Client-to-Node]
 
-在 Azure 上运行的群集和在 Windows 上运行的独立群集可以使用[证书安全性](https://msdn.microsoft.com/library/ff649801.aspx)或[windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)，但建议尽可能使用 x.509 证书身份验证。
+在 Azure 上运行的群集和在 Windows 上运行的独立群集可以使用[证书安全性](/previous-versions/msp-n-p/ff649801(v=pandp.10))或[windows 安全性](/previous-versions/msp-n-p/ff649396(v=pandp.10))，但建议尽可能使用 x.509 证书身份验证。
 
 ### <a name="client-to-node-certificate-security"></a>客户端到节点的证书安全性
 
@@ -95,7 +95,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 证书和 Service Fabric
 
-X.509 数字证书通常用于验证客户端与服务器。 它们还用于对消息进行加密和数字签名。 Service Fabric 使用 X.509 证书保护群集，提供应用程序安全功能。 有关 X.509 数字证书的详细信息，请参阅[使用证书](https://msdn.microsoft.com/library/ms731899.aspx)。 可以使用 [Key Vault](../key-vault/general/overview.md) 管理 Azure 中 Service Fabric 群集的证书。
+X.509 数字证书通常用于验证客户端与服务器。 它们还用于对消息进行加密和数字签名。 Service Fabric 使用 X.509 证书保护群集，提供应用程序安全功能。 有关 X.509 数字证书的详细信息，请参阅[使用证书](/dotnet/framework/wcf/feature-details/working-with-certificates)。 可以使用 [Key Vault](../key-vault/general/overview.md) 管理 Azure 中 Service Fabric 群集的证书。
 
 要考虑的几个要点：
 
@@ -114,7 +114,7 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 
 * 证书必须包含私钥。 这些证书通常使用扩展名 .pfx 或 .pem  
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* **证书的使用者名称必须与用于访问 Service Fabric 群集的域匹配**。 只有满足此匹配，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 TLS。 你无法从证书颁发机构（CA）处获取针对 *. cloudapp.azure.com 域的 TLS/SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
+* **证书的使用者名称必须与用于访问 Service Fabric 群集的域匹配**。 只有满足此匹配，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 TLS。 你无法从证书颁发机构获取 cloudapp.azure.com 域的证书颁发机构 (CA) 的 TLS/SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
 
 其他注意事项：
 

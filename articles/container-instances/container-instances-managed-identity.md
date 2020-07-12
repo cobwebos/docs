@@ -3,12 +3,12 @@ title: 在容器组中启用托管标识
 description: 了解如何在 Azure 容器实例中启用可使用其他 Azure 服务进行身份验证的托管标识
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169776"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259629"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -392,6 +392,6 @@ identity:
 > * 授予标识对 Azure Key Vault 的访问权限
 > * 使用托管标识从正在运行的容器访问 Key Vault
 
-* 详细了解 [Azure 资源的托管标识](/azure/active-directory/managed-identities-azure-resources/)。
+* 详细了解 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml)。
 
 * 请参阅[Azure 中转 SDK 示例](https://medium.com/@samkreter/c98911206328)，了解如何使用托管标识从 Azure 容器实例中访问密钥保管库。

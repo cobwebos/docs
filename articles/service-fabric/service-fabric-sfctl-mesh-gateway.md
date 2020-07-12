@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 3e398ff8a1a0a28fd9d0650a7c9d18ba04817d33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b6766137dd88a5a780dcca7b6eab7c6c3f9bbf4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906018"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260393"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
 获取和删除网格网关资源。
@@ -18,7 +19,7 @@ ms.locfileid: "76906018"
 
 |命令|描述|
 | --- | --- |
-| delete | 删除网关资源。 |
+| 删除 | 删除网关资源。 |
 | list | 列出所有网关资源。 |
 | show | 获取具有给定名称的网关资源。 |
 
@@ -82,4 +83,4 @@ ms.locfileid: "76906018"
 
 ## <a name="next-steps"></a>后续步骤
 - [设置](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
+- 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

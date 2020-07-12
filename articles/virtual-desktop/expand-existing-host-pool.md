@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209345"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259887"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的会话主机展开现有的主机池
 
@@ -29,7 +29,7 @@ ms.locfileid: "85209345"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>扩展主机池所需的条件
 
-在开始之前，请确保已使用以下方法之一创建了主机池和会话主机虚拟机（Vm）：
+在开始之前，请确保已使用以下方法之一) 创建了主机池和会话主机虚拟机 (Vm：
 
 - [Azure 门户](./create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 创建主机池](./create-host-pools-powershell.md)
@@ -54,7 +54,7 @@ ms.locfileid: "85209345"
 
 5. 选择 " **+ 添加**" 开始创建主机池。
 
-6. 忽略 "基本信息" 选项卡，然后选择 " **VM 详细信息**" 选项卡。可在此处查看和编辑要添加到主机池的虚拟机（VM）的详细信息。
+6. 忽略 "基本信息" 选项卡，然后选择 " **VM 详细信息**" 选项卡。在此处，你可以查看和编辑要添加到主机池的虚拟机 (VM) 的详细信息。
 
 7. 选择要在其下创建 Vm 的资源组，然后选择区域。 您可以选择当前使用的区域或新区域。
 
@@ -78,7 +78,7 @@ ms.locfileid: "85209345"
 
 现在，你已扩展现有的主机池，你可以登录到 Windows 虚拟桌面客户端，以将其作为用户会话的一部分进行测试。 你可以使用以下任一客户端连接到会话：
 
-- [使用 Windows 桌面客户端进行连接](./connect-windows-7-and-10.md)
+- [使用 Windows 桌面客户端进行连接](./connect-windows-7-10.md)
 - [使用 Web 客户端进行连接](./connect-web.md)
 - [使用 Android 客户端进行连接](./connect-android.md)
 - [使用 macOS 客户端进行连接](./connect-macos.md)

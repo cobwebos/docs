@@ -6,17 +6,18 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76718814"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260104"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载基于 Azure 文件的卷 
 
 本文介绍了如何将基于 Azure 文件的卷装载到 Service Fabric 网格应用程序的服务中。  Azure 文件卷驱动程序是将 Azure 文件共享装载到容器的 Docker 卷驱动程序，可使用它来保存服务状态。 卷提供常规用途文件存储，并允许使用正常磁盘 I/O 文件 API 读取/写入文件。  有关卷和应用程序数据存储选项的详细信息，请参阅[存储状态](service-fabric-mesh-storing-state.md)。
 
-若要将卷装载到服务，需在 Service Fabric 网格应用程序中创建卷资源，然后在服务中引用该卷。  可在[基于 YAML 的资源文件](#declare-a-volume-resource-and-update-the-service-resource-yaml)或[基于 JSON 的部署模板](#declare-a-volume-resource-and-update-the-service-resource-json)中完成声明该卷资源并在服务资源中引用它。 必须先创建 Azure 存储帐户和 [Azure 文件共享](/azure/storage/files/storage-how-to-create-file-share)，然后才能装载此卷。
+若要将卷装载到服务，需在 Service Fabric 网格应用程序中创建卷资源，然后在服务中引用该卷。  可在[基于 YAML 的资源文件](#declare-a-volume-resource-and-update-the-service-resource-yaml)或[基于 JSON 的部署模板](#declare-a-volume-resource-and-update-the-service-resource-json)中完成声明该卷资源并在服务资源中引用它。 必须先创建 Azure 存储帐户和 [Azure 文件共享](../storage/files/storage-how-to-create-file-share.md)，然后才能装载此卷。
 
 ## <a name="prerequisites"></a>先决条件
 > [!NOTE]
@@ -26,7 +27,7 @@ Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterS
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
 Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
 ```
-此问题的解决方法是：1）以 Powershell 管理员身份运行以下命令，2）重新启动计算机。
+此问题的解决方法是 1) 以 Powershell 管理员身份运行以下命令，2) 重新启动计算机。
 ```powershell
 PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 ```

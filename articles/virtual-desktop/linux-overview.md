@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dc9d62141a63574a6796982542cb1491108eedc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422415"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259856"
 ---
 # <a name="linux-support"></a>Linux 支持
 
@@ -48,9 +48,9 @@ SDK 支持多个到桌面和远程应用程序会话的连接。 支持以下重
 | 鼠标             | &#10004;  |
 | 音频传入          | &#10004;  |
 | 音频输出         | &#10004;  |
-| 剪贴板（文本）  | &#10004;  |
-| 剪贴板（图像） | &#10004;  |
-| 剪贴板（文件）  | &#10004;  |
+| 剪贴板 (文本)   | &#10004;  |
+| 剪贴板 (图像)  | &#10004;  |
+| 剪贴板 (文件)   | &#10004;  |
 | 智能卡         | &#10004;  |
 | 驱动器/文件夹      | &#10004;  |
 
@@ -69,7 +69,7 @@ SDK 还支持多个监视器显示配置，前提是你为会话选择的监视�
 
 请查看以下客户端的文档：
 
-- [Windows 桌面客户端](connect-windows-7-and-10.md)
+- [Windows 桌面客户端](connect-windows-7-10.md)
 - [Web 客户端](connect-web.md)
 - [Android 客户端](connect-android.md)
 - [macOS 客户端](connect-macos.md)

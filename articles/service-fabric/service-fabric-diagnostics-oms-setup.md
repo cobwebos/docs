@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609921"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258660"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>为群集设置 Azure Monitor 日志
 
@@ -90,7 +91,7 @@ Azure 资源管理器可检测出此命令要更新到现有资源。 它仅处�
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>部署 Azure Monitor 日志 Azure PowerShell
 
-还可以使用命令通过 PowerShell 部署 log analytics 资源 `New-AzOperationalInsightsWorkspace` 。 要使用此方法，请确保已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 使用此脚本新建 Log Analytics 工作区，并向其添加 Service Fabric 解决方案： 
+还可以使用命令通过 PowerShell 部署 log analytics 资源 `New-AzOperationalInsightsWorkspace` 。 要使用此方法，请确保已安装 [Azure PowerShell](/powershell/azure/install-az-ps)。 使用此脚本新建 Log Analytics 工作区，并向其添加 Service Fabric 解决方案： 
 
 ```powershell
 
@@ -122,5 +123,5 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 ## <a name="next-steps"></a>后续步骤
 * 将[Log Analytics 代理部署](service-fabric-diagnostics-oms-agent.md)到节点上，以收集性能计数器并收集容器的 docker 统计信息和日志
-* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能
 * [使用视图设计器在 Azure Monitor 日志中创建自定义视图](../azure-monitor/platform/view-designer.md)

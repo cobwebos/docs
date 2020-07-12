@@ -4,12 +4,12 @@ description: 了解如何从 Azure 容器实例中的容器组将资源日志和
 ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169725"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259609"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录
 
@@ -29,7 +29,7 @@ Log Analytics 工作区提供了一个集中的位置，用于存储和查询来
 若要在容器实例中启用日志记录，需具备以下条件：
 
 * [Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)
-* [Azure CLI](/cli/azure/install-azure-cli)（或 [Cloud Shell](/azure/cloud-shell/overview)）
+* [Azure CLI](/cli/azure/install-azure-cli)（或 [Cloud Shell](../cloud-shell/overview.md)）
 
 ## <a name="get-log-analytics-credentials"></a>获取 Log Analytics 凭据
 
@@ -153,7 +153,7 @@ ContainerInstanceLog_CL
 
 若要详细了解如何在 Azure Monitor 日志中查询日志和配置警报，请参阅：
 
-* [了解 Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-search.md)
+* [了解 Azure Monitor 日志中的日志搜索](../azure-monitor/log-query/log-query-overview.md)
 * [Azure Monitor 中的统一警报](../azure-monitor/platform/alerts-overview.md)
 
 

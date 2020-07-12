@@ -6,11 +6,12 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76908158"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260145"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>将 Service Fabric 网格应用程序移动到另一个 Azure 区域
 
@@ -20,34 +21,34 @@ ms.locfileid: "76908158"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 入口控制器（如[应用程序网关](https://docs.microsoft.com/azure/application-gateway/)），用作在客户端与 Service Fabric 网格应用程序之间路由流量的媒介
-* 目标 Azure 区域（ `westus` 、 `eastus` 或 `westeurope` ）中的 Service Fabric 网格（预览版）可用性
+* 入口控制器 (例如，[应用程序网关](../application-gateway/index.yml)) 用于在客户端与 Service Fabric 网格应用程序之间路由流量的媒介
+* Service Fabric 网格 (预览版在目标 Azure 区域中) 可用性 (`westus` 、 `eastus` 或 `westeurope`) 
 
 ## <a name="prepare"></a>准备
 
-1. 通过从最近的部署导出 Azure 资源管理器模板和参数，拍摄 Service Fabric 网格应用程序当前状态的 "快照"。 为此，请按照使用 Azure 门户[部署后的导出模板](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment)中的步骤操作。 也可以使用 [Azure CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates) 或 [REST API](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)。
+1. 通过从最近的部署导出 Azure 资源管理器模板和参数，拍摄 Service Fabric 网格应用程序当前状态的 "快照"。 为此，请按照使用 Azure 门户[部署后的导出模板](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment)中的步骤操作。 也可以使用 [Azure CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates) 或 [REST API](/rest/api/resources/resourcegroups/exporttemplate)。
 
-2. 如果适用，请[导出同一资源组中的其他资源](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group)，以便在目标区域中重新部署。
+2. 如果适用，请[导出同一资源组中的其他资源](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource-group)，以便在目标区域中重新部署。
 
-3. 查看（并根据需要编辑）导出的模板，以确保现有属性值是要在目标区域中使用的属性值。 新的 `location` （Azure 区域）是在重新部署过程中将提供的参数。
+3. 查看 (并编辑（如果需要）) 导出的模板，以确保现有属性值是要在目标区域中使用的值。 新的 `location` Azure 区域 () 是在重新部署过程中将提供的参数。
 
 ## <a name="move"></a>移动
 
-1. 在目标区域中创建新的资源组（或使用现有的资源组）。
+1. 在目标区域中创建新的资源组 (或使用现有的资源组) 。
 
-2. 使用导出的模板，按照使用 Azure 门户[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)中的步骤操作。 也可以使用 [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)、[Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell) 或 [REST API](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-rest)。
+2. 使用导出的模板，按照使用 Azure 门户[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)中的步骤操作。 也可以使用 [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) 或 [REST API](../azure-resource-manager/templates/deploy-rest.md)。
 
 3. 有关移动相关资源（例如[Azure 存储帐户](../storage/common/storage-account-move.md)）的指南，请参阅[跨区域移动 Azure 资源](../azure-resource-manager/management/move-region.md)主题中列出的各个服务的指南。
 
 ## <a name="verify"></a>验证
 
-1. 部署完成后，请测试应用程序终结点以验证应用程序的功能。
+1. 部署完成后，请测试 (的应用程序终结点) ，验证应用程序的功能。
 
-2. 还可以通过使用[Azure Service Fabric 网格 CLI](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-quickstart-deploy-container#set-up-service-fabric-mesh-cli)检查应用程序状态（[az 网格应用显示](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)）并查看应用程序日志和（[az 网格代码包日志](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)）命令，来验证应用程序的状态。
+2. 你还可以通过检查应用程序状态 ([az 网格应用显示](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) 并查看应用程序日志，并 ([az 网格代码包-记录](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) [Service Fabric](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli)命令来验证应用程序的状态。
 
 ## <a name="commit"></a>Commit
 
-确认目标区域中 Service Fabric 网格应用程序的等效功能后，将入口控制器（例如，[应用程序网关](../application-gateway/redirect-overview.md)）配置为将流量重定向到新应用程序。
+确认目标区域中 Service Fabric 网格应用程序的等效功能后，配置入口控制器 (例如，[应用程序网关](../application-gateway/redirect-overview.md)) ，将流量重定向到新应用程序。
 
 ## <a name="clean-up-source-resources"></a>清理源资源
 
@@ -57,6 +58,6 @@ ms.locfileid: "76908158"
 
 * [跨区域移动 Azure 资源](../azure-resource-manager/management/move-region.md)
 * [跨区域移动 Azure 资源的支持](../azure-resource-manager/management/region-move-support.md)
-* [将资源移到新资源组或订阅中](../azure-resource-manager/management/move-resource-group-and-subscription.md)
-* [支持移动操作的资源](../azure-resource-manager/management/move-support-resources.md
+* [将资源移至新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+* [资源移动操作支持](../azure-resource-manager/management/move-support-resources.md
 )

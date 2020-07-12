@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82025027"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259638"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在专用主机上部署
 
@@ -27,7 +28,7 @@ ms.locfileid: "82025027"
 > 只能在当前推出的最新 API 版本 (2019-12-01) 中使用专用 SKU。请在部署模板中指定此 API 版本。
 >
 
-从 API 版本 2019-12-01 开始，部署模板的容器组属性部分下有一个 `sku` 属性，它是 ACI 部署所必需的。 目前，可以将此属性用作 ACI 的 Azure 资源管理器部署模板的一部分。 若要详细了解如何使用模板来部署 ACI 资源，请参阅[教程：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)。 
+从 API 版本 2019-12-01 开始，部署模板的容器组属性部分下有一个 `sku` 属性，它是 ACI 部署所必需的。 目前，可以将此属性用作 ACI 的 Azure 资源管理器部署模板的一部分。 若要详细了解如何使用模板来部署 ACI 资源，请参阅[教程：使用资源管理器模板部署多容器组](./container-instances-multi-container-group.md)。 
 
 `sku` 属性可以具有下列值之一：
 * `Standard` - 标准 ACI 部署选择，仍可保证虚拟机监控程序级别的安全性 
@@ -136,17 +137,17 @@ ms.locfileid: "82025027"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令部署模板。
+使用 [az deployment group create][az-deployment-group-create] 命令部署模板。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 将在几秒钟内收到来自 Azure 的初始响应。 在专用主机上部署成功。
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

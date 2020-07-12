@@ -7,35 +7,36 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3897ef75be34d4413e06dc5459739baec3afdcec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 996793f2851949f7474312a18ccff04e88db2232
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267997"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259160"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>容器实例的 Azure 安全基线
 
 容器实例的 Azure 安全基线包含有助于改进部署安全状况的建议。
 
-此服务的基线摘自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
-有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
 ## <a name="network-security"></a>网络安全性
 
-有关详细信息，请参阅[安全控制：网络安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。
+有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
 **指导**：Azure 虚拟网络为 Azure 资源和本地资源提供安全的专用网络。 将 Azure 容器实例中的容器组与 Azure 虚拟网络集成。 
 
-* [虚拟网络方案和资源-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-virtual-network-concepts)
+* [虚拟网络方案和资源-Azure 容器实例](./container-instances-virtual-network-concepts.md)
 
-* [将容器实例部署到 Azure 虚拟网络](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [将容器实例部署到 Azure 虚拟网络](./container-instances-vnet.md)
 
-* [如何创建采用安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何创建采用安全配置的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [如何部署和配置 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [如何部署和配置 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
 
 **Azure 安全中心监视**：是
@@ -46,9 +47,9 @@ ms.locfileid: "84267997"
 
 **指导**：使用 Azure 安全中心并修正网络保护建议来帮助保护 Azure 中的网络资源。 启用 NSG 流日志，并将日志发送到存储帐户中进行流量审核。
 
-* [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何启用 NSG 流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [保护网络资源](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [保护网络资源](../security-center/security-center-network-recommendations.md)
 
 **Azure 安全中心监视**：是
 
@@ -56,9 +57,9 @@ ms.locfileid: "84267997"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：在 Azure 容器实例中托管的关键 Web 应用程序之前部署 Azure Web 应用程序防火墙（WAF），以便对传入流量进行额外检查。 启用 WAF 的诊断设置，并将日志引入存储帐户、事件中心或 Log Analytics 工作区。
+**指南**：在 Azure 容器实例中托管的关键 Web 应用程序的前面部署 Azure Web 应用程序防火墙 (WAF) ，以便对传入流量进行额外检查。 启用 WAF 的诊断设置，并将日志引入存储帐户、事件中心或 Log Analytics 工作区。
 
-* [如何部署 Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [如何部署 Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 
 
@@ -68,15 +69,15 @@ ms.locfileid: "84267997"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
-**指南**：在 Azure 虚拟网络上启用 ddos 标准保护，防止出现 DDoS 攻击。 使用 Azure 安全中心集成威胁情报拒绝与已知的恶意 IP 地址的通信。 在组织的每个网络边界上部署 Azure 防火墙，启用威胁情报，并配置为“发出警报并拒绝”恶意网络流量。 使用 Azure 安全中心实时网络访问，将 NSG 配置为只能在有限时间内将终结点公开给已批准的 IP 地址。 使用 Azure 安全中心自适应网络强化，推荐基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。 
+**指南**：在 Azure 虚拟网络上启用 ddos 标准保护，防止出现 DDoS 攻击。 使用 Azure 安全中心的集成式威胁情报功能拒绝与已知的恶意 IP 地址通信。 在组织的每个网络边界上部署 Azure 防火墙，启用威胁情报，并配置为“发出警报并拒绝”恶意网络流量。 使用 Azure 安全中心实时网络访问，将 NSG 配置为只能在有限时间内将终结点公开给已批准的 IP 地址。 使用 Azure 安全中心自适应网络强化，推荐基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。 
 
-* [如何部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [了解 Azure 安全中心集成的威胁情报](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [了解 Azure 安全中心集成的威胁情报](../security-center/threat-protection.md)
 
-* [了解 Azure 安全中心自适应网络强化](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+* [了解 Azure 安全中心自适应网络强化](../security-center/security-center-adaptive-network-hardening.md)
 
-* [Azure 安全中心实时网络访问控制](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Azure 安全中心实时网络访问控制](../security-center/security-center-just-in-time.md)
 
 **Azure 安全中心监视**：是
 
@@ -84,11 +85,11 @@ ms.locfileid: "84267997"
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：记录网络数据包和流日志
 
-**指南**：如果将网络安全组（nsg）与虚拟网络实现一起使用，请启用附加到委托给 Azure 容器实例的子网的 NSG 的 NSG 流日志。 将 NSG 流日志记录到 Azure 存储帐户中，以生成流记录。 如果需要调查异常活动，请启用 Azure 网络观察程序数据包捕获。
+**指南**：如果将网络安全组与虚拟网络实现一起使用 (nsg) ，请启用附加到委托给 Azure 容器实例的子网的 NSG 的 NSG 流日志。 将 NSG 流日志记录到 Azure 存储帐户中，以生成流记录。 如果需要调查异常活动，请启用 Azure 网络观察程序数据包捕获。
 
-* [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何启用 NSG 流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [如何启用网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [如何启用网络观察程序](../network-watcher/network-watcher-create.md)
 
 **Azure 安全中心监视**：是
 
@@ -102,11 +103,11 @@ ms.locfileid: "84267997"
 
 * [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [如何部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [如何配置 Azure 防火墙警报](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [如何配置 Azure 防火墙警报](../firewall/threat-intel.md)
 
-* [在虚拟网络中部署-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [在虚拟网络中部署-Azure 容器实例](./container-instances-vnet.md) 
 
 
 
@@ -116,17 +117,17 @@ ms.locfileid: "84267997"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：为受信任的证书启用 HTTPS/SSL 的 web 应用程序部署 Azure 应用程序网关。
+**指导**：为 Web 应用程序部署 Azure 应用程序网关，并为受信任的证书启用 HTTPS/SSL。
 
-* [如何部署应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [如何部署应用程序网关](../application-gateway/quick-create-portal.md)
 
-* [如何将应用程序网关配置为使用 HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal) 
+* [如何将应用程序网关配置为使用 HTTPS](../application-gateway/create-ssl-portal.md) 
 
-* [了解 Azure Web 应用程序网关的第七层负载均衡](https://docs.microsoft.com/azure/application-gateway/overview)
+* [了解 Azure Web 应用程序网关的第七层负载均衡](../application-gateway/overview.md)
 
-* [公开容器组的静态 IP 地址](https://docs.microsoft.com/azure/container-instances/container-instances-application-gateway)
+* [公开容器组的静态 IP 地址](./container-instances-application-gateway.md)
 
-* [在虚拟网络中部署-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [在虚拟网络中部署-Azure 容器实例](./container-instances-vnet.md)
 
 
 
@@ -136,15 +137,15 @@ ms.locfileid: "84267997"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指南**：使用虚拟网络服务标记定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 
+**指导**：在网络安全组或 Azure 防火墙中使用虚拟网络服务标记来定义网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 
 
 还可使用应用程序安全组来帮助简化复杂的安全配置。 使用应用程序安全组可将网络安全性配置为应用程序结构的固有扩展，从而可以基于这些组将虚拟机分组以及定义网络安全策略。 
 
-* [了解并使用服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) 
+* [了解并使用服务标记](../virtual-network/service-tags-overview.md) 
 
-* [了解并使用应用程序安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+* [了解并使用应用程序安全组](../virtual-network/security-overview.md#application-security-groups)
 
-* [在虚拟网络中部署-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [在虚拟网络中部署-Azure 容器实例](./container-instances-vnet.md)
 
 
 
@@ -156,17 +157,17 @@ ms.locfileid: "84267997"
 
 **指南**：你也可以使用 azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、RBAC 控件和策略）来简化大规模的 azure 部署。 可将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。 
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [用于网络的 Azure Policy 示例](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+* [用于网络的 Azure Policy 示例](/azure/governance/policy/samples/#network)
 
-* [如何创建 Azure 蓝图](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [如何创建 Azure 蓝图](../governance/blueprints/create-blueprint-portal.md)
 
 
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
@@ -176,24 +177,24 @@ ms.locfileid: "84267997"
 
 可以使用 Azure PowerShell 或 Azure CLI 根据资源的标记查找资源或对其执行操作。
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-* [在虚拟网络中部署-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [在虚拟网络中部署-Azure 容器实例](./container-instances-vnet.md)
 
-* [如何创建具有安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何创建采用安全配置的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与容器实例相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -201,15 +202,15 @@ ms.locfileid: "84267997"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-有关详细信息，请参阅[安全控制：日志记录和监视](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。
+有关详细信息，请参阅[安全控制：日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
 **指南**：Microsoft 维护 Azure 资源的时间源，但你可以选择管理计算资源的时间同步设置。 例如，在正在运行的容器中运行时间同步命令。
 
-* [如何配置 Azure 计算资源的时间同步](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [如何配置 Azure 计算资源的时间同步](../virtual-machines/windows/time-sync.md)
 
-* [在运行的 Azure 容器实例中执行命令](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [在运行的 Azure 容器实例中执行命令](./container-instances-exec.md)
 
 
 
@@ -221,9 +222,9 @@ ms.locfileid: "84267997"
 
 **指南**：通过 Azure Monitor 引入日志来聚合由 Azure 容器组生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期/存档存储。
 
-* [使用 Azure Monitor 日志进行容器组和实例日志记录](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [使用 Azure Monitor 日志进行容器组和实例日志记录](./container-instances-log-analytics.md)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -231,9 +232,9 @@ ms.locfileid: "84267997"
 
 **指导**：Azure Monitor 针对注册表中的用户驱动事件收集资源日志（前称为诊断日志）。 Azure 容器实例包含内置支持，可用于将容器组日志和事件数据以及容器日志发送到 Azure Monitor 日志。
 
-* [使用 Azure Monitor 日志进行容器组和实例日志记录](https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs)
+* [使用 Azure Monitor 日志进行容器组和实例日志记录](../container-registry/container-registry-diagnostics-audit-logs.md)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -248,9 +249,9 @@ ms.locfileid: "84267997"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
+**指南**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-* [如何为 Log Analytics 工作区设置日志保留参数](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -260,11 +261,11 @@ ms.locfileid: "84267997"
 
 **指南**：分析和监视日志中的异常行为，并定期检查结果。 使用 Azure Monitor 的 Log Analytics 工作区来查看日志并执行针对日志数据的查询。 
 
-* [使用 Azure Monitor 日志进行容器组和实例日志记录](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [使用 Azure Monitor 日志进行容器组和实例日志记录](./container-instances-log-analytics.md)
 
-* [了解 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [了解 Log Analytics 工作区](../azure-monitor/log-query/get-started-portal.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -274,11 +275,11 @@ ms.locfileid: "84267997"
 
 **指南**：使用 Log Analytics "工作区" 监视和警报安全日志和事件中的异常活动。 
 
-* [使用 Azure Monitor 日志进行容器组和实例日志记录](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [使用 Azure Monitor 日志进行容器组和实例日志记录](./container-instances-log-analytics.md)
 
-* [如何针对 Log Analytics 日志数据发出警报](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -303,7 +304,7 @@ ms.locfileid: "84267997"
 
 **指南**：如果需要，在正在运行的容器实例中配置控制台日志记录。
 
-* [在运行的 Azure 容器实例中执行命令](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [在运行的 Azure 容器实例中执行命令](./container-instances-exec.md)
 
 
 
@@ -313,7 +314,7 @@ ms.locfileid: "84267997"
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-有关详细信息，请参阅[安全控制：标识和访问控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。
+有关详细信息，请参阅[安全控制：标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -321,11 +322,11 @@ ms.locfileid: "84267997"
 
 如果将 Azure 容器注册表与 Azure 容器实例一起使用，请针对每个 Azure 容器注册表跟踪内置管理员帐户是否已启用或禁用。 不使用该帐户时请将其禁用。
 
-* [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Azure 容器注册表管理员帐户](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Azure 容器注册表管理员帐户](../container-registry/container-registry-authentication.md#admin-account)
 
 **Azure 安全中心监视**：是
 
@@ -337,7 +338,7 @@ ms.locfileid: "84267997"
 
 如果将 Azure 容器注册表与 Azure 容器实例一起使用，并且启用了 Azure 容器注册表的默认管理员帐户，则会自动创建复杂密码并进行轮换。 不使用该帐户时请将其禁用。
 
-* [Azure 容器注册表管理员帐户](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Azure 容器注册表管理员帐户](../container-registry/container-registry-authentication.md#admin-account)
 
 **Azure 安全中心监视**：不适用
 
@@ -345,13 +346,13 @@ ms.locfileid: "84267997"
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指导**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识和访问管理来监视管理帐户的数量。
+**指南**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识和访问管理来监视管理帐户的数量。
 
 如果将 Azure 容器注册表与 Azure 容器实例一起使用，请创建过程来启用容器注册表的内置管理员帐户。 不使用该帐户时请将其禁用。
 
-* [了解 Azure 安全中心的标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [了解 Azure 安全中心的标识和访问](../security-center/security-center-identity-access.md)
 
-* [Azure 容器注册表管理员帐户](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Azure 容器注册表管理员帐户](../container-registry/container-registry-authentication.md#admin-account)
 
 **Azure 安全中心监视**：是
 
@@ -361,7 +362,7 @@ ms.locfileid: "84267997"
 
 **指导**：请尽可能使用 Azure Active Directory SSO，而不是为每个服务配置单个独立凭据。 请使用 Azure 安全中心标识和访问管理建议。
 
-* [了解 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [了解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -372,43 +373,43 @@ ms.locfileid: "84267997"
 
 **指导**：启用 Azure Active Directory (Azure AD) 多重身份验证 (MFA)，并遵循 Azure 安全中心标识和访问管理的建议。
 
-* [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [如何在 Azure 安全中心内监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
 **指南**：将 PAW（特权访问工作站）与为登录和配置 Azure 资源而配置的 MFA 结合使用。
 
-* [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
 **指导**：当环境中出现可疑或不安全的活动时，请使用 Azure Active Directory (Azure AD) 安全报告来生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
 
-* [如何确定标记为存在风险活动的 Azure AD 用户](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何在 Azure 安全中心内监视用户的标识和访问活动](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 安全中心内监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
 **指南**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行访问。
 
-* [如何在 Azure 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [如何在 Azure 中配置命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -418,23 +419,23 @@ ms.locfileid: "84267997"
 
 **指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
-* [如何创建和配置 Azure AD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
 **指导**：Azure Active Directory (Azure AD) 提供日志来帮助发现过时的帐户。 此外，请使用 Azure 标识访问评审来有效管理组成员身份、对企业应用程序的访问和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
 
-* [了解 Azure AD 报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
-* [如何使用 Azure 标识访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
 
@@ -442,7 +443,7 @@ ms.locfileid: "84267997"
 
 可以通过为 Azure Active Directory 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。
 
-* [如何将 Azure 活动日志集成到 Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -452,9 +453,9 @@ ms.locfileid: "84267997"
 
 **指导**：使用 Azure Active Directory (Azure AD) 风险和标识保护功能配置对检测到的与用户标识相关的可疑操作的自动响应。
 
-* [如何查看 Azure AD 风险登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何配置和启用标识保护风险策略](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -464,7 +465,7 @@ ms.locfileid: "84267997"
 
 **指南**：当前不可用;Azure 容器实例当前不支持客户密码箱。
 
-* [客户密码箱支持的服务列表](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [客户密码箱支持的服务列表](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure 安全中心监视**：不适用
 
@@ -472,7 +473,7 @@ ms.locfileid: "84267997"
 
 ## <a name="data-protection"></a>数据保护
 
-有关详细信息，请参阅[安全控制：数据保护](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。
+有关详细信息，请参阅[安全控制：数据保护](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
@@ -480,9 +481,9 @@ ms.locfileid: "84267997"
 
 标记和版本容器映像，有助于跟踪存储或处理敏感信息的图像。
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-* [标记和版本控制容器映像的建议](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [标记和版本控制容器映像的建议](../container-registry/container-registry-image-tag-version.md)
 
 
 **Azure 安全中心监视**：目前不可用
@@ -493,20 +494,20 @@ ms.locfileid: "84267997"
 
 **指南**：为开发、测试和生产实施单独的订阅和/或管理组。 资源应当按 VNet/子网进行分隔，相应地进行标记，并由 NSG 或 Azure 防火墙提供保护。 存储或处理敏感数据的资源应当充分隔离。
 
-* [在运行的 Azure 容器实例中执行命令](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [在运行的 Azure 容器实例中执行命令](./container-instances-exec.md)
 
-* [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何创建管理组](../governance/management-groups/create.md)
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-* [在虚拟网络中部署-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
-* [如何创建采用安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [在虚拟网络中部署-Azure 容器实例](./container-instances-vnet.md) 
+* [如何创建采用安全配置的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [如何部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [如何配置警报或警报，以及如何拒绝 Azure 防火墙](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [如何配置警报或警报，以及如何拒绝 Azure 防火墙](../firewall/threat-intel.md)
 
 
 **Azure 安全中心监视**：目前不可用
@@ -519,11 +520,11 @@ ms.locfileid: "84267997"
 
 对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
-* [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-* [在虚拟网络中部署-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [在虚拟网络中部署-Azure 容器实例](./container-instances-vnet.md) 
 
-* [在 Azure 容器实例中装载 Azure 文件共享](https://docs.microsoft.com/azure/container-instances/container-instances-volume-azure-files)
+* [在 Azure 容器实例中装载 Azure 文件共享](./container-instances-volume-azure-files.md)
 
 
 **Azure 安全中心监视**：目前不可用
@@ -536,7 +537,7 @@ ms.locfileid: "84267997"
 
 请按照 Azure 安全中心的建议，了解静态加密和传输中的加密（如果适用）。
 
-* [了解 Azure 传输中的加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Azure 安全中心监视**：是
 
@@ -548,7 +549,7 @@ ms.locfileid: "84267997"
 
 对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
-* [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -558,7 +559,7 @@ ms.locfileid: "84267997"
 
 **指南**：使用 Azure AD RBAC 控制对 Azure 容器实例数据和资源的访问。 
 
-* [如何在 Azure 中配置 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -567,11 +568,11 @@ ms.locfileid: "84267997"
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
-**指南**：不适用;此建议适用于 IaaS 计算资源。
+**指导**：不适用；此建议适用于 IaaS 计算资源。
 
 对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
-* [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -579,11 +580,11 @@ ms.locfileid: "84267997"
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
-**指南**：默认情况下，Azure 容器实例中的所有部署数据都使用 Microsoft 托管的密钥进行静态加密。 （可选）用您自己的密钥（客户管理的密钥）管理加密。
+**指南**：默认情况下，Azure 容器实例中的所有部署数据都使用 Microsoft 托管的密钥进行静态加密。 （可选）通过客户托管的密钥)  (管理加密。
 
-* [了解 Azure 中的静态加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [了解 Azure 中的静态加密](../security/fundamentals/encryption-atrest.md)
 
-* [用 Azure 容器实例加密部署数据](https://docs.microsoft.com/azure/container-instances/container-instances-encrypt-data)
+* [用 Azure 容器实例加密部署数据](./container-instances-encrypt-data.md)
 
 
 
@@ -595,7 +596,7 @@ ms.locfileid: "84267997"
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，为容器组和容器实例进行更改时创建警报。 
 
-* [如何针对 Azure 活动日志事件创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -604,15 +605,15 @@ ms.locfileid: "84267997"
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-有关详细信息，请参阅[安全控制：漏洞管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。
+有关详细信息，请参阅[安全控制：漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
 **指南**：实施解决方案来扫描专用注册表中的容器映像并识别潜在的漏洞。 遵循 Azure 安全中心的建议，对 Azure 容器注册表中存储的容器映像执行漏洞评估。 （可选）从 Azure 市场部署第三方解决方案，用于执行映像漏洞评估。
 
-* [Azure 容器实例的安全注意事项](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-* [Azure 容器注册表与安全中心的集成](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure 容器注册表与安全中心的集成](../security-center/azure-container-registry-integration.md)
 
 **Azure 安全中心监视**：是
 
@@ -624,9 +625,9 @@ ms.locfileid: "84267997"
 
 使用自定义或第三方解决方案修补容器映像。 如果在 Azure 容器注册表中存储容器映像，请运行 Azure 容器注册表任务，以根据基本操作系统映像中的安全修补程序或其他更新自动更新容器注册表中的应用程序映像。
 
-* [Azure 容器实例的安全注意事项](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-* [关于 Azure 容器注册表任务的基本映像更新](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [关于 Azure 容器注册表任务的基本映像更新](../container-registry/container-registry-tasks-base-images.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -637,9 +638,9 @@ ms.locfileid: "84267997"
 
 **指南**：使用自定义或第三方解决方案修补容器映像。 如果在 Azure 容器注册表中存储容器映像，请运行 Azure 容器注册表任务，以根据基本操作系统映像中的安全修补程序或其他更新自动更新容器注册表中的应用程序映像。
 
-* [Azure 容器实例的安全注意事项](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-* [关于 ACR 任务的基本映像更新](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [关于 ACR 任务的基本映像更新](../container-registry/container-registry-tasks-base-images.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -649,9 +650,9 @@ ms.locfileid: "84267997"
 
 **指南**：按一致的间隔导出映像扫描结果，并比较结果以验证是否已修正了漏洞。 如果在 Azure 容器注册表中存储容器映像，请将你的注册表与 Azure 安全中心集成，以便定期扫描容器映像中的漏洞。 （可选）从 Azure 市场部署第三方解决方案，用于执行定期的映像漏洞扫描。
 
-* [Azure 容器实例的安全注意事项](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-* [Azure 容器注册表与安全中心的集成](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure 容器注册表与安全中心的集成](../security-center/azure-container-registry-integration.md)
 
 **Azure 安全中心监视**：是
 
@@ -661,9 +662,9 @@ ms.locfileid: "84267997"
 
 **指南**：如果你在 Azure 容器注册表中存储容器映像，请将你的注册表与 Azure 安全中心集成，以便对容器映像进行定期扫描，并为风险分类。 （可选）从 Azure 市场部署第三方解决方案，用于执行定期的映像漏洞扫描和风险分类。
 
-* [Azure 容器实例的安全注意事项](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-* [Azure 容器注册表与安全中心的集成](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure 容器注册表与安全中心的集成](../security-center/azure-container-registry-integration.md)
 
 **Azure 安全中心监视**：是
 
@@ -671,19 +672,19 @@ ms.locfileid: "84267997"
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-有关详细信息，请参阅[安全控制：清单和资产管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。
+有关详细信息，请参阅[安全控制：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
 **指导**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
+虽然可以通过 Resource Graph 发现经典的 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源以供后续使用。
 
-* [如何使用 Azure Resource Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -693,7 +694,7 @@ ms.locfileid: "84267997"
 
 **指南**：将标记应用于 Azure 容器实例和相关资源，提供元数据以逻辑方式将它们组织到分类。
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -704,11 +705,11 @@ ms.locfileid: "84267997"
 
 **指导**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-* [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何创建管理组](../governance/management-groups/create.md)
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -727,13 +728,13 @@ ms.locfileid: "84267997"
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
 
-* [使用 Azure 策略审核 Azure 容器注册表的符合性](https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy)
+* [使用 Azure 策略审核 Azure 容器注册表的符合性](../container-registry/container-registry-azure-policy.md)
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -747,14 +748,14 @@ ms.locfileid: "84267997"
 
 监视 Azure 容器实例日志中的异常行为，并定期检查结果。 使用 Azure Monitor 的 Log Analytics 工作区来查看日志并执行针对日志数据的查询。
 
-* [使用 Azure Monitor 日志进行容器组和实例日志记录](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [使用 Azure Monitor 日志进行容器组和实例日志记录](./container-instances-log-analytics.md)
 
-* [了解 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [了解 Log Analytics 工作区](../azure-monitor/log-query/get-started-portal.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
-* [Azure 容器实例的安全注意事项](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
-* [Azure 容器注册表与安全中心的集成](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
+* [Azure 容器注册表与安全中心的集成](../security-center/azure-container-registry-integration.md)
 
 
 
@@ -766,7 +767,7 @@ ms.locfileid: "84267997"
 
 **指导**：可以通过 Azure 自动化在工作负荷和资源的部署、操作和解除授权过程中进行完全的控制。 你可以实现自己的解决方案，用于删除未经授权的 Azure 资源和软件应用程序。
 
-* [Azure 自动化简介](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure 自动化简介](../automation/automation-intro.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -775,7 +776,7 @@ ms.locfileid: "84267997"
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
 **指南**：标记和版本容器映像，以帮助跟踪运行已批准的应用程序的映像。
-* [标记和版本控制容器映像的建议](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [标记和版本控制容器映像的建议](../container-registry/container-registry-image-tag-version.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -786,9 +787,9 @@ ms.locfileid: "84267997"
 
 **指南**：使用 Azure 策略限制可在环境中预配的服务。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure 安全中心监视**：不适用
 
@@ -797,7 +798,7 @@ ms.locfileid: "84267997"
 ### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
 **指南**：标记和版本容器映像，以帮助跟踪运行已批准的应用程序的映像。
-* [标记和版本控制容器映像的建议](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [标记和版本控制容器映像的建议](../container-registry/container-registry-image-tag-version.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -808,7 +809,7 @@ ms.locfileid: "84267997"
 
 **指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，使用 Azure 条件访问限制用户与 Azure 资源管理器的交互能力。 
 
-* [如何配置条件性访问以阻止访问 Azure 资源管理器](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [如何配置条件性访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -820,17 +821,17 @@ ms.locfileid: "84267997"
 
 使用不同的 Azure 订阅或管理组管理和查看对 Azure 容器实例资源的访问权限，或使用虚拟网络和 Nsg 或 Azure 防火墙隔离资源。
 
-* [在运行的 Azure 容器实例中执行命令](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [在运行的 Azure 容器实例中执行命令](./container-instances-exec.md)
 
-* [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何创建管理组](../governance/management-groups/create.md)
 
-* [在虚拟网络中部署-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [在虚拟网络中部署-Azure 容器实例](./container-instances-vnet.md)
 
-* [如何创建采用安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何创建采用安全配置的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [如何部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
 
 
@@ -842,9 +843,9 @@ ms.locfileid: "84267997"
 
 **指南**：业务运营所需的软件，但可能会给组织带来更高的风险，应在其自己的虚拟网络中隔离，并使用 Azure 防火墙或网络安全组进行充分的保护。
 
-* [在虚拟网络中部署-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [在虚拟网络中部署-Azure 容器实例](./container-instances-vnet.md) 
 
-* [如何创建采用安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何创建采用安全配置的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -852,7 +853,7 @@ ms.locfileid: "84267997"
 
 ## <a name="secure-configuration"></a>安全配置
 
-有关详细信息，请参阅[安全控制：安全配置](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。
+有关详细信息，请参阅[安全控制：安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -860,7 +861,7 @@ ms.locfileid: "84267997"
 
 * [Azure 容器实例中的容器组](container-instances-container-groups.md#deployment)
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -871,7 +872,7 @@ ms.locfileid: "84267997"
 
 **指南**：使用自定义或第三方解决方案修补容器映像。 如果在 Azure 容器注册表中存储容器映像，请运行 Azure 容器注册表任务，以根据基本操作系统映像中的安全修补程序或其他更新自动更新容器注册表中的应用程序映像。 
 
-* [关于 Azure 容器注册表任务的基本映像更新](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [关于 Azure 容器注册表任务的基本映像更新](../container-registry/container-registry-tasks-base-images.md)
 
 
 
@@ -883,9 +884,9 @@ ms.locfileid: "84267997"
 
 **指导**：使用 Azure 策略“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [了解 Azure Policy 效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -897,10 +898,10 @@ ms.locfileid: "84267997"
 
 使用自定义或第三方解决方案修补容器映像。 如果在 Azure 容器注册表中存储容器映像，请运行 Azure 容器注册表任务，以根据基本操作系统映像中的安全修补程序或其他更新自动更新容器注册表中的应用程序映像。 
 
-* [Azure 容器实例的容器监视和扫描安全建议](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure 容器实例的容器监视和扫描安全建议](./container-instances-image-security.md)
 
-* [Azure 容器注册表与安全中心的集成](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-* [关于 Azure 容器注册表任务的基本映像更新](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Azure 容器注册表与安全中心的集成](../security-center/azure-container-registry-integration.md)
+* [关于 Azure 容器注册表任务的基本映像更新](../container-registry/container-registry-tasks-base-images.md)
 
 
 
@@ -912,9 +913,9 @@ ms.locfileid: "84267997"
 
 **指南**：在源代码管理中安全地存储和管理 ARM 模板、YAML 文件和自定义 Azure 策略定义。
 
-* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -924,30 +925,30 @@ ms.locfileid: "84267997"
 
 **指南**：在 Azure 容器注册表中存储容器映像并利用 RBAC，确保只有经过授权的用户才能访问这些映像。
 
-* [了解 Azure 中的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [了解 Azure 中的 RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [了解容器注册表的 RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [了解容器注册表的 RBAC](../container-registry/container-registry-roles.md)
 
-* [如何在 Azure 中配置 RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [如何在 Azure 中配置 RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系统配置管理工具
 
 **指导**：使用 Azure 策略针对系统配置发出警报，以及审核和强制实施系统配置。 另外，开发一个用于管理策略例外的流程和管道。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：为操作系统部署系统配置管理工具
 
-**指南**：不适用;此准则适用于 IaaS 计算资源。
+**指导**：不适用；此项指导适用于 IaaS 计算资源。
 
 
 **Azure 安全中心监视**：不适用
@@ -960,9 +961,9 @@ ms.locfileid: "84267997"
 
 使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-* [如何在 Azure 安全中心修正建议](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [如何在 Azure 安全中心修正建议](../security-center/security-center-remediate-recommendations.md)
 
-* [使用 Azure 策略审核 Azure 容器注册表的符合性](https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy)
+* [使用 Azure 策略审核 Azure 容器注册表的符合性](../container-registry/container-registry-azure-policy.md)
 
 **Azure 安全中心监视**：是
 
@@ -972,7 +973,7 @@ ms.locfileid: "84267997"
 
 **指南**：如果使用 Azure 容器注册表来存储容器映像，请使用 Azure 安全中心对 OS 和容器的 Docker 设置执行基线扫描。
 
-* [了解 Azure 安全中心容器建议](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [了解 Azure 安全中心容器建议](../security-center/container-security.md)
 
 
 **Azure 安全中心监视**：是
@@ -983,13 +984,13 @@ ms.locfileid: "84267997"
 
 **指导**：将托管服务标识与 Azure Key Vault 结合使用，以便简化和保护云应用程序的机密管理。
 
-* [如何与 Azure 托管标识集成](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
+* [如何与 Azure 托管标识集成](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [如何创建 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+* [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [如何使用托管标识提供 Key Vault 身份验证](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/managed-identity.md)
 
-* [如何将托管标识与 Azure 容器实例结合使用](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+* [如何将托管标识与 Azure 容器实例结合使用](./container-instances-managed-identity.md)
 
 **Azure 安全中心监视**：是
 
@@ -999,9 +1000,9 @@ ms.locfileid: "84267997"
 
 **指导**：使用托管标识在 Azure AD 中为 Azure 服务提供自动托管标识。 通过托管标识，你可以对任何支持 Azure AD 身份验证的服务进行身份验证，包括 Key Vault，而无需在代码中包含任何凭据。
 
-* [如何配置托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [如何配置托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-* [如何将托管标识与 Azure 容器实例结合使用](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+* [如何将托管标识与 Azure 容器实例结合使用](./container-instances-managed-identity.md)
 
 
 
@@ -1011,7 +1012,7 @@ ms.locfileid: "84267997"
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。
 
 * [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -1021,11 +1022,11 @@ ms.locfileid: "84267997"
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-有关详细信息，请参阅[安全控制：恶意软件防护](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。
+有关详细信息，请参阅[安全控制：恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指南**：不适用;此准则适用于 IaaS 计算资源。
+**指导**：不适用；此项指导适用于 IaaS 计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -1033,7 +1034,7 @@ ms.locfileid: "84267997"
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 azure 服务（例如 Azure 容器实例）的底层主机上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+**指南**：在支持 azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，Azure 容器实例) ，但是不会在客户内容上运行。
 
 预扫描任何上传到非计算 Azure 资源（例如应用服务、Data Lake Storage、Blob 存储等）的文件。 
 
@@ -1044,9 +1045,9 @@ ms.locfileid: "84267997"
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
-**指南**：不适用;此建议适用于 IaaS 计算资源。
+**指导**：不适用；此建议适用于 IaaS 计算资源。
 
-Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 容器实例）上启用，但是不会在客户内容上运行。
+支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，Azure 容器实例) ，但是不会在客户内容上运行。
 
 **Azure 安全中心监视**：不适用
 
@@ -1054,15 +1055,15 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 ## <a name="data-recovery"></a>数据恢复
 
-有关详细信息，请参阅[安全控制：数据恢复](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。
+有关详细信息，请参阅[安全控制：数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
-**指南**：启用 Azure 备份并配置备份源（例如装载到容器组的文件共享）以及所需的频率和保留期。 
+**指南**：启用 Azure 备份并配置备份源 (例如，装载到容器组) 的文件共享，以及所需的频率和保留期。 
 
-* [如何启用 Azure 备份](https://docs.microsoft.com/azure/backup/)
+* [如何启用 Azure 备份](../backup/index.yml)
 
-* [在 Azure 容器实例中装载 Azure 文件共享](https://docs.microsoft.com/azure/container-instances/container-instances-volume-azure-files)
+* [在 Azure 容器实例中装载 Azure 文件共享](./container-instances-volume-azure-files.md)
 
 
 **Azure 安全中心监视**：不适用
@@ -1074,9 +1075,9 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 **指南**：使用 Azure 命令行工具或 sdk 在 Azure Key Vault 中备份客户托管的密钥。
 
 还可以通过从一个注册表导入到另一个注册表来备份容器映像。
-* [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中备份密钥保管库密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [将容器映像导入到容器注册表](https://docs.microsoft.com/azure/container-registry/container-registry-import-images)
+* [将容器映像导入到容器注册表](../container-registry/container-registry-import-images.md)
 
 
 
@@ -1088,9 +1089,9 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 **指导**：使用 Azure 命令行工具或 SDK 在 Azure Key Vault 中测试已备份的客户管理的密钥的还原。
 
-* [如何在 Azure 中还原 Azure Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中还原 Azure Key Vault 密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [加密部署数据-Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-encrypt-data)
+* [加密部署数据-Azure 容器实例](./container-instances-encrypt-data.md)
 
 
 
@@ -1102,7 +1103,7 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 **指导**：你可以在 Azure Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。
 
-* [如何在 Key Vault 中启用软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [如何在 Key Vault 中启用软删除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -1110,17 +1111,17 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 ## <a name="incident-response"></a>事件响应
 
-有关详细信息，请参阅[安全控制：事件响应](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。
+有关详细信息，请参阅[安全控制：事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保制定书面事件响应计划，其中定义了人员的所有角色，以及从检测到事件后审查的事件处理/管理阶段。
 
 客户还可以利用 NIST 的计算机安全事件处理指南来帮助创建自己的事件响应计划。
 
-* [如何在 Azure 安全中心配置工作流自动化](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 
-* [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+* [有关如何生成自己的安全事件响应过程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
 * [Microsoft 安全响应中心事件分析](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1134,7 +1135,7 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 **指导**：Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，清楚地标记订阅（例如， 生产、非生产），并创建一个命名系统以便清晰地识别和分类 Azure 资源。
+此外， (例如，清楚地标记订阅。 生产、非生产) 并创建命名系统，以便清晰地识别和分类 Azure 资源。
 
 
 **Azure 安全中心监视**：是
@@ -1153,9 +1154,9 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
-**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。 事后审查事件，确保问题得到解决。
+**指南**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。 事后审查事件，确保问题得到解决。
 
-* [如何设置 Azure 安全中心安全联系人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 安全中心监视**：是
 
@@ -1165,9 +1166,9 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 **指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
 
-* [如何配置连续导出](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [如何配置连续导出](../security-center/continuous-export.md)
 
-* [如何将警报流式传输到 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [如何将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1177,7 +1178,7 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 **指导**：使用 Azure 安全中心内的工作流自动化功能可以通过“逻辑应用”针对安全警报和建议自动触发响应。
 
-* [如何配置工作流自动化和逻辑应用](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [如何配置工作流自动化和逻辑应用](../security-center/workflow-automation.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1185,7 +1186,7 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-有关详细信息，请参阅[安全控制：渗透测试和红队练习](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+有关详细信息，请参阅[安全控制：渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：定期对 Azure 资源执行渗透测试，确保在 60 天内修正所有发现的关键安全问题
 
@@ -1202,5 +1203,5 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如，Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

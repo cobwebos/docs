@@ -4,11 +4,12 @@ description: 了解 Azure Service Fabric 网格的常见问题和解答。
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78252489"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260119"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
 
@@ -96,7 +97,7 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 
 ### <a name="what-types-of-applications-can-i-deploy"></a>可以部署哪些类型的应用程序？ 
 
-你可以部署在容器中运行的、适合于应用程序资源上的限制的任何内容（有关配额的详细信息，请参阅上文）。 如果我们检测到你正在使用网格来运行非法工作负荷或滥用系统（即挖掘），则我们保留终止你的部署并阻止列表你的订阅在服务上运行的权利。 如果对运行特定工作负荷有任何疑问，请联系我们。 
+你可以部署在容器中运行的、适合于应用程序资源上的限制的任何内容 (参阅上面的有关配额) 的详细信息。 如果我们检测到你正在使用网格来运行非法工作负荷或滥用系统 (即挖掘) ，则我们保留终止你的部署并阻止列表你的订阅在服务上运行的权利。 如果对运行特定工作负荷有任何疑问，请联系我们。 
 
 ## <a name="developer-experience-issues"></a>开发人员体验问题
 
@@ -120,7 +121,7 @@ EXPOSE 80
 
 Azure 网格目前不支持跨应用程序进行 DNS 解析。
 
-有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅：[调试 windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)和[已知 DNS 问题](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)。
+有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅：[调试 windows 容器](../service-fabric/service-fabric-how-to-debug-windows-containers.md)和[已知 DNS 问题](../service-fabric/service-fabric-dnsservice.md#known-issues)。
 
 ### <a name="networking"></a>网络
 

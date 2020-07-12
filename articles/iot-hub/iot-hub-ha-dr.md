@@ -7,11 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267624"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260167"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 
@@ -75,6 +76,8 @@ RTO 较高的原因是，Microsoft 必须代表该区域中所有受影响的客
 
 不管主要区域是否遇到停机，手动故障转移选项始终可用。 因此，用户可能会使用此选项来执行计划内故障转移。 计划内故障转移的一个示例用途是执行定期的故障转移演练。 需要注意的是，计划内故障转移操作会导致中心在此选项的 RTO 定义的时间段内停机，同时会导致数据丢失（由上面的 RPO 表定义）。 可以考虑设置一个测试 IoT 中心实例来定期执行计划内故障转移选项，以便在发生实际灾难时，自信地让端到端解决方案正常运行。
 
+对于在5月 18 2017 日之后创建的 IoT 中心，无需额外付费即可使用手动故障转移
+
 有关分步说明，请参阅[教程：为 IoT 中心执行手动故障转移](tutorial-manual-failover.md)
 
 ### <a name="running-test-drills"></a>运行测试训练
@@ -130,8 +133,8 @@ IoT 解决方案中对部署拓扑的完整处理不在本文的介绍范围内�
 | HA/DR 选项 | RTO | RPO | 是否需要人工干预？ | 实施复杂性 | 附加成本影响|
 | --- | --- | --- | --- | --- | --- |
 | Microsoft 发起的故障转移 |2 - 26 小时|参考上面的 RPO 表|否|无|None|
-| 手动故障转移 |10 分钟 - 2 小时|参考上面的 RPO 表|是|极低。 只需从门户触发此操作。|None|
-| 跨区域 HA |小于 1 分钟|取决于自定义 HA 解决方案的复制频率|否|高|超过 1 个 IoT 中心的 1 倍|
+| 手动故障转移 |10 分钟 - 2 小时|参考上面的 RPO 表|适合|极低。 只需从门户触发此操作。|无|
+| 跨区域 HA |小于 1 分钟|取决于自定义 HA 解决方案的复制频率|不适合|高|超过 1 个 IoT 中心的 1 倍|
 
 ## <a name="next-steps"></a>后续步骤
 

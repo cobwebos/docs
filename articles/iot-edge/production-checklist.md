@@ -4,18 +4,19 @@ description: 了解如何将 Azure IoT Edge 解决方案从开发环境转移到
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/25/2020
+ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431927"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258793"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -37,11 +38,14 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 
 ### <a name="install-production-certificates"></a>安装生产证书
 
-生产环境中的每个 IoT Edge 设备上需要安装设备证书颁发机构 (CA) 证书。 然后，在 config.yaml 文件中将该 CA 证书声明到 IoT Edge 运行时。 对于开发和测试场景，如果 config.yaml 文件中没有声明证书，则 IoT Edge 运行时将创建临时证书。 但是，这些临时证书将在三个月后过期，并且对于生产方案而言并不安全。
+生产环境中的每个 IoT Edge 设备上需要安装设备证书颁发机构 (CA) 证书。 然后，在 config.yaml 文件中将该 CA 证书声明到 IoT Edge 运行时。 对于开发和测试场景，如果 config.yaml 文件中没有声明证书，则 IoT Edge 运行时将创建临时证书。 但是，这些临时证书将在三个月后过期，并且对于生产方案而言并不安全。 对于生产方案，你应该提供自己的设备 CA 证书，无论是自签名证书颁发机构，还是从商业证书颁发机构购买的证书。
+
+> [!NOTE]
+> 目前，libiothsm 中的限制会阻止使用在2050年1月1日或之后过期的证书。
 
 若要了解设备 CA 证书的作用，请参阅 [Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
-有关如何在 IoT Edge 设备上安装证书并从 config.yaml 文件引用这些证书的详细信息，请参阅[在 IoT Edge 设备上安装生产证书](how-to-manage-device-certificates.md)。
+有关如何在 IoT Edge 设备上安装证书并从 yaml 文件中引用它们的详细信息，请参阅[管理 IoT Edge 设备上的证书](how-to-manage-device-certificates.md)。
 
 ### <a name="have-a-device-management-plan"></a>创建设备管理计划
 
@@ -171,22 +175,22 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ### <a name="store-runtime-containers-in-your-private-registry"></a>将运行时容器存储在专用注册表中
 
-你了解如何在专用 Azure 注册表中存储自定义代码模块的容器映像，但你也可以使用它来存储公共容器映像，例如适用于 edgeAgent 和 edgHub 运行时模块。 如果防火墙受到严格限制，则可能需要执行此操作，因为这些运行时容器存储在 Microsoft 容器注册表（MCR）中。
+你了解如何在专用 Azure 注册表中存储自定义代码模块的容器映像，但你也可以使用它来存储公共容器映像（例如将它用于 edgeAgent 和 edgHub 运行时模块）。 如果有很严格的防火墙限制，则可能需要执行此操作，因为这些运行时容器存储在 Microsoft 容器注册表 (MCR) 中。
 
-获取包含要放置在专用注册表中的 Docker pull 命令的图像。 请注意，你将需要更新每个新版本的 IoT Edge 运行时的映像。
+使用 Docker pull 命令获取映像，并将其放入专用注册表中。 请注意，你将需要使用每个新版 IoT Edge 运行时来更新映像。
 
-| IoT Edge 运行时容器 | Docker 拉取命令 |
+| IoT Edge 运行时容器 | Docker pull 命令 |
 | --- | --- |
 | [Azure IoT Edge 代理](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge 中心](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-接下来，请确保在 edgeAgent 和 edgeHub 系统模块的文件的 deployment.template.js中更新映像引用。 将替换为 `mcr.microsoft.com` 这两个模块的注册表名称和服务器。
+接下来，请确保在 edgeAgent 和 edgeHub 系统模块的 deployment.template.json 文件中更新映像引用。 将 `mcr.microsoft.com` 替换为这两个模块的注册表名称和服务器。
 
-* EdgeAgent
+* edgeAgent：
 
     `"image": "<registry name and server>/azureiotedge-agent:1.0",`
 
-* EdgeHub
+* edgeHub：
 
     `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 

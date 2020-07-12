@@ -4,12 +4,12 @@ description: 了解 Service Fabric 群集中基于证书的身份验证，以及
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36717f526f88af753f3929d62e84ee65be4320e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429663"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259034"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric 群集中基于 X.509 证书的身份验证
 
@@ -180,7 +180,7 @@ Service Fabric 群集的安全性设置大致描述以下方面：
 
 如前所述，证书验证始终意味着要生成并评估证书链。 对于 CA 颁发的证书，这种表面上简单的 OS API 调用通常需要对颁发者 PKI 的各个终结点进行多次出站调用、对响应进行缓存，以及执行其他操作。 由于证书验证调用在 Service Fabric 群集中非常普遍，PKI 终结点中出现任何问题都可能导致群集可用性下降或完全中断。 尽管无法抑制出站调用（如需此方面的详细信息，请参阅下面的“常见问题解答”部分），但可以使用以下设置来隐藏由于 CRL 调用失败而导致的验证错误。
 
-  * CrlCheckingFlag -“Security”节中转换为 UINT 的字符串。 Service Fabric 使用此设置的值通过更改链生成行为来隐藏证书链状态错误；此值将作为“dwFlags”参数传递给 Win32 CryptoAPI [CertGetCertificateChain](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) 调用，并可设置为该函数接受的任何有效标志组合。 值为 0 会强制 Service Fabric 运行时忽略任何信任状态错误 - 不建议使用此值，因为会导致严重的安全风险。 默认值为 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT)。
+  * CrlCheckingFlag -“Security”节中转换为 UINT 的字符串。 Service Fabric 使用此设置的值通过更改链生成行为来隐藏证书链状态错误；此值将作为“dwFlags”参数传递给 Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) 调用，并可设置为该函数接受的任何有效标志组合。 值为 0 会强制 Service Fabric 运行时忽略任何信任状态错误 - 不建议使用此值，因为会导致严重的安全风险。 默认值为 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT)。
 
   何时使用：使用格式不全面的自签名证书或开发人员证书进行本地测试/没有适当的公钥基础结构用于支持证书。 还可以在 PKI 之间的过渡期间，在与外界隔绝的环境中用作缓解措施。
 
@@ -257,7 +257,7 @@ Nk: {P:{TP=A}, V:{TP=A}}，其中：
 我们会在单独的文章中介绍关于如何在 Service Fabric 群集中管理和预配证书的主题。
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>故障排除和常见问题解答
-尽管在 Service Fabric 群集中调试与身份验证相关的问题并不容易，但以下提示和技巧也许会有帮助。 若要开始进行调查，最简单的方法是检查群集节点（不一定只是表现了症状的节点，也包括已启动但无法连接到某个邻居的节点）上的 Service Fabric 事件日志。 在 Windows 上，重要事件通常分别记录在“Applications and Services Logs\Microsoft-ServiceFabric\Admin”或“Operational”路径下。 有时，[启用 CAPI2 日志记录](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues)可能会有帮助，这样可以捕获有关证书验证、CRL/CTL 检索等方面的更多详细信息。（在完成问题重现后，请记得禁用此功能，因为记录的日志非常详细。）
+尽管在 Service Fabric 群集中调试与身份验证相关的问题并不容易，但以下提示和技巧也许会有帮助。 若要开始进行调查，最简单的方法是检查群集节点（不一定只是表现了症状的节点，也包括已启动但无法连接到某个邻居的节点）上的 Service Fabric 事件日志。 在 Windows 上，重要事件通常分别记录在“Applications and Services Logs\Microsoft-ServiceFabric\Admin”或“Operational”路径下。 有时，[启用 CAPI2 日志记录](/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues)可能会有帮助，这样可以捕获有关证书验证、CRL/CTL 检索等方面的更多详细信息。（在完成问题重现后，请记得禁用此功能，因为记录的日志非常详细。）
 
 遇到身份验证问题的群集中表现的典型症状如下： 
   - 节点关闭/循环启动 
@@ -300,5 +300,4 @@ Nk: {P:{TP=A}, V:{TP=A}}，其中：
     ```C++
     0x80090014  -2146893804 NTE_BAD_PROV_TYPE
     ```
-    若要修正此问题，请使用 CAPI1（例如“Microsoft 增强型 RSA 和 AES 加密提供程序”）提供程序重新创建群集证书。 有关加密提供程序的更多详细信息，请参阅 [Understanding Cryptographic Providers](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers)（了解加密提供程序）
-
+    若要修正此问题，请使用 CAPI1（例如“Microsoft 增强型 RSA 和 AES 加密提供程序”）提供程序重新创建群集证书。 有关加密提供程序的更多详细信息，请参阅 [Understanding Cryptographic Providers](/windows/win32/seccertenroll/understanding-cryptographic-providers)（了解加密提供程序）

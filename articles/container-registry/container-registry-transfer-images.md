@@ -4,12 +4,12 @@ description: 使用 Azure 存储帐户创建传输管道，将映像集合或其
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186922"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259453"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>将项目传输到另一个注册表
 
@@ -36,7 +36,7 @@ ms.locfileid: "86186922"
 * **存储帐户** - 在选择的订阅和位置中创建源和目标存储帐户。 出于测试目的，可使用与源和目标注册表相同的一个或多个订阅。 对于跨云方案，通常在每个云中创建一个单独的存储帐户。 如果需要，请使用 [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) 或其他工具创建存储帐户。 
 
   在每个帐户中创建用于传输项目的 blob 容器。 例如，创建一个名为 transfer 的容器。 两个或多个传输管道可以共享同一个存储帐户，但应使用不同的存储容器作用域。
-* **密钥保管库** - 需要使用密钥保管库来存储用于访问源和目标存储帐户的 SAS 令牌机密。 请在与源和目标注册表相同的一个或多个 Azure 订阅中创建源和目标密钥保管库。 如果需要，请使用 [Azure CLI](../key-vault/quick-create-cli.md) 或其他工具创建密钥保管库。
+* **密钥保管库** - 需要使用密钥保管库来存储用于访问源和目标存储帐户的 SAS 令牌机密。 请在与源和目标注册表相同的一个或多个 Azure 订阅中创建源和目标密钥保管库。 如果需要，请使用 [Azure CLI](../key-vault/secrets/quick-create-cli.md) 或其他工具创建密钥保管库。
 * **环境变量** - 对于本文中的示例命令，可为源和目标环境设置以下环境变量。 所有示例的格式都适用于 Bash shell。
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -257,7 +257,7 @@ az storage blob list \
 
 使用 AzCopy 工具或其他方法将 [blob 数据](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts)从源存储帐户传输到目标存储帐户。
 
-例如，以下 [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) 命令会将源帐户下 transfer 容器中的 myblob 复制到目标帐户下的 transfer 容器 。 如果该 blob 存在于目标帐户中，则会被覆盖。 身份验证使用对源和目标容器具有相应权限的 SAS 令牌。 （未显示用于创建令牌的步骤。）
+例如，以下 [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) 命令会将源帐户下 transfer 容器中的 myblob 复制到目标帐户下的 transfer 容器 。 如果该 blob 存在于目标帐户中，则会被覆盖。 身份验证使用对源和目标容器具有相应权限的 SAS 令牌。 （未显示用于创建令牌的步骤。）
 
 ```console
 azcopy copy \
@@ -366,6 +366,3 @@ az deployment group delete \
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
-
-
-

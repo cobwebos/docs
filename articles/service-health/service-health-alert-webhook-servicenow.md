@@ -3,11 +3,12 @@ title: 用 ServiceNow 发送 Azure 服务运行状况警报
 description: 获取有关发送到 ServiceNow 实例的服务运行状况事件的个性化通知。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654097"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260206"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 Webhook 通过 ServiceNow 发送 Azure 服务运行状况警报
 
@@ -139,9 +140,10 @@ ms.locfileid: "77654097"
      ![ServiceNow 中的“基础 API 路径”](./media/webhook-alerts/servicenow-base-api-path.png)
 
 1.  完整的集成 URL 如下所示：
-        
-         https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
+    ```http
+    https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
+    ```
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>在 Azure 门户中使用 ServiceNow 创建警报
 ### <a name="for-a-new-action-group"></a>对于新操作组：

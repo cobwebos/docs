@@ -4,11 +4,12 @@ description: 介绍如何创建具有无状态服务和有状态服务的 Micros
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038015"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260468"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 
@@ -168,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和可靠集合，可以将数据直接存储在服务中而无需外部持久性存储。 可靠集合可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个*副本*来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和可靠集合，可以将数据直接存储在服务中而无需外部持久性存储。 可靠集合可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个*副本*来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
 
 可靠集合可以存储任何 .NET 类型（包括自定义类型），但需要注意以下几点：
 
-* Service Fabric 通过跨节点*复制*状态，使状态具备高可用性；而可靠集合会将数据存储到每个副本上的本地磁盘中。 这意味着可靠集合中存储的所有内容都必须*可序列化*。 默认情况下，可靠集合使用 [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) 进行序列化，因此，在使用默认序列化程序时，务必确保类型[受数据协定序列化程序的支持](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx)。
+* Service Fabric 通过跨节点*复制*状态，使状态具备高可用性；而可靠集合会将数据存储到每个副本上的本地磁盘中。 这意味着可靠集合中存储的所有内容都必须*可序列化*。 默认情况下，可靠集合使用 [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) 进行序列化，因此，在使用默认序列化程序时，务必确保类型[受数据协定序列化程序的支持](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)。
 * 在可靠集合上提交事务时，将复制对象以实现高可用性。 存储在可靠集合中的对象保留在服务的本地内存中。 这意味着你有对象的本地引用。
   
    切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改将不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个*更新*方法。
@@ -211,7 +212,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 ## <a name="next-steps"></a>后续步骤
 [在 Visual Studio 中调试 Service Fabric 应用程序](service-fabric-debugging-your-application.md)
 
-[入门：Service Fabric Web API 服务与 OWIN 自托管](service-fabric-reliable-services-communication-webapi.md)
+[入门：Service Fabric Web API 服务与 OWIN 自托管](./service-fabric-reliable-services-communication-aspnetcore.md)
 
 [深入了解 Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
 
@@ -219,5 +220,4 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 
 [应用程序升级](service-fabric-application-upgrade.md)
 
-[Reliable Services 的开发人员参考](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+[Reliable Services 的开发人员参考](/previous-versions/azure/dn706529(v=azure.100))

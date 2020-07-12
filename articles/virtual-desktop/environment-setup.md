@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612361"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259906"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虚拟桌面环境
 
@@ -43,7 +43,7 @@ Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚
 - RemoteApp，用户可在其中访问单独选择并发布到应用组的 RemoteApps
 - 桌面，用户在其中访问完整桌面
 
-默认情况下，当你创建主机池时，将自动创建一个桌面应用组（名为 "桌面应用程序组"）。 你可以随时删除此应用组。 但是，如果存在桌面应用组，则无法在主机池中创建另一个桌面应用组。 若要发布 RemoteApps，必须创建 RemoteApp 应用组。 可以创建多个 RemoteApp 应用组来适应不同的辅助角色。 不同的 RemoteApp 应用组还可以包含重叠的 RemoteApps。
+默认情况下，在创建主机池时，将自动创建一个名为 "桌面应用程序组" )  (桌面应用组。 你可以随时删除此应用组。 但是，如果存在桌面应用组，则无法在主机池中创建另一个桌面应用组。 若要发布 RemoteApps，必须创建 RemoteApp 应用组。 可以创建多个 RemoteApp 应用组来适应不同的辅助角色。 不同的 RemoteApp 应用组还可以包含重叠的 RemoteApps。
 
 若要将资源发布到用户，你必须将其分配给应用组。 将用户分配到应用组时，请考虑以下事项：
 
@@ -66,7 +66,7 @@ Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚
 
 若要了解如何连接到 Windows 虚拟桌面，请参阅以下文章之一：
 
-- [与 Windows 10 或 Windows 7 连接](connect-windows-7-and-10.md)
+- [与 Windows 10 或 Windows 7 连接](connect-windows-7-10.md)
 - [使用 Web 浏览器建立连接](connect-web.md)
 - [使用 Android 客户端进行连接](connect-android.md)
 - [使用 macOS 客户端进行连接](connect-macos.md)

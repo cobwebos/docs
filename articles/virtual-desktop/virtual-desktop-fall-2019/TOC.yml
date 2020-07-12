@@ -24,6 +24,8 @@
   items:
     - name: 连接到 Windows 虚拟桌面资源
       items:
+        - name: 使用 Windows 桌面客户端进行连接
+          href: connect-windows-7-10-2019.md
         - name: 使用 Web 客户端进行连接
           href: connect-web-2019.md
         - name: 使用 Android 客户端进行连接

@@ -3,11 +3,12 @@ title: 打包 Azure Service Fabric 应用
 description: 了解如何打包 Azure Service Fabric 应用程序以及如何准备部署到群集。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701041"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260970"
 ---
 # <a name="package-an-application"></a>打包应用程序
 
@@ -210,7 +211,7 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType
 `sfpkg` 文件是一个 zip 文件，其中包含初始应用程序包并具有扩展名“.sfpkg”。
 在此 zip 文件内，应用程序包可以是压缩的，也可以是未压缩的。 如[前文所述](service-fabric-package-apps.md#compress-a-package)，zip 文件内应用程序包的压缩是在代码、配置和数据包级别执行的。
 
-若要创建 `sfpkg`，请首先创建包含原始应用程序包（压缩的或未压缩的）的文件夹。 然后，使用任何实用程序以扩展名“.sfpkg”压缩该文件夹。 例如，使用 [ZipFile.CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx)。
+若要创建 `sfpkg`，请首先创建包含原始应用程序包（压缩的或未压缩的）的文件夹。 然后，使用任何实用程序以扩展名“.sfpkg”压缩该文件夹。 例如，使用 [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_)。
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214275"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260771"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的会话主机展开现有的主机池
 
@@ -25,7 +26,7 @@ ms.locfileid: "85214275"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>扩展主机池所需的条件
 
-在开始之前，请确保已使用以下方法之一创建了主机池和会话主机虚拟机（Vm）：
+在开始之前，请确保已使用以下方法之一) 创建了主机池和会话主机虚拟机 (Vm：
 
 - [Azure Marketplace 产品/服务](create-host-pools-azure-marketplace-2019.md)
 - [GitHub Azure 资源管理器模板](create-host-pools-arm-template.md)
@@ -48,7 +49,7 @@ ms.locfileid: "85214275"
 
 下面介绍如何重新部署 Azure 资源管理器模板来扩展主机池：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 从 "Azure 门户顶部的搜索栏中，搜索"**资源组**"，然后选择"**服务**"下的项。
 3. 查找并选择在创建主机池时创建的资源组。
 4. 在浏览器左侧的面板中，选择 "**部署**"。
@@ -75,7 +76,7 @@ ms.locfileid: "85214275"
 
 按照[使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace-2019.md)中的说明进行操作，直到[运行 azure marketplace 产品/服务来预配新的主机池](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)。 转到该点时，需要输入每个选项卡的下列信息：
 
-### <a name="basics"></a>基础
+### <a name="basics"></a>基本信息
 
 本部分中的所有值应与首次创建主机池和会话主机 Vm 时提供的值匹配（*默认桌面用户*除外）：
 
@@ -129,7 +130,7 @@ ms.locfileid: "85214275"
 
 现在，你已扩展现有的主机池，你可以登录到 Windows 虚拟桌面客户端，以将其作为用户会话的一部分进行测试。 你可以使用以下任一客户端连接到会话：
 
-- [使用 Windows 桌面客户端进行连接](../connect-windows-7-and-10.md)
+- [使用 Windows 桌面客户端进行连接](connect-windows-7-10-2019.md)
 - [使用 Web 客户端进行连接](connect-web-2019.md)
 - [使用 Android 客户端进行连接](connect-android-2019.md)
 - [使用 macOS 客户端进行连接](connect-macos-2019.md)

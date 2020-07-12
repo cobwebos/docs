@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232434"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259715"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署数据
 
@@ -39,7 +39,7 @@ ACI 中的数据是使用 256 位 AES 加密法加密和解密的。 此加密�
 
 ### <a name="create-service-principal-for-aci"></a>为 ACI 创建服务主体
 
-第一步是确保为 [Azure 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)分配一个服务主体，用于向 Azure 容器实例服务授予权限。 
+第一步是确保为 [Azure 租户](../active-directory/develop/quickstart-create-new-tenant.md)分配一个服务主体，用于向 Azure 容器实例服务授予权限。 
 
 > [!IMPORTANT]
 > 若要成功地运行以下命令并创建服务主体，请确认你有权在租户中创建服务主体。
@@ -59,7 +59,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="create-a-key-vault-resource"></a>创建 Key Vault 资源
 
-使用 [Azure 门户](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)、[CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli) 或 [PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell) 创建一个 Azure Key Vault。 
+使用 [Azure 门户](../key-vault/secrets/quick-create-portal.md#create-a-vault)、[CLI](../key-vault/secrets/quick-create-cli.md) 或 [PowerShell](../key-vault/secrets/quick-create-powershell.md) 创建一个 Azure Key Vault。 
 
 对于 Key Vault 的属性，请使用以下指导原则： 
 * 姓名：必须提供唯一的名称。 
@@ -96,7 +96,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 > [!IMPORTANT]
 > 当前正在推出的最新 API 版本 (2019-12-01) 中提供了使用客户管理的密钥加密部署数据的功能。请在部署模板中指定此 API 版本。 如果在执行此操作时遇到任何问题，请联系 Azure 支持部门。
 
-设置 Key Vault 密钥和访问策略后，将以下属性添加到 ACI 部署模板。 若要详细了解如何使用模板来部署 ACI 资源，请参阅[教程：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)。 
+设置 Key Vault 密钥和访问策略后，将以下属性添加到 ACI 部署模板。 若要详细了解如何使用模板来部署 ACI 资源，请参阅[教程：使用资源管理器模板部署多容器组](./container-instances-multi-container-group.md)。 
 * 在 `resources` 下，将 `apiVersion` 设置为 `2019-12-01`。
 * 在部署模板的容器组 properties 节下，添加包含以下值的 `encryptionProperties`：
   * `vaultBaseUrl`：Key Vault 的 DNS 名称，可在门户中 Key Vault 资源的概览边栏选项卡上找到。
@@ -129,7 +129,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ]
 ```
 
-下面是一个完整的模板，改编自[教程：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)。 
+下面是一个完整的模板，改编自[教程：使用资源管理器模板部署多容器组](./container-instances-multi-container-group.md)。 
 
 ```json
 {
@@ -233,14 +233,14 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令部署模板。
+使用 [az deployment group create][az-deployment-group-create] 命令部署模板。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 将在几秒钟内收到来自 Azure 的初始响应。 部署完成后，所有与之相关且由 ACI 服务保存的数据将使用提供的密钥进行加密。
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create

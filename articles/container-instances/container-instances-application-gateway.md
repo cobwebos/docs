@@ -3,11 +3,12 @@ title: 容器组的静态 IP 地址
 description: 在虚拟网络中创建容器组，并使用 Azure 应用程序网关向容器化 Web 应用公开静态前端 IP 地址
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299156"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260784"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公开容器组的静态 IP 地址
 
@@ -102,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>创建应用程序网关
 
-按照[应用程序网关快速入门](../application-gateway/quick-create-cli.md)中的步骤，在虚拟网络中创建应用程序网关。 以下 [az network application-gateway create][az-network-application-gateway-create] 命令创建一个网关，该网关使用某个公共前端 IP 地址以及用于连接后端容器组的路由。 有关网关设置的详细信息，请参阅[应用程序网关文档](/azure/application-gateway/)。
+按照[应用程序网关快速入门](../application-gateway/quick-create-cli.md)中的步骤，在虚拟网络中创建应用程序网关。 以下 [az network application-gateway create][az-network-application-gateway-create] 命令创建一个网关，该网关使用某个公共前端 IP 地址以及用于连接后端容器组的路由。 有关网关设置的详细信息，请参阅[应用程序网关文档](../application-gateway/index.yml)。
 
 ```azurecli
 az network application-gateway create \
