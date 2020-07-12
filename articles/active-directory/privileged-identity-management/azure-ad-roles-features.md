@@ -1,27 +1,25 @@
 ---
-title: 在 Privileged Identity Management (PIM) 中管理 Azure AD 角色 | Microsoft Docs
+title: Privileged Identity Management 中的 Azure AD 角色功能 |Microsoft Docs
 description: 如何在 Privileged Identity Management (PIM) 中管理 Azure AD 角色的分配
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
-ms.devlang: na
-ms.topic: how-to
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 501efaf2e9e97f37521daa770e6c760cc794fa36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742855"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256622"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的管理功能
 
@@ -29,28 +27,30 @@ Privileged Identity Management 中 Azure AD 角色的管理体验已更新，以
 
 通过当前推出的更新，我们将两者合并为一个单一的管理体验。在此体验中，你可获得与 Azure 资源角色相同的 Azure AD 角色功能。 本文将介绍已更新的功能和任何要求。
 
-
 ## <a name="time-bound-assignments"></a>时限性分配
 
-以前在 Azure AD 角色 Privileged Identity Management 中，你熟悉了具有两种可能状态的角色分配：有*资格*且是*永久性*的。 现在，你可为每种类型的分配设置开始时间和结束时间。 此新增功能提供了四种可能的状态，你可以在这些状态下进行分配：
+以前，角色分配有两种可能的状态：*合格*和*永久*。 现在，你还可以为每种类型的分配设置开始时间和结束时间。 此添加操作为您提供了四种可能的状态：
 
 - 永久合格
 - 永久活动
-- 合格，具有指定的分配开始/结束日期
-- 活动，具有指定的分配开始/结束日期
+- 符合条件，具有指定的开始日期和结束日期进行分配
+- 活动，具有指定的开始和结束日期分配
 
 在许多情况下，即使你不希望用户每次都具有合格的分配并激活角色，仍可通过设置分配的过期时间来保护 Azure AD 组织。 例如，如果你有一些符合条件的临时用户，可考虑设置一个过期时间，以便在他们工作完成后自动将他们从角色分配中删除。
 
 ## <a name="new-role-settings"></a>新角色设置
 
-我们还为 Azure AD 角色添加了新的设置。 之前，你只能在每个角色的基础上配置激活设置。 也就是说，已将诸如多重身份验证要求和事件/请求票证要求等激活设置应用于符合指定角色要求的所有用户。 现在，你可以配置单个用户是否需要执行多重身份验证，然后才能激活角色。 此外，还可以对与特定角色相关的 Privileged Identity Management 电子邮件进行高级控制。
+我们还为 Azure AD 角色添加了新的设置。
+
+- **以前**，只能按角色配置激活设置。 也就是说，已将诸如多重身份验证要求和事件/请求票证要求等激活设置应用于符合指定角色要求的所有用户。
+- **现在**，你可以配置单个用户是否需要执行多重身份验证，然后才能激活角色。 此外，还可以对与特定角色相关的 Privileged Identity Management 电子邮件进行高级控制。
 
 ## <a name="extend-and-renew-assignments"></a>延期并续订分配
 
 在理解了有时限的分配后，你可能会问的第一个问题是，角色过期后会出现什么情况？ 在此新版本中，我们针对此情况提供了两个选项：
 
-- 扩展–当角色分配接近其过期时间时，用户可以使用 Privileged Identity Management 来请求该角色分配的扩展
-- 续订–角色分配过期后，用户可以使用 Privileged Identity Management 来请求续订该角色分配
+- **扩展**：当角色分配接近其过期时间时，用户可以使用 Privileged Identity Management 来请求该角色分配的扩展
+- **续订**：角色分配过期后，用户可以使用 Privileged Identity Management 来请求续订该角色分配
 
 这两个用户发起的操作都需要全局管理员或特权角色管理员的批准。 管理员将不再需要管理这些过期的分配。 他们只需要等待延期或续订请求，并在请求有效的情况下批准它们即可。
 

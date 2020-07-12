@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 4688664fea29cc07f5895e33ebfff541d61070d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f20c5180b078bc49fcf1eb35893325fa3a7fa50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392737"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256146"
 ---
 # <a name="view-service-fabric-health-reports"></a>查看 Service Fabric 运行状况报告
 Azure Service Fabric 引入了一种具有运行状况实体的[运行状况模型](service-fabric-health-introduction.md)，系统组件和监视器可以在其上报告它们监视的本地状况。 [运行状况存储](service-fabric-health-introduction.md#health-store)聚合所有运行状况数据以确定实体是否正常运行。
@@ -54,10 +55,10 @@ Service Fabric Explorer 提供群集的更直观展示。 在下图中，可以�
 >
 
 ## <a name="health-queries"></a>运行状况查询
-Service Fabric 为每个支持的[实体类型](service-fabric-health-introduction.md#health-entities-and-hierarchy)提供运行状况查询。 可以通过 API（使用 [FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上的方法）、PowerShell cmdlet 和 REST 访问它们。 这些查询返回有关实体的完整运行状况信息：聚合运行状况、实体运行状况事件、子运行状况（在适用时）、不正常评估（实体不正常时）以及子集运行状况统计信息（在适用时）。
+Service Fabric 为每个支持的[实体类型](service-fabric-health-introduction.md#health-entities-and-hierarchy)提供运行状况查询。 可以通过 API（使用 [FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上的方法）、PowerShell cmdlet 和 REST 访问它们。 这些查询返回有关实体的完整运行状况信息：聚合运行状况、实体运行状况事件、子运行状况（在适用时）、不正常评估（实体不正常时）以及子集运行状况统计信息（在适用时）。
 
 > [!NOTE]
-> 填满运行状况存储时，将返回运行状况实体。 实体必须是作用中（未删除），并且具有系统报告。 层次结构链上其父实体还必须有系统报告。 如果不满足以上任何条件，则运行状况查询返回 [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) 为 [（显示未返回实体的原因）的 ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode)FabricException`FabricHealthEntityNotFound`。
+> 填满运行状况存储时，将返回运行状况实体。 实体必须是作用中（未删除），并且具有系统报告。 层次结构链上其父实体还必须有系统报告。 如果不满足以上任何条件，则运行状况查询返回 [FabricErrorCode](/dotnet/api/system.fabric.fabricexception) 为 [（显示未返回实体的原因）的 ](/dotnet/api/system.fabric.fabricerrorcode)FabricException`FabricHealthEntityNotFound`。
 >
 >
 
@@ -86,7 +87,7 @@ Service Fabric 为每个支持的[实体类型](service-fabric-health-introducti
 * [可选] 用于在运行状况统计信息中包括 fabric:/System 运行状况统计信息的筛选器。 仅当未排除运行状况统计信息时才适用。 默认情况下，运行状况统计信息只包括用户应用程序的统计信息，而不包括系统应用程序的统计信息。
 
 ### <a name="api"></a>API
-若要获取群集运行状况，请创建 `FabricClient` 并在其 **HealthManager** 上调用 [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) 方法。
+若要获取群集运行状况，请创建 `FabricClient` 并在其 **HealthManager** 上调用 [GetClusterHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) 方法。
 
 以下调用将获取群集运行状况：
 
@@ -94,7 +95,7 @@ Service Fabric 为每个支持的[实体类型](service-fabric-health-introducti
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync();
 ```
 
-以下代码使用针对节点和应用程序的自定义运行状况策略和筛选器获取群集运行状况。 它指定运行状况统计信息包括 fabric:/System 统计信息。 它将创建包含输入信息的 [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription)。
+以下代码使用针对节点和应用程序的自定义运行状况策略和筛选器获取群集运行状况。 它指定运行状况统计信息包括 fabric:/System 统计信息。 它将创建包含输入信息的 [ClusterHealthQueryDescription](/dotnet/api/system.fabric.description.clusterhealthquerydescription)。
 
 ```csharp
 var policy = new ClusterHealthPolicy()
@@ -126,7 +127,7 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-用于获取群集运行状况的 cmdlet 为 [Get-ServiceFabricClusterHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
+用于获取群集运行状况的 cmdlet 为 [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
 
 群集的状态：有五个节点、系统应用程序和如前所述配置的 fabric:/WordCount。
 
@@ -224,7 +225,7 @@ HealthEvents            : None
 ```
 
 ### <a name="rest"></a>REST
-可以使用 [GET 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster)或 [POST 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy)获取群集运行状况，其中包括正文中所述的运行状况策略。
+可以使用 [GET 请求](/rest/api/servicefabric/get-the-health-of-a-cluster)或 [POST 请求](/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy)获取群集运行状况，其中包括正文中所述的运行状况策略。
 
 ## <a name="get-node-health"></a>获取节点运行状况
 返回节点实体的运行状况，并包含针对该节点报告的运行状况事件。 输入：
@@ -234,7 +235,7 @@ HealthEvents            : None
 * [可选] 事件的筛选，指定对那些项目感到兴趣，并且应该在结果中返回（例如，仅限错误、或警告和错误）。 所有事件都用于评估实体聚合运行状况，无论筛选器为何。
 
 ### <a name="api"></a>API
-若要通过 API 获取节点运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) 方法。
+若要通过 API 获取节点运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetNodeHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) 方法。
 
 以下代码获取具有指定节点名称的节点运行状况：
 
@@ -242,7 +243,7 @@ HealthEvents            : None
 NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(nodeName);
 ```
 
-以下代码获取指定节点名称的节点运行状况，并通过 [NodeHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.nodehealthquerydescription) 传入事件筛选器和自定义策略：
+以下代码获取指定节点名称的节点运行状况，并通过 [NodeHealthQueryDescription](/dotnet/api/system.fabric.description.nodehealthquerydescription) 传入事件筛选器和自定义策略：
 
 ```csharp
 var queryDescription = new NodeHealthQueryDescription(nodeName)
@@ -255,7 +256,7 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 ```
 
 ### <a name="powershell"></a>PowerShell
-用于获取节点运行状况的 cmdlet 为 [Get-ServiceFabricNodeHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnodehealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
+用于获取节点运行状况的 cmdlet 为 [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
 以下 cmdlet 使用默认运行状况策略获取节点运行状况：
 
 ```powershell
@@ -293,7 +294,7 @@ _Node_0                     Ok
 ```
 
 ### <a name="rest"></a>REST
-可以使用 [GET 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node)或 [POST 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy)获取节点运行状况，其中包括正文中所述的运行状况策略。
+可以使用 [GET 请求](/rest/api/servicefabric/get-the-health-of-a-node)或 [POST 请求](/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy)获取节点运行状况，其中包括正文中所述的运行状况策略。
 
 ## <a name="get-application-health"></a>获取应用程序运行状况
 返回一个应用程序实体的运行状况。 包含已部署应用程序和服务子项的运行状况。 输入：
@@ -304,7 +305,7 @@ _Node_0                     Ok
 * [可选] 用于排除运行状况统计信息的筛选器。 如果未指定，则运行状况统计信息包括所有应用程序子级的正常、警告和错误计数：服务、分区、副本、部署的应用程序和部署的服务包。
 
 ### <a name="api"></a>API
-若要获取应用程序运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) 方法。
+若要获取应用程序运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetApplicationHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) 方法。
 
 以下代码获取具有指定应用程序名称 (URI) 的应用程序的运行状况：
 
@@ -312,7 +313,7 @@ _Node_0                     Ok
 ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplicationHealthAsync(applicationName);
 ```
 
-以下代码使用通过 [ApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationhealthquerydescription) 指定的筛选器和自定义策略，获取指定应用程序名称 (URI) 的应用程序运行状况。
+以下代码使用通过 [ApplicationHealthQueryDescription](/dotnet/api/system.fabric.description.applicationhealthquerydescription) 指定的筛选器和自定义策略，获取指定应用程序名称 (URI) 的应用程序运行状况。
 
 ```csharp
 HealthStateFilter warningAndErrors = HealthStateFilter.Error | HealthStateFilter.Warning;
@@ -439,7 +440,7 @@ HealthEvents                    : None
 ```
 
 ### <a name="rest"></a>REST
-可以使用 [GET 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application)或 [POST 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy)获取应用程序运行状况，其中包括正文中所述的运行状况策略。
+可以使用 [GET 请求](/rest/api/servicefabric/get-the-health-of-an-application)或 [POST 请求](/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy)获取应用程序运行状况，其中包括正文中所述的运行状况策略。
 
 ## <a name="get-service-health"></a>获取服务运行状况
 返回一个服务实体的运行状况。 包含分区运行状况。 输入：
@@ -450,7 +451,7 @@ HealthEvents                    : None
 * [可选] 用于排除运行状况统计信息的筛选器。 如果未指定，则运行状况统计信息显示服务的所有分区和副本的正常、警告和错误计数。
 
 ### <a name="api"></a>API
-若要通过 API 获取服务运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) 方法。
+若要通过 API 获取服务运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetServiceHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) 方法。
 
 以下示例获取具有指定服务名称 (URI) 的服务的运行状况：
 
@@ -458,7 +459,7 @@ HealthEvents                    : None
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
-以下代码通过 [ServiceHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicehealthquerydescription) 指定筛选器和自定义策略，从而获取指定服务名称 (URI) 的服务运行状况：
+以下代码通过 [ServiceHealthQueryDescription](/dotnet/api/system.fabric.description.servicehealthquerydescription) 指定筛选器和自定义策略，从而获取指定服务名称 (URI) 的服务运行状况：
 
 ```csharp
 var queryDescription = new ServiceHealthQueryDescription(serviceName)
@@ -471,7 +472,7 @@ ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-用于获取服务运行状况的 cmdlet 为 [Get-ServiceFabricServiceHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicehealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
+用于获取服务运行状况的 cmdlet 为 [Get-ServiceFabricServiceHealth](/powershell/module/servicefabric/get-servicefabricservicehealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
 
 以下 cmdlet 使用默认运行状况策略获取服务运行状况：
 
@@ -511,7 +512,7 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-可以使用 [GET 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service)或 [POST 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy)获取服务运行状况，其中包括正文中所述的运行状况策略。
+可以使用 [GET 请求](/rest/api/servicefabric/get-the-health-of-a-service)或 [POST 请求](/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy)获取服务运行状况，其中包括正文中所述的运行状况策略。
 
 ## <a name="get-partition-health"></a>获取分区运行状况
 返回一个分区实体的运行状况。 包含副本运行状况。 输入：
@@ -522,14 +523,14 @@ HealthStatistics      :
 * [可选] 用于排除运行状况统计信息的筛选器。 如果未指定，则运行状况统计信息显示处于正常、警告和错误状态的副本数。
 
 ### <a name="api"></a>API
-若要通过 API 获取分区运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) 方法。 若要指定可选参数，请创建 [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription)。
+若要通过 API 获取分区运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetPartitionHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) 方法。 若要指定可选参数，请创建 [PartitionHealthQueryDescription](/dotnet/api/system.fabric.description.partitionhealthquerydescription)。
 
 ```csharp
 PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionHealthAsync(partitionId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-用于获取分区运行状况的 cmdlet 为 [Get-ServiceFabricPartitionHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
+用于获取分区运行状况的 cmdlet 为 [Get-ServiceFabricPartitionHealth](/powershell/module/servicefabric/get-servicefabricpartitionhealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
 
 以下 cmdlet 获取 **fabric:/WordCount/WordCountService** 服务的所有分区的运行状况，并筛选掉副本运行状况：
 
@@ -603,7 +604,7 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-可以使用 [GET 请求](/rest/api/servicefabric/sfclient-api-getpartitionhealth)或 [POST 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy)获取分区运行状况，其中包括正文中所述的运行状况策略。
+可以使用 [GET 请求](/rest/api/servicefabric/sfclient-api-getpartitionhealth)或 [POST 请求](/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy)获取分区运行状况，其中包括正文中所述的运行状况策略。
 
 ## <a name="get-replica-health"></a>获取副本运行状况
 返回有状态服务副本或无状态服务实例的运行状况。 输入：
@@ -613,14 +614,14 @@ HealthStatistics      :
 * [可选] 事件的筛选，指定对那些项目感到兴趣，并且应该在结果中返回（例如，仅限错误、或警告和错误）。 所有事件都用于评估实体聚合运行状况，无论筛选器为何。
 
 ### <a name="api"></a>API
-若要通过 API 获取副本运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) 方法。 若要指定高级参数，请使用 [ReplicaHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription)。
+若要通过 API 获取副本运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetReplicaHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) 方法。 若要指定高级参数，请使用 [ReplicaHealthQueryDescription](/dotnet/api/system.fabric.description.replicahealthquerydescription)。
 
 ```csharp
 ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthAsync(partitionId, replicaId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-用于获取副本运行状况的 cmdlet 为 [Get-ServiceFabricReplicaHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricreplicahealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
+用于获取副本运行状况的 cmdlet 为 [Get-ServiceFabricReplicaHealth](/powershell/module/servicefabric/get-servicefabricreplicahealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
 
 以下 cmdlet 获取服务所有分区的主副本的运行状况：
 
@@ -646,7 +647,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-可以使用 [GET 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica)或 [POST 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy)获取副本运行状况，其中包括正文中所述的运行状况策略。
+可以使用 [GET 请求](/rest/api/servicefabric/get-the-health-of-a-replica)或 [POST 请求](/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy)获取副本运行状况，其中包括正文中所述的运行状况策略。
 
 ## <a name="get-deployed-application-health"></a>获取已部署应用程序的运行状况
 返回部署在节点实体上的一个应用程序的运行状况。 包含已部署服务包的运行状况。 输入：
@@ -657,7 +658,7 @@ HealthEvents          :
 * [可选] 用于排除运行状况统计信息的筛选器。 如果未指定，则运行状况统计信息显示处于正常、警告和错误运行状况的已部署服务包数。
 
 ### <a name="api"></a>API
-若要通过 API 获取部署在节点上的一个应用程序的运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetDeployedApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync)方法。 若要指定可选参数，请使用 [DeployedApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription)。
+若要通过 API 获取部署在节点上的一个应用程序的运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetDeployedApplicationHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync)方法。 若要指定可选参数，请使用 [DeployedApplicationHealthQueryDescription](/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription)。
 
 ```csharp
 DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedApplicationHealthAsync(
@@ -705,7 +706,7 @@ HealthStatistics                   :
 ```
 
 ### <a name="rest"></a>REST
-可以使用 [GET 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application)或 [POST 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy)获取部署的应用程序运行状况，其中包括正文中所述的运行状况策略。
+可以使用 [GET 请求](/rest/api/servicefabric/get-the-health-of-a-deployed-application)或 [POST 请求](/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy)获取部署的应用程序运行状况，其中包括正文中所述的运行状况策略。
 
 ## <a name="get-deployed-service-package-health"></a>获取已部署服务包的运行状况
 返回一个已部署服务包实体的运行状况。 输入：
@@ -715,7 +716,7 @@ HealthStatistics                   :
 * [可选] 事件的筛选，指定对那些项目感到兴趣，并且应该在结果中返回（例如，仅限错误、或警告和错误）。 所有事件都用于评估实体聚合运行状况，无论筛选器为何。
 
 ### <a name="api"></a>API
-若要通过 API 获取一个已部署服务包的运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetDeployedServicePackageHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) 方法。 若要指定可选参数，请使用 [DeployedServicePackageHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription)。
+若要通过 API 获取一个已部署服务包的运行状况，请创建 `FabricClient` 并在其 HealthManager 上调用 [GetDeployedServicePackageHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) 方法。 若要指定可选参数，请使用 [DeployedServicePackageHealthQueryDescription](/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription)。
 
 ```csharp
 DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeployedServicePackageHealthAsync(
@@ -723,7 +724,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ```
 
 ### <a name="powershell"></a>PowerShell
-用于获取已部署服务包的运行状况的 cmdlet 为 [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。 若要查看应用程序的部署位置，请运行 [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) 并查看已部署应用程序。 若要查看一个应用程序中有哪些服务包，请在 [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) 输出中查看已部署的服务包子项。
+用于获取已部署服务包的运行状况的 cmdlet 为 [Get-ServiceFabricDeployedServicePackageHealth](/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。 若要查看应用程序的部署位置，请运行 [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) 并查看已部署应用程序。 若要查看一个应用程序中有哪些服务包，请在 [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) 输出中查看已部署的服务包子项。
 
 以下 cmdlet 获取部署在 **_Node_2** 上的 **fabric:/WordCount** 应用程序的 **WordCountServicePkg** 服务包的运行状况。 此实体的 **System.Hosting** 报告包含成功的服务包和入口点激活以及成功的服务类型注册。
 
@@ -775,7 +776,7 @@ HealthEvents               :
 ```
 
 ### <a name="rest"></a>REST
-可以使用 [GET 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package)或 [POST 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy)获取部署的服务包运行状况，其中包括正文中所述的运行状况策略。
+可以使用 [GET 请求](/rest/api/servicefabric/get-the-health-of-a-service-package)或 [POST 请求](/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy)获取部署的服务包运行状况，其中包括正文中所述的运行状况策略。
 
 ## <a name="health-chunk-queries"></a>运行状况区块查询
 运行状况区块查询可以根据输入筛选器返回多级群集子项（以递归方式）。 它支持可用于非常灵活地选择要返回的子级的高级筛选器。 这些筛选器可以指定通过唯一标识符或通过其他组标识符和/或运行状况指定子级。 与始终包含第一级子项的运行状况命令不同的是，它在默认情况下不包含任何子项。
@@ -803,14 +804,14 @@ HealthEvents               :
 * [可选] 用于评估节点和群集事件的群集运行状况策略。
 * [可选] 应用程序运行状况策略与用于取代应用程序清单策略的运行状况策略进行映射。
 * [可选] 节点和应用程序的筛选器，用于指定应该在结果中返回的相关条目。 筛选器特定于实体/实体组，或适用于该级别的所有实体。 筛选器列表可包含一个常规筛选器以及/或者由查询返回的精细实体的特定标识符筛选器。 如果筛选器列表为空，默认情况下不会返回任何子项。
-  有关筛选器的详细信息，请参阅 [NodeHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) 和 [ApplicationHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter)。 应用程序筛选器可采用递归方式为子项指定高级筛选器。
+  有关筛选器的详细信息，请参阅 [NodeHealthStateFilter](/dotnet/api/system.fabric.health.nodehealthstatefilter) 和 [ApplicationHealthStateFilter](/dotnet/api/system.fabric.health.applicationhealthstatefilter)。 应用程序筛选器可采用递归方式为子项指定高级筛选器。
 
 区块结果包含采用筛选器的子项。
 
 区块查询目前不会返回不正常的评估或实体事件。 可以使用现有的群集运行状况查询获取这些附加信息。
 
 ### <a name="api"></a>API
-若要获取群集运行状况，请创建 `FabricClient` 并在其 **HealthManager** 上调用 [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) 方法。 可以传入 [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) 来描述运行状况策略和高级筛选器。
+若要获取群集运行状况，请创建 `FabricClient` 并在其 **HealthManager** 上调用 [GetClusterHealthChunkAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) 方法。 可以传入 [ClusterHealthQueryDescription](/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) 来描述运行状况策略和高级筛选器。
 
 以下代码使用高级筛选器获取群集运行状况区块。
 
@@ -856,7 +857,7 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 ```
 
 ### <a name="powershell"></a>PowerShell
-用于获取群集运行状况的 cmdlet 为 [Get-ServiceFabricClusterChunkHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealthchunk)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
+用于获取群集运行状况的 cmdlet 为 [Get-ServiceFabricClusterChunkHealth](/powershell/module/servicefabric/get-servicefabricclusterhealthchunk)。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
 
 以下代码仅在节点处于“错误”状态时才获取节点，只有一个特定节点例外，任何情况下都应返回该节点。
 
@@ -1006,7 +1007,7 @@ ApplicationHealthStateChunks :
 ```
 
 ### <a name="rest"></a>REST
-可以使用[GET 请求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks)或 [POST 请求](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster)获取群集运行状况区块，其中包括正文中所述的运行状况策略和高级筛选器。
+可以使用[GET 请求](/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks)或 [POST 请求](/rest/api/servicefabric/health-of-cluster)获取群集运行状况区块，其中包括正文中所述的运行状况策略和高级筛选器。
 
 ## <a name="general-queries"></a>常规查询
 常规查询返回指定类型的 Service Fabric 实体的列表。 这些查询通过 API（通过 **FabricClient.QueryManager** 上的方法）、PowerShell cmdlet 和 REST 来公开。 这些查询聚合了来自多个组件的子查询。 其中一个组件是[运行状况存储](service-fabric-health-introduction.md#health-store)，该组件填充每个查询结果的聚合运行状况。  
@@ -1021,29 +1022,29 @@ ApplicationHealthStateChunks :
 包含实体的 **HealthState** 的查询为：
 
 * 节点列表：返回群集中节点的列表（已分页）。
-  * API：[FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
+  * API：[FabricClient.QueryClient.GetNodeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
   * PowerShell：Get-ServiceFabricNode
 * 应用程序列表：返回群集中应用程序的列表（已分页）。
-  * API：[FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
+  * API：[FabricClient.QueryClient.GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
   * PowerShell：Get-ServiceFabricApplication
 * 服务列表：返回应用程序中服务的列表（已分页）。
-  * API：[FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
+  * API：[FabricClient.QueryClient.GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
   * PowerShell：Get-ServiceFabricService
 * 分区列表：返回服务中分区的列表（已分页）。
-  * API：[FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
+  * API：[FabricClient.QueryClient.GetPartitionListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
   * PowerShell：Get-ServiceFabricPartition
 * 副本列表：返回分区中副本的列表（已分页）。
-  * API：[FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
+  * API：[FabricClient.QueryClient.GetReplicaListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
   * PowerShell：Get-ServiceFabricReplica
 * 已部署应用程序列表：返回节点上已部署应用程序的列表。
-  * API：[FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
+  * API：[FabricClient.QueryClient.GetDeployedApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
   * PowerShell：Get-ServiceFabricDeployedApplication
 * 已部署服务包列表：返回已部署应用程序中服务包的列表。
-  * API：[FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
+  * API：[FabricClient.QueryClient.GetDeployedServicePackageListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
   * PowerShell：Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> 有些查询会返回已分页的结果。 这些查询的返回结果是派生自 [PagedList\<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) 的列表。 如果一条消息无法容纳这些结果，则仅返回一页，以及一个用于跟踪枚举停止位置的 ContinuationToken。 继续调用相同的查询，并从先前的查询传入继续标记以获取后续结果。
+> 有些查询会返回已分页的结果。 这些查询的返回结果是派生自 [PagedList\<T>](/dotnet/api/system.fabric.query.pagedlist-1) 的列表。 如果一条消息无法容纳这些结果，则仅返回一页，以及一个用于跟踪枚举停止位置的 ContinuationToken。 继续调用相同的查询，并从先前的查询传入继续标记以获取后续结果。
 
 ### <a name="examples"></a>示例
 以下代码获取群集中不正常的应用程序：

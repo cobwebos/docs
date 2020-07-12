@@ -3,12 +3,12 @@ title: 将群集节点升级为使用 Azure 托管磁盘
 description: 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 46dec6ae29fdd8f2a418f695c31900e6df4483e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611622"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255891"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>将群集节点升级为使用 Azure 托管磁盘
 
@@ -16,7 +16,7 @@ ms.locfileid: "85611622"
 
 将 Service Fabric 群集节点升级为使用托管磁盘的一般策略是：
 
-1. 部署该节点类型的另一重复虚拟机规模集，但在虚拟机规模集部署模板的 `osDisk` 节中添加 [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) 对象。 新规模集应绑定到原始规模集所用的同一负载均衡器/IP，使客户在迁移期间不会遇到服务中断。
+1. 部署该节点类型的另一重复虚拟机规模集，但在虚拟机规模集部署模板的 `osDisk` 节中添加 [managedDisk](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) 对象。 新规模集应绑定到原始规模集所用的同一负载均衡器/IP，使客户在迁移期间不会遇到服务中断。
 
 2. 在原始规模集和升级后的规模集一起运行后，逐个禁用原始节点实例，以便将系统服务（或有状态服务的副本）迁移到新规模集。
 
@@ -25,7 +25,7 @@ ms.locfileid: "85611622"
 本文将引导你完成将示例群集的主要节点类型升级为使用托管磁盘的步骤，同时避免发生任何群集停机（参阅下面的注释）。 示例测试群集的初始状态包括一个[银级持久性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)的节点类型，该节点类型由包含五个节点的单个规模集提供支持。
 
 > [!CAUTION]
-> 仅当你依赖于群集 DNS 时（例如，在访问 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 时），才会在此过程中遇到服务中断。 [适用于前端服务的体系结构最佳做法](https://docs.microsoft.com/azure/architecture/microservices/design/gateway)要求在你的节点类型的前面使用某种[负载均衡器](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)，以便无需中断服务即可进行节点交换。
+> 仅当你依赖于群集 DNS 时（例如，在访问 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 时），才会在此过程中遇到服务中断。 [适用于前端服务的体系结构最佳做法](/azure/architecture/microservices/design/gateway)要求在你的节点类型的前面使用某种[负载均衡器](/azure/architecture/guide/technology-choices/load-balancing-overview)，以便无需中断服务即可进行节点交换。
 
 下面是用于完成升级方案的 Azure 资源管理器的[模板和 cmdlet](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)。 下文中的[为主要节点类型部署升级规模集](#deploy-an-upgraded-scale-set-for-the-primary-node-type)将介绍模板更改。
 
@@ -266,7 +266,7 @@ Get-ServiceFabricClusterHealth
     $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **群集证书的指纹。** （如果已[连接到初始群集](#connect-to-the-new-cluster-and-check-health-status)来检查其运行状况，则可能已拥有此选项。）在 Azure 门户中，从同一 "证书" 边栏选项卡（**证书**  >  *所需的证书*）复制**x.509 sha-1 指纹（十六进制）**：
+* **群集证书的指纹。**  (如果已[连接到初始群集](#connect-to-the-new-cluster-and-check-health-status)来检查其运行状况状态，则可能已具有此项。 ) 从相同的证书边栏选项卡 (**证书**  >  *Your desired certificate*) 在 Azure 门户中，复制**x.509 sha-1 指纹 (十六进制) **：
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"

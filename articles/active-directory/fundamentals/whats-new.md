@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cbf811fdb8ff051ec1bb782eb3da12ea45b29bdf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170439"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256810"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -259,7 +259,7 @@ Azure 支持现可用于 Microsoft Identity Manager 2016 的 Azure AD 集成组�
 **产品功能：** 标识安全和保护
  
 
-我们正在对 MFA 的 MFA 电子邮件通知进行以下更改：
+我们将对云 MFA 的电子邮件通知进行以下更改：
 
 电子邮件通知将从以下地址发送： azure-noreply@microsoft.com 和 msonlineservicesteam@microsoftonline.com 。 我们正在更新欺诈警报电子邮件的内容，以更好地指示取消阻止使用所需的步骤。
 

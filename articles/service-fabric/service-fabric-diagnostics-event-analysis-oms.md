@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464736"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257667"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Monitor 日志进行事件分析和可视化
  Azure Monitor 日志收集并分析云中托管的应用程序和服务的遥测，并提供分析工具以帮助最大限度地提高其可用性和性能。 本文概述了如何在 Azure Monitor 日志中运行查询，以获取见解并解决群集中发生的问题。 本文解决以下常见问题：
@@ -102,7 +103,7 @@ Kusto 查询语言非常强大。 可以运行另一个有用查询来找出哪�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要启用基础结构监视（即性能计数器），请转到[添加 Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)。 该代理将收集性能计数器，并将其添加到现有工作区。
-* 对于本地群集，Azure Monitor 日志提供了一个可用于将数据发送到 Azure Monitor 日志的网关（HTTP 转发代理）。 有关详细信息，请参阅[使用 Log Analytics 网关将计算机连接到无 Internet 访问 Azure Monitor 日志](../azure-monitor/platform/gateway.md)。
-* 配置[自动警报](../log-analytics/log-analytics-alerts.md)，帮助检测和诊断。
-* 获取熟悉，其中包含作为 Azure Monitor 日志一部分提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。
-* 详细了解 Azure Monitor 日志及其提供的内容，请参阅[什么是 Azure Monitor 日志？](../operations-management-suite/operations-management-suite-overview.md)。
+* 对于本地群集，Azure Monitor 日志提供了一个可用于将数据发送到 Azure Monitor 日志的 (HTTP 转发代理) 的网关。 有关详细信息，请参阅[使用 Log Analytics 网关将计算机连接到无 Internet 访问 Azure Monitor 日志](../azure-monitor/platform/gateway.md)。
+* 配置[自动警报](../azure-monitor/platform/alerts-overview.md)，帮助检测和诊断。
+* 获取熟悉，其中包含作为 Azure Monitor 日志一部分提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能。
+* 详细了解 Azure Monitor 日志及其提供的内容，请参阅[什么是 Azure Monitor 日志？](../azure-monitor/overview.md)。

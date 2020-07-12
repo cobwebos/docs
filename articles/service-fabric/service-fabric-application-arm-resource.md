@@ -3,11 +3,12 @@ title: 使用 Azure 资源管理器部署和升级
 description: 了解如何使用 Azure 资源管理器模板，将应用程序和服务部署到 Service Fabric 群集。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75610244"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256503"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>将应用程序和服务作为 Azure 资源管理器资源进行管理
 
@@ -260,13 +261,12 @@ Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/provide
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>通过资源管理器管理现有应用程序
 
-如果群集已部署，且其上已部署一些要作为资源管理器资源进行管理的应用程序，可以使用相同的 API，将这些应用程序确定为资源管理器资源，从而执行 PUT 调用，而不用删除并重新部署应用程序。 有关更多信息，请参阅[什么是 Service Fabric 应用程序资源模型？](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
+如果群集已部署，且其上已部署一些要作为资源管理器资源进行管理的应用程序，可以使用相同的 API，将这些应用程序确定为资源管理器资源，从而执行 PUT 调用，而不用删除并重新部署应用程序。 有关更多信息，请参阅[什么是 Service Fabric 应用程序资源模型？](./service-fabric-concept-resource-model.md)
 
 > [!NOTE]
-> 若要允许群集升级忽略不正常的应用，客户可以在“upgradeDescription/healthPolicy”节中指定“maxPercentUnhealthyApplications: 100”；有关所有设置的详细说明，请参阅 [Service Fabrics REST API 群集升级策略文档](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
+> 若要允许群集升级忽略不正常的应用，客户可以在“upgradeDescription/healthPolicy”节中指定“maxPercentUnhealthyApplications: 100”；有关所有设置的详细说明，请参阅 [Service Fabrics REST API 群集升级策略文档](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 [Service Fabric CLI](service-fabric-cli.md) 或 [PowerShell](service-fabric-deploy-remove-applications.md)，将其他应用程序部署到群集。 
 * [升级 Service Fabric 群集](service-fabric-cluster-upgrade.md)
-

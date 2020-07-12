@@ -5,11 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79258182"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256248"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
 
@@ -131,7 +132,7 @@ Service Fabric Explorer 提供了与[备份和还原](./service-fabric-reliable-
 * 触发和跟踪分区备份。
 * 触发和跟踪分区还原。
 
-有关备份和还原服务的详细信息，请参阅 [REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)。
+有关备份和还原服务的详细信息，请参阅 [REST API 参考](/rest/api/servicefabric/sfclient-index-backuprestore)。
 ## <a name="next-steps"></a>后续步骤
 * [在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)
 * [使用 PowerShell 部署 Service Fabric 应用程序](service-fabric-deploy-remove-applications.md)

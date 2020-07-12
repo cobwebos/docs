@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906023"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257277"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 创建 Service Fabric 网格资源。
@@ -27,7 +28,7 @@ ms.locfileid: "76906023"
 
 |参数|说明|
 | --- | --- |
-| --input-yaml-files [必需] | 逗号分隔的所有 yaml 文件的相对或绝对文件路径，或包含 yaml 文件的目录的相对或绝对路径（递归）。 |
+| --input-yaml-files [必需] | 以逗号分隔的所有 yaml 文件的相对路径或绝对路径路径，或者包含 yaml 文件 (递归) 的目录的相对路径或绝对路径。 |
 | --parameters | 指向 yaml 文件的相对路径或绝对路径，或包含需要重写的参数的 json 对象。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -62,4 +63,4 @@ sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_
 
 ## <a name="next-steps"></a>后续步骤
 - [设置](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
+- 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

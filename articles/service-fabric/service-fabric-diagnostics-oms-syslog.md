@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645746"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258631"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 中的 Service Fabric Linux 群集事件
 
@@ -25,7 +26,7 @@ Service Fabric 公开一组平台事件，告知你群集中的重要活动。 �
 * 设施
 * 标识
 * 消息
-* severity
+* 严重性
 
 SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 可以通过更改配置配置来更新到任何有效的设施。使用的标识是 `ServiceFabric` 。 消息字段包含在 JSON 中序列化的整个事件，以便可通过各种工具查询和使用。 
 
@@ -112,6 +113,6 @@ SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 可以通过更
 
 ## <a name="next-steps"></a>后续步骤
 * 将[Log Analytics 代理部署](service-fabric-diagnostics-oms-agent.md)到节点上，以收集性能计数器并收集容器的 docker 统计信息和日志
-* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
-* [使用视图设计器在 Azure Monitor 日志中创建自定义视图](../log-analytics/log-analytics-view-designer.md)
-* 有关如何[Azure Monitor 日志与 Syslog 集成](../log-analytics/log-analytics-data-sources-syslog.md)的参考。
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能
+* [使用视图设计器在 Azure Monitor 日志中创建自定义视图](../azure-monitor/platform/view-designer.md)
+* 有关如何[Azure Monitor 日志与 Syslog 集成](../azure-monitor/platform/data-sources-syslog.md)的参考。

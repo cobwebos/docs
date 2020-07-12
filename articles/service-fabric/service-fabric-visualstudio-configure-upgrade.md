@@ -5,11 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464074"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256044"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>在 Visual Studio 中配置 Service Fabric 应用程序的升级
 Azure Service Fabric 的 Visual Studio 工具提供发布到本地或远程群集的升级支持。 在测试和调试期间将应用程序升级到较新的版本而不是替换应用程序的三种方案：
@@ -56,7 +57,7 @@ Azure Service Fabric 的 Visual Studio 工具提供发布到本地或远程群�
 3. 如果选择 UnmonitoredManual 升级模式，则必须手动启动 PowerShell 控制台才能继续并完成升级过程。 若要了解手动升级的工作方式，请参阅 [Service Fabric 应用程序升级：高级主题](service-fabric-application-upgrade-advanced.md)。
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>使用 PowerShell 升级应用程序
-可以使用 PowerShell cmdlet 来升级 Service Fabric 应用程序。 有关详细信息，请参阅 [Service Fabric 应用程序升级教程](service-fabric-application-upgrade-tutorial.md)和 [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade)。
+可以使用 PowerShell cmdlet 来升级 Service Fabric 应用程序。 有关详细信息，请参阅 [Service Fabric 应用程序升级教程](service-fabric-application-upgrade-tutorial.md)和 [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade)。
 
 ## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>在应用程序清单文件中指定运行状况状态检查策略
 Service Fabric 应用程序中的每个服务可能有自身的运行状况策略参数，这些参数可重写默认值。 可以在应用程序清单文件中提供这些参数值。

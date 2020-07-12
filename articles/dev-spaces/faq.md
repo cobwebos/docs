@@ -5,11 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 查找有关 Azure Dev Spaces 的一些常见问题的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 6328515232b257e01b9b453de4ca0aca820c4038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27e834e71f9e5cfdf3d72fb3b221c24edecab4e8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267488"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258316"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>常见问题 Azure Dev Spaces
 
@@ -17,7 +18,7 @@ ms.locfileid: "84267488"
 
 ## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Spaces 支持哪种版本的 Kubernetes？
 
-Azure Dev Spaces 支持[AKS 中所有当前支持的 Kubernetes 正式发布（GA）版本][aks-supported-k8s]。
+Azure Dev Spaces 支持[AKS 中的所有当前受 (支持的公开) 版本的 Kubernetes][aks-supported-k8s]。
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>哪些 Azure 区域当前提供 Azure Dev Spaces？
 
@@ -25,7 +26,7 @@ Azure Dev Spaces 支持[AKS 中所有当前支持的 Kubernetes 正式发布（G
 
 ## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>是否可以将 Azure Dev Spaces 的 AKS 群集迁移到另一个区域？
 
-是，如果你想要将 AKS 群集与 Azure Dev Spaces 移动到另一个[受支持的区域][supported-regions]，则建议你在另一个区域中创建新群集，然后安装并配置 Azure Dev Spaces 并将资源和应用程序部署到新群集。 有关迁移 AKS 的详细信息，请参阅[迁移到 Azure Kubernetes 服务（AKS）][aks-migration]。
+是，如果你想要将 AKS 群集与 Azure Dev Spaces 移动到另一个[受支持的区域][supported-regions]，则建议你在另一个区域中创建新群集，然后安装并配置 Azure Dev Spaces 并将资源和应用程序部署到新群集。 有关迁移 AKS 的详细信息，请参阅[迁移到 Azure Kubernetes Service (AKS) ][aks-migration]。
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>能否在现有 Dockerfile 或 Helm 图表中使用 Azure Dev Spaces？
 
@@ -103,7 +104,7 @@ Azure Dev Spaces 支持[AKS 中所有当前支持的 Kubernetes 正式发布（G
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
-[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#list-currently-supported-versions
+[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions
 [bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md

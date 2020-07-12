@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c534ba54ccea78759628f554707271934ddc9a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645559"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258478"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors 简介
 Reliable Actors 是基于[虚拟执行组件](https://research.microsoft.com/en-us/projects/orleans/)模式的 Service Fabric 应用程序框架。 Reliable Actors API 提供单一线程编程模型，该模型是基于 Service Fabric 所提供的可扩展性和可靠性保证构建的。
@@ -136,7 +137,7 @@ Reliable Actors 运行时提供简单的基于轮次的访问模型用于访问�
 ## <a name="next-steps"></a>后续步骤
 从生成第一个 Reliable Actors 服务开始：
    * [.NET 上的 Reliable Actors 入门](service-fabric-reliable-actors-get-started.md)
-   * [Java 上的 Reliable Actors 入门](service-fabric-reliable-actors-get-started-java.md)
+   * [Java 上的 Reliable Actors 入门](./service-fabric-create-your-first-linux-application-with-java.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png

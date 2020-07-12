@@ -3,12 +3,12 @@ title: 了解 Azure Service Fabric 应用程序安全性
 description: 有关如何在 Service Fabric 中安全运行微服务应用程序的概述。 了解如何以不同的安全帐户运行服务和启动脚本、对用户进行身份验证和授权、管理应用程序机密、保护服务通信、使用 API 网关，以及保护应用程序的静态数据。
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461423"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256571"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
 微服务体系结构可以带来[诸多好处](service-fabric-overview-microservices.md)。 但是，管理微服务的安全性有一定的难度，比管理传统单体式应用程序的安全性更复杂。 
@@ -35,7 +35,7 @@ ms.locfileid: "81461423"
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>使用 API 网关限制和保护访问
 云应用程序通常都需要使用前端网关，为用户、设备或其他应用程序提供同一个入口点。 [API 网关](/azure/architecture/microservices/gateway)位于客户端与服务之间，是应用程序提供的所有服务的入口点。 它充当反向代理，将来自客户端的请求路由到服务。 它还可以执行各种横切任务，例如身份验证和授权、TLS 终止与速率限制。 如果未部署网关，则客户端必须直接向前端服务发送请求。
 
-在 Service Fabric 中，网关可以是任意无状态服务（如 [ASP.NET Core 应用程序](service-fabric-reliable-services-communication-aspnetcore.md)），也可以是其他专为流量入口设计的服务（如 [Traefik](https://docs.traefik.io/)、[事件中心](https://docs.microsoft.com/azure/event-hubs/)、[IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或 [Azure API 管理](https://docs.microsoft.com/azure/api-management)）。
+在 Service Fabric 中，网关可以是任意无状态服务（如 [ASP.NET Core 应用程序](service-fabric-reliable-services-communication-aspnetcore.md)），也可以是其他专为流量入口设计的服务（如 [Traefik](https://docs.traefik.io/)、[事件中心](../event-hubs/index.yml)、[IoT 中心](../iot-hub/index.yml)或 [Azure API 管理](../api-management/index.yml)）。
 
 API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路由规则向后端 Service Fabric 服务发布 API。  可以使用限制来保护对后端服务的访问、防止 DOS 攻击；还可以验证 API 密钥、JWT 令牌、证书和其他凭据。 有关详细信息，请参阅[有关 Service Fabric 与 Azure API 管理的概述](service-fabric-api-management-overview.md)。
 
@@ -85,7 +85,7 @@ Service Fabric 提供一种机制，供容器内服务访问在 Windows 或 Linu
 Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 了解如何在使用服务远程处理（在 [C#](service-fabric-reliable-services-secure-communication.md) 或 [Java](service-fabric-reliable-services-secure-communication-java.md) 中）或 [WCF](service-fabric-reliable-services-secure-communication-wcf.md) 时提高安全性。
 
 ## <a name="encrypt-application-data-at-rest"></a>加密应用程序的静态数据
-在 Azure 中运行的 Service Fabric 群集中的每个[节点类型](service-fabric-cluster-nodetypes.md)都受[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)的支持。 可以使用 Azure 资源管理器模板将数据磁盘附加到组成 Service Fabric 群集的规模集。  如果服务将数据保存到附加的数据磁盘，则你可以[加密这些数据磁盘](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md)，以保护应用程序数据。
+在 Azure 中运行的 Service Fabric 群集中的每个[节点类型](service-fabric-cluster-nodetypes.md)都受[虚拟机规模集](../virtual-machine-scale-sets/overview.md)的支持。 可以使用 Azure 资源管理器模板将数据磁盘附加到组成 Service Fabric 群集的规模集。  如果服务将数据保存到附加的数据磁盘，则你可以[加密这些数据磁盘](../virtual-machine-scale-sets/disk-encryption-powershell.md)，以保护应用程序数据。
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->

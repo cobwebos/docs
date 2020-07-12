@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371641"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257519"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric 中的灾难恢复
 提供高可用性的关键一环是确保服务能够经受各种不同类型的故障。 对于计划外和不受控制的故障，这一点尤其重要。 
@@ -171,7 +172,7 @@ Service Fabric 的目标是自动管理故障。 但是，若要处理某些类�
 >
 
 - 使用 `Repair-ServiceFabricPartition -PartitionId` 或 `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API。 使用此 API 可以指定分区 ID，使其从仲裁丢失转为潜在的数据丢失。
-- 如果你的群集遇到导致服务进入仲裁丢失状态的频繁故障，而且可能会_丢失数据，则_指定适当的[QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps)值可帮助你的服务自动恢复。 在执行恢复之前，Service Fabric 会等待提供的 `QuorumLossWaitDuration` 值（默认为 infinite）。 我们不建议使用此方法，因为它可能导致意外的数据丢失  。
+- 如果你的群集遇到导致服务进入仲裁丢失状态的频繁故障，而且可能会_丢失数据，则_指定适当的[QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps)值可帮助你的服务自动恢复。 在执行恢复之前，Service Fabric 会等待提供的 `QuorumLossWaitDuration` 值（默认为 infinite）。 我们不建议使用此方法，因为它可能导致意外的数据丢失  。
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric 群集的可用性
 一般情况下，Service Fabric 群集是一个分散程度很高的环境，没有任何单一故障点。 任何一个节点发生故障不会给群集造成可用性或可靠性问题，主要是因为 Service Fabric 系统服务遵循前面提供的准则。 即，默认情况下，它们始终运行三个或三个以上的副本，并且无状态系统服务在所有节点上运行。 
@@ -207,17 +208,17 @@ Service Fabric 具有种子节点的概念  。 种子节点可以维护基础�
 - 了解如何使用[可测试性框架](service-fabric-testability-overview.md)模拟各种故障。
 - 阅读有关灾难恢复和高可用性的其他资源。 Microsoft 已发布大量有关这些主题的指导。 尽管其中有些资源提到的是在其他产品中使用的特定技术，但它们包含的许多常规最佳做法是可在 Service Fabric 上下文中应用的：
   - [可用性核对清单](/azure/architecture/checklist/resiliency-per-service)
-  - [执行灾难恢复演练](../sql-database/sql-database-disaster-recovery-drills.md)
+  - [执行灾难恢复演练](../azure-sql/database/disaster-recovery-drills.md)
   - [Azure 应用程序的灾难恢复和高可用性][dr-ha-guide]
 - 了解 [Service Fabric 支持选项](service-fabric-support.md)。
 
 
 <!-- External links -->
 
-[repair-partition-ps]: https://msdn.microsoft.com/library/mt163522.aspx
+[repair-partition-ps]: /windows/win32/perfctrs/specifying-a-counter-path
 [azure-status-dashboard]:https://azure.microsoft.com/status/
 [azure-regions]: https://azure.microsoft.com/regions/
-[dr-ha-guide]: https://msdn.microsoft.com/library/azure/dn251004.aspx
+[dr-ha-guide]: /previous-versions/azure/dn251004(v=azure.100)
 
 
 <!-- Images -->

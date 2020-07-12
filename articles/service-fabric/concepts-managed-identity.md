@@ -4,12 +4,12 @@ description: 了解如何通过 Service Fabric 使用 Azure 的托管标识。
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710297"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257629"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>通过 Service Fabric 使用 Azure 的托管标识
 
@@ -24,7 +24,7 @@ ms.locfileid: "84710297"
 
 Azure 托管标识基于几个关键概念：
 
-- **客户端 ID** - Azure AD 生成的唯一标识符，在其初始预配期间与应用程序和服务主体绑定（另请参阅[应用程序 ID](/azure/active-directory/develop/developer-glossary#application-id-client-id)。）
+- **客户端 ID** - Azure AD 生成的唯一标识符，在其初始预配期间与应用程序和服务主体绑定（另请参阅[应用程序 ID](../active-directory/develop/developer-glossary.md#application-id-client-id)。）
 
 - **主体 ID** - 托管标识的服务主体对象的对象 ID，用于授予对 Azure 资源的基于角色的访问权限。
 

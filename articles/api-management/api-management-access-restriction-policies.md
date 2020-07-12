@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 3ba620d66b84e6724751b2024059e8ecd66888cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6e5012d64f7370c4d81c24324522824bc88584d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690330"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255109"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 
@@ -75,7 +76,7 @@ ms.locfileid: "84690330"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站、出站
 
@@ -135,7 +136,7 @@ ms.locfileid: "84690330"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站
 
@@ -148,7 +149,7 @@ ms.locfileid: "84690330"
 
 `rate-limit-by-key` 策略可以对调用速率进行限制，使每个指定时段的调用不超出指定的数目，避免单个密钥的 API 使用量暴增。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定在判断请求数是否达到限制时应计入哪些请求。 触发此策略时，调用方会收到 `429 Too Many Requests` 响应状态代码。
 
-有关此策略的详细信息和示例，请参阅[使用 Azure API 管理进行高级请求限制](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)。
+有关此策略的详细信息和示例，请参阅[使用 Azure API 管理进行高级请求限制](./api-management-sample-flexible-throttling.md)。
 
 > [!CAUTION]
 > 由于限制体系结构的分布式性质，速率限制永远不可能完全准确。 允许的请求的配置数字和实际数字之间的差异因请求量和速度、后端延迟以及其他因素而异。
@@ -199,7 +200,7 @@ ms.locfileid: "84690330"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站
 
@@ -246,7 +247,7 @@ ms.locfileid: "84690330"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站
 -   **策略范围：** 所有范围
@@ -303,7 +304,7 @@ ms.locfileid: "84690330"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站
 -   **策略范围：** 产品
@@ -315,7 +316,7 @@ ms.locfileid: "84690330"
 
 `quota-by-key` 策略允许根据密钥强制实施可续订或有生存期的调用量和/或带宽配额。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定在判断请求数是否达到配额时应计入哪些请求。 如果多个策略增加相同的键值，则每个请求的键值仅增加一次。 达到调用限制时，调用方会收到 `403 Forbidden` 响应状态代码。
 
-有关此策略的详细信息和示例，请参阅[使用 Azure API 管理进行高级请求限制](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)。
+有关此策略的详细信息和示例，请参阅[使用 Azure API 管理进行高级请求限制](./api-management-sample-flexible-throttling.md)。
 
 ### <a name="policy-statement"></a>策略语句
 
@@ -364,7 +365,7 @@ ms.locfileid: "84690330"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站
 -   **策略范围：** 所有范围
@@ -533,7 +534,7 @@ ms.locfileid: "84690330"
 
 ### <a name="usage"></a>使用情况
 
-此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
 
 -   **策略节：** 入站
 -   **策略范围：** 所有范围
@@ -544,5 +545,5 @@ ms.locfileid: "84690330"
 
 -   [API 管理中的策略](api-management-howto-policies.md)
 -   [转换 API](transform-api.md)
--   [策略参考](api-management-policy-reference.md)，获取策略语句及其设置的完整列表
+-   [策略参考](./api-management-policies.md)，获取策略语句及其设置的完整列表
 -   [策略示例](policy-samples.md)

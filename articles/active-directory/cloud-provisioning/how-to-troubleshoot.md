@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360786"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256860"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>云预配故障排除
 
@@ -22,9 +22,9 @@ ms.locfileid: "85360786"
 
 ## <a name="common-troubleshooting-areas"></a>常见疑难解答区域
 
-|“属性”|描述|
+|名称|说明|
 |-----|-----|
-|[代理问题](#agent-problems)|验证是否正确安装了代理，以及该代理是否与 Azure Active Directory （Azure AD）通信。|
+|[代理问题](#agent-problems)|验证是否正确安装了代理，以及它是否与 Azure Active Directory (Azure AD) 通信。|
 |[对象同步问题](#object-synchronization-problems)|使用预配日志排查对象同步问题。|
 |[预配隔离问题](#provisioning-quarantined-problems)|了解预配隔离问题及其修复方法。|
 
@@ -55,9 +55,7 @@ ms.locfileid: "85360786"
 
 ### <a name="verify-the-port"></a>验证端口
 
-若要验证 Azure 是否正在侦听端口443，以及代理是否可以与其通信，请使用以下工具：
-
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
+验证 Azure 是否正在侦听端口443，并验证代理是否可以与它进行通信。 
 
 此测试验证代理是否可以通过端口443与 Azure 通信。 打开浏览器，并从安装了代理的服务器中转到上一个 URL。
 
@@ -82,7 +80,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 **无法启动服务 "Microsoft Azure AD 连接设置代理"。验证您是否有足够的权限来启动系统服务。** 
 
-此问题通常由阻止将权限应用于安装程序创建的本地 NT 服务登录帐户的组策略（NT SERVICE\AADConnectProvisioningAgent）引起的。 这些权限是启动服务所必需的。
+此问题通常由阻止将权限应用于安装程序创建的本地 NT 服务登录帐户 (NT SERVICE\AADConnectProvisioningAgent) 的组策略导致的。 这些权限是启动服务所必需的。
 
 若要解决此问题，请执行以下步骤。
 

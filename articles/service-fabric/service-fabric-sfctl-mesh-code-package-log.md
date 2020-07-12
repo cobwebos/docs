@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ac1d85a1a498f9f6fcd0a03f8f819d1cdfcac33
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906048"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257299"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 获取给定服务副本的指定代码包的容器日志。
@@ -48,4 +49,4 @@ ms.locfileid: "76906048"
 
 ## <a name="next-steps"></a>后续步骤
 - [设置](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
+- 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

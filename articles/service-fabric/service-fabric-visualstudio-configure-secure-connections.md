@@ -5,11 +5,12 @@ author: cawaMS
 ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464092"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256087"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>从 Visual Studio 配置与 Service Fabric 群集的安全连接
 了解如何使用 Visual Studio 安全访问已配置访问控制策略的 Azure Service Fabric 群集。
@@ -34,9 +35,9 @@ Visual Studio Service Fabric 工具支持所有用于连接到群集来进行发
 3. 在项目的快捷菜单上选择“发布...”命令，打开“发布 Azure 应用程序”对话框，然后选择目标群集   。 该工具将自动解析连接，并将安全连接参数保存在发布配置文件中。
 4. 可选：可以编辑发布配置文件以指定安全群集连接。
    
-   由于此时正在手动编辑“发布配置文件”XML 文件以指定证书信息，因此请务必记下证书存储名称、存储位置以及证书指纹。 稍后需要为证书的存储名称和存储位置提供这些值。 请参阅[如何：检索证书的指纹](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)，了解详细信息。
+   由于此时正在手动编辑“发布配置文件”XML 文件以指定证书信息，因此请务必记下证书存储名称、存储位置以及证书指纹。 稍后需要为证书的存储名称和存储位置提供这些值。 请参阅[如何：检索证书的指纹](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)，了解详细信息。
    
-   可以使用 ClusterConnectionParameters 参数指定连接到 Service Fabric 群集时要使用的 PowerShell 参数  。 Connect-ServiceFabricCluster cmdlet 所接受的任何参数均为有效参数。 有关可用参数的列表，请参阅 [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)。
+   可以使用 ClusterConnectionParameters 参数指定连接到 Service Fabric 群集时要使用的 PowerShell 参数  。 Connect-ServiceFabricCluster cmdlet 所接受的任何参数均为有效参数。 有关可用参数的列表，请参阅 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster)。
    
    如果要发布到远程群集，需要指定该特定群集的相应参数。 下面是连接到不安全群集的示例：
    

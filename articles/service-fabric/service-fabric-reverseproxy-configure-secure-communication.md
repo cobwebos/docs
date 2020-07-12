@@ -3,11 +3,12 @@ title: Azure Service Fabric 反向代理安全通信
 description: 在 Azure Service Fabric 应用程序中配置反向代理以启用安全的端到端通信。
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82858523"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256129"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 
@@ -19,7 +20,7 @@ ms.locfileid: "82858523"
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>在反向代理与服务之间建立安全连接 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>反向代理在服务中进行身份验证：
-反向代理使用其证书向服务标识自己。 对于 Azure 群集，证书使用资源管理器模板的 [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的 reverseProxyCertificate 属性指定。 对于独立群集，证书使用 ClusterConfig.json“安全”部分中的 ReverseProxyCertificate 或 ReverseProxyCertificateCommonNames 属性指定。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
+反向代理使用其证书向服务标识自己。 对于 Azure 群集，证书使用资源管理器模板的 [**Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的 reverseProxyCertificate 属性指定。 对于独立群集，证书使用 ClusterConfig.json“安全”部分中的 ReverseProxyCertificate 或 ReverseProxyCertificateCommonNames 属性指定。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
 
 服务可以实现逻辑来验证反向代理提供的证书。 服务可以在配置包中将已接受的客户端证书详细信息指定为配置设置。 此设置可在运行时读取，并用于验证反向代理提供的证书。 请参阅[管理应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)来添加配置设置。 
 
@@ -188,5 +189,5 @@ Service Fabric 支持为服务配置多个终结点。 有关详细信息，请�
 * 请参阅[配置反向代理以连接到安全服务](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
 * 参阅 [GitHub 上的示例项目](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)中服务之间的 HTTP 通信示例。
 * [使用 Reliable Services 远程控制执行远程过程调用](service-fabric-reliable-services-communication-remoting.md)
-* [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services 中使用 OWIN 的 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [管理群集证书](service-fabric-cluster-security-update-certs-azure.md)

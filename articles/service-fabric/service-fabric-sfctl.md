@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906215"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257047"
 ---
 # <a name="sfctl"></a>sfctl
 用于管理 Service Fabric 群集和实体的命令。 此版本与 Service Fabric 7.0 运行时兼容。
@@ -17,7 +18,7 @@ ms.locfileid: "76906215"
 命令遵循名词谓词模式。 有关详细信息，请参阅子组。
 
 ## <a name="subgroups"></a>子组
-|子组|描述|
+|子组|说明|
 | --- | --- |
 | [应用程序](service-fabric-sfctl-application.md) | 创建、删除和管理应用程序及应用程序类型。 |
 | [chaos](service-fabric-sfctl-chaos.md) | 启动、停止和报告混沌测试服务。 |
@@ -39,4 +40,4 @@ ms.locfileid: "76906215"
 
 ## <a name="next-steps"></a>后续步骤
 - [设置](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
+- 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

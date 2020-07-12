@@ -4,12 +4,12 @@ description: 了解如何为 Azure Service Fabric 应用程序设置和配置反
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80476669"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256334"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>在 Azure Service Fabric 中设置和配置反向代理
 反向代理是一种可选的 Azure Service Fabric 服务，有助于在 Service Fabric 群集中运行的微服务发现包含 http 终结点的其他服务，并与之通信。 有关详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)。 本文介绍如何在群集中设置和配置反向代理。 
@@ -37,7 +37,7 @@ ms.locfileid: "80476669"
 
 可在 GitHub 上的[安全反向代理示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample)中找到可帮助你为 Azure 群集配置安全反向代理的示例资源管理器模板。 请参阅 README 文件中的[在安全群集中配置 HTTPS 反向代理](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)，了解用于配置具有证书的安全反向代理和处理证书变换的说明和模板。
 
-对于现有群集，可使用 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) 或 [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) 导出群集资源组的资源管理器模板。
+对于现有群集，可使用 [Azure 门户](../azure-resource-manager/templates/export-template-portal.md)、[PowerShell](../azure-resource-manager/management/manage-resources-powershell.md) 或 [Azure CLI](../azure-resource-manager/management/manage-resources-cli.md) 导出群集资源组的资源管理器模板。
 
 有了资源管理器模板后，可以通过以下步骤启用反向代理：
 
@@ -52,7 +52,7 @@ ms.locfileid: "80476669"
         }
     },
     ```
-2. 在 [Microsoft.ServiceFabric/clusters](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中为每个 nodetype 对象指定端口。
+2. 在 [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中为每个 nodetype 对象指定端口。
 
     端口由参数名称 reverseProxyEndpointPort 标识。
 
@@ -74,7 +74,7 @@ ms.locfileid: "80476669"
         ...
     }
     ```
-3. 若要在反向代理的端口上配置 TLS/SSL 证书，请将证书添加到 Microsoft.ServiceFabric/clusters [资源类型部分](../resource-group-authoring-templates.md)中的 reverseProxyCertificate 属性。
+3. 若要在反向代理的端口上配置 TLS/SSL 证书，请将证书添加到 Microsoft.ServiceFabric/clusters [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的 reverseProxyCertificate 属性。
 
     ```json
     {
@@ -98,7 +98,7 @@ ms.locfileid: "80476669"
     ```
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>支持不同于群集证书的反向代理证书
- 如果反向代理证书不同于用于保护群集的证书，应将前面指定的证书安装在虚拟机上，并将其添加到访问控制列表 (ACL)，使 Service Fabric 能够访问它。 可在 [Microsoft.Compute/virtualMachineScaleSets](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets) [资源类型部分](../resource-group-authoring-templates.md)中执行此操作。 要安装，请将该证书添加到 osProfile。 模板的扩展节可以更新 ACL 中的证书。
+ 如果反向代理证书不同于用于保护群集的证书，应将前面指定的证书安装在虚拟机上，并将其添加到访问控制列表 (ACL)，使 Service Fabric 能够访问它。 可在 [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中执行此操作。 要安装，请将该证书添加到 osProfile。 模板的扩展节可以更新 ACL 中的证书。
 
   ```json
   {
@@ -252,50 +252,50 @@ ms.locfileid: "80476669"
 
 ### <a name="expose-the-reverse-proxy-via-resource-manager-templates"></a>通过资源管理器模板公开反向代理
 
-以下 JSON 引用[通过 Azure 资源管理器模板启用反向代理](#enable-reverse-proxy-via-azure-resource-manager-templates)中使用的相同模板。 有关如何创建资源管理器模板或导出现有集群的模板的信息，请参阅文档的该部分。  其中对 [Microsoft.Network/loadBalancers](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers) [资源类型部分](../resource-group-authoring-templates.md)进行了更改。
+以下 JSON 引用[通过 Azure 资源管理器模板启用反向代理](#enable-reverse-proxy-via-azure-resource-manager-templates)中使用的相同模板。 有关如何创建资源管理器模板或导出现有集群的模板的信息，请参阅文档的该部分。  其中对 [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)进行了更改。
 
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
+```json
+{
+    "apiVersion": "[variables('lbApiVersion')]",
+    "type": "Microsoft.Network/loadBalancers",
+    ...
+    ...
+    "loadBalancingRules": [
         ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
+        {
+            "name": "LBSFReverseProxyRule",
+            "properties": {
+                "backendAddressPool": {
+                    "id": "[variables('lbPoolID0')]"
+                },
+                "backendPort": "[parameters('SFReverseProxyPort')]",
+                "enableFloatingIP": "false",
+                "frontendIPConfiguration": {
+                    "id": "[variables('lbIPConfig0')]"
+                },
+                "frontendPort": "[parameters('SFReverseProxyPort')]",
+                "idleTimeoutInMinutes": "5",
+                "probe": {
+                    "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
+                },
+                "protocol": "tcp"
             }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
+        }
+    ],
+    "probes": [
+        ...
+        {
+            "name": "SFReverseProxyProbe",
+            "properties": {
+                "intervalInSeconds": 5,
+                "numberOfProbes": 2,
+                "port":     "[parameters('SFReverseProxyPort')]",
+                "protocol": "tcp"
+            }
+        }  
+    ]
+}
+```
 
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>使用结构设置自定义反向代理行为

@@ -3,12 +3,12 @@ title: 使用可靠集合
 description: 了解有关在 Azure Service Fabric 应用程序中使用可靠集合的最佳做法。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374689"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255789"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠集合
 Service Fabric 通过可靠集合向 .NET 开发人员提供有状态的编程模型。 具体而言，Service Fabric 提供可靠字典和可靠队列类。 在使用这些类时，状态是分区的（实现伸缩性）、复制的（实现可用性），并在分区内进行事务处理（实现 ACID 语义）。 让我们看一下可靠字典对象的典型用法，并看一看它究竟在做些什么。
@@ -219,10 +219,10 @@ public struct ItemId
 另外，也可以执行通称为两阶段升级的功能。 通过两阶段升级，可以将服务从 V1 升级到 V2：V2 包含知道如何处理新架构更改的代码，但此代码不会执行。 当 V2 代码读取 V1 数据时，它在其上操作并写入 V1 数据。 然后，在跨所有升级域的升级都完成之后，就可以通知运行中的 V2 实例，升级已完成。 （通知方式之一是推出配置升级；这就是两阶段升级。）现在，V2 实例可以读取 V1 数据，将它转换成 V2 数据、操作它，并写出为 V2 数据。 当其他实例读取 V2 数据时，不需要转换它，只要操作并写出 V2 数据即可。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何创建向前兼容的数据约定，请参阅[向前兼容的数据协定](https://msdn.microsoft.com/library/ms731083.aspx)
+若要了解如何创建向前兼容的数据约定，请参阅[向前兼容的数据协定](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts)
 
-若要了解版本控制数据协定的最佳做法，请参阅[数据协定版本控制](https://msdn.microsoft.com/library/ms731138.aspx)
+若要了解版本控制数据协定的最佳做法，请参阅[数据协定版本控制](/dotnet/framework/wcf/feature-details/data-contract-versioning)
 
-若要了解如何实现版本容错的数据协定，请参阅[版本容错的序列化回调](https://msdn.microsoft.com/library/ms733734.aspx)
+若要了解如何实现版本容错的数据协定，请参阅[版本容错的序列化回调](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)
 
-若要了解如何提供可跨多个版本互操作的数据结构，请参阅 [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)
+若要了解如何提供可跨多个版本互操作的数据结构，请参阅 [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1)

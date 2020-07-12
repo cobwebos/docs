@@ -3,11 +3,12 @@ title: Azure Service Fabric 诊断常见情况
 description: 了解对 Azure Service Fabric 应用程序中常见监视和诊断情况进行故障排除的信息。
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697682"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257737"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>使用 Service Fabric 诊断常见情况
 
@@ -132,9 +133,9 @@ ms.locfileid: "83697682"
 ## <a name="next-steps"></a>后续步骤
 
 * [查找常见代码包激活错误](./service-fabric-diagnostics-code-package-errors.md)
-* [在 AI 中设置警报](/azure/azure-monitor/platform/alerts-log)以获取有关性能或使用情况的通知
+* [在 AI 中设置警报](../azure-monitor/platform/alerts-log.md)以获取有关性能或使用情况的通知
 * [Application Insights 中的智能检测](../azure-monitor/app/proactive-diagnostics.md)针对发送给 AI 的遥测进行主动分析，向你警告潜在的性能问题
-* 详细了解有助于进行检测和诊断的 Azure Monitor 日志[警报](../log-analytics/log-analytics-alerts.md)。
+* 详细了解有助于进行检测和诊断的 Azure Monitor 日志[警报](../azure-monitor/platform/alerts-overview.md)。
 * 对于本地群集，Azure Monitor 日志提供了一个网关（HTTP 正向代理），可用于向 Azure Monitor 日志发送数据。 有关更多信息，请参阅[使用 Log Analytics 网关将无法访问 Internet 的计算机连接到 Azure Monitor 日志](../azure-monitor/platform/gateway.md)
-* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
-* 有关 Azure Monitor 日志及其功能的更详细概述，请参阅[什么是 Azure Monitor 日志？](../operations-management-suite/operations-management-suite-overview.md)
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能
+* 有关 Azure Monitor 日志及其功能的更详细概述，请参阅[什么是 Azure Monitor 日志？](../azure-monitor/overview.md)

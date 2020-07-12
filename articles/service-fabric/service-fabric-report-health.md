@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 167ca76d0b6977a87352f8219d807949a0e4a301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e8d03f782527cd3a9a2667f3513046d7e76c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392635"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256299"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>添加自定义 Service Fabric 运行状况报告
 Azure Service Fabric 引入了[运行状况模型](service-fabric-health-introduction.md)，用于在特定实体上标记不正常的群集和应用程序状态。 运行状况模型使用**运行状况报告器**（系统组件和监视器）。 其目标是实现轻松快捷的诊断和修复。 服务编写人员必须预先考虑运行状况。 应报告任何可能会影响运行状况的条件，尤其是如果它有助于标记出接近根源的问题。 运行状况信息可节省调试和调查的时间和精力。 该服务在云中（私有云或 Azure 云）大规模启动并运行后，好处格外明显。
@@ -37,7 +38,7 @@ Service Fabric 报告器可监视感兴趣的已标识条件。 它们会根据�
 > 
 > 
 
-只要运行状况报告的设计清晰明了，发送运行状况报告就十分容易。 如果群集不[安全](service-fabric-cluster-security.md)或 Fabric 客户端拥有管理员权限，可以使用 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 报告运行状况。 可以使用 [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) 通过 API 进行报告，或者通过 PowerShell 或 REST 来完成。 配置旋钮 Batch 报告可提升性能。
+只要运行状况报告的设计清晰明了，发送运行状况报告就十分容易。 如果群集不[安全](service-fabric-cluster-security.md)或 Fabric 客户端拥有管理员权限，可以使用 [FabricClient](/dotnet/api/system.fabric.fabricclient) 报告运行状况。 可以使用 [FabricClient.HealthManager.ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) 通过 API 进行报告，或者通过 PowerShell 或 REST 来完成。 配置旋钮 Batch 报告可提升性能。
 
 > [!NOTE]
 > 报告运行状况会同步处理，并且只代表客户端上的验证工作。 运行状况客户端或者 `Partition` 或 `CodePackageActivationContext` 对象接受报告的事实并不表示该报告已应用于存储中。 它以异步方式发送并可能与其他报告一起进行批处理。 服务器上的处理仍可能失败：序号可能已过时、必须应用报告的实体已被删除，等等。
@@ -57,7 +58,7 @@ Service Fabric 报告器可监视感兴趣的已标识条件。 它们会根据�
 > 
 
 客户端上的缓冲会将报告的唯一性纳入考虑范围。 例如，如果特定的错误报告器针对相同实体的相同属性每秒报告 100 个报告，则会以最后一个版本取代所有报告。 客户端队列中最多存在一个这样的报告。 如果配置了批处理，则发送到运行状况管理器的报告数目仅为每个发送间隔发送一份报告。 这是最后添加的报告，可反映实体的最新状态。
-创建 `FabricClient` 时，通过传递 [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) 及运行状况相关实体的所需值来指定配置参数。
+创建 `FabricClient` 时，通过传递 [FabricClientSettings](/dotnet/api/system.fabric.fabricclientsettings) 及运行状况相关实体的所需值来指定配置参数。
 
 以下示例创建结构客户端，并指定添加报告后尽快发送。 可重试的错误或超时发生时，每 40 秒重试一次。
 
@@ -71,7 +72,7 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-建议保留默认结构客户端设置，将 `HealthReportSendInterval` 设为 30 秒。 此设置确保通过批处理获得最佳性能。 对于必须尽快发送关键报告，请在 [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API 中对 `HealthReportSendOptions` 使用 Immediate `true`。 即时报告会绕过批处理间隔。 请小心使用此标志；我们想尽可能利用运行状况客户端批处理。 结构客户端即将关闭（例如，进程已确定无效状态并需要关闭以预防副作用）时，即时发送也很有用。 它确保尽量发送累积的报告。 如果某个报告添加有“即时”标志，运行状况客户端对自上次发送积累的所有报告进行批处理。
+建议保留默认结构客户端设置，将 `HealthReportSendInterval` 设为 30 秒。 此设置确保通过批处理获得最佳性能。 对于必须尽快发送关键报告，请在 [FabricClient.HealthClient.ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API 中对 `HealthReportSendOptions` 使用 Immediate `true`。 即时报告会绕过批处理间隔。 请小心使用此标志；我们想尽可能利用运行状况客户端批处理。 结构客户端即将关闭（例如，进程已确定无效状态并需要关闭以预防副作用）时，即时发送也很有用。 它确保尽量发送累积的报告。 如果某个报告添加有“即时”标志，运行状况客户端对自上次发送积累的所有报告进行批处理。
 
 通过 PowerShell 创建与群集的连接时，可以指定相同的参数。 以下示例启动与本地群集的连接：
 
@@ -113,12 +114,12 @@ GatewayInformation   : {
 ## <a name="report-from-within-low-privilege-services"></a>在低特权的服务内进行报告
 如果 Service Fabric 服务对群集没有管理员访问权限，可以通过 `Partition` 或 `CodePackageActivationContext`，报告来自当前上下文的实体的运行状况。
 
-* 对于无状态服务，使用 [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) 报告当前服务实例的运行状况。
-* 对于有状态服务，使用 [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) 报告当前副本的运行状况。
-* 使用 [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) 报告当前分区实体的运行状况。
-* 使用 [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) 报告当前应用程序的运行状况。
-* 使用 [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) 报告当前节点上部署的当前应用程序的运行状况。
-* 使用 [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) 报告当前节点上部署的应用程序的服务包的运行状况。
+* 对于无状态服务，使用 [IStatelessServicePartition.ReportInstanceHealth](/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) 报告当前服务实例的运行状况。
+* 对于有状态服务，使用 [IStatefulServicePartition.ReportReplicaHealth](/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) 报告当前副本的运行状况。
+* 使用 [IServicePartition.ReportPartitionHealth](/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) 报告当前分区实体的运行状况。
+* 使用 [CodePackageActivationContext.ReportApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) 报告当前应用程序的运行状况。
+* 使用 [CodePackageActivationContext.ReportDeployedApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) 报告当前节点上部署的当前应用程序的运行状况。
+* 使用 [CodePackageActivationContext.ReportDeployedServicePackageHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) 报告当前节点上部署的应用程序的服务包的运行状况。
 
 > [!NOTE]
 > 就内部而言，`Partition` 和 `CodePackageActivationContext` 会保留使用默认设置配置的运行状况客户端。 如同就[运行状况客户端](service-fabric-report-health.md#health-client)进行的阐释那样，对报告进行批处理并根据计时器发送。 对象应保持活动状态，以便有机会发送报告。
@@ -289,7 +290,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-通过 REST 使用 POST 请求发送运行状况报告，这些请求将发送到所需的实体，其正文中包含运行状况报告描述。 如需示例，请参阅有关如何发送 REST [群集运行状况报告](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster)或[服务运行状况报告](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)的文档。 支持所有实体。
+通过 REST 使用 POST 请求发送运行状况报告，这些请求将发送到所需的实体，其正文中包含运行状况报告描述。 如需示例，请参阅有关如何发送 REST [群集运行状况报告](/rest/api/servicefabric/report-the-health-of-a-cluster)或[服务运行状况报告](/rest/api/servicefabric/report-the-health-of-a-service)的文档。 支持所有实体。
 
 ## <a name="next-steps"></a>后续步骤
 根据运行状况数据，服务编写人员和群集/应用程序管理员可以思考使用这些信息的方法。 例如，他们可以根据运行状态设置警报，以便在出现导致服务中断的严重问题之前就会其捕获。 管理员还可以设置修复系统以便自动修复问题。
@@ -305,4 +306,3 @@ HealthEvents          :
 [在本地监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)
-

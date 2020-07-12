@@ -111,7 +111,7 @@
 - name: 示例
   items:
     - name: 代码示例
-      href: 'https://docs.microsoft.com/samples/browse/'
+      href: /samples/browse/
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
@@ -491,7 +491,7 @@
             - name: 配置 ReliableDictionaryActorStateProvider
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: 生成 ASP.NET Core 服务
-          href: service-fabric-add-a-web-frontend.md
+          href: ./service-fabric-reliable-services-communication-aspnetcore.md
         - name: 在 Linux 上生成 Apache Tomcat 服务器容器
           href: service-fabric-get-started-tomcat.md
         - name: 配置安全性
@@ -628,7 +628,7 @@
         - name: 设置持续集成
           items:
             - name: 使用 Azure Pipelines 设置持续集成
-              href: service-fabric-set-up-continuous-integration.md
+              href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: 使用 Jenkins 部署 Linux 应用程序
               href: service-fabric-cicd-your-linux-applications-with-jenkins.md
     - name: 设置和配置反向代理
@@ -897,7 +897,7 @@
     - name: 常见问题
       href: service-fabric-common-questions.md
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
+      href: /answers/topics/azure-service-fabric.html
     - name: Azure 资源管理器部署准则
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: 定价

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd309b7c3b37e338b1d8e69635247cc90511b34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204738"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256843"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>教程：通过使用 Azure 市场创建主机池
 
@@ -154,7 +154,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 当前支持的客户端如下：
 
-* [适用于 Windows 7 和 Windows 10 的远程桌面客户端](../connect-windows-7-and-10.md)
+* [适用于 Windows 7 和 Windows 10 的远程桌面客户端](connect-windows-7-10-2019.md)
 * [Windows 虚拟桌面 Web 客户端](connect-web-2019.md)
 
 ## <a name="next-steps"></a>后续步骤

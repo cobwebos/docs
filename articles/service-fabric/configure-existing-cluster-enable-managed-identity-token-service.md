@@ -4,12 +4,12 @@ description: 下面介绍如何在现有 Azure Service Fabric 群集中启用托
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415689"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257623"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在现有 Service Fabric 群集中配置托管标识支持
 
@@ -40,7 +40,7 @@ ms.locfileid: "81415689"
 ]
 ```
 
-若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，`forceRestart` 是启用重启功能的必要设置。 对于其余参数，请使用下面所述的值或使用已为群集资源指定的现有自定义值。 通过在 Service Fabric 资源或 resources.azure.com 上选择“结构升级”选项，可以从 Azure 门户查看结构升级策略 ('upgradeDescription') 的自定义设置。 无法从 powershell 或 resources.azure.com 查看升级策略 ('upgradeDescription') 的默认选项。 有关其他信息，请参阅 [ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)。  
+若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，`forceRestart` 是启用重启功能的必要设置。 对于其余参数，请使用下面所述的值或使用已为群集资源指定的现有自定义值。 通过在 Service Fabric 资源或 resources.azure.com 上选择“结构升级”选项，可以从 Azure 门户查看结构升级策略 ('upgradeDescription') 的自定义设置。 无法从 powershell 或 resources.azure.com 查看升级策略 ('upgradeDescription') 的默认选项。 有关其他信息，请参阅 [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)。  
 
 ```json
 "upgradeDescription": {

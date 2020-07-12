@@ -15,11 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827142"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256673"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -256,6 +257,16 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 
 **问：我不知道升级到新版 Azure AD Connect 后会有什么风险。你们能通过电话帮助我升级吗？**  
 如果在升级到新版 Azure AD Connect 时需要帮助，请参阅[创建服务请求以联系 Office 365 支持部门](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)开具支持票证。
+
+## <a name="operational-best-practice"></a>操作最佳实践    
+下面是在 Windows Server Active Directory 和 Azure Active Directory 间同步时应实现的一些最佳实践。
+
+**为所有已同步的帐户应用多重身份验证**Azure 多重身份验证可帮助保护对数据和应用程序的访问，同时保持用户的简单性。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的身份验证方法提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。 可在此处阅读有关 MFA 的详细信息：https://www.microsoft.com/security/business/identity/mfa?rtc=1
+
+**遵循 Azure AD Connect 服务器安全指导原则**Azure AD Connect 服务器包含关键的标识数据，应将其视为第0层组件，如[Active Directory 管理层模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中所述。 请参阅我们[的有关保护 AADConnect 服务器安全的准则](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server)。
+
+**为泄漏的凭据检测启用 PHS**密码哈希同步还为混合帐户启用[泄漏的凭据检测](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)。 Microsoft 与深色 web 研究人员和执法机构合作，查找公开提供的用户名/密码对。 如果这些对中的任何一对与用户的关联，则关联的帐户将被移到 "高风险"。 
+
 
 ## <a name="troubleshooting"></a>疑难解答
 **问：如何获取有关 Azure AD Connect 的帮助？**

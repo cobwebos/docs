@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142411"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258218"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生及其克隆图形
 
@@ -21,11 +21,27 @@ ms.locfileid: "86142411"
 > [!TIP]
 > "Azure 数字孪生" 是指作为一个整体的 Azure 服务。 "数字双子 (s) " 或仅 " () " 的 "克隆" 指的是服务实例中的各个不同的节点。
 
-## <a name="creating-digital-twins"></a>创建数字孪生
+## <a name="digital-twins"></a>数字孪生
 
 你需要将*模型*上传到服务，然后才能在 Azure 数字孪生实例中创建数字输出。 模型描述了一组属性、遥测消息和特定的非特定克隆可以具有的关系，等等。 有关在模型中定义的信息类型，请参阅[概念：自定义模型](concepts-models.md)。
 
 创建和上载模型后，客户端应用可以创建类型的实例;这是一种数字克隆。 例如，在创建*楼层*模型后，可以创建一个或多个使用此 (类型的数字孪生，例如名为*GroundFloor*的*楼层*类型，另一个称为*Floor2*，依此类推。 ) 。 
+
+## <a name="relationships-a-graph-of-digital-twins"></a>关系：数字孪生图形
+
+孪生通过其关系连接到一个克隆图形中。 克隆可以具有的关系定义为其模型的一部分。  
+
+例如，模型*楼层*可能定义一个*contains*关系，该关系面向孪生的类型*空间*。 借助此定义，Azure 数字孪生将允许你创建*包含*从任何*楼层*到任何*空间*的源的关系， (包括) *空间*子类型的孪生。 
+
+此过程的结果是一组节点 (数字孪生) 通过边缘 (它们在关系图中的关系) 连接的。
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+## <a name="create-with-the-apis"></a>通过 Api 创建
+
+此部分显示从客户端应用程序创建数字孪生和关系的外观。 它包含使用[DigitalTwins api](how-to-use-apis-sdks.md)的 .net 代码示例，以提供有关每个概念中的内容的其他上下文。
+
+### <a name="create-digital-twins"></a>创建数字孪生
 
 下面是使用[DigitalTwins api](how-to-use-apis-sdks.md)来实例化类型*空间*的克隆的客户端代码的代码段。
 
@@ -59,11 +75,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 }
 ```
 
-## <a name="relationships-creating-a-graph-of-digital-twins"></a>关系：创建数字孪生的图形
-
-孪生通过其关系连接到一个克隆图形中。 克隆可以具有的关系定义为其模型的一部分。  
-
-例如，模型*楼层*可能定义一个*contains*关系，该关系面向孪生的类型*空间*。 借助此定义，Azure 数字孪生将允许你创建*包含*从任何*楼层*到任何*空间*的源的关系， (包括) *空间*子类型的孪生。 
+### <a name="create-relationships"></a>创建关系
 
 下面是一些客户端代码示例，它使用[DigitalTwins api](how-to-use-apis-sdks.md)在名为*GroundFloor*的*楼层*类型数字硬编码与称为*咖啡馆*的*房间*类型数字硬编码之间建立关系。
 
@@ -84,8 +96,6 @@ try
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
 }
 ```
-
-此过程的结果是一组节点 (数字孪生) 通过边缘 (它们在关系图中的关系) 连接的。
 
 ## <a name="json-representations-of-graph-elements"></a>Graph 元素的 JSON 表示形式
 
