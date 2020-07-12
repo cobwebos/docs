@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81677465"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273908"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
@@ -28,21 +29,32 @@ ms.locfileid: "81677465"
 NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件。 其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录会包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和牌照编号（出租车的唯一 ID）。 数据涵盖 2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 - trip_data CSV 文件包含行程的详细信息：乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
-   
-        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+
+  `medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
+
+  `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
+
 - trip_data CSV 文件包含每个行程支付费用的详细信息：付款类型、费用金额、附加费和税金、小费和通行费以及支付的总金额。 下面是一些示例记录：
-   
-        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+
+  `medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
+
+  `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
 
 联接 trip\_data 和 trip\_fare 的唯一键由以下字段组成：medallion、hack\_license 和 pickup\_datetime。 若要获取与特定行程相关的所有详细信息，只需联接这三个键即可。
 
@@ -50,16 +62,18 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 根据数据分析确定要进行的预测类型，以帮助明确所需的进程任务。 下面是本演练中要解决的三个预测问题示例，它们全部基于 *tip\_amount*：
 
 - **二元分类**：预测某个行程是否支付小费。 即大于 $0 的 *tip\_amount* 是正例，等于 $0 的 *tip\_amount* 是反例。
-   
-        Class 0: tip_amount = $0
-        Class 1: tip_amount > $0
+
+  - 级别 0：tip_amount = $0
+  - 类1： tip_amount > $0
+
 - **多类分类**：预测为行程支付的小费金额范围。 我们将 *tip\_amount* 划分成五个类：
-   
-        Class 0: tip_amount = $0
-        Class 1: tip_amount > $0 and tip_amount <= $5
-        Class 2: tip_amount > $5 and tip_amount <= $10
-        Class 3: tip_amount > $10 and tip_amount <= $20
-        Class 4: tip_amount > $20
+
+  - 级别 0：tip_amount = $0
+  - 级别 1：tip_amount > $0 且 tip_amount <= $5
+  - 级别 2：tip_amount > $5 且 tip_amount <= $10
+  - 级别 3：tip_amount > $10 且 tip_amount <= $20
+  - 级别 4：tip_amount > $20
+
 - **回归任务**：预测为行程支付的小费金额。  
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>针对高级分析设置 HDInsight Hadoop 群集
@@ -89,7 +103,9 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 1. 在命令提示符窗口中，运行以下 AzCopy 命令，请将 \<path_to_data_folder> 替换为所需目标**：
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```console
+    "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```
 
 1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹在下文中称为 \<path\_to\_unzipped_data\_files\>**。
 
@@ -110,11 +126,15 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 此命令将行程数据上传到 Hadoop 群集的默认容器中的 ***nyctaxitripraw*** 目录。
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+```console
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+```
 
 此命令将费用数据上传到 Hadoop 群集的默认容器中的 ***nyctaxifareraw*** 目录。
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+```console
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+```
 
 现在，数据应在 Blob 存储中，并且可以在 HDInsight 群集中使用。
 
@@ -130,9 +150,11 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 若要准备用于探索数据分析的群集，需将包含相关 Hive 脚本的“.hql”文件从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) 下载到头节点上的本地目录 (C:\temp)。 从群集的头节点中打开命令提示符，并运行以下两个命令：
 
-    set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
+```console
+set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
-    @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+```
 
 这两个命令会将本演练中需要的所有“.hql”文件下载到头节点中的本地目录 C:\temp&#92;******。
 
@@ -145,7 +167,9 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 现在已准备就绪，可以为 NYC 出租车数据集创建 Hive 表。
 在 Hadoop 群集的头节点中，在头节点的桌面上打开 Hadoop 命令行。 运行以下命令进入 Hive 目录：
 
-    cd %hive_home%\bin
+```console
+cd %hive_home%\bin
+```
 
 > [!NOTE]
 > 从 Hive bin/ 目录提示符运行此演练中的所有 Hive 命令。 这会自动处理任何路径问题。 我们在本演练中交替使用术语“Hive 目录提示符”、“Hive bin/ 目录提示符”和“Hadoop 命令行”。
@@ -154,48 +178,52 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 在 Hive 目录提示符下，在创建 Hive 数据库和表的头节点的 Hadoop 命令行中运行以下命令：
 
-    hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
+```console
+hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
+```
 
 下面是 C:\temp\sample\_hive\_create\_db\_and\_tables.hql 文件的内容，用于创建 Hive 数据库 nyctaxidb 以及表“行程”和“费用”**** **** **** ****。
 
-    create database if not exists nyctaxidb;
+```hiveql
+create database if not exists nyctaxidb;
 
-    create external table if not exists nyctaxidb.trip
-    (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        passenger_count int,
-        trip_time_in_secs double,
-        trip_distance double,
-        pickup_longitude double,
-        pickup_latitude double,
-        dropoff_longitude double,
-        dropoff_latitude double)  
-    PARTITIONED BY (month int)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-    STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
+create external table if not exists nyctaxidb.trip
+(
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    rate_code string,
+    store_and_fwd_flag string,
+    pickup_datetime string,
+    dropoff_datetime string,
+    passenger_count int,
+    trip_time_in_secs double,
+    trip_distance double,
+    pickup_longitude double,
+    pickup_latitude double,
+    dropoff_longitude double,
+    dropoff_latitude double)  
+PARTITIONED BY (month int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
 
-    create external table if not exists nyctaxidb.fare
-    (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        pickup_datetime string,
-        payment_type string,
-        fare_amount double,
-        surcharge double,
-        mta_tax double,
-        tip_amount double,
-        tolls_amount double,
-        total_amount double)
-    PARTITIONED BY (month int)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-    STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
+create external table if not exists nyctaxidb.fare
+(
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    pickup_datetime string,
+    payment_type string,
+    fare_amount double,
+    surcharge double,
+    mta_tax double,
+    tip_amount double,
+    tolls_amount double,
+    total_amount double)
+PARTITIONED BY (month int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
+```
 
 此 Hive 脚本会创建两个表：
 
@@ -212,64 +240,80 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 NYC 出租车数据集具有按月划分的自然分区，用于加快处理和查询时间。 以下 PowerShell 命令（使用 Hadoop 命令行 从 Hive 目录发出）将数据加载到按月分区的 trip 和 fare Hive 表。
 
-    for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
+```powershell
+for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
+```
 
 **sample\_hive\_load\_data\_by\_partitions.hql** 文件包含以下 **LOAD** 命令：
 
-    LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
-    LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+```hiveql
+LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
+LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+```
 
 在探索过程中，此处使用的许多 Hive 查询仅涉及查看一个或两个分区。 但是可以针对整个数据集运行这些查询。
 
 ### <a name="show-databases-in-the-hdinsight-hadoop-cluster"></a><a name="#show-db"></a>在 HDInsight Hadoop 群集中显示数据库
 若要在 Hadoop 命令行窗口中显示 HDInsight Hadoop 群集中创建的数据库，请在 Hadoop 命令行中运行以下命令：
 
-    hive -e "show databases;"
+```console
+hive -e "show databases;"
+```
 
 ### <a name="show-the-hive-tables-in-the-nyctaxidb-database"></a><a name="#show-tables"></a>显示 **nyctaxidb** 数据库中的 Hive 表
 若要显示 **nyctaxidb** 数据库中的表，请在 Hadoop 命令行中运行以下命令：
 
-    hive -e "show tables in nyctaxidb;"
+```console
+hive -e "show tables in nyctaxidb;"
+```
 
 可以通过运行以下命令，确认表是否分区：
 
-    hive -e "show partitions nyctaxidb.trip;"
+```console
+hive -e "show partitions nyctaxidb.trip;"
+```
 
 下面是预期的输出：
 
-    month=1
-    month=10
-    month=11
-    month=12
-    month=2
-    month=3
-    month=4
-    month=5
-    month=6
-    month=7
-    month=8
-    month=9
-    Time taken: 2.075 seconds, Fetched: 12 row(s)
+```output
+month=1
+month=10
+month=11
+month=12
+month=2
+month=3
+month=4
+month=5
+month=6
+month=7
+month=8
+month=9
+Time taken: 2.075 seconds, Fetched: 12 row(s)
+```
 
 同样，可以通过运行以下命令确保 fare 表已分区：
 
-    hive -e "show partitions nyctaxidb.fare;"
+```console
+hive -e "show partitions nyctaxidb.fare;"
+```
 
 下面是预期的输出：
 
-    month=1
-    month=10
-    month=11
-    month=12
-    month=2
-    month=3
-    month=4
-    month=5
-    month=6
-    month=7
-    month=8
-    month=9
-    Time taken: 1.887 seconds, Fetched: 12 row(s)
+```output
+month=1
+month=10
+month=11
+month=12
+month=2
+month=3
+month=4
+month=5
+month=6
+month=7
+month=8
+month=9
+Time taken: 1.887 seconds, Fetched: 12 row(s)
+```
 
 ## <a name="data-exploration-and-feature-engineering-in-hive"></a><a name="#explore-hive"></a>Hive 中的数据探索和功能设计
 > [!NOTE]
@@ -295,15 +339,21 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
 
 获取 trip 表中第一个月的前 10 条记录：
 
-    hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
+```console
+hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
+```
 
 获取 fare 表中第一个月的前 10 条记录：
 
-    hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
+```console
+hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
+```
 
 为了方便查看，可以将记录保存到文件中，只需稍微更改前面的查询即可：
 
-    hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
+```console
+hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
+```
 
 ### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>浏览：查看 12 个分区中每个分区的记录数
 > [!NOTE]
@@ -313,65 +363,81 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
 
 此任务关注的是在历年内行程次数如何变化。 按月分组可以显示行程的分布情况。
 
-    hive -e "select month, count(*) from nyctaxidb.trip group by month;"
+```console
+hive -e "select month, count(*) from nyctaxidb.trip group by month;"
+```
 
 该命令生成以下输出：
 
-    1       14776615
-    2       13990176
-    3       15749228
-    4       15100468
-    5       15285049
-    6       14385456
-    7       13823840
-    8       12597109
-    9       14107693
-    10      15004556
-    11      14388451
-    12      13971118
-    Time taken: 283.406 seconds, Fetched: 12 row(s)
+```output
+1       14776615
+2       13990176
+3       15749228
+4       15100468
+5       15285049
+6       14385456
+7       13823840
+8       12597109
+9       14107693
+10      15004556
+11      14388451
+12      13971118
+Time taken: 283.406 seconds, Fetched: 12 row(s)
+```
 
 此处，第一列表示月份，第二列表示该月份的行程数。
 
 我们还可以通过在 Hive 目录提示符下运行以下命令来计算行程数据集中的记录总数：
 
-    hive -e "select count(*) from nyctaxidb.trip;"
+```console
+hive -e "select count(*) from nyctaxidb.trip;"
+```
 
 此命令生成：
 
-    173179759
-    Time taken: 284.017 seconds, Fetched: 1 row(s)
+```output
+173179759
+Time taken: 284.017 seconds, Fetched: 1 row(s)
+```
 
 使用类似于对行程数据集显示的命令，可以从 Hive 目录提示符中针对费用数据集发出 Hive 查询，以便验证记录数。
 
-    hive -e "select month, count(*) from nyctaxidb.fare group by month;"
+```console
+hive -e "select month, count(*) from nyctaxidb.fare group by month;"
+```
 
 此命令生成以下输出：
 
-    1       14776615
-    2       13990176
-    3       15749228
-    4       15100468
-    5       15285049
-    6       14385456
-    7       13823840
-    8       12597109
-    9       14107693
-    10      15004556
-    11      14388451
-    12      13971118
-    Time taken: 253.955 seconds, Fetched: 12 row(s)
+```output
+1       14776615
+2       13990176
+3       15749228
+4       15100468
+5       15285049
+6       14385456
+7       13823840
+8       12597109
+9       14107693
+10      15004556
+11      14388451
+12      13971118
+Time taken: 253.955 seconds, Fetched: 12 row(s)
+```
 
 每月为两个数据集返回的行程数完全相同，这是首次验证了数据已正确加载。
 
 可以通过在 Hive 目录提示符下运行以下命令来计算 fare 数据集中的记录总数：
 
-    hive -e "select count(*) from nyctaxidb.fare;"
+```console
+hive -e "select count(*) from nyctaxidb.fare;"
+```
 
 此命令生成：
 
-    173179759
-    Time taken: 186.683 seconds, Fetched: 1 row(s)
+```output
+173179759
+Time taken: 186.683 seconds, Fetched: 1 row(s)
+```
 
 两个表中的记录总数也相同，这再次验证了数据已正确加载。
 
@@ -383,31 +449,39 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
 
 此示例标识在给定的时间段内具有 100 多个行程的徽章（出租车数）。 查询受益于分区表访问，因为它受分区变量 **month** 的限制。 查询结果将写入头节点上 `C:\temp` 中的本地文件 **queryoutput.tsv**。
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```
 
 下面是要检查的 **sample\_hive\_trip\_count\_by\_medallion.hql** 文件的内容。
 
-    SELECT medallion, COUNT(*) as med_count
-    FROM nyctaxidb.fare
-    WHERE month<=3
-    GROUP BY medallion
-    HAVING med_count > 100
-    ORDER BY med_count desc;
+```hiveql
+SELECT medallion, COUNT(*) as med_count
+FROM nyctaxidb.fare
+WHERE month<=3
+GROUP BY medallion
+HAVING med_count > 100
+ORDER BY med_count desc;
+```
 
 NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问特定时间段内，哪些出租车的行程数超过了一定量，可以确定哪些车处于相对忙碌状态。 以下示例标识前三个月内行程数超过 100 的出租车，并将查询结果保存到本地文件 **C:\temp\queryoutput.tsv**。
 
 下面是要检查的 **sample\_hive\_trip\_count\_by\_medallion.hql** 文件的内容。
 
-    SELECT medallion, COUNT(*) as med_count
-    FROM nyctaxidb.fare
-    WHERE month<=3
-    GROUP BY medallion
-    HAVING med_count > 100
-    ORDER BY med_count desc;
+```hiveql
+SELECT medallion, COUNT(*) as med_count
+FROM nyctaxidb.fare
+WHERE month<=3
+GROUP BY medallion
+HAVING med_count > 100
+ORDER BY med_count desc;
+```
 
 在 Hive 目录提示符下运行以下命令：
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>浏览：依据徽章和出租汽车执照的行程分布
 > [!NOTE]
@@ -419,18 +493,22 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 **sample\_hive\_trip\_count\_by\_medallion\_license.hql** 文件将 **medallion** 和 **hack_license** 上的费用数据集分组，并返回每个组合的计数。 以下是其内容：
 
-    SELECT medallion, hack_license, COUNT(*) as trip_count
-    FROM nyctaxidb.fare
-    WHERE month=1
-    GROUP BY medallion, hack_license
-    HAVING trip_count > 100
-    ORDER BY trip_count desc;
+```hiveql
+SELECT medallion, hack_license, COUNT(*) as trip_count
+FROM nyctaxidb.fare
+WHERE month=1
+GROUP BY medallion, hack_license
+HAVING trip_count > 100
+ORDER BY trip_count desc;
+```
 
 此查询返回出租车和司机的组合，按行程数降序排序。
 
 从 Hive 目录提示符中，运行：
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
+```
 
 查询结果将写入本地文件 **C:\temp\queryoutput.tsv**。
 
@@ -444,17 +522,20 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 以下是用于检查的 **sample\_hive\_quality\_assessment.hql** 文件内容。
 
-        SELECT COUNT(*) FROM nyctaxidb.trip
-        WHERE month=1
-        AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
-        OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
-        OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
-        OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
-
+```hiveql
+    SELECT COUNT(*) FROM nyctaxidb.trip
+    WHERE month=1
+    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
+    OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
+    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
+    OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
+```
 
 从 Hive 目录提示符中，运行：
 
-    hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
+```console
+hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
+```
 
 此命令中包含的 *-S* 参数阻止状态屏幕打印输出 Hive Map/Reduce 作业。 此命令非常有用，因为它可以使 Hive 查询输出的屏幕打印更加易读。
 
@@ -471,17 +552,21 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 以下 sample\_hive\_tipped\_frequencies.hql**** 文件显示要运行的命令：
 
-    SELECT tipped, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tipped;
+```hiveql
+SELECT tipped, COUNT(*) AS tip_freq
+FROM
+(
+    SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
+    FROM nyctaxidb.fare
+)tc
+GROUP BY tipped;
+```
 
 从 Hive 目录提示符中，运行：
 
-    hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
+```console
+hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
+```
 
 
 ### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>浏览：多类设置中的类分布
@@ -492,20 +577,24 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 对于[预测任务示例](hive-walkthrough.md#mltasks)部分中所述的多类分类问题，此数据集也适用于自然分类，在这种分类中可预测所付小费的金额。 我们可以使用 bin 在查询中定义小费范围。 若要获取各种小费范围的类分布，请使用 **sample\_hive\_tip\_range\_frequencies.hql** 文件。 以下是其内容。
 
-    SELECT tip_class, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount=0, 0,
-            if(tip_amount>0 and tip_amount<=5, 1,
-            if(tip_amount>5 and tip_amount<=10, 2,
-            if(tip_amount>10 and tip_amount<=20, 3, 4)))) as tip_class, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tip_class;
+```hiveql
+SELECT tip_class, COUNT(*) AS tip_freq
+FROM
+(
+    SELECT if(tip_amount=0, 0,
+        if(tip_amount>0 and tip_amount<=5, 1,
+        if(tip_amount>5 and tip_amount<=10, 2,
+        if(tip_amount>10 and tip_amount<=20, 3, 4)))) as tip_class, tip_amount
+    FROM nyctaxidb.fare
+)tc
+GROUP BY tip_class;
+```
 
 从 Hadoop 命令行控制台运行以下命令：
 
-    hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
+```console
+hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
+```
 
 ### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>浏览：计算两个经纬位置之间的直接距离
 > [!NOTE]
@@ -517,24 +606,26 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 为了查看实际行程距离与两个经纬点（“大圆”距离）之间的[半正矢距离](https://en.wikipedia.org/wiki/Haversine_formula)的比较结果，我们使用 Hive 中可用的三角函数：
 
-    set R=3959;
-    set pi=radians(180);
+```hiveql
+set R=3959;
+set pi=radians(180);
 
-    insert overwrite directory 'wasb:///queryoutputdir'
+insert overwrite directory 'wasb:///queryoutputdir'
 
-    select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-    ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-     *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
-     *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
-     /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
-     +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
-     pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance
-    from nyctaxidb.trip
-    where month=1
-    and pickup_longitude between -90 and -30
-    and pickup_latitude between 30 and 90
-    and dropoff_longitude between -90 and -30
-    and dropoff_latitude between 30 and 90;
+select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
+${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+ *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+ *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+ /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
+ +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
+ pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance
+from nyctaxidb.trip
+where month=1
+and pickup_longitude between -90 and -30
+and pickup_latitude between 30 and 90
+and dropoff_longitude between -90 and -30
+and dropoff_latitude between 30 and 90;
+```
 
 在上面的查询中，R 表示以英里为单位的地球半径，pi 转换为弧度。 筛选了经纬点，以便删除远离 NYC 区域的值。
 
@@ -542,20 +633,25 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 从 Hive 目录提示符中，运行：
 
-    hdfs dfs -mkdir wasb:///queryoutputdir
+```hiveql
+hdfs dfs -mkdir wasb:///queryoutputdir
 
-    hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
-
+hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
+```
 
 查询结果将写入 Hadoop 群集的默认容器下的 9 个 Azure Blob（**queryoutputdir/000000\_0** 到 **queryoutputdir/000008\_0**）。
 
 若要查看各个 Blob 的大小，可在 Hive 目录提示符下运行以下命令：
 
-    hdfs dfs -ls wasb:///queryoutputdir
+```hiveql
+hdfs dfs -ls wasb:///queryoutputdir
+```
 
 若要查看给定文件（例如 **000000\_0**）的内容，可以使用 Hadoop 的 `copyToLocal` 命令。
 
-    hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
+```hiveql
+hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
+```
 
 > [!WARNING]
 > 对于大型文件，`copyToLocal` 可能非常慢，因此不建议将其用于此类文件。  
@@ -588,130 +684,134 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 下面是 **sample\_hive\_prepare\_for\_aml\_full.hql** 文件的内容，用于为在机器学习中构建模型准备数据。
 
-        set R = 3959;
-        set pi=radians(180);
+```hiveql
+set R = 3959;
+set pi=radians(180);
 
-        create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
+create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
 
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        pickup_hour string,
-        pickup_week string,
-        weekday string,
-        passenger_count int,
-        trip_time_in_secs double,
-        trip_distance double,
-        pickup_longitude double,
-        pickup_latitude double,
-        dropoff_longitude double,
-        dropoff_latitude double,
-        direct_distance double,
-        payment_type string,
-        fare_amount double,
-        surcharge double,
-        mta_tax double,
-        tip_amount double,
-        tolls_amount double,
-        total_amount double,
-        tipped string,
-        tip_class string
-        )
-        row format delimited fields terminated by ','
-        lines terminated by '\n'
-        stored as textfile;
+medallion string,
+hack_license string,
+vendor_id string,
+rate_code string,
+store_and_fwd_flag string,
+pickup_datetime string,
+dropoff_datetime string,
+pickup_hour string,
+pickup_week string,
+weekday string,
+passenger_count int,
+trip_time_in_secs double,
+trip_distance double,
+pickup_longitude double,
+pickup_latitude double,
+dropoff_longitude double,
+dropoff_latitude double,
+direct_distance double,
+payment_type string,
+fare_amount double,
+surcharge double,
+mta_tax double,
+tip_amount double,
+tolls_amount double,
+total_amount double,
+tipped string,
+tip_class string
+)
+row format delimited fields terminated by ','
+lines terminated by '\n'
+stored as textfile;
 
-        --- now insert contents of the join into the above internal table
+--- now insert contents of the join into the above internal table
 
-        insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
-        select
-        t.medallion,
-        t.hack_license,
-        t.vendor_id,
-        t.rate_code,
-        t.store_and_fwd_flag,
-        t.pickup_datetime,
-        t.dropoff_datetime,
-        hour(t.pickup_datetime) as pickup_hour,
-        weekofyear(t.pickup_datetime) as pickup_week,
-        from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
-        t.passenger_count,
-        t.trip_time_in_secs,
-        t.trip_distance,
-        t.pickup_longitude,
-        t.pickup_latitude,
-        t.dropoff_longitude,
-        t.dropoff_latitude,
-        t.direct_distance,
-        f.payment_type,
-        f.fare_amount,
-        f.surcharge,
-        f.mta_tax,
-        f.tip_amount,
-        f.tolls_amount,
-        f.total_amount,
-        if(tip_amount>0,1,0) as tipped,
-        if(tip_amount=0,0,
-        if(tip_amount>0 and tip_amount<=5,1,
-        if(tip_amount>5 and tip_amount<=10,2,
-        if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
+insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
+select
+t.medallion,
+t.hack_license,
+t.vendor_id,
+t.rate_code,
+t.store_and_fwd_flag,
+t.pickup_datetime,
+t.dropoff_datetime,
+hour(t.pickup_datetime) as pickup_hour,
+weekofyear(t.pickup_datetime) as pickup_week,
+from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
+t.passenger_count,
+t.trip_time_in_secs,
+t.trip_distance,
+t.pickup_longitude,
+t.pickup_latitude,
+t.dropoff_longitude,
+t.dropoff_latitude,
+t.direct_distance,
+f.payment_type,
+f.fare_amount,
+f.surcharge,
+f.mta_tax,
+f.tip_amount,
+f.tolls_amount,
+f.total_amount,
+if(tip_amount>0,1,0) as tipped,
+if(tip_amount=0,0,
+if(tip_amount>0 and tip_amount<=5,1,
+if(tip_amount>5 and tip_amount<=10,2,
+if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
 
-        from
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        rate_code,
-        store_and_fwd_flag,
-        pickup_datetime,
-        dropoff_datetime,
-        passenger_count,
-        trip_time_in_secs,
-        trip_distance,
-        pickup_longitude,
-        pickup_latitude,
-        dropoff_longitude,
-        dropoff_latitude,
-        ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-        *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
-        *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
-        /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
-        +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance,
-        rand() as sample_key
+from
+(
+select
+medallion,
+hack_license,
+vendor_id,
+rate_code,
+store_and_fwd_flag,
+pickup_datetime,
+dropoff_datetime,
+passenger_count,
+trip_time_in_secs,
+trip_distance,
+pickup_longitude,
+pickup_latitude,
+dropoff_longitude,
+dropoff_latitude,
+${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+*${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+/sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
++cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance,
+rand() as sample_key
 
-        from nyctaxidb.trip
-        where pickup_latitude between 30 and 90
-            and pickup_longitude between -90 and -30
-            and dropoff_latitude between 30 and 90
-            and dropoff_longitude between -90 and -30
-        )t
-        join
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        pickup_datetime,
-        payment_type,
-        fare_amount,
-        surcharge,
-        mta_tax,
-        tip_amount,
-        tolls_amount,
-        total_amount
-        from nyctaxidb.fare
-        )f
-        on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-        where t.sample_key<=0.01
+from nyctaxidb.trip
+where pickup_latitude between 30 and 90
+    and pickup_longitude between -90 and -30
+    and dropoff_latitude between 30 and 90
+    and dropoff_longitude between -90 and -30
+)t
+join
+(
+select
+medallion,
+hack_license,
+vendor_id,
+pickup_datetime,
+payment_type,
+fare_amount,
+surcharge,
+mta_tax,
+tip_amount,
+tolls_amount,
+total_amount
+from nyctaxidb.fare
+)f
+on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
+where t.sample_key<=0.01
+```
 
 从 Hive 目录提示符中运行此查询：
 
-    hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
+```console
+hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
+```
 
 创建内部表 nyctaxidb.nyctaxi_downsampled_dataset 之后，可以使用机器学习中的[导入数据][import-data]模块访问该表****。 此外，可将此数据集用于构建机器学习模型。  
 
@@ -739,7 +839,9 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 下面介绍如何确定数据库 **D.db** 中的表 **T** 是否是内部表。 在 Hive 目录提示符下运行以下命令：
 
-    hdfs dfs -ls wasb:///D.db/T
+```hiveql
+hdfs dfs -ls wasb:///D.db/T
+```
 
 如果该表是内部表并且已填充，则其内容一定会在此处显示。
 

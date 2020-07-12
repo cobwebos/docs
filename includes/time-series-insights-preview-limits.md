@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1171c07a754b056fb9df2cee73ddf224427037cc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77123181"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277802"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>正式版和预览版比较
 
@@ -22,16 +22,16 @@ ms.locfileid: "77123181"
 
 | | GA | 预览 |
 | --- | --- | ---|
-| 第一类公民 | 以事件为中心 | 以时序为中心 |
-| 语义推理 | 低级（参考数据） | 高级（模型） |
-| 数据上下文化 | 非设备级别 | 设备和非设备级别 |
-| 计算逻辑存储 | 否 | 存储在模型的类型变量中 |
-| 存储和访问控制 | 否 | 已通过模型启用 |
-| 聚合/采样 | 否 | 事件加权和时间加权 |
-| 信号重建 | 否 | 内插 |
-| 生成衍生时序 | 否 | 是，合并和联接 |
-| 语言灵活性 | 不可组合 | 可组合 |
-| 表达式语言 | 谓词字符串 | 时序表达式（谓词字符串、值、表达式和函数） |
+| **第一类公民** | 以事件为中心 | 以时序为中心 |
+| **语义推理** | 低级（参考数据） | 高级（模型） |
+| **数据上下文化** | 非设备级别 | 设备和非设备级别 |
+| **计算逻辑存储** | 否 | 存储在模型的类型变量中 |
+| **存储和访问控制** | 否 | 已通过模型启用 |
+| **聚合/采样** | 否 | 事件加权和时间加权 |
+| **信号重建** | 否 | 内插 |
+| **生成衍生时序** | 否 | 是，合并和联接 |
+| **语言灵活性** | 不可组合 | 可组合 |
+| **表达式语言** | 谓词字符串 | 时序表达式（谓词字符串、值、表达式和函数） |
 
 ### <a name="property-limits"></a>属性限制
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83868076"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277682"
 ---
 Azure 共享磁盘（预览版）是 Azure 托管磁盘的一项新功能，可同时将托管磁盘附加到多个虚拟机 (VM)。 通过将托管磁盘附加到多个 VM，可以向 Azure 部署新的群集应用程序或迁移现有的群集应用程序。
 
@@ -41,7 +41,7 @@ Azure 共享磁盘（预览版）是 Azure 托管磁盘的一项新功能，可�
 
 WSFC 上运行的热门应用程序包括：
 
-- SQL Server 故障转移群集实例 (FCI)
+- [在 Azure Vm 上创建 FCI 和 Azure 共享磁盘 (SQL Server) ](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
 - 横向扩展文件服务器 (SoFS)
 - 常规用途的文件服务器（IW 工作负载）
 - 远程桌面服务器用户配置文件磁盘 (RDS UPD)
@@ -87,7 +87,12 @@ Linux 群集可以利用群集管理器，例如 [Pacemaker](https://wiki.cluste
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="描述预留持有者、注册者和其他人的只读或读/写访问权限的表的图像。":::
 
-## <a name="ultra-disk-performance-throttles"></a>超级磁盘性能限制
+## <a name="performance-throttles"></a>性能限制
+
+### <a name="premium-ssd-performance-throttles"></a>高级 ssd 性能限制
+使用高级 ssd 时，磁盘 IOPS 和吞吐量是固定的，例如 P30 的 IOPS 为5000。 如果磁盘在2个 Vm 或5个 Vm 之间共享，则会保留此值。 可以从单个 VM 或跨越两个或多个 Vm 来访问磁盘限制。 
+
+### <a name="ultra-disk-performance-throttles"></a>超级磁盘性能限制
 
 超级磁盘具有独特的功能，允许你通过公开可修改的属性并允许对其进行修改来设置性能。 默认情况下，只有两个可修改的属性，但共享的超级磁盘具有两个附加属性。
 
@@ -111,23 +116,23 @@ Linux 群集可以利用群集管理器，例如 [Pacemaker](https://wiki.cluste
     - 单个磁盘对应于每个预配 IOPS 的吞吐量限制为 256 KiB/秒，每个磁盘的最大吞吐量为 2000 MBps。
     - 对于每个预配的 IOPS，每个磁盘的最低保证吞吐量为 4KiB/s，总体基线最低为 1 MBps
 
-### <a name="examples"></a>示例
+#### <a name="examples"></a>示例
 
 以下示例描述了一些方案，这些方案具体说明了限制如何作用于共享超级磁盘。
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>使用群集共享卷的双节点群集
+##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>使用群集共享卷的双节点群集
 
 以下是使用群集共享卷的 2 节点 WSFC 的示例。 使用此配置，两个 VM 都可以同时对磁盘进行写入访问，这将导致 ReadWrite 限制将由两个 VM 共享，且不使用 ReadOnly 限制。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV 双节点超级性能示例":::
 
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>无群集共享卷的双节点群集
+##### <a name="two-node-cluster-without-cluster-share-volumes"></a>无群集共享卷的双节点群集
 
 以下是未使用群集共享卷的 2 节点 WSFC 的示例。 使用此配置时，只有一个 VM 对磁盘具有写入访问权限。 这会导致 ReadWrite 限制专用于主 VM，ReadOnly 限制专用于辅助 VM。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV 双节点无 csv 超级磁盘示例":::
 
-#### <a name="four-node-linux-cluster"></a>四节点 Linux 群集
+##### <a name="four-node-linux-cluster"></a>四节点 Linux 群集
 
 下面是具有一个编写器和三个横向扩展读取器的 4 节点 Linux 群集的示例。 使用此配置时，只有一个 VM 对磁盘具有写入访问权限。 这会导致将 ReadWrite 限制专用于主 VM，而 ReadOnly 限制则由辅助 VM 共享。
 

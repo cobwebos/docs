@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 005932f4a4be9e4a7bae85a6b380c934de5e9874
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84012970"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276526"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -104,7 +105,7 @@ CLE 具有内置函数，可通过函数使用对称或非对称密钥、证书�
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB 数据库加密
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) 由 Microsoft 提供，是全球分布式多模型数据库。 存储在非易失性存储（固态硬盘）中的 Cosmos DB 中的用户数据默认加密。 无法将其打开或关闭。 静态加密是通过许多安全技术实现的，其中包括安全密钥存储系统、加密网络以及加密 API。 加密密钥由 Microsoft 管理，并根据 Microsoft 的内部指南进行轮换。
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) 由 Microsoft 提供，是全球分布式多模型数据库。 存储在非易失性存储（固态硬盘）中的 Cosmos DB 中的用户数据默认加密。 无法将其打开或关闭。 静态加密是使用许多安全技术实现的，其中包括安全的密钥存储系统、加密的网络以及加密 API。 加密密钥由 Microsoft 管理，并根据 Microsoft 的内部指南进行轮换。
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake 中的静态加密
 
@@ -116,9 +117,13 @@ CLE 具有内置函数，可通过函数使用对称或非对称密钥、证书�
 
 Azure 提供了许多机制，用于在迁移数据时保持数据的私密性。
 
-### <a name="tlsssl-encryption-in-azure"></a>Azure 中的 TLS/SSL 加密
+### <a name="data-link-layer-encryption-in-azure"></a>Azure 中的数据链路层加密
 
-Microsoft 使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) 协议，在云服务和客户之间传输数据时提供保护。 Microsoft 的数据中心与连接到 Azure 服务的客户端系统协商建立 TLS 连接。 TLS 提供严格的身份验证，消息隐私性和完整性强（允许检测消息篡改、拦截和伪造），具有良好的互操作性，算法灵活，易于部署和使用。
+每当 Azure 客户流量在数据中心之间移动时（不是由 Microsoft (控制或代表 Microsoft) 使用[IEEE 802.1 AE MAC 安全标准](https://1.ieee802.org/security/802-1ae/)的数据链路层加密方法）， (也称为 MACsec) 将从点到点应用于基础网络硬件。  数据包会在发送之前在设备上加密和解密，从而阻止物理 "中间人" 或侦听/wiretapping 攻击。  由于此技术在网络硬件本身上集成，因此它在网络硬件上提供线路速率加密，而不会增加可度量的链接延迟。  默认情况下，此 MACsec 加密在某个区域内或各区域之间的所有 Azure 流量中处于启用状态，并且在要启用的客户部件上无需执行任何操作。 
+
+### <a name="tls-encryption-in-azure"></a>Azure 中的 TLS 加密
+
+Microsoft 使客户能够使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) 协议在云服务和客户之间传输数据时对数据进行保护。 Microsoft 的数据中心与连接到 Azure 服务的客户端系统协商建立 TLS 连接。 TLS 提供严格的身份验证，消息隐私性和完整性强（允许检测消息篡改、拦截和伪造），具有良好的互操作性，算法灵活，易于部署和使用。
 
 [完美正向保密](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) 通过唯一密钥保护客户的客户端系统与 Microsoft 云服务间的连接。 连接还使用基于 RSA 的 2,048 位加密密钥长度。 此组合使得别人难以拦截和访问传输中的数据。
 
@@ -140,7 +145,7 @@ Microsoft 使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Lay
 
 ## <a name="in-transit-encryption-in-vms"></a>VM 中的传输中加密
 
-根据连接的性质，通过多种方式对在运行 Windows 的 VM 间传输的数据进行加密。
+可以通过多种方式对运行 Windows 的 Vm 的传输中的数据进行加密，具体取决于连接的性质。
 
 ### <a name="rdp-sessions"></a>RDP 会话
 
@@ -150,7 +155,7 @@ Microsoft 使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Lay
 
 ### <a name="secure-access-to-linux-vms-with-ssh"></a>使用 SSH 安全访问 Linux VM
 
-若要进行远程管理，可以使用[安全外壳](../../virtual-machines/linux/ssh-from-windows.md) (SSH) 连接到在 Azure 中运行的 Linux VM。 SSH 是一种加密的连接协议，利用该协议可以通过未受保护的连接进行安全登录。 它是在 Azure 中托管的 Linux VM 的默认连接协议。 使用 SSH 密钥进行身份验证，无需使用密码即可登录。 SSH 使用公钥/私钥对（非对称加密）进行身份验证。
+若要进行远程管理，可以使用[安全外壳](../../virtual-machines/linux/ssh-from-windows.md) (SSH) 连接到在 Azure 中运行的 Linux VM。 SSH 是一种加密的连接协议，利用该协议可以通过未受保护的连接进行安全登录。 它是适用于 Azure 中托管的 Linux VM 的默认连接协议。 使用 SSH 密钥进行身份验证，无需使用密码即可登录。 SSH 使用公钥/私钥对（非对称加密）进行身份验证。
 
 ## <a name="azure-vpn-encryption"></a>Azure VPN 加密
 
@@ -207,4 +212,4 @@ Key Vault 可帮助组织减少对配置、修补以及维护硬件安全模块 
 - [Azure 数据库安全性概述](database-security-overview.md)
 - [Azure 虚拟机安全概述](virtual-machines-overview.md)
 - [静态数据加密](encryption-atrest.md)
-- [数据安全与加密最佳实践](data-encryption-best-practices.md)
+- [数据安全与加密最佳做法](data-encryption-best-practices.md)

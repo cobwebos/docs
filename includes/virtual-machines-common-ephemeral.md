@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d8d712e4eecb930b52a519a1aaddf97c744a24ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 6a400ae798245cc4912724c16840421d5282b3a0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218378"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277855"
 ---
 临时 OS 磁盘在本地虚拟机 (VM) 存储中创建，不保存到远程 Azure 存储。 临时 OS 磁盘适用于无状态工作负荷，在此类工作负荷中，应用程序可以容忍单个 VM 故障，但受 VM 部署时间或单个 VM 实例的映像重置的影响更大。 使用临时 OS 磁盘时，通过 OS 磁盘进行读取/写入的延迟更低，VM 重置映像速度会更快。 
  
@@ -33,7 +33,7 @@ ms.locfileid: "86218378"
 |                             | 持久 OS 磁盘                          | 临时 OS 磁盘                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | **OS 磁盘的大小限制**      | 2 TiB                                                                                        | 与 VM 大小相对应的缓存大小或 2TiB，具体取决于哪一个更小。 有关**GiB 中的缓存大小**，请[参阅 DS](../articles/virtual-machines/linux/sizes-general.md)、 [ES](../articles/virtual-machines/linux/sizes-memory.md)、 [M](../articles/virtual-machines/linux/sizes-memory.md)、 [FS](../articles/virtual-machines/linux/sizes-compute.md)和[GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
-| **支持的 VM 大小**          | 全部                                                                                          | DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
+| **支持的 VM 大小**          | 全部                                                                                          | 支持高级存储的 VM 大小，如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、LSv2、M                                               |
 | **磁盘类型支持**           | 托管和非托管 OS 磁盘                                                                | 仅托管 OS 磁盘                                                               |
 | **区域支持**              | 所有区域                                                                                  | 所有区域                              |
 | **数据持久性**            | 写入 OS 磁盘的 OS 磁盘数据存储在 Azure 存储中                                  | 写入 OS 磁盘的数据存储到本地 VM 存储，不保存到 Azure 存储。 |

@@ -7,11 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325127"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261378"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
@@ -23,7 +24,7 @@ ms.locfileid: "84325127"
 
 * 接收来自其他逻辑应用的 HTTPS 调用并对其作出响应。
 
-请求触发器支持 [Azure Active Directory Open Authorization](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth)，用于授权对逻辑应用的入站调用。 有关如何启用此身份验证的详细信息，请参阅[保护 Azure 逻辑应用中的访问和数据安全 - 启用 Azure AD OAuth 身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)。
+请求触发器支持 [Azure Active Directory Open Authorization](/azure/active-directory/develop/) (Azure AD OAuth)，用于授权对逻辑应用的入站调用。 有关如何启用此身份验证的详细信息，请参阅[保护 Azure 逻辑应用中的访问和数据安全 - 启用 Azure AD OAuth 身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,7 +36,7 @@ ms.locfileid: "84325127"
 
 ## <a name="transport-layer-security-tls"></a>传输层安全 (TLS) (Transport Layer Security) (TLS)
 
-* 入站调用*仅*支持传输层安全性（TLS）1.2。 如果出现 TLS 握手错误，请确保使用 TLS 1.2。 有关详细信息，请参阅[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。 出站调用支持基于目标终结点功能的 TLS 1.0、1.1 和1.2。
+* 入站调用*仅*支持 (TLS) 1.2 的传输层安全性。 如果出现 TLS 握手错误，请确保使用 TLS 1.2。 有关详细信息，请参阅[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。 出站调用支持基于目标终结点功能的 TLS 1.0、1.1 和1.2。
 
 * 入站呼叫支持以下密码套件：
 
@@ -74,7 +75,7 @@ ms.locfileid: "84325127"
    | 属性名称 | JSON 属性名称 | 必须 | 描述 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {无} | 是 | 保存逻辑应用后生成的终结点 URL，该 URL 用于调用逻辑应用 |
-   | **请求正文 JSON 架构** | `schema` | 否 | JSON 架构，用于描述传入请求正文中的属性和值 |
+   | **请求正文 JSON 架构** | `schema` | 不适合 | JSON 架构，用于描述传入请求正文中的属性和值 |
    |||||
 
 1. 在“请求正文 JSON 架构”框中，可以选择输入描述传入请求中的正文的 JSON 架构，例如：
@@ -156,7 +157,7 @@ ms.locfileid: "84325127"
          "account": {
             "name": "Contoso",
             "ID": "12345",
-            "address": { 
+            "address": {
                "number": "1234",
                "street": "Anywhere Street",
                "city": "AnyTown",
@@ -170,17 +171,17 @@ ms.locfileid: "84325127"
 
 1. 若要检查入站调用是否具有与指定架构匹配的请求正文，请执行以下步骤：
 
-   1. 在请求触发器的标题栏中，选择省略号按钮（**...**）。
-   
+   1. 在请求触发器的标题栏中，选择省略号**按钮 (") "。**
+
    1. 在触发器的 "设置" 中，启用 "**架构验证**"，然后选择 "**完成**"。
-   
+
       如果入站调用的请求正文与架构不匹配，则触发器将返回 `HTTP 400 Bad Request` 错误。
 
 1. 要指定其他属性，请打开“添加新参数”列表，然后选择要添加的参数。
 
    | 属性名称 | JSON 属性名称 | 必须 | 描述 |
    |---------------|--------------------|----------|-------------|
-   | **方法** | `method` | 否 | 一个方法，传入请求必须使用它才能调用逻辑应用 |
+   | **方法** | `method` | 不适合 | 一个方法，传入请求必须使用它才能调用逻辑应用 |
    | **Relative path** | `relativePath` | 否 | 逻辑应用的终结点 URL 可以接受的参数的相对路径 |
    |||||
 
@@ -205,7 +206,7 @@ ms.locfileid: "84325127"
    ![用于触发逻辑应用的 URL](./media/connectors-native-reqres/generated-url.png)
 
    > [!NOTE]
-   > 如果要在 **#** 调用请求触发器时在 URI 中包含哈希或井号（），请改用此编码版本：`%25%23`
+   > 如果要在 **#** 调用请求触发器时，在 URI 中包含哈希或井符号 () ，请改用此编码版本：`%25%23`
 
 1. 要触发逻辑应用，请向生成的 URL 发送一个 HTTP POST。
 
@@ -258,7 +259,7 @@ ms.locfileid: "84325127"
 
    为了简单起见，此示例中折叠了请求触发器。
 
-1. 添加响应消息所需的任何值。 
+1. 添加响应消息所需的任何值。
 
    在某些字段中，单击其框内部分将打开动态内容列表。 然后，可以选择代表工作流的先前步骤中可用输出的令牌。 前面示例中指定的架构的属性现在显示在动态内容列表中。
 
@@ -270,18 +271,18 @@ ms.locfileid: "84325127"
 
    ![标头 - 切换到文本视图](./media/connectors-native-reqres/switch-to-text-view.png)
 
-   下面是有关可以在响应操作中设置的属性的详细信息。 
+   下面是有关可以在响应操作中设置的属性的详细信息。
 
    | 属性名称 | JSON 属性名称 | 必须 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
-   | **标头** | `headers` | 否 | 一个 JSON 对象，用于描述要包含在响应中的一个或多个标头 |
+   | **标头** | `headers` | 不适合 | 一个 JSON 对象，用于描述要包含在响应中的一个或多个标头 |
    | **正文** | `body` | 否 | 响应正文 |
    |||||
 
 1. 要指定其他属性（例如响应正文的 JSON 架构），请打开“添加新参数”列表，然后选择要添加的参数。
 
-1. 完成后，保存逻辑应用。 在设计器工具栏上，选择“保存”。 
+1. 完成后，保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

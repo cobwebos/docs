@@ -3,11 +3,12 @@ title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 获取有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300920"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275710"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -80,7 +81,7 @@ AKS 基于多个 Azure 基础结构资源构建（包括虚拟机规模集、虚
 
 修改或删除节点资源组中 Azure 创建的标记或其他资源属性可能会导致预期之外的结果，例如缩放和升级错误。 使用 AKS 可以创建和修改最终用户创建的自定义标记。 有时，你可能想要创建或修改自定义标记，例如，在指定业务部门或成本中心时。 这可以通过使用托管资源组上的作用域创建 Azure 策略来实现。
 
-但是，在 AKS 群集中的节点资源组下修改资源上的任何**Azure 创建的标记**是不受支持的操作，该操作会中断服务级别目标（SLO）。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
+但是，在 AKS 群集中的节点资源组下修改资源上的任何**Azure 创建的标记**是不受支持的操作，该操作会中断服务级别目标 (SLO) 。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支持哪些 Kubernetes 许可控制器？ 是否可以添加或删除许可控制器？
 
@@ -136,7 +137,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>是否可以在 Azure 租户之间移动/迁移群集？
 
-可以使用 `az aks update-credentials` 命令在 Azure 租户之间移动 AKS 群集。 按照[选择更新或创建服务主体](https://docs.microsoft.com/azure/aks/update-credentials)中的说明进行操作，然后[使用新凭据](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials)更新 AKS 群集。
+可以使用 `az aks update-credentials` 命令在 Azure 租户之间移动 AKS 群集。 按照[选择更新或创建服务主体](./update-credentials.md)中的说明进行操作，然后[使用新凭据](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials)更新 AKS 群集。
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>是否可以跨订阅移动/迁移群集？
 
@@ -144,7 +145,11 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将 AKS 群集从当前 Azure 订阅移动到另一个订阅？ 
 
-不支持跨 Azure 订阅移动 AKS 群集及其关联的资源。
+不支持在 Azure 订阅之间移动 AKS 群集及其关联的资源。
+
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>是否可以将我的 AKS 群集或 AKS 基础结构资源移到其他资源组，或将它们重命名？
+
+不支持移动或重命名 AKS 群集及其关联的资源。
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>为什么删除群集需要如此长的时间？ 
 
@@ -164,11 +169,11 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>升级后，我的 pod 总是崩溃，而且就绪情况探测失败，我该如何解决？
 
-请确认服务主体是否已过期。  请参阅以下内容：[AKS 服务主体](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和 [AKS 更新凭据](https://docs.microsoft.com/azure/aks/update-credentials)
+请确认服务主体是否已过期。  请参阅以下内容：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>我的群集之前运行正常，但现在突然无法预配 LoadBalancer、装载 PVC 等，该怎么解决？ 
 
-请确认服务主体是否已过期。  请参阅以下内容：[AKS 服务主体](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和 [AKS 更新凭据](https://docs.microsoft.com/azure/aks/update-credentials)
+请确认服务主体是否已过期。  请参阅以下内容：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>是否可以使用虚拟机规模集 API 手动进行缩放？
 
@@ -189,9 +194,9 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
-[aks-cluster-autoscale]: ./autoscaler.md
+[aks-cluster-autoscale]: ./cluster-autoscaler.md
 [aks-advanced-networking]: ./configure-azure-cni.md
-[aks-rbac-aad]: ./azure-ad-integration.md
+[aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create

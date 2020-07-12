@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f472865c131b873f1ae0a21fa9ec55865fb2b29
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85805339"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277763"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -22,7 +22,11 @@ ms.locfileid: "85805339"
 az login
 az account set --subscription <your-Azure-subscription-ID>
 ```
-
+> [!TIP]
+> 你还可以使用订阅名称来设置订阅。 使用此命令： 
+> ```azurecli
+> az account set --subscription "your-Azure-subscription-name"
+> 
 如果这是你首次将此订阅与 Azure 数字孪生一起使用，请运行该命令以向 Azure 数字孪生命名空间进行注册。 （如果不确定，可以再次运行该命令，即使过去某个时候操作过也是如此。）
 
 ```azurecli
@@ -39,7 +43,7 @@ az extension list
 
 在输出中，查找 `"name"` 每个列表条目的字段，以查看扩展的名称。
 
-使用输出确定要为扩展安装程序运行的以下哪个命令（可以运行多个）。
+使用输出确定要为扩展安装程序运行的以下哪个命令 (可以运行多个) 。
 * 如果列表包含 `azure-iot` ：你已有扩展。 运行此命令以确保具有最新更新：
 
    ```azurecli-interactive

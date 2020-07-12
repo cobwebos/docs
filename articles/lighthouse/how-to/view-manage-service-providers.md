@@ -1,14 +1,14 @@
 ---
 title: 查看和管理服务提供商
 description: 客户可以使用 Azure 门户中的“服务提供商”页面来查看有关服务提供商、服务提供商产品/服务和委派资源的信息。
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 56ba5b8c88cd4653c9d41f7f3fcc6219cc376256
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111620"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273772"
 ---
 # <a name="view-and-manage-service-providers"></a>查看和管理服务提供商
 
@@ -17,9 +17,9 @@ ms.locfileid: "86111620"
 要访问 Azure 门户中的“服务提供者”页面****，客户可以选择“所有服务”****，然后搜索“服务提供商”并选择它。**** 他们还可以通过在 Azure 门户顶部附近的搜索框中输入 "服务提供商" 或 "Azure Lighthouse" 来找到它。
 
 > [!NOTE]
-> 若要查看 "**服务提供程序**" 页，客户租户中的用户必须具有 "读取者"[内置角色](../../role-based-access-control/built-in-roles.md#reader)（或其他包含读者访问权限的内置角色）。
+> 若要查看 "**服务提供程序**" 页，客户租户中的用户必须具有[读取器内置角色](../../role-based-access-control/built-in-roles.md#reader) (或其他包含读者访问) 的内置角色。
 >
-> 若要添加产品/服务、委托资源和删除提供程序，用户必须具有订阅的[所有者内置角色](../../role-based-access-control/built-in-roles.md#owner)。
+> 若要添加或更新产品/服务、委托资源和删除提供程序，用户必须具有订阅的[所有者内置角色](../../role-based-access-control/built-in-roles.md#owner)。
 
 请记住，"**服务提供商**" 页仅显示有关可通过 Azure Lighthouse 访问客户的订阅或资源组的服务提供商的信息。 如果客户与不使用 Azure Lighthouse 访问客户资源的其他服务提供商合作，此处将不会显示有关这些服务提供商的信息。
 
@@ -73,7 +73,7 @@ ms.locfileid: "86111620"
 
 客户可能需要了解已委派给 Azure Lighthouse 的订阅和/或资源组。 对于具有大量订阅的客户，或者拥有执行管理任务的多个用户，此操作特别有用。
 
-我们提供了一个[Azure 策略内置策略定义](../../governance/policy/samples/built-in-policies.md#lighthouse)，用于审核作用域到管理租户的委派。 你可以将此策略分配到包含你要审核的所有订阅的管理组。 检查与此策略的符合性时，任何委派的订阅和/或资源组（该策略所分配到的管理组内）将显示为不符合要求的状态。 然后，可以查看结果，并确认没有任何意外委托。
+我们提供了一个[Azure 策略内置策略定义](../../governance/policy/samples/built-in-policies.md#lighthouse)，用于审核作用域到管理租户的委派。 你可以将此策略分配到包含你要审核的所有订阅的管理组。 检查此策略的符合性时，将在策略分配到的管理组中 (任何委派的订阅和/或资源组，) 将显示为不符合要求的状态。 然后，可以查看结果，并确认没有任何意外委托。
 
 有关如何分配策略和查看符合性状态结果的详细信息，请参阅[快速入门：创建策略分配](../../governance/policy/assign-policy-portal.md)。
 

@@ -4,18 +4,19 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 GetCurrentTimestamp�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 07/09/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b816c63da56025fe6e9cbaece2cde5dcd01585d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c35f83ce7a9a478f706e9ed560d884d9bf5e508
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71351006"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261288"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
- 返回自 1970 年 1 月 1 日星期四 00:00:00 开始消逝的毫秒数。 
+
+ 返回自 1970 年 1 月 1 日星期四 00:00:00 开始消逝的毫秒数。
   
 ## <a name="syntax"></a>语法
   

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 89450e5518d854fbc31b43324ecb05f47e1ab5ac
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.date: 07/10/2020
+ms.openlocfilehash: fc41b76fa14d464b2e4ddcca7e98997011a51cd4
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970988"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276628"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>监视和优化 Azure Database for PostgreSQL（单一服务器）
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，帮助用户深入了解服务器的行为。
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
-|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。 （不适用于基本层服务器。）|
+|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。  (不适用于基本层服务器。 ) |
 |storage_percent|存储百分比|百分比|所用存储占服务器最大存储的百分比。|
 |storage_used|已用的存储量|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
 |storage_limit|存储限制|字节|此服务器的最大存储。|
@@ -34,7 +34,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |serverlog_storage_usage|服务器日志已用的存储量|字节|使用的服务器日志存储量。|
 |serverlog_storage_limit|服务器存储空间上限|字节|此服务器的最大服务器日志存储。|
 |active_connections|活动连接数|计数|服务器的活动连接数。|
-|connections_failed|失败的连接数|计数|服务器的失败连接数。|
+|connections_failed|失败的连接数|计数|已建立失败的连接数。|
 |network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
 |backup_storage_used|使用的备份存储|字节|已使用的备份存储量。|

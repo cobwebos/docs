@@ -15,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811426"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273466"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客户数据保护   
-默认情况下，拒绝 Microsoft 运营和支持人员访问客户数据。 授予对客户数据的访问权限后，需要经过领导批准，并仔细管理和记录访问活动。 访问控制要求由以下 Azure 安全策略制定：
+默认情况下，拒绝 Microsoft 运营和支持人员访问客户数据。 当授予对与支持案例相关的数据的访问权限时，只会使用基于我们的符合性和隐私策略审核并审查的策略，使用实时 (JIT) 模型来授予它。  访问控制要求由以下 Azure 安全策略制定：
 
 - 默认情况下无权访问客户数据。
 - 客户虚拟机 (VM) 上没有用户帐户或管理员帐户。
@@ -39,12 +40,9 @@ Azure 按默认或者以客户选项的形式为客户提供可靠的数据安�
 
 **静态数据保护**：客户负责确保按标准加密 Azure 中存储的数据。 Azure 提供各种加密功能，便于客户选择满足自己需求的最佳解决方案。 Azure Key Vault 可帮助客户轻松保持对密钥的控制，以便云应用程序和服务用于加密数据。 客户可以使用 Azure 磁盘加密来加密 VM。 Azure 存储服务加密可以加密客户存储帐户中的所有数据。
 
-**传输中数据保护**：客户可为自己 VM 与最终用户之间的流量启用加密。 Azure 会保护传入或传出组件的数据，以及在内部传输的数据，例如两个虚拟网络之间传输的数据。 Azure 根据 CESG/NCSC 的建议，结合 2048 位 RSA/SHA256 加密密钥使用行业标准传输层安全性 (TLS) 1.2 或更高版本的协议来加密以下各方之间的通信：
+**传输中数据保护**： Microsoft 提供了许多选项，这些选项可供客户在 Azure 网络内部和外部通过 Internet 向最终用户提供数据传输的安全。  其中包括通过虚拟专用网络进行通信 (利用 IPsec/IKE 加密) 、传输层安全性 (TLS) 1.2 或更高版本 (通过 Azure 组件（例如应用程序网关或 Azure 前门) ），直接在 Azure 虚拟机上的协议 (例如 Windows IPsec 或 SMB) 等。 
 
-- 客户与云。
-- Azure 系统和数据中心之间的内部通信。
-
-**加密**：作为确保数据保密性和完整性的最佳做法，客户可以部署存储中数据加密和传输中数据加密。 客户可以直截了当地将其 Azure 云服务配置为使用 TLS 保护来自 Internet 的通信，甚至是 Azure 托管 VM 之间的通信。
+此外，"默认情况下使用 MACsec 加密" (在数据链路层上使用 IEEE standard) 为 Azure 数据中心之间的所有 Azure 流量启用此功能，以确保客户数据的机密性和完整性。 
 
 **数据冗余**：出现网络攻击或者数据中心遭到物理损坏时，Microsoft 可帮助确保数据受到保护。 客户可以选择：
 

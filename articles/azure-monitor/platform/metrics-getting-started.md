@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696977"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276424"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure 指标资源管理器入门
 
@@ -38,7 +39,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
     > ![选择指标](./media/metrics-getting-started/metric-picker.png)
 
-4. （可选）可以更改指标聚合。 例如，你可能希望图表显示指标的最小值、最大值或平均值。
+4. 还可以[更改指标聚合](metrics-charts.md#changing-aggregation)。 例如，你可能希望图表显示指标的最小值、最大值或平均值。
 
 > [!NOTE]
 > 如果要查看在同一图表中绘制的多个指标，请使用“添加指标”按钮，并重复这些步骤  。 若要在一个视图中添加多个图表，请选择顶部的“添加图表”按钮。 

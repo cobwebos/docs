@@ -5,18 +5,20 @@ author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 5/6/2019
-ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/09/2020
+ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116346"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274503"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中优化 autovacuum
+
 本文介绍如何在 Azure Database for PostgreSQL 服务器中有效优化 autovacuum。
 
 ## <a name="overview-of-autovacuum"></a>Autovacuum 概述
+
 PostgreSQL 使用多版本并发控制 (MVCC) 实现更高的数据库并发性。 每次更新都会导致插入和删除，而每次删除都会导致要删除的行被软标记。 软标记用于标识随后要清除的死元组。 为执行这些任务，PostgreSQL 将运行一个清扫作业。
 
 清扫作业可以手动触发或自动触发。 在数据库进行大量更新或删除操作时，死元组会更多。 数据库空闲时，死元组较少。 数据库负载过大时，需要更频繁地运行清扫作业，因此手动运行清扫作业会有所不便  。
@@ -36,6 +38,7 @@ PostgreSQL 使用多版本并发控制 (MVCC) 实现更高的数据库并发性�
 - I/O 增加。
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>使用 autovacuum 查询监视膨胀情况
+
 以下示例查询的目的是确定名为 XYZ 的表中的非活动元组和活动元组的数量：
 
 ```sql
@@ -43,7 +46,9 @@ SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRa
 ```
 
 ## <a name="autovacuum-configurations"></a>Autovacuum 配置
+
 控制 autovacuum 的配置参数基于两个关键问题的答案：
+
 - 何时应该启动它？
 - 启动它以后应清除多少内容？
 
@@ -55,10 +60,10 @@ autovacuum_vacuum_threshold|指定在任一表中触发清扫操作所需的已�
 autovacuum_vacuum_scale_factor|指定在决定是否触发清扫操作时要添加到 autovacuum_vacuum_threshold 的表大小的占比。 默认值为 0.2，即表大小的 20%。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。 若要替代单个表的设置，请更改表存储参数。|0.2
 autovacuum_vacuum_cost_limit|指定自动清扫操作中使用的成本限制值。 如果指定为 -1（默认值），则会使用常规的 vacuum_cost_limit 值。 如果存在多个辅助角色，则该值会按比例分配给这些运行 autovacuum 的辅助角色。 每个辅助角色的限制的总和不超过此变量的值。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。 若要替代单个表的设置，请更改表存储参数。|-1
 autovacuum_vacuum_cost_delay|指定自动清扫操作中使用的成本延迟值。 如果指定为 -1，则会使用常规的 vacuum_cost_delay 值。 默认值为 20 毫秒。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。 若要替代单个表的设置，请更改表存储参数。|20 ms
-autovacuum_nap_time|指定任一给定数据库上运行的 autovacuum 之间的最小延迟。 守护程序会在每一轮中检查数据库并根据需要为数据库中的表发出清扫和分析命令。 延迟以秒为单位，默认值为一分钟 (1 min)。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。|15 s
-autovacuum_max_workers|指定在任何时候可能运行的 autovacuum 进程（不是 autovacuum 启动器）的最大数量。 默认值为三个。 只能在服务器启动时设置此参数。|3
+autovacuum_naptime | 指定任一给定数据库上运行的 autovacuum 之间的最小延迟。 守护程序会在每一轮中检查数据库并根据需要为数据库中的表发出清扫和分析命令。 延迟以秒为单位。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。| 15 s
+autovacuum_max_workers | 指定在任何时候可能运行的 autovacuum 进程（不是 autovacuum 启动器）的最大数量。 默认值为三个。 只能在服务器启动时设置此参数。|3
 
-若要替代单个表的设置，请更改表存储参数。 
+若要替代单个表的设置，请更改表存储参数。
 
 ## <a name="autovacuum-cost"></a>Autovacuum 成本
 
@@ -82,12 +87,14 @@ autovacuum_max_workers|指定在任何时候可能运行的 autovacuum 进程（
 使用 PostgreSQL，可以在表级别或实例级别设置这些参数。 目前，只能在 Azure Database for PostgreSQL 中的表级别设置这些参数。
 
 ## <a name="estimate-the-cost-of-autovacuum"></a>预估 autovacuum 的成本
+
 运行 autovacuum 的成本比较高昂，有一些参数可以控制清扫操作的运行时。 以下参数有助于预估运行清扫作业的成本：
+
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-清扫进程读取物理页面并检查死元组。 shared_buffers 中的每个页面产生的成本为 1 (vacuum_cost_page_hit)。 至于所有其他页面，如果存在死元组，则产生的成本为 20 (vacuum_cost_page_dirty)，如果不存在死元组，则成本为 10 (vacuum_cost_page_miss)。 在进程超过 autovacuum_vacuum_cost_limit 时会停止清扫操作。 
+清扫进程读取物理页面并检查死元组。 shared_buffers 中的每个页面产生的成本为 1 (vacuum_cost_page_hit)。 至于所有其他页面，如果存在死元组，则产生的成本为 20 (vacuum_cost_page_dirty)，如果不存在死元组，则成本为 10 (vacuum_cost_page_miss)。 在进程超过 autovacuum_vacuum_cost_limit 时会停止清扫操作。
 
 达到此限制后，进程会进入睡眠状态，在经过 autovacuum_vacuum_cost_delay 参数所指定的持续时间后，会再次启动。 如果未达到该限制，会在经过 autovacuum_nap_time 所指定的时间后启动 autovacuum。
 

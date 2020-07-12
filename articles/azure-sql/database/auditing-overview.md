@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 26569606ce2aeb9d645f82e474b728cc4044ca93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250938"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276305"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>针对 Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,9 +24,9 @@ ms.locfileid: "85250938"
 
 审核还可：
 
-- 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
+- 帮助你保持法规遵从性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
-- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可在其中找到 azure SQL 符合性认证的最新列表。
+- 实现并促进遵从符合性标准，但不能保证符合性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可在其中找到 azure SQL 符合性认证的最新列表。
 
 > [!NOTE]
 > 有关 Azure SQL 托管实例审核的信息，请参阅以下文章： [SQL 托管实例审核入门](../managed-instance/auditing-configure.md)。
@@ -50,7 +50,7 @@ ms.locfileid: "85250938"
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>定义服务器级和数据库级审核策略
 
-可以为特定数据库定义审核策略，也可以在 Azure 中定义为默认[服务器](logical-servers.md)策略（托管 SQL 数据库或 azure Synapse）：
+可以为特定数据库定义审核策略，也可以为 Azure (中托管 SQL 数据库或 Azure Synapse) 的默认[服务器](logical-servers.md)策略定义审核策略：
 
 - 服务器策略适用于服务器上的所有现有数据库和新建数据库。
 
@@ -116,6 +116,8 @@ Azure SQL Database 和 Azure Synapse Audit 会在审核记录中存储字符字�
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
+有关 Azure Monitor 日志工作区的更多详细信息，请参阅[设计 Azure Monitor 日志部署](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
+   
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>对事件中心目标的审核
 
 > [!WARNING]
