@@ -4,11 +4,12 @@ description: Service Fabric 中云应用程序的类别概述。 介绍使用有
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
-ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76024739"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248163"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 应用程序方案
 
@@ -16,7 +17,7 @@ Azure Service Fabric 提供了一个可靠而灵活的平台，可用于编写�
 
 Service Fabric 的独特体系结构使你可以在应用程序中执行近实时数据分析、内存中计算、并行事务和事件处理。 可根据不断变化的资源要求轻松缩小或扩展应用程序。
 
-有关生成应用程序的设计指南，请参阅[Azure Service Fabric 上的微服务体系结构](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric)和[使用 Service Fabric 进行应用程序设计的最佳实践](service-fabric-best-practices-applications.md)。
+有关生成应用程序的设计指南，请参阅[Azure Service Fabric 上的微服务体系结构](/azure/architecture/reference-architectures/microservices/service-fabric)和[使用 Service Fabric 进行应用程序设计的最佳实践](service-fabric-best-practices-applications.md)。
 
 对于以下类型的应用程序，请考虑使用 Service Fabric 平台：
 
@@ -24,7 +25,7 @@ Service Fabric 的独特体系结构使你可以在应用程序中执行近实�
 
     使用 Service Fabric 构建 IoT 服务的客户包括[Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure)、 [PCL 构造](https://customers.microsoft.com/story/pcl-construction-professional-services-azure)、 [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure)、[宝马](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/)、 [Schneider 电气](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)和[网格系统](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions)。
 
-* **游戏和基于会话的交互式应用程序**：如果应用程序需要低延迟读取和写入（例如在线游戏或即时消息），Service Fabric 非常有用。 通过 Service Fabric，可生成这些交互式有状态应用程序，而无需创建单独的存储或缓存。 有关[在游戏服务中使用 Service Fabric](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf) 的设计指导，请访问 [Azure 游戏解决方案](https://azure.microsoft.com/solutions/gaming/)。
+* **游戏和基于会话的交互式应用程序**：如果应用程序需要低延迟读取和写入（例如在线游戏或即时消息），Service Fabric 非常有用。 通过 Service Fabric，可生成这些交互式有状态应用程序，而无需创建单独的存储或缓存。 有关[在游戏服务中使用 Service Fabric](/gaming/azure/reference-architectures/multiplayer-synchronous-sf) 的设计指导，请访问 [Azure 游戏解决方案](https://azure.microsoft.com/solutions/gaming/)。
 
     已构建游戏服务的客户包括 [Next Games](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) 和 [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/)。 已构建交互式会话的客户包括 [Honeywell with Hololens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens)。
 
@@ -67,7 +68,7 @@ Service Fabric 中的有状态服务可让所有类型的应用程序（而不�
 ## <a name="next-steps"></a>后续步骤
 
 * 开始生成无状态和有状态服务 Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md)和[Reliable Actors](service-fabric-reliable-actors-get-started.md)编程模型。
-* 请访问 Azure 体系结构中心，获取有关在[Azure 上构建微服务](https://docs.microsoft.com/azure/architecture/microservices/)的指导。
+* 请访问 Azure 体系结构中心，获取有关在[Azure 上构建微服务](/azure/architecture/microservices/)的指导。
 * 有关应用程序设计指导，请参阅 [Azure Service Fabric 应用程序和群集最佳做法](service-fabric-best-practices-overview.md)。
 
 * 另请参阅：

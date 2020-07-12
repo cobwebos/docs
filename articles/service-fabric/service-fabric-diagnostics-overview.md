@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712218"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247517"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric 的监视和诊断
 
@@ -92,4 +92,4 @@ Service Fabric 还为 Reliable Services 和 Reliable Actors 编程模型提供�
 * 了解如何设置用于监视容器的 Azure Monitor 日志- [Azure Service Fabric 中 Windows 容器的监视和诊断](service-fabric-tutorial-monitoring-wincontainers.md)。
 * 在[诊断常见方案](service-fabric-diagnostics-common-scenarios.md)中查看 Service Fabric 的示例诊断问题和解决方案
 * 在 [Service Fabric 诊断合作伙伴](service-fabric-diagnostics-partners.md)中查看与 Service Fabric 集成的其他诊断产品
-* 了解适用于 Azure 资源的一般性监视建议 - [最佳做法 - 监视和诊断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。 
+* 了解适用于 Azure 资源的一般性监视建议 - [最佳做法 - 监视和诊断](/azure/architecture/best-practices/monitoring)。 

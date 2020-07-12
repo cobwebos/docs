@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701194"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247415"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 > [!div class="op_single_selector"]
@@ -21,7 +22,7 @@ ms.locfileid: "84701194"
 监视、检测、诊断和故障排除允许服务继续运行，同时对用户体验造成最小中断。 虽然监视和诊断在实际部署的生产环境中相当重要，但是效率将取决于在服务开发过程中采用类似的模型，以便在移到实际安装时能确保其正常工作。 Service Fabric 使服务开发人员能够轻松实现可以跨单个计算机本地开发安装和实际生产群集安装无缝工作的诊断。
 
 ## <a name="event-tracing-for-windows"></a>Windows 事件跟踪
-[Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 是推荐的用于跟踪 Service Fabric 中的消息的技术。 使用 ETW 的一些好处包括：
+[Windows 事件跟踪](/windows/win32/etw/event-tracing-portal) (ETW) 是推荐的用于跟踪 Service Fabric 中的消息的技术。 使用 ETW 的一些好处包括：
 
 * **ETW 速度很快。** 它是作为一种对代码执行时间影响最小的跟踪技术而构建的。
 * **ETW 跟踪可以跨本地开发环境和实际群集安装无缝工作。** 这意味着准备好将代码部署到实际群集时，无需重新编写跟踪代码。
@@ -55,6 +56,5 @@ Service Fabric Visual Studio 项目模板包含示例代码。 该代码演示�
 ## <a name="next-steps"></a>后续步骤
 添加到上述应用程序用于进行本地诊断的相同跟踪代码将与工具一起工作，在 Azure 群集上运行应用程序时，可以使用这些工具查看这些事件。 请查看以下文章，其中介绍了不同的工具选项，以及如何设置这些选项。
 
-* [如何使用 Azure 诊断收集日志](service-fabric-diagnostics-how-to-setup-wad.md)
+* [如何使用 Azure 诊断收集日志](./service-fabric-diagnostics-event-aggregation-wad.md)
 * [使用 EventFlow 进行事件聚合和收集](service-fabric-diagnostics-event-aggregation-eventflow.md)
-

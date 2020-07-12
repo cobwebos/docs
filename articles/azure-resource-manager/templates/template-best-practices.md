@@ -2,13 +2,13 @@
 title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/10/2020
+ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058055"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248911"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳实践
 
@@ -160,7 +160,7 @@ ms.locfileid: "86058055"
 
 决定要设置的[依赖项](define-resource-dependency.md)时，请使用以下准则：
 
-* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项****。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。
+* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项****。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。 有关设置隐式依赖项的示例，请参阅[隐式依赖项](define-resource-dependency.md#reference-and-list-functions)。
 
 * 将子资源设置为依赖于其父资源。
 
@@ -189,7 +189,7 @@ ms.locfileid: "86058055"
    ]
    ```
 
-* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码****。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
+* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码   。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
    
    ```json
    "diagnosticsProfile": {
@@ -200,7 +200,7 @@ ms.locfileid: "86058055"
    }
    ```
    
-   如果存储帐户部署在正在创建的同一模板中，并且存储帐户的名称未与模板中的其他资源共享，则在引用资源时不需要指定提供程序命名空间或 apiVersion。 下面的示例显示了简化的语法：
+   如果存储帐户部署在正在创建的同一模板中，并且存储帐户的名称未与模板中的其他资源共享，则在引用资源时不需要指定提供程序命名空间或 apiVersion。 以下示例显示简化的语法：
    
    ```json
    "diagnosticsProfile": {
@@ -227,7 +227,7 @@ ms.locfileid: "86058055"
      有关连接到虚拟机的详细信息，请参阅：
    
    * [在 Azure 中运行用于 N 层体系结构的 VM](../../guidance/guidance-compute-n-tier-vm.md)
-   * [在 Azure Resource Manager 中设置对 VM 的 WinRM 访问](../../virtual-machines/windows/winrm.md)
+   * [在 Azure 资源管理器中设置对 VM 的 WinRM 访问](../../virtual-machines/windows/winrm.md)
    * [使用 Azure 门户实现对 VM 的外部访问](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [使用 PowerShell 实现对 VM 的外部访问](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [使用 Azure CLI 实现对 Linux VM 的外部访问](../../virtual-machines/linux/nsg-quickstart.md)

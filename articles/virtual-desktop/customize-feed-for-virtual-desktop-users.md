@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99c63fd04a40b1a4e591f5ad42d8f776e8e5b67c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c2ad99a59e548ff7793455dac21748dd057c5fc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208495"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248690"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户自定义源
 
@@ -124,7 +124,7 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 自定义用户的源后，可以登录到 Windows 虚拟桌面客户端进行测试。为此，请继续阅读连接到 Windows 虚拟桌面的操作指南：
 
- * [与 Windows 10 或 Windows 7 连接](connect-windows-7-and-10.md)
+ * [与 Windows 10 或 Windows 7 连接](connect-windows-7-10.md)
  * [使用 Web 客户端进行连接](connect-web.md)
  * [使用 Android 客户端进行连接](connect-android.md)
  * [使用 iOS 客户端进行连接](connect-ios.md)

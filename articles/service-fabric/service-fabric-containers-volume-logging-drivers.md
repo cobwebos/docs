@@ -3,30 +3,31 @@ title: 适用于 Service Fabric 的 Azure 文件存储卷驱动程序
 description: Service Fabric 支持使用 Azure 文件备份容器中的卷。
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5125dbd88a2fe236196c427244f1311d9b73b9f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75750037"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247687"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>适用于 Service Fabric 的 Azure 文件存储卷驱动程序
 
-Azure 文件存储卷驱动程序是一个 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)，可为 Docker 容器提供基于 [Azure 文件存储](/azure/storage/files/storage-files-introduction)的卷。 它将打包为 Service Fabric 应用程序，可以部署到 Service Fabric 群集以为群集内的其他 Service Fabric 容器应用程序提供卷。
+Azure 文件存储卷驱动程序是一个 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)，可为 Docker 容器提供基于 [Azure 文件存储](../storage/files/storage-files-introduction.md)的卷。 它将打包为 Service Fabric 应用程序，可以部署到 Service Fabric 群集以为群集内的其他 Service Fabric 容器应用程序提供卷。
 
 > [!NOTE]
 > Azure 文件存储卷插件版本6.5.661.9590 已正式发布。
 >
 
 ## <a name="prerequisites"></a>必备条件
-* Windows 版 Azure 文件卷插件仅适用于 [Windows Server 1709 版](/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 1709 版](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709)或更高版本的操作系统。
+* Windows 版 Azure 文件卷插件仅适用于 [Windows Server 1709 版](/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 1709 版](/windows/whats-new/whats-new-windows-10-version-1709)或更高版本的操作系统。
 
 * Linux 版 Azure 文件卷插件适用于 Service Fabric 支持的所有操作系统版本。
 
 * Azure 文件卷插件仅适用于 Service Fabric 6.2 和更高版本。
 
-* 按照 [Azure 文件文档](/azure/storage/files/storage-how-to-create-file-share)中的说明，为要用作卷的 Service Fabric 容器应用程序创建文件共享。
+* 按照 [Azure 文件文档](../storage/files/storage-how-to-create-file-share.md)中的说明，为要用作卷的 Service Fabric 容器应用程序创建文件共享。
 
-* 需要[具有 Service Fabric 模块的 Powershell](/azure/service-fabric/service-fabric-get-started) 或安装 [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)。
+* 需要[具有 Service Fabric 模块的 Powershell](./service-fabric-get-started.md) 或安装 [SFCTL](./service-fabric-cli.md)。
 
 * 如果使用的是 Hyper-V 容器，则需要在 Azure 资源管理器模板（Azure 群集）或 ClusterConfig.json（独立群集）的 ClusterManifest（本地群集）或 fabricSettings 节中添加以下代码片段。
 
@@ -71,7 +72,7 @@ Azure 文件存储卷驱动程序是一个 [Docker 卷插件](https://docs.docke
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -linux
 ```
 
-成功运行脚本以后，即可跳到[配置应用程序](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)部分。
+成功运行脚本以后，即可跳到[配置应用程序](#configure-your-applications-to-use-the-volume)部分。
 
 
 ### <a name="manual-deployment-for-standalone-clusters"></a>针对独立群集的手动部署
@@ -124,7 +125,7 @@ Azure 文件存储卷驱动程序是一个 [Docker 卷插件](https://docs.docke
 > Windows Server 2016 Datacenter 不支持向容器装载映射 SMB （[仅 Windows Server 1709 版支持](/virtualization/windowscontainers/manage-containers/container-storage)）。 这样可以阻止网络卷映射和 Azure 文件卷驱动程序出现在早于 1709 的版本上。
 
 #### <a name="deploy-the-application-on-a-local-development-cluster"></a>在本地开发群集上部署应用程序
-执行[上面](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)的步骤 1-3。
+执行[上面](#manual-deployment-for-standalone-clusters)的步骤 1-3。
 
  Azure 文件卷插件应用程序的默认服务实例计数为 -1，这表示有一个服务实例会部署到群集中的每个节点。 但在本地开发群集上部署 Azure 文件卷插件应用程序时，服务实例计数应指定为 1。 可以通过 InstanceCount 应用程序参数完成此操作  。 因此，在本地开发群集上创建 Azure 文件存储卷插件应用程序的命令为：
 
@@ -197,7 +198,7 @@ Azure 文件卷插件的驱动程序名称为 sfazurefile  。 此值为应用�
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>使用自己的卷或日志记录驱动程序
-Service Fabric 还允许使用自己的自定义[卷](https://docs.docker.com/engine/extend/plugins_volume/)或[日志记录](https://docs.docker.com/engine/admin/logging/overview/)驱动程序。 如果群集上未安装 Docker 卷/日志记录驱动程序，可使用 RDP/SSH 协议手动安装。 还可使用这些协议，通过[虚拟机规模集启动脚本](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)或 [SetupEntryPoint 脚本](/azure/service-fabric/service-fabric-application-model)执行安装操作。
+Service Fabric 还允许使用自己的自定义[卷](https://docs.docker.com/engine/extend/plugins_volume/)或[日志记录](https://docs.docker.com/engine/admin/logging/overview/)驱动程序。 如果群集上未安装 Docker 卷/日志记录驱动程序，可使用 RDP/SSH 协议手动安装。 还可使用这些协议，通过[虚拟机规模集启动脚本](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)或 [SetupEntryPoint 脚本](./service-fabric-application-model.md)执行安装操作。
 
 以下是安装 [Azure 的 Docker 卷驱动程序](https://docs.docker.com/docker-for-azure/persistent-data-volumes/)的一个脚本实例：
 
@@ -240,4 +241,4 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 
 ## <a name="next-steps"></a>后续步骤
 * 要查看容器示例（包括卷驱动程序），请访问 [Service Fabric 容器示例](https://github.com/Azure-Samples/service-fabric-containers)
-* 要将容器部署到 Service Fabric 群集，请参阅[在 Service Fabric 上部署容器](service-fabric-deploy-container.md)一文
+* 要将容器部署到 Service Fabric 群集，请参阅[在 Service Fabric 上部署容器](./service-fabric-get-started-containers.md)一文

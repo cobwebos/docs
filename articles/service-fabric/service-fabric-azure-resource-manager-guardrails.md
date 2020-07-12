@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: f8d8d5ae677ea438de4baed7d6636c2087277427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa1499c57ead28bfcee90a2f224ef9c3bb1d7f58
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602697"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247818"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric 准则 
 部署 Service Fabric 群集时，需遵循相应准则，使用有效的群集配置通过 Azure 资源管理器进行部署，否则就会失败。 以下部分概述了常见的群集配置问题，以及解决这些问题所需的步骤。 
@@ -68,7 +68,7 @@ Service Fabric 节点类型的持久性值在 Azure 资源管理器模板的两�
 
 ## <a name="seed-node-deletion"></a>删除种子节点 
 ### <a name="overview"></a>概述
-Service Fabric 群集提供一个[可靠性层](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster)属性，用于确定主节点类型的群集上运行的系统服务副本数。 所需副本数将确定必须在主节点类型的群集中维护的最小节点数。 如果主节点类型中的节点数小于可靠性层所需的最小数目，则群集将变得不稳定。  
+Service Fabric 群集提供一个[可靠性层](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)属性，用于确定主节点类型的群集上运行的系统服务副本数。 所需副本数将确定必须在主节点类型的群集中维护的最小节点数。 如果主节点类型中的节点数小于可靠性层所需的最小数目，则群集将变得不稳定。  
 
 ### <a name="error-messages"></a>错误消息 
 已检测到种子节点删除操作，将拒绝该操作。 
@@ -79,7 +79,7 @@ Service Fabric 群集提供一个[可靠性层](https://docs.microsoft.com/azure
 确保主节点类型具有足够的虚拟机，以实现群集中指定的可靠性。 如果删除某个虚拟机会导致虚拟机规模集的节点数小于给定可靠性层的最小节点数，将无法执行此删除操作。
 * 如果正确指定了可靠性层，请确保在主节点类型中提供可靠性层所需的足够节点。 
 * 如果可靠性层不正确，请在 Service Fabric 资源中发起更改以便先降低可靠性级别，然后启动任何虚拟机规模集操作并等待操作完成。
-* 如果可靠性层为“铜级”，请按照[这些步骤](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)适度横向缩减群集。
+* 如果可靠性层为“铜级”，请按照[这些步骤](./service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)适度横向缩减群集。
 
 ## <a name="next-steps"></a>后续步骤
 * 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)

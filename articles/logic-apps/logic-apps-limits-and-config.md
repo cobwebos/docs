@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/25/2020
-ms.openlocfilehash: 33e521046889733b2f0a66b839ab5dde46398318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 350c542e1b183c79707c99989b2544fd8faa43ac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412689"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248469"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -80,7 +81,7 @@ ms.locfileid: "85412689"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 限制 | 说明 |
+| 名称 | 限制 | 备注 |
 | ---- | ----- | ----- |
 | 触发器并发 | - 在禁用并发控制时无限制 <p><p>- 在启用并发控制时，默认限制为 25（启用并发后无法撤消）。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>**注意**：启用并发后，[解除数组批处理](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)的 SplitOn 限制会降低到 100 个项。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
 | 最大等待运行数 | - 未启用并发时，最小等待运行数是 1，最大数目是 50。 <p><p>- 启用并发时，最小等待运行数是 10 加上并发运行（触发器并发）数。 可以将最大数更改为多达 100 个（含）。 | 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要更改此默认限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
@@ -140,7 +141,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 某些连接器操作会进行异步调用或侦听 Webhook 请求，因此，这些操作的超时时间可能会长于以下限制。 有关详细信息，请参阅特定连接器的技术详细信息以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| “属性” | 多租户限制 | 集成服务环境限制 | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 备注 |
 |------|--------------------|---------------------------------------|-------|
 | 出站请求 | 120 秒 <br>（2 分钟） | 240 秒 <br>（4 分钟） | HTTP 触发器发出的调用就是出站请求。 <p><p>**提示**：对于运行时间较长的操作，请使用[异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 在调用其他具有[可调用终结点](logic-apps-http-endpoint.md)的逻辑应用时，若要绕过超时限制，可改用内置的 Azure 逻辑应用操作（可在“内置”下的连接器连接器中找到）。 |
 | 入站请求 | 120 秒 <br>（2 分钟） | 240 秒 <br>（4 分钟） | 请求触发器和 Webhook 触发器接收的调用就是入站请求。 <p><p>**注意**：要使原始调用方能够获得响应，则除非以嵌套工作流的形式调用其他逻辑应用，否则必须在限制内完成响应的所有步骤。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
@@ -150,7 +151,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 #### <a name="message-size"></a>消息大小
 
-| “属性” | 多租户限制 | 集成服务环境限制 | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 备注 |
 |------|--------------------|---------------------------------------|-------|
 | 消息大小 | 100 MB | 200 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 <p><p>- 连接器（如 AS2、X12 和 EDIFACT）具有自己的 [B2B 消息限制](#b2b-protocol-limits)。 <br>- ISE 连接器使用 ISE 限制，而不是非 ISE 连接器限制。 |
 | 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可在其运行时配置中启用分块的操作。 <p><p>如果你使用的是 ISE，则逻辑应用引擎支持此限制，但连接器具有自己的分块限制（不超过引擎限制），例如请参阅 [Azure Blob 存储连接器的 API 参考](https://docs.microsoft.com/connectors/azureblob/)。 有关分块的详细信息，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
@@ -168,7 +169,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 #### <a name="retry-policy"></a>重试策略
 
-| “属性” | 限制 | 说明 |
+| 名称 | 限制 | 备注 |
 | ---- | ----- | ----- |
 | 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
@@ -179,9 +180,9 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ### <a name="authentication-limits"></a>身份验证限制
 
-如果逻辑应用从使用请求触发器开始，并启用 [Azure Active Directory 开放式身份验证](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) 来授权对请求触发器的入站调用，则应遵循以下限制：
+如果逻辑应用从使用请求触发器开始，并启用 [Azure Active Directory 开放式身份验证](/azure/active-directory/develop/) (Azure AD OAuth) 来授权对请求触发器的入站调用，则应遵循以下限制：
 
-| “属性” | 限制 | 说明 |
+| 名称 | 限制 | 备注 |
 | ---- | ----- | ----- |
 | Azure AD 授权策略 | 5 | |
 | 每个授权策略的声明 | 10 | |
@@ -301,7 +302,8 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用所在的区域。 ** 同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 某些 [Power Automate](https://docs.microsoft.com/power-automate/getting-started) 调用（例如 HTTP**** 和 HTTP + OpenAPI**** 请求）直接通过 Azure 逻辑应用服务执行并来自此处列出的 IP 地址。 有关 Power Automate 使用的 IP 地址的详细信息，请参阅 [Power Automate 中的配置和限制](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)。
 
 > [!TIP]
-> 为了帮助降低创建安全规则时的复杂性，你可以选择使用[服务标记](../virtual-network/service-tags-overview.md)，而不是为每个区域指定逻辑应用 IP 地址，本部分稍后将对此进行介绍。 这些标记适用于可使用逻辑应用服务的区域：
+> 为了帮助降低创建安全规则时的复杂性，你可以选择使用[服务标记](../virtual-network/service-tags-overview.md)，而不是为每个区域指定逻辑应用 IP 地址，本部分稍后将对此进行介绍。
+> 这些标记适用于可使用逻辑应用服务的区域：
 >
 > * **LogicAppsManagement**：表示逻辑应用服务的入站 IP 地址前缀。
 > * **LogicApps**：表示逻辑应用服务的出站 IP 地址前缀。
@@ -325,7 +327,8 @@ Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用�
 该部分仅列出了 Azure 逻辑应用服务的入站 IP 地址。 如果你有 Azure 政府，请参阅 [Azure 政府 - 入站 IP 地址](#azure-government-inbound)。
 
 > [!TIP]
-> 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md) LogicAppsManagement，而不是为每个区域指定入站逻辑应用 IP 地址前缀。 此标记可使用逻辑应用服务的区域。
+> 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md) LogicAppsManagement，而不是为每个区域指定入站逻辑应用 IP 地址前缀。
+> 此标记可使用逻辑应用服务的区域。
 
 <a name="multi-tenant-inbound"></a>
 
@@ -385,7 +388,9 @@ Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用�
 该部分列出了 Azure 逻辑应用服务和托管连接器的出站 IP 地址。 如果你有 Azure 政府，请参阅 [Azure 政府 - 出站 IP 地址](#azure-government-outbound)。
 
 > [!TIP]
-> 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md) LogicApps，而不是为每个区域指定出站逻辑应用 IP 地址前缀。 此标记可使用逻辑应用服务的区域。 对于托管连接器，必须继续使用以下 IP 地址。
+> 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md) LogicApps，而不是为每个区域指定出站逻辑应用 IP 地址前缀。
+> 此标记可使用逻辑应用服务的区域。
+> 对于托管连接器，必须继续使用以下 IP 地址。
 
 <a name="multi-tenant-outbound"></a>
 
@@ -440,5 +445,5 @@ Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
+* 了解如何[创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * 了解[常见示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)

@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645729"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247636"
 ---
 # <a name="eventstore-overview"></a>EventStore 概述
 
@@ -45,7 +46,7 @@ EventStore 是有状态 Service Fabric 服务，它维护群集中的事件。 �
 * 分区副本：来自所有副本的事件/特定分区中的实例，由 `partitionId` 标识
 * 分区副本：来自特定副本的事件/实例，由 `replicaId` 和 `partitionId` 标识
 
-若要了解有关 API 的详细信息，请查看 [EventStore API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)。
+若要了解有关 API 的详细信息，请查看 [EventStore API 参考](/rest/api/servicefabric/sfclient-index-eventsstore)。
 
 EventStore 服务还能够将群集中的事件相关联。 通过查看在同一时间从可能已相互影响的不同实体写入的事件，EventStore 服务能够将这些事件进行关联来帮助查明群集中发生各项活动的原因。 例如，如果某个应用程序变得不正常且没有诱发任何变化，则 EventStore 将查看由平台公开的其他事件并且可能会将此情况与 `Error` 或 `Warning` 事件相关联。 这有助于更快地进行故障检测和根本原因分析。
 
@@ -125,5 +126,5 @@ EventStore 服务还能够将群集中的事件相关联。 通过查看在同�
 * 开始使用 EventStore API - [在 Azure Service Fabric 群集中使用 EventStore API](service-fabric-diagnostics-eventstore-query.md)
 * 详细了解有关 EventStore 提供的事件的列表 - [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)
 * Service Fabric 中的监视和诊断概述 - [Service Fabric 的监视和诊断](service-fabric-diagnostics-overview.md)
-* 查看 API 调用的完整列表 - [EventStore REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* 查看 API 调用的完整列表 - [EventStore REST API 参考](/rest/api/servicefabric/sfclient-index-eventsstore)
 * 了解有关监视群集的详细信息 - [监视群集和平台](service-fabric-diagnostics-event-generation-infra.md)。

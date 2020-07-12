@@ -5,11 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458418"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247891"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric 中的按需备份
 
@@ -55,7 +56,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 #### <a name="rest-call-using-powershell"></a>使用 Powershell 进行 Rest 调用
 
-使用 [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API 为分区 ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` 的按需备份设置触发。
+使用 [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API 为分区 ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` 的按需备份设置触发。
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -63,7 +64,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-使用 [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API 启用[按需备份进度](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)跟踪。
+使用 [GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API 启用[按需备份进度](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)跟踪。
 
 ### <a name="on-demand-backup-to-specified-storage"></a>指定存储的按需备份
 
@@ -80,7 +81,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 #### <a name="rest-call-using-powershell"></a>使用 Powershell 进行 Rest 调用
 
-使用 [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API 为分区 ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` 的按需备份设置触发。 包括以下 Azure 存储信息：
+使用 [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API 为分区 ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` 的按需备份设置触发。 包括以下 Azure 存储信息：
 
 ```powershell
 $StorageInfo = @{
@@ -99,7 +100,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-可以使用 [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API 设置[按需备份进度](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)跟踪。
+可以使用 [GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API 设置[按需备份进度](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)跟踪。
 
 ### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
 请确保已在 Service Fabric Explorer 设置中启用了“高级模式”。
@@ -169,7 +170,7 @@ $backupResponse
     LsnOfLastBackupRecord   : 0
     FailureError            : @{Code=FABRIC_E_BACKUPCOPIER_UNEXPECTED_ERROR; Message=An error occurred during this operation.  Please check the trace logs for more details.}
     ```
-  - **Timeout**：_Timeout_ 备份状态表示在给定的时间内无法创建分区状态备份。 默认超时值为 10 分钟。 如果发生这种情况，请使用更大的 [BackupTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 发起新的按需备份请求。
+  - **Timeout**：_Timeout_ 备份状态表示在给定的时间内无法创建分区状态备份。 默认超时值为 10 分钟。 如果发生这种情况，请使用更大的 [BackupTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 发起新的按需备份请求。
     ```
     BackupState             : Timeout
     TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -183,7 +184,7 @@ $backupResponse
 ## <a name="next-steps"></a>后续步骤
 
 - [了解定期备份配置](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [BackupRestore REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [BackupRestore REST API 参考](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/trigger-partition-backup.png
 [1]: ./media/service-fabric-backuprestoreservice/trigger-backup-fileshare.png

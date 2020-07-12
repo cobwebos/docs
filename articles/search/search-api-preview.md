@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fb99530923f25541316fd159a2270f7035a1916b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0c0f40144fde49d467ca7fb126a19afa6c76660a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229238"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246950"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 认知搜索中的预览功能
 
@@ -23,6 +23,7 @@ ms.locfileid: "86229238"
 
 |具有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
+| [**Azure 机器学习 (AML) 技能**](cognitive-search-aml-skill.md) | AI 扩充| 用于将推断终结点与 Azure 机器学习集成的一种新技术类型。 请先查看[此教程](cognitive-search-tutorial-aml-custom-skill.md)。 | 使用[Search REST API 2020-06-30-preview](https://docs.microsoft.com/rest/api/searchservice/)或 2019-05-06-preview。 如果在同一订阅中部署了认知搜索和 Azure ML 服务，则门户中也会提供此功能。 |
 | [**featuresMode 参数**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | 关联性 (计分)  | 相关分数扩展以包括详细信息：每个字段的相似性分数、每个字段的术语频率以及与每个字段匹配的唯一令牌数。 可以在[自定义计分解决方案](https://github.com/Azure-Samples/search-ranking-tutorial)中使用这些数据点。 | 使用搜索文档添加此查询参数， [ (REST) ](https://docs.microsoft.com/rest/api/searchservice/search-documents) ，其 api 版本 = 2020-06-30 或 2019-05-06-preview。 |
 | [**托管服务标识**](search-howto-managed-identities-data-sources.md) | 索引器，安全性| 将搜索服务注册到 Azure Active Directory 以使其成为可信服务，然后使用 Azure 数据源上的 RBAC 权限允许索引器进行只读访问。 | 使用门户时访问此功能，或使用 api 版本 = 2020-06-30 或 api 版本 = 2019-05-06-01.5.1-Preview[创建数据源 (REST) ](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 。 |
 | [**调试会话**](cognitive-search-debug-session.md) | 门户、AI 扩充 (技能组合)  | 用于调查和解决技能组合问题的会话中技能组合编辑器。 在调试会话期间应用的修复可以保存到服务中的技能组合。 | 仅门户，使用 "概述" 页上的中页链接打开调试会话。 |

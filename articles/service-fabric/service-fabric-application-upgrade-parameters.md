@@ -3,18 +3,19 @@ title: 应用程序升级：升级参数
 description: 介绍与升级 Service Fabric 应用程序相关的参数，包括要执行的运行状况检查，以及用于自动撤消升级的策略。
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.openlocfilehash: 42b5c52181cfb006ae57e43c183b96a059a9c63a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6116bf1188fcf191b2d672e6c698bb3c050e6c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75377967"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247959"
 ---
 # <a name="application-upgrade-parameters"></a>应用程序升级参数
 本文介绍 Azure Service Fabric 应用程序升级期间应用的各种参数。 应用程序升级参数控制升级期间应用的超时和运行状况检查，并指定在升级失败时必须应用的策略。 应用程序参数使用以下项应用于升级：
 - PowerShell
 - Visual Studio
 - SFCTL
-- [REST](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-startapplicationupgrade)
+- [REST](/rest/api/servicefabric/sfclient-api-startapplicationupgrade)
 
 应用程序升级通过三个可供用户选择的升级模式中的一个进行启动。 每个模式都有自己的应用程序参数集：
 - Monitored
@@ -25,7 +26,7 @@ ms.locfileid: "75377967"
 
 ## <a name="visual-studio-and-powershell-parameters"></a>Visual Studio 和 PowerShell 参数
 
-通过 PowerShell 进行的 Service Fabric 应用程序升级使用 [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) 命令。 将 **Monitored**、**UnmonitoredAuto** 或 **UnmonitoredManual** 参数传递给 [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) 即可选择升级模式。
+通过 PowerShell 进行的 Service Fabric 应用程序升级使用 [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) 命令。 将 **Monitored**、**UnmonitoredAuto** 或 **UnmonitoredManual** 参数传递给 [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) 即可选择升级模式。
 
 Visual Studio Service Fabric 应用程序升级参数通过“Visual Studio 升级设置”对话框进行设置。 Visual Studio 升级模式通过“升级模式”下拉框从“Monitored”、“UnmonitoredAuto”或“UnmonitoredManual”中进行选择。     有关详细信息，请参阅[在 Visual Studio 中配置 Service Fabric 应用程序的升级](service-fabric-visualstudio-configure-upgrade.md)。
 
@@ -57,7 +58,7 @@ UnmonitoredManual | PS | 指示升级模式为“不受监视的手动”。 Ser
 > | ForceRestart |PS、VS |如果更新配置或数据包而不更新服务代码，则仅当 ForceRestart 属性设置为 **True** 时，服务才会重启。 更新完成后，Service Fabric 将通知服务新的配置包或数据包可用。 该服务负责应用所做的更改。 如有必要，该服务可进行重启。 |
 > | HealthCheckRetryTimeoutSec |PS、VS |声明升级失败之前，Service Fabric 继续执行运行状况评估的持续时间（以秒为单位）。 默认为 600 秒。 此持续时间在 *HealthCheckWaitDurationSec* 秒后开始。 在此 *HealthCheckRetryTimeout* 期间，Service Fabric 可能会对应用程序执行多次运行状况检查。 默认值为 10 分钟，应该针对应用程序相应地自定义该值。 |
 > | HealthCheckStableDurationSec |PS、VS |在转到下一个升级域或完成升级之前，为了验证应用程序是否稳定而要等待的持续时间（以秒为单位）。 此等待持续时间用于防止在执行了运行状况检查后，未检测到运行状况更改。 默认值为 120 秒，应该针对应用程序相应地自定义该值。 |
-> | HealthCheckWaitDurationSec |PS、VS | 完成升级域的升级后，在 Service Fabric 评估应用程序的运行状况之前需要等待的时间（以秒为单位）。 也可将此持续时间视为应用程序应先运行多长时间才可被视为正常运行。 如果运行状况检查通过，升级过程将转到下一个升级域。  如果运行状况检查失败，则在再次重试运行状况检查之前，Service Fabric 会等待 [UpgradeHealthCheckInterval](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#clustermanager) 秒的时间，直到 *HealthCheckRetryTimeoutSec* 秒的时间用完。 建议的默认值为 0 秒。 |
+> | HealthCheckWaitDurationSec |PS、VS | 完成升级域的升级后，在 Service Fabric 评估应用程序的运行状况之前需要等待的时间（以秒为单位）。 也可将此持续时间视为应用程序应先运行多长时间才可被视为正常运行。 如果运行状况检查通过，升级过程将转到下一个升级域。  如果运行状况检查失败，则在再次重试运行状况检查之前，Service Fabric 会等待 [UpgradeHealthCheckInterval](./service-fabric-cluster-fabric-settings.md#clustermanager) 秒的时间，直到 *HealthCheckRetryTimeoutSec* 秒的时间用完。 建议的默认值为 0 秒。 |
 > | MaxPercentUnhealthyDeployedApplications|PS、VS |建议的默认值为 0。 指定在将应用程序视为不正常和升级失败之前，可以不正常的最大已部署应用程序数（请参阅[运行状况部分](service-fabric-health-introduction.md)）。 此参数在节点上定义应用程序运行状况，可帮助检查升级过程中的问题。 通常，应用程序的副本将与另一个节点负载均衡，使应用程序看上去运行正常，从而使升级继续。 通过指定严格的 *MaxPercentUnhealthyDeployedApplications* 运行状况，Service Fabric 可以快速检测应用程序包的问题，这样就产生了一种采用快速失败机制的升级。 |
 > | MaxPercentUnhealthyServices |PS、VS |*DefaultServiceTypeHealthPolicy* 和 *ServiceTypeHealthPolicyMap* 的参数。 建议的默认值为 0。 指定在将应用程序视为不正常和升级失败之前，应用程序实例中可以不正常的最大服务数。 |
 > | MaxPercentUnhealthyPartitionsPerService|PS、VS |*DefaultServiceTypeHealthPolicy* 和 *ServiceTypeHealthPolicyMap* 的参数。 建议的默认值为 0。 指定在将服务视为不正常之前，服务中可以不正常的最大分区数。 |
@@ -73,7 +74,7 @@ UnmonitoredManual | PS | 指示升级模式为“不受监视的手动”。 Ser
 
 ## <a name="sfctl-parameters"></a>SFCTL 参数
 
-通过 Service Fabric CLI 进行的 Service Fabric 应用程序升级使用 [sfctl application upgrade](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-upgrade) 命令以及下面的必需和可选参数。
+通过 Service Fabric CLI 进行的 Service Fabric 应用程序升级使用 [sfctl application upgrade](./service-fabric-sfctl-application.md#sfctl-application-upgrade) 命令以及下面的必需和可选参数。
 
 ### <a name="required-parameters"></a>必需的参数
 
@@ -87,7 +88,7 @@ parameters  |升级应用程序时应用的应用程序参数替代的 JSON 编�
 
 | 参数 | 说明 |
 | --- | --- |
-default-service-health-policy | 默认使用的健康策略的 [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) 编码规范，用于评估服务类型的运行状况。 映射默认为空。 |
+default-service-health-policy | 默认使用的健康策略的 [JSON](/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) 编码规范，用于评估服务类型的运行状况。 映射默认为空。 |
 failure-action | 允许的值为 **Rollback**、**Manual** 和 **Invalid**。 *Monitored* 升级遇到违反监视策略或运行状况策略的情况时需执行的补救操作。 <br>**Rollback** 指定将升级自动回退到升级前的版本。 <br>**Manual** 指示将升级切换到 *UnmonitoredManual* 升级模式。 <br>**Invalid** 指示故障操作无效。|
 force-restart | 如果更新配置或数据包而不更新服务代码，则仅当 ForceRestart 属性设置为 **True** 时，服务才会重启。 更新完成后，Service Fabric 将通知服务新的配置包或数据包可用。 该服务负责应用所做的更改。 如有必要，该服务可进行重启。 |
 health-check-retry-timeout | 执行 *FailureAction* 前，当应用程序或群集不正常时，重试运行状况评估所需的时间。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值：PT0H10M0S。 |
@@ -96,7 +97,7 @@ health-check-wait-duration | 应用运行状况策略之前，完成升级域后
 max-unhealthy-apps | 建议的默认值为 0。 指定在将应用程序视为不正常和升级失败之前，可以不正常的最大已部署应用程序数（请参阅[运行状况部分](service-fabric-health-introduction.md)）。 此参数在节点上定义应用程序运行状况，可帮助检查升级过程中的问题。 通常，应用程序的副本将与另一个节点负载均衡，使应用程序看上去运行正常，从而使升级继续。 通过指定严格的 *max-unhealthy-apps* 运行状况，Service Fabric 可以快速检测应用程序包的问题，这样就产生了一种采用快速失败机制的升级。 由介于 0 到 100 间的数字表示。 |
 mode | 允许的值为 **Monitored**、**UpgradeMode**、**UnmonitoredAuto**、**UnmonitoredManual**。 默认值为 **UnmonitoredAuto**。 有关这些值的说明，请参阅 Visual Studio 和 PowerShell *必需的参数*部分。|
 replica-set-check-timeout |以秒为度量单位。 <br>**无状态服务** - 在单个升级域内，Service Fabric 尝试确保服务的其他实例可用。 如果有多个目标实例，则 Service Fabric 等待多个实例可用，直到达到最大超时值。 此超时是使用 *replica-set-check-timeout* 属性指定的。 如果超时到期，Service Fabric 将继续进行升级，而无论服务实例的数量。 如果只有一个目标实例，则 Service Fabric 不会等待，而是会立即继续进行升级。<br><br>**有状态服务** - 在单个升级域内，Service Fabric 尝试确保副本集具有仲裁。 Service Fabric 将等待一个仲裁可用，直到达到最大超时值（由 *replica-set-check-timeout* 属性指定）。 如果超时到期，Service Fabric 将继续进行升级，而无论是否具有仲裁。 前滚时，此设置设置为 never（无限）；回退时，设置为 1200 秒。 |
-service-health-policy | 包含每个服务类型名称的服务类型健康策略的 JSON 编码映射。 映射默认为空。 [参数 JSON 格式。](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap) “Value”部分的 JSON 包含 **MaxPercentUnhealthyServices**、**MaxPercentUnhealthyPartitionsPerService** 和 **MaxPercentUnhealthyReplicasPerPartition**。 有关这些参数的说明，请参阅 Visual Studio 和 PowerShell “可选参数”部分。
+service-health-policy | 包含每个服务类型名称的服务类型健康策略的 JSON 编码映射。 映射默认为空。 [参数 JSON 格式。](/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap) “Value”部分的 JSON 包含 **MaxPercentUnhealthyServices**、**MaxPercentUnhealthyPartitionsPerService** 和 **MaxPercentUnhealthyReplicasPerPartition**。 有关这些参数的说明，请参阅 Visual Studio 和 PowerShell “可选参数”部分。
 timeout | 指定操作的超时设置（以秒为单位）。 默认值：60。 |
 upgrade-domain-timeout | 执行 *FailureAction* 前，每个升级域需等待的时长。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 默认值：P10675199DT02H48M05.4775807S。 |
 upgrade-timeout | 执行 *FailureAction* 前，每个升级域需等待的时长。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 默认值：P10675199DT02H48M05.4775807S。|

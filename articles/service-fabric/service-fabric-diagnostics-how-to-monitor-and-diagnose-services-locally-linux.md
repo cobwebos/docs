@@ -3,11 +3,12 @@ title: 在 Linux 中调试 Azure Service Fabric 应用
 description: 了解如何在本地 Linux 开发计算机上监视和诊断 Service Fabric 服务。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80991324"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247551"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>在本地 Linux 计算机开发设置中监视和诊断服务
 
@@ -131,4 +132,4 @@ public static TextWriter Out = Console.Out;
 
 ## <a name="next-steps"></a>后续步骤
 添加到应用程序中的跟踪代码也可用于诊断 Azure 群集中的应用程序。 请查看以下文章，其中介绍了不同的工具选项，以及如何设置这些选项。
-* [如何使用 Azure 诊断收集日志](service-fabric-diagnostics-how-to-setup-lad.md)
+* [如何使用 Azure 诊断收集日志](./service-fabric-diagnostics-event-aggregation-lad.md)

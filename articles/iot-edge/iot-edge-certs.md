@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982722"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247007"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>了解 Azure IoT Edge 使用证书的方式
 
@@ -24,6 +25,9 @@ IoT Edge 证书由模块和下游 IoT 设备用来验证 [IoT Edge 中心](iot-e
 ## <a name="iot-edge-certificates"></a>IoT Edge 证书
 
 通常，制造商不是 IoT Edge 设备的最终用户。 有时，两者之间的唯一关系是最终用户或操作员购买制造商生产的通用设备。 其他时候，制造商根据合同为运营商构建自定义设备。 IoT Edge 证书设计尝试考虑这两种情况。
+
+> [!NOTE]
+> 目前，libiothsm 中的限制会阻止使用在2050年1月1日或之后过期的证书。 此限制适用于设备 CA 证书、信任捆绑中的任何证书和用于 x.509 预配方法的设备 ID 证书。
 
 下图说明了 IoT Edge 证书使用情况。 根 CA 证书和设备 CA 证书之间可能存在零个、一个或多个中间签名证书，具体取决于所涉及的实体数量。 下面介绍一个用例。
 

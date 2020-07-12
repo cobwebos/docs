@@ -1,6 +1,6 @@
 ---
 title: 在 Azure API 管理中管理协议和加密 | Microsoft Docs
-description: 了解如何在 Azure API 管理中管理协议（TLS）和密码（DES）。
+description: 了解如何在 Azure API 管理中 (TLS) 和密码 (DES) 管理协议。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: 7f87389016286c9f1b91abc77155be9e94005371
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 043a3d0b63dfc74f587b58b3c2ac42f1a084cc4a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335870"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250305"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>在 Azure API 管理中管理协议和加密
 
@@ -42,5 +42,5 @@ Azure API 管理支持客户端和后端的多个 TLS 协议版本，同时也�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [TLS（传输层安全性）](https://docs.microsoft.com/dotnet/framework/network-programming/tls)。
+* 详细了解 [TLS（传输层安全性）](/dotnet/framework/network-programming/tls)。
 * 观看有关 API 管理的更多[视频](https://azure.microsoft.com/documentation/videos/index/?services=api-management)。

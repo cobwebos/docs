@@ -1,25 +1,25 @@
 ---
 title: 在 .NET Azure Functions 中使用依赖项注入
-description: 了解如何使用依赖项注入在 .NET 函数中注册和使用服务
+description: 了解如何在 .NET 函数中使用依赖项注入来注册和使用服务
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a994111d2f7e938ecdd71236858e4cb8773b00f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832859"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249251"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
-Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是在类及其依赖项之间实现[控制反转 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的一种技术。
+Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在类与其依赖项之间实现[控制反转 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的方法。
 
-- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能。 建议熟悉 [.NET Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 两者在如何替代依赖项以及如何使用 Azure Functions 对消耗计划读取配置值方面存在差异。
+- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能构建。 建议熟悉 [.NET Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 两者在如何替代依赖项以及如何使用 Azure Functions 对消耗计划读取配置值方面存在差异。
 
-- 对依赖项注入的支持始于 Azure Functions 2.x。
+- 从 Azure Functions 2.x 支持依赖项注入。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,9 +31,9 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是在类及�
 
 ## <a name="register-services"></a>注册服务
 
-若要注册服务，请创建一个方法来配置组件并将组件添加到 `IFunctionsHostBuilder` 实例。  Azure Functions 主机创建 `IFunctionsHostBuilder` 的实例并将其直接传递到你的方法。
+若要注册服务，请创建一个方法来配置组件并将组件添加到 `IFunctionsHostBuilder` 实例。  Azure Functions 主机会创建 `IFunctionsHostBuilder` 的实例，并将其直接传递到方法中。
 
-若要注册方法，请添加 `FunctionsStartup` 程序集属性来指定在启动期间使用的类型名称。
+若要注册方法，请添加指定在启动过程中使用的类型名称的 `FunctionsStartup` 程序集特性。
 
 ```csharp
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -63,17 +63,17 @@ namespace MyNamespace
 
 ### <a name="caveats"></a>注意事项
 
-在运行时处理启动类之前和之后，会运行一系列注册步骤。 因此，请注意以下事项：
+在运行时处理启动类之前和之后会运行一系列注册步骤。 因此，请注意以下事项：
 
-- 启动类只能用于设置和注册。** 避免使用在启动时注册的服务。 例如，请勿尝试在记录器中记录在启动过程中注册的消息。 此注册过程点对你的服务来说太早，因此无法使用。 在运行 `Configure` 方法以后，Functions 运行时会继续注册其他依赖项，这可能影响服务的运行。
+- 启动类仅用于设置和注册。 避免使用在启动时注册的服务。 例如，请勿尝试在记录器中记录在启动过程中注册的消息。 此注册过程点对你的服务来说太早，因此无法使用。 在运行 `Configure` 方法以后，Functions 运行时会继续注册其他依赖项，这可能影响服务的运行。
 
-- 依赖项注入容器仅存储显式注册的类型**。 能够用作可注入类型的服务仅限在 `Configure` 方法中设置的服务。 因此，特定于 Functions 的类型（例如 `BindingContext` 和 `ExecutionContext`）在设置中不可用，也不能用作可注入类型。
+- 依赖项注入容器仅存储显式注册的类型。 能够用作可注入类型的服务仅限在 `Configure` 方法中设置的服务。 因此，特定于 Functions 的类型（例如 `BindingContext` 和 `ExecutionContext`）在设置中不可用，也不能用作可注入类型。
 
 ## <a name="use-injected-dependencies"></a>使用注入的依赖项
 
 使用构造函数注入以后，依赖项即可在函数中使用。 使用构造函数注入要求不要将静态类用于注入的服务或用于函数类。
 
-以下示例演示了 `IMyService` 和 `HttpClient` 依赖项是如何注入到 HTTP 触发的函数中的。
+下面的示例演示如何将 `IMyService` 和 `HttpClient` 依赖项注入到 HTTP 触发的函数中。
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -118,7 +118,7 @@ namespace MyNamespace
 Azure Functions 应用提供与 [ASP.NET 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服务生存期。 就 Functions 应用来说，不同的服务生存期表现如下：
 
 - **暂时性**：每次请求此服务时，都会创建暂时性服务。
-- **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 具有作用域的服务针对每次执行创建一次。 在执行期间针对该服务的后续请求将重用现有的服务实例。
+- **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 作用域服务在每次执行时创建一次。 在执行期间对该服务的后续请求会重复使用现有服务实例。
 - **单一实例**：单一实例服务生存期与主机生存期相匹配，并且在该实例上的各个函数执行之间重用。 对于连接和客户端（例如 `DocumentClient` 或 `HttpClient` 实例），建议使用单一实例生存期服务。
 
 可在 GitHub 上查看或下载[不同服务生存期的示例](https://aka.ms/functions/di-sample)。
@@ -187,20 +187,20 @@ namespace MyNamespace
 
 |服务类型|生存期|说明|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|单例|运行时配置|
+|`Microsoft.Extensions.Configuration.IConfiguration`|单一实例|运行时配置|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|单一实例|负责提供主机实例的 ID|
 
 如果存在你要依赖的其他服务，请[在 GitHub 上创建一个问题并提出它们](https://github.com/azure/azure-functions-host)。
 
 ### <a name="overriding-host-services"></a>替代主机服务
 
-目前不支持替代由主机提供的服务。  如果存在你要替代的服务，请[在 GitHub 上创建一个问题并提出它们](https://github.com/azure/azure-functions-host)。
+目前不支持替代由主机提供的服务。  如果有要替代的服务，[请在 GitHub上创建并提出问题](https://github.com/azure/azure-functions-host)。
 
 ## <a name="working-with-options-and-settings"></a>使用选项和设置
 
 在[应用设置](./functions-how-to-use-azure-function-app-settings.md#settings)中定义的值可以在 `IConfiguration` 实例中使用，这使得你可以读取启动类中的应用设置值。
 
-可以将 `IConfiguration` 实例中的值提取为自定义类型。 将应用设置值复制为自定义类型以后，即可使这些值变得可注入，方便测试服务。 读取到配置实例的设置必须是简单的键/值对。
+可以将 `IConfiguration` 实例中的值提取为自定义类型。 如果将应用设置值复制到自定义类型，则通过使这些值可注入，可以轻松地测试服务。 读入到配置实例中的设置必须是简单的键/值对。
 
 请考虑以下类，其中包含一个命名与应用设置一致的属性：
 
@@ -221,7 +221,7 @@ public class MyOptions
 }
 ```
 
-在 `Startup.Configure` 方法中，可以使用以下代码将 `IConfiguration` 实例的值提取为自定义类型：
+在 `Startup.Configure` 方法内，可以使用以下代码从 `IConfiguration` 实例将值提取到自定义类型中：
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -250,10 +250,10 @@ public class HttpTrigger
 }
 ```
 
-请参阅 [ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)，更详细地了解如何使用选项。
+有关使用选项的更多详细信息，请参阅 [ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
 
 > [!WARNING]
-> 请避免尝试从有关消耗计划的 local.settings.json** 或 appsettings.{environment}.json** 等文件中读取值。 从与触发器连接相关的这些文件中读取的值在应用规模上不可用，因为当规模控制器创建应用的新实例时，托管基础结构将无法访问配置信息。
+> 请避免尝试从有关消耗计划的 local.settings.json 或 appsettings.{environment}.json 等文件中读取值。 从与触发器连接相关的这些文件中读取的值在应用缩放时不可用，因为规模控制器创建应用的新实例时托管基础结构无法访问配置信息。
 
 ## <a name="next-steps"></a>后续步骤
 

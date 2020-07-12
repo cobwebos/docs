@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498144"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248401"
 ---
 # <a name="monitoring-and-diagnostics"></a>监视和诊断
 Azure Service Fabric 网格是一个完全托管的服务，由此开发者可部署微服务应用程序，而无需管理虚拟机、存储或网络。 Service Fabric 网格的监控和诊断分为三大类型诊断数据：
@@ -57,7 +58,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 | RestartCount | 容器重启次数 | 不适用 |
 
 > [!NOTE]
-> ServiceStatus 和 ServiceReplicaStatus 值与 Service Fabric 中的[HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet)相同。 
+> ServiceStatus 和 ServiceReplicaStatus 值与 Service Fabric 中的[HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet)相同。 
 
 每个指标都可以在不同的维度上使用，因此可以在不同级别查看聚合。 维度的当前列表如下所示：
 
@@ -73,7 +74,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-[AZURE MONITOR CLI 文档](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)中提供了完整命令列表，但我们提供了以下几个有用的示例 
+[AZURE MONITOR CLI 文档](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)中提供了完整命令列表，但我们提供了以下几个有用的示例 
 
 在每个示例中，资源 ID 遵循此模式
 
@@ -117,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解 Service Fabric 网格，请阅读 [Service Fabric 网格概述](service-fabric-mesh-overview.md)。
-* 若要详细了解 Azure Monitor 指标命令，请查看[AZURE MONITOR CLI 文档](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)。
+* 若要详细了解 Azure Monitor 指标命令，请查看[AZURE MONITOR CLI 文档](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)。

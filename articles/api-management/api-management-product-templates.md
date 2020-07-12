@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79243921"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249897"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的产品模板
 
@@ -30,7 +31,7 @@ ms.locfileid: "79243921"
 -   [Product](#Product)  
   
 > [!NOTE]
->  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](./api-management-developer-portal-templates.md)。  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -209,7 +210,7 @@ ms.locfileid: "79243921"
 |IsDeveloperSubscribed|boolean|当前用户是否订阅了此产品。|  
 |SubscriptionState|数字|订阅的状态。 可能的状态包括：<br /><br /> -   `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br />-   `1 - active` – 订阅处于活动状态。<br />-   `2 - expired` – 订阅已达到其到期日期，因此已停用。<br />-   `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br />-   `4 - rejected` – 管理员已拒绝订阅请求。<br />-   `5 - cancelled` – 开发人员或管理员已取消订阅。|  
 |限制|array|此属性已弃用，不应使用。|  
-|DelegatedSubscriptionEnabled|boolean|是否为此订阅启用了[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
+|DelegatedSubscriptionEnabled|boolean|是否为此订阅启用了[委派](./api-management-howto-setup-delegation.md)。|  
 |DelegatedSubscriptionUrl|字符串|委派的订阅 URL（如果启用了委派）。|  
 |IsAgreed|boolean|如果产品有条款，当前用户是否已同意这些条款。|  
 |Subscriptions|[订阅摘要](api-management-template-data-model-reference.md#SubscriptionSummary)实体的集合。|对产品的订阅。|  

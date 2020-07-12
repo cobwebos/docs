@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: d9562c09fe99372a9b1106d3ae891f65663cf307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610092"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247228"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>如何删除 Service Fabric 节点类型
 本文介绍如何通过删除群集的现有节点类型来缩放 Azure Service Fabric 群集。 Service Fabric 群集是通过网络连接在一起的一组虚拟机或物理机，可在其中部署和管理微服务。 属于群集一部分的计算机或 VM 称为节点。 虚拟机规模集是一种 Azure 计算资源，用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。 创建 Service Fabric 群集之后，可以通过删除节点类型（虚拟机规模集）及其所有节点来水平缩放群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
@@ -20,7 +20,7 @@ ms.locfileid: "85610092"
 > 建议不要频繁使用此方法从生产群集中删除节点类型。 这是一个非常危险的命令，因为它会删除节点类型后的虚拟机规模集资源。 
 
 ## <a name="durability-characteristics"></a>持续性特征
-使用 Remove-AzServiceFabricNodeType 时，安全性优先于速度。 节点类型必须为银级或金级[持续性级别](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)，原因如下：
+使用 Remove-AzServiceFabricNodeType 时，安全性优先于速度。 节点类型必须为银级或金级[持续性级别](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)，原因如下：
 - 铜级未提供任何关于保存状态信息的保证。
 - 银级和金级持续性阻止对规模集的任何更改。
 - 金级还可控制规模集下的 Azure 更新。
@@ -175,6 +175,6 @@ Service Fabric 会“协调”基础更改和更新，以便数据不会丢失�
     - 等待部署完成。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关群集[持续性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)的更多信息。
+- 了解有关群集[持续性特征](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)的更多信息。
 - 了解有关[节点类型和虚拟机规模集](service-fabric-cluster-nodetypes.md)的更多信息。
 - 了解有关 [Service Fabric 群集缩放](service-fabric-cluster-scaling.md)的更多信息。
