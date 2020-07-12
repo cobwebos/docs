@@ -9,11 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82854110"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254276"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>将自托管网关部署到 Kubernetes
 
@@ -64,7 +65,7 @@ ms.locfileid: "82854110"
 ### <a name="access-token"></a>访问令牌
 如果没有有效的访问令牌，自承载网关将无法从关联的 API 管理服务的终结点访问和下载配置数据。 访问令牌的有效期最长为 30 天。 必须在到期前重新生成令牌，并手动或通过自动化方式用新令牌配置群集。 
 
-自动刷新令牌时，请使用[此管理 API 操作](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway/generatetoken)生成新令牌。 有关管理 Kubernetes 机密的信息，请参阅 [Kubernetes 网站](https://kubernetes.io/docs/concepts/configuration/secret)。
+自动刷新令牌时，请使用[此管理 API 操作](/rest/api/apimanagement/2019-12-01/gateway/generatetoken)生成新令牌。 有关管理 Kubernetes 机密的信息，请参阅 [Kubernetes 网站](https://kubernetes.io/docs/concepts/configuration/secret)。
 
 ### <a name="namespace"></a>命名空间
 Kubernetes [命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)有助于在多个团队、项目或应用程序之间划分单个群集。 命名空间提供了资源和名称的范围。 它们可以与资源配额和访问控制策略相关联。

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 672a5afe36449aaa486ca6980f510ba52cf6daf2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361568"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250951"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
@@ -40,7 +40,7 @@ ms.locfileid: "85361568"
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 安装[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)版本2.8.0 或更高版本
+* 安装[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)版本2.8.0 或更高版本
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>创建具有运行时间 SLA 的新群集
 
@@ -113,7 +113,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
   },
   ```
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 若要避免收费，请清除创建的所有资源。 若要删除群集，请使用 [`az group delete`][az-group-delete] 命令删除 AKS 资源组：
 

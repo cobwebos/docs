@@ -4,12 +4,12 @@ description: 了解如何使用 PowerShell 在 Azure Kubernetes 服务 (AKS) 中
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207935"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250866"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>使用 PowerShell 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -47,7 +47,7 @@ Windows Server 节点池存在以下额外限制：
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-[Azure 资源组](/azure/azure-resource-manager/resource-group-overview)是用于部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [New-AzResourceGroup][new-azresourcegroup] cmdlet 创建资源组。
+[Azure 资源组](../azure-resource-manager/management/overview.md)是用于部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [New-AzResourceGroup][new-azresourcegroup] cmdlet 创建资源组。
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
@@ -70,7 +70,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-使用 `ssh-keygen` 命令行实用程序生成 SSH 密钥对。 有关详细信息，请参阅[快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对](/azure/virtual-machines/linux/mac-create-ssh-keys)。
+使用 `ssh-keygen` 命令行实用程序生成 SSH 密钥对。 有关详细信息，请参阅[快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要采用使用 [Azure CNI][azure-cni-about]（高级）网络插件的网络策略。 有关帮助计划所需子网范围和网络注意事项的更多详细信息，请参阅[配置 Azure CNI 网络][use-advanced-networking]。 使用下面的 [New-AzAks][new-azaks] cmdlet 创建名为 myAKSCluster 的 AKS 群集。 下面的示例将创建必要的网络资源（如果这些资源不存在）。
 

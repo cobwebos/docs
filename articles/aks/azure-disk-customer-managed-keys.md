@@ -4,12 +4,12 @@ description: 自带密钥 (BYOK) 来加密 AKS OS 和数据磁盘。
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: 9fd04b44be969e03eec2ed18f618068316572066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6452facc999456c35aa5d1c3bfe6b2f59141b7c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84882528"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252039"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>对 Azure Kubernetes Service (AKS) 中的 Azure 磁盘使用自带密钥 (BYOK)
 
@@ -18,7 +18,7 @@ Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况�
 > [!NOTE]
 > BYOK Linux 和基于 Windows 的 AKS 群集在支持 Azure 托管磁盘服务器端加密的[azure 区域][supported-regions]中提供。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 * 本文假定你要创建*新的 AKS 群集*。
 
@@ -110,7 +110,7 @@ az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset
 
 将新节点池添加到上面创建的群集中时，在创建过程中提供的客户托管密钥用于对 OS 磁盘进行加密。
 
-## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>加密 AKS 群集数据磁盘（可选）
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>将 AKS 群集数据磁盘加密 (可选) 
 如果未通过 v 1.17.2 为数据磁盘提供密钥，则将使用 OS 磁盘加密密钥加密数据磁盘，还可以使用其他密钥对 AKS 数据磁盘进行加密。
 
 > [!IMPORTANT]
@@ -178,8 +178,8 @@ kubectl apply -f byok-azure-disk.yaml
 <!-- LINKS - internal -->
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[best-practices-security]: /azure/aks/operator-best-practices-cluster-security
-[byok-azure-portal]: /azure/storage/common/storage-encryption-keys-portal
-[customer-managed-keys]: /azure/virtual-machines/windows/disk-encryption#customer-managed-keys
-[key-vault-generate]: /azure/key-vault/key-vault-manage-with-cli2
-[supported-regions]: /azure/virtual-machines/windows/disk-encryption#supported-regions
+[best-practices-security]: ./operator-best-practices-cluster-security.md
+[byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
+[customer-managed-keys]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[key-vault-generate]: ../key-vault/general/manage-with-cli2.md
+[supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions

@@ -5,11 +5,12 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8765e86ffeae86b9f4e2b693c0dbf92478632dbf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645508"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253161"
 ---
 # <a name="configure-stateful-reliable-services"></a>配置有状态 Reliable Services
 有两组配置设置可供 Reliable Services 使用。 一组适用于群集中的所有 Reliable Services，而另一组特定于特定的 Reliable Services。
@@ -183,5 +184,4 @@ SharedLogId 和 SharedLogPath 设置始终一起使用，使服务可以使用�
 
 ## <a name="next-steps"></a>后续步骤
 * [在 Visual Studio 中调试 Service Fabric 应用程序](service-fabric-debugging-your-application.md)
-* [Reliable Services 的开发人员参考](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+* [Reliable Services 的开发人员参考](/previous-versions/azure/dn706529(v=azure.100))

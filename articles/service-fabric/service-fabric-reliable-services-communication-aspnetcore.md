@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8866714ca1736b3ba785b560cb5a7aea451fdf1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639626"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253331"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -19,7 +20,7 @@ ASP.NET Core 是一个开源跨平台框架。 此框架用于生成基于云的
 
 有关 Service Fabric 中 ASP.NET Core 的入门教程以及如何设置开发环境的说明，请参阅[教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建和部署应用程序](service-fabric-tutorial-create-dotnet-app.md)。
 
-本文的剩余内容假设你熟悉 ASP.NET Core。 如果不熟悉，请通读 [ASP.NET Core 基础知识](https://docs.microsoft.com/aspnet/core/fundamentals/index)。
+本文的剩余内容假设你熟悉 ASP.NET Core。 如果不熟悉，请通读 [ASP.NET Core 基础知识](/aspnet/core/fundamentals/index)。
 
 ## <a name="aspnet-core-in-the-service-fabric-environment"></a>Service Fabric 环境中的 ASP.NET Core
 
@@ -93,7 +94,7 @@ Kestrel 和 HTTP.sys `ICommunicationListener` 实现以完全相同的方式使�
 ## <a name="httpsys-in-reliable-services"></a>Reliable Services 中的 HTTP.sys
 可以通过导入 **Microsoft.ServiceFabric.AspNetCore.HttpSys** NuGet 包来使用 Reliable Services 中的 HTTP.sys。 此包包含 `HttpSysCommunicationListener`（`ICommunicationListener` 的实现）。 `HttpSysCommunicationListener` 允许使用 HTTP.sys 作为 Web 服务器在 Reliable Service 内部创建 ASP.NET Core WebHost。
 
-在 [Windows HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx) 上生成 HTTP.sys。 此 API 使用 **HTTP.sys** 内核驱动程序处理 HTTP 请求，并将其路由到运行 Web 应用程序的进程。 这可允许同一物理计算机或虚拟机上的多个进程在同一端口上托管 Web 应用程序，通过唯一 URL 路径或主机名来消除歧义。 Service Fabric 在同一群集中托管多个网站时，这些功能非常有用。
+在 [Windows HTTP Server API](/windows/win32/http/http-api-start-page) 上生成 HTTP.sys。 此 API 使用 **HTTP.sys** 内核驱动程序处理 HTTP 请求，并将其路由到运行 Web 应用程序的进程。 这可允许同一物理计算机或虚拟机上的多个进程在同一端口上托管 Web 应用程序，通过唯一 URL 路径或主机名来消除歧义。 Service Fabric 在同一群集中托管多个网站时，这些功能非常有用。
 
 >[!NOTE]
 >HTTP.sys 实现仅适用于 Windows 平台。
@@ -132,9 +133,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="endpoint-configuration"></a>终结点配置
 
-对于使用 Windows HTTP Server API 的 Web 服务器（包括 HTTP.sys），需要配置 `Endpoint`。 使用 Windows HTTP Server API 的 Web 服务器首先必须保留带有 HTTP.sys 的 URL（通常可使用 [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) 工具实现）。 
+对于使用 Windows HTTP Server API 的 Web 服务器（包括 HTTP.sys），需要配置 `Endpoint`。 使用 Windows HTTP Server API 的 Web 服务器首先必须保留带有 HTTP.sys 的 URL（通常可使用 [netsh](/windows/win32/http/netsh-commands-for-http) 工具实现）。 
 
-此操作需要提升的权限，默认情况下服务不具备此权限。 用于 ServiceManifest.xml 中 `Endpoint` 配置的 `Protocol` 属性的“http”或“https”选项，可专门用于指示 Service Fabric 运行时代表你注册带有 HTTP.sys 的 URL。 它使用[*强通配符*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL 前缀来提供此指示。
+此操作需要提升的权限，默认情况下服务不具备此权限。 用于 ServiceManifest.xml 中 `Endpoint` 配置的 `Protocol` 属性的“http”或“https”选项，可专门用于指示 Service Fabric 运行时代表你注册带有 HTTP.sys 的 URL。 它使用[*强通配符*](/windows/win32/http/urlprefix-strings) URL 前缀来提供此指示。
 
 例如，若要保留服务的 `http://+:80`，请在 ServiceManifest.xml 中使用以下配置：
 
@@ -190,7 +191,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services 中的 Kestrel
 可以通过导入 **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet 包来使用 Reliable Services 中的 Kestrel。 此包包含 `KestrelCommunicationListener`（`ICommunicationListener` 的实现）。 `KestrelCommunicationListener` 允许使用 Kestrel 作为 Web 服务器在 Reliable Service 内部创建 ASP.NET Core WebHost。
 
-Kestrel 是一个用于 ASP.NET Core 的跨平台 Web 服务器。 与 HTTP.sys 不同，Kestrel 不使用集中式终结点管理器。 与 HTTP.sys 的另一个区别在于，Kestrel 不支持在多个进程之间共享端口。 Kestrel 的每个实例必须使用唯一端口。 有关 Kestrel 的详细信息，请参阅[实现详细信息](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)。
+Kestrel 是一个用于 ASP.NET Core 的跨平台 Web 服务器。 与 HTTP.sys 不同，Kestrel 不使用集中式终结点管理器。 与 HTTP.sys 的另一个区别在于，Kestrel 不支持在多个进程之间共享端口。 Kestrel 的每个实例必须使用唯一端口。 有关 Kestrel 的详细信息，请参阅[实现详细信息](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)。
 
 ![Kestrel 示意图][4]
 
@@ -334,7 +335,7 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 
 
 ## <a name="service-fabric-configuration-provider"></a>Service Fabric 配置提供程序
-ASP.NET Core 中的应用程序配置基于配置提供程序建议的键值对。 请阅读 [ASP.NET Core 中的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/)，详细了解一般的 ASP.NET Core 配置支持。
+ASP.NET Core 中的应用程序配置基于配置提供程序建议的键值对。 请阅读 [ASP.NET Core 中的配置](/aspnet/core/fundamentals/configuration/)，详细了解一般的 ASP.NET Core 配置支持。
 
 本部分介绍如何通过导入 `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet 包，将 Service Fabric 配置提供程序与 ASP.NET Core 配置相集成。
 
@@ -447,7 +448,7 @@ public Startup()
 ```
 
 ### <a name="configuration-updates"></a>配置更新
-Service Fabric 配置提供程序还支持配置更新。 可以使用 ASP.NET Core `IOptionsMonitor` 接收更改通知，然后使用 `IOptionsSnapshot` 重新加载配置数据。 有关详细信息，请参阅 [ASP.NET Core 选项](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
+Service Fabric 配置提供程序还支持配置更新。 可以使用 ASP.NET Core `IOptionsMonitor` 接收更改通知，然后使用 `IOptionsSnapshot` 重新加载配置数据。 有关详细信息，请参阅 [ASP.NET Core 选项](/aspnet/core/fundamentals/configuration/options)。
 
 默认支持这些选项。 无需进一步编写代码即可启用配置更新。
 

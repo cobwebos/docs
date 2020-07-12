@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205113"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254378"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>部署到 Azure Kubernetes 服务
 
@@ -36,7 +36,7 @@ ms.locfileid: "82205113"
 5. 确保在“部署脚本”下选择“Kubernetes”。 
 6. 选择“部署”旁边的“<网关名称>.yml”文件链接以下载该文件。 
 7. 在该 yml 文件中根据需要调整端口映射和容器名称。
-8. 根据你的方案，你可能需要更改[服务类型](https://docs.microsoft.com/azure/aks/concepts-network#services)。 默认值为 `NodePort`。
+8. 根据你的方案，你可能需要更改[服务类型](../aks/concepts-network.md#services)。 默认值为 `NodePort`。
 9. 选择“部署”文本框右侧的“复制”图标，将 `kubectl` 命令保存到剪贴板。 
 10. 将该命令粘贴到终端（或命令）窗口。 请注意，该命令要求下载的环境文件位于当前目录中。
 ```console
@@ -63,10 +63,6 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解自承载网关，请参阅 [Azure API 管理自承载网关概述](self-hosted-gateway-overview.md)
-* 详细了解 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+* 详细了解 [Azure Kubernetes 服务](../aks/intro-kubernetes.md)
 * 了解[如何在云中配置和保留日志](how-to-configure-cloud-metrics-logs.md)
 * * 了解[如何在本地配置和保留日志](how-to-configure-local-metrics-logs.md)
-
-
-
-

@@ -1,33 +1,33 @@
 ---
 title: 使用公共负载均衡器
 titleSuffix: Azure Kubernetes Service
-description: 了解如何通过 Azure Kubernetes Service （AKS）使用带有标准 SKU 的公共负载均衡器公开服务。
+description: 了解如何使用带有标准 SKU 的公共负载均衡器通过 Azure Kubernetes Service (AKS) 公开服务。
 services: container-service
 ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c03c8b385fc287737853c3cabd2e25f365a84578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11f8442f188ea6ce7ee1de5a093362279da4594c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831516"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251157"
 ---
-# <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务中的公共标准负载均衡器（AKS）
+# <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务中的公共标准负载均衡器 (AKS) 
 
-Azure 负载均衡器是开放系统互连（OSI）模型的 L4，支持入站和出站方案。 它将到达负载均衡器前端的入站流分发到后端池实例。
+Azure 负载均衡器是支持入站和出站方案 (OSI) 型号的开放系统互连的 L4。 它将到达负载均衡器前端的入站流分发到后端池实例。
 
 与 AKS 集成时的**公共**负载均衡器有两个用途：
 
 1. 提供到 AKS 虚拟网络内群集节点的出站连接。 它通过将节点专用 IP 地址转换为其*出站池*所属的公共 ip 地址来实现此目标。
 2. 通过类型的 Kubernetes 服务提供对应用程序的访问 `LoadBalancer` 。 利用它，可以轻松扩展应用程序，并创建高度可用的服务。
 
-使用**内部（或专用）** 负载均衡器，仅允许专用 ip 作为前端。 内部负载均衡器用于对虚拟网络内部的流量进行负载均衡。 在混合方案中，还可以从本地网络访问负载均衡器前端。
+**内部 (或专用) **负载均衡器仅允许专用 ip 作为前端。 内部负载均衡器用于对虚拟网络内部的流量进行负载均衡。 在混合方案中，还可以从本地网络访问负载均衡器前端。
 
 本文档介绍与公共负载均衡器的集成。 有关内部负载均衡器集成，请参阅[AKS 内部负载均衡器文档](internal-lb.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”** **。 默认情况下，创建 AKS 群集时使用*标准*SKU。 使用*标准*SKU 可以访问附加功能，例如更大的后端池、[**多个节点池**](use-multiple-node-pools.md)和[**可用性区域**](availability-zones.md)。 这是建议用于 AKS 的负载均衡器 SKU。
 
@@ -36,11 +36,11 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”** **。 
 本文假设你有一个带有*标准*SKU Azure 负载平衡器的 AKS 群集，并演练如何使用和配置负载均衡器的某些功能和功能。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 > [!IMPORTANT]
-> 如果不想使用 Azure 负载均衡器来提供出站连接，而是使用自己的网关、防火墙或代理来实现这一目的，可以通过使用[**出站类型作为 UserDefinedRouting （UDR）**](egress-outboundtype.md)，跳过创建负载均衡器出站池和相应的前端 IP。 出站类型定义群集的出口方法并且默认为类型：负载均衡器。
+> 如果你不想使用 Azure 负载均衡器来提供出站连接，而是使用自己的网关、防火墙或代理来实现这一目的，则可以通过使用[**出站类型作为 UserDefinedRouting (UDR) **](egress-outboundtype.md)，跳过创建负载均衡器出站池和相应的前端 IP。 出站类型定义群集的出口方法并且默认为类型：负载均衡器。
 
 ## <a name="use-the-public-standard-load-balancer"></a>使用公共标准负载均衡器
 
-创建出站类型为 "AKS" 的群集后，可以使用负载均衡器来公开服务。
+创建出站类型为 "AKS" 的群集后 (默认) ，该群集已准备好使用负载均衡器公开服务。
 
 为此，可以创建类型的公共服务， `LoadBalancer` 如下面的示例中所示。 首先创建名为的服务清单 `public-svc.yaml` ：
 
@@ -189,7 +189,7 @@ az aks create \
 ### <a name="configure-the-allocated-outbound-ports"></a>配置分配的出站端口
 
 > [!IMPORTANT]
-> 如果你的群集上有应用程序，这些应用程序应与一组小型目标建立大量连接，例如 许多连接到 SQL DB 的前端实例都有很容易遇到 SNAT 端口耗尽（用来连接的端口）。 在这些情况下，强烈建议在负载平衡器上增加分配的出站端口和出站前端 Ip。 增加应考虑到一（1）个附加的 IP 地址添加64k 个额外的端口，以便在所有群集节点上进行分配。
+> 如果你的群集上有应用程序，这些应用程序应与一组小型目标建立大量连接，例如 许多连接到 SQL DB 的前端实例都有很容易遇到 SNAT 端口耗尽 (用来从) 连接的端口。 在这些情况下，强烈建议在负载平衡器上增加分配的出站端口和出站前端 Ip。 增加应考虑到一个 (1) 额外的 IP 地址添加64k 个额外的端口，以便在所有群集节点上进行分配。
 
 
 除非另外指定，否则 AKS 将使用标准负载均衡器定义的分配的出站端口的默认值。 此值在 AKS API 上为**null** ，在 SLB api 上为**0** ，如以下命令所示：
@@ -243,7 +243,7 @@ az aks create \
 ### <a name="configure-the-load-balancer-idle-timeout"></a>配置负载均衡器空闲超时
 
 如果 SNAT 端口资源已经耗尽，那么在现有流释放 SNAT 端口之前出站流会失败。 负载均衡器会在流关闭时回收 SNAT 端口，而 AKS 配置的负载均衡器使用30分钟的空闲超时，从空闲流回收 SNAT 端口。
-你还可以使用传输（例如 **`TCP keepalives`** ）或 **`application-layer keepalives`** 刷新空闲流，并根据需要重置此空闲超时。 可以在以下示例中配置此超时值： 
+你还可以使用传输 (例如 **`TCP keepalives`**) 或 **`application-layer keepalives`** 刷新空闲流，并根据需要重置此空闲超时。 可以在以下示例中配置此超时值： 
 
 
 ```azurecli-interactive
@@ -297,13 +297,13 @@ spec:
 
 下面是类型为的 Kubernetes 服务支持的批注列表 `LoadBalancer` ，这些批注仅适用于**入站**流：
 
-| Annotation | “值” | 描述
+| Annotation | 值 | 描述
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` 或 `false`                     | 指定负载平衡器是否应为内部负载平衡器。 如果未设置，则默认为 public。
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子网名称                    | 指定内部负载均衡器应绑定到的子网。 如果未设置，则默认为在云配置文件中配置的子网。
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | 公共 Ip 上 DNS 标签的名称   | 指定**公共**服务的 DNS 标签名称。 如果将其设置为空字符串，则不会使用公共 IP 中的 DNS 条目。
 | `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` 或 `false`                     | 指定应使用可与其他服务共享的 Azure 安全规则公开服务，并通过贸易规则来提高可公开的服务数量。 此批注依赖于 Azure 增强的网络安全组[安全规则](../virtual-network/security-overview.md#augmented-security-rules)功能。 
-| `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | 资源组的名称            | 指定负载均衡器公共 Ip 的资源组，该资源组与群集基础结构位于同一资源组中（节点资源组）。
+| `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | 资源组的名称            | 指定负载平衡器公共 Ip 的资源组，该资源组与群集基础结构 (节点资源组) 不在同一资源组中。
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | 允许的服务标记列表          | 指定以逗号分隔的允许[服务标记](../virtual-network/security-overview.md#service-tags)的列表。
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP 空闲超时（分钟）          | 指定负载均衡器上的 TCP 连接空闲超时时间（以分钟为单位）。 默认值和最小值为4。 最大值为30。 必须是整数。
 |`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | 禁用 `enableTcpReset` SLB
@@ -311,7 +311,7 @@ spec:
 
 ## <a name="troubleshooting-snat"></a>SNAT 疑难解答
 
-如果知道正在启动与同一目标 IP 地址和端口的多个出站 TCP 或 UDP 连接，并且观察到出站连接失败，或者如果你耗尽 SNAT 端口（PAT 使用的预先分配的临时端口），则建议你使用几个常规的缓解选项。 查看这些选项，确定可用且最适合自己的方案的选项。 一个或多个选项可能有助于管理此方案。 有关详细信息，请查看[出站连接故障排除指南](../load-balancer/troubleshoot-outbound-connection.md)。
+如果知道正在启动与同一目标 IP 地址和端口的多个出站 TCP 或 UDP 连接，并且观察到了出站连接失败，或者已建议你使用 PAT)  (预先分配的临时端口来耗尽 SNAT 端口，则有几个常规的缓解选项。 查看这些选项，确定可用且最适合自己的方案的选项。 一个或多个选项可能有助于管理此方案。 有关详细信息，请查看[出站连接故障排除指南](../load-balancer/troubleshoot-outbound-connection.md)。
 
 通常，SNAT 耗尽的根本原因是建立和管理出站连接的方式出现了对立模式，或者可配置的计时器已更改，不再使用默认值。 请认真阅读本部分。
 
@@ -325,7 +325,7 @@ spec:
 ### <a name="design-patterns"></a>设计模式
 始终尽量利用连接重用和连接池。 这些模式可以避免资源耗尽问题，并使行为可预测。 在许多开发库和框架中，都可以找到这些模式的根源。
 
-- 原子请求（每个连接一个请求）通常不是良好的设计选择。 这种对立模式会限制缩放，降低性能并降低可靠性。 应该重复使用 HTTP/S 连接来减少连接数和关联的 SNAT 端口数。 应用程序规模会提高，性能提高，因为使用 TLS 时的握手、开销和加密操作成本降低。
+- 原子请求 (每个连接的请求) 通常不是良好的设计选择。 这种对立模式会限制缩放，降低性能并降低可靠性。 应该重复使用 HTTP/S 连接来减少连接数和关联的 SNAT 端口数。 应用程序规模会提高，性能提高，因为使用 TLS 时的握手、开销和加密操作成本降低。
 - 如果使用的是群集/自定义 DNS，或 coreDNS 上的自定义上游服务器，请注意，当客户端未缓存 DNS 解析器结果时，DNS 可以在卷上引入多个单独的流。 请确保先自定义 coreDNS，而不是使用自定义 DNS 服务器，并定义良好的缓存值。
 - UDP 流（例如 DNS 查找）根据空闲超时持续时间分配 SNAT 端口。 空闲超时越长，SNAT 端口上的压力越大。 使用较短的空闲超时（例如 4 分钟）。
 使用连接池来调整连接卷。
@@ -393,10 +393,10 @@ spec:
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
-[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
+[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md
 [azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
-[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md

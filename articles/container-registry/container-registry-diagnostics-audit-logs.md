@@ -3,11 +3,12 @@ title: 收集和分析资源日志
 description: 记录和分析 Azure 容器注册表的资源日志事件，例如身份验证、映像推送和映像拉取。
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343177"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252481"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>用于诊断评估和审核的 Azure 容器注册表日志
 
@@ -26,7 +27,7 @@ ms.locfileid: "84343177"
 * **推送**
 * **请求**
 * **取消标记**
-* **删除**（包括存储库删除事件）
+* **删除** (包括存储库删除事件) 
 * **清除标记**并**清除清单**
 
 > [!NOTE]
@@ -141,10 +142,9 @@ ContainerRegistryLoginEvents
 
 除了将日志发送到 Log Analytics 以外，还有一种常见的替代方案，那就是选择 Azure 存储帐户作为日志目标。 若要将日志存档在 Azure 存储中，请先创建一个存储帐户，然后通过诊断设置启用存档。
 
-还可以将诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 数据中心每秒可以接受数百万事件，用户可以使用任何实时分析提供程序转换并存储这些事件。 
+还可以将诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-about.md)。 数据中心每秒可以接受数百万事件，用户可以使用任何实时分析提供程序转换并存储这些事件。 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解如何使用 [Log Analytics](../azure-monitor/log-query/get-started-portal.md) 和创建[日志查询](../azure-monitor/log-query/get-started-queries.md)。
 * 参阅 [Azure 平台日志概述](../azure-monitor/platform/platform-logs-overview.md)，了解不同的 Azure 层提供的平台日志。
-

@@ -7,15 +7,16 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7aa93d8ba21cafddc5511e16fa430b76942b1a6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668294"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251190"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
-在 Azure Kubernetes 服务 (AKS) 中管理群集时，应用程序的正常运行时间变得非常重要。 默认情况下，AKS 通过在[虚拟机规模集 (VMSS)](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) 中使用多个节点来提供高可用性。 但这些多个节点不会保护你的系统免受区域故障的问题。 为了最大化正常运行时间，请提前规划以维持业务连续性并为灾难恢复做好准备。
+在 Azure Kubernetes 服务 (AKS) 中管理群集时，应用程序的正常运行时间变得非常重要。 默认情况下，AKS 通过在[虚拟机规模集 (VMSS)](../virtual-machine-scale-sets/overview.md) 中使用多个节点来提供高可用性。 但这些多个节点不会保护你的系统免受区域故障的问题。 为了最大化正常运行时间，请提前规划以维持业务连续性并为灾难恢复做好准备。
 
 本文重点介绍如何在 AKS 中规划业务连续性和灾难恢复。 你将学习如何执行以下操作：
 
@@ -32,8 +33,8 @@ ms.locfileid: "80668294"
 
 一个 AKS 群集部署到单个区域中。 为避免系统受到区域故障的影响，可以跨不同区域将应用程序部署到多个 AKS 群集中。 规划 AKS 群集的部署位置时，请考虑：
 
-* [**AKS 区域可用性**](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability)：选择靠近用户的区域。 AKS 不断向新区域扩展。
-* [**Azure 配对区域**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)：对于地理区域，请选择两个相互配对的区域。 配对区域协调平台更新，并在需要时确定恢复工作的优先级。
+* [**AKS 区域可用性**](./quotas-skus-regions.md#region-availability)：选择靠近用户的区域。 AKS 不断向新区域扩展。
+* [**Azure 配对区域**](../best-practices-availability-paired-regions.md)：对于地理区域，请选择两个相互配对的区域。 配对区域协调平台更新，并在需要时确定恢复工作的优先级。
 * **服务可用性**：确定配对区域应采用热/热、热/暖还是热/冷配置。 是否要同时运行两个区域，其中一个区域已准备好开始提供流量？ 或者，是否要运行一个区域，以便有时间来准备好提供流量？
 
 AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部署到配对区域中，这些区域旨在一起管理区域灾难恢复。 例如，AKS 现已在美国东部和美国西部推出。 这些区域是配对的。 创建 AKS BC/DR 策略时，请选择这两个区域。
@@ -44,7 +45,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 **最佳做法**：Azure 流量管理器可以将客户定向到最近的 AKS 群集和应用程序实例。 为获得最佳性能和冗余，在进入 AKS 群集之前，通过流量管理器来定向所有应用程序流量。
 
-如果在不同的区域中创建了多个 AKS 群集，请使用流量管理器控制如何将流量传送到每个群集中运行的应用程序。 [Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/)是可以在区域间分布网络流量的基于 DNS 的流量负载均衡器。 使用流量管理器根据群集响应时间或地理位置路由用户。
+如果在不同的区域中创建了多个 AKS 群集，请使用流量管理器控制如何将流量传送到每个群集中运行的应用程序。 [Azure 流量管理器](../traffic-manager/index.yml)是可以在区域间分布网络流量的基于 DNS 的流量负载均衡器。 使用流量管理器根据群集响应时间或地理位置路由用户。
 
 ![将 AKS 与流量管理器配合使用](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
@@ -54,15 +55,15 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 流量管理器执行 DNS 查找，并为用户返回最适当的终结点。 嵌套的配置文件可为主位置指定优先级。 例如，用户在一般情况下应连接到最近的地理区域。 如果该区域有问题，流量管理器会将用户定向到次要区域。 此方式确保客户可以连接到应用程序实例，即使最近的地理区域不可用。
 
-有关如何设置终结点和路由的信息，请参阅[使用流量管理器配置地理流量路由方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)。
+有关如何设置终结点和路由的信息，请参阅[使用流量管理器配置地理流量路由方法](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)。
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>第7层应用程序通过 Azure 前门服务进行路由
 
-流量管理器使用 DNS （第3层）来整形流量。 [Azure 前门服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供 HTTP/HTTPS （第7层）路由选项。 Azure 前门服务的其他功能包括 TLS 终止、自定义域、web 应用程序防火墙、URL 重写和会话相关性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
+流量管理器使用 DNS (第3层) 来整形流量。 [Azure 前门服务](../frontdoor/front-door-overview.md)提供 HTTP/HTTPS (第7层) 路由选项。 Azure 前门服务的其他功能包括 TLS 终止、自定义域、web 应用程序防火墙、URL 重写和会话相关性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>使用虚拟网络对等互连将区域互连
 
-如果群集需要相互通信，则可以通过[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)来实现两个虚拟网络之间的相互连接。 这种技术将虚拟网络相互互连，同时跨 Microsoft 主干网络提供高带宽，甚至跨不同地理区域。
+如果群集需要相互通信，则可以通过[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)来实现两个虚拟网络之间的相互连接。 这种技术将虚拟网络相互互连，同时跨 Microsoft 主干网络提供高带宽，甚至跨不同地理区域。
 
 要对等互连运行 AKS 群集的虚拟网络，一个先决条件是在 AKS 群集中使用标准负载均衡器，以便通过虚拟网络对等互连访问 Kubernetes 服务。
 
@@ -82,7 +83,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 * **更可靠**：如果一个区域不可用，AKS 群集将从可用的容器注册表提取映像。
 * **更经济实惠**：数据中心之间没有任何网络出口费用。
 
-异地复制是高级 SKU 容器注册表的一项功能。 有关如何配置异地复制的信息，请参阅[容器注册表异地复制](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)。
+异地复制是高级 SKU 容器注册表的一项功能。 有关如何配置异地复制的信息，请参阅[容器注册表异地复制](../container-registry/container-registry-geo-replication.md)。
 
 ## <a name="remove-service-state-from-inside-containers"></a>从容器内删除服务状态
 
@@ -97,7 +98,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 如何构建可移植的应用程序，请参阅以下指导原则：
 
 * [12 因素应用方法](https://12factor.net/)
-* [在多个 Azure 区域中运行 Web 应用程序](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)
+* [在多个 Azure 区域中运行 Web 应用程序](/azure/architecture/reference-architectures/app-service-web-app/multi-region)
 
 ## <a name="create-a-storage-migration-plan"></a>创建存储迁移计划
 

@@ -6,18 +6,18 @@ author: mlearned
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: mlearned
-ms.openlocfilehash: 27ae1d1a2c6309bdac2410dca4b48abf27d8ea0b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 95a303a4b6a83901560b26679bca920b9de4d3f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231975"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250899"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
 
 目前，Azure Kubernetes Service (AKS) 群集 (具体来说，Kubernetes 云提供商) 要求使用标识在 Azure 中创建负载均衡器和托管磁盘等其他资源。 此标识可以是*托管标识*，也可以是*服务主体*。 如果使用[服务主体](kubernetes-service-principal.md)，则必须提供一个或 AKS 代表您创建一个。 如果使用托管标识，将自动为您创建 AKS。 使用服务主体的群集最终会到达一种状态，在此状态中必须续订服务主体，以使群集保持正常运行。 管理服务主体增加了复杂性，这就是更易于使用托管标识的原因。 相同的权限要求适用于服务主体和托管标识。
 
-*托管标识*本质上是服务主体的包装，使其管理更简单。 根据 Azure Active Directory 默认值，MI 的凭据轮换每46天自动发生一次。 AKS 同时使用系统分配的和用户分配的托管标识类型。 这些标识目前是不可变的。 若要了解详细信息，请参阅[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+*托管标识*本质上是服务主体的包装，使其管理更简单。 根据 Azure Active Directory 默认值，MI 的凭据轮换每46天自动发生一次。 AKS 同时使用系统分配的和用户分配的托管标识类型。 这些标识目前是不可变的。 若要了解详细信息，请参阅[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -110,4 +110,4 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 * 使用[Azure 资源管理器 (ARM) 模板][aks-arm-template]来创建启用了托管身份的群集。
 
 <!-- LINKS - external -->
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters

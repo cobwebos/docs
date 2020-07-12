@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77083514"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253076"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services 概述
 
@@ -36,7 +37,7 @@ Reliable Services 提供简单且功能强大的顶级编程模型，以帮助�
   * 使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
   * 访问其他许多功能，所有这些操作都可通过使用多种编程语言编写的一流编程模型执行。
 * 类似于你所熟悉的编程模型的简单模型，用于运行自己的代码。 代码具有定义完善的入口点和易于管理的生命周期。
-* 可插式通信模型。 使用选择的传输方式，如包含 [Web API](service-fabric-reliable-services-communication-webapi.md) 的 HTTP、WebSockets、自定义 TCP 协议，等等。 Reliable Services 提供一些极佳的自带选项供你使用，也可以提供自己的选项。
+* 可插式通信模型。 使用选择的传输方式，如包含 [Web API](./service-fabric-reliable-services-communication-aspnetcore.md) 的 HTTP、WebSockets、自定义 TCP 协议，等等。 Reliable Services 提供一些极佳的自带选项供你使用，也可以提供自己的选项。
 * 对于有状态服务，Reliable Services 编程模型允许使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) 直接在服务内以一致、可靠的方式存储状态。 Reliable Collections 是一组简单的高度可用、可靠集合类，用过 C# 集合的用户都对它很熟悉。 一直以来，服务需借助外部系统来进行可靠的状态管理。 利用 Reliable Collections，可将状态存储在计算旁边，获得高可用性外部存储一样的高可用性和可靠性。 此模型还能改善延迟问题，因为可将运行此模型所需的计算资源与状态放置在一起。
 
 ## <a name="what-makes-reliable-services-different"></a>Reliable Services 有何不同之处
@@ -52,7 +53,7 @@ Reliable Services 与你以前编写的服务不同，因为 Service Fabric 提�
 
 无论服务有状态还是无状态，Reliable Services 都会提供简单的生命周期，可让你快速插入代码并开始执行。  启动并运行新服务需要实现两个方法：
 
-* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** - 服务在此方法中定义要使用的通信堆栈。 通信堆栈（如 [Web API](service-fabric-reliable-services-communication-webapi.md)）可定义服务的一个或多个侦听终结点（客户端将如何访问服务）。 它还定义所显示的消息如何与服务代码的其余部分交互。
+* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** - 服务在此方法中定义要使用的通信堆栈。 通信堆栈（如 [Web API](./service-fabric-reliable-services-communication-aspnetcore.md)）可定义服务的一个或多个侦听终结点（客户端将如何访问服务）。 它还定义所显示的消息如何与服务代码的其余部分交互。
 * **RunAsync** - 服务在此方法中运行其业务逻辑，对于在服务生存期内一直运行的所有后台任务，服务可在此方法中启动这些任务。 所提供的取消标记是指示该操作何时应停止的信号。 例如，如果服务需要从 Reliable Queue 中提取消息并进行处理，这就是这些工作的发生位置。
 
 如果这是首次学习可靠服务，请继续阅读！ 如果你正在寻找 Reliable Services 生命周期的详细演练，请查看 [Reliable Services 生命周期概述](service-fabric-reliable-services-lifecycle.md)。
@@ -67,7 +68,7 @@ Reliable Services 与你以前编写的服务不同，因为 Service Fabric 提�
 
 以没有内存的计算器为例，它会接收所有项并同时执行运算。
 
-在这种情况下，由于服务无需处理任何后台任务，因此，服务的 `RunAsync()` (C#) 或 `runAsync()` (Java) 可为空。 创建计算器服务后，该服务将返回 `ICommunicationListener` (C#) 或 `CommunicationListener`（例如 [Web API](service-fabric-reliable-services-communication-webapi.md)），用于在某个端口上打开侦听终结点。 此侦听终结点挂接到不同的计算方法（例如："Add(n1, n2)"），这些方法定义计算器的公共 API。
+在这种情况下，由于服务无需处理任何后台任务，因此，服务的 `RunAsync()` (C#) 或 `runAsync()` (Java) 可为空。 创建计算器服务后，该服务将返回 `ICommunicationListener` (C#) 或 `CommunicationListener`（例如 [Web API](./service-fabric-reliable-services-communication-aspnetcore.md)），用于在某个端口上打开侦听终结点。 此侦听终结点挂接到不同的计算方法（例如："Add(n1, n2)"），这些方法定义计算器的公共 API。
 
 从客户端进行调用时，将调用相应的方法，并且计算器服务会对所提供的数据执行运算并返回结果。 它不存储任何状态。
 

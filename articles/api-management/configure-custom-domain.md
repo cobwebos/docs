@@ -12,11 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83004745"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252889"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名
 
@@ -70,8 +71,8 @@ ms.locfileid: "83004745"
     > 通配符域名（例如 `*.contoso.com`）在除消耗层以外的所有层中都受支持。
 
     > [!TIP]
-    > 我们建议使用 [Azure Key Vault 管理证书](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)并将其设置为“自动续订”。
-    > 如果使用 Azure Key Vault 来管理自定义域 TLS/SSL 证书，请确保该证书[作为证书](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)而不是机密插入到 Key Vault 中 。
+    > 我们建议使用 [Azure Key Vault 管理证书](../key-vault/certificates/about-certificates.md)并将其设置为“自动续订”。
+    > 如果使用 Azure Key Vault 来管理自定义域 TLS/SSL 证书，请确保该证书[作为证书](/rest/api/keyvault/createcertificate/createcertificate)而不是机密插入到 Key Vault 中 。
     >
     > 若要提取 TLS/SSL 证书，API 管理必须对包含该证书的 Azure Key Vault 具有“列表”和“获取机密”权限。 使用 Azure 门户时，所有必要的配置步骤都将自动完成。 使用命令行工具或管理 API 时，必须手动授予这些权限。 此过程分为两个步骤。 首先，使用 API 管理实例上的“托管标识”页确保已启用“托管标识”并记下该页上显示的主体 ID。 其次，在包含证书的 Azure Key Vault 上为此主体 ID 提供权限列表并获取机密权限。
     >

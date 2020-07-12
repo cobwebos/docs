@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 64eaa3fd38a9f3de7e2032ef7ff7a18924353a1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318430"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250849"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -123,7 +123,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 > [!TIP]
 > 如果在添加节点池时未指定*VmSize* ，则 Windows 节点池的默认大小和 Linux 节点池的*Standard_DS2_v2* *Standard_D2s_v3* 。 如果未指定 OrchestratorVersion，则它将默认为与控制平面相同的版本。
 
-### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>添加具有唯一子网的节点池（预览）
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>添加具有唯一子网 (预览的节点池) 
 
 工作负荷可能需要将群集的节点拆分为单独的池，以便进行逻辑隔离。 对于群集中每个节点池专用的单独子网，可以支持此隔离。 这可以满足要求，例如，在节点池中拆分非连续的虚拟网络地址空间。
 
@@ -723,12 +723,12 @@ az group deployment create \
 
 更新 AKS 群集可能需要花费几分钟时间，具体取决于资源管理器模板中定义的节点池设置和操作。
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>为节点池分配每个节点一个公共 IP （预览）
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a> (预览为节点池分配每个节点的公共 IP) 
 
 > [!WARNING]
 > 必须安装 CLI 预览版扩展0.4.43 或更高版本，才能使用公共 IP 每节点功能。
 
-AKS 节点无需使用自身的公共 IP 地址进行通信。 但是，方案可能需要节点池中的节点接收其自己的专用公共 IP 地址。 常见的情况是，游戏工作负荷，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 此方案可通过注册预览功能 "节点公共 IP （预览版）" AKS 来实现。
+AKS 节点无需使用自身的公共 IP 地址进行通信。 但是，方案可能需要节点池中的节点接收其自己的专用公共 IP 地址。 常见的情况是，游戏工作负荷，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 此方案可通过注册预览功能、节点公共 IP (preview) 来实现 AKS。
 
 若要安装和更新最新的 aks 扩展，请使用以下 Azure CLI 命令：
 
@@ -844,7 +844,7 @@ az group delete --name myResourceGroup2 --yes --no-wait
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [quotas-skus-regions]: quotas-skus-regions.md
 [supported-versions]: supported-kubernetes-versions.md
-[tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
+[tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md

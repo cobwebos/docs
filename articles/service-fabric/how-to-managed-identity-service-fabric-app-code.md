@@ -3,12 +3,12 @@ title: 在应用程序中使用托管标识
 description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461559"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253637"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
 
@@ -371,7 +371,7 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 | 5 | 等待 16 秒并重试 |
 
 ## <a name="resource-ids-for-azure-services"></a>Azure 服务的资源 ID
-有关支持 Azure AD 的资源的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-msi.md)。
+有关支持 Azure AD 的资源的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

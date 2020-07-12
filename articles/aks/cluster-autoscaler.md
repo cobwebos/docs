@@ -4,11 +4,12 @@ description: 了解如何使用群集自动缩放程序自动缩放群集以满�
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aa06ea2fbc3aff218a4940fa60da767fabca500
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730010"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252022"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
@@ -212,7 +213,7 @@ AKS 将代你管理群集自动缩放程序，并在托管控制平面中运行�
 
 若要配置将从群集自动缩放程序推送到 Log Analytics 的日志，请执行以下步骤。
 
-1. 设置一条资源日志规则，以便将群集自动缩放程序日志推送到 Log Analytics。 [此处提供了详细说明](https://docs.microsoft.com/azure/aks/view-master-logs#enable-resource-logs)，请确保在选择“日志”的选项时选中 `cluster-autoscaler` 的复选框。
+1. 设置一条资源日志规则，以便将群集自动缩放程序日志推送到 Log Analytics。 [此处提供了详细说明](./view-master-logs.md#enable-resource-logs)，请确保在选择“日志”的选项时选中 `cluster-autoscaler` 的复选框。
 1. 在 Azure 门户中单击群集上的“日志”部分。
 1. 将以下示例查询输入 Log Analytics：
 
