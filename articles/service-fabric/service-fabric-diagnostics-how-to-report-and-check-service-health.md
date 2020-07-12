@@ -5,18 +5,19 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 751af36c630d1b0faa0c07bdd3a8b7519bd328c9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464636"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241924"
 ---
 # <a name="report-and-check-service-health"></a>报告和检查服务运行状况
 当服务发生问题时，必须能够快速检测问题，才能响应并修复所有事件和中断。 如果从服务代码向 Azure Service Fabric 运行状况管理器报告问题和失败，可以使用 Service Fabric 提供的标准运行状况监视工具来检查运行状况。
 
 可通过三种方式报告服务的运行状况：
 
-* 使用 [Partition](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) 或 [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) 对象。  
+* 使用 [Partition](/dotnet/api/system.fabric.istatefulservicepartition) 或 [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) 对象。  
   可以使用 `Partition` 和 `CodePackageActivationContext` 对象在属于当前上下文一部分的项目中报告运行状况。 例如，作为副本一部分运行的代码只能报告该副本、其所属的分区，以及其所属应用程序的运行状况。
 * 改用 `FabricClient`   
   如果群集不[安全](service-fabric-cluster-security.md)或者使用管理员权限运行服务，则可以使用 `FabricClient` 从服务代码中报告运行状况。 大多数实际情况下都要求使用安全群集，或提供管理员权限。 可以使用 `FabricClient` 报告任何属于群集一部分的实体的运行状况。 但是，在理想情况下，服务代码应该只发送与其本身运行状况相关的报告。
@@ -140,6 +141,5 @@ activationContext.ReportApplicationHealth(healthInformation);
 
 ## <a name="next-steps"></a>后续步骤
 * [深入了解 Service Fabric 运行状况](service-fabric-health-introduction.md)
-* [用于报告服务运行状况的 REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [用于报告应用程序运行状况的 REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
-
+* [用于报告服务运行状况的 REST API](/rest/api/servicefabric/report-the-health-of-a-service)
+* [用于报告应用程序运行状况的 REST API](/rest/api/servicefabric/report-the-health-of-an-application)

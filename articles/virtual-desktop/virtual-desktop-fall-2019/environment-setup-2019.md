@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d666f7e3e43b5429423a5356aa00e074ed020869
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 153532b3c33158ee1a43db7883eb7a9ec621ade7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615326"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241669"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虚拟桌面环境
 
@@ -44,7 +44,7 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 - RemoteApp，用户可在其中访问单独选择并发布到应用组的 RemoteApps
 - 桌面，用户在其中访问完整桌面
 
-默认情况下，当你创建主机池时，将自动创建一个桌面应用组（名为 "桌面应用程序组"）。 你可以随时删除此应用组。 但是，如果存在桌面应用组，则无法在主机池中创建另一个桌面应用组。 若要发布 RemoteApps，必须创建 RemoteApp 应用组。 可以创建多个 RemoteApp 应用组来适应不同的辅助角色。 不同的 RemoteApp 应用组还可以包含重叠的 RemoteApps。
+默认情况下，在创建主机池时，将自动创建一个名为 "桌面应用程序组" )  (桌面应用组。 你可以随时删除此应用组。 但是，如果存在桌面应用组，则无法在主机池中创建另一个桌面应用组。 若要发布 RemoteApps，必须创建 RemoteApp 应用组。 可以创建多个 RemoteApp 应用组来适应不同的辅助角色。 不同的 RemoteApp 应用组还可以包含重叠的 RemoteApps。
 
 若要将资源发布到用户，你必须将其分配给应用组。 将用户分配到应用组时，请考虑以下事项：
 
@@ -53,7 +53,7 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 
 ## <a name="tenant-groups"></a>租户组
 
-在 Windows 虚拟桌面中，大多数设置和配置都会在 Windows 虚拟桌面租户中发生。 Windows 虚拟桌面租户包含主机池、应用组和应用组用户分配。 但是，在某些情况下，你可能需要同时管理多个 Windows 虚拟桌面租户，尤其是在你是云服务提供商（CSP）或托管合作伙伴时。 在这些情况下，可以使用自定义 Windows 虚拟桌面租户组放置每个客户的 Windows 虚拟桌面租户，并集中管理访问权限。 但是，如果你只管理单个 Windows 虚拟桌面租户，则租户组概念不适用，你可以继续操作并管理默认租户组中存在的租户。
+在 Windows 虚拟桌面中，大多数设置和配置都会在 Windows 虚拟桌面租户中发生。 Windows 虚拟桌面租户包含主机池、应用组和应用组用户分配。 但是，在某些情况下，你可能需要同时管理多个 Windows 虚拟桌面租户，特别是当你是云服务提供商 (CSP) 或托管合作伙伴时。 在这些情况下，可以使用自定义 Windows 虚拟桌面租户组放置每个客户的 Windows 虚拟桌面租户，并集中管理访问权限。 但是，如果你只管理单个 Windows 虚拟桌面租户，则租户组概念不适用，你可以继续操作并管理默认租户组中存在的租户。
 
 ## <a name="end-users"></a>最终用户
 
@@ -67,5 +67,5 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 
 若要了解如何连接到 Windows 虚拟桌面，请参阅以下文章之一：
 
-- [从 Windows 10 或 Windows 7 进行连接](../connect-windows-7-and-10.md)
+- [从 Windows 10 或 Windows 7 进行连接](connect-windows-7-10-2019.md)
 - [从 Web 浏览器进行连接](connect-web-2019.md)

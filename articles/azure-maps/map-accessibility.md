@@ -8,11 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648570"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242366"
 ---
 # <a name="building-an-accessible-application"></a>生成可访问的应用程序
 
@@ -21,7 +22,7 @@ ms.locfileid: "83648570"
 涉及到地图等丰富交互式内容时，一些常见的辅助功能考虑因素如下：
 - 对难以查看 Web 应用程序的用户提供屏幕阅读器支持。
 - 提供多种方法与 Web 应用程序交互以及在其中导航，例如，支持鼠标、触屏和键盘。
-- 确保在指定颜色对比度时不会混合多种颜色，导致颜色难以相互区分。 
+- 确保颜色对比度，使颜色不会混合在一起，并且难以区分。 
 
 Azure Maps Web SDK 中随附了许多预生成的辅助功能，例如：
 - 当地图移动以及当用户聚焦于某个控件或弹出窗口时显示屏幕阅读器说明。
@@ -45,6 +46,7 @@ Azure Maps Web SDK 中随附了许多预生成的辅助功能，例如：
 - 聚焦到地图后，使用减号、连字符 (`-`) 或下划线 (`_`) 可以缩小一个级别。
 - 配合鼠标、触屏或键盘 Tab/Enter 键使用缩放控件。
 - 在按住 `Shift` 按钮的同时，在地图上按下鼠标左键并拖动可以绘制要放大的地图区域。
+- 使用一些多点触摸板，向上拖动两个手指以缩小或缩小以放大。
 
 **平移地图**
 
@@ -75,7 +77,7 @@ Azure Maps Web SDK 中随附了许多预生成的辅助功能，例如：
 - 加载地图控件后，它会检查是否已启用高对比度，以及浏览器是否支持高对比度。
 - 地图控件不会监视设备的高对比度模式。 地图不会随着设备模式的更改而更改。 因此，用户需要通过刷新页面来重新加载地图。
 - 检测到高对比度时，地图样式会自动切换到高对比度，所有内置控件将使用高对比度样式。 例如，ZoomControl、PitchControl、CompassControl、StyleControl 和其他内置控件将使用高对比度样式。
-- 有两种类型的高对比度：浅色和深色。 如果地图控件可以检测到高对比度类型，则地图的行为将会相应地调整。 如果是浅色类型，则加载 grayscale_light 地图样式。 如果无法检测到类型或者类型为深色，则加载 high_contrast_dark 样式。
+- 有两种类型的高对比度：浅色和深色。 如果地图控件可以检测到高对比度类型，则地图的行为将会相应地调整。 如果是浅色类型，则加载 grayscale_light 地图样式。 如果无法检测到该类型或该类型为深色，则将加载 high_contrast_dark 样式。
 - 创建自定义控件有助于了解内置控件是否使用高对比度样式。 开发人员可以在地图容器 div 中添加一个用于检查的 css 类。 要添加的 css 类为 `high-contrast-dark` 和 `high-contrast-light`。 若要使用 JavaScript 进行检查，请使用：
 
 ```javascript
@@ -109,7 +111,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 | 减号、连字号 (`-`) 或 <sup>*</sup>下划线 (`_`) | 缩小 | 
 | `Shift` + 在地图上拖动鼠标以绘制区域 | 放大区域 |
 
-<sup>*</sup> 这些快捷键通常共享键盘上的同一键。 添加这些快捷键的目的是改进用户体验。 用户是否对这些快捷键使用 Shift 键并不重要。
+<sup>*</sup> 这些快捷键通常共享键盘上的同一键。 添加这些快捷键的目的是改进用户体验。 如果用户对这些快捷方式使用 shift 键，这也无关紧要。
 
 ## <a name="screen-reader-support"></a>屏幕阅读器支持
 

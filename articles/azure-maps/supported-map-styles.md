@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db8ae98302ad6df7355ce03f5a33b5d21f1ea09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334041"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242094"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps 支持的地图样式
 Azure Maps 支持几种不同的内置地图样式，如下所述。
@@ -28,6 +28,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 * [地图磁贴](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK 地图控件
 * Android 地图控件
+* Power BI 视觉对象
 
 ## <a name="blank-and-blank_accessible"></a>空白和 blank_accessible
 
@@ -48,6 +49,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 * [卫星图块](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK 地图控件
 * Android 地图控件
+* Power BI 视觉对象
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 此地图样式是道路和标签叠加在卫星和航拍图像上的混合体。
@@ -57,6 +59,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 **适用 API：**
 * Web SDK 地图控件
 * Android 地图控件
+* Power BI 视觉对象
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 **灰度深色**是道路地图样式的深色版本。
@@ -68,6 +71,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 * [地图磁贴](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK 地图控件 
 * Android 地图控件
+* Power BI 视觉对象
 
 
 ## <a name="grayscale_light"></a>grayscale_light
@@ -78,6 +82,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 **适用 API：**
 * Web SDK 地图控件
 * Android 地图控件
+* Power BI 视觉对象
 
 
 ## <a name="night"></a>夜间
@@ -88,6 +93,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 **适用 API：**
 * Web SDK 地图控件
 * Android 地图控件
+* Power BI 视觉对象
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 道路地形阴影是 Azure Maps 主要样式，通过地球的轮廓完成****。
@@ -98,6 +104,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 * [地图磁贴](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK 地图控件
 * Android 地图控件
+* Power BI 视觉对象
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
@@ -107,6 +114,7 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 **适用 API：**
 * Web SDK 地图控件
+* Power BI 视觉对象
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: b5751bdccde33fa16d5f09cfbe9a411a351518b0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 74fdfb9f3a3f59f55b0f0ed4865601c0ddb7b7f2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086545"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241958"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>了解 Azure Database for MySQL 中的业务连续性
 
@@ -51,6 +51,10 @@ Azure 数据中心会罕见地发生中断。 发生中断时，可能仅导致�
 ## <a name="cross-region-read-replicas"></a>跨区域只读副本
 
 可以使用跨区域只读副本来增强业务连续性和灾难恢复规划。 使用 MySQL 的二进制日志复制技术异步更新读取副本。 从[只读副本概念文章](concepts-read-replicas.md)详细了解有关只读副本、可用区域以及如何进行故障转移的信息。 
+
+## <a name="faq"></a>常见问题解答
+### <a name="where-does-azure-database-for-mysql-store-customer-data"></a>Azure Database for MySQL 将客户数据存储在何处？
+默认情况下，Azure Database for MySQL 不会将客户数据从其部署到的区域中移出或存储。 但是，客户可以选择启用[异地冗余备份](concepts-backup.md#backup-redundancy-options)，或创建[跨区域读取副本](concepts-read-replicas.md#cross-region-replication)以便将数据存储在另一个区域中。
 
 ## <a name="next-steps"></a>后续步骤
 

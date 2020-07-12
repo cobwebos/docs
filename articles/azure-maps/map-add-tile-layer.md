@@ -9,11 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988594"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242298"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>将图块层添加到地图
 
@@ -23,7 +24,7 @@ ms.locfileid: "76988594"
 
 * X、Y、缩放表示法-X 是列、Y 是磁贴网格中磁贴的行位置，而缩放表示法基于缩放级别。
 * Quadkey 表示法-将 x、y 和缩放信息合并为一个字符串值。 此字符串值将成为单个磁贴的唯一标识符。
-* 边界框-指定边界方框坐标格式的图像： `{west},{south},{east},{north}` 。 此格式通常由[Web 映射服务（WMS）](https://www.opengeospatial.org/standards/wms)使用。
+* 边界框-指定边界方框坐标格式的图像： `{west},{south},{east},{north}` 。 此格式通常由[Web 映射服务 (WMS) ](https://www.opengeospatial.org/standards/wms)使用。
 
 > [!TIP]
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) 是直观显示地图上的大型数据集的好办法。 矢量数据不仅可以从图像生成，还可以作为图块层呈现。 通过将矢量数据呈现为图块层，地图控件只需加载小于其所表示的矢量数据的文件大小的磁贴。 此方法通常用于在地图上呈现数百万行数据。
@@ -36,6 +37,7 @@ ms.locfileid: "76988594"
 * `{quadkey}` - 基于必应地图图块系统命名约定的图块 quadkey 标识符。
 * `{bbox-epsg-3857}` - EPSG 3857 空间引用系统中格式为 `{west},{south},{east},{north}` 的边界框字符串。
 * `{subdomain}`-将添加子域值的占位符（如果指定） `subdomain` 。
+* `{azMapsDomain}`-一个占位符，用于对齐域并使用映射所用的相同值对磁贴请求进行身份验证。
 
 ## <a name="add-a-tile-layer"></a>添加图块层
 
