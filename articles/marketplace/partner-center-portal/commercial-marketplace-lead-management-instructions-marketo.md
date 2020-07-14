@@ -60,7 +60,7 @@ ms.locfileid: "83849165"
     找出这些值的另一种方法是：
 
     - 在 Marketo 实例的 URL 中找到服务器 ID，例如 `serverID.marketo.com`。
-    - 转到“管理员” ** > ** “Munchkin 帐户 ID”字段中的“Munchkin”菜单，或从 Marketo REST API 主机子域的第一个部分获取订阅的 Munchkin ID：`https://{Munchkin ID}.mktorest.com`。
+    - 转到“管理员” ** > ** “Munchkin 帐户 ID”字段中的“Munchkin” 菜单，或从 Marketo REST API 主机子域的第一个部分获取订阅的 Munchkin ID：`https://{Munchkin ID}.mktorest.com`。
     - 窗体 ID 是在步骤 7 中创建的“嵌入代码”窗体的 ID，用于从市场路由潜在顾客。
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>配置你的产品/服务以将潜在顾客发送到 Marketo
