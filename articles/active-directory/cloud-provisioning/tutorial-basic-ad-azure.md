@@ -1,29 +1,29 @@
 ---
-title: 教程-基本 Active Directory 本地和 Azure AD 环境。
+title: 教程 - 基本 Active Directory 本地和 Azure AD 环境。
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360514"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>教程：基本 Active Directory 环境
 
-本教程将指导你创建基本的 Active Directory 环境。 
+本教程将指导你创建基本 Active Directory 环境。 
 
 ![创建](media/tutorial-single-forest/diagram1.png)
 
-您可以使用在本教程中创建的环境来测试混合标识方案的各个方面，并将作为某些教程的先决条件。  如果你已有现有 Active Directory 环境，则可以使用它作为替代。  此信息适用于从任何内容开始的个人。
+你可以使用在本教程中创建的环境来测试混合标识方案的各个方面，这将作为某些教程的先决条件。  如果已有现有 Active Directory 环境，则可以使用它作为替代环境。  此信息适用于可能尚未接触过相关内容的个人。
 
 本教程包含
 ## <a name="prerequisites"></a>先决条件
@@ -32,17 +32,17 @@ ms.locfileid: "74793893"
 - 允许虚拟机与 Internet 通信的[外部网络适配器](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)。
 - [Azure 订阅](https://azure.microsoft.com/free)
 - Windows Server 2016 的副本
-- [Microsoft .NET 框架4.7。1](https://www.microsoft.com/download/details.aspx?id=56115)
+- [Microsoft .NET framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)
 
 > [!NOTE]
 > 本教程使用 PowerShell 脚本，以便可以在最短的时间内创建教程环境。  每个脚本都使用在脚本开头声明的变量。  你可以而且应该更改变量以反映你的环境。
 >
->使用的脚本会在安装 Azure AD Connect 云预配代理之前创建通用 Active Directory 环境。  它们与所有教程相关。
+>在安装 Azure AD Connect 云预配代理之前，所使用的脚本会创建常规 Active Directory 环境。  它们与所有教程相关。
 >
 > GitHub [此处](https://github.com/billmath/tutorial-phs)提供了本教程中使用的 PowerShell 脚本的副本。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
-为了使混合标识环境正常运行，您需要做的第一件事是创建一个将用作本地 Active Directory 服务器的虚拟机。  请执行以下操作：
+你需要做的第一件事就是创建一个将用作我们的本地 Active Directory 服务器的虚拟机，以便启动并运行我们的混合标识环境。  请执行以下操作：
 
 1. 以管理员身份打开 PowerShell ISE。
 2. 运行以下脚本。
@@ -78,16 +78,16 @@ ms.locfileid: "74793893"
 1. Hyper-V 管理器，双击虚拟机
 2. 单击“开始”按钮。
 3. 系统将提示你“按任意键以从 CD 或 DVD 启动”。 继续执行此操作。
-4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”  。
-5. 单击“立即安装”  。
-6. 输入许可证密钥并单击“下一步”  。
-7. 勾选“我接受许可条款”，然后单击“下一步”  。
-8. 选择“自定义:  仅安装 Windows (高级)”
-9. 点击“下一步” 
+4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”。
+5. 单击“立即安装”。
+6. 输入许可证密钥并单击“下一步”。
+7. 勾选“我接受许可条款”，然后单击“下一步”。
+8. 选择“自定义: 仅安装 Windows (高级)”
+9. 点击“下一步”
 10. 安装完成后，重新启动虚拟机，登录并运行 Windows 更新，以确保 VM 是最新的。  安装最新更新。
 
 ## <a name="install-active-directory-prerequisites"></a>安装 Active Directory 的先决条件
-现在，你已有一个虚拟机，在安装 Active Directory 之前，需要执行一些操作。  也就是说，你需要重命名虚拟机、设置静态 IP 地址和 DNS 信息，并安装远程服务器管理工具。   请执行以下操作：
+现在你已经启动了虚拟机，你需要在安装 Active Directory 之前完成一些操作。  也就是说，你需要重命名虚拟机，设置静态 IP 地址和 DNS 信息，并安装远程服务器管理工具。   请执行以下操作：
 
 1. 以管理员身份打开 PowerShell ISE。
 2. 运行以下脚本。
@@ -123,7 +123,7 @@ ms.locfileid: "74793893"
     ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>创建 Windows Server AD 环境
-创建 VM 后，已将其重命名并具有静态 IP 地址，接下来可以安装并配置 Active Directory 域服务。  请执行以下操作：
+现在你已经创建了 VM 并且已经重命名并且具有静态 IP 地址，你可以继续安装和配置 Active Directory 域服务。  请执行以下操作：
 
 1. 以管理员身份打开 PowerShell ISE。
 2. 运行以下脚本。
@@ -154,7 +154,7 @@ ms.locfileid: "74793893"
     ```
 
 ## <a name="create-a-windows-server-ad-user"></a>创建 Windows Server AD 用户
-现在，你已准备了 Active Directory 环境，你需要一个测试帐户。  此帐户将在我们的本地 AD 环境中创建，然后同步到 Azure AD。  请执行以下操作：
+现在你拥有了 Active Directory 环境，你还需要一个测试帐户。  此帐户将在我们的本地 AD 环境中创建，然后同步到 Azure AD。  请执行以下操作：
 
 1. 以管理员身份打开 PowerShell ISE。
 2. 运行以下脚本。
@@ -194,31 +194,31 @@ ms.locfileid: "74793893"
 
 
 ## <a name="create-an-azure-ad-tenant"></a>创建 Azure AD 租户
-现在，你需要创建一个 Azure AD 租户，以便可以将我们的用户同步到云。  要创建新的 Azure AD 租户，请执行以下操作。
+现在，你需要创建 Azure AD 租户，以便你可以将用户同步到云。  要创建新的 Azure AD 租户，请执行以下操作。
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
-2. 选择加号图标 (+) 并搜索“Azure Active Directory”   。
-3. 在搜索结果中选择“Azure Active Directory”  。
-4. 选择“创建”  。</br>
+2. 选择加号图标 (+) 并搜索“Azure Active Directory” 。
+3. 在搜索结果中选择“Azure Active Directory”。
+4. 选择“创建”。</br>
 ![创建](media/tutorial-single-forest/create1.png)</br>
-5. 为组织提供名称以及初始域名   。 然后选择“创建”  。 随即创建目录。
-6. 完成此操作后，单击此处链接以管理目录  。
+5. 为组织提供名称以及初始域名 。 然后选择“创建”。 随即创建目录。
+6. 完成此操作后，单击此处链接以管理目录。
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>在 Azure AD 中创建全局管理员
-Azure AD 租户后，你将创建一个全局管理员帐户。  要创建全局管理员帐户，请执行以下操作。
+现在你有了 Azure AD 租户，你将创建全局管理员帐户。  要创建全局管理员帐户，请执行以下操作。
 
-1.  在“管理”下，选择“用户”   。</br>
+1.  在“管理”下，选择“用户” 。</br>
 ![创建](media/tutorial-single-forest/administrator1.png)</br>
-2.  选择“所有用户”，然后选择“+ 新建用户”   。
-3.  为此用户提供名称和用户名。 这将是租户的全局管理员。 还需要将“目录角色”更改为“全局管理员”   。 还可以显示临时密码。 完成后，选择“创建”  。</br>
+2.  选择“所有用户”，然后选择“+ 新建用户” 。
+3.  为此用户提供名称和用户名。 这将是租户的全局管理员。 还需要将“目录角色”更改为“全局管理员” 。 还可以显示临时密码。 完成后，选择“创建”。</br>
 ![创建](media/tutorial-single-forest/administrator2.png)</br>
 4. 完成此操作后，使用新的全局管理员帐户和临时密码打开新的 Web 浏览器并登录 myapps.microsoft.com。
 5. 将全局管理员的密码更改为你可以记住的密码。
 
 ## <a name="optional--additional-server-and-forest"></a>可选：其他服务器和林
-下面是一个可选部分，它提供了创建其他服务器和或林的步骤。  这可用于一些更高级的教程，如[试点 Azure AD Connect 云预配](tutorial-pilot-aadc-aadccp.md)。
+以下是可选部分，提供了创建其他服务器和/或林的步骤。  可在一些更高级的教程（如 [Azure AD Connect 云预配试点](tutorial-pilot-aadc-aadccp.md)）中使用它。
 
-如果只需要其他服务器，则可以在 "**创建虚拟机**" 步骤后停止，然后将服务器加入到上面创建的现有域中。  
+如果仅需要其他服务器，则可以在“创建虚拟机”步骤后停止并将服务器加入到上面创建的现有域。  
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
@@ -265,16 +265,16 @@ Azure AD 租户后，你将创建一个全局管理员帐户。  要创建全局
 1. Hyper-V 管理器，双击虚拟机
 2. 单击“开始”按钮。
 3. 系统将提示你“按任意键以从 CD 或 DVD 启动”。 继续执行此操作。
-4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”  。
-5. 单击“立即安装”  。
-6. 输入许可证密钥并单击“下一步”  。
-7. 勾选“我接受许可条款”，然后单击“下一步”  。
-8. 选择“自定义:  仅安装 Windows (高级)”
-9. 点击“下一步” 
+4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”。
+5. 单击“立即安装”。
+6. 输入许可证密钥并单击“下一步”。
+7. 勾选“我接受许可条款”，然后单击“下一步”。
+8. 选择“自定义: 仅安装 Windows (高级)”
+9. 点击“下一步”
 10. 安装完成后，重新启动虚拟机，登录并运行 Windows 更新，以确保 VM 是最新的。  安装最新更新。
 
 ### <a name="install-active-directory-prerequisites"></a>安装 Active Directory 的先决条件
-现在，你已有一个虚拟机，在安装 Active Directory 之前，需要执行一些操作。  也就是说，你需要重命名虚拟机、设置静态 IP 地址和 DNS 信息，并安装远程服务器管理工具。   请执行以下操作：
+现在你已经启动了虚拟机，你需要在安装 Active Directory 之前完成一些操作。  也就是说，你需要重命名虚拟机，设置静态 IP 地址和 DNS 信息，并安装远程服务器管理工具。   请执行以下操作：
 
 1. 以管理员身份打开 PowerShell ISE。
 2. 运行以下脚本。
@@ -324,7 +324,7 @@ Azure AD 租户后，你将创建一个全局管理员帐户。  要创建全局
     Restart-Computer
     ```
 ### <a name="create-a-windows-server-ad-environment"></a>创建 Windows Server AD 环境
-创建 VM 后，已将其重命名并具有静态 IP 地址，接下来可以安装并配置 Active Directory 域服务。  请执行以下操作：
+现在你已经创建了 VM 并且已经重命名并且具有静态 IP 地址，你可以继续安装和配置 Active Directory 域服务。  请执行以下操作：
 
 1. 以管理员身份打开 PowerShell ISE。
 2. 运行以下脚本。
@@ -370,7 +370,7 @@ Azure AD 租户后，你将创建一个全局管理员帐户。  要创建全局
     ```
 
 ### <a name="create-a-windows-server-ad-user"></a>创建 Windows Server AD 用户
-现在，你已准备了 Active Directory 环境，你需要一个测试帐户。  此帐户将在我们的本地 AD 环境中创建，然后同步到 Azure AD。  请执行以下操作：
+现在你拥有了 Active Directory 环境，你还需要一个测试帐户。  此帐户将在我们的本地 AD 环境中创建，然后同步到 Azure AD。  请执行以下操作：
 
 1. 以管理员身份打开 PowerShell ISE。
 2. 运行以下脚本。

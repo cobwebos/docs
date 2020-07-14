@@ -7,25 +7,25 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
 ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232132"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>教程：删除 Azure Red Hat OpenShift 4 群集
 
-在本教程的第三部分中，将删除运行 OpenShift 4 的 Azure Red Hat OpenShift 群集。 学习如何：
+在本教程（由三个教程组成的系列教程的第三部分）中，运行 OpenShift 4 的 Azure Red Hat OpenShift 群集会被删除。 学习如何：
 
 > [!div class="checklist"]
 > * 删除 Azure Red Hat OpenShift 群集
 
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
-在前面的教程中，使用 OpenShift web 控制台创建并连接了 Azure Red Hat OpenShift 群集。 如果尚未执行这些步骤，并且想要继续操作，请从[教程 1-创建 Azure Red Hat Openshift 4 群集开始。](tutorial-create-cluster.md)
+在之前的教程中，创建了 Azure Red Hat OpenShift 群集并使用 OpenShift Web 控制台与它建立了连接。 如果尚未完成这些步骤，因此想要逐一完成它们，请先阅读[教程 1 - 创建 Azure Red Hat Openshift 4 群集](tutorial-create-cluster.md)。
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 版本2.0.75 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.75 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -39,20 +39,20 @@ az login
 
 ## <a name="delete-the-cluster"></a>删除群集
 
-在前面的教程中，已设置以下变量。 
+在之前的教程中，设置了以下变量。 
 
 ```bash
 CLUSTER=yourclustername
 RESOURCE_GROUP=yourresourcegroup
 ```
 
-使用这些值删除群集：
+使用这些值来删除群集：
 
 ```bash
 az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
 ```
 
-系统将提示你确认是否要删除群集。 通过 `y` 进行确认后，删除群集需要几分钟。 命令完成后，整个资源组以及其中的所有资源（包括群集）都将被删除。
+系统将提示你确认是否要删除该群集。 通过 `y` 进行确认后，删除群集需要几分钟。 此命令完成后，整个资源组以及其中所有资源都将被删除，包括该群集。
 
 ## <a name="next-steps"></a>后续步骤
 

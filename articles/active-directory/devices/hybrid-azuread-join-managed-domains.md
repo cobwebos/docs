@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 2f3ea5f1810b5ca80e096b19e1dcf230e21eabcc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778836"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317630"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -70,9 +70,9 @@ ms.locfileid: "83778836"
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com`（如果使用或计划使用无缝 SSO）
 
-如果组织需要通过出站代理访问 Internet，我们建议[实施 Web 代理自动发现 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))，使 Windows 10 计算机能够在 Azure AD 中进行设备注册。 若要解决在配置和管理 WPAD 时遇到问题，请参阅[排查自动检测的问题](/previous-versions/tn-archive/cc302643(v=technet.10))。
+如果你的组织需要通过出站代理访问 Internet，你可使用[实施 Web 代理自动发现 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))，使 Windows 10 计算机能够在 Azure AD 中进行设备注册。 若要解决在配置和管理 WPAD 时遇到问题，请参阅[排查自动检测的问题](/previous-versions/tn-archive/cc302643(v=technet.10))。 在 1709 更新之前的 Windows 10 设备中，只能使用 WPAD 来配置代理以使用混合 Azure AD 联接。 
 
-如果不使用 WPAD，从 Windows 10 1709 开始，可以在计算机上配置代理设置。 有关详细信息，请参阅 [GPO 部署的 WinHTTP 代理设置](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。
+从 Windows 10 1709 开始，如果不使用 WPAD，则可以在计算机上配置 WinHTTP 代理设置。 有关详细信息，请参阅 [GPO 部署的 WinHTTP 代理设置](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。
 
 > [!NOTE]
 > 如果使用 WinHTTP 设置在计算机上配置代理设置，则无法连接到所配置的代理的任何计算机将无法连接到 Internet。

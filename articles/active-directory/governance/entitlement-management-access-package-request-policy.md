@@ -18,6 +18,7 @@ ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ef2faf2a1d1a131dc5f2a01d3fa46cc61a06fb6
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85078820"
@@ -36,8 +37,8 @@ ms.locfileid: "85078820"
 
 | 方案 | 策略数 |
 | --- | --- |
-| 我想让我的目录中的所有用户都具有相同的访问包请求和批准设置 | One |
-| 我想让某些连接的组织中的所有用户都能够请求访问包 | One |
+| 我想让我的目录中的所有用户都具有相同的访问包请求和批准设置 | 一种 |
+| 我想让某些连接的组织中的所有用户都能够请求访问包 | 一种 |
 | 我想允许目录中的用户以及我的目录以外的用户请求访问包 | 多种 |
 | 我想为某些用户指定不同的审批设置 | 多种 |
 | 我想让某些用户访问包分配使其过期，而其他用户可以扩展其访问权限 | 多种 |

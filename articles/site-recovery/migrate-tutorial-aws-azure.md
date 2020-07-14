@@ -11,6 +11,7 @@ ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 929bc0695bda2e64f77f7e9286e06cee787822ba
 ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "80388961"
@@ -94,7 +95,7 @@ ms.locfileid: "80388961"
 在迁移（故障转移）后创建的 Azure VM 会加入此 Azure 网络。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”>“网络” >
-   “虚拟网络”。**** **** ****
+   “虚拟网络” **** **** ****。
 3. 对于“名称”，请输入 **myMigrationNetwork**。
 4. 保留“地址空间”的默认值（必须输入值）。
 5. 对于“订阅”，请选择要使用的订阅。

@@ -8,19 +8,19 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 93b150d47f1703662ebda5b017e1824cf74b7ab0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318618"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>教程：使用 Azure DevOps Starter 部署 ASP.NET 应用和 Azure SQL 数据库代码
 
 Azure DevOps Starter 提供一种简化的体验，你在其中既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。 
 
 DevOps Starter 还可以：
-* 自动创建 Azure 资源，例如 Azure SQL 数据库。
+* 自动创建 Azure 资源，例如 Azure SQL 数据库中的数据库。
 * 在 Azure Pipelines 中创建并配置一个发布管道，其中包括用于 CI 的生成管道。
 * 为 CD 设置发布管道。 
 * 创建用于监视的 Azure Application Insights 资源。
@@ -40,9 +40,9 @@ DevOps Starter 还可以：
 
 * Azure 订阅。 可以通过 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免费获取一个。
 
-## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>在 DevOps Projects 中为 ASP.NET 应用和 Azure SQL 数据库创建项目
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-azure-sql-database"></a>在 DevOps Projects 中为 ASP.NET 应用和 Azure SQL 数据库创建项目
 
-DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Starter 还可在所选的 Azure 订阅中创建 Azure 资源，例如 Azure SQL 数据库。
+DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Starter 还可在你所选的 Azure 订阅中创建 Azure 资源，例如 Azure SQL 数据库。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -140,11 +140,11 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 1. 发布完成后，刷新应用程序以验证更改。
 
-## <a name="connect-to-the-azure-sql-database"></a>连接到 Azure SQL 数据库
+## <a name="connect-to-azure-sql-database"></a>连接到 Azure SQL 数据库
 
 需要相应的权限才能连接到 Azure SQL 数据库。
 
-1. 在 DevOps Starter 仪表板中选择“SQL 数据库”，转到 SQL 数据库的管理页。
+1. 在 DevOps Starter 仪表板上，选择“SQL 数据库”以转到 SQL 数据库的管理页。
    
 1. 依次选择“设置服务器防火墙”、“添加客户端 IP”。  
 
@@ -165,7 +165,7 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 ## <a name="clean-up-resources"></a>清理资源
 
-测试后，可以清理资源，以避免产生费用。 不再需要本教程中创建的 Azure SQL 数据库和相关资源时，可将其删除。 为此，请使用 DevOps Starter 仪表板上的“删除”功能。
+测试后，可以清理资源，以避免产生费用。 当不再需要本教程中创建的 Azure SQL 数据库和相关资源时，可将其删除。 为此，请使用 DevOps Starter 仪表板上的“删除”功能。
 
 > [!IMPORTANT]
 > 以下过程会永久删除资源。 删除功能会销毁 DevOps Starter 中的项目在 Azure 和 Azure DevOps 中创建的数据，删除后无法检索这些数据。 只能在仔细阅读提示后才使用此过程。

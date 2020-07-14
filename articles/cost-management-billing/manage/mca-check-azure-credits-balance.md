@@ -6,20 +6,23 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/24/2019
 ms.author: banders
-ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e238a409adda674e1182c0ffd40a4f666d362731
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199681"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361500"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>跟踪 Microsoft 客户协议的 Azure 额度余额
 
 可以通过 Azure 门户或 REST API 查看 Microsoft 客户协议的计费帐户的 Azure 额度余额。
 
 在 Microsoft 客户协议的计费帐户中，额度分配给计费对象信息。 每个计费对象信息都有其自己的额度，这些额度自动应用到其发票上的费用。 若要查看计费对象信息的 Azure 额度余额，你必须在计费对象信息上有所有者、参与者、读者或发票管理者角色，或者必须在计费帐户上有所有者、参与者或读者角色。 若要详细了解这些角色，请参阅[了解 Azure 中的 Microsoft 客户协议管理角色](understand-mca-roles.md)。
+
+> [!NOTE]
+> 新额度可能需要最多 24 小时才能显示在 Azure 门户中。 如果已获得新额度，但额度在门户中尚未显示，请等待 24 小时以供额度显示。
 
 本文适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 
@@ -29,7 +32,7 @@ ms.locfileid: "77199681"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
     ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
@@ -41,7 +44,7 @@ ms.locfileid: "77199681"
     >
     > Azure 门户会记住你访问的最后一个计费范围，并在你下一次转到“成本管理 + 计费”页时显示该范围。 如果你早前访问过“成本管理 + 计费”，则看不到计费范围页。 如果是这样，请检查你是否处于[正确的范围](#check-access-to-a-microsoft-customer-agreement)。 否则，请[切换范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)，选择 Microsoft 客户协议的计费帐户。
 
-3. 在左侧选择“付款方式”，然后选择“Azure 额度”。  
+3. 在左侧选择“付款方式”，然后选择“Azure 额度”。 
 
    ![计费对象信息的额度余额的屏幕截图](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
@@ -151,7 +154,7 @@ API 响应返回一个列表，其中包含计费帐户及其计费对象信息�
 }
 ```
 
-使用计费对象信息的 `displayName` 属性来标识需要检查其额度余额的计费对象信息。 复制计费对象信息的 `id`。 例如，如果需要检查“开发”  计费对象信息的额度余额，可复制 ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```。 将该值粘贴到某个位置，以便在下一步使用它。
+使用计费对象信息的 `displayName` 属性来标识需要检查其额度余额的计费对象信息。 复制计费对象信息的 `id`。 例如，如果需要检查“开发”计费对象信息的额度余额，可复制 ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```。 将该值粘贴到某个位置，以便在下一步使用它。
 
 ### <a name="get-azure-credit-balance"></a>获取 Azure 额度余额
 
