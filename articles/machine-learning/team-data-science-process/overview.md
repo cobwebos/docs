@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ffe00c3df4abd924fca202d2bcdd0ec458dd3eb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79088077"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355329"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 
@@ -30,8 +30,8 @@ TDSP 包括以下关键组件：
 
 - **数据科学生命周期**定义
 - **标准化项目结构**
-- 数据科学项目的**基础结构和资源**
-- 用于项目执行的**工具和实用程序**
+- 推荐数据科学项目使用的**基础结构和资源**
+- 推荐用于项目执行的**工具和实用程序**
 
 
 ## <a name="data-science-lifecycle"></a>数据科学生命周期
@@ -48,7 +48,6 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 * **数据采集和理解**
 * **建模**
 * **部署**
-* **客户验收**
 
 以下是 **Team Data Science Process 生命周期**的可视化表示形式 。 
 
@@ -58,7 +57,9 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 - 解决方案架构师
 - 项目经理
+- 数据工程师
 - 数据科学家
+- 应用程序开发人员
 - 项目主管 
 
 下图提供了与这些角色（纵轴）的每个生命周期阶段（横轴）相关联的任务（蓝色）和项目（绿色）的网格视图。 
@@ -87,7 +88,7 @@ TDSP 提供有关管理共享分析和存储基础结构的建议，例如：
 
 - 用于存储数据集的云文件系统 
 - 数据库
-- 大数据（Hadoop 或 Spark）群集 
+- 大数据（SQL 或 Spark）群集 
 - 机器学习服务 
 
 存储原始数据集和已处理数据集的分析和存储基础结构可能位于云中或本地。 此基础结构实现重现的分析。 它还可以避免重复，防止产生不一致情况和不必要的基础结构成本。 TDSP 提供了工具用于预配和跟踪共享资源，并让每位团队成员安全连接到这些资源。 让项目成员创建一致的计算环境也是一种不错的做法。 然后，不同的团队成员可以复制和验证试验。

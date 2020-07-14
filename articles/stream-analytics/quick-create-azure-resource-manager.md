@@ -10,18 +10,22 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 127a8550b7f4ca89b8b3a8e61880b295a806e5d0
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: b7217df7fe7ccedf2419480b1114fa1ef6c8e24a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449356"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043540"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Azure 流分析作业
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 流分析作业
 
-在本快速入门中，将使用 Azure 资源管理器模板创建 Azure 流分析作业。 创建作业后，将验证部署。
+本快速入门将使用 Azure 资源管理器模板（ARM 模板）创建 Azure 流分析作业。 创建作业后，将验证部署。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,9 +33,7 @@ ms.locfileid: "84449356"
 
 * 拥有 Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 
-## <a name="create-an-azure-stream-analytics-job"></a>创建 Azure 流分析作业
-
-### <a name="review-the-template"></a>查看模板
+## <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/)。
 
@@ -39,9 +41,9 @@ ms.locfileid: "84449356"
 
 模板中定义的 Azure 资源是 [Microsoft.StreamAnalytics/StreamingJobs](/azure/templates/microsoft.streamanalytics/streamingjobs)：创建 Azure 流分析作业。
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
-在本部分，我们将使用 Azure 资源管理器模板创建 Azure 流分析作业。
+本部分介绍如何使用 ARM 模板创建 Azure 流分析作业。
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板会创建 Azure 流分析作业。
 
@@ -108,7 +110,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你通过使用 Azure 资源管理器模板创建了 Azure 流分析作业，并验证了部署。 要了解如何使用 VS Code 导出现有作业的 Azure 资源管理器模板，请继续阅读下一篇文章。
+在本快速入门中，你已使用 ARM 模板创建了 Azure 流分析作业，并验证了部署。 要了解如何使用 VS Code 导出现有作业的 ARM 模板，请继续阅读下一篇文章。
 
 > [!div class="nextstepaction"]
-> [导出 Azure 流分析作业 Azure 资源管理器模板](resource-manager-export.md)
+> [导出 Azure 流分析作业 ARM 模板](resource-manager-export.md)

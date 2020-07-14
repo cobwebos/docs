@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9135873b61abf5a5ebd0d9c4d7f52ae314ee12
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674900"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026791"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Akamai 的集成
 
@@ -79,7 +79,7 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 • 可定义单独的 CA 策略
 
-• 所有应用都在 0365 Waffle 和 myApps.microsoft.com 面板上呈现。
+• 所有应用都在 O365 Waffle 和 myApps.microsoft.com 面板上呈现。
 
 缺点：
 
@@ -102,7 +102,7 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 #### <a name="important"></a>重要说明
 
-下面列出的所有设置对于集成方案 1 和方案 2 都相同 。 对于集成方案 2，你已在 Akamai EAA 中设置单独的 IDP，且需要修改 URL 属性，使其指向应用程序 URL。
+下面列出的所有设置对于集成方案 1 和方案 2 都相同 。 对于集成方案 2，你需要在 Akamai EAA 中设置单独的 IDP，并且需要修改 URL 属性，使其指向应用程序 URL。
 
 ![重要说明](./media/header-akamai-tutorial/important.png)
 

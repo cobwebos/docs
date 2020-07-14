@@ -3,16 +3,16 @@ title: Azure Enterprise 门户入门
 description: 本文介绍 Azure 企业协议 (Azure EA) 客户如何使用 Azure Enterprise 门户。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/29/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2d4fbf90afa93f3dbde12a3bc5ce02f9a60b6c5d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560358"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044951"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise 门户入门
 
@@ -372,7 +372,7 @@ MSDN 订阅自动转换为 MSDN 开发/测试套餐，Azure EA 套餐所有现�
 
 ## <a name="view-usage-summary-and-download-reports"></a>查看使用情况摘要和下载报告
 
-企业管理员可以查看对其使用情况数据、使用的货币承诺以及与 Azure Enterprise 门户中其他使用量相关的费用的摘要。 费用以摘要形式显示，适用于所有帐户和订阅。
+企业管理员可以查看对其使用情况数据、使用的 Azure 预付款以及与 Azure Enterprise 门户中其他使用量相关的费用的摘要。 费用以摘要形式显示，适用于所有帐户和订阅。
 
 若要查看特定帐户的详细使用情况，请下载使用情况详细信息报表：
 
@@ -390,7 +390,7 @@ MSDN 订阅自动转换为 MSDN 开发/测试套餐，Azure EA 套餐所有现�
 
 1. 登录到 Azure Enterprise 门户。
 
-1. 选择承诺条款。
+1. 选择预付款期限。
 
    若要更改“使用情况摘要”的日期范围，可以在页面右上角从“M”（每月）切换为“C”（自定义），然后输入自定义的开始日期和结束日期。  
 
@@ -455,7 +455,7 @@ Azure Enterprise 门户会从视图中筛选出非活动的注册。 需要取�
 - **帐户**：Azure Enterprise 门户中的一个组织单位。 它用于管理订阅和报表。
 - **帐户所有者**：管理 Azure 上的订阅和服务管理员的人员。 他们可以查看此帐户及其关联订阅的使用情况数据。
 - **修订订阅**：注册修正条款下的一年期订阅或连年订阅。
-- **承诺**：在此预付模式下，Azure 服务的年货币额承诺按折扣承诺费率为使用量付款。
+- **预付款**：在此预付款模式下，Azure 服务的年货币额预付款按折扣预付款费率为使用量付款。
 - **部门管理员**：管理部门、新建帐户和帐户所有者、查看所管理部门的使用情况详细信息并可在获得授权时查看费用的用户。
 - **合约编号**：Microsoft 提供的唯一标识符，用于标识与企业协议关联的特定注册。
 - **企业管理员**：管理 Azure 上的部门、部门所有者、帐户和帐户所有者的用户。 他们能够管理企业管理员，查看使用情况数据、已计费数量以及与企业合约相关的所有帐户和订阅中的未计费费用。
@@ -478,7 +478,7 @@ Azure Enterprise 门户会从视图中筛选出非活动的注册。 需要取�
 
    在 Azure EA 注册达到企业协议结束日期之前，注册管理员应决定是否要采取以下做法：
 
-  - 通过添加更多的货币承诺来续订注册。
+  - 通过添加更多 Azure 预付款来续订注册。
   - 转移到新注册。
   - 迁移到 Microsoft 在线订阅计划 (MOSP)。
   - 确认禁用与注册关联的所有服务。

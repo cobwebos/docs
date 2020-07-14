@@ -8,38 +8,38 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: 32e02d3a7c1af6d15e7f381807d80f19b94da38f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: db7a32ac06e41a72314d3d73208c0d7e1b652649
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80587211"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805493"
 ---
 开始使用适用于 Java 的必应自定义搜索客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。 借助必应自定义搜索 API，可为关注的主题创建定制的无广告搜索体验。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingCustomSearch) 上找到此示例的源代码
 
 使用适用于 Java 的必应自定义搜索客户端库，可以执行以下操作：
 
-* 使用必应自定义搜索实例在网上查找搜索结果。 
+* 使用必应自定义搜索实例在网上查找搜索结果。
 
 [参考文档](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [项目 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)。
 * 最新版 [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * [Gradle 生成工具](https://gradle.org/install/)，或其他依赖项管理器。
 * 必应自定义搜索实例。 请参阅[快速入门：创建第一个必应自定义搜索实例](../../quick-start.md)，了解详细信息。
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](~/includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
-获取试用订阅或资源的密钥后，请为该密钥创建名为 `AZURE_BING_CUSTOM_SEARCH_API_KEY` 的[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+从资源获取密钥后，为密钥[创建一个环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)（名为 `AZURE_BING_CUSTOM_SEARCH_API_KEY`）。
 
 ### <a name="create-a-new-gradle-project"></a>创建新的 Gradle 项目
 
 > [!TIP]
 > 如果使用 Gradle，则可在 [Maven 中央存储库](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/)中找到客户端库以及其他依赖项管理器的详细信息。
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。
 
 ```console
 mkdir myapp && cd myapp
@@ -53,7 +53,7 @@ gradle init --type basic
 
 当提示你选择一个 **DSL** 时，选择 **Kotlin**。
 
-## <a name="install-the-client-library"></a>安装客户端库 
+## <a name="install-the-client-library"></a>安装客户端库
 
 找到 *build.gradle.kts*，并使用喜好的 IDE 或文本编辑器将其打开。 然后将以下生成配置复制到其中。 确保 `dependencies` 下包含客户端库：
 
@@ -119,7 +119,7 @@ BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKe
 
 ## <a name="get-search-results-from-your-custom-search-instance"></a>从自定义搜索实例获取搜索结果
 
-使用客户端的 [BingCustomInstances.search()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) 函数，向自定义实例发送搜索查询。 将 `withCustomConfig` 设置为自定义配置 ID，或默认设置为 `1`。 从 API 获得响应以后，检查是否发现了任何搜索结果。 如果发现了搜索结果，请通过调用响应的 `webPages().value().get()` 函数来获取第一个搜索结果，并输出结果的名称和 URL。 
+使用客户端的 [BingCustomInstances.search()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) 函数，向自定义实例发送搜索查询。 将 `withCustomConfig` 设置为自定义配置 ID，或默认设置为 `1`。 从 API 获得响应以后，检查是否发现了任何搜索结果。 如果发现了搜索结果，请通过调用响应的 `webPages().value().get()` 函数来获取第一个搜索结果，并输出结果的名称和 URL。
 
 [!code-java[call the custom search API](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=runSample)]
 

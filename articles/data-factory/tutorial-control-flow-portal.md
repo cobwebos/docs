@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253658"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077639"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 门户对 Azure 数据工厂管道中的活动进行分支和链接
 
@@ -139,7 +139,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
    Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   数据工厂名“ADFTutorialDataFactory”不可用。
+
 3. 选择要在其中创建数据工厂的 Azure **订阅**。
 4. 对于**资源组**，请执行以下步骤之一：
 
@@ -202,10 +203,11 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    ![新建 Azure 存储链接服务](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. 输入 `@pipeline().parameters.sourceBlobContainer` 作为文件夹，输入 `emp.txt` 作为文件名。 使用 sourceBlobContainer 管道参数设置数据集的文件夹路径。
 
-   ![源数据集设置](./media/tutorial-control-flow-portal/source-dataset-settings.png)
-13. 切换到“管道”选项卡，或单击树状视图中的管道。 确认为“源数据集”选择了“SourceBlobDataset”。 
+    ![源数据集设置](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-    ![源数据集](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+13. 切换到“管道”选项卡，或单击树状视图中的管道。 确认为“源数据集”选择了“SourceBlobDataset”。 
+      
+   ![源数据集](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 
 13. 在属性窗口中切换到“接收器”选项卡，针对“接收器数据集”单击“+ 新建”。   像创建源数据集一样，在此步骤中创建复制活动的接收器数据集。
 

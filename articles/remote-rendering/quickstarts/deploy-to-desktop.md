@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659925"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557066"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>快速入门：将 Unity 示例部署到桌面
 
@@ -55,7 +55,7 @@ ms.locfileid: "84659925"
 1. 按下“生成”（或“生成并运行”）时，系统会要求你选择应在其中存储解决方案的某个文件夹。
 1. 使用 Visual Studio 打开生成的 Quickstart.sln。
 1. 将配置更改为“发布”和“x86”。 
-1. 将调试器模式切换为“本地计算机”。
+1. 将调试模式切换为“本地计算机”。
   ![解决方案配置](./media/unity-deploy-config-pc.png)
 1. 生成解决方案 (F7)。
 

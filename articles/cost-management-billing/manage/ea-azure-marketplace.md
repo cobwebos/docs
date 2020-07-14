@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 4721d8dbe5973baf2ac82124ff516a89398227cb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: acb818cf2a892a3a71f2f59b0a44041767b846d0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298187"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044917"
 ---
 # <a name="azure-marketplace"></a>Azure 市场
 
@@ -20,7 +20,7 @@ ms.locfileid: "84298187"
 
 ## <a name="azure-marketplace-for-ea-customers"></a>面向 EA 客户的 Azure 市场
 
-直接客户可以在 Azure Enterprise 门户上看到 Azure 市场费用。 Azure 市场购买和消耗内容将在货币承诺以外按季或按月以欠款的形式计费。
+直接客户可以在 Azure Enterprise 门户上看到 Azure 市场费用。 Azure 市场购买和消费内容将在 Azure 预付款以外按季或按月以欠款的形式计费。
 
 间接客户可以在 Azure Enterprise 门户的“管理订阅”页上找到其 Azure 市场订阅，但定价处于隐藏状态。 客户应该联系其授权解决方案提供商 (LSP) 了解有关 Azure 市场费用的信息。
 
@@ -28,7 +28,7 @@ ms.locfileid: "84298187"
 
 现有的每月重复费用将在每个日历月的第一日继续更新。 年度费用则在购买周年日更新。
 
-Azure 市场提供的某些第三方经销商服务现在使用企业协议 (EA) 货币承诺余额。 这些服务以前不遵照 EA 货币承诺进行计费并且单独开具发票。 Azure 市场中这些服务采用 EA 货币承诺付款可帮助客户简化购买和支付管理过程。 如需现在使用货币承诺的服务的完整列表，请参阅 [2018 年 3 月 6 日的 Azure 网站更新内容](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)。
+Azure 市场提供的某些第三方经销商服务现在使用企业协议 (EA) Azure 预付款余额。 这些服务以前不遵照 EA Azure 预付款进行计费并且单独开具发票。 Azure 市场中这些服务采用 EA Azure 预付款可帮助客户简化购买和支付管理过程。 如需现在使用 Azure 预付款服务的完整列表，请参阅 [2018 年 3 月 06 日的 Azure 网站更新内容](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)。
 
 ### <a name="partners"></a>合作伙伴
 
@@ -75,41 +75,41 @@ LSP 可以从 Azure Enterprise 门户中的价目表页下载 Azure 市场价目
 
 ## <a name="azure-marketplace-faq"></a>Azure 市场常见问题解答
 
-本部分解释 Azure 货币承诺如何应用到 Azure 市场中的某些第三方经销商服务。
+本部分解释 Azure 预付款如何应用到 Azure 市场中的某些第三方经销商服务。
 
-### <a name="what-changed-with-azure-marketplace-services-and-ea-monetary-commitment"></a>Azure 市场服务和 EA 货币承诺方面发生了哪些更改？
+### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Azure 市场服务和 Azure EA 预付款方面有哪些更改？
 
-从 2018 年 3 月 1 日起，某些第三方经销商服务会消耗 EA 货币承诺 (MC)。 以前，除 Azure 虚拟机预留实例 (RI) 外，其他服务会在 EA 货币承诺以外计费，并单独开票。
+从 2018 年 3 月 1 日起，某些第三方经销商服务会使用 Azure EA 预付款。 以前，除 Azure 虚拟机预留实例 (RI) 外，其他服务会在 Azure EA 预付款以外计费，并单独开票。
 
-我们扩展了 MC 的使用范围，现在它包括客户频繁购买的、由第三方发布的一些 Azure 市场服务。 Azure 市场中这些服务采用 EA 货币承诺付款可帮助简化购买和支付管理过程。
+我们扩展了 Azure 预付款的使用范围，现在它包括了频繁购买的、由第三方发布的一些 Azure 市场服务。 Azure 市场中这些服务采用 Azure EA 预付款可帮助简化购买和支付管理过程。
 
 ### <a name="why-did-we-make-this-change"></a>为何做出这种更改？
 
-客户不断寻找其他方式来利用 MC 提前付款。 此项更改因应了客户的频繁请求，并影响了大部分 Azure 市场客户。
+客户不断寻找更多的方法来利用 Azure 预付款提前付款。 此项更改因应了客户的频繁请求，并影响了大部分 Azure 市场客户。
 
 ### <a name="how-do-you-benefit"></a>它为客户带来了哪些好处？
 
-客户可获得更简单的计费体验，并且可以更好地消费 EA 货币承诺。 由于这些服务包含在预付的 MC 中，因此 EA 货币承诺更有价值。
+客户可获得更简单的计费体验，并且可以更好地使用 Azure EA 预付款。 由于这些服务包含在 Azure 预付款中，因此 Azure EA 预付款会变得更有价值。
 
-### <a name="what-azure-marketplace-services-use-ea-monetary-commitment-and-how-do-i-know"></a>如何知道 Azure 市场服务使用了多少 EA 货币承诺？
+### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>如何知道哪些 Azure 市场服务使用了 Azure EA 预付款？
 
-购买使用 MC 的服务时，Azure 市场会显示免责声明。 支持 Red Hat、SUSE、Autodesk 和 Oracle 发布的某些服务。 目前，不会从 MC 中减去其他第三方发布的名称类似的服务。 本 FAQ 末尾提供完整的列表。
+当购买使用 Azure 预付款的服务时，Azure 市场会显示免责声明。 支持 Red Hat、SUSE、Autodesk 和 Oracle 发布的某些服务。 目前，不会从 Azure 预付款中扣除由其他方发布的名称类似的服务费用。 本 FAQ 末尾提供完整的列表。
 
-### <a name="what-if-my-ea-monetary-commitment-runs-out"></a>如果我的 EA 货币承诺已用尽，该怎么办？
+### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>如果我的 Azure EA 预付款用完了怎么办？
 
-如果你已消耗所有 MC 并处于超额状态，与这些服务相关的费用会连同所有其他消耗服务一起显示在下一份超额发票上。 在实施 2018 年 3 月 1 日更改之前，这些费用会连同其他 Azure 市场服务一起开票。
+如果你使用了所有 Azure 预付款并处于超额状态，与这些服务相关的费用会连同所有其他消费服务一起显示在下一份超额发票上。 在实施 2018 年 3 月 1 日更改之前，这些费用会连同其他 Azure 市场服务一起开票。
 
-### <a name="why-dont-all-azure-marketplaces-consume-ea-monetary-commitment"></a>为何并非所有 Azure 市场项都消耗 EA 货币承诺？
+### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>为何并非所有 Azure 市场都使用 Azure EA 预付款？
 
-我们始终致力于在 EA 货币承诺方面提供最佳客户体验。 此项更改满足了大量客户的需求，能应对 Azure 市场中总支出的很大一部分。 将来可能会添加其他服务。
+我们始终致力于在 Azure EA 预付款方面提供最佳客户体验。 此项更改满足了大量客户的需求，能应对 Azure 市场中总支出的很大一部分。 将来可能会添加其他服务。
 
 ### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>这对间接合约和合作伙伴有何影响？
 
-这不会对间接合约客户或合作伙伴产生任何影响。 这些服务与其他其他消费服务一样，受到相同的合作伙伴加价功能的约束。 唯一的变化是，费用将显示在不同的发票上，并在客户的 EA 货币承诺以外支付费用。
+这不会对间接合约客户或合作伙伴产生任何影响。 这些服务与其他其他消费服务一样，受到相同的合作伙伴加价功能的约束。 唯一的变化是，费用将显示在不同的发票上，并在客户的 Azure EA 预付款以外支付费用。
 
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-ea-monetary-commitment"></a>你们是否提供了消耗 EA 货币承诺的 Azure 市场服务列表？
+### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>是否提供了使用 Azure EA 预付款的 Azure 市场服务列表？
 
-特定的 Azure 市场套餐可以使用货币承诺资金。 有关参与此计划的产品的完整列表，请参阅[使用货币承诺的第三方服务](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)。
+特定的 Azure 市场套餐可以使用 Azure 预付款资金。 有关参与此计划的产品的完整列表，请参阅[使用 Azure 预付款的第三方服务](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)。
 
 
 ## <a name="next-steps"></a>后续步骤

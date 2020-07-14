@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918932"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027848"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
@@ -41,7 +41,7 @@ ms.locfileid: "85918932"
 
 > [!Note]
 > * 本教程引入了一个方法，用于为异常检测器 API 实现建议的[解决方案体系结构](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)。
-> * 本教程不能使用异常检测器 API 或 Azure Databricks 的免费试用版来完成。 
+> * 本教程不能使用异常检测器 API 或 Azure Databricks 的免费试用版 (`F0`) 订阅来完成。 
 
 创建 [Azure 订阅](https://azure.microsoft.com/free/)（如果没有）。
 
@@ -61,11 +61,11 @@ ms.locfileid: "85918932"
 
 在本部分，使用 [Azure 门户](https://portal.azure.com/)创建 Azure Databricks 工作区。
 
-1. 在 Azure 门户中，选择“创建资源”   >   “分析” >   “Azure Databricks”。
+1. 在 Azure 门户中，选择“创建资源” > “分析” > “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
-3. 在“Azure Databricks 服务”  下提供以下值，创建 Databricks 工作区：
+3. 在“Azure Databricks 服务”下提供以下值，创建 Databricks 工作区：
 
 
     |properties  |说明  |
@@ -73,22 +73,22 @@ ms.locfileid: "85918932"
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../../azure-resource-manager/management/overview.md)。 |
-    |**位置**     | 选择“美国东部 2”或任何其他可用区域之一。  有关区域可用性，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
-    |**定价层**     |  选择“标准”或“高级”。   请勿选择“试用版”  。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
+    |**位置**     | 选择“美国东部 2”或任何其他可用区域之一。 有关区域可用性，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
+    |**定价层**     |  选择“标准”或“高级”。  请勿选择“试用版”。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
-    选择“创建”  。
+    选择“创建”。
 
 4. 创建工作区需要几分钟时间。 
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
-1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后选择“启动工作区”。 
+1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后选择“启动工作区”。
 
-2. 系统随后会将你重定向到 Azure Databricks 门户。 在门户中选择“新建群集”。 
+2. 系统随后会将你重定向到 Azure Databricks 门户。 在门户中选择“新建群集”。
 
     ![Azure 上的 Databricks](../media/tutorials/databricks-on-azure.png "Azure 上的 Databricks")
 
-3. 在“新建群集”页中，提供用于创建群集的值。 
+3. 在“新建群集”页中，提供用于创建群集的值。
 
     ![在 Azure 上创建 Databricks Spark 群集](../media/tutorials/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
@@ -96,24 +96,24 @@ ms.locfileid: "85918932"
 
    * 输入群集的名称。
    * 在本文中，请创建运行时为 **5.2** 的群集。 请勿选择 **5.3** 运行时。
-   * 请务必选中“在不活动超过 \_\_ 分钟后终止”  复选框。 如果未使用群集，则请提供一个持续时间（以分钟为单位），超过该时间后群集会被终止。
+   * 请务必选中“在不活动超过 \_\_ 分钟后终止”复选框。 如果未使用群集，则请提供一个持续时间（以分钟为单位），超过该时间后群集会被终止。
 
-     选择“创建群集”。  
+     选择“创建群集”。 
 4. 创建群集需要数分钟。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 
 若要接收推文流，必须在 Twitter 中创建一个应用程序。 按步骤创建一个 Twitter 应用程序，并记下稍后需要在本教程中使用的值。
 
-1. 在 Web 浏览器中，转到 [Twitter 应用程序管理](https://apps.twitter.com/) ，选择“创建新应用”  。
+1. 在 Web 浏览器中，转到 [Twitter 应用程序管理](https://apps.twitter.com/) ，选择“创建新应用”。
 
     ![创建 Twitter 应用程序](../media/tutorials/databricks-create-twitter-app.png "创建 Twitter 应用程序")
 
-2. 在“创建应用程序”  页中提供新应用的详细信息，然后选择“创建 Twitter 应用程序”  。
+2. 在“创建应用程序”页中提供新应用的详细信息，然后选择“创建 Twitter 应用程序”。
 
     ![Twitter 应用程序详细信息](../media/tutorials/databricks-provide-twitter-app-details.png "Twitter 应用程序详细信息")
 
-3. 在应用程序页中选择“密钥和访问令牌”  选项卡，复制“使用者密钥”  和“使用者机密”  的值。 此外，请选择“创建我的访问令牌”  以生成访问令牌。 复制“访问令牌”  和  “访问令牌机密”的值。
+3. 在应用程序页中选择“密钥和访问令牌”选项卡，复制“使用者密钥”和“使用者机密”的值。 此外，请选择“创建我的访问令牌”以生成访问令牌。 复制“访问令牌”和“访问令牌机密”的值。
 
     ![Twitter 应用程序详细信息](../media/tutorials/twitter-app-key-secret.png "Twitter 应用程序详细信息")
 
@@ -123,25 +123,25 @@ ms.locfileid: "85918932"
 
 本教程使用 Twitter API 将推文发送到事件中心。 也可以使用 [Apache Spark 事件中心连接器](https://github.com/Azure/azure-event-hubs-spark)在 Azure 事件中心读取和写入数据。 若要将这些 API 用作群集的一部分，请将其作为库添加到 Azure Databricks，然后将其与 Spark 群集相关联。 以下说明介绍如何将库添加到工作区中的 **Shared** 文件夹。
 
-1. 在 Azure Databricks 工作区中选择“工作区”  ，然后右键单击“共享”  。 从上下文菜单中选择“创建”   >   “库”。
+1. 在 Azure Databricks 工作区中选择“工作区”，然后右键单击“共享”。 从上下文菜单中选择“创建” > “库”。
 
    ![“添加库”对话框](../media/tutorials/databricks-add-library-option.png "“添加库”对话框")
 
-2. 在“新建库”  页中，选择“Maven”作为“源”  。 对于“坐标”  ，请输入要添加的包的坐标。 下面是本教程中使用的库的 Maven 坐标：
+2. 在“新建库”页中，选择“Maven”作为“源”。 对于“坐标”，请输入要添加的包的坐标。 下面是本教程中使用的库的 Maven 坐标：
 
    * Spark 事件中心连接器 - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.7`
 
      ![提供 Maven 坐标](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "提供 Maven 坐标")
 
-3. 选择“创建”  。
+3. 选择“创建”。
 
 4. 选择库添加到的文件夹，然后选择库名称。
 
     ![选择要添加的库](../media/tutorials/select-library.png "选择要添加的库")
 
-5. 如果库页中没有群集，请选择“群集”并运行所创建的群集。  等到状态显示为“正在运行”，然后返回到库页面。
-在库页上，选择要在其中使用该库的群集，然后选择“安装”。  将库成功关联到群集后，状态会立即更改为“已安装”  。
+5. 如果库页中没有群集，请选择“群集”并运行所创建的群集。 等到状态显示为“正在运行”，然后返回到库页面。
+在库页上，选择要在其中使用该库的群集，然后选择“安装”。 将库成功关联到群集后，状态会立即更改为“已安装”。
 
     ![将库安装到群集](../media/tutorials/databricks-library-attached.png "将库安装到群集")
 
@@ -153,13 +153,13 @@ ms.locfileid: "85918932"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“+ 创建资源”。 
+2. 选择“+ 创建资源”。
 
-3. 在 Azure 市场下，选择“AI + 机器学习”   > “全部查看”   > “认知服务 - 更多”   >   “异常检测器”。 也可使用[此链接](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)，直接转到“创建”对话框。 
+3. 在 Azure 市场下，选择“AI + 机器学习” > “全部查看” > “认知服务 - 更多” > “异常检测器”。 也可使用[此链接](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)，直接转到“创建”对话框。
 
     ![创建异常检测器资源](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "创建异常检测器资源")
 
-4. 在“创建”  对话框中，提供以下值：
+4. 在“创建”对话框中，提供以下值：
 
     |值 |说明  |
     |---------|---------|
@@ -170,13 +170,13 @@ ms.locfileid: "85918932"
     |资源组     | 指定是要创建新的资源组还是选择现有的资源组。        |
 
 
-     选择“创建”  。
+     选择“创建”。
 
-5. 创建资源后，从“概览”选项卡复制并保存  **终结点** URL，如屏幕截图所示。 然后选择“显示访问密钥”  。
+5. 创建资源后，从“概览”选项卡复制并保存 **终结点** URL，如屏幕截图所示。 然后选择“显示访问密钥”。
 
     ![显示访问密钥](../media/tutorials/cognitive-services-get-access-keys.png "显示访问密钥")
 
-6. 在“密钥”  下针对要使用的密钥选择复制图标。 保存访问密钥。
+6. 在“密钥”下针对要使用的密钥选择复制图标。 保存访问密钥。
 
     ![复制访问密钥](../media/tutorials/cognitive-services-copy-access-keys.png "复制访问密钥")
 
@@ -187,15 +187,15 @@ ms.locfileid: "85918932"
 - **SendTweetsToEventHub** - 用于从 Twitter 获取推文并将其流式传输到事件中心的生成者 Notebook。
 - **AnalyzeTweetsFromEventHub** - 用于从事件中心读取推文并运行异常检测的使用者 Notebook。
 
-1. 在 Azure Databricks 工作区的左窗格中选择“工作区”  。 在“工作区”下拉列表中选择“创建”，然后选择“Notebook”。   
+1. 在 Azure Databricks 工作区的左窗格中选择“工作区”。 在“工作区”下拉列表中选择“创建”，然后选择“Notebook”。  
 
     ![在 Databricks 中创建笔记本](../media/tutorials/databricks-create-notebook.png "在 Databricks 中创建笔记本")
 
-2. 在“创建 Notebook”  对话框中输入 **SendTweetsToEventHub** 作为名称，选择 **Scala** 作为语言，并选择前面创建的 Spark 群集。
+2. 在“创建 Notebook”对话框中输入 **SendTweetsToEventHub** 作为名称，选择 **Scala** 作为语言，并选择前面创建的 Spark 群集。
 
     ![在 Databricks 中创建笔记本](../media/tutorials/databricks-notebook-details.png "在 Databricks 中创建笔记本")
 
-    选择“创建”  。
+    选择“创建”。
 
 3. 重复上述步骤，创建 **AnalyzeTweetsFromEventHub** Notebook。
 
@@ -682,11 +682,11 @@ adResult.show()
 
 ## <a name="clean-up-resources"></a>清理资源
 
-运行完本教程后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”  。 针对想要终止的群集，将光标移到“操作”  列下面的省略号上，选择“终止”  图标，然后选择“确认”。 
+运行完本教程后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”。 针对想要终止的群集，将光标移到“操作”列下面的省略号上，选择“终止”图标，然后选择“确认”。
 
 ![停止 Databricks 群集](../media/tutorials/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”  复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 ## <a name="next-steps"></a>后续步骤
 

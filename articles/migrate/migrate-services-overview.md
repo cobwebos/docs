@@ -4,12 +4,12 @@ description: 了解 Azure Migrate 服务。
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d90c40447dc4928a34332685aea728b13c3775b1
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771251"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122075"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -20,7 +20,7 @@ Azure Migrate 提供了一个集中化中心，用于评估本地服务器、基
 - **统一迁移平台**：用于启动、运行和跟踪到 Azure 的迁移的单一门户。
 - **工具范围**：用于评估和迁移的一系列工具。 Azure Migrate 工具包括服务器评估和 Azure Migrate:服务器迁移。 Azure Migrate 还集成了其他 Azure 服务和工具，以及独立软件供应商 (ISV) 产品/服务。
 - **评估和迁移**：在 Azure Migrate 中心内，可以评估和迁移以下项目：
-    - **服务器**：评估本地服务器并将其迁移到 Azure 虚拟机。
+    - **服务器**：评估本地服务器并将其迁移到 Azure 虚拟机或 Azure VMware 解决方案 (AVS)（预览版）。
     - **数据库**：评估本地数据库，并将其迁移到 Azure SQL 数据库或 SQL 托管实例。
     - **Web 应用程序**：使用 Azure 应用服务迁移助手评估本地 Web 应用程序并将其迁移到 Azure 应用服务。
     - **虚拟桌面**：评估本地虚拟桌面基础结构 (VDI) 并将其迁移到 Azure 中的 Windows 虚拟桌面。
@@ -34,11 +34,11 @@ Azure Migrate 中心包含以下工具：
 --- | --- | ---
 **Azure Migrate:服务器评估** | 评估服务器。 | 在准备迁移到 Azure 时，发现并评估本地 VMware VM、Hyper-V VM 和物理服务器。
 **Azure Migrate:服务器迁移** | 迁移服务器。 | 将 VMware VM、Hyper-V VM、物理服务器、其他虚拟机和公有云 VM 迁移到 Azure。
-**Data Migration Assistant** | 评估 SQL Server 数据库，以便迁移到 Azure SQL 数据库、Azure SQL 托管实例或运行 SQL Server 的 Azure VM。 | 数据迁移助手可以帮助找出阻止迁移的潜在问题。 它可以识别不受支持的功能、迁移后可从中受益的新功能，以及正确的数据库迁移路径。 [了解详细信息](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)。
-**Azure 数据库迁移服务** | 将本地数据库迁移到运行 SQL Server 的 Azure VM、Azure SQL 数据库或 SQL 托管实例。 | [详细了解](https://docs.microsoft.com/azure/dms/dms-overview)数据库迁移服务。
+**Data Migration Assistant** | 评估 SQL Server 数据库，以便迁移到 Azure SQL 数据库、Azure SQL 托管实例或运行 SQL Server 的 Azure VM。 | 数据迁移助手可以帮助找出阻止迁移的潜在问题。 它可以识别不受支持的功能、迁移后可从中受益的新功能，以及正确的数据库迁移路径。 [了解详细信息](/sql/dma/dma-overview?view=sql-server-2017)。
+**Azure 数据库迁移服务** | 将本地数据库迁移到运行 SQL Server 的 Azure VM、Azure SQL 数据库或 SQL 托管实例。 | [详细了解](../dms/dms-overview.md)数据库迁移服务。
 **Movere** | 评估服务器。 | [详细了解](#movere) Movere。
 **Web 应用迁移助手** | 评估本地 Web 应用并将其迁移到 Azure。 |  使用 Azure 应用服务迁移助手评估用于迁移到 Azure 应用服务的本地网站。<br/><br/> 使用迁移助手将 .NET 和 PHP Web 应用迁移到 Azure。 [详细了解](https://appmigration.microsoft.com/) Azure 应用服务迁移助手。
-**Azure Data Box** | 迁移脱机数据。 | 使用 Azure Data Box 产品将大量脱机数据迁移到 Azure。 [了解详细信息](https://docs.microsoft.com/azure/databox/)。
+**Azure Data Box** | 迁移脱机数据。 | 使用 Azure Data Box 产品将大量脱机数据迁移到 Azure。 [了解详细信息](../databox/index.yml)。
 
 > [!NOTE]
 > 如果使用的是 Azure 政府版，则外部集成工具和 ISV 产品/服务无法将数据发送到 Azure Migrate 项目。 你可以单独使用工具。
@@ -60,12 +60,12 @@ Azure Migrate 集成了多个 ISV 产品/服务。
 
 ## <a name="azure-migrate-server-assessment-tool"></a>“Azure Migrate:服务器评估工具
 
-Azure Migrate:服务器评估工具可发现并评估要迁移到 Azure 的本地 VMware VM、Hyper-V VM 和物理服务器。
+Azure Migrate:服务器评估工具可发现并评估要迁移到 Azure 的本地 VMware VM、Hyper-V VM 和物理服务器。 
 
 该工具的作用如下：
 
 - **Azure 迁移就绪性**：评估本地计算机是否已准备好迁移到 Azure。
-- **Azure 大小调整**：估算迁移后的 Azure VM 大小。
+- **Azure 大小调整**：迁移后估算 Azure VM 大小或 Azure VMware 节点数。
 - **Azure 成本估算**：估算在 Azure 中运行本地服务器的成本。
 - **依赖关系分析**：确定跨服务器依赖关系和优化策略，以便将相互依赖的服务器移动到 Azure。 详细了解使用[依赖关系分析](concepts-dependency-visualization.md)进行的服务器评估。
 

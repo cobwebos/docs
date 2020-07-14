@@ -3,16 +3,16 @@ title: 创建第一个自动化工作流
 description: 快速入门 - 使用 Azure 逻辑应用构建第一个自动化工作流以实现系统集成和企业应用程序集成 (EAI) 解决方案
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 555230499ebda106cbca616b779ae632d65349ab
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 0b3559a27fe9fae6c34b07c648a289d205560bd8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807860"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321582"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个工作流 - Azure 门户
 
@@ -74,13 +74,13 @@ ms.locfileid: "84807860"
 
    ![选择“发布源项时”触发器](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
-1. 为触发器提供如下所示的信息：
+1. 为触发器提供如下表所述的信息：
 
    ![使用 RSS 源、频率和间隔设置触发器](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
    | properties | 值 | 说明 |
    |----------|-------|-------------|
-   | **RSS 源 URL** | `http://feeds.reuters.com/reuters/topNews` | 要监视的 RSS 源的链接 |
+   | **RSS 源 URL** | <*RSS-feed-URL*> | 要监视的 RSS 源的链接。 此示例使用 `http://feeds.reuters.com/reuters/topNews`。 |
    | 间隔 | 1 | 在两次检查之间需等待的时间间隔数 |
    | **频率** | Minute | 两次检查的间隔的时间单位  |
    ||||

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: f437205ae76feb36596b05ee0e320aaed0a37184
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846659"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044271"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -47,7 +47,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 ## <a name="architecture"></a>体系结构
 
-由于安全中心本身是 Azure 的一部分，因此 Azure 中的 PaaS 服务（包括 Service Fabric、SQL 数据库和存储帐户）会受到安全中心的监视和保护，无需进行任何部署。
+由于安全中心本身是 Azure 的一部分，因此 Azure 中的 PaaS 服务（包括 Service Fabric、SQL 数据库、SQL 托管实例和存储帐户）会受到安全中心的监视和保护，无需进行任何部署。
 
 此外，安全中心还会保护云中或本地的非 Azure 服务器和虚拟机（针对 Windows 和 Linux 服务器），具体方式是在其上安装 Log Analytics 代理。 Azure 虚拟机是在安全中心中自动预配的。
 

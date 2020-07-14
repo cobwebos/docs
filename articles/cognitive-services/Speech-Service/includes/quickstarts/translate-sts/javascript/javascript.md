@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: a204940c316304290f32417f7e5d3cb058992e1f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.author: trbye
+ms.openlocfilehash: abd34ddf39bd8e64740d3edd4a2bf4f44851c07e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978942"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035463"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "82978942"
 如果要在 web 服务器上承载网页，可以为演示应用程序提供令牌源。
 这样一来，订阅密钥永远不会离开服务器，并且用户可以在不输入任何授权代码的情况下使用语音功能。
 
-创建名为 `token.php` 的新文件。 此示例假设 web 服务器支持 PHP 脚本语言。 输入以下代码：
+创建名为 `token.php` 的新文件。 此示例假设 Web 服务器在启用 cURL 的情况下支持 PHP 脚本语言。 输入以下代码：
 
 ```php
 <?php
@@ -67,11 +67,11 @@ echo curl_exec($ch);
 
 ## <a name="build-and-run-the-sample-locally"></a>在本地生成和运行示例
 
-要启动应用，双击 index.html 文件或使用你喜欢的 web 浏览器打开 index.html。 它会提供一个简单的 GUI，允许你输入订阅密钥和[区域](../../../../regions.md)，并触发输入文本的合成。
+要启动应用，双击 index.html 文件或使用你喜欢的 web 浏览器打开 index.html。 它会提供一个简单的 GUI，可以输入订阅密钥和[区域](../../../../regions.md)，并触发输入语音的文本听录。
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>通过 web 服务器生成并运行示例
 
-若要启动应用，请打开你喜爱的 Web 浏览器并将其指向托管文件夹的公共 URL，输入[区域](../../../../regions.md)，然后触发输入文本的合成。 配置后，它将获取令牌源中的令牌。
+若要启动应用，请打开你喜爱的 Web 浏览器并将其指向托管文件夹的公共 URL，输入[区域](../../../../regions.md)，然后触发输入语音的文本听录。 配置后，它将获取令牌源中的令牌。
 
 ## <a name="next-steps"></a>后续步骤
 

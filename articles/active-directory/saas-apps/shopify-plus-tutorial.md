@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebbb73b6fc4e2a934c7c4235cfcdc39b8fa81b60
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126987"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Shopify Plus 的集成
 
@@ -103,7 +103,8 @@ ms.locfileid: "85126987"
     | ---------------| --------------- | --------- |
     | 电子邮件 | | user.mail |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+1. 将“名称 ID”格式更改为“永久” 。 选择“唯一用户标识符(名称 ID)”选项，然后选择“名称标识符”格式 。 对于此选项选择“永久”。 保存所做更改。
+1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“复制”按钮以复制“应用联合元数据 URL”，并将其保存在计算机上  。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -139,11 +140,31 @@ ms.locfileid: "85126987"
 
 ## <a name="configure-shopify-plus-sso"></a>配置 Shopify Plus SSO
 
-要在 Shopify Plus 端配置单一登录，需要将“应用联合元数据 URL”发送给 [Shopify Plus 支持团队](mailto:plus-user-management@shopify.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+要查看全部步骤，请参阅 [Shopify 有关设置 SAML 集成的文档](https://help.shopify.com/en/manual/shopify-plus/saml)。
+
+若要在“Shopify Plus”端配置单一登录，请从 Azure Active Directory 复制“应用联合元数据 URL” 。 然后，登录[组织管理员](https://shopify.plus)并转到“用户” > “安全性” 。 选择“设置配置”，然后将应用联合元数据 URL 粘贴到“标识提供者元数据 URL”部分中********。 若要完成此步骤，请选择“添加”。
 
 ### <a name="create-shopify-plus-test-user"></a>创建 Shopify Plus 测试用户
 
-在本部分中，将在 Shopify Plus 中创建名为 B.Simon 的用户。 与  [Shopify Plus 支持团队](mailto:plus-user-management@shopify.com)合作，将用户添加到 Shopify Plus 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Shopify Plus 中创建名为 B.Simon 的用户。 返回到“用户”部分，并通过输入用户的电子邮件和访问权限来添加用户。 使用单一登录前，必须先创建并激活用户。
+
+### <a name="enforce-saml-authentication"></a>强制执行 SAML 身份验证
+
+> [!NOTE]
+> 建议在广泛应用这种集成之前，通过使用单独用户来测试集成。
+
+单独用户：
+1. 通过由 Azure AD 管理并在 Shopify Plus 中进行验证的电子邮件域，转到 Shopify Plus 中的单独用户页面。
+1. 在“SAML 身份验证”部分中，选择“编辑”，再选择“必需”，然后选择“保存”******** 。
+1. 测试此用户是否可以通过 IdP 启动和 SP 启动的流成功登录。
+
+对于电子邮件域下的所有用户：
+1. 返回到“安全性”页面。
+1. 为 SAML 身份验证设置选择“必需”。 这将在 Shopify Plus 中为具有该电子邮件域的所有用户强制实施 SAML。
+1. 选择“保存”。
+
+> [!IMPORTANT]
+> 为电子邮件域下的所有用户启用 SAML 会影响使用此应用程序的所有用户。 用户将无法使用其常规登录页面登录。 他们只能通过 Azure Active Directory 访问应用。 Shopify 不提供用户可以使用其常规用户名和密码登录的备份登录 URL。 如有必要，可以联系 Shopify 客户支持以关闭 SAML。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -155,7 +176,7 @@ ms.locfileid: "85126987"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

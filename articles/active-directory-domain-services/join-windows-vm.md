@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ac7af2f4500f6702dcacad546b0985e41159dc6e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734667"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024921"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>教程：将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
 
@@ -72,7 +72,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     | 用户名             | 输入要在 VM 上创建的本地管理员帐户的用户名，如 azureuser |
     | 密码             | 输入，然后确认要在 VM 上创建的本地管理员的安全密码。 请不要指定域用户帐户的凭据。 |
 
-1. 默认情况下，可以使用 RDP 从 Internet 访问在 Azure 中创建的 VM。 启用 RDP 后，可能会发生自动登录攻击，这可能会因为多次尝试连续登录失败而禁用具有常见名称（如 admin 或 administrator）的帐户 。
+1. 默认情况下，可以使用 RDP 从 Internet 访问在 Azure 中创建的 VM。 启用 RDP 后，可能会发生自动登录攻击，这可能会因为多次连续登录尝试失败而禁用具有通用名称（例如“admin”或“administrator”）的帐户 。
 
     应仅在需要时启用 RDP，并将其限制为一组已授权 IP 范围。 此配置有助于提高 VM 的安全性并减小潜在攻击的范围。 或者，创建并使用 Azure Bastion 主机，以便仅允许在 Azure 门户中通过 TLS 进行访问。 在本教程的下一步，我们使用 Azure Bastion 主机安全地连接到 VM。
 
@@ -110,7 +110,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 1. 创建子网需要几秒钟的时间。 创建后，请选择“X”关闭子网窗口。
 1. 返回到“网络”窗格以创建 VM，从下拉菜单中选择所创建的子网，如 management。 同样，请确保选择了正确的子网，并且不要将 VM 部署在与托管域相同的子网中。
-1. 对于“公共 IP”，请从下拉菜单中选择“无”，因为你使用 Azure Bastion 连接到“管理”，不需要分配公共 IP 地址。
+1. 对于“公共 IP”，请从下拉菜单中选择“无”。 在本教程中使用 Azure Bastion 连接到管理时，无需为 VM 分配公共 IP 地址。
 1. 将其他选项保留默认值，然后选择“管理”。
 1. 将“启动诊断”设置为“关”。 将其他选项保留默认值，然后选择“查看 + 创建”。
 1. 查看 VM 设置，然后选择“创建”。
@@ -121,7 +121,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 ## <a name="connect-to-the-windows-server-vm"></a>连接到 Windows Server VM
 
-若要安全地连接到 VM，请使用 Azure Bastion 主机。 使用 Azure Bastion 时，托管主机部署到虚拟网络中，并提供到 VM 的基于 Web 的 RDP 或 SSH 连接。 不需要为 VM 使用公共 IP 地址，也不需要为外部远程流量打开网络安全组规则。 我们在 Web 浏览器中使用 Azure 门户连接到 VM。
+若要安全地连接到 VM，请使用 Azure Bastion 主机。 使用 Azure Bastion 时，托管主机部署到虚拟网络中，并提供到 VM 的基于 Web 的 RDP 或 SSH 连接。 不需要为 VM 使用公共 IP 地址，也不需要为外部远程流量打开网络安全组规则。 我们在 Web 浏览器中使用 Azure 门户连接到 VM。 根据需要[创建 Azure Bastion 主机][azure-bastion]。
 
 若要使用 Bastion 主机连接到 VM，请完成以下步骤：
 
@@ -152,7 +152,9 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![指定要加入的托管域](./media/join-windows-vm/join-domain.png)
 
-1. 输入域凭据以加入域。 使用属于托管域的用户的凭据。 此帐户必须属于托管域或 Azure AD 租户 - 与 Azure AD 租户关联的外部目录的帐户无法在加入域的过程中正确进行身份验证。 可以通过以下某种方式指定帐户凭据：
+1. 输入域凭据以加入域。 提供属于托管域的用户的凭据。 此帐户必须属于托管域或 Azure AD 租户 - 与 Azure AD 租户关联的外部目录的帐户无法在加入域的过程中正确进行身份验证。
+
+    可以通过以下某种方式指定帐户凭据：
 
     * **UPN 格式**（推荐）- 输入在 Azure AD 中为用户帐户配置的用户主体名称 (UPN) 后缀。 例如，用户 contosoadmin 的 UPN 后缀为 `contosoadmin@aaddscontoso.onmicrosoft.com`。 有几种常见的用例，可以可靠地使用 UPN 格式登录到域而不是使用 SAMAccountName 格式：
         * 如果用户的 UPN 前缀过长（如 deehasareallylongname），服务可能会自动生成 SAMAccountName 。
@@ -180,7 +182,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 在下一个教程中，你将使用此 Windows Server VM 安装管理工具来管理托管域。 如果不想继续学习本系列教程，请查看以下清理步骤，以便[删除 VM](#delete-the-vm)。 否则，[请继续学习下一个教程](#next-steps)。
 
-### <a name="un-join-the-vm-from-the-managed-domain"></a>取消将 VM 加入托管域的操作
+### <a name="unjoin-the-vm-from-the-managed-domain"></a>从托管域删除 VM
 
 若要从托管域中删除 VM，请再次执行[将 VM 加入域](#join-the-vm-to-the-managed-domain)的步骤。 不要加入托管域，而是选择加入工作组，例如默认的 WORKGROUP。 VM 重新启动后，将从托管域中删除计算机对象。
 

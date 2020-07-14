@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 2333ace1b1e9116acf85964fb180f44e0f66e6e7
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 28c56b7ece51e39d72c4ddff39d681eeb57d2252
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733484"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024717"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建和配置 Azure Active Directory 域服务托管域
 
@@ -87,16 +87,19 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 填写 Azure 门户的“基本信息”窗口中的字段，以创建托管域：
 
 1. 输入托管域的 **DNS 域名**，并注意前面所述的问题。
-1. 选择应在其中创建托管域的 Azure“位置”。 如果选择支持可用性区域的区域，则 Azure AD DS 资源会跨区域分布以实现额外的冗余。
+1. 选择应在其中创建托管域的 Azure“位置”。 如果选择支持 Azure 可用性区域的区域，则 Azure AD DS 资源会跨区域分布以实现额外的冗余。
 
-    可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。
-
-    对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
+    > [!TIP]
+    > 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。
+    >
+    > 对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
 
 1. **SKU** 确定可以创建的林信任的性能、备份频率和最大数量。 如果业务需求或要求发生变化，可以在创建托管域后更改 SKU。 有关详细信息，请参阅 [Azure AD DS SKU 概念][concepts-sku]。
 
     对于本教程，请选择“标准”SKU。
-1. 林是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造。 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
+1. 林是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造。 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。
+
+    *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
 
     对于本教程，请选择创建用户林。
 
@@ -128,11 +131,12 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![成功预配后的域服务状态](./media/tutorial-create-instance/successfully-provisioned.png)
 
-托管域与 Azure AD 租户相关联。 在预配过程中，Azure AD DS 会在 Azure AD 租户中创建名为 Domain Controller Services 和 AzureActiveDirectoryDomainControllerServices 的两个企业应用程序。 需要这些企业应用程序来为托管域提供服务。 不要删除这些应用程序。
+> [!IMPORTANT]
+> 托管域与 Azure AD 租户相关联。 在预配过程中，Azure AD DS 会在 Azure AD 租户中创建名为 Domain Controller Services 和 AzureActiveDirectoryDomainControllerServices 的两个企业应用程序。 需要这些企业应用程序来为托管域提供服务。 不要删除这些应用程序。
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>更新 Azure 虚拟网络的 DNS 设置
 
-成功部署 Azure AD DS 后，请配置虚拟网络，以允许其他连接的 VM 和应用程序使用托管域。 若要提供此连接，请更新虚拟网络的 DNS 服务器设置，以指向部署 Azure AD DS 的两个 IP 地址。
+成功部署 Azure AD DS 后，请配置虚拟网络，以允许其他连接的 VM 和应用程序使用托管域。 若要提供此连接，请更新虚拟网络的 DNS 服务器设置，以指向部署托管域的两个 IP 地址。
 
 1. 托管域的“概述”选项卡显示了一些“必需的配置步骤”。  第一个配置步骤是更新虚拟网络的 DNS 服务器设置。 正确配置 DNS 设置后，不再会显示此步骤。
 
@@ -150,9 +154,17 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 若要对托管域上的用户进行身份验证，Azure AD DS 需要密码哈希，其格式适用于 NT LAN Manager (NTLM) 和 Kerberos 身份验证。 除非为租户启用了 Azure AD DS，否则 Azure AD 不会以 NTLM 或 Kerberos 身份验证所需的格式生成或存储密码哈希。 出于安全考虑，Azure AD 也不以明文形式存储任何密码凭据。 因此，Azure AD 无法基于用户的现有凭据自动生成这些 NTLM 或 Kerberos 密码哈希。
 
 > [!NOTE]
-> 经过适当的配置后，可用的密码哈希将存储在托管域中。 删除托管域也会删除其中存储的所有密码哈希。 如果以后创建托管域，Azure AD 中已同步的凭据信息不可重复使用 - 必须重新配置密码哈希同步，以再次存储密码哈希。 以前加入域的 VM 或用户无法立即进行身份验证 - Azure AD 需要在新的托管域中生成并存储密码哈希。 有关详细信息，请参阅 [Azure AD DS 和 Azure AD Connect 的密码哈希同步过程][password-hash-sync-process]。
+> 经过适当的配置后，可用的密码哈希将存储在托管域中。 删除托管域也会删除其中存储的所有密码哈希。
+>
+> 如果以后创建托管域，Azure AD 中已同步的凭据信息不可重复使用 - 必须重新配置密码哈希同步，以再次存储密码哈希。 以前加入域的 VM 或用户无法立即进行身份验证 - Azure AD 需要在新的托管域中生成并存储密码哈希。
+>
+> 有关详细信息，请参阅 [Azure AD DS 和 Azure AD Connect 的密码哈希同步过程][password-hash-sync-process]。
 
-对于在 Azure AD 中创建的仅限云的用户帐户而言，生成和存储这些密码哈希的步骤不同于使用 Azure AD Connect 从本地目录同步的用户帐户。 仅限云的用户帐户是在 Azure AD 目录中使用 Azure 门户或 Azure AD PowerShell cmdlet 创建的帐户。 这些用户帐户不是从本地目录同步的。 本教程使用一个基本的仅限云的用户帐户。 有关使用 Azure AD Connect 所需的其他步骤的详细信息，请参阅[将从本地 AD 同步的用户帐户的密码哈希同步到托管域][on-prem-sync]。
+对于在 Azure AD 中创建的仅限云的用户帐户而言，生成和存储这些密码哈希的步骤不同于使用 Azure AD Connect 从本地目录同步的用户帐户。
+
+仅限云的用户帐户是在 Azure AD 目录中使用 Azure 门户或 Azure AD PowerShell cmdlet 创建的帐户。 这些用户帐户不是从本地目录同步的。
+
+> 本教程使用一个基本的仅限云的用户帐户。 有关使用 Azure AD Connect 所需的其他步骤的详细信息，请参阅[将从本地 AD 同步的用户帐户的密码哈希同步到托管域][on-prem-sync]。
 
 > [!TIP]
 > 如果 Azure AD 租户既有仅限云的用户，又有来自本地 AD 的用户，则需完成两组步骤。
@@ -197,7 +209,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 [create-dedicated-subnet]: ../virtual-network/virtual-network-manage-subnet.md#add-a-subnet
 [scoped-sync]: scoped-synchronization.md
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
-[configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
+[configure-sspr]: ../active-directory/authentication/tutorial-enable-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [skus]: overview.md

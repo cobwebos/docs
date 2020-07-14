@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195572"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082771"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
@@ -680,8 +680,8 @@ ms.locfileid: "84195572"
 
     | 占位符 | 建议的值 |
     | --- | --- |
-    | *{your_username}* | 使用刚刚创建的数据库服务器的**服务器管理员登录名**。 |
-    | *{your_password}* | 使用刚刚创建的数据库服务器的密码。 |
+    | *{your_username}* | 使用刚刚创建的服务器的服务器管理员登录名。 |
+    | *{your_password}* | 使用刚刚创建的服务器的密码。 |
 
     将用户名和密码添加为应用程序设置后，你的用户名和密码将不会包含在代码中。 这种做法有助于保护这些凭据。
 

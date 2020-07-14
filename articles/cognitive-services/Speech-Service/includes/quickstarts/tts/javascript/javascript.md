@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 2ac2051bd75bdad550bc93323053db2d220095a2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.author: trbye
+ms.openlocfilehash: 4e3b87055246c3060ab9a35e6a112782275633ae
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979433"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035893"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "82979433"
 如果要在 web 服务器上承载网页，可以为演示应用程序提供令牌源。
 这样一来，订阅密钥永远不会离开服务器，并且用户可以在不输入任何授权代码的情况下使用语音功能。
 
-创建名为 `token.php` 的新文件。 此示例假设 web 服务器支持 PHP 脚本语言。 输入以下代码：
+创建名为 `token.php` 的新文件。 此示例假设 Web 服务器在启用 cURL 的情况下支持 PHP 脚本语言。 输入以下代码：
 
 ```php
 <?php

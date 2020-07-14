@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 891e0c18b3f95dca905fbc14b957af773135eeec
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80046420"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557894"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -54,20 +54,20 @@ Linux 应用服务支持大量内置映像，以便提高开发人员工作效�
 
 Azure 门户仅显示当前对用于容器的 Web 应用有效的功能。 当我们启用更多功能时，会在门户中看到这些功能。
 
-Linux 上的应用服务仅支持[免费、基本、标准和高级](https://azure.microsoft.com/pricing/details/app-service/plans/)应用服务计划，没有[共享](https://azure.microsoft.com/pricing/details/app-service/plans/)层。 不能在已经托管非 Linux Web 应用的应用服务计划中创建 Linux Web 应用。  
+Linux 上的应用服务仅支持[免费、基本、标准、高级和独立](https://azure.microsoft.com/pricing/details/app-service/plans/)应用服务计划，没有[共享](https://azure.microsoft.com/pricing/details/app-service/plans/)层。 不能在已经托管非 Linux Web 应用的应用服务计划中创建 Linux Web 应用。  
 
 根据当前的限制，对于同一资源组，不能在同一区域中混合使用 Windows 和 Linux 应用。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 > [!NOTE]
 > [Azure Monitor（预览版）](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview)提供新的集成日志记录功能。 
 >
 >
 
-如果未能启动应用程序或希望检查应用中的日志记录，请查看 LogFiles 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。 若要从容器记录 `stdout` 和 `stderr`，需要在“应用服务日志”下启用“应用程序日志记录”   。 设置立即生效。 应用服务会检测更改，并自动重启容器。
+如果未能启动应用程序或希望检查应用中的日志记录，请查看 LogFiles 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。 若要从容器记录 `stdout` 和 `stderr`，需要在“应用服务日志”下启用“应用程序日志记录” 。 设置立即生效。 应用服务会检测更改，并自动重启容器。
 
-可从“开发工具”  菜单中的“高级工具”  访问 SCM 站点。
+可从“开发工具”菜单中的“高级工具”访问 SCM 站点。
 
 ![使用 Kudu 查看 Docker 日志][1]
 

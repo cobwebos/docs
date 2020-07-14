@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 8b340bdbd4bea4fcd865d6c27d688e5dbed86bb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a449c078b18b5bc9e005a873c51d92ad29417f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052338"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084981"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>快速入门：通过 Azure 门户创建服务器级防火墙规则
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,12 +33,12 @@ ms.locfileid: "84052338"
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>创建服务器级 IP 防火墙规则
 
- SQL 数据库在服务器级别为单一数据库和共用数据库创建防火墙。 此防火墙阻止客户端应用程序和工具连接到服务器或其任何单一数据库或共用数据库，除非你创建 IP 防火墙规则来打开防火墙。 对于从 Azure 外部的 IP 地址进行的连接，请针对要连接到的特定 IP 地址或地址范围创建防火墙规则。 有关服务器级和数据库级 IP 防火墙规则的详细信息，请参阅[服务器级和数据库级 IP 防火墙规则](firewall-configure.md)。
+ SQL 数据库在服务器级别为单一数据库和共用数据库创建防火墙。 此防火墙阻止客户端应用程序和工具连接到服务器或其任何数据库，除非创建 IP 防火墙规则来打开防火墙。 对于从 Azure 外部的 IP 地址进行的连接，请针对要连接到的特定 IP 地址或地址范围创建防火墙规则。 有关服务器级和数据库级 IP 防火墙规则的详细信息，请参阅[服务器级和数据库级 IP 防火墙规则](firewall-configure.md)。
 
 > [!NOTE]
 > 通过端口 1433 进行的 Azure SQL 数据库通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 1433。
 > [!IMPORTANT]
-> 0\.0.0.0 防火墙规则可让所有 Azure 服务通过服务器级防火墙规则，并尝试通过服务器连接到单一数据库或共用数据库。
+> 0\.0.0.0 防火墙规则可让所有 Azure 服务通过服务器级防火墙规则，并尝试通过服务器连接到数据库。
 
 按照以下步骤为客户端 IP 地址创建服务器级 IP 防火墙规则，以便仅针对该 IP 地址通过 Azure SQL 数据库防火墙启用外部连接。
 

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 1f1a83bce3a8b46bb49bf78917690851390408e0
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 0a9a89b6ff3d0e2d3987d4b4281b9e4e1605475f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194682"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476778"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Apache Spark 是什么
 
@@ -60,7 +60,7 @@ SparkContext 能够连接到可在不同应用程序之间分配资源的群集�
 
 SparkContext 在节点上运行用户的主函数，并执行各种并行操作。 然后，SparkContext 收集操作的结果。 节点从/向文件系统读取和写入数据。 节点还将已转换的数据作为弹性分布式数据集 (RDD) 缓存在内存中。
 
-SparkContext 连接到 Spark 池，并负责将应用程序转换为有向图 (DAG)。 该图由在节点上的执行程序进程内执行的各个任务构成。 每个应用程序获取自己的执行程序进程，这些进程在整个应用程序持续时间内保留，并以多个线程运行任务。
+SparkContext 连接到 Spark 池，并负责将应用程序转换为有向无环图 (DAG)。 该图由在节点上的执行程序进程内执行的各个任务构成。 每个应用程序获取自己的执行程序进程，这些进程在整个应用程序持续时间内保留，并以多个线程运行任务。
 
 ## <a name="apache-spark-in-synapse-analytics-use-cases"></a>Synapse Analytics 中的 Apache Spark 用例
 

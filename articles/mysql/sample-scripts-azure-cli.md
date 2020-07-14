@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
-ms.openlocfilehash: 18c52505ddf82cb29b13a9ee7621db5c3422eab6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 467d14e1f00e88999e130d28ee0e5a00dac47825
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74769755"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120953"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>用于 MySQL 的 Azure 数据库的 Azure CLI 示例 
 下表包含指向示例 Azure CLI 脚本的链接，这些脚本针对用于 MySQL 的 Azure 数据库。
 
-| |  |
+| 示例链接 | 说明  |
 |---|---|
 |**创建服务器**||
 | [创建服务器和防火墙规则](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | 此 Azure CLI 脚本为 MySQL 服务器创建单个 Azure 数据库，并配置服务器级防火墙规则。 |

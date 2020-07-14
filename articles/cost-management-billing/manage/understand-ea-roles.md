@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: b8693ea09ccbb6f0a3f8dfe0846a9b1b256872b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678012"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045138"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企业角色
 
@@ -84,7 +84,7 @@ Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管�
 
 |任务| 企业管理员|企业管理员（只读）|部门管理员|部门管理员（只读） |帐户所有者| Partner|
 |---|---|---|---|---|---|---|
-|查看信用额度余额（包括货币承诺）|✔|✔|✘|✘|✘|✔|
+|查看额度余额（包括 Azure 预付款）|✔|✔|✘|✘|✘|✔|
 |查看部门支出配额|✔|✔|✘|✘|✘|✔|
 |设置部门支出配额|✔|✘|✘|✘|✘|✘|
 |查看组织的 EA 价目表|✔|✔|✘|✘|✘|✔|

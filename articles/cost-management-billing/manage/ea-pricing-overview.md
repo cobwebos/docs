@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 5ad92fe9f243cf9884f29536cf6ebb66202338d5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d205f3ccc0adef7e2390274bb7f4511c6f994027
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299955"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037998"
 ---
 # <a name="azure-ea-pricing"></a>Azure EA 定价
 
@@ -24,7 +24,7 @@ ms.locfileid: "84299955"
 
 ### <a name="price-protection"></a>价格保护
 
-我们保证客户或渠道合作伙伴收到的价格不高于客户价目表 (CPS) 中显示的价格，或购买 Azure 产品/服务的生效日期当日的价格。 此价格称作基准价格。 对于购买 Azure 产品/服务后引入的服务，将按首次引入服务时应用了相应级别折扣的价格计费。 此价格保护策略在承诺期（一年或三年，具体取决于企业协议）内适用。
+我们保证客户或渠道合作伙伴收到的价格不高于客户价目表 (CPS) 中显示的价格，或购买 Azure 产品/服务的生效日期当日的价格。 此价格称作基准价格。 对于购买 Azure 产品/服务后引入的服务，将按首次引入服务时应用了相应级别折扣的价格计费。 此价格保护策略在预付款期（一年或三年，具体取决于企业协议）内适用。
 
 ### <a name="price-changes"></a>价格更改
 

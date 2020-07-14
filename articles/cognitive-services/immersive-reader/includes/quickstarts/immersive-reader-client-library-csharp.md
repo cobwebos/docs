@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2b6f4bb707d6c5c07dd6a1205ce7be542a220f17
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a5bd7b3e6262fa21865f04a6b65d1a75faafefa4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268667"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038152"
 ---
 [沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术以提高阅读理解能力。
 
@@ -305,7 +305,8 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看 [Node.js 快速入门](../../quickstart-nodejs.md)，了解通过 Node.js 使用沉浸式阅读器客户端库还可以做什么
+* 查看 [Node.js 快速入门](../../tutorial-nodejs.md)，了解通过 Node.js 使用沉浸式阅读器客户端库还可以做什么
+* 查看 [Android 教程](../../tutorial-android.md)，了解通过 Java 或 Kotlin for Android 使用沉浸式阅读器 SDK 可执行的其他操作
+* 查看 [iOS 教程](../../tutorial-ios.md)，了解通过 Swift for iOS 使用沉浸式阅读器 SDK 可执行的其他操作
 * 查看 [Python 教程](../../tutorial-python.md)，了解通过 Python 使用沉浸式阅读器客户端库还可以做什么
-* 查看 [iOS 教程](../../tutorial-ios-picture-immersive-reader.md)，了解通过 Swift 使用沉浸式阅读器客户端库还可以做什么
 * 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](../../reference.md)

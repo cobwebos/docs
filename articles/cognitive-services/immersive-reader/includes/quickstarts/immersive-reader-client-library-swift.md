@@ -1,7 +1,7 @@
 ---
 title: 沉浸式阅读器 Swift 客户端库快速入门
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将从头开始构建一个 Web 应用，并添加沉浸式阅读器 API 功能。
+description: 本快速入门将从头构建一个 iOS 应用，并添加沉浸式阅读器 API 功能。
 services: cognitive-services
 author: pasta
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 191d802064d477babd8aa1f782ad15876b821d11
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268683"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038153"
 ---
 [沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术以提高阅读理解能力。
 
@@ -573,4 +573,4 @@ function sendContentToReader(message) {
 
 ## <a name="next-steps"></a>后续步骤
 
-* 浏览[沉浸式阅读器 SDK 参考](../../reference.md)
+* 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](../../reference.md)

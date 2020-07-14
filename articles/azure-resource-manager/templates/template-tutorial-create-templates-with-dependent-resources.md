@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: cf876d3c7c100f001ba81082d792e81a777c7315
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82193031"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102066"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>教程：创建包含所依赖资源的 ARM 模板
 
@@ -33,7 +33,7 @@ ms.locfileid: "82193031"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
     ```console
@@ -46,15 +46,15 @@ ms.locfileid: "82193031"
 
 Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
-1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
-2. 在“文件名”中粘贴以下 URL： 
+1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。 
+2. 在“文件名”中粘贴以下 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. 选择“打开”以打开该文件。 
-4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
+3. 选择“打开”以打开该文件。
+4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。 
 
 ## <a name="explore-the-template"></a>浏览模板
 
@@ -71,12 +71,12 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
     有六个通过此模板定义的资源：
 
-   * [Microsoft.Storage/storageAccounts](/azure/templates/Microsoft.Storage/storageAccounts)  。
-   * [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)  。
-   * [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)  。
-   * [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)  。
-   * [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)  。
-   * [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)  。
+   * [Microsoft.Storage/storageAccounts](/azure/templates/Microsoft.Storage/storageAccounts)。
+   * [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)。
+   * [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)。
+   * [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)。
+   * [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)。
+   * [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)。
 
      在自定义模板之前查看模板参考会很有帮助。
 
@@ -120,11 +120,11 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
 1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
-1. 通过在左上角选择“PowerShell”  或“Bash”  （适用于 CLI）来选择你喜欢使用的环境。  进行切换时，需重启 shell。
+1. 通过在左上角选择“PowerShell”或“Bash”（适用于 CLI）来选择你喜欢使用的环境 。  进行切换时，需重启 shell。
 
     ![Azure 门户 - Cloud Shell - 上传文件](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. 依次选择“上传/下载文件”、“上传”。   请参阅上面的屏幕截图。 选择先前保存的文件。 上传文件后，可以使用 ls  命令和 cat  命令验证文件是否已成功上传。
+1. 依次选择“上传/下载文件”、“上传”。  请参阅上面的屏幕截图。 选择先前保存的文件。 上传文件后，可以使用 ls 命令和 cat 命令验证文件是否已成功上传。
 
 1. 运行以下 PowerShell 脚本以部署该模板。
 
@@ -173,10 +173,10 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。 应该会看到，该资源组中总共有六个资源。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

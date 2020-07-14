@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: b9afd1c4ca5e4c652a03bc2ef652b8e43ea12787
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 3e5afae9421d13d986ad6c891c8e889f590f04a2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727193"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044713"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
@@ -93,7 +93,7 @@ az extension add --name azure-iot
 
 ## <a name="retrieve-the-service-connection-string"></a>检索服务连接字符串
 
-还需一个服务连接字符串  ，以便后端服务应用程序能够连接到 IoT 中心以执行方法并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
+还需一个服务连接字符串，以便后端服务应用程序能够连接到 IoT 中心以执行方法并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
 
 **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -113,9 +113,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 设备 SDK 示例应用程序可以在物理 Android 设备或 Android 模拟器上运行。 示例会连接到 IoT 中心的特定于设备的终结点，发送模拟遥测数据，并侦听中心的直接方法调用。 在本快速入门中，中心的直接方法调用告知设备对其发送遥测的间隔进行更改。 执行直接方法后，模拟设备会将确认发送回中心。
 
-1. 在 Android Studio 中打开 GitHub 示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中。
-
-        \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
+1. 在 Android Studio 中打开 GitHub 示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中：\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample。
 
 2. 在 Android Studio 中打开示例项目的 *gradle.properties*，将 **Device_Connection_String** 占位符替换为此前记下的设备连接字符串。
 
@@ -123,7 +121,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. 在 Android Studio 中，单击“文件”   >   “将项目与 Gradle 文件同步”。 验证生成是否已完成。
+3. 在 Android Studio 中，单击“文件” > “将项目与 Gradle 文件同步”。 验证生成是否已完成。
 
    > [!NOTE]
    > 如果项目同步失败，可能是由于以下某个原因：
@@ -131,9 +129,9 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
    > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
    > * Android SDK 的许可协议尚未签署。 请按照 Build 输出中的说明签署许可协议并下载 SDK。
 
-4. 生成完成以后，请单击“运行”   >   “运行‘应用’”。 将应用配置为在物理 Android 设备或 Android 模拟器上运行。 若要详细了解如何在物理设备或模拟器上运行 Android 应用，请参阅[运行您的应用](https://developer.android.com/training/basics/firstapp/running-app)。
+4. 生成完成以后，请单击“运行” > “运行‘应用’”。 将应用配置为在物理 Android 设备或 Android 模拟器上运行。 若要详细了解如何在物理设备或模拟器上运行 Android 应用，请参阅[运行您的应用](https://developer.android.com/training/basics/firstapp/running-app)。
 
-5. 待应用加载以后，请单击“启动”按钮，开始将遥测数据发送到 IoT 中心： 
+5. 待应用加载以后，请单击“启动”按钮，开始将遥测数据发送到 IoT 中心：
 
     ![客户端设备 android 应用的示例屏幕截图](media/quickstart-control-device-android/sample-screenshot.png)
 
@@ -165,9 +163,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松地减轻与敏感的连接字符串相关联的风险。该字符串控制某个 IoT 中心的所有设备。 在此示例中，我们将它作为 Android 应用运行，仅仅是为了演示。 其他语言版本的本快速入门提供与典型后端服务应用程序更匹配的示例。
 
-1. 在 Android Studio 中打开 GitHub 服务示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中。
-
-        \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
+1. 在 Android Studio 中打开 GitHub 服务示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中：\azure-iot-samples-java\iot-hub\Samples\service\AndroidSample。
 
 2. 在 Android Studio 中，打开示例项目的 *gradle.properties*。 将 **ConnectionString** 和 **DeviceId** 属性的值更新为此前记下的服务连接字符串和已注册的 Android 设备 ID。
 
@@ -176,7 +172,7 @@ IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松�
     DeviceId=MyAndroidDevice
     ```
 
-3. 在 Android Studio 中，单击“文件”   >   “将项目与 Gradle 文件同步”。 验证生成是否已完成。
+3. 在 Android Studio 中，单击“文件” > “将项目与 Gradle 文件同步”。 验证生成是否已完成。
 
    > [!NOTE]
    > 如果项目同步失败，可能是由于以下某个原因：
@@ -184,9 +180,9 @@ IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松�
    > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
    > * Android SDK 的许可协议尚未签署。 请按照 Build 输出中的说明签署许可协议并下载 SDK。
 
-4. 生成完成以后，请单击“运行”   >   “运行‘应用’”。 将应用配置为在单独的物理 Android 设备或 Android 模拟器上运行。 若要详细了解如何在物理设备或模拟器上运行 Android 应用，请参阅[运行您的应用](https://developer.android.com/training/basics/firstapp/running-app)。
+4. 生成完成以后，请单击“运行” > “运行‘应用’”。 将应用配置为在单独的物理 Android 设备或 Android 模拟器上运行。 若要详细了解如何在物理设备或模拟器上运行 Android 应用，请参阅[运行您的应用](https://developer.android.com/training/basics/firstapp/running-app)。
 
-5. 待应用加载以后，将“设置消息传送时间间隔”值更新为  **1000**，然后单击“调用”。 
+5. 待应用加载以后，将“设置消息传送时间间隔”值更新为 **1000**，然后单击“调用”。
 
     遥测消息传送时间间隔以毫秒为单位。 设备示例的默认遥测时间间隔设置为 5 秒钟。 此更改会更新 Android IoT 设备，使遥测数据每秒发送一次。
 

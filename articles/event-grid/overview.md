@@ -1,20 +1,14 @@
 ---
 title: 什么是 Azure 事件网格？
 description: 使用 Azure 事件网格将事件数据从源发送到处理程序。 生成基于事件的应用程序，并与 Azure 服务集成。
-services: event-grid
-author: femila
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 02/20/2020
-ms.author: femila
-ms.custom: seodec18
-ms.openlocfilehash: 38f0218a7dedd243cccfab4b0b5ecfb73d3a626a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/07/2020
+ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560308"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116125"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -103,7 +97,7 @@ Azure 事件网格提供多项功能，极大程度地改进了无服务器体�
 
 ![运维自动化](./media/overview/Ops_automation.png)
 
-使用事件网格，可以加快自动化，简化策略执行。 例如，使用事件网格在创建虚拟机或 SQL 数据库时通知 Azure 自动化。 使用事件自动检查服务配置是否符合要求、将元数据放入操作工具、标记虚拟机或提交工作项。
+使用事件网格，可以加快自动化，简化策略执行。 例如，使用事件网格在 Azure SQL 中创建虚拟机或 SQL 数据库时通知 Azure 自动化。 使用事件自动检查服务配置是否符合要求、将元数据放入操作工具、标记虚拟机或提交工作项。
 
 ### <a name="application-integration"></a>应用程序集成
 

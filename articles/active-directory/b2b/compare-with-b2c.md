@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9006a70ae941abb700412a7c596627939c994028
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c45aae35c7c1cf2fbde436303a2ac000dfdd5ec
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587504"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339608"
 ---
 # <a name="compare-solutions-for-external-identities-in-azure-active-directory"></a>比较 Azure Active Directory 中的外部标识的解决方案
 
@@ -36,11 +36,11 @@ Azure AD 外部标识在用户与组织的关系上关注较少，而在个人�
 
 | 多租户应用程序  | 外部用户协作 (B2B) | 面向消费者或客户 (B2C) 的应用  |
 | ---- | --- | --- |
-| 主要方案：企业软件即服务 (SaaS) | 主要方案：使用 Microsoft 应用程序（Office 365、Teams、...）或自己的协作软件进行协作。  | 主要方案：使用自定义开发的应用程序的事务应用程序。   |
+| 主要方案：企业软件即服务 (SaaS) | 主要方案：使用 Microsoft 应用程序（Microsoft 365、Teams…）或自己的协作软件进行协作。  | 主要方案：使用自定义开发的应用程序的事务应用程序。   |
 | 适用于：希望向许多企业客户提供软件的组织。    | 适用于：希望在不考虑标识提供者的情况下验证合作伙伴组织中用户的身份的组织。    | 适用于：邀请移动和 Web 应用的客户（无论是个人、机构还是组织客户）加入到不同于自己组织的目录的 Azure AD 目录。 |
 | 支持的标识：具有 Azure AD 帐户的员工。 | 支持的标识：使用工作或学校帐户的员工、使用工作或学校帐户的合作伙伴或者任何电子邮件地址。 即将支持直接联合身份验证。      | 支持的标识：具有本地应用程序帐户的客户用户（任何电子邮件地址或用户名），或者任何使用直接联合身份验证的受支持社交标识。       |
 | 外部用户在其自己的目录中管理，该目录与注册应用程序所在的目录相隔离。    | 外部用户在员工所在的目录中进行托管（特别备注的除外）。 可采用与员工相同的方式进行管理，还可将其添加到相同组，等等。    | 外部用户在应用程序目录中管理。 他们与组织的员工和合作伙伴目录（若有）分开管理。  |
-| 单一登录：支持 SSO 到所有 Azure AD 连接的应用。          | 单一登录：支持 SSO 到所有 Azure AD 连接的应用。 例如，可允许访问 Office 365 或本地应用以及其他 SaaS 应用（例如 Salesforce 或 Workday）。    | 单一登录：支持在 Azure AD B2C 租户中单一登录到客户自有应用。 不支持单一登录到 Office 365 或其他 Microsoft SaaS 应用。    |
+| 单一登录：支持 SSO 到所有 Azure AD 连接的应用。          | 单一登录：支持 SSO 到所有 Azure AD 连接的应用。 例如，可允许访问 Microsoft 365 或本地应用以及其他 SaaS 应用（例如 Salesforce 或 Workday）。    | 单一登录：支持在 Azure AD B2C 租户中单一登录到客户自有应用。 不支持单一登录到 Microsoft 365 或其他 Microsoft SaaS 应用。    |
 | 客户生命周期：由用户的本组织管理。      | 合作伙伴生命周期：由主办/邀请组织管理。    | 客户生命周期：自助服务或由应用程序管理。      |
 | 安全策略和符合性：由主办/邀请组织管理（例如，通过[条件访问策略](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)）。           | 安全策略和符合性：由主办/邀请组织管理（例如，通过[条件访问策略](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)）。 | 安全策略和符合性：由应用程序管理。        |
 | 品牌：使用主办/邀请组织的品牌。   | 品牌：使用主办/邀请组织的品牌。    | 品牌：由应用程序管理。 通常是带品牌的产品，组织退居幕后。   |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024432"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103698"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
 
@@ -45,7 +45,7 @@ ms.locfileid: "82024432"
 - **已加入 Azure AD**
    - 已加入 Azure AD 的设备由组织拥有，并已登录到属于该组织的 Azure AD 帐户。 这些设备位于云中。
       - Windows 10 
-      - Windows Server 2019（不支持服务器核心）
+      - [在 Azure 中运行的 Windows Server 2019 虚拟机] (./howto-vm-sign-in-azure-ad-windows.md)（不支持服务器核心）
 - **已加入混合 Azure AD**
    - 已加入混合 Azure AD 的设备由组织拥有，并已登录到属于该组织的 Azure AD 帐户。 这些设备位于云中和本地。
       - Windows 7、8.1 或 10

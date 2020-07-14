@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185041"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118505"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>教程：利用资源管理器模板参考
 
@@ -36,21 +36,21 @@ ms.locfileid: "82185041"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本快速入门中使用的模板称为[创建标准存储帐户](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
 
-1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
-1. 在“文件名”中粘贴以下 URL： 
+1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。 
+1. 在“文件名”中粘贴以下 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-1. 选择“打开”以打开该文件。 
-1. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。  
+1. 选择“打开”以打开该文件。
+1. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。 
 
 ## <a name="understand-the-schema"></a>了解架构
 
@@ -65,7 +65,7 @@ ms.locfileid: "82185041"
     * **resources**：指定已在资源组中部署或更新的资源类型。
     * **outputs**：指定部署后返回的值。
 
-1. 展开“resources”  。 已定义 `Microsoft.Storage/storageAccounts` 资源。 SKU 名称使用参数值。  此参数称为 **storageAccountType**。
+1. 展开“resources”。 已定义 `Microsoft.Storage/storageAccounts` 资源。 SKU 名称使用参数值。  此参数称为 **storageAccountType**。
 
     ![资源管理器模板存储帐户定义](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
 
@@ -75,8 +75,8 @@ ms.locfileid: "82185041"
 
 ## <a name="find-the-template-reference"></a>查找模板参考
 
-1. 浏览到 [Azure 模板参考](https://docs.microsoft.com/azure/templates/)。
-1. 在“按标题筛选”  框中输入“存储帐户”，  然后在“参考”>“存储”下选择第一批“存储帐户”。  
+1. 浏览到 [Azure 模板参考](/azure/templates/)。
+1. 在“按标题筛选”框中输入“存储帐户”，然后在“参考”>“存储”下选择第一批“存储帐户”。 
 
     ![资源管理器模板参考存储帐户](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "82185041"
 
     ![资源管理器模板参考存储帐户版本](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-versions.png)
 
-1. 从左窗格的“存储”下选择“所有资源”。   此页列出了存储资源提供程序的资源类型和版本。 建议对模板中定义的资源类型使用最新的 API 版本。
+1. 从左窗格的“存储”下选择“所有资源”。  此页列出了存储资源提供程序的资源类型和版本。 建议对模板中定义的资源类型使用最新的 API 版本。
 
     ![资源管理器模板参考存储帐户类别版本](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
@@ -104,11 +104,11 @@ ms.locfileid: "82185041"
 
 1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
-1. 通过在左上角选择“PowerShell”  或“Bash”  （适用于 CLI）来选择你喜欢使用的环境。  进行切换时，需重启 shell。
+1. 通过在左上角选择“PowerShell”或“Bash”（适用于 CLI）来选择你喜欢使用的环境 。  进行切换时，需重启 shell。
 
     ![Azure 门户 - Cloud Shell - 上传文件](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. 依次选择“上传/下载文件”、“上传”。   请参阅上面的屏幕截图。 选择在上一部分保存的文件。 上传文件后，可以使用 ls  命令和 cat  命令验证文件是否已成功上传。
+1. 依次选择“上传/下载文件”、“上传”。  请参阅上面的屏幕截图。 选择在上一部分保存的文件。 上传文件后，可以使用 ls 命令和 cat 命令验证文件是否已成功上传。
 
 1. 在 Cloud Shell 中运行以下命令。 选择用于显示 PowerShell 代码或 CLI 代码的选项卡。
 
@@ -137,16 +137,16 @@ ms.locfileid: "82185041"
 
     ---
 
- 部署模板时，请使用新添加的值（例如 Standard_RAGRS  ）指定 storageAccountType  参数。 如果使用原始快速入门模板，部署会失败，因为 Standard_RAGRS  不是允许的值。
+ 部署模板时，请使用新添加的值（例如 Standard_RAGRS）指定 storageAccountType 参数。 如果使用原始快速入门模板，部署会失败，因为 Standard_RAGRS 不是允许的值。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

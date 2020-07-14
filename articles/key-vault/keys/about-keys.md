@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900922"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413717"
 ---
 # <a name="about-azure-key-vault-keys"></a>关于 Azure Key Vault 密钥
 
@@ -30,10 +30,10 @@ Key Vault 中的加密密钥表示为 JSON Web 密钥 [JWK] 对象。 JavaScript
 
 此外，还扩展了基本 JWK/JWA 规范，以启用对于 Key Vault 实现唯一的密钥类型。 例如，使用 HSM 供应商特定的包导入密钥，可以安全传输仅可在 Key Vault HSM 中使用的密钥。 
 
-Azure Key Vault 同时支持软密钥和硬密钥：
+Azure Key Vault 同时支持受软件保护的密钥和受 HSM 保护的密钥：
 
-- **“软”密钥**：由 Key Vault 在软件中处理，但使用 HSM 中的系统密钥进行静态加密的一种密钥。 客户端可以导入现有 RSA 或 EC（椭圆曲线）密钥，也可以请求 Key Vault 生成该密钥。
-- **“硬”密钥**：在 HSM（硬件安全模块）中处理的密钥。 这些密钥在一个 Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用软性形式或通过从兼容 HSM 设备导出的方式来导入 RSA 或 EC 密钥。 此外，客户端还可以请求 Key Vault 生成该密钥。 此密钥类型将 key_hsm 属性添加到获得的 JWK 以携带 HSM 密钥材料。
+- **受软件保护的密钥**：由 Key Vault 在软件中处理，但使用 HSM 中的系统密钥进行静态加密的一种密钥。 客户端可以导入现有 RSA 或 EC（椭圆曲线）密钥，也可以请求 Key Vault 生成该密钥。
+- **受 HSM 保护的密钥**：在 HSM（硬件安全模块）中处理的密钥。 这些密钥在一个 Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用受软件保护的形式或通过从兼容 HSM 设备导出的方式来导入 RSA 或 EC 密钥。 此外，客户端还可以请求 Key Vault 生成该密钥。 此密钥类型将 key_hsm 属性添加到获得的 JWK 以携带 HSM 密钥材料。
 
 有关地理边界的详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)  
 
@@ -41,24 +41,24 @@ Azure Key Vault 同时支持软密钥和硬密钥：
 
 Key Vault 仅支持 RSA 和椭圆曲线密钥。 
 
--   **EC**：“软”椭圆曲线密钥。
+-   **EC**：受软件保护的椭圆曲线密钥。
 -   **EC-HSM**：“硬”椭圆曲线密钥。
--   **RSA**：“软”RSA 密钥。
+-   **RSA**：受软件保护的 RSA 密钥。
 -   **RSA-HSM**：“硬”RSA 密钥。
 
 Key Vault 支持大小为 2048、3072 和 4096 的 RSA 密钥。 Key Vault 支持类型为 P-256、P-384、P-521 和 P-256K (SECP256K1) 的椭圆曲线密钥。
 
-Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信息处理标准）验证。 不需执行任何特殊操作便可在 FIPS 模式下运行。 “创建”或“导入”为受 HSM 保护的密钥在 HSM 内处理，且验证为 FIPS 140-2 级别 2   。 “创建”或“导入”为受软件保护的密钥在加密模块内处理，且验证为 FIPS 140-2 级别 1   。
+Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信息处理标准）验证。 不需执行任何特殊操作便可在 FIPS 模式下运行。 “创建”或“导入”为受 HSM 保护的密钥在 HSM 内处理，且验证为 FIPS 140-2 级别 2 。 “创建”或“导入”为受软件保护的密钥在加密模块内处理，且验证为 FIPS 140-2 级别 1 。
 
 ###  <a name="ec-algorithms"></a>EC 算法
  Key Vault 中的 EC 和 EC-HSM 密钥支持以下算法标识符。 
 
 #### <a name="curve-types"></a>曲线类型
 
--   P-256  - NIST 曲线 P-256，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
--   P-256K  - SEC 曲线 SECP256K1，在 [SEC 2：建议使用的椭圆曲线域参数](https://www.secg.org/sec2-v2.pdf)中定义。
--   P-384  - NIST 曲线 P-384，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
--   P-521  - NIST 曲线 P-521，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-256 - NIST 曲线 P-256，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-256K - SEC 曲线 SECP256K1，在 [SEC 2：建议使用的椭圆曲线域参数](https://www.secg.org/sec2-v2.pdf)中定义。
+-   P-384 - NIST 曲线 P-384，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-521 - NIST 曲线 P-521，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
@@ -119,20 +119,20 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 
 除密钥材料外，还可以指定以下属性。 在 JSON 请求中，即使未指定任何属性，也需要属性关键字和大括号“{”“}”。  
 
-- enabled：布尔型，可选，默认值为 true   。 指定密钥是否已启用并可用于加密操作。 enabled 属性结合 nbf 和 exp 使用    。如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作     。 nbf / exp 时段外的操作会自动禁止，[特定条件](#date-time-controlled-operations)下的某些操作类型除外   。
-- *nbf*：IntDate，可选，默认值为“now”。 nbf（非过去）属性识别密钥不得用于加密操作以前的时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外  。 处理 nbf 属性要求当前日期/时间必须晚于或等于 nbf 属性中列出的非过去日期/时间   。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
-- *exp*：IntDate，可选，默认值为“forever”。 exp（过期时间）属性识别密钥不得用于加密操作当时或之后的过期时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外  。 处理 exp 属性要求当前日期/时间必须早于 exp 属性中列出的过期日期/时间   。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
+- enabled：布尔型，可选，默认值为 true。 指定密钥是否已启用并可用于加密操作。 enabled 属性结合 nbf 和 exp 使用  。如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作  。 nbf / exp 时段外的操作会自动禁止，[特定条件](#date-time-controlled-operations)下的某些操作类型除外 。
+- *nbf*：IntDate，可选，默认值为“now”。 nbf（非过去）属性识别密钥不得用于加密操作以前的时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外。 处理 nbf 属性要求当前日期/时间必须晚于或等于 nbf 属性中列出的非过去日期/时间 。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
+- *exp*：IntDate，可选，默认值为“forever”。 exp（过期时间）属性识别密钥不得用于加密操作当时或之后的过期时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外。 处理 exp 属性要求当前日期/时间必须早于 exp 属性中列出的过期日期/时间 。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
 
 在包含密钥属性的任何响应中还包括以下其他只读属性：  
 
-- *created*：IntDate，可选。 created 属性指示创建此版本的密钥的时间  。 如果密钥在添加此属性之前创建，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
-- *updated*：IntDate，可选。 updated 属性指示更新此版本的密钥的时间  。 如果密钥上次更新的时间早于添加此属性的时间，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
+- *created*：IntDate，可选。 created 属性指示创建此版本的密钥的时间。 如果密钥在添加此属性之前创建，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
+- *updated*：IntDate，可选。 updated 属性指示更新此版本的密钥的时间。 如果密钥上次更新的时间早于添加此属性的时间，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
 
 有关 IntDate 和其他数据类型的详细信息，请参阅[关于密钥、机密和证书：[数据类型](../general/about-keys-secrets-certificates.md#data-types)。
 
 ### <a name="date-time-controlled-operations"></a>日期时间控制的操作
 
-这些在 nbf / exp 时段外的尚未生效的密钥和过期密钥适合 decrypt、unwrap 和 verify 操作（不会返回“403 禁止访问”）      。 使用尚未生效状态的基本原理是允许在投入生产前测试密钥。 使用过期状态的基本原理是允许对秘钥有效期间创建的数据执行恢复操作。 此外，使用 Key Vault 策略，或通过将 enabled 密钥属性更新为 false 可以禁用访问密钥   。
+这些在 nbf / exp 时段外的尚未生效的密钥和过期密钥适合 decrypt、unwrap 和 verify 操作（不会返回“403 禁止访问”）   。 使用尚未生效状态的基本原理是允许在投入生产前测试密钥。 使用过期状态的基本原理是允许对秘钥有效期间创建的数据执行恢复操作。 此外，使用 Key Vault 策略，或通过将 enabled 密钥属性更新为 false 可以禁用访问密钥。
 
 有关数据类型的详细信息，请参阅[数据类型](../general/about-keys-secrets-certificates.md#data-types)。
 
@@ -143,7 +143,7 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 可以用标记的形式指定其他特定于应用程序的元数据。 Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
 
 >[!Note]
->如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记   。
+>如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记 。
 
 ##  <a name="key-access-control"></a>密钥访问控制
 

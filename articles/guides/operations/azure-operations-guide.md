@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 4f9da6cbfe8d1e6b92c39148b275de193730c8f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7ebcf39c203f9956b23ef22754b38f32e9d9352
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623583"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323020"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -64,7 +64,7 @@ Azure 提供了多个 IaaS 解决方案，包括虚拟机、虚拟机规模集�
 
 Azure 提供了多个 PaaS 计算服务，包括 Azure 应用服务和 Azure 云服务的 Web 应用功能（Web 角色和辅助角色）。 在任一情况下，开发者都可通过多种方式来部署应用程序，而无需了解支持该应用程序的任何具体细节。 开发者不必创建虚拟机 (VM)，无需使用远程桌面协议 (RDP) 登录每个虚拟机，也不必安装应用程序。 他们只需点击按钮（或者靠近它），Microsoft 提供的工具就会预配 VM，然后在其中部署并安装应用程序。
 
-#### <a name="saas-software-as-a-service"></a>SaaS：服务型软件
+#### <a name="saas-software-as-a-service"></a>SaaS：软件即服务
 
 SaaS 是集中托管和管理的软件。 它通常基于多租户体系结构 - 所有客户使用的单一版本的应用程序。 可以扩大到多个实例，确保在所有位置都达到最佳性能。 SaaS 软件通常通过月度订阅或年度订阅获得许可。 SaaS 软件供应商负责软件堆栈的所有组件，因此你只需要管理所提供的服务。
 
@@ -94,7 +94,7 @@ Azure 在其云计算平台中提供多种服务。 这些服务包括：
 
 - Azure 存储（包括 Azure Blob、队列、表和文件服务）
 
-- Azure SQL 数据库
+- Azure SQL Database
 
 - Azure Cosmos DB
 
@@ -184,7 +184,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 需要订阅之后才能使用 Azure 服务。 可以使用多种订阅类型。
 
-**免费帐户**：注册免费帐户的链接位于 [Azure网站](https://azure.microsoft.com/)。 这可以提供 30 天试用期和相应信用额度，用于尝试 Azure 中的任何资源组合。 超出信用额度后，帐户将被暂停。 试用期结束时，服务将被停用，不再工作。 可随时升级到即用即付订阅。
+**免费帐户**：注册免费帐户的链接位于 [Azure 网站](https://azure.microsoft.com/)。 这可以提供 30 天试用期和相应信用额度，用于尝试 Azure 中的任何资源组合。 超出信用额度后，帐户将被暂停。 试用期结束时，服务将被停用，不再工作。 可随时升级到即用即付订阅。
 
 **MSDN 订阅**：如果有 MSDN 订阅，每月可以获得特定金额的 Azure 信用额度。 例如，如果有 Microsoft Visual Studio Enterprise with MSDN 订阅，则每月可获得 \$150 美元的 Azure 信用额度。
 
@@ -226,7 +226,7 @@ RBAC 有多个可用于分配权限的内置角色。 要使用户成为 Azure �
 
 Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 通过使用资源管理器，可以将多个单独的资源置于一个资源组中。
 
-资源管理器还提供部署功能，可用于对相关资源进行自定义部署和配置。 例如，通过使用资源管理器，可将包含多个虚拟机、负载均衡器和 SQL 数据库的应用程序作为单一单元进行部署。 可以使用资源管理器模板来开发这些部署。
+资源管理器还提供部署功能，可用于对相关资源进行自定义部署和配置。 例如，通过使用资源管理器，你可将包含多个虚拟机、负载均衡器和 Azure SQL 数据库的应用程序作为单一单元进行部署。 可以使用资源管理器模板来开发这些部署。
 
 资源管理器提供多种优势：
 
@@ -280,11 +280,11 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 - **资源依赖关系**：部署多个资源时，某些资源对其他资源具有依赖关系。 为了方便部署，可以使用资源依赖关系声明，先部署依赖资源，然后再部署其他资源。
 
-- **模版链接**：可从一个资源管理器模板中链接到另一个模板。 这允许将部署分解成一组具有特定用途的定向模板。
+- **模板链接**：可从一个资源管理器模板中链接到另一个模板。 这允许将部署分解成一组具有特定用途的定向模板。
 
 可在任何文本编辑器中生成资源管理器模板。 但是，用于 Visual Studio 的 Azure SDK 包括的工具可提供帮助。 通过使用 Visual Studio，可以通过向导向模板添加资源，然后直接从 Visual Studio 中部署和调试模板。 有关详细信息，请参阅[创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md)。
 
-最后，可将现有资源组从 Azure 门户转换为可重用模板。 如果要创建现有资源组的可部署模板，或者只想检查基础 JSON，这非常有用。 若要导出资源组，请从资源组的设置中选择“自动化脚本”按钮  。
+最后，可将现有资源组从 Azure 门户转换为可重用模板。 如果要创建现有资源组的可部署模板，或者只想检查基础 JSON，这非常有用。 若要导出资源组，请从资源组的设置中选择“自动化脚本”按钮。
 
 ## <a name="security-of-azure-resources-rbac"></a>Azure 资源的安全性 (RBAC)
 
@@ -298,13 +298,13 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 - **读者**：具有此角色的用户可以读取所有类型的资源（机密除外），但不能进行更改。
 
-- 虚拟机参与者  ：具有此角色的用户可以管理虚拟机，但不能管理其连接的虚拟网络或 VHD 文件所在的存储帐户。
+- **虚拟机参与者**：具有此角色的用户可以管理虚拟机，但不能管理其连接的虚拟网络或 VHD 文件所在的存储帐户。
 
-- SQL DB 参与者  ：具有此角色的用户可以管理 SQL 数据库，而不是与安全性相关的策略。
+- **SQL DB 参与者**：具有此角色的用户可以管理 SQL 数据库，而不是与安全性相关的策略。
 
-- SQL 安全管理器  ：具有此角色的用户可以管理 SQL 服务器和数据库与安全性相关的策略。
+- **SQL 安全管理器**：具有此角色的用户可以管理 SQL 服务器和数据库与安全性相关的策略。
 
-- 存储帐户参与者  ：具有此角色的用户可以管理存储帐户，但不能管理对存储帐户的访问权限。
+- **存储帐户参与者**：具有此角色的用户可以管理存储帐户，但不能管理对存储帐户的访问权限。
 
 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
@@ -338,7 +338,7 @@ Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持
 
 #### <a name="command-line-interface-cli"></a>命令行接口 (CLI)
 
-与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 使用 Azure CLI“vm quick-create”命令时，将部署所有相关虚拟机资源（包括存储和网络）以及虚拟机本身  。 有关详细信息，请参阅[使用 Azure CLI 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-cli.md)。
+与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 使用 Azure CLI“vm quick-create”命令时，将部署所有相关虚拟机资源（包括存储和网络）以及虚拟机本身。 有关详细信息，请参阅[使用 Azure CLI 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-cli.md)。
 
 同样，可以使用 Azure CLI 部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)。
 
@@ -368,7 +368,7 @@ Azure 存储帐户可以配置不同级别的冗余：
 
 #### <a name="blob-storage"></a>Blob 存储
 
-“Blob”是二进制大型对象的缩写   。 Blob 和计算机上存储的文件一样，是非结构化文件。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。 Azure Blob 存储还可保存 Azure 虚拟机数据磁盘。
+“Blob”是二进制大型对象的缩写 。 Blob 和计算机上存储的文件一样，是非结构化文件。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。 Azure Blob 存储还可保存 Azure 虚拟机数据磁盘。
 
 Azure 存储支持三种 blob：
 
@@ -420,7 +420,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 #### <a name="command-line-interface-cli"></a>命令行接口 (CLI)
 
-与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 可使用 Azure CLI“storage account create”命令创建存储帐户  。 有关详细信息，请参阅[将 Azure CLI 用于 Azure 存储。](../../storage/common/storage-azure-cli.md)
+与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 可使用 Azure CLI“storage account create”命令创建存储帐户。 有关详细信息，请参阅[将 Azure CLI 用于 Azure 存储。](../../storage/common/storage-azure-cli.md)
 
 同样，可以使用 Azure CLI 部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../resource-group-template-deploy-cli.md)。
 
@@ -475,7 +475,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 > **何时使用**：无论何时使用 Azure 中的 VM，都将使用虚拟网络。 这允许将 VM 分段为类似本地数据中心的面向公众子网和专用子网。
 >
-> **开始行动**：要使用 Azure 门户部署 Azure 虚拟网络，只需要一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的虚拟网络部署到新的或现有资源组中。 从门户创建新的虚拟机时，可选择现有虚拟网络或创建一个新的虚拟网络。 开始行动并[使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md)。
+> **入门**：要使用 Azure 门户部署 Azure 虚拟网络，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的虚拟网络部署到新的或现有资源组中。 从门户创建新的虚拟机时，可选择现有虚拟网络或创建一个新的虚拟网络。 开始行动并[使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md)。
 
 ### <a name="access-and-security-for-virtual-networks"></a>虚拟网络的访问和安全性
 

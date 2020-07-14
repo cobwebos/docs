@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 4175214219350620ae44d0249243e23b1a25144a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196596"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321084"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -142,6 +142,6 @@ Azure 数据工厂本身不存储任何数据。 它可以用于创建数据驱�
 
 | 教程 | 说明 |
 | --- | --- |
-| [在两个云数据存储之间移动数据](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |创建一个包含管道的数据工厂，将数据从 Blob 存储移到 SQL 数据库。 |
+| [在两个云数据存储之间移动数据](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |创建一个包含管道的数据工厂，将数据从 Blob 存储移动到 SQL 数据库。 |
 | [使用 Hadoop 群集转换数据](data-factory-build-your-first-pipeline.md) |构建第一个包含数据管道的 Azure 数据工厂，该数据管道可以通过在 Azure HDInsight (Hadoop) 群集上运行 Hive 脚本来处理数据。 |
 | [使用数据管理网关在本地数据存储与云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md) |构建一个包含管道的数据工厂，以便将数据从 SQL Server 数据库移到 Azure Blob。 在演练过程中，需要在计算机上安装并配置数据管理网关。 |

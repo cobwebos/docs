@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/24/2020
+ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488216"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562529"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -24,6 +24,14 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 [![动画 GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 更喜欢 PowerShell？ 使用 Azure 资源管理器[服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。 有关如何入门的帮助，请参阅[使用 PowerShell 管理 Azure 认知搜索](search-manage-powershell.md)。
+
+## <a name="before-you-start"></a>开始之前
+
+以下服务属性在服务生存期内是固定的，更改这些属性需要新的服务。 创建服务时，请考虑将如何使用它：
+
+* 名称（查看有关服务名称的[建议](#name-the-service)）
+* 层（免费层、基本层、标准层会[影响计费](search-sku-tier.md)，因此请设置容量上限）
+* 区域（选择包含相关服务的位置。 对于与认知服务或 Azure 机器学习的集成，需要同一区域的共存的服务）
 
 ## <a name="subscribe-free-or-paid"></a>订阅（免费或付费）
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262423"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028241"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -64,9 +64,11 @@ Azure Cosmos 模拟器具有以下硬件和软件要求：
 
 要启动 Azure Cosmos 模拟器，请选择“开始”按钮或按 Windows 键。 开始键入“Azure Cosmos 模拟器”，再从应用程序列表中选择该模拟器。
 
-![选择“开始”按钮或按 Windows 键，开始键入**Azure Cosmos DB 模拟器**，再从应用程序列表中选择该模拟器](./media/local-emulator/database-local-emulator-start.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="选择“开始”按钮或按 Windows 键，开始键入“Azure Cosmos 模拟器”，再从应用程序列表中选择该模拟器":::
 
-运行模拟器时，在 Windows 任务栏通知区域中会显示一个图标。 ![Azure Cosmos DB 本地模拟器任务栏通知](./media/local-emulator/database-local-emulator-taskbar.png)
+运行模拟器时，在 Windows 任务栏通知区域中会显示一个图标。 
+
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Azure Cosmos DB 本地模拟器任务栏通知":::
 
 默认情况下，Azure Cosmos 模拟器在本地计算机（“localhost”）上运行，侦听端口 8081。
 
@@ -222,7 +224,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 为了获得用于语言和运行时（未与 Windows 证书存储集成）的证书，需要通过 Windows 证书管理器将其导出。 可通过运行 certlm.msc 进行启动，也可按照[导出 Azure Cosmos 模拟器证书](./local-emulator-export-ssl-certificates.md)中的分步说明进行操作。 证书管理器开始运行后，打开个人证书（如下所示），并将友好名称为“DocumentDBEmulatorCertificate”的证书导出为 BASE-64 编码的 X.509 (.cer) 文件。
 
-![Azure Cosmos DB 本地模拟器 TLS/SSL 证书](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-ssl_certificate.png" alt-text="Azure Cosmos DB 本地模拟器 TLS/SSL 证书":::
 
 可按照[将证书添加到 Java CA 证书存储](https://docs.microsoft.com/azure/java-add-certificate-ca-store)中的说明，将 X.509 证书导入 Java 证书存储。 证书导入证书存储后，SQL 和 MongoDB 的 Azure Cosmos DB API 的客户端就能连接到 Azure Cosmos 模拟器。
 
@@ -233,7 +235,9 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="command-line-syntax"></a>命令行语法
 
-    Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+```
 
 若要查看选项列表，请在命令提示符下键入 `Microsoft.Azure.Cosmos.Emulator.exe /?`。
 
@@ -418,7 +422,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 若要打开数据资源管理器，请在浏览器中导航到以下 URL。 上面所示的响应消息中提供了模拟器终结点。
 
-    https://<emulator endpoint provided in response>/_explorer/index.html
+**https\://** \<emulator endpoint provided in response> **/_explorer/index.html**
 
 如果你有在 Linux docker 容器上运行的 .NET 客户端应用程序，并且你在主机上运行 Azure Cosmos 模拟器，请根据适用于 Linux 的以下部分将证书导入到 Linux docker 容器中。
 
@@ -468,7 +472,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
    update-ca-certificates
    ```
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
 如果在 Mac 中工作，请使用以下步骤：
 

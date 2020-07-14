@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 75b6629ea924ec17888ec2f981ff85ed917434c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677612"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557053"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>快速入门：将 Unity 示例部署到 HoloLens
 
@@ -32,21 +32,23 @@ ms.locfileid: "80677612"
 
 ## <a name="build-the-sample-project"></a>生成示例项目
 
-1. 打开“文件”>“生成设置”。 
-1. 将“平台”更改为“通用 Windows 平台”  
-1. 将“目标设备”设置为“HoloLens”  
-1. 将“体系结构”设置为“ARM64”  
-1. 将“生成类型”设置为“D3D 项目”![生成设置](./media/unity-build-settings.png)  
-1. 选择“切换到平台” 
-1. 按下“生成”（或“生成并运行”）时，系统会要求你选择应在其中存储解决方案的某个文件夹 
-1. 使用 Visual Studio 打开生成的 Quickstart.sln 
-1. 将配置更改为“发布”和“ARM64”  
-1. 将调试器模式切换为“远程计算机”![解决方案配置](media/unity-deploy-config.png) 
+1. 打开“文件”>“生成设置”。
+1. 将“平台”更改为“通用 Windows 平台”
+1. 将“目标设备”设置为“HoloLens”
+1. 将“体系结构”设置为“ARM64”
+1. 将“生成类型”设置为“D3D 项目”\
+    ![生成设置](./media/unity-build-settings.png)
+1. 选择“切换到平台”
+1. 按下“生成”（或“生成并运行”）时，系统会要求你选择应在其中存储解决方案的某个文件夹
+1. 使用 Visual Studio 打开生成的 Quickstart.sln
+1. 将配置更改为“发布”和“ARM64” 
+1. 将调试模式切换为“远程计算机”\
+    ![解决方案配置](media/unity-deploy-config.png)
 1. 生成解决方案 (F7)
-1. 在项目的“快速启动”页中，转到“属性”>“调试” 
-    1. 确保“发布”配置处于活动状态 
-    1. 将“要启动的调试器”设置为“远程计算机”  
-    1. 将“计算机名”更改为“HoleLens 的 IP”  
+1. 在项目的“快速启动”页中，转到“属性”>“调试”
+    1. 确保“发布”配置处于活动状态
+    1. 将“要启动的调试器”设置为“远程计算机”
+    1. 将“计算机名”更改为“HoleLens 的 IP”
 
 ## <a name="launch-the-sample-project"></a>启动示例项目
 

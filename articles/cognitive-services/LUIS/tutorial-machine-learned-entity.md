@@ -3,12 +3,12 @@ title: 教程：使用机器学习实体提取结构化数据 - LUIS
 description: 使用机器学习实体从言语中提取结构化数据。 若要提高提取准确性，请添加包含功能的子实体。
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611010"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045597"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>教程：在语言理解 (LUIS) 中使用机器学习实体从用户言语中提取结构化数据
 
@@ -108,7 +108,7 @@ ms.locfileid: "85611010"
 
 1. 从左侧菜单中选择“实体”，然后选择“+ 创建” 。
 
-1. 将实体名称设置为 `SizeListentity`，以便在与上一节中创建的 `SizePhraselist` 进行比较时轻松识别它。
+1. 将实体名称设置为 `SizeListentity`，并将“类型”设置为“列表”，以便在与前一个部分中创建的 `SizePhraselist` 进行比较时轻松识别它。
 
 1. 添加客户端应用程序预期的尺寸：`Small`、`Medium`、`Large` 和 `XLarge`，然后为每个尺寸添加同义词。 同义词应该是用户在聊天机器人中输入的词语。 实体与规范化值或同义词完全匹配时，将提取出该实体以及列表实体。
 

@@ -3,16 +3,16 @@ title: Azure EA 虚拟机预留实例
 description: 本文总结了针对 VM 预留实例的 Azure 预留如何帮助你节省企业注册的费用。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b78abeaac3066839636918923636f4b7bdf9ee35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735415"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044849"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
 
@@ -83,9 +83,9 @@ ms.locfileid: "84735415"
 
 ### <a name="reserved-instance-billing"></a>预留实例计费
 
-企业客户可使用货币承诺来购买 Azure 虚拟机预留实例。 如果合约的货币承诺余额足以购买预留实例，系统将从货币承诺余额中扣除该额度且不会向你发送此次购买的发票。
+企业客户可使用 Azure 预付款来购买 Azure VM 预留实例。 如果合约的 Azure 预付款余额足以购买预留实例，系统将从 Azure 预付款余额中扣除该额度且不会向你发送此次购买的发票。
 
-即使 Azure EA 客户的货币承诺已全部用完，仍然可以购买预留实例，购买费用发票将开在下一个超额帐单上。 预留实例超额（如果有）是常规超额发票的一部分。
+即使 Azure EA 客户的 Azure 预付款已全部用完，仍然可以购买预留实例，购买费用发票将开在下一个超额帐单上。 预留实例超额（如果有）是常规超额发票的一部分。
 
 ### <a name="reserved-instance-expiration"></a>预留实例到期
 

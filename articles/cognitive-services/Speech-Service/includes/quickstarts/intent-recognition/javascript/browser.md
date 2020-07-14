@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 904144b044a0a0223d4807372407b5ce0b9f127b
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.author: trbye
+ms.openlocfilehash: 4889d9b0f142206bf26a69f275cb60598fba577f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570140"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035598"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>从一些样本代码入手
 
@@ -245,7 +245,7 @@ ms.locfileid: "85570140"
 如果要在 web 服务器上承载网页，可以为演示应用程序提供令牌源。
 这样一来，订阅密钥永远不会离开服务器，并且用户可以在不输入任何授权代码的情况下使用语音功能。
 
-创建名为 `token.php` 的新文件。 此示例假设 web 服务器支持 PHP 脚本语言。 输入以下代码：
+创建名为 `token.php` 的新文件。 此示例假设 Web 服务器在启用 cURL 的情况下支持 PHP 脚本语言。 输入以下代码：
 
 ```php
 <?php

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 05/14/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 8bdba64445212c564a3d4762bc8497be15f7d9a0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657008"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027199"
 ---
 # <a name="about-azure-virtual-wan"></a>关于 Azure 虚拟 WAN
 
@@ -64,7 +64,7 @@ Azure 区域充当可供连接的中心。 所有中心均在标准虚拟 WAN �
 
 其他虚拟 WAN 资源
 
-  * 站点：此资源仅用于站点到站点连接。 站点资源为 vpnsite。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
+* 站点：此资源仅用于站点到站点连接。 站点资源为 vpnsite。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
 
 ## <a name="types-of-connectivity"></a><a name="connectivity"></a>连接类型
 
@@ -72,21 +72,9 @@ Azure 区域充当可供连接的中心。 所有中心均在标准虚拟 WAN �
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>站点到站点 VPN 连接
 
-![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwan.png)
+通过站点到站点 IPsec/IKE (IKEv2) 连接可以连接到 Azure 中的资源。 有关详细信息，请参阅[使用虚拟 WAN 创建站点到站点连接](virtual-wan-site-to-site-portal.md)。 
 
-创建虚拟 WAN 站点到站点连接时，可与可用的合作伙伴协作。 如果不想使用合作伙伴，则可以手动配置连接。 有关详细信息，请参阅[使用虚拟 WAN 创建站点到站点连接](virtual-wan-site-to-site-portal.md)。
-
-#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>虚拟 WAN 合作伙伴工作流
-
-与虚拟 WAN 合作伙伴合作时，此工作流包括：
-
-1. 分支设备 (VPN/SDWAN) 控制器经过身份验证后，使用 [Azure 服务主体](../active-directory/develop/howto-create-service-principal-portal.md)将站点导向型信息导出到 Azure。
-2. 分支设备 (VPN/SDWAN) 控制器获取 Azure 连接配置并更新本地设备。 这样可以自动完成配置下载，以及本地 VPN 设备的编辑和更新。
-3. 设备获得正确的 Azure 配置后，将与 Azure WAN 建立站点到站点连接（两个活动隧道）。 Azure 同时支持 IKEv1 和 IKEv2。 BGP 是可选的。
-
-#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>站点到站点虚拟 WAN 连接的合作伙伴
-
-有关可用的合作伙伴和位置的列表，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。
+此类型的连接需要 VPN 设备或虚拟 WAN 合作伙伴设备。 虚拟 WAN 合作伙伴提供自动进行连接的功能：将设备信息导出到 Azure 中，下载 Azure 配置，然后建立与 Azure 虚拟 WAN 中心的连接。 有关可用的合作伙伴和位置的列表，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。 如果 VPN/SD-WAN 设备提供程序未在提到的链接中列出，则可以仅使用分步说明[使用虚拟 WAN 创建站点到站点连接](virtual-wan-site-to-site-portal.md)来设置连接。
 
 ### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>用户 VPN（点到站点）连接
 
@@ -95,9 +83,50 @@ Azure 区域充当可供连接的中心。 所有中心均在标准虚拟 WAN �
 ### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute 连接
 ExpressRoute 允许通过专用连接将本地网络连接到 Azure。 要创建连接，请参阅[使用虚拟 WAN 创建 ExpressRoute 连接](virtual-wan-expressroute-portal.md)。
 
+### <a name="hub-to-vnet-connections"></a><a name="hub"></a>中心到 VNet 连接
+
+可以将 Azure 虚拟网络连接到虚拟中心。 有关详细信息，请参阅[将 VNet 连接到中心](virtual-wan-site-to-site-portal.md#vnet)。
+
+### <a name="transit-connectivity"></a><a name="transit"></a>传输连接
+
+#### <a name="transit-connectivity-between-vnets"></a><a name="transit-vnet"></a>VNet 之间的传输连接
+
+虚拟 WAN 允许 VNet 之间的传输连接。 VNet 通过虚拟网络连接连接到虚拟中心。 由于每个虚拟中心中都有路由器，因此启用了标准虚拟 WAN 中的 VNet 之间的传输连接。 首次创建虚拟中心时，将实例化此路由器。
+
+路由器可以有四种路由状态：“已预配”、“正在预配”、“失败”或“无”。 在 Azure 门户中，通过导航到“虚拟中心”页面可以找到“路由状态”。
+
+* “无”状态表示虚拟中心未预配路由器。 如果虚拟 WAN 为“基本”类型，或者虚拟中心是在提供服务之前部署的，则可能会出现此状态。
+* “失败”状态表示在实例化过程中失败。 若要实例化或重置路由器，可以通过导航到 Azure 门户中的虚拟中心“概述”页面，找到“重置路由器”选项。
+
+每个虚拟中心路由器支持的聚合吞吐量上限为 50 Gbps。 虚拟网络连接之间的连接假设虚拟 WAN 中的所有 VNet 共有 2000 VM 工作负载。
+
+#### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN 和 ExpressRoute 之间的传输连接
+
+虚拟 WAN 允许 VNet 和 ExpressRoute 之间的传输连接。 这意味着 VPN 连接的站点或远程用户可以与 ExpressRoute 连接的站点进行通信。 此外，还存在一个隐式假设，即已启用“分支到分支标记”。 在 Azure 门户中的“Azure 虚拟 WAN”设置中可找到此标记。 所有路由管理功能均由虚拟中心路由器提供，该路由器还启用了虚拟网络之间的传输连接。
+
+### <a name="custom-routing"></a><a name="routing"></a>自定义路由
+
+虚拟 WAN 提供了高级路由增强功能。 能够设置自定义路由表，通过路由关联和传播优化虚拟网络路由，使用标签对路由表进行逻辑分组以及简化众多网络虚拟设备或共享服务路由方案。
+
+### <a name="global-vnet-peering"></a><a name="global"></a>全局 VNet 对等互连
+
+全局 VNet 对等互连提供了一种机制，用于连接不同区域中的两个 VNet。 在虚拟 WAN 中，虚拟网络连接将 VNet 连接到虚拟中心。 用户无需显式设置全局 VNet 对等互连。 连接到虚拟中心的 VNet 位于同一区域，因此会产生 VNet 对等互连费用。 连接到不同区域中的虚拟中心的 VNet 会产生全局 VNet 对等互连费用。
+
+### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute 流量加密
+
+Azure 虚拟 WAN 提供了加密 ExpressRoute 流量的功能。 此方法通过 ExpressRoute 在本地网络和 Azure 虚拟网络之间提供加密的传输，而无需通过公共 Internet 或使用公共 IP 地址。 有关详细信息，请参阅[虚拟 WAN 的基于 ExpressRoute 的 IPsec](vpn-over-expressroute.md)。
+
 ## <a name="locations"></a><a name="locations"></a>位置
 
 有关位置信息，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。
+
+## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>基本和标准虚拟 WAN 中的路由表
+
+路由表现在具有关联和传播功能。 预先存在的路由表是不具有这些功能的路由表。 如果中心路由中具有预先存在的路由，并希望使用新功能，请考虑以下事项：
+
+* **在虚拟中心中具有预先存在的路由的标准虚拟 WAN 客户**：若要使用新的路由表功能，请等一下，这些功能在 Azure 中推出要到 8 月第 3 周才能完成。 如果你在 Azure 门户中的中心的“路由”部分具有预先存在的路由，则需要首先删除它们，再尝试在 Azure 门户中的中心的“路由表”部分创建新的路由表。
+
+* **在虚拟中心中具有预先存在的路由的基本虚拟 WAN 客户**：若要使用新的路由表功能，请等一下，这些功能在 Azure 中推出要到 8 月第 3 周才能完成。 如果你在 Azure 门户中的中心的“路由”部分具有预先存在的路由，则需要首先删除它们，再将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
 
 ## <a name="faq"></a><a name="faq"></a>常见问题解答
 

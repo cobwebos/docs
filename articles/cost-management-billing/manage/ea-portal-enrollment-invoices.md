@@ -3,16 +3,16 @@ title: Azure Enterprise 注册发票
 description: 本文介绍如何管理和处理 Azure 企业发票。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 5276780d06671b8358f615b1fcb6447c8e1310f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807797"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044866"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -46,14 +46,14 @@ Azure Enterprise 门户会自动生成默认的采购订单 (PO) 编号，除非
 
 ## <a name="azure-enterprise-billing-frequency"></a>Azure 企业计费频率
 
-Microsoft 每年在注册生效日期，针对 Microsoft Azure 服务的任何承诺购买量计费。 对于超出承诺金额的任何用量，Microsoft 将以欠款的形式计费。
+Microsoft 每年在注册生效日期对 Microsoft Azure 服务的任何预付款购买计费。 对于超出预付金额的任何用量，Microsoft 将以欠款的形式计费。
 
-- 承诺费用是根据每月费率报出的，每年提前计费。
+- 预付费用是根据每月费率报出的，每年提前计费。
 - 超额费用按月计算，在计费周期结束时以欠款形式计费。
 
 ### <a name="billing-intervals"></a>计费时间间隔
 
-计费时间间隔取决于承诺购买的选择方式。 年度承诺的日期范围与以下任何一项相一致：
+计费时间间隔取决于预付款购买的选择方式。 年度预付的日期范围与以下任何一项相一致：
 
 - 注册周年日期
 - 一年期修正订阅的生效日期。
@@ -62,12 +62,12 @@ Microsoft 每年在注册生效日期，针对 Microsoft Azure 服务的任何�
 
 - **开始日期在 2018 年 5 月 1 日之前的直接合约**：
   - 如果你签署的是直接企业协议 (EA)，则 Azure 服务（不包括 Azure 市场服务）采用每年计费周期。 计费周期基于周年日期：协议生效的日期。
-  - 如果超过了 EA 货币承诺 (MC) 阈值的 150%，则会自动转换为基于周年日期的每季计费周期。 此外，你还会收到 Azure 服务超额发票。
-  - 如果未超过 MC 阈值的 150%，则注册将保持采用每年计费周期。 承诺年份结束时，你将收到超额发票。
+  - 如果超过了 Azure EA 预付款阈值的 150%，则会自动转换为基于周年日期的按季计费周期。 此外，你还会收到 Azure 服务超额发票。
+  - 如果未超过 Azure 预付款阈值的 150%，则注册将保持采用按年计费周期。 预付款年份结束时，你将收到超额发票。
 
 - **开始日期在 2018 年 5 月 1 日之后的直接合约**：
   - Azure 使用量和单独计费发票采用每月计费周期。
-  - 货币承诺未涵盖的任何费用计为应付的超额款项。  
+  - Azure 预付款未涵盖的任何费用计为超额款项。  
 
 - **登记开始日期在 2018 年 5 月 1 日之前的间接合约**：
 
@@ -77,21 +77,21 @@ Microsoft 每年在注册生效日期，针对 Microsoft Azure 服务的任何�
 
   采用每月计费周期。  
 
-### <a name="increase-your-monetary-commitment"></a>提高货币承诺
+### <a name="increase-your-azure-prepayment"></a>增加 Azure 预付款
 
-随时可以提高承诺。 将按该年份的承诺期限的剩余月数计费。 例如，如果你注册的是一年期的修订订阅并在六月增加了承诺使用量，则系统将按当年剩下的六个月对你开票。 还将更新承诺期内最后六个月的承诺使用量。 这些新数量用于确定任何超额费用。
+随时可以增加预付款。 将按该年份预付款期限的剩余月数计费。 例如，如果你注册的是一年期的修订订阅并在第六个月增加了预付款，则系统将按当年剩下的六个月对你开票。 还将更新预付款期限后六个月的预付款使用量。 这些新数量用于确定任何超额费用。
 
 ### <a name="overage"></a>超额
 
-如果超额，将对计费周期内超出承诺使用量的使用量或预留使用量计费。 如果要查看为各项计算超额用量的明细，请参阅使用情况摘要报表或联系自己的渠道合作伙伴。
+如果超额，将对计费时期内超出预付款使用量的使用量或预留使用量计费。 如果要查看为各项计算超额用量的明细，请参阅使用情况摘要报表或联系自己的渠道合作伙伴。
 
 对于发票上的每个项，你将看到：
 
 - **应付金额**：总费用
-- **承诺用量**：用于涵盖费用的承诺量
-- **净额**：超出承诺的费用
+- **预付款使用量**：用于支付费用的预付款金额
+- **净额**：超出预付款的费用
 
-仅对超出承诺的净额计算适用的税款。
+仅对超出预付款的净额计算适用税金。
 
 系统自动执行超额开票。 发出通知和开具发票的时间取决于计费周期的结束日期。
 
@@ -130,18 +130,18 @@ Microsoft 每年在注册生效日期，针对 Microsoft Azure 服务的任何�
 1. 在 [Azure Enterprise 门户](https://ea.azure.com)中选择“报表”部分。
 1. 选择“使用情况摘要”。
 1. 在右上角将 M 视图更改为 C 视图 。
-1. 扩展 Azure 服务承诺表中的调整字段。
+1. 扩展 Azure 服务预付款表中的调整字段。
 1. 你将看到应用于你的注册的额度和简短说明。 例如：服务级别协议额度。
 
-## <a name="pay-your-overage-with-your-monetary-commitment"></a>用货币承诺支付超额
+## <a name="pay-your-overage-with-your-azure-prepayment"></a>通过 Azure 预付款支付超额费用
 
-若要向超额应用货币承诺，必须符合以下条件：
+若要向超额费用应用 Azure 预付款，必须满足以下条件：
 
 - 产生的超额费用尚未支付，并且付款期限在计费服务结束日期后的一年之内。
-- 可用货币承诺金额涵盖产生的总费用，包括以往未付的所有 Azure 发票。
+- 可用 Azure 预付款金额涵盖产生的总费用，包括以往未付的所有 Azure 发票。
 - 要完成的计费条款必须完全了结。 计费将在每个月的五号之后完全了结。
 - 要抵销的计费周期必须完全了结。
-- Azure 承诺折扣 (ACD) 基于实际的新承诺金额减去根据上次消耗量计划的任何资金。 此项要求仅适用于产生的超额费用。 它只对消耗货币承诺的服务有效，因此不适用于 Azure 市场费用。 Azure 市场费用单独计收。
+- Azure 预付款折扣 (ACD) 基于实际的新预付款金额减去根据上次消耗量计划的任何资金。 此项要求仅适用于产生的超额费用。 它只对 Azure 预付款服务有效，因此不适用于支付 Azure 市场费用。 Azure 市场费用单独计收。
 
 若要完成超额抵销，你或帐户团队可以提出支持请求。 需要经过企业管理员或“接收帐单的联系人”的电子邮件批准。
 
@@ -178,13 +178,13 @@ Microsoft 每年在注册生效日期，针对 Microsoft Azure 服务的任何�
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>使用情况详细信息报表与使用情况摘要页之间的转换
 
-在“下载使用情况数据”报表中可以看到，原始资源用量数据最多取六位小数。 但是，Azure Enterprise 门户中显示的使用情况数据舍入为四位小数，将用于超额单位的用量截断为零位小数。 在转换为 Azure 门户中使用的单位之前，原始用量数据首先舍入为四位数。 然后，转换后的 Enterprise 单位也舍入为四位数。 只能在“下载使用情况”报表中看到转换之前实际使用的时数，而在 Azure Enterprise 门户中则看不到。
+在“下载使用情况数据”报表中可以看到，原始资源用量数据最多取六位小数。 但是，Azure Enterprise 门户中显示的使用情况数据舍入预付款单位的四位小数，并将超额单位用量截断为零位小数。 在转换为 Azure 门户中使用的单位之前，原始用量数据首先舍入为四位数。 然后，转换后的 Enterprise 单位也舍入为四位数。 只能在“下载使用情况”报表中看到转换之前实际使用的时数，而在 Azure Enterprise 门户中则看不到。
 
 例如：如果使用情况报表中报告的实际 SQL Server 时数为 694.533404。 这些单位被转换为 6.94533404 个单位的计算时间（每个单位 100 小时），然后舍入为 6.9453 并显示在 Azure Enterprise 门户中。
 
-- 若要确定计费总额，可将显示的单位数乘以承诺单价，结果将截断为两位小数。 对日元 (JPY) 和韩元 (KRW)，则将该总额舍入为零位小数（即整数）。
+- 若要确定扩展计费量，所显示的单位将乘以预付款单价，结果将被截断为两位小数。 对日元 (JPY) 和韩元 (KRW)，则将该总额舍入为零位小数（即整数）。
 - 对于超额，计费单位将截断为六位数，然后乘以超额单价，得出计费总额。
-- 对于托管服务提供商 (MSP) 帐单，在转换为 EA 度量单位后，将与标记为 MSP 的部门相关的所有用量取整（零位小数）。 因此，此用量的总和可能低于 Azure Enterprise 门户中报告的所有用量的总和， 具体取决于 MSP 是尚有货币承诺余额还是已经超额。
+- 对于托管服务提供商 (MSP) 帐单，在转换为 EA 度量单位后，将与标记为 MSP 的部门相关的所有用量取整（零位小数）。 因此，此用量的总和可能低于 Azure Enterprise 门户中报告的所有用量的总和， 这取决于 MSP 是在 Azure 预付款余额内还是已经超额。
 
 ### <a name="graduated-pricing"></a>分级定价
 
@@ -226,13 +226,13 @@ Microsoft 每年在注册生效日期，针对 Microsoft Azure 服务的任何�
 
 对于驻留在同一数据中心内的服务之间的数据传出不收取任何费用。 例如 Microsoft 365 和 Azure。
 
-### <a name="monetary-commitment-and-unbilled-usage"></a>货币承诺和未开票用途
+### <a name="azure-prepayment-and-unbilled-usage"></a>Azure 预付款和未开票使用情况
 
-Azure 货币承诺是提前为 Azure 服务支付的金额。 使用服务时，会消耗货币承诺。 第一方 Azure 服务根据货币承诺计费。 但是，某些费用是单独计收的，而 Azure 市场服务不消耗货币承诺。
+Azure 预付款是提前为 Azure 服务支付的金额。 使用服务时会消耗 Azure 预付款。 第一方 Azure 服务按 Azure 预付款计费。 但是，某些费用是单独计收的，而 Azure 市场服务不消耗 Azure 预付款金额。
 
 ### <a name="charges-billed-separately"></a>单独计费
 
-某些由第三方来源提供的产品和服务不使用 Azure 货币承诺。 将这些项作为标准计费周期的超额发票的一部分单独计费。
+某些从第三方来源提供的产品和服务不使用 Azure 预付款。 将这些项作为标准计费周期的超额发票的一部分单独计费。
 
 我们已将所有 Azure 和 Azure 市场费用合并到一份与注册的计费周期相符的发票中。 合并发票不适用于澳大利亚、日本或新加坡的客户。
 
@@ -265,7 +265,7 @@ Azure 货币承诺是提前为 Azure 服务支付的金额。 使用服务时，
 
    | 标题 | 说明 | 文件名 |
    | --- | --- | --- |
-   | [友好服务名称](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | 列出所有有效服务，包括： <br>  <ul><li>服务类别</li>   <li>友好服务名称</li>   <li>承诺名称和构成部分编号</li> <li>消耗计划名称和构成部分编号</li>   <li>度量单位</li>   <li>报告的用量与显示的 Enterprise 门户用量之间的转换系数</li></ul> | Friendly\_Service\_Names.xlsx |
+   | [友好服务名称](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | 列出所有有效服务，包括： <br>  <ul><li>服务类别</li>   <li>友好服务名称</li>   <li>预付款名称和构成部分编号</li> <li>消耗计划名称和构成部分编号</li>   <li>度量单位</li>   <li>报告的用量与显示的 Enterprise 门户用量之间的转换系数</li></ul> | Friendly\_Service\_Names.xlsx |
    | [服务下载字段](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | 此电子表格提供使用情况下载报表中服务相关字段的所有可能的组合的一览。 | Service\_Download\_Fields.xlsx |
 
 - 有关发票和费用的信息，请参阅[了解 Azure 企业协议帐单](../understand/review-enterprise-agreement-bill.md)。

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：Azure Sentinel 入门
-description: Azure Sentinel 快速入门 - Azure Sentinel 入门
+description: 本快速入门介绍如何使用 Azure Sentinel 快速查看和监视整个环境中发生的情况。 
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 60e3529e68183488016e40211730412da8e3e0bb
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798673"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564617"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入门：Azure Sentinel 入门
 
@@ -47,7 +47,7 @@ ms.locfileid: "83798673"
 
 - **最新事件**：查看最近的事件、其严重性及其关联的警报数。 如果特定类型的警报出现突发性的高峰，可能意味着某种攻击正在活跃地进行。 例如，如果 Azure ATP 中突然引发了多达 20 个传递哈希事件，可能意味着某人正在试图攻击你。
 
-- **数据源异常**：Microsoft 的数据分析师创建了模型用于不间断地搜索数据源中数据的异常。 如果未出现任何异常，则不会显示任何信息。 如果检测到异常，则你应该进行深入调查，以确定发生了什么情况。 例如，单击“Azure 活动”中的高峰。 可以单击“图表”了解高峰是何时发生的，然后筛选在该时间段发生的活动，以确定哪些因素造成了高峰。 
+- **数据源异常**：Microsoft 的数据分析师创建了模型用于不间断地搜索数据源中数据的异常。 如果未出现任何异常，则不会显示任何信息。 如果检测到异常，则你应该进行深入调查，以确定发生了什么情况。 例如，单击“Azure 活动”中的高峰。 可以单击“图表”了解高峰是何时发生的，然后筛选在该时间段发生的活动，以确定哪些因素造成了高峰。
 
    ![Azure Sentinel 地图](./media/qs-get-visibility/anomolies.png)
 
@@ -55,19 +55,19 @@ ms.locfileid: "83798673"
 
 内置工作簿提供连接的数据源中的集成数据，让你深入调查这些服务中生成的事件。 内置工作簿包括 Azure AD、Azure 活动事件和本地信息，这些数据可能来自服务器的 Windows 事件、第一方警报或任何第三方（包括防火墙流量日志、Office 365 和基于 Windows 事件的不安全协议）。 这些工作簿基于 Azure Monitor 工作簿，为你提供增强的可定制性和灵活性，方便你设计自己的工作簿。 有关详细信息，请参阅[工作簿](../azure-monitor/platform/workbooks-overview.md)。
 
-1. 在“设置”  下，选择“工作簿”  。 在“已安装”下，可以看到所有已安装的工作簿。  在“全部”下，可以看到可供安装的整个内置工作簿库。  
+1. 在“设置”下，选择“工作簿”。 在“已安装”下，可以看到所有已安装的工作簿。 在“全部”下，可以看到可供安装的整个内置工作簿库。 
 2. 搜索特定的工作簿以查看整个列表，以及每个工作簿的功能说明。 
 3. 假设你使用 Azure AD，若要正常运行 Azure Sentinel，我们建议至少安装以下工作簿：
    - **Azure AD**：使用以下两项中的一个或两个：
-       - “Azure AD 登录”可分析不同时间的登录活动，以确定是否存在异常。  此工作簿按应用程序、设备和位置列出失败的登录，使你能够即时注意到有异常情况发生。 请注意是否出现了多个失败的登录活动。 
-       - “Azure AD 审核日志”可分析管理活动，例如用户更改（添加、删除等）、组创建和修改。   
+       - “Azure AD 登录”可分析不同时间的登录活动，以确定是否存在异常。 此工作簿按应用程序、设备和位置列出失败的登录，使你能够即时注意到有异常情况发生。 请注意是否出现了多个失败的登录活动。 
+       - “Azure AD 审核日志”可分析管理活动，例如用户更改（添加、删除等）、组创建和修改。  
 
    - 添加防火墙工作簿。 例如，添加 Palo Alto 工作簿。 工作簿可分析防火墙流量，在防火墙数据与威胁事件之间提供关联，并突出显示各个实体的可疑事件。 工作簿提供有关流量趋势的信息，并允许向下钻取和筛选结果。 
 
       ![Pal Alto 仪表板](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-可以通过编辑主要查询 ![按钮](./media/qs-get-visibility/edit-query-button.png) 来自定义工作簿。 可以单击按钮 ![按钮](./media/qs-get-visibility/go-to-la-button.png) 转到 [Log Analytics 以编辑查询](../azure-monitor/log-query/get-started-portal.md)；可以选择省略号 (...) 并选择“自定义磁贴数据”，以编辑主要时间筛选器，或者从工作簿中删除特定的磁贴。 
+可以通过编辑主要查询 ![按钮](./media/qs-get-visibility/edit-query-button.png) 来自定义工作簿。 可以单击按钮 ![按钮](./media/qs-get-visibility/go-to-la-button.png) 转到 [Log Analytics 以编辑查询](../azure-monitor/log-query/get-started-portal.md)；可以选择省略号 (...) 并选择“自定义磁贴数据”，以编辑主要时间筛选器，或者从工作簿中删除特定的磁贴。
 
 有关使用查询的详细信息，请参阅[教程：Log Analytics 中的视觉数据](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -75,16 +75,16 @@ ms.locfileid: "83798673"
 
 若要添加新磁贴，可将其添加到现有工作簿 - 你创建的工作簿，或 Azure Sentinel 的内置工作簿。 
 1. 在 Log Analytics 中，遵照以下教程中的说明创建磁贴：[教程：Log Analytics 中的视觉数据](../azure-monitor/learn/tutorial-logs-dashboards.md)。 
-2. 创建磁贴后，在“固定”下，选择要在其中显示该磁贴的工作簿。 
+2. 创建磁贴后，在“固定”下，选择要在其中显示该磁贴的工作簿。
 
 ## <a name="create-new-workbooks"></a>创建新工作簿
 可以从头开始创建新工作簿，或者基于某个内置工作簿创建新工作簿。
 
-1. 若要从头开始创建新工作簿，请选择“工作簿”，然后选择“+新建工作簿”。  
+1. 若要从头开始创建新工作簿，请选择“工作簿”，然后选择“+新建工作簿”。 
 2. 选择要在其中创建该工作簿的订阅，并为其指定一个描述性的名称。 与其他任何元素一样，每个工作簿都是一个 Azure 资源，可为其分配角色 (RBAC) 以定义和限制哪些用户可以访问它。 
-3. 若要使其显示在要将可视化效果固定到的工作簿中，必须将其共享。 依次单击“共享”、“管理用户”。   
+3. 若要使其显示在要将可视化效果固定到的工作簿中，必须将其共享。 依次单击“共享”、“管理用户”。  
  
-1. 像设置其他任何 Azure 资源一样，使用“检查访问权限”和“角色分配”。   有关详细信息，请参阅[使用 RBAC 共享 Azure 工作簿](../azure-portal/azure-portal-dashboard-share-access.md)。
+1. 像设置其他任何 Azure 资源一样，使用“检查访问权限”和“角色分配”。  有关详细信息，请参阅[使用 RBAC 共享 Azure 工作簿](../azure-portal/azure-portal-dashboard-share-access.md)。
 
 
 ## <a name="new-workbook-examples"></a>新工作簿示例
@@ -117,7 +117,7 @@ ms.locfileid: "83798673"
 
 创建新的检测时，请利用 Microsoft 安全研究人员为你连接的数据源量身定制的内置检测。
 
-若要查看所有现成的检测，请转到 **Analytics**，然后转到“规则模板”  。 此选项卡包含所有的 Azure Sentinel 内置规则。
+若要查看所有现成的检测，请转到 **Analytics**，然后转到“规则模板”。 此选项卡包含所有的 Azure Sentinel 内置规则。
 
    ![使用 Azure Sentinel 通过内置检测来查找威胁](media/tutorial-detect-built-in/view-oob-detections.png)
 

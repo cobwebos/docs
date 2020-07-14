@@ -7,14 +7,14 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: e402eabce5fd7af6ca9f51a1d67175cd8e5e1ce4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 736e046b5254de9aa18c898994d7df11efc98a9a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726054"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037981"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>如何对 Azure SQL 数据库应用预留折扣
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>如何对 Azure SQL 数据库应用预留折扣
 
 购买 Azure SQL 数据库预留容量后，预留折扣会自动应用到与预留属性和数量匹配的 SQL 数据库。 预留涵盖 SQL 数据库的计算成本。 将按标准费率收取软件、存储和网络费用。 可以通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来包含 SQL 数据库的许可成本。
 
@@ -28,7 +28,7 @@ ms.locfileid: "84726054"
 
 关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失。
 
-## <a name="discount-applied-to-sql-databases"></a>应用到 SQL 数据库的折扣
+## <a name="discount-applied-to-running-sql-databases"></a>应用于运行 SQL 数据库的折扣
 
  SQL 数据库预留容量折扣按小时应用到正在运行的 SQL 数据库。 购买的预留容量将与运行中 SQL 数据库产生的计算用量进行匹配。 对于不是整小时运行的 SQL 数据库，预留将自动应用到与预留属性匹配其他 SQL 数据库。 折扣可以应用到同时运行的 SQL 数据库。 如果与预留属性匹配的 SQL 数据库不是整小时运行，则无法获得该小时的完整预留折扣权益。
 

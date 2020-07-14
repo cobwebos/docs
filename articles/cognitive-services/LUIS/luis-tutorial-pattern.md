@@ -2,13 +2,13 @@
 title: 教程：模式 - LUIS
 description: 在本教程中，使用模式来改进意向和实体预测，同时提供更少的示例话语。 该模式以模板言语示例形式提供，该示例包括用于标识实体和可忽略文本的语法。
 ms.topic: tutorial
-ms.date: 05/07/2020
-ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/06/2020
+ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592910"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039494"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>教程：添加常见的模式模板言语格式以改进预测
 
@@ -39,12 +39,10 @@ LUIS 应用中存储了两种类型的言语：
 
 请使用以下步骤：
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)。
+1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true)。
 
 1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
-1. 将 JSON 导入到 [LUIS 门户](https://www.luis.ai)的新应用中。 在“我的应用”页上，选择“+ 新建聊天应用”，然后选择“作为 JSON 导入”。   选择在上一步骤中下载的文件。
-
-1. 在“管理”部分的“版本”选项卡上选择活动版本，然后选择“克隆”。   将克隆的版本命名为 `patterns`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+1. 将 JSON 导入到 [LUIS 门户](https://www.luis.ai)的新应用中。 在“我的应用”页上，选择“+ 新建聊天应用”，然后选择“作为 JSON 导入”。   选择在上一步骤中下载的文件，将应用命名为 `Patterns tutorial`。
 
 ## <a name="create-new-intents-and-their-utterances"></a>创建新意向及其话语
 
@@ -67,8 +65,6 @@ LUIS 应用中存储了两种类型的言语：
     |`Who is John W. Smith's manager?`|
     |`Who does Jill Jones directly report to?`|
     |`Who is Jill Jones supervisor?`|
-
-    如果 keyPhrase 实体在意向的话语中而不是员工实体中标记，请不要担心。 两者都已在“测试”窗格和终结点中正确预测。
 
 1. 在左侧导航栏中选择“意向”。
 
@@ -109,50 +105,50 @@ LUIS 应用中存储了两种类型的言语：
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.313054234
+                    "score": 0.326605469
                 },
                 "OrgChart-Reports": {
-                    "score": 0.2462688
+                    "score": 0.127583548
                 },
                 "EmployeeFeedback": {
-                    "score": 0.0488328524
-                },
-                "GetJobInformation": {
-                    "score": 0.0156933
+                    "score": 0.0299124215
                 },
                 "MoveEmployee": {
-                    "score": 0.011265873
+                    "score": 0.01159851
                 },
-                "Utilities.StartOver": {
-                    "score": 0.003065792
-                },
-                "Utilities.Stop": {
-                    "score": 0.00300148362
-                },
-                "Utilities.Cancel": {
-                    "score": 0.00271081156
-                },
-                "None": {
-                    "score": 0.00212835032
+                "GetJobInformation": {
+                    "score": 0.0104600191
                 },
                 "ApplyForJob": {
-                    "score": 0.0020669254
+                    "score": 0.007508645
                 },
-                "Utilities.Confirm": {
-                    "score": 0.00200891262
+                "Utilities.StartOver": {
+                    "score": 0.00359402061
+                },
+                "Utilities.Stop": {
+                    "score": 0.00336530479
                 },
                 "FindForm": {
-                    "score": 0.00194145238
+                    "score": 0.002653719
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00263288687
+                },
+                "None": {
+                    "score": 0.00238638581
                 },
                 "Utilities.Help": {
-                    "score": 0.00182301877
+                    "score": 0.00226386427
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00211663754
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -171,9 +167,9 @@ LUIS 应用中存储了两种类型的言语：
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -190,13 +186,9 @@ LUIS 应用中存储了两种类型的言语：
     }
     ```
 
-两个顶级意向的分数很接近，而最高的意向没有高得很显著（超出 60%），并没有超出下一个意向的分数足够多。
+可以预测正确的最高意向 `OrgChart-Manager`，但得分不超过 70％，并且距离次高意向还远远不够。 使用模式使正确意向的分数在百分比上显着提高，并且距离下一个最高分数更远。
 
-由于 LUIS 训练每次都不完全相同（有一定的变化），因此这两个排名最靠前的评分可能会在下一个训练周期中反转。 结果导致可能会返回的错误意向。
-
-使用模式使正确意向的分数在百分比上显着提高，并且距离下一个最高分数更远。
-
-使此第二个浏览器窗口保持打开。 本教程稍后将使用该窗口。
+使此第二个浏览器窗口保持打开。 稍后将在本教程中再次使用它。
 
 ## <a name="template-utterances"></a>模板话语
 考虑到人力资源主题领域的性质，可通过几种常见方式询问组织中的员工关系。 例如：
@@ -206,16 +198,16 @@ LUIS 应用中存储了两种类型的言语：
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
 
-在未提供许多陈述示例的情况下，这些陈述过于相近而无法确定每个陈述的上下文唯一性。 通过为意向添加模式，LUIS 可了解意向的常见陈述模式，而无需提供许多陈述示例。
+在未提供“许多”陈述示例的情况下，这些陈述过于相近而无法确定每个陈述的上下文唯一性。 通过为意向添加模式，LUIS 可了解意向的常见陈述模式，而无需提供许多陈述示例。
 
 此意向的模板陈述示例包括：
 
 |模板陈述示例|语法含义|
 |--|--|
-|`Who does {Employee} report to[?]`|可交换 `{Employee}`<br>忽略 `[?]`|
-|`Who reports to {Employee}[?]`|可交换 `{Employee}`<br>忽略 `[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|可交换 `{EmployeeListEntity}`<br>忽略 `[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|可交换 `{EmployeeListEntity}`<br>忽略 `[?]`|
 
-`{Employee}` 语法可标记模板陈述中的实体位置以及它是哪个实体。 可选语法 `[?]` 标记可选的单词或[标点](luis-reference-application-settings.md#punctuation-normalization)。 LUIS 匹配话语，忽略括号内的可选文本。
+`{EmployeeListEntity}` 语法可标记模板陈述中的实体位置以及它是哪个实体。 可选语法 `[?]` 标记可选的单词或[标点](luis-reference-application-settings.md#punctuation-normalization)。 LUIS 匹配话语，忽略括号内的可选文本。
 
 虽然语法类似于正则表达式，但它不是正则表达式。 仅支持大括号 `{}` 和方括号 `[]` 语法。 它们最多可以嵌套两层。
 
@@ -233,25 +225,25 @@ LUIS 应用中存储了两种类型的言语：
 
     |模板话语|
     |:--|
-    |`Who is {Employee} the subordinate of[?]`|
-    |`Who does {Employee} report to[?]`|
-    |`Who is {Employee}['s] manager[?]`|
-    |`Who does {Employee} directly report to[?]`|
-    |`Who is {Employee}['s] supervisor[?]`|
-    |`Who is the boss of {Employee}[?]`|
+    |`Who is {EmployeeListEntity} the subordinate of[?]`|
+    |`Who does {EmployeeListEntity} report to[?]`|
+    |`Who is {EmployeeListEntity}['s] manager[?]`|
+    |`Who does {EmployeeListEntity} directly report to[?]`|
+    |`Who is {EmployeeListEntity}['s] supervisor[?]`|
+    |`Who is the boss of {EmployeeListEntity}[?]`|
 
-    这些模板言语使用大括号表示法包含了 Employee 实体。
+    这些模板陈述使用大括号表示法包含了“EmployeeListEntity”实体。
 
 1. 在“模式”页上选择“OrgChart-Reports”意向，然后输入以下模板言语：
 
     |模板话语|
     |:--|
-    |`Who are {Employee}['s] subordinates[?]`|
-    |`Who reports to {Employee}[?]`|
-    |`Who does {Employee} manage[?]`|
-    |`Who are {Employee} direct reports[?]`|
-    |`Who does {Employee} supervise[?]`|
-    |`Who does {Employee} boss[?]`|
+    |`Who are {EmployeeListEntity}['s] subordinates[?]`|
+    |`Who reports to {EmployeeListEntity}[?]`|
+    |`Who does {EmployeeListEntity} manage[?]`|
+    |`Who are {EmployeeListEntity} direct reports[?]`|
+    |`Who does {EmployeeListEntity} supervise[?]`|
+    |`Who does {EmployeeListEntity} boss[?]`|
 
 ### <a name="query-endpoint-when-patterns-are-used"></a>使用模式时查询终结点
 
@@ -261,7 +253,7 @@ LUIS 应用中存储了两种类型的言语：
 
 1. 发布完成后，请将浏览器标签页切换回终结点 URL 标签页。
 
-1. 转到地址栏中 URL 的末尾，将 YOUR_QUERY_HERE 替换为 `Who is the boss of Jill Jones?`
+1. 转到地址栏中 URL 的末尾，并确认查询仍然为 `Who is the boss of Jill Jones?`，然后提交 URL 以进行新的预测。
 
     ```json
     {
@@ -270,50 +262,50 @@ LUIS 应用中存储了两种类型的言语：
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.999997854
+                    "score": 0.999999046
                 },
                 "OrgChart-Reports": {
-                    "score": 6.13748343E-05
+                    "score": 3.237443E-05
                 },
                 "EmployeeFeedback": {
-                    "score": 8.052567E-06
+                    "score": 4.364242E-06
                 },
                 "GetJobInformation": {
-                    "score": 1.18197136E-06
+                    "score": 1.616159E-06
                 },
                 "MoveEmployee": {
-                    "score": 7.65549657E-07
-                },
-                "None": {
-                    "score": 3.975E-09
-                },
-                "Utilities.StartOver": {
-                    "score": 1.53E-09
-                },
-                "Utilities.Confirm": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Help": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Stop": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Cancel": {
-                    "score": 1.25833333E-09
-                },
-                "FindForm": {
-                    "score": 1.15384613E-09
+                    "score": 7.575752E-07
                 },
                 "ApplyForJob": {
-                    "score": 5.26923061E-10
+                    "score": 5.234157E-07
+                },
+                "None": {
+                    "score": 3.3E-09
+                },
+                "Utilities.StartOver": {
+                    "score": 1.26E-09
+                },
+                "FindForm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Cancel": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Confirm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Help": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Stop": {
+                    "score": 1.13636367E-09
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -332,9 +324,9 @@ LUIS 应用中存储了两种类型的言语：
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -372,8 +364,8 @@ LUIS 应用中存储了两种类型的言语：
 
 |Intent|包含可选文本和预构建的实体的示例话语|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who is {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 
 可选语法方括号 `[]` 的使用使此可选文本易于添加到模板话语中，并且可以嵌套到另一个级别 `[[]]` 并包括实体或文本。
@@ -383,9 +375,10 @@ LUIS 应用中存储了两种类型的言语：
 
 **问：如果 March 3 被同时预测为数字 `3` 和日期 `March 3`，预构建的数字为何不是模板话语的一部分？** 模板话语从上下文来看使用的是日期，无论是逐字表示为 `March 3` 还是抽象为 `in a month`. 日期可以包含数字，但数字不一定会被视为日期。 请始终使用能够最好地表示你要在预测 JSON 结果中返回的类型的实体。
 
-**问：如果使用了措辞不当的话语（例如 `Who will {Employee}['s] manager be on March 3?`），将会怎样？** 像这种在语法上不同的动词时态（其中 `will` 和 `be` 是独立的）需要作为一句新的模板话语。 现有模板话语将不会匹配它。 虽然话语的意向未更改，但是话语中的单词位置已更改。 此更改会影响 LUIS 中的预测。 可以使用 [group 和 or 运算符](#use-the-or-operator-and-groups)来组合谓语时态，以合并这些言语。
+**问：如果使用了措辞不当的话语（例如 `Who will {EmployeeListEntity}['s] manager be on March 3?`），将会怎样？** 像这种在语法上不同的动词时态（其中 `will` 和 `be` 是独立的）需要作为一句新的模板话语。 现有模板话语将不会匹配它。 虽然话语的意向未更改，但是话语中的单词位置已更改。 此更改会影响 LUIS 中的预测。 可以使用 [group 和 or 运算符](#use-the-or-operator-and-groups)来组合谓语时态，以合并这些言语。
 
-**请记住：将首先查找实体，然后再匹配模式。**
+> [!CAUTION]
+> **请记住：将首先查找实体，然后再匹配模式。**
 
 ### <a name="add-new-pattern-template-utterances"></a>添加新的模式模板话语
 
@@ -393,9 +386,9 @@ LUIS 应用中存储了两种类型的言语：
 
     |Intent|包含可选文本和预构建的实体的示例话语|
     |--|--|
-    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 2. 选择导航栏的“训练”来训练该应用。
 
@@ -403,7 +396,7 @@ LUIS 应用中存储了两种类型的言语：
 
 4. 输入多条测试话语来验证模式是否匹配以及意向得分是否很高。
 
-    输入第一条话语后，选择结果下的“检查”，以便可以看到所有预测结果。 每个言语应该包含 **OrgChart Manager** 意向，并且应提取 Employee 和 datetimeV2 实体的值。
+    输入第一条话语后，选择结果下的“检查”，以便可以看到所有预测结果。 每个陈述都应包含“OrgChart Manager”意向，并且应提取 `EmployeeListEntity` 和 `datetimeV2` 实体的值。
 
     |话语|
     |--|
@@ -425,18 +418,21 @@ LUIS 应用中存储了两种类型的言语：
 
 前面的几个模板言语非常接近。 使用 **group** `()` 和 **OR** `|` 语法减少模板言语。
 
-使用 group `()` 和 OR `|` 语法可将以下 2 个模式合并成单个模式。
+使用 group `()` 和 OR `|` 语法可将以下两种模式合并成单个模式。
 
 |Intent|包含可选文本和预构建的实体的示例话语|
 |--|--|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 新的模板言语为：
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]` 列中的一个值匹配。
+`who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]` 列中的一个值匹配。
 
 此代码围绕所需的谓语时态使用 **group**，并在两者之间结合 **or** 管道使用可选的 `in` 和 `on`。
+
+> [!NOTE]
+> 使用“OR”符号、`|`（管道）时，请确保管道符号在示例模板中的前后都用空格分隔。
 
 1. 在“模式”页上，选择“OrgChart-Manager”筛选器。  通过搜索 `manager` 来缩小列表范围。
 
@@ -444,7 +440,7 @@ LUIS 应用中存储了两种类型的言语：
 
 1. 将模板言语更改为：
 
-    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
+    `who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`
 
 2. 选择导航栏的“训练”来训练该应用。
 

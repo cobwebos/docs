@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: a0846a07fd8107a87483753c8dbff1301fda4a0c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ff10d9ec9b92b85d057e556a21c144b9e8f155cf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299904"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043268"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 传输
 
@@ -49,7 +49,7 @@ ms.locfileid: "84299904"
 
 在以下情况下，应考虑注册转移：
 
-- 当前注册的承诺期限已到期。
+- 当前注册的预付款期限已到期。
 - 注册处于到期/延期状态，且新协议正在商定中。
 - 你有多个注册，并希望合并单个注册下的所有帐户和账单。
 
@@ -60,7 +60,7 @@ ms.locfileid: "84299904"
 - 所有 Azure 服务、订阅、帐户、部门和整个注册结构（包括所有 EA 部门管理员）将转移到新的目标注册。
 - 注册状态将设置为“已转移”。 转移的注册仅可用于历史使用情况报告。
 - 无法将角色或订阅添加到处于已转移状态的注册。 已转移状态可防止注册进一步产生使用费。
-- 协议中任何剩余的货币承诺余额将会丢失，包括将来的条款。
+- 协议中任何剩余的 Azure 预付款余额都将丢失（包括将来的款项）。
 -    如果作为转移源的注册中购买了 RI，系统仍会将 RI 购买费保留在源注册中，但会转移所有 RI 权益以供在新注册中使用。
 -    不会向新合约转移旧合约中已产生的市场一次性购买费和任何固定费用。 将传输基于使用量的市场费用。
 
@@ -68,7 +68,7 @@ ms.locfileid: "84299904"
 
 转移生效日期可以是目标注册的开始日期当日或之后的某个日期。
 
-源注册的使用费根据货币承诺或超额计收。 在转移生效日期之后发生的使用费将转移到新注册并相应地收费。
+源注册的使用费根据 Azure 预付款或超额计收。 在转移生效日期之后发生的使用费将转移到新注册并相应地收费。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -84,9 +84,9 @@ ms.locfileid: "84299904"
 - 如果注册转移不符合要求，请考虑进行帐户转移。
 - 源注册状态将更新为“已转移”，并仅用于历史使用情况报告。
 
-### <a name="monetary-commitment"></a>货币承诺
+### <a name="azure-prepayment"></a>Azure 预付款
 
-货币承诺不可在注册之间转移。 货币承诺余额在契约上关联到订购服务的注册。 在帐户或注册转移过程中，不会转移货币承诺。
+Azure 预付款不可在注册之间转移。 Azure 预付款余额在契约上关联到订购服务的注册。 在帐户或注册转移过程中，不会转移 Azure 预付款。
 
 ### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>帐户和注册转移不影响任何服务
 

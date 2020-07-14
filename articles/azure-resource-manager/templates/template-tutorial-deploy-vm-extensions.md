@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 06d948b44064f029e00a2ef089077e9b55246545
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fb99babfd53b26874bed62183871d13ae0ae4baf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184956"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120120"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教程：使用 ARM 模板部署虚拟机扩展
 
@@ -30,7 +30,7 @@ ms.locfileid: "82184956"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
     ```console
@@ -53,26 +53,26 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
-1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。  
-1. 在“文件名”框中粘贴以下 URL： 
+1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。 
+1. 在“文件名”框中粘贴以下 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. 若要打开该文件，请选择“打开”。 
+1. 若要打开该文件，请选择“打开”。
     该模板定义五个资源：
 
-   * [Microsoft.Storage/storageAccounts](/azure/templates/Microsoft.Storage/storageAccounts)  。
-   * [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)  。
-   * [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)  。
-   * [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)  。
-   * [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)  。
-   * [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)  。
+   * [Microsoft.Storage/storageAccounts](/azure/templates/Microsoft.Storage/storageAccounts)。
+   * [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)。
+   * [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)。
+   * [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)。
+   * [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)。
+   * [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)。
 
      在自定义模板之前，不妨对其进行一些基本的了解。
 
-1. 选择“文件” > “另存为”，使用文件名 *azuredeploy.json* 将该文件的副本保存到本地计算机。  
+1. 选择“文件” > “另存为”，使用文件名 *azuredeploy.json* 将该文件的副本保存到本地计算机。 
 
 ## <a name="edit-the-template"></a>编辑模板
 
@@ -102,14 +102,14 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 }
 ```
 
-有关此资源定义的详细信息，请查看[扩展参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions)。 下面是一些重要元素：
+有关此资源定义的详细信息，请查看[扩展参考](/azure/templates/microsoft.compute/virtualmachines/extensions)。 下面是一些重要元素：
 
 * **名称**：由于扩展资源是虚拟机对象的子资源，因此其名称必须有虚拟机名称前缀。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。
 * **dependsOn**：在创建虚拟机以后创建扩展资源。
 * **fileUris**：存储脚本文件的位置。 如果不使用提供的位置，则需更新这些值。
 * **commandToExecute**：此命令调用脚本。
 
-若要使用内联脚本，请删除“fileUris”  并将“commandToExecute”  更新为：
+若要使用内联脚本，请删除“fileUris”并将“commandToExecute”更新为：
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
@@ -156,11 +156,11 @@ powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools &
 
 不再需要部署的 Azure 资源时，请通过删除资源组将其清除。
 
-1. 在 Azure 门户的左窗格中选择“资源组”  。
-2. 在“按名称筛选”框中输入资源组名称。 
+1. 在 Azure 门户的左窗格中选择“资源组”。
+2. 在“按名称筛选”框中输入资源组名称。
 3. 选择资源组名称。
     将显示资源组中的六个资源。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

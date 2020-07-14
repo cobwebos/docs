@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488760"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083553"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -150,7 +150,7 @@ ms.locfileid: "84488760"
 
    ![搜索浏览器命令](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. 在“索引”下拉列表中，选择“hotels-sample-index”。 单击“API 版本”下拉列表，查看有哪些 REST API 可用。 对于以下查询，请使用正式版 (2019-05-06)。
+2. 在“索引”下拉列表中，选择“hotels-sample-index”。 单击“API 版本”下拉列表，查看有哪些 REST API 可用。 对于以下查询，请使用正式发行版 (2020-06-30)。
 
    ![索引和 API 命令](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -275,4 +275,9 @@ ms.locfileid: "84488760"
 使用门户向导生成在浏览器中运行的即用型 Web 应用。 可以在刚刚创建的小索引上尝试使用此向导，也可以使用内置的示例数据集之一来获得更丰富的搜索体验。
 
 > [!div class="nextstepaction"]
-> [在门户中创建搜索应用](search-create-app-portal.md)
+> [在门户中创建演示应用](search-create-app-portal.md)
+
+希望优化并节省云支出？
+
+> [!div class="nextstepaction"]
+> [使用成本管理开始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

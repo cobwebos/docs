@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 37f1f129122a64dc27227bee8a267702c7f9d903
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 40dd7f1b177fd1319b145036c8263ba2c6e30137
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733664"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024666"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>教程：在 Azure Active Directory 域服务（预览版）中创建到本地域的出站林信任
 
@@ -45,7 +45,9 @@ ms.locfileid: "84733664"
     * 如果需要，请[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance-advanced]。
     
     > [!IMPORTANT]
-    > 确保使用“资源”林创建托管域。 默认选项是创建用户林。 只有资源林才能创建对本地 AD DS 环境的信任。 此外，至少需要为托管域使用“企业版”SKU。 如果需要，请[更改托管域的 SKU][howto-change-sku]。
+    > 确保使用“资源”林创建托管域。 默认选项是创建用户林。 只有资源林才能创建对本地 AD DS 环境的信任。
+    >
+    > 此外，至少需要为托管域使用“企业版”SKU。 如果需要，请[更改托管域的 SKU][howto-change-sku]。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -69,10 +71,10 @@ ms.locfileid: "84733664"
 
 ## <a name="configure-dns-in-the-on-premises-domain"></a>在本地域中配置 DNS
 
-若要从本地环境正确解析托管域，可能需要向现有 DNS 服务器添加转发器。 如果尚未将本地环境配置为与托管域进行通信，请在管理工作站中针对本地 AD DS 域完成以下步骤：
+若要从本地环境正确解析托管域，可能需要向现有 DNS 服务器添加转发器。 如果尚未将本地环境配置为与托管域通信，请从管理工作站为本地 AD DS 域完成以下步骤：
 
 1. 选择“开始”|“管理工具”|“DNS”
-1. 右键单击 DNS 服务器（例如 myAD01）并选择“属性”
+1. 右键单击 DNS 服务器（例如“myAD01”），然后选择“属性”
 1. 选择“转发器”，然后选择“编辑”以添加更多转发器。 
 1. 添加托管域的 IP 地址，例如 10.0.2.4 和 10.0.2.5 。
 
@@ -83,9 +85,9 @@ ms.locfileid: "84733664"
 若要在本地 AD DS 域上配置入站信任，请在管理工作站中针对本地 AD DS 域完成以下步骤：
 
 1. 选择“开始”|“管理工具”|“Active Directory 域和信任”
-1. 右键单击域（例如 onprem.contoso.com）并选择“属性”
+1. 右键单击域（例如“onprem.contoso.com”），然后选择“属性”
 1. 依次选择“信任”选项卡、“新建信任” 
-1. 在“Azure AD DS 域名”中输入名称（例如 aaddscontoso.com），然后选择“下一步”
+1. 在 Azure AD DS 域名中输入名称（例如“aaddscontoso.com”），然后选择“下一步”
 1. 选择创建“林信任”的选项，然后选择创建“单向: 传入”信任的选项。 
 1. 选择创建“仅限此域”的信任。 在下一步骤中，你将在 Azure 门户中为托管域创建信任。
 1. 选择使用“全林性身份验证”，然后输入并确认信任密码。 在下一部分中，也要在 Azure 门户中输入同一密码。
@@ -94,7 +96,7 @@ ms.locfileid: "84733664"
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>在 Azure AD DS 中创建出站林信任
 
-配置本地 AD DS 域来解析托管域并创建入站林信任后，现在请创建出站林信任。 此出站林信任完成本地 AD DS 域与托管域之间的信任关系。
+配置本地 AD DS 域以解析托管域并创建入站林信任后，现在请创建出站林信任。 此出站林信任完成本地 AD DS 域与托管域之间的信任关系。
 
 若要在 Azure 门户中为托管域创建出站信任，请完成以下步骤：
 
@@ -124,7 +126,7 @@ ms.locfileid: "84733664"
 
 ### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>从 Azure AD DS 资源林进行本地用户身份验证
 
-应事先将 Windows Server 虚拟机加入 Azure AD DS 资源域。 使用此虚拟机来测试本地用户是否可在虚拟机上进行身份验证。
+应事先将 Windows Server 虚拟机加入托管域。 使用此虚拟机来测试本地用户是否可在虚拟机上进行身份验证。 如果需要，请[创建 Windows VM，并将其加入托管域][join-windows-vm]。
 
 1. 使用 [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) 和 Azure AD DS 管理员凭据连接到已加入 Azure AD DS 资源林的 Windows Server VM。
 1. 打开命令提示符，使用 `whoami` 命令显示当前已通过身份验证的用户的可分辨名称：
@@ -167,7 +169,7 @@ ms.locfileid: "84733664"
 1. 在“输入要选择的对象名称”框中键入“域用户”。 选择“检查名称”，提供本地 Active Directory 的凭据，然后选择“确定”。 
 
     > [!NOTE]
-    > 必须提供凭据，因为信任关系只是单向的。 这意味着，Azure AD DS 中的用户无法访问资源或者搜索受信任（本地）域中的用户或组。
+    > 必须提供凭据，因为信任关系只是单向的。 这意味着，Azure AD DS 托管域中的用户无法访问资源或搜索受信任的（本地）域中的用户或组。
 
 1. 本地 Active Directory 中的“域用户”组应是“FileServerAccess”组的成员。  选择“确定”以保存该组并关闭窗口。
 
@@ -216,3 +218,4 @@ ms.locfileid: "84733664"
 [howto-change-sku]: change-sku.md
 [vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
 [expressroute]: ../expressroute/expressroute-introduction.md
+[join-windows-vm]: join-windows-vm.md

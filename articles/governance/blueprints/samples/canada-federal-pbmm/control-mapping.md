@@ -3,12 +3,12 @@ title: 加拿大联邦 PBMM 蓝图示例控件
 description: 加拿大联邦 PBMM 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 8fc5b2f369dbe174fb4d5ea8160d592e9aaef3af
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: e9153972938a572f8d37610e5721f7b0a578157c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005717"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085627"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例的控制映射
 
@@ -108,7 +108,7 @@ Azure Monitor 收集的日志数据存储在支持集中配置和管理的 Log A
 
 - 审核诊断设置
 - 应启用 SQL 服务器上的审核
-- 应在托管实例上启用高级数据安全性
+- 应在 SQL 托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) 审核评审、分析和报告 | 中心评审和分析
@@ -132,7 +132,7 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 - \[预览\]：为 Windows VM 部署 Log Analytics 代理
 - 审核诊断设置
 - 应启用 SQL 服务器上的审核
-- 应在托管实例上启用高级数据安全性
+- 应在 SQL 托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
 - 在 SQL 服务器上部署高级数据安全
 - 对 SQL 服务器部署审核
@@ -198,7 +198,7 @@ Azure Site Recovery 将在虚拟机上运行的工作负荷从主位置复制到
 
 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于在 Azure 安全中心内监视操作系统漏洞、SQL 漏洞和虚拟机漏洞，来帮助你管理信息系统漏洞。 Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。 此蓝图还会分配策略定义用于审核和强制执行 SQL 服务器上的高级数据安全。 高级数据安全包括漏洞评估和高级威胁防护功能，可帮助你了解已部署资源中的漏洞。
 
-- 应在托管实例上启用高级数据安全性
+- 应在 SQL 托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
 - 在 SQL 服务器上部署高级数据安全
 - 应该修复虚拟机规模集上安全配置中的漏洞
@@ -249,7 +249,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于强制实施特定的加密控制措施并审核弱加密设置的使用，从而帮助你强制实施有关通过使用加密控制措施保护静态信息的策略。 了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体地说，该蓝图分配的策略定义要求对数据湖存储帐户进行加密；要求 SQL 数据库上的透明数据加密；审核 SQL 数据库、虚拟机磁盘和自动化帐户变量上缺少的加密。
 
-- 应在托管实例上启用高级数据安全性
+- 应在 SQL 托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
 - 在 SQL 服务器上部署高级数据安全
 - 部署 SQL DB 透明数据加密
@@ -293,7 +293,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 - \[预览\]：审核 VM 的 Log Analytics 工作区 — 报告不匹配
 - \[预览\]：为 Linux VM 部署 Log Analytics 代理
 - \[预览\]：为 Windows VM 部署 Log Analytics 代理
-- 应在托管实例上启用高级数据安全性
+- 应在 SQL 托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
 - 在 SQL 服务器上部署高级数据安全
 - 在存储帐户上部署高级威胁防护

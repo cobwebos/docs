@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250326"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101879"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
 
@@ -34,7 +34,7 @@ ms.locfileid: "85250326"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](./use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](./quickstart-create-templates-use-visual-studio-code.md)。
 * 若要增强安全性，请使用为服务器管理员帐户生成的密码。 以下是可用于生成密码的示例：
 
     ```console
@@ -112,8 +112,8 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
     模板中定义了两个资源：
 
-   * `Microsoft.Sql/servers` 列中的一个值匹配。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)。
-   * `Microsoft.SQL.servers/databases` 列中的一个值匹配。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)。
+   * `Microsoft.Sql/servers` 列中的一个值匹配。 请参阅[模板参考](/azure/templates/microsoft.sql/servers)。
+   * `Microsoft.SQL.servers/databases` 列中的一个值匹配。 请参阅[模板参考](/azure/templates/microsoft.sql/servers/databases)。
 
         在自定义模板之前，不妨对其进行一些基本的了解。
 1. 选择“文件” > “另存为”，将该文件的副本保存到名为 *azuredeploy.json* 的本地计算机。 
@@ -194,7 +194,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
         ![包含 SQL 数据库扩展的模板](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-        若要了解资源定义，请参阅 [SQL 数据库扩展参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions)。 下面是一些重要元素：
+        若要了解资源定义，请参阅 [SQL 数据库扩展参考](/azure/templates/microsoft.sql/servers/databases/extensions)。 下面是一些重要元素：
 
         * **dependsOn**：必须在创建数据库以后才能创建扩展资源。
         * **storageKeyType**：指定要使用的存储密钥的类型。 值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 在本教程中使用 `StorageAccessKey`。

@@ -7,17 +7,14 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298389"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027883"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>使用 Azure 数字孪生 API 编写代码
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 开发人员使用 Azure 数字孪生编写客户端应用程序，以与其 Azure 数字孪生服务实例交互，这是很常见的情况。 这篇面向开发人员的教程介绍如何使用[适用于 .NET 的 Azure IoT 数字孪生客户端库 (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) 对 Azure 数字孪生服务进行编程。 本教程会逐步引导你从头开始编写 C# 控制台客户端应用。
 
@@ -288,6 +285,7 @@ Type name: : dtmi:com:contoso:SampleModel;1
 
 ```csharp
 using System.Text.Json;
+using Azure.DigitalTwins.Core.Serialization;
 ```
 
 然后，将以下代码添加到 `Main` 方法的末尾，以根据此模型创建和初始化三个数字孪生。
@@ -318,7 +316,7 @@ for(int i=0; i<3; i++) {
 
 接下来，你可以在已创建的孪生之间创建关系，将它们连接到孪生图 。 [孪生图](concepts-twins-graph.md)用于表示整个环境。
 
-为了能够创建关系，请在 SDK 中为关系基类型添加 `using` 语句：
+为了能够创建关系，请在 SDK 中为关系基类型添加 `using` 语句（如果已添加，请跳过此步骤）。
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
@@ -566,5 +564,5 @@ az ad app delete --id <your-application-ID>
 > [教程：使用示例客户端应用了解基础知识](tutorial-command-line-app.md)
 
 你也可以在操作说明文章中了解更多管理操作，以增加在本教程中编写的代码，或开始查看概念文档，详细了解教程中使用的元素。
-* [操作说明：管理孪生模型](how-to-manage-model.md)
+* [操作说明：管理自定义模型](how-to-manage-model.md)
 * [概念：自定义模型](concepts-models.md)

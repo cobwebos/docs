@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 创建异地复制的注册表 - 资源管理器模板
+title: 快速入门 - 创建异地复制的注册表 - Azure 资源管理器模板
 description: 了解如何使用 Azure 资源管理器模板创建异地复制 Azure 容器注册表。
 services: azure-resource-manager
 author: dlepow
@@ -8,28 +8,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: c94cd3b4b455691e85e7525007fcdf7a056a2b28
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3ed160780e15cc36648f7e2ad77e726901ee86c3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558087"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119848"
 ---
-# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建异地复制容器注册表
+# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建异地复制容器注册表
 
-本快速入门介绍如何使用 Azure 资源管理器模板创建 Azure 容器注册表实例。 该模板会设置一个[异地复制](container-registry-geo-replication.md)注册表，使其自动在多个 Azure 区域之间同步注册表内容。 借助异地复制，可以从区域部署对映像进行近网络访问，同时提供单一管理体验。 这是[高级](container-registry-skus.md)注册表服务层级的一项功能。 
+本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure 容器注册表实例。 该模板会设置一个[异地复制](container-registry-geo-replication.md)注册表，使其自动在多个 Azure 区域之间同步注册表内容。 借助异地复制，可以从区域部署对映像进行近网络访问，同时提供单一管理体验。 这是[高级](container-registry-skus.md)注册表服务层级的一项功能。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
-无。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="create-a-geo-replicated-registry"></a>创建异地复制注册表
-
-### <a name="review-the-template"></a>查看模板
+## <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)。 该模板会设置注册表和其他区域副本。
 
@@ -42,7 +42,7 @@ ms.locfileid: "84558087"
 
 可以在[快速入门模板库](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerregistry&pageNumber=1&sort=Popular)中找到更多 Azure 容器注册表模板示例。
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
  1. 选择下图登录到 Azure 并打开一个模板。
 
@@ -86,7 +86,7 @@ ms.locfileid: "84558087"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你使用资源管理器模板创建了 Azure 容器注册表，并在其他位置配置了注册表副本。 请继续阅读 Azure 容器注册表教程，以更深入地了解 ACR。
+在本快速入门中，你已使用 ARM 模板创建了 Azure 容器注册表，并在其他位置配置了注册表副本。 请继续阅读 Azure 容器注册表教程，以更深入地了解 ACR。
 
 > [!div class="nextstepaction"]
 > [Azure 容器注册表教程](container-registry-tutorial-prepare-registry.md)
@@ -94,4 +94,4 @@ ms.locfileid: "84558087"
 有关引导你完成模板创建过程的分步教程，请参阅：
 
 > [!div class="nextstepaction"]
-> [教程：创建和部署你的第一个 Azure 资源管理器模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [教程：创建和部署你的第一个 ARM 模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft Docs
-description: 本文提供 Azure Front Door 的概述。 了解它是否是针对应用程序进行用户流量负载均衡的正确选择。
+title: Azure Front Door
+description: 本文概述了 Azure Front Door 规则引擎功能。
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,27 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 19deb763c8e750490854892c90d0293d3e209c09
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ee981d08e53765003e88870d35b291a5802e6848
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515792"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322006"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>什么是 Azure Front Door 的规则引擎？ 
 
 可以通过规则引擎自定义在边缘处理 HTTP 请求的方式，并对 Web 应用程序行为提供更多控制。 Azure Front Door 的规则引擎包含多个关键功能，例如：
 
-- 基于标头的路由 - 根据请求标头、Cookie 和查询字符串的内容中的模式来路由请求。
-- 基于参数的路由 - 利用一系列匹配条件（包括 post 参数、查询字符串、Cookie 和请求方法），根据 HTTP 请求参数路由请求。 
-- 路由配置替代： 
-    - 使用重定向功能将 301/302/307/308 重定向返回到客户端，以重定向到新的主机名、路径和协议。 
-    - 使用转发功能重写请求 URL 路径（无需执行传统的重定向），并将请求转发到所配置的后端池中的相应后端。 
-    - 自定义缓存配置，并根据匹配条件动态地将路由从转发更改为缓存。 
-
-> [!IMPORTANT]
-> 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
+- 强制执行 HTTPS，确保所有最终用户都能够通过安全连接与内容进行交互。
+- 实施安全性标头，以防止基于浏览器的漏洞攻击，例如 HTTP Strict-Transport-Security (HSTS)、X-XSS-Protection、Content-Security-Policy、X-Frame-Options 以及用于跨域资源共享 (CORS) 方案的 Access-Control-Allow-Origin 标头。 基于安全性的属性也可以用 Cookie 来定义。
+- 基于请求标头、Cookie 或查询字符串内容中的模式，将请求路由到应用程序的移动或桌面版本。
+- 使用重定向功能将 301、302、307 和 308 重定向返回到客户端，以重定向到新的主机名、路径或协议。
+- 基于传入请求动态修改路由的缓存配置。
+- 重写请求 URL 路径，并将请求转接到配置的后端池中的相应后端。
 
 ## <a name="architecture"></a>体系结构 
 
@@ -52,9 +48,9 @@ ms.locfileid: "82515792"
 
 使用 AFD 规则引擎，可以创建一系列规则引擎配置，每个配置由一组规则组成。 下面概述了在配置规则引擎时会遇到的一些有用的术语。 
 
-- 规则引擎配置  ：应用于单个路由规则的一组规则。 每个配置限制为 5 个规则。 最多可以创建 10 个配置。 
-- 规则引擎规则  ：由最多 10 个匹配条件和 5 个操作组成的规则。
-- 匹配条件  ：可以利用许多匹配条件来分析传入请求。 一个规则最多可包含 10 个匹配条件。 将使用 AND  运算符来评估匹配条件。 可以在[此处](front-door-rules-engine-match-conditions.md)找到匹配条件的完整列表。 
+- 规则引擎配置：应用于单个路由规则的一组规则。 每个配置限制为 25 个规则。 最多可以创建 10 个配置。 
+- 规则引擎规则：由最多 10 个匹配条件和 5 个操作组成的规则。
+- 匹配条件：可以利用许多匹配条件来分析传入请求。 一个规则最多可包含 10 个匹配条件。 将使用 AND 运算符来评估匹配条件。 可以在[此处](front-door-rules-engine-match-conditions.md)找到匹配条件的完整列表。 
 - *操作*：操作规定如何处理传入请求 - 目前，请求/响应标头操作、转发、重定向和重写都是可以使用的操作。 一个规则最多可包含 5 个操作；但是，一个规则只能包含 1 个路由配置替代。  可以在[此处](front-door-rules-engine-actions.md)找到操作的完整列表。
 
 

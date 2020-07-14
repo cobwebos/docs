@@ -1,24 +1,22 @@
 ---
-title: Azure 防火墙管理器预览版部署概述
-description: 了解 Azure 防火墙管理器预览版所需的高级部署步骤
+title: Azure 防火墙管理器部署概述
+description: 了解 Azure 防火墙管理器所需的高级部署步骤
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77443119"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565798"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure 防火墙管理器预览版部署概述
+# <a name="azure-firewall-manager-deployment-overview"></a>Azure 防火墙管理器部署概述
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-部署 Azure 防火墙管理器预览版有多种方式，但建议执行以下常规过程。
+部署 Azure 防火墙管理器有多种方式，但建议执行以下常规过程。
 
 ## <a name="general-deployment-process"></a>常规部署过程
 
@@ -70,4 +68,4 @@ ms.locfileid: "77443119"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：配合使用 Azure 防火墙管理器预览版和 Azure 门户以保护云网络](secure-cloud-network.md)
+- [教程：在 Azure 门户中使用 Azure 防火墙管理器保护云网络](secure-cloud-network.md)

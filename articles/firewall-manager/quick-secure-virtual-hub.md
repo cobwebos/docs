@@ -1,27 +1,27 @@
 ---
-title: 快速入门：使用 Azure 防火墙管理器预览版保护虚拟中心安全 - 资源管理器模板
-description: 了解如何使用 Azure 防火墙管理器预览版保护虚拟中心安全。
+title: 快速入门：使用 Azure 防火墙管理器保护虚拟中心安全 - 资源管理器模板
+description: 了解如何使用 Azure 防火墙管理器保护虚拟中心安全。
 services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167190"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563692"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>快速入门：使用 Azure 防火墙管理器保护虚拟中心安全 - 资源管理器模板
 
-在本快速入门中，你将通过 Azure 防火墙管理器预览版并使用资源管理器模板来保护虚拟中心的安全。 部署的防火墙具有允许连接到 `www.microsoft.com` 的应用程序规则。 部署了两个 Windows Server 2019 虚拟机以测试防火墙。 一个跳转服务器用于连接到工作负载服务器。 从工作负载服务器，只能连接到 `www.microsoft.com`。
+本快速入门将通过 Azure 防火墙管理器并使用资源管理器模板来保护虚拟中心的安全。 部署的防火墙具有允许连接到 `www.microsoft.com` 的应用程序规则。 部署了两个 Windows Server 2019 虚拟机以测试防火墙。 一个跳转服务器用于连接到工作负载服务器。 从工作负载服务器，只能连接到 `www.microsoft.com`。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-有关 Azure 防火墙管理器预览版的详细信息，请参阅[什么是 Azure 防火墙管理器预览版？](overview.md)。
+有关 Azure 防火墙管理器的详细信息，请参阅[什么是 Azure 防火墙管理器？](overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "84167190"
 
 ## <a name="create-a-secured-virtual-hub"></a>创建安全虚拟中心
 
-此模板使用 Azure 防火墙管理器预览版以及支持该场景所需的资源创建了一个安全虚拟中心。
+此模板使用 Azure 防火墙管理器以及支持该场景所需的资源创建了一个安全虚拟中心。
 
 ### <a name="review-the-template"></a>查看模板
 
@@ -101,4 +101,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解受信任的安全合作伙伴](trusted-security-partners.md)
+> [了解安全合作伙伴提供程序](trusted-security-partners.md)

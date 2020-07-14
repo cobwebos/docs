@@ -4,14 +4,14 @@ description: 查找某些常用应用服务方案的 Azure CLI 示例。 了解�
 tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
-ms.date: 12/12/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: ce10c0e95d77103f386174c7bd0ffd56adff871b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254491"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054536"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>针对 Azure 应用服务的 CLI 示例
 
@@ -25,7 +25,8 @@ ms.locfileid: "85254491"
 | [从 GitHub 使用连续部署创建应用](./scripts/cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并从你拥有的 GitHub 存储库持续向其发布代码。 |
 | [从本地 Git 存储库创建应用并部署代码](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用并配置从本地 Git 存储库进行的代码推送。 |
 | [创建应用并将代码部署到过渡环境](./scripts/cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用并为其配置用于暂存代码更改的部署槽位。 |
-| [在 Docker 容器中创建 ASP.NET Core 应用](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| 在 Linux 上创建应用服务应用并从 Docker 中心加载 Docker 映像。 |
+| [在 Docker 容器中创建 ASP.NET Core 应用](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json) | 在 Linux 上创建应用服务应用并从 Docker 中心加载 Docker 映像。 |
+| [创建应用并将其与专用终结点一起公开](./scripts/cli-deploy-privateendpoint.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用和专用终结点 |
 |**配置应用**||
 | [将自定义域映射到应用](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并将自定义域名映射到它。 |
 | [将自定义 TLS/SSL 证书绑定到应用](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并将自定义域名的 TLS/SSL 证书绑定到该应用。 |
@@ -35,7 +36,7 @@ ms.locfileid: "85254491"
 |**保护应用**||
 | [与 Azure 应用程序网关集成](./scripts/cli-integrate-app-service-with-application-gateway.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用，并使用服务终结点和访问限制将其与应用程序网关集成。 |
 |**将应用连接到资源**||
-| [将应用连接到 SQL 数据库](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用和 Azure SQL 数据库中的数据库，然后将数据库连接字符串添加到应用设置。 |
+| [将应用连接到 SQL 数据库](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并在 Azure SQL 数据库中创建数据库，然后将数据库连接字符串添加到应用设置中。 |
 | [将应用连接到存储帐户](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用和存储帐户，然后将存储连接字符串添加到应用设置。 |
 | [将应用连接到用于 Redis 的 Azure 缓存](./scripts/cli-connect-to-redis.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用和用于 Redis 的 Azure 缓存，然后将 Redis 连接详细信息添加到应用设置。） |
 | [将应用连接到 Cosmos DB](./scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用和 Cosmos DB，然后将 Cosmos DB 连接详细信息添加到应用设置。 |

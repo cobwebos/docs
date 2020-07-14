@@ -7,17 +7,17 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/21/2019
-ms.openlocfilehash: f435a33befdde96a92c900663a2ddcca1d319260
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/6/2020
+ms.openlocfilehash: d62fd0a23a5f5553f27c7a399eb17d06d427a6f3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201187"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108781"
 ---
 # <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
 
-Azure 流分析是一个实时分析和复杂事件处理引擎，旨在同时分析和处理来自多个源的大量快速流式处理数据。 可以在从许多输入源（包括设备、传感器、点击流、社交媒体源和应用程序）提取的信息中识别模式和关系。 这些模式可用于触发操作和启动工作流，例如创建警报、向报告工具馈送信息或存储转换后的数据供以后使用。 此外，流分析可在 Azure IoT Edge 运行时上使用，并支持与云完全相同的语言或语法。 
+Azure 流分析是一个实时分析和复杂事件处理引擎，旨在同时分析和处理来自多个源的大量快速流式处理数据。 可以在从许多输入源（包括设备、传感器、点击流、社交媒体源和应用程序）提取的信息中识别模式和关系。 这些模式可用于触发操作和启动工作流，例如创建警报、向报告工具馈送信息或存储转换后的数据供以后使用。 此外，流分析可在 Azure IoT Edge 运行时上使用，从而能够处理 IoT 设备上的数据。 
 
 下面是可以使用 Azure 流分析的示例场景：
 
@@ -29,13 +29,13 @@ Azure 流分析是一个实时分析和复杂事件处理引擎，旨在同时�
 
 ## <a name="how-does-stream-analytics-work"></a>流分析工作原理
 
-Azure 流分析作业由输入、查询和输出构成。 流分析从 Azure 事件中心、Azure IoT 中心或 Azure Blob 存储引入数据。 基于 SQL 查询语言的查询可用于对某个时段的流数据轻松进行筛选、排序、聚合和联接。 还可以使用 JavaScript 和 C# 用户定义函数 (UDF) 扩展此 SQL 语言。 通过简单的语言构造和/或配置执行聚合操作时，可以轻松地调整事件排序选项和时间窗口的持续时间。
+Azure 流分析作业由输入、查询和输出构成。 流分析从 Azure 事件中心（包括来自 Apache Kafka 的 Azure 事件中心）、Azure IoT 中心或 Azure Blob 存储中引入数据。 基于 SQL 查询语言的查询可用于对某个时段的流数据轻松进行筛选、排序、聚合和联接。 还可以使用 JavaScript 和 C# 用户定义函数 (UDF) 扩展此 SQL 语言。 通过简单的语言构造和/或配置执行聚合操作时，可以轻松地调整事件排序选项和时间窗口的持续时间。
 
-每个作业提供转换后数据的输出，你可以针对所要分析的信息控制过程。 例如，你能够：
+每个作业都有一个或多个转换后数据的输出，你可以针对所要分析的信息控制过程。 例如，你能够：
 
 * 将数据发送到 Azure Functions、服务总线主题或队列等服务，以触发下游的通信或自定义工作流。
 * 将数据发送到 Power BI 仪表板进行实时仪表板操作。
-* 将数据存储到其他 Azure 存储服务，以基于历史数据训练机器学习模型或执行批处理分析。
+* 将数据存储到其他 Azure 存储服务（例如 Azure Data Lake、Azure Synapse Analytics 等）中，以基于历史数据训练机器学习模型或执行批处理分析。
 
 下图说明了如何将数据发送到流分析，在进行分析后再发送到其他位置进行其他操作（例如存储或演示）：
 
@@ -59,21 +59,21 @@ Azure 流分析易于入门。 只需点击几下鼠标即可连接到多个源�
 
 Azure 流分析使用简单的基于 SQL 的查询语言，该语言已使用强大的时态约束进行强化，可以分析动态数据。 若要定义作业转换，请使用简单的声明性[流分析查询语言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)，以便通过简单的 SQL 构造创作复杂的时态查询和分析。 由于流分析查询语言与 SQL 语言相一致，因此，熟悉 SQL 就足以开始创建作业。 也可使用 Azure PowerShell、[流分析 Visual Studio 工具](stream-analytics-tools-for-visual-studio-install.md)、[流分析 Visual Studio Code 扩展](quick-create-vs-code.md)或 Azure 资源管理器模板等开发人员工具来创建作业。 可以使用开发人员工具来脱机开发转换查询，然后使用 [CI/CD 管道](stream-analytics-tools-for-visual-studio-cicd.md)将作业提交到 Azure。
 
-流分析查询语言提供各种用于分析和处理流数据的功能。 此查询语言支持简单的数据操作、聚合函数和复杂的地理空间函数。 可以在门户中编辑查询，然后使用从实时流中提取的示例数据来测试它们。
+流分析查询语言提供各种用于分析和处理流数据的功能。 此查询语言支持简单的数据操作、聚合和分析函数、[地理空间函数](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions)、[模式匹配](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)和[异常情况检测](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection)。 可以在门户中编辑查询，然后使用从实时流中提取的示例数据来测试它们。
 
 可以通过定义和调用其他函数来扩展查询语言的功能。 可以在 Azure 机器学习中定义函数调用，以便利用 Azure 机器学习解决方案，还可以集成 JavaScript 或 C# 用户定义的函数 (UDF) 或用户定义的聚合，以便在流分析查询中执行复杂的计算。
 
 ## <a name="fully-managed"></a>完全托管
 
-Azure 流分析是 Azure 中的一项完全托管的无服务器 (PaaS) 产品/服务。 无需预配硬件或管理群集即可运行作业。 Azure 流分析对作业进行全方位管理，可以在云中设置复杂的计算群集，并负责实现运行作业所需的性能优化。 与 Azure 事件中心和 Azure IoT 中心集成后，作业每秒可以从大量的源引入数百万个事件，以包含连接的设备、点击流和日志文件。 使用事件中心的分区功能，可以将计算分成多个逻辑步骤，每个步骤还可以进一步细分，以提高可伸缩性。
+Azure 流分析是 Azure 中的一项完全托管的无服务器 (PaaS) 产品/服务。 你无需预配任何硬件，无需管理运行作业的群集，也无需更新 OS 或软件。 Azure 流分析完全管理你的作业，因此你可以专注于业务逻辑，而不是基础结构。
 
 ## <a name="run-in-the-cloud-or-on-the-intelligent-edge"></a>在云中或智能边缘上运行
 
-Azure 流分析可以在云中运行，实现大规模分析；还可以在 IoT Edge 上运行，实现超低延迟分析。 Azure 流分析在云和边缘上采用同一种查询语言，让开发者能够生成用于流处理的真正的混合体系结构。 
+Azure 流分析可以在云中运行，实现大规模分析；还可以在 IoT Edge 上运行，实现超低延迟分析。 Azure 流分析在云和边缘上采用同一种工具和查询语言，让开发者能够生成用于流处理的真正混合体系结构。 
 
 ## <a name="low-total-cost-of-ownership"></a>总拥有成本低廉
 
-流分析已作为云服务进行成本优化。 没有前期费用，只需根据[所使用的流单元](stream-analytics-streaming-unit-consumption.md)和已处理的数据量付费。 无需承诺使用量，也无需预配群集，可以根据业务需求纵向缩放作业。
+流分析已作为云服务进行成本优化。 没有前期费用，只需为[所使用的流单元](stream-analytics-streaming-unit-consumption.md)付费。 无需承诺使用量，也无需预配群集，可以根据业务需求纵向缩放作业。
 
 ## <a name="mission-critical-ready"></a>关键任务就绪
 

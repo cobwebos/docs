@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 383b59d10fa1de1b2ee0ea8b505c164577487255
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7052e9203532320a7de5197e983d40cb0a34b50d
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974375"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374774"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虚拟桌面中有哪些新增功能？
 
@@ -73,6 +73,8 @@ Windows 虚拟桌面现已集成到 Azure 资源管理器中。 在最新更新�
 要了解详细信息，请参阅[我们的博客文章](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)。
 
 ## <a name="next-steps"></a>后续步骤
+
+请在 [Microsoft 365 Windows 虚拟桌面路线图](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)了解未来的计划。
 
 要了解 Windows 虚拟桌面和远程桌面服务的客户端更新，请参阅以下文章：
 

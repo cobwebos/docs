@@ -3,16 +3,16 @@ title: Azure EA 门户管理
 description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 6169a18148b251540d66bce6e34374a16f697015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456549"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044883"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -33,7 +33,7 @@ ms.locfileid: "84456549"
 
 ## <a name="department-spending-quotas"></a>部门支出配额
 
-EA 客户可为注册中的每个部门设置或更改支出配额。 支出配额的额度是为当前承诺期设置的。 在当前承诺期结束时，系统会将现有支出配额扩展到下一个承诺期，除非已更新了配额值。
+EA 客户可为注册中的每个部门设置或更改支出配额。 支出配额金额是针对当前的预付款期设置的。 在当前预付款期结束时，系统会将现有支出配额扩展到下一个预付款期，除非已更新了配额值。
 
 部门管理员可以查看支出配额，但只有企业管理员才能更新配额。 在配额达到 50%、75%、90% 和 100% 时，企业管理员和部门管理员都会收到通知。
 
@@ -48,9 +48,9 @@ EA 客户可为注册中的每个部门设置或更改支出配额。 支出配�
     - 还可以在此时编辑部门名称和成本中心。
  1. 选择“保存”。
 
-现在，可在“部门”选项卡下的“部门列表”视图中看到部门支出配额。当前承诺期结束时，Azure EA 门户会为下一个承诺期继续使用该支出配额。
+现在，可在“部门”选项卡下的“部门列表”视图中看到部门支出配额。当前预付款期结束时，Azure EA 门户会为下一个预付款期继续使用该支出配额。
 
-部门配额的金额与当前货币承诺无关，配额的金额和警报仅适用于第一方使用。 部门支出配额仅用于提供信息，不强制实施支出限制。
+部门配额的金额与当前 Azure 预付款无关，配额的金额和警报仅适用于第一方使用。 部门支出配额仅用于提供信息，不强制实施支出限制。
 
 ### <a name="department-administrator-to-view-the-quota"></a>部门管理员查看配额：
 
@@ -174,7 +174,7 @@ Azure Enterprise 用户的身份验证类型可以从 Microsoft 帐户（MSA 或
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>每个订阅可以有多少个 Azure 帐户所有者？
 
-每个订阅只允许有一个帐户所有者。  可以使用 [portal.azure.com] (https://portal.azure.com) 页面左上角“订阅”选项卡中的“基于角色的访问”或“访问控制 (IAM)”来添加其他角色。
+每个订阅只允许有一个帐户所有者。  可以使用 [Azure 门户](https://portal.azure.com)页面左上角的订阅选项卡中“基于角色的访问”或“访问控制 (IAM)”来添加其他角色。
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>可以在多个部门下列出同一个 Azure 帐户所有者吗？
 

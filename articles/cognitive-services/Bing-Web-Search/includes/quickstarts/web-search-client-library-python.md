@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: b6ab34019207ccbeec5448b848e501e063707d16
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85940408"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 Python 应用程序中。 本快速入门介绍了如何发送请求、接收 JSON 响应以及筛选和分析结果。
 
 想要马上查看代码？ GitHub 上提供了[适用于 Python 的必应搜索客户端库](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search)的示例。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 必应 Web 搜索 SDK 与 Python 2.7、3.3、3.4、3.5 和 3.6 兼容。 建议在本快速入门中使用虚拟环境。
 
 * Python 2.7、3.3、3.4、3.5 或 3.6
@@ -167,7 +167,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 1. 将 `SUBSCRIPTION_KEY` 替换为有效订阅密钥。
 
-1. 将 `YOUR_ENDPOINT` 替换为门户中你的终结点 URL。
+1. 将 `YOUR_ENDPOINT` 替换为门户中的终结点 URL，并从终结点中删除“bing/v7.0”部分。
 
 1. 运行该程序。 例如：`python your_program.py`。
 

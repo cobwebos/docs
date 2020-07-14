@@ -1,14 +1,14 @@
 ---
-title: 概述
+title: Azure 资源管理器概述
 description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管理资源以及对其进行访问控制。
 ms.topic: overview
 ms.date: 04/21/2020
-ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81870487"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087021"
 ---
 # <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
@@ -33,7 +33,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供了一个管
 * **资源** - 可通过 Azure 获取的可管理项。 资源的示例包括虚拟机、存储帐户、Web 应用、数据库和虚拟网络。 资源组、订阅、管理组和标记也是资源的示例。
 * **资源组** — 一个容器，用于保存 Azure 解决方案的相关资源。 资源组包括你想要作为一个组进行管理的那些资源。 根据最适合组织的情况来决定哪些资源属于哪个资源组。 请参阅 [资源组](#resource-groups)。
 * **资源提供程序** - 提供 Azure 资源的服务。 例如，Microsoft.Compute 就是一个常见的资源提供程序，它提供虚拟机资源。 Microsoft.Storage 是另一个常见的资源提供程序。 请参阅[资源提供程序和类型](resource-providers-and-types.md)。
-* 资源管理器模板  - 一个 JavaScript 对象表示法 (JSON) 文件，用于定义一个或多个要部署到资源组、订阅、管理组或租户的资源。 使用模板能够以一致方式反复部署资源。 请参阅[模板部署概述](../templates/overview.md)。
+* 资源管理器模板 - 一个 JavaScript 对象表示法 (JSON) 文件，用于定义一个或多个要部署到资源组、订阅、管理组或租户的资源。 使用模板能够以一致方式反复部署资源。 请参阅[模板部署概述](../templates/overview.md)。
 * **声明性语法** — 一种语法，允许声明“以下是我想要创建的项目”，而不需要编写一系列编程命令来进行创建。 资源管理器模板便是声明性语法的其中一个示例。 在该文件中，可以定义要部署到 Azure 的基础结构的属性。  请参阅[模板部署概述](../templates/overview.md)。
 
 ## <a name="the-benefits-of-using-resource-manager"></a>使用 Resource Manager 的优势
@@ -68,7 +68,7 @@ Azure 提供四个级别的范围：[管理组](../../governance/management-grou
 
 定义资源组时，需要考虑以下几个重要因素：
 
-* 组中的所有资源应该共享相同的生命周期。 一起部署、更新和删除这些资源。 如果某个资源（例如数据库服务器）需要采用不同的部署周期，则它应在另一个资源组中。
+* 组中的所有资源应该共享相同的生命周期。 一起部署、更新和删除这些资源。 如果某个资源（例如服务器）需要采用不同的部署周期，则它应在另一个资源组中。
 
 * 每个资源只能在一个资源组中。
 

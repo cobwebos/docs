@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft Docs
-description: 本文提供 Azure Front Door 的概述。 了解它是否是针对应用程序进行用户流量负载均衡的正确选择。
+title: Azure Front Door
+description: 本文提供了一系列可使用 Azure Front Door 规则引擎执行的各种操作。
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 3e7c9606a17736ea45b09a4d6981b4d55fa6dee6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515802"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314007"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door 规则引擎操作
 
 在 [AFD 规则引擎](front-door-rules-engine.md)中，规则由零个或多个匹配条件和操作组成。 本文将详细介绍可在 AFD 规则引擎中使用的操作。
 
-操作定义了要应用于某个匹配条件或匹配条件集所识别的请求类型的行为。 在 AFD 规则引擎中，一个规则最多可以包含五个操作，其中只有一个操作可以是路由配置替代操作（转发或重定向）。 
+操作定义了要应用于某个匹配条件或匹配条件集所识别的请求类型的行为。 在 AFD 规则引擎中，一个规则最多可以包含五个操作，其中只有一个操作可以是路由配置替代操作（转发或重定向）。
 
 可在 Azure Front Door 规则引擎中使用以下操作。  
 
@@ -31,24 +31,24 @@ ms.locfileid: "82515802"
 
 使用此操作可以修改发送到源的请求中提供的标头。
 
-### <a name="required-fields"></a>必填字段
+### <a name="required-fields"></a>Required fields
 
 操作 | HTTP 标头名称 | 值
 -------|------------------|------
-追加 | 如果选择此选项并且规则匹配，则会将“标头名称”中指定的标头添加到请求并使用指定的值  。 如果该标头已存在，则会将该值追加到现有值后面。 | 字符串
-替代 | 如果选择此选项并且规则匹配，则会将“标头名称”中指定的标头添加到请求并使用指定的值  。 如果该标头已存在，则指定的值将替代现有值。 | 字符串
+附加 | 如果选择此选项并且规则匹配，则会将“标头名称”中指定的标头添加到请求并使用指定的值。 如果该标头已存在，则会将该值追加到现有值后面。 | 字符串
+Overwrite | 如果选择此选项并且规则匹配，则会将“标头名称”中指定的标头添加到请求并使用指定的值。 如果该标头已存在，则指定的值将替代现有值。 | 字符串
 删除 | 如果选择此选项，规则匹配，并且在规则中指定的标头存在，则会从请求中删除该标头。 | 字符串
 
 ## <a name="modify-response-header"></a>修改响应标头
 
 使用此操作可以修改返回给客户端的响应中提供的标头。
 
-### <a name="required-fields"></a>必填字段
+### <a name="required-fields"></a>Required fields
 
 操作 | HTTP 标头名称 | 值
 -------|------------------|------
-追加 | 如果选择此选项并且规则匹配，则会将“标头名称”中指定的标头添加到响应并使用指定的“值”   。 如果该标头已存在，则会将该“值”追加到现有值后面  。 | 字符串
-替代 | 如果选择此选项并且规则匹配，则会将“标头名称”中指定的标头添加到响应并使用指定的“值”   。 如果该标头已存在，则该“值”将替代现有值  。 | 字符串
+附加 | 如果选择此选项并且规则匹配，则会将“标头名称”中指定的标头添加到响应并使用指定的“值” 。 如果该标头已存在，则会将该“值”追加到现有值后面。 | 字符串
+Overwrite | 如果选择此选项并且规则匹配，则会将“标头名称”中指定的标头添加到响应并使用指定的“值” 。 如果该标头已存在，则该“值”将替代现有值。 | 字符串
 删除 | 如果选择此选项，规则匹配，并且在规则中指定的标头已存在，则会从响应中删除该标头。 | 字符串
 
 ## <a name="route-configuration-overrides"></a>路由配置替代 
@@ -57,7 +57,7 @@ ms.locfileid: "82515802"
 
 使用此操作可将客户端重定向到一个新 URL。 
 
-#### <a name="required-fields"></a>必填字段
+#### <a name="required-fields"></a>Required fields
 
 字段 | 说明 
 ------|------------
@@ -69,7 +69,7 @@ ms.locfileid: "82515802"
 目标片段 | 定义要在重定向中使用的片段。 留空会保留传入片段。 
 
 
-### <a name="route-type-forward"></a>路由类型：转发
+### <a name="route-type-forward"></a>路由类型：前进
 
 使用此操作可将客户端转发到新 URL。 此操作还包含用于 URL 重写和缓存的子操作。 
 
@@ -78,17 +78,17 @@ ms.locfileid: "82515802"
 后端池 | 选择要替代的后端池，以及要为请求提供服务的源。 这会显示 Front Door 配置文件中当前包含的所有预配置后端池。 
 转发协议 | 匹配请求、HTTP、HTTPS。
 URL 重写 | 使用此操作可以重写路由到源的请求的路径。 如果已启用，请参阅下面的其他必填字段
-缓存 | 已启用、已禁用。 如果已启用，请参阅下面的其他必填字段。 
+Caching | “Enabled”、“Disabled”。 如果已启用，请参阅下面的其他必填字段。 
 
 #### <a name="url-rewrite"></a>URL 重写
 
-使用此设置可以配置可选的“自定义转发路径”，以便在构造要转发到后端的请求时使用  。
+使用此设置可以配置可选的“自定义转发路径”，以便在构造要转发到后端的请求时使用。
 
 字段 | 说明 
 ------|------------
 自定义转发路径 | 定义要将请求转发到的路径。 
 
-#### <a name="caching"></a>缓存
+#### <a name="caching"></a>Caching
 
 使用这些设置可以控制如何为包含查询字符串的请求缓存文件，以及是要根据所有参数还是根据所选参数缓存内容。 可以使用其他设置来替代生存时间 (TTL) 值，以控制规则匹配条件指定的请求的内容在缓存中保留多长时间。 若要强制缓存，请将缓存字段设置为“已启用”。 执行此操作时，会显示以下选项： 
 

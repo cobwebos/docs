@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184973"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119321"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教程：使用部署脚本创建自签名证书（预览版）
 
@@ -40,7 +40,7 @@ ms.locfileid: "82184973"
 
 若要完成本文，需要做好以下准备：
 
-* **包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)** 。 请参阅[使用 Visual Studio Code 创建 ARM 模板](./use-vs-code-to-create-template.md)。
+* **包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)** 。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](./quickstart-create-templates-use-visual-studio-code.md)。
 
 * **在订阅级别具有参与者角色的用户分配的托管标识**。 此标识用来执行部署脚本。 若要创建一个标识，请参阅[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)。 部署模板时需要此标识 ID。 标识符的格式为：
 
@@ -62,15 +62,15 @@ ms.locfileid: "82184973"
 
 本快速入门中使用的模板名为[创建 Azure 密钥保管库和机密](https://azure.microsoft.com/resources/templates/101-key-vault-create/)。 该模板将创建一个密钥保管库，然后向该密钥保管库中添加机密。
 
-1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
-2. 在“文件名”中粘贴以下 URL： 
+1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。 
+2. 在“文件名”中粘贴以下 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-key-vault-create/azuredeploy.json
     ```
 
-3. 选择“打开”以打开该文件。 
-4. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。  
+3. 选择“打开”以打开该文件。
+4. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。 
 
 ## <a name="edit-the-template"></a>编辑模板
 
@@ -149,7 +149,7 @@ ms.locfileid: "82184973"
     ],
     ```
 
-    定义了两个策略，一个用于已登录用户，另一个用于托管标识。  已登录用户仅需要“列表”  权限来验证部署。  为了简化本教程，为托管标识和已登录用户分配了相同的证书。
+    定义了两个策略，一个用于已登录用户，另一个用于托管标识。  已登录用户仅需要“列表”权限来验证部署。  为了简化本教程，为托管标识和已登录用户分配了相同的证书。
 
 ### <a name="add-the-deployment-script"></a>添加部署脚本
 
@@ -280,17 +280,17 @@ ms.locfileid: "82184973"
 
     正确的命令是 **Write-Output** 而非 **Write-Output1**。
 
-1. 选择“文件”>“保存”以保存文件。  
+1. 选择“文件”>“保存”以保存文件。 
 
 ## <a name="deploy-the-template"></a>部署模板
 
 1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
-1. 通过在左上角选择“PowerShell”  或“Bash”  （适用于 CLI）来选择你喜欢使用的环境。  进行切换时，需重启 shell。
+1. 通过在左上角选择“PowerShell”或“Bash”（适用于 CLI）来选择你喜欢使用的环境 。  进行切换时，需重启 shell。
 
     ![Azure 门户 - Cloud Shell - 上传文件](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. 依次选择“上传/下载文件”、“上传”。   请参阅上面的屏幕截图。  选择在上一部分保存的文件。 上传文件后，可以使用 ls  命令和 cat  命令验证文件是否已成功上传。
+1. 依次选择“上传/下载文件”、“上传”。  请参阅上面的屏幕截图。  选择在上一部分保存的文件。 上传文件后，可以使用 ls 命令和 cat 命令验证文件是否已成功上传。
 
 1. 运行以下 PowerShell 脚本以部署该模板。
 
@@ -331,11 +331,11 @@ ms.locfileid: "82184973"
 
     这两个文件的后缀都是 **azscripts**。 一个是存储帐户，另一个是容器实例。
 
-    选择“显示隐藏的类型”  来列出 deploymentScripts 资源。
+    选择“显示隐藏的类型”来列出 deploymentScripts 资源。
 
 1. 选择带 **azscripts** 后缀的存储帐户。
-1. 选择“文件共享”  磁贴。 你将看到一个 **azscripts** 文件夹。  该文件夹包含部署脚本执行文件。
-1. 选择“azscripts”  。 你将看到两个文件夹：**azscriptinput** 和 **azscriptoutput**。  输入文件夹包含一个系统 PowerShell 脚本文件和一些用户部署脚本文件。 输出文件夹包含 **executionresult.json** 和脚本输出文件。 可以在 **executionresult.json** 中看到错误消息。 输出文件不在那里，因为执行失败。
+1. 选择“文件共享”磁贴。 你将看到一个 **azscripts** 文件夹。  该文件夹包含部署脚本执行文件。
+1. 选择“azscripts”。 你将看到两个文件夹：**azscriptinput** 和 **azscriptoutput**。  输入文件夹包含一个系统 PowerShell 脚本文件和一些用户部署脚本文件。 输出文件夹包含 **executionresult.json** 和脚本输出文件。 可以在 **executionresult.json** 中看到错误消息。 输出文件不在那里，因为执行失败。
 
 删除 **Write-Output1** 行并重新部署模板。
 
@@ -345,10 +345,10 @@ ms.locfileid: "82184973"
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

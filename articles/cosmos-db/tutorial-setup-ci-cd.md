@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 77cf98cae943b8652e20ed48fd41ed717d1e4fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba90bb89d731c343dfcb3778433d444f2d9a617a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262117"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025856"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -24,16 +24,16 @@ ms.locfileid: "85262117"
 
 ## <a name="install-the-emulator-build-task"></a>安装模拟器生成任务
 
-若要使用生成任务，需先将它安装到 Azure DevOps 组织。  在[市场](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview)中找到“Azure Cosmos DB 模拟器”，然后单击“免费获取”。 
+若要使用生成任务，需先将它安装到 Azure DevOps 组织。 在[市场](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview)中找到“Azure Cosmos DB 模拟器”，然后单击“免费获取”。
 
-![在 Azure DevOps 市场中找到并安装 Azure Cosmos DB 模拟器生成任务](./media/tutorial-setup-ci-cd/addExtension_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_1.png" alt-text="在 Azure DevOps 市场中找到并安装 Azure Cosmos DB 模拟器生成任务":::
 
 接下来，选择要在其中安装扩展的组织。 
 
 > [!NOTE]
 > 要将扩展安装到 Azure DevOps 组织，必须是帐户所有者或项目集合管理员。 如果你没有权限，但却是帐户成员，可以改为请求扩展。 [了解详细信息。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
-![选择要在其中安装扩展的 Azure DevOps 组织](./media/tutorial-setup-ci-cd/addExtension_2.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="选择要在其中安装扩展的 Azure DevOps 组织":::
 
 ## <a name="create-a-build-definition"></a>创建生成定义
 
@@ -41,11 +41,11 @@ ms.locfileid: "85262117"
 
 1. 若要创建新的生成定义，请导航到 Azure DevOps 中的 **“生成”** 选项卡。 选择 **“+新建”** 。 \> **新建生成管道**
 
-   ![创建新的生成管道](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="创建新的生成管道":::
 
-2. 选择所需**源**、**团队项目**、**存储库**和**手动和计划生成的默认分库**。 选择所需选项后，请选择“继续”  。
+2. 选择所需**源**、**团队项目**、**存储库**和**手动和计划生成的默认分库**。 选择所需选项后，请选择“继续”。
 
-   ![针对生成管道选择团队项目、存储库和分库](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="针对生成管道选择团队项目、存储库和分库":::
 
 3. 最后，选择生成管道所需的模板。 在本教程中，我们将选择 **ASP.NET** 模板。 现在，我们有了一个生成管道，可以通过设置它来使用 Azure Cosmos DB 模拟器生成任务。 
 
@@ -61,11 +61,11 @@ Start-CosmosDbEmulator
 
 ## <a name="add-the-task-to-a-build-pipeline"></a><a name="addEmulatorBuildTaskToBuildDefinition"></a>将任务添加到生成管道
 
-1. 在向生成管道添加任务之前，应先添加代理作业。 导航到生成管道，选择“...”，然后选择“添加代理作业”。  
+1. 在向生成管道添加任务之前，应先添加代理作业。 导航到生成管道，选择“...”，然后选择“添加代理作业”。 
 
-1. 接下来选择代理作业旁边的 **+** 符号，以便添加模拟器生成任务。 在搜索框中搜索 **cosmos**，选择“Azure Cosmos DB 模拟器”，然后将其添加到代理作业。  此生成任务会启动一个容器，其中的 Cosmos DB 模拟器实例已经运行。 应该将 Azure Cosmos DB 模拟器任务置于任何其他预期模拟器会处于运行状态的任务之前。
+1. 接下来选择代理作业旁边的 **+** 符号，以便添加模拟器生成任务。 在搜索框中搜索 **cosmos**，选择“Azure Cosmos DB 模拟器”，然后将其添加到代理作业。 此生成任务会启动一个容器，其中的 Cosmos DB 模拟器实例已经运行。 应该将 Azure Cosmos DB 模拟器任务置于任何其他预期模拟器会处于运行状态的任务之前。
 
-   ![向生成定义添加模拟器生成任务](./media/tutorial-setup-ci-cd/addExtension_3.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="向生成定义添加模拟器生成任务":::
 
 在本教程中，我们会将任务添加到开始的时候，确保模拟器在测试执行之前可用。
 
@@ -138,23 +138,23 @@ namespace todo.Tests
 }
 ```
 
-导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用  **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 `-endpoint $(CosmosDbEmulator.Endpoint)`。  这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
+导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用 **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 `-endpoint $(CosmosDbEmulator.Endpoint)`。 这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
 
-![使用模拟器生成任务终结点替代终结点变量](./media/tutorial-setup-ci-cd/addExtension_5.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="使用模拟器生成任务终结点替代终结点变量":::
 
 ## <a name="run-the-build"></a>运行生成
 
-现在，请对该生成执行“保存并排队”操作。  
+现在，请对该生成执行“保存并排队”操作。 
 
-![保存并运行生成](./media/tutorial-setup-ci-cd/runBuild_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="保存并运行生成":::
 
 生成启动以后，就会观察到 Cosmos DB 模拟器任务开始使用已安装的模拟器拉取 Docker 映像。 
 
-![保存并运行生成](./media/tutorial-setup-ci-cd/runBuild_4.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="保存并运行生成":::
 
 生成完成以后，就会观察到测试通过，所有这些测试都是针对生成任务中的 Cosmos DB 模拟器运行的！
 
-![保存并运行生成](./media/tutorial-setup-ci-cd/buildComplete_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="保存并运行生成":::
 
 ## <a name="set-up-using-yaml"></a>使用 YAML 进行设置
 

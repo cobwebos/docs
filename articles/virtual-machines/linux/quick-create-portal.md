@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 11/05/2019
+ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6bf9a89a4806db53797191336578ef9148886181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759236"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392826"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -21,69 +21,62 @@ ms.locfileid: "81759236"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-ssh-key-pair"></a>创建 SSH 密钥对
-
-需要一个 SSH 密钥对才能完成本快速入门。 如果已有一个 SSH 密钥对，则可以跳过此步骤。
-
-打开 bash shell，使用 [ssh-keygen](https://www.ssh.com/ssh/keygen/) 创建一个 SSH 密钥对。 如果本地计算机上没有 bash shell，则可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。
-
-
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在页面顶部的菜单中选择 `>_` 图标以打开 Cloud Shell。
-1. 请确保 CloudShell 在左上角显示 **Bash**。 如果显示“PowerShell”，请使用下拉菜单选择 **Bash**，然后选择“确认”  以更改为 Bash shell。
-1. 键入 `ssh-keygen -t rsa -b 2048` 以创建 ssh 密钥。 
-1. 系统将提示你输入用于保存密钥对的文件。 只需按 **Enter** 即可保存到括号中列出的默认位置。 
-1. 系统会要求你输入密码。 你可以为 SSH 密钥键入密码，或按 **Enter** 继续而不键入密码。
-1. `ssh-keygen` 命令会在 `~/.ssh directory` 中生成默认名称为 `id_rsa` 的公钥和私钥。 此命令返回公钥的完整路径。 通过键入 `cat ~/.ssh/id_rsa.pub` 使用公钥的此路径以 `cat` 显示其内容。
-1. 复制此命令的输出，并将其保存到某个位置，以供本文后面使用。 这是你的公钥，在配置登录 VM 所需的管理员帐户时，需要用到它。
-
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 如果尚未登录到 [Azure 门户](https://portal.azure.com)，请进行登录。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在搜索中键入“虚拟机”  。
-1. 在“服务”下，选择“虚拟机”   。
-1. 在“虚拟机”页上，选择“添加”   。 此时将打开“创建虚拟机”页  。
-1. 在“基本信息”  选项卡中的“项目详细信息”  下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称.*，请键入 myResourceGroup  。 
+1. 在搜索中键入“虚拟机”。
+1. 在“服务”下，选择“虚拟机” 。
+1. 在“虚拟机”页上，选择“添加” 。 此时将打开“创建虚拟机”页。
+1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称.*，请键入 myResourceGroup。 
 
     ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
 
-1. 在“实例详细信息”下，键入“myVM”作为“虚拟机名称”，选择“美国东部”作为“区域”，并选择“Ubuntu 18.04 LTS”作为“映像”        。 保留其他默认值。
+1. 在“实例详细信息”下，键入“myVM”作为“虚拟机名称”，选择“美国东部”作为“区域”，并选择“Ubuntu 18.04 LTS”作为“映像”。 保留其他默认值。
 
     ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 
-1. 在“管理员帐户”  下，选择“SSH 公钥”  ，键入用户名，然后粘贴公钥。 删除公钥中的所有前导或尾随空格。
+1. 在“管理员帐户”下，选择“SSH 公钥” 。
+
+1. 在“用户名”处键入 azureuser。
+
+1. 对于“SSH 公钥源”，请保留默认的“生成新密钥对”，然后为“密钥对名称”键入 myKey 。
 
     ![管理员帐户](./media/quick-create-portal/administrator-account.png)
 
-1. 在“入站端口规则”   > “公共入站端口”  下，选择“允许所选端口”  ，然后从下拉列表中选择“SSH (22)”  和“HTTP (80)”  。 
+1. 在“入站端口规则” > “公共入站端口”下，选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”和“HTTP (80)”。 
 
     ![打开 RDP 和 HTTP 的端口](./media/quick-create-portal/inbound-port-rules.png)
 
-1. 保留其余默认值，然后选择页面底部的“查看 + 创建”  按钮。
+1. 保留其余默认值，然后选择页面底部的“查看 + 创建”按钮。
 
-1. 在“创建虚拟机”页上，  可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”  。
+1. 在“创建虚拟机”页上，可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”。
 
-部署 VM 需要数分钟。 部署完成后，请转到下一部分。
+1. “生成新密钥对”窗口打开时，选择“下载私钥并创建资源” 。 下载的密钥文件将名为“myKey.pem”。 请确保知道 `.pem` 文件的下载位置，下一步将需要该文件的路径。
 
-    
+1. 部署完成后，选择“转到资源”。
+
+1. 在新 VM 的页面上，选择公共 IP 地址并将其复制到剪贴板。
+
+
+    ![复制公共 IP 地址](./media/quick-create-portal/ip-address.png)
+
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
 创建与 VM 的 SSH 连接。
 
-1. 选择 VM 的概述页面上的“连接”按钮。  
+1. 如果使用的是 Mac 或 Linux 计算机，请打开 Bash 提示符。 如果使用的是 Windows 计算机，请打开 PowerShell 提示符。 
 
-    ![门户 9](./media/quick-create-portal/portal-quick-start-9.png)
+1. 根据提示符，打开与虚拟机的 SSH 连接。 将 IP 地址替换为 VM 中的 IP 地址，并将 `.pem` 的路径替换为密钥文件的下载路径。
 
-2. 在“连接到虚拟机”页面中，请保留默认选项，以使用 IP 地址通过端口 22 进行连接。  在“使用 VM 本地帐户登录”  中，将显示一个连接命令。 选择相应的按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式：
+```console
+ssh -i .\Downloads\myKey1.pem azureuser@10.111.12.123
+```
 
-    ```bash
-    ssh azureuser@10.111.12.123
-    ```
-
-3. 使用创建 SSH 密钥对时使用的同一 bash shell（可以通过再次选择 `>_` 或转到 `https://shell.azure.com/bash` 重新打开 Cloud Shell），将 SSH 连接命令粘贴到 shell 中以创建 SSH 会话。
+> [!TIP]
+> 下次在 Azure 中创建 VM 时，可以使用此次创建的 SSH 密钥。 下次创建 VM 时，只需为“SSH 公钥源”选择“使用存储在 Azure 中的密钥” 。 你的计算机上已有私钥，因此无需下载任何内容。
 
 ## <a name="install-web-server"></a>安装 Web 服务器
 
@@ -105,7 +98,7 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 

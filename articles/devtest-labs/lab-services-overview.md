@@ -1,26 +1,16 @@
 ---
-title: Azure 实验室服务 | Microsoft Docs
-description: 了解实验室服务如何轻松创建、管理以及保护包含由开发者、测试人员、教育工作者、学生等人群使用的虚拟机的实验室。
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure 实验室服务对比Azure 开发测试实验室
+description: 比较 Azure 开发测试实验室和 Azure 实验室服务。
 ms.topic: overview
-ms.date: 02/03/2020
-ms.author: spelluru
-ms.openlocfilehash: a1e42a415e99bfaec1c48204efdaacd178005705
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899366"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480076"
 ---
-# <a name="an-introduction-to-azure-lab-services"></a>Azure 实验室服务简介
+# <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>比较 Azure 开发测试实验室和 Azure 实验室服务
 Azure 上有两项服务，可用于在云中设置实验室环境。 
 
 - **Azure 开发测试实验室** - 通过此服务，可以快速为团队设置环境（例如：开发环境或云中的测试环境）。 实验室所有者创建实验室、预配 Windows 或 Linux 虚拟机、安装必要的软件和工具，并将其提供给实验室用户使用。 实验室用户连接到实验室中的虚拟机 (VM)，并将这些虚拟机用于日常工作和短期项目。 用户开始利用实验室中的资源后，实验室管理员可分析多个实验室的成本和使用情况，并设置总体策略以优化组织或团队成本。
@@ -69,18 +59,18 @@ Azure 开发测试实验室可用于实现许多关键方案，但其中一个�
 有关详细信息，请参阅[使用开发测试实验室进行测试](devtest-lab-test-env.md)。
 
 ## <a name="types-of-labs"></a>实验室类型
-可以创建两种类型的实验室：使用 Azure 实验室服务创建的托管实验室类型和使用 Azure 实验室服务创建的实验室   。 如果希望仅向实验室中输入所需内容，并让服务设置和管理实验室所需基础结构，请选择一个托管实验室类型  。 目前，教室实验室是唯一可使用 Azure 实验室服务创建的托管实验室类型  。 如果希望管理自己的基础结构，请使用 Azure 开发测试实验室创建实验室  。
+可以创建两种类型的实验室：使用 Azure 实验室服务创建的托管实验室类型和使用 Azure 实验室服务创建的实验室 。 如果希望仅向实验室中输入所需内容，并让服务设置和管理实验室所需基础结构，请选择一个托管实验室类型。 目前，教室实验室是唯一可使用 Azure 实验室服务创建的托管实验室类型。 如果希望管理自己的基础结构，请使用 Azure 开发测试实验室创建实验室。
 
 以下各节提供了有关这些实验室的更多详细信息。 
 
 ## <a name="managed-lab-types"></a>托管的实验室类型
-使用 Azure 实验室服务可创建由 Azure 管理其基础结构的实验室。 本文将它们称为托管实验室类型。 托管实验室类型提供不同类型的实验室，可满足用户的特定需求。 目前，唯一支持的托管实验室类型是教室实验室  。 
+使用 Azure 实验室服务可创建由 Azure 管理其基础结构的实验室。 本文将它们称为托管实验室类型。 托管实验室类型提供不同类型的实验室，可满足用户的特定需求。 目前，唯一支持的托管实验室类型是教室实验室。 
 
 使用托管实验室类型，可立即开始工作，且仅需进行极少的设置。 从启动 VM 到处理错误及扩展基础结构，该服务本身可处理实验室基础设施的所有管理工作。 若要创建托管实验室（例如教室实验室）类型，首先需要为组织创建实验室帐户。 实验室帐户用作中心帐户，由该帐户管理组织中的所有实验室。 
 
 在这些托管实验室类型中创建和使用 Azure 资源时，该服务会在内部 Microsoft 订阅中创建和管理资源。 它们并非创建在在用户自己的 Azure 订阅中。 服务会跟踪内部 Microsoft 订阅中这些资源的使用情况。 会就使用情况，对包含该实验室帐户的 Azure 订阅收费。   
 
-下面是一些托管实验室类型的用例  ： 
+下面是一些托管实验室类型的用例： 
 
 - 为学生提供虚拟机实验室，这些虚拟机完全根据课程所需进行配置。 向每位学生提供一定的 VM 使用时长，供学生完成家庭作业或个人项目。
 - 设置高性能计算 VM 池，以进行计算密集型或图形密集型研究。 按需运行 VM 并在完成后清理计算机。 

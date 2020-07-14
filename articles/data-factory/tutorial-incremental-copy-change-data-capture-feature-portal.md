@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: ca6b0ff197c21dd41521d2aa6106aa3b0df2d177
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249477"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085712"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用变更数据捕获 (CDC)，以增量方式将 Azure SQL 托管实例中的数据加载到 Azure 存储
 
@@ -113,7 +113,7 @@ ms.locfileid: "85249477"
 
    Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+    数据工厂名“ADFTutorialDataFactory”不可用。
 3. 选择“V2”作为“版本”。
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于**资源组**，请执行以下步骤之一：
@@ -278,12 +278,12 @@ ms.locfileid: "85249477"
    2. 为“使用查询”选择“查询”。 
    3. 为“查询”输入以下内容。
 
-    ```sql
-    DECLARE @from_lsn binary(10), @to_lsn binary(10); 
-    SET @from_lsn =sys.fn_cdc_get_min_lsn('dbo_customers'); 
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal', GETDATE());
-    SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
-    ```
+      ```sql
+      DECLARE @from_lsn binary(10), @to_lsn binary(10); 
+      SET @from_lsn =sys.fn_cdc_get_min_lsn('dbo_customers'); 
+      SET @to_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal', GETDATE());
+      SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
+      ```
 
    ![复制活动 - 源设置](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-settings.png)
 

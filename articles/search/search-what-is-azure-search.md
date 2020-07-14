@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 7075753049e6ba6f4804d23aa31796cbd5bc9141
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: 9d081dea8e4a59a7b872bde8626cbb8674eebd7e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263222"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554318"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
-Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-name)）是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 代码或工具调用数据引入（索引）来创建和加载索引。 或者，可以添加认知技能，以便在编制索引期间应用 AI 流程。 这样可以添加用于搜索和其他方案的新信息与结构。
+Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-name)）是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 
 
-在服务的另一端，应用程序代码发出查询请求并处理响应。 使用 Azure 认知搜索中的功能在客户端中定义搜索体验，通过在服务中创建，拥有并存储的持久索引执行查询。
+在自定义解决方案中，搜索服务位于两个主要工作负载之间：内容引入和查询。 使用代码或工具定义架构，并调用数据引入（索引）以将索引加载到 Azure 认知搜索中。 或者，可以添加认知技能，以便在编制索引期间应用 AI 流程。 这样可以创建用于搜索和知识挖掘方案的新信息与结构。
+
+存在索引后，应用程序代码会发出对搜索服务的查询请求并处理响应。 使用 Azure 认知搜索中的功能在客户端中定义搜索体验，通过在服务中创建，拥有并存储的持久索引执行查询。
 
 ![Azure 认知搜索体系结构](media/search-what-is-azure-search/azure-search-diagram.svg "Azure 认知搜索体系结构")
 
@@ -31,7 +33,7 @@ Azure 认知搜索非常适合以下应用方案：
 
 + 将异构内容类型整合成单个专用的可搜索索引。 查询始终基于你创建并连同文档一起加载的索引，索引始终驻留在云中的 Azure 认知搜索服务上。 可以在索引中填充来自任何源或平台的 JSON 文档流。 或者，对于源自 Azure 的内容，可以使用索引器将数据提取到索引中。 索引定义和管理/所有权是使用 Azure 认知搜索的重要原因。
 
-+ 原始内容是 Azure 数据源（例如 Azure Blob 存储或 Cosmos DB）中的大型无差别文本、图像文件或应用程序文件（例如 Office 内容类型）。 可以在编制索引期间应用认知技能，以添加结构，或者从图像和应用程序文件中提取含义。
++ 原始内容是 Azure 数据源（例如 Azure Blob 存储或 Cosmos DB）中的大型无差别文本、图像文件或应用程序文件（例如 Office 内容类型）。 可以在编制索引过程中应用认知技能，以添加结构或从图像和应用程序文件中提取可搜索的文本。
 
 + 轻松实现搜索相关的功能。 Azure 认知搜索 API 简化了查询构造、分面导航、筛选器（包括地理空间搜索）、同义词映射、自动提示查询和相关性优化。 使用内置功能可以满足最终用户对搜索体验的预期，使其觉得该体验类似于商用 Web 搜索引擎。
 
@@ -53,8 +55,8 @@ Azure 认知搜索非常适合以下应用方案：
 
 | AI&nbsp;扩充&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | 功能 |
 |-------------------|----------|
-|在编制索引期间进行 AI 处理 | 适用于图像和文本分析的 [**AI 扩充**](cognitive-search-concept-intro.md)可以应用于索引管道，以从原始内容中提取文本信息。 [内置技术](cognitive-search-predefined-skills.md)的一些示例包括：光学字符识别（使扫描的 JPEG 变得可搜索）、实体识别（标识组织、名称或位置）、关键短语识别。 也可[将自定义技术编码](cognitive-search-create-custom-skill-example.md)，以便将其附加到管道。 |
-| 存储丰富的内容以供在非搜索场景中分析和使用 | [**知识存储（预览版）** ](knowledge-store-concept-intro.md)是基于 AI 的索引编制的一个扩展。 通过将 Azure 存储用作后端，可以保存在编制索引期间创建的扩充。 这些项目可用于帮助你设计更好的技能集，或创建不含无固定结构或不明确数据的形状和结构。 可以创建定目标到特定工作负荷或用户的这些结构的投影。 还可以直接分析已提取的数据，或将它加载到其他应用中。<br/><br/> |
+|在编制索引期间进行 AI 处理 | 适用于图像和文本分析的 [**AI 扩充**](cognitive-search-concept-intro.md)可以应用于索引管道，以从原始内容中提取文本信息。 [内置技术](cognitive-search-predefined-skills.md)的一些示例包括：光学字符识别（使扫描的 JPEG 变得可搜索）、实体识别（标识组织、名称或位置）、关键短语识别。 也可[将自定义技术编码](cognitive-search-create-custom-skill-example.md)，以便将其附加到管道。 也可[集成 Azure 机器学习创作技能](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-aml-custom-skill)。 |
+| 存储丰富的内容以供在非搜索场景中分析和使用 | [知识存储](knowledge-store-concept-intro.md)是基于 AI 的索引扩展。 通过将 Azure 存储用作后端，可以保存在编制索引期间创建的扩充。 这些项目可用于帮助你设计更好的技能集，或创建不含无固定结构或不明确数据的形状和结构。 可以创建定目标到特定工作负荷或用户的这些结构的投影。 还可以直接分析已提取的数据，或将它加载到其他应用中。<br/><br/> |
 | 缓存内容 | [**增量扩充（预览版）** ](cognitive-search-incremental-indexing-conceptual.md)将处理限制为仅处理通过对管道进行特定编辑而更改的文档，并对未更改的管道部分使用缓存内容。 |
 
 | 数据导入/编制索引&nbsp; | 功能 |
@@ -69,7 +71,7 @@ Azure 认知搜索非常适合以下应用方案：
 | 用于原型制作和检查的工具 | 在门户中，可以使用[**导入数据向导**](search-import-data-portal.md)来配置索引器、索引设计器以建立索引，并可以使用[**搜索浏览器**](search-explorer.md)来测试查询并优化评分配置文件。 还可以打开任何索引来查看其架构。 |
 | 监视和诊断 | [启用监视功能](search-monitor-usage.md)可查看除门户中始终可见的一目了然指标外的其他指标。 门户页面中会捕获并报告关于每秒查询数、延迟和限制的指标，无需额外进行配置。|
 | 服务器端加密 | [Microsoft 托管的静态加密](search-security-overview.md#encrypted-transmissions-and-storage)内置在内部存储层中，它是不可撤消的。 可以视需要使用[客户托管的加密密钥](search-security-manage-encryption-keys.md)来补充默认加密。 你在 Azure Key Vault 中创建和管理的密钥用于加密 Azure 认知搜索中的索引和同义词映射。 |
-| 基础结构 | **高可用性平台**确保极其可靠的搜索服务体验。 正确缩放后，[Azure 认知搜索可提供 99.9% SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。<br/><br/> 作为一种**完全托管且可缩放的**端到端解决方案，Azure 认知搜索绝对不需要基础结构管理。 通过在两个维度进行缩放以便处理更多文档存储和/或更高的查询负载，可以根据需求来定制服务。<br/><br/>|
+| 基础结构 | **高可用性平台**确保极其可靠的搜索服务体验。 正确缩放时，[Azure 认知搜索可提供 99.9% SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。<br/><br/> 作为一种**完全托管且可缩放的**端到端解决方案，Azure 认知搜索绝对不需要基础结构管理。 通过在两个维度进行缩放以便处理更多文档存储和/或更高的查询负载，可以根据需求来定制服务。<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>如何使用 Azure 认知搜索
 ### <a name="step-1-provision-service"></a>步骤 1：预配服务
@@ -129,7 +131,7 @@ Azure 认知搜索非常适合以下应用方案：
 
 |平台 |说明 |
 |-----|------------|
-|[REST](/rest/api/searchservice/) | 任何编程平台和语言（包括 Xamarin、Java 和 JavaScript）支持的 HTTP 命令|
+|[REST](/rest/api/searchservice/) | 任何编程平台和语言（包括 Java、Python 和 JavaScript）支持的 HTTP 命令|
 |[.NET SDK](search-howto-dotnet-sdk.md) | REST API 的 .NET 包装器以 C# 和其他针对 .NET Framework 的托管代码语言提供了有效编码。 |
 
 ## <a name="free-trial"></a>免费试用

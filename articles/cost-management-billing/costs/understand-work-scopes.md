@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 2f61345cd55fc9541f9e1b707389d0b9d06685b0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873433"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077152"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -67,7 +67,7 @@ Azure 支持用于资源管理的三个范围。 每个范围支持管理访问�
 
 成本管理参与者是建议的最低特权角色。 此角色授予创建和管理预算和导出的权限，以便更有效地监视和报告成本。 成本管理参与者还可能需要有其他角色才能支持端到端的成本管理方案。 请考虑下列情形：
 
-- **报告资源使用情况** - Azure 成本管理在 Azure 门户中显示费用，还包含使用情况数据，这些数据与完全使用情况下的费用相关，并对 API 和下载收取费用，但你可能会想获取有关 Azure Monitor 中使用情况指标的更多信息，以便进行深入了解。 请考虑在需要报告详细使用情况指标的任何适用范围上授权[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)权限。
+- **报告资源使用情况** - Azure 成本管理显示 Azure 门户中的成本，包括使用情况，因为它与完整使用情况模式中的成本相关。 此报表还可以显示 API 和下载费用，但你可能还想要深入了解 Azure Monitor 中的详细使用情况指标，以便更深入理解前者。 请考虑在需要报告详细使用情况指标的任何适用范围上授权[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)权限。
 - **超出预算时采取措施** – 成本管理参与者还需要拥有创建和/或管理操作组以自动对超额问题做出反应的访问权限。 请考虑将[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)授予某个资源组，该资源组包含超出预算阈值时要使用的操作组。 自动执行特定的操作需要所用特定服务（例如自动化和 Azure Functions）的其他角色。
 - **计划成本数据导出** – 成本管理参与者还需要以下访问权限：管理存储帐户，以计划通过导出将数据复制到存储帐户。 请考虑将[存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)授予某个资源组，该资源组包含要将成本数据导出到的存储帐户。
 - **查看成本节省建议** – 默认情况下，成本管理读取者和成本管理参与者拥有查看成本建议的访问权限。 但是，需要访问各个资源才能获得处理成本建议的访问权限。 若要处理基于成本的建议，请考虑授予[服务特定的角色](../../role-based-access-control/built-in-roles.md#all)。

@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: trbye, jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 04/15/2020
+ms.date: 06/23/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: b26527321cf7fc5ca7fc4b061f11b86f8830ec29
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552318"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023357"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,9 +112,6 @@ else:
 from azureml.core import Datastore
 from azureml.core import Workspace
 
-# Load workspace authorization details from config.json
-ws = Workspace.from_config()
-
 mnist_blob = Datastore.register_azure_blob_container(ws, 
                       datastore_name="mnist_datastore", 
                       container_name="sampledata", 
@@ -140,8 +137,6 @@ def_data_store = ws.get_default_datastore()
 
 ```python
 from azureml.core.dataset import Dataset
-
-mnist_ds_name = 'mnist_sample_data'
 
 path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
@@ -210,7 +205,7 @@ model = Model.register(model_path="models/",
 - `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。 此函数将在进程开始时调用一次。
 -  `run(mini_batch)`：将针对每个 `mini_batch` 实例运行此函数。
     -  `mini_batch`：ParallelRunStep 将调用 run 方法，并将列表或 Pandas 数据帧作为参数传递给该方法。 如果输入是 FileDataset，则 mini_batch 中的每个条目都将为文件路径；如果输入是 TabularDataset，则为 Pandas 数据帧。
-    -  `response`：run() 方法应返回 Pandas 数据帧或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一次成功运行。 应确保运行结果中包含足够的数据，以便将输入映射到运行输出结果。 运行输出将写入输出文件中，并且不保证按顺序写入，你应使用输出中的某个键将其映射到输入。
+    -  `response`：run() 方法应返回 Pandas 数据帧或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一次成功运行。 确保运行结果中包含足够的数据，以便将输入映射到运行输出结果。 运行输出将写入输出文件中，并且不保证按顺序写入，你应使用输出中的某个键将其映射到输入。
 
 ```python
 # Snippets from a sample script.
@@ -218,6 +213,7 @@ model = Model.register(model_path="models/",
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
+%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -270,7 +266,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ### <a name="prepare-the-environment"></a>准备环境
 
-首先，指定脚本的依赖项。 这样，你就可以安装 pip 包并配置环境。 请始终包括 azureml-core 和 azureml-dataprep[pandas, fuse] 包。
+首先，指定脚本的依赖项。 这样就可以安装 pip 包并配置环境。 请始终包括 azureml-core 和 azureml-dataprep[pandas, fuse] 包 。
 
 如果使用自定义 docker 映像 (user_managed_dependencies=True)，则还应该安装 conda。
 
@@ -311,12 +307,14 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 可以将 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 指定为 `PipelineParameter`，以便在重新提交管道运行时，可以微调参数值。 在此示例中，对 `mini_batch_size` 和 `Process_count_per_node` 使用 PipelineParameter，并在稍后重新提交运行时更改这些值。 
 
+此示例假设你使用的是之前讨论的 `digit_identification.py` 脚本。 如果你使用自己的脚本，请相应地更改 `source_directory` 和 `entry_script` 参数。
+
 ```python
 from azureml.pipeline.core import PipelineParameter
 from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
-    source_directory=scripts_folder,
+    source_directory='.',
     entry_script="digit_identification.py",
     mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
@@ -384,9 +382,8 @@ pipeline_run.wait_for_completion(show_output=True)
 由于你已将输入和多个配置设置为 `PipelineParameter`，因此可以使用不同的数据集输入重新提交批量推理运行，并微调参数，而不必创建全新的管道。 你将使用相同的数据存储，但仅使用单个映像作为数据输入。
 
 ```python
-path_on_datastore = mnist_data.path('mnist/0.png')
+path_on_datastore = mnist_blob.path('mnist/0.png')
 single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-single_image_ds._ensure_saved(ws)
 
 pipeline_run_2 = experiment.submit(pipeline, 
                                    pipeline_parameters={"mnist_param": single_image_ds, 

@@ -4,12 +4,12 @@ description: 了解 Azure Migrate 服务中的新增功能和最新更新。
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: be617590ce0c96c3ec8ea705732534c8395ac0ce
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052329"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556933"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
@@ -17,6 +17,7 @@ ms.locfileid: "85052329"
 
 ## <a name="update-june-2020"></a>更新（2020 年 6 月）
 
+- 现在支持将本地 VMware VM 迁移到 [Azure VMware 解决方案 (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) 的评估。 [了解详细信息](how-to-create-azure-vmware-solution-assessment.md)
 - 支持在设备上用多个凭据来发现物理服务器。
 - 支持允许租户从设备登录 Azure，其中租户限制已配置。
 - 新的 Azure Migrate 设备版本，如下所示。

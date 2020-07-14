@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 9cd59fdf81e9b5d56872d20c76e8ea177b3c8577
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e4ea76a888ba51b3560139e9efc3df512c4fbadf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79470888"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120936"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>快速入门：使用 Azure 门户启动现有 Azure Spring Cloud 应用程序
 
@@ -56,42 +56,42 @@ az extension add --name spring-cloud
 
 1. 在新选项卡中，打开 [Azure 门户](https://ms.portal.azure.com/)。 
 
-2. 在顶部搜索框中，搜索“Azure Spring Cloud”。 
+2. 在顶部搜索框中，搜索“Azure Spring Cloud”。
 
-3. 从结果中选择“Azure Spring Cloud”  。
+3. 从结果中选择“Azure Spring Cloud”。
 
  ![ASC 图标](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. 在“Azure Spring Cloud”页上，单击“+ 添加”  。
+4. 在“Azure Spring Cloud”页上，单击“+ 添加”。
 
  ![ASC 图标](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-5. 在 Azure Spring Cloud“创建”页中填写表单  。  遵循以下指南：
-    - **订阅**：选择要在其中收取此资源费用的订阅。  请确保此订阅已添加到 Azure Spring Cloud 的允许列表。
-    - **资源组**：最佳做法是为新资源创建新的资源组。
+5. 在 Azure Spring Cloud“创建”页中填写表单。  遵循以下指南：
+    - 订阅：选择要在其中收取此资源费用的订阅。  请确保此订阅已添加到 Azure Spring Cloud 的允许列表。
+    - 资源组：最佳做法是为新资源创建新的资源组。
     - **服务详细信息/名称**：指定服务实例的名称。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
-    - **位置**：选择服务实例的位置。 目前支持的位置包括：美国东部、美国西部 2、西欧和东南亚。
+    - 位置：选择服务实例的位置。 目前支持的位置包括：美国东部、美国西部 2、西欧和东南亚。
 
     ![ASC 门户启动](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. 单击“诊断设置”  选项卡，打开以下对话框。
+6. 单击“诊断设置”选项卡，打开以下对话框。
 
-7. 可以将“启用日志”  设置为“是”  ，或根据你的要求设置为“否”  。
+7. 可以将“启用日志”设置为“是”，或根据你的要求设置为“否”。
 
     ![启用日志](media/spring-cloud-quickstart-launch-app-portal/diagnostic-setting.png)
 
-8. 单击“跟踪”  选项卡。
+8. 单击“跟踪”选项卡。
 
-9. 可以将“启用跟踪”  设置为“是”  ，或根据你的要求设置为“否”  。  如果将“启用跟踪”设置为“是”，请选择现有的应用程序见解，或创建一个新的。  如果没有 **Application Insights** 规范，将会出现验证错误。
+9. 可以将“启用跟踪”设置为“是”，或根据你的要求设置为“否”。  如果将“启用跟踪”设置为“是”，请选择现有的应用程序见解，或创建一个新的。 如果没有 **Application Insights** 规范，将会出现验证错误。
 
 
     ![跟踪](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
 
-10. 单击“审阅并创建”  。
+10. 单击“审阅并创建”。
 
-11. 验证你的规范，并单击“创建”  。
+11. 验证你的规范，并单击“创建”。
 
-部署服务大约需要 5 分钟的时间。  部署后，会显示服务实例的“概述”页。 
+部署服务大约需要 5 分钟的时间。  部署后，会显示服务实例的“概述”页。
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=provision)
@@ -99,11 +99,11 @@ az extension add --name spring-cloud
 
 ## <a name="set-up-your-configuration-server"></a>设置配置服务器
 
-1. 转到服务的“概览”页，选择“配置服务器”。  
+1. 转到服务的“概览”页，选择“配置服务器”。 
 
-2. 在“默认存储库”部分，将“URI”设置为“https://github.com/Azure-Samples/piggymetrics-config”   。
+2. 在“默认存储库”部分，将“URI”设置为“https://github.com/Azure-Samples/piggymetrics-config” 。
 
-3. 选择“应用”以保存所做的更改。 
+3. 选择“应用”以保存所做的更改。
 
     ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -134,7 +134,13 @@ az extension add --name spring-cloud
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-4. 创建 `gateway` 应用程序并部署 JAR 文件。
+4. 创建 `gateway` 应用程序并部署 JAR 文件。  以下步骤需要 Spring Cloud 扩展。 如果安装未满足先决条件，请运行以下命令：
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+    使用 Spring Cloud 扩展创建应用：
 
     ```azurecli
     az spring-cloud app create -n gateway
@@ -150,18 +156,18 @@ az extension add --name spring-cloud
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-6. 完成应用程序部署需要几分钟的时间。 若要确认是否已部署这些应用程序，请在 Azure 门户中转到“应用”边栏选项卡。  应会看到，这三个应用程序各占一行。
+6. 完成应用程序部署需要几分钟的时间。 若要确认是否已部署这些应用程序，请在 Azure 门户中转到“应用”边栏选项卡。 应会看到，这三个应用程序各占一行。
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>将公共终结点分配到网关
 
-1. 打开左侧菜单中的“应用”  选项卡。
+1. 打开左侧菜单中的“应用”选项卡。
 
-2. 选择 `gateway` 应用程序以显示“概述”  页。
+2. 选择 `gateway` 应用程序以显示“概述”页。
 
-3. 选择“分配终结点”，将一个公共终结点分配到网关。  这可能需要几分钟的时间。
+3. 选择“分配终结点”，将一个公共终结点分配到网关。 这可能需要几分钟的时间。
 
     ![ASC 门户的屏幕截图](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 

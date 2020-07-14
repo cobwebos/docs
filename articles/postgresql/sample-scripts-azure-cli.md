@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: sample, mvc
 ms.date: 5/6/2019
-ms.openlocfilehash: 154dc8b8569162992f4fc231caee2a43682db456
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 094222c9d6cee6c785f44111a9f9ac6a2185536c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74774714"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120529"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单个服务器的 Azure CLI 示例
 下表包含指向示例 Azure CLI 脚本的链接，这些脚本针对用于 PostgreSQL 的 Azure 数据库。
 
-| |  |
+| 示例链接 | 说明 |
 |---|---|
 |**创建服务器**||
 | [创建服务器和防火墙规则](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI 脚本，用于创建适用于 PostgreSQL 服务器的 Azure 数据库并配置服务器级防火墙规则。 |

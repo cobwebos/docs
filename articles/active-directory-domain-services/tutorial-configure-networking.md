@@ -7,18 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 1e3b94208c3ead6e7ed4e15dac7c32b50025064a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733800"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024768"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置虚拟网络
 
-为了给用户和应用程序提供连接，已在 Azure 虚拟网络子网中部署了一个 Azure Active Directory 域服务 (Azure AD DS) 托管域。 此虚拟网络子网应该仅供 Azure 平台提供的托管域资源使用。 当你创建自己的 VM 和应用程序时，不应将它们部署到同一个虚拟网络子网中。 应创建应用程序并将其部署到不同的虚拟网络子网，或部署到与 Azure AD DS 虚拟网络对等互连的其他虚拟网络中。
+为了给用户和应用程序提供连接，已在 Azure 虚拟网络子网中部署了一个 Azure Active Directory 域服务 (Azure AD DS) 托管域。 此虚拟网络子网应该仅供 Azure 平台提供的托管域资源使用。
+
+当你创建自己的 VM 和应用程序时，不应将它们部署到同一个虚拟网络子网中。 应创建应用程序并将其部署到不同的虚拟网络子网，或部署到与 Azure AD DS 虚拟网络对等互连的其他虚拟网络中。
 
 本教程介绍如何创建和配置专用的虚拟网络子网，或者如何将不同的网络对等互连到 Azure AD DS 托管域的虚拟网络。
 
@@ -39,7 +41,7 @@ ms.locfileid: "84733800"
     * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
-* 需要在 Azure AD 目录中拥有“全局管理员”特权才能启用 Azure AD DS。
+* 需要在 Azure AD 租户中拥有“全局管理员”特权才能配置 Azure AD DS。
 * 需要在 Azure 订阅中拥有“参与者”特权才能创建所需的 Azure AD DS 资源。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请参考第一篇教程[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
@@ -54,12 +56,16 @@ ms.locfileid: "84733800"
 
 创建并运行需要使用托管域的 VM 时，需要提供网络连接。 可通过以下方式之一提供此网络连接：
 
-* 在默认托管域的虚拟网络中创建额外的虚拟网络子网。 将在此额外子网中创建和连接 VM。
+* 在托管域的虚拟网络中创建额外的虚拟网络子网。 将在此额外子网中创建和连接 VM。
     * 由于这些 VM 位于同一虚拟网络中，它们可以自动执行名称解析并与 Azure AD DS 域控制器通信。
 * 配置从托管域的虚拟网络到一个或多个独立虚拟网络的 Azure 虚拟网络对等互连。 将在这些独立的虚拟网络中创建和连接 VM。
-    * 配置虚拟网络对等互连时，还必须配置 DNS 设置，以使用定向回到 Azure AD DS 域控制器的名称解析。
+    * 配置虚拟网络对等互连时，还必须配置 DNS 设置，以使用名称解析回到 Azure AD DS 域控制器。
 
-通常我们只使用其中的一个网络连接选项。 做出的选择往往取决于如何单独管理 Azure 资源。 若要将 Azure AD DS 和连接的 VM 作为一组资源进行管理，可为 VM 额外创建一个虚拟网络子网。 若要将 Azure AD DS 和任何连接的 VM 分开管理，可以使用虚拟网络对等互连。 还可以选择使用虚拟网络对等互连来与 Azure 环境中已连接到现有虚拟网络的现有 VM 建立连接。
+通常我们只使用其中的一个网络连接选项。 做出的选择往往取决于如何单独管理 Azure 资源。
+
+* 若要将 Azure AD DS 和连接的 VM 作为一组资源进行管理，可为 VM 额外创建一个虚拟网络子网。
+* 若要将 Azure AD DS 和任何连接的 VM 分开管理，可以使用虚拟网络对等互连。
+    * 还可以选择使用虚拟网络对等互连来与 Azure 环境中已连接到现有虚拟网络的现有 VM 建立连接。
 
 在本教程中，你只需配置其中的一个虚拟网络连接选项。
 
@@ -95,7 +101,9 @@ ms.locfileid: "84733800"
 
 你可能已经为 VM 创建了 Azure 虚拟网络，或者希望保持托管域虚拟网络的独立性。 若要使用托管域，其他虚拟网络中的 VM 需要通过某种方式来与 Azure AD DS 域控制器通信。 可以使用 Azure 虚拟网络对等互连来提供此连接。
 
-使用 Azure 虚拟网络对等互连时，两个虚拟网络将连接到一起，而无需使用虚拟专用网络 (VPN) 设备。 使用网络对等互连可以快速连接虚拟网络并定义整个 Azure 环境中的流量流。 有关对等互连的详细信息，请参阅 [Azure 虚拟网络对等互连概述][peering-overview]。
+使用 Azure 虚拟网络对等互连时，两个虚拟网络将连接到一起，而无需使用虚拟专用网络 (VPN) 设备。 使用网络对等互连可以快速连接虚拟网络并定义整个 Azure 环境中的流量流。
+
+有关对等互连的详细信息，请参阅 [Azure 虚拟网络对等互连概述][peering-overview]。
 
 若要将某个虚拟网络对等互连到托管域虚拟网络，请完成以下步骤：
 
@@ -121,7 +129,7 @@ ms.locfileid: "84733800"
 
 ### <a name="configure-dns-servers-in-the-peered-virtual-network"></a>在对等互连的虚拟网络中配置 DNS 服务器
 
-要使对等互连虚拟网络中的 VM 和应用程序能够成功地与托管域通信，必须更新 DNS 设置。 必须将 Azure AD DS 域控制器的 IP 地址配置为对等互连虚拟网络上的 DNS 服务器。 可通过两种方式将域控制器配置为对等互连虚拟网络的 DNS 服务器：
+要使对等互连虚拟网络中的 VM 和应用程序能够成功地与托管域通信，必须更新 DNS 设置。 必须将 Azure AD DS 域控制器的 IP 地址配置为对等互联虚拟网络上的 DNS 服务器。 可通过两种方式将域控制器配置为对等互连虚拟网络的 DNS 服务器：
 
 * 将 Azure 虚拟网络 DNS 服务器配置为使用 Azure AD DS 域控制器。
 * 将对等互连虚拟网络中使用的现有 DNS 服务器配置为使用条件 DNS 转发向托管域定向查询。 这些步骤根据所用的现有 DNS 服务器而异。
@@ -159,3 +167,4 @@ ms.locfileid: "84733800"
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
 [peering-overview]: ../virtual-network/virtual-network-peering-overview.md
+[network-considerations]: network-considerations.md

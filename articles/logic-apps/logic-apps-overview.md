@@ -3,16 +3,16 @@ title: 自动执行企业集成任务
 description: 了解如何使用 Azure 逻辑应用以最少的代码自动执行集成应用、数据、服务和系统的工作流，以实现企业集成。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 789ddf39e4493d11d63a07f2341ab36ac161f32d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 08b3863ac9a03cda2659cf4934b781eeb9330e17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659601"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563817"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概述 - 什么是 Azure 逻辑应用？
 
@@ -32,7 +32,7 @@ ms.locfileid: "84659601"
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-## <a name="how-does-logic-apps-work"></a>逻辑应用的工作原理 
+## <a name="how-do-logic-apps-work"></a>逻辑应用的工作原理 
 
 每个逻辑应用工作流都从触发器开始，在发生特定事件或新的可用数据符合特定条件的情况下触发。 逻辑应用中的连接器提供的许多触发器都包含基本的计划功能，方便你设置工作负荷的运行频率。 对于更复杂的计划或高级重复周期，你可以使用重复触发器作为任何工作流的第一步。 详细了解[基于计划的工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "84659601"
 
 可以使用逻辑应用设计器直观地生成逻辑应用。该设计器可通过浏览器在 Azure 门户中获取，也可在 Visual Studio 中获取。 若要获取更多的自定义逻辑应用，可以使用“代码视图”编辑器以 JavaScript 对象表示法 (JSON) 创建或编辑逻辑应用定义。 也可对选定的任务使用 Azure PowerShell 命令和 Azure 资源管理器模板。 逻辑应用部署和运行在 Azure 云中。 如需更详细的介绍，请观看此视频：[使用 Azure Enterprise Integration Services 大规模运行云应用](https://channel9.msdn.com/Events/Connect/2017/T119/)
 
-## <a name="why-use-logic-apps"></a>为什么使用逻辑应用？
+## <a name="why-use-logic-apps"></a>使用逻辑应用的原因
 
 随着企业逐渐转向数字化，逻辑应用应运而生。它可以提供预生成的 API 作为 Microsoft 托管的连接器，从而可以更轻松快捷地连接旧系统和新式、前沿的系统。 因此，你可以专注于应用的业务逻辑和功能， 不需担心应用的生成、托管、缩放、管理、维护和监视。 逻辑应用为你解决这一切。 另外，只需根据使用情况付费，具体取决于使用量[定价模型](../logic-apps/logic-apps-pricing.md)。
 
