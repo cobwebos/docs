@@ -103,6 +103,8 @@
       href: howto-import-export-data.md
     - name: 将事件路由到自定义终结点
       href: howto-app-configuration-event.md
+    - name: 自动备份配置存储
+      href: howto-backup-config-store.md
     - name: 最佳做法
       href: howto-best-practices.md
 - name: 参考

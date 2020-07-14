@@ -8,19 +8,20 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ed1a7cacc6c40cb12976c8703164d46e0dc0458
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844388"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202376"
 ---
 # <a name="coarse-relocalization"></a>粗略重新局部化
 
 粗 relocalization 是提供问题初始答案的一项功能：我的*设备现在的位置/我应该观察哪些内容？* 响应并不精确，但其形式如下：*你接近这些定位点，尝试查找其中一个*。
 
-通过将各种设备上的传感器读数与创建和查询定位点相关联，来 relocalization。 对于户外方案，传感器数据通常是设备的 GPS （全球定位系统）位置。 当 GPS 不可用或不可靠时（例如室内），传感器数据由 WiFi 接入点和蓝牙信标在范围内。 所有收集的传感器数据都有助于维护空间索引。 Azure 空间锚点使用此空间来快速确定设备约100米以内的锚。
+通过将各种设备上的传感器读数与创建和查询定位点相关联，来 relocalization。 对于户外方案，传感器数据通常是 (全球定位系统设备的) 位置。 如果 GPS 不可用或不可靠 (如室内) ，则传感器数据包括 WiFi 接入点和范围内的蓝牙信标。 所有收集的传感器数据都有助于维护空间索引。 Azure 空间锚点使用此空间来快速确定设备约100米以内的锚。
 
-通过粗糙 relocalization 启用的定位点的快速查找可简化应用程序的开发，这些应用程序是由全球规模的集合（例如，百万个异地分散的）定位点支持的。 定位点管理的复杂性全部处于隐藏状态，从而使你可以更多地关注你的出色应用程序逻辑。 所有锚点都由 Azure 空间锚记在幕后完成。
+通过粗糙 relocalization 启用的定位点的快速查找可简化应用程序的开发， (例如，百万个异地分散) 定位点的全球规模集合支持。 定位点管理的复杂性全部处于隐藏状态，从而使你可以更多地关注你的出色应用程序逻辑。 所有锚点都由 Azure 空间锚记在幕后完成。
 
 ## <a name="collected-sensor-data"></a>收集的传感器数据
 
@@ -119,13 +120,11 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 接下来，需要确定要用于粗糙 relocalization 的传感器。 此决定特定于正在开发的应用程序，但下表中的建议应能为您带来很好的起点：
 
-
-|             | 室内 | 室外 |
-|-------------|---------|----------|
-| GPS         | 关 | 开 |
-| WLAN        | 开 | 启用（可选） |
-| BLE 信标 | 开启（可选，请参阅下文） | 关 |
-
+|                 | 室内 | 室外 |
+|-----------------|---------|----------|
+| **GPS**         | 禁用 | 启用 |
+| **Wlan**        | 启用 |  (可选)  |
+| **BLE 信标** |  (带有注意事项的可选)  | 禁用 |
 
 ### <a name="enabling-gps"></a>启用 GPS
 
@@ -176,8 +175,8 @@ sensors.GeoLocationEnabled(true);
 
 在应用程序中使用 GPS 时，请记住，硬件提供的读数通常是：
 
-* 异步和低频率（小于 1 Hz）。
-* 不可靠/干扰性（平均 7-m 标准偏差）。
+* 异步和低频率 (小于 1 Hz) 。
+* ) 平均 7-m 标准偏差 (不可靠/有噪音。
 
 通常情况下，设备 OS 和 Azure 空间锚，会对原始 GPS 信号进行一些筛选和推断，以尝试缓解这些问题。 这一额外处理需要额外的时间来实现聚合，因此，为获得最佳结果，应尝试执行以下操作：
 
@@ -362,14 +361,14 @@ sensors.WifiEnabled(true);
 
 在应用程序中使用 WiFi 时，请记住，硬件提供的读数通常是：
 
-* 异步和低频率（小于 0.1 Hz）。
+*  (低于 0.1 Hz) 的异步和低频率。
 * 在 OS 级别可能会受到限制。
-* 不可靠/干扰（平均为 3-dBm 标准偏差）。
+* ) 平均 3-dBm 标准偏差 (不可靠/有噪音。
 
 Azure 空间锚点将在会话期间尝试生成经过筛选的 WiFi 信号强度映射，以尝试缓解这些问题。 为获得最佳结果，应尝试执行以下操作：
 
 * 在放置第一个定位点之前，请先创建会话。
-* 尽可能长时间保持会话活动状态（即，在一个会话中创建所有锚和查询）。
+* 尽可能长时间保持会话活动 (即，在一个会话中创建所有定位点和查询) 。
 
 ### <a name="enabling-bluetooth-beacons"></a>启用 Bluetooth 信标
 
@@ -637,7 +636,7 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 ## <a name="expected-results"></a>预期结果
 
-消费者级 GPS 设备通常非常不精确。 按[Zandenbergen 和 Barbeau （2011）][6]进行的调查报告：移动电话的中值的中值为约7米，要忽略的值非常大！ 为了应对这些测量错误，服务将定位点视为 GPS 空间中的概率分布。 因此，定位点现在是最有可能的空间区域（即，具有超过95% 的置信度）包含其真正的未知 GPS 位置。
+消费者级 GPS 设备通常非常不精确。 按[Zandenbergen 和 Barbeau (2011) ][6]进行的调查报告，使用辅助 gps 将移动电话的中值的准确性 (gps) 约为7米，要忽略的值非常大！ 为了应对这些测量错误，服务将定位点视为 GPS 空间中的概率分布。 因此，定位点现在是最有可能 (的空间区域，超过95% 的置信度) 包含其真实的未知 GPS 位置。
 
 用 GPS 进行查询时，会应用相同的推理。 设备在其真正的未知 GPS 位置附近表示为另一个空间置信区。 发现附近的定位点可转换为仅查找置信区*近近*于设备置信区的定位点，如下图所示：
 
@@ -647,7 +646,7 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 下表针对每种传感器类型估算了预期的搜索空间：
 
-| 传感器      | 搜索空间半径（约为） | 详细信息 |
+| 传感器      | 搜索空间 radius (约 )  | 详细信息 |
 |-------------|:-------:|---------|
 | GPS         | 20 m-30 m | 由其他因素的 GPS 不确定性决定。 报告的数字是使用-GPS 的移动电话的中间 GPS 准确性估算，这是7米。 |
 | WLAN        | 50 m-100 m | 由无线访问点的范围确定。 取决于频率、发送器强度、物理障碍物、干扰等等。 |
@@ -657,12 +656,11 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 下表总结了在每个受支持的平台上收集的传感器数据，以及任何特定于平台的警告：
 
-
-|             | HoloLens | Android | iOS |
-|-------------|----------|---------|-----|
-| GPS         | 不适用 | 支持通过[LocationManager][3] API （GPS 和网络） | 通过[CLLocationManager][4] api 支持 |
-| WLAN        | 支持，每3秒约扫描一次 | 。 从 API 级别28开始，每隔2分钟就会将 WiFi 扫描限制为4次调用。 可以从 Android 10 中禁用 "开发人员设置" 菜单中的限制。 有关详细信息，请参阅[Android 文档][5]。 | 不适用-无公共 API |
-| BLE 信标 | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] |
+|                 | HoloLens | Android | iOS |
+|-----------------|----------|---------|-----|
+| **GPS**         | 空值 | 通过[LocationManager][3] api 支持 (GPS 和网络)  | 通过[CLLocationManager][4] api 支持 |
+| **Wlan**        | 支持，每3秒约扫描一次 | 。 从 API 级别28开始，每隔2分钟就会将 WiFi 扫描限制为4次调用。 可以从 Android 10 中禁用 "开发人员设置" 菜单中的限制。 有关详细信息，请参阅[Android 文档][5]。 | 不适用-无公共 API |
+| **BLE 信标** | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] |
 
 ## <a name="next-steps"></a>后续步骤
 

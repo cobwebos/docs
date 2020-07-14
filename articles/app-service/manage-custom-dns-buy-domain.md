@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535700"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220714"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -78,11 +78,11 @@ ms.locfileid: "81535700"
 ### <a name="launch-buy-domains"></a>启动“购买域”
 在“应用服务”选项卡中，单击应用的名称，选择“设置”，并选择“自定义域”************
    
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![显示突出显示自定义域的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 在“自定义域”**** 页中，单击“购买域”****。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
+![显示 "购买域" 突出显示的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
 > 如果看不到“应用服务域”**** 部分，则需要移除 Azure 帐户上的支出限制（请参阅[先决条件](#prerequisites)）。
@@ -93,7 +93,7 @@ ms.locfileid: "81535700"
 
 在“应用服务域”页上的“搜索域”框中，键入要购买的域名并按 `Enter`。******** 文本框的正下方会显示建议的可用域。 选择要购买的一个或多个域。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+![显示 "搜索域搜索" 框的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
 > 应用服务域支持以下[顶级域](https://wikipedia.org/wiki/Top-level_domain)：com__、net__、co.uk__、org__、nl__、in__、biz__、org.uk__ 和 co.in__。
@@ -122,19 +122,19 @@ ms.locfileid: "81535700"
 
 返回“应用服务域”页，单击“确定”。******** 操作正在进行时，会显示以下通知：
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
+![显示正在进行验证的消息的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
+![屏幕截图，显示购买成功的通知。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
 ### <a name="test-the-hostnames"></a>测试主机名
 
 如果已将默认主机名分配到应用，则每个选定的主机名还会出现对应的成功通知。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![显示每个所选主机名的成功通知的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 此外，“自定义域”**** 页上的“自定义主机名”**** 部分也会显示选定的主机名。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+![屏幕截图，显示在 "自定义域" 页的 "自定义主机名" 部分中选择的主机名。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
 > 你的自定义域的 "**不安全**" 标签意味着尚未绑定到 TLS/SSL 证书，并且从浏览器到自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要配置 TLS 绑定，请参阅[在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
@@ -154,11 +154,11 @@ ms.locfileid: "81535700"
 ### <a name="launch-add-hostname"></a>启动“添加主机名”
 在“应用服务”页中，选择要将主机名分配到的应用的名称，选择“设置”，并选择“自定义域”************。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![显示突出显示自定义域的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 确保购买的域已列在“应用服务域”部分中，但不要选择它。**** 
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![显示 "应用服务域" 部分中购买的域的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
 > 同一订阅中的所有应用服务域显示在应用的“自定义域”页中****。 如果域在应用的订阅中，但应用的“自定义域”页中未显示该域，请尝试重新打开“自定义域”页或刷新网页********。 另外，请通过 Azure 门户顶部的通知铃铛来查看进度或创建失败结果。
@@ -180,14 +180,14 @@ ms.locfileid: "81535700"
 
 完成该操作后，会看到所分配主机名的成功通知。  
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![显示分配的主机名的成功通知的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>关闭“添加主机名”
 在“添加主机名”页中，根据需要将任何其他主机名分配到应用****。 完成后，关闭“添加主机名”页。****
 
 现在，应用的“自定义域”页中应会显示新分配的主机名。****
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
+![屏幕截图，显示应用的 "自定义域" 页中新分配的主机名。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
 ### <a name="test-the-hostnames"></a>测试主机名
 
@@ -201,15 +201,15 @@ ms.locfileid: "81535700"
 
 在 "**应用服务**" 选项卡中，单击应用的名称，选择 "**设置**"，然后选择 "**自定义域**"。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![显示突出显示自定义域的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 在“应用服务域”**** 部分，选择要配置的域。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![显示 "应用服务域" 部分中购买的域的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 从域的左侧导航窗格，选择“域续订”****。 若要停止自动续订域，请选择“关闭”****，然后“保存”****。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+![显示自动续订你的域的选项的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
 若要手动续订域，选择“续订域”****。 但是，此按钮在[域过期之前90天内](#when-domain-expires)处于非活动状态。
 
@@ -221,7 +221,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 * 如果禁用自动续订：在域过期之前90天，将向你发送续订通知电子邮件，并在门户中激活 "**续订域**" 按钮。
 * 如果启用自动续订：在你的域到期日期之后的那一日，Azure 将尝试为你的域名续订付费。
-* 如果在自动续订期间出现错误（例如，你的卡已过期），或者如果禁用自动续订，并且你允许域过期，则 Azure 会通知你域过期，并使你的域名过期。 你可以[手动续订](#renew-the-domain)你的域。
+* 如果在自动续订期间出现错误 (例如，文件上的卡已过期) ，或者禁用了自动续订，并且你允许域过期，则 Azure 会通知你域过期，并使你的域名过期。 你可以[手动续订](#renew-the-domain)你的域。
 * 在过期后的第4天和第12天，Azure 会向你发送其他通知电子邮件。 你可以[手动续订](#renew-the-domain)你的域。
 * 在过期后的第19天，你的域仍保持不变，但会收取兑换费。 你可以致电客户支持人员续订你的域名，但需遵守任何适用的续订和兑换费用。
 * 在过期后的第25天，Azure 将使用域名行业拍卖服务使你的域与拍卖联系。 你可以致电客户支持人员续订你的域名，但需遵守任何适用的续订和兑换费用。
@@ -237,7 +237,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 在 Azure 门户中，从左侧菜单中选择 "**所有服务**" "  >  **应用服务域**"。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![显示应用服务域访问位置的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 选择要管理的域。 
 
@@ -245,7 +245,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 在域的左侧菜单中，选择“DNS 区域”。****
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
+![显示 DNS 区域选择位置的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
 此操作会在 Azure DNS 中打开应用服务域的[“DNS 区域”](../dns/dns-zones-records.md)页。 有关如何编辑 DNS 记录的信息，请参阅[如何在 Azure 门户中管理 DNS 区域](../dns/dns-operations-dnszones-portal.md)。
 
@@ -257,7 +257,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 在 Azure 门户中，从左侧菜单中选择 "**所有服务**" "  >  **应用服务域**"。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![显示应用服务域访问位置的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 选择要取消或删除的域。 
 
@@ -265,13 +265,13 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 在域的左侧菜单中，选择“主机名绑定”。**** 此处列出了所有 Azure 服务的主机名绑定。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+![显示 "主机名绑定" 页的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
 只有在删除所有主机名绑定之后，才能删除应用服务域。
 
 通过**选择**  >  "删除每个主机名"**删除**。 删除所有绑定后，选择“保存”。****
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
+![显示要删除主机名绑定的位置的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>取消或删除
 
@@ -279,7 +279,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 如果所购买域的取消期限未过，请选择“取消购买”。**** 否则，请参阅“删除”按钮。**** 若要删除该域且不想要获得退款，请选择“删除”。****
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
+![显示在何处删除或取消购买的域的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
 选择“是”**** 以确认操作。
 

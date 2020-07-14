@@ -30,7 +30,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 对设备进行排序之前，请先完成 Data Box 服务和设备的以下配置先决条件。
 

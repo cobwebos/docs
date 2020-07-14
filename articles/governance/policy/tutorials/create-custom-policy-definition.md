@@ -3,12 +3,12 @@ title: 教程：创建自定义策略定义
 description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888142"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044611"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -53,7 +53,7 @@ ms.locfileid: "84888142"
 可通过多种方式确定 Azure 资源的属性。 本教程将介绍其中的每种方式：
 
 - 适用于 VS Code 的 Azure Policy 扩展
-- 资源管理器模板
+- Azure 资源管理器模板（ARM 模板）
   - 导出现有资源
   - 创建体验
   - 快速入门模板 (GitHub)
@@ -64,9 +64,9 @@ ms.locfileid: "84888142"
 
 [VS Code 扩展](../how-to/extension-for-vscode.md#search-for-and-view-resources)可用于浏览环境中的资源和查看每个资源上的资源管理器属性。
 
-### <a name="resource-manager-templates"></a>资源管理器模板
+### <a name="arm-templates"></a>ARM 模板
 
-可通过多种方式查找包含所要管理的属性的[资源管理器模板](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md)。
+可通过多种方式查找包含所要管理的属性的[资源管理器模板](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)。
 
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 
@@ -144,12 +144,11 @@ ms.locfileid: "84888142"
 
 #### <a name="quickstart-templates-on-github"></a>GitHub 上的快速入门模板
 
-GitHub 上的 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)包含数百个针对不同资源生成的资源管理器模板。 使用这些模板能够十分方便地查找所需的资源属性。 某些属性似乎是我们所要查找的属性，但它们控制了其他某个对象。
+GitHub 上的 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates)包含数百个针对不同资源生成的 ARM 模板。 使用这些模板能够十分方便地查找所需的资源属性。 某些属性似乎是我们所要查找的属性，但它们控制了其他某个对象。
 
 #### <a name="resource-reference-docs"></a>资源参考文档
 
-若要验证 **supportsHttpsTrafficOnly** 是否为正确的属性，请在存储提供商网站上查看[存储帐户资源](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的资源管理器模板参考。
-属性对象包含有效参数的列表。 选择 [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 链接会显示可接受的属性表。 若要满足业务要求，**supportsHttpsTrafficOnly** 必须存在，并且说明必须与所要查找的内容相匹配。
+若要验证 supportsHttpsTrafficOnly 是否为正确的属性，请在存储提供商网站上查看[存储帐户资源](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的 ARM 模板参考。 属性对象包含有效参数的列表。 选择 [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 链接会显示可接受的属性表。 若要满足业务要求，**supportsHttpsTrafficOnly** 必须存在，并且说明必须与所要查找的内容相匹配。
 
 ### <a name="azure-resource-explorer"></a>Azure 资源浏览器
 
@@ -219,7 +218,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-结果类似于在资源管理器模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还可通过_投影_ _别名_数组来包含[别名](../concepts/definition-structure.md#aliases)详细信息：
+结果类似于在 ARM 模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还可通过_投影_ _别名_数组来包含[别名](../concepts/definition-structure.md#aliases)详细信息：
 
 ```kusto
 Resources

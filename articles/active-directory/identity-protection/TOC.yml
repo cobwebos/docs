@@ -44,6 +44,14 @@
       href: troubleshooting-identity-protection-faq.md
 - name: 参考
   items:
+    - name: 图形 API
+      items:
+        - name: riskDetection API
+          href: /graph/api/resources/riskdetection?view=graph-rest-v1.0
+        - name: riskyUsers API
+          href: /graph/api/resources/riskyuser?view=graph-rest-v1.0
+        - name: signIn API
+          href: /graph/api/resources/signin?view=graph-rest-v1.0
     - name: 术语表
       href: reference-identity-protection-glossary.md
 - name: 资源

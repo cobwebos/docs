@@ -159,6 +159,8 @@
           href: streaming-policy-concept.md
         - name: 内容密钥策略
           href: content-key-policy-concept.md
+        - name: 使用 Azure AD 进行内容保护
+          href: azure-ad-content-protection.md
     - name: 监视
       items:
         - name: 将事件与事件网格配合使用

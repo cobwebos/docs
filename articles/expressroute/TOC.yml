@@ -40,6 +40,8 @@
       items:
         - name: 关于线路和对等互连
           href: expressroute-circuit-peerings.md
+        - name: 关于升级线路带宽
+          href: about-upgrade-circuit-bandwidth.md
         - name: 将线路从经典部署转移到 Resource Manager 部署
           href: expressroute-move.md
     - name: 基于 ExpressRoute 的 BFD

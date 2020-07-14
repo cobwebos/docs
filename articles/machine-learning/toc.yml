@@ -443,6 +443,9 @@
     - name: 管理资源配额
       displayName: limits
       href: how-to-manage-quotas.md
+    - name: 管理资源 VS Code
+      displayName: 'vscode,resources'
+      href: how-to-manage-resources-vscode.md
     - name: 导出和删除数据
       displayName: GDPR
       href: how-to-export-delete-data.md
@@ -495,3 +498,6 @@
     - name: 设计辅助功能
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
+    - name: 精挑细选的环境
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md

@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 07/07/2020
-  ms.openlocfilehash: f36190edbdbfe4840f9f03d612d6fe2353ad5f5b
-  ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+  ms.openlocfilehash: 0cf2dbdf69ec2cd7af7cf23816db5fb03dacd76e
+  ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86134073"
+  ms.locfileid: "86143718"
 conceptualContent:
   title: 合规性产品
   items:
@@ -375,13 +375,15 @@ additionalContent:
     - title: 国家/地区隐私和符合性指南
       links:
       - text: 澳大利亚安全和隐私要求
-        url: https://gallery.technet.microsoft.com/Azure-Compliance-in-the-0c790495
+        url: https://azure.microsoft.com/resources/microsoft-azure-compliance-and-australian-security-and-privacy-requirements/
       - text: 新加坡安全和隐私要求
-        url: https://gallery.technet.microsoft.com/Azure-Compliance-in-the-ced8dbf9
+        url: https://azure.microsoft.com/resources/microsoft-azure-compliance-in-the-context-of-singapore/
+      - text: 日本安全和隐私要求
+        url: https://azure.microsoft.com/resources/microsoft-azure-compliance-and-the-japan-security-and-privacy-requirements/
       - text: 马来西亚安全和隐私要求
         url: https://gallery.technet.microsoft.com/Azure-Compliance-in-the-8b936d6a
       - text: 新西兰安全和隐私要求
-        url: https://gallery.technet.microsoft.com/Azure-Compliance-in-the-f19e44c2
+        url: https://azure.microsoft.com/resources/microsoft-azure-compliance-in-the-context-of-new-zealand/
       - text: 为通往欧洲的云之路导航
         url: https://www.microsoft.com/en-ie/lcc_cloud/default.aspx
       - text: 为通往亚洲的云之路导航

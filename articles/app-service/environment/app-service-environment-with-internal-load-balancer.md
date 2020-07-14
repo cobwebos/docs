@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833097"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220807"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配应用服务环境使用内部负载均衡器
 
@@ -54,7 +54,7 @@ ms.locfileid: "85833097"
 7. 提供子域名称（此名称是一个子域，用于此 ASE 中创建的应用）。
 8. 选择“确定”，然后选择“创建”。********
 
-![][1]
+![显示用于创建 ILB ASE 的屏幕。][1]
 
 在“虚拟网络”窗格中有一个“VNet 配置”选项，用于选择“外部 VIP”或“内部 VIP”。 默认为“外部”。 如果将其设置为“外部”，ASE 会使用可通过 Internet 访问的 VIP。 如果选择“内部”，则会在 VNet 中的 IP 地址上对 ASE 配置 ILB。 
 
@@ -70,7 +70,7 @@ ms.locfileid: "85833097"
 5. 选择或创建应用服务计划 (ASP)。 如果创建新的 ASP，请选择 ASE 作为位置并选择希望在其中创建 ASP 的工作线程池。 创建该 ASP 时，请选择 ASE 作为位置并选择工作线程池。 指定应用的名称时，会看到应用名称下面的子域替换为 ASE 的子域。 
 6. 选择“创建”。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。**** 
 
-![][2]
+![演示如何在 Azure 门户中的 ILB ASE 中创建应用。][2]
 
 应用名称下面的子域名称会更新，以反映 ASE 的子域。 
 
@@ -79,11 +79,11 @@ ILB ASE 与非 ILB ASE 稍有不同。 如先前所述，除了管理自己的 D
 
 创建 ASE 之后，你会注意到子域显示指定的子域，且“设置”菜单中有一个名为“ILB 证书”的新项。******** 使用自签名证书创建 ASE，使测试 HTTPS 更加轻松。 门户会告知你需要提供自己的用于 HTTPS 的证书，但这是促使你拥有与子域搭配的证书。 
 
-![][3]
+![显示创建 ASE 时指定的子域。][3]
 
 如果你只是要进行测试，并不知道如何创建证书，可以使用 IIS MMC 控制台应用程序来创建自签名证书。 创建之后，可以将它导出为 .pfx 文件，并在 ILB 证书 UI 中上传。 访问使用自签名证书保护的站点时，浏览器会发出警告，指出正在访问的站点不安全，因为无法验证证书。 如果想避免出现此警告，则需一个与子域匹配、具有浏览器能够识别的信任链，并且已经正确签名的证书。
 
-![][6]
+![演示如何使用 IIS MMC 控制台应用程序来创建自签名证书。][6]
 
 使用自己的证书试用流并测试对 ASE 的 HTTP 和 HTTPS 访问：
 
@@ -98,7 +98,7 @@ ILB ASE 与非 ILB ASE 稍有不同。 如先前所述，除了管理自己的 D
 
 ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 
-![][4]
+![显示 ILB 的 IP 地址在 "属性" 中列出为虚拟 IP 地址。][4]
 
 ## <a name="using-an-ilb-ase"></a>使用 ILB ASE
 #### <a name="network-security-groups"></a>网络安全组
@@ -108,7 +108,7 @@ ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 
 若要配置 NSG，必须知道 Azure 所使用的 IP 地址，以管理 ASE。 如果该 IP 地址发出 Internet 请求，它也会成为 ASE 的出站 IP 地址。 ASE 的出站 IP 地址在 ASE 的生命周期中保持静态。 删除并重新创建 ASE 后，将获得新的 IP 地址。 若要查找此 IP 地址，请转到“设置”->“属性”并查找“出站 IP 地址”。******** 
 
-![][5]
+![显示可在何处找到 ASE 的出站 IP 地址。][5]
 
 #### <a name="general-ilb-ase-management"></a>常规 ILB ASE 管理
 管理 ILB ASE 通常与管理 ASE 大致相同。 必须增加工作线程池来托管更多 ASP 实例，并增加前端服务器来处理增加的 HTTP/HTTPS 流量。 有关管理 ASE 配置的常规信息，请参阅[配置应用服务环境][ASEConfig]。 

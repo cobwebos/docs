@@ -79,6 +79,10 @@
       href: enterprise-state-roaming-group-policy-settings.md
     - name: 企业状态漫游 Windows 设置
       href: enterprise-state-roaming-windows-settings-reference.md
+    - name: 图形 API
+      items:
+        - name: 设备标识 API
+          href: /graph/api/resources/device?view=graph-rest-1.0
 - name: 资源
   items:
     - name: Azure 反馈论坛

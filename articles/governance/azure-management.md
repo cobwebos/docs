@@ -1,16 +1,16 @@
 ---
 title: Azure 管理概述 - Azure 治理
 description: Azure 应用程序和资源管理领域概述及 Azure 管理工具上内容的链接。
-ms.date: 05/22/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828141"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041908"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Azure 中的管理服务概述
+# <a name="what-are-the-azure-management-areas"></a>什么是 Azure 管理区域？
 
 Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure 中部署和维护资源的不同管理领域。
 
@@ -26,7 +26,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 
 ## <a name="monitor"></a>监视
 
-监视是一种数据收集和分析操作，用于审核资源的性能、运行状况及可用性。 有效的监视策略有助于了解组件的运行情况，并通过通知延长正常运行时间。 请阅读监视概述，了解[监视 Azure 应用程序和资源](../monitoring/monitoring-overview.md)中使用的不同服务。
+监视是一种数据收集和分析操作，用于审核资源的性能、运行状况及可用性。 有效的监视策略有助于了解组件的运行情况，并通过通知延长正常运行时间。 请阅读监视概述，了解[监视 Azure 应用程序和资源](../azure-monitor/overview.md)中使用的不同服务。
 
 ## <a name="configure"></a>配置
 
@@ -46,9 +46,16 @@ Azure 中的治理主要是通过两个服务实现的。 [Azure Policy ](./poli
 
 ## <a name="protect"></a>保护
 
-保护是指保持应用程序和数据可用，即使是超出控制范围的中断也是如此。 Azure 中的保护由两个服务提供。 [Azure 备份](../backup/backup-introduction-to-azure-backup.md)提供数据备份和恢复（在云中或本地）。 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 可在发生灾难期间提供业务连续性和即时恢复。
+保护是指保持应用程序和数据可用，即使是超出控制范围的中断也是如此。 Azure 中的保护由两个服务提供。 [Azure 备份](../backup/backup-overview.md)提供数据备份和恢复（在云中或本地）。 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 可在发生灾难期间提供业务连续性和即时恢复。
 
 ## <a name="migrate"></a>迁移
 
 迁移指的是将当前在本地运行的工作负荷转换到 Azure 云中。
-[Azure Migrate](../migrate/migrate-overview.md) 是一项服务，可帮助评估本地虚拟机到 Azure 的迁移适用性。 Azure Site Recovery [从本地](../site-recovery/migrate-tutorial-on-premises-azure.md)或[从 Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) 迁移虚拟机。 [Azure 数据库迁移](../dms/dms-overview.md)会帮助你将数据库源迁移到 Azure 数据平台。
+[Azure Migrate](../migrate/migrate-services-overview.md) 是一项服务，可帮助评估本地虚拟机到 Azure 的迁移适用性。 Azure Site Recovery [从本地](../site-recovery/migrate-tutorial-on-premises-azure.md)或[从 Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) 迁移虚拟机。 [Azure 数据库迁移](../dms/dms-overview.md)会帮助你将数据库源迁移到 Azure 数据平台。
+
+## <a name="next-steps"></a>后续步骤
+
+若要了解有关 Azure 治理的详细信息，请参阅以下文章：
+
+- 请参阅 [Azure 治理中心](./index.yml)。
+- 请参阅[适用于 Azure 的云采用框架中的治理](/azure/cloud-adoption-framework/govern/)

@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 6c395d7e2be151e97808fa9601ff6001801d243b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771302"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110345"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>使用“服务器评估”功能评估 VMware VM
 
@@ -42,25 +42,25 @@ ms.locfileid: "84771302"
 按如下所述设置新的 Azure Migrate 项目：
 
 1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。
-1. 在“服务”下选择“Azure Migrate”。 
-1. 在“概览”中的“发现、评估和迁移服务器”下，选择“评估和迁移服务器”。  
+2. 在“服务”下选择“Azure Migrate”。 
+3. 在“概览”中的“发现、评估和迁移服务器”下，选择“评估和迁移服务器”。  
 
    ![用于评估和迁移服务器的按钮](./media/tutorial-assess-vmware/assess-migrate.png)
 
-1. 在“入门”中，选择“添加工具”。 
-1. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。     
-1. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
+4. 在“入门”中，选择“添加工具”。 
+5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。     
+6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
    ![用于项目名称和区域的框](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. 选择“**下一页**”。
-1. 在“选择评估工具”中，选择“Azure Migrate: 服务器评估” > “下一步”。
+7. 选择“**下一页**”。
+8. 在“选择评估工具”中，选择“Azure Migrate: 服务器评估” > “下一步”。
 
    ![用于服务器评估工具的选项](./media/tutorial-assess-vmware/assessment-tool.png)
 
-1. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。  
-1. 在“查看 + 添加工具”中查看设置，然后选择“添加工具”。 
-1. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。
+9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。  
+10. 在“查看 + 添加工具”中查看设置，然后选择“添加工具”。 
+11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
 
@@ -75,8 +75,8 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 ### <a name="download-the-ova-template"></a>下载 OVA 模板
 
 1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，选择“发现”。
-1. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 VMWare vSphere 虚拟机监控程序”。  
-1. 选择“下载”以下载 OVA 模板文件。
+2. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 VMWare vSphere 虚拟机监控程序”。  
+3. 选择“下载”以下载 OVA 模板文件。
 
    ![用于下载 OVA 文件的选项](./media/tutorial-assess-vmware/download-ova.png)
 
@@ -114,13 +114,13 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 
    ![用于部署 OVF 模板的菜单命令](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-1. 在“部署 OVF 模板向导”>“源”中，指定 OVA 文件的位置。
-1. 在“名称”和“位置”中，为 VM 指定一个易记名称。  选择要在其中托管 VM 的库存对象。
-1. 在“主机/群集”中，指定要在其上运行 VM 的主机或群集。
-1. 在“存储”中，指定 VM 的存储目标。
-1. 在“磁盘格式”中，指定磁盘类型和大小。
-1. 在“网络映射”中，指定 VM 要连接到的网络。 该网络需要与 Internet 建立连接，这样才能向 Azure Migrate 服务器评估发送元数据。
-1. 检查并确认设置，然后选择“完成”。
+2. 在“部署 OVF 模板向导”>“源”中，指定 OVA 文件的位置。
+3. 在“名称”和“位置”中，为 VM 指定一个易记名称。  选择要在其中托管 VM 的库存对象。
+4. 在“主机/群集”中，指定要在其上运行 VM 的主机或群集。
+5. 在“存储”中，指定 VM 的存储目标。
+6. 在“磁盘格式”中，指定磁盘类型和大小。
+7. 在“网络映射”中，指定 VM 要连接到的网络。 该网络需要与 Internet 建立连接，这样才能向 Azure Migrate 服务器评估发送元数据。
+8. 检查并确认设置，然后选择“完成”。
 
 ## <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
@@ -134,8 +134,8 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 > 如果使用 [PowerShell 脚本](deploy-appliance-script.md)而不是下载的 OVA 设置设备，则此过程中的前两个步骤不相关。
 
 1. 在 vSphere 客户端控制台中右键单击“VM”，然后选择“打开控制台”。
-1. 提供设备的语言、时区和密码。
-1. 在可连接到该 VM 的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL：**https://*设备名称或 IP 地址*:** 44368。
+2. 提供设备的语言、时区和密码。
+3. 在可连接到该 VM 的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL：**https://*设备名称或 IP 地址*:** 44368。
 
    或者，可以在设备桌面上选择应用快捷方式打开该应用。
 1. 在 Web 应用 >“设置必备组件”中执行以下操作：
@@ -153,13 +153,13 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
 1. 选择“登录”。 如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
-1. 在新选项卡上，使用 Azure 用户名和密码登录。
+2. 在新选项卡上，使用 Azure 用户名和密码登录。
    
    不支持使用 PIN 登录。
-1. 成功登录后，返回到 Web 应用。
-1. 选择在其中创建了 Azure Migrate 项目的订阅，然后选择项目。
-1. 指定设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
-1. 选择“注册”。
+3. 成功登录后，返回到 Web 应用。
+4. 选择在其中创建了 Azure Migrate 项目的订阅，然后选择项目。
+5. 指定设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
+6. 选择“注册”。
 
 
 ## <a name="start-continuous-discovery"></a>启动持续发现
@@ -191,39 +191,53 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 发现完成后，可以验证 VM 是否出现在 Azure 门户中：
 
 1. 打开 Azure Migrate 仪表板。
-1. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”中，选择显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”中，选择显示了**已发现服务器**计数的图标。
 
 ## <a name="set-up-an-assessment"></a>设置评估
 
 可以使用 Azure Migrate 服务器评估创建两种类型的评估：
 
-**评估** | **详细信息** | **数据**
+**评估类型** | **详细信息**
+--- | --- 
+**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md) 和[物理服务器](how-to-set-up-appliance-physical.md)。 [了解详细信息](concepts-assessment-calculation.md)
+**Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
+
+服务器评估提供两个调整大小标准选项：
+
+**调整大小标准** | **详细信息** | **数据**
 --- | --- | ---
-**基于性能** | 基于收集的性能数据的评估 | **建议的 VM 大小**：基于 CPU 和内存利用率数据。<br/><br/> **建议的磁盘类型(标准或高级托管磁盘)** ：基于本地磁盘的 IOPS 和吞吐量。
-**本地** | 基于本地大小设置进行的评估 | **建议的 VM 大小**：基于本地 VM 大小。<br/><br> **建议的磁盘类型**：基于为评估选择的存储类型设置。
+**基于性能** | 基于收集的性能数据提出建议的评估 | **Azure VM 评估**：VM 大小建议基于 CPU 和内存利用率数据。<br/><br/> 磁盘类型建议（标准 HDD/SSD 或高级托管磁盘）基于本地磁盘的 IOPS 和吞吐量。<br/><br/> **Azure VMware 解决方案 (AVS) 评估**：AVS 节点建议基于 CPU 和内存利用率数据。
+**按本地原样** | 不使用性能数据来提出建议的评估。 | **Azure VM 评估**：VM 大小建议基于本地 VM 大小<br/><br> 建议的磁盘类型基于在存储类型设置中选择要评估的内容。<br/><br/> **Azure VMware 解决方案 (AVS) 评估**：AVS 节点建议基于本地 VM 大小。
 
 ## <a name="run-an-assessment"></a>运行评估
 
-按如下述运行评估：
+运行 Azure VM 评估，如下所述：
 
 1. 查看有关创建评估的[最佳做法](best-practices-assessment.md)。
-1. 在“服务器”选项卡上的“Azure Migrate: 服务器评估”磁贴中，选择“评估”。
+2. 在“服务器”选项卡上的“Azure Migrate: 服务器评估”磁贴中，选择“评估”。
 
    ![“评估”按钮的位置](./media/tutorial-assess-vmware/assess.png)
 
-1. 在“评估服务器”中，指定评估的名称。
-1. 选择“全部查看”，然后查看评估属性。
+3. 在“评估服务器”中，将评估类型选择为“Azure VM”，选择发现源并指定评估名称。
+
+    ![评估基本信息](./media/tutorial-assess-vmware/assess-servers-azurevm.png)
+ 
+4. 选择“全部查看”，然后查看评估属性。
 
    ![评估属性](./media/tutorial-assess-vmware/view-all.png)
 
-1. 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
-1. 在“将计算机添加到组”中，选择要添加到该组的 VM。
-1. 选择“创建评估”以创建该组并运行评估。
+5. 单击“下一步”以转到“选择要评估的计算机” 。 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
+6. 在“将计算机添加到组”中，选择要添加到该组的 VM。
+7. 单击“下一步”以转到“查看 + 创建评估”以查看评估详细信息 。
+8. 选择“创建评估”以创建该组并运行评估。
 
    ![评估服务器](./media/tutorial-assess-vmware/assessment-create.png)
 
-1. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估” > “评估”中查看它。
-1. 选择“导出评估”，将评估下载为 Excel 文件。
+8. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估” > “评估”中查看它。
+9. 选择“导出评估”，将评估下载为 Excel 文件。
+
+如果要运行 Azure VMware 解决方案 (AVS) 评估，请按照[此处](how-to-create-azure-vmware-solution-assessment.md)所述步骤进行操作。
+
 
 ## <a name="review-an-assessment"></a>查看评估
 
@@ -236,20 +250,20 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 若要查看评估，请执行以下操作：
 
 1. 在“迁移目标” > “服务器”中，选择“Azure Migrate:   服务器评估”中的“评估”。
-1. 在“评估”中，选择某项评估将其打开。
+2. 在“评估”中，选择某项评估将其打开。
 
    ![评估摘要](./media/tutorial-assess-vmware/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>查看 Azure 迁移就绪性
 
 1. 在“Azure 迁移就绪性”中，验证 VM 是否已准备好迁移到 Azure。
-1. 查看 VM 状态：
+2. 查看 VM 状态：
     - **已做好 Azure 迁移准备**：在 Azure Migrate 针对评估中的 VM 建议 VM 大小并显示估算成本时使用。
     - **准备就绪但存在以下状况**：显示问题和建议的补救措施。
     - **尚未做好 Azure 迁移准备**：显示问题和建议的补救措施。
     - **就绪性未知**：当数据可用性问题导致 Azure Migrate 无法评估就绪性时使用。
 
-1. 选择某种“Azure 迁移就绪性”状态。 可以查看 VM 就绪详情。 还可以深入查看 VM 详细信息，包括计算、存储和网络设置。
+3. 选择某种“Azure 迁移就绪性”状态。 可以查看 VM 就绪详情。 还可以深入查看 VM 详细信息，包括计算、存储和网络设置。
 
 ### <a name="review-cost-details"></a>查看成本详细信息
 

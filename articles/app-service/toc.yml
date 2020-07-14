@@ -176,6 +176,8 @@
               href: configure-authentication-provider-microsoft.md
             - name: 使用 Twitter 进行身份验证
               href: configure-authentication-provider-twitter.md
+            - name: 使用 OpenID Connect 提供程序进行身份验证（预览）
+              href: configure-authentication-provider-openid-connect.md
         - name: 高级身份验证
           href: app-service-authentication-how-to.md
         - name: 限制访问

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211385"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042996"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
 
@@ -95,7 +95,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>使用 Azure Powershell 启用日志记录
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>使用 Azure PowerShell 启用日志记录
 
 为了启用 Key Vault 日志记录，我们将使用 **Set-AzDiagnosticSetting** cmdlet 并配合针对新存储帐户和 Key Vault 创建的变量。 还将 **-Enabled** 标志设置为 **$true**，并将类别设置为 **AuditEvent**（Key Vault 日志记录的唯一类别）：
 
@@ -105,15 +105,17 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 输出如下所示：
 
-    StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
-    ServiceBusRuleId   :
-    StorageAccountName :
-        Logs
-        Enabled           : True
-        Category          : AuditEvent
-        RetentionPolicy
-        Enabled : False
-        Days    : 0
+```output
+StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccountContosoKeyVaultLogs
+ServiceBusRuleId   :
+StorageAccountName :
+    Logs
+    Enabled           : True
+    Category          : AuditEvent
+    RetentionPolicy
+    Enabled : False
+    Days    : 0
+```
 
 此输出确认 Key Vault 日志记录现已启用，会将信息保存到存储帐户。
 
@@ -330,5 +332,3 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](developers-guide.md)。
 
 有关 Azure Key Vault 的 Azure PowerShell 1.0 cmdlet 列表，请参阅 [Azure Key Vault cmdlet](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)。
-
-有关使用 Azure Key Vault 进行密钥轮换和日志审核的教程，请参阅[为 Key Vault 设置端到端密钥转换和审核](../secrets/key-rotation-log-monitoring.md)。

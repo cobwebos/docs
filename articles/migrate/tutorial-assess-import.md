@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 98675b0f986ecb78ff122ed052a01d521aac1f6f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342640"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114204"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用导入的数据评估服务器
 
@@ -179,10 +179,21 @@ IP 地址 | 否 | 服务器地址。
 
 可以使用“服务器评估”创建两种类型的评估。
 
-**评估类型** | **详细信息** | **数据**
+
+**评估类型** | **详细信息**
+--- | --- 
+**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md) 和[物理服务器](how-to-set-up-appliance-physical.md)。(concepts-assessment-calculation.md)
+**Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。[了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
+
+### <a name="sizing-criteria"></a>调整大小标准
+
+服务器评估提供两个调整大小标准选项：
+
+**调整大小标准** | **详细信息** | **数据**
 --- | --- | ---
-**基于性能** | 基于指定的性能数据值的评估。 | **建议的 VM 大小**：基于 CPU 和内存利用率数据。<br/><br/> **建议的磁盘类型(标准或高级托管磁盘)** ：基于本地磁盘的每秒输入/输出 (IOPS) 和吞吐量。
-**本地** | 基于本地大小的评估。 | **建议的 VM 大小**：基于指定的服务器大小。<br/><br> **建议的磁盘类型**：基于为评估选择的存储类型设置。
+**基于性能** | 基于收集的性能数据提出建议的评估 | **Azure VM 评估**：VM 大小建议基于 CPU 和内存利用率数据。<br/><br/> 磁盘类型建议（标准 HDD/SSD 或高级托管磁盘）基于本地磁盘的 IOPS 和吞吐量。<br/><br/> **Azure VMware 解决方案 (AVS) 评估**：AVS 节点建议基于 CPU 和内存利用率数据。
+**按本地原样** | 不使用性能数据来提出建议的评估。 | **Azure VM 评估**：VM 大小建议基于本地 VM 大小<br/><br> 建议的磁盘类型基于在存储类型设置中选择要评估的内容。<br/><br/> **Azure VMware 解决方案 (AVS) 评估**：AVS 节点建议基于本地 VM 大小。
+
 
 若要运行评估，请执行以下操作：
 
@@ -191,24 +202,31 @@ IP 地址 | 否 | 服务器地址。
 
     ![评估](./media/tutorial-assess-physical/assess.png)
 
-3. 在“评估服务器”中，指定评估的名称。
+3. 在“评估服务器”中，指定评估名称，并将“评估”类型选择为“Azure VM”（如果要执行 Azure VM 评估）或“Azure VMware 解决方案(AVS)”（如果要执行 AVS 评估）  。
+
+    ![评估基本信息](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
 4. 在“发现源”中，选择“通过导入添加到 Azure Migrate 的计算机”。
+
 5. 选择“全部查看”来查看评估属性。
 
     ![评估属性](./media/tutorial-assess-physical/view-all.png)
 
-6. 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
+6. 单击“下一步”以转到“选择要评估的计算机” 。 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
 7. 在“将计算机添加到组”中，选择要添加到该组的服务器。
-8. 选择“创建评估”来创建组，然后运行评估。
+8. 单击“下一步”以转到“查看 + 创建评估”以查看评估详细信息 。
+9. 单击“创建评估”来创建组，然后运行评估。
 
     ![创建评估](./media/tutorial-assess-physical/assessment-create.png)
 
 9. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估” > “评估”中查看它。
 10. 选择“导出评估”，将评估下载为 Microsoft Excel 文件。
 
-## <a name="review-an-assessment"></a>查看评估
+若要了解有关 Azure VMware 解决方案 (AVS) 评估的更多详细信息，请参阅[此处](how-to-create-azure-vmware-solution-assessment.md)。 
 
-评估描述：
+## <a name="review-an-azure-vm-assessment"></a>查看 Azure VM 评估
+
+Azure VM 评估说明：
 
 - **Azure 迁移就绪性**：服务器是否适合迁移到 Azure。
 - **每月成本估算**：在 Azure 中运行服务器的估算每月计算和存储成本。

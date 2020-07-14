@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 1e725fb483afed0f126248737c2e9121ce823a45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdef11fec93d4ba6254957ad14e0612e2fd05580
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734684"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221351"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
 
-若要自动执行 Azure 虚拟机（Vm）的部署和配置，可以使用资源管理器模板。 这些模板使你可以每次创建一致的部署。 还可以将扩展包含在模板中，以在部署过程中自动配置 VM。 一个有用的扩展将 Vm 加入到域中，该域可与 Azure Active Directory 域服务（Azure AD DS）托管域一起使用。
+若要 (Vm) 自动部署和配置 Azure 虚拟机，可以使用资源管理器模板。 这些模板使你可以每次创建一致的部署。 还可以将扩展包含在模板中，以在部署过程中自动配置 VM。 一个有用的扩展将 Vm 加入到一个域中，该域可与 Azure Active Directory 域服务 (Azure AD DS) 托管域一起使用。
 
 本文说明如何使用资源管理器模板创建 Windows Server VM 并将其加入到 Azure AD DS 托管域。 你还将了解如何将现有 Windows Server VM 加入到 Azure AD DS 域。
 
@@ -40,7 +40,7 @@ ms.locfileid: "84734684"
 
 资源管理器模板使你可以在代码中定义 Azure 基础结构。 所有必需的资源、网络连接或 Vm 的配置都可以在模板中进行定义。 这些模板每次都创建一致的可重现部署，并且可以在进行更改时进行版本控制。 有关详细信息，请参阅[Azure 资源管理器模板概述][template-overview]。
 
-每个资源都是使用 JavaScript 对象表示法（JSON）在模板中定义的。 下面的 JSON 示例使用*virtualMachines/extensions*资源类型来安装 Active Directory 域加入扩展。 使用在部署时指定的参数。 部署扩展后，VM 将联接到指定的托管域。
+每个资源都是使用 JavaScript 对象表示法 (JSON) 在模板中定义的。 下面的 JSON 示例使用*virtualMachines/extensions*资源类型来安装 Active Directory 域加入扩展。 使用在部署时指定的参数。 部署扩展后，VM 将联接到指定的托管域。
 
 ```json
  {
@@ -122,7 +122,7 @@ ms.locfileid: "84734684"
     | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
     | 资源组            | 选择包含现有 VM 的资源组。 |
     | 位置                  | 选择现有 VM 的位置。 |
-    | VM 列表                   | 输入要加入托管域的现有 VM 的逗号分隔列表，例如*myVM1、myVM2*。 |
+    | VM 列表                   | 输入要加入托管域) 的现有 VM (的逗号分隔列表，例如*myVM1、myVM2*。 |
     | 域加入用户名     | 托管域中应用于将 VM 加入托管域的用户帐户，例如 `contosoadmin@aaddscontoso.com` 。 此帐户必须是托管域的一部分。 |
     | 域加入用户密码 | 在上一个设置中指定的用户帐户的密码。 |
     | 可选 OU 路径          | 要在其中添加 VM 的自定义 OU。 如果未指定此参数的值，则会将 VM 添加到默认的*AAD DC 计算机*OU。 |

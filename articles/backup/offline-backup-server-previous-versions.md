@@ -1,16 +1,16 @@
 ---
-title: 脱机备份 Data Protection Manager （DPM）和 Microsoft Azure 备份服务器（MABS）-早期版本
+title: 脱机备份 Data Protection Manager (DPM) 和 Microsoft Azure 备份 Server (MABS) -早期版本
 description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文说明 DPM 和 Azure 备份服务器的脱机备份工作流。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f39e93973deab09eb328eeafcff4e49b326483f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374825"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186939"
 ---
-# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 备份服务器的脱机备份工作流（以前的版本）
+# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 备份服务器 (早期版本的脱机备份工作流) 
 
 >[!IMPORTANT]
 >这些步骤适用于 DPM 2019 RTM 及更早版本以及 MABS v3 RTM 和更早版本。
@@ -44,6 +44,9 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 > * 使用 MARS 代理或 Azure 备份代理备份文件和文件夹。
 > * 使用 DPM 备份所有工作负荷和文件。
 > * 使用 MABS 备份所有工作负荷和文件。
+
+>[!NOTE]
+>Azure CSP 订阅不支持用于 DPM 2019 RTM 和更早版本以及 MABS v3 RTM 和更早版本的脱机种子设定。 仍支持通过网络进行联机备份。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -187,7 +190,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
     | 参数 | 说明 |
     | --- | --- |
     | s：&lt;暂存位置路径&gt; |此项必需的输入用于提供在“启动脱机备份”部分的工作流中所输入的暂存位置的路径。 |
-    | p：&lt;PublishSettingsFile 的路径&gt; |此可选输入用于提供在“启动脱机备份”部分的工作流中所输入的 Azure 发布设置文件的路径。 |
+    | p:&lt;*Path to PublishSettingsFile*&gt; |此可选输入用于提供在“启动脱机备份”部分的工作流中所输入的 Azure 发布设置文件的路径。 |
 
     > [!NOTE]
     > 复制计算机与源计算机不同时，&lt;AzurePublishSettingFile 的路径&gt; 值是必需的。

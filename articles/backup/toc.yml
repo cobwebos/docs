@@ -369,8 +369,10 @@
           href: backup-azure-security-feature.md
         - name: 专用终结点
           href: private-endpoints.md
-        - name: 加密
+        - name: Azure 备份中的加密
           href: backup-encryption.md
+        - name: 使用客户管理的密钥进行加密
+          href: encryption-at-rest-with-cmk.md
         - name: 内置安全控件
           href: backup-security-controls.md
         - name: 安全基线

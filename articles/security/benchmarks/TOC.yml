@@ -39,12 +39,34 @@
       href: ../../application-gateway/security-baseline.md
     - name: 自动化安全基线
       href: ../../automation/security-baseline.md
+    - name: Azure 备份安全基线
+      href: ../../backup/security-baseline.md
     - name: Azure Cache for Redis 安全基线
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure Data Box 安全基线
+      href: ../../databox/security-baseline.md
+    - name: Azure 数据资源管理器安全基线
+      href: /azure/data-explorer/security-baseline
+    - name: Azure 数据工厂安全基线
+      href: ../../data-factory/security-baseline.md
+    - name: Azure Database for MySQL 安全基线
+      href: ../../mysql/security-baseline.md
+    - name: Azure Database for MariaDB 安全基线
+      href: ../../mariadb/security-baseline.md
+    - name: Azure Database for PostgreSQL 安全基线
+      href: ../../postgresql/security-baseline.md
+    - name: Azure Databricks 安全基线
+      href: ../../azure-databricks/security-baseline.md
+    - name: Azure Functions 安全基线
+      href: ../../azure-functions/security-baseline.md
     - name: Azure Policy 安全基线
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
-    - name: 备份安全基线
-      href: ../../backup/security-baseline.md
+    - name: Azure Resource Graph 安全基线
+      href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure SQL 数据库安全基线
+      href: ../../sql-database/security-baseline.md
+    - name: Azure 存储安全基线
+      href: ../../storage/common/security-baseline.md
     - name: Batch 安全基线
       href: ../../batch/security-baseline.md
     - name: 认知服务的安全基线
@@ -57,39 +79,19 @@
       href: ../../cosmos-db/security-baseline.md
     - name: 客户密码箱安全基线
       href: ../fundamentals/customer-lockbox-security-baseline.md
-    - name: Data Box 安全基线
-      href: ../../databox/security-baseline.md
-    - name: 数据资源管理器安全基线
-      href: /azure/data-explorer/security-baseline
-    - name: 数据工厂安全基线
-      href: ../../data-factory/security-baseline.md
-    - name: Databricks 安全基线
-      href: ../../azure-databricks/security-baseline.md
     - name: 事件中心安全基线
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute 安全基线
       href: ../../expressroute/security-baseline.md
-    - name: Functions 安全基线
-      href: ../../azure-functions/security-baseline.md
     - name: HDInsight 安全基线
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault 安全基线
       href: ../../key-vault/security-baseline.md
     - name: 逻辑应用安全基线
       href: ../../logic-apps/security-baseline.md
-    - name: MariaDB 安全基线
-      href: ../../mariadb/security-baseline.md
-    - name: MySQL 安全基线
-      href: ../../mysql/security-baseline.md
     - name: 网络观察程序安全基线
       href: ../../network-watcher/security-baseline.md
-    - name: PostgreSQL 安全基线
-      href: ../../postgresql/security-baseline.md
-    - name: SQL 数据库安全基线
-      href: ../../sql-database/security-baseline.md
     - name: 流分析基线
       href: ../../stream-analytics/security-baseline.md
-    - name: 存储安全基线
-      href: ../../storage/common/security-baseline.md
     - name: Synapse Analytics 安全基线
       href: ../../synapse-analytics/security-baseline.md

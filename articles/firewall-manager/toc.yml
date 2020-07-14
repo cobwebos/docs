@@ -44,12 +44,14 @@
       href: migrate-to-policy.md
     - name: DNS 设置
       href: dns-settings.md
+    - name: 部署多个公共 IP
+      href: multiple-public-ip-powershell.md
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/azure-firewall/network/firewall
+      href: /cli/azure/ext/azure-firewall/network/firewall/policy
     - name: Azure PowerShell
-      href: /powershell/module/az.network/new-azfirewall
+      href: /powershell/module/az.network/new-azfirewallpolicy
     - name: .NET
       href: /dotnet/api
     - name: Java
@@ -59,7 +61,7 @@
     - name: Python
       href: 'https://azure.microsoft.com/develop/python/'
     - name: REST
-      href: /rest/api/firewall
+      href: /rest/api/virtualnetwork/firewallpolicies
     - name: Azure 资源管理器
       href: ../azure-resource-manager/management/overview.md
 - name: 资源

@@ -104,6 +104,18 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: 常见问题解答
           href: faqs.md
+- name: 参考
+  items:
+    - name: Beta 版本图形 API
+      items:
+        - name: conditionalAccessPolicy API
+          href: /graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta
+        - name: namedLocation API
+          href: /graph/api/resources/namedlocation?view=graph-rest-beta
+        - name: countryNamedLocation API
+          href: /graph/api/resources/countrynamedlocation?view=graph-rest-beta
+        - name: ipNamedLocation API
+          href: /graph/api/resources/ipnamedlocation?view=graph-rest-beta
 - name: 资源
   items:
     - name: Azure 反馈论坛
