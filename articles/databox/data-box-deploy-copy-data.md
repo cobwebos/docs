@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 82cdd8519f1e3fce80aaf051d6bc5fc40a9b8be9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219112"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959557"
 ---
 ::: zone target="docs"
 
@@ -62,7 +62,7 @@ ms.locfileid: "84219112"
 
 下表显示了 Data Box 上共享的 UNC 路径以及上传数据的 Azure 存储路径 URL。 最终的 Azure 存储路径 URL 可以从 UNC 共享路径派生。
  
-|                   |                                                            |
+|Azure 存储类型  | Data Box 共享            |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure 块 Blob | <li>UNC 共享路径：`\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure 页 Blob  | <li>UNC 共享路径：`\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -70,32 +70,32 @@ ms.locfileid: "84219112"
 
 如果使用 Windows Server 主机，请按照以下步骤连接到 Data Box。
 
-1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。 单击“获取凭据”，获取与存储帐户关联的共享的访问凭据。 
+1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。 选择“SMB”以获取与存储帐户关联的共享的访问凭据。 
 
     ![获取共享凭据 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. 在“访问共享和复制数据”对话框中，复制对应于该共享的“用户名”和“密码”。  单击“确定”。
+2. 在“访问共享和复制数据”对话框中，复制对应于该共享的“用户名”和“密码”。  选择“确定”。
     
     ![获取共享凭据 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. 若要从主机访问与存储帐户关联的共享（以下示例中为 devicemanagertest1），请打开命令窗口。 在命令提示符处，键入：
+3. 若要从主机访问与存储帐户关联的共享（在以下示例中为“utsac1”），请打开命令窗口。 在命令提示符处，键入：
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
     根据数据格式，共享路径如下：
-    - Azure 块 blob - `\\10.126.76.172\devicemanagertest1_BlockBlob`
-    - Azure 页 blob - `\\10.126.76.172\devicemanagertest1_PageBlob`
-    - Azure 文件 - `\\10.126.76.172\devicemanagertest1_AzFile`
+    - Azure 块 blob - `\\10.126.76.138\utSAC1_202006051000_BlockBlob`
+    - Azure 页 blob - `\\10.126.76.138\utSAC1_202006051000_PageBlob`
+    - Azure 文件 - `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
 4. 出现提示时，请输入共享的密码。 以下示例演示如何通过前面的命令连接到共享。
 
     ```
-    C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
-    Enter the password for 'devicemanagertest1' to connect to '10.126.76.172':
+    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
+    Enter the password for 'testuser1' to connect to '10.126.76.138':
     The command completed successfully.
     ```
 
-4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 单击“确定”打开文件资源管理器。
+4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 选择“确定”以打开文件资源管理器。
     
     ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "84219112"
     
 如果使用 Linux 客户端，请使用以下命令装载 SMB 共享。 下面的“vers”参数是 Linux 主机支持的 SMB 版本。 在下面的命令中插入相应版本。 有关 Data Box 支持的 SMB 版本，请参阅 [Linux 客户端支持的文件系统](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
-    `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
+    `sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox`
 
 ## <a name="copy-data-to-data-box"></a>将数据复制到 Data Box
 
@@ -215,11 +215,23 @@ ms.locfileid: "84219112"
 
 有关 Robocopy 命令的详细信息，请转到 [Robocopy 和几个示例](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)。
 
-打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的错误文件。 有关详细信息，请参阅[查看将数据复制到 Data Box 期间的错误日志](data-box-logs.md#view-error-log-during-data-copy)。 有关数据复制期间的错误详细列表，请参阅 [Data Box 问题故障排除](data-box-troubleshoot.md)。
+在复制过程中，如果有任何错误，你将看到一条通知。
+
+![下载并查看“连接并复制”页上的错误](media/data-box-deploy-copy-data/view-errors-1.png)
+
+选择“下载问题列表”。
+
+![下载并查看“连接并复制”页上的错误](media/data-box-deploy-copy-data/view-errors-2.png)
+
+打开列表以查看错误的详细信息，并选择解析 URL 以查看推荐的解决方法。
+
+![下载并查看“连接并复制”页上的错误](media/data-box-deploy-copy-data/view-errors-3.png)
+
+有关详细信息，请参阅[查看将数据复制到 Data Box 期间的错误日志](data-box-logs.md#view-error-log-during-data-copy)。 有关数据复制期间的错误详细列表，请参阅 [Data Box 问题故障排除](data-box-troubleshoot.md)。
 
 为确保数据完整性，复制数据时将以内联方式计算校验和。 复制完成后，检查设备上的已用空间和可用空间。
 
-   ![在仪表板上检查可用空间和已用空间](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
+![在仪表板上检查可用空间和已用空间](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
 

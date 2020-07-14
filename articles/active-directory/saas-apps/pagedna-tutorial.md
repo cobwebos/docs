@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 34e496ea9d2a89894951856a19854bff18f20a8b
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68227469"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>教程：Azure Active Directory 与 PageDNA 的集成
 
@@ -57,33 +57,33 @@ PageDNA 支持以下功能：
 若要配置 PageDNA 与 Azure AD 的集成，需要从 Azure 市场中将 PageDNA 添加到托管 SaaS 应用列表：
 
 1. 登录 [Azure 门户](https://portal.azure.com?azure-portal=true)。
-1. 在左窗格中选择“Azure Active Directory”  。
+1. 在左窗格中选择“Azure Active Directory”。
 
     ![“Azure Active Directory”选项](common/select-azuread.png)
 
-1. 转到“企业应用程序”，并选择“所有应用程序”。  
+1. 转到“企业应用程序”，并选择“所有应用程序”。 
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
-1. 若要添加新应用程序，请在窗格顶部选择“+ 新建应用程序”  。
+1. 若要添加新应用程序，请在窗格顶部选择“+ 新建应用程序”。
 
     ![“新建应用程序”选项](common/add-new-app.png)
 
-1. 在搜索框中，输入“PageDNA”  。 在搜索结果中选择“PageDNA”，然后选择“添加”以添加应用程序   。
+1. 在搜索框中，输入“PageDNA”。 在搜索结果中选择“PageDNA”，然后选择“添加”以添加应用程序 。
 
     ![结果列表中的“PageDNA”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分，我们基于名为 Britta Simon  的测试用户来配置并测试 PageDNA 的 Azure AD 单一登录。 若要正常使用单一登录，需要在 Azure AD 用户与 PageDNA 相关用户之间建立链接。
+在本部分，我们基于名为 Britta Simon 的测试用户来配置并测试 PageDNA 的 Azure AD 单一登录。 若要正常使用单一登录，需要在 Azure AD 用户与 PageDNA 相关用户之间建立链接。
 
 若要配置并测试 PageDNA 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** ，让用户能够使用此功能。
-1. [配置 PageDNA 单一登录](#configure-pagedna-single-sign-on)  ，在应用程序端配置单一登录。
+1. [配置 PageDNA 单一登录](#configure-pagedna-single-sign-on)，在应用程序端配置单一登录。
 1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以便使用 Britta Simon 测试 Azure AD 单一登录。
 1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，使 Britta Simon 能够使用 Azure AD 单一登录。
-1. [创建 PageDNA 测试用户](#create-a-pagedna-test-user)  ，以便在 PageDNA 中创建名为 Britta Simon 的用户，该用户与名为 Britta Simon 的 Azure AD 用户相关联。
+1. [创建 PageDNA 测试用户](#create-a-pagedna-test-user)，以便在 PageDNA 中创建名为 Britta Simon 的用户，该用户与名为 Britta Simon 的 Azure AD 用户相关联。
 1. **[测试单一登录](#test-single-sign-on)** ，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -92,48 +92,46 @@ PageDNA 支持以下功能：
 
 若要配置 PageDNA 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“PageDNA”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“PageDNA”应用程序集成页上，选择“单一登录”。 
 
     ![配置单一登录选项](common/select-sso.png)
 
-1. 在“选择单一登录方法”窗格中，选择“SAML/WS-Fed”模式以启用单一登录   。
+1. 在“选择单一登录方法”窗格中，选择“SAML/WS-Fed”模式以启用单一登录 。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-1. 在“设置 SAML 单一登录”窗格中，选择“编辑”（铅笔图标）可打开“基本 SAML 配置”窗格    。
+1. 在“设置 SAML 单一登录”窗格中，选择“编辑”（铅笔图标）可打开“基本 SAML 配置”窗格  。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”窗格中执行以下步骤  ：
+1. 在“基本 SAML 配置”窗格中执行以下步骤：
 
     ![PageDNA 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    1. 在“登录 URL”  框中，使用以下模式之一输入 URL：
+    1. 在“登录 URL”框中，使用以下模式之一输入 URL：
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>` |
-        | `https://<your domain>` |
-        | `https://<your domain>/<your site>` |
-        | `https://www.nationsprint.com/<your site>` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>
+        https://<your domain>
+        https://<your domain>/<your site>
+        https://www.nationsprint.com/<your site>
+        ```
 
-    1. 在“标识符(实体 ID)”  框中，使用以下模式之一输入 URL：
+    1. 在“标识符(实体 ID)”框中，使用以下模式之一输入 URL：
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
-        | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>/saml2ep.cgi
+        https://www.nationsprint.com/<your site>/saml2ep.cgi
+        ```
 
     > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [PageDNA 支持团队](mailto:success@pagedna.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”  窗格中显示的模式。
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [PageDNA 支持团队](mailto:success@pagedna.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”窗格中显示的模式。
 
-1. 在“设置 SAML 单一登录”窗格上的“SAML 签名证书”部分，选择“下载”以从给定的选项下载“证书(原始)”并将其保存在计算机中     。
+1. 在“设置 SAML 单一登录”窗格上的“SAML 签名证书”部分，选择“下载”以从给定的选项下载“证书(原始)”并将其保存在计算机中   。
 
     ![“证书(原始)”下载选项](common/certificateraw.png)
 
-1. 在“设置 PageDNA”部分，复制所需的一个或多个 URL  ：
+1. 在“设置 PageDNA”部分，复制所需的一个或多个 URL：
 
    * **登录 URL**
    * **Azure AD 标识符**
@@ -149,51 +147,51 @@ PageDNA 支持以下功能：
 
 在本部分，我们将在 Azure 门户中创建名为 Britta Simon 的用户。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory”   > “用户” > “所有用户”。   
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory”   > “用户” > “所有用户”。  
 
     ![“用户”和“所有用户”选项](common/users.png)
 
-1. 在屏幕顶部选择“+ 新建用户”  。
+1. 在屏幕顶部选择“+ 新建用户”。
 
     ![“新建用户”选项](common/new-user.png)
 
-1. 在“用户”窗格中执行以下步骤  ：
+1. 在“用户”窗格中执行以下步骤：
 
     ![“用户”窗格](common/user-properties.png)
 
-    1. 在“姓名”  框中，输入 **BrittaSimon**。
+    1. 在“姓名”框中，输入 **BrittaSimon**。
   
-    1. 在“用户名”框中，输入 BrittaSimon\@\<yourcompanydomain>.\<extension>   。 例如，“BrittaSimon\@contoso.com”  。
+    1. 在“用户名”框中，输入 BrittaSimon\@\<yourcompanydomain>.\<extension> 。 例如，“BrittaSimon\@contoso.com”。
 
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
 
-    1. 选择“创建”  。
+    1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予用户 Britta Simon 访问 PageDNA 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “PageDNA”。   
+1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “PageDNA”。  
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
-1. 在“应用程序”列表中，选择“PageDNA”。 
+1. 在“应用程序”列表中，选择“PageDNA”。
 
     ![应用程序列表中的 PageDNA](common/all-applications.png)
 
-1. 在左窗格的“管理”下，选择“用户和组”   。
+1. 在左窗格的“管理”下，选择“用户和组” 。
 
     ![“用户和组”选项](common/users-groups-blade.png)
 
-1. 选择“+ 添加用户”，然后在“添加分配”窗格中选择“用户和组”    。
+1. 选择“+ 添加用户”，然后在“添加分配”窗格中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-1. 在“用户和组”窗格中，选择“用户”列表中的“Britta Simon”，然后选择窗格底部的“选择”     。
+1. 在“用户和组”窗格中，选择“用户”列表中的“Britta Simon”，然后选择窗格底部的“选择”   。
 
-1. 如果希望在 SAML 断言中使用角色值，请在“选择角色”窗格中，从列表中为用户选择相应的角色  。 在窗格底部选择“选择”  。
+1. 如果希望在 SAML 断言中使用角色值，请在“选择角色”窗格中，从列表中为用户选择相应的角色。 在窗格底部选择“选择”。
 
-1. 在“添加分配”窗格中选择“分配”   。
+1. 在“添加分配”窗格中选择“分配” 。
 
 ### <a name="create-a-pagedna-test-user"></a>创建 PageDNA 测试用户
 
@@ -203,7 +201,7 @@ PageDNA 支持以下功能：
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“PageDNA”时，应自动登录到为其设置了单一登录的 PageDNA 订阅  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在“我的应用”门户中选择“PageDNA”时，应自动登录到为其设置了单一登录的 PageDNA 订阅。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: c60f9df87930519684c6c29b1194624342b11528
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a8f6fe49faf0624f6ef6d4fa8a346e22c69da599
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851729"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教程：使用 Azure Batch 通过 Azure 数据工厂运行 Python 脚本
 
@@ -116,27 +116,27 @@ python main.py
 1. 在“工厂资源”框中选择“+”（加号）按钮，然后选择“管道” 
 1. 在“常规”选项卡中，将管道名称设置为“运行 Python”
 
-    ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
+    ![在“常规”选项卡中，将管道名称设置为“运行 Python”](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
 1. 在“活动”框中展开“Batch 服务”。  将“活动”工具箱中的自定义活动拖到管道设计器图面。
 1. 在“常规”选项卡中，指定 **testPipeline** 作为名称。
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    ![在“常规”选项卡中，指定 testPipeline 作为名称](./media/run-python-batch-azure-data-factory/create-custom-task.png)
 1. 在“Azure Batch”选项卡中，添加在前面步骤中创建的 **Batch 帐户**，然后选择“测试连接”以确保连接成功 
 
-    ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    ![在“Azure Batch”选项卡中，添加在前面步骤中创建的 Batch 帐户，然后测试连接](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
 1. 在“设置”选项卡中，输入命令 `python main.py`。
 1. 对于“资源链接服务”，请添加在前面步骤中创建的存储帐户。 测试连接以确保连接成功。
 1. 在“文件夹路径”中，选择包含 Python 脚本和关联输入的“Azure Blob 存储”容器的名称。  这会在执行 Python 脚本之前，将所选文件从该容器下载到池节点实例。
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
+    ![在“文件夹路径”中，选择 Azure Blob 存储容器的名称](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. 在画布上面的管道工具栏中单击“验证”，以便验证管道设置。 确认已成功验证管道。 若要关闭验证输出，请选择 &gt;&gt;（右箭头）按钮。
 1. 单击“调试”以测试管道，确保管道正常运行。
 1. 单击“发布”以发布管道。
 1. 单击“触发”，以便在批处理过程中运行 Python 脚本。
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
+    ![单击“触发”，以便在批处理过程中运行 Python 脚本](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
 ### <a name="monitor-the-log-files"></a>监视日志文件
 

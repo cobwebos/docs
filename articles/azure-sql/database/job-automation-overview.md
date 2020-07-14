@@ -2,7 +2,8 @@
 title: 作业自动化
 description: 使用作业自动化跨一个或多个数据库运行 Transact-SQL (T-SQL) 脚本
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: overview
@@ -10,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b27eac1a8b5989734d3451bf21c5b13dd5cc0af
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220572"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984636"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +55,8 @@ Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期�
 
 | |弹性作业 |SQL 代理 |
 |---------|---------|---------|
-|范围 | 作业代理所在 Azure 云中任意数目的 Azure SQL 数据库中的数据库和/或数据仓库。 目标可以位于不同的服务器、订阅和/或区域中。 <br><br>目标组可以包含单个数据库或数据仓库，也可以包含某个服务器、池或分片映射中的所有数据库（在作业运行时动态枚举）。 | SQL 代理所在实例中的任何单个数据库。 |
-|支持的 API 和工具 | 门户、PowerShell、T-SQL、Azure 资源管理器 | T-SQL、SQL Server Management Studio (SSMS) |
+|**范围** | 作业代理所在 Azure 云中任意数目的 Azure SQL 数据库中的数据库和/或数据仓库。 目标可以位于不同的服务器、订阅和/或区域中。 <br><br>目标组可以包含单个数据库或数据仓库，也可以包含某个服务器、池或分片映射中的所有数据库（在作业运行时动态枚举）。 | SQL 代理所在实例中的任何单个数据库。 |
+|**支持的 API 和工具** | 门户、PowerShell、T-SQL、Azure 资源管理器 | T-SQL、SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL 代理作业
 

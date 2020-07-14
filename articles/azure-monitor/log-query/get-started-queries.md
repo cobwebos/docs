@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: f56abe2bf6ccea1f55f9b3fe94b75016d449b46b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670173"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801421"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
 
 > [!NOTE]
-> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。
+> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。  如果你知道如何采用 KQL 进行查询，只是需要基于资源类型快速创建有用的查询，请参阅[保存的示例查询窗格](saved-queries.md)。
 
 在本教程中，你将学习在 Azure Monitor 中编写日志查询。 具体内容包括：
 
@@ -36,12 +36,14 @@ ms.locfileid: "77670173"
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>编写新查询
+
 查询可以从表名或 *search* 命令开始。 首先应从表名开始，因为它为查询定义了明确的范围，并可以改善查询性能和结果的相关性。
 
 > [!NOTE]
 > Azure Monitor 使用的 Kusto 查询语言区分大小写。 语言关键字通常以小写编写。 在查询中使用表或列名时，请确保使用正确的大小写，如架构窗格中所示。
 
 ### <a name="table-based-queries"></a>基于表的查询
+
 Azure Monitor 在表中组织日志数据，每个表由多个列组成。 所有表和列都显示在 Analytics 门户中的 Log Analytics 中的架构窗格内。 找到所需的表，然后看看其中的一些数据：
 
 ```Kusto
@@ -58,6 +60,7 @@ SecurityEvent
 实际上，即使不添加 `| take 10`，我们也可以运行查询 - 该查询仍然有效，只不过它最多会返回 10,000 个结果。
 
 ### <a name="search-queries"></a>搜索查询
+
 搜索查询的结构化程度不高，通常更适合用于查找在任何列中包含特定值的记录：
 
 ```Kusto
@@ -65,7 +68,7 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。 
+此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。
 
 > [!WARNING]
 > 搜索查询通常比基于表的查询慢，因为它们必须处理更多的数据。 
@@ -78,7 +81,7 @@ SecurityEvent
 | sort by TimeGenerated desc
 ```
 
-不过，这可能会返回过多的结果，此外可能需要一段时间。 上述查询按 TimeGenerated 列将整个 SecurityEvent 表排序。  然后，Analytics 门户将结果限制为仅显示 10,000 条记录。 当然，这种方法不是最佳的。
+不过，这可能会返回过多的结果，此外可能需要一段时间。 上述查询按 TimeGenerated 列将整个 SecurityEvent 表排序。 然后，Analytics 门户将结果限制为仅显示 10,000 条记录。 当然，这种方法不是最佳的。
 
 仅获取最新 10 条记录的最佳方式是使用 **top**，它会在服务器端将整个表排序，然后返回前几条记录：
 
@@ -132,12 +135,14 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>指定时间范围
 
 ### <a name="time-picker"></a>时间选取器
-时间选取器位于“运行”按钮的旁边，指示我们只查询过去 24 小时的记录。 这是应用到所有查询的默认时间范围。 如果只要获取过去一个小时的记录，请选择“过去一小时”并再次运行查询。 
+
+时间选取器位于“运行”按钮的旁边，指示我们只查询过去 24 小时的记录。 这是应用到所有查询的默认时间范围。 如果只要获取过去一个小时的记录，请选择“过去一小时”并再次运行查询。
 
 ![时间选取器](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>查询中的时间筛选器
+
 还可以通过将时间筛选器添加到查询来定义自己的时间范围。 最好是紧靠在表名的后面添加时间筛选器： 
 
 ```Kusto
@@ -150,6 +155,7 @@ SecurityEvent
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>投影和扩展：选择和计算列
+
 使用**投影**可以选择要包含在结果中的特定列：
 
 ```Kusto
@@ -175,7 +181,7 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**extend** 保留结果集中的所有原始列，并定义其他列。 下面的查询使用 extend 来添加 EventCode 列   。 请注意，此列可能不会显示在表结果的末尾，在这种情况下，需要展开记录的详细信息才能查看它。
+**extend** 保留结果集中的所有原始列，并定义其他列。 下面的查询使用 extend 来添加 EventCode 列。 请注意，此列可能不会显示在表结果的末尾，在这种情况下，需要展开记录的详细信息才能查看它。
 
 ```Kusto
 SecurityEvent
@@ -184,7 +190,7 @@ SecurityEvent
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Summarize：聚合行组
-使用 **summarize** 可以根据一个或多个列标识记录组，并向其应用聚合。 summarize  最常见的用途是计数  ，可以返回每个组中的结果数。
+使用 **summarize** 可以根据一个或多个列标识记录组，并向其应用聚合。 summarize 最常见的用途是计数，可以返回每个组中的结果数。
 
 以下查询检查过去一小时的所有 *Perf* 记录，按 *ObjectName* 将其分组，然后统计每个组中的记录数： 
 ```Kusto

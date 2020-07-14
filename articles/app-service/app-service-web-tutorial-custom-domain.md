@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 46c27f18f8f16f783248790f03364654d0b3c2fe
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559929"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986819"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -43,7 +43,7 @@ ms.locfileid: "82559929"
 
 ## <a name="prepare-the-app"></a>准备应用
 
-若要将自定义 DNS 名称映射到 Web 应用，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（Azure Functions 的“共享”、“基本”、“标准”、“高级”或“消耗”层）      。 在此步骤中，需确保应用服务计划位于受支持的定价层。
+若要将自定义 DNS 名称映射到 Web 应用，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（Azure Functions 的“共享”、“基本”、“标准”、“高级”或“消耗”层）    。 在此步骤中，需确保应用服务计划位于受支持的定价层。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -53,11 +53,11 @@ ms.locfileid: "82559929"
 
 ### <a name="select-the-app-in-the-azure-portal"></a>在 Azure 门户中选择应用
 
-搜索并选择“应用服务”。 
+搜索并选择“应用服务”。
 
 ![选择应用服务](./media/app-service-web-tutorial-custom-domain/app-services.png)
 
-在“应用服务”页上，选择 Azure 应用的名称  。
+在“应用服务”页上，选择 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "82559929"
 
 ### <a name="check-the-pricing-tier"></a>检查定价层
 
-在应用页的左侧导航窗格中，向下滚动到“设置”  部分，然后选择“增加(应用服务计划)”  。
+在应用页的左侧导航窗格中，向下滚动到“设置”部分，然后选择“增加(应用服务计划)”。
 
 ![扩展菜单](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -75,15 +75,15 @@ ms.locfileid: "82559929"
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-如果应用服务计划不在 **F1** 层中，请关闭“纵向扩展”  页并跳转到[映射 CNAME记录](#cname)。
+如果应用服务计划不在 **F1** 层中，请关闭“纵向扩展”页并跳转到[映射 CNAME记录](#cname)。
 
 <a name="scaleup" aria-hidden="true"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>增加应用服务计划
 
-选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”  类别中的任何层）。 有关其他选项，请单击“查看其他选项”  。
+选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”类别中的任何层）。 有关其他选项，请单击“查看其他选项”。
 
-单击“应用”  。
+单击“应用”。
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -95,9 +95,7 @@ ms.locfileid: "82559929"
 
 ## <a name="get-domain-verification-id"></a>获取域验证 ID
 
-若要将自定义域添加到应用，需要使用域提供程序添加验证 ID 作为 TXT 记录来验证你对域的所有权。 在应用页的左侧导航栏中，单击“开发工具”  下的“资源浏览器”  ，然后单击“运行”  。
-
-在应用属性的 JSON 视图中搜索“`customDomainVerificationId`”，将其值复制到双引号中。 下一步需要此验证 ID。
+若要将自定义域添加到应用，需要使用域提供程序添加验证 ID 作为 TXT 记录来验证你对域的所有权。 在应用页的左侧导航窗格中，单击“设置”下的“自定义域” 。 从此处复制自定义域验证 ID 的值。 下一步需要此验证 ID。
 
 ## <a name="map-your-domain"></a>映射域
 
@@ -113,6 +111,8 @@ ms.locfileid: "82559929"
 ### <a name="map-a-cname-record"></a>映射 CNAME 记录
 
 在教程示例中，为 `www` 子域（例如 `www.contoso.com`）添加 CNAME 记录。
+
+如果你有除 `www` 以外的子域，请将 `www` 替换为你的子域（例如，如果你的自定义域为 `sub.constoso.com`，则使用 `sub` 进行替换）。
 
 #### <a name="access-dns-records-with-domain-provider"></a>通过域提供商访问 DNS 记录
 
@@ -133,34 +133,34 @@ ms.locfileid: "82559929"
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>在 Azure 中启用 CNAME 记录映射
 
-在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”  。
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在应用的“自定义域”  页中，将完全限定的自定义 DNS 名称添加到 (`www.contoso.com`) 列表。
+在应用的“自定义域”页中，将完全限定的自定义 DNS 名称添加到 (`www.contoso.com`) 列表。
 
-选择“添加域名”  旁边的 **+** 图标。
+选择“添加域名”旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 键入已添加 CNAME 记录的完全限定的域名，如 `www.contoso.com`。
 
-选择“验证”。 
+选择“验证”。
 
-此时会显示“添加自定义域”  页。
+此时会显示“添加自定义域”页。
 
-确保“主机名记录类型”  设置为“CNAME (www\.example.com 或任何子域)”  。
+确保“主机名记录类型”设置为“CNAME (www\.example.com 或任何子域)”。
 
-选择“添加自定义域”  。
+选择“添加自定义域”。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中  。 请尝试刷新浏览器来更新数据。
+新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> 自定义域的“不安全”  标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+> 自定义域的“不安全”标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
 如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
 
@@ -176,13 +176,13 @@ ms.locfileid: "82559929"
 
 #### <a name="copy-the-apps-ip-address"></a>复制应用的 IP 地址
 
-若要映射 A 记录，需要应用的外部 IP 地址。 可以在 Azure 门户中应用的“自定义域”  页中找到此 IP 地址。
+若要映射 A 记录，需要应用的外部 IP 地址。 可以在 Azure 门户中应用的“自定义域”页中找到此 IP 地址。
 
-在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”  。
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在“自定义域”页中，复制应用的 IP 地址。 
+在“自定义域”页中，复制应用的 IP 地址。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
@@ -216,30 +216,30 @@ ms.locfileid: "82559929"
 
 #### <a name="enable-the-a-record-mapping-in-the-app"></a>在应用中启用 A 记录映射
 
-在 Azure 门户中返回到应用的“自定义域”  页。将完全限定的自定义 DNS 名称（例如 `contoso.com`）添加到列表。
+在 Azure 门户中返回到应用的“自定义域”页。将完全限定的自定义 DNS 名称（例如 `contoso.com`）添加到列表。
 
-选择“添加域名”  旁边的 **+** 图标。
+选择“添加域名”旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 键入已配置 A 记录的完全限定的域名，如 `contoso.com`。
 
-选择“验证”。 
+选择“验证”。
 
-此时会显示“添加自定义域”  页。
+此时会显示“添加自定义域”页。
 
-确保“主机名记录类型”设置为“A 记录 (example.com)”。  
+确保“主机名记录类型”设置为“A 记录 (example.com)”。 
 
-选择“添加自定义域”  。
+选择“添加自定义域”。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中  。 请尝试刷新浏览器来更新数据。
+新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
 ![已添加 A 记录](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> 自定义域的“不安全”  标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+> 自定义域的“不安全”标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
 如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部看到验证错误。
 
@@ -269,32 +269,32 @@ ms.locfileid: "82559929"
 
 现在，可以将任何与通配符名称匹配的子域添加到应用中（例如 `sub1.contoso.com` 和`sub2.contoso.com` 匹配 `*.contoso.com`）。
 
-在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”  。
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-选择“添加域名”  旁边的 **+** 图标。
+选择“添加域名”旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入与通配符域相匹配的完全限定的域名（例如 `sub1.contoso.com`），然后选择“验证”  。
+键入与通配符域相匹配的完全限定的域名（例如 `sub1.contoso.com`），然后选择“验证”。
 
-“添加自定义域”按钮随即激活。 
+“添加自定义域”按钮随即激活。
 
-确保“主机名记录类型”  设置为“CNAME 记录(www\.example.com 或任何子域)”  。
+确保“主机名记录类型”设置为“CNAME 记录(www\.example.com 或任何子域)”。
 
-选择“添加自定义域”  。
+选择“添加自定义域”。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中  。 请尝试刷新浏览器来更新数据。
+新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
 再次选择 **+** 图标，添加另一个与通配符域匹配的自定义域。 例如，添加 `sub2.contoso.com`。
 
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> 自定义域的“不安全”  标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+> 自定义域的“不安全”标签意味着该域还没有绑定到 TLS/SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 
 ## <a name="test-in-browser"></a>在浏览器中测试
 
@@ -319,7 +319,7 @@ ms.locfileid: "82559929"
 
 默认情况下，应用服务将 Web 请求定向到应用代码的根目录下。 但是，某些 Web 框架不在根目录下启动。 例如，[Laravel](https://laravel.com/) 在 `public` 子目录中启动。 若要继续 `contoso.com` DNS 示例，此类应用应可在 `http://contoso.com/public` 中访问，但你实际上想要将 `http://contoso.com` 直接定向到 `public` 目录。 此步骤不涉及 DNS 解析，但涉及到自定义虚拟目录。
 
-若要执行此操作，请选择 Web 应用页左侧导航窗格中的“应用程序设置”  。 
+若要执行此操作，请选择 Web 应用页左侧导航窗格中的“应用程序设置”。 
 
 在页面底部，根虚拟目录 `/` 默认指向 `site\wwwroot`，这是应用代码的根目录。 将其改为指向例如 `site\wwwroot\public`，并保存所做的更改。
 

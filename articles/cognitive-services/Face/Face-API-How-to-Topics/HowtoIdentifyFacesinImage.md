@@ -8,64 +8,79 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 04/10/2019
+ms.date: 07/02/2020
 ms.author: sbowles
-ms.openlocfilehash: 248bae81db1bc8cb69bac4618bd7593658336636
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 607f67258c5d069590f934891c09ccada780c977
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918743"
 ---
 # <a name="example-identify-faces-in-images"></a>示例：在图像中识别人脸
 
 本指南演示如何使用事先根据已知人员创建的 PersonGroup 对象来识别未知的人脸。 这些示例是使用 Azure 认知服务人脸客户端库以 C# 编写的。
-
-## <a name="preparation"></a>准备工作
 
 此示例演示：
 
 - 如何创建 PersonGroup。 此 PersonGroup 包含已知人员的列表。
 - 如何为每个人员分配人脸。 这些人脸用作识别人员的基线。 我们建议使用清晰的人脸正面照， 例如证件照。 合适的照片包含姿势不同、衣服颜色不同或发型不同的同一个人的人脸。
 
-若要执行本示例，请准备好：
+## <a name="prerequisites"></a>先决条件
+* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”，然后复制密钥。
+* 几张包含已识别人员面部的照片。 [下载](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anna、Bill 和 Clare 的示例照片。
+* 一系列测试照片。 照片可以包含或不包含已识别人员的面部。 使用示例照片链接中的一些图像。
 
-- 一些包含人脸的照片。 [下载](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anna、Bill 和 Clare 的示例照片。
-- 一系列测试照片。 照片可以包含或不包含 Anna、Bill 或 Clare 的人脸。 它们用于测试识别功能。 另外，请通过前面的链接选择一些示例图像。
+## <a name="setting-up"></a>设置
+
+### <a name="create-a-new-c-application"></a>新建 C# 应用程序
+
+在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。 
+
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `face-identify` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。 
+
+```dotnetcli
+dotnet new console -n face-quickstart
+```
+
+将目录更改为新创建的应用文件夹。 可使用以下代码生成应用程序：
+
+```dotnetcli
+dotnet build
+```
+
+生成输出不应包含警告或错误。 
+
+```output
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
 
 ## <a name="step-1-authorize-the-api-call"></a>步骤 1：授权 API 调用
 
-每次调用人脸 API 都需要订阅密钥。 此密钥可以通过查询字符串参数传递，或在请求标头中指定。 若要通过查询字符串传递订阅密钥，请参阅 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 的请求 URL 示例：
-```
-https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
-&subscription-key=<Subscription key>
-```
-
-作为替代方法，也可以在 HTTP 请求标头 **ocp-apim-subscription-key:&lt;订阅密钥&gt;** 中指定订阅密钥。
-使用客户端库时，订阅密钥通过 FaceClient 类的构造函数传入。 例如：
+每次调用人脸 API 都需要订阅密钥。 此密钥可以通过查询字符串参数传递，或在请求标头中指定。 使用客户端库时，订阅密钥是通过 FaceClient 类的构造函数传入的。 将以下代码添加到 Program.cs 文件的 Main 方法。
  
 ```csharp 
 private readonly IFaceClient faceClient = new FaceClient(
-            new ApiKeyServiceClientCredentials("<subscription key>"),
-            new System.Net.Http.DelegatingHandler[] { });
+    new ApiKeyServiceClientCredentials("<subscription key>"),
+    new System.Net.Http.DelegatingHandler[] { });
 ```
- 
-按照这些说明获取密钥。
-
-1. 创建 [Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)。 如果已有帐户，请跳至下一步。
-2. 在 Azure 门户中创建[人脸资源](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace)以获取密钥。 请确保在设置过程中选择免费层 (F0)。 
-3. 部署资源后，单击“转到资源”以收集密钥。 
 
 ## <a name="step-2-create-the-persongroup"></a>步骤 2：创建 PersonGroup
 
-在此步骤中，名为“MyFriends”的 PersonGroup 包含 Anna、Bill 和 Clare。 每个人都注册了多个人脸。 必须在图像中检测这些人脸。 执行所有这些步骤以后，就有了一个 PersonGroup，如下图所示：
+在此步骤中，名为“MyFriends”的 PersonGroup 包含 Anna、Bill 和 Clare。 每个人都注册了多个人脸。 必须在图像中检测这些人脸。 执行所有这些步骤后，就有了一个 PersonGroup，如下图所示：
 
 ![MyFriends](../Images/group.image.1.jpg)
 
 ### <a name="step-21-define-people-for-the-persongroup"></a>步骤 2.1：定义 PersonGroup 的人员
-人是标识的基本单元。 一个人可以注册一个或多个已知人脸。 PersonGroup 是人员的集合。 每个人在特定的 PersonGroup 中定义。 识别是针对 PersonGroup 进行的。 任务是先创建一个 PersonGroup，然后在其中创建人员，例如 Anna、Bill、Clare。
+人是标识的基本单元。 一个人可以注册一个或多个已知人脸。 PersonGroup 是人员的集合。 每个人是在特定 PersonGroup 中定义的。 识别是针对 PersonGroup 进行的。 任务是先创建一个 PersonGroup，然后在其中创建人员，例如 Anna、Bill、Clare。
 
-首先，使用 [PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API 创建新的 PersonGroup。 相应的客户端库 API 是 FaceClient 类的 CreatePersonGroupAsync 方法。 指定的用于创建组的组 ID 对于每个订阅都是唯一的。 还可以使用其他 PersonGroup API 来获取、更新或删除 PersonGroup。 
+首先，使用 [PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API 创建新的 PersonGroup。 相应的客户端库 API 是 FaceClient 类的 CreatePersonGroupAsync 方法 。 指定的用于创建组的组 ID 对于每个订阅都是唯一的。 还可以使用其他 PersonGroup API 来获取、更新或删除 PersonGroup 。 
 
 定义组之后，可以使用 [PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API 在该组中定义人员。 客户端库方法是 CreatePersonAsync。 可以在创建每个人之后向其添加人脸。
 
@@ -110,7 +125,7 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
 
 ## <a name="step-3-train-the-persongroup"></a>步骤 3：训练 PersonGroup
 
-必须先训练 PersonGroup，然后才能使用它来进行识别。 在添加或删除任何人或者编辑某人的已注册人脸后，必须重新训练 PersonGroup。 训练由 [PersonGroup - 训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API 完成。 使用客户端库时，会调用 TrainPersonGroupAsync 方法：
+必须先训练 PersonGroup，然后才能使用它来进行识别。 在添加或删除任何人或者在编辑某人的已注册人脸后，必须重新训练 PersonGroup。 训练由 [PersonGroup - 训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API 完成。 使用客户端库时，会调用 TrainPersonGroupAsync 方法：
  
 ```csharp 
 await faceClient.PersonGroup.TrainAsync(personGroupId);
@@ -174,8 +189,7 @@ using (Stream s = File.OpenRead(testImageFile))
 
 ## <a name="step-5-request-for-large-scale"></a>步骤 5：大规模请求
 
-根据以往的设计限制，一个 PersonGroup 最多可以包含 10,000 个人。
-若要详细了解高达百万人规模的方案，请参阅[如何使用大规模功能](how-to-use-large-scale.md)。
+根据以往的设计限制，一个 PersonGroup 最多可以包含 10,000 个人。 若要详细了解高达百万人规模的方案，请参阅[如何使用大规模功能](how-to-use-large-scale.md)。
 
 ## <a name="summary"></a>总结
 

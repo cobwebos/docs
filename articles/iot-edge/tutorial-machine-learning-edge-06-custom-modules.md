@@ -4,49 +4,49 @@ description: 本教程演示如何通过机器学习模型创建和部署基于�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2019
+ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0726edae7c5f44fae7f573559d561e7ef5773e71
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75772357"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801285"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 
 > [!NOTE]
 > 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
-在本文中，我们要创建三个 IoT Edge 模块来从叶设备中接收消息，通过机器学习模型运行数据，然后将见解转发到 IoT 中心。
+在本文中，我们要创建三个 IoT Edge 模块来从叶 IoT 设备中接收消息，通过机器学习模型运行数据，然后将见解转发到 IoT 中心。
 
 IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中转站，可保证模块之间相互独立。 模块只需指定它们接受消息的输入和写入消息的输出。
 
 我们希望 IoT Edge 设备代为完成四项操作：
 
-* 从叶设备接收数据
-* 预测发送此数据的设备的剩余使用寿命 (RUL)
-* 在仅使用设备 RUL 的情况下将消息发送到 IoT 中心（可修改此函数，指示如果 RUL 低于某级别，则仅发送数据）
-* 将叶设备数据保存到 IoT Edge 设备上的本地文件中。 此数据文件会通过文件上传定期上传到 IoT 中心，以优化机器学习模型的训练。 与定期消息流式传输相比，使用文件上传更具成本效益。
+* 从叶设备接收数据。
+* 预测发送此数据的设备的剩余使用寿命 (RUL)。
+* 将包含设备 RUL 的消息发送到 IoT 中心。 此函数可以修改为仅在 RUL 低于指定级别时发送数据。
+* 将叶设备数据保存到 IoT Edge 设备上的本地文件中。 此数据文件定期上传到 IoT 中心，以优化机器学习模型的训练。 与定期消息流式传输相比，使用文件上传更具成本效益。
 
 我们使用三个自定义模块来完成上述任务：
 
-* RUL 分类器  ：我们在[训练和部署 Azure 机器学习模型](tutorial-machine-learning-edge-04-train-model.md)中创建的 turboFanRulClassifier 模块是一个标准机器学习模块，它公开一个名为“amlInput”的输入和一个名为“amlOutput”的输出。 “amlInput”需要其输入与我们发送到基于 ACI 的 Web 服务的输入完全相同。 同样地，“amlOutput”返回与 Web 服务相同的数据。
+* RUL 分类器：我们在[训练和部署 Azure 机器学习模型](tutorial-machine-learning-edge-04-train-model.md)中创建的 turboFanRulClassifier 模块是一个标准机器学习模块，它公开一个名为“amlInput”的输入和一个名为“amlOutput”的输出。 “amlInput”需要其输入与我们发送到基于 ACI 的 Web 服务的输入完全相同。 同样地，“amlOutput”返回与 Web 服务相同的数据。
 
-* Avro 编写器  ：此模块会接收有关“avroModuleInput”输入的消息，并按 Avro 格式将消息保留在磁盘中供稍后上传到 IoT 中心。
+* Avro 编写器：此模块会接收有关“avroModuleInput”输入的消息，并按 Avro 格式将消息保留在磁盘中供稍后上传到 IoT 中心。
 
-* 路由器模块  ：路由器模块会接收来自下游叶设备的消息，然后设置消息格式并将其发送到分类器。 然后，该模块会接收来自分类器的消息，并将消息转发给 Avro 编写器模块。 最后，该模块只将 RUL 预测结果发送到 IoT 中心。
+* 路由器模块：路由器模块会接收来自下游叶设备的消息，然后设置消息格式并将其发送到分类器。 然后，该模块会接收来自分类器的消息，并将消息转发给 Avro 编写器模块。 最后，该模块只将 RUL 预测结果发送到 IoT 中心。
 
   * 输入：
-    * deviceInput：从叶设备接收消息 
-    * rulInput：从“amlOutput”接收消息 
+    * deviceInput：从叶设备接收消息
+    * rulInput：从“amlOutput”接收消息
 
   * 输出：
-    * 分类器：向“amlInput”发送消息 
-    * writeAvro：向“avroModuleInput”发送消息 
-    * toIotHub：将消息发送到 $upstream，后者再将消息传递到连接的 IoT 中心 
+    * 分类器：向“amlInput”发送消息
+    * writeAvro：向“avroModuleInput”发送消息
+    * toIotHub：将消息发送到 $upstream，后者再将消息传递到连接的 IoT 中心
 
 下图显示了整个解决方案的模块、输入、输出和 IoT Edge 中心路由：
 
@@ -56,31 +56,33 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 
 ## <a name="create-a-new-iot-edge-solution"></a>创建新的 IoT Edge 解决方案
 
-在执行第二个 Azure Notebook（共 2 个）的过程中，我们创建并发布了一个包含 RUL 模型的容器映像。 Azure 机器学习在映像创建过程中打包了该模型，以便该映像可部署为 Azure IoT Edge 模块。 在此步骤中，我们将使用“Azure 机器学习”模块创建一个 Azure IoT Edge 解决方案，并将该模块指向我们使用 Azure Notebook 发布的映像。
+在执行第二个 Azure Notebook（共 2 个）的过程中，我们创建并发布了一个包含 RUL 模型的容器映像。 Azure 机器学习在映像创建过程中打包了该模型，以便该映像可部署为 Azure IoT Edge 模块。
 
-1. 打开到开发计算机的远程桌面会话。
+在此步骤中，我们将使用“Azure 机器学习”模块创建一个 Azure IoT Edge 解决方案，并将该模块指向我们使用 Azure Notebook 发布的映像。
 
-2. 在 Visual Studio Code 中打开 C:\\source\\IoTEdgeAndMlSample 文件夹  。
+1. 打开到开发 VM 的远程桌面会话。
 
-3. 右键单击资源管理器面板（在空白区单击），然后选择“新建 IoT Edge 解决方案”  。
+1. 在 Visual Studio Code 中打开 C:\\source\\IoTEdgeAndMlSample 文件夹。
+
+1. 右键单击资源管理器面板（在空白区单击），然后选择“新建 IoT Edge 解决方案”。
 
     ![创建新的 IoT Edge 解决方案](media/tutorial-machine-learning-edge-06-custom-modules/new-edge-solution-command.png)
 
-4. 接受默认解决方案名称 EdgeSolution  。
+1. 接受默认解决方案名称 EdgeSolution。
 
-5. 选择“Azure 机器学习”作为模块模板  。
+1. 选择“Azure 机器学习”作为模块模板。
 
-6. 将模块命名为 turbofanRulClassifier  。
+1. 将模块命名为 turbofanRulClassifier。
 
-7. 选择机器学习工作区。
+1. 选择机器学习工作区。 此工作区是在[教程：训练和部署 Azure 机器学习模型](tutorial-machine-learning-edge-04-train-model.md)中创建的“turboFanDemo”工作区
 
-8. 选择在运行 Azure Notebook 时创建的映像。
+1. 选择在运行 Azure Notebook 时创建的映像。
 
-9. 查看解决方案并注意已创建的文件：
+1. 查看解决方案并注意已创建的文件：
 
-   * deployment.template.json：  此文件包含解决方案中每个模块的定义。 此文件中有三个部分需多加注意：
+   * deployment.template.json：此文件包含解决方案中每个模块的定义。 此文件中有三个部分需多加注意：
 
-     * 注册表凭据：  定义你在解决方案中使用的一组自定义容器注册表。 当前，它应包含存储 Azure 机器学习映像的机器学习工作区中的注册表。 你可拥有任意数量的容器注册表，但为简单起见，这个注册表将通用于所有模块
+     * 注册表凭据：定义你在解决方案中使用的一组自定义容器注册表。 当前，它应包含存储 Azure 机器学习映像的机器学习工作区中的注册表。 你可拥有任意数量的容器注册表，但为简单起见，这个注册表将通用于所有模块。
 
        ```json
        "registryCredentials": {
@@ -92,110 +94,96 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
        }
        ```
 
-     * 模块：  本部分包含一组此解决方案随附的用户定义的模块。 你将注意到此部分当前包含两个模块：SimulatedTemperatureSensor 和 turbofanRulClassifier。 Visual Studio Code 模板已安装 SimulatedTemperatureSensor，但此解决方案中无需使用它。 可从 modules 节删除 SimulatedTemperatureSensor 模块定义。 请注意，turbofanRulClassifier 模块定义指向的是你的容器注册表中的映像。 在我们向解决方案添加更多模块时，它们将在此部分中显示。
+     * 模块：本部分包含一组此解决方案随附的用户定义的模块。 turbofanRulClassifier 模块定义指向的是你的容器注册表中的映像。 在我们向解决方案添加更多模块时，它们将在此部分中显示。
 
        ```json
-       "modules": {
-         "SimulatedTemperatureSensor": {
-           "version": "1.0",
-           "type": "docker",
-           "status": "running",
-           "restartPolicy": "always",
-           "settings": {
-             "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
-             "createOptions": {}
-           }
-         },
-         "turbofanRulClassifier": {
-           "version": "1.0",
-           "type": "docker",
-           "status": "running",
-           "restartPolicy": "always",
-           "settings": {
-             "image": "<your registry>.azurecr.io/edgemlsample:1",
-             "createOptions": {}
-           }
-         }
-       }
+        "modules": {
+          "turbofanRulClassifier": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "turbofandemo2cd74296.azurecr.io/edgemlsample:1",
+              "createOptions": {}
+            }
+          }
+        }
        ```
 
-     * 路由：我们将在本教程中频繁使用路由  。 路由定义了模块彼此之间的通信方式。 模板定义的两个路由与我们需要的路由不符。 第一个路由将来自分类器所有输出的所有数据发送到 IoT 中心 ($upstream)。 而另一个路由用于我们刚才删除的 SimulatedTemperatureSensor。 删除两个默认路由。
+     * 路由：我们将在本教程中频繁使用路由。 路由定义了模块彼此之间的通信方式。 模板定义的现有路由与我们需要的路由不符。 删除 `turbofanRulClassifierToIoTHub` 路由。
 
        ```json
-       "$edgeHub": {
-         "properties.desired": {
-           "schemaVersion": "1.0",
-           "routes": {
-             "turbofanRulClassifierToIoTHub": "FROM /messages/modules/turbofanRulClassifier/outputs/\* INTO $upstream",
-             "sensorToturbofanRulClassifier": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\\"/modules/turbofanRulClassifier/inputs/input1\\")"
-           },
-           "storeAndForwardConfiguration": {
-             "timeToLiveSecs": 7200
-           }
-         }
-       }
+        "$edgeHub": {
+          "properties.desired": {
+            "schemaVersion": "1.0",
+            "routes": {
+              "turbofanRulClassifierToIoTHub": "FROM /messages/modules/turbofanRulClassifier/outputs/* INTO $upstream"
+            },
+            "storeAndForwardConfiguration": {
+              "timeToLiveSecs": 7200
+            }
+          }
+        }
        ```
 
-   * deployment.debug.template.json：此文件是 deployment.template.json 的调试版本  。 我们应将来自 deployment.template.json 的所有更改镜像到此文件。
+   * deployment.debug.template.json：此文件是 deployment.template.json 的调试版本。 通常，我们应该使该文件与 deployment.template.json 文件的内容保持同步，但本教程并不要求这样做。
 
-   * .env：你应在此文件中提供用户名和密码来访问注册表  。
+   * .env：你应在此文件中提供用户名和密码来访问注册表。
 
       ```env
       CONTAINER_REGISTRY_USERNAME_<your registry name>=<ACR username>
       CONTAINER_REGISTRY_PASSWORD_<your registry name>=<ACR password>
       ```
 
-10. 在 Visual Studio Code 资源浏览器中右键单击 deployment.template.json 文件，然后选择“生成 IoT Edge 解决方案”  。
+1. 在 Visual Studio Code 资源浏览器中右键单击 deployment.template.json 文件，然后选择“生成 IoT Edge 解决方案”。
 
-11. 请注意，此命令会创建一个带有 deployment.amd64.json 文件的 config 文件夹。 此文件是解决方案的具体部署模板。
+1. 请注意，此命令会创建一个带有 deployment.amd64.json 文件的 config 文件夹。 此文件是解决方案的具体部署模板。
 
 ## <a name="add-router-module"></a>添加路由器模块
 
 接下来，向解决方案添加路由器模块。 路由器模块复制解决方案的多项操作：
 
-* 从叶设备接收消息：当消息从下游设备传输到 IoT Edge 设备时，路由器模块会接收消息并开始编排消息的路由  。
-* 将消息发送到 RUL 分类器模块：当从下游设备接收到新的消息时，路由器模块会将消息转换为 RUL 分类器期望的格式  。 路由器将消息发送到 RUL 分类器进行 RUL 预测。 分类器做出预测后，会将消息发送回路由器模块。
-* 将 RUL 消息发送到 IoT 中心：当路由器从分类器接收消息时，它会转换消息，使其仅包含基本信息、设备 ID 和 RUL，并将简短消息发送到 IoT 中心  。 仅当 RUL 预测结果低于阈值（例如，当 RUL 少于 100 个周期时），进一步优化才会将消息发送到 IoT 中心（我们未在此处进行此优化）。 此方式的筛选会减少消息量，同时降低 IoT 中心的成本。
-* 将消息发送到 Avro 编写器模块：为保留下游设备发送的所有数据，路由器模块会将从分类器接收到的整条消息发送到 Avro 编写器模块，后者将保留数据并通过 IoT 中心文件上传来上传数据  。
+* 从叶设备接收消息：当消息从下游设备传输到 IoT Edge 设备时，路由器模块会接收消息并开始编排消息的路由。
+* 将消息发送到 RUL 分类器模块：当从下游设备接收到新的消息时，路由器模块会将消息转换为 RUL 分类器期望的格式。 路由器将消息发送到 RUL 分类器进行 RUL 预测。 分类器做出预测后，会将消息发送回路由器模块。
+* 将 RUL 消息发送到 IoT 中心：当路由器从分类器接收消息时，它会转换消息，使其仅包含基本信息、设备 ID 和 RUL，并将简短消息发送到 IoT 中心。 仅当 RUL 预测结果低于阈值（例如，当 RUL 少于 100 个周期时），进一步优化才会将消息发送到 IoT 中心（我们未在此处进行此优化）。 此方式的筛选会减少消息量，同时降低 IoT 中心的成本。
+* 将消息发送到 Avro 编写器模块：为保留下游设备发送的所有数据，路由器模块会将从分类器接收到的整条消息发送到 Avro 编写器模块，后者将保留数据并通过 IoT 中心文件上传来上传数据。
 
-> [!NOTE]
-> 模块职责的说明可能使得处理显得连贯有序，但该流程实际上是基于消息/事件的。 这就是为什么我们需要一个类似路由器木块的业务流程模块。
+路由器模块是解决方案中的一个重要部分，它确保消息按照正确的顺序进行处理。
 
-### <a name="create-module-and-copy-files"></a>创建模块和复制文件
+### <a name="create-the-module-and-copy-files"></a>创建模块和复制文件
 
-1. 在 Visual Studio Code 中右键单击模块文件夹，然后选择“添加 IoT Edge 模块”  。
+1. 在 Visual Studio Code 中右键单击模块文件夹，然后选择“添加 IoT Edge 模块”。
 
-2. 选择“C# 模块”  。
+1. 为模块模板选择“C# 模块”。
 
-3. 将模块命名为 turbofanRouter  。
+1. 将模块命名为 turbofanRouter。
 
-4. 当系统提示提供 Docker 映像存储库时，请使用来自机器学习工作区的注册表（可在 deployment.template.json 文件的 registryCredentials 节点中找到此注册表）  。 该值是指向注册表的完全限定的地址，例如 \<你的注册表\>.azurecr.io/turbofanrouter  。
+1. 当系统提示提供 Docker 映像存储库时，请使用来自机器学习工作区的注册表（可在 deployment.template.json 文件的 registryCredentials 节点中找到此注册表）。 该值是指向注册表的完全限定的地址，例如 \<your registry\>.azurecr.io/turbofanrouter。
 
     > [!NOTE]
-    > 在本文中，将使用由 Azure 机器学习工作区创建的 Azure 容器注册表，我们之前用它来训练和部署分类器。 使用它仅为方便起见。 我们本来可创建一个新的容器注册表并在此处发布模块。
+    > 在本文中，将使用由 Azure 机器学习工作区创建的 Azure 容器注册表。 使用它仅为方便起见。 我们本来可创建一个新的容器注册表并在此处发布模块。
 
-5. 在 Visual Studio Code 中通过“视图” > “终端”打开新的终端窗口，然后复制模块目录中的文件   。
+1. 在使用命令提示符 shell 的终端中，将文件从示例模块复制到解决方案中。
 
     ```cmd
     copy c:\source\IoTEdgeAndMlSample\EdgeModules\modules\turbofanRouter\*.cs c:\source\IoTEdgeAndMlSample\EdgeSolution\modules\turbofanRouter\
     ```
 
-6. 当系统提示覆盖 program.cs 时，按 `y`，再点击 `Enter`。
+1. 接受关于覆盖 program.cs 文件的提示。
 
 ### <a name="build-router-module"></a>构建路由器模块
 
-1. 在 Visual Studio Code 中，选择“终端” > “配置默认生成任务”   。
+1. 在 Visual Studio Code 中，选择“终端” > “配置默认生成任务” 。
 
-2. 单击“基于模板创建 tasks.json 文件”  。
+1. 选择“使用模板创建 tasks.json 文件”。
 
-3. 单击“.NET Core”  。
+1. 选择“.NET Core”。
 
-4. 当 tasks.json 打开时，将内容替换为以下信息：
+1. 将 tasks.json 的内容替换为以下代码。
 
     ```json
     {
-      // See https://go.microsoft.com/fwlink/?LinkId=733558
-      // for the documentation about the tasks.json format
       "version": "2.0.0",
       "tasks": [
         {
@@ -219,13 +207,13 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
     }
     ```
 
-5. 保存并关闭 tasks.json。
+1. 保存并关闭 tasks.json。
 
-6. 通过 `Ctrl + Shift + B` 或“终端” > “运行生成任务”来运行生成   。
+1. 通过 `Ctrl + Shift + B` 或“终端” > “运行生成任务”来运行生成 。
 
 ### <a name="set-up-module-routes"></a>设置模块路由
 
-如上所述，IoT Edge 运行时使用 deployment.template.json 文件中配置的路由来管理松散耦合的模块之间的通信  。 在该部分，我们将深入探讨如何为 turbofanRouter 模块设置路由。 我们将先介绍输入路由，然后讲解输出。
+如上所述，IoT Edge 运行时使用 deployment.template.json 文件中配置的路由来管理松散耦合的模块之间的通信。 在该部分，我们将深入探讨如何为 turbofanRouter 模块设置路由。 我们将先介绍输入路由，然后讲解输出。
 
 #### <a name="inputs"></a>输入
 
@@ -236,7 +224,7 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
    await ioTHubModuleClient.SetInputMessageHandlerAsync(EndpointNames.FromClassifier, ClassifierCallbackMessageHandler, ioTHubModuleClient);
    ```
 
-2. 第一个回调侦听发送到 deviceInput 接收器的消息  。 从上图可见，我们想要将任何叶设备中的消息路由到此输入。 在 deployment.template.json 文件中，添加一个路由，以指示边缘中心将非 IoT Edge 模块发送的 IoT Edge 设备所接收的任何消息路由到 turbofanRouter 模块上名为“deviceInput”的输入中  ：
+2. 第一个回调侦听发送到 deviceInput 接收器的消息。 从上图可见，我们想要将任何叶设备中的消息路由到此输入。 在 deployment.template.json 文件中，添加一个路由，以指示边缘中心将非 IoT Edge 模块发送的 IoT Edge 设备所接收的任何消息路由到 turbofanRouter 模块上名为“deviceInput”的输入中：
 
    ```json
    "leafMessagesToRouter": "FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/deviceInput\")"
@@ -297,38 +285,28 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 }
 ```
 
-> [!NOTE]
-> 通过添加 turbofanRouter 模块，额外创建了下述路由：`turbofanRouterToIoTHub": "FROM /messages/modules/turbofanRouter/outputs/* INTO $upstream`。 删除此路由，仅在 deployment.template.json 文件中保留上述所列的路由。
-
-#### <a name="copy-routes-to-deploymentdebugtemplatejson"></a>将路由复制到 deployment.debug.template.json
-
-在最后一步中，为保证文件同步，请将所作更改镜像到 deployment.debug.template.json 中的 deployment.template.json。
+  > [!NOTE]
+  > 通过添加 turbofanRouter 模块，额外创建了下述路由：`turbofanRouterToIoTHub": "FROM /messages/modules/turbofanRouter/outputs/* INTO $upstream`。 删除此路由，仅在 deployment.template.json 文件中保留上述所列的路由。
 
 ## <a name="add-avro-writer-module"></a>添加 Avro 编写器模块
 
 Avro 编写器模块在解决方案中负责两个操作：存储消息和上传文件。
 
-* 存储消息：当 Avro 编写器模块收到消息时，它会按 Avro 格式将消息写入到本地文件系统  。 我们使用了绑定装载，它将目录（在本例中是 /data/avrofiles）装载到模块容器的路径中。 通过此装载，模块可写入到本地路径 (/avrofiles)，还使这些文件可直接通过 IoT Edge 设备进行访问。
+* 存储消息：当 Avro 编写器模块收到消息时，它会按 Avro 格式将消息写入到本地文件系统。 我们使用了绑定装载，它将目录（在本例中是 /data/avrofiles）装载到模块容器的路径中。 通过此装载，模块可写入到本地路径 (/avrofiles)，还使这些文件可直接通过 IoT Edge 设备进行访问。
 
-* 上传文件：Avro 编写器模块使用 Azure IoT 中心文件上传功能将文件上传到 Azure 存储帐户  。 成功上传文件后，模块从磁盘中删除文件
+* 上传文件：Avro 编写器模块使用 Azure IoT 中心文件上传功能将文件上传到 Azure 存储帐户。 成功上传文件后，模块从磁盘中删除文件
 
 ### <a name="create-module-and-copy-files"></a>创建模块和复制文件
 
-1. 在命令面板中，搜索并选择“Python:**Select Interpreter**。
+1. 在 Visual Studio Code 中，选择“视图” > “命令面板”，然后搜索并选择  **Python:Select Interpreter**。
 
-1. 选择在 C:\\Python37 中找到的解释器。
+1. 选择已安装的 Python 版本 3.7 或更高版本。
 
-1. 再次打开命令面板，搜索并选择“终端:  选择默认 Shell”。
+1. 在 Visual Studio Code 中右键单击模块文件夹，然后选择“添加 IoT Edge 模块”。
 
-1. 出现提示时，选择“命令提示符”  。
+1. 选择“Python 模块”。
 
-1. 打开新的终端 shell，选择“终端” > “新建终端”   。
-
-1. 在 Visual Studio Code 中右键单击模块文件夹，然后选择“添加 IoT Edge 模块”  。
-
-1. 选择“Python 模块”。 
-
-1. 将模块命名为“avroFileWriter”。
+1. 将模块命名为 `avroFileWriter`。
 
 1. 当系统提示提供 Docker 映像存储库时，请使用在添加路由器模块时所用的同一注册表。
 
@@ -338,7 +316,7 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    copy C:\source\IoTEdgeAndMlSample\EdgeModules\modules\avroFileWriter\*.py C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avroFileWriter\
    ```
 
-1. 如果系统提示覆盖 main.py，请键入 `y`，然后点击 `Enter`。
+1. 在出现覆盖 main.py 的提示时选择接受。
 
 1. 请注意，filemanager.py 和 schema.py 已添加到解决方案中，且 main.py 已更新。
 
@@ -347,29 +325,29 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 ### <a name="bind-mount-for-data-files"></a>针对数据文件的绑定装载
 
-如简介中所述，编写器模块依靠绑定装载的存在来将 Avro 文件写入设备的文件系统。
+如前文所述，编写器模块依靠绑定装载的存在来将 Avro 文件写入设备的文件系统。
 
 #### <a name="add-directory-to-device"></a>将目录添加到设备
 
-1. 使用 SSH 连接到 IoT Edge 设备 VM。
+1. 在 Azure 门户中，启动 IoT Edge 设备 VM（如果它未运行）。 使用 SSH 连接到它。 连接需要 DNS 名称，可以从 Azure 门户中 VM 的概述页面复制该名称。
 
-   ```bash
-   ssh -l <user>@IoTEdge-<extension>.<region>.cloudapp.azure.com
+   ```cmd
+   ssh -l <user>@<vm name>.<region>.cloudapp.azure.com
    ```
 
-2. 创建将保留所保存的叶设备消息的目录。
+1. 登录后，创建将保留所保存的叶设备消息的目录。
 
    ```bash
    sudo mkdir -p /data/avrofiles
    ```
 
-3. 更新目录权限，使其可由容器写入。
+1. 更新目录权限，使其可由容器写入。
 
    ```bash
    sudo chmod ugo+rw /data/avrofiles
    ```
 
-4. 验证目录显示是否具有面向用户、组和所有者的写入 (w) 权限。
+1. 验证目录显示是否具有面向用户、组和所有者的写入 (w) 权限。
 
    ```bash
    ls -la /data
@@ -381,9 +359,9 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 要将目录添加到模块的容器，我们将修改与 avroFileWriter 模块关联的 Dockerfile。 下面是与模块关联的三个 Dockerfile：Dockerfile.amd64、Dockerfile.amd64.debug 和 Dockerfile.arm32v7。 应保证这些文件同步，以防我们希望调试或部署到 arm32 设备。 在本文中，只需关注 Dockerfile.amd64。
 
-1. 在开发计算机上，打开 Dockerfile.amd64 文件  。
+1. 在开发 VM 上，打开 C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avoFileWriter\Dockerfile.amd64 文件。
 
-2. 修改此文件，使其如下例所示：
+1. 修改此文件，使其如下例所示：
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -408,9 +386,9 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
    `mkdir` 和 `chown` 命令会指导 Docker 生成过程在映像中创建一个名为 /avrofiles 的顶级目录，然后将模块用户设置为该目录的所有者。 有必要确保这些命令插入到用户通过 `useradd` 命令添加到映像的模块后面且模块用户的上下文开关（USER 模块用户）的前面。
 
-3. 对 Dockerfile.amd64.debug 和 Dockerfile.arm32v7 进行相应更改。
+1. 如果需要，请对 Dockerfile.amd64.debug 和 Dockerfile.arm32v7 进行相应更改。
 
-#### <a name="update-the-module-configuration"></a>更新模块配置
+#### <a name="add-bind-configuration-to-the-avrofilewriter"></a>向 avroFileWriter 添加绑定配置
 
 创建绑定的最后一步是，使用绑定信息更新 deployment.template.json（以及 deployment.debug.template.json）文件。
 
@@ -437,8 +415,6 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    }
    ```
 
-3. 对 deployment.debug.template.json 进行相应的更改。
-
 ### <a name="bind-mount-for-access-to-configyaml"></a>针对 config.yaml 访问的绑定装载
 
 需要为编写器模块再添加一个绑定。 通过此绑定，模块可从 IoT Edge 设备上的 /etc/iotedge/config.yaml 文件读取连接字符串。 我们需要连接字符串来创建 IoTHubClient，因此可调用 \_blob\_async 方法，将文件上传到 IoT 中心。 添加此绑定的步骤与上一部分中的步骤类似。
@@ -451,25 +427,25 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    ssh -l <user>@IoTEdge-<extension>.<region>.cloudapp.azure.com
    ```
 
-2. 添加到 config.yaml 文件的读取权限。
+1. 添加到 config.yaml 文件的读取权限。
 
    ```bash
    sudo chmod +r /etc/iotedge/config.yaml
    ```
 
-3. 验证权限是否设置正确。
+1. 验证权限是否设置正确。
 
    ```bash
    ls -la /etc/iotedge/
    ```
 
-4. 确保 config.yaml 的权限为 -r--r--r--  。
+1. 确保 config.yaml 的权限为 -r--r--r--。
 
 #### <a name="add-directory-to-module"></a>将目录添加到模块
 
-1. 在开发计算机上，打开 Dockerfile.amd64 文件  。
+1. 在开发计算机上，打开 Dockerfile.amd64 文件。
 
-2. 再向文件添加一组 `mkdir` 和 `chown` 命令，使其如下所示：
+1. 再向文件添加一组 `mkdir` 和 `chown` 命令，使其如下所示：
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -494,13 +470,13 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    CMD "python3", "-u", "./main.py"]
    ```
 
-3. 对 Dockerfile.amd64.debug 和 Dockerfile.arm32v7 进行相应更改。
+1. 对 Dockerfile.amd64.debug 和 Dockerfile.arm32v7 进行相应更改。
 
 #### <a name="update-the-module-configuration"></a>更新模块配置
 
 1. 打开 **deployment.template.json** 文件。
 
-2. 通过将 `Binds` 参数添加第二行将容器目录 (/app/iotconfig) 指向设备上的本地目录 (/etc/iotedge)，修改 avroFileWriter 的定义。
+1. 通过将 `Binds` 参数添加第二行将容器目录 (/app/iotconfig) 指向设备上的本地目录 (/etc/iotedge)，修改 avroFileWriter 的定义。
 
    ```json
    "avroFileWriter": {
@@ -522,7 +498,7 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    }
    ```
 
-3. 对 deployment.debug.template.json 进行相应的更改。
+1. 对 deployment.debug.template.json 进行相应的更改。
 
 ## <a name="install-dependencies"></a>安装依赖项
 
@@ -530,14 +506,14 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 ### <a name="pyyaml"></a>PyYAML
 
-1. 在开发计算机上，打开 requirements.txt 文件并添加 pyyaml  。
+1. 在开发计算机上，打开 `C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avoFileWriter\requirements.txt` 文件并在文件的新行添加“pyyaml”。
 
    ```txt
    azure-iothub-device-client~=1.4.3
    pyyaml
    ```
 
-2. 打开 Dockerfile.amd64 文件，再添加 `pip install` 命令来升级 setuptools  。
+1. 打开 Dockerfile.amd64 文件，再添加 `pip install` 命令来升级 setuptools。
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -563,9 +539,7 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    CMD [ "python3", "-u", "./main.py" ]
    ```
 
-3. 对 Dockerfile.amd64.debug 进行相应更改。 <!--may not be necessary. Add 'if needed'?-->
-
-4. 在 Visual Studio Code 中打开终端并键入内容，本地安装 pyyaml
+1. 在命令提示符下，将 pyyaml 安装到你的开发计算机。
 
    ```cmd
    pip install pyyaml
@@ -581,7 +555,7 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    fastavro
    ```
 
-2. 使用 Visual Studio Code 终端将 fastavro 安装到开发计算机上。
+1. 将 fastavro 安装到你的开发计算机。
 
    ```cmd
    pip install fastavro
@@ -602,31 +576,31 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 1. 在 Azure 门户中，导航到 IoT 中心。
 
-2. 从右侧导航栏中，选择“消息路由”  。
+1. 在左侧窗格菜单中的“消息”下，选择“消息路由” 。
 
-3. 选择 **添加** 。
+1. 在“路由”选项卡上，选择“添加” 。
 
-4. 将路由命名为 RulMessageRoute  。
+1. 将路由命名为 RulMessageRoute。
 
-5. 在“终结点”选择器旁边选择“添加”，然后选择“Blob 存储”    。
+1. 在“终结点”选择器右侧选择“添加终结点”，然后选择“存储”  。
 
-6. 在“添加存储终结点”窗体中，将终结点命令为 ruldata   。
+1. 在“添加存储终结点”页上，将终结点命令为 ruldata 。
 
-7. 选择“选取容器”  。
+1. 选择“选取容器”。
 
-8. 选择在这整个教程中使用的存储帐户，该帐户采用 iotedgeandml\<唯一前缀\> 之类的名称  。
+1. 在“存储帐户”页面上，找到你在本教程中使用的存储帐户，其名称类似于“iotedgeandml\<unique suffix\>” 。
 
-9. 选择 ruldata 容器，然后单击“选择”   。
+1. 选择 ruldata 容器，然后单击“选择” 。
 
-10. 单击“创建”以创建存储终结点  。
+1. 返回“添加存储终结点”页面，选择“创建”来创建存储终结点 。
 
-11. 对于“路由查询”，请输入以下查询  ：
+1. 返回“添加路由”页面，对于“路由查询”，将 `true` 替换为以下查询 ：
 
     ```sql
     IS_DEFINED($body.PredictedRul) AND NOT IS_DEFINED($body.OperationalSetting1)
     ```
 
-12. 展开“测试”部分，然后展开“消息正文”部分   。 将消息替换为以下预期消息示例：
+1. 展开“测试”部分，然后展开“消息正文”部分 。 将消息正文替换为以下预期消息示例：
 
     ```json
     {
@@ -637,25 +611,25 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
     }
     ```
 
-13. 选择“测试路由”  。 如果测试成功，将看到“消息与查询相匹配”。
+1. 选择“测试路由”。 如果测试成功，将看到“消息与查询相匹配”。
 
-14. 单击“ **保存**”。
+1. 单击“ **保存**”。
 
-#### <a name="update-turbofandevicetostorage-route"></a>更新 turbofanDeviceToStorage 路由
+#### <a name="update-turbofandevicedatatostorage-route"></a>更新 turbofanDeviceDataToStorage 路由
 
 我们不希望将新的预测数据路由到旧的存储位置，因此请更新路由来避免此问题。
 
-1. 在 IoT 中心的“消息路由”页面，选择“路由”选项卡   。
+1. 在 IoT 中心的“消息路由”页面，选择“路由”选项卡 。
 
-2. 选择 turbofanDeviceDataToStorage，或选择向初始设备数据路由赋予的任何名称  。
+1. 选择 turbofanDeviceDataToStorage，或选择向初始设备数据路由赋予的任何名称。
 
-3. 将路由查询更新为
+1. 将路由查询更新为
 
    ```sql
    IS_DEFINED($body.OperationalSetting1)
    ```
 
-4. 展开“测试”部分，然后展开“消息正文”部分   。 将消息替换为以下预期消息示例：
+1. 展开“测试”部分，然后展开“消息正文”部分 。 将消息替换为以下预期消息示例：
 
    ```json
    {
@@ -689,23 +663,23 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    }
    ```
 
-5. 选择“测试路由”  。 如果测试成功，将看到“消息与查询相匹配”。
+1. 选择“测试路由”。 如果测试成功，将看到“消息与查询相匹配”。
 
-6. 选择“保存”。 
+1. 选择“保存”。
 
 ### <a name="configure-file-upload"></a>配置文件上传
 
 配置 IoT 中心文件上传功能，使文件编写器模块能够将文件上传到存储。
 
-1. 从 IoT 中心内的左侧导航栏，选择“文件上传”  。
+1. 在 IoT 中心左窗格菜单中的“消息”下，选择“文件上传” 。
 
-2. 选择“Azure 存储容器”  。
+1. 选择“Azure 存储容器”。
 
-3. 从列表中选择存储帐户。
+1. 从列表中选择存储帐户。
 
-4. 选择 uploadturbofanfiles 容器，然后单击“选择”   。
+1. 选择以“azureml-blobstore”开头且附加了 guid 的容器，然后单击“选择” 。
 
-5. 选择“保存”。  保存完毕时，门户将向你发送通知。
+1. 选择“保存”。 保存完毕时，门户将向你发送通知。
 
 > [!Note]
 > 在本教程中，我们不打开上传通知，但你可参阅[接收文件上传通知](../iot-hub/iot-hub-java-java-file-upload.md#receive-a-file-upload-notification)，详细了解如何处理文件上传通知。
@@ -714,9 +688,9 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 我们已进行配置更改，接下来准备生成映像并将其发布到 Azure 容器注册表。 生成过程会使用 deployment.template.json 文件来决定需要生成哪些模块。 可在模块文件夹的 module.json 文件中找到每个模块的设置（包括版本）。 生成过程首先针对与 module.json 文件中找到的当前配置相匹配的 Dockerfile 运行一个 Docker 生成来创建映像。 然后，它通过与 module.json 文件中的标记相匹配的版本标记将映像从 module.json 文件发布到注册表。 最后，它生成一个配置特定的部署清单（例如 deployment.amd64.json），我们要将它部署到 IoT Edge 设备。 IoT Edge 设备从部署清单中读取消息，然后根据说明下载模块、配置路由并设置所有必需属性。 此部署方法有两个需注册的“副作用”：
 
-* 部署滞后：由于 IoT Edge 运行时必须识别对其所需属性的更改，然后才能开始重新配置，因此在你部署模块后直到运行时获取这些模块并开始更新 IoT Edge 设备需要一段时间  。
+* 部署滞后：由于 IoT Edge 运行时必须识别对其所需属性的更改，然后才能开始重新配置，因此在你部署模块后直到运行时获取这些模块并开始更新 IoT Edge 设备需要一段时间。
 
-* 模块版本问题：如果使用与上一模块相同的版本标记将模块容器的新版本发布到容器注册表，运行时不会下载此模块的新版本  。 它会将本地映像的版本标记与部署清单中的必需映像进行比较。 如果两者相匹配，则运行时不执行任何操作。 因此，有必要在每次希望部署新的更改时将模块版本号进行递增。 版本号递增方式是，针对要更改的模块在 module.json 文件的 tag 属性下更改 version 属性   。 生成并发布模块。
+* 模块版本问题：如果使用与上一模块相同的版本标记将模块容器的新版本发布到容器注册表，运行时不会下载此模块的新版本。 它会将本地映像的版本标记与部署清单中的必需映像进行比较。 如果两者相匹配，则运行时不执行任何操作。 因此，有必要在每次希望部署新的更改时将模块版本号进行递增。 版本号递增方式是，针对要更改的模块在 module.json 文件的 tag 属性下更改 version 属性 。 生成并发布模块。
 
     ```json
     {
@@ -740,27 +714,29 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 ### <a name="build-and-publish"></a>生成并发布
 
-1. 在开发 VM 的 Visual Studio Code 中，打开 Visual Studio Code 终端窗口并登录容器注册表。
+1. 在开发 VM 上，如果 Docker 未运行，请启动它。
+
+1. 在 Visual Studio Code 中，使用命令提示符启动一个新的终端，然后登录到 Azure 容器注册表 (ACR)。
+
+  可以在 Azure 门户中找到所需的用户名、密码和登录服务器值。 容器注册表名的格式为“turbofandemo\<unique id\>”。 从左窗格菜单的“设置”下，选择“访问密钥”来查看它们 。
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-1. 在 Visual Studio Code 中，右键单击 deployment.template.json，然后选择“生成并推动 IoT Edge 解决方案”  。
+1. 在 Visual Studio Code 中，右键单击 deployment.template.json，然后选择“生成并推动 IoT Edge 解决方案”。
 
 ### <a name="view-modules-in-the-registry"></a>在注册表中查看模块
 
 成功完成生成后，我们将能够使用 Azure 门户查看所发布的模块。
 
-1. 在 Azure 门户中，导航到 Azure 机器学习工作区，然后单击注册表的超链接  。
+1. 在此教程中打开 Azure 容器注册表。 容器注册表名的格式为“turbofandemo\<unique id\>”。 
 
-    ![从机器学习服务工作区导航到注册表](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
+1. 从左窗格菜单的“服务”下，选择“存储库” 。
 
-2. 从注册表端导航器中，选择“存储库”  。
+1. 请注意，所创建的两个模块（avrofilewriter 和 turbofanrouter）都显示为存储库 。
 
-3. 请注意，所创建的两个模块（avrofilewriter 和 turbofanrouter）都显示为存储库   。
-
-4. 选择 turbofanrouter，并记下你已发布一个标记为 0.0.1-amd64 的映像  。
+1. 选择 turbofanrouter，并记下你已发布一个标记为 0.0.1-amd64 的映像。
 
    ![查看第一个标记的 turbofanrouter 版本](media/tutorial-machine-learning-edge-06-custom-modules/tagged-image-turbofanrouter-repo.png)
 
@@ -768,15 +744,15 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 我们已生成模块并将其部署到解决方案中，接下来要将模块部署到 IoT Edge 设备。
 
-1. 在 Visual Studio Code 中，右键单击 config 文件夹中的 deployment.amd64.json 文件  。
+1. 在 Visual Studio Code 中，右键单击 config 文件夹中的 deployment.amd64.json 文件。
 
-2. 选择“为单个设备创建部署”  。
+1. 选择“为单个设备创建部署”。
 
-3. 选择 IoT Edge 设备 aaTurboFanEdgeDevice  。
+1. 选择 IoT Edge 设备 aaTurboFanEdgeDevice。
 
-4. 在 Visual Studio Code 资源管理器中刷新 Azure IoT 中心设备面板。 你应会看到已部署三个新模块，但它们尚未运行。
+1. 在 Visual Studio Code 资源管理器中刷新 Azure IoT 中心设备面板。 你应会看到已部署三个新模块，但它们尚未运行。
 
-5. 几分钟后再次刷新，你将看到模块正在运行。
+1. 几分钟后再次刷新，你将看到模块正在运行。
 
    ![在 Visual Studio Code 中查看正在运行的模块](media/tutorial-machine-learning-edge-06-custom-modules/view-running-modules-list.png)
 
@@ -789,13 +765,19 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 ### <a name="identify-failed-modules"></a>确定出现故障的模块
 
-* Visual Studio Code：  查看 Azure IoT 中心设备面板。 如果大多数模块处于运行状态，但其中一个模块已停止，则需要进一步调查停止运行的模块。 如果所有模块长期处于停止状态，这也可能表示出现故障。
+* Visual Studio Code：查看 Azure IoT 中心设备面板。 如果大多数模块处于运行状态，但其中一个模块已停止，则需要进一步调查停止运行的模块。 如果所有模块长期处于停止状态，这也可能表示出现故障。
 
 * **Azure 门户：** 通过导航到门户中的 IoT 中心，再找到设备详细信息页面（在 IoT Edge 下向下钻取设备），你可能发现某模块已报告错误或从未向 IoT 中心报告任何问题。
 
 ### <a name="diagnosing-from-the-device"></a>通过设备诊断
 
-通过登录 IoT Edge 设备，可获取大量有关模块状态的信息。 我们使用的主要机制是 Docker 命令，它可用于检查设备上的容器和映像。
+通过登录 IoT Edge 设备（本例中的 Linux VM），可获取大量有关模块状态的信息。 我们使用的主要机制是 Docker 命令，它可用于检查设备上的容器和映像。
+
+1. 登录到 IoT Edge 设备：
+
+   ```bash
+   ssh -l <user>@IoTEdge-<extension>.<region>.cloudapp.azure.com
+   ```
 
 1. 列出所有正在运行的容器。 我们希望看到每个模块的容器都有与该模块相对应的名称。 此外，此命令列出了与你的期望完全匹配的容器映像（包括版本）。 你还可通过在命令中将“映像”替换为“容器”来列出映像。
 
@@ -803,19 +785,19 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
    sudo docker container ls
    ```
 
-2. 获取容器的日志。 此命令会输出容器中写入到 StdErr 和 StdOut 的所有内容。 此命令适用于已启动但由于某种原因而停机的容器。 它还帮助理解 edgeAgent 或 edgeHub 容器发生了什么情况。
+1. 获取容器的日志。 此命令会输出容器中写入到 StdErr 和 StdOut 的所有内容。 此命令适用于已启动但由于某种原因而停机的容器。 它还帮助理解 edgeAgent 或 edgeHub 容器发生了什么情况。
 
    ```bash
-   sudo docker container logs <container name>
+   sudo docker container logs <container id>
    ```
 
-3. 检查容器。 此命令提供了大量有关映像的信息。 可根据要查找的内容筛选数据。 例如，如果你要查看 avroFileWriter 上的绑定是否正确，可使用以下命令：
+1. 检查容器。 此命令提供了大量有关映像的信息。 可根据要查找的内容筛选数据。 例如，如果你要查看 avroFileWriter 上的绑定是否正确，可使用以下命令：
 
    ```bash
    sudo docker container inspect -f "{{ json .Mounts }}" avroFileWriter | python -m json.tool
    ```
 
-4. 连接到正在运行的容器。 如果想要在容器运行时检查该容器，此命令非常有用：
+1. 连接到正在运行的容器。 如果想要在容器运行时检查该容器，此命令非常有用：
 
    ```bash
    sudo docker exec -it avroFileWriter bash
@@ -823,9 +805,11 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 ## <a name="next-steps"></a>后续步骤
 
-本文中，我们在 Visual Studio Code 中创建了一个 IoT Edge 解决方案，它具有 3 个模块、1 个分类器、1 个路由器和 1 个文件编写器/上载程序。 我们设置了路由来允许模块在边缘设备上彼此通信，修改了边缘设备的配置，还上传了 Dockerfile 来安装依赖项并将绑定装载添加到模块的容器中。 接下来，我们上传了 IoT 中心的配置来根据类型路由消息并处理文件上传操作。 一切就绪后，我们将模块部署到 IoT Edge设备，同时确保了模块正确运行。
+本文中，我们在 Visual Studio Code 中创建了一个 IoT Edge 解决方案，它具有 3 个模块、1 个分类器、1 个路由器和 1 个文件编写器/上载程序。 我们设置了路由来允许模块在边缘设备上彼此通信。 我们修改了边缘设备的配置，还上传了 Dockerfile 来安装依赖项并将绑定装载添加到模块的容器中。 
 
-在以下页面上可以找到更多信息：
+接下来，我们上传了 IoT 中心的配置来根据类型路由消息并处理文件上传操作。 一切就绪后，我们将模块部署到 IoT Edge设备，同时确保了模块正确运行。
+
+有关详细指南，请参阅以下文章：
 
 * [了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)
 * [IoT 中心消息路由查询语法](../iot-hub/iot-hub-devguide-routing-query-syntax.md)

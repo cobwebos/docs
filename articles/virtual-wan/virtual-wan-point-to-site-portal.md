@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 06/29/2020
 ms.author: alzam
-ms.openlocfilehash: 11007bc39cb1112799c89afaf0ca670aa6760de6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 9c93ad0357011008c45b2898260a655509b02dc2
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81482129"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560739"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建用户 VPN 连接
 
@@ -22,12 +22,10 @@ ms.locfileid: "81482129"
 
 > [!div class="checklist"]
 > * 创建 WAN
-> * 创建中心
 > * 创建 P2S 配置
+> * 创建中心
+> * 指定 DNS 服务器
 > * 下载 VPN 客户端配置文件
-> * 将 P2S 配置应用到中心
-> * 将 VNet 连接到中心
-> * 下载并应用 VPN 客户端配置
 > * 查看虚拟 WAN
 
 ![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwanp2s.png)
@@ -48,9 +46,9 @@ ms.locfileid: "81482129"
 
 从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
 
-1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
-2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
-3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段   ：
+1. 导航到“虚拟 WAN”页。 在门户中，选择“+创建资源”。 在搜索框中键入“虚拟 WAN”，然后选择“Enter” 。
+1. 从结果中选择“虚拟 WAN”。 在“虚拟 WAN”页上，选择“创建”以打开“创建 WAN”页。
+1. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段 ：
 
    ![虚拟 WAN](./media/virtual-wan-point-to-site-portal/vwan.png)
 
@@ -59,124 +57,100 @@ ms.locfileid: "81482129"
    * **资源组位置** - 从下拉列表中选择资源位置。 WAN 是一个全局资源，不会驻留在某个特定区域。 但是，必须选择一个区域才能更轻松地管理和查找所创建的 WAN 资源。
    * **名称** - 键入要用于称呼 WAN 的名称。
    * **类型：** 标准。 如果创建基本 WAN，则只能创建基本中心。 基本中心仅支持 VPN 站点到站点连接。
-4. 填写完字段后，单击“审阅 + 创建”  。
-5. 验证通过后，选择“创建”以创建虚拟 WAN  。
-
-## <a name="create-an-empty-virtual-hub"></a><a name="hub"></a>创建空虚拟中心
-
-1. 在虚拟 WAN 下，选择“中心”，然后单击“+新建中心” 
-
-   ![新建站点](media/virtual-wan-point-to-site-portal/hub1.jpg)
-2. 在“创建虚拟中心”页上，请填写以下字段。
-
-   **区域** - 选择要在其中部署虚拟中心的区域。
-
-   **名称** - 输入要用于称呼虚拟中心的名称。
-
-   **中心专用地址空间** - 用 CIDR 表示法来表示的中心地址范围。
-
-   ![新建站点](media/virtual-wan-point-to-site-portal/hub2.jpg)  
-3. 单击“查看 + 创建” 
-4. 在“验证已通过”  页上，单击“创建” 
+1. 填写完字段后，单击“审阅 + 创建”。
+1. 验证通过后，选择“创建”以创建虚拟 WAN。
 
 ## <a name="create-a-p2s-configuration"></a><a name="p2sconfig"></a>创建 P2S 配置
 
 P2S 配置定义连接远程客户端的参数。
 
-1. 导航到“所有资源”  。
-2. 单击创建的虚拟 WAN。
-3. 单击页面顶部的“+创建用户 VPN 配置”  ，打开“创建新的用户 VPN 配置”页。 
+1. 导航到“所有资源”。
+1. 选择创建的虚拟 WAN。
+1. 选择页面顶部的“+创建用户 VPN 配置”，打开“创建新的用户 VPN 配置”页 。
 
-   ![新建站点](media/virtual-wan-point-to-site-portal/p2s1.jpg)
-4. 在“创建新的用户 VPN 配置”页上填写以下字段： 
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/p2s1.jpg" alt-text="用户 VPN 配置":::
 
-   **配置名称** - 这是需要按其来引用配置的名称。
+1. 在“创建新的用户 VPN 配置”页上填写以下字段：
 
-   **隧道类型** - 用于隧道的协议。
-
-   **根证书名称** - 证书的说明性名称。
-
-   **公用证书数据** - Base-64 编码的 X.509 证书数据。
+   * **配置名称** - 这是需要按其来引用配置的名称。
+   * **隧道类型** - 用于隧道的协议。
+   * **根证书名称** - 证书的说明性名称。
+   * **公用证书数据** - Base-64 编码的 X.509 证书数据。
   
-5. 单击“创建”  以创建配置。
+1. 选择“创建”以创建配置。
 
-## <a name="edit-hub-assignment"></a><a name="edit"></a>编辑中心分配
+## <a name="create-hub-with-point-to-site-gateway"></a><a name="hub"></a>使用点到站点网关创建中心
 
-1. 导航到虚拟 WAN 下的“中心”  边栏选项卡
-2. 选择要将 VPN 服务器配置与之关联的中心，然后单击“...” 
+1. 在虚拟 WAN 下选择“中心”，然后选择“+新建中心”。
 
-   ![新建站点](media/virtual-wan-point-to-site-portal/p2s4.jpg)
-3. 单击“编辑虚拟中心”  。
-4. 选中“包括点到站点网关”  复选框，然后选择所需的网关缩放单元  。
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/hub1.jpg" alt-text="新中心":::
 
-   ![新建站点](media/virtual-wan-point-to-site-portal/p2s2.jpg)
+1. 在“创建虚拟中心”页上，请填写以下字段。
 
-下表显示了有关可用缩放单元  的详细信息
+   * **区域** - 选择要在其中部署虚拟中心的区域。
+   * **名称** - 输入要用于称呼虚拟中心的名称。
+   * **中心专用地址空间** - 用 CIDR 表示法来表示的中心地址范围。
 
-| **缩放单元** | **吞吐量** | **P2S 连接** |
-| --- | --- | --- |
-| 1| 500 Mbps | 500 |
-| 2| 1 Gbps | 500 |
-| 3| 1.5 Gbps | 500 |
-| 4| 2 Gbps | 1000 |
-| 5| 2.5 Gbps | 1000 |
-| 6| 3 Gbps | 1000 |
-| 7| 3.5 Gbps | 5000 |
-| 8| 4 Gbps | 5000 |
-| 9| 4.5 Gbps | 5000 |
-| 10| 5 Gbps | 5000 |
-| 11| 5.5 Gbps | 5000 |
-| 12| 6 Gbps | 5000 |
-| 13| 6.5 Gbps | 10000 |
-| 14| 7 Gbps | 10000 |
-| 15| 7.5 Gbps | 10000 |
-| 16| 8 Gbps | 10000 |
-| 17| 8.5 Gbps | 10000 |
-| 18| 9 Gbps | 10000 |
-| 19| 9.5 Gbps | 10000 |
-| 20| 10 Gbps | 10000 |
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/hub2.jpg" alt-text="创建虚拟中心":::
 
-5. 输入用于为 VPN 客户端分配 IP 地址的“地址池”  。
-6. 单击“确认” 
-7. 完成此操作最多需要 30 分钟。
+1. 在“点到站点”选项卡上填写以下字段：
+
+   * **网关缩放单元** - 表示用户 VPN 网关的聚合容量。
+   * **点到站点配置** - 已在上一步中创建。
+   * **客户端地址池** - 用于远程用户。
+   * **自定义 DNS 服务器 IP**。
+
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/hub-with-p2s.png" alt-text="包含点到站点的中心":::
+
+1. 选择“查看 + 创建”。
+1. 在“验证已通过”页上，选择“创建” 。
+
+## <a name="specify-dns-server"></a><a name="dns"></a>指定 DNS 服务器
+
+虚拟 WAN 用户 VPN 网关允许指定最多 5 个 DNS 服务器。 可以在创建中心的过程中对其进行配置，也可以在以后对其进行修改。 若要执行此操作，请找到虚拟中心。 在“用户 VPN (点到站点)”下，单击“配置”，然后在“自定义 DNS 服务器”文本框中输入 DNS 服务器 IP 地址 。
+
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/custom-dns.png" alt-text="自定义 DNS" lightbox="media/virtual-wan-point-to-site-portal/custom-dns-expand.png":::
 
 ## <a name="download-vpn-profile"></a><a name="download"></a>下载 VPN 配置文件
 
 使用 VPN 配置文件来配置客户端。
 
-1. 在虚拟 WAN 的页面上，单击“用户 VPN 配置”  。
-2. 在页面顶部，单击“下载用户 VPN 配置”  。
-3. 完成创建文件后，可以单击相应的链接下载该文件。
-4. 使用此配置文件配置 VPN 客户端。
+1. 在虚拟 WAN 的页面上，选择“用户 VPN 配置”。
+2. 在页面顶部，选择“下载用户 VPN 配置”。下载 WAN 级配置时，系统会提供内置的基于流量管理器的用户 VPN 配置文件。 有关全局配置文件或基于中心的配置文件的详细信息，请参阅此[中心配置文件](https://docs.microsoft.com/azure/virtual-wan/global-hub-profile)。   使用全局配置文件可简化故障转移方案。
+
+   如果中心由于某种原因而不可用，则该服务提供的内置流量管理可确保通过不同的中心连接到点到站点用户的 Azure 资源。 始终可以通过导航到特定的中心来下载特定于中心的 VPN 配置。 在“用户 VPN (点到站点)”下，下载虚拟中心用户 VPN 配置文件 。
+
+1. 完成创建文件后，可以选择相应的链接下载该文件。
+1. 使用此配置文件配置 VPN 客户端。
 
 ### <a name="configure-user-vpn-clients"></a>配置用户 VPN 客户端
+
 使用下载的配置文件配置远程访问客户端。 每个操作系统的过程并不相同，请按照下面的正确说明操作：
 
 #### <a name="microsoft-windows"></a>Microsoft Windows
 ##### <a name="openvpn"></a>OpenVPN
 
 1. 从官方网站下载并安装 OpenVPN 客户端。
-2. 下载网关的 VPN 配置文件。 这可以通过 Azure 门户中的“用户 VPN 配置”选项卡或 PowerShell 中的 New-AzureRmVpnClientConfiguration 来完成。
-3. 解压缩该配置文件。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
-4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 有关步骤，请参阅[如何导出证书以获取已编码的公钥](certificates-point-to-site.md)。
-5. 使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 有关步骤，请参阅[如何提取私钥](howto-openvpn-clients.md#windows)。
-6. 不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。
-7. 将 vpnconfig.ovpn 文件复制到 C:\Program Files\OpenVPN\config 文件夹。
-8. 右键单击系统托盘中的 OpenVPN 图标，然后单击“连接”。
+1. 下载网关的 VPN 配置文件。 这可以通过 Azure 门户中的“用户 VPN 配置”选项卡或 PowerShell 中的 New-AzureRmVpnClientConfiguration 来完成。
+1. 解压缩该配置文件。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
+1. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 有关步骤，请参阅[如何导出证书以获取已编码的公钥](certificates-point-to-site.md)。
+1. 使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 有关步骤，请参阅[如何提取私钥](howto-openvpn-clients.md#windows)。
+1. 不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。
+1. 将 vpnconfig.ovpn 文件复制到 C:\Program Files\OpenVPN\config 文件夹。
+1. 右键单击系统托盘中的 OpenVPN 图标，然后选择“连接”。
 
 ##### <a name="ikev2"></a>IKEv2
 
 1. 根据 Windows 计算机的体系结构选择 VPN 客户端配置文件。 对于 64 位处理器体系结构，请选择“VpnClientSetupAmd64”安装程序包。 对于 32 位处理器体系结构，请选择“VpnClientSetupX86”安装程序包。
-2. 双击所需的包进行安装。 如果显示 SmartScreen 弹出窗口，请单击“更多信息”，并单击“仍要运行”。
-3. 在客户端计算机上，导航到“网络设置”，并单击“VPN”。 VPN 连接显示所连接到的虚拟网络的名称。
-4. 尝试连接前，请验证客户端计算机上是否已安装客户端证书。 使用本机 Azure 证书身份验证类型时，客户端证书是身份验证必需的。 有关生成证书的详细信息，请参阅[生成证书](certificates-point-to-site.md)。 有关如何安装客户端证书的信息，请参阅[安装客户端证书](../vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)。
+1. 双击所需的包进行安装。 如果看到弹出 SmartScreen，选择“详细信息”，然后选择“仍要运行” 。
+1. 在客户端计算机上，导航到“网络设置”，并选择“VPN” 。 VPN 连接显示所连接到的虚拟网络的名称。
+1. 尝试连接前，请验证客户端计算机上是否已安装客户端证书。 使用本机 Azure 证书身份验证类型时，客户端证书是身份验证必需的。 有关生成证书的详细信息，请参阅[生成证书](certificates-point-to-site.md)。 有关如何安装客户端证书的信息，请参阅[安装客户端证书](../vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
 ## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>查看虚拟 WAN
 
 1. 导航到虚拟 WAN。
-2. 在“概述”页上，地图中的每个点表示一个中心。
-3. 在“中心和连接”部分，可以查看中心状态、站点、区域、VPN 连接状态和传入与传出字节数。
-
+1. 在“概述”页上，地图中的每个点表示一个中心。
+1. 在“中心和连接”部分，可以查看中心状态、站点、区域、VPN 连接状态和传入与传出字节数。
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清理资源
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1cc89beb1e704428fdb4e10868e72e837804d3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765254"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799868"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Hub Planner 的集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "84765254"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Hub Planner 支持“SP”发起的 SSO
+* Hub Planner 支持 SP 发起的 SSO。
 * 配置 Hub Planner 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-hub-planner-from-the-gallery"></a>从库中添加 Hub Planner
@@ -85,9 +85,9 @@ ms.locfileid: "84765254"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.hubplanner.com`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.hubplanner.com/sso/metadata`
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://app.hubplanner.com/sso/metadata`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.hubplanner.com/sso/callback`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Hub Planner 客户端支持团队](mailto:hello@hubplanner.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -133,9 +133,29 @@ ms.locfileid: "84765254"
 
 若要在“Hub Planner”端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给[ Hub Planner 支持团队](mailto:hello@hubplanner.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
+### <a name="install-the-extension-in-hub-planner"></a>在 Hub Planner 中安装扩展
+
+若要启用 SSO 功能，必须首先启用该扩展。 以帐户所有者的身份或具有等效权限的用户身份完成以下步骤：
+
+1. 转到“设置”。
+1. 在侧边菜单中，选择“管理扩展” > “添加/删除扩展” 。
+1. 找到单一登录的扩展，然后添加或免费试用它。
+1. 出现系统提示时选择同意条款和条件，然后选择“立即添加”。
+
+### <a name="enable-sso"></a>启用 SSO
+
+启用扩展后，必须为你的帐户启用 SSO。 
+
+1. 转到“设置”。
+1. 在侧边菜单中，选择“身份验证”。
+1. 选择“SSO (单一登录)”。
+1. 按下图所示输入其他身份验证信息，然后选择“保存”。
+
+![SSO 设置的屏幕截图](media/hub-planner-tutorial/sso-settings.png)
+
 ### <a name="create-hub-planner-test-user"></a>创建 Hub Planner 测试用户
 
-本部分需在 Hub Planner 中创建名为 Britta Simon 的用户。 请与  [Hub Planner 支持团队](mailto:hello@hubplanner.com)协作，在 Hub Planner 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+如果要添加其他用户，请转到“设置” > 管理资源”，然后从此处添加用户 。 请确保添加他们的电子邮件地址并向他们发出邀请。 发出邀请后，他们将收到一封电子邮件，并且可通过 SSO 进入。 
 
 ## <a name="test-sso"></a>测试 SSO 
 

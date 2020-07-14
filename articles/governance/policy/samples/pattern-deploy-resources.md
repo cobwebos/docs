@@ -3,20 +3,20 @@ title: 模式：使用策略定义部署资源
 description: 此 Azure Policy 模式提供了有关如何使用策略定义部署资源的示例。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: a8b6528afbd21c7c667e48965574c9b48c403654
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7ce93f4895a86905cd31889e853f95a3de640b13
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77169985"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970852"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy 模式：部署资源
 
-[deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果使得在创建或更新不符合要求的资源时能够部署 [Azure 资源管理器模板](../../../azure-resource-manager/templates/overview.md)。 与使用 [deny](../concepts/effects.md#deny) 效果相比，此方法更好，因为它允许继续创建资源，并确保进行更改以使资源符合要求。
+[deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果使得在创建或更新不合规的资源时能够部署 [Azure 资源管理器模板](../../../azure-resource-manager/templates/overview.md)（ARM 模板）。 与使用 [deny](../concepts/effects.md#deny) 效果相比，此方法更好，因为它允许继续创建资源，并确保进行更改以使资源符合要求。
 
 ## <a name="sample-policy-definition"></a>示例策略定义
 
-此策略定义使用 **field** 运算符来计算创建或更新的资源的 `type`。 当资源是 _Microsoft.Network/virtualNetworks_ 时，策略将在新资源或已更新资源的位置中查找网络观察程序。 如果找不到匹配的网络观察程序，则会部署资源管理器模板来创建缺少的资源。
+此策略定义使用 **field** 运算符来计算创建或更新的资源的 `type`。 当资源是 _Microsoft.Network/virtualNetworks_ 时，策略将在新资源或已更新资源的位置中查找网络观察程序。 如果找不到匹配的网络观察程序，则会部署 ARM 模板来创建缺少的资源。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 

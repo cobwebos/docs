@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f8b34f1678d39471a1d0b91756ac93a01cbfedba
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800167"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985682"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -26,7 +26,7 @@ ms.locfileid: "83800167"
 
 ### <a name="verify-your-permissions"></a>验证你的权限
 
-若要创建 Azure Red Hat OpenShift 群集，请对 Azure 帐户和用户验证以下权限：
+若要创建 Azure Red Hat OpenShift 群集，请对 Azure 订阅、Azure Active Directory 用户或服务主体验证以下权限：
 
 |权限|包含 VNet 的资源组|执行 `az aro create` 的用户|作为 `–client-id` 传递的服务主体|
 |----|:----:|:----:|:----:|

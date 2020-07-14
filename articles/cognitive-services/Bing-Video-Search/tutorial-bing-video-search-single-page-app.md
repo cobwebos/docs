@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c6e36bdbb3d58878e6afa28610ab2b214f47de20
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988254"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800719"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教程：单页视频搜索应用
 使用必应视频搜索 API 可以搜索 Web，并获取与搜索查询相关的视频结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
@@ -257,7 +257,7 @@ function handleOnLoad() {
 
 > [!IMPORTANT]
 > 如果搜索操作中出现错误，必应新闻搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
-成功的 HTTP 请求不  一定意味着搜索本身成功。 
+成功的 HTTP 请求不一定意味着搜索本身成功。 
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 
@@ -319,7 +319,7 @@ function renderSearchResults(results) {
 
 ## <a name="rendering-result-items"></a>呈现结果项
 
-在 JavaScript 代码中，对象 `searchItemRenderers` 可能包含呈现器：为每种搜索结果生成 HTML 的函数  。 视频搜索页仅使用 `videos`。 请参阅其他教程了解各种类型的呈现器。
+在 JavaScript 代码中，对象 `searchItemRenderers` 可能包含呈现器：为每种搜索结果生成 HTML 的函数。 视频搜索页仅使用 `videos`。 请参阅其他教程了解各种类型的呈现器。
 
 ```javascript
 searchItemRenderers = {
@@ -393,15 +393,18 @@ searchItemRenderers = {
 
 安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最后，运行下面的命令，启动 CORS 代理：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 

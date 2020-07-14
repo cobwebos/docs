@@ -4,14 +4,14 @@ description: 了解如何进行 Azure 预留的交换或退款。
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/01/2020
 ms.author: banders
-ms.openlocfilehash: 3c2f92db1f65a4e9e57ad443a9f000ab3f6567d5
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101027"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807683"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
@@ -20,6 +20,9 @@ Azure 预留可以灵活地满足你不断变化的需求。 可将某个预留�
 美国政府企业协议客户不能使用自助交换和取消功能。 可以使用其他美国政府订阅类型，包括即用即付和云解决方案提供商 (CSP)。
 
 若要请求对现有的预留进行交换或退款，你必须具有预留订单的所有者访问权限。 可[添加或更改可以管理预留的用户](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)。
+
+> [!NOTE]
+> Microsoft 目前不会对预留退款收取提前终止费。 但我们可能会对将来的退款收取该费用。 目前尚未确定收取此费用的日期。
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>如何对现有预留进行交换或退款
 
@@ -72,7 +75,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可将某个预留�
 
 **退款策略**
 
-- 如果取消，可能会产生 12% 的提前终止费。
+- 我们目前不会收取提前终止费，但将来可能会收取因取消而产生的 12% 的提前终止费。
 - 在为期 12 个月的滚动期限内，已取消的总承诺费用不能超过 50,000 美元。 示例：对于三年的预订，每月支付 100 美元并在第 18 个月退款，则取消的承诺为 1,800 美元。 退款后，新的可用退款限额为 48,200 美元。 此退款的 365天后，48,200 美元限额将增加 1800 美元，而新的池将为 50,000 美元。 所有其他预留取消将消耗同一池中的额度，并且适用于同一补充逻辑。
 - 退款根据购买价格和当前预留价格中的最低者计算。
 - 只有预留订单所有者可以处理退款。 [了解如何添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。

@@ -1,5 +1,5 @@
 ---
-title: 使用 SQL 按需版本（预览版）在 Synapse SQL 中查询存储文件
+title: 使用 SQL 按需版本（预览版）在 Synapse SQL 中访问存储中的文件
 description: 介绍如何使用 SQL 按需版本（预览版）资源在 Synapse SQL 中查询存储文件。
 services: synapse-analytics
 author: azaricstefan
@@ -9,220 +9,172 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bfea79fe232fbb6f1b39c03a5cc8e9fe06bee867
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c251b70d1988be82821f1e133151dae1ac6d1bc9
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204933"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921295"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>使用 SQL 按需版本（预览版）资源在 Synapse SQL 中查询存储文件
+# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>访问 Synapse SQL 中的外部存储（按需版本）
 
-使用 SQL 按需版本（预览版）可以查询数据湖中的数据。 SQL 按需版本提供一个可以适应半结构化和非结构化数据查询的 T-SQL 查询外围应用。
+本文档介绍用户如何从 Synapse SQL（按需版本）中 Azure 存储中存储的文件读取数据。 用户具有以下用于访问存储的选项：
 
-对于查询，T-SQL 的以下方面受支持：
+- [OPENROWSET](develop-openrowset.md) 函数，可对 Azure 存储中的文件进行即席查询。
+- [外部表](develop-tables-external-tables.md)，它是基于一组外部文件生成的预定义数据结构。
 
-- 完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 外围应用，包括大部分 SQL 函数、运算符等。
-- CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) 会创建一个[外部表](develop-tables-external-tables.md)，然后将 Transact-SQL SELECT 语句的结果并行导出到 Azure 存储。
+用户可以使用[不同的身份验证方法](develop-storage-files-storage-access-control.md)，例如 Azure AD 传递身份验证（Azure AD 主体的默认方法）和 SAS 身份验证（SQL 主体的默认方法）。
 
-有关当前支持和不支持的功能的详细信息，请参阅 [SQL 按需版本概述](on-demand-workspace-overview.md)一文。
+## <a name="openrowset"></a>OPENROWSET
 
-当 Azure AD 用户运行查询时，默认会使用 Azure AD 直通身份验证协议访问存储帐户。 因此，将在存储级别模拟用户和检查权限。 可以根据需求[控制存储访问](develop-storage-files-storage-access-control.md)。
+[OPENROWSET](develop-openrowset.md) 函数，使用户能够读取 Azure 存储中的文件。
 
-## <a name="extensions"></a>扩展
+### <a name="query-files-using-openrowset"></a>使用 OPENROWSET 查询文件
 
-为了支持在就地查询 Azure 存储文件中的数据方面提供顺畅的体验，SQL 按需版本将使用具有以下附加功能的 [OPENROWSET](develop-openrowset.md) 函数：
+借助 OPENROWSET，用户可以查询 Azure 存储上的外部文件，前提是他们具有对存储的访问权限。 连接到 Synapse SQL 按需版本终结点的用户应使用以下查询来读取 Azure 存储中文件的内容：
 
-- [查询多个文件或文件夹](#query-multiple-files-or-folders)
-- [PARQUET 文件格式](#parquet-file-format)
-- [用于处理分隔文本的其他选项（字段终止符、行终止符、转义字符）](#additional-options-for-working-with-delimited-text)
-- [读取选定的列子集](#read-a-chosen-subset-of-columns)
-- [架构推理](#schema-inference)
-- [filename 函数](#filename-function)
-- [filepath 函数](#filepath-function)
-- [处理复杂类型以及嵌套或重复的数据结构](#work-with-complex-types-and-nested-or-repeated-data-structures)
-
-### <a name="query-multiple-files-or-folders"></a>查询多个文件或文件夹
-
-若要针对一个文件夹或一组文件夹中的一组文件运行 T-SQL 查询，并将这些文件视为单个实体或行集，请提供某个文件夹的路径，或者提供针对一组文件或文件夹的模式（使用通配符）。
-
-下列规则适用：
-
-- 模式可以出现在目录路径的某个部分中，或者出现在文件名中。
-- 多种模式可以出现在同一个目录步骤或文件名中。
-- 如果有多个通配符，则所有匹配路径中的文件将包含在生成的文件集中。
-
-```
-N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.csv'
+```sql
+SELECT * FROM
+ OPENROWSET(BULK 'http://storage...com/container/file/path/*.csv', format= 'parquet') as rows
 ```
 
-有关用法示例，请参阅[查询文件夹和多个文件](query-folders-multiple-csv-files.md)。
+用户可以使用以下访问规则来访问存储：
 
-### <a name="parquet-file-format"></a>PARQUET 文件格式
+- Azure AD 用户 - OPENROWSET 将使用调用方的 Azure AD 标识来访问 Azure 存储或通过匿名访问来访问存储。
+- SQL 用户 - OPENROWSET 将通过匿名访问来访问存储。
 
-若要查询 Parquet 源数据，请使用 FORMAT = 'PARQUET'
+SQL 主体也可以使用 OPENROWSET 直接查询受 SAS 令牌保护的文件或工作区的托管标识。 如果 SQL 用户执行此函数，则具有 ALTER ANY CREDENTIAL 权限的 Power User 必须创建服务器范围的凭据，该凭据与该函数（使用存储名称和容器）中的 URL 匹配，并向 OPENROWSET 函数的调用方授予此凭据的 REFERENCES 权限：
 
-```syntaxsql
-OPENROWSET
-(
-    { BULK 'data_file' ,
-    { FORMATFILE = 'format_file_path' [ <bulk_options>] } }
-)
-AS table_alias(column_alias,...n)
-<bulk_options> ::=
-...
-[ , FORMAT = {'CSV' | 'PARQUET'} ]
+```sql
+EXECUTE AS somepoweruser
+
+CREATE CREDENTIAL [http://storage.dfs.com/container]
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sas token';
+
+GRANT REFERENCES CREDENTIAL::[http://storage.dfs.com/container] TO sqluser
 ```
 
-有关用法示例，请查看[查询 Parquet 文件](query-parquet-files.md)一文。
-
-### <a name="additional-options-for-working-with-delimited-text"></a>用于处理分隔文本的其他选项
-
-所介绍的这些附加参数用于处理 CSV（分隔文本）文件：
-
-```syntaxsql
-<bulk_options> ::=
-...
-[ , FIELDTERMINATOR = 'char' ]
-[ , ROWTERMINATOR = 'char' ]
-[ , ESCAPE_CHAR = 'char' ]
-...
-```
-
-- ESCAPE_CHAR = 'char' 指定文件中用于将自身及文件中所有分隔符值转义的字符。 如果转义字符后接除本身以外的某个值或者任何分隔符值，则读取值时会删除该转义字符。
-无论是否启用了 FIELDQUOTE，都会应用 ESCAPE_CHAR 参数。 不会使用该参数来转义引号字符。 必须使用其他引号字符来转义引号字符。 要让引号字符出现在列值内，必须将值放在引号中。
-- FIELDTERMINATOR ='field_terminator' 指定要使用的字段终止符。 默认的字段终止符为逗号（“,”）
-- ROWTERMINATOR ='row_terminator' 指定要使用的行终止符。 默认的行终止符为换行符：\r\n。 ****
-
-### <a name="read-a-chosen-subset-of-columns"></a>读取选定的列子集
-
-若要指定所要读取的列，可以在 OPENROWSET 语句中提供可选的 WITH 子句。
-
-- 如果存在 CSV 数据文件，若要读取所有列，请提供列名及其数据类型。 如果需要列的子集，请使用序号按顺序从来源数据文件中选取列。 列将按序号指定值绑定。
-- 如果存在 Parquet 数据文件，请提供与来源数据文件中的列名匹配的列名。 列将按名称绑定。
-
-```syntaxsql
-OPENROWSET
-...
-| BULK 'data_file',
-{ FORMATFILE = 'format_file_path' [ <bulk_options>] } }
-) AS table_alias(column_alias,...n) | WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
-```
-
-有关示例，请参阅[在不指定所有列的情况下读取 CSV 文件](query-single-csv-file.md#returning-subset-of-columns)。
-
-### <a name="schema-inference"></a>架构推理
-
-通过从 OPENROWSET 语句中省略 WITH 子句，可以指示服务从基础文件中自动检测（推理）架构。
+如果没有与 URL 匹配的服务器级凭据或 SQL 用户没有此凭据的引用权限，则将返回错误。 SQL 主体无法使用某些 Azure AD 标识进行模拟。
 
 > [!NOTE]
-> 目前，这仅适用于 PARQUET 文件格式。
+> 此版本的 OPENROWSET 旨在使用默认的身份验证快速轻松地浏览数据。 若要利用模拟或托管标识，请将 OPENROWSET 与下一部分中所述的 DATASOURCE 一起使用。
+
+### <a name="querying-data-sources-using-openrowset"></a>使用 OPENROWSET 查询数据源
+
+借助 OPENROWSET，用户可以查询放置在某些外部数据源上的文件：
 
 ```sql
-OPENROWSET(
-BULK N'path_to_file(s)', FORMAT='PARQUET');
+SELECT * FROM
+ OPENROWSET(BULK 'file/path/*.parquet',
+ DATASOURCE = MyAzureInvoices,
+ FORMAT= 'parquet') as rows
 ```
 
-请确保使用[适当的推断数据类型](best-practices-sql-on-demand.md#check-inferred-data-types)以获得最佳性能。 
-
-### <a name="filename-function"></a>Filename 函数
-
-此函数返回行的来源文件的名称。 
-
-若要查询特定的文件，请阅读[查询特定文件](query-specific-files.md#filename)一文中的“Filename”部分。
-
-返回数据类型为 nvarchar(1024)。 为了获得最佳性能，请始终将 filename 函数的结果强制转换为适当的数据类型。 如果使用字符数据类型，请确保使用适当的长度。
-
-### <a name="filepath-function"></a>Filepath 函数
-
-此函数返回完整路径或一部分路径：
-
-- 如果在不使用参数的情况下调用此函数，此函数将返回行的来源文件的完整路径。
-- 如果在使用参数的情况下调用此函数，此函数将返回与该参数中指定的位置上的通配符相匹配的路径部分。 例如，参数值 1 将返回与第一个通配符匹配的路径部分。
-
-有关更多信息，请阅读[查询特定文件](query-specific-files.md#filepath)一文的“Filepath”部分。
-
-返回数据类型为 nvarchar(1024)。 为了获得最佳性能，请始终将 filepath 函数的结果强制转换为适当的数据类型。 如果使用字符数据类型，请确保使用适当的长度。
-
-### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>处理复杂类型以及嵌套或重复的数据结构
-
-为了在处理以嵌套的或重复的数据类型存储的数据（例如，在 [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) 文件中）时实现顺畅的体验，SQL 按需版本添加了以下扩展。
-
-#### <a name="project-nested-or-repeated-data"></a>投影嵌套数据或重复数据
-
-若要投影数据，请对包含嵌套数据类型列的 Parquet 文件运行 SELECT 语句。 在输出中，嵌套值将序列化为 JSON，并作为 varchar (8000) SQL 数据类型返回。
+具有 CONTROL DATABASE 权限的 Power User 将需要创建 DATABASE SCOPED CREDENTIAL（将用于访问存储）和 EXTERNAL DATA SOURCE（指定应使用的数据源和凭据的 URL）：
 
 ```sql
-    SELECT * FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
+
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3' ,
+ CREDENTIAL = AccessAzureInvoices) ;
 ```
 
-有关更多详细信息，请参阅[查询 Parquet 嵌套类型](query-parquet-nested-types.md#project-nested-or-repeated-data)一文中的“投影嵌套数据或重复数据”部分。
+DATABASE SCOPED CREDENTIAL 指定如何访问参考数据源（当前为 SAS 和托管标识）上的文件。
 
-#### <a name="access-elements-from-nested-columns"></a>访问嵌套列中的元素
+调用方必须具有以下权限之一才能执行 OPENROWSET 函数：
 
-若要访问嵌套列中的嵌套元素（例如 Struct），请使用“点表示法”将字段名称串联成路径。 在 OPENROWSET 函数的 WITH 子句中提供路径作为 column_name。
+- 执行 OPENROWSET 所需的权限之一：
+  - ADMINISTER BULK OPERATION，使登录名可以执行 OPENROWSET 函数。
+  - ADMINISTER DATABASE BULK OPERATION，使数据库范围内的用户可以执行 OPENROWSET 函数。
+- EXTERNAL DATA SOURCE 中引用的凭据的 REFERENCES DATABASE SCOPED CREDENTIAL
 
-语法片段示例如下所示：
+#### <a name="accessing-anonymous-data-sources"></a>访问匿名数据源
 
-```syntaxsql
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    WITH ({'column_name' 'column_type',})
-    [AS alias]
-    'column_name' ::= '[field_name.] field_name'
+用户可以创建不带 CREDENTIAL 的 EXTERNAL DATA SOURCE 来引用公共访问存储，也可以使用 Azure AD 传递身份验证：
+
+```sql
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3') ;
 ```
 
-默认情况下，OPENROWSET 函数会将源字段名称和路径与 WITH 子句中提供的列名进行匹配。 可以通过 WITH 子句访问同一源 Parquet 文件中包含在不同嵌套级别的元素。
+## <a name="external-table"></a>EXTERNAL TABLE
 
-**返回值**
+具有读取表权限的用户可以使用基于一组 Azure 存储文件夹和文件创建的 EXTERNAL TABLE 来访问外部文件。
 
-- 对于不在“嵌套类型”组中的所有 Parquet 类型，函数将返回指定元素以及指定路径中的某个标量值，例如 int、decimal 和 varchar。
-- 如果该路径指向嵌套类型的元素，则函数将返回指定路径中从顶部元素开始的 JSON 片段。 JSON 片段的类型为 varchar (8000)。
-- 如果在指定的 column_name 中找不到该属性，则函数将返回错误。
-- 如果在指定的 column_path 中找不到该属性，则函数将根据[路径模式](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)返回结果：在严格模式下返回错误，在宽松模式下返回 null。
+[具有创建外部表权限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions)（例如 CREATE TABLE 和 ALTER ANY CREDENTIAL 或 REFERENCES DATABASE SCOPED CREDENTIAL）的用户可以使用以下脚本基于 Azure 存储数据源创建表：
 
-有关查询示例，请查看[查询 Parquet 嵌套类型](query-parquet-nested-types.md#access-elements-from-nested-columns)一文中的“访问嵌套列中的元素”部分。
-
-#### <a name="access-elements-from-repeated-columns"></a>访问重复列中的元素
-
-若要访问重复列中的元素（例如数组或映射的元素），请对需要投影的每个标量元素使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 函数，并提供：
-
-- 嵌套列或重复列（作为第一个参数）
-- 用于指定要访问的元素或属性的 [JSON 路径](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)（作为第二个参数）
-
-若要访问重复列中的非标量元素，请对需要投影的每个非标量元素使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 函数，并提供：
-
-- 嵌套列或重复列（作为第一个参数）
-- 用于指定要访问的元素或属性的 [JSON 路径](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)（作为第二个参数）
-
-请参阅以下语法片段：
-
-```syntaxsql
-    SELECT
-       { JSON_VALUE (column_name, path_to_sub_element), }
-       { JSON_QUERY (column_name [ , path_to_sub_element ]), )
-    FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+```sql
+CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
+( ProductKey int, ProductLabel nvarchar, ProductName nvarchar )
+WITH
+(
+LOCATION='/DimProduct/year=*/month=*' ,
+DATA_SOURCE = AzureDataLakeStore ,
+FILE_FORMAT = TextFileFormat
+) ;
 ```
 
-可以在[查询 Parquet 嵌套类型](query-parquet-nested-types.md#access-elements-from-repeated-columns)一文中查找有关访问重复列中的元素的查询示例。
+拥有 CONTROL DATABASE 权限的用户将需要创建 DATABASE SCOPED CREDENTIAL（将用于访问存储）和 EXTERNAL DATA SOURCE（指定应使用的数据源和凭据的 URL）：
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL cred
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
+
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
+ WITH ( LOCATION = 'https://samples.blob.core.windows.net/products' ,
+ CREDENTIAL = cred
+ ) ;
+```
+
+DATABASE SCOPED CREDENTIAL 指定如何访问引用的数据源上的文件。
+
+### <a name="reading-external-files-with-external-table"></a>使用 EXTERNAL TABLE 读取外部文件
+
+借助 EXTERNAL TABLE，你可以读取使用标准 SQL SELECT 语句通过数据源引用的文件中的数据：
+
+```sql
+SELECT *
+FROM dbo.DimProductsExternal
+```
+
+调用方必须具有以下权限才能读取数据：
+- 对外部表的 `SELECT` 权限
+- `REFERENCES DATABASE SCOPED CREDENTIAL` 权限（如果 `DATA SOURCE` 具有 `CREDENTIAL`）
+
+## <a name="permissions"></a>权限
+
+下表列出了上面列出的操作所需的权限。
+
+| 查询 | 所需的权限|
+| --- | --- |
+| OPENROWSET(BULK)，不包含数据源 | `ADMINISTER BULK ADMIN`、`ADMINISTER DATABASE BULK ADMIN` 或 SQL 登录名必须对受 SAS 保护的存储具有 REFERENCES CREDENTIAL::\<URL> |
+| OPENROWSET(BULK)，包含不带凭据的数据源 | `ADMINISTER BULK ADMIN` 或 `ADMINISTER DATABASE BULK ADMIN`， |
+| OPENROWSET(BULK)，包含带凭据的数据源 | `ADMINISTER BULK ADMIN`、`ADMINISTER DATABASE BULK ADMIN` 或 `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CREATE EXTERNAL DATA SOURCE | `ALTER ANY EXTERNAL DATA SOURCE` 和 `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CREATE EXTERNAL TABLE | `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY EXTERNAL FILE FORMAT` 和 `ALTER ANY EXTERNAL DATA SOURCE` |
+| SELECT FROM EXTERNAL TABLE | `SELECT TABLE` 和 `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CETAS | 创建表：`CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY DATA SOURCE` 和 `ALTER ANY EXTERNAL FILE FORMAT`。 读取数据：查询中每个表/视图/函数的 `ADMIN BULK OPERATIONS` 或 `REFERENCES CREDENTIAL` 或 `SELECT TABLE` + 对存储的 R/W 权限 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何查询不同文件类型以及创建和使用视图的详细信息，请参阅以下文章：
+现在，你已准备好继续学习以下操作指南文章：
 
-- [查询单个 CSV 文件](query-single-csv-file.md)
+- [查询存储中的数据](query-data-storage.md)
+
+- [查询 CSV 文件](query-single-csv-file.md)
+
+- [查询文件夹和多个文件](query-folders-multiple-csv-files.md)
+
+- [查询特定的文件](query-specific-files.md)
+
 - [查询 Parquet 文件](query-parquet-files.md)
+
+- [查询嵌套类型](query-parquet-nested-types.md)
+
 - [查询 JSON 文件](query-json-files.md)
-- [查询 Parquet 嵌套类型](query-parquet-nested-types.md)
-- [查询文件夹和多个 CSV 文件](query-folders-multiple-csv-files.md)
-- [在查询中使用文件元数据](query-specific-files.md)
+
 - [创建和使用视图](create-use-views.md)

@@ -3,16 +3,16 @@ title: 快速入门：使用 Azure CLI 创建蓝图
 description: 在本快速入门中，通过 Azure CLI 使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7d144edca0794679e67358ff820e1508736ba723
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 30a450fc7eab55424da7ce971ad234cbf2248b30
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613345"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969654"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入门：使用 Azure CLI 定义和分配 Azure 蓝图
 
-了解如何创建和分配蓝图以后即可定义常见的模式，以便根据资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务，例如：
+了解如何创建和分配蓝图来定义常见的模式，以便根据 Azure 资源管理器模板（ARM 模板）、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务，例如：
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ ms.locfileid: "84613345"
 
 ## <a name="create-a-blueprint"></a>创建蓝图
 
-定义符合性的标准模式的第一步是根据可用资源构建蓝图。 我们将创建名为“MyBlueprint”的蓝图，以配置订阅的角色和策略分配。 然后，我们将添加资源组、资源管理器模板，然后在资源组上添加角色分配。
+定义符合性的标准模式的第一步是根据可用资源构建蓝图。 我们将创建名为“MyBlueprint”的蓝图，以配置订阅的角色和策略分配。 然后，我们将添加资源组、ARM 模板，并在该资源组上添加角色分配。
 
 > [!NOTE]
 > 使用 Azure CLI 时，首先创建 blueprint 对象。 对于每个要添加的具有参数的项目，需要在初始蓝图上提前定义该参数 。
@@ -193,9 +193,9 @@ ms.locfileid: "84613345"
         --parameters artifacts\policyStorageTags.json
      ```
 
-1. 在资源组下添加模板。 资源管理器模板的 template 参数包含模板的标准 JSON 组件。 系统会向模板一一传递 **storageAccountType**、**tagName** 和 **tagValue** 蓝图参数，让模板重复使用这些参数。 通过使用参数 parameters 和在使用键-值对的模板 JSON 中注入值，模板可以使用蓝图参数。 蓝图和模板参数名称可以相同。
+1. 在资源组下添加模板。 ARM 模板的 template 参数包含模板的标准 JSON 组件。 系统会向模板一一传递 **storageAccountType**、**tagName** 和 **tagValue** 蓝图参数，让模板重复使用这些参数。 通过使用参数 parameters 和在使用键-值对的模板 JSON 中注入值，模板可以使用蓝图参数。 蓝图和模板参数名称可以相同。
 
-   - JSON Azure 资源管理器模板文件 - artifacts\templateStorage.json
+   - JSON ARM 模板文件 - artifacts\templateStorage.json
 
      ```json
      {
@@ -249,7 +249,7 @@ ms.locfileid: "84613345"
      }
      ```
 
-   - JSON Azure 资源管理器模板参数文件 - artifacts\templateStorageParams.json
+   - JSON ARM 模板参数文件 - artifacts\templateStorageParams.json
 
      ```json
      {

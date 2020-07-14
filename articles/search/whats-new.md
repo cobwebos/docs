@@ -1,19 +1,18 @@
 ---
-title: 新增功能通告
-titleSuffix: Azure Cognitive Search
+title: Azure 认知搜索中的新增功能
 description: 新增功能和增强功能的通告，包括 Azure 搜索服务已重命名为 Azure 认知搜索。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/08/2020
-ms.openlocfilehash: 97defe2af5b82cccbaf289ccbd805b608b978a43
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/30/2020
+ms.openlocfilehash: 078892691bfaec62f71f9d601a42de3f80221149
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736078"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958151"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -23,23 +22,33 @@ ms.locfileid: "84736078"
 
 ### <a name="june-2020"></a>2020 年 6 月
 
-Azure 机器学习技能是集成 Azure 机器学习推断终结点的新技能类型。 门户体验支持在认知搜索技能集中发现和集成 Azure 机器学习终结点。 此发现要求将认知搜索和 Azure ML 服务部署在同一订阅中。 要注册 AML 技能预览版，[请填写表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u)。 请先查看[此教程](cognitive-search-tutorial-aml-custom-skill.md)。
++ [知识存储](knowledge-store-concept-intro.md)现已正式发布。
+
++ [搜索服务 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 是 REST API 的新稳定版本。 除了知识存储，此正式发布版还包括搜索相关性和评分的增强功能。
+
++ 对于创建的任何新服务，新的相关性排名算法现在都是 [BM25](https://en.wikipedia.org/wiki/Okapi_BM25)。 对于现有服务，可以通过在索引字段上设置 `similarity` 属性来选择加入。 此属性已正式发布。
+
++ 新索引器 `executionEnvironment` 可以显式设置为 `private`。 此功能支持索引器通过专用终结点访问外部数据，并且该功能已正式发布。
+
++ [Azure 机器学习 (AML)](cognitive-search-aml-skill.md) 是集成 Azure 机器学习推理终结点的新技能类型。 门户体验支持在认知搜索技能集中发现和集成 Azure 机器学习终结点。 此发现要求将认知搜索和 Azure ML 服务部署在同一订阅中。 此技能已正式发布。 请先查看[此教程](cognitive-search-tutorial-aml-custom-skill.md)。
 
 ### <a name="may-2020-microsoft-build"></a>2020 年 5 月（Microsoft Build 大会）
 
-+ [调试会话](cognitive-search-debug-session.md)功能现提供预览。 [注册以请求访问](https://aka.ms/DebugSessions)。 调试会话提供基于门户的接口来调查和解决技能组的问题。 在调试会话中创建的修补程序可以保存到生产技能集。 请先查看[此教程](cognitive-search-tutorial-debug-sessions.md)。
++ [调试会话](cognitive-search-debug-session.md)功能现提供预览。 调试会话提供基于门户的接口来调查和解决技能组的问题。 在调试会话中创建的修补程序可以保存到生产技能集。 请先查看[此教程](cognitive-search-tutorial-debug-sessions.md)。
 
-+ 安全增强功能包括能够[设置无法在公共 Internet 上访问的专用搜索终结点（预览）](service-create-private-endpoint.md)。 还可以[配置用于入站防火墙支持的 IP 规则（预览）](service-configure-firewall.md)。
++ 通过[配置用于入站防火墙支持的 IP 规则](service-configure-firewall.md)或利用[用于专用搜索终结点的 Azure 专用链接](service-create-private-endpoint.md)，将搜索服务终结点与公共 Internet 隔离。 这两项功能已正式发布。
 
 + 使用[系统托管标识（预览）](search-howto-managed-identities-data-sources.md)设置与 Azure 数据源的连接以编制索引。 适用于从 Azure 数据源（例如 Azure SQL 数据库、Azure Cosmos DB 和 Azure 存储）引入内容的[索引器](search-indexer-overview.md)。
 
-+ 使用 [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) 和 sessionId 查询参数，将搜索评分的计算方式从每个分片更改为所有分片。
++ 使用 [sessionId](index-similarity-and-scoring.md) 和 [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) 查询参数，将搜索评分的计算方式从每个分片更改为所有分片。 这些参数已正式发布。
+
++ 添加 [featuresMode（预览版）](index-similarity-and-scoring.md#featuresMode-param)查询参数，展开相关性分数以显示详细信息：每个字段相似度得分、每个字段术语频率和每个字段匹配的唯一标记数。 你可以在自定义评分算法中使用这些数据点。 有关演示此功能的示例，请参阅[添加机器学习 (LearnToRank) 以搜索相关性](https://github.com/Azure-Samples/search-ranking-tutorial)。
 
 ### <a name="march-2020"></a>2020 年 3 月
 
 + [本机 blob 软删除（预览版）](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection)意味着 Azure 认知搜索中的 Azure blob 存储索引器会识别处于软删除状态的 blob，并在编制索引过程中删除相应的搜索文档。
 
-+ 新的稳定版[管理 REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) 现已可用。 
++ 新的稳定版[管理 REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) 现已正式发布。 
 
 ### <a name="february-2020"></a>2020 年 2 月
 
@@ -49,17 +58,15 @@ Azure 机器学习技能是集成 Azure 机器学习推断终结点的新技能�
 
 ### <a name="january-2020"></a>2020 年 1 月
 
-+ [客户管理的加密密钥](search-security-manage-encryption-keys.md)现已推出正式版。 如果使用 REST，可以通过 `api-version=2019-05-06` 访问该功能。 对于托管代码，即使该功能现在不再以预览版提供，但正确的包仍是 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 
++ [客户管理的加密密钥](search-security-manage-encryption-keys.md)现已推出正式版。 如果使用 REST，可以使用 `api-version=2019-05-06` 或更高版本访问该功能。 对于托管代码，即使该功能现在不再以预览版提供，但正确的包仍是 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 
 
 + 可以通过两种机制（两者的功能目前以预览版提供）对搜索服务进行私密访问：
 
   + 可以使用管理 REST API `api-version=2019-10-01-Preview` 创建服务，来仅限特定的 IP 地址进行访问。 预览版 API 在 [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中提供 **IpRule** 和 **NetworkRuleSet** 属性。 此预览版功能可在选定的区域中使用。 有关详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
-  + 可以预配一个支持 Azure 专用终结点的 Azure 搜索服务，用于从同一虚拟网络中的客户端建立连接。此功能目前以受限访问预览版提供。 有关详细信息，请参阅[创建专用终结点以建立安全连接](service-create-private-endpoint.md)。
-
 ### <a name="december-2019"></a>2019 年 12 月
 
-+ [创建应用（预览版）](search-create-app-portal.md)是门户中用于生成可下载 HTML 文件的新向导。 文件附带了嵌入式脚本，用于呈现可正常运行的“localhost”式 Web 应用，该应用绑定到搜索服务中的索引。 页面在向导中可配置，可以包含搜索栏、结果区域、边栏导航和自动提示查询支持。 可以脱机修改 HTML 以扩展或者自定义工作流或外观。
++ [创建演示应用（预览版）](search-create-app-portal.md)是门户中用于生成可下载 HTML 文件的新向导，并可对索引进行查询（只读）访问。 文件附带了嵌入式脚本，用于呈现可正常运行的“localhost”式 Web 应用，该应用绑定到搜索服务中的索引。 页面在向导中可配置，可以包含搜索栏、结果区域、边栏导航和自动提示查询支持。 可以脱机修改 HTML 以扩展或者自定义工作流或外观。 演示应用并不易于扩展到包含生产方案中通常需要的安全层和托管层。 你应将其视为验证和测试工具，而不是通往完整客户端应用的捷径。
 
 + [创建专用终结点以建立安全连接（预览版）](service-create-private-endpoint.md)中介绍了如何设置专用链接，以便与搜索服务建立安全连接。 此预览版功能按请求提供，使用 [Azure 专用链接](../private-link/private-link-overview.md)和 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)作为解决方案的一部分。
 

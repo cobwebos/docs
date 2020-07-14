@@ -9,20 +9,20 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: a78e2cbc6f1e33f516912911e2038a0de3ff6b99
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d78767474150bc9571b25fe1f26135d6f41d1f20
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996935"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961228"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
-[自定义翻译](https://portal.customtranslator.azure.ai)是 Microsoft Translator 服务的一项功能，允许翻译企业、应用开发人员和语言服务提供者生成自定义的神经机器翻译 (NMT) 系统。 自定义的翻译系统可无缝集成到现有的应用程序、工作流和网站中。 [自定义翻译](https://portal.customtranslator.azure.ai/)提供的功能类似于 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 为统计机器翻译 (SMT) 提供的功能，但专用于神经机器翻译 (NMT) 系统。
+[自定义翻译器](https://portal.customtranslator.azure.ai)是翻译服务的一项功能，允许企业、应用开发人员和语言服务提供者生成自定义的神经网络机器翻译 (NMT) 系统。 自定义的翻译系统可无缝集成到现有的应用程序、工作流和网站中。 
 
-使用[自定义翻译](https://portal.customtranslator.azure.ai)生成的翻译系统可以通过同一个基于云、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效且高度可缩放的 Microsoft 文本[翻译 API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 来使用，该 API 版本每天为数十亿条翻译提供支持。
+对于使用[自定义翻译器](https://portal.customtranslator.azure.ai)生成的翻译系统，可以通过同一个基于云、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效且高度可缩放的 [Azure 认知服务翻译 V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 来使用，该翻译版本每天为数十亿条翻译提供支持。
 
-自定义翻译支持三十多种语言，可以直接映射到适用于 NMT 的语言。 如需完整的列表，请参阅 [Microsoft Translator 语言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
+自定义翻译支持三十多种语言，可以直接映射到适用于 NMT 的语言。 如需完整列表，请参阅[翻译语言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
 
 ## <a name="features"></a>功能
 
@@ -38,7 +38,7 @@ ms.locfileid: "83996935"
 
 ## <a name="get-better-translations"></a>获取更好的翻译
 
-Microsoft Translator 在 2016 年发布了[神经机器翻译 (NMT)](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)。 NMT 的翻译质量相对于行业标准的[统计机器翻译 (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) 技术有很大的进步。 由于 NMT 在翻译之前能够更好地理解完整句子的上下文，因此其提供的翻译质量更高、更类似于人类且更流畅。 [自定义翻译](https://portal.customtranslator.azure.ai)为自定义模型提供 NMT，因此翻译质量更好。
+“翻译”在 2016 年发布了[神经网络机器翻译 (NMT)](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)。 NMT 的翻译质量相对于行业标准的[统计机器翻译 (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) 技术有很大的进步。 由于 NMT 在翻译之前能够更好地理解完整句子的上下文，因此其提供的翻译质量更高、更类似于人类且更流畅。 [自定义翻译](https://portal.customtranslator.azure.ai)为自定义模型提供 NMT，因此翻译质量更好。
 
 可以使用以前翻译的文档生成一个翻译系统。 这些文档包括特定于领域的术语和样式，比标准翻译系统更好。 用户可以上传 ALIGN、PDF、LCL、HTML、HTM、XLF、TMX、XLIFF、TXT、DOCX 和 XLSX 文档。
 

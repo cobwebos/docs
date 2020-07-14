@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: ea01fcd259075caee1e21eb091b8df1b326c553f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: b0992c4d18fdb9cb5201ab3ef52fba8ee3feb7a2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996459"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964373"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入门：生成、部署和使用翻译的自定义模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "83996459"
 
 ## <a name="create-a-workspace"></a>创建工作区
 
-如果你是第一次使用，将要求你同意服务条款，以创建工作区并将工作区与“翻译”订阅相关联。
+如果你是第一次使用，需要同意服务条款，才能创建工作区并将工作区与“翻译”订阅相关联。
 
 ![创建工作区](media/quickstart/terms-of-service.png)
 ![创建工作区](media/quickstart/create-workspace-1.png)
@@ -83,7 +83,7 @@ ms.locfileid: "83996459"
 
 ## <a name="use-a-deployed-model"></a>使用已部署的模型
 
-部署的模型可以通过 Microsoft 文本[翻译 API V3 进行访问，方法是指定 CategoryID](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)。 有关“翻译”的详细信息，可查看 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)网页。
+已部署的模型可以通过“翻译”进行访问，方法是指定 CategoryID](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 。 有关“翻译”的详细信息，可查看 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)网页。
 
 ## <a name="next-steps"></a>后续步骤
 

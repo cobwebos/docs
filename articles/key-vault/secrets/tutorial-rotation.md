@@ -1,6 +1,6 @@
 ---
-title: 单用户/单密码轮换教程
-description: 通过本教程了解如何自动轮换使用单用户/单密码身份验证的资源的机密。
+title: 使用一组身份验证凭据的资源的轮换教程
+description: 通过本教程了解如何自动轮换使用一组身份验证凭据的资源的机密。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bff8c040f4cfed612278dd83ebb354b31a3a1f3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183205"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801438"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>自动轮换使用单用户/单密码身份验证的资源的机密
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>自动轮换使用一组身份验证凭据的资源的机密
 
 向 Azure 服务进行身份验证的最佳方法是使用[托管标识](../general/managed-identity.md)，但某些情况下无法做到这一点。 在此类情况下，将使用访问密钥或机密。 应定期轮换访问密钥或机密。
 
-本教程介绍如何定期自动轮换使用单用户/单密码身份验证的数据库和服务的机密。 具体而言，本教程将使用 Azure 事件网格通知触发的函数来轮换 Azure Key Vault 中存储的 SQL Server 密码：
+本教程介绍如何定期自动轮换使用一组身份验证凭据的数据库和服务的机密。 具体而言，本教程将使用 Azure 事件网格通知触发的函数来轮换 Azure Key Vault 中存储的 SQL Server 密码：
 
 ![轮换解决方案示意图](../media/rotate1.png)
 
@@ -41,8 +41,8 @@ ms.locfileid: "82183205"
 
 1. 选择 Azure 模板部署链接：
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Finitial-setup%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 在“资源组”下  ，选择“新建”  。 将组命名为 simplerotation。 
-1. 选择“购买”。 
+1. 在“资源组”下，选择“新建”。 将组命名为 simplerotation。
+1. 选择“购买”。
 
     ![创建资源组](../media/rotate2.png)
 
@@ -73,8 +73,8 @@ simplerotation-sql/master  simplerotation      eastus      Microsoft.Sql/servers
 
 1. 选择 Azure 模板部署链接：
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Ffunction-app%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 在“资源组”列表中选择“simplerotation”。  
-1. 选择“购买”。 
+1. 在“资源组”列表中选择“simplerotation”。 
+1. 选择“购买”。
 
    ![选择“购买”](../media/rotate3.png)
 
@@ -204,7 +204,7 @@ az eventgrid event-subscription create --name simplerotation-eventsubscription -
 ```
 
 ## <a name="add-the-secret-to-key-vault"></a>将机密添加到 Key Vault
-设置访问策略，以向用户授予“管理机密”权限： 
+设置访问策略，以向用户授予“管理机密”权限：
 
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name simplerotation-kv --secret-permissions set delete get list
@@ -222,11 +222,11 @@ az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Si
 ## <a name="test-and-verify"></a>测试和验证
 几分钟后，`sqluser` 机密应会自动轮换。
 
-若要验证该机密是否已轮换，请转到“Key Vault” > “机密”：  
+若要验证该机密是否已轮换，请转到“Key Vault” > “机密”： 
 
 ![转到“机密”](../media/rotate8.png)
 
-打开“sqluser”机密并查看原始版本和轮换后的版本： 
+打开“sqluser”机密并查看原始版本和轮换后的版本：
 
 ![打开 sqluser 机密](../media/rotate9.png)
 
@@ -240,8 +240,8 @@ az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Si
 
 1. 选择 Azure 模板部署链接：
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Fweb-app%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 选择“simplerotation”资源组。 
-1. 选择“购买”。 
+1. 选择“simplerotation”资源组。
+1. 选择“购买”。
 
 ### <a name="deploy-the-web-app"></a>部署 Web 应用
 
@@ -263,7 +263,7 @@ az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Si
  
 ![选择 URL](../media/rotate10.png)
 
-当应用程序在浏览器中打开时，你会看到“生成的机密值”  ，并会看到“数据库已连接”  的值为“true”  。
+当应用程序在浏览器中打开时，你会看到“生成的机密值”，并会看到“数据库已连接”的值为“true”。
 
 ## <a name="learn-more"></a>了解详细信息
 

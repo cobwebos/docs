@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2193bd85265103957c5cafad10a243b266f7e5bc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563256"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026876"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -57,18 +57,20 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 按照快速入门开始从表单中提取数据。 我们建议你在学习该技术时使用免费服务。 请记住，每月的免费页数限于 500。
 
-* 自定义 - 按表单训练模型
-  * 在没有标签的情况下训练
-    * [快速入门：使用 REST API 和 cURL 训练表单识别器模型并提取表单数据](quickstarts/curl-train-extract.md)
-    * [快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据](quickstarts/python-train-extract.md)
-  * 使用标签进行训练
-    * [使用示例标记工具通过标签来训练表单识别器模型](quickstarts/label-tool.md)
-    * [使用 REST API 和 Python 通过标签训练表单识别器模型](quickstarts/python-labeled-data.md)
-* 预生成的收据 - 从美国销售收据中提取数据
-  * [快速入门：使用 cURL 提取回执数据](quickstarts/curl-receipts.md)
-  * [快速入门：使用 Python 提取回执数据](quickstarts/python-receipts.md)
-* 布局 - 从表单提取文本和表结构
-  * [快速入门：使用 Python 提取布局数据](quickstarts/python-layout.md)
+* [客户端库快速入门](./quickstarts/client-library.md)（所有语言，多种场景）
+* Web UI 快速入门
+  * [在有标签的情况下进行训练 - 示例标签工具](quickstarts/label-tool.md)
+* REST 快速入门
+  * 训练自定义模型并提取表单数据
+    * [在没有标签的情况下进行训练 - cURL](quickstarts/curl-train-extract.md)
+    * [在没有标签的情况下进行训练 - Python](quickstarts/python-train-extract.md)
+    * [在有标签的情况下进行训练 - Python](quickstarts/python-labeled-data.md)
+  * 从美国销售收据中提取数据
+    * [提取收据数据 - cURL](quickstarts/curl-receipts.md)
+    * [提取收据数据 - Python](quickstarts/python-receipts.md)
+  * 从表单中提取文本和表结构
+    * [提取布局数据 - Python](quickstarts/python-layout.md)
+
 
 ### <a name="review-the-rest-apis"></a>查看 REST API
 
@@ -81,7 +83,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 | **分析收据** |分析单个回执文档，以提取关键信息和其他回执文本。|
 | **分析布局** |分许表单布局，以便提取文本和表结构。|
 
-请浏览 [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
+请浏览 [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
 
 ## <a name="input-requirements"></a>输入要求
 ### <a name="custom-model"></a>自定义模型
@@ -104,4 +106,4 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 ## <a name="next-steps"></a>后续步骤
 
-完成一个[快速入门](quickstarts/curl-train-extract.md)，开始使用[表单识别器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)。
+完成一个[快速入门](quickstarts/curl-train-extract.md)，开始使用[表单识别器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)。

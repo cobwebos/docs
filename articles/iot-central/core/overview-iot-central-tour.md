@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1792f158ac59e2b80a037621be2c2ce2556e1097
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77425959"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799779"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>浏览 Azure IoT Central UI
 
@@ -22,13 +22,13 @@ ms.locfileid: "77425959"
 
 本文介绍了 Microsoft Azure IoT Central UI。 可以通过 UI 创建、管理和使用 Azure IoT Central 解决方案及其已连接的设备。
 
-作为“解决方案构建者”可以使用 Azure IoT Central UI 来定义 Azure IoT Central 解决方案  。 他们可以使用 UI 执行以下操作：
+作为“解决方案构建者”可以使用 Azure IoT Central UI 来定义 Azure IoT Central 解决方案。 他们可以使用 UI 执行以下操作：
 
 * 定义连接到解决方案的设备类型。
 * 配置用于设备的规则和操作。 
-* 为使用解决方案的“操作员”自定义 UI。 
+* 为使用解决方案的“操作员”自定义 UI。
 
-“操作员”  可以使用 Azure IoT Central UI 来管理 Azure IoT Central 解决方案。 他们可以使用 UI 执行以下操作：
+“操作员”可以使用 Azure IoT Central UI 来管理 Azure IoT Central 解决方案。 他们可以使用 UI 执行以下操作：
 
 * 监视设备。
 * 配置设备。
@@ -70,7 +70,7 @@ ms.locfileid: "77425959"
       > ![左窗格](media/overview-iot-central-tour/navigationbar-pnp.png)
   :::column-end:::
   :::column span="2":::
-     “仪表板”  显示应用程序仪表板。 作为“解决方案构建者”，你可以为操作员自定义全局仪表板  。 根据用户角色的不同，操作员还可以创建自己的个人仪表板。
+     “仪表板”显示应用程序仪表板。 作为“解决方案构建者”，你可以为操作员自定义全局仪表板。 根据用户角色的不同，操作员还可以创建自己的个人仪表板。
      
      **设备**使你能够管理连接的设备 - 实际设备和模拟设备。
 
@@ -88,7 +88,7 @@ ms.locfileid: "77425959"
 
      **管理**是管理应用程序的设置、自定义、计费、用户和角色的地方。
 
-     **IoT Central** 允许管理员跳回 IoT Central 的应用管理器  。
+     **IoT Central** 允许管理员跳回 IoT Central 的应用管理器。
      
    :::column-end:::
 :::row-end:::
@@ -100,10 +100,10 @@ ms.locfileid: "77425959"
 > [!div class="mx-imgBorder"]
 > ![工具栏](media/overview-iot-central-tour/toolbar-pnp.png)
 
-* 若要搜索设备模板和设备，请输入“搜索”  值。
-* 若要更改 UI 语言或主题，请选择“设置”  图标。 详细了解[管理应用程序首选项](howto-manage-preferences.md)
-* 若要从应用程序中注销，请选择“帐户”  图标。
-* 若要获取帮助和支持，请选择**帮助**下拉列表以显示资源列表。 在针对免费定价计划的应用程序中，支持资源包括对[实时聊天](howto-show-hide-chat.md)的访问权限。
+* 若要搜索设备模板和设备，请输入“搜索”值。
+* 若要更改 UI 语言或主题，请选择“设置”图标。 详细了解[管理应用程序首选项](howto-manage-preferences.md)
+* 若要从应用程序中注销，请选择“帐户”图标。
+* 若要获取帮助和支持，请选择**帮助**下拉列表以显示资源列表。 你可从“关于你的应用”链接中[获取有关应用程序的信息](./howto-get-app-info.md)。 在针对免费定价计划的应用程序中，支持资源包括对[实时聊天](howto-show-hide-chat.md)的访问权限。
 
 可以为 UI 选择浅色主题或深色主题：
 
@@ -117,16 +117,16 @@ ms.locfileid: "77425959"
 > [!div class="mx-imgBorder"]
 > ![仪表板](media/overview-iot-central-tour/dashboard-pnp.png)
 
-* 仪表板是登录到 Azure IoT Central 应用程序后看到的第一个页面。 解决方案构建者可以为其他用户创建和自定义多个全局应用程序仪表板  。 详细了解[将磁贴添加到仪表板](howto-add-tiles-to-your-dashboard.md)
+* 仪表板是登录到 Azure IoT Central 应用程序后看到的第一个页面。 解决方案构建者可以为其他用户创建和自定义多个全局应用程序仪表板。 详细了解[将磁贴添加到仪表板](howto-add-tiles-to-your-dashboard.md)
 
-* 如果操作员的用户角色允许，则可以创建个人仪表板来监视所关注的内容  。 若要了解详细信息，请参阅[创建 Azure IoT Central 个人仪表板](howto-create-personal-dashboards.md)操作指南文章。
+* 如果操作员的用户角色允许，则可以创建个人仪表板来监视所关注的内容。 若要了解详细信息，请参阅[创建 Azure IoT Central 个人仪表板](howto-create-personal-dashboards.md)操作指南文章。
 
 ### <a name="devices"></a>设备
 
 > [!div class="mx-imgBorder"]
 > ![设备页](media/overview-iot-central-tour/devices-pnp.png)
 
-Explorer 页面显示 Azure IoT Central 应用程序中按“设备模板”分组的“设备”。   
+Explorer 页面显示 Azure IoT Central 应用程序中按“设备模板”分组的“设备”。  
 
 * 设备模板定义可以连接到应用程序的设备类型。
 * 设备表示应用程序中的真实或模拟设备。
@@ -138,7 +138,7 @@ Explorer 页面显示 Azure IoT Central 应用程序中按“设备模板”分�
 > [!div class="mx-imgBorder"]
 > ![设备组页](media/overview-iot-central-tour/device-groups-pnp.png)
 
-设备组是相关设备的集合。 解决方案构建者定义查询以标识设备组中包含的设备  。 使用设备组在应用程序中执行批量操作。 若要了解详细信息，请参阅[在 Azure IoT Central 应用程序中使用设备组](tutorial-use-device-groups.md)一文。
+设备组是相关设备的集合。 解决方案构建者定义查询以标识设备组中包含的设备。 使用设备组在应用程序中执行批量操作。 若要了解详细信息，请参阅[在 Azure IoT Central 应用程序中使用设备组](tutorial-use-device-groups.md)一文。
 
 ### <a name="rules"></a>规则
 > [!div class="mx-imgBorder"]
@@ -172,7 +172,7 @@ Explorer 页面显示 Azure IoT Central 应用程序中按“设备模板”分�
 * 命令
 * 视图
 
-解决方案构建者还可以创建表单和仪表板，供操作员用来管理设备  。
+解决方案构建者还可以创建表单和仪表板，供操作员用来管理设备。
 
 若要了解详细信息，请参阅[在 Azure IoT Central 应用程序中定义新的设备类型](howto-set-up-template.md)教程。 
 

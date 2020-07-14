@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684223"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833175"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
@@ -37,7 +37,7 @@ Web 应用程序防火墙 (WAF) 会检查入站 Web 流量，并阻止 SQL 注�
 要配置应用服务环境，请参阅有关该主题的[文档](app-service-web-how-to-create-an-app-service-environment.md)。 创建应用服务环境后，可在此环境中创建 Web 应用、API 应用和[移动应用](../../app-service-mobile/app-service-mobile-value-prop.md)，下一部分中配置的 WAF 可保护所有这些应用。
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>配置 Barracuda WAF 云服务
-Barracuda 提供了有关在 Azure 中的虚拟机上部署其 WAF 的 [详细文章](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) 。 但是，由于我们想要冗余，但不想要造成单一故障点，因此可以在遵循这些说明时，将至少两个 WAF 实例 VM 部署到相同的云服务中。
+Barracuda 提供了有关在 Azure 中的虚拟机上部署其 WAF 的[详细文章](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure)。 但是，由于我们想要冗余，但不想要造成单一故障点，因此可以在遵循这些说明时，将至少两个 WAF 实例 VM 部署到相同的云服务中。
 
 ### <a name="adding-endpoints-to-cloud-service"></a>将终结点添加云服务
 云服务中有两个以上的 WAF VM 实例之后，即可使用 [Azure 门户](https://portal.azure.com/)添加应用程序使用的 HTTP 和 HTTPS 终结点，如下图所示：
@@ -66,7 +66,7 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 
 ![管理仪表板][ManagementDashboard]
 
-单击“服务”选项卡可以根据 WAF 保护的服务配置 WAF  。 有关配置 Barracuda WAF 的详细信息，请参阅[相关文档](https://techlib.barracuda.com/waf/getstarted1)。 在以下示例中，已配置处理 HTTP 和 HTTPS 流量的应用服务应用。
+单击“服务”选项卡可以根据 WAF 保护的服务配置 WAF。 有关配置 Barracuda WAF 的详细信息，请参阅[相关文档](https://techlib.barracuda.com/waf/getstarted1)。 在以下示例中，已配置处理 HTTP 和 HTTPS 流量的应用服务应用。
 
 ![管理添加服务][ManagementAddServices]
 
@@ -80,7 +80,7 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 
 ![流量管理器终结点][TrafficManagerEndpoint]
 
-如果应用程序需要身份验证，请确保有某个资源不需要任何身份验证，使流量管理器能够 ping 出应用程序的可用性。 可以在 [Azure 门户](https://portal.azure.com)的“配置”  页上配置 URL，如下图所示：
+如果应用程序需要身份验证，请确保有某个资源不需要任何身份验证，使流量管理器能够 ping 出应用程序的可用性。 可以在 [Azure 门户](https://portal.azure.com)的“配置”页上配置 URL，如下图所示：
 
 ![配置流量管理器][ConfigureTrafficManager]
 
@@ -89,9 +89,11 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 ![网站转换][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>使用网络安全组 (NSG) 保护发往应用服务环境的流量
-有关使用云服务的 VIP 地址只限制从 WAF 流入应用服务环境的流量的详细信息，请遵循[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)。 以下是针对 TCP 端口 80 运行此任务的示例 Powershell 命令。
+有关使用云服务的 VIP 地址只限制从 WAF 流入应用服务环境的流量的详细信息，请遵循[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)。 以下是针对 TCP 端口 80 执行此任务的示例 PowerShell 命令。
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 将 SourceAddressPrefix 替换为 WAF 云服务的虚拟 IP 地址 (VIP)。
 

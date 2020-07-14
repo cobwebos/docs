@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 718365119b8cdf9279dcabc5f8c54deb386e8500
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019035"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807775"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -22,7 +22,7 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 若要购买计划，必须在企业订阅（MS-AZR-0017P 或 MS-AZR-0148P）或即用即付订阅（MS-AZR-0003P 或 MS-AZR-0023P）或 Microsoft 客户协议订阅中具有订阅所有者角色。 云解决方案提供商可使用 Azure 门户或 [合作伙伴中心](/partner-center/azure-reservations)购买 Azure 预留项。
 
-企业协议 (EA) 客户可以通过在 EA 门户中禁用“添加预留实例”选项，将购买权限制为 EA 管理员。  EA 管理员必须是至少一个 EA 订阅的订阅所有者才能购买预留项。 对于希望通过一个核心团队为不同的成本中心购买预留项的企业而言，该选项非常有用。 购买后，核心团队可将成本中心所有者添加到预留项。 然后，所有者可将预留范围限定为其订阅。 购买预留项时，核心团队无需拥有订阅所有者访问权限。
+企业协议 (EA) 客户可以通过在 EA 门户中禁用“添加预留实例”选项，将购买权限制为 EA 管理员。 EA 管理员必须是至少一个 EA 订阅的订阅所有者才能购买预留项。 对于希望通过一个核心团队为不同的成本中心购买预留项的企业而言，该选项非常有用。 购买后，核心团队可将成本中心所有者添加到预留项。 然后，所有者可将预留范围限定为其订阅。 购买预留项时，核心团队无需拥有订阅所有者访问权限。
 
 预留折扣仅适用于与通过企业、云解决方案提供商 (CSP)、采用即用即付费率的 Microsoft 客户协议和单个计划购买的订阅关联的资源。
 
@@ -44,7 +44,7 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 2. 单一范围的预留项
 3. 共享范围的预留项
 
-始终可在购买预留项后更新范围。 为此，请转到该预留项，单击“配置”，然后重新设置预留范围。  重新设置预留范围不属于商业交易。 预留条款不会有变化。 有关更新范围的详细信息，请参阅[在购买预留项后更新范围](manage-reserved-vm-instance.md#change-the-reservation-scope)。
+始终可在购买预留项后更新范围。 为此，请转到该预留项，单击“配置”，然后重新设置预留范围。 重新设置预留范围不属于商业交易。 预留条款不会有变化。 有关更新范围的详细信息，请参阅[在购买预留项后更新范围](manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
 ![演示如何更改预留范围的示例](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
 
@@ -85,13 +85,13 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 如果使用 Microsoft 客户协议 (MCA) 购买预留项，则每月付款金额可能会有所不同，具体取决于本地货币的当月市场汇率。
 
-每月付款不适用于：Databricks、SUSE Linux 预留项、Red Hat 计划和 Azure Red Hat OpenShift 计算。
+每月付款不适用于：Databricks、SUSE Linux 预留项、Red Hat 计划和 Azure Red Hat OpenShift 许可证。
 
 ### <a name="view-payments-made"></a>查看已进行的付款
 
-可以查看通过 API、使用数据和成本分析进行的付款。 对于按月付款的预留，频率值在使用数据和预留费用 API 中显示为“定期”。  对于提前付款的预留，该值显示为“一次性”。 
+可以查看通过 API、使用数据和成本分析进行的付款。 对于按月付款的预留，频率值在使用数据和预留费用 API 中显示为“定期”。 对于提前付款的预留，该值显示为“一次性”。
 
-成本分析在默认视图中显示按月购买。 对“费用类型”应用“购买”筛选器，对“频率”应用“定期”筛选器，即可查看所有购买项。     若只查看预留，请应用“预留”筛选器。 
+成本分析在默认视图中显示按月购买。 对“费用类型”应用“购买”筛选器，对“频率”应用“定期”筛选器，即可查看所有购买项。    若只查看预留，请应用“预留”筛选器。
 
 ![在成本分析中显示预留购买成本的示例](./media/prepare-buy-reservation/cost-analysis.png)
 

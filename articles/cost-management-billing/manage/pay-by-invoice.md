@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 5fb8a9cd5e00bf3a6ebeddaf44a09ac48b94fe7c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849079"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按发票为 Azure 订阅付款
 
@@ -42,28 +42,28 @@ ms.locfileid: "85297998"
 
 5. 在“详细信息”框中输入以下信息，并选择“下一步”。
 
-         New or existing customer:
-         If existing, current payment method:
-         Order ID (requesting for invoice option):
-         Account Admins Live ID (or Org ID) (should be company domain):
-         Commerce Account ID:
-         Company Name (as registered under VAT or Government Website):
-         Company Address (as registered under VAT or Government Website):
-         Company Website:
-         Country:
-         TAX ID/ VAT ID:
-         Company Established on (Year):
-         Any prior business with Microsoft:
-         Contact Name:
-         Contact Phone:
-         Contact Email:
-         Justification on why you prefer Invoice option over credit card:
+     新客户或现有客户：<br>
+     如果是现有客户，当前付款方式为：<br>
+     订单 ID（请求发票选项）：<br>
+     帐户管理员 Live ID（或组织 ID）（应为公司域）：<br>
+     商务帐户 ID：<br>
+     公司名称（与在 VAT 或政府网站上注册的相同）：<br>
+     公司地址（与在 VAT 或政府网站上注册的相同）：<br>
+     公司网站：<br>
+     国家/地区：<br>
+     税务 ID/增值税 ID：<br>
+     公司成立时间（年）：<br>
+     以前是否与 Microsoft 有业务往来：<br>
+     联系人姓名：<br>
+     联系人电话：<br>
+     联系人电子邮件：<br>
+     你更青睐于发票选项而非信用卡的理由：<br>
 
-         For cores increase, provide the following additional information:
+     对于核心增加情况，请提供以下附加信息：<br>
 
-         (Old quota) Existing Cores:
-         (New quota) Requested cores:
-         Specific region & series of Subscription:
+     （旧配额）现有核心数：<br>
+     （新配额）请求的核心数：<br>
+     特定区域和系列的订阅：<br>
 
     - “公司名称”和“公司地址”应与你为 Azure 帐户提供的信息匹配。  若要查看或更新信息，请参阅[更改 Azure 帐户个人资料信息](change-azure-account-profile.md)。
     - 请在 Azure 门户中添加计费联系人信息，然后额度限制才会获得批准。 联系人详细信息应该与公司的应付账款或财务部门相关。 若要更新计费联系人信息，请转到 [Azure 帐户中心](https://account.azure.com/Profile)。

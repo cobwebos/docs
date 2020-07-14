@@ -1,24 +1,21 @@
 ---
-title: 使用 REST 创建知识存储（预览版）
+title: 使用 REST 创建知识存储
 titleSuffix: Azure Cognitive Search
-description: 使用 REST API 和 Postman 创建 Azure 认知搜索知识存储，用于保存 AI 扩充管道的扩充内容。 此功能目前处于公开预览状态。
+description: 使用 REST API 和 Postman 创建 Azure 认知搜索知识存储，用于保存 AI 扩充管道的扩充内容。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: f030fc81ab33ecd0531040662346e1ed44f5d17c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: f496413cf1a5175cee65bce46a2f7f6260d5451d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263018"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565227"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>使用 REST 和 Postman 创建知识库
-
-> [!IMPORTANT] 
-> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
 知识存储包含 Azure 认知搜索扩充管道的输出，用于后续分析或其他下游处理。 AI 扩充的管道接受图像文件或非结构化文本文件，使用 Azure 认知搜索为其编制索引，应用认知服务中的 AI 扩充（例如图像分析和自然语言处理），并将结果保存到 Azure 存储中的知识存储。 可以在 Azure 门户中使用 Power BI 或存储资源管理器等工具来浏览知识存储。
 
@@ -41,11 +38,11 @@ ms.locfileid: "85263018"
 
 1. [创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，或在当前订阅下[查找现有帐户](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 你将使用 Azure 存储来保存要导入的原始内容，并使用知识存储（最终结果）。
 
-   选择“StorageV2 (常规用途 V2)”帐户类型  。
+   选择“StorageV2 (常规用途 V2)”帐户类型。
 
-1. 打开 Blob 服务页并创建一个名为 hotel-reviews 的容器  。
+1. 打开 Blob 服务页并创建一个名为 hotel-reviews 的容器。
 
-1. 单击“上载” 。 
+1. 单击“上载” 。
 
     ![上传数据](media/knowledge-store-create-portal/upload-command-bar.png "上传酒店评论")
 
@@ -53,7 +50,7 @@ ms.locfileid: "85263018"
 
     ![创建 Azure Blob 容器](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "创建 Azure Blob 容器")
 
-1. 对此资源的操作即将完成，但在退出这些页面之前，请使用左侧导航窗格中的链接打开“访问密钥”页。  获取用于从 Blob 存储检索数据的连接字符串。 连接字符串类似于以下示例：`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. 对此资源的操作即将完成，但在退出这些页面之前，请使用左侧导航窗格中的链接打开“访问密钥”页。 获取用于从 Blob 存储检索数据的连接字符串。 连接字符串类似于以下示例：`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
 1. 仍然在门户中，切换到 Azure 认知搜索。 [新建服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本练习中使用免费服务。
 
@@ -64,32 +61,32 @@ ms.locfileid: "85263018"
 ### <a name="download-and-install-postman"></a>下载并安装 Postman
 
 1. 下载 [Postman 集合源代码](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json)。
-1. 选择“文件” > “导入”将源代码导入 Postman。  
-1. 选择“集合”选项卡，然后选择“...”（省略号）按钮。  
-1. 选择“编辑”  。 
+1. 选择“文件” > “导入”将源代码导入 Postman。 
+1. 选择“集合”选项卡，然后选择“...”（省略号）按钮。 
+1. 选择“编辑”。 
    
    ![显示导航栏的 Postman 应用](media/knowledge-store-create-rest/postman-edit-menu.png "转到 Postman 中的“编辑”菜单")
-1. 在“编辑”对话框中，选择“变量”选项卡。   
+1. 在“编辑”对话框中，选择“变量”选项卡。  
 
-在“变量”选项卡上，可以添加 Postman 每次在遇到双大括号中的值时要替换成的值。  例如，Postman 会将符号 `{{admin-key}}` 替换成为 `admin-key` 设置的当前值。 Postman 将在 URL、标头和请求正文等内容中进行这种替换。 
+在“变量”选项卡上，可以添加 Postman 每次在遇到双大括号中的值时要替换成的值。 例如，Postman 会将符号 `{{admin-key}}` 替换成为 `admin-key` 设置的当前值。 Postman 将在 URL、标头和请求正文等内容中进行这种替换。 
 
-若要获取 `admin-key` 的值，请转到 Azure 认知搜索服务并选择“密钥”选项卡。  将 `search-service-name` 和 `storage-account-name` 更改为在[创建服务](#create-services-and-load-data)中选择的值。 使用存储帐户的“访问密钥”选项卡中的值设置 `storage-connection-string`。  其他值可保留默认设置。
+若要获取 `admin-key` 的值，请转到 Azure 认知搜索服务并选择“密钥”选项卡。将 `search-service-name` 和 `storage-account-name` 更改为在[创建服务](#create-services-and-load-data)中选择的值。 使用存储帐户的“访问密钥”选项卡中的值设置 `storage-connection-string`。其他值可保留默认设置。
 
 ![Postman 应用变量选项卡](media/knowledge-store-create-rest/postman-variables-window.png "Postman 的变量窗口")
 
 
 | 变量    | 从何处获取 |
 |-------------|-----------------|
-| `admin-key` | 在 Azure 认知搜索服务的“密钥”页上。   |
-| `api-version` | 保留为“2019-05-06-Preview”。  |
-| `datasource-name` | 保留为“hotel-reviews-ds”。  | 
-| `indexer-name` | 保留为“hotel-reviews-ixr”。  | 
-| `index-name` | 保留为“hotel-reviews-ix”。  | 
+| `admin-key` | 在 Azure 认知搜索服务的“密钥”页上。  |
+| `api-version` | 保留为“2020-06-30”。 |
+| `datasource-name` | 保留为“hotel-reviews-ds”。 | 
+| `indexer-name` | 保留为“hotel-reviews-ixr”。 | 
+| `index-name` | 保留为“hotel-reviews-ix”。 | 
 | `search-service-name` | Azure 认知搜索服务的名称。 该 URL 为 `https://{{search-service-name}}.search.windows.net`。 | 
-| `skillset-name` | 保留为“hotel-reviews-ss”。  | 
+| `skillset-name` | 保留为“hotel-reviews-ss”。 | 
 | `storage-account-name` | 存储帐户名称。 | 
-| `storage-connection-string` | 在存储帐户中的“访问密钥”选项卡上，选择“密钥 1” > “连接字符串”。    | 
-| `storage-container-name` | 保留为“hotel-reviews”。  | 
+| `storage-connection-string` | 在存储帐户中的“访问密钥”选项卡上，选择“密钥 1” > “连接字符串”。   | 
+| `storage-container-name` | 保留为“hotel-reviews”。 | 
 
 ### <a name="review-the-request-collection-in-postman"></a>查看 Postman 中的请求集合
 
@@ -112,7 +109,7 @@ ms.locfileid: "85263018"
 
 创建 Azure 认知搜索索引来表示你要搜索、筛选并向其应用扩充的数据。 通过向 `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` 发出 PUT 请求来创建索引。 Postman 会将双大括号中的符号（例如 `{{search-service-name}}`、`{{index-name}}` 和 `{{api-version}}`）替换为[配置 Postman](#configure-postman) 中设置的值。 如果你使用其他工具发出 REST 命令，则必须自行替换这些变量。
 
-在请求正文中设置 Azure 认知搜索索引的结构。 在 Postman 中设置 `api-key` 和 `Content-type` 标头后，转到请求的“正文”窗格。  应会看到以下 JSON。 如果未看到，请选择“Raw” > “JSON (application/JSON)”，然后粘贴以下代码作为正文：  
+在请求正文中设置 Azure 认知搜索索引的结构。 在 Postman 中设置 `api-key` 和 `Content-type` 标头后，转到请求的“正文”窗格。 应会看到以下 JSON。 如果未看到，请选择“Raw” > “JSON (application/JSON)”，然后粘贴以下代码作为正文： 
 
 ```JSON
 {
@@ -149,13 +146,13 @@ ms.locfileid: "85263018"
 
 此索引定义是要向用户显示的数据（酒店名称、评论内容和日期）、搜索元数据和 AI 扩充数据（情绪、关键短语和语言）的组合。
 
-选择“发送”以发出 PUT 请求。  应会看到状态 `201 - Created`。 如果看到其他状态，请在“正文”窗格中查找包含错误消息的 JSON 响应。  
+选择“发送”以发出 PUT 请求。 应会看到状态 `201 - Created`。 如果看到其他状态，请在“正文”窗格中查找包含错误消息的 JSON 响应。 
 
 ## <a name="create-the-datasource"></a>创建数据源
 
 接下来，将 Azure 认知搜索连接到 Blob 存储中存储的酒店数据。 若要创建数据源，请向 `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` 发送 POST 请求。 必须根据前面所述设置 `api-key` 和 `Content-Type` 标头。 
 
-在 Postman 中，转到“创建数据源”请求，然后转到“正文”窗格。   应会看到以下代码：
+在 Postman 中，转到“创建数据源”请求，然后转到“正文”窗格。  应会看到以下代码：
 
 ```json
 {
@@ -167,17 +164,17 @@ ms.locfileid: "85263018"
 }
 ```
 
-选择“发送”以发出 POST 请求。  
+选择“发送”以发出 POST 请求。 
 
 ## <a name="create-the-skillset"></a>创建技能集 
 
-下一步是指定技能集，用于指定要应用的扩充，以及要将结果存储到的知识存储。 在 Postman 中选择“创建技能集”选项卡。  此请求向 `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}` 发送 PUT。 根据前面所述设置 `api-key` 和 `Content-type` 标头。 
+下一步是指定技能集，用于指定要应用的扩充，以及要将结果存储到的知识存储。 在 Postman 中选择“创建技能集”选项卡。此请求向 `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}` 发送 PUT。 根据前面所述设置 `api-key` 和 `Content-type` 标头。 
 
 有两个大型顶级对象：`skills` 和 `knowledgeStore`。 `skills` 对象中的每个对象都是一个扩充服务。 每个扩充服务具有 `inputs` 和 `outputs`。 `LanguageDetectionSkill` 包含 `Language` 的输出 `targetName`。 此节点的值由其他大多数技能用作输入。 源为 `document/Language`。 在指定数据如何流入知识存储表的 `ShaperSkill` 中，使用一个节点的输出作为另一个节点的输入这一功能尢为明显。
 
 `knowledge_store` 对象通过 `{{storage-connection-string}}` Postman 变量连接到存储帐户。 `knowledge_store` 包含增强的文档与知识存储中的表和列之间的一组映射。 
 
-若要生成技能集，请在 Postman 中选择“发送”按钮来放置 (PUT) 请求： 
+若要生成技能集，请在 Postman 中选择“发送”按钮来放置 (PUT) 请求：
 
 ```json
 {
@@ -307,11 +304,11 @@ ms.locfileid: "85263018"
 
 ## <a name="create-the-indexer"></a>创建索引器
 
-最后一步是创建索引器。 索引器读取数据并激活技能集。 在 Postman 中选择“创建索引器”请求，然后查看正文。  索引器的定义引用创建的其他多个资源：数据源、索引和技能集。 
+最后一步是创建索引器。 索引器读取数据并激活技能集。 在 Postman 中选择“创建索引器”请求，然后查看正文。 索引器的定义引用创建的其他多个资源：数据源、索引和技能集。 
 
 `parameters/configuration` 对象控制索引器引入数据的方式。 在这种情况下，输入数据位于带有标题行和逗号分隔值的单个文档中。 文档键是文档的唯一标识符。 文档键在编码之前是源文档的 URL。 最后，技能集输出值（例如语言代码、情绪和关键短语）将映射到它们在文档中的位置。 尽管 `Language` 只有单个值，但 `Sentiment` 将应用到 `pages` 数组中的每个元素。 `Keyphrases` 是一个数组，也会应用到 `pages` 数组中的每个元素。
 
-设置 `api-key` 和 `Content-type` 标头并确认请求正文类似于后面的源代码后，请在 Postman 中选择“发送”。  Postman 随即向 `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` 发送一个 PUT 请求。 Azure 认知搜索将创建并运行索引器。 
+设置 `api-key` 和 `Content-type` 标头并确认请求正文类似于后面的源代码后，请在 Postman 中选择“发送”。 Postman 随即向 `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` 发送一个 PUT 请求。 Azure 认知搜索将创建并运行索引器。 
 
 ```json
 {
@@ -344,7 +341,7 @@ ms.locfileid: "85263018"
 
 ## <a name="run-the-indexer"></a>运行索引器 
 
-在 Azure 门户中，转到 Azure 认知搜索服务的“概览”页。  依次选择“索引器”选项卡、“hotels-reviews-ixr”。   如果索引器尚未运行，请选择“运行”。  索引任务可能会引发一些与语言识别相关的警告。 数据中的某些评论是以认知技能尚不支持的语言编写的。 
+在 Azure 门户中，转到 Azure 认知搜索服务的“概览”页。 依次选择“索引器”选项卡、“hotels-reviews-ixr”。  如果索引器尚未运行，请选择“运行”。 索引任务可能会引发一些与语言识别相关的警告。 数据中的某些评论是以认知技能尚不支持的语言编写的。 
 
 ## <a name="next-steps"></a>后续步骤
 

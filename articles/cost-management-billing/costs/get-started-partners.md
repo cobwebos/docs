@@ -3,23 +3,25 @@ title: 面向合作伙伴的 Azure 成本管理入门
 description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554556"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849866"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
-Azure 成本管理原生可用于已将其客户加入 Microsoft 客户协议并已[购买 Azure 计划](/partner-center/purchase-azure-plan)的直接合作伙伴。 本文介绍合作伙伴如何使用 [Azure 成本管理](../index.yml)功能查看 Azure 计划中的订阅的成本。 此外，介绍合作伙伴如何为其客户启用成本管理访问。
+Azure 成本管理原生可用于已将其客户加入 Microsoft 客户协议并已[购买 Azure 计划](/partner-center/purchase-azure-plan)的直接合作伙伴。 本文介绍合作伙伴如何使用 [Azure 成本管理](../index.yml)功能查看 Azure 计划中的订阅的成本。 此外，还将介绍合作伙伴如何以零售价为其客户启用成本管理访问。
 
-就直接合作伙伴和间接提供商而言，间接提供商的全局管理员和管理员代理可以访问合作伙伴租户中的成本管理。 经销商和客户可以访问客户租户中的成本管理并查看订阅的成本，其中成本是按零售价计算和显示的。 但是，他们必须对客户租户中的订阅具有 RBAC 访问权限才能查看成本。 提供商必须为客户租户启用成本可见性策略。
+就直接合作伙伴和间接提供商而言，全局管理员和管理员代理可以访问合作伙伴租户中的成本管理并以已开票的价格管理成本。
+
+经销商和客户可以访问客户租户中的成本管理并查看订阅的成本，其中成本是按零售价计算和显示的。 但是，他们必须对客户租户中的订阅具有 RBAC 访问权限才能查看成本。 提供商必须为客户租户启用成本可见性策略。
 
 在 CSP 合作伙伴为其客户启用成本管理功能后，客户即可使用该功能。
 
@@ -33,10 +35,12 @@ CSP 合作伙伴可以使用成本管理来实现以下目的：
 - 将成本和使用情况数据导出到即用即付订阅的存储 Blob。
 
 以下示例显示了所有客户的成本。
-![显示所有客户的成本的示例](./media/get-started-partners/customer-costs1.png)
+
+[![显示所有客户的成本的示例](./media/get-started-partners/customer-costs1.png)](./media/get-started-partners/customer-costs1.png#lightbox)
 
 以下示例显示了单个客户的成本。
-![显示单个客户的成本的示例](./media/get-started-partners/customer-costs2.png)
+
+[![显示单个客户的成本的示例](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
 还可以通过 REST API 使用 Azure 成本管理提供的所有功能。 使用 API 可以自动化成本管理任务。
 
@@ -50,8 +54,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 有关为计费帐户启用 Azure 成本管理并分配其访问权限的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 “全局管理员”和“管理员代理”角色可以管理计费帐户的成本。 
 
-若要在订阅范围访问 Azure 成本管理，对某个订阅拥有 RBAC 访问权限的任何用户都可以查看零售（即用即付）费率的成本。 但是，必须为客户租户启用成本可见性策略。 若要查看受支持帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
-
+若要在订阅范围访问 Azure 成本管理，对某个订阅拥有 RBAC 访问权限的任何用户都可以查看零售（即用即付）费率的成本。 但是，必须[为客户租户启用成本可见性策略](#enable-the-policy-to-view-azure-usage-charges)。 若要查看受支持帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
 
 ## <a name="how-cost-management-uses-scopes"></a>成本管理如何使用范围
 
@@ -110,13 +113,13 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。  有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>在客户租户中启用成本管理
+## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>为客户租户订阅启用成本管理
 
-将客户加入 Microsoft 客户协议后，合作伙伴可以启用对成本管理的访问。 然后，合作伙伴可以启用某个策略，使客户能够查看按即用即付零售费率计算的成本。 将在 RBAC 订阅和资源组范围，以客户的计费货币根据其消耗用量显示成本。
+将客户加入 Microsoft 客户协议后，合作伙伴可以启用对成本管理的访问。 然后，合作伙伴可以启用某个策略，使客户能够查看其按即用即付零售价计算的 Azure 所消耗服务的成本。 将在 RBAC 订阅和资源组范围，以客户的计费货币根据其消耗用量显示成本。
 
 合作伙伴启用成本可见性策略后，可通过 Azure 资源管理器访问订阅的任何用户都可以管理和分析按即用即付费率计算的成本。 对 Azure 订阅拥有相应 RBAC 访问权限的经销商和客户实际上可以查看成本。
 
-如果合作伙伴有权访问订阅和资源组，则无论采用哪种策略，他们也都可以查看成本。
+无论采用哪种策略，只要提供商的全局管理员和管理员代理具有对订阅和资源组的访问权限，他们就可以查看订阅成本。
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>启用查看 Azure 使用费的策略
 
@@ -126,7 +129,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 在客户列表中，选择要允许其查看成本的客户。
 
-![在成本管理中选择客户](./media/get-started-partners/customer-list.png)
+[![在成本管理中选择客户](./media/get-started-partners/customer-list.png)](./media/get-started-partners/customer-list.png#lightbox)
 
 在“设置”下，选择“策略”。 
 
@@ -139,16 +142,17 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 启用成本可见性策略后，具有订阅用量的所有服务都会显示按即用即付费率计算的成本。 对于实际和摊销成本，预留用量会显示零费用。 购买项和权利不与特定的订阅相关联。 因此，不会在订阅范围显示购买项。
 
+### <a name="view-subscription-costs-in-the-customer-tenant"></a>查看客户租户中的订阅成本
 
-### <a name="view-customer-costs"></a>查看客户成本
+若要查看订阅成本，请在客户的 Azure 租户中打开“成本管理 + 计费”。 选择“成本分析”所需订阅，开始查看成本。 可在客户租户中单独查看每个订阅的消耗成本。
 
-若要查看客户租户的成本，请打开**成本管理 + 计费**。 选择“成本分析”，然后将范围更改为客户租户订阅以开始查看成本。
-
-![以客户身份查看成本分析 ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+[![以客户身份查看成本分析](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
 将以基于即用即付费率的成本，提供订阅和资源组 RBAC 范围的成本分析、预算和警报。
 
 RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。 预留实例成本仅显示在购买时所在的计费范围内。
+
+用于计算视图中显示的成本的零售价与适用于所有客户的 Azure 定价计算器中显示的价格相同。 显示的成本不包括合作伙伴可能具有的任何折扣或额度，例如“合作伙伴赚取的额度”、“分级折扣”和“全局服务折扣”。
 
 ## <a name="analyze-costs-in-cost-analysis"></a>在成本分析中分析成本
 

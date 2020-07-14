@@ -1,16 +1,16 @@
 ---
 title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
-ms.date: 04/15/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773145"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963676"
 ---
-# <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
+# <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
 
 如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 Azure 管理组提供订阅上的作用域级别。 可将订阅组织到名为“管理组”的容器中，并将管理条件应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的条件。 不管使用什么类型的订阅，管理组都能提供大规模的企业级管理。
 单个管理组中的所有订阅都必须信任同一个 Azure Active Directory 租户。
@@ -199,6 +199,4 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 
 - [创建管理组来组织 Azure 资源](./create.md)
 - [如何更改、删除或管理管理组](./manage.md)
-- [在 Azure PowerShell 资源模块中查看管理组](/powershell/module/az.resources#resources)
-- [在 REST API 中查看管理组](/rest/api/resources/managementgroups)
-- [在 Azure CLI 中查看管理组](/cli/azure/account/management-group)
+- 请参阅[如何保护资源层次结构](./how-to/protect-resource-hierarchy.md)的选项

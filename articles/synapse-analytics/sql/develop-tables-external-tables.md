@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bf014c7188232f07a399cc3e438d1d894c96a233
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7c795e6077bc5a7b755a388a6f50848ad6094d48
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701437"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921797"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>通过 Synapse SQL 使用外部表
 
@@ -96,13 +96,17 @@ data_source_name
 指定数据源的用户定义名称。 该名称在数据库中必须唯一。
 
 #### <a name="location"></a>位置
-LOCATION = `'<prefix>://<path>'` - 提供连接协议和外部数据源的路径。 该路径可以包含 `'<prefix>://<path>/container'` 格式的容器，以及 `'<prefix>://<path>/container/folder'` 格式的文件夹。
+LOCATION = `'<prefix>://<path>'` - 提供连接协议和外部数据源的路径。 以下模式可用于位置：
 
 | 外部数据源        | 位置前缀 | 位置路径                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob 存储          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
+|                             | `https`         | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
 | Azure Data Lake Store Gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
 | Azure Data Lake Store Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
+|                             | `https`         | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
+
+`https:` 前缀允许使用路径中的子文件夹。
 
 #### <a name="credential"></a>凭据
 CREDENTIAL = `<database scoped credential>` 是可选凭据，用于在 Azure 存储上进行身份验证。 没有凭据的外部数据源可以访问公共存储帐户。 
@@ -124,7 +128,7 @@ TYPE = `HADOOP` 在 SQL 池中是强制选项，并指定使用 Polybase 技术�
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH
   -- Please note the abfss endpoint when your account has secure transfer enabled
-  ( LOCATION = 'abfss://newyorktaxidataset.azuredatalakestore.net' ,
+  ( LOCATION = 'abfss://data@newyorktaxidataset.dfs.core.windows.net' ,
     CREDENTIAL = ADLS_credential ,
     TYPE = HADOOP
   ) ;

@@ -5,16 +5,17 @@ description: 了解如何创建和运行标记项目，以标记用于机器学�
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: f514c33f2c39e205ac186b70711b478f67fcb4e5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e20b7b447797a957f860c6b1dd9679519960ebc5
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211998"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025176"
 ---
-# <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
+# <a name="create-a-data-labeling-project-preview-and-export-labels"></a>创建数据标签项目（预览版）并导出标签 
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

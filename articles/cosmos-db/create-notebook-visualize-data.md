@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115272"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961092"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教程：在 Azure Cosmos DB 中创建笔记本用于分析和可视化数据
 
@@ -235,7 +235,7 @@ df_cosmos.head(10)
 
    输出将以不同的颜色显示在世界地图上。 颜色越深，表示所在国家/地区的收入越高。
 
-   ![国家/地区收入地图可视化](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="国家/地区收入地图可视化":::
 
 1. 让我们看看另一个数据可视化用例。 WebsiteData 容器包含查看了某个项、将该项添加到了购物车以及购买了该项的用户记录。 让我们绘制已购项的转换率。 在新的单元中运行以下代码，以可视化每个项的转换率：
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 03fe40cea5891e87f42f0d6a50eedee80a68f25e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: efcc5e8f629c8b6ccc903478473b54989c0e9fd6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200521"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959433"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ ms.locfileid: "83200521"
 在开始之前，请确保：
 
 - 已完成[教程：将数据复制到 Azure Data Box 并进行验证](data-box-deploy-copy-data.md)。 
-- 复制作业已完成。 如果复制作业正在进行，则无法运行“准备交付”。
+- 复制作业已完成，且在“连接并复制”页上没有错误。 如果复制作业正在进行或“连接并复制”页中存在错误，则准备交付将无法运行。
 
 ## <a name="prepare-to-ship"></a>准备交付
 
@@ -62,7 +62,7 @@ ms.locfileid: "83200521"
 
 在准备寄送之前，请确保复制作业已完成。
 
-1. 在本地 Web UI 中转到“准备交付”页面，开始发货准备。  
+1. 在本地 Web UI 中转到“准备交付”页面，开始发货准备。 
 2. 通过本地 Web UI 关闭设备。 移除设备的电缆。 
 
 接下来的步骤根据在何处退回设备而定。
@@ -73,7 +73,7 @@ ms.locfileid: "83200521"
 
 ## <a name="ship-data-box-back"></a>寄回 Data Box
 
-确保数据复制到设备已完成，并且“准备交付”  运行成功。 根据要寄送设备的区域，过程会有所不同。
+确保数据复制到设备已完成，并且“准备交付”运行成功。 根据要寄送设备的区域，过程会有所不同。
 
 ::: zone-end
 
@@ -83,7 +83,7 @@ ms.locfileid: "83200521"
 
 1. 确保已关闭设备电源且拔下电缆。 
 2. 将设备随附的电源线卷好并安全地放在设备后面。
-3. 确保发货标签显示在电子墨水显示屏上，并与承运人安排好取件。 如果该标签损坏或丢失，或者未显示在电子墨水显示屏上，请联系 Microsoft 支持部门。 在支持部门建议的情况下，可以在 Azure 门户中转到“概览”>“下载发货标签”  。 下载发货标签，将其贴在设备上。 
+3. 确保发货标签显示在电子墨水显示屏上，并与承运人安排好取件。 如果该标签损坏或丢失，或者未显示在电子墨水显示屏上，请联系 Microsoft 支持部门。 在支持部门建议的情况下，可以在 Azure 门户中转到“概览”>“下载发货标签”。 下载发货标签，将其贴在设备上。 
 4. 如果要寄回设备，请安排 UPS 提货。 安排提货：
 
     - 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
@@ -91,7 +91,7 @@ ms.locfileid: "83200521"
     - 如果未引用跟踪号码，UPS 将要求你在提货时支付额外费用。
 
     也可以在最近的卸货位置放置 Data Box，而不是安排提货。
-4. 承运人提取 Data Box 并进行扫描后，门户中的订单状态将更新为“已提货”。  此外还会显示一个跟踪 ID。
+4. 承运人提取 Data Box 并进行扫描后，门户中的订单状态将更新为“已提货”。 此外还会显示一个跟踪 ID。
 
 ::: zone target="chromeless"
 
@@ -120,7 +120,7 @@ ms.locfileid: "83200521"
 
 
 1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
-2. 确保数据复制到设备已完成，并且“准备交付”  运行成功。
+2. 确保数据复制到设备已完成，并且“准备交付”运行成功。
 3. 关闭设备电源并拔下电缆。
 4. 将设备随附的电源线卷好并安全地放在设备后面。
 5. 打开 [DHL 链接](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)，在线预约取件。

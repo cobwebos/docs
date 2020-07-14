@@ -3,12 +3,12 @@ title: 教程：预测意向 - LUIS
 description: 创建一个自定义应用，以便根据本教程中的言语（文本）预测用户的意向。
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588920"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959853"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用以确定用户意向
 
@@ -113,9 +113,8 @@ ms.locfileid: "83588920"
 
     `get a medium vegetarian pizza for delivery`
 
-    这与示例示例言语并不完全相同，因此，要查看 LUIS 是否可以了解通过此意向预测的内容。
-
-    最后一个查询字符串参数为 `query`，表示陈述查询 (**q**uery)。 此话语不同于任何示例话语。 它非常适合用于测试，测试结果应返回 `OrderPizza` 意向（评分最高的意向）。
+  
+    查询字符串参数为 `query`，言语 query 会在 URI 中传递。 此话语不同于任何示例话语。 这应该是一项很好的测试，可检查 LUIS 是否会学习 `OrderPizza` 意向并将它预测为得分最高的意向。
 
     ```JSON
     {

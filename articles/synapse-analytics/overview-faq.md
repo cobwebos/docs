@@ -5,16 +5,16 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609142"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807870"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics（工作区预览版）常见问题解答
 
@@ -48,6 +48,10 @@ ms.locfileid: "84609142"
 答：Azure Synapse Analytics 是在 Azure SQL 数据仓库基础上演进而来的分析平台，其中包含用作数据仓库解决方案的 SQL 池。 此平台结合了数据探索、引入、转换、准备和一个为分析提供服务的层。
 
 ## <a name="use-cases"></a>用例
+
+### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>问：如何实现在 Azure Synapse 中重命名已发布的项目（数据集、笔记本、sql 脚本等）？
+
+答：若要重命名已发布的项目文件，请首先克隆该文件，然后将新文件重命名为你喜欢的名称。 需要将项目的所有引用手动更新为新文件名并删除旧文件名。
 
 ### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>问：Synapse SQL 池的典型用例是什么
 
