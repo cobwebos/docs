@@ -1,21 +1,21 @@
 ---
-title: 教程 - 如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
-description: 本教程介绍如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
+title: 如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
+description: 了解如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 657aa70d77fd1af9fd2121a3e98ea3aca7773642
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6f2c9a46d8b17a53d2dc43c0c8313c9357f502a1
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277545"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142165"
 ---
-# <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>教程：将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序 
+# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序 
 
-可以通过 Azure Spring Cloud 将所选 Azure 服务自动绑定到应用程序，而不必手动配置 Spring Boot 应用程序。 本教程介绍如何将应用程序绑定到 Azure Database for MySQL 实例。
+可以通过 Azure Spring Cloud 将所选 Azure 服务自动绑定到应用程序，而不必手动配置 Spring Boot 应用程序。 本文介绍如何将应用程序绑定到 Azure Database for MySQL 实例。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,9 +29,9 @@ ms.locfileid: "76277545"
 
 1. 记下 Azure Database for MySQL 帐户的管理员用户名和密码。 
 
-1. 连接到服务器，从 MySQL 客户端创建名为“testdb”的数据库，然后创建新的非管理员帐户  。
+1. 连接到服务器，从 MySQL 客户端创建名为“testdb”的数据库，然后创建新的非管理员帐户。
 
-1. 在项目的 pom.xml 文件中，添加以下依赖项  ：
+1. 在项目的 pom.xml 文件中，添加以下依赖项：
 
     ```xml
     <dependency>
@@ -39,15 +39,15 @@ ms.locfileid: "76277545"
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     ```
-1. 在 application.properties 文件中，删除所有 `spring.datasource.*` 属性  。
+1. 在 application.properties 文件中，删除所有 `spring.datasource.*` 属性。
 
 1. 通过运行 `az spring-cloud app update` 更新当前部署，或者通过运行 `az spring-cloud app deployment create` 针对此更改创建新的部署。  这些命令会使用新的依赖项更新或创建应用程序。
 
-1. 在 Azure 门户的“Azure Spring Cloud”服务页上，查找“应用程序仪表板”，然后选择要绑定到 Azure Database for MySQL 实例的应用程序   。  这是在上一步更新或部署的应用程序。 
+1. 在 Azure 门户的“Azure Spring Cloud”服务页上，查找“应用程序仪表板”，然后选择要绑定到 Azure Database for MySQL 实例的应用程序 。  这是在上一步更新或部署的应用程序。 
 
-1. 选择“服务绑定”，然后选择“创建服务绑定”按钮   。 
+1. 选择“服务绑定”，然后选择“创建服务绑定”按钮 。 
 
-1. 填充窗体，选择“Azure MySQL”作为“绑定类型”，使用以前使用的数据库名称以及在第一步记下的用户名和密码  。
+1. 填充窗体，选择“Azure MySQL”作为“绑定类型”，使用以前使用的数据库名称以及在第一步记下的用户名和密码。
 
 1. 重启应用，此绑定现在应该生效。
 
@@ -61,7 +61,4 @@ ms.locfileid: "76277545"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Database for MySQL 实例。  若要详细了解如何管理 Azure Spring Cloud 服务，请参阅关于服务发现和注册的文章。
-
-> [!div class="nextstepaction"]
-> [使用 Spring Cloud 服务注册表来启用服务发现和注册](spring-cloud-service-registration.md)
+本文介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Database for MySQL 实例。 若要详细了解如何将服务绑定到应用程序，请参阅[将 Azure Cosmos DB 数据库绑定到 Azure Spring Cloud 应用程序](spring-cloud-tutorial-bind-cosmos.md)。

@@ -106,6 +106,8 @@
           href: how-to-connect-install-express.md
         - name: 使用联合身份验证或其他自定义设置安装 Azure AD Connect
           href: how-to-connect-install-custom.md
+        - name: 导入和导出配置设置
+          href: how-to-connect-import-export-config.md
         - name: 使用直通身份验证 (PTA) 安装 Azure AD Connect
           href: how-to-connect-pta-quick-start.md
         - name: 安装 Azure AD Connect Health

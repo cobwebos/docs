@@ -1,17 +1,17 @@
 ---
-title: 教程 - 将 Azure Cosmos DB 绑定到 Azure Spring Cloud 应用程序
-description: 本教程介绍如何将 Azure Cosmos DB 绑定到 Azure Spring Cloud 应用程序
+title: 将 Azure Cosmos DB 绑定到 Azure Spring Cloud 应用程序
+description: 了解如何将 Azure Cosmos DB 绑定到 Azure Spring Cloud 应用程序
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 1566b6ab59e858217adcf6818e1d62f851f37eb1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 083c67184c6b039303b29119261a6967306a1447
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277566"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142214"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>将 Azure Cosmos DB 数据库绑定到 Azure Spring Cloud 应用程序
 
@@ -82,9 +82,9 @@ Azure Cosmos DB 具有五种支持绑定的不同 API 类型。 以下过程演�
 
 1. 使用 `az spring-cloud app update` 更新当前部署，或者使用 `az spring-cloud app deployment create` 创建新的部署。 这些命令会使用新的依赖项更新或创建应用程序。
 
-1. 转到 Azure 门户中的 Azure Spring Cloud 服务页面。 转到“应用程序仪表板”  ，选择要绑定到 Azure Cosmos DB 的应用程序。 此应用程序是在上一步更新或部署的应用程序。
+1. 转到 Azure 门户中的 Azure Spring Cloud 服务页面。 转到“应用程序仪表板”，选择要绑定到 Azure Cosmos DB 的应用程序。 此应用程序是在上一步更新或部署的应用程序。
 
-1. 选择“服务绑定”，然后选择“创建服务绑定”   。 若要填写表单，请选择以下项：
+1. 选择“服务绑定”，然后选择“创建服务绑定” 。 若要填写表单，请选择以下项：
    * **绑定类型**值 **Azure Cosmos DB**。
    * API 类型。
    * 数据库名称。
@@ -93,7 +93,7 @@ Azure Cosmos DB 具有五种支持绑定的不同 API 类型。 以下过程演�
     > [!NOTE]
     > 如果使用 Cassandra，请使用数据库名称的密钥空间。
 
-1. 选择应用程序页上的“重启”来重启应用程序  。
+1. 选择应用程序页上的“重启”来重启应用程序。
 
 1. 若要确保服务绑定正确，请选择绑定名称并验证其详细信息。 `property` 字段应类似于以下示例：
 
@@ -105,7 +105,4 @@ Azure Cosmos DB 具有五种支持绑定的不同 API 类型。 以下过程演�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Cosmos DB 数据库。 若要了解如何将应用程序绑定到 Azure Cache for Redis 缓存，请继续学习下一教程。
-
-> [!div class="nextstepaction"]
-> [了解如何绑定到 Azure Cache for Redis 缓存](spring-cloud-tutorial-bind-redis.md)
+本问介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Cosmos DB 数据库。 若要详细了解如何将服务绑定到应用程序，请参阅[绑定到 Azure Cache for Redis 缓存](spring-cloud-tutorial-bind-redis.md)。

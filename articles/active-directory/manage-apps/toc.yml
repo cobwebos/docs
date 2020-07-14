@@ -5,6 +5,8 @@
   items:
     - name: 什么是应用程序管理？
       href: what-is-application-management.md
+    - name: 什么是单一登录 (SSO)？
+      href: what-is-single-sign-on.md
 - name: 快速入门
   items:
     - name: 查看你的应用
@@ -19,6 +21,8 @@
       href: delete-application-portal.md
 - name: 教程
   items:
+    - name: 添加库中未列出的应用
+      href: add-non-gallery-app.md
     - name: 集成库应用（例如 ServiceNow、Salesforce、Dropbox）
       href: /azure/active-directory/saas-apps/
     - name: 添加通过应用程序代理访问的本地应用
@@ -46,8 +50,6 @@
               href: developer-guidance-for-integrating-applications.md
         - name: 单一登录
           items:
-            - name: 什么是单一登录
-              href: what-is-single-sign-on.md
             - name: 为多租户应用程序启用 SSO
               href: isv-sso-content.md
             - name: 为多租户应用程序创建 Azure 租户
@@ -103,10 +105,6 @@
   items:
     - name: 云应用和单一登录
       items:
-        - name: 添加云应用
-          items:
-            - name: 添加非库应用
-              href: add-non-gallery-app.md
         - name: 配置单一登录
           items:
             - name: 配置基于 SAML 的单一登录
@@ -143,6 +141,8 @@
               href: configure-admin-consent-workflow.md
             - name: 向应用分配用户或组
               href: assign-user-or-group-access-portal.md
+            - name: 查看向应用授予的权限
+              href: manage-application-permissions.md
             - name: 在“我的应用”上创建集合
               href: access-panel-collections.md
             - name: 使用自助服务应用访问权限

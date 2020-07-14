@@ -257,6 +257,8 @@
           href: private-clusters.md
         - name: 为磁盘使用 BYOK
           href: azure-disk-customer-managed-keys.md
+        - name: 启用基于主机的加密
+          href: enable-host-encryption.md
     - name: 监视和日志记录
       items:
         - name: 用于容器的 Azure Monitor
@@ -282,9 +284,9 @@
         - name: 使用 Kubernetes 仪表板
           href: kubernetes-dashboard.md
         - name: 创建用于 Windows Server 容器的 Dockerfile
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context
         - name: 优化用于 Windows Server 容器的 Dockerfile
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: 开发和运行应用程序
       items:
         - name: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）

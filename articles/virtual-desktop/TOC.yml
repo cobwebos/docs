@@ -23,7 +23,7 @@
     - name: 连接到 Windows 虚拟桌面资源
       items:
         - name: 使用 Windows 桌面客户端进行连接
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: 使用 Web 客户端进行连接
           href: connect-web.md
         - name: 使用 Android 客户端进行连接
@@ -38,6 +38,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: 部署 Windows 7 虚拟机
+          href: deploy-windows-7-virtual-machine.md
         - name: 部署基于 GPU 的会话主机
           href: configure-vm-gpu.md
         - name: 展开现有的主机池
@@ -90,6 +92,8 @@
       href: language-packs.md
 - name: 概念
   items:
+    - name: 安全 URL 列表
+      href: safe-url-list.md
     - name: Windows 虚拟桌面环境
       href: environment-setup.md
     - name: 确定用户连接延迟

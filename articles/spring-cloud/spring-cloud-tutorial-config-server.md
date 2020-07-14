@@ -1,19 +1,19 @@
 ---
-title: 教程 - 在 Azure Spring Cloud 中设置配置服务器实例
-description: 本教程介绍如何在 Azure 门户上为 Azure Spring Cloud 设置 Spring Cloud 配置服务器实例
+title: 在 Azure Spring Cloud 中设置 Config Server 实例
+description: 了解如何在 Azure 门户中为 Azure Spring Cloud 设置 Spring Cloud Config Server 实例
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 4c8b2e92cd7e88dde434e42971d091db689bfbc9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791293"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142187"
 ---
-# <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>教程：为服务设置 Spring Cloud 配置服务器实例
+# <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>为服务设置 Spring Cloud 配置服务器实例
 
 本文介绍如何将 Spring Cloud 配置服务器实例连接到 Azure Spring Cloud 服务。
 
@@ -52,12 +52,12 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 下表列出了用于设置公共 Git 存储库的所有可配置属性：
 
 > [!NOTE]
-> 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel”   。
+> 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel” 。
 
 | properties        | 必选 | Feature                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | 是    | 用作配置服务器后端的 Git 存储库的 URI 以“http://”、“https://”、“git@”或“ssh://”开头     。 |
-| `default-label` | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id    。 |
+| `uri`           | 是    | 用作配置服务器后端的 Git 存储库的 URI 以“http://”、“https://”、“git@”或“ssh://”开头   。 |
+| `default-label` | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id  。 |
 | `search-paths`  | 否     | 用于搜索 Git 存储库子目录的字符串数组。 |
 
 ------
@@ -67,17 +67,17 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 下表列出了用于设置使用 SSH 的专用 Git 存储库的所有可配置属性：
 
 > [!NOTE]
-> 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel”   。
+> 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel” 。
 
 | properties                   | 必选 | Feature                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | 是    | 用作配置服务器后端的 Git 存储库的 URI 应以“http://”、“https://”、“git@”或“ssh://”开头     。 |
-| `default-label`            | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id    。 |
+| `uri`                      | 是    | 用作配置服务器后端的 Git 存储库的 URI 应以“http://”、“https://”、“git@”或“ssh://”开头   。 |
+| `default-label`            | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id  。 |
 | `search-paths`             | 否     | 用于搜索 Git 存储库子目录的字符串数组。 |
-| `private-key`              | 否     | 用于访问 Git 存储库的 SSH 私钥，如果 URI 以“git@”或“ssh://”开头，则此私钥是必需的    。 |
+| `private-key`              | 否     | 用于访问 Git 存储库的 SSH 私钥，如果 URI 以“git@”或“ssh://”开头，则此私钥是必需的 。 |
 | `host-key`                 | 否     | Git 存储库服务器的主机密钥，不应包含 `host-key-algorithm` 涵盖的算法前缀。 |
-| `host-key-algorithm`       | 否     | 主机密钥算法应为 ssh-dss、ssh-rsa、ecdsa-sha2-nistp256、ecdsa-sha2-nistp384 或 ecdsa-sha2-nistp521      。 仅当存在 `host-key` 时，才是必需的  。 |
-| `strict-host-key-checking` | 否     | 指示在利用专用 `host-key` 时配置服务器实例是否无法启动。 应为 true（默认值）或 false   。 |
+| `host-key-algorithm`       | 否     | 主机密钥算法应为 ssh-dss、ssh-rsa、ecdsa-sha2-nistp256、ecdsa-sha2-nistp384 或 ecdsa-sha2-nistp521    。 仅当存在 `host-key` 时，才是必需的。 |
+| `strict-host-key-checking` | 否     | 指示在利用专用 `host-key` 时配置服务器实例是否无法启动。 应为 true（默认值）或 false 。 |
 
 -----
 
@@ -86,15 +86,15 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 下面列出了用于设置使用基本身份验证的专用 Git 存储库的所有可配置属性。
 
 > [!NOTE]
-> 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel”   。
+> 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel” 。
 
 | properties        | 必选 | Feature                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | 是    | 用作配置服务器后端的 Git 存储库的 URI 应以“http://”、“https://”、“git@”或“ssh://”开头     。 |
-| `default-label` | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id    。 |
+| `uri`           | 是    | 用作配置服务器后端的 Git 存储库的 URI 应以“http://”、“https://”、“git@”或“ssh://”开头   。 |
+| `default-label` | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id  。 |
 | `search-paths`  | 否     | 用于搜索 Git 存储库子目录的字符串数组。 |
-| `username`      | 否     | 用于访问 Git 存储库服务器的用户名，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此用户名是必需的  。 |
-| `password`      | 否     | 用于访问 Git 存储库服务器的密码，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此密码是必需的  。 |
+| `username`      | 否     | 用于访问 Git 存储库服务器的用户名，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此用户名是必需的。 |
+| `password`      | 否     | 用于访问 Git 存储库服务器的密码，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此密码是必需的。 |
 
 > [!NOTE]
 > 许多 `Git` 存储库服务器都支持对 HTTP 基本身份验证使用令牌，而不支持使用密码。 某些存储库（如 GitHub）允许令牌无限期保留。 但是，某些 Git 存储库服务器（包括 Azure DevOps）会在数小时内强制令牌过期。 导致令牌过期的存储库不应在 Azure Spring Cloud 中使用基于令牌的身份验证。
@@ -104,22 +104,22 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 下面列出了用于设置带模式的 Git 存储库的所有可配置属性。
 
 > [!NOTE]
-> 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel”   。
+> 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel” 。
 
 | properties                           | 必选         | Feature                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | 否             | 包含具有给定名称的 Git 存储库的设置的图。 |
-| `repos."uri"`                      | 在 `repos` 上选择“是” | 用作配置服务器后端的 Git 存储库的 URI 应以“http://”、“https://”、“git@”或“ssh://”开头     。 |
-| `repos."name"`                     | 在 `repos` 上选择“是” | 用于标识 Git 存储库的名称，仅当 `repos` 存在时才是必需的  。 例如，team-A、team-B   。 |
+| `repos."uri"`                      | 在 `repos` 上选择“是” | 用作配置服务器后端的 Git 存储库的 URI 应以“http://”、“https://”、“git@”或“ssh://”开头   。 |
+| `repos."name"`                     | 在 `repos` 上选择“是” | 用于标识 Git 存储库的名称，仅当 `repos` 存在时才是必需的。 例如，team-A、team-B 。 |
 | `repos."pattern"`                  | 否             | 用于匹配应用程序名称的字符串数组。 对于每个模式，使用带有通配符的 `{application}/{profile}` 格式。 |
-| `repos."default-label"`            | 否             | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id    。 |
+| `repos."default-label"`            | 否             | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id  。 |
 | `repos."search-paths`"             | 否             | 用于搜索 Git 存储库子目录的字符串数组。 |
-| `repos."username"`                 | 否             | 用于访问 Git 存储库服务器的用户名，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此用户名是必需的  。 |
-| `repos."password"`                 | 否             | 用于访问 Git 存储库服务器的密码，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此密码是必需的  。 |
-| `repos."private-key"`              | 否             | 用于访问 Git 存储库的 SSH 私钥，如果 URI 以“git@”或“ssh://”开头，则此私钥是必需的    。 |
+| `repos."username"`                 | 否             | 用于访问 Git 存储库服务器的用户名，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此用户名是必需的。 |
+| `repos."password"`                 | 否             | 用于访问 Git 存储库服务器的密码，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此密码是必需的。 |
+| `repos."private-key"`              | 否             | 用于访问 Git 存储库的 SSH 私钥，如果 URI 以“git@”或“ssh://”开头，则此私钥是必需的 。 |
 | `repos."host-key"`                 | 否             | Git 存储库服务器的主机密钥，不应包含 `host-key-algorithm` 涵盖的算法前缀。 |
-| `repos."host-key-algorithm"`       | 否             | 主机密钥算法应为 ssh-dss、ssh-rsa、ecdsa-sha2-nistp256、ecdsa-sha2-nistp384 或 ecdsa-sha2-nistp521      。 仅当存在 `host-key` 时，才是必需的  。 |
-| `repos."strict-host-key-checking"` | 否             | 指示在利用专用 `host-key` 时配置服务器实例是否无法启动。 应为 true（默认值）或 false   。 |
+| `repos."host-key-algorithm"`       | 否             | 主机密钥算法应为 ssh-dss、ssh-rsa、ecdsa-sha2-nistp256、ecdsa-sha2-nistp384 或 ecdsa-sha2-nistp521    。 仅当存在 `host-key` 时，才是必需的。 |
+| `repos."strict-host-key-checking"` | 否             | 指示在利用专用 `host-key` 时配置服务器实例是否无法启动。 应为 true（默认值）或 false 。 |
 
 ## <a name="attach-your-config-server-repository-to-azure-spring-cloud"></a>将配置服务器存储库附加到 Azure Spring Cloud
 
@@ -127,11 +127,11 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 转到 Azure Spring Cloud 的“概览”页  。
+1. 转到 Azure Spring Cloud 的“概览”页。
 
 1. 选择要配置的服务。
 
-1. 在服务页的左窗格中的“设置”下，选择“配置服务器”选项卡   。
+1. 在服务页的左窗格中的“设置”下，选择“配置服务器”选项卡 。
 
 ![配置服务器窗口](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
@@ -139,24 +139,24 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 
 #### <a name="default-repository"></a>默认存储库
 
-* **公共存储库**：在“默认存储库”部分的“Uri”框中粘贴存储库 URI   。  将“标签”设置为“配置”   。确保“身份验证”设置为“公共”，然后选择“应用”以完成操作    。 
+* **公共存储库**：在“默认存储库”部分的“Uri”框中粘贴存储库 URI 。  将“标签”设置为“配置” 。确保“身份验证”设置为“公共”，然后选择“应用”以完成操作  。 
 
 * **专用存储库**：Azure Spring Cloud 支持基本的基于密码/令牌的身份验证和 SSH。
 
-    * **基本身份验证**：在“默认存储库”部分的“Uri”框中，粘贴存储库 URI，然后选择“身份验证”（“铅笔”图标）按钮    。 在“编辑身份验证”窗格的“身份验证类型”下拉列表中选择“HTTP 基本”，然后输入你的用户名和密码/令牌以授权访问 Azure Spring Cloud    。 选择“确定”，然后选择“应用”完成配置服务器实例的设置   。
+    * **基本身份验证**：在“默认存储库”部分的“Uri”框中，粘贴存储库 URI，然后选择“身份验证”（“铅笔”图标）按钮  。 在“编辑身份验证”窗格的“身份验证类型”下拉列表中选择“HTTP 基本”，然后输入你的用户名和密码/令牌以授权访问 Azure Spring Cloud  。 选择“确定”，然后选择“应用”完成配置服务器实例的设置 。
 
     ![“编辑身份验证”窗格](media/spring-cloud-tutorial-config-server/basic-auth.png)
     
     > [!CAUTION]
-    > 一些 Git 存储库服务器（例如 GitHub）将个人令牌或访问令牌（例如密码）用于基本身份验证    。 你可以在 Azure Spring Cloud 中使用这种类型的令牌作为密码，因为它将永不过期。 但对于其他 Git 存储库服务器（例如 BitBucket 和 Azure DevOps），访问令牌将在一到两小时后过期  。 这意味着，在将这些存储库服务器与 Azure Spring Cloud 一起使用时，此选项是不可行的。
+    > 一些 Git 存储库服务器（例如 GitHub）将个人令牌或访问令牌（例如密码）用于基本身份验证 。 你可以在 Azure Spring Cloud 中使用这种类型的令牌作为密码，因为它将永不过期。 但对于其他 Git 存储库服务器（例如 BitBucket 和 Azure DevOps），访问令牌将在一到两小时后过期。 这意味着，在将这些存储库服务器与 Azure Spring Cloud 一起使用时，此选项是不可行的。
 
-    * **SSH**：在“默认存储库”部分的“Uri”框中，粘贴存储库 URI，然后选择“身份验证”（“铅笔”图标）按钮    。 在“编辑身份验证”窗格中的“身份验证类型”下拉列表中，选择“SSH”，然后输入“私钥”     。 （可选）指定“主机密钥”和“主机密钥算法”   。 请确保在配置服务器存储库中包含公钥。 选择“确定”，然后选择“应用”完成配置服务器实例的设置   。
+    * **SSH**：在“默认存储库”部分的“Uri”框中，粘贴存储库 URI，然后选择“身份验证”（“铅笔”图标）按钮  。 在“编辑身份验证”窗格中的“身份验证类型”下拉列表中，选择“SSH”，然后输入“私钥”   。 （可选）指定“主机密钥”和“主机密钥算法” 。 请确保在配置服务器存储库中包含公钥。 选择“确定”，然后选择“应用”完成配置服务器实例的设置 。
 
     ![“编辑身份验证”窗格](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
 #### <a name="pattern-repository"></a>模式存储库
 
-如果要使用可选的“模式存储库”  来配置服务，请使用与“默认存储库”  相同的方式指定“URI”  和“身份验证”  。 请确保为模式包含“名称”，然后选择“应用”以将其附加到实例   。 
+如果要使用可选的“模式存储库”来配置服务，请使用与“默认存储库”相同的方式指定“URI”和“身份验证”。 请确保为模式包含“名称”，然后选择“应用”以将其附加到实例 。 
 
 ### <a name="enter-repository-information-into-a-yaml-file"></a>将存储库信息输入 YAML 文件
 
@@ -174,23 +174,20 @@ spring:
 
 ```
 
-单击“导入设置”按钮，然后从项目目录中选择 YAML 文件  。 选择“导入”，然后将弹出“通知”中的 `async` 操作   。 1-2 分钟后，它应报告成功。
+单击“导入设置”按钮，然后从项目目录中选择 YAML 文件。 选择“导入”，然后将弹出“通知”中的 `async` 操作 。 1-2 分钟后，它应报告成功。
 
 ![“配置服务器通知”窗格](media/spring-cloud-tutorial-config-server/local-yml-success.png)
 
 
-YAML 文件中的信息应显示在 Azure 门户中。 选择“应用”以完成操作  。 
+YAML 文件中的信息应显示在 Azure 门户中。 选择“应用”以完成操作。 
 
 
 ## <a name="delete-your-app-configuration"></a>删除应用配置
 
-保存配置文件后，“配置”选项卡中会显示“删除应用配置”按钮   。单击此按钮会彻底清除现有的设置。 如果你希望将配置服务器实例连接到另一个源（例如，从 GitHub 移到 Azure DevOps），则应选择该选项。
+保存配置文件后，“配置”选项卡中会显示“删除应用配置”按钮 。单击此按钮会彻底清除现有的设置。 如果你希望将配置服务器实例连接到另一个源（例如，从 GitHub 移到 Azure DevOps），则应选择该选项。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何启用和配置 Spring Cloud 配置服务器实例。 若要了解有关管理应用程序的详细信息，请继续学习有关手动缩放应用的教程。
-
-> [!div class="nextstepaction"]
-> [教程：在 Azure Spring Cloud 中缩放应用程序](spring-cloud-tutorial-scale-manual.md)
+本文介绍了如何启用和配置 Spring Cloud Config Server 实例。 若要详细了解如何管理应用程序，请参阅[在 Azure Spring Cloud 中缩放应用程序](spring-cloud-tutorial-scale-manual.md)。

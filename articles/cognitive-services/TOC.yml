@@ -5,6 +5,8 @@
   items:
     - name: 什么是认知服务？
       href: Welcome.md
+    - name: 认知服务文档中的新增内容
+      href: whats-new-docs.md
     - name: 认知服务和机器学习
       href: cognitive-services-and-machine-learning.md
     - name: 认知服务的自定义子域
@@ -64,6 +66,24 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes 服务 (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+- name: 大数据
+  items:
+    - name: 适用于大数据的认知服务
+      href: ./big-data/cognitive-services-for-big-data.md
+    - name: 入门
+      href: ./big-data/getting-started.md
+    - name: 示例
+      items:
+        - name: Python
+          href: ./big-data/samples-python.md
+        - name: Scala
+          href: ./big-data/samples-scala.md
+    - name: 配方
+      items:
+        - name: 配方：异常检测器
+          href: ./big-data/recipes/anomaly-detection.md
+        - name: 配方：Art Explorer
+          href: ./big-data/recipes/art-explorer.md
 - name: 资源
   items:
     - name: Azure 路线图

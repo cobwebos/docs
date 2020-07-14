@@ -270,6 +270,8 @@
           href: connector-db2.md
         - name: 带分隔符的文本格式
           href: format-delimited-text.md
+        - name: 增量格式
+          href: format-delta.md
         - name: 钻取
           href: connector-drill.md
         - name: Dynamics 365
@@ -727,6 +729,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: 在 Azure-SSIS IR 中排查包执行问题
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: 在 Azure-SSIS IR 中诊断连接性
+          href: ssis-integration-runtime-diagnose-connectivity-faq.md
 - name: 参考
   items:
     - name: 数据流脚本

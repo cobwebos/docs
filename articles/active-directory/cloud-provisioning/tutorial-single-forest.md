@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c922b95154f16a199660bcd5e58f792e46eade7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4fbfe9222971ccd1d28ceaddc91b137c6106e12
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360599"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146750"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>教程：将单个林与单个 Azure AD 租户集成
 
@@ -108,13 +108,13 @@ ms.locfileid: "85360599"
 2.  单击“Azure Active Directory”
 3.  单击“Azure AD Connect”
 4.  选择“管理预配(预览版)”
-![](media/how-to-configure/manage1.png)
+![显示“管理预配(预览版)”链接的屏幕截图。](media/how-to-configure/manage1.png)
 5.  单击“新建配置”
-![](media/tutorial-single-forest/configure1.png)
+![Azure AD 预配（预览版）屏幕的屏幕截图，突出显示了“新建配置”链接。](media/tutorial-single-forest/configure1.png)
 7.  在配置屏幕上输入一条**通知电子邮件**，将选择器切换到“启用”，然后单击“保存”。 
-![](media/tutorial-single-forest/configure2.png)
+![“配置”屏幕的屏幕截图，已填写通知电子邮件并选择了“启用”。](media/tutorial-single-forest/configure2.png)
 1.  现在，配置状态应为“正常”。
-![](media/how-to-configure/manage4.png)
+![Azure AD 设置（预览版）屏幕的屏幕截图，显示“正常运行”状态。](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>验证是否已创建用户并正在进行同步
 现在验证本地目录中的用户是否已同步并在 Azure AD 租户中存在。  请注意，这可能需要几个小时才能完成。  要验证用户是否已同步，请执行以下操作。
