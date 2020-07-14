@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory v1.0 代码示例 | Microsoft Docs
+title: Azure Active Directory v1.0 的代码示例 | Microsoft Docs
 description: 提供 Azure Active Directory（v1.0 终结点）代码示例的索引，这些示例按方案进行组织。
 services: active-directory
 documentationcenter: dev-center-name
@@ -7,19 +7,19 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: sample
 ms.workload: identity
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ae283529abb3b71ee50fc710dd1ebe0d17a12be0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154825"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387603"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 代码示例（v1.0 终结点）
 
@@ -56,7 +56,7 @@ ms.locfileid: "80154825"
 ![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
 ![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD Graph) |
 ![此图显示了 Python 徽标](media/sample-v2-code/logo-python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
-![此图显示了 Java 日志](media/sample-v2-code/logo-java.png)  | | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
+![此图显示了 Java 徽标](media/sample-v2-code/logo-java.png)  | | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
 ![此图显示了 PHP 徽标](media/sample-v2-code/logo-php.png) | | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
 
 ### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>演示基于角色的访问控制（授权）的 Web 应用程序
@@ -69,11 +69,11 @@ ms.locfileid: "80154825"
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>调用 Microsoft Graph 或 Web API 的桌面和移动公共客户端应用程序
 
-以下示例演示了以用户的名义访问 Microsoft Graph 或 Web API 的公共客户端应用程序（deskto/pmobile 应用程序）。 根据设备和平台，应用程序可以用不同方式（流/授权）让用户登录：
+以下示例演示了以用户身份访问 Microsoft Graph 或 Web API 的公共客户端应用程序（桌面/移动应用程序）。 根据设备和平台，应用程序可以用不同方式（流/授权）让用户登录：
 
 - 交互式
-- 无提示方式（使用 Windows 上集成的 Windows 身份验证或用户名/密码）
-- 通过将交互式登录委托给另一个设备（在不提供 Web 控件的设备上使用的设备代码流）
+- 无提示方式（使用 Windows 上的集成 Windows 身份验证，或用户名/密码）
+- 通过将交互式登录委托给另一设备（在不提供 Web 控件的设备上使用的设备代码流）
 
 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET 或 ASP.NET Core 2.x Web API
 ------------------ | -------- | ---------- | -------------------- | -------------------------
@@ -86,7 +86,7 @@ ms.locfileid: "80154825"
 桌面（控制台）          | ![此图显示了 Java 徽标](media/sample-v2-code/logo-java.png) | 用户名/密码 | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
 桌面（控制台）           | ![此图显示了 .NET Core/C# 徽标](media/sample-v2-code/logo-netcore.png) | 设备代码流 | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
-## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>守护程序应用程序（使用应用程序标识访问 Web API）
+## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>守护程序应用程序（使用应用程序的标识访问 Web API）
 
 以下示例展示了可在无用户的情况下（使用应用程序标识）访问 Microsoft Graph 或 Web API 的桌面或 Web 应用程序。
 
@@ -110,7 +110,7 @@ ASP.NET Web 应用  | ![此图显示了 .NET 徽标](media/sample-v2-code/logo-n
 
 ### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>调用 Microsoft Graph 或另一个 Web API 的 Web API
 
-以下示例展示了调用另一个 Web API 的 Web API。 第二个示例演示了如何处理条件访问。
+以下示例展示了调用另一个 Web API 的 Web API。 第二个示例展示了如何处理条件访问。
 
 | 平台 |  调用 Microsoft Graph | 调用另一个 ASP.NET 或 ASP.NET Core 2.0 Web API |
 | -------- |  --------------------- | ------------------------- |

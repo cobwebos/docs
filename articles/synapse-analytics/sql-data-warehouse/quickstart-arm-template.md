@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 766a41b61f32804c7d7f59c946530f8e1a7b869a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 3f84cd92a4c4f96831d39cac783df6710c5ea5f4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296264"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513420"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Synapse Analytics SQL 池
 
-此模板会创建启用了透明数据加密的 Azure Synapse Analytics SQL 池。 Synapse SQL 池是指 Azure Synapse 中正式发布的企业数据仓库功能。
+使用此 Azure 资源管理器模板（ARM 模板）创建 Azure Synapse Analytics SQL 池，并启用透明数据加密。 Synapse SQL 池是指 Azure Synapse 中正式发布的企业数据仓库功能。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "85296264"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-1. 选择下图登录到 Azure 并打开模板。 此模板会创建 Synapse SQL 池。
+1. 选择下图登录到 Azure 并打开模板。 使用此模板创建 Synapse SQL 池。
    
    [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-sql-data-warehouse-transparent-encryption-create%2Fazuredeploy.json)
 
@@ -107,8 +107,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你使用 Azure 资源管理器模板创建了 Azure Synapse Analytics SQL 池，并验证了部署。 若要详细了解 Azure Synapse Analytics 和 Azure 资源管理器，请继续阅读以下文章。
+在本快速入门中，你使用 ARM 模板创建了 Azure Synapse Analytics SQL 池，并验证了部署。 若要详细了解 Azure Synapse Analytics 和 Azure 资源管理器，请继续阅读以下文章。
 
 - 阅读 [Azure Synapse Analytics 概述](sql-data-warehouse-overview-what-is.md)
 - 了解有关 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的详细信息
-- [创建和部署第一个 Azure 资源管理器模板](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+- [创建并部署第一个 ARM 模板](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

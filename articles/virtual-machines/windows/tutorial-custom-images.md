@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1ded745b5a734fd92a8ace851e3ecfc4a7a487d5
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e8d68e5f2eeeb7363469535c027f258fbc9d7ed1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636387"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480484"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Windows VM 映像
 
@@ -54,7 +54,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="get-the-vm"></a>获取 VM
 
-可以使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 查看资源组中可用的 VM 列表。 了解 VM 名称和资源组后，可以再次使用 `Get-AzVM` 来获取 VM 对象并将其存储在变量中，供稍后使用。 此示例从“myResourceGroup”资源组获取名为 sourceVM 的 VM，并将其分配给变量 $vm 。 
+可以使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 查看资源组中可用的 VM 列表。 了解 VM 名称和资源组后，可以再次使用 `Get-AzVM` 来获取 VM 对象并将其存储在变量中，供稍后使用。 此示例从“myResourceGroup”资源组获取名为 sourceVM 的 VM，并将其分配给变量 $sourceVM 。 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -131,7 +131,7 @@ New-AzGalleryImageVersion `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
    -TargetRegion $targetRegions  `
-   -Source $vm.Id.ToString() `
+   -Source $sourceVM.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01'
 ```
 

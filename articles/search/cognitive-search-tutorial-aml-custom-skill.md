@@ -8,24 +8,24 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 1ff29be9cde4a2bd53f0edbe57f3eab603c1796f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739490"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513801"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>教程：使用 Azure 机器学习构建和部署自定义技能 
 
-在本教程中，你将使用[酒店评论数据集](https://www.kaggle.com/datafiniti/hotel-reviews)（在 Creative Commons 许可证 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 下分发）通过 Azure 机器学习创建[自定义技能](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)，以从评论中提取基于方面的情绪。 这样一来，就可以将同一评论中的正面和负面情绪正确归因于已标识的实体，例如员工、客房、大厅或游泳池。
+在本教程中，你将使用[酒店评论数据集](https://www.kaggle.com/datafiniti/hotel-reviews)（在 Creative Commons 许可证 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 下分发）通过 Azure 机器学习创建[自定义技能](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)，以从评论中提取基于方面的情绪。 这样一来，就可以将同一评论中的正面和负面情绪正确归因于已标识的实体，例如员工、客房、大厅或游泳池。
 
-为训练基于方面的情绪模型，你将使用 [nlp recipes 存储库](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)。 然后，你会将该模型部署为 Azure Kubernetes 群集上的终结点。 部署后，该模型将作为自定义技能添加到扩充管道中，以供认知搜索服务使用。
+为了在 Azure 机器学习中训练基于方面的情绪模型，你将使用 [nlp recipes 存储库](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)。 然后，你会将该模型部署为 Azure Kubernetes 群集上的终结点。 部署后，该终结点将作为 AML 技能添加到扩充管道中，供认知搜索服务使用。
 
 提供了两个数据集。 如果希望自己训练模型，你需要 hotel_reviews_1000.csv 文件。 希望跳过训练步骤？ 下载 hotel_reviews_100.csv 文件。
 
 > [!div class="checklist"]
 > * 创建 Azure 认知搜索实例
-> * 创建 Azure 机器学习工作区
+> * 创建 Azure 机器学习工作区（搜索服务和工作区应在同一订阅中）
 > * 训练模型并将其部署到 Azure Kubernetes 群集
 > * 将 AI 扩充管道链接到已部署的模型
 > * 从已部署的模型引入输出作为自定义技能

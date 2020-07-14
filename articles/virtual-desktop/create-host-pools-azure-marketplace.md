@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100865"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362928"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -67,20 +67,23 @@ ms.locfileid: "85100865"
    
    与你选择的区域关联的 Azure 地理位置是此主机池及其相关对象的元数据将存储到的位置。 请确保在要用于存储服务元数据的地理位置选择区域。
 
-     ![Azure 门户的屏幕截图，其中显示了“位置”字段并选择了“美国东部”位置。 字段旁边的文本指出“将在美国东部存储元数据”。](media/portal-location-field.png)
+     > [!div class="mx-imgBorder"]
+     > ![Azure 门户的屏幕截图，其中显示了“位置”字段并选择了“美国东部”位置。 字段旁边的文本指出“将在美国东部存储元数据”。](media/portal-location-field.png)
 
 8. 在“主机池类型”下，选择主机池是“个人”还是“共用”类型 。
 
     - 如果选择“个人”，请在“分配类型”字段中选择“自动”或“直接”  。
 
-      ![“分配类型”字段下拉菜单的屏幕截图。 用户已选择“自动”。](media/assignment-type-field.png)
+      > [!div class="mx-imgBorder"]
+      > ![“分配类型”字段下拉菜单的屏幕截图。 用户已选择“自动”。](media/assignment-type-field.png)
 
 9. 如果选择“共用”，请输入以下信息：
 
      - 对于“会话数上限”，请输入你要在单个会话主机中进行负载均衡的最大用户数。
      - 对于“负载均衡算法”，请根据使用模式选择“广度优先”或“深度优先”。
 
-       ![“分配类型”字段的屏幕截图，其中已选择“共用”。 用户正在将其光标悬停在负载均衡下拉菜单中的“广度优先”上。](media/pooled-assignment-type.png)
+       > [!div class="mx-imgBorder"]
+       > ![“分配类型”字段的屏幕截图，其中已选择“共用”。 用户正在将其光标悬停在负载均衡下拉菜单中的“广度优先”上。](media/pooled-assignment-type.png)
 
 10. 在完成时选择“下一步:VM 详细信息”。
 
@@ -117,11 +120,13 @@ ms.locfileid: "85100865"
 
      如果未看到所需的映像，请选择“浏览所有映像和磁盘”，然后便可以选择库中的另一个映像，或选择 Microsoft 和其他发行商提供的映像。
 
-     ![市场屏幕截图，其中显示了 Microsoft 提供的映像列表。](media/marketplace-images.png)
+     > [!div class="mx-imgBorder"]
+     > ![市场屏幕截图，其中显示了 Microsoft 提供的映像列表。](media/marketplace-images.png)
 
      还可以转到“我的项”并选择已上传的自定义映像。
 
-     ![“我的项”选项卡的屏幕截图。](media/my-items.png)
+     > [!div class="mx-imgBorder"]
+     > ![“我的项”选项卡的屏幕截图。](media/my-items.png)
 
     - 如果选择“存储 Blob”，则可以利用你自己的、通过 Hyper-V 生成的映像或 Azure VM 上的映像。 只需输入该映像在存储 Blob 中的位置作为 URI 即可。
 
@@ -136,7 +141,8 @@ ms.locfileid: "85100865"
     >[!NOTE]
     >为了提高安全性，我们建议不要打开公共入站端口。
 
-    ![安全组页的屏幕截图，其中的下拉菜单显示了可用端口列表。](media/available-ports.png)
+    > [!div class="mx-imgBorder"]
+    > ![安全组页的屏幕截图，其中的下拉菜单显示了可用端口列表。](media/available-ports.png)
     
     如果选择“高级”，请选择已配置的现有网络安全组。
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: c0a8185d81966932c17fd3b0590b5f8ef2f7b6df
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099674"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479787"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IBM Digital Business Automation on Cloud 的集成
 
@@ -93,7 +93,7 @@ ms.locfileid: "85099674"
     > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。 
 
     > [!Note]
-    > 客户可从 [DBAoC DevOps 团队](mailto:supportbpmoncloud@us.ibm.com)那里获取云订阅的元数据文件。
+    > 客户可从 [IBM Digital Business Automation on Cloud 客户端支持团队](mailto:supportbpmoncloud@us.ibm.com)处获取他们云订阅的元数据文件。
 
 1. 在没有“服务提供程序元数据文件”的情况下，如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分输入以下字段的值  ：
 

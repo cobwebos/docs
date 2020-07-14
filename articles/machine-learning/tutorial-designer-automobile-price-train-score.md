@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2fab23e9f765d9ab4908cc4be69d8b747c6856b9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 7068c1e795e7a607776c48d1b026562a1be6b25d
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790528"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517578"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -107,8 +107,8 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 1. 在画布右侧的模块详细信息窗格中，选择“输出 + 日志”。
 
 1. 选择图形图标以可视化数据。
-
-    ![可视化数据](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="此处为替换文字。":::
 
 1. 选择数据窗口中的不同列，查看有关每个列的信息。
 
@@ -180,8 +180,8 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 1. 在画布右侧的模块详细信息窗格中，选择“注释”框并输入“删除缺失值行”。 
 
     管道现在应如下所示：
-    
-    ![选择列](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
+
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="选择列":::
 
 ## <a name="train-a-machine-learning-model"></a>训练机器学习模型
 
@@ -229,7 +229,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
     > [!IMPORTANT]
     > 请确保“拆分数据”的左侧输出端口连接到“训练模型”。  左侧端口包含训练集。 右侧端口包含测试集。
 
-    ![显示“训练模型”模块的正确配置的屏幕截图。 “线性回归”模块将连接到“训练模型”模块的左端口，“拆分数据”模块将连接到“训练模型”的右端口](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="显示“训练模型”模块的正确配置的屏幕截图。“线性回归”模块将连接到“训练模型”模块的左端口，“拆分数据”模块将连接到“训练模型”的右端口。":::
 
 1. 选择**训练模型**模块。
 
@@ -244,7 +244,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
     管道应如下所示：
 
-    ![显示添加“训练模型”模块后管道的正确配置的屏幕截图。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="显示添加“训练模型”模块后管道的正确配置的屏幕截图。":::
 
 ### <a name="add-the-score-model-module"></a>添加“评分模型”模块
 
@@ -264,7 +264,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
     最终的管道应如下所示：
 
-    ![显示管道的正确配置的屏幕截图。](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="显示管道的正确配置的屏幕截图。":::
 
 ## <a name="submit-the-pipeline"></a>提交管道
 
@@ -295,7 +295,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
     在此处可以看到从测试数据预测的价格和实际价格。
 
-    ![输出可视化效果的屏幕截图，其中突出显示了“评分标签”列](./media/tutorial-designer-automobile-price-train-score/score-result.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="输出可视化效果的屏幕截图，其中突出显示了“评分标签”列":::
 
 ### <a name="evaluate-models"></a>评估模型
 

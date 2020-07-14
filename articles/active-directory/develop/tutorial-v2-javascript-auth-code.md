@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: e02f6946ff6f520fec63ead7e14e94f33182357f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3e6f94c3b44cd3316a25c356dc5e33835f8c9337
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682333"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553804"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教程：使用授权代码流让用户登录并从 JavaScript 单页应用 (SPA) 调用 Microsoft Graph API
 
@@ -42,10 +42,7 @@ MSAL.js 2.0 支持浏览器中的授权代码流（而不是隐式授权流）�
 
 本教程使用以下库：
 
-| | |
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)|“适用于 JavaScript v2.0 的 Microsoft 身份验证库”浏览器包|
-| | |
+[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) 适用于 JavaScript v2.0 的 Microsoft 身份验证库浏览器包
 
 ## <a name="get-the-completed-code-sample"></a>获取完整代码示例
 
@@ -335,7 +332,7 @@ const tokenRequest = {
   - 对于主要（或全球）Azure 云，请输入 `https://login.microsoftonline.com`。
   - 对于国家/地区云（例如中国云），可以在[国家/地区云](authentication-national-cloud.md)中找到相应值。
 - `Enter_the_Tenant_info_here` 应是以下各项之一：
-  - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com` 。
+  - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com`。
   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为“`organizations`”。
   - 如果应用支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为“`common`”。
   - 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为“`consumers`”。

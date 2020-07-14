@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886780"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510978"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>教程：诊断、修正和提交对技能组的更改
 
 在本文中，你将使用 Azure 门户访问调试会话，以修复所提供的技能组存在的问题。 技能组存在一些需要解决的错误。 本教程将引导你通过调试会话确定并解决技能输入和输出存在的问题。
 
 > [!Important]
-> 以受限访问预览版形式[根据请求](https://aka.ms/DebugSessions)提供对 Azure 认知搜索的调试会话支持。 预览版功能在提供时没有附带服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 调试会话是一项在提供时未附带服务级别协议的预览功能，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 获得预览版访问权限后，你将能够使用 Azure 门户访问和使用服务的调试会话。
->   
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

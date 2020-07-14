@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945239"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413886"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell 示例
 本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。
@@ -220,6 +220,10 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 其他 Webhook 属性都是可选的。 可以使用 `Get-AzActivityLogAlert` 返回活动日志警报的内容。
 
 ## <a name="create-and-manage-autoscale-settings"></a>创建和管理自动缩放设置
+
+> [!NOTE] 
+> 对于云服务 (Microsoft.ClassicCompute)，自动缩放支持 5 分钟时间粒度 (PT5M)。 对于其他服务，自动缩放支持至少 1 分钟时间粒度 (PT1M)
+
 资源（例如 Web 应用、VM、云服务或虚拟机规模集）只能有一种为其配置的自动缩放设置。
 但是，每个自动缩放设置可具有多个配置文件。 例如，一个用于基于性能的缩放配置文件，另一个用于基于计划的配置文件。 每个配置文件可以为其配置多个规则。 有关自动缩放的详细信息，请参阅[如何自动缩放应用程序](../../cloud-services/cloud-services-how-to-scale-portal.md)。
 

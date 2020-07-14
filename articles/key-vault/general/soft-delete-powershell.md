@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 452dd99ae58858b661892e3f962fce8086d4503c
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783344"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444652"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -267,7 +267,7 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 
 启用清除保护时，在保持期到期之前，不能清除处于已删除状态的保管库或对象。 仍可以恢复此类保管库或对象。 此功能可增加保障，在保留期到期之前，永远不会永久删除保管库或对象。 默认保持期为 90 天，但在创建密钥保管库期间，可将保留策略间隔设置为介于 7 到 90 天之间的值。 清除保护保留策略使用相同的间隔。 一旦设置，保留策略间隔就不能再更改。
 
-仅当也启用了软删除时，才能启用清除保护。 
+仅当也启用了软删除时，才能启用清除保护。 目前不支持禁用清除保护。 
 
 若要在创建保管库时同时启用软删除和清除保护，请使用 [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) cmdlet：
 

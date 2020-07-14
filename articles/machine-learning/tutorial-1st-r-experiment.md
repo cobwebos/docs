@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684747"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483374"
 ---
-# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>教程：使用 R 创建机器学习模型
+# <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教程：使用 R 创建机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教程中，我们将使用 Azure 机器学习 R SDK 创建逻辑回归模型，该模型预测交通事故中的死亡几率。 你将了解 Azure 机器学习云资源如何与 R 一起工作，提供一个可缩放的环境以用来训练和部署模型。  
+在本教程中，你将使用 Azure 机器学习 R SDK（预览版）创建逻辑回归模型，该模型预测交通事故中的死亡几率。 你将了解 Azure 机器学习云资源如何与 R 一起工作，提供一个可缩放的环境以用来训练和部署模型。  
 
 将在本教程中执行以下任务：
 > [!div class="checklist"]
@@ -46,7 +46,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> 记下你的工作区和订阅   。 你将需要这些项才能确保在正确的位置创建试验。 
+> 记下你的工作区和订阅 。 你将需要这些项才能确保在正确的位置创建试验。 
 
 
 ## <a name="clone-a-notebook-folder"></a><a name="azure"></a>克隆笔记本文件夹
@@ -59,31 +59,31 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 选择创建的订阅和工作区。
 
-1. 选择左侧的“笔记本”  。
+1. 选择左侧的“笔记本”。
 
-1. 打开“Samples”文件夹  。
+1. 打开“Samples”文件夹。
 
-1. 打开 R 文件夹  。
+1. 打开 R 文件夹。
 
 1. 打开包含版本号的文件夹。  此数字表示 R SDK 的当前版本。
 
-1. 选择 **vignettes** 文件夹右侧的“...”，然后选择“克隆”。  
+1. 选择 **vignettes** 文件夹右侧的“...”，然后选择“克隆”。 
 
     ![克隆文件夹](media/tutorial-1st-r-experiment/clone-folder.png)
 
-1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“vignettes”文件夹克隆到其中的文件夹  。
+1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“vignettes”文件夹克隆到其中的文件夹。
 
-## <a name="a-nameopenopen-rstudio"></a><a name="open">打开 RStudio
+## <a name="open-rstudio"></a><a name="open"></a>打开 RStudio
 
 在计算实例或 Notebook VM 上使用 RStudio 运行此教程。  
 
-1. 选择左侧的“计算”  。
+1. 选择左侧的“计算”。
 
 1. 如果没有计算资源，请添加一个。
 
-1. 计算运行后，使用 RStudio 链接打开 RStudio  。
+1. 计算运行后，使用 RStudio 链接打开 RStudio。
 
-1. 在 RStudio 中，“vignettes”文件夹位于右下位置“文件”部分中的“用户”下几级的位置    。  在 vignettes 下选择“train-and-deploy-to-aci”文件夹，找到本教程中所需的文件  。 
+1. 在 RStudio 中，“vignettes”文件夹位于右下位置“文件”部分中的“用户”下几级的位置 。  在 vignettes 下选择“train-and-deploy-to-aci”文件夹，找到本教程中所需的文件。
 
 > [!Important]
 > 本文的余下部分包含 *train-and-deploy-to-aci.Rmd* 文件中所示的相同内容。 如果你有 RMarkdown 方面的经验，可随意使用该文件中的代码。  或者，可将该文件或本文中的代码片段复制/粘贴到 R 脚本或命令行中。  
@@ -115,7 +115,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
     azuremlsdk::install_azureml(envname = 'r-reticulate')
     ```
 
-现在，继续导入 azuremlsdk  包。
+现在，继续导入 azuremlsdk 包。
 
 ```R
 library(azuremlsdk)
@@ -228,7 +228,7 @@ est <- estimator(source_directory = ".",
 
 ### <a name="submit-the-job-on-the-remote-cluster"></a>在远程群集上提交作业
 
-最后，请在群集上提交要运行的作业。 `submit_experiment()` 返回一个 Run 对象，然后，你可以使用该对象来与运行对接。 总的来说，首次运行需要大约 10 分钟  。 但对于后续的运行，只要脚本依赖项未更改，就会重复使用同一个 Docker 映像。  在这种情况下，映像将会缓存，容器启动速度要快得多。
+最后，请在群集上提交要运行的作业。 `submit_experiment()` 返回一个 Run 对象，然后，你可以使用该对象来与运行对接。 总的来说，首次运行需要大约 10 分钟。 但对于后续的运行，只要脚本依赖项未更改，就会重复使用同一个 Docker 映像。  在这种情况下，映像将会缓存，容器启动速度要快得多。
 
 ```R
 run <- submit_experiment(exp, est)
@@ -407,7 +407,7 @@ delete_compute(compute)
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”  。
+还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

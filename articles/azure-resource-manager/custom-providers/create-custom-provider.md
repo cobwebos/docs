@@ -3,26 +3,38 @@ title: 创建资源提供程序
 description: 介绍如何创建资源提供程序并部署其自定义资源类型。
 author: MSEvanhi
 ms.topic: tutorial
-ms.date: 06/19/2020
+ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: ce547c010d3cc814d4e6f6182c19572248228fc3
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85124998"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368101"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>快速入门：创建自定义提供程序并部署自定义资源
+# <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>快速入门：创建自定义提供程序并部署自定义资源
 
 在本快速入门中，你将创建自己的资源提供程序，并为该资源提供程序部署自定义资源类型。 有关自定义提供程序的详细信息，请参阅 [Azure 自定义提供程序预览版概述](overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门中的步骤需要调用 `REST` 操作。 可以通过[不同的方法来发送 REST 请求](/rest/api/azure/)。
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 完成本快速入门中的步骤需要调用 `REST` 操作。 可以通过[不同的方法来发送 REST 请求](/rest/api/azure/)。
 
-要运行 Azure CLI 命令，请使用 [Azure Cloud Shell 中的 Bash](/azure/cloud-shell/quickstart)。 [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) 命令需要扩展。 有关详细信息，请参阅[使用 Azure CLI 的扩展](/cli/azure/azure-cli-extensions-overview)。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-要在本地运行 PowerShell 命令，请使用 PowerShell 7 或更高版本以及 Azure PowerShell 模块。 有关详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果还没有用于 `REST` 操作的工具，请安装 [ARMClient](https://github.com/projectkudu/ARMClient)。 它是一种可简化 Azure 资源管理器 API 调用的开源命令行工具。
+- [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) 命令需要扩展。 有关详细信息，请参阅[使用 Azure CLI 的扩展](/cli/azure/azure-cli-extensions-overview)。
+- Azure CLI 示例将 `az rest` 用于 `REST` 请求。 有关详细信息，请参阅 [az rest](/cli/azure/reference-index#az-rest)。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+- PowerShell 命令是使用 PowerShell 7 或更高版本以及 Azure PowerShell 模块在本地运行的。 有关详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
+- 如果还没有用于 `REST` 操作的工具，请安装 [ARMClient](https://github.com/projectkudu/ARMClient)。 它是一种可简化 Azure 资源管理器 API 调用的开源命令行工具。
+- 安装 ARMClient 后，可从 PowerShell 命令提示符中通过键入 `armclient.exe` 来显示使用情况信息。 或者，转到 [ARMClient wiki](https://github.com/projectkudu/ARMClient/wiki)。
+
+---
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>部署自定义提供程序
 
@@ -30,14 +42,16 @@ ms.locfileid: "85124998"
 
 部署模板之后，订阅将具有以下资源：
 
-* 可以针对资源和操作运行的 Function App。
-* 存储帐户，用于存储通过自定义提供程序创建的用户。
-* 自定义提供程序，用于定义自定义资源类型和操作。 它使用函数应用终结点来发送请求。
-* 自定义提供程序提供的自定义资源。
+- 可以针对资源和操作运行的 Function App。
+- 存储帐户，用于存储通过自定义提供程序创建的用户。
+- 自定义提供程序，用于定义自定义资源类型和操作。 它使用函数应用终结点来发送请求。
+- 自定义提供程序提供的自定义资源。
 
-要部署自定义提供程序，请使用 Azure CLI 或 PowerShell：
+若要部署自定义提供程序，请使用 Azure CLI、PowerShell 或 Azure 门户：
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+本示例提示你输入资源组、位置和提供程序的函数应用名称。 名称会存储在其他命令中所使用的变量中。 [az group create](/cli/azure/group#az-group-create) 和 [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) 命令将部署资源。
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&
@@ -52,6 +66,8 @@ read
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+本示例提示你输入资源组、位置和提供程序的函数应用名称。 名称会存储在其他命令中所使用的变量中。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 和 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 命令将部署资源。
+
 ```powershell
 $rgName = Read-Host -Prompt "Enter a resource group name"
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -64,7 +80,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ---
 
-也可通过以下按钮从 Azure 门户部署解决方案：
+还可以从 Azure 门户部署解决方案。 选择“部署到 Azure”按钮以在 Azure 门户中打开模板。
 
 [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
@@ -252,7 +268,7 @@ armclient PUT $addURI $requestBody
 
 ### <a name="list-custom-resource-providers"></a>列出自定义资源提供程序
 
-列出订阅中的所有自定义资源提供程序。 默认列出当前订阅的自定义资源提供程序，也可以指定 `--subscription` 参数。 要列出资源组，请使用 `--resource-group` 参数。
+使用 `list` 命令显示订阅中的所有自定义资源提供程序。 默认列出当前订阅的自定义资源提供程序，你也可以指定 `--subscription` 参数。 要列出资源组，请使用 `--resource-group` 参数。
 
 ```azurecli-interactive
 az custom-providers resource-provider list --subscription $subID
@@ -289,7 +305,7 @@ az custom-providers resource-provider list --subscription $subID
 
 ### <a name="show-the-properties"></a>显示属性
 
-显示自定义资源提供程序的属性。 输出格式类似于 `list` 输出。
+使用 `show` 命令显示自定义资源提供程序的属性。 输出格式类似于 `list` 输出。
 
 ```azurecli-interactive
 az custom-providers resource-provider show --resource-group $rgName --name $funcName
