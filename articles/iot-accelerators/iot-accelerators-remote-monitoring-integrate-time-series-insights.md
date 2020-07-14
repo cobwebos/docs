@@ -8,11 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564638"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232060"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>将 Azure 时序见解与远程监视集成
 
@@ -56,7 +57,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 1. 若要创建时序见解环境，请使用下表中的值：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 环境名称 | 以下屏幕截图使用名称“contorosrmtsi”****。 完成此步骤后，请选择自己的唯一名称。 |
     | 订阅 | 在下拉列表中选择自己的 Azure 订阅。 |
@@ -79,13 +80,13 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![查看事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. 单击“添加” 。
+1. 单击“添加”。
 
     ![添加事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
 1. 若要将 IoT 中心配置为新事件源，请使用下表中的值：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 事件源名称 | 以下屏幕截图使用名称“contosorm-iot-hub”****。 完成此步骤后，请使用自己的唯一名称。 |
     | 源 | **IoT 中心** |
@@ -243,7 +244,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 为上面已更新的微服务配置 `standard` 部署的环境
 
-1. 在命令行上，运行 `kubectl proxy`。 有关详细信息，请参阅 [访问 Kubernetes API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)。
+1. 在命令行上，运行 `kubectl proxy`。 有关详细信息，请参阅 [访问 Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/)。
 
 1. 打开 Kubernetes 管理控制台。
 

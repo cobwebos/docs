@@ -8,11 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: 了解如何使用 Azure DevOps 与 Azure Dev Spaces 设置持续集成/持续部署
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81685632"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229323"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>结合使用 CI/CD 与 Azure Dev Spaces
 
@@ -25,7 +26,7 @@ ms.locfileid: "81685632"
 ## <a name="prerequisites"></a>先决条件
 * [已启用 Azure Dev Spaces 的 Azure Kubernetes 服务 (AKS) 群集](../get-started-netcore.md)
 * [已安装 Azure Dev Spaces CLI](upgrade-tools.md)
-* [有项目的 Azure DevOps 组织](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [有项目的 Azure DevOps 组织](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure 容器注册表 (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * 可详细了解 Azure 容器注册表[管理员帐户](../../container-registry/container-registry-authentication.md#admin-account)
 * [授权 AKS 群集从 Azure 容器注册表拉取映像](../../aks/cluster-container-registry-integration.md)
@@ -67,7 +68,7 @@ dev__ 空间始终包含最新状态的存储库（基线），以便开发人�
 > [!Note]
 > Azure DevOps 预览功能“新 YAML 管道创建体验”__ 暂与创建预定义的生成管道冲突。 目前，必须禁用此功能，才能部署预定义的生成管道。
 
-在 azds_updates__ 分支中，我们已添加简单的 [Azure 管道 YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema)，用于定义 mywebapi** 和 webfrontend** 所需的生成步骤。
+在 azds_updates__ 分支中，我们已添加简单的 [Azure 管道 YAML](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema)，用于定义 mywebapi** 和 webfrontend** 所需的生成步骤。
 
 管道 YAML 已签入，路径如下（具体视已选择的语言而定）：`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
@@ -92,13 +93,13 @@ dev__ 空间始终包含最新状态的存储库（基线），以便开发人�
 1. 如果处理的是尚未包含发布定义的全新 DevOps 项目，必须先创建空白的发布定义，再继续操作。 只有在现有发布定义的情况下，“导入”选项才会显示在 UI 中。
 1. 在左侧单击 " **+ 新建**" 按钮，然后单击 "**导入管道**"。
 1. 单击 "**浏览**"，然后 `samples/release.json` 从项目中选择。
-1. 单击“确定”。 请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
+1. 单击 **“确定”** 。 请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
 1. 在“管道”窗格的左侧，单击“添加项目”**** 气泡。
 1. 在 "**源**" 下拉列表中，选择前面创建的生成管道。
 1. 对于**默认版本**，请**从带有标记的生成管道默认分支选择 "最新**"。
 1. 将**标记**留空。
 1. 将“源别名”**** 设置为“`drop`”。 预定义的发布任务使用**源别名**值，因此必须对其进行设置。
-1. 单击“添加” 。
+1. 单击“添加”。
 1. 现在，单击新创建的 `drop` 项目源上的闪电图标，如下所示：
 
     ![发布项目持续部署设置](../media/common/release-artifact-cd-setup.png)

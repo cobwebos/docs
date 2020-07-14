@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 订阅转移到不同的 Azure AD 目录（预览）
-description: 了解如何将 Azure 订阅和已知相关资源传输到不同的 Azure Active Directory （Azure AD）目录。
+title: " (预览版将 Azure 订阅转移到不同 Azure AD 目录) "
+description: 了解如何将 Azure 订阅和已知相关资源传输到不同的 Azure Active Directory (Azure AD) 目录。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -10,27 +10,27 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: f169cf45702d4a5051f9f6908b77c645c7a0018f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042384"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230836"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>将 Azure 订阅转移到不同的 Azure AD 目录（预览）
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a> (预览版将 Azure 订阅转移到不同 Azure AD 目录) 
 
 > [!IMPORTANT]
 > 按照以下步骤将订阅传输到不同的 Azure AD 目录当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-组织可能具有多个 Azure 订阅。 每个订阅都与特定的 Azure Active Directory （Azure AD）目录关联。 为了更轻松地进行管理，你可能需要将订阅转移到不同的 Azure AD 目录。 将订阅传输到不同 Azure AD 目录时，某些资源不会传输到目标目录。 例如，Azure 基于角色的访问控制（Azure RBAC）中的所有角色分配和自定义角色会**永久**从源目录中删除，并且不会传输到目标目录。
+组织可能具有多个 Azure 订阅。 每个订阅都与特定的 Azure Active Directory (Azure AD) 目录相关联。 为了更轻松地进行管理，你可能需要将订阅转移到不同的 Azure AD 目录。 将订阅传输到不同 Azure AD 目录时，某些资源不会传输到目标目录。 例如，Azure RBAC) 中的所有角色分配和自定义角色 (Azure RBAC 会**永久**从源目录中删除，并且不会传输到目标目录。
 
 本文介绍将订阅传输到不同 Azure AD 目录时可以遵循的基本步骤，并在传输后重新创建某些资源。
 
 ## <a name="overview"></a>概述
 
-将 Azure 订阅转移到不同的 Azure AD 目录是一个复杂的过程，必须仔细计划和执行。 许多 Azure 服务都需要安全主体（标识）才能正常运行，甚至可以管理其他 Azure 资源。 本文将尽力涵盖严重依赖于安全主体的大多数 Azure 服务，但并不是很全面。
+将 Azure 订阅转移到不同的 Azure AD 目录是一个复杂的过程，必须仔细计划和执行。 许多 Azure 服务都需要 (标识的安全主体) 才能正常运行，甚至可以管理其他 Azure 资源。 本文将尽力涵盖严重依赖于安全主体的大多数 Azure 服务，但并不是很全面。
 
 > [!IMPORTANT]
 > 传输订阅需要停机时间才能完成此过程。
@@ -76,7 +76,7 @@ ms.locfileid: "86042384"
 | Azure Data Lake Storage Gen1 | 是 |  |  | 必须重新创建任何 Acl。 |
 | Azure 文件 | 是 | 是 |  | 必须重新创建任何 Acl。 |
 | Azure 文件同步 | 是 | 是 |  |  |
-| Azure 托管磁盘 | 是 | 不适用 |  |  |
+| Azure 托管磁盘 | 是 | 空值 |  |  |
 | 适用于 Kubernetes 的 Azure 容器服务 | 是 | 是 |  |  |
 | Azure Active Directory 域服务 | 是 | 否 |  |  |
 | 应用注册 | 是 | 是 |  |  |
@@ -127,7 +127,7 @@ ms.locfileid: "86042384"
 
 ### <a name="save-all-role-assignments"></a>保存所有角色分配
 
-1. 使用[az role 赋值 list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list)列出所有角色分配（包括继承的角色分配）。
+1. 使用[az role 赋值 list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list)列出所有角色分配 (包括) 继承的角色分配。
 
     为了更轻松地查看列表，可以将输出导出为 JSON、TSV 或表。 有关详细信息，请参阅[使用 AZURE RBAC 和 Azure CLI 列出角色分配](role-assignments-list-cli.md)。
 
@@ -189,7 +189,7 @@ ms.locfileid: "86042384"
 
 1. 查看[支持托管标识的 Azure 服务列表](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)，以了解你可能使用托管标识的位置。
 
-1. 使用[az ad sp list](/azure/ad/sp#az-ad-sp-list)列出系统分配的和用户分配的托管标识。
+1. 使用[az ad sp list](/cli/azure/identity?view=azure-cli-latest#az-identity-list)列出系统分配的和用户分配的托管标识。
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
