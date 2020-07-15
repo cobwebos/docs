@@ -9,6 +9,7 @@ ms.date: 03/25/2020
 ms.author: sukishen
 ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83747615"
@@ -43,7 +44,7 @@ ms.locfileid: "83747615"
 * 软件定义的 WAN (SDWAN)
 * 专用 Internet 访问
 
-接下来，需要同意该提供商在 Microsoft 全球网络及其位于香港（而不是北京或上海）的边缘网络中提供一个接入点。 在这种情况下，香港由于其自身的物理连接优势以及在中国的归属而显得非常重要。
+接下来，需要同意该提供商在 Microsoft 全球网络及其位于中国香港（而不是北京或上海）的边缘网络中提供一个接入点。 在这种情况下，香港由于其自身的物理连接优势以及在中国的归属而显得非常重要。
 
 大多数客户觉得新加坡在地图上与中国较为靠近，因此最适合在新加坡建立互连，但事实上并非如此。 观察网络光纤地图时可以发现，与中国的几乎所有网络连接都是通过北京、上海和香港建立的。 因此，香港是更适合与中国建立互连的位置。
 
@@ -126,7 +127,7 @@ ExpressRoute Global Reach 在某些区域不可用。 例如，如果需要与�
 
 ![中国大陆到香港的流量 - ExpressRoute](./media/interconnect-china/expressroute.png)
 
-还可以通过其他一些选项从中国终止 ExpressRoute，例如，在韩国或日本终止。 但出于合规性、管制和延迟方面的原因，香港目前是最佳选择。
+还可以通过其他一些选项从中国终止 ExpressRoute，例如，在韩国或日本终止。 但出于合规性、管制和延迟方面的原因，中国香港目前是最佳选择。
 
 ### <a name="option-3-expressroute-only"></a><a name="option-3"></a>选项 3：仅使用 ExpressRoute
 
