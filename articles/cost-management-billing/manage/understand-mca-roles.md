@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84702595"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207217"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Microsoft 客户协议管理角色
 
@@ -141,12 +141,12 @@ ms.locfileid: "84702595"
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>管理发票科目的权限和属性
 
-|任务|发票科目所有者|发票科目参与者|发票科目读取者|Azure 订阅创建者|计费帐户所有者|计费帐户参与者|计费帐户读取者 | |
-|---|---|---|---|---|---|---|---|---|
-|查看对发票科目的所有权限|✔|✔|✔|✔|✔|✔|✔| |
-|向其他人授予查看和管理发票科目的权限|✔|✘|✘|✘|✘|✘|✘| |
-|查看发票科目属性|✔|✔|✔|✔|✔|✔|✔| |
-|更新发票科目属性|✔|✔|✘|✘|✘|✘|✘|✘|
+|任务|发票科目所有者|发票科目参与者|发票科目读取者|Azure 订阅创建者|计费帐户所有者|计费帐户参与者|计费帐户读取者 |
+|---|---|---|---|---|---|---|---|
+|查看对发票科目的所有权限|✔|✔|✔|✔|✔|✔|✔|
+|向其他人授予查看和管理发票科目的权限|✔|✘|✘|✘|✘|✘|✘|
+|查看发票科目属性|✔|✔|✔|✔|✔|✔|✔|
+|更新发票科目属性|✔|✔|✘|✘|✘|✘|✘|
 
 ### <a name="manage-products-for-invoice-section"></a>管理发票科目的产品
 
@@ -178,17 +178,17 @@ ms.locfileid: "84702595"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/understand-mca-roles/billing-search-cost-management-billing.png)
 
-3. 在要其授予访问权限的范围（例如计费帐户、计费配置文件或发票科目）选择“访问控制(IAM)”。 
+3. 在要其授予访问权限的范围（例如计费帐户、计费配置文件或发票科目）选择“访问控制(IAM)”。
 
 4. “访问控制(IAM)”页将列出已在该范围分配到每个角色的用户和组。
 
    ![显示计费帐户的管理员列表的屏幕截图](./media/understand-mca-roles/billing-list-admins.png)
 
-5. 若要向用户授予访问权限，请在页面顶部选择“添加”。  在“角色”下拉列表中选择一个角色。 输入要向其授予访问权限的用户的电子邮件地址。 选择“保存”以分配该角色。 
+5. 若要向用户授予访问权限，请在页面顶部选择“添加”。 在“角色”下拉列表中选择一个角色。 输入要向其授予访问权限的用户的电子邮件地址。 选择“保存”以分配该角色。
 
    ![显示如何将管理员添加到计费帐户的屏幕截图](./media/understand-mca-roles/billing-add-admin.png)
 

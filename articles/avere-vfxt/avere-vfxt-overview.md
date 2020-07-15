@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7967b58819523173fd66d45eeabeaddc8605a21d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76153185"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229459"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>什么是 Avere vFXT for Azure？
 
@@ -66,7 +66,7 @@ Avere vFXT 群集根据请求来缓存文件。 重复的请求在超过 80% 的
 
 Avere vFXT for Azure 使用以下 Azure 资源：
 
-|Azure 组件|   |
+|Azure 组件| 资源 |
 |----------|-----------|
 |虚拟机|3 个或更多个 E32s_v3|
 |高级 SSD 存储|200 GB OS 空间加上每个节点的 1 TB 到 4 TB 缓存空间 |

@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Synapse Studio 创建 Synapse SQL 池（预览版）
+title: 快速入门：使用 Synapse Studio 创建 Synapse SQL 池（预览版）
 description: 遵循本指南中的步骤，使用 Synapse Studio 创建新的 Synapse SQL 池。
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f93eb55b888c58ad111bd67b2011ba9c996b16bb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4aac32ec69a4572a0988a22f1bc3b7bdf3f947d7
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960259"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274265"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>快速入门：使用 Synapse Studio 创建 Synapse SQL 池（预览版）
 

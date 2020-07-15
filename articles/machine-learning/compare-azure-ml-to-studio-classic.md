@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1d4896a2dd2115e5654baffe394618b30a294d5b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210365"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231737"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure 机器学习与机器学习工作室（经典版）
 
@@ -27,7 +27,7 @@ Azure 机器学习提供 Python 和 R SDK 以及“拖放”设计器，用于�
 
 下表总结了 Azure 机器学习和工作室（经典版）之间的一些重要差异：
 
-| | 机器学习工作室（经典版） | Azure 机器学习 |
+| Feature | 机器学习工作室（经典版） | Azure 机器学习 |
 |---| --- | --- |
 | 拖放界面 | 支持 | 支持 - [Azure 机器学习设计器（预览版）](concept-designer.md) <br/>（需要企业工作区） | 
 | 试验 | 可缩放（10 GB 训练数据限制） | 使用计算目标进行缩放 |
