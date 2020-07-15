@@ -4,12 +4,12 @@ description: 使用 Azure Site Recovery 服务快速为 Azure VM 设置到其他
 ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
-ms.openlocfilehash: e26c2a1f24a88dc979f4ec68de65afc618740c00
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371873"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135711"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>快速入门：为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
@@ -22,7 +22,7 @@ ms.locfileid: "80371873"
 需要 Azure 订阅和 VM 才能完成此教程。
 
 - 如果没有一个订阅处于活动状态的 Azure 帐户，可以[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 建议使用 RAM 至少为 1 GB 的 VM。 [详细了解](/azure/virtual-machines/windows/quick-create-portal)如何创建 VM。
+- 建议使用 RAM 至少为 1 GB 的 VM。 [详细了解](../virtual-machines/windows/quick-create-portal.md)如何创建 VM。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

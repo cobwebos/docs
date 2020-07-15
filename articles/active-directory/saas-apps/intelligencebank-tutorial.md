@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e41f2a5124603c8233bf515e07a95d0ee9ff4272
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a0b418b15aaebe298b8e7c6507c96de2843d51e9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255615"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170167"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IntelligenceBank 的集成
 
@@ -88,12 +88,9 @@ ms.locfileid: "85255615"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下任何一项：
 
-    | |
-    |--|
-    | `IB`| 
-    | `IntelligenceBank`|
-    | `https://<SUBDOMAIN>.intelligencebank.com`|
-    | |
+    - `IB`
+    - `IntelligenceBank`
+    - `https://<SUBDOMAIN>.intelligencebank.com`
 
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.intelligencebank.com/auth`
 

@@ -1,22 +1,15 @@
 ---
 title: Azure PowerShell - 订阅 Blob 存储帐户
 description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅 Blob 存储帐户的事件网格事件。
-services: event-grid
-documentationcenter: na
-author: spelluru
-ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: a8a0982ca118663cbf0f7e4d72412ce8feda3c4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/08/2020
+ms.openlocfilehash: 6e1d7fa349134400c26e03815983067d921f388c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76721432"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171221"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>使用 PowerShell 订阅 Blob 存储帐户的事件
 

@@ -1,22 +1,15 @@
 ---
 title: Azure CLI 脚本示例 - 订阅自定义主题 | Microsoft Docs
 description: 本文提供了一个示例 Azure CLI 脚本，演示如何订阅自定义主题的事件网格事件。
-services: event-grid
-documentationcenter: na
-author: spelluru
-ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 9d82a5c3d9723c26d5a98bb2f0c92a6739ffee25
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/08/2020
+ms.openlocfilehash: 4a3cfe132da280d6b33ddfa6c396fd651bdbd7d5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76720123"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171255"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>使用 Azure CLI 订阅自定义主题的事件
 

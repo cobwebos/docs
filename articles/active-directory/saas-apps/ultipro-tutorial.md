@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036737bd945f9abecef04e6e747c2d05dcb25187
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d4967e9aeb5d8f0a1e05d272f6e5f372c11dd64
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161068"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170184"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>教程：Azure Active Directory 与 UltiPro 集成
 
@@ -108,27 +108,21 @@ ms.locfileid: "73161068"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
-    | |
-    |--|
-    | `https://<companyname>.ultipro.com/`|
-    | `https://<companyname>.ultiproworkplace.com?cpi=AZUREADISSSUERURL`|
-    | `https://<companyname>.ultipro.ca`|
+    - `https://<companyname>.ultipro.com/`
+    - `https://<companyname>.ultiproworkplace.com?cpi=AZUREADISSSUERURL`
+    - `https://<companyname>.ultipro.ca`
     
     b. 在“标识符”文本框中，使用以下模式键入 URL  ：
 
-    | |
-    |--|
-    | `https://<companyname>.ultipro.com/adfs/services/trust`|
-    | `https://<companyname>.ultiproworkplace.com/adfs/services/trust`|
-    | `https://<companyname>.ultipro.ca/adfs/services/trust`|
+    - `https://<companyname>.ultipro.com/adfs/services/trust`
+    - `https://<companyname>.ultiproworkplace.com/adfs/services/trust`
+    - `https://<companyname>.ultipro.ca/adfs/services/trust`
     
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：
     
-    | |
-    |--|
-    | `https://<companyname>.ultipro.com/<instancename>`|
-    | `https://<companyname>.ultiproworkplace.com/<instancename>`|
-    | `https://<companyname>.ultipro.ca/<instancename>`|
+    - `https://<companyname>.ultipro.com/<instancename>`
+    - `https://<companyname>.ultiproworkplace.com/<instancename>`
+    - `https://<companyname>.ultipro.ca/<instancename>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [UltiPro 客户端支持团队](https://www.ultimatesoftware.com/ContactUs)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

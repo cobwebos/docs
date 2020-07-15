@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75498045"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130628"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
 
@@ -51,11 +51,11 @@ ms.locfileid: "75498045"
 
      ![跨层的单一实例 VM 部署](media/move-vm-overview/regular-deployment.png)
 
-* **每个层中跨可用性集部署的 VM**：层中的每个 VM 在可用性集中进行配置。 [可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)确保在 Azure 上部署的 VM 能够跨群集中多个隔离的硬件节点分布。 这可以确保当 Azure 中发生硬件或软件故障时，只有一部分 VM 会受到影响，整体解决方案仍可使用和操作。
+* **每个层中跨可用性集部署的 VM**：层中的每个 VM 在可用性集中进行配置。 [可用性集](../virtual-machines/windows/tutorial-availability-sets.md)确保在 Azure 上部署的 VM 能够跨群集中多个隔离的硬件节点分布。 这可以确保当 Azure 中发生硬件或软件故障时，只有一部分 VM 会受到影响，整体解决方案仍可使用和操作。
 
      ![跨可用性集的 VM 部署](media/move-vm-overview/avset.png)
 
-* **每个层中跨可用性区域部署的 VM**：层中的每个 VM 跨[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)进行配置。 Azure 区域中的可用性区域是容错域和更新域的组合。 例如，如果在 Azure 区域的三个区域中创建三个或更多 VM，则 VM 将有效分布在三个容错域和三个更新域中。 Azure 平台会识别更新域上的此分布，以确保不同区域中的 VM 不会同时更新。
+* **每个层中跨可用性区域部署的 VM**：层中的每个 VM 跨[可用性区域](../availability-zones/az-overview.md)进行配置。 Azure 区域中的可用性区域是容错域和更新域的组合。 例如，如果在 Azure 区域的三个区域中创建三个或更多 VM，则 VM 将有效分布在三个容错域和三个更新域中。 Azure 平台会识别更新域上的此分布，以确保不同区域中的 VM 不会同时更新。
 
      ![可用性区域部署](media/move-vm-overview/zone.png)
 

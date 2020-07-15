@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db2e583515d948f455e1d2129684f97347a07403
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 2a2db9f7342b984a8c539a345f8e5038caf5ff85
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594927"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170269"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>教程：使用通知中心向 Windows Phone 应用发送推送通知
 
@@ -84,8 +84,11 @@ ms.locfileid: "82594927"
     ![Visual Studio - NuGet 包管理器][20]
 4. 打开文件 App.xaml.cs 并添加以下 `using` 语句：
 
-        using Microsoft.Phone.Notification;
-        using Microsoft.WindowsAzure.Messaging;
+    ```csharp
+    using Microsoft.Phone.Notification;
+    using Microsoft.WindowsAzure.Messaging;
+    ```
+
 5. 在 `App.xaml.cs` 中的 `Application_Launching` 方法顶部添加以下代码：
 
     ```csharp

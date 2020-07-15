@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78298524"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134025"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>在“Azure 政府”区域和“公用”区域之间移动 Azure VM 
 
@@ -32,7 +32,7 @@ ms.locfileid: "78298524"
 > * 丢弃源区域中的资源
 
 > [!IMPORTANT]
-> 本教程介绍如何在“Azure 政府”区域和“公用”区域之间移动 Azure VM 或者在 Azure VM 的常规灾难恢复解决方案不支持的区域对之间移动 Azure VM。 如果源和目标区域对受[支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，请参阅此[文档](azure-to-azure-tutorial-migrate.md)进行移动。 如果你的要求是通过将一个可用性集中的 VM 移动到另一区域中区域固定的 VM 来提高可用性，请参阅[此教程](move-azure-VMs-AVset-Azone.md)。
+> 本教程介绍如何在“Azure 政府”区域和“公用”区域之间移动 Azure VM 或者在 Azure VM 的常规灾难恢复解决方案不支持的区域对之间移动 Azure VM。 如果源和目标区域对受[支持](./azure-to-azure-support-matrix.md#region-support)，请参阅此[文档](azure-to-azure-tutorial-migrate.md)进行移动。 如果你的要求是通过将一个可用性集中的 VM 移动到另一区域中区域固定的 VM 来提高可用性，请参阅[此教程](move-azure-VMs-AVset-Azone.md)。
 
 > [!IMPORTANT]
 > 不建议使用此方法在不支持的区域对之间配置 DR，因为定义这些对时要考虑到数据延迟，这对于 DR 方案至关重要。
@@ -96,13 +96,13 @@ ms.locfileid: "78298524"
 
      请参阅以下文档，根据源 VM 配置创建最常用的相关网络资源。
 
-    - [网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer)
+    - [网络安全组](../virtual-network/manage-network-security-group.md)
+    - [负载均衡器](../load-balancer/index.yml)
     - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-    对于其他任何网络组件，请参阅网络[文档](https://docs.microsoft.com/azure/?pivot=products&panel=network)。
+    对于其他任何网络组件，请参阅网络[文档](../index.yml?pivot=products&panel=network)。
 
-4. 若要在最终转接到目标区域之前测试配置，请在目标区域中手动[创建非生产网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 这可以尽量减少对生产造成的干扰，也是建议的做法。
+4. 若要在最终转接到目标区域之前测试配置，请在目标区域中手动[创建非生产网络](../virtual-network/quick-create-portal.md)。 这可以尽量减少对生产造成的干扰，也是建议的做法。
 
 ## <a name="copy-data-to-the-target-region"></a>将数据复制到目标区域
 以下步骤引导你使用 Azure Site Recovery 将数据复制到目标区域。
@@ -136,7 +136,7 @@ ms.locfileid: "78298524"
 开始之前，请执行以下操作： 
 
 #### <a name="verify-time-accuracy"></a>验证时间准确性
-在配置服务器计算机上，确保将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
+在配置服务器计算机上，确保将系统时钟与[时间服务器](/windows-server/networking/windows-time-service/windows-time-service-top)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
 
 #### <a name="verify-connectivity"></a>验证连接性
 确保计算机可以根据你的环境访问这些 URL： 

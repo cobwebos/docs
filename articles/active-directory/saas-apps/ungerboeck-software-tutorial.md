@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c7a7a8fe0ef346cb26e3b0b4f14d3dae7211b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 654abe0900cd1cecd4964c344a01dafe40caeb85
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67372630"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166972"
 ---
 # <a name="tutorial-integrate-ungerboeck-software-with-azure-active-directory"></a>教程：将 Ungerboeck Software 与 Azure Active Directory 集成
 
@@ -84,23 +84,17 @@ ms.locfileid: "67372630"
 
     1. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
     
-       **对于生产环境**：
+    *  **对于生产环境**：
 
-       | |
-       |-|
-       | `https://<SUBDOMAIN>.ungerboeck.com/prod` |
-       | `https://<SUBDOMAIN>.ungerboeck.net/prod` |
-       | `https://<SUBDOMAIN>.ungerboeck.io/prod` |
-       | |
+       - `https://<SUBDOMAIN>.ungerboeck.com/prod`
+       - `https://<SUBDOMAIN>.ungerboeck.net/prod`
+       - `https://<SUBDOMAIN>.ungerboeck.io/prod`
 
-        **对于测试环境**：
+   * **对于测试环境**：
 
-       | |
-       |-|
-       | `https://<SUBDOMAIN>.ungerboeck.com/test` |
-       | `https://<SUBDOMAIN>.ungerboeck.net/test` |
-       | `https://<SUBDOMAIN>.ungerboeck.io/test` |
-       | |
+     - `https://<SUBDOMAIN>.ungerboeck.com/test`
+     - `https://<SUBDOMAIN>.ungerboeck.net/test`
+     - `https://<SUBDOMAIN>.ungerboeck.io/test`
 
    > [!NOTE]
    > 这些不是实际值。 请使用本教程稍后在“配置 Ungerboeck Software 单一登录”部分介绍的实际“登录 URL”和“标识符”更新这些值。 

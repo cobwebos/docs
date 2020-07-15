@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 30fc55cb608189e1be82c2b28393c5e242e262fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cfe2825915e52e1cbe1cb3d1015e0239e88d15e0
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160858"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167192"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>教程：Azure Active Directory 与 webMethods Integration Suite 的集成
 
@@ -109,19 +109,16 @@ ms.locfileid: "73160858"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `<SUBDOMAIN>.webmethodscloud.com` |
-    | `<SUBDOMAIN>.webmethodscloud.eu` |
-    | `<SUBDOMAIN>.webmethodscloud.de` |
+    - `<SUBDOMAIN>.webmethodscloud.com`
+    - `<SUBDOMAIN>.webmethodscloud.eu`
+    - `<SUBDOMAIN>.webmethodscloud.de`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse` |
-    | `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse` |
-    | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse` |
+
+    - `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse`
+    - `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse`
+    - `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse`
 
     c. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -129,11 +126,9 @@ ms.locfileid: "73160858"
 
     d. 在“登录 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest` |
-    | `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoRequest` |
-    | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest` |
+    - `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest`
+    - `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoRequest`
+    - `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [webMethods Integration Suite 客户端支持团队](https://empower.softwareag.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -144,19 +139,15 @@ ms.locfileid: "73160858"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `<SUBDOMAIN>.webmethodscloud.com` |
-    | `<SUBDOMAIN>.webmethodscloud.eu` |
-    | `<SUBDOMAIN>.webmethodscloud.de` |
+    - `<SUBDOMAIN>.webmethodscloud.com`
+    - `<SUBDOMAIN>.webmethodscloud.eu`
+    - `<SUBDOMAIN>.webmethodscloud.de`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso` |
-    | `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso` |
-    | `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso` |
+    - `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso`
+    - `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso`
+    - `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso`
 
     c. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -164,11 +155,9 @@ ms.locfileid: "73160858"
 
     d. 在“登录 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>` |
-    | `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>` |
-    | `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>` |
+    - `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>`
+    - `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>`
+    - `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [webMethods Integration Suite 客户端支持团队](https://empower.softwareag.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

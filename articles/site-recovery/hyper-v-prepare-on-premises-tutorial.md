@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691095"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135649"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>为 Hyper-V VM 到 Azure 的灾难恢复准备本地 Hyper-V 服务器
 
@@ -56,12 +56,12 @@ ms.locfileid: "84691095"
 
 ### <a name="prepare-vmm-for-network-mapping"></a>为网络映射准备 VMM
 
-如果使用 VMM，则[网络映射](site-recovery-network-mapping.md)在本地 VMM VM 网络和 Azure 虚拟网络之间进行映射。 映射将确保在故障转移后创建 Azure VM 时，将其连接到正确的网络。
+如果使用 VMM，则[网络映射](./hyper-v-vmm-network-mapping.md)在本地 VMM VM 网络和 Azure 虚拟网络之间进行映射。 映射将确保在故障转移后创建 Azure VM 时，将其连接到正确的网络。
 
 为网络映射准备 VMM，如下所示：
 
-1. 确保有与 Hyper-V 主机所在的云相关联的 [VMM 逻辑网络](https://docs.microsoft.com/system-center/vmm/network-logical)。
-2. 确保有链接到逻辑网络的[虚拟机网络](https://docs.microsoft.com/system-center/vmm/network-virtual)。
+1. 确保有与 Hyper-V 主机所在的云相关联的 [VMM 逻辑网络](/system-center/vmm/network-logical)。
+2. 确保有链接到逻辑网络的[虚拟机网络](/system-center/vmm/network-virtual)。
 3. 在 VMM 中，将 VM 连接到 VM 网络。
 
 ## <a name="verify-internet-access"></a>验证 Internet 访问
@@ -94,5 +94,5 @@ ms.locfileid: "84691095"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [为 Hyper-V VM 设置到 Azure 的灾难恢复](tutorial-hyper-v-to-azure.md)
-> [为 VMM 云中的 Hyper-V VM 设置到 Azure 的灾难恢复](tutorial-hyper-v-vmm-to-azure.md)
+> [为 Hyper-V VM 设置到 Azure 的灾难恢复](./hyper-v-azure-tutorial.md)
+> [为 VMM 云中的 Hyper-V VM 设置到 Azure 的灾难恢复](./hyper-v-vmm-azure-tutorial.md)

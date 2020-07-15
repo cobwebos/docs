@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b407f29e4dda532ef12019f8d0a2a273832987
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a62bdc0f23f6769dca9914381a81674e470e695d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67595240"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167770"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>教程：Azure Active Directory 与 Teamwork.com 集成
 
@@ -110,10 +110,8 @@ ms.locfileid: "67595240"
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL： 
 
-    | | |
-    |-|-|
-    | `https://teamwork.com/saml`|
-    | `https://eu.teamwork.com/saml`|
+    - `https://teamwork.com/saml`
+    - `https://eu.teamwork.com/saml`
 
     > [!NOTE]
     > 此登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 要获取此值，请与 [Teamwork.com 支持团队](mailto:support@teamwork.com)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

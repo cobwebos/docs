@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3740415652407c834ec258730f89e46398a9f79
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078063"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Shopify Plus 的集成
 
@@ -99,9 +99,9 @@ ms.locfileid: "86078063"
 
 1. 除了上述属性，Shopify Plus 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | 名称 |  |  源属性|
-    | ---------------| --------------- | --------- |
-    | 电子邮件 | | user.mail |
+    | 名称 | 源属性|
+    | ---- | --------------- |
+    | 电子邮件 | user.mail |
 
 1. 将“名称 ID”格式更改为“永久” 。 选择“唯一用户标识符(名称 ID)”选项，然后选择“名称标识符”格式 。 对于此选项选择“永久”。 保存所做更改。
 1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“复制”按钮以复制“应用联合元数据 URL”，并将其保存在计算机上  。

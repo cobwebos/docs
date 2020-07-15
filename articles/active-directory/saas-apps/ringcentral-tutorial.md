@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: de7cf57d177902efdbb44524703481e8c65c75c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 33548df0b8eb73d28dfe6348f057266cca4c0290
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72991474"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168535"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>教程：将 RingCentral 与 Azure Active Directory 集成
 
@@ -92,17 +92,13 @@ ms.locfileid: "72991474"
 
     a. 在“标识符”文本框中，键入一个 URL  ：
 
-    | |
-    |--|
-    |  `https://sso.ringcentral.com` |
-    | `https://ssoeuro.ringcentral.com` |
+    - `https://sso.ringcentral.com`
+    - `https://ssoeuro.ringcentral.com`
 
     b. 在“回复 URL”  文本框中键入 URL：
 
-    | |
-    |--|
-    | `https://sso.ringcentral.com/sp/ACS.saml2` |
-    | `https://ssoeuro.ringcentral.com/sp/ACS.saml2` |
+    - `https://sso.ringcentral.com/sp/ACS.saml2`
+    - `https://ssoeuro.ringcentral.com/sp/ACS.saml2`
 
 1. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74091348"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134455"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>在 Azure 区域之间对 Azure VM 进行故障回复
 
@@ -28,7 +28,7 @@ ms.locfileid: "74091348"
 > 
 > [!NOTE]
 > 
-> 本教程可帮助你在只需进行极少量的自定义操作的情况下，将多个 VM 故障转移到目标区域，然后故障回复到源区域。 有关更深入的说明，请查看 [Azure VM 的操作指南](https://docs.microsoft.com/azure/virtual-machines/windows/)。
+> 本教程可帮助你在只需进行极少量的自定义操作的情况下，将多个 VM 故障转移到目标区域，然后故障回复到源区域。 有关更深入的说明，请查看 [Azure VM 的操作指南](../virtual-machines/windows/index.yml)。
 
 ## <a name="before-you-start"></a>开始之前
 

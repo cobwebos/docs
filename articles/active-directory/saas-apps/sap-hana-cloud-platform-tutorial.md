@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89ea2c45e16dfeb63801f70fa4480c0d865a890f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2972af3c94768cc21b53bbf5376826940aee639a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160087"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform 集成
 
@@ -114,35 +114,29 @@ ms.locfileid: "73160087"
 
     a. 在“登录 URL”  文本框中，键入用户用于登录“SAP Cloud Platform”应用程序的 URL  。 这是“SAP Cloud Platform”应用程序中受保护资源的特定于帐户的 URL。 URL 基于以下模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
-     >[!NOTE]
-     >这是“SAP Cloud Platform”应用程序中要求用户进行身份验证的 URL。
-     > 
+    >[!NOTE]
+    >这是“SAP Cloud Platform”应用程序中要求用户进行身份验证的 URL。
+    > 
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
 
     b. 在“标识符”文本框，使用以下模式之一键入 SAP Cloud Platform 的 URL：  
 
-    | |
-    |--|
-    | `https://hanatrial.ondemand.com/<instancename>` |
-    | `https://hana.ondemand.com/<instancename>` |
-    | `https://us1.hana.ondemand.com/<instancename>` |
-    | `https://ap1.hana.ondemand.com/<instancename>` |
+    - `https://hanatrial.ondemand.com/<instancename>`
+    - `https://hana.ondemand.com/<instancename>`
+    - `https://us1.hana.ondemand.com/<instancename>`
+    - `https://ap1.hana.ondemand.com/<instancename>`
 
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SAP Cloud Platform 客户端支持团队](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html)获取登录 URL 和标识符。 可以从“信任管理”部分获取回复 URL，本教程稍后将会介绍。

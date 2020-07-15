@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: ef19c8eb747432a2eea3880b094f77747890c0d9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 663d6659acf5c1e5abc8be56156af84167c51797
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984005"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146943"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 REST 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -451,7 +451,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **GET** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来搜索某个字或短语的实例，并返回 `content` 字段和匹配文档的计数。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=content&api-version=2020-06-30
    ```
    
    此查询的结果将返回文档内容，这与使用 Blob 索引器但不使用认知搜索管道时获取的结果相同。 此字段是可搜索的，但若要使用分面、筛选器或自动完成，则此字段不起作用。
@@ -461,7 +461,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 第二个查询返回管道创建的一些新字段（人员、组织、位置、languageCode）。 为简洁起见，我们省略了关键短语，但若要查看这些值，应包含关键短语。
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    $select 语句中的字段包含认知服务的自然语言处理功能创建的新信息。 如你所料，结果中出现了一些干扰信息，并且各个文档的返回信息有差异，但在许多情况下，分析模型会生成准确的结果。
 
@@ -483,7 +483,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 此最终示例对组织集合应用一个筛选器，以基于 NASDAQ 返回筛选条件的两个匹配项。
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 这些查询演示了对认知搜索创建的新字段使用查询语法和筛选器的多种方式。 有关更多查询示例，请参阅[搜索文档 REST API 中的示例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[简单语法查询示例](search-query-simple-examples.md)和[完整 Lucene 查询示例](search-query-lucene-examples.md)。

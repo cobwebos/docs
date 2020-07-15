@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 83974a57fe080e76dee26781abaddf2b0b884839
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e60e1680b0155ed089eeb08fc41cb0b1ac6cb515
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67091489"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>教程：Azure Active Directory 与 SCC LifeCycle 的集成
 
@@ -109,10 +109,8 @@ ms.locfileid: "67091489"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
     
-    | |
-    |--|
-    | `https://bs1.scc.com/<entity>`|
-    | `https://lifecycle.scc.com/<entity>`|
+    - `https://bs1.scc.com/<entity>`
+    - `https://lifecycle.scc.com/<entity>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [SCC LifeCycle 客户端支持团队](mailto:lifecycle.support@scc.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

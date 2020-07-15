@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 63165da69815c77afb8692e1e68c1710beb8df8c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ae0be30eb834ea5c01a719daca410fe0e0c90b4d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67090825"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170728"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>教程：Azure Active Directory 与 SilkRoad Life Suite 集成
 
@@ -131,17 +131,13 @@ ms.locfileid: "67090825"
 
     b. 在“标识符”框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<subdomain>.silkroad-eng.com/Authentication/SP`|
-    | `https://<subdomain>.silkroad.com/Authentication/SP`|
+    - `https://<subdomain>.silkroad-eng.com/Authentication/SP`
+    - `https://<subdomain>.silkroad.com/Authentication/SP`
 
     c. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<subdomain>.silkroad-eng.com/Authentication/`|
-    | `https://<subdomain>.silkroad.com/Authentication/`|
+    - `https://<subdomain>.silkroad-eng.com/Authentication/`
+    - `https://<subdomain>.silkroad.com/Authentication/`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SilkRoad Life Suite 客户端支持团队](https://www.silkroad.com/locations/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

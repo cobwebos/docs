@@ -5,18 +5,18 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 145ae5f6f9204366052d9a182c61d76ff7ffa715
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: e7f7535cf66da721e1738da6d0efbf335d97a6da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871507"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134505"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>为 Azure VM 设置灾难恢复
 
 [Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复，因而有利于灾难恢复策略。
 
-本教程介绍如何为 Azure VM 设置灾难恢复：将 VM 从一个 Azure 区域复制到另一个区域。 在本教程中，你将了解如何执行以下操作：
+本教程介绍如何为 Azure VM 设置灾难恢复：将 VM 从一个 Azure 区域复制到另一个区域。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建恢复服务保管库
@@ -29,18 +29,18 @@ ms.locfileid: "82871507"
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
-- 查看[方案体系结构和组件](concepts-azure-to-azure-architecture.md)。
-- 在开始之前，请查看[支持要求](site-recovery-support-matrix-azure-to-azure.md)。
+- 查看[方案体系结构和组件](./azure-to-azure-architecture.md)。
+- 在开始之前，请查看[支持要求](./azure-to-azure-support-matrix.md)。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
 在除了源区域之外的任意区域中创建保管库。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。 然后，选择“IT 和管理工具” > “备份和 Site Recovery” 。
-1. 在“名称”中，指定一个友好名称以标识该保管库。 如果有多个订阅，请选择合适的一个。
+1. 在“名称” 中，指定一个友好名称以标识该保管库。 如果有多个订阅，请选择合适的一个。
 1. 创建一个资源组或选择一个现有的资源组。 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
 1. 若要从仪表板访问保管库，请选择“固定到仪表板”，然后选择“创建”。 
 
@@ -88,7 +88,7 @@ ms.locfileid: "82871507"
 
 Azure Site Recovery 提供了三个用于控制 Site Recovery 管理操作的内置角色。
 
-- **Site Recovery 参与者** - 此角色拥有管理恢复服务保管库中 Azure Site Recovery 操作所需的全部权限。 不过，拥有此角色的用户既无法创建或删除恢复服务保管库，也无法向其他用户分配访问权限。 此角色最适合分配给灾难恢复管理员，这样他们就可以为应用程序或整个组织启用和管理灾难恢复。
+- **Site Recovery 参与者** - 此角色拥有管理恢复服务保管库中的 Azure Site Recovery 操作所需的所有权限。 不过，拥有此角色的用户既无法创建或删除恢复服务保管库，也无法向其他用户分配访问权限。 此角色最适合分配给灾难恢复管理员，这样他们就可以为应用程序或整个组织启用和管理灾难恢复。
 
 - **Site Recovery 操作员** - 此角色有权执行和管理故障转移和故障回复操作。 拥有此角色的用户无法启用或禁用复制、无法创建或删除保管库，也无法注册新的基础结构或向其他用户分配访问权限。 此角色最适合分配给灾难恢复操作员，这样他们就可以遵循应用程序所有者或 IT 管理员的指示，对虚拟机或应用程序进行故障转移。 解决灾难后，灾难恢复操作员可以对虚拟机进行重新保护和故障回复。
 
@@ -117,7 +117,7 @@ Azure Site Recovery 提供了三个用于控制 Site Recovery 管理操作的内
 Site Recovery 检索与订阅和资源组/云服务关联的 VM 列表。
 
 1. 在“虚拟机”中，选择要复制的 VM。
-1. 选择“确定”。
+1. 选择“确定” 。
 
 ### <a name="configure-replication-settings"></a>配置复制设置
 
@@ -135,12 +135,12 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 可以�
    | --- | --- |
    | **目标订阅** | 默认情况下，目标订阅与源订阅相同。 选择“自定义”以在同一 Azure Active Directory 租户中选择其他目标订阅。 |
    | **目标位置** | 用于灾难恢复的目标区域。<br/><br/> 建议选择与 Site Recovery 保管库位置匹配的目标位置。 |
-   | **目标资源组** | 故障转移后，目标区域中用于容纳 Azure VM 的资源组。<br/><br/> 默认情况下，Site Recovery 会在目标位置中创建一个带有 `asr` 后缀的新资源组。 目标资源组的位置可以是除托管源虚拟机区域以外的任何区域。 |
-   | **目标虚拟网络** | 故障转移后，目标区域中 VM 所位于的网络。<br/><br/> 默认情况下，Site Recovery 会在目标位置中创建一个带有 `asr` 后缀的新虚拟网络（以及子网）。 |
-   | **缓存存储帐户** | Site Recovery 使用源区域中的一个存储帐户。 复制到目标位置之前，对源 VM 的更改将发送到此帐户。<br/><br/> 如果使用支持防火墙的缓存存储帐户，请确保启用“允许受信任的 Microsoft 服务”。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。 同时，请确保允许访问至少一个源 Vnet 子网。 |
+   | 目标资源组 | 故障转移后，目标区域中用于容纳 Azure VM 的资源组。<br/><br/> 默认情况下，Site Recovery 会在目标位置中创建一个带有 `asr` 后缀的新资源组。 目标资源组的位置可以是除托管源虚拟机区域以外的任何区域。 |
+   | 目标虚拟网络 | 故障转移后，目标区域中 VM 所位于的网络。<br/><br/> 默认情况下，Site Recovery 会在目标位置中创建一个带有 `asr` 后缀的新虚拟网络（以及子网）。 |
+   | 缓存存储帐户 | Site Recovery 使用源区域中的一个存储帐户。 复制到目标位置之前，对源 VM 的更改将发送到此帐户。<br/><br/> 如果使用支持防火墙的缓存存储帐户，请确保启用“允许受信任的 Microsoft 服务”。 [了解详细信息](../storage/common/storage-network-security.md#exceptions)。 同时，请确保允许访问至少一个源 Vnet 子网。 |
    | **目标存储帐户(源 VM 使用非托管磁盘)** | 默认情况下，Site Recovery 会在目标区域中创建新存储帐户，从而形成源 VM 存储帐户的镜像。<br/><br/> 如果使用支持防火墙的缓存存储帐户，请启用“允许受信任的 Microsoft 服务”。 |
    | **副本托管磁盘(如果源 VM 使用托管磁盘)** | 默认情况下，Site Recovery 在目标区域中创建副本托管磁盘，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。 你只能自定义磁盘类型。 |
-   | **目标可用性集** | 默认情况下，Azure Site Recovery 会在目标区域中创建一个名称带有 `asr` 后缀（针对源区域中可用性集的 VM 部分）的新可用性集。 如果 Azure Site Recovery 创建的可用性集已存在，则会重复使用。 |
+   | 目标可用性集 | 默认情况下，Azure Site Recovery 会在目标区域中创建一个名称带有 `asr` 后缀（针对源区域中可用性集的 VM 部分）的新可用性集。 如果 Azure Site Recovery 创建的可用性集已存在，则会重复使用。 |
    | **目标可用性区域** | 默认情况下，Site Recovery 会在目标区域中分配与源区域相同的区域编号，前提是目标区域支持可用性区域。<br/><br/> 如果目标区域不支持可用性区域，则会将目标 VM 默认配置为单一实例。<br/><br/> 选择“自定义”，将 VM 配置为目标区域中可用性集的一部分。<br/><br/> 启用复制后，无法更改可用性类型（单一实例、可用性集或可用性区域）。 若要更改可用性类型，请先禁用然后再启用复制。 |
 
 1. 若要自定义复制策略设置，请选择“复制策略”旁边的“自定义”，然后根据需要修改设置。 
@@ -149,8 +149,8 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 可以�
    | --- | --- |
    | **复制策略名称** | 策略名称。 |
    | **恢复点保留期** | 默认情况下，Site Recovery 会将恢复点保留 24 小时。 可将此值配置为 1 - 72 小时。 |
-   | **应用一致性快照频率** | 默认情况下，Site Recovery 每隔 4 小时拍摄 1 次“应用一致”快照。 可将此值配置为 1 - 12 小时之间的任何值。<br/><br/> 应用一致的快照是 VM 内应用程序数据的时间点快照。 卷影复制服务 (VSS) 确保 VM 上的应用在拍摄快照时处于一致状态。 |
-   | **复制组** | 如果应用程序需要跨 VM 的多 VM 一致性，可以为这些 VM 创建一个复制组。 默认情况下，所选的 VM 不属于任何复制组。 |
+   | **应用一致性快照频率** | 默认情况下，Site Recovery 每隔 4 小时创建应用一致性快照。 可将此值配置为 1 - 12 小时之间的任何值。<br/><br/> 应用一致的快照是 VM 内应用程序数据的时间点快照。 卷影复制服务 (VSS) 确保 VM 上的应用在拍摄快照时处于一致状态。 |
+   | **复制组** | 如果应用程序需要跨 VM 的多 VM 一致性，可为这些 VM 创建一个复制组。 默认情况下，所选的 VM 不属于任何复制组。 |
 
 1. 若要将 VM 添加到新的或现有的复制组，请在“自定义”中选择“是”以确保多 VM 一致性。  然后选择“确定”。
 
@@ -166,8 +166,8 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 可以�
 如果源 VM 上已启用 Azure 磁盘加密 (ADE)，请检查设置。
 
 1. 验证设置：
-   1. **磁盘加密密钥保管库**：默认情况下，Site Recovery 会在源 VM 磁盘加密密钥中创建新的密钥保管库，其名称带有 `asr` 后缀。 如果已存在密钥保管库，则会重复使用它。
-   1. **密钥加密密钥保管库**：默认情况下，Site Recovery 会在目标区域中创建新的 Key Vault， 其名称带有 `asr` 后缀，并且基于源 VM 的密钥加密密钥。 如果 Site recovery 创建的 Key Vault 已存在，则会重复使用它。
+   1. **磁盘加密 Key Vault**：默认情况下，Site Recovery 会在源 VM 磁盘加密密钥中创建新的密钥保管库，其名称带有 `asr` 后缀。 如果已存在密钥保管库，则会重复使用它。
+   1. **密钥加密 Key Vault**：默认情况下，Site Recovery 会在目标区域中创建新的 Key Vault， 其名称带有 `asr` 后缀，并且基于源 VM 的密钥加密密钥。 如果 Site recovery 创建的 Key Vault 已存在，则会重复使用它。
 1. 选择“自定义”以选择自定义密钥保管库。
 
 >[!NOTE]

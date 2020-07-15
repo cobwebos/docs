@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09a00d2c6a889f396e5c18da29530c94a624568b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78303930"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134427"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
@@ -37,7 +37,7 @@ ms.locfileid: "78303930"
 ## <a name="prerequisites"></a>必备条件
 
 - 请确保 Azure VM 位于要从中移动的 Azure 区域中。
-- 验证所选的[源区域 - 目标区域组合是否受支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，并在目标区域方面做出明智的决策。
+- 验证所选的[源区域 - 目标区域组合是否受支持](./azure-to-azure-support-matrix.md#region-support)，并在目标区域方面做出明智的决策。
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看[支持限制和要求](azure-to-azure-support-matrix.md)。
 - 验证帐户权限。 如果你创建了免费 Azure 帐户，那么你就是订阅的管理员。 如果你不是订阅管理员，请要求管理员分配你所需的权限。 若要为 VM 启用复制，并使用 Azure Site Recovery 按原样复制数据，必须：
@@ -70,10 +70,10 @@ ms.locfileid: "78303930"
      > 为源 VM 启用复制时，Azure Site Recovery 会自动发现并创建虚拟网络。 此外可以预先创建网络，并将其分配到用户流中的 VM 以启用复制。 按后文所述，需要在目标区域中手动创建其他资源。
 
     若要根据源 VM 配置创建最常用的相关网络资源，请参阅以下文档：
-    - [网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer)
+    - [网络安全组](../virtual-network/manage-network-security-group.md)
+    - [负载均衡器](../load-balancer/index.yml)
     -  [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
-    - 对于其他任何网络组件，请参阅[网络文档](https://docs.microsoft.com/azure/?pivot=products&panel=network)。
+    - 对于其他任何网络组件，请参阅[网络文档](../index.yml?pivot=products&panel=network)。
 
 
 
@@ -146,4 +146,3 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 
 > [!div class="nextstepaction"]
 > [在迁移后设置灾难恢复](azure-to-azure-quickstart.md)
-

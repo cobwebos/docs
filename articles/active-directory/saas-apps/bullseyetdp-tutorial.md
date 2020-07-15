@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66c07dbaf069ef804df21467354544676aeec5ba
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 9b7ac1538c02ab41a905f208f9485260423bc125
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101611"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169062"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bullseyetdp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BullseyeTDP 的集成
 
@@ -91,11 +91,11 @@ ms.locfileid: "85101611"
 
 1. 除了上述属性，BullseyeTDP 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
     
-    | 名称 |  |  源属性|
-    | ---------------| --------------- | --------- |
-    | AccessToken | | < AccessTokenValue > |
-    | ApplicationKey | | < ApplicationKeyValue >|
-    | EmployeeID | | user.employeeid |
+    | 名称 | 源属性|
+    | ---- | --------------- |
+    | AccessToken | < AccessTokenValue > |
+    | ApplicationKey | < ApplicationKeyValue >|
+    | EmployeeID | user.employeeid |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 

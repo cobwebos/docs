@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: fcd12b0c47dc587153df51d4d30eb2abe4cc2657
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 03e6f52d764b72c423269fcdfdc966474978aa6e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74081945"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>教程：Azure Active Directory 与 Reward Gateway 集成
 
@@ -106,22 +106,18 @@ ms.locfileid: "74081945"
     ![Reward Gateway 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
-    
-    | |
-    |--|
-    | `https://<companyname>.rewardgateway.com`|
-    | `https://<companyname>.rewardgateway.co.uk/`|
-    | `https://<companyname>.rewardgateway.co.nz/`|
-    | `https://<companyname>.rewardgateway.com.au/`|
+
+    - `https://<companyname>.rewardgateway.com`
+    - `https://<companyname>.rewardgateway.co.uk/`
+    - `https://<companyname>.rewardgateway.co.nz/`
+    - `https://<companyname>.rewardgateway.com.au/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
-    
-    | |
-    |--|
-    |  `https://<companyname>.rewardgateway.com/Authentication/EndLogin?idp=<Unique Id>`|
-    | `https://<companyname>.rewardgateway.co.uk/Authentication/EndLogin?idp=<Unique Id>`|
-    | `https://<companyname>.rewardgateway.co.nz/Authentication/EndLogin?idp=<Unique Id>`|
-    | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
+
+    - `https://<companyname>.rewardgateway.com/Authentication/EndLogin?idp=<Unique Id>`
+    - `https://<companyname>.rewardgateway.co.uk/Authentication/EndLogin?idp=<Unique Id>`
+    - `https://<companyname>.rewardgateway.co.nz/Authentication/EndLogin?idp=<Unique Id>`
+    - `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请在 Reward Manager 门户中启动集成设置。 可以在 https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication 上找到详细信息

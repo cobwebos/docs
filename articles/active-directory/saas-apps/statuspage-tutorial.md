@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: d947f610e6a753ce2ed349917640b07a55bbb735
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c1ad9d7afd215371b92c83445cfd1c8778bc0642
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67089877"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170524"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>教程：Azure Active Directory 与 StatusPage 集成
 
@@ -106,18 +106,14 @@ ms.locfileid: "67089877"
     ![StatusPage 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
-    
-    | |
-    |--|
-    | `https://<subdomain>.statuspagestaging.com/`|
-    | `https://<subdomain>.statuspage.io/`|
+
+    - `https://<subdomain>.statuspagestaging.com/`
+    - `https://<subdomain>.statuspage.io/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
-    
-    | |
-    |--|
-    | `https://<subdomain>.statuspagestaging.com/sso/saml/consume`|
-    | `https://<subdomain>.statuspage.io/sso/saml/consume`|
+
+    - `https://<subdomain>.statuspagestaging.com/sso/saml/consume`
+    - `https://<subdomain>.statuspage.io/sso/saml/consume`
 
     > [!NOTE]
     > 通过 [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io) 联系 StatusPage 支持团队，请求配置单一登录所需的元数据。 

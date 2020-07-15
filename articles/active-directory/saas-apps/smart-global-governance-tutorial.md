@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c3b2f5332f3dc94f10a7822068b165db13b3d33
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 91200ba4561aa6b715149d91beee8ac9d0375657
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456753"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170456"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Smart Global Governance 的集成
 
@@ -85,26 +85,20 @@ Smart Global Governance 支持 SP 和 IDP 发起的 SSO。
 
     a. 在“标识符”框中，输入以下 URL 之一：
 
-    | | |
-    |-|-|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/metadata`|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/metadata`|
+    - `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/metadata`
+    - `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/metadata`
 
     b. 在“回复 URL”框中，输入以下 URL 之一：
 
-    | | |
-    |-|-|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/acs`|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/acs`|
+    - `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/acs`
+    - `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/acs`
 
 1. 若要将应用程序配置为 SP 发起的模式，请选择“设置其他 URL”并完成以下步骤。
 
    - 在“登录 URL”框中，输入以下 URL 之一：
 
-    | | |
-    |-|-|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/dpo`|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/platform`|
+    - `https://eu-fr-south.console.smartglobalprivacy.com/dpo`
+    - `https://eu-fr-south.console.smartglobalprivacy.com/platform`
 
 1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，找到“证书(原始)”对应的“下载”链接，以下载证书并将其保存到计算机上：   
 

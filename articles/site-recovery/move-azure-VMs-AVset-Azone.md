@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3efa8da87ac15495900dd264a9c37143f5e08181
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84699713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135467"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>将 Azure VM 移到可用性区域中
-数据中心发生故障时，Azure 中的可用性区域可帮助保护应用程序和数据。 每个可用性区域都由一个或多个数据中心组成，这些数据中心都配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可帮助保护应用程序和数据。 随着可用性区域的推出，Azure 可为虚拟机 (VM) 的运行时间提供 99.99% 的服务级别协议 (SLA)。 如[支持可用性区域的区域](https://docs.microsoft.com/azure/availability-zones/az-region)中所述，选定区域支持可用性区域。
+数据中心发生故障时，Azure 中的可用性区域可帮助保护应用程序和数据。 每个可用性区域都由一个或多个数据中心组成，这些数据中心都配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可帮助保护应用程序和数据。 随着可用性区域的推出，Azure 可为虚拟机 (VM) 的运行时间提供 99.99% 的服务级别协议 (SLA)。 如[支持可用性区域的区域](../availability-zones/az-region.md)中所述，选定区域支持可用性区域。
 
 如果你将 VM 作为单一实例部署到了特定的区域，并想要通过将这些 VM 移到可用性区域来提高可用性，可以使用 Azure Site Recovery。 此操作可进一步划分为：
 
@@ -23,11 +23,11 @@ ms.locfileid: "84699713"
 - 将可用性集中的 VM 移到目标区域中的可用性区域
 
 > [!IMPORTANT]
-> 目前，Azure Site Recovery 支持将 VM 从一个区域移到另一个区域。 仅支持在几个区域的区域内跨地区移动。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)。
+> 目前，Azure Site Recovery 支持将 VM 从一个区域移到另一个区域。 仅支持在几个区域的区域内跨地区移动。 [了解详细信息](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)。
 
 ## <a name="check-prerequisites"></a>检查先决条件
 
-- 检查目标区域是否[支持可用性区域](https://docs.microsoft.com/azure/availability-zones/az-region)。 检查所选的[源区域/目标区域组合是否受支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)。 在目标区域方面做出明智的决策。
+- 检查目标区域是否[支持可用性区域](../availability-zones/az-region.md)。 检查所选的[源区域/目标区域组合是否受支持](./azure-to-azure-support-matrix.md#region-support)。 在目标区域方面做出明智的决策。
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看[支持限制和要求](azure-to-azure-support-matrix.md)。
 - 检查帐户权限。 如果你刚刚创建了免费 Azure 帐户，那么你就是订阅的管理员。 如果你不是订阅管理员，请与管理员一起分配所需的权限。 若要为 VM 启用复制，并使用 Azure Site Recovery 将数据最终复制到目标，必须拥有：
@@ -41,7 +41,7 @@ ms.locfileid: "84699713"
 
 ## <a name="prepare-the-source-vms"></a>准备源 VM
 
-1. 若要使用 Site Recovery 将 VM 移到可用性区域，这些 VM 应使用托管磁盘。 可将使用非托管磁盘的现有 Windows VM 转换为使用托管磁盘。 遵循[将 Windows 虚拟机从非托管磁盘转换为托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)中的步骤。 确保可用性集配置为“托管”。
+1. 若要使用 Site Recovery 将 VM 移到可用性区域，这些 VM 应使用托管磁盘。 可将使用非托管磁盘的现有 Windows VM 转换为使用托管磁盘。 遵循[将 Windows 虚拟机从非托管磁盘转换为托管磁盘](../virtual-machines/windows/convert-unmanaged-to-managed-disks.md)中的步骤。 确保可用性集配置为“托管”。
 2. 检查要移动的 Azure VM 上是否存在所有最新的根证书。 如果没有最新的根证书，则会出于安全约束的原因，无法实现将数据复制到目标区域。
 
 3. 对于 Windows VM，请在 VM 上安装所有最新的 Windows 更新，使所有受信任的根证书位于该计算机上。 在离线环境中，请遵循组织的标准 Windows 更新和证书更新过程。
@@ -66,16 +66,16 @@ ms.locfileid: "84699713"
 
      以下文档介绍了如何根据源 VM 配置创建最常用的相关网络资源。
 
-    - [网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer)
+    - [网络安全组](../virtual-network/manage-network-security-group.md)
+    - [负载均衡器](../load-balancer/index.yml)
     - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   对于其他任何网络组件，请参阅网络[文档](https://docs.microsoft.com/azure/?pivot=products&panel=network)。
+   对于其他任何网络组件，请参阅网络[文档](../index.yml?pivot=products&panel=network)。
 
     > [!IMPORTANT]
-    > 确保在目标中使用区域冗余的负载均衡器。 可在[标准负载均衡器和可用性区域](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)中了解详细信息。
+    > 确保在目标中使用区域冗余的负载均衡器。 可在[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)中了解详细信息。
 
-4. 若要在最终转接到目标区域之前测试配置，请在目标区域中手动[创建非生产网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 之所以建议此方法，是因为这可以尽量减少对生产环境造成的干扰。
+4. 若要在最终转接到目标区域之前测试配置，请在目标区域中手动[创建非生产网络](../virtual-network/quick-create-portal.md)。 之所以建议此方法，是因为这可以尽量减少对生产环境造成的干扰。
 
 ## <a name="enable-replication"></a>启用复制
 以下步骤引导你使用 Azure Site Recovery 将数据复制到目标区域，最终将其移到可用性区域。
@@ -85,7 +85,7 @@ ms.locfileid: "84699713"
 
 1. 在 Azure 门户中选择“虚拟机”，然后选择要移到可用性区域中的 VM。
 2. 在“操作”中，选择“灾难恢复” 。
-3. 在“配置灾难恢复” > “目标区域”中，选择要复制到的目标区域 。 确保此区域[支持](https://docs.microsoft.com/azure/availability-zones/az-region)可用性区域。
+3. 在“配置灾难恢复” > “目标区域”中，选择要复制到的目标区域 。 确保此区域[支持](../availability-zones/az-region.md)可用性区域。
 
     ![选择目标区域](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -149,5 +149,3 @@ ms.locfileid: "84699713"
 
 > [!div class="nextstepaction"]
 > [在迁移后设置灾难恢复](azure-to-azure-quickstart.md)
-
-

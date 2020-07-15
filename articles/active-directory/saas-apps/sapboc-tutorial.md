@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dbe6aed8ae0403f6ab4a7f9e0ba8b9a2c5d61617
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68347796"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168552"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>教程：将 SAP Analytics Cloud 与 Azure Active Directory 集成
 
@@ -85,17 +85,13 @@ ms.locfileid: "68347796"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
-    | |
-    |-|-|
-    | `https://<sub-domain>.sapanalytics.cloud/` |
-    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
+    - `https://<sub-domain>.sapanalytics.cloud/`
+    - `https://<sub-domain>.sapbusinessobjects.cloud/`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
-    
-    | |
-    |-|-|
-    | `<sub-domain>.sapbusinessobjects.cloud` |
-    | `<sub-domain>.sapanalytics.cloud` |
+
+    - `<sub-domain>.sapbusinessobjects.cloud`
+    - `<sub-domain>.sapanalytics.cloud`
 
     > [!NOTE] 
     > 这些 URL 中的值仅用于演示。 请使用实际登录 URL 和标识符 URL 来更新这些值。 若要获取登录 URL，请联系 [SAP Analytics Cloud 客户端支持团队](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)。 可以通过从管理员控制台下载 SAP Analytics Cloud 元数据来获取标识符 URL。 本教程后面将对有所解释。

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae7b80fd4d2fcec32bbef5e4cdf18e576412a86
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e3199509b03b058b71b609d276a8d95e8d225175
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74231981"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167753"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sugar CRM 集成
 
@@ -87,18 +87,14 @@ ms.locfileid: "74231981"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<companyname>.sugarondemand.com`|
-    | `https://<companyname>.trial.sugarcrm`|
+    - `https://<companyname>.sugarondemand.com`
+    - `https://<companyname>.trial.sugarcrm`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<companyname>.sugarondemand.com/<companyname>`|
-    | `https://<companyname>.trial.sugarcrm.com/<companyname>`|
-    | `https://<companyname>.trial.sugarcrm.eu/<companyname>`|
+    - `https://<companyname>.sugarondemand.com/<companyname>`
+    - `https://<companyname>.trial.sugarcrm.com/<companyname>`
+    - `https://<companyname>.trial.sugarcrm.eu/<companyname>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [Sugar CRM 客户端支持团队](https://support.sugarcrm.com/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将 AWS VM 迁移到 Azure�
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5d697c2146144ca7f4b9a8739b6863ba31845f4e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102797"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165424"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
 
@@ -77,9 +77,9 @@ ms.locfileid: "86102797"
 
 将“虚拟机参与者”角色分配给 Azure 帐户。 这提供了执行以下操作的权限：
 
-    - 在所选资源组中创建 VM。
-    - 在所选虚拟网络中创建 VM。
-    - 写入 Azure 托管磁盘。 
+- 在所选资源组中创建 VM。
+- 在所选虚拟网络中创建 VM。
+- 写入 Azure 托管磁盘。 
 
 ### <a name="create-an-azure-network"></a>创建 Azure 网络
 

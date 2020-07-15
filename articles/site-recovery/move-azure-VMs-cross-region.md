@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 463bd290c304d9436316c9e08778f37ce8bd0b55
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78303913"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135436"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
 
@@ -35,7 +35,7 @@ ms.locfileid: "78303913"
 ## <a name="prerequisites"></a>先决条件
 
 - 请确保要从中进行移动的源 Azure 区域中包含 Azure VM。 
-- 验证所选的[源区域 - 目标区域组合是否受支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，并慎重选择目标区域。
+- 验证所选的[源区域 - 目标区域组合是否受支持](./azure-to-azure-support-matrix.md#region-support)，并慎重选择目标区域。
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看[支持限制和要求](azure-to-azure-support-matrix.md)。
 - 验证帐户权限。 如果你刚刚创建了免费 Azure 帐户，那么你就是订阅的管理员。  如果你不是管理员，请咨询管理员，以获取所需的权限：
@@ -66,13 +66,13 @@ ms.locfileid: "78303913"
 
    为源 VM 启用复制时，Azure Site Recovery 会自动发现并创建虚拟网络和存储帐户。 你也可以预先创建这些资源，并在执行启用复制的步骤期间将这些资源分配到 VM。 但是，其他任何资源必须在目标区域中手动创建。 请参阅以下文档，根据源 VM 的配置创建最常用的网络资源。
 
-   - [网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-   - [负载均衡器](https://docs.microsoft.com/azure/load-balancer)
+   - [网络安全组](../virtual-network/manage-network-security-group.md)
+   - [负载均衡器](../load-balancer/index.yml)
    - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   对于其他任何网络组件，请参阅 [Azure 网络文档](https://docs.microsoft.com/azure/?pivot=products&panel=network)。 
+   对于其他任何网络组件，请参阅 [Azure 网络文档](../index.yml?pivot=products&panel=network)。 
 
-4. 若要在执行移动之前测试配置，请在目标区域中手动[创建非生产网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 测试设置可以尽量减少对生产环境造成的干扰，也是建议的做法。
+4. 若要在执行移动之前测试配置，请在目标区域中手动[创建非生产网络](../virtual-network/quick-create-portal.md)。 测试设置可以尽量减少对生产环境造成的干扰，也是建议的做法。
     
 ## <a name="copy-data-to-the-target-region"></a>将数据复制到目标区域
 以下步骤使用 Azure Site Recovery 将数据复制到目标区域。
@@ -149,4 +149,3 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 
 > [!div class="nextstepaction"]
 > [在迁移后设置灾难恢复](azure-to-azure-quickstart.md)
-

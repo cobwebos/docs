@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a149527c6e00972991bf0b18e6f7c599799a0c91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d7623373be1aded29cb022f1d5080ed94d96b719
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161034"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Internet Access Administrator 的集成
 
@@ -108,25 +108,21 @@ ms.locfileid: "73161034"
 
     a. 在“标识符”文本框中，根据要求键入 URL： 
 
-    | |
-    |--|
-    | `https://admin.zscaler.net` |
-    | `https://admin.zscalerone.net` |
-    | `https://admin.zscalertwo.net` |
-    | `https://admin.zscalerthree.net` |
-    | `https://admin.zscloud.net` |
-    | `https://admin.zscalerbeta.net` |
+    - `https://admin.zscaler.net`
+    - `https://admin.zscalerone.net`
+    - `https://admin.zscalertwo.net`
+    - `https://admin.zscalerthree.net`
+    - `https://admin.zscloud.net`
+    - `https://admin.zscalerbeta.net`
 
     b. 在“回复 URL”文本框中，根据要求键入 URL： 
 
-    | |
-    |--|
-    | `https://admin.zscaler.net/adminsso.do` |
-    | `https://admin.zscalerone.net/adminsso.do` |
-    | `https://admin.zscalertwo.net/adminsso.do` |
-    | `https://admin.zscalerthree.net/adminsso.do` |
-    | `https://admin.zscloud.net/adminsso.do` |
-    | `https://admin.zscalerbeta.net/adminsso.do` |
+    - `https://admin.zscaler.net/adminsso.do`
+    - `https://admin.zscalerone.net/adminsso.do`
+    - `https://admin.zscalertwo.net/adminsso.do`
+    - `https://admin.zscalerthree.net/adminsso.do`
+    - `https://admin.zscloud.net/adminsso.do`
+    - `https://admin.zscalerbeta.net/adminsso.do`
 
 5. Zscaler Internet Access Administrator 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值  。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮打开“用户属性和声明”对话框    。
 

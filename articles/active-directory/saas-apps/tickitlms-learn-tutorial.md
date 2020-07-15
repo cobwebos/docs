@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5c4cef9c2334328dc1291db95cfed3994d1709
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 0c860d821ff67b5eb95735e33dd0fda267f9c3bf
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80669013"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167328"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tickitlms-learn"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TickitLMS Learn 的集成
 
@@ -95,13 +95,13 @@ ms.locfileid: "80669013"
 
 1. 除上述属性以外，TickitLMS Learn 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
     
-    | 名称 |   |  源属性|
-    | ---------------| --------------- | --------- |
-    | samlaccount |  | user.samlaccount |
-    | employeeid |  | user.employeeid |
-    | 角色 (role) |  | user.role |
-    | department |  | user.department |
-    | reportsto |  | user.reportsto |
+    | 名称 | 源属性|
+    | ---- | --------------- |
+    | samlaccount | user.samlaccount |
+    | employeeid | user.employeeid |
+    | 角色 (role) | user.role |
+    | department | user.department |
+    | reportsto | user.reportsto |
 
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f081d6b01ffb0b4fc78c23a076c20ff93c483203
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76262106"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166954"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>教程：Azure Active Directory 单一登录 (SSO) 与 uniFLOW Online 的集成
 
@@ -83,23 +83,19 @@ ms.locfileid: "76262106"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
-    | | |
-    |-|-|
-    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
-    | `https://<tenant_domain_name>.us.uniflowonline.com`|
-    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
-    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
-    | `https://<tenant_domain_name>.au.uniflowonline.com`|
+    - `https://<tenant_domain_name>.eu.uniflowonline.com`
+    - `https://<tenant_domain_name>.us.uniflowonline.com`
+    - `https://<tenant_domain_name>.sg.uniflowonline.com`
+    - `https://<tenant_domain_name>.jp.uniflowonline.com`
+    - `https://<tenant_domain_name>.au.uniflowonline.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
 
-    | | |
-    |-|-|
-    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
-    | `https://<tenant_domain_name>.us.uniflowonline.com`|
-    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
-    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
-    | `https://<tenant_domain_name>.au.uniflowonline.com`|
+    - `https://<tenant_domain_name>.eu.uniflowonline.com`
+    - `https://<tenant_domain_name>.us.uniflowonline.com`
+    - `https://<tenant_domain_name>.sg.uniflowonline.com`
+    - `https://<tenant_domain_name>.jp.uniflowonline.com`
+    - `https://<tenant_domain_name>.au.uniflowonline.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [uniFLOW Online 客户端支持团队](mailto:support@nt-ware.com)获取这些值。 还可参考 Azure 门户的“基本 SAML 配置”部分中显示的模式，或者参考你的 uniFLOW Online 租户中显示的回复 URL。 

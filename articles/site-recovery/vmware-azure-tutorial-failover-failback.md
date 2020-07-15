@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
-ms.openlocfilehash: 8501bb1a998eb08984a118bfa5d52d1e3f3e4f84
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75498082"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131992"
 ---
 # <a name="fail-over--vmware-vms"></a>对 VMware VM 进行故障转移
 
@@ -87,7 +87,7 @@ ms.locfileid: "75498082"
 
 ## <a name="connect-to-failed-over-vm"></a>连接到故障转移的 VM
 
-1. 如果想在故障转移后通过使用远程桌面协议 (RDP) 和安全外壳 (SSH) 连接到 Azure VM，[请验证是否符合要求]((ailover-failback-overview.md#connect-to-azure-after-failover)。
+1. 如果想在故障转移后通过使用远程桌面协议 (RDP) 和安全外壳 (SSH) 连接到 Azure VM，请[验证是否符合要求](failover-failback-overview.md#connect-to-azure-after-failover)。
 2. 故障转移后，请转到该 VM，并通过与它建立[连接](../virtual-machines/windows/connect-logon.md)来进行验证。
 3. 若要在故障转移后使用不同的恢复点，请使用“更改恢复点”。  在下一步骤中提交故障转移后，此选项不再可用。
 4. 验证后，选择“提交”以确认故障转移后的 VM 恢复点  。

@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将物理计算机迁移到 
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: dbb7737d59f48cadc645be990634bb5cb0cda251
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 16145c5d8b2414750b6eff9669fa7cd61eb482f5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116091"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165390"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -69,9 +69,9 @@ ms.locfileid: "86116091"
 
 将“虚拟机参与者”角色分配给 Azure 帐户。 这提供了执行以下操作的权限：
 
-    - 在所选资源组中创建 VM。
-    - 在所选虚拟网络中创建 VM。
-    - 写入 Azure 托管磁盘。 
+- 在所选资源组中创建 VM。
+- 在所选虚拟网络中创建 VM。
+- 写入 Azure 托管磁盘。 
 
 ### <a name="create-an-azure-network"></a>创建 Azure 网络
 

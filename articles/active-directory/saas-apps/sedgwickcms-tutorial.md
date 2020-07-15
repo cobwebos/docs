@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94012a6830e59658562ed3e7485dad698f74974f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 155222dcbc3fed33ba4f9098986e3fb4f74a3dc3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67091121"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168773"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>教程：Azure Active Directory 与 Sedgwick CMS 集成
 
@@ -108,17 +108,13 @@ ms.locfileid: "67091121"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `expresspreview.sedgwickcms.net/voe/sso` |
-    | `claimlookup.com/Voe/sso` |
+    - `expresspreview.sedgwickcms.net/voe/sso`
+    - `claimlookup.com/Voe/sso`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<subdomain>.sedgwickcms.net/voe/sso` |
-    | `https://claimlookup.com/Voe/sso` |
+    - `https://<subdomain>.sedgwickcms.net/voe/sso`
+    - `https://claimlookup.com/Voe/sso`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 要获取这些值，请联系 [Sedgwick CMS 客户端支持团队](https://www.sedgwick.com/help)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
