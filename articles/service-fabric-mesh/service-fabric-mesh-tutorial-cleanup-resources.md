@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b8ce3c795bc9ad212331ce1c1f413fe7fd6da909
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75351878"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246737"
 ---
 # <a name="tutorial-remove-azure-resources"></a>教程：删除 Azure 资源
 
@@ -62,4 +62,4 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 * 浏览[投票应用示例](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp)，查看有关服务到服务通信的另一个示例
 * 要详细了解 Service Fabric 资源模型，请参阅 [Service Fabric 网格资源模型](service-fabric-mesh-service-fabric-resources.md)。
 * 若要详细了解 Service Fabric 网格，请阅读 [Service Fabric 网格概述](service-fabric-mesh-overview.md)。
-* 了解 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)
+* 了解 [Cloud Shell](../cloud-shell/overview.md)

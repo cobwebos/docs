@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 4a8353cf38c63e2642c7f76d05b4b7a2764e0706
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2c02f6858711173a2ddd2217bbb9e241a5a2109d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117374"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201454"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>快速入门：将 Azure Redis 缓存与 .NET Core 应用配合使用
 
@@ -315,6 +315,7 @@ dotnet run
 > [!div class="nextstepaction"]
 > [创建使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
 
+希望优化并节省云支出？
 
-
-
+> [!div class="nextstepaction"]
+> [使用成本管理开始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

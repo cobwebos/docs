@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
-ms.openlocfilehash: 4778a4089c7374c1ac6a9312064dcfb1e0325b63
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 3c331faad3c49b91defc9f081352eda80c701b4a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478491"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205389"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>教程：使用适用于 C# 的必应视觉搜索 SDK 裁剪图像
 
@@ -81,8 +81,8 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 完整的应用程序返回：
 
-|ActionType  |代码  | |
-|---------|---------|---------|
+|ActionType  |代码  |
+|---------|---------|
 |PagesIncluding WebSearchURL     |         |
 |MoreSizes WebSearchURL     |         |  
 |VisualSearch WebSearchURL    |         |

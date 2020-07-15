@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75646001"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244984"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="create-a-cluster"></a>创建群集
 
-应用程序就绪以后，即可创建 Service Fabric 群集，然后将应用程序部署到群集。 [Service Fabric 群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。
+应用程序就绪以后，即可创建 Service Fabric 群集，然后将应用程序部署到群集。 [Service Fabric 群集](./service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。
 
 在本教程中，请在 Visual Studio IDE 中创建一个新的三节点型测试群集，然后将应用程序发布到该群集。 请参阅[有关创建和管理群集的教程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)，了解如何创建生产群集。 也可通过 [Azure 门户](https://portal.azure.com)、[PowerShel](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)、[Azure CLI](./scripts/cli-create-cluster.md) 脚本或 [Azure 资源管理器模板](service-fabric-tutorial-create-vnet-and-windows-cluster.md)将应用程序部署到此前已创建的现有群集。
 

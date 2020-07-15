@@ -1,16 +1,16 @@
 ---
 title: 优化材料、照明和效果
 description: 修改模型材料和照明。 添加其他效果，如边框和剪切平面。
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0379fe460d2bb90d28999a139e3ca9c8b7110eca
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39560966b542999b2c0c3472075c7497f2146455
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85566160"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207343"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>教程：优化材料、照明和效果
 

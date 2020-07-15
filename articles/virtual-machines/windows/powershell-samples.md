@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 03d27e1e72eaa5f5dee8cfa9062a56c6dd45007a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 712ff713a4aa7c014b14323cea7c0d6be1c9f53c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100016"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202228"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虚拟机 PowerShell 示例
 
 下表提供了用于创建和管理 Windows 虚拟机 (VM) 的 PowerShell 脚本示例的链接。
 
-| | |
+| Script | 说明 |
 |---|---|
 |**创建虚拟机**||
 | [快速创建虚拟机](./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 根据简单的提示创建资源组、虚拟机和所有相关资源。|

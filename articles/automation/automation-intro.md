@@ -7,12 +7,12 @@ keywords: azure 自动化, DSC, powershell, 状态配置, 更新管理, 更改�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 30cfadcec1f0c28a463740ddaefa8fc76f04af3f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835268"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186174"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自动化简介
 
@@ -53,14 +53,14 @@ Azure 自动化提供许多共享功能，包括共享资源、基于角色的�
 
 Azure 自动化包含一组共享资源，方便用户大规模地完成环境的自动化操作和配置。
 
-* **[计划](automation-schedules.md)** - 在预定义的时间触发自动化操作。
-* **[模块](automation-integration-modules.md)** - 管理 Azure 和其他系统。 可将模块导入到适用于 Microsoft、第三方、社区或自定义 cmdlet 和 DSC 资源的自动化帐户中。
+* **[计划](./shared-resources/schedules.md)** - 在预定义的时间触发自动化操作。
+* **[模块](./shared-resources/modules.md)** - 管理 Azure 和其他系统。 可将模块导入到适用于 Microsoft、第三方、社区或自定义 cmdlet 和 DSC 资源的自动化帐户中。
 * **[模块库](automation-runbook-gallery.md)** - 支持与 PowerShell 库的本机集成，使你能够查看 Runbook 并将其导入自动化帐户。 利用该库可以快速开始从 PowerShell 库与 Microsoft 脚本中心集成和创作流程。
 * **[Python 2 包](python-packages.md)** - 支持用于自动化帐户的 Python 2 Runbook。
-* **[凭据](automation-credentials.md)** - 安全地存储可供 Runbook 和配置在运行时使用的敏感信息。
+* **[凭据](./shared-resources/credentials.md)** - 安全地存储可供 Runbook 和配置在运行时使用的敏感信息。
 * **[连接](automation-connections.md)** - 存储用于连接到系统的常用信息的名称/值对。 模块作者将在 Runbook 和配置中定义连接，以便在运行时使用。
-* **[证书](automation-certificates.md)** - 定义要在身份验证中使用的信息，以及用于保护由 Runbook 或 DSC 配置在运行时访问的已部署资源的信息。 
-* **[变量](automation-variables.md)** - 保存可在不同的 Runbook 和配置中使用的内容。 可以更改变量值，而无需修改引用这些值的 Runbook 或配置。
+* **[证书](./shared-resources/certificates.md)** - 定义要在身份验证中使用的信息，以及用于保护由 Runbook 或 DSC 配置在运行时访问的已部署资源的信息。 
+* **[变量](./shared-resources/variables.md)** - 保存可在不同的 Runbook 和配置中使用的内容。 可以更改变量值，而无需修改引用这些值的 Runbook 或配置。
 
 ### <a name="role-based-access-control"></a>基于角色的访问控制
 

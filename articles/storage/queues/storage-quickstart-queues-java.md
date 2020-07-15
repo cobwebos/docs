@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: a4c873e7ec1867b6ce53cd9f4c3d5c54242a6f16
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729849"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232332"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入门：适用于 Java 的 Azure 队列存储客户端库 v12
 
@@ -167,7 +167,7 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 * [获取连接字符串](#get-the-connection-string)
 * [创建队列](#create-a-queue)
 * [向队列添加消息](#add-messages-to-a-queue)
-* [查看队列中的消息](#peek-at-messages -in-a-queue)
+* [查看队列中的消息](#peek-at-messages-in-a-queue)
 * [更新队列中的消息](#update-a-message-in-a-queue)
 * [接收和删除队列中的消息](#receive-and-delete-messages-from-a-queue)
 * [删除队列](#delete-a-queue)

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75494937"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248384"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
@@ -171,7 +171,7 @@ Result
 ## <a name="retrieve-credentials-for-the-registry"></a>检索注册表凭据
 
 > [!IMPORTANT]
-> 对于生产方案，建议不要启用 ACR 实例上的管理员用户。 此处这样做是为了方便起见。 对于生产方案，请在生产方案中使用[服务主体](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal)进行用户和系统身份验证。
+> 对于生产方案，建议不要启用 ACR 实例上的管理员用户。 此处这样做是为了方便起见。 对于生产方案，请在生产方案中使用[服务主体](../container-registry/container-registry-auth-service-principal.md)进行用户和系统身份验证。
 
 若要从使用模板创建的注册表中部署容器实例，必须在部署期间提供注册表凭据。 首先，使用以下命令对注册表启用管理员用户：
 
@@ -191,7 +191,7 @@ az acr credential show --name myContainerRegistry --query "passwords[0].value"
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>下载并浏览模板和参数文件
 
-Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资源管理器 (RM) 模板进行部署和管理。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Azure 资源管理器概述](/azure/azure-resource-manager/resource-group-overview)以及[了解 RM 模板的结构和语法](/azure/azure-resource-manager/resource-group-authoring-templates)。
+Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资源管理器 (RM) 模板进行部署和管理。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)以及[了解 RM 模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。
 
 本教程使用待办事项示例作为示例。  下载 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)和 [mesh_rp.windows.parameter.json 参数](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)文件，而不是生成新的模板和参数文件。
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75613952"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245375"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>教程：在 Service Fabric 独立群集上部署应用程序
 
@@ -52,7 +52,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 4. 在解决方案资源管理器中右键单击 `Voting` 应用程序项目，选择“发布” 
 
-5. 选择**连接终结点**的下拉列表，并输入群集中某个节点的公共 DNS 名称。  例如，`ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 请注意，在 Azure 中，不会自动提供完全限定的域名 (FQDN)，但可以[在“VM 概述”页中轻松设置](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)。
+5. 选择**连接终结点**的下拉列表，并输入群集中某个节点的公共 DNS 名称。  例如，`ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 请注意，在 Azure 中，不会自动提供完全限定的域名 (FQDN)，但可以[在“VM 概述”页中轻松设置](../virtual-machines/linux/portal-create-fqdn.md)。
 
 6. 打开首选浏览器并键入群集地址（连接终结点，此应用在端口 8080 上部署 - 例如，ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080）。
 

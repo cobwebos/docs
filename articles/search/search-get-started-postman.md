@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: c68c813c9c9ecdcb7c7b75102940aa1f1a57b4f0
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 07c5e73ecd53bad0e5d5ec7959b288e0b6237a87
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562161"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171918"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -57,14 +57,16 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 使用任一工具都需要选择一个命令（GET、POST、PUT 等）并提供 URL 终结点；对于某些任务，需要在请求正文中提供 JSON。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为一个有效值。 添加 `$select=name` 以便仅返回每个索引的名称。 
 
-    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2020-06-30&$select=name
+> `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2020-06-30&$select=name`
 
 请注意 HTTPS 前缀、服务的名称、对象（在本例中为索引集合）的名称和 [api-version](search-api-versions.md)。 api-version 是必需的小写字符串；对于当前版本，它指定为 `?api-version=2020-06-30`。 API 版本定期更新。 将 api-version 包括在每个请求中即可完全控制要使用的版本。  
 
 请求标头组合包括两个元素：内容类型，以及用于在 Azure 认知搜索中进行身份验证的 api-key。 将管理员 API 密钥 (YOUR-AZURE-SEARCH-ADMIN-API-KEY) 替换为一个有效值。 
 
-    api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
-    Content-Type: application/json
+```http
+api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
+Content-Type: application/json
+```
 
 在 Postman 中，构建如以下屏幕截图所示的请求。 选择“GET”作为谓词，提供 URL，然后单击“发送”。   此命令连接到 Azure 认知搜索，读取索引集合，并在成功连接后返回 HTTP 状态代码 200。 如果服务已有索引，则响应还会包含索引定义。
 

@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: e6fc57a1e0d8988666dd4fe1391e157a2a15f682
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: bd2f8005300aeb77a88be2609246f2d760154e36
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196814"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231992"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>使用 CLI 监视和缩放 Azure SQL 数据库中的单一数据库
 
@@ -57,7 +57,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| | |
+| Script | 说明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | 服务器命令。 |
 | [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | 显示数据库的大小使用情况信息。 |

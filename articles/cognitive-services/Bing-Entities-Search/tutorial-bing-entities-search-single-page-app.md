@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: a376c5d223121774b6c707b3bdc8edce42649e42
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800051"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184134"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 
 必应实体搜索 API 用于在 Web 中搜索实体和场所的信息。  可以在给定查询中请求一种或两种结果。 场所和实体的定义在下面提供。
 
-|||
+| 结果 | 说明 |
 |-|-|
 |实体|按名称查找的知名人物、场所和事物|
 |场所|按名称或类型查找的餐馆、酒店和其他本地商业场所（例如，意大利餐馆）|
@@ -141,7 +141,7 @@ function getSearchSubscriptionKey() {
 
 HTML 表单包括以下控件：
 
-| | |
+| 控制 | 说明 |
 |-|-|
 |`where`|用于选择市场（位置和语言）进行搜索的下拉菜单。|
 |`query`|用于输入搜索词的文本字段。|
@@ -411,7 +411,7 @@ function handleBingResponse() {
 
 `rankingResponse` 集合中的每个项采用两种不同但却等效的方式来映射实际的搜索结果项。
 
-| | |
+| Item | 说明 |
 |-|-|
 |`id`|`id` 看起来像 URL，但不应将其用于链接。 排名结果的 `id` 类型与答案集合中某个搜索结果项的 `id` 匹配，或者与整个答案集合（例如 `Entities`）匹配。
 |`answerType`<br>`resultIndex`|`answerType` 是指包含结果的顶级答案集合（例如 `Entities`）。 `resultIndex` 是指结果在该集合中的索引。 如果省略 `resultIndex`，则排名结果指整个集合。
@@ -452,7 +452,7 @@ searchItemRenderers = {
 
 呈现器函数可接受以下参数：
 
-| | |
+| 参数 | 说明 |
 |-|-|
 |`item`|包含项目属性（如其 URL 及其说明）的 JavaScript 对象。|
 |`index`|结果项集合中的结果项的索引。|

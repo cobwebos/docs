@@ -3,7 +3,7 @@ title: Angular 单页应用教程 - Azure
 titleSuffix: Microsoft identity platform
 description: 了解 Angular SPA 应用程序如何才能从 Microsoft 标识平台终结点调用需要访问令牌的 API。
 services: active-directory
-author: hahamil
+author: hamiltonha
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322764"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231686"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教程：从 Angular 单页应用程序将用户登录并调用 Microsoft Graph API
 
@@ -51,7 +51,7 @@ ms.locfileid: "84322764"
 
 ## <a name="prerequisites"></a>先决条件
 
-要运行本教程，需要：
+若要运行本教程，需要：
 
 * 本地 Web 服务器，例如 [Node.js](https://nodejs.org/en/download/)。 本教程中的说明基于 Node.js。
 * 集成开发环境 (IDE)（例如 [Visual Studio Code](https://code.visualstudio.com/download)），用于编辑项目文件。
@@ -138,7 +138,7 @@ ng generate component page-name                  # To add a new page (such as a 
 3. 将以下 import 语句添加到 `src/app/app.component.ts` 的顶部：
 
     ```javascript
-    import { MsalService } from '@azure/msal-angular';
+    import { MsalService, BroadcastService } from '@azure/msal-angular';
     import { Component, OnInit } from '@angular/core';
     ```
 ## <a name="sign-in-a-user"></a>将用户登录
@@ -148,6 +148,8 @@ ng generate component page-name                  # To add a new page (such as a 
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
+    
+    ngOnInit() { }
 
     login() {
         const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;

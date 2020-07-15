@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: tracking-python
-ms.openlocfilehash: 6621967584ee79dd514b6d9d4a9d0e2d240e7905
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: b70ac801765461401a7bfa1d2f251fb41176dccb
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608105"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232757"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 
@@ -104,7 +104,7 @@ Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提�
 
 2. 用于激活虚拟环境的命令根据平台/shell 而异：   
 
-   | 平台 | Shell | Command |
+   | 平台 | Shell | 命令 |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
    | Windows | bash | `source venv/Scripts/activate` |
@@ -152,7 +152,7 @@ Requests 是用于发送 HTTP 1.1 请求的常用模块。 无需手动将查询
    export FLASK_APP=app.py
    ```
 
-   Windows：
+   **Windows**：
    ```
    set FLASK_APP=app.py
    ```
@@ -475,7 +475,7 @@ flask run
 
 ## <a name="analyze-sentiment"></a>分析情绪
 
-[文本分析 API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) 可用于执行情绪分析、从文本中提取关键短语，或检测源语言。 在此应用中，我们将使用情绪分析来确定提供的文本是积极的、中性的还是消极的。 API 将返回介于 0 与 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。
+[文本分析 API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) 可用于执行情绪分析、从文本中提取关键短语，或检测源语言。 在此应用中，我们将使用情绪分析来确定提供的文本是积极的、中性的还是消极的。 该 API 返回介于 0 与 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。
 
 在本部分，你将执行以下几项操作：
 
@@ -778,7 +778,7 @@ flask run
        <option value="(zh-CN, Kangkang, Apollo)">Chinese (Mainland) | Male | Kangkang, Apollo</option>
        <option value="(zh-HK, Tracy, Apollo)">Chinese (Hong Kong)| Female | Tracy, Apollo</option>
        <option value="(zh-HK, Danny, Apollo)">Chinese (Hong Kong) | Male | Danny, Apollo</option>
-       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
+       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yating, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
        <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
@@ -798,7 +798,7 @@ flask run
        <option value="(it-IT, Cosimo, Apollo)">Italian | Male | Cosimo, Apollo</option>
        <option value="(ja-JP, Ichiro, Apollo)">Japanese | Male | Ichiro</option>
        <option value="(ja-JP, HarukaRUS)">Japanese | Female | HarukaRUS</option>
-       <option value="(ko-KR, HeamiRUS)">Korean | Female | Haemi</option>
+       <option value="(ko-KR, HeamiRUS)">Korean | Female | Heami</option>
        <option value="(pt-BR, HeloisaRUS)">Portuguese (Brazil) | Female | HeloisaRUS</option>
        <option value="(pt-BR, Daniel, Apollo)">Portuguese (Brazil) | Male | Daniel, Apollo</option>
        <option value="(pt-PT, HeliaRUS)">Portuguese (Portugal) | Female | HeliaRUS</option>
@@ -941,7 +941,7 @@ flask run
    });
    ```
 
-### <a name="test-your-app"></a>测试应用
+### <a name="test-your-app"></a>测试应用程序
 
 让我们在应用中测试语音合成。
 

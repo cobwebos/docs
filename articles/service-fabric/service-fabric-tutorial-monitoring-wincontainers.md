@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: eeb279892f987ed1f26ced97ab267e8140ccb20e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a3a5211864c4cbadc03bbc77bfef2204f6c2ccf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614054"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244797"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>教程：使用 Azure Monitor 日志监视 Service Fabric 上的 Windows 容器
 
@@ -37,7 +37,7 @@ ms.locfileid: "75614054"
 如果使用了本教程第一部分中[提供的模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure)，则它应包含常规 Service Fabric Azure 资源管理器模板的下列附加件。 如果拥有自己的群集，并且想要对它进行设置，以便使用 Azure Monitor 日志监视容器：
 
 * 在资源管理器模板中进行以下更改。
-* 使用 PowerShell 部署它，以通过[部署模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)升级群集。 Azure 资源管理器会确认此资源的存在，以将它作为升级内容推出。
+* 使用 PowerShell 部署它，以通过[部署模板](./service-fabric-cluster-creation-via-arm.md)升级群集。 Azure 资源管理器会确认此资源的存在，以将它作为升级内容推出。
 
 ### <a name="adding-azure-monitor-logs-to-your-cluster-template"></a>向群集模板添加 Azure Monitor 日志
 
@@ -233,6 +233,6 @@ ms.locfileid: "75614054"
 至此，你已设置对容器化应用程序的监视，接下来请尝试以下操作：
 
 * 按照与上述步骤类似的步骤操作，为 Linux 群集设置 Azure Monitor 日志。 请参考[此模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS)，对资源管理器模板进行更改。
-* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../log-analytics/log-analytics-alerts.md)。
+* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../azure-monitor/platform/alerts-overview.md)。
 * 浏览 Service Fabric 的[性能计数器建议](service-fabric-diagnostics-event-generation-perf.md)列表，以为群集配置它们。
-* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能。

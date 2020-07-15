@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 3cd5db3736d5eda88e7cad7bda1966efb2b00977
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 53031efa831f788fe0fe58146496b427f4cfb4db
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744735"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185528"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>教程：创建图形 Runbook
 
@@ -30,7 +30,7 @@ ms.locfileid: "83744735"
 要完成本教程，需要以下各项：
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [自动化帐户](../automation-offering-get-started.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。
+* [自动化帐户](../index.yml) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。
 * Azure 虚拟机。 由于需要停止并启动此虚拟机，因此它不应当是生产 VM。
 
 ## <a name="step-1---create-runbook"></a>步骤 1 - 创建 Runbook
@@ -146,7 +146,7 @@ ms.locfileid: "83744735"
 
 ## <a name="step-6---add-authentication"></a>步骤 6 - 添加身份验证
 
-现已创建一个变量来保存订阅 ID，接下来可以配置 Runbook，以使用订阅的运行方式凭据进行身份验证。 为此，可将 Azure 运行方式连接添加为资产。 此外，必须将 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) cmdlet 和 [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) cmdlet 添加到画布。
+现已创建一个变量来保存订阅 ID，接下来可以配置 Runbook，以使用订阅的运行方式凭据进行身份验证。 为此，可将 Azure 运行方式连接添加为资产。 此外，必须将 [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) cmdlet 和 [Set-AzContext](/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) cmdlet 添加到画布。
 
 >[!NOTE]
 >对于 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount` 的别名。 请注意，这些别名不适用于图形 Runbook。 图形 Runbook 只能使用 `Connect-AzAccount` 本身。
@@ -213,7 +213,7 @@ ms.locfileid: "83744735"
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>步骤 7 - 添加用于启动虚拟机的活动
 
-现在，必须添加一个 `Start-AzVM` 活动来启动虚拟机。 可以选取 Azure 订阅中的任何 VM，但暂时请在 [Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm?view=azps-3.5.0) cmdlet 中对 VM 名称进行硬编码。
+现在，必须添加一个 `Start-AzVM` 活动来启动虚拟机。 可以选取 Azure 订阅中的任何 VM，但暂时请在 [Start-AzVM](/powershell/module/az.compute/start-azvm?view=azps-3.5.0) cmdlet 中对 VM 名称进行硬编码。
 
 1. 在“库”控件的搜索字段中，键入 `Start-Az`。
 
@@ -270,7 +270,7 @@ Runbook 当前会启动资源组中为 `Start-AzVM` cmdlet 指定的 VM。 如�
 
 ## <a name="step-9---create-a-conditional-link"></a>步骤 9 - 创建条件链接
 
-现在可以修改该 Runbook，使之仅在 VM 尚未启动的情况下尝试启动该 VM。 为此，可以添加一个 [Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) cmdlet 来检索 VM 的实例级状态。 然后，可以添加名为 `Get Status` 的 PowerShell 工作流代码模块，并使用 PowerShell 代码片段来确定 VM 状态是“正在运行”还是“已停止”。 仅当当前运行状态为“已停止”时，`Get Status` 模块中的条件链接才运行 `Start-AzVM`。 在此过程的最后，Runbook 将使用 `Write-Output` cmdlet 输出一条消息，告知 VM 是否已成功启动。
+现在可以修改该 Runbook，使之仅在 VM 尚未启动的情况下尝试启动该 VM。 为此，可以添加一个 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) cmdlet 来检索 VM 的实例级状态。 然后，可以添加名为 `Get Status` 的 PowerShell 工作流代码模块，并使用 PowerShell 代码片段来确定 VM 状态是“正在运行”还是“已停止”。 仅当当前运行状态为“已停止”时，`Get Status` 模块中的条件链接才运行 `Start-AzVM`。 在此过程的最后，Runbook 将使用 `Write-Output` cmdlet 输出一条消息，告知 VM 是否已成功启动。
 
 1. 在图形编辑器中打开“MyFirstRunbook-Graphical”。
 
@@ -354,5 +354,4 @@ Runbook 当前会启动资源组中为 `Start-AzVM` cmdlet 指定的 VM。 如�
 * 若要详细了解图形创作，请参阅[在 Azure 自动化中创作图形](../automation-graphical-authoring-intro.md)。
 * 若要开始使用 PowerShell Runbook，请参阅[创建 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅[创建 PowerShell 工作流 Runbook](automation-tutorial-runbook-textual.md)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

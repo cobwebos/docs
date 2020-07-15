@@ -7,12 +7,12 @@ keywords: dsc, 配置, 自动化
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 28e8f921fa7620d1fec7dec1788ed769026624d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836713"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186072"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 VM
 
@@ -23,7 +23,7 @@ ms.locfileid: "83836713"
 若要完成本快速入门，你需要：
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/)。
-* 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)。
+* 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](./manage-runas-account.md)。
 * 运行 Red Hat Enterprise Linux、CentOS 或 Oracle Linux 的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Linux 虚拟机](../virtual-machines/linux/quick-create-portal.md)
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -31,7 +31,7 @@ ms.locfileid: "83836713"
 
 ## <a name="enable-a-virtual-machine"></a>启用一个虚拟机
 
-可以通过多种不同的方法启用用于 State Configuration 功能的计算机。 本快速入门介绍如何使用自动化帐户为 VM 启用此功能。 若要详细了解如何使用不同的方法为计算机启用 State Configuration，请阅读[启用通过 Azure 自动化 State Configuration 执行管理任务的计算机](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)。
+可以通过多种不同的方法启用用于 State Configuration 功能的计算机。 本快速入门介绍如何使用自动化帐户为 VM 启用此功能。 若要详细了解如何使用不同的方法为计算机启用 State Configuration，请阅读[启用通过 Azure 自动化 State Configuration 执行管理任务的计算机](./automation-dsc-onboarding.md)。
 
 1. 在 Azure 门户的左窗格中，选择“自动化帐户”。 如果该选项未显示在左侧窗格中，请单击“所有服务”，然后在出现的视图中进行搜索。
 1. 在列表中选择一个自动化帐户。
@@ -39,7 +39,7 @@ ms.locfileid: "83836713"
 2. 单击“添加”以打开“VM 选择”页。
 3. 查找要为其启用 DSC 的虚拟机。 可以使用搜索栏和筛选器选项来查找特定的虚拟机。
 4. 单击该虚拟机，然后单击“连接”。
-5. 选择适用于虚拟机的 DSC 设置。 如果已准备好一个配置，可将其指定为 `Node Configuration Name`。 可以将[配置模式](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig)设置为控制计算机的配置行为。
+5. 选择适用于虚拟机的 DSC 设置。 如果已准备好一个配置，可将其指定为 `Node Configuration Name`。 可以将[配置模式](/powershell/scripting/dsc/managing-nodes/metaConfig)设置为控制计算机的配置行为。
 6. 单击“确定”。 将 DSC 扩展部署到虚拟机时，状态将显示为 `Connecting`。
 
 ![启用用于 DSC 的 Azure VM](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -57,7 +57,7 @@ ms.locfileid: "83836713"
 
 ## <a name="import-the-configuration"></a>导入配置
 
-本快速入门使用 DSC 配置在计算机上配置 Apache HTTP Server、MySQL 和 PHP。 参阅 [DSC 配置](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations)。
+本快速入门使用 DSC 配置在计算机上配置 Apache HTTP Server、MySQL 和 PHP。 参阅 [DSC 配置](/powershell/scripting/dsc/configurations/configurations)。
 
 在文本编辑器中键入以下内容，并在本地将文件保存为 AMPServer.ps1。
 
