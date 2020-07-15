@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: b0a9597e370648faab3787218c7d038798dbd455
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048114"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251767"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>适用于 Azure Kubernetes 的部署中心
 
@@ -34,7 +34,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在 Azure 门户中菜单栏的右侧选择[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)选项。
+1. 在 Azure 门户中菜单栏的右侧选择[Cloud Shell](../cloud-shell/overview.md)选项。
 
 1. 若要创建 AKS 群集，请运行以下命令：
 
@@ -56,7 +56,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 
    ![设置](media/deployment-center-launcher/settings.png)
 
-1. 选择代码位置并选择“下一步”。  然后选择当前支持的存储库之一： **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** 或 **GitHub**。
+1. 选择代码位置并选择“下一步”。  然后选择当前支持的存储库之一： **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** 或 **GitHub**。
 
     Azure Repos 是可以帮助管理代码的一组版本控制工具。 不管软件项目是大还是小，都应尽早使用版本控制。
 
@@ -77,7 +77,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 
     ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
 
-1. 选择现有的或新建一个容器注册表，然后选择“完成”。  管道会自动创建，并会在 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops) 中将某个生成排入队列。
+1. 选择现有的或新建一个容器注册表，然后选择“完成”。  管道会自动创建，并会在 [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) 中将某个生成排入队列。
 
     Azure Pipelines 是一项云服务，你可以用它来自动生成并测试代码项目，然后将该项目提供给其他用户。 Azure Pipelines 将持续集成和持续交付组合在一起，可以持续且一致地测试并生成代码，并将代码发送给任何目标。
 

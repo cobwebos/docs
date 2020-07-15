@@ -4,12 +4,12 @@ description: 本教程介绍如何横向扩展和缩小 Azure 中的 Service Fab
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611639"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257098"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：缩放 Azure 中的 Service Fabric 群集
 
@@ -38,7 +38,7 @@ ms.locfileid: "85611639"
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安装 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="important-considerations-and-guidelines"></a>重要注意事项和指南
@@ -64,7 +64,7 @@ ms.locfileid: "85611639"
 
 ## <a name="export-the-template-for-the-resource-group"></a>导出资源组的模板
 
-成功创建一个安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)并设置资源组后，导出该资源组的资源管理器模板。 导出模板后，便可自动执行群集及其资源的未来部署，因为模板包含所有完整的基础结构。  有关导出模板的详细信息，请阅读[使用 Azure 门户管理 Azure 资源管理器资源组](/azure/azure-resource-manager/manage-resource-groups-portal)。
+成功创建一个安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)并设置资源组后，导出该资源组的资源管理器模板。 导出模板后，便可自动执行群集及其资源的未来部署，因为模板包含所有完整的基础结构。  有关导出模板的详细信息，请阅读[使用 Azure 门户管理 Azure 资源管理器资源组](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到包含群集的资源组（如果按本教程操作，即为 **sfclustertutorialgroup**）。 
 

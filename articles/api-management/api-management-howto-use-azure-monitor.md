@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982044"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243233"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -43,7 +43,7 @@ ms.locfileid: "84982044"
 
 ## <a name="view-metrics-of-your-apis"></a>查看 API 的指标
 
-API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状态和运行状况。 下面是两个最常用的指标。 有关所有可用指标的列表，请参阅[支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice)。
+API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状态和运行状况。 下面是两个最常用的指标。 有关所有可用指标的列表，请参阅[支持的指标](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)。
 
 * 容量：帮助做出有关升级/降级 APIM 服务的决策。 指标每分钟发出，在报告时反映网关容量。 指标范围为 0-100，是根据 CPU 和内存利用率等网关资源计算的。
 * 请求：帮助分析通过 APIM 服务的 API 流量。 指标每分钟发出一次，并报告网关请求数，其维度包括响应代码、位置、主机名和错误。 

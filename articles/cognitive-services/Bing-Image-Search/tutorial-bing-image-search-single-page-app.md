@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6a88ca1f028efcb3b9614df532b6d2dcc9dcfac8
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 3d4ccc6ecf18eb2eecc3ccc69ed97bf1094b2035
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800898"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206462"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教程：使用必应图像搜索 API 创建单页应用
 
@@ -118,7 +118,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 必应图像搜索 API 提供若干个[筛选器查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)来缩小范围和筛选搜索结果。 此应用程序中的 HTML 表单使用并显示以下参数选项：
 
-|              |                                                                                                                                                                                    |
+| 选项 | 说明 |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `where`      | 用于选择市场（位置和语言）进行搜索的下拉菜单。                                                                                             |
 | `query`      | 用于输入搜索词的文本字段。                                                                                                                                 |

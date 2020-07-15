@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 R 创建机器学习模型
+title: 教程：使用 R 创建机器学习模型（预览版）
 titleSuffix: Azure Machine Learning
 description: 在本教程中，我们将使用 Azure 机器学习 R SDK 创建逻辑回归模型，该模型预测交通事故中的死亡几率。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483374"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134689"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教程：使用 R 创建机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 047c4649da298e1dcb74ec1910a49353d8be534a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711249"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206648"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>教程：通过 NFS 将数据复制到 Azure Data Box Heavy
 
@@ -31,7 +31,7 @@ ms.locfileid: "84711249"
 在开始之前，请确保：
 
 1. 已完成[教程：设置 Azure Data Box Heavy](data-box-heavy-deploy-set-up.md)。
-2. 已收到 Data Box Heavy，并且门户中的订单状态为“已送达”  。
+2. 已收到 Data Box Heavy，并且门户中的订单状态为“已送达”。
 3. 你有一台主机，其中的数据需复制到 Data Box Heavy。 该主机必须
     - 运行[支持的操作系统](data-box-heavy-system-requirements.md)。
     - 连接到高速网络。 为获得最快的复制速度，可以同时利用两个 40-GbE 连接（在每个节点上使用一个）。 如果没有可用的 40-GbE 连接，我们建议至少开通两个 10-GbE 连接（在每个节点上使用一个）。 
@@ -55,7 +55,7 @@ ms.locfileid: "84711249"
 
 下表显示了 Data Box Heavy 上的共享的 UNC 路径，以及数据上传到的 Azure 存储路径 URL。 最终的 Azure 存储路径 URL 可以从 UNC 共享路径派生。
  
-|                   |                                                            |
+| 存储           | UNC 路径                                                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure 块 Blob | <li>UNC 共享路径：`//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure 页 Blob  | <li>UNC 共享路径：`//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -63,11 +63,11 @@ ms.locfileid: "84711249"
 
 如果使用的是 Linux 主机，请执行以下步骤将设备配置为允许访问 NFS 客户端。
 
-1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。  在“NFS 设置”下，单击“NFS 客户端访问”。   
+1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。 在“NFS 设置”下，单击“NFS 客户端访问”。  
 
     ![配置 NFS 客户端访问 1](media/data-box-deploy-copy-data/nfs-client-access.png)
 
-2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。  可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。 
+2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。 可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。
 
     ![配置 NFS 客户端访问 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "84711249"
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
 
-    **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹  。
+    **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹。
 
 ## <a name="copy-data-to-data-box-heavy"></a>将数据复制到 Data Box Heavy
 
@@ -95,7 +95,7 @@ ms.locfileid: "84711249"
 -  在复制数据时，请确保数据大小符合 [Azure 存储和 Data Box Heavy 限制](data-box-heavy-limits.md)中所述的大小限制。 
 - 如果 Data Box Heavy 正在上传的数据同时已由 Data Box Heavy 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 - 我们建议不要同时使用 SMB 和 NFS，也不要将相同的数据复制到 Azure 上的同一个最终目标。 在这种情况下，最终的结果不可确定。
-- **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹  。
+- **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹。
 - 如果从 NFS 共享中将区分大小写的目录和文件名引入到 Data Box Heavy 上的 NFS，请注意以下事项： 
     - 名称将保留大小写。
     - 文件不区分大小写。

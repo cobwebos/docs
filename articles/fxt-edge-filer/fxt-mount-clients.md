@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 43223db298e4ad170ea6d0687a342b3aee35500e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130771"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231346"
 ---
 # <a name="tutorial-mount-the-cluster"></a>教程：装载群集
 
@@ -43,7 +43,7 @@ ms.locfileid: "80130771"
 
 适用于小型安装的更简单方法是在装载客户端时使用脚本分配整个范围内的 IP 地址。
 
-其他负载均衡方法可能适用于大型或复杂系统。 请咨询 Microsoft 代表，或提出[支持请求](fxt-support-ticket.md)以寻求帮助。 （Azure FXT Edge Filer 目前不支持 Azure 负载均衡器。） 
+其他负载均衡方法可能适用于大型或复杂系统。 请咨询 Microsoft 代表，或提出[支持请求](fxt-support-ticket.md)以寻求帮助。 （Azure FXT Edge Filer 目前不支持 Azure 负载均衡器。）
 
 ## <a name="create-the-mount-command"></a>创建装载命令
 
@@ -59,7 +59,7 @@ ms.locfileid: "80130771"
 
 ### <a name="create-the-cluster-path"></a>创建群集路径
 
-群集路径是 vserver IP 地址加上命名空间接合点路径的组合   。 命名空间接合点是[添加存储系统](fxt-add-storage.md#create-a-junction)时定义的虚拟路径。
+群集路径是 vserver IP 地址加上命名空间接合点路径的组合 。 命名空间接合点是[添加存储系统](fxt-add-storage.md#create-a-junction)时定义的虚拟路径。
 
 例如，如果使用 ``/fxt/files`` 作为命名空间路径，则客户端会将 *IP_address*:/fxt/files 装载到其本地载入点。
 
@@ -67,11 +67,11 @@ ms.locfileid: "80130771"
 
 IP 地址是为 vserver 定义的面向客户端的 IP 地址之一。 可在群集控制面板中的两个位置找到面向客户端的 IP 范围：
 
-* VServers 表（仪表板选项卡）  -
+* VServers 表（仪表板选项卡） -
 
   ![控制面板的仪表板选项卡，在图表下方的数据表中选择了 VServer 选项卡，并且带有 IP 地址部分](media/fxt-mount/fxt-ip-addresses-dashboard.png)
 
-* 面向客户端的网络设置页面  -
+* 面向客户端的网络设置页面 -
 
   ![“设置”>“VServer”>“面向客户端的网络”配置页面，在特定虚拟服务器的表的“地址范围”部分周围有一个圆圈](media/fxt-mount/fxt-ip-addresses-settings.png)
 
@@ -93,14 +93,14 @@ IP 地址是为 vserver 定义的面向客户端的 IP 地址之一。 可在群
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| 必需设置 | |
+| 必需设置 | 说明 |
 --- | ---
 ``hard`` | Azure FXT Edge Filer 群集的软装载与应用程序故障和可能的数据丢失相关联。
 ``proto=netid`` | 此选项支持适当处理 NFS 网络错误。
 ``mountproto=netid`` | 此选项支持对装载操作的网络错误进行适当处理。
 ``retry=n`` | 设置 ``retry=30`` 以避免瞬时装载失败。 （建议在前景装载中使用不同的值。）
 
-| 首选设置  | |
+| 首选设置  | 说明 |
 --- | ---
 ``nointr``            | 如果客户端使用支持此选项的早期 OS 内核（2008 年 4 月之前），请使用此选项。 默认选项为“intr”。
 

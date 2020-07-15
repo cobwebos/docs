@@ -4,12 +4,12 @@ description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695278"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259507"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -43,7 +43,7 @@ ms.locfileid: "84695278"
 
 ## <a name="persistent-storage"></a>持久存储
 
-为了通过 Azure 容器实例来检索和持久保存状态，我们提供由 Azure 存储支持的直接[装载 Azure 文件共享](container-instances-mounting-azure-files-volume.md)功能。
+为了通过 Azure 容器实例来检索和持久保存状态，我们提供由 Azure 存储支持的直接[装载 Azure 文件共享](./container-instances-volume-azure-files.md)功能。
 
 ## <a name="linux-and-windows-containers"></a>Linux 和 Windows 容器
 
