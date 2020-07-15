@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 3a7c9f61af0124c656f98b64ba9295bc659c572a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 6edc6facc884fc6469b75b63216d6e5036321ea8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262325"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277815"
 ---
 ## <a name="configure-the-sample-project"></a>配置示例项目
 
@@ -36,7 +36,7 @@ ms.locfileid: "85262325"
 
 接下来，配置 serviceConfig 文件，在生成 SampleClientApp 时将其复制到输出目录 。 为此，请右键单击 serviceConfig.json 文件，然后选择“属性” 。 在“属性”检查器中，将“复制到输出目录”属性的值更改为“如果较新则复制”  。
 
-:::image type="content" source="../articles/digital-twins/media/include-tutorial/copy-config.png" alt-text="Visual Studio 窗口的摘录，其中显示了“解决方案资源管理器”窗格（该窗格中突出显示了 serviceConfig.json）和“属性”窗格（该窗格中将“复制到输出目录”属性设置为“如果较新则复制”）" border="false":::
+:::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Visual Studio 窗口的摘录，其中显示了“解决方案资源管理器”窗格（该窗格中突出显示了 serviceConfig.json）和“属性”窗格（该窗格中将“复制到输出目录”属性设置为“如果较新则复制”）" border="false":::
 
 在 Visual Studio 中将 AdtE2ESample 项目保持在打开状态，以便在本教程中继续使用该项目。
 
