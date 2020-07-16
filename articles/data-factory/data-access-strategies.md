@@ -36,7 +36,7 @@ ms.locfileid: "84247472"
 
 ## <a name="data-access-strategies-through-azure-data-factory"></a>通过 Azure 数据工厂的数据访问策略
 
-* **[受信任的服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure 存储（Blob、ADLS Gen2）支持允许精选受信任 Azure 平台服务安全访问存储帐户的防火墙配置。 受信任的服务强制实施托管标识身份验证，这可以确保其他数据工厂不能连接到此存储，除非使用其托管标识将其列入了执行此操作的白名单。 可在[此博客](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)中找到更多详细信息。 因此，这这种方法非常安全，建议使用。 
+* **[受信任的服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure 存储（Blob、ADLS Gen2）支持允许精选受信任 Azure 平台服务安全访问存储帐户的防火墙配置。 受信任的服务强制实施托管标识身份验证，这可以确保其他数据工厂不能连接到此存储，除非使用其托管标识将其列入了执行此操作的允许列表。 可在[此博客](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)中找到更多详细信息。 因此，这这种方法非常安全，建议使用。 
 * **唯一静态 IP** - 需要设置一个自承载集成运行时，以便获取静态 IP 以建立数据工厂连接器。 此机制可确保阻止来自其他所有 IP 地址的访问。 
 * **[静态 IP 范围](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** - 可以使用 Azure Integration Runtime 的 IP 地址，允许在你的存储（如 S3、Salesforce 等）中列出它。 它肯定会限制可连接到数据存储但又依赖于身份验证/授权规则的 IP 地址。
 * **[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** - 服务标记是来自给定 Azure 服务（例如 Azure 数据工厂）的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量简化网络安全规则的频繁更新。 要将虚拟网络中 IaaS 托管数据存储上的数据访问列入允许列表时，此方法非常有用。

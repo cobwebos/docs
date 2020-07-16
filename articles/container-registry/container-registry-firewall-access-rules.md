@@ -1,6 +1,6 @@
 ---
 title: 防火墙访问规则
-description: 通过允许访问（“列入白名单”）REST API 和数据终结点域名或特定于服务的 IP 地址范围，配置从防火墙后面访问 Azure 容器注册表的规则。
+description: 通过允许访问（“列入允许列表”）REST API 和数据终结点域名或特定于服务的 IP 地址范围，配置从防火墙后面访问 Azure 容器注册表的规则。
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
