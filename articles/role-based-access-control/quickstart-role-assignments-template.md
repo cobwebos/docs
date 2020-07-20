@@ -10,34 +10,34 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: da25f4bc585da26b9765fd36d65a8b5e0689f725
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9320a68684a25949e8a0b4e2c7d72a6267401add
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300658"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252345"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板添加 Azure 角色分配
+# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>快速入门：使用 ARM 模板添加 Azure 角色分配
 
-可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本快速入门中，你将创建资源组并授予用户在资源组中创建和管理虚拟机的访问权限。 本快速入门使用资源管理器模板来授予访问权限。
+可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本快速入门中，你将创建资源组并授予用户在资源组中创建和管理虚拟机的访问权限。 本快速入门使用 Azure 资源管理器模板（ARM 模板）授予访问权限。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-rbac-builtinrole-resourcegroup%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
 若要添加角色分配，必须具有：
 
-* `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
+- 若要添加角色分配，必须指定三个要素：安全主体、角色订阅和范围。 在本快速入门中，安全主体是你或目录中的其他用户，角色定义是[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)，范围是指定的资源组。
 
-## <a name="create-a-role-assignment"></a>创建角色分配
+## <a name="review-the-template"></a>查看模板
 
-若要添加角色分配，必须指定三个要素：安全主体、角色订阅和范围。 在本快速入门中，安全主体是你或目录中的其他用户，角色定义是[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)，范围是指定的资源组。
-
-### <a name="review-the-template"></a>查看模板
-
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)。 该模板具有三个参数和资源部分。 请注意，资源部分包含角色分配的三个要素：安全主体、角色定义和作用域。 
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)。 该模板具有三个参数和资源部分。 请注意，资源部分包含角色分配的三个要素：安全主体、角色定义和作用域。
 
 :::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
 
@@ -45,7 +45,7 @@ ms.locfileid: "84300658"
 
 - [Microsoft.Authorization/roleAssignments](/azure/templates/Microsoft.Authorization/roleAssignments)
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 

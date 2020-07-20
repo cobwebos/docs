@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 4b53c4d1a26d8e4b8d784087dcb9b9feba9c7ded
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191752"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242861"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -164,6 +164,14 @@ Azure Maps 空间操作服务获取位置信息。 它会快速分析位置信�
 Azure Maps 针对移动设备设计，可帮助你开发跨平台应用程序。 它使用语言无关的编程模型，并通过 [REST API](https://docs.microsoft.com/rest/api/maps/) 支持 JSON 输出。
 
 此外，Azure Maps 还通过简单的编程模型提供了一个便利的 [JavaScript 地图控件](https://docs.microsoft.com/javascript/api/azure-maps-control)。 Web 和移动应用程序的开发都快速而简单。
+
+## <a name="power-bi-visual"></a>Power BI 视觉对象
+
+Power BI 的 Azure Maps 视觉对象提供了一组丰富的数据可视化效果，适用于地图上的空间数据。 估计超过 80% 的业务数据具有位置上下文。 Azure Maps 视觉对象提供了一个无代码解决方案，可用于深入了解此位置上下文与业务数据有何关系以及对业务数据有何影响。
+
+![具有显示业务数据的 Azure Maps 视觉对象的 Power BI 桌面](media/power-bi-visual/azure-maps-visual-hero.png)
+
+有关详细信息，请参阅 [Azure Maps Power BI 视觉对象入门](power-bi-visual-getting-started.md)文档。
 
 ## <a name="usage"></a>使用情况
 

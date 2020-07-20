@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 25b45f2731e94fc6a7a4bedd9c8d44b10125c273
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: ee897a22ceda4378ea9dba4579d5108a2ddf0b0d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82975036"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156607"
 ---
 开始使用适用于 Go 的必应自动建议客户端库。 请按照以下步骤安装库并试用基本任务的示例。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "82975036"
 ## <a name="create-environment-variables"></a>创建环境变量
 
 >[!NOTE]
-> 在 2019 年 7 月 1 日之后创建的非试用资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
+> 在 2019 年 7 月 1 日之后创建的资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
 
 从创建的资源使用密钥和终结点，创建两个用于身份验证的环境变量：
 <!-- replace the below variable names with the names expected in the code sample.-->

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 0ba4531ed15630a8887cb7be843a00ba23a439cc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0eaa4a828716f1a52161726e768acc817d1fde17
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682024"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134170"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 JavaScript SPA 中登录用户并获取访问令牌
 
@@ -115,7 +115,7 @@ ms.locfileid: "83682024"
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
 > - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于**国家**云（例如“中国”云），请参阅[国家云](authentication-national-cloud.md)。
 > - `Enter_the_Tenant_info_here` 设置为以下选项之一：
->   - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com` 。
+>   - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com`。
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为“`organizations`”。
 >   - 如果应用支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为“`common`”。 本快速入门中使用 `common`。
 >   - 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为“`consumers`”。
@@ -181,7 +181,7 @@ ms.locfileid: "83682024"
 
 ### <a name="how-the-sample-works"></a>示例工作原理
 
-:::image type="content" source="media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="展示单页应用程序的授权代码流的示意图":::
+![展示单页应用程序的授权代码流的示意图。](media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png)
 
 ### <a name="msaljs"></a>msal.js
 
