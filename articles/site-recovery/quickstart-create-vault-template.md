@@ -1,33 +1,31 @@
 ---
 title: 有关使用 Azure 资源管理器模板创建 Azure 恢复服务保管库的快速入门。
-description: 本快速入门介绍如何使用 Azure 资源管理器模板创建 Azure 恢复服务保管库。
+description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure 恢复服务保管库。
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-author: davidsmatlak
-ms.author: v-dasmat
-ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217283"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248819"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建恢复服务保管库
+# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>快速入门：使用 ARM 模板创建恢复服务保管库
 
-本快速入门介绍如何使用 Azure 资源管理器模板设置恢复服务保管库。 [Azure Site Recovery](site-recovery-overview.md) 服务有助于实施业务连续性和灾难恢复 (BCDR) 策略，以便在计划内和计划外中断期间使商业应用程序保持联机状态。 Site Recovery 管理本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
+本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）设置恢复服务保管库。 [Azure Site Recovery](site-recovery-overview.md) 服务有助于实施业务连续性和灾难恢复 (BCDR) 策略，以便在计划内和计划外中断期间使商业应用程序保持联机状态。 Site Recovery 管理本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果没有有效的 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
-无。
+如果没有有效的 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
-
-### <a name="review-the-template"></a>查看模板
+## <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/)。
 
@@ -42,7 +40,7 @@ ms.locfileid: "84217283"
 
 有关 Azure 恢复服务模板的详细信息，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular)。
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
 若要部署模板，需要指定“订阅”、“资源组”和“保管库名称”  。
 

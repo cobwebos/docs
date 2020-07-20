@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391921"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206553"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>扩建端到端解决方案
 
@@ -205,8 +205,9 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure 门户：创建事件订阅":::
 
-按如下所示填写字段：
+按如下所示填写字段（默认填充的字段未提及）：
 * “事件订阅详细信息” > “名称”：为事件订阅指定名称。
+* “主题详细信息” > “系统主题名称”：为系统主题提供一个名称。 
 * “事件类型” > “筛选事件类型”：从菜单选项中选择“设备遥测”。
 * “终结点详细信息” > “终结点类型”：从菜单选项中选择“Azure 函数”。
 * “终结点详细信息” > “终结点”：点击“选择终结点”链接。 这会打开“选择 Azure 函数”窗口：:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure 门户事件订阅：选择 Azure 函数" border="false":::
@@ -361,11 +362,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure 门户：事件网格事件订阅":::
 
-创建此事件订阅的步骤与之前在本教程中将第一个 Azure 函数订阅到 IoT 中心的步骤类似。 不同之处在于，这次不需要将设备遥测指定为要侦听的事件类型，而且会连接到其他 Azure 函数。
+创建此事件订阅的步骤与之前在本教程中将第一个 Azure 函数订阅到 IoT 中心的步骤类似。 这次不需要将设备遥测指定为要侦听的事件类型，而且会连接到其他 Azure 函数。
 
-下面是订阅步骤：
-
-在“创建事件订阅”页中，按如下所示填写字段：
+在“创建事件订阅”页，按如下所示填写字段（默认填充的字段未提及）：
 * “事件订阅详细信息” > “名称”：为事件订阅指定名称。
 * “终结点详细信息” > “终结点类型”：从菜单选项中选择“Azure 函数”。
 * “终结点详细信息” > “终结点”：点击“选择终结点”链接。 这会打开“选择 Azure 函数”窗口：

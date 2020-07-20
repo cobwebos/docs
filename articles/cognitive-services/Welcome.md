@@ -10,16 +10,18 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588286"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223748"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
 Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应用程序，而无需具备直接的 AI 或数据科学技能或知识。 开发人员使用 Azure 认知服务能够轻松地将认知功能添加到其应用程序中。 Azure 认知服务的目标是帮助开发人员创建可以看、听、说、理解甚至开始推理的应用程序。 Azure 认知服务中的服务目录可分为五大主要支柱类别：视觉、语音、语言、Web 搜索和决策。
+
+是否想查看新增功能和更新的认知服务文档？ 请查看[认知服务新增功能文档](whats-new-docs.md)。
 
 ## <a name="vision-apis"></a>视觉 API
 
@@ -78,17 +80,13 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |[内容审查器](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "内容审查器")|内容审查器监视可能的冒犯性、不可取和危险内容。|
 |[个性化体验创建服务](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "个性化体验创建服务")|个性化体验创建服务可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。|
 
-## <a name="use-free-trials"></a>使用免费试用版
-
-[注册免费试用版](https://azure.microsoft.com/try/cognitive-services/ "注册帮助")只需要发送一封电子邮件并执行一些简单的步骤。 需要创建 Microsoft 帐户（如果还没有帐户）。 对于所请求的每个 API，你都会收到一对唯一的密钥。 第二个密钥只是备用密钥。 请不要与任何人分享密钥。 试用版具有每秒或每分钟事务数速率限制和每月使用上限。 事务就是 API 调用。 若要解锁这些限制，你可以升级到付费层。
-
 ## <a name="subscription-management"></a>订阅管理
 
 使用 Microsoft 帐户登录后，你可以访问[我的订阅](https://www.microsoft.com/cognitive-services/subscriptions "我的订阅")，以显示你正在使用的产品、剩余配额以及能否向订阅添加其他产品。
 
 ## <a name="upgrade-to-unlock-limits"></a>通过升级来解锁限制
 
-所有 API 都有一个免费试用计划，该计划具有使用量和吞吐量限制。  在 Azure 门户中部署服务时，可以通过使用付费产品/服务和选择适当的定价层选项来增加这些限制。 [详细了解产品/服务和定价](https://azure.microsoft.com/pricing/details/cognitive-services/ "产品/服务和定价")。 你将需要使用信用卡和电话号码设置一个 Azure 订阅者帐户。 如果你有特殊要求或者只是想与销售人员交谈，请单击定价页顶部的“联系我们”按钮。
+所有 API 都有一个免费层，它具有使用量和吞吐量限制。  在 Azure 门户中部署服务时，可以通过使用付费产品/服务和选择适当的定价层选项来增加这些限制。 [详细了解产品/服务和定价](https://azure.microsoft.com/pricing/details/cognitive-services/ "产品/服务和定价")。 你将需要使用信用卡和电话号码设置一个 Azure 订阅者帐户。 如果你有特殊要求或者只是想与销售人员交谈，请单击定价页顶部的“联系我们”按钮。
 
 ## <a name="regional-availability"></a>区域可用性
 

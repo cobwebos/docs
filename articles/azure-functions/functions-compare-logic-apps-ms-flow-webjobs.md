@@ -4,12 +4,12 @@ description: 比较针对集成任务进行了优化的各种 Microsoft 云服�
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9d7531fac9610b357adb37d28f5d5e90a7e4b108
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878130"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169861"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中选择合适的集成和自动化服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "80878130"
 
 ## <a name="compare-microsoft-power-automate-and-azure-logic-apps"></a>比较 Microsoft Power Automate 和 Azure 逻辑应用
 
-Power Automate 和逻辑应用都是可以创建工作流的“设计器优先”  集成服务。 这两种服务都与各种 SaaS 和企业应用程序相集成。 
+Power Automate 和逻辑应用都是可以创建工作流的“设计器优先”集成服务。 这两种服务都与各种 SaaS 和企业应用程序相集成。 
 
 Power Automate 基于逻辑应用而构建。 它们有相同的工作流设计器和相同的[连接器](../connectors/apis-list.md)。 
 
@@ -45,7 +45,7 @@ Power Automate 基于逻辑应用而构建。 它们有相同的工作流设计�
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>比较 Azure Functions 和 Azure 逻辑应用
 
-函数和逻辑应用是用于启用无服务器工作负荷的 Azure 服务。 Azure Functions 是一种无服务器计算服务，而 Azure 逻辑应用提供无服务器工作流。 两者都可以创建复杂的业务流程  。 业务流程是函数或步骤（在逻辑应用中称为“操作”）的集合，将执行这些函数或步骤来完成复杂任务。  例如，若要处理一批订单，可以并行执行某个函数的许多实例，等待所有实例完成，然后执行某个函数来计算聚合结果。
+函数和逻辑应用是用于启用无服务器工作负荷的 Azure 服务。 Azure Functions 是一种无服务器计算服务，而 Azure 逻辑应用提供无服务器工作流。 两者都可以创建复杂的业务流程。 业务流程是函数或步骤（在逻辑应用中称为“操作”）的集合，将执行这些函数或步骤来完成复杂任务。 例如，若要处理一批订单，可以并行执行某个函数的许多实例，等待所有实例完成，然后执行某个函数来计算聚合结果。
 
 对于 Azure Functions，通过编写代码并使用 [Durable Functions 扩展](durable/durable-functions-overview.md)来开发业务流程。 对于逻辑应用，你通过使用 GUI 或通过编辑配置文件来创建业务流程。
 
@@ -64,7 +64,7 @@ Power Automate 基于逻辑应用而构建。 它们有相同的工作流设计�
 
 ## <a name="compare-functions-and-webjobs"></a>比较函数和 WebJobs
 
-与 Azure Functions 一样，包含 WebJobs SDK 的 Azure 应用服务是一项代码优先的  集成服务，专为开发人员设计。 二者都是在 [Azure 应用服务](../app-service/overview.md) 上构建的，支持[源代码管理集成](../app-service/deploy-continuous-deployment.md)、[身份验证](../app-service/overview-authentication-authorization.md)以及[使用 Application Insights 集成进行监视](functions-monitoring.md)等功能。
+与 Azure Functions 一样，包含 WebJobs SDK 的 Azure 应用服务是一项代码优先的集成服务，专为开发人员设计。 二者都是在 [Azure 应用服务](../app-service/overview.md) 上构建的，支持[源代码管理集成](../app-service/deploy-continuous-deployment.md)、[身份验证](../app-service/overview-authentication-authorization.md)以及[使用 Application Insights 集成进行监视](functions-monitoring.md)等功能。
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs 和 WebJobs SDK
 
@@ -81,9 +81,9 @@ Azure Functions 是在 WebJobs SDK 上构建的，因此共享许多相同的事
 |使用[自动缩放](functions-scale.md#how-the-consumption-and-premium-plans-work)的[无服务器应用模型](https://azure.microsoft.com/solutions/serverless/)|✔||
 |[在浏览器中进行开发和测试](functions-create-first-azure-function.md) |✔||
 |[按使用付费定价](functions-scale.md#consumption-plan)|✔||
-|[集成逻辑应用](functions-twitter-email.md)|✔||
+|[与逻辑应用集成](functions-twitter-email.md)|✔||
 | 触发事件 |[计时器](functions-bindings-timer.md)<br>[Azure 存储队列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服务总线队列和主题](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中心](functions-bindings-event-hubs.md)<br>[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)<br>[Azure 事件网格](functions-bindings-event-grid.md)|[计时器](functions-bindings-timer.md)<br>[Azure 存储队列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服务总线队列和主题](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中心](functions-bindings-event-hubs.md)<br>[文件系统](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| 支持的语言  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
+| **支持的语言**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
 |包管理器|NPM 和 NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> WebJobs（不带 WebJobs SDK）支持 C#、Java、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python 等。 该列表并不详尽。 WebJob 可以运行任何程序或脚本，只要该程序或脚本可以在应用服务沙盒中运行。

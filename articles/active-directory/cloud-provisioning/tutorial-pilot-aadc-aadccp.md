@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360752"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146816"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云预配 
 
@@ -165,18 +165,18 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
  2. 单击“Azure Active Directory”
  3. 单击“Azure AD Connect”
  4. 选择“管理预配(预览版)”
- ![](media/how-to-configure/manage1.png)</br>
+ ![显示“管理预配(预览版)”链接的屏幕截图。](media/how-to-configure/manage1.png)</br>
  5.  单击“新建配置”
- ![](media/tutorial-single-forest/configure1.png)</br>
+ ![Azure AD 预配（预览版）屏幕的屏幕截图，突出显示了“新建配置”链接。](media/tutorial-single-forest/configure1.png)</br>
  6.  在配置屏幕上输入一条**通知电子邮件**，将选择器切换到“启用”，然后单击“保存”。 
- ![](media/tutorial-single-forest/configure2.png)</br>
+ ![“配置”屏幕的屏幕截图，已填写通知电子邮件并选择了“启用”。](media/tutorial-single-forest/configure2.png)</br>
  7. 在“配置”下选择“所有用户”，以更改配置规则的范围。 
- ![](media/how-to-configure/scope2.png)</br>
+ ![“配置”屏幕的屏幕截图，突出显示“限定用户范围”旁边的“所有用户”。](media/how-to-configure/scope2.png)</br>
  8. 在右侧，将范围更改为包括刚刚创建的特定 OU“OU=CPUsers,DC=contoso,DC=com”。
- ![](media/tutorial-existing-forest/scope2.png)</br>
+ ![“限定用户范围”屏幕的屏幕截图，突出显示更改为所创建的 OU 的范围。](media/tutorial-existing-forest/scope2.png)</br>
  9.  依次单击“完成”、“保存”。 
  10. 现在，范围应设置为一个组织单位。 
- ![](media/tutorial-existing-forest/scope3.png)</br>
+ ![“配置”屏幕的屏幕截图，突出显示“限定用户范围”旁边的“1 个组织单位”。](media/tutorial-existing-forest/scope3.png)</br>
  
 
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>验证云预配是否预配用户

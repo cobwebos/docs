@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6727a2c45187e0e6bb583bb65e176024067d81e2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80064417"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219975"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>教程：使用设备功能模型创建 IoT 即插即用（预览版）设备并将其连接到 IoT Central 应用程序
 
@@ -30,13 +30,13 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
 
 ## <a name="prerequisites"></a>先决条件
 
-完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)快速入门，使用“自定义应用”>“自定义应用程序”模板创建 IoT Central 应用程序。 
+完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)快速入门，使用“自定义应用”>“自定义应用程序”模板创建 IoT Central 应用程序。
 
 若要完成本教程，需在本地计算机上安装以下软件：
 
-* [适用于 Visual Studio 的生成工具](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)，其中包含 C++ 生成工具和 Nuget 包管理器组件工作负荷   。 安装了相同工作负荷的 [Visual Studio（Community、Professional 或 Enterprise）](https://visualstudio.microsoft.com/downloads/)2019、2017 或 2015。
+* [适用于 Visual Studio 的生成工具](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)，其中包含 C++ 生成工具和 Nuget 包管理器组件工作负荷 。 安装了相同工作负荷的 [Visual Studio（Community、Professional 或 Enterprise）](https://visualstudio.microsoft.com/downloads/)2019、2017 或 2015。
 * [Git](https://git-scm.com/download/)。
-* [CMake](https://cmake.org/download/) - 安装 **CMake** 时，请选择“将 CMake 添加到系统 PATH”选项。 
+* [CMake](https://cmake.org/download/) - 安装 **CMake** 时，请选择“将 CMake 添加到系统 PATH”选项。
 * [Visual Studio Code](https://code.visualstudio.com/)。
 * [Node.js](https://nodejs.org/)
 * `dps-keygen` 实用工具：
@@ -49,9 +49,9 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
 
 使用以下步骤在 VS Code 中安装 Azure IoT Tools 扩展包：
 
-1. 在 VS Code 中选择“扩展”选项卡。 
-1. 搜索“Azure IoT Tools”  。
-1. 选择“安装”  。
+1. 在 VS Code 中选择“扩展”选项卡。
+1. 搜索“Azure IoT Tools”。
+1. 选择“安装”。
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
@@ -82,11 +82,13 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
 
 若要将设备连接到 IoT Central 应用程序，需要生成一个设备密钥。 若要生成设备密钥：
 
-1. 登录到使用[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)快速入门中的“自定义应用程序”模板创建的 IoT Central 应用程序  。
+1. 登录到使用[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)快速入门中的“自定义应用程序”模板创建的 IoT Central 应用程序。
 
-1. 转到“管理”页并选择“设备连接”。  
+1. 转到“管理”页并选择“设备连接”。 
 
-1. 记下选择“查看密钥”时显示的“ID 范围”和“主键”    。 本教程后面会用到这些值。
+1. 记下“ID 范围”。 你稍后将在本教程中用到此值。
+
+1. 选择 SAS-IoT-Devices 注册组。 记下“主密钥”。 你稍后将在本教程中用到此值。
 
     ![设备连接](./media/tutorial-connect-pnp-device/device-connection.png)
 
@@ -96,7 +98,7 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
     dps-keygen -di:mxchip-001 -mk:{Primary Key from previous step}
     ```
 
-    记下生成的设备密钥，在本教程稍后的步骤中将要用到它  。
+    记下生成的设备密钥，在本教程稍后的步骤中将要用到它。
 
 ## <a name="download-your-model"></a>下载模型
 
@@ -104,9 +106,9 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
 
 1. 创建一个名为 `central_app` 的文件夹，然后在 VS Code 中打开它。
 
-1. 按 **Ctrl+Shift+P** 打开命令面板，输入“IoT 即插即用”，然后选择“打开模型存储库”。   选择“公共存储库”。  VS Code 将显示公共模型存储库中的 DCM 列表。
+1. 按 **Ctrl+Shift+P** 打开命令面板，输入“IoT 即插即用”，然后选择“打开模型存储库”。  选择“公共存储库”。 VS Code 将显示公共模型存储库中的 DCM 列表。
 
-1. 选择 ID 为 `urn:mxchip:mxchip_iot_devkit:1` 的“MXChip IoT DevKit”DCM。  然后选择“下载”。  现在，`central_app` 文件夹中已有一个 DCM 副本。
+1. 选择 ID 为 `urn:mxchip:mxchip_iot_devkit:1` 的“MXChip IoT DevKit”DCM。 然后选择“下载”。 现在，`central_app` 文件夹中已有一个 DCM 副本。
 
 ![模型存储库和 DCM](./media/tutorial-connect-pnp-device/public-repository.png)
 
@@ -117,7 +119,7 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
 
 现已获得一个 **MXChip IoT DevKit** DCM 及其关联的接口，接下来可以生成用于实现该模型的设备代码。 若要在 VS Code 中生成 C 代码存根：
 
-1. 打开包含 DCM 文件的文件夹后，按 **Ctrl+Shift+P** 打开命令面板，输入“IoT 即插即用”，然后选择“生成设备代码存根”。  
+1. 打开包含 DCM 文件的文件夹后，按 **Ctrl+Shift+P** 打开命令面板，输入“IoT 即插即用”，然后选择“生成设备代码存根”。 
 
     > [!NOTE]
     > 首次使用 IoT 即插即用代码生成器实用工具时，需要花费几秒钟时间来下载组件。
@@ -126,13 +128,13 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
 
 1. 输入项目名称 **devkit_device**。
 
-1. 选择“ANSI C”作为语言。 
+1. 选择“ANSI C”作为语言。
 
-1. 选择“通过 DPS (设备预配服务)对称密钥”作为连接方法。 
+1. 选择“通过 DPS (设备预配服务)对称密钥”作为连接方法。
 
-1. 选择“Windows 上的 CMake 项目”作为项目类型  。 请不要选择“MXChip IoT DevKit 项目”，只有在使用实际的 DevKit 设备时，此选项才可用。 
+1. 选择“Windows 上的 CMake 项目”作为项目类型。 请不要选择“MXChip IoT DevKit 项目”，只有在使用实际的 DevKit 设备时，此选项才可用。
 
-1. 选择“通过 Vcpkg”作为包括 SDK 的方式  。
+1. 选择“通过 Vcpkg”作为包括 SDK 的方式。
 
 1. VS Code 将打开一个新窗口，其中包含 `devkit_device` 文件夹中生成的设备代码存根文件。
 
@@ -149,7 +151,7 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
     cd cmake
     ```
 
-1. 运行以下命令以生成代码存根。 将 `<directory of your Vcpkg repo>` 占位符替换为 Vcpkg 存储库副本的路径  ：
+1. 运行以下命令以生成代码存根。 将 `<directory of your Vcpkg repo>` 占位符替换为 Vcpkg 存储库副本的路径：
 
     ```cmd
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
@@ -178,17 +180,17 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
 
 将设备代码连接到 IoT Central 后，可以查看其发送的属性和遥测数据：
 
-1. 在 IoT Central 应用程序中，转到“设备”页并选择“mxchip-01”设备。   连接设备代码后，会自动添加此设备：
+1. 在 IoT Central 应用程序中，转到“设备”页并选择“mxchip-01”设备。  连接设备代码后，会自动添加此设备：
 
     ![概述页](./media/tutorial-connect-pnp-device/overview-page.png)
 
     几分钟后，此页将显示设备正在发送的遥测数据的图表。
 
-1. 选择“关于”页查看设备发送的属性值。 
+1. 选择“关于”页查看设备发送的属性值。
 
-1. 选择“命令”页调用设备上的命令。  可以在运行设备代码的命令提示符下查看设备是否做出响应。
+1. 选择“命令”页调用设备上的命令。 可以在运行设备代码的命令提示符下查看设备是否做出响应。
 
-1. 转到“设备模板”页，查看 IoT Central 基于公共存储库中的 DCM 创建的模板： 
+1. 转到“设备模板”页，查看 IoT Central 基于公共存储库中的 DCM 创建的模板：
 
     ![“设备模板”页](./media/tutorial-connect-pnp-device/device-template.png)
 

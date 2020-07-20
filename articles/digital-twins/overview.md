@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737115"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257999"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Azure 数字孪生**是一个 IoT 平台，可用于创建整个环境的完整数字模型。 这些环境可能是建筑物、工厂、农场、能源网络、铁路，体育场等，甚至是整个城市。 这些数字模型可用于获取洞察力，以推动产品改进、运营优化、成本降低和客户体验突破。
 
@@ -46,6 +43,12 @@ DTDL 用于其他 Azure IoT 服务中的数据模型，包括 [IoT 即插即用 
 ### <a name="live-execution-environment"></a>实时执行环境
 
 Azure 数字孪生中的数字模型是真实世界的实时最新表示。 使用自定义 DTDL 模型中的关系，可以将孪生连接到表示你环境的**实时图形**。
+
+可借助示例应用程序 [Azure 数字孪生资源管理器](https://github.com/Azure-Samples/digital-twins-explorer)查看 Azure 数字孪生图的可视化效果。
+
+下面是示例可视化效果的视图：
+
+:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Azure 数字孪生资源管理器示例应用程序的屏幕截图，显示表示数字孪生的节点图" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
 Azure 数字孪生提供了丰富的**事件系统**，以使该图形跟上数据处理和业务逻辑的变化。 可以连接外部计算资源（例如 [Azure Functions](../azure-functions/functions-overview.md)），以灵活的自定义方式来驱动此数据处理。
 

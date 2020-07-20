@@ -17,12 +17,12 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 273827e68a81e87dcff15760f0b400b2d5ce8723
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80126876"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220858"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>教程：使用通知中心和 Google Firebase Cloud Messaging 将通知发送到特定设备
 
@@ -117,7 +117,7 @@ ms.locfileid: "80126876"
 
     `main_activity.xml` 的图形布局应如下图所示：
 
-    ![][A1]
+    ![显示主活动 XML 图形布局外观的仿真器的屏幕截图。][A1]
 3. 在与 `MainActivity` 类相同的包中创建 `Notifications` 类。
 
     ```java

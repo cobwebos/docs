@@ -1,16 +1,16 @@
 ---
 title: 查看远程渲染的模型
 description: Azure 远程渲染的“Hello World”教程介绍了如何查看 Azure 远程渲染的模型
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: f0b9bf1c7e085efd86f70f8246214d366265036a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bd9e9b6754c8626a8d858b9832a8e3547b72352d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85566256"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231892"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教程：查看远程渲染的模型
 
@@ -101,7 +101,7 @@ ms.locfileid: "85566256"
 
 1. 将“清除标志”设置为“纯色”
 
-1. 将“背景”设置为“黑色”(#000000)，并将 alpha (A) 设置为 full (255)
+1. 将“背景”设置为“黑色”(#000000)，并将 alpha (A) 设置为完全透明 (0)
 
     ![色轮](./media/color-wheel-black.png)
 

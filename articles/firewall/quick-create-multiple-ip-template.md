@@ -1,6 +1,6 @@
 ---
 title: 快速入门：创建具有多个公共 IP 地址的 Azure 防火墙 - 资源管理器模板
-description: 了解如何使用资源管理器模板创建具有多个公共 IP 地址的 Azure 防火墙。
+description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建具有多个公共 IP 地址的 Azure 防火墙。
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: b81362f191e6317aa7ffa974a6d432b0c7514d8f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7e89188e7ebc979c403b86ee26c876e8c40aa208
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680536"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260563"
 ---
-# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>快速入门：创建具有多个公共 IP 地址的 Azure 防火墙 - 资源管理器模板
+# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>快速入门：创建具有多个公共 IP 地址的 Azure 防火墙 - ARM 模板
 
-在本快速入门中，我们使用资源管理器模板部署具有多个公共 IP 地址的 Azure 防火墙。 部署的防火墙具有 NAT 规则收集规则，这些规则允许通过 RDP 连接与两个 Windows Server 2019 虚拟机进行连接。
+在本快速入门中，使用 Azure 资源管理器模板（ARM 模板）部署具有多个公共 IP 地址的 Azure 防火墙。 部署的防火墙具有 NAT 规则收集规则，这些规则允许通过 RDP 连接与两个 Windows Server 2019 虚拟机进行连接。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 若要详细了解具有多个公共 IP 地址的 Azure 防火墙，请参阅[使用 Azure PowerShell 部署具有多个公共 IP 地址的 Azure 防火墙](deploy-multi-public-ip-powershell.md)。
 
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-azure-firewall"></a>创建 Azure 防火墙
+## <a name="review-the-template"></a>查看模板
 
 此模板创建具有两个公共 IP 地址的 Azure 防火墙，以及用于支持 Azure 防火墙的必要资源。
 
-### <a name="review-the-template"></a>查看模板
-
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/fw-docs-qs)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/fw-docs-qs)。
 
 :::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
 
@@ -48,9 +50,9 @@ ms.locfileid: "83680536"
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
-将资源管理器模板部署到 Azure：
+将 ARM 模板部署到 Azure：
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板将创建 Azure 防火墙、网络基础结构和两个虚拟机。
 

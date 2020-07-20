@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 9e50caeac5c52b9f2309448e2bb0b760f533fb6c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ec78ffd1fbc1f77a7b1e1467df1c2303e7d5daf1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67172667"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156504"
 ---
 ## <a name="delete-anchors"></a>删除定位点
 
-若要删除云空间定位点，请使用 `DeleteAnchor()` 方法。 删除不再使用的定位点是要尽早包括在开发流程和做法中的不错做法。 这样做可以使资源保持已经过清理的状态。 此外，虽然你可以免费使用 Azure 空间定位点，但是定价在将来可能会发生更改。 可以在我们的[定价页面](https://azure.microsoft.com/pricing/details/spatial-anchors/)上找到有关预览版期间的定价的详细信息。
+若要删除云空间定位点，请使用 `DeleteAnchor()` 方法。 删除不再使用的定位点是要尽早包括在开发流程和做法中的不错做法，可使 Azure 资源保持清洁状态。 

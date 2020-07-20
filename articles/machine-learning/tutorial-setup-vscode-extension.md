@@ -1,5 +1,5 @@
 ---
-title: 教程：设置 Visual Studio Code 扩展
+title: 教程：设置 Visual Studio Code 扩展（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解如何设置 Visual Studio Code Azure 机器学习扩展。
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 04/13/2020
-ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.date: 07/09/2020
+ms.openlocfilehash: 48fb2ce3672634af202500ccb256e7730933fff8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272896"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199759"
 ---
-# <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>设置 Azure 机器学习 Visual Studio Code 扩展
+# <a name="set-up-azure-machine-learning-visual-studio-code-extension-preview"></a>设置 Azure 机器学习 Visual Studio Code 扩展（预览版）
 
 了解如何使用 Azure 机器学习 Visual Studio Code 扩展安装和运行脚本。
 
@@ -36,9 +36,9 @@ ms.locfileid: "81272896"
 ## <a name="install-the-extension"></a>安装扩展
 
 1. 打开 Visual Studio Code。
-1. 从**活动栏**选择“扩展”  图标，打开“扩展”视图。
+1. 从**活动栏**选择“扩展”图标，打开“扩展”视图。
 1. 在“扩展”视图中，搜索“Azure 机器学习”。
-1. 选择“安装”  。
+1. 选择“安装”。
 
     > [!div class="mx-imgBorder"]
     > ![安装 Azure 机器学习 VS Code 扩展](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
@@ -52,7 +52,7 @@ ms.locfileid: "81272896"
 
 若要在 Azure 上预配资源并运行工作负载，必须使用 Azure 帐户凭据登录。 Azure 机器学习会自动安装 Azure 帐户扩展，帮助你进行帐户管理。 请访问以下站点，[详细了解 Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)。
 
-1. 从菜单栏选择“视图”>“命令面板”，打开命令面板。  
+1. 从菜单栏选择“视图”>“命令面板”，打开命令面板。 
 1. 将命令“Azure:登录”输入命令面板，启动登录过程。
 
 ## <a name="run-a-machine-learning-model-training-script-in-azure"></a>在 Azure 中运行机器学习模型训练脚本
@@ -61,35 +61,38 @@ ms.locfileid: "81272896"
 
 1. 在计算机上的任何位置下载并解压缩 [VS Code Tools for AI 存储库](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip)。
 1. 在 Visual Studio Code 中打开 `mnist-vscode-docs-sample` 目录。
-1. 在活动栏中选择“Azure”图标。 
-1. 选择“Azure 机器学习”视图顶部的“运行试验”  图标。
+1. 在活动栏中选择“Azure”图标。
+1. 选择“Azure 机器学习”视图顶部的“运行试验”图标。
 
     > [!div class="mx-imgBorder"]
     > ![运行试验](./media/tutorial-setup-vscode-extension/run-experiment.PNG)
 
 1. 命令面板展开后，请按提示操作。
 
+    > [!NOTE]
+    > 如果已预配现有的 Azure 机器学习资源，请参阅[“如何在 VS Code 中运行试验”指南](./how-to-manage-resources-vscode.md#run-experiment)。
+
     1. 选择 Azure 订阅。
-    1. 从环境列表中选择“Conda 依赖项文件”  。
-    1. 按“Enter”  以浏览 Conda 依赖项文件。 此文件包含运行脚本所需的依赖项。 在本例中，依赖项文件是 `mnist-vscode-docs-sample` 目录中的 `env.yml` 文件。
-    1. 按“Enter”  以浏览训练脚本文件。 这是一个文件，其中包含机器学习模型的代码，用于对手写数字的图像分类。 在此示例中，用于训练模型的脚本是 `mnist-vscode-docs-sample` 目录内的 `train.py` 文件。
+    1. 从环境列表中选择“Conda 依赖项文件”。
+    1. 按“Enter”以浏览 Conda 依赖项文件。 此文件包含运行脚本所需的依赖项。 在本例中，依赖项文件是 `mnist-vscode-docs-sample` 目录中的 `env.yml` 文件。
+    1. 按“Enter”以浏览训练脚本文件。 这是一个文件，其中包含机器学习模型的代码，用于对手写数字的图像分类。 在此示例中，用于训练模型的脚本是 `mnist-vscode-docs-sample` 目录内的 `train.py` 文件。
 
 1. 此时会在文本编辑器中显示如下所示的配置文件。 此配置包含运行训练作业所需的信息，例如，包含训练模型所需的代码以及在上一步指定的任何 Python 依赖项的文件。
 
     ```json
     {
-        "workspace": "WS04131142",
-        "resourceGroup": "WS04131142-rg1",
+        "workspace": "WS06271500",
+        "resourceGroup": "WS06271500-rg2",
         "location": "South Central US",
-        "experiment": "WS04131142-exp1",
+        "experiment": "WS06271500-exp1",
         "compute": {
-            "name": "WS04131142-com1",
+            "name": "WS06271500-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS04131142-com1-rc1",
+            "filename": "WS06271500-com1-rc1",
             "environment": {
-                "name": "WS04131142-env1",
+                "name": "WS06271500-env1",
                 "conda_dependencies": [
                     "python=3.6.2",
                     "tensorflow=1.15.0",
@@ -116,7 +119,7 @@ ms.locfileid: "81272896"
 
 运行脚本可能需要几分钟时间。 若要跟踪其进度，请执行以下操作：
 
-1. 在活动栏中选择“Azure”图标。 
+1. 在活动栏中选择“Azure”图标。
 1. 展开订阅节点。
 1. 展开当前正在运行的试验的节点。 它位于 `{workspace}/Experiments/{experiment}` 节点中，其中的工作区和试验的值与配置文件中定义的属性相同。
 1. 将列出试验的所有运行及其状态。 若要获取最新状态，请单击“Azure 机器学习”视图顶部的刷新图标。
@@ -128,7 +131,7 @@ ms.locfileid: "81272896"
 
 试验运行完成后，输出是训练的模型。 若要在本地下载输出，请执行以下操作：
 
-1. 右键单击最近的运行，然后选择“下载输出”。 
+1. 右键单击最近的运行，然后选择“下载输出”。
 
     > [!div class="mx-imgBorder"]
     > ![下载训练的模型](./media/tutorial-setup-vscode-extension/download-trained-model.PNG)

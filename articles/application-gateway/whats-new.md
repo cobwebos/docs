@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: dd6ec2057ede076511b567c013fc1b6fa12d8281
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: ebb3e6ba777646d39e3732215aa6c8fdd12ca40a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669726"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186684"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure 应用程序网关有哪些新增功能？
 
@@ -27,6 +27,7 @@ Azure 应用程序网关会不断更新。 为了让大家随时了解最新的�
 
 |Feature  |说明  |添加日期  |
 |---------|---------|---------|
+| 运行状况探测的自定义端口 | 现可通过应用程序网关 v2 SKU 在运行状况探测配置中提供自定义端口。 有关详细信息，请参阅[运行状况探测概述](application-gateway-probe-overview.md) | 2020 年 7 月
 | 应用程序网关入口控制器 (AGIC) AKS 附加产品（预览版） |现可通过 Azure CLI 将应用程序网关入口控制器单行部署为本机 AKS 附加产品。 作为 AKS 附加产品，AGIC 可成为一项完全托管服务，同时仍在客户的 AKS 群集中运行。 有关详细信息，请参阅 [AGIC 附加产品差异](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)。 |2020 年 6 月 |
 | v2（预览版）上的用户定义路由 (UDR) |在某些情况下，应用程序网关 v2 SKU 现在支持用户定义的路由。 有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。 |2020 年 3 月 |
 |关联 cookie 更改 |启用基于 Cookie 的关联时，除了现有的 ApplicationGatewayAffinity Cookie 外，应用程序网关还会注入另一个名为“ApplicationGatewayAffinityCORS”的相同 Cookie。 ApplicationGatewayAffinityCORS 又添加了两个属性 (SameSite=None; Secure)，这样即使对于跨域请求也可以保持粘性会话。 有关详细信息，请参阅[基于应用程序网关 Cookie 的关联](configuration-overview.md#cookie-based-affinity)。 |2020 年 2 月 |

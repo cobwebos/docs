@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4bf2f12ef79f8551291316b5446121f2735d9347
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75378528"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206587"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教程：将 Power BI 与文本分析认知服务集成
 
@@ -34,7 +34,7 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop。 [免费下载](https://powerbi.microsoft.com/get-started/)。
-- 一个 Microsoft Azure 帐户。 [启动免费试用版](https://azure.microsoft.com/free/)或[登录](https://portal.azure.com/)。
+- 一个 Microsoft Azure 帐户。 [创建免费帐户](https://azure.microsoft.com/free/cognitive-services/)或[登录](https://portal.azure.com/)。
 - 包含文本分析 API 的认知服务 API 帐户。 如果没有帐户，可以[注册](../../cognitive-services-apis-create-account.md)并使用 5,000 个事务/月的免费层级（请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)以完成本教程）。
 - 在注册期间生成的[文本分析访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - 客户评论。 可以使用[我们的示例数据](https://aka.ms/cogsvc/ta)或你自己的数据。 本教程假定你使用我们的示例数据。
@@ -91,7 +91,7 @@ CSV 导入对话框用于验证 Power BI Desktop 是否已正确检测到字符�
 
 对于每个 HTTP 请求，文本分析服务的[关键短语 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) 最多可以处理一千个文本文档。 Power BI 偏好一次处理一个记录，因此在本教程中，对 API 的每次调用将只包含一个文档。 对于每个要处理的文档，关键短语 API 要求提供以下字段。
 
-| | |
+| 字段 | 说明 |
 | - | - |
 | `id`  | 请求中此文档的唯一标识符。 响应也包含此字段。 这样，在处理多个文档时，就可以轻松地将提取的关键短语与所在文档相关联。 在本教程中，由于每个请求只处理一个文档，你可以将 `id` 值硬编码为针对每个请求均相同。|
 | `text`  | 要处理的文本。 此字段的值来自于你在[先前部分](#PreparingData)中创建的 `Merged` 列，其包含合并的主题行和评论文本。 关键短语 API 要求该数据不得超出 5,120 个字符。|

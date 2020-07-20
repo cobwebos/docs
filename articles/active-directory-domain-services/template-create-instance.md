@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 01/14/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 9a9518eb4c8635275b9cbf0467f3091eca10f647
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734209"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223000"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure Active Directory 域服务托管域
 
 Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 使用这些域服务就无需自行部署、管理和修补域控制器。 Azure AD DS 与现有的 Azure AD 租户集成。 这种集成可让用户使用其企业凭据登录，而你可以使用现有的组和用户帐户来保护对资源的访问。
 
-本文介绍如何使用 Azure 资源管理器模板启用 Azure AD DS。 支持性资源是使用 Azure PowerShell 创建的。
+本文介绍如何使用 Azure 资源管理器模板创建托管域。 支持性资源是使用 Azure PowerShell 创建的。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +51,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 >
 > 可能需要为环境中的其他服务或环境中现有 DNS 名称空间之间的条件 DNS 转发器创建一些其他的 DNS 记录。 例如，如果运行使用根 DNS 名称托管站点的 Web 服务器，则可能存在命名冲突，从而需要其他 DNS 条目。
 >
-> 在这些教程和操作指南文章中，我们使用自定义域 *aaddscontoso.com* 作为简短示例。 在所有命令中，指定你自己的域名。
+> 在此示例和这些操作指南文章中，使用自定义域 aaddscontoso.com 作为简短示例。 在所有命令中，指定你自己的域名。
 
 还存在以下 DNS 名称限制：
 
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 创建“AAD DC 管理员”组后，使用 [Add-AzureADGroupMember][Add-AzureADGroupMember] cmdlet 将一个用户添加到该组。 首先使用 [Get-AzureADGroup][Get-AzureADGroup] cmdlet 获取“AAD DC 管理员”组对象 ID，然后使用 [Get-AzureADUser][Get-AzureADUser] cmdlet 获取所需用户的对象 ID。
 
-以下示例显示了 UPN 为 `admin@aaddscontoso.onmicrosoft.com` 的帐户的用户对象 ID。 请将此用户帐户替换为要添加到“AAD DC 管理员”组的用户的 UPN：
+以下示例显示了 UPN 为 `admin@contoso.onmicrosoft.com` 的帐户的用户对象 ID。 请将此用户帐户替换为要添加到“AAD DC 管理员”组的用户的 UPN：
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -98,7 +98,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -124,9 +124,9 @@ New-AzResourceGroup `
 | 参数               | 值 |
 |-------------------------|---------|
 | domainName              | 托管域的 DNS 域名，填写此参数时，请考虑到前面提到的有关命名前缀和冲突的要点。 |
-| filteredSync            | Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。  如果选择同步所有用户和组，则以后无法选择仅执行范围内同步。<br /> 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。|
-| notificationSettings    | 如果托管域中生成了任何警报，可以发出电子邮件通知。 <br />可为 Azure 租户的“全局管理员”以及“AAD DC 管理员”组的成员启用这些通知。  <br /> 如果需要，可以添加更多收件人来接收在有需要关注的警报时发出的通知。|
-| domainConfigurationType | 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定 domainConfiguration 值即可创建用户林。<br /> *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 将值设置为 ResourceTrusting 可创建资源林。<br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。|
+| filteredSync            | Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。 <br /><br /> 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。|
+| notificationSettings    | 如果托管域中生成了任何警报，可以发出电子邮件通知。 <br /><br />可为 Azure 租户的“全局管理员”以及“AAD DC 管理员”组的成员启用这些通知。  <br /><br /> 如果需要，可以添加更多收件人来接收在有需要关注的警报时发出的通知。|
+| domainConfigurationType | 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定 domainConfiguration 值即可创建用户林。<br /><br /> *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 将值设置为 ResourceTrusting 可创建资源林。<br /><br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。|
 
 以下精简参数定义演示了这些值的声明方式。 将创建名为 aaddscontoso.com 的用户林，其中包含已从 Azure AD 同步到托管域的所有用户：
 
@@ -331,7 +331,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
-* [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
+* [启用 Azure AD DS 的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试并快速迭代 Java 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c71471d1a89188a065bafef2c5b6372aeff35851
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 5616e92d64854d145c30aa3fd32bf61d65ca4221
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80240537"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224309"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 Java 与 Azure Dev Spaces 结合使用
 
@@ -93,13 +93,13 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 在此部分中，将创建一个 Java Web 应用并让其在 Kubernetes 的容器中运行。
 
 ### <a name="create-a-java-web-app"></a>创建 Java Web 应用
-从 GitHub 下载代码，方法是：导航到 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces)，然后选择“克隆或下载”  ，将 GitHub 存储库下载到本地环境。 本指南的代码位于 `samples/java/getting-started/webfrontend` 中。
+从 GitHub 下载代码，方法是：导航到 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces)，然后选择“克隆或下载”，将 GitHub 存储库下载到本地环境。 本指南的代码位于 `samples/java/getting-started/webfrontend` 中。
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>准备用于 Docker 和 Kubernetes 开发的代码
 到目前为止，已有一个可以在本地运行的基本 Web 应用。 现在，将通过创建定义应用的容器以及将应用部署到 Kubernetes 的方式的资产来将其容器化。 使用 Azure Dev Spaces，可以很容易完成此任务： 
 
 1. 启动 VS Code 并打开 `webfrontend` 文件夹。 （可以忽略任何默认提示以添加调试资产或还原项目。）
-1. 在 VS Code 中打开集成终端（使用“视图”>“集成终端”  菜单）。
+1. 在 VS Code 中打开集成终端（使用“视图”>“集成终端”菜单）。
 1. 运行此命令（确保 **webfrontend** 是当前文件夹）：
 
     ```cmd
@@ -145,7 +145,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 
 在 `up` 命令的输出中标识服务的公共 URL。 它以 `.azds.io` 结尾。 在上面的示例中，公共 URL 为 `http://webfrontend.1234567890abcdef1234.eus.azds.io/`。
 
-若要查看 Web 应用，请在浏览器中打开公共 URL。 另请注意，当你与 Web 应用交互时，`stdout` 和 `stderr` 输出将流式传输到 azds trace  终端窗口。 你还将看到 HTTP 请求通过系统时的跟踪信息。 这使你可以更轻松地在开发期间跟踪复杂的多服务调用。 Dev Spaces 添加的检测提供了此请求跟踪。
+若要查看 Web 应用，请在浏览器中打开公共 URL。 另请注意，当你与 Web 应用交互时，`stdout` 和 `stderr` 输出将流式传输到 azds trace 终端窗口。 你还将看到 HTTP 请求通过系统时的跟踪信息。 这使你可以更轻松地在开发期间跟踪复杂的多服务调用。 Dev Spaces 添加的检测提供了此请求跟踪。
 
 > [!Note]
 > 除了公共 URL 之外，还可以使用控制台输出中显示的备用 `http://localhost:<portnumber>` URL。 如果使用该 localhost URL，则容器看起来是在本地运行，但实际上是在 AKS 中运行。 Azure Dev Spaces 使用 Kubernetes *端口转发*功能将 localhost 端口映射到 AKS 中运行的容器。 这有助于从本地计算机与服务进行交互。
@@ -165,13 +165,13 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 
 此命令重新生成容器映像并重新部署 Helm 图表。 若要查看代码更改是否在正在运行的应用程序中生效，只需刷新浏览器即可。
 
-不过，还有一种更快的开发代码的方法，该方法在下一部分介绍。  
+不过，还有一种更快的开发代码的方法，该方法在下一部分介绍。 
 
 ## <a name="debug-a-container-in-kubernetes"></a>在 Kubernetes 中调试容器
 
 在本部分中，将使用 VS Code 直接调试在 Azure 中运行的容器。 你还将学习如何实现更快的“编辑-运行-测试”循环。
 
-![](media/common/edit-refresh-see.png)
+![显示“编辑代码”、“刷新容器”、“查看更新”循环的关系图。](media/common/edit-refresh-see.png)
 
 > [!Note]
 > **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分，或在此页上发表评论。
@@ -179,17 +179,17 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>使用 VS Code 扩展初始化调试资产
 首先需要配置代码项目，以便 VS Code 与 Azure 中的开发空间进行通信。 Azure Dev Spaces 的 VS Code 扩展提供了一个帮助程序命令来设置调试配置。 
 
-打开**命令面板**（使用“视图”|“命令面板”  菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
+打开**命令面板**（使用“视图”|“命令面板”菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
 
 这将在 `.vscode` 文件夹下为 Azure Dev Spaces 添加调试配置。 此命令不应与 `azds prep` 命令混淆，后者配置部署的项目。
 
-![](media/common/command-palette.png)
+![显示 VS Code Command Pallet 中 Azure Dev Spaces 选项的屏幕截图](media/common/command-palette.png)
 
 ### <a name="select-the-azds-debug-configuration"></a>选择 AZDS 调试配置
 1. 若要打开“调试”视图，请单击 VS Code 侧**活动栏**中的“调试”图标。
-1. 选择“启动 Java 程序(AZDS)”作为活动的调试配置。 
+1. 选择“启动 Java 程序(AZDS)”作为活动的调试配置。
 
-![](media/get-started-java/debug-configuration.png)
+![VS Code 调试功能的屏幕截图，其中“启动 Java 程序”选项以红色框标出。](media/get-started-java/debug-configuration.png)
 
 > [!Note]
 > 如果在命令面板中看不到任何 Azure Dev Spaces 命令，请确保已安装 Azure Dev Spaces 的 VS Code 扩展。 确保在 VS Code 中打开的工作区是包含 `azds.yaml` 的文件夹。
@@ -202,7 +202,7 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 > [!Tip]
 > VS Code 状态栏将变为橙色，指示已附加调试器。 它还会显示一个可点击的 URL，你可以使用它打开你的应用程序。
 
-![](media/common/vscode-status-bar-url.png)
+![变为橙色后的 VS Code 状态栏的屏幕截图。](media/common/vscode-status-bar-url.png)
 
 在服务器端的代码文件中设置一个断点，例如，在 `src/main/java/com/ms/sample/webfrontend/Application.java` 源文件的 `greeting()` 函数中设置断点。 刷新浏览器页面即可命中断点。
 
@@ -218,9 +218,9 @@ public String greeting()
 }
 ```
 
-保存文件，然后在“调试操作”窗格中单击“重启”按钮。  
+保存文件，然后在“调试操作”窗格中单击“重启”按钮。 
 
-![](media/common/debug-action-refresh.png)
+![VS Code 调试操作窗格的屏幕截图，其中的重启选项以红色框标出。](media/common/debug-action-refresh.png)
 
 Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部署新的容器映像（这通常需要很长时间），而是在现有的容器中以增量方式重新编译代码，加快编辑/调试循环速度。
 

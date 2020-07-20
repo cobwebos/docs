@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214320"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231533"
 ---
 ::: zone target="docs"
 
@@ -82,11 +82,11 @@ ms.locfileid: "79214320"
 
     ![磁盘驱动器的内容](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. 将需要作为块 Blob 导入的数据复制到 BlockBlob 文件夹中  。 同样，将 VHD/VHDX 等数据复制到 PageBlob 文件夹并将数据复制到 AzureFile 文件夹   。
+2. 将需要作为块 Blob 导入的数据复制到 BlockBlob 文件夹中。 同样，将 VHD/VHDX 等数据复制到 PageBlob 文件夹并将数据复制到 AzureFile 文件夹 。
 
     在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob 和 PageBlob 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 `$root` 中。 `$root` 容器中的所有文件始终作为块 Blob 上传。
 
-   将文件复制到“AzureFile”文件夹中的文件夹  。 AzureFile 文件夹中的子文件夹创建文件共享  。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传  。
+   将文件复制到“AzureFile”文件夹中的文件夹。 AzureFile 文件夹中的子文件夹创建文件共享。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传。
 
     如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
 
@@ -106,8 +106,8 @@ ms.locfileid: "79214320"
     |目标       | 指定目标目录的路径。        |
     |/E                  | 复制包括空目录的子目录。 |
     |/MT[:N]             | 使用 N 个线程创建多线程副本，其中 N 是介于 1 和 128 之间的整数。 <br>N 的默认值为 8。        |
-    |/R:\<N>             | 指定复制失败时的重试次数。 N 的默认值为 1,000,000（100 万次重试）。        |
-    |/W:\<N>             | 指定等待重试的间隔时间，以秒为单位。 N 的默认值为的 30（等待 30 秒）。        |
+    |/R: \<N>             | 指定复制失败时的重试次数。 N 的默认值为 1,000,000（100 万次重试）。        |
+    |/W: \<N>             | 指定等待重试的间隔时间，以秒为单位。 N 的默认值为的 30（等待 30 秒）。        |
     |/NFL                | 指定不记录文件名。        |
     |/NDL                | 指定不记录目录名。        |
     |/FFT                | 采用 FAT 文件时间（精度为两秒）。        |
@@ -273,7 +273,7 @@ ms.locfileid: "79214320"
 
 如果未使用拆分复制工具复制数据，则需要验证数据。 若要验证数据，请执行以下步骤。
 
-1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。
+1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。 此功能仅适用于 Windows 环境。 Linux 用户需要验证复制到磁盘的源数据是否符合[先决条件](https://docs.microsoft.com/azure/databox/data-box-disk-limits)。
     
     ![Data Box Disk 验证工具输出](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -311,12 +311,12 @@ ms.locfileid: "79214320"
 执行以下步骤，连接到计算机并将其上的数据复制到 Data Box Disk。
 
 1. 查看已解锁的驱动器的内容。 根据放置 Data Box Disk 顺序时选择的选项，驱动器中预先创建的文件夹和子文件夹的列表会有所不同。
-2. 将数据复制到与适当数据格式对应的文件夹中。 例如，将非结构化数据复制到 BlockBlob  文件夹，将 VHD 或 VHDX 数据复制到 PageBlob  文件夹，并将文件复制到 AzureFile  文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
+2. 将数据复制到与适当数据格式对应的文件夹中。 例如，将非结构化数据复制到 BlockBlob 文件夹，将 VHD 或 VHDX 数据复制到 PageBlob 文件夹，并将文件复制到 AzureFile 文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
 
     - 请确保所有容器、blob 和文件都符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)和 [Azure 对象大小限制](data-box-disk-limits.md#azure-object-size-limits)。 如果不遵循这些规则或限制，则无法将数据上传到 Azure。     
     - 如果你的订单将托管磁盘作为存储目标之一，请参阅[托管磁盘](data-box-disk-limits.md#managed-disk-naming-conventions)的命名约定。
-    - 在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob  和 PageBlob  文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 $root 中。 $root 容器中的所有文件将始终作为块 blob 上传。
-    - 在 AzureFile  文件夹内创建子文件夹。 此子文件夹将映射到云中的文件共享。 将文件复制到子文件夹。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传  。
+    - 在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob 和 PageBlob 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 $root 中。 $root 容器中的所有文件将始终作为块 blob 上传。
+    - 在 AzureFile 文件夹内创建子文件夹。 此子文件夹将映射到云中的文件共享。 将文件复制到子文件夹。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传。
     - 如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
 
 3. 使用文件资源管理器或任何与 SMB 兼容的文件复制工具（如 Robocopy）通过拖放来复制数据。 可以使用以下命令启动多个复制作业：

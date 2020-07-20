@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3f0dca5aa9e430fa21d09509121a7ad26feda446
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75351850"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261320"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>教程：部署 Service Fabric 网格应用程序
 
@@ -33,7 +33,7 @@ ms.locfileid: "75351850"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -53,19 +53,19 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
-若要将 Service Fabric 网格项目发布到 Azure，请在 Visual Studio 中右键单击“todolistapp”并选择“发布...”  
+若要将 Service Fabric 网格项目发布到 Azure，请在 Visual Studio 中右键单击“todolistapp”并选择“发布...” 
 
-接下来，查看“发布 Service Fabric 应用程序”对话框。 
+接下来，查看“发布 Service Fabric 应用程序”对话框。
 
 ![Visual Studio - Service Fabric 网格 - 发布对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-选择自己的 Azure 帐户和订阅。 选择“位置”  。 本文使用“美国东部”  。
+选择自己的 Azure 帐户和订阅。 选择“位置”。 本文使用“美国东部”。
 
-在“资源组”下，选择“\<创建新资源组...>”。 此时会出现一个对话框，我们将在其中创建新资源组。 本文使用“美国东部”位置并将组命名为 **sfmeshTutorial1RG**（如果组织有多个人使用同一订阅，请选择唯一的组名称）。  按“创建”以创建资源组，并返回发布对话框。 
+在“资源组”下，选择 \<Create New Resource Group...> 。 此时会出现一个对话框，我们将在其中创建新资源组。 本文使用“美国东部”位置并将组命名为 **sfmeshTutorial1RG**（如果组织有多个人使用同一订阅，请选择唯一的组名称）。  按“创建”以创建资源组，并返回发布对话框。
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“\<创建新容器注册表...>”。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称   。 指定一个**位置**（本教程使用“美国东部”）。  在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG   。 将“SKU”设置为“基本”，然后按“创建”，以创建专用 Azure 容器注册表并返回发布对话框。   
+返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择 \<Create New Container Registry...>  。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称 。 指定一个**位置**（本教程使用“美国东部”）。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG 。 将“SKU”设置为“基本”，然后按“创建”，以创建专用 Azure 容器注册表并返回发布对话框。  
 
 ![Visual Studio - Service Fabric 网格 - 新建容器注册表对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
@@ -82,9 +82,9 @@ Connect-AzureRmAccount
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
 ```
 
-在发布对话框中，按“发布”按钮将 Service Fabric 应用程序部署到 Azure。 
+在发布对话框中，按“发布”按钮将 Service Fabric 应用程序部署到 Azure。
 
-首次发布到 Azure 时，会将 Docker 映像推送到 Azure 容器注册表 (ACR)，此过程需要一段时间，具体时间取决于映像的大小。 后续发布同一项目会更快。 可以通过在 Visual Studio 的“输出”窗口中选择“Service Fabric 工具”窗格，来监视部署的进度。   完成部署后，“Service Fabric 工具”输出将以 URL 的形式显示应用程序的 IP 地址和端口  。
+首次发布到 Azure 时，会将 Docker 映像推送到 Azure 容器注册表 (ACR)，此过程需要一段时间，具体时间取决于映像的大小。 后续发布同一项目会更快。 可以通过在 Visual Studio 的“输出”窗口中选择“Service Fabric 工具”窗格，来监视部署的进度。  完成部署后，“Service Fabric 工具”输出将以 URL 的形式显示应用程序的 IP 地址和端口。
 
 ```
 Packaging Application...
@@ -139,4 +139,4 @@ az mesh app list --output table
 > [!div class="nextstepaction"]
 > [升级 Service Fabric 网格应用](service-fabric-mesh-tutorial-upgrade.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest

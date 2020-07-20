@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113966"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273755"
 ---
 # <a name="backend-pool-management"></a>后端池管理
 后端池是负载均衡器的一个关键组成部分。 后端池定义将在给定负载均衡规则下提供流量的资源的组。
@@ -22,9 +22,9 @@ ms.locfileid: "86113966"
 * 网络接口卡 (NIC)
 * 组合 IP 地址和虚拟网络 (VNET) 资源 ID
 
-使用虚拟机和虚拟机规模集时，通过 NIC 配置后端池。 此方法会在资源与后端池之间生成最直接的链接。 
+使用现有的虚拟机和虚拟机规模集时，通过 NIC 配置后端池。 此方法会在资源与后端池之间生成最直接的链接。 
 
-在 NIC 不可用的情况下，例如对于容器或 Kubernetes Pod，可以通过 IP 地址和 VNET ID 组合配置后端池。
+在为后端池预分配一个 IP 地址范围（计划稍后创建虚拟机和虚拟机规模集的范围）时，请结合 IP 地址和 VNET ID 配置后端池。
 
 本文的配置部分将重点关注：
 
@@ -249,7 +249,7 @@ JSON 请求正文：
 按照此[快速入门资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/)部署负载均衡器和虚拟机，并通过网络接口将虚拟机添加到后端池。
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>通过 IP 地址和虚拟网络配置后端池
-对于容器或预填充了 IP 的后端池，使用 IP 和虚拟网络。
+在预填充了后端池的情况下，使用 IP 和虚拟网络。
 
 所有后端池管理都是直接在后端池对象上完成的，如下例中突出显示的那样。
 

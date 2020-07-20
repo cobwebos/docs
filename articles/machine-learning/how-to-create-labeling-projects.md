@@ -8,14 +8,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: e20b7b447797a957f860c6b1dd9679519960ebc5
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8c0aabc3242bf9576de917ad63ce4f71bec9905e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025176"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146539"
 ---
-# <a name="create-a-data-labeling-project-preview-and-export-labels"></a>创建数据标签项目（预览版）并导出标签 
+# <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -144,7 +144,7 @@ Azure 机器学习可跟踪进度，并维护未完成标记任务的队列。
 >[!NOTE]
 > 请务必注意，标记程序可以使用编号键 1-9 选择前 9 个标签。
 
-## <a name="use-ml-assisted-labeling"></a>使用 ML 辅助标记
+## <a name="use-ml-assisted-labeling-preview"></a>使用 ML 辅助标记（预览版）
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 

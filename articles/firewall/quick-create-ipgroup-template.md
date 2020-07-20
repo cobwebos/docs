@@ -1,6 +1,6 @@
 ---
 title: 快速入门：创建 Azure 防火墙和 IP 组 - 资源管理器模板
-description: 了解如何使用资源管理器模板创建 Azure 防火墙和 IP 组。
+description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure 防火墙和 IP 组。
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,30 +8,32 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 403aaafebcae680f337aeff551b81a80a9549252
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 5ac1248ddcdf8c0eef68b7c32e322398fa01a6f2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680553"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260583"
 ---
-# <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>快速入门：创建 Azure 防火墙和 IP 组 - 资源管理器模板
+# <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>快速入门：创建 Azure 防火墙和 IP 组 - ARM 模板
 
-在本快速入门中，我们使用资源管理器模板部署一个 Azure 防火墙，其中包含在网络规则和应用程序规则中使用的示例 IP 组。 IP 组是顶级资源，可用于定义 IP 地址、范围与子网并将其组合到单个对象中。 在管理 Azure 防火墙规则中的 IP 地址时，IP 组非常有用。 可以手动输入 IP 地址，或者从文件导入。
+在本快速入门中，使用 Azure 资源管理器模板（ARM 模板）部署一个 Azure 防火墙，其中包含在网络规则和应用程序规则中使用的示例 IP 组。 IP 组是顶级资源，可用于定义 IP 地址、范围与子网并将其组合到单个对象中。 在管理 Azure 防火墙规则中的 IP 地址时，IP 组非常有用。 可以手动输入 IP 地址，或者从文件导入。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-azure-firewall-and-ip-groups"></a>创建 Azure 防火墙和 IP 组
+## <a name="review-the-template"></a>查看模板
 
 此模板将创建 Azure 防火墙和 IP 组，以及为 Azure 防火墙提供支持所需的资源。
 
-### <a name="review-the-template"></a>查看模板
-
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox)。
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json" range="001-512" highlight="118-141":::
 
@@ -47,9 +49,9 @@ ms.locfileid: "83680553"
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
-将资源管理器模板部署到 Azure：
+将 ARM 模板部署到 Azure：
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板将创建 Azure 防火墙、网络基础结构和两个虚拟机。
 
@@ -76,7 +78,7 @@ ms.locfileid: "83680553"
 
 :::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="网络规则。":::
 
-若要了解模板中防火墙的 JSON 语法和属性，请参阅 [Microsoft.Network azureFirewalls template reference](https://docs.microsoft.com/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)（Microsoft.Network azureFirewalls 模板参考）。
+若要了解模板中防火墙的 JSON 语法和属性，请参阅 [Microsoft.Network azureFirewalls template reference](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)（Microsoft.Network azureFirewalls 模板参考）。
 
 ## <a name="clean-up-resources"></a>清理资源
 

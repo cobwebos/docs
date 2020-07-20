@@ -1,19 +1,19 @@
 ---
 title: 教程：在 Azure Spring Cloud 中缩放应用程序 | Microsoft Docs
-description: 本教程介绍如何在 Azure 门户中通过 Azure Spring Cloud 缩放应用程序
+description: 了解如何在 Azure 门户中通过 Azure Spring Cloud 缩放应用程序
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: ca889e48510ec20b4823c6ec5e4e0149d5aaaa62
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792058"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141880"
 ---
-# <a name="scale-an-application-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中缩放应用程序
+# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>教程：在 Azure Spring Cloud 中缩放应用程序
 
 本教程演示如何在 Azure 门户中使用 Azure Spring Cloud 仪表板缩放任何微服务应用程序。
 
@@ -23,10 +23,10 @@ ms.locfileid: "84792058"
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，需要：
+若要遵循这些过程进行操作，需要：
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-* 部署的 Azure Spring Cloud 服务实例。  按[有关如何通过 Azure CLI 来部署应用的快速入门](spring-cloud-quickstart-launch-app-cli.md)操作即可入门。
+* 部署的 Azure Spring Cloud 服务实例。  按[有关如何通过 Azure CLI 来部署应用的快速入门](spring-cloud-quickstart-launch-app-cli.md)中的说明开始操作。
 * 至少已在该服务实例中创建一个应用程序。
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>导航到 Azure 门户中的“缩放”页
@@ -64,7 +64,7 @@ ms.locfileid: "84792058"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们了解了如何手动缩放 Azure Spring Cloud 应用程序。 若要了解如何监视应用程序，请继续学习下一教程。
+本教程介绍了如何手动缩放 Azure Spring Cloud 应用程序。 若要了解如何通过设置警报来监视应用程序，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
-> [了解如何监视应用程序](spring-cloud-tutorial-distributed-tracing.md)
+> [了解如何设置警报](spring-cloud-tutorial-alerts-action-groups.md)

@@ -4,12 +4,12 @@ description: 了解如何准备好要通过 Azure Migrate 进行迁移的本地�
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: e6840b75d58bf19f742f94caad74e10aebe24666
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: aec2e95b65be2e3c69b2d29111fa1cfdbd66674e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044152"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223612"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -122,7 +122,7 @@ ms.locfileid: "86044152"
 --- | --- | ---
 **安装 Hyper-V Linux Integration Services** | 重新生成 Linux init 映像，使之包含所需的 Hyper-V 驱动程序。 重新生成 init 映像可以确保 VM 在 Azure 中启动。 | 默认情况下，大多数最新版本的 Linux 分发版已包含此服务。<br/><br/> 如果不包含，除以上所示版本之外的所有版本，都需要手动安装。
 **启用 Azure 串行控制台日志记录** | 启用控制台日志记录有助于进行故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动。 启动磁盘映像相当于重新启动新 VM。<br/><br/> 遵照[这些说明](../virtual-machines/troubleshooting/serial-console-linux.md)启用此功能。
-**更新设备映射文件** | 更新包含设备名称到卷的关联的设备映射文件，以使用永久设备标识符。 | 除以上所示版本之外的所有版本，都需要手动安装。
+**更新设备映射文件** | 更新包含设备名称到卷的关联的设备映射文件，以使用永久设备标识符。 | 除以上所示版本之外的所有版本，都需要手动安装。 （仅适用于基于代理的 VMware 场景）
 **更新 fstab 条目** |  更新条目以使用永久卷标识符。    | 除以上所示版本之外的所有版本，都需要手动更新。
 **删除 udev 规则** | 删除基于 MAC 地址等属性保留接口名称的所有 udev 规则。 | 除以上所示版本之外的所有版本，都需要手动删除。
 **更新网络接口** | 更新网络接口以基于 DHCP.nst 接收 IP 地址 | 除以上所示版本之外的所有版本，都需要手动更新。

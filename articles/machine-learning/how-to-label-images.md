@@ -2,20 +2,20 @@
 title: 在标记项目中标记图像
 title.suffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习标记项目中使用数据标记工具。
-author: lobrien
-ms.author: laobri
+author: sdgilley
+ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025125"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147007"
 ---
-# <a name="tag-images-in-a-labeling-project-preview"></a>在标记项目中标记图像（预览）
+# <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像 
 
 项目管理员在 Azure 机器学习中[创建标记项目](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)后，你可以使用标记工具（公共预览版）为机器学习项目快速准备数据。 本文介绍：
 
@@ -64,7 +64,7 @@ ms.locfileid: "86025125"
 
 提交手头数据的标记后，Azure 将使用工作队列中的一组新图像刷新页面。
 
-### <a name="assisted-machine-learning"></a>辅助机器学习 
+### <a name="assisted-machine-learning-preview"></a>辅助机器学习（预览版） 
 
 可能会触发机器学习算法。 如果在项目中启用了这些算法，你可能会看到以下内容：
 

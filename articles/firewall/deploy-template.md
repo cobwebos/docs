@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9b9b7926caa717c1a02988ac7a927bd9bd39d52a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683704"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260622"
 ---
-# <a name="quickstart-deploy-azure-firewall-with-availability-zones---resource-manager-template"></a>快速入门：部署具有可用性区域的 Azure 防火墙 - 资源管理器模板
+# <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>快速入门：部署具有可用性区域的 Azure 防火墙 - ARM 模板
 
-在本快速入门中，你将使用资源管理器模板在三个可用性区域中部署 Azure 防火墙。 
+在本快速入门中，使用 Azure 资源管理器模板（ARM 模板）在三个可用性区域中部署 Azure 防火墙。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,17 +29,19 @@ ms.locfileid: "83683704"
 
 有关 Azure 防火墙的详细信息，请参阅[使用 Azure 门户部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)。
 
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-azure-firewall-with-availability-zones"></a>创建具有可用性区域的 Azure 防火墙
+## <a name="review-the-template"></a>查看模板
 
 此模板创建具有可用性区域的 Azure 防火墙，以及用于支持 Azure 防火墙的必要资源。
 
-### <a name="review-the-template"></a>查看模板
-
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)。
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json" range="001-444" highlight="369-442":::
 
@@ -54,19 +56,19 @@ ms.locfileid: "83683704"
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
-将资源管理器模板部署到 Azure：
+将 ARM 模板部署到 Azure：
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板将创建 Azure 防火墙、网络基础结构和两个虚拟机。
 
    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
 
 2. 在门户中的“创建具有区域的 Azure 防火墙的沙盒设置”页上，键入或选择以下值：
-   - **资源组**：选择“新建”，键入资源组的名称，然后选择“确定”。 
-   - **虚拟网络名称**：键入新 VNet 的名称。 
+   - 资源组：选择“新建”，键入资源组的名称，然后选择“确定”。 
+   - **虚拟网络名称**：键入新 VNet 的名称。
    - **管理员用户名**：键入管理员用户帐户的用户名。
-   - **管理员密码**：键入管理员密码。 
+   - **管理员密码**：键入管理员密码。
 
 3. 阅读条款和条件，选择“我同意上述条款和条件”，然后选择“购买”。  部署可能需要 10 分钟或更长时间才能完成。
 
@@ -78,7 +80,7 @@ ms.locfileid: "83683704"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要这些资源时，可以通过运行 PowerShell 命令 `Remove-AzResourceGroup` 来删除资源组、防火墙和所有相关的资源。 若要删除名为 MyResourceGroup 的资源组，请运行： 
+当不再需要这些资源时，可以通过运行 PowerShell 命令 `Remove-AzResourceGroup` 来删除资源组、防火墙和所有相关的资源。 若要删除名为 MyResourceGroup 的资源组，请运行：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup

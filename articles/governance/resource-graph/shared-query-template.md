@@ -4,30 +4,32 @@ description: 在本快速入门中，我们使用 Azure 资源管理器模板（
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969799"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252362"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建共享查询
+# <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建共享查询
 
 可以将 Resource Graph 查询另存为专用查询或共享查询。  专用查询保存到个人门户配置文件中，不显示给其他人。 共享查询是一个资源管理器对象，可通过权限和基于角色的访问权限与他人共享。 可以通过共享查询以通用且一致的方式执行资源发现操作。 本快速入门使用 Azure 资源管理器模板（ARM 模板）来创建共享查询。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="部署用于创建 Azure 共享查询的 ARM 模板" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="create-a-shared-query"></a>创建共享查询
+## <a name="review-the-template"></a>查看模板
 
 在本快速入门中，我们创建一个名为“按 OS 进行 VM 计数”的共享查询。 若要使用 Resource Graph 资源管理器在 SDK 或门户中尝试此查询，请参阅[示例 - 按 OS 类型对虚拟机进行计数](./samples/starter.md#count-os)。
 
-### <a name="review-the-template"></a>查看模板
-
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/)。
 
 :::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
 
@@ -35,7 +37,7 @@ ms.locfileid: "85969799"
 
 - [Microsoft.ResourceGraph/queries](/azure/templates/microsoft.resourcegraph/queries)
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
 > [!NOTE]
 > Azure Resource Graph 服务免费。 有关详细信息，请参阅 [Azure Resource Graph 概述](./overview.md)。

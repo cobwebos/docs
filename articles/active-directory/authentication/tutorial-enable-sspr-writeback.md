@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85551744"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202552"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教程：启用到本地环境的 Azure Active Directory 自助式密码重置写回
 
@@ -43,7 +43,7 @@ ms.locfileid: "85551744"
     * 如果需要，请[完成上一篇教程来启用 Azure AD SSPR](tutorial-enable-sspr.md)。
 * 配置有最新 Azure AD Connect 版本的现有本地 AD DS 环境。
     * 如果需要，请使用“[快速](../hybrid/how-to-connect-install-express.md)”或“[自定义](../hybrid/how-to-connect-install-custom.md)”设置配置 Azure AD Connect。
-    * 若要使用密码写回，域控制器必须是 Windows Server 2008 R2 或更高版本。
+    * 若要使用密码写回，域控制器必须是 Windows Server 2012 或更高版本。
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>为 Azure AD Connect 配置帐户权限
 

@@ -2,14 +2,14 @@
 title: 教程 - 通过 Azure 函数触发容器组
 description: 创建 HTTP 触发的无服务器 PowerShell 函数，以便自动创建 Azure 容器实例
 ms.topic: tutorial
-ms.date: 09/20/2019
+ms.date: 06/10/2020
 ms.custom: ''
-ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 298cf1452e514ede540e23d4e64f6dd1059cceab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78331019"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259752"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教程：使用 HTTP 触发的 Azure 函数创建容器组
 
@@ -25,38 +25,36 @@ ms.locfileid: "78331019"
 > * 修改并重新发布用于自动部署单容器容器组的 PowerShell 函数。
 > * 验证对容器进行的 HTTP 触发的部署。
 
-> [!IMPORTANT]
-> 适用于 Azure Functions 的 PowerShell 当前为预览版。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
-
 ## <a name="prerequisites"></a>先决条件
 
-请参阅[在 Azure 中创建第一个函数](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment)，了解在 OS 上安装 Visual Studio Code 并将其与 Azure Functions 配合使用的先决条件。
+请参阅[在 Azure 中使用 Visual Studio Code 创建你的第一个函数](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment)，了解在 OS 上安装 Visual Studio Code 并将其与 Azure Functions 扩展配合使用的先决条件。
 
-本文中的一些步骤使用 Azure CLI。 可以使用 Azure Cloud Shell 或本地安装的 Azure CLI 完成这些步骤。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+本文中的其他步骤使用 Azure PowerShell。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell][azure-powershell-install] 和[登录到 Azure](/powershell/azure/get-started-azureps#sign-in-to-azure)。
 
 ## <a name="create-a-basic-powershell-function"></a>创建基本的 PowerShell 函数
 
-请按[在 Azure 中创建第一个 PowerShell 函数](../azure-functions/functions-create-first-function-powershell.md)中的步骤操作，使用“HTTP 触发器”模板创建 PowerShell 函数。 使用默认的 Azure 函数名称 **HttpTrigger**。 按快速入门中的演示操作，在本地测试函数，并将项目发布到 Azure 中的函数应用。 此示例是一个基本的 HTTP 触发的函数，返回文本字符串。 在本文后面的步骤中，我们通过修改该函数来创建容器组。
+请按[在 Azure 中创建第一个 PowerShell 函数](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell)中的步骤操作，使用“HTTP 触发器”模板创建 PowerShell 函数。 使用默认的 Azure 函数名称 **HttpTrigger**。 按快速入门中的演示操作，在本地测试函数，并将项目发布到 Azure 中的函数应用。 此示例是一个基本的 HTTP 触发的函数，返回文本字符串。 在本文后面的步骤中，我们通过修改该函数来创建容器组。
 
 本文假定你在一个 Azure 资源组中使用名称 *myfunctionapp* 发布项目，该资源组自动根据函数应用名称（也是 *myfunctionapp*）命名。 请在后面的步骤中将上述名称替换为自己的唯一函数应用名称和资源组名称。
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>在函数应用中启用 Azure 托管标识
 
-现在，在函数应用中启用系统分配的[托管标识](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity)。 运行此应用的 PowerShell 主机可以使用此标识自动进行身份验证，使函数能够在标识有权访问的 Azure 服务上执行操作。 在本教程中，我们授予托管标识在函数应用的资源组中创建资源的权限。 
+以下命令在函数应用中启用系统分配的[托管标识](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity)。 运行此应用的 PowerShell 主机可以使用此标识自动对 Azure 进行身份验证，使函数能够在标识有权访问的 Azure 服务上执行操作。 在本教程中，我们授予托管标识在函数应用的资源组中创建资源的权限。 
 
-首先使用 [az group show][az-group-show] 命令获取函数应用的资源组的 ID 并将其存储在环境变量中。 以下示例假定你在 Bash shell 中运行该命令。
+向函数应用[添加标识](../app-service/overview-managed-identity.md?tabs=dotnet#using-azure-powershell-1)：
 
-```azurecli
-rgID=$(az group show --name myfunctionapp --query id --output tsv)
+```powershell
+Update-AzFunctionApp -Name myfunctionapp `
+    -ResourceGroupName myfunctionapp `
+    -IdentityType SystemAssigned
 ```
 
-运行 [az functionapp identity app assign][az-functionapp-identity-app-assign]，为函数应用分配本地标识，为资源组分配参与者角色。 此角色允许标识在资源组中创建其他资源，例如容器组。
+将参与者角色范围的标识分配给资源组：
 
-```azurecli
-az functionapp identity assign \
-  --name myfunctionapp \
-  --resource-group myfunctionapp \
-  --role contributor --scope $rgID
+```powershell
+$SP=(Get-AzADServicePrincipal -DisplayName myfunctionapp).Id
+$RG=(Get-AzResourceGroup -Name myfunctionapp).ResourceId
+New-AzRoleAssignment -ObjectId $SP -RoleDefinitionName "Contributor" -Scope $RG
 ```
 
 ## <a name="modify-httptrigger-function"></a>修改 HttpTrigger 函数
@@ -66,8 +64,7 @@ az functionapp identity assign \
 ```powershell
 [...]
 if ($name) {
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
+    $body = "Hello, $name. This HTTP triggered function executed successfully."
 }
 [...]
 ```
@@ -77,13 +74,16 @@ if ($name) {
 ```powershell
 [...]
 if ($name) {
-    $status = [HttpStatusCode]::OK
     New-AzContainerGroup -ResourceGroupName myfunctionapp -Name $name `
         -Image alpine -OsType Linux `
         -Command "echo 'Hello from an Azure container instance triggered by an Azure function'" `
         -RestartPolicy Never
-    $body = "Started container group $name"
-}
+    if ($?) {
+        $body = "This HTTP triggered function executed successfully. Started container group $name"
+    }
+    else  {
+        $body = "There was a problem starting the container group."
+    }
 [...]
 ```
 
@@ -91,90 +91,88 @@ if ($name) {
  
 ## <a name="test-function-app-locally"></a>在本地测试函数应用
 
-请确保函数在本地正常运行，然后再将函数应用项目重新发布到 Azure。 如 [PowerShell 快速入门](../azure-functions/functions-create-first-function-powershell.md)所示，请在 PowerShell 脚本中插入一个本地断点，然后在其上插入 `Wait-Debugger` 调用。 有关调试指南，请参阅[在本地调试 PowerShell Azure Functions](../azure-functions/functions-debug-powershell-local.md)。
-
+请确保函数在本地运行，然后再将函数应用项目重新发布到 Azure。 在本地运行时，函数不会创建 Azure 资源。 但是，不管是否有没有在查询字符串中传递名称值，你都可以测试函数流。 若要调试函数，请参阅[在本地调试 PowerShell Azure Functions](../azure-functions/functions-debug-powershell-local.md)。
 
 ## <a name="republish-azure-function-app"></a>重新发布 Azure 函数应用
 
-验证该函数可以在本地计算机上正确运行以后，即可将项目重新发布到 Azure 中的现有函数应用。
+验证该函数可以在本地运行以后，请将项目重新发布到 Azure 中的现有函数应用。
 
-> [!NOTE]
-> 将函数发布到 Azure 之前，请记得删除对 `Wait-Debugger` 的所有调用。
-
-1. 在 Visual Studio Code 中打开命令面板。 搜索并选择 `Azure Functions: Deploy to function app...`。
+1. 在 Visual Studio Code 中打开命令面板。 搜索并选择 `Azure Functions: Deploy to Function App...`。
 1. 选择当前的用于压缩和部署的工作文件夹。
 1. 选择订阅，然后选择现有函数应用的名称 (*myfunctionapp*)。 确认要覆盖以前的部署。
 
-创建函数应用并应用了部署包之后，会显示一个通知。 在此通知中选择“查看输出”  以查看创建和部署结果，其中包括已更新的 Azure 资源。
+创建函数应用并应用了部署包之后，会显示一个通知。 在此通知中选择“查看输出”以查看创建和部署结果，其中包括已更新的 Azure 资源。
 
 ## <a name="run-the-function-in-azure"></a>在 Azure 中运行函数
 
-部署成功完成以后，请获取函数 URL。 例如，使用 Visual Studio Code 中的“Azure:  Functions”区域复制 **HttpTrigger** 函数 URL，或者在 [Azure 门户](../azure-functions/functions-create-first-azure-function.md#test-the-function)中获取函数 URL。
+部署成功完成以后，请获取函数 URL。 例如，使用 Visual Studio Code 中的“Azure:Functions”区域复制 HttpTrigger 函数 URL，或者在 [Azure 门户](../azure-functions/functions-create-first-azure-function.md#test-the-function)中获取函数 URL。
 
-函数 URL 包含唯一代码，采用以下形式：
+函数 URL 的格式为：
 
 ```
-https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==
+https://myfunctionapp.azurewebsites.net/api/HttpTrigger
 ```
 
 ### <a name="run-function-without-passing-a-name"></a>在不传递名称的情况下运行函数
 
-首次测试时，请运行 `curl` 命令，传递没有追加 `name` 查询字符串的函数 URL。 请确保包括函数的唯一代码。
+首次测试时，请运行 `curl` 命令，传递没有追加 `name` 查询字符串的函数 URL。 
 
 ```bash
-curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M=="
+curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger"
 ```
 
-此函数返回状态代码 400 和文本“`Please pass a name on the query string or in the request body`”：
+此函数返回状态代码 200 和文本“`This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response`”：
 
 ```
 [...]
-> GET /api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M== HTTP/2
+> GET /api/HttpTrigger? HTTP/1.1
 > Host: myfunctionapp.azurewebsites.net
-> User-Agent: curl/7.54.0
+> User-Agent: curl/7.64.1
 > Accept: */*
 > 
 * Connection state changed (MAX_CONCURRENT_STREAMS updated)!
-< HTTP/2 400 
-< content-length: 62
-< content-type: text/plain; charset=utf-8
-< date: Mon, 05 Aug 2019 22:08:15 GMT
+< HTTP/1.1 200 OK
+< Content-Length: 135
+< Content-Type: text/plain; charset=utf-8
+< Request-Context: appId=cid-v1:d0bd0123-f713-4579-8990-bb368a229c38
+< Date: Wed, 10 Jun 2020 17:50:27 GMT
 < 
 * Connection #0 to host myfunctionapp.azurewebsites.net left intact
-Please pass a name on the query string or in the request body.
+This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.* Closing connection 0
 ```
 
 ### <a name="run-function-and-pass-the-name-of-a-container-group"></a>运行函数并传递容器组的名称
 
-现在请运行 `curl` 命令，方法是：将容器组的名称 (*mycontainergroup*) 以查询字符串 `&name=mycontainergroup` 的形式追加：
+现在请运行 `curl` 命令，并将容器组的名称 (mycontainergroup) 以查询字符串 `?name=mycontainergroup` 的形式进行追加：
 
 ```bash
-curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup"
+curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?name=mycontainergroup"
 ```
 
 此函数返回状态代码 200 并触发一项创建容器组的操作：
 
 ```
 [...]
-> GET /api/HttpTrigger?ode=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup HTTP/2
+> GET /api/HttpTrigger1?name=mycontainergroup HTTP/1.1
 > Host: myfunctionapp.azurewebsites.net
-> User-Agent: curl/7.54.0
+> User-Agent: curl/7.64.1
 > Accept: */*
 > 
-* Connection state changed (MAX_CONCURRENT_STREAMS updated)!
-< HTTP/2 200 
-< content-length: 28
-< content-type: text/plain; charset=utf-8
-< date: Mon, 05 Aug 2019 22:15:30 GMT
+< HTTP/1.1 200 OK
+< Content-Length: 92
+< Content-Type: text/plain; charset=utf-8
+< Request-Context: appId=cid-v1:d0bd0123-f713-4579-8990-bb368a229c38
+< Date: Wed, 10 Jun 2020 17:54:31 GMT
 < 
 * Connection #0 to host myfunctionapp.azurewebsites.net left intact
-Started container group mycontainergroup
+This HTTP triggered function executed successfully. Started container group mycontainergroup* Closing connection 0
 ```
 
-使用 [az container logs][az-container-logs] 命令验证容器是否已运行：
+使用 [Get-AzContainerInstanceLog][get-azcontainerinstancelog] 命令验证容器是否已运行：
 
 ```azurecli
-az container logs --resource-group myfunctionapp --name mycontainergroup
+Get-AzContainerInstanceLog -ResourceGroupName myfunctionapp `
+  -ContainerGroupName mycontainergroup 
 ```
 
 示例输出：
@@ -185,7 +183,7 @@ Hello from an Azure container instance triggered by an Azure function
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要在本教程中创建的任何资源，可以执行 [az group delete][az-group-delete] 命令，删除资源组和其中包含的所有资源。 此命令将删除创建的容器注册表、正在运行的容器和所有相关资源。
+如果不再需要在本教程中创建的任何资源，可以执行 [az group delete][az-group-delete] 命令，删除资源组和其中包含的所有资源。 此命令将删除创建的函数应用、正在运行的容器和所有相关资源。
 
 ```azurecli-interactive
 az group delete --name myfunctionapp
@@ -203,7 +201,7 @@ az group delete --name myfunctionapp
 
 有关如何启动并监视容器化作业的详细示例，请参阅博客文章 [Event-Driven Serverless Containers with PowerShell Azure Functions and Azure Container Instances](https://dev.to/azure/event-driven-serverless-containers-with-powershell-azure-functions-and-azure-container-instances-e9b)（将事件驱动型无服务器容器与 PowerShell Azure Functions 和 Azure 容器实例配合使用）和随附的[代码示例](https://github.com/anthonychu/functions-powershell-run-aci)。
 
-请参阅 [Azure Functions 文档](/azure/azure-functions/)，获取有关如何创建 Azure Functions 和发布 Functions 项目的详细指南。 
+请参阅 [Azure Functions 文档](../azure-functions/index.yml)，获取有关如何创建 Azure Functions 和发布 Functions 项目的详细指南。 
 
 <!-- IMAGES -->
 
@@ -212,10 +210,6 @@ az group delete --name myfunctionapp
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - internal -->
-
-[azure-cli-install]: /cli/azure/install-azure-cli
-[az-group-show]: /cli/azure/group#az-group-show
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-functionapp-identity-app-assign]: /cli/azure/functionapp/identity#az-functionapp-identity-assign
+[azure-powershell-install]: /powershell/azure/install-az-ps
 [new-azcontainergroup]: /powershell/module/az.containerinstance/new-azcontainergroup
-[az-container-logs]: /cli/azure/container#az-container-logs
+[get-azcontainerinstancelog]: /powershell/module/az.containerinstance/get-azcontainerinstancelog

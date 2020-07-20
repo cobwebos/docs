@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513801"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245324"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>教程：使用 Azure 机器学习构建和部署自定义技能 
 
@@ -29,6 +29,9 @@ ms.locfileid: "85513801"
 > * 训练模型并将其部署到 Azure Kubernetes 群集
 > * 将 AI 扩充管道链接到已部署的模型
 > * 从已部署的模型引入输出作为自定义技能
+
+> [!IMPORTANT] 
+> 此技能以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持 .NET SDK。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 044c55e64c6532bf08d31b2c052e4ee9f5069ff1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f93a25854bc8b93e9bd75ea71037f6363d143914
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956094"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145715"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>快速入门：向 Azure Active Directory (Azure AD) 租户添加应用程序
 
-Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的应用程序。 组织使用的许多应用程序可能已包含在库中。 本快速入门使用 Azure 门户向 Azure AD 租户添加库应用程序。 本快速入门重点介绍如何添加已为库的一部分的应用。 未包含在库中的应用也可以与 Azure AD 集成，但本快速入门不涉及此项内容。 
+Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的应用程序。 组织使用的许多应用程序可能已包含在库中。
 
 将某个应用程序添加到 Azure AD 租户以后，即可：
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 
 ## <a name="add-an-app-to-your-azure-ad-tenant"></a>将应用添加到 Azure AD 租户
 
-若要向 Azure AD 租户添加库应用程序，请执行以下操作：
+向 Azure AD 租户添加应用程序：
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧导航面板中，选择“Azure Active Directory”。
 2. 在“Azure Active Directory”窗格中，选择“企业应用程序”。  此时会打开“所有应用程序”窗格，其中显示了 Azure AD 租户中应用程序的随机示例。
@@ -50,8 +50,10 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 4. 切换到新的库预览体验：在“添加应用程序”页顶部的横幅中，选择显示“单击此处以试用新的和改进的应用库”的链接 。
 5. “浏览 Azure AD 库(预览版)”窗格会打开并显示云平台、本地应用程序和特别推荐应用程序的磁贴。 “特别推荐应用程序”部分中列出的应用程序带有指示其是否支持联合单一登录 (SSO) 和预配的图标。
     ![按名称或类别搜索应用](media/add-application-portal/browse-gallery.png)
-6. 你可以在库中浏览要添加的应用程序，或通过在搜索框中输入其名称来搜索该应用程序。 然后，从结果中选择应用程序。 在表单中，可以根据组织的需要来编辑应用程序的名称。 在此示例中，我们已将该名称更改为 GitHub-test。
+6. 你可以在库中浏览要添加的应用程序，或通过在搜索框中输入其名称来搜索该应用程序。 然后，从结果中选择应用程序。 在表单中，可以根据组织的需要来编辑应用程序的名称。 在此示例中，我们已选择 GitHub 并将该名称更改为 GitHub-test。
     ![演示如何从库添加应用程序](media/add-application-portal/create-application.png)
+    >[!TIP]
+    >如果要查找的应用程序不在库中，则可以单击链接“创建自己的应用程序”。 Microsoft 已与多个应用程序开发人员合作，将应用预配置为使用 Azure AD。 这些是在库中显示的应用。 但如果未列出要添加的应用，可以创建一个新的通用应用，然后自行配置或根据创建该应用的开发人员的指导进行配置。
 7. 选择“创建”。 此时会显示一个入门页面，其中包含为组织配置应用程序所需的选项。
 
 已完成添加应用程序的操作。 接下来的快速入门介绍如何更改徽标和编辑应用程序的其他属性。

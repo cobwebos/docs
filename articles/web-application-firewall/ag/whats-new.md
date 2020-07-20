@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
-ms.openlocfilehash: 11212c931e38b1c6319c7c3554155d9d17a1080c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5033d19de2321e0dfd3b6d89d2da3306b1723bd0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745148"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146583"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Azure Web 应用程序防火墙中的新增功能
 
@@ -27,6 +27,7 @@ Azure Web 应用程序防火墙会不断更新。 为了让大家随时了解最
 
 |Feature  |说明  |添加日期  |
 |---------|---------|---------|
+|每站点策略 GA| 每站点策略现已正式发布。 | 2020 年 7 月 |
 |机器人风险缓解规则集（预览版）|你可以启用机器人风险缓解规则集以及所选的 CRS 规则集。 | 2019 年 11 月 |
 |GeoDB 集成（预览版）|现在，你可以创建自定义规则，按源国家/地区限制流量。 | 2019 年 11 月 |
 |WAF 每个站点/每个 URI 策略（预览版）|WAF-v2 现在支持向侦听器应用策略，以及基于路径的规则。 请参阅[创建 WAF 策略](create-waf-policy-ag.md)。 | 2019 年 11 月 |

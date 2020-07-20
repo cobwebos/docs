@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59f83c7896ca371809d9103489b140ae73d5a42d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647353"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256641"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护是什么？
 
@@ -94,7 +94,7 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| 功能 | 详细信息 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
+| 功能 | 详细信息 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free/Office 365 应用 |
 | --- | --- | --- | --- | --- |
 | 风险策略 | 用户风险策略（通过标识保护实现） | 是 | 否 | 否 |
 | 风险策略 | 登录风险策略（通过标识保护或条件访问实现） | 是 | 否 | 否 |

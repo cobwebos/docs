@@ -3,14 +3,15 @@ title: 发布服务目录托管应用
 description: 演示如何创建适用于组织中成员的 Azure 托管应用程序。
 author: tfitzmac
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 47eda62810b1098fcaca5b734be4f74edc0db49a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d0a3e2a435be679a2a35941dfa24978ae77291b0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609351"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249030"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>快速入门：创建并发布托管应用程序定义
 
@@ -26,9 +27,9 @@ ms.locfileid: "82609351"
 
 ## <a name="create-the-arm-template"></a>创建 ARM 模板
 
-每个托管应用程序定义均包含一个名为 **mainTemplate.json** 的文件。 可在其中定义要部署的 Azure 资源。 该模板与常规的 Azure 资源管理器 (ARM) 模板没有什么不同。
+每个托管应用程序定义均包含一个名为 _mainTemplate.json_ 的文件。 可在其中定义要部署的 Azure 资源。 该模板与常规 ARM 模板并没有不同。
 
-创建一个名为 **mainTemplate.json** 的文件。 该名称区分大小写。
+创建一个名为 _mainTemplate.json_ 的文件。 该名称区分大小写。
 
 将以下 JSON 添加到该文件。 它定义用于创建存储帐户的参数，并指定存储帐户的属性。
 
@@ -77,9 +78,9 @@ ms.locfileid: "82609351"
 
 ## <a name="define-your-create-experience"></a>定义你的创建体验
 
-作为发布者，你将定义用于创建托管应用程序的门户体验。 **createUiDefinition.json** 文件生成门户界面。 使用[控件元素](create-uidefinition-elements.md)（包括下拉框、文本框和密码框）来定义用户如何为每个参数提供输入。
+作为发布者，你将定义用于创建托管应用程序的门户体验。 _createUiDefinition.json_ 文件生成门户界面。 使用[控件元素](create-uidefinition-elements.md)（包括下拉框、文本框和密码框）来定义用户如何为每个参数提供输入。
 
-创建一个名为 **createUiDefinition.json** 的文件（此名称区分大小写）
+创建一个名为 _createUiDefinition.json_ 的文件（此名称区分大小写）
 
 将以下起始 JSON 添加到该文件并保存。
 
@@ -136,7 +137,7 @@ ms.locfileid: "82609351"
 
 ## <a name="package-the-files"></a>将文件打包
 
-将这两个文件添加到名为 app.zip 的 .zip 文件。 这两个文件必须都位于该 .zip 文件的根级别。 如果将它们放在文件夹中，则会在创建托管应用程序定义时收到错误，称所需文件不存在。
+将这两个文件添加到名为 app.zip 的 .zip 文件 。 这两个文件必须都位于该 .zip 文件的根级别。 如果将它们放在文件夹中，则会在创建托管应用程序定义时收到错误，称所需文件不存在。
 
 将包上传到可从中使用程序包的一个可访问位置。 你需要为存储帐户提供一个唯一名称。
 
@@ -308,16 +309,16 @@ az managedapp definition create \
 
 ### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>在存储帐户中设置“设备资源提供程序”的角色分配
 
-在将托管的应用程序定义部署到存储帐户之前，你必须为“设备资源提供程序”  角色授予参与者权限，以便它可以将定义文件写入存储帐户的容器中。
+在将托管的应用程序定义部署到存储帐户之前，你必须为“设备资源提供程序”角色授予参与者权限，以便它可以将定义文件写入存储帐户的容器中。
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
-1. 选择“访问控制(标识和访问管理)”以显示存储帐户的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
-1. 在“添加角色分配”窗口中，选择“参与者”角色   。 
-1. 在“分配访问权限至”  字段中，选择“Azure AD 用户、组或服务主体”  。
-1. 在“选择”下，搜索“设备资源提供程序”角色，然后将其选中。  
+1. 选择“访问控制(标识和访问管理)”以显示存储帐户的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
+1. 在“添加角色分配”窗口中，选择“参与者”角色 。 
+1. 在“分配访问权限至”字段中，选择“Azure AD 用户、组或服务主体”。
+1. 在“选择”下，搜索“设备资源提供程序”角色，然后将其选中。 
 1. 保存角色分配。
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>使用 ARM 模板部署托管应用程序定义 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>使用 ARM 模板部署托管应用程序定义
 
 使用以下 ARM 模板将打包的托管应用程序部署为服务目录中的新托管应用程序定义，其定义文件在你自己的存储帐户中进行存储和维护：
    
@@ -391,9 +392,9 @@ az managedapp definition create \
 }
 ```
 
-我们已将名为 storageAccountId  的新属性添加到 applicationDefintion 的属性中，并提了供要在其中存储定义的存储帐户 ID 作为其值：
+我们已将名为 `storageAccountId` 的新属性添加到 `applicationDefinitions` 属性中，并提供了要在其中存储定义的存储帐户 ID 作为其值：
 
-可以验证是否已将应用程序定义文件保存在标题为 **applicationdefinitions** 的容器的已提供的存储帐户中。
+可以验证是否已将应用程序定义文件保存在标题为 `applicationDefinitions` 的容器的已提供的存储帐户中。
 
 > [!NOTE]
 > 为了增加安全性，可以创建一个托管应用程序定义，并将其存储在[启用了加密的 Azure 存储帐户 Blob](../../storage/common/storage-service-encryption.md) 中。 通过存储帐户的加密选项来加密定义内容。 只有有权访问文件的用户才能查看服务目录中的定义。

@@ -5,17 +5,96 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 04/06/2020
-ms.openlocfilehash: 561767b6857f4b52b3ee1eb17fedd51ad409ee29
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 07/08/2020
+ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462968"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203749"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="general"></a>常规
+- [部署 Azure Monitor](platform/deploy-scale.md) - 新文章。
+- [Azure Monitor 客户管理的密钥](platform/customer-managed-keys.md) - 更新的 billingtype 属性。 添加了 PowerShell 命令。
+
+### <a name="agents"></a>代理
+- [Log Analytics 代理概述](platform/log-analytics-agent.md) - 添加了 Python 2 要求。
+
+### <a name="alerts"></a>警报
+- [如何在警报规则或操作规则的目标资源移动到其他 Azure 区域时进行更新](platform/alerts-resource-move.md) - 新文章。
+- [排查 Azure 指标警报问题](platform/alerts-troubleshoot-metric.md) - 新文章。
+- [在 Azure Monitor 中排查日志警报问题](platform/alerts-troubleshoot-metric.md) - 新文章。
+  
+### <a name="application-insights"></a>Application Insights
+- [适用于 JavaScript Web 应用的 Azure Application Insights](app/javascript.md) - JavaScript SDK 更新部分。 更新了代码段以报告加载失败。
+- [为探查器和 Snapshot Debugger 配置 BYOS（自带存储）](app/profiler-bring-your-own-storage.md) - 新文章。
+- [使用 OpenCensus Python 在 Azure Application Insights 中跟踪导入请求](app/opencensus-python-request.md) - 更新了 OpenCensus 的日志记录和配置。
+- [使用 Azure Application Insights 监视实时 ASP.NET Web 应用](app/monitor-performance-live-website-now.md) - 更新了 Application Insights 状态监视器 v1 的删除日期。
+- [使用 Application Insights 监视 Node.js 服务](app/nodejs.md) - 包括从早期版本和 SDK 配置迁移的多个更新
+- [使用 Azure Monitor 监视 Python 应用程序（预览版）](app/opencensus-python.md) - 添加了有关配置 Azure Monitor 导出程序的部分。
+- [在不更改代码的情况下监视应用 - Azure Monitor Application Insights 自动检测功能](app/codeless-overview.md) - 新文章。
+- [对 JavaScript Web 应用的 SDK 加载失败进行故障排查](app/javascript-sdk-load-failure.md) - 新文章。
+
+### <a name="containers"></a>容器
+- [如何停止监视混合 Kubernetes 群集](insights/container-insights-optout-hybrid.md) - 添加了有关已启用 Arc 的 Kubernetes 的部分。
+- [使用用于容器的 Azure Monitor 配置已启用 Azure Arc 的 Kubernetes 群集](insights/container-insights-enable-arc-enabled-clusters.md) - 新文章。
+- [使用用于容器的 Azure Monitor 配置 Azure Red Hat OpenShift v4.x](insights/container-insights-azure-redhat4-setup.md) - 已更新先决条件。
+- [为容器实时数据设置 Azure Monitor（预览版）](insights/container-insights-livedata-setup.md) - 删除了关于 Azure 美国政府不提供此功能的说明。
+
+### <a name="insights"></a>洞察力
+- [常见问题解答 - Azure 中的网络性能监视器解决方案](insights/network-performance-monitor-faq.md) - 添加了 ExpressRoute 监视器的常见问题解答。
+
+### <a name="logs"></a>日志
+- [删除和恢复 Azure Log Analytics 工作区](platform/delete-workspace.md) - 添加了 PowerShell 命令。 更新了疑难解答。
+- [在 Azure Monitor 中管理 Log Analytics 工作区](platform/manage-access.md) - 在 RBAC 部分添加了不允许的表的示例。
+- [管理 Azure Monitor 日志的使用情况和成本](platform/manage-cost-storage.md) - 有关数据大小计算的其他详细信息。 更新了数据卷警报的配置。 有关 Azure Sentinel 收集的安全数据的详细信息。 数据上限的说明。
+- [将 Azure Monitor 日志与 Azure 逻辑应用和 Power Automate 配合使用](platform/logicapp-flow-connector.md) - 添加了连接器限制。
+
+### <a name="metrics"></a>指标
+- [Azure Monitor 按资源类型支持的指标](platform/metrics-supported.md) - 更新了 SQL Server 指标。
+
+
+### <a name="platform-logs"></a>平台日志
+
+- [诊断设置的资源管理器模板示例](samples/resource-manager-diagnostic-settings.md) - 对活动日志诊断设置的修复。
+- [使用 Azure 门户将 Azure 活动日志发送到 Log Analytics 工作区](learn/quick-collect-activity-log-portal.md) - 新文章。
+- [使用 Azure 资源管理器模板将 Azure 活动日志发送到 Log Analytics 工作区](learn/quick-collect-activity-log-arm.md) - 新文章。
+
+#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>来自平台日志内容重构和整合的新文章和更新文章
+- [将 Azure 资源日志存档到存储帐户](platform/resource-logs-collect-storage.md)
+- [Azure 活动日志事件架构](platform/activity-log-schema.md)
+- [Azure 活动日志](platform/activity-log.md)
+- [Azure Monitor CLI 示例](samples/cli-samples.md)
+- [Azure Monitor PowerShell 示例](samples/powershell-samples.md)
+- [Azure 监视 REST API 演练](platform/rest-api-walkthrough.md)
+- [Azure 资源日志支持的服务和架构](platform/diagnostic-logs-schema.md)
+- [Azure 资源日志](platform/resource-logs.md)
+- [收集和分析 Azure Monitor 中的 Azure 活动日志](platform/activity-log-collect.md)
+- [收集 Log Analytics 工作区中的 Azure 资源日志](platform/resource-logs-collect-workspace.md)
+- [创建诊断设置以将平台日志和指标发送到不同目标](platform/diagnostic-settings.md)
+- [导出 Azure 活动日志](platform/activity-log-export.md)
+- [Azure 平台日志概述](platform/platform-logs-overview.md)
+- [将 Azure 平台日志流式传输到事件中心](platform/resource-logs-stream-event-hubs.md)
+- [在 Azure Monitor 中查看 Azure 活动日志事件](platform/activity-log-view.md)
+
+### <a name="virtual-machines"></a>虚拟机
+- [在 Azure 门户中启用用于 VM 的 Azure Monitor](insights/vminsights-enable-single-vm.md) - 更新为包含 Azure Arc。
+- [启用用于 VM 的 Azure Monitor 概述](insights/vminsights-enable-overview.md) - 更新为包含 Azure Arc。
+- [什么是用于 VM 的 Azure Monitor？](insights/vminsights-overview.md) - 更新为包含 Azure Arc。
+
+
+### <a name="visualizations"></a>可视化效果
+- [Azure Monitor 工作簿数据源](platform/workbooks-data-sources.md) - 添加了“警报和自定义终结点”部分。
+- [对 Azure Monitor 基于工作簿的见解进行故障排查](insights/troubleshoot-workbooks.md) - 新文章。
+- [升级 Log Analytics 仪表板可视化效果](log-query/dashboard-upgrade.md) - 新文章。
+
+
 
 ## <a name="may-2020"></a>2020 年 5 月
 

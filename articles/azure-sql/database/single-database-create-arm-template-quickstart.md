@@ -11,16 +11,16 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: 2975b98306b7019022799d5ba69b9d7af5797a2b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a766d61c49fe23645c232432198eb4aa0eedb98b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368033"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135638"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure SQL 数据库中创建单一数据库
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure SQL 数据库中创建单一数据库
 
-在 Azure SQL 数据库中创建数据库时，创建[单一数据库](single-database-overview.md)是最快速且最简单的选项。 本快速入门介绍如何使用 Azure 资源管理器模板创建单一数据库。
+在 Azure SQL 数据库中创建数据库时，创建[单一数据库](single-database-overview.md)是最快速且最简单的选项。 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）创建单一数据库。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "85368033"
 
 单一数据库有一组通过两个[购买模型](purchasing-models.md)中的一个定义的计算、内存和存储资源。 创建单一数据库时，还需要定义一个[服务器](logical-servers.md)来管理它并将它放置在指定区域的 [Azure 资源组](../../active-directory-b2c/overview.md)中。
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-sql-logical-server/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-sql-database/)。
 
 :::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 
@@ -88,4 +88,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
   - [使用 Azure Data Studio 连接和查询](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - 若要使用 Azure CLI 创建单一数据库，请参阅 [Azure CLI 示例](az-cli-script-samples-content-guide.md)。
 - 若要使用 Azure PowerShell 创建单一数据库，请参阅 [Azure PowerShell 示例](powershell-script-content-guide.md)。
-- 若要了解如何创建资源管理器模板，请参阅[创建第一个模板](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)。
+- 若要了解如何创建 ARM 模板，请参阅[创建第一个模板](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)。

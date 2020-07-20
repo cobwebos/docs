@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985682"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260678"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -87,11 +87,26 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 
 如果要在其他脚本中复制拉取机密或引用它，则应该将拉取机密格式设置为有效的 JSON 字符串。
 
+### <a name="prepare-a-custom-domain-for-your-cluster-optional"></a>为群集准备自定义域（可选）
+
+运行 `az aro create` 命令时，可以使用 `--domain foo.example.com` 参数为群集指定自定义域。
+
+如果为群集提供自定义域，请注意以下几点：
+
+* 创建群集后，必须在 DNS 服务器中为指定的 `--domain` 创建 2 个 DNS A 记录：
+    * **api** - 指向 API 服务器
+    * **\*.apps** - 指向流入量
+    * 通过执行 `az aro show -n -g --query '{api:apiserverProfile.ip, ingress:ingressProfiles[0].ip}'` 命令检索这些值。
+
+* OpenShift 控制台将在 URL（如 `https://console-openshift-console.apps.foo.example.com`）上可用，而在内置域 `https://console-openshift-console.apps.<random>.<location>.aroapp.io` 中不可用。
+
+* 默认情况下，OpenShift 对 `*.apps.<random>.<location>.aroapp.io` 上创建的所有路由使用自签名证书。  如果在连接到群集后选择使用自定义 DNS，则需按照 OpenShift 文档[为入口控制器配置自定义 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html)，并[为 API 服务器配置自定义 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)。
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>创建包含两个空子网的虚拟网络
 
 接下来，你将创建一个包含两个空子网的虚拟网络。
 
-1. **设置以下变量。**
+1. **在将执行 `az` 命令的 shell 环境中设置以下变量。**
 
    ```console
    LOCATION=eastus                 # the location of your cluster
@@ -99,9 +114,9 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **创建资源组**
+1. **创建资源组。**
 
-    Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
+    Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
@@ -126,7 +141,7 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 
     运行 OpenShift 4 的 Azure Red Hat OpenShift 群集需要一个包含两个空子网（用于主节点和工作器节点）的虚拟网络。
 
-    在之前创建的同一资源组中创建新的虚拟网络。
+    在之前创建的同一资源组中创建新的虚拟网络：
 
     ```azurecli-interactive
     az network vnet create \
@@ -189,10 +204,12 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 
 ## <a name="create-the-cluster"></a>创建群集
 
-运行以下命令以创建群集。 （可选）可以[传递 Red Hat 拉取机密](#get-a-red-hat-pull-secret-optional)，该机密使群集能够访问 Red Hat 容器注册表以及其他内容。
+运行以下命令以创建群集。 如果选择使用以下任一选项，请相应地修改命令：
+* （可选）可以[传递 Red Hat 拉取机密](#get-a-red-hat-pull-secret-optional)，该机密使群集能够访问 Red Hat 容器注册表以及其他内容。 将 `--pull-secret @pull-secret.txt` 参数添加到命令中。
+* 或者，也可选择[使用自定义域](#prepare-a-custom-domain-for-your-cluster-optional)。 将 `--domain foo.example.com` 参数添加到命令中，将 `foo.example.com` 替换为你自己的自定义域。
 
->[!NOTE]
-> 如果要复制/粘贴命令并使用可选参数之一，请确保删除初始井号标签和尾随注释文本。 同样，使用尾随反斜杠关闭前面命令行上的参数。
+> [!NOTE]
+> 如果要将任何可选参数添加到命令中，请确保对命令前一行的参数使用尾随反斜杠。
 
 ```azurecli-interactive
 az aro create \
@@ -201,17 +218,9 @@ az aro create \
   --vnet aro-vnet \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
-  # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
 执行 `az aro create` 命令之后，创建群集通常需要大约 35 分钟。
-
->[!IMPORTANT]
-> 如果选择指定自定义域（例如 **foo.example.com**），则 OpenShift 控制台将在诸如 `https://console-openshift-console.apps.foo.example.com` 之类的 URL（而不是内置域 `https://console-openshift-console.apps.<random>.<location>.aroapp.io`）上提供。
->
-> 默认情况下，OpenShift 对 `*.apps.<random>.<location>.aroapp.io` 上创建的所有路由使用自签名证书。  如果在连接到群集后选择使用自定义 DNS，则需按照 OpenShift 文档[为入口控制器配置自定义 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html)，并[为 API 服务器配置自定义 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)。
->
 
 ## <a name="next-steps"></a>后续步骤
 

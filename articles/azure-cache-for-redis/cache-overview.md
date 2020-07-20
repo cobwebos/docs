@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75c6f8ec8410ff90b3da4fb6a50c9ef8ba7d1618
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196375"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184613"
 ---
 # <a name="azure-cache-for-redis"></a>用于 Redis 的 Azure 缓存
 
@@ -40,7 +40,7 @@ Azure Redis 缓存在下述层中提供：
 | 层 | 说明 |
 |---|---|
 基本 | 单节点缓存。 此层级支持多个内存大小（250 MB - 53 GB），适用于开发/测试和非关键工作负荷。 基本层没有服务级别协议 (SLA) |
-| Standard | 在 Azure 托管的双节点（主/辅）配置中提供复制的缓存，并提供高可用性 SLA (99.9%) |
+| Standard | 在 Azure 托管的双节点（主/副本）配置中提供复制的缓存，并提供高可用性 SLA (99.9%) |
 | Premium | 高级层是面向企业的层。 高级层缓存支持更多的功能，吞吐量更高，延迟更低。 高级层中的缓存部署在更强大的硬件上，其性能优于基本层或标准层。 这种优势意味着，在缓存大小相同的情况下，高级层的吞吐量大于标准层。 |
 
 > [!TIP]
