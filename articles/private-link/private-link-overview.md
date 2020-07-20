@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c1246c2d3a58ad29503c0767b5c4af303d1f0c54
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3814711f090a7d996271f8fa5bef9ff1394d135a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957480"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276577"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -48,7 +48,7 @@ Azure 专用链接提供以下优势：
 |  Azure SQL Database         | 所有公共区域      |  支持代理[连接策略](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |Azure Synapse Analytics（SQL 数据仓库）| 所有公共区域 |  支持代理[连接策略](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) |GA <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
 |Azure Cosmos DB|  所有公共区域 | |GA <br/> [了解详细信息](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域      |  | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域      | 受常规用途和内存优化定价层支持 | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  Azure Database for MySQL         | 所有公共区域      |  | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
 |  Azure Database for MariaDB         | 所有公共区域      |  | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  Azure Key Vault         | 所有公共区域      |  | GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
@@ -61,7 +61,7 @@ Azure 专用链接提供以下优势：
 |Azure 服务总线 | 所有公共区域  | 在 Azure 服务总线的高级层受支持。 [单击以获取层](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure 中继 | 所有公共区域      |  | 预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure 事件网格| 所有公共区域       |  | GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web 应用 | 所有公共区域      |  | 预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|Azure Web 应用 | 所有公共区域      | 受 PremiumV2 Windows 和 Linux 以及弹性高级函数支持  | 预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 |Azure 机器学习 | 美国东部、美国西部 2、美国中南部      |  | 预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure 自动化  | 所有公共区域 |  | 预览 | |
 | Azure IoT 中心 | 所有公共区域    |  | GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
