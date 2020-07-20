@@ -20,7 +20,7 @@ ms.locfileid: "83747615"
 
 在大多数情况下，连接到中国境外（例如欧洲或美国）的客户都会挣扎于高延迟、低带宽、不稳定连接以及高费用的问题。
 
-这些阻碍的原因在于“中国防火长城（中国国家防火墙）”，它会保护 Internet 上的中国网段部分，并筛选发往中国的流量。 从中国大陆发往中国境外（香港和澳门等特别行政区除外）的几乎所有流量都要流经防火长城。 流经中国香港和中国澳门的流量不会强力进入防火长城，而是由防火长城的一部分机制进行处理。
+这些阻碍的原因在于“中国防火长城（中国国家防火墙）”，它会保护 Internet 上的中国网段部分，并筛选发往中国的流量。 从中国发往外界（香港和澳门等特别行政区除外）的几乎所有流量都要流经防火长城。 流经中国香港和中国澳门的流量不会强力进入防火长城，而是由防火长城的一部分机制进行处理。
 
 ![提供商互连](./media/interconnect-china/provider.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "83747615"
 
 使用此连接方法时，Microsoft 服务的 BGP 下一跃点必须是 Microsoft 自治系统编号 (AS#) 8075。 如果使用单一位置或 SDWAN 解决方案，则会选择该解决方案建立连接。
 
-无论采用哪种方式，我们仍建议在中国大陆建立另一个常规 Internet 接入点。 其目的是为了在发往云服务（例如 Microsoft 365 和 Azure）的企业流量以及法律管制的 Internet 流量之间进行划分。
+无论采用哪种方式，我们仍建议在中国建立另一个常规 Internet 接入点。 其目的是为了在发往云服务（例如 Microsoft 365 和 Azure）的企业流量以及法律管制的 Internet 流量之间进行划分。
 
 中国境内合规的网络体系结构如以下示例所示：
 
@@ -117,7 +117,7 @@ ExpressRoute Global Reach 在某些区域不可用。 例如，如果需要与�
 
 本部分讨论使用 SDWAN 或 VPN 连接到中国香港和其他分支的设计。 此选项展示了在虚拟 WAN 主干网络的两个站点上使用单纯 Internet 连接时的用法和流量流。 在这种情况下，将使用专用 Internet 访问或 ICP 提供商 SDWAN 解决方案连接到香港。 其他分支也使用单纯 Internet 或 SDWAN 解决方案。
 
-![中国大陆到香港的流量](./media/interconnect-china/china-traffic.png)
+![中国到香港特别行政区的流量](./media/interconnect-china/china-traffic.png)
 
 在此体系结构中，每个站点将使用 VPN 和 Azure 虚拟 WAN 连接到 Microsoft 全球网络。 站点与中国香港之间的流量通过 Microsoft 网络传输，只在最后一英里范围内才使用普通的 Internet 连接。
 
@@ -125,7 +125,7 @@ ExpressRoute Global Reach 在某些区域不可用。 例如，如果需要与�
 
 本部分讨论通过 VPN/SDWAN 分支在中国香港以及其他分支中使用 ExpressRoute 的设计。 此选项展示了如何使用在中国香港以及通过 SDWAN 或 VPN 连接的其他分支中终止的 ExpressRoute。 中国香港的 ExpressRoute 目前限制为少量的提供商，可以在 [Express Route 合作伙伴](../expressroute/expressroute-locations-providers.md#global-commercial-azure)列表中找到这些提供商。
 
-![中国大陆到香港的流量 - ExpressRoute](./media/interconnect-china/expressroute.png)
+![中国到香港特别行政区的流量 - ExpressRoute](./media/interconnect-china/expressroute.png)
 
 还可以通过其他一些选项从中国终止 ExpressRoute，例如，在韩国或日本终止。 但出于合规性、管制和延迟方面的原因，中国香港目前是最佳选择。
 
