@@ -9,19 +9,19 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 06/30/2020
+ms.date: 07/07/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186854"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520692"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>在定型过程中进行网络隔离 & 专用虚拟网络的推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，你将了解如何通过在 Azure 虚拟网络 (vnet) 内隔离 Azure 机器学习定型和推理作业来保护机器学习生命周期。 Azure 机器学习依赖于用于计算资源的其他 Azure 服务（也称为[计算目标](concept-compute-target.md)）来定型和部署模型。 可以在虚拟网络中创建这些目标。 例如，可以使用 Azure 机器学习计算来训练模型，然后将模型部署到 Azure Kubernetes 服务 (AKS)。 
+本文介绍如何通过在 Azure 虚拟网络（vnet）中隔离 Azure 机器学习定型和推理作业来保护机器学习生命周期。 Azure 机器学习依赖于用于计算资源的其他 Azure 服务（也称为[计算目标](concept-compute-target.md)）来定型和部署模型。 可以在虚拟网络中创建这些目标。 例如，可以使用 Azure 机器学习计算来训练模型，然后将模型部署到 Azure Kubernetes 服务 (AKS)。 
 
 虚拟网络起到安全边界的作用，将你的 Azure 资源与公共 Internet 隔离开来。 你也可以将 Azure 虚拟网络加入本地网络。 通过联接网络，可以安全地训练模型，并访问已部署的模型来进行推理。
 
@@ -82,7 +82,7 @@ Studio 支持从虚拟网络中的以下数据存储类型读取数据：
 * Azure Blob
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
-* Azure SQL 数据库
+* Azure SQL Database
 
 ### <a name="add-resources-to-the-virtual-network"></a>向虚拟网络添加资源 
 
@@ -94,7 +94,7 @@ Studio 支持从虚拟网络中的以下数据存储类型读取数据：
 
 ### <a name="configure-a-datastore-to-use-managed-identity"></a>将数据存储配置为使用托管标识
 
-将工作区和存储服务帐户添加到虚拟网络后，需要将数据存储配置为使用托管标识访问数据。 这些步骤使用基于 Azure 资源的访问控制 (RBAC) 将工作区托管标识作为__读取器__添加到存储服务。 __读取__者访问权限允许工作区检索防火墙设置，并确保数据不会离开虚拟网络。
+将工作区和存储服务帐户添加到虚拟网络后，需要将数据存储配置为使用托管标识访问数据。 这些步骤使用 Azure 基于资源的访问控制（RBAC）将工作区托管标识作为__读取器__添加到存储服务。 __读取__者访问权限允许工作区检索防火墙设置，并确保数据不会离开虚拟网络。
 
 1. 在工作室中，选择 "__数据存储__"。
 
@@ -110,9 +110,27 @@ Studio 支持从虚拟网络中的以下数据存储类型读取数据：
 对于__Azure Blob 存储__，还会将工作区托管标识作为[Blob 数据读取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)添加，以便它能够从 blob 存储中读取数据。
 
 
+### <a name="azure-machine-learning-designer-default-datastore"></a>Azure 机器学习设计器默认数据存储
+
+默认情况下，设计器使用附加到工作区的存储帐户来存储输出。 不过，您可以指定它将输出存储到您有权访问的任何数据存储。 如果你的环境使用虚拟网络，则可以使用这些控件确保你的数据保持安全且可访问。
+
+为管道设置新的默认存储：
+
+1. 在 "管道草稿" 中，选择管道标题附近的 "**设置" 齿轮图标**。
+1. 选择 "**选择默认数据存储**"。
+1. 指定新的数据存储。
+
+还可以基于每个模块覆盖默认数据存储。 这使您可以控制每个模块的存储位置。
+
+1. 选择要指定其输出的模块。
+1. 展开 "**输出设置**" 部分。
+1. 选择 "**替代默认输出设置**"。
+1. 选择 "**设置输出设置**"。
+1. 指定新的 datstore。
+
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 访问控制
 
-可以使用 RBAC 和 POSIX 样式的访问控制列表 (Acl) 来控制虚拟网络内的数据访问。
+可以使用 RBAC 和 POSIX 样式的访问控制列表（Acl）来控制虚拟网络内的数据访问。
 
 若要使用 RBAC，请将工作区托管标识添加到[Blob 数据读取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色。 有关详细信息，请参阅[基于角色的访问控制](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control)。
 
@@ -132,9 +150,9 @@ Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可�
 
 ### <a name="connect-to-the-studio"></a>连接到工作室
 
-如果要从虚拟网络内部的资源访问工作室 (例如，计算实例或虚拟机) ，则必须允许来自虚拟网络的出站流量发送到工作室。 
+如果要从虚拟网络内部的资源（例如，计算实例或虚拟机）访问 studio，则必须允许从虚拟网络到工作室的出站流量。 
 
-例如，如果使用网络安全组 (NSG) 来限制出站流量，请将规则添加到__AzureFrontDoor__的__服务标记__目标。
+例如，如果使用网络安全组（NSG）来限制出站流量，请将规则添加到__AzureFrontDoor__的__服务标记__目标。
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>使用工作区的存储帐户
 
@@ -161,7 +179,7 @@ Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可�
 
 1. 在“防火墙和虚拟网络”页上，执行以下操作：
     - 选择“所选网络”。
-    - 在“虚拟网络”下，选择“添加现有虚拟网络”链接。 此操作将添加计算所在的虚拟网络 (参见步骤 1) 。
+    - 在“虚拟网络”下，选择“添加现有虚拟网络”链接。 此操作将添加计算所在的虚拟网络（请参阅步骤1）。
 
         > [!IMPORTANT]
         > 存储帐户必须与用于训练或推理的计算实例或群集位于同一虚拟网络和子网中。
@@ -188,7 +206,7 @@ Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可�
 - Azure Blob 存储
 - Azure 文件共享
 - PostgreSQL
-- Azure SQL 数据库
+- Azure SQL Database
 
 下面的代码示例创建一个新的 Azure Blob 数据存储和集 `skip_validation=True` 。
 
@@ -286,8 +304,8 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 - 使用 NSG 规则来拒绝出站 Internet 连接。
 
 - 对于计算实例或计算群集，限制为出站流量只能流向以下项：
-   - Azure 存储，通过使用服务标记 Storage.RegionName。 其中 `{RegionName}` 是 Azure 区域名称。
-   - Azure 容器注册表，通过使用服务标记 AzureContainerRegistry.RegionName。 其中 `{RegionName}` 是 Azure 区域名称。
+   - Azure 存储，使用__存储__的__服务标记__。
+   - Azure 容器注册表，使用__AzureContainerRegistry__的__服务标记__。
    - Azure 机器学习，通过使用服务标记 AzureMachineLearning
    - Azure 资源管理器，通过使用服务标记 AzureResourceManager
    - Azure Active Directory，通过使用服务标记 AzureActiveDirectory
@@ -326,11 +344,15 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 > run = exp.submit(est)
 > ```
 
-### <a name="user-defined-routes-for-forced-tunneling"></a>用户定义的用于强制隧道的路由
+### <a name="forced-tunneling"></a>强制隧道
 
-若要结合使用强制隧道和机器学习计算，请将[用户定义的路由 (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) 添加到包含计算资源的子网。
+如果要在 Azure 机器学习计算中使用[强制隧道](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)，则必须允许从包含计算资源的子网与公共 internet 通信。 此通信用于任务计划和访问 Azure 存储。
 
-* 为 Azure Batch 服务在资源所在区域中使用的每个 IP 地址建立 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加资源所在的 Azure 机器学习服务 IP 地址，因为这是访问计算实例所必需的。 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
+可以通过两种方式来实现此目的：
+
+* 使用[虚拟网络 NAT](../virtual-network/nat-overview.md)。 NAT 网关为虚拟网络中的一个或多个子网提供出站 internet 连接。 有关信息，请参阅[设计具有 NAT 网关资源的虚拟网络](../virtual-network/nat-gateway-resource.md)。
+
+* 将[用户定义的路由（udr）](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)添加到包含计算资源的子网。 为 Azure Batch 服务在资源所在区域中使用的每个 IP 地址建立 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加资源所在的 Azure 机器学习服务 IP 地址，因为这是访问计算实例所必需的。 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
     * 下载 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`（其中 `<region>` 是你的 Azure 区域）。
 
@@ -340,14 +362,15 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+    
+    添加 UDR 时，为每个相关 Batch IP 地址前缀定义路由，并将“下一个跃点类型”设置为“Internet”。 下图展示了 Azure 门户中的此 UDR 示例：
 
-* 流向 Azure 存储的出站流量不得被本地网络设备阻止。 具体而言，URL 的格式为 `<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net`。
+    ![地址前缀的 UDR 示例](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-添加 UDR 时，为每个相关 Batch IP 地址前缀定义路由，并将“下一个跃点类型”设置为“Internet”。 下图展示了 Azure 门户中的此 UDR 示例：
+    除了定义的任何 Udr 外，还必须通过本地网络设备允许到 Azure 存储的出站流量。 具体而言，此流量的 Url 采用以下格式： `<account>.table.core.windows.net` 、 `<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 。 
 
-![地址前缀的 UDR 示例](./media/how-to-enable-virtual-network/user-defined-route.png)
+    有关详细信息，请参阅[在虚拟网络中创建 Azure Batch 池](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)。
 
-有关详细信息，请参阅[在虚拟网络中创建 Azure Batch 池](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)。
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>在虚拟网络中创建计算群集
 
@@ -480,6 +503,40 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 启用专用 IP 地址的方法为，将 AKS 配置为使用内部负载均衡器。 
 
+#### <a name="network-contributor-role"></a>网络参与者角色
+
+> [!IMPORTANT]
+> 如果通过提供先前创建的虚拟网络来创建或附加 AKS 群集，则_必须将 AKS 群集的服务_主体（SP）或托管标识授予包含虚拟网络的资源组。 必须在尝试将内部负载均衡器更改为专用 IP 之前完成此操作。
+>
+> 若要将标识作为网络参与者添加，请执行以下步骤：
+
+1. 若要查找 AKS 的服务主体或托管标识 ID，请使用以下 Azure CLI 命令。 将 `<aks-cluster-name>` 替换为群集的名称。 将替换 `<resource-group-name>` 为_包含 AKS 群集_的资源组的名称：
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    如果此命令返回的值 `msi` ，则使用以下命令来标识托管标识的主体 ID：
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. 若要查找包含虚拟网络的资源组的 ID，请使用以下命令。 将替换 `<resource-group-name>` 为_包含虚拟网络_的资源组的名称：
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. 若要将服务主体或托管标识作为网络参与者添加，请使用以下命令。 替换为 `<SP-or-managed-identity>` 服务主体或托管标识返回的 ID。 `<resource-group-id>`将替换为包含虚拟网络的资源组返回的 ID：
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
+若要详细了解如何结合使用内部负载均衡器与 AKS，请参阅[结合使用内部负载均衡器与 Azure Kubernetes 服务](/azure/aks/internal-lb)。
+
+#### <a name="enable-private-ip"></a>启用专用 IP
+
 > [!IMPORTANT]
 > 无法在创建 Azure Kubernetes 服务群集时启用专用 IP。 必须将它作为对现有群集的更新来启用。
 
@@ -570,38 +627,6 @@ aks_target.update(update_config)
 aks_target.wait_for_completion(show_output = True)
 ```
 
-__网络参与者角色__
-
-> [!IMPORTANT]
-> 如果通过提供先前创建的虚拟网络来创建或附加 AKS 群集，则必须向 AKS 群集的服务主体 (SP) 或托管标识授予对包含虚拟网络的资源组的 "_网络参与者_" 角色。 必须在尝试将内部负载均衡器更改为专用 IP 之前完成此操作。
->
-> 若要将标识作为网络参与者添加，请执行以下步骤：
-
-1. 若要查找 AKS 的服务主体或托管标识 ID，请使用以下 Azure CLI 命令。 将 `<aks-cluster-name>` 替换为群集的名称。 将替换 `<resource-group-name>` 为_包含 AKS 群集_的资源组的名称：
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
-    ``` 
-
-    如果此命令返回的值 `msi` ，则使用以下命令来标识托管标识的主体 ID：
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
-    ```
-
-1. 若要查找包含虚拟网络的资源组的 ID，请使用以下命令。 将替换 `<resource-group-name>` 为_包含虚拟网络_的资源组的名称：
-
-    ```azurecli-interactive
-    az group show -n <resource-group-name> --query id
-    ```
-
-1. 若要将服务主体或托管标识作为网络参与者添加，请使用以下命令。 替换为 `<SP-or-managed-identity>` 服务主体或托管标识返回的 ID。 `<resource-group-id>`将替换为包含虚拟网络的资源组返回的 ID：
-
-    ```azurecli-interactive
-    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
-    ```
-若要详细了解如何结合使用内部负载均衡器与 AKS，请参阅[结合使用内部负载均衡器与 Azure Kubernetes 服务](/azure/aks/internal-lb)。
-
 ## <a name="use-azure-container-instances-aci"></a>使用 Azure 容器实例 (ACI)
 
 Azure 容器实例在部署模型时动态创建。 你必须为部署使用的子网启用子网委派，Azure 机器学习才能在虚拟网络中创建 ACI。
@@ -609,7 +634,7 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 > [!WARNING]
 > 在虚拟网络中使用 Azure 容器实例时，虚拟网络必须与 Azure 机器学习工作区位于同一资源组中。
 >
-> 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表 (ACR) 也不能在虚拟网络中。
+> 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表（ACR）也不能在虚拟网络中。
 
 若要将虚拟网络中的 ACI 用于工作区，请按照以下步骤操作：
 
@@ -630,6 +655,7 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 > 可以将 Azure 容器注册表 (ACR) 置于虚拟网络中，但必须先满足以下先决条件：
 >
 > * Azure 机器学习工作区必须是 Enterprise Edition。 若要了解如何升级，请参阅[升级到 Enterprise Edition](how-to-manage-workspace.md#upgrade)。
+> * Azure 机器学习工作区区域应为 " [privated 链接已启用" 区域](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)。 
 > * Azure 容器注册表必须是高级版。 若要详细了解如何升级，请参阅[更改 SKU](/azure/container-registry/container-registry-skus#changing-skus)。
 > * Azure 容器注册表必须与用于训练或推理的存储帐户和计算目标位于同一虚拟网络和子网中。
 > * Azure 机器学习工作区必须包含 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)。

@@ -3,11 +3,12 @@ title: 配置公共注册表访问
 description: 配置 IP 规则，以便能够从所选的公共 IP 地址或地址范围访问 Azure 容器注册表。
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702086"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523819"
 ---
 # <a name="configure-public-ip-network-rules"></a>配置公共 IP 网络规则
 
@@ -100,6 +101,13 @@ az acr update --name myContainerRegistry --public-network-enabled true
 1. 在“公共访问”选项卡上的“允许公用网络访问”中，选择“所有网络”  。 再选择“保存”。
 
 ![来自所有网络的公共访问][acr-access-all-networks]
+
+## <a name="troubleshoot"></a>故障排除
+
+如果设置了公用网络规则，或对注册表的公共访问被拒绝，则尝试从禁止的公共网络登录到注册表会失败。 如果未设置代理的访问规则，则 HTTPS 代理后的客户端访问也将失败。 你将看到类似于或的错误 `Error response from daemon: login attempt failed with status: 403 Forbidden` 消息 `Looks like you don't have access to registry` 。
+
+如果你使用网络访问规则允许的 HTTPS 代理，但未在客户端环境中正确配置代理，则也可能会发生这些错误。 检查是否为代理行为配置了 Docker 客户端和 Docker 后台程序。 有关详细信息，请参阅 Docker 文档中的[HTTP/HTTPS 代理](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738237"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521660"
 ---
 # <a name="troubleshooting-network-performance"></a>网络性能故障排除
 ## <a name="overview"></a>概述
@@ -177,9 +177,8 @@ AzureCT PowerShell 模块有两个组件 - [可用性测试][Availability Doc]�
 >
 >
 
-| | | | | | |
-|-|-|-|-|-|-|
-|ExpressRoute<br/>位置|Azure<br/>区域|估计<br/>距离 (km)|延迟|1 会话<br/>带宽|最大值<br/>带宽|
+| ExpressRoute<br/>位置|Azure<br/>区域 | 估计<br/>距离 (km) | 延迟|1 会话<br/>带宽 | 最大值<br/>带宽 |
+| ------------------------------------------ | --------------------------- |  - | - | - | - |
 | 西雅图 | 美国西部 2        |    191 km |   5 ms | 262.0 Mbits/sec |  3.74 Gbits/sec |
 | 西雅图 | 美国西部          |  1,094 km |  18 ms |  82.3 Mbits/sec |  3.70 Gbits/sec |
 | 西雅图 | 美国中部       |  2,357 km |  40 ms |  38.8 Mbits/sec |  2.55 Gbits/sec |

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641817"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520963"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
@@ -38,7 +39,7 @@ ms.locfileid: "81641817"
 * 本主题的示例使用的[完整模板](#full-example-template)
 * GitHub 中的[示例快速入门逻辑应用模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
 
-有关特定于逻辑应用、集成帐户和集成帐户项目的模板资源信息，请参阅 [Microsoft.Logic 资源类型](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)。
+有关特定于逻辑应用、集成帐户和集成帐户项目的模板资源信息，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
 
 <a name="template-structure"></a>
 
@@ -318,16 +319,16 @@ ms.locfileid: "81641817"
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 特性 | 必须 | 类型 | 说明 |
+| Attribute | 必需 | 类型 | 说明 |
 |-----------|----------|------|-------------|
-| `state` | 是 | String | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
+| `state` | 是 | 字符串 | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
 | `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
 | `definition` | 是 | Object | 逻辑应用的基础工作流定义，它是代码视图中显示的相同对象，[工作流定义语言的架构参考](../logic-apps/logic-apps-workflow-definition-language.md)主题中对此做了全面介绍。 在此工作流定义中，`parameters` 对象声明要在逻辑应用运行时使用的值的参数。 有关详细信息，请参阅[工作流定义和参数](#workflow-definition-parameters)。 <p><p>若要查看逻辑应用工作流定义中的属性，请在 Azure 门户或 Visual Studio 中或使用 [Azure 资源浏览器](https://resources.azure.com)之类的工具，从“设计视图”切换到“代码视图”。 |
 | `parameters` | 否 | Object | 要在逻辑应用运行时使用的[工作流定义参数值](#workflow-definition-parameters)。 这些值的参数定义显示在[工作流定义的 parameters 对象中](#workflow-definition-parameters)。 此外，如果逻辑应用使用[托管连接器](../connectors/apis-list.md)来访问其他服务和系统，则此对象将包含一个用于设置要在运行时使用的连接值的 `$connections` 对象。 |
 | `accessControl` | 否 | Object | 用于指定逻辑应用的安全属性，例如限制对请求触发器或运行历史记录输入和输出的 IP 访问。 有关详细信息，请参阅[保护对逻辑应用的访问](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
 ||||
 
-有关特定于逻辑应用、集成帐户和集成帐户项目的模板资源信息，请参阅 [Microsoft.Logic 资源类型](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)。
+有关特定于逻辑应用、集成帐户和集成帐户项目的模板资源信息，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
 
 <a name="workflow-definition-parameters"></a>
 
@@ -909,7 +910,7 @@ ms.locfileid: "81641817"
 
 ### <a name="authenticate-connections"></a>身份验证连接
 
-部署后，逻辑应用将使用有效参数进行端到端的运行。 但是，仍然必须授权任何 OAuth 连接，以生成用于[对凭据进行身份验证](../active-directory/develop/authentication-scenarios.md)的有效访问令牌。 有关详细信息，请参阅[授权 OAuth 连接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)。
+部署后，逻辑应用将使用有效参数进行端到端的运行。 但是，仍然必须授权任何 OAuth 连接，以生成用于[对凭据进行身份验证](../active-directory/develop/authentication-vs-authorization.md)的有效访问令牌。 有关详细信息，请参阅[授权 OAuth 连接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)。
 
 某些连接支持使用 Azure Active Directory (Azure AD) [服务主体](../active-directory/develop/app-objects-and-service-principals.md)来授权已[在 Azure AD 中注册](../active-directory/develop/quickstart-register-app.md)的逻辑应用的连接。 例如，以下 Azure Data Lake 连接资源定义显示了如何引用用于处理服务主体信息的模板参数，以及模板如何声明这些参数：
 
@@ -937,7 +938,7 @@ ms.locfileid: "81641817"
 }
 ```
 
-| 特性 | 描述 |
+| Attribute | 说明 |
 |-----------|-------------|
 | `token:clientId` | 与服务主体关联的应用程序或客户端 ID |
 | `token:clientSecret` | 与服务主体关联的密钥值 |
@@ -1005,7 +1006,7 @@ ms.locfileid: "81641817"
 有关使用服务主体的详细信息，请参阅以下主题：
 
 * [使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)
-* [使用 Azure PowerShell 创建 Azure 服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [使用 Azure PowerShell 创建 Azure 服务主体](/powershell/azure/create-azure-service-principal-azureps)
 * [使用 Azure PowerShell 创建具有证书的服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>

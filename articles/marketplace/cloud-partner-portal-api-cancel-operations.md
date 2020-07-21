@@ -4,20 +4,20 @@ description: 用于取消产品/服务上当前正在进行的操作的 API
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 06/16/2020
-ms.openlocfilehash: e65f0a8ee0a5dfafab681010006fe190cb5bad70
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 462ca525be9cf46c87acdf4025223a98afaf8e3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102746"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520368"
 ---
 # <a name="cancel-operation"></a>取消操作
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成，在你的产品/服务迁移到合作伙伴中心后，它们仍可运行。 集成造成了少量的更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 此 API 会取消当前正在对产品/服务进行的操作。 使用[检索操作 API](./cloud-partner-portal-api-retrieve-operations.md) 获取要传递给此 API 的 `operationId`。 取消通常是同步操作，但是在某些复杂情况下，可能需要执行新操作来取消现有操作。 在这种情况下，HTTP 响应正文包含应该用于查询状态的操作位置。
 
@@ -29,12 +29,12 @@ ms.locfileid: "86102746"
 
 |  **名称**    |      **说明**                                  |    **Data type**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  发布者标识符，例如 `contoso`         |   String          |
-| offerId      |  产品/服务标识符                                     |   String          |
+| publisherId  |  发布者标识符，例如 `contoso`         |   字符串          |
+| offerId      |  产品/服务标识符                                     |   字符串          |
 | api-version  |  API 的当前版本                               |    日期           |
 |  |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>标头
 ------
 
 |  **名称**              |  **值**         |

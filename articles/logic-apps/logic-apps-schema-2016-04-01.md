@@ -8,11 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792876"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520709"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
 
@@ -28,7 +29,7 @@ ms.locfileid: "74792876"
 
 ## <a name="scopes"></a>作用域
 
-此架构包含作用域，方便用户将操作组合或嵌套到一起。 例如，一个条件可以包含另一个条件。 请详细了解[作用域语法](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的作用域示例：
+此架构包含作用域，方便用户将操作组合或嵌套到一起。 例如，一个条件可以包含另一个条件。 请详细了解[作用域语法](./logic-apps-control-flow-loops.md)，或者查看下面这个基本的作用域示例：
 
 ```json
 {
@@ -54,7 +55,7 @@ ms.locfileid: "74792876"
 
 ## <a name="conditions-and-loops-changes"></a>条件和循环更改
 
-在以前的架构版本中，条件和循环是与单个操作关联的参数。 此架构提升了该限制，因此条件和循环现在都可以操作类型的形式提供。 详细了解[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)、[条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)，或者查看这个显示条件操作的基本示例：
+在以前的架构版本中，条件和循环是与单个操作关联的参数。 此架构提升了该限制，因此条件和循环现在都可以操作类型的形式提供。 详细了解[循环和作用域](./logic-apps-control-flow-loops.md)、[条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)，或者查看这个显示条件操作的基本示例：
 
 ```json
 {
@@ -130,7 +131,7 @@ ms.locfileid: "74792876"
 
 #### <a name="foreach-loop-with-condition"></a>带条件的“foreach”循环
 
-在新架构中，可以使用筛选器操作来复制使用 **For each** 循环（每项一个条件）的模式。 但是，升级时会自动进行更改。 条件会变为在 **For each** 循环之前出现的筛选器操作，仅返回与条件匹配的项数组，并将该数组传递给 **For each** 操作。 有关示例，请参阅[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)。
+在新架构中，可以使用筛选器操作来复制使用 **For each** 循环（每项一个条件）的模式。 但是，升级时会自动进行更改。 条件会变为在 **For each** 循环之前出现的筛选器操作，仅返回与条件匹配的项数组，并将该数组传递给 **For each** 操作。 有关示例，请参阅[循环和作用域](./logic-apps-control-flow-loops.md)。
 
 ### <a name="resource-tags"></a>资源标记
 

@@ -5,11 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 536918e1b1db88dcae6985b853b3cb0a6c91a52a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307361"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522272"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces 工作原理
 
@@ -48,7 +49,7 @@ Azure Dev Spaces 有助于团队在同一 AKS 群集上高效地工作应用程�
 若要开始使用 Azure Dev Spaces 进行团队开发，请参阅 [Azure Dev Spaces 中的团队开发][quickstart-team]快速入门。
 
 [connect]: how-to/local-process-kubernetes-vs-code.md
-[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
+[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

@@ -4,18 +4,20 @@ description: 用于检索对产品/服务的所有操作或为指定的 operatio
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: c0611cb3cbc24e2b105cdef134e30a7c2fbdd445
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113456"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520283"
 ---
 # <a name="retrieve-operations"></a>检索操作
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成，在你的产品/服务迁移到合作伙伴中心后，它们仍可运行。 集成造成了少量的更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 检索针对产品/服务的所有操作或获取指定 operationId 所对应的特定操作。 客户端可以使用查询参数来筛选正在运行的操作。
 
@@ -27,26 +29,23 @@ ms.locfileid: "86113456"
 
 ```
 
-
 ## <a name="uri-parameters"></a>URI 参数
 
 |  **名称**          |      **说明**                                                                                           | **Data type** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  发布者标识符，例如 `Contoso`                                                                   |  String       |
-|  offerId           |  产品/服务标识符                                                                                              |  String       |
+|  publisherId       |  发布者标识符，例如 `Contoso`                                                                   |  字符串       |
+|  offerId           |  产品/服务标识符                                                                                              |  字符串       |
 |  operationId       |  唯一标识针对产品/服务的操作的 GUID。 可以使用此 API 检索 operationId，并且对于任何长时间运行的操作（如[发布产品/服务](./cloud-partner-portal-api-publish-offer.md) API），也会在响应的 HTTP 标头中返回 operationId。  |   Guid   |
 |  api-version       | API 的最新版本 |    日期      |
 |  |  |  |
 
-## <a name="header"></a>Header
-
+## <a name="header"></a>标头
 
 |  **名称**          |  **值**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  授权     | `Bearer YOUR_TOKEN`  |
 |  |  |
-
 
 ## <a name="body-example"></a>正文示例
 
@@ -176,8 +175,8 @@ ms.locfileid: "86113456"
 |  submissionType              | 标识为产品/服务报告的操作类型，例如 `Publish/GoLive`      |
 |  createdDateTime             | 创建操作时的 UTC 日期/时间                                                       |
 |  lastActionDateTime          | 上次更新操作时的 UTC 日期/时间                                       |
-|  状态                      | 操作的状态 `not started` \| `running` \| `failed` \| `completed` 。 一次只能有一个操作具有状态 `running`。 |
-|  错误                       | 操作失败的错误消息                                                               |
+|  status                      | 操作的状态 `not started` \| `running` \| `failed` \| `completed` 。 一次只能有一个操作具有状态 `running`。 |
+|  error                       | 操作失败的错误消息                                                               |
 |  |  |
 
 ### <a name="response-step-properties"></a>响应步骤属性
@@ -188,7 +187,7 @@ ms.locfileid: "86113456"
 | id | 步骤过程的唯一标识符 |
 | description | 步骤的说明 |
 | stepName | 步骤的友好名称 |
-| 状态 | 步骤的状态，可以是 `notStarted` \| `running` \| `failed` \|`completed` |
+| status | 步骤的状态，可以是 `notStarted` \| `running` \| `failed` \|`completed` |
 | 计数 | 在此步骤中遇到的任何通知或警告。 字符串数组 |
 | System.componentmodel.progresschangedeventargs.progresspercentage | 0到100之间的一个整数，用于指示步骤的进度 |
 | | |

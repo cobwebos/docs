@@ -2,14 +2,14 @@
 title: 收集和分析资源日志
 description: 了解如何从 Azure 容器实例中的容器组将资源日志和事件数据发送到 Azure Monitor 日志
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 07/13/2020
 ms.author: danlep
-ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524006"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录
 
@@ -38,11 +38,10 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 若要获取 Log Analytics 工作区 ID 和主密钥，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 在“设置”下，选择“高级设置” 
-1. 选择 "**连接的源**" "  >  **Windows 服务器** (或**Linux 服务器**"--ID 和密钥对于这两个服务器都是相同的) 
+1. 在 "**设置**" 下，选择 "**代理管理**"
 1. 记下以下内容：
    * **工作区 ID**
-   * **主密钥**
+   * **主键**
 
 ## <a name="create-container-group"></a>创建容器组
 
@@ -102,7 +101,9 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 ## <a name="view-logs"></a>查看日志
 
-部署容器组以后，可能需要等待数分钟（最多 10 分钟），第一个日志条目才会显示在 Azure 门户中。 若要查看 `ContainerInstanceLog_CL` 表中的容器组日志，请执行以下操作：
+部署容器组以后，可能需要等待数分钟（最多 10 分钟），第一个日志条目才会显示在 Azure 门户中。 
+
+若要查看 `ContainerInstanceLog_CL` 表中的容器组日志，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
 1. 在“常规”下，选择“日志”  

@@ -10,11 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c3fa56daee5d2dba98fa9fd420524a9b7e4c60ba
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726105"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521116"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -303,7 +304,21 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 在设备成功订阅 `devices/{device_id}/messages/devicebound/#` 主题筛选器表示的设备特定终结点前，不会从 IoT 中心收到任何消息。 建立订阅后，设备会接收建立订阅后发送给它的云到设备消息。 如果设备在 **CleanSession** 标志设置为 0 的情况下进行连接，则订阅在经历不同的会话后仍然持久存在。 在此情况下，下次使用 CleanSession 0 进行连接时，设备会收到断开连接时发送给它的未处理消息。 但是，如果设备使用设置为 1 的 CleanSession 标志，在订阅其设备终结点前，它不会从 IoT 中心收到任何消息。
 
-如有消息属性，IoT 中心会传送包含主题名称 `devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` 的消息。 `{property_bag}` 包含 URL 编码的消息属性键/值对。 属性包中只包含应用程序属性和用户可设置的系统属性（例如 **messageId** 或 **correlationId**）。 系统属性名称具有前缀 **$** ，但应用程序属性使用没有前缀的原始属性名称。
+如有消息属性，IoT 中心会传送包含主题名称 `devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` 的消息。 `{property_bag}` 包含 URL 编码的消息属性键/值对。 属性包中只包含应用程序属性和用户可设置的系统属性（例如 **messageId** 或 **correlationId**）。 系统属性名称具有前缀 **$** ，但应用程序属性使用没有前缀的原始属性名称。 有关属性包格式的其他详细信息，请参阅[发送设备到云的消息](#sending-device-to-cloud-messages)。
+
+在从云到设备的消息中，属性包中的值表示如下表中所示：
+
+| 属性值 | 表示形式 | 说明 |
+|----|----|----|
+| `null` | `key` | 属性包中只显示密钥 |
+| 空字符串 | `key=` | 键后跟一个无值的等号 |
+| 非 null，非空值 | `key=value` | 键后跟一个等号和值 |
+
+下面的示例显示一个属性包，其中包含三个应用程序属性： **prop1** ，值为 `null` ;**prop2**，空字符串（""）;和值为 "a string" 的**prop3** 。
+
+```mqtt
+/?prop1&prop2=&prop3=a%20string
+```
 
 当设备应用使用 **QoS 2** 订阅主题时，IoT 中心会在 **SUBACK** 包中授予最高 QoS 级别 1。 之后，IoT 中心会使用 QoS 1 将消息传送到设备。
 
@@ -424,7 +439,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 若要深入了解如何规划 IoT 中心部署，请参阅：
 
-* [Azure IoT 已认证设备目录](https://catalog.azureiotsolutions.com/)
+* [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)
 * [支持其他协议](iot-hub-protocol-gateway.md)
 * [与事件中心比较](iot-hub-compare-event-hubs.md)
 * [缩放、高可用性和灾难恢复](iot-hub-scaling.md)

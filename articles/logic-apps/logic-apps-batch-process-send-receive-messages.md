@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4863ff0005f09ca325125667062455357687fdd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144345"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521133"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中发送、接收和批处理消息
 
@@ -37,7 +37,7 @@ ms.locfileid: "82144345"
 * 具有任何 [Azure 逻辑应用支持的电子邮件提供商](../connectors/apis-list.md)的电子邮件帐户
 
   > [!IMPORTANT]
-  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 

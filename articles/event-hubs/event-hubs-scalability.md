@@ -3,12 +3,12 @@ title: 可伸缩性-Azure 事件中心 |Microsoft Docs
 description: 本文介绍如何使用分区和吞吐量单位来缩放 Azure 事件中心。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6d1c7bc5a0206b634e5a85243f25b2c926762d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315485"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521949"
 ---
 # <a name="scaling-with-event-hubs"></a>通过事件中心进行缩放
 
@@ -23,7 +23,7 @@ ms.locfileid: "85315485"
 * 入口：最高每秒 1 MB 或每秒 1000 个事件（以先达到的限制为准）。
 * 出口：最高每秒 2 MB，或每秒 4096 个事件。
 
-超出所购吞吐量单位的容量时，入口受限，返回 [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception)。 出口不会出现限制异常，但仍受限于所购买吞吐量单位的容量。 如果收到发布速率异常或者预期看到更高的出口，请务必检查为命名空间购买的吞吐量单位数量。 可以在 [Azure 门户](https://portal.azure.com)的命名空间的“规模”边栏选项卡上管理吞吐量单位。 也可使用[事件中心 API](event-hubs-api-overview.md) 以编程方式管理吞吐量单位。
+超出所购吞吐量单位的容量时，入口受限，返回 [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception)。 出口不会出现限制异常，但仍受限于所购买吞吐量单位的容量。 如果收到发布速率异常或者预期看到更高的出口，请务必检查为命名空间购买的吞吐量单位数量。 可以在 [Azure 门户](https://portal.azure.com)的命名空间的“规模”边栏选项卡上管理吞吐量单位。 也可使用[事件中心 API](./event-hubs-samples.md) 以编程方式管理吞吐量单位。
 
 吞吐量单位按小时计费，需提前购买。 购买后，吞吐量单位的最短计费时限为一小时。 最多可以为一个事件中心命名空间购买 20 个吞吐量单位，这些单位跨此命名空间内的所有事件中心进行共享。
 
@@ -50,4 +50,4 @@ ms.locfileid: "85315485"
 访问以下链接可以了解有关事件中心的详细信息：
 
 - [自动缩放吞吐量单位](event-hubs-auto-inflate.md)
-- [事件中心服务概述](event-hubs-what-is-event-hubs.md)
+- [事件中心服务概述](./event-hubs-about.md)

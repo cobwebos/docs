@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: dfa3f00e668488574abeb08964909a8972c8913f
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 115a01fe0b1edc343ed9efd324c4be3b53251566
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772941"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519501"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 安全中心数据安全性
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
@@ -69,7 +70,7 @@ VM 磁盘快照存储在 VM 磁盘所在的同一存储帐户中。
 在 Azure 中启用安全中心后，即为每个 Azure 订阅启用了数据收集功能。 还可在 Azure 安全中心的“安全策略”部分，为订阅启用数据收集。 启用数据收集功能后，Azure 安全中心即可在所有受支持的现有 Azure 虚拟机以及任何新创建的虚拟机中预配 Log Analytics 代理。
 Log Analytics 代理扫描各种安全相关配置和事件，并将其收集到 [Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 的跟踪中。 另外，在运行计算机的过程中，操作系统会引发事件日志事件。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址、已登录用户、租户 ID。 Log Analytics 代理读取事件日志条目和 ETW 跟踪，并将其复制到工作区进行分析。 Log Analytics 代理还启用进程创建事件和命令行审核。
 
-如果使用 Azure 安全中心免费版，也可以在“安全策略”中从虚拟机禁用数据收集。 标准层上的订阅需启用数据收集。 即使禁用数据收集，也仍会启用 VM 磁盘快照和项目收集。
+如果使用 Azure 安全中心免费版，也可以在“安全策略”中从虚拟机禁用数据收集。 标准层上的订阅需要数据收集。 即使禁用数据收集，也仍会启用 VM 磁盘快照和项目收集。
 
 ## <a name="data-consumption"></a>数据使用
 

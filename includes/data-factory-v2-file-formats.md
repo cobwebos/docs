@@ -2,13 +2,14 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 07/16/2020
 ms.author: jingwang
-ms.openlocfilehash: fd5d13c6b4e071a2c5f9702aab5de6cadee0cef5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54487cc8992149e6d8b599bb2a4b35e2c252404d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84666905"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522426"
 ---
 <!--
     Common for all ADF file-based connectors
@@ -23,3 +24,4 @@ Azure 数据工厂支持以下文件格式。 请参阅每一篇介绍基于格�
 - [JSON 格式](../articles/data-factory/format-json.md)
 - [ORC 格式](../articles/data-factory/format-orc.md)
 - [Parquet 格式](../articles/data-factory/format-parquet.md)
+- [具有完全控制的](../articles/data-factory/format-xml.md)

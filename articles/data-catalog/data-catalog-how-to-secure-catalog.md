@@ -4,13 +4,14 @@ description: 本文介绍如何保护 Azure 数据目录中的数据目录及其
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b0972be2b8a6e05d3d90cde7354b4890ea95cbe4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976767"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523377"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>如何保护对安全访问数据目录和数据资产的访问
 
@@ -31,7 +32,7 @@ ms.locfileid: "68976767"
 
    ![Azure 数据目录用户添加按钮](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
 
-3. 单击“添加” 。
+3. 单击“添加”。
 
 4. 在与目录关联的 Azure Active Directory (AAD) 中输入完全限定用户名或安全组名称********。 若要添加多个用户或组，请使用逗号（“,”）作为分隔符。
 

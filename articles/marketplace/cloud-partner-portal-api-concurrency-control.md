@@ -3,19 +3,21 @@ title: 并发控制-Azure Marketplace
 description: 云合作伙伴门户发布 API 的并发控制策略。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b66d266500745d08bef98a42e51cc8a7bab63958
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: emuench
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: 1160d5568108e7936099cc5227b9e4cadbaddf36
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102729"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520334"
 ---
 # <a name="concurrency-control"></a>并发控制
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成，在你的产品/服务迁移到合作伙伴中心后，它们仍可运行。 集成造成了少量的更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 对云合作伙伴门户发布 API 的每个调用都必须显式指定要使用哪个并发控制策略。 如果未提供 **If-Match** 标头，则会导致 HTTP 400 错误响应。 我们提供了两种并发控制策略。
 

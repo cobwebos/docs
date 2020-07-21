@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 86d88787d024029b11d9718f8dbc834ae7217707
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78cc1fe1a84f1fd596d0c581f034f312cb1a0c3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260638"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523802"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>使用图批量执行程序 .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
 
@@ -155,6 +155,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 3. 通过查询图形数据库来评估结果。 如果 `ShouldCleanupOnFinish` 选项设置为 true，则会自动删除此数据库。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解 Nuget 包的详细信息以及 Bulk Executor .Net 库的发行说明，请参阅 [Bulk Executor SDK 详细信息](sql-api-sdk-bulk-executor-dot-net.md)。 
+
+* 若要了解有关 NuGet 包的详细信息和批量执行器 .NET 库的发行说明，请参阅[批量执行器 SDK 详细信息](sql-api-sdk-bulk-executor-dot-net.md)。 
 * 请查看[性能提示](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips)，以便进一步优化批量执行程序的使用。
 * 请查看 [BulkExecutor.Graph 参考文章](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet)，以便更详细地了解在此命名空间中定义的类和方法。

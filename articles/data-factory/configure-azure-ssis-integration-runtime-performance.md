@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255528"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523309"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
 
@@ -104,11 +104,15 @@ AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置。 该工�
 
 此数据代表单个辅助角色节点上的单个包执行。 此包从 Azure Blob 存储中加载 3 百万个包含名和姓列的记录，生成全名列并将全名超过 20 个字符的记录写到 Azure Blob 存储。
 
+Y 轴是在一小时内完成执行的包数。 请注意，这只是一个占用大量内存的包的测试结果。 如果要了解包的吞吐量，建议你自行执行测试。
+
 ![SSIS Integration Runtime 包执行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>配置整体吞吐量
 
 如果有大量包要运行且最关注整体吞吐量，则使用下表中的信息选择适合方案的虚拟机类型。
+
+Y 轴是在一小时内完成执行的包数。 请注意，这只是一个占用大量内存的包的测试结果。 如果要了解包的吞吐量，建议你自行执行测试。
 
 ![SSIS Integration Runtime 最大整体吞吐量](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 

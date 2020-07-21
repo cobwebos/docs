@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ebe701032e6416b3e007a28db62f5a8235bb1bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bcd5f0e6229c4130dddb48c1a20de1c711c6fcf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80068031"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519875"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>如何对自定义转换进行编码 - .NET
 
@@ -52,7 +52,7 @@ ms.locfileid: "80068031"
 
 ### <a name="example"></a>示例
 
-下面的示例定义了一组我们希望在使用此转换时生成的输出。 我们首先为音频编码添加一个 AacAudio 层，为视频编码添加两个 H264Video 层。 在视频层中，我们分配标签，以便可以在输出文件名中使用它们。 接下来，我们希望输出还包括缩略图。 在以下示例中，我们指定 PNG 格式的图像，这些图像以输入视频分辨率的 50% 生成，并以输入视频长度的 {25%, 50%, 75} 三个时间戳生成。 最后，我们指定输出文件的格式 - 一个用于视频 + 音频，另一个用于缩略图。 由于我们有多个 H264 层，因此我们必须使用宏来为每个层生成唯一的名称。 可以使用 `{Label}` 或 `{Bitrate}` 宏，此示例显示了前者。
+下面的示例定义了一组我们希望在使用此转换时生成的输出。 我们首先为音频编码添加一个 AacAudio 层，为视频编码添加两个 H264Video 层。 在视频层中，我们分配标签，以便可以在输出文件名中使用它们。 接下来，我们希望输出还包括缩略图。 在下面的示例中，我们指定了 PNG 格式的图像，该图像是在输入视频的分辨率50% 的情况下生成的，并有三个时间戳-{25%、50%、75%} （对于输入视频的长度）。 最后，我们指定输出文件的格式 - 一个用于视频 + 音频，另一个用于缩略图。 由于我们有多个 H264 层，因此我们必须使用宏来为每个层生成唯一的名称。 可以使用 `{Label}` 或 `{Bitrate}` 宏，此示例显示了前者。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 

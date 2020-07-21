@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/08/2020
-ms.openlocfilehash: 8ad7cfad0a17608af6b59b712d1f0c2b72b49a61
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 07/16/2020
+ms.openlocfilehash: adbe3ceb72d88c2a6441c04d876d92ac2ab85930
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223646"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522765"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>映射数据流中的源转换 
 
@@ -39,16 +39,16 @@ ms.locfileid: "86223646"
 
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a>支持的源类型
 
-映射数据流遵循提取、加载、转换 (ELT) 方法，并适用于所有 Azure 中的*临时*数据集。 当前，以下数据集可用于源转换：
+映射数据流遵循提取、加载和转换（ELT）方法，并且适用于所有 Azure 中的*临时*数据集。 当前，以下数据集可用于源转换：
 
 | 连接器 | 格式 | 数据集/内联 |
 | --------- | ------ | -------------- |
-| [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [增量 (预览) ](format-delta.md) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> -/✓ <br> ✓/✓ <br/> ✓/- <br> ✓/- |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br>✓/✓ <br/> ✓/- <br> ✓/- |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)  <br> [通用数据模型 (预览) ](format-common-data-model.md#source-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [增量 (预览) ](format-delta.md) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/-<br/> -/✓ <br> ✓/- <br> -/✓ <br> ✓/✓ <br>✓/- <br/> ✓/- |
+| [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)<br>[增量（预览）](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/-<br>✓/-<br>-/✓<br>✓/✓<br/>✓/-<br>✓/-<br>✓/✓ |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties)  | ✓/-<br>✓/-<br>✓/✓<br/>✓/-<br>✓/-<br>✓/✓ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[通用数据模型（预览）](format-common-data-model.md#source-properties)<br>[带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)<br>[增量（预览）](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/-<br/>-/✓<br>✓/-<br>-/✓<br>✓/✓<br>✓/-<br/>✓/-<br>✓/✓ |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure CosmosDB (SQL API) ](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 
 特定于这些连接器的设置位于 "**源选项**" 选项卡中。有关这些设置的信息和数据流脚本示例位于连接器文档中。 
 
@@ -89,7 +89,7 @@ Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)
 
 ## <a name="projection"></a>投影
 
-与数据集中的架构一样，源中的投影定义源数据中的数据列、类型和格式。 对于大多数数据集类型（例如 SQL 和 Parquet），源中的投影是固定的，以反映数据集中定义的架构。 如果源文件不是强类型的 (例如，平面 csv 文件而不是 Parquet files) ，则可以定义源转换中每个字段的数据类型。
+与数据集中的架构一样，源中的投影定义源数据中的数据列、类型和格式。 对于大多数数据集类型（例如 SQL 和 Parquet），源中的投影是固定的，以反映数据集中定义的架构。 如果源文件不是强类型的（例如，平面 csv 文件而不是 Parquet 文件），则可以定义源转换中每个字段的数据类型。
 
 !["投影" 选项卡上的设置](media/data-flow/source3.png "投影")
 
@@ -103,7 +103,7 @@ Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)
 
 使用 "**投影**" 选项卡上的 "**导入架构**" 按钮，可以使用活动调试群集创建架构投影。 在每个源类型中提供，在此处导入架构将覆盖数据集中定义的投影。 数据集对象将不会更改。
 
-这在支持复杂数据结构的数据集中很有用，因为这些数据集不需要架构定义存在于数据集中。 对于内联数据集，这是引用列元数据而不会有架构偏移的唯一方法。
+这在支持复杂数据结构的数据集（如 Avro 和 Azure Cosmos DB）中非常有用，不需要架构定义存在于数据集中。 对于内联数据集，这是引用列元数据而不会有架构偏移的唯一方法。
 
 ## <a name="optimize-the-source-transformation"></a>优化源转换
 

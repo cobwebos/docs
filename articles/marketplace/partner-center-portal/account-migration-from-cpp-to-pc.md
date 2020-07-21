@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 24ce0ff2fa5e0b023f2a0d6b92e657299518c044
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120494"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520147"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>如何将帐户从云合作伙伴门户迁移到合作伙伴中心
 
@@ -27,7 +27,7 @@ ms.locfileid: "86120494"
 
 ### <a name="your-account-has-been-migrated-to-partner-center"></a>你的帐户已迁移到合作伙伴中心
 
-对于已完成从 CPP 迁移到合作伙伴中心的所有帐户，帐户管理将在合作伙伴中心进行。 诸如用户添加/删除之类的更改将同步回 CPP。
+你现在可以在合作伙伴中心管理你的帐户。 诸如用户添加/删除之类的更改将同步回 CPP。
 
 ### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>你尚未将帐户迁移到合作伙伴中心
 
@@ -45,7 +45,7 @@ ms.locfileid: "86120494"
 
 ## <a name="publishers-moving-from-cpp"></a>从 CPP 迁移的发布者
 
-如果你的帐户已从[云合作伙伴门户 (CPP)](https://cloudpartner.azure.com) 迁移，则无需创建新的合作伙伴中心帐户。 登录到现有 CPP 帐户后，你应该已经通过电子邮件和横幅通知收到了指向新的合作伙伴中心帐户的自定义链接。
+如果你的帐户已从 CPP 迁移，则无需创建新的合作伙伴中心帐户。 登录到现有的 CPP 帐户后，应在电子邮件和横幅通知中收到指向新合作伙伴中心帐户的自定义链接。
 
 通过访问此自定义链接启用新的合作伙伴中心帐户后，可以访问合作伙伴中心中的[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)以返回到帐户。
 

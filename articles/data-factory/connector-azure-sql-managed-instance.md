@@ -10,12 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 907579d44575de56f95e0828c3313d0d1682b29c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: d67a050ccd590e220c51e02b827013ace7707ee2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513898"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523241"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 托管实例复制数据
 
@@ -58,7 +59,7 @@ ms.locfileid: "85513898"
 
 SQL 托管实例链接服务支持以下属性：
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureSqlMI**。 | 是 |
 | connectionString |此属性指定通过 SQL 身份验证连接到 SQL 托管实例时所需的 **connectionString** 信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为 1433。 如果将 SQL 托管实例与公共终结点配合使用，请显式指定端口 3342。<br> 还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -227,10 +228,10 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从/向 SQL 托管实例复制数据，以下属性需受支持：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlMITable。 | 是 |
-| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“否”，对于接收器为“是”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -263,7 +264,7 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从 SQL 托管实例复制数据，复制活动的 source 节需要支持以下属性：
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SqlMISource**。 | 是 |
 | sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 |否 |
@@ -370,11 +371,11 @@ GO
 
 若要将数据复制到 SQL 托管实例，复制活动的 sink 节需要支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SqlMISink**。 | 是 |
 | preCopyScript |此属性指定将数据写入到 SQL 托管实例之前要由复制活动运行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |否 |
-| tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 当接收器指定存储过程或在复制活动中配置了暂存复制时，不支持自动表创建。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
+| tableOption | 指定是否根据源架构[自动创建接收器表](copy-activity-overview.md#auto-create-sink-tables)（如果不存在）。 当接收器指定存储过程或在复制活动中配置了暂存复制时，不支持自动表创建。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
 | sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 <br/>此存储过程由每个批处理调用。 若要执行仅运行一次且与源数据无关的操作（例如删除或截断），请使用 `preCopyScript` 属性。<br>请参阅[调用 SQL 接收器的存储过程](#invoke-a-stored-procedure-from-a-sql-sink)中的示例。 | 否 |
 | storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |否 |
 | sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |

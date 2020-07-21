@@ -11,16 +11,24 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: tracking-python
-ms.openlocfilehash: 733eec452501a829d0162b91aca9ece191d68914
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: fc589f53fc10e376479bf54ec408a95dac42db4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611418"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523955"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用见解令牌获取图像的见解
 
-必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关演示如何上传图像以获取见解的示例，请参阅快速入门（[c #](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)）。
+必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关演示如何上传图像以获取见解的示例，请参阅快速入门：
+
+* （[C #](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [Node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md)）。
 
 如果发送必应视觉搜索图像令牌或 URL，则以下内容将显示您必须包含在帖子正文中的表单数据。 窗体数据必须包含 `Content-Disposition` 标头，并且必须将其 `name` 参数设置为 "knowledgeRequest"。 有关对象的详细信息 `imageInfo` ，请参阅请求：
 
@@ -59,14 +67,22 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-有关使用 insights 令牌的示例，请参阅[c #](#use-with-c)  |  [Java](#use-with-java)  |  [Node.js](#use-with-nodejs)  |  [Python](#use-with-python)。
+有关使用 insights 令牌的示例，请参阅：
+
+* [C#](#use-with-c)
+
+* [Java](#use-with-java)
+
+* [Node.js](#use-with-nodejs)
+
+* [Python](#use-with-python)
 
 ## <a name="use-with-c"></a>与 C 一起使用#
 
 ### <a name="c-prerequisites"></a>C # 必备组件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
-* 获得 Azure 订阅后， <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" 创建一个必应搜索资源， "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 在 Azure 门户中创建必应搜索资源以获取密钥和终结点。 部署后，单击“转到资源”。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/)的任意版本，使此代码在 Windows 上运行。
 
 ## <a name="run-the-application"></a>运行应用程序
@@ -77,7 +93,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 2. 将 Program.cs 的内容替换为本快速入门中所示的代码。
 3. 将 `accessKey` 值替换为你的订阅密钥。
 4. 将 `insightsToken` 值替换为 /图像/搜索响应中的见解标记。
-5. 运行该程序。
+5. 运行程序。
 
 ```csharp
 using System;
@@ -240,7 +256,7 @@ namespace VisualSearchInsightsToken
 ### <a name="java-prerequisites"></a>Java 必备组件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
-* 获得 Azure 订阅后， <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" 创建一个必应搜索资源， "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 在 Azure 门户中创建必应搜索资源以获取密钥和终结点。 部署后，单击“转到资源”。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
 * 要编译并运行此代码， [JDK 7 或 8](https://aka.ms/azure-jdks) 。 如果你喜欢，可以使用 Java IDE，但文本编辑器可以满足要求。
 
 
@@ -252,7 +268,7 @@ namespace VisualSearchInsightsToken
 2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
 3. 将提供的代码添加到一个名为 `VisualSearch.java` 的文件中。
 4. 将 `subscriptionKey` 值替换为你的订阅密钥。
-5. 运行该程序。
+5. 运行程序。
 
 ```java
 package insightstoken;
@@ -356,7 +372,7 @@ public class InsightsToken {
 ### <a name="nodejs-prerequisites"></a>Node.js 先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
-* 获得 Azure 订阅后， <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" 创建一个必应搜索资源， "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 在 Azure 门户中创建必应搜索资源以获取密钥和终结点。 部署后，单击“转到资源”。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
 * 若要运行此代码，必须具有[Node.js 6](https://nodejs.org/en/download/) 。
 
 ## <a name="run-the-javascript-application"></a>运行 JavaScript 应用程序
@@ -376,7 +392,7 @@ public class InsightsToken {
    ```
 1. 创建一个名为 GetVisualInsights.js 的文件，并将以下代码添加到其中。
 1. 将 `subscriptionKey` 值替换为你的订阅密钥。
-1. 运行该程序。  
+1. 运行程序。  
    ```
    node GetVisualInsights.js
    ```
@@ -421,7 +437,7 @@ function requestCallback(err, res, body) {
 ### <a name="python-prerequisites"></a>Python 必备组件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
-* 获得 Azure 订阅后， <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" 创建一个必应搜索资源， "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 在 Azure 门户中创建必应搜索资源以获取密钥和终结点。 部署后，单击“转到资源”。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
 * 若要运行此代码，必须具有[Python 3](https://www.python.org/) 。
 
 ## <a name="run-the-python-application"></a>运行 Python 应用程序

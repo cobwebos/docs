@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708036"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520726"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>设置 Azure Monitor 日志并收集 Azure 逻辑应用的诊断数据
 
-若要在运行时获取有关逻辑应用的更丰富的调试信息，你可以设置并使用[Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)来记录和存储有关运行时数据和事件的信息，例如触发事件、运行事件和[Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)中的操作事件。 [Azure Monitor](../azure-monitor/overview.md)可帮助你监视云和本地环境，使你能够更轻松地保持其可用性和性能。 通过使用 Azure Monitor 日志，您可以创建帮助您收集和查看此信息的[日志查询](../azure-monitor/log-query/log-query-overview.md)。 你还可以[将此诊断数据用于其他 azure 服务](#extend-data)，例如 azure 存储和 Azure 事件中心。
+若要在运行时获取有关逻辑应用的更丰富的调试信息，你可以设置并使用[Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)来记录和存储有关运行时数据和事件的信息，例如触发事件、运行事件和[Log Analytics 工作区](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)中的操作事件。 [Azure Monitor](../azure-monitor/overview.md)可帮助你监视云和本地环境，使你能够更轻松地保持其可用性和性能。 通过使用 Azure Monitor 日志，您可以创建帮助您收集和查看此信息的[日志查询](../azure-monitor/log-query/log-query-overview.md)。 你还可以[将此诊断数据用于其他 azure 服务](#extend-data)，例如 azure 存储和 Azure 事件中心。
 
 若要为逻辑应用设置日志记录，可以在[创建逻辑应用时启用 Log Analytics](#logging-for-new-logic-apps)，也可以在现有逻辑应用的 Log Analytics 工作区中[安装逻辑应用管理解决方案](#install-management-solution)。 此解决方案提供了逻辑应用运行的聚合信息，并包括详细信息，如状态、执行时间、重新提交状态和关联 Id。 然后，若要为此信息启用日志记录和创建查询，请[设置 Azure Monitor 日志](#set-up-resource-logs)。
 
@@ -23,7 +23,7 @@ ms.locfileid: "84708036"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，需要[Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)。 如果没有工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+在开始之前，需要[Log Analytics 工作区](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。 如果没有工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 <a name="logging-for-new-logic-apps"></a>
 
@@ -41,7 +41,7 @@ ms.locfileid: "84708036"
 
       完成此步骤后，Azure 将创建逻辑应用，该应用现在与你的 Log Analytics 工作区相关联。 此外，此步骤还会在工作区中自动安装逻辑应用管理解决方案。
 
-1. 完成后，选择“创建”。
+1. 完成操作后，选择“创建”。
 
 1. 运行逻辑应用后，若要查看逻辑应用运行，请[继续执行以下步骤](#view-logic-app-runs)。
 
@@ -176,15 +176,15 @@ ms.locfileid: "84708036"
 
 结合使用 Azure Monitor 日志后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如：
 
-* [将 Azure 资源日志存档到存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)
-* [将 Azure 平台日志流式传输到 Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+* [将 Azure 资源日志存档到存储帐户](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+* [将 Azure 平台日志流式传输到 Azure 事件中心](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
 
 然后，可通过使用其他服务（如 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)和 [Power BI](../azure-monitor/platform/powerbi.md)）的遥测数据和分析来进行实时监视。 例如：
 
 * [将数据从事件中心流式传输到流分析](../stream-analytics/stream-analytics-define-inputs.md)
 * [在 Power BI 中使用流分析来分析流数据，并创建实时分析仪表板](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-根据要发送诊断数据的位置，请确保先[创建 azure 存储帐户](../storage/common/storage-create-storage-account.md)或[创建 azure 事件中心](../event-hubs/event-hubs-create.md)。 然后，可以选择要将该数据发送到的目标。 仅当使用存储帐户时，保持期才适用。
+根据要发送诊断数据的位置，请确保先[创建 azure 存储帐户](../storage/common/storage-account-create.md)或[创建 azure 事件中心](../event-hubs/event-hubs-create.md)。 然后，可以选择要将该数据发送到的目标。 仅当使用存储帐户时，保持期才适用。
 
 ![将数据发送到 Azure 存储帐户或事件中心](./media/monitor-logic-apps-log-analytics/diagnostics-storage-event-hub-log-analytics.png)
 
@@ -192,7 +192,7 @@ ms.locfileid: "84708036"
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure Monitor 诊断事件
 
-每个诊断事件都有关于逻辑应用和该事件的详细信息，例如状态、开始时间、结束时间等。 若要以编程方式设置监视、跟踪和日志记录，可以将此信息与[适用于 Azure 逻辑应用的 REST API](https://docs.microsoft.com/rest/api/logic)和[Azure Monitor 的 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)一起使用。 你还可以使用 `clientTrackingId` `trackedProperties` 出现在 
+每个诊断事件都有关于逻辑应用和该事件的详细信息，例如状态、开始时间、结束时间等。 若要以编程方式设置监视、跟踪和日志记录，可以将此信息与[适用于 Azure 逻辑应用的 REST API](/rest/api/logic)和[Azure Monitor 的 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)一起使用。 你还可以使用 `clientTrackingId` `trackedProperties` 出现在 
 
 * `clientTrackingId`：如果未提供，Azure 会自动生成此 ID，并跨逻辑应用运行关联事件，包括从逻辑应用调用的任何嵌套工作流。 可以通过 `x-ms-client-tracking-id` 在触发器请求中传递包含自定义 ID 值的标头，在触发器中手动指定此 ID。 可以使用请求触发器、HTTP 触发器或 webhook 触发器。
 

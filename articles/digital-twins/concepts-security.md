@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833158"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522255"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>使用基于角色的访问控制保护 Azure 数字孪生
 
@@ -37,7 +37,7 @@ RBAC 通过与[Azure Active Directory](../active-directory/fundamentals/active-d
 
 若要了解有关 Azure 中支持的角色和角色分配的详细信息，请参阅了解 Azure RBAC 文档中[的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
-### <a name="authentication-with-managed-identities"></a>用托管标识进行身份验证
+### <a name="authentication-with-managed-identities"></a>使用托管标识进行身份验证
 
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可用于创建与应用程序代码运行的部署关联的安全标识。 然后，你可以将该标识与访问控制角色相关联，以授予用于访问应用程序所需的特定 Azure 资源的自定义权限。
 
@@ -58,7 +58,7 @@ Azure 提供以下内置 RBAC 角色，用于授权访问 Azure 数字孪生资�
 * 在 Azure 门户中通过 Azure 数字孪生的 "访问控制（IAM）" 窗格（请参阅[使用 AZURE RBAC 和 Azure 门户添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)）
 * 通过 CLI 命令添加或删除角色
 
-有关如何执行此操作的更多详细步骤，请在[Azure 数字孪生教程中试用：连接端到端解决方案](tutorial-end-to-end.md)。
+有关如何执行此操作的更多详细步骤，请在[Azure 数字孪生教程中试用：*连接端到端解决方案*](tutorial-end-to-end.md)。
 
 ## <a name="permission-scopes"></a>权限范围
 
@@ -73,6 +73,6 @@ Azure 提供以下内置 RBAC 角色，用于授权访问 Azure 数字孪生资�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅如何对[客户端应用程序进行身份验证](how-to-authenticate-client.md)中的示例客户端应用程序，了解如何执行这些步骤。
+* 请参阅如何对[*客户端应用程序进行身份验证*](how-to-authenticate-client.md)中的示例客户端应用程序，了解如何执行这些步骤。
 
 * 阅读有关[适用于 Azure 的 RBAC 的](../role-based-access-control/overview.md)详细信息。

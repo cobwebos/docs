@@ -72,6 +72,10 @@
           href: how-to-manage-routes.md
         - name: 与 Azure Maps 集成
           href: how-to-integrate-maps.md
+    - name: 疑难解答
+      items:
+        - name: 已知问题
+          href: troubleshoot-known-issues.md
 - name: 参考
   items:
     - name: 数字孪生服务限制

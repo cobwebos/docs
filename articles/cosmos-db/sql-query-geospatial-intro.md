@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bb7fd69073dbc960904e8f7b44459ed85e98cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79367578"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523513"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空间和 GeoJSON 位置数据
 
@@ -20,9 +21,19 @@ ms.locfileid: "79367578"
 * 如何使用 SQL 和 LINQ 查询 Azure Cosmos DB 中的地理空间数据？
 * 如何在Azure Cosmos DB 中启用或禁用空间索引？
 
+## <a name="spatial-data-use-cases"></a>空间数据用例
+
+地理空间数据通常涉及邻近查询，例如 "查找位于当前位置附近的所有咖啡厅"。 常见的用例包括：
+
+* 地理位置分析，推动特定的市场营销计划。
+* 基于位置的个性化，适用于多个行业，如零售和医疗保健。
+* 用于传输优化的后勤增强。
+* 风险分析，特别是对于保险和金融公司。
+* 针对警报和通知的形势认知。
+
 ## <a name="introduction-to-spatial-data"></a>空间数据简介
 
-空间数据用于描述空间中对象的位置和形状。 在大部分应用程序中，这些会对应于地球上的对象，也就是地理空间数据。 空间数据可以用来表示人、名胜古迹、城市边界或湖泊所处的位置。 常见用例通常涉及邻近查询，例如“寻找我目前位置附近的所有咖啡厅”。
+空间数据用于描述空间中对象的位置和形状。 在大部分应用程序中，这些会对应于地球上的对象，也就是地理空间数据。 空间数据可以用来表示人、名胜古迹、城市边界或湖泊所处的位置。
 
 Azure Cosmos DB SQL API 支持两种空间数据类型：geometry  数据类型和 geography 数据类型  。
 

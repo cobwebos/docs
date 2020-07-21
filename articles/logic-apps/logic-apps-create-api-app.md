@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834486"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520794"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
@@ -53,8 +54,8 @@ ms.locfileid: "83834486"
 有关自定义连接器的详细信息，请参阅 
 
 * [自定义连接器概述](../logic-apps/custom-connector-overview.md)
-* [从 Web API 创建自定义连接器](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [在 Azure 逻辑应用中注册自定义连接器](../logic-apps/logic-apps-custom-connector-register.md)
+* [从 Web API 创建自定义连接器](/connectors/custom-connectors/create-web-api-connector)
+* [在 Azure 逻辑应用中注册自定义连接器](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>有用的工具
 
@@ -227,7 +228,7 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 * 有关使用自定义 API 的特定帮助，请联系[customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)。
 
-* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](/answers/topics/azure-logic-apps.html)。
 
 * 为帮助改进逻辑应用，敬请在[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)上投票或发表看法。 
 

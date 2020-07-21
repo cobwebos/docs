@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/25/2020
-ms.openlocfilehash: 350c542e1b183c79707c99989b2544fd8faa43ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4235e948dba76c0b2926d9965ccd2fcb072cad62
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248469"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520777"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
-本文介绍使用 Azure 逻辑应用创建和运行自动化工作流的限制和配置的详细信息。 对于 Power Automate，请参阅 [Power Automate 中的限制和配置](https://docs.microsoft.com/flow/limits-and-config)。
+本文介绍使用 Azure 逻辑应用创建和运行自动化工作流的限制和配置的详细信息。 对于 Power Automate，请参阅 [Power Automate 中的限制和配置](/flow/limits-and-config)。
 
 <a name="definition-limits"></a>
 
@@ -129,7 +129,7 @@ ms.locfileid: "86248469"
 
 ## <a name="gateway-limits"></a>网关限制
 
-Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新）。 但是，这些操作存在[有效负载大小限制](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。
+Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新）。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。
 
 <a name="request-limits"></a>
 
@@ -154,7 +154,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 | 名称 | 多租户限制 | 集成服务环境限制 | 备注 |
 |------|--------------------|---------------------------------------|-------|
 | 消息大小 | 100 MB | 200 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 <p><p>- 连接器（如 AS2、X12 和 EDIFACT）具有自己的 [B2B 消息限制](#b2b-protocol-limits)。 <br>- ISE 连接器使用 ISE 限制，而不是非 ISE 连接器限制。 |
-| 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可在其运行时配置中启用分块的操作。 <p><p>如果你使用的是 ISE，则逻辑应用引擎支持此限制，但连接器具有自己的分块限制（不超过引擎限制），例如请参阅 [Azure Blob 存储连接器的 API 参考](https://docs.microsoft.com/connectors/azureblob/)。 有关分块的详细信息，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
+| 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可在其运行时配置中启用分块的操作。 <p><p>如果你使用的是 ISE，则逻辑应用引擎支持此限制，但连接器具有自己的分块限制（不超过引擎限制），例如请参阅 [Azure Blob 存储连接器的 API 参考](/connectors/azureblob/)。 有关分块的详细信息，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
 |||||
 
 #### <a name="character-limits"></a>字符限制
@@ -180,7 +180,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ### <a name="authentication-limits"></a>身份验证限制
 
-如果逻辑应用从使用请求触发器开始，并启用 [Azure Active Directory 开放式身份验证](/azure/active-directory/develop/) (Azure AD OAuth) 来授权对请求触发器的入站调用，则应遵循以下限制：
+如果逻辑应用从使用请求触发器开始，并启用 [Azure Active Directory 开放式身份验证](../active-directory/develop/index.yml) (Azure AD OAuth) 来授权对请求触发器的入站调用，则应遵循以下限制：
 
 | 名称 | 限制 | 备注 |
 | ---- | ----- | ----- |
@@ -216,7 +216,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 每个 Azure 订阅具有以下集成帐户限制：
 
-* 每个 Azure 区域有一个[免费层](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帐户。 此级别仅适用于 Azure 中的公共区域，例如 "美国西部" 或 "东南亚"，但不适用于[Azure 中国世纪互联](https://docs.microsoft.com/azure/china/overview-operations)或[azure 政府](../azure-government/documentation-government-welcome.md)版。
+* 每个 Azure 区域有一个[免费层](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帐户。 此级别仅适用于 Azure 中的公共区域，例如 "美国西部" 或 "东南亚"，但不适用于[Azure 中国世纪互联](/azure/china/overview-operations)或[azure 政府](../azure-government/documentation-government-welcome.md)版。
 
 * 共 1,000 个集成帐户，包括[开发人员和高级 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)中任何[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内的集成帐户。
 
@@ -258,7 +258,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 | 项目 | 限制 | 注释 |
 | -------- | ----- | ----- |
 | Assembly | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
-| 映射（XSLT 文件） | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 逻辑应用 REST API - 映射](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：映射可以成功处理的数据或记录量取决于 Azure 逻辑应用中的消息大小和操作超时限制。 例如，如果使用 HTTP 操作，则根据 [HTTP 消息大小和超时限制](#request-limits)，在操作能够在 HTTP 超时限制内完成的情况下，映射最多可以处理达到 HTTP 消息大小限制的数据量。 |
+| 映射（XSLT 文件） | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：映射可以成功处理的数据或记录量取决于 Azure 逻辑应用中的消息大小和操作超时限制。 例如，如果使用 HTTP 操作，则根据 [HTTP 消息大小和超时限制](#request-limits)，在操作能够在 HTTP 超时限制内完成的情况下，映射最多可以处理达到 HTTP 消息大小限制的数据量。 |
 | 架构 | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
 ||||
 
@@ -299,7 +299,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>防火墙配置：IP 地址和服务标记
 
-Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用所在的区域。 ** 同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 某些 [Power Automate](https://docs.microsoft.com/power-automate/getting-started) 调用（例如 HTTP**** 和 HTTP + OpenAPI**** 请求）直接通过 Azure 逻辑应用服务执行并来自此处列出的 IP 地址。 有关 Power Automate 使用的 IP 地址的详细信息，请参阅 [Power Automate 中的配置和限制](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)。
+Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用所在的区域。 ** 同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 某些 [Power Automate](/power-automate/getting-started) 调用（例如 HTTP**** 和 HTTP + OpenAPI**** 请求）直接通过 Azure 逻辑应用服务执行并来自此处列出的 IP 地址。 有关 Power Automate 使用的 IP 地址的详细信息，请参阅 [Power Automate 中的配置和限制](/flow/limits-and-config#ip-address-configuration)。
 
 > [!TIP]
 > 为了帮助降低创建安全规则时的复杂性，你可以选择使用[服务标记](../virtual-network/service-tags-overview.md)，而不是为每个区域指定逻辑应用 IP 地址，本部分稍后将对此进行介绍。
@@ -308,7 +308,7 @@ Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用�
 > * **LogicAppsManagement**：表示逻辑应用服务的入站 IP 地址前缀。
 > * **LogicApps**：表示逻辑应用服务的出站 IP 地址前缀。
 
-* 对于 [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)，固定或保留 IP 地址不可用于[自定义连接器](../logic-apps/custom-connector-overview.md)和[托管连接器](../connectors/apis-list.md#managed-api-connectors)（例如，Azure 存储、SQL Server、Office 365 Outlook 等）。
+* 对于 [Azure 中国世纪互联](/azure/china/)，固定或保留 IP 地址不可用于[自定义连接器](../logic-apps/custom-connector-overview.md)和[托管连接器](../connectors/apis-list.md#managed-api-connectors)（例如，Azure 存储、SQL Server、Office 365 Outlook 等）。
 
 * 若要支持逻辑应用通过 [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 和其他 HTTP 请求直接发出的调用，请根据这些逻辑应用所在的区域，使用逻辑应用服务所用的所有[入站](#inbound)和**[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“入站”**** 和“出站”**** 标题下，并按区域进行排序。
 

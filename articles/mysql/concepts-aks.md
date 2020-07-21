@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 9e020d34b6cfb8117ccff1114cc938c966126b77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519858"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>连接 Azure Kubernetes 服务和 Azure Database for MySQL
 
@@ -40,12 +40,6 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeRe
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
-
-## <a name="open-service-broker-for-azure"></a>打开 Service Broker for Azure 
-[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) 允许你直接从 Kubernetes 或 Cloud Foundry 预配 Azure 服务。 它是适用于 Azure 的 [Open Service Broker API](https://www.openservicebrokerapi.org/) 实现。
-
-通过 OSBA，可以使用 Kubernetes 的本机语言创建 Azure Database for MySQL 服务器并将其绑定到 AKS 群集。 在 [OSBA GitHub 页](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md)上了解如何将 OSBA 和 Azure Database for MySQL 一起使用。 
-
 
 
 ## <a name="next-steps"></a>后续步骤

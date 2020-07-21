@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anbene
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119287"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520266"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>在 Azure 市场中创建、配置和发布 IoT Edge 模块产品/服务
 
@@ -286,13 +286,13 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 ### <a name="plan-overview"></a>计划概述
 
-使用此选项卡，可以在合作伙伴中心内的相同产品/服务中提供不同的计划选项。 这些计划旧称为“库存单位 (SKU)”。 计划可能会因哪些云可用（如全球云、政府云和由计划引用的映像）而异。 若要在市场中列出你的产品/服务，至少必须设置一个计划。
+使用此选项卡，可以在合作伙伴中心内的相同产品/服务中提供不同的计划选项。 计划（以前称为 Sku）的不同之处在于可用的云，如全球云、政府云和计划引用的映像。 若要在市场中列出你的产品/服务，至少必须设置一个计划。
 
 在你创建计划后，“计划概述”选项卡显示：
 
 - 计划名称
 - 定价模型
-- 云可用性（全球云或政府云）
+- Azure 区域（全局或政府）
 - 当前发布状态
 - 任何可用操作
 
@@ -329,7 +329,7 @@ IoT Edge 模块产品/服务的所有计划自动在**Azure Global**中提供。
 
 #### <a name="azure-government-certifications"></a>Azure 政府认证
 
-仅当在**云可用性**下选择了**Azure 政府**版时，此选项才可见。
+仅当在 " **azure 区域**" 下选择了 " **azure 政府**" 时，此选项才可见。
 
 Azure 政府服务处理符合特定政府法规和要求的数据。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 为了让受众注意到你在这些计划上获得的认证，可以提供最多 100 个链接来描述你的认证。 这些链接可以直接链接到你在这些计划上获得的认证一览，也可以链接到你自己的网站。 这些链接只对 Azure 政府客户可见。
 

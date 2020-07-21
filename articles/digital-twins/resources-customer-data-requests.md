@@ -8,14 +8,14 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 9822044de53f5f74df302e05e0e6c5cd06f3eb92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737149"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522340"
 ---
-# <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
+# <a name="azure-digital-twins-customer-data-request-features"></a>Azure 数字孪生客户数据请求功能
 
 Azure 数字孪生是一个开发人员平台，用于创建安全的业务环境数字表示形式。 表示形式由用户选择的数据源中的实时状态数据驱动。
 

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831567"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520895"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用作用域基于组状态运行操作
 
@@ -70,13 +71,13 @@ ms.locfileid: "83831567"
 
       ![设置“必应地图 - 获取路线”操作](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
-      有关这些参数的详细信息，请参阅 [Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx)（计算路线）。
+      有关这些参数的详细信息，请参阅 [Calculate a route](/bingmaps/rest-services/routes/calculate-a-route)（计算路线）。
 
       | 设置 | 值 | 说明 |
       | ------- | ----- | ----------- |
       | **路标 1** | <*起点*> | 输入路线的起点。 | 
       | **路标 2** | <*终点*> | 输入路线的目的地。 | 
-      | **避免** | 无 | 输入路线上需要避免的项目，例如高速公路、收费站等。 有关可能的值，请参阅[计算路由](https://msdn.microsoft.com/library/ff701717.aspx)。 | 
+      | **避免** | 无 | 输入路线上需要避免的项目，例如高速公路、收费站等。 有关可能的值，请参阅[计算路由](/bingmaps/rest-services/routes/calculate-a-route)。 | 
       | **优化** | timeWithTraffic | 选择一个参数来优化路线，例如距离、时间（在使用当前交通信息的情况下），等等。 此示例使用以下值：timeWithTraffic | 
       | **距离单位** | <*your-preference*> | 输入要用来计算路线的距离单位。 此示例使用以下值：“英里” | 
       | **旅行模式** | 驾车 | 输入路线的旅行模式。 此示例使用以下值：Driving | 
@@ -387,7 +388,7 @@ ms.locfileid: "83831567"
 
 ## <a name="get-support"></a>获取支持
 
-* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](/answers/topics/azure-logic-apps.html)。
 * 若要提交功能和建议或者为其投票，请访问 [Azure 逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

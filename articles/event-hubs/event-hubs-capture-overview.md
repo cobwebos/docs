@@ -3,12 +3,12 @@ title: 捕获流式处理事件 - Azure 事件中心 | Microsoft Docs
 description: 本文概述了捕获功能，该功能可以捕获通过 Azure 事件中心流式处理的事件。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: be5a8bed06f5df0ffcee66c277f8ba5fa1a1bf74
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 201fde24e50fc9403d5e9faf314550520fb7b865
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985252"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522119"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
 使用 Azure 事件中心，可以按指定的时间间隔或大小差异在所选的 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或者 [Azure Data Lake Storage Gen 1 或 Gen 2](https://azure.microsoft.com/services/data-lake-store/) 帐户中自动捕获事件中心的流式处理数据。 设置捕获极其简单，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 事件中心捕获是在 Azure 中加载流式处理数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
@@ -89,7 +89,7 @@ https://github.com/yorek/apache-drill-azure-blob
 
 - [HDInsight：确定 Azure 存储中文件的地址][HDInsight: Address files in Azure storage]
 - [Azure Databricks：Azure Blob 存储][Azure Databricks: Azure Blob Storage]
-- [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/spark-job) 
+- [Azure Kubernetes 服务](../aks/spark-job.md) 
 
 ### <a name="use-avro-tools"></a>使用 Avro 工具
 
@@ -152,7 +152,7 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 [Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/

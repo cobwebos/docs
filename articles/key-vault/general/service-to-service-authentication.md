@@ -9,12 +9,12 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 132663ed26eab41747f6fce25bdb2beabe286322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 83c4a48f8c177cf84078966bae32126102b45c3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232604"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521014"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -170,7 +170,7 @@ ms.locfileid: "86232604"
 
     将 {AppId}、{TenantId} 和 {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 *LocalMachine*` 或 *CurrentUser*。
 
-1. 运行应用程序。
+1. 运行该应用程序。
 
 ### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>使用共享机密凭据登录到 Azure AD
 
@@ -230,7 +230,7 @@ ms.locfileid: "86232604"
 
 - [Azure 资源的托管标识](../..//active-directory/managed-identities-azure-resources/overview.md)
 - Visual Studio 身份验证
-- [Azure CLI 身份验证](/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [Azure CLI 身份验证](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 - [集成的 Windows 身份验证](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
 若要控制此过程，请使用传递到 `AzureServiceTokenProvider` 构造函数或在 AzureServicesAuthConnectionString 环境变量中指定的连接字符串。  可以使用以下选项：
@@ -294,7 +294,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 - 将“setProfileEnvironment”配置为“True”。 请在[此处](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)查看详细信息。 
 
     - 转到 %windir%\System32\inetsrv\config\applicationHost.config
-    - 搜索“setProfileEnvironment”。 如果它设置为“False”，请更改为“True”。 如果该属性不存在，请将其作为属性添加到 processModel 元素 (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) ，并将其设置为 "True"。
+    - 搜索“setProfileEnvironment”。 如果它设置为“False”，请更改为“True”。 如果该元素不存在，请将其作为属性添加到 processModel 元素（ /configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment ），并将其设置为 "True"。
 
 - 详细了解 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/index.yml)。
 - 详细了解 [Azure AD 身份验证方案](../../active-directory/develop/active-directory-authentication-scenarios.md)。

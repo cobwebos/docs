@@ -3,12 +3,12 @@ title: Azure 事件中心的网络安全
 description: 本文介绍如何配置专用终结点的访问权限
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: de4c5c6ddc658aab549ccf6960edbca3285e338d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312839"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521847"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure 事件中心的网络安全 
 本文介绍如何在 Azure 事件中心中使用以下安全功能： 
@@ -24,7 +24,7 @@ ms.locfileid: "85312839"
 
 可以在[网络安全组](../virtual-network/security-overview.md#security-rules) 或  [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 通过在规则的相应 "*源*" 或 "目标" 字段中指定服务标记名称（例如， **EventHub**）    *destination*   ，可以允许或拒绝相应服务的流量。
 
-| 服务标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可在 Azure 防火墙中使用？ |
+| 服务标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可与 Azure 防火墙一起使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **EventHub** | Azure 事件中心。 | 出站 | 是 | 是 |
 
@@ -32,7 +32,7 @@ ms.locfileid: "85312839"
 ## <a name="ip-firewall"></a>IP 防火墙 
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。
 
-在仅应从某些知名站点访问 Azure 事件中心的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services) 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
+在仅应从某些知名站点访问 Azure 事件中心的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
 
 IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与事件中心命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 

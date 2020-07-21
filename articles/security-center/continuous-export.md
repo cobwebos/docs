@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299938"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519691"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>导出安全警报和建议
 
@@ -28,7 +29,6 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 
 
 
-
 ## <a name="availability"></a>可用性
 
 - 发布状态：**正式发布版**
@@ -36,10 +36,7 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
     - 订阅上包含导出配置的**读取器**
     - 资源组（或**所有者**）上的**安全管理员角色**
     - 还必须对目标资源具有写入权限
-- 云： 
-    - ✔ 商业云
-    - ✔ US Gov
-    - ✘中国 Gov，其他 Gov
+- 云：✔ US Gov ✘中国 Gov 的商业云✔，其他 Gov
 
 
 ## <a name="setting-up-a-continuous-export"></a>设置连续导出
@@ -58,7 +55,7 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 
 1. 从 "导出目标" 区域中，选择要将数据保存到的位置。 数据可以保存在不同订阅的目标中（例如，在中央事件中心实例或中央 Log Analytics 工作区中）。
 
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
 
 

@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: a82d2317314c79a82fe80c5a25afc950fb728815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: c677b0278d29c499d4369967c1c76132a1ae9d21
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76155190"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519841"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL 服务器防火墙规则
 在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -65,8 +66,12 @@ ms.locfileid: "76155190"
 
 * **服务器的 IP 似乎是公共的：** 与 Azure Database for MySQL 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请参阅[连接体系结构文章](concepts-connectivity-architecture.md)。 
 
+* **无法使用允许的 IP 从 Azure 资源进行连接：** 检查是否为要连接的子网启用了**Microsoft .sql**服务终结点。 如果启用了**Sql** ，则表明你只希望在该子网上使用[VNet 服务终结点规则](concepts-data-access-and-security-vnet.md)。
+
+   例如，如果要从已启用了**Microsoft .sql**但没有相应 VNet 规则的子网中的 Azure VM 进行连接，则可能会看到以下错误：`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-portal.md)
 * [使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-cli.md)
-- [Azure Database for MySQL 中的 VNet 服务终结点](./concepts-data-access-and-security-vnet.md)
+* [Azure Database for MySQL 中的 VNet 服务终结点](./concepts-data-access-and-security-vnet.md)

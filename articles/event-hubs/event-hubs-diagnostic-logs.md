@@ -3,11 +3,12 @@ title: 设置诊断日志 - Azure 事件中心 | Microsoft Docs
 description: 了解如何为 Azure 中的事件中心设置活动日志和诊断日志。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322463"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521932"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
@@ -232,7 +233,7 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 
 
 ## <a name="next-steps"></a>后续步骤
-- [事件中心简介](event-hubs-what-is-event-hubs.md)
+- [事件中心简介](./event-hubs-about.md)
 - [事件中心示例](sdks.md)
 - 事件中心入门
     - [.NET Core](get-started-dotnet-standard-send-v2.md)

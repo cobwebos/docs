@@ -3,12 +3,12 @@ title: 在 IoT Edge 设备上部署实时视频分析-Azure
 description: 本文列出了可帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 例如，如果你有权访问本地 Linux 计算机，并且/或者以前创建了 Azure 媒体服务帐户，则可以执行此操作。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026961"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519892"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署实时视频分析
 
@@ -24,7 +24,7 @@ ms.locfileid: "86026961"
 * [在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [创建 Azure 媒体服务帐户](../latest/create-account-howto.md)
     * 使用以下区域之一：美国东部2、美国中部、美国中北部、日本东部、美国西部2、美国中部、加拿大东部、英国南部、法国中部、法国南部、瑞士北部、瑞士西部和日本西部。
-    * 建议使用常规用途 v2 （GPv2）存储帐户。
+    * 建议使用常规用途 v2 （GPv2）存储帐户
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>使用实时视频分析配置 Azure 资源
 
@@ -34,7 +34,7 @@ ms.locfileid: "86026961"
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>设置高级流式处理终结点
 
-如果你想要使用实时视频分析将视频录制到云，然后再播放视频，则应该将媒体服务更新为使用[高级流式处理终结点](../latest/streaming-endpoint-concept.md#types)。  
+如果你想要使用实时视频分析来持续记录到云，并在播放之前使用[查询 api](playback-recordings-how-to.md#query-api) ，则建议将媒体服务更新为使用[高级流式处理终结点](../latest/streaming-endpoint-concept.md#types)。  
 
 这是可选步骤。 您可以使用此 Azure CLI 命令执行此操作：
 

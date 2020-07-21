@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75378426"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524194"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用访问和管理 OneDrive 连接器中的文件
 
@@ -39,11 +40,11 @@ ms.locfileid: "75378426"
 
 1. 在逻辑应用设计器中，键入 `onedrive` 以获取触发器列表：  
 
-   ![](./media/connectors-create-api-onedrive/onedrive-1.png)
+   ![标题为 "显示 Microsoft 托管的 Api" 的对话框包含一个包含 "onedrive" 的框。 下面是四个触发器的列表。 其中第一个是 "OneDrive-创建文件时"。 选择第二个 "OneDrive-修改文件时"。](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. 选择“修改文件时”****。 如果连接已存在，选择“显示选取器”按钮选择文件夹。
 
-   ![](./media/connectors-create-api-onedrive/sample-folder.png)
+   ![标题为 "修改文件时" 的对话框有一个标题为 "文件夹" 的框，其中包含关联的浏览按钮。](./media/connectors-create-api-onedrive/sample-folder.png)
 
    如果提示登录，则输入登录详细信息以创建连接。 本文中的[创建连接](connectors-create-api-onedrive.md#create-the-connection)列出了相关步骤。
 
@@ -51,7 +52,7 @@ ms.locfileid: "75378426"
 
 3. 选择“编辑”**** 按钮并设置“频率”**** 和“间隔”**** 值。 例如，如果希望触发器每 15 分钟轮询一次，将“频率”**** 设置为“分钟”****，将“间隔”**** 设置为“15”****。 
 
-   ![](./media/connectors-create-api-onedrive/trigger-properties.png)
+   ![标题为 "修改文件时" 的对话框显示标记为 "文件夹"、"频率"、"间隔"、"时区" 和 "开始时间" 的五个框。 "频率" 和 "时区" 字段有下拉列表。](./media/connectors-create-api-onedrive/trigger-properties.png)
 
 4. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
 
@@ -61,23 +62,23 @@ ms.locfileid: "75378426"
 
 1. 选择加号。 可看到多个选项：“添加操作”****、“添加条件”**** 或“更多”**** 选项之一。
 
-   ![](./media/connectors-create-api-onedrive/add-action.png)
+   ![屏幕截图显示四个按钮： "+ 新建步骤"、"添加操作"、"添加条件" 和 ".。。更多 "。](./media/connectors-create-api-onedrive/add-action.png)
 
 2. 选择“添加操作”****。
 
 3. 在 "搜索" 框中，键入 `onedrive` 以获取所有可用操作的列表。
 
-   ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   ![标题为 "显示 Microsoft 托管的 Api" 的对话框包含一个包含 "onedrive" 的框。 下面是八个操作的列表。 第一个是 "OneDrive-创建文件"，并且已选中。](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. 在我们的示例中，选择“OneDrive - 创建文件”****。 如果连接已存在，选择“文件夹路径”**** 放入文件、输入“文件名”****，并选择所需的“文件内容”****：  
 
-   ![](./media/connectors-create-api-onedrive/sample-action.png)
+   ![标题为 "创建文件" 的对话框显示了三个标签为 "文件夹路径"、"文件名" 和 "文件夹内容" 的框。 "文件夹路径" 框旁边有一个目录浏览按钮。](./media/connectors-create-api-onedrive/sample-action.png)
 
    如果系统提示输入连接信息，请按照本主题中所述，输入详细信息以[创建连接](#create-the-connection)。
 
    在此示例中，将在 OneDrive 文件夹中创建一个新文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”** 触发器。 然后添加可在 ForEach 内使用“附件”和“内容类型”字段的 OneDrive“创建文件”操作，在 OneDrive 中新建文件**。
 
-   ![](./media/connectors-create-api-onedrive/foreach-action.png)
+   ![标题为 "For each" 的对话框有一个名为 "选择前面步骤的输出"，其中包含 "附件" 的框。 有一个 "创建文件" 对话框，其中包含 "For each" 框的其余部分，其中的框标记为 "文件夹路径"、"文件名" 和 "文件内容"。 ](./media/connectors-create-api-onedrive/foreach-action.png)
 
 5. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
 

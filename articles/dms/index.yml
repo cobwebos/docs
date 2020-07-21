@@ -3,17 +3,19 @@ title: Azure 数据库迁移服务文档
 summary: 使用 Azure 数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 该服务使用数据迁移助手生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 当你准备好开始该迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。
 metadata:
   description: 了解如何使用 Azure 数据库迁移服务以停机时间最短的方式从多个数据库源无缝迁移到 Azure 数据平台。
+  keywords: azure database migration services, dms service, azure data migration, data migration service, database migration service
   author: HJToland3
   ms.author: jtoland
   ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 9a37c850426cab0d940ab546084c1c64811ccb64
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.custom: azure-migrate-seo
+  ms.openlocfilehash: 732870bef2311ac13afb9a6e2a1a329fdd3905e2
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78164553"
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86522306"
 landingContent:
 - title: 关于 Azure 数据库迁移服务
   linkLists:

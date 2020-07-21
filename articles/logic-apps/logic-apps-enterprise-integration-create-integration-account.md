@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a0d3c344d19d0831dd8525ddf3311e0ce7cd682
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691751"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520811"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>创建和管理 Azure 逻辑应用中用于 B2B 企业集成的集成帐户
 
@@ -38,7 +39,7 @@ ms.locfileid: "84691751"
 
 ## <a name="create-integration-account"></a>创建集成帐户
 
-对于此任务，您可以按照本部分中的步骤使用 Azure 门户， [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)或[Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create)。
+对于此任务，您可以按照本部分中的步骤使用 Azure 门户， [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)或[Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-create)。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -54,7 +55,7 @@ ms.locfileid: "84691751"
 
    ![提供集成帐户详细信息](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | properties | 必须 | 值 | 描述 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **名称** | 是 | <*集成帐户-名称*> | 集成帐户的名称，只能包含字母、数字、连字符（ `-` ）、下划线（ `_` ）、括号（ `(` 、 `)` ）和句点（ `.` ）。 此示例使用 "Fabrikam-集成"。 |
    | **订阅** | 是 | <*Azure-subscription-name*> | Azure 订阅的名称 |
@@ -131,13 +132,13 @@ ms.locfileid: "84691751"
 
 #### <a name="azure-cli"></a>Azure CLI
 
-1. 如果尚未这样做，请[安装 Azure CLI 必备组件](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
+1. 如果尚未这样做，请[安装 Azure CLI 必备组件](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
 
-1. 在 Azure 门户中，打开 Azure [**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)环境。
+1. 在 Azure 门户中，打开 Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest)环境。
 
    ![打开 Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. 在命令提示符下，输入[ **az resource**命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)，并将设置 `skuName` 为所需的更高级别。
+1. 在命令提示符下，输入[ **az resource**命令](/cli/azure/resource?view=azure-cli-latest#az-resource-update)，并将设置 `skuName` 为所需的更高级别。
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
@@ -153,15 +154,15 @@ ms.locfileid: "84691751"
 
 ### <a name="downgrade-pricing-tier"></a>降级定价层
 
-若要进行此更改，请使用[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
+若要进行此更改，请使用[Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
 
-1. 如果尚未这样做，请[安装 Azure CLI 必备组件](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
+1. 如果尚未这样做，请[安装 Azure CLI 必备组件](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
 
-1. 在 Azure 门户中，打开 Azure [**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)环境。
+1. 在 Azure 门户中，打开 Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest)环境。
 
    ![打开 Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. 在命令提示符下，输入[ **az resource**命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)，并将设置 `skuName` 为所需的较低层。
+1. 在命令提示符下，输入[ **az resource**命令](/cli/azure/resource?view=azure-cli-latest#az-resource-update)，并将设置 `skuName` 为所需的较低层。
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
@@ -221,7 +222,7 @@ ms.locfileid: "84691751"
 
 可以将集成帐户移到另一个 Azure 资源组或 Azure 订阅。 移动资源时，Azure 会创建新的资源 Id，因此请确保改用新 Id 并更新与移动的资源关联的任何脚本或工具。 如果要更改订阅，还必须指定现有或新的资源组。
 
-对于此任务，您可以按照本部分中的步骤或[Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-move)使用 Azure 门户。
+对于此任务，您可以按照本部分中的步骤或[Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-move)使用 Azure 门户。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -245,7 +246,7 @@ ms.locfileid: "84691751"
 
    * 资源组：从 "**资源组**" 列表中，选择目标资源组。 或者，若要创建其他资源组，请选择 "**创建新的资源组**"。
 
-   * 订阅：从 "**订阅**" 列表中，选择目标订阅。 在“资源组”列表中选择目标资源组。  或者，若要创建其他资源组，请选择 "**创建新的资源组**"。
+   * 订阅：从 "**订阅**" 列表中，选择目标订阅。 在“资源组”列表中选择目标资源组。 或者，若要创建其他资源组，请选择 "**创建新的资源组**"。
 
 1. 若要确认你的了解，在使用新的资源 Id 更新它们之前，与所移动资源关联的任何脚本或工具都不起作用，请选择确认框，然后选择 **"确定"**。
 
@@ -253,7 +254,7 @@ ms.locfileid: "84691751"
 
 ## <a name="delete-integration-account"></a>删除集成帐户
 
-对于此任务，您可以按照本部分中的步骤使用 Azure 门户， [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-delete)或[Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount)。
+对于此任务，您可以按照本部分中的步骤使用 Azure 门户， [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-delete)或[Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount)。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 

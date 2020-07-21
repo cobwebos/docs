@@ -1,5 +1,5 @@
 ---
-title: 决策林回归：模块参考
+title: 双类平均感知器：模块引用
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习中使用双类平均感知器模块，以便根据平均感知器算法创建机器学习模型。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 53e40726a5745263ee2b3cb4ada8671bf65da963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daa0cfdedfe634acd2039cd4ec87606d30f7e76f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137665"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520572"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>双类平均感知器模块
 
