@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa2b936f97b037bdc62a01f607945ad270faa13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945059"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502327"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
 
@@ -66,7 +67,7 @@ IBM DB2 pureScale 环境为 Azure 提供了一个数据库群集，在 Linux 操
 
 -   一个 DB2 pureScale 群集。 Azure 上所需的计算资源类型取决于你的设置。 一般情况下，可以使用两种方法：
 
-    -   使用中小型实例可以在其中访问共享存储的多节点、高性能计算 (HPC) 式网络。 对于此 HPC 类型的配置，Azure 内存优化 E 系列或存储优化 L 系列[虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)可以提供所需的计算能力。
+    -   使用中小型实例可以在其中访问共享存储的多节点、高性能计算 (HPC) 式网络。 对于此 HPC 类型的配置，Azure 内存优化 E 系列或存储优化 L 系列[虚拟机](../windows/sizes.md)可以提供所需的计算能力。
 
     -   为数据引擎使用较少的大型虚拟机实例。 对于大型实例，最大的内存优化 [M 系列](https://azure.microsoft.com/pricing/details/virtual-machines/series/)虚拟机非常适合大量的内存中工作负载。 你可能需要一个专用实例，具体取决于用于运行 DB2 的逻辑分区 (LPAR) 的大小。
 
@@ -95,11 +96,11 @@ DB2 pureScale 使用共享的所有体系结构，所有数据都可以从所有
 
 IBM 建议为 DB2 pureScale 群集中的所有成员提供 InfiniBand 网络。 DB2 pureScale 还为 CF 使用远程直接内存访问 (RDMA)（如果可用）。
 
-在安装过程中，将创建一个 Azure [资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)来包含所有虚拟机。 一般情况下，可根据资源的生存期及其管理者将资源分组。 此体系结构中的虚拟机需要[加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。 这是一项 Azure 功能，可以通过单根 I/O虚拟化 (SR-IOV) 向虚拟机提供一致的超低网络延迟。
+在安装过程中，将创建一个 Azure [资源组](../../azure-resource-manager/management/overview.md)来包含所有虚拟机。 一般情况下，可根据资源的生存期及其管理者将资源分组。 此体系结构中的虚拟机需要[加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。 这是一项 Azure 功能，可以通过单根 I/O虚拟化 (SR-IOV) 向虚拟机提供一致的超低网络延迟。
 
-每台 Azur e虚拟机都部署到具有子网的虚拟网络中：主子网、Gluster FS 前端 (gfsfe)、Gluster FS 后端 (bfsbe)、DB2 pureScale (dB2be) 和 DB2 pureScale 前端 (db2fe)。 安装脚本还会在主子网中的虚拟机上创建主 [NIC](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)。
+每台 Azur e虚拟机都部署到具有子网的虚拟网络中：主子网、Gluster FS 前端 (gfsfe)、Gluster FS 后端 (bfsbe)、DB2 pureScale (dB2be) 和 DB2 pureScale 前端 (db2fe)。 安装脚本还会在主子网中的虚拟机上创建主 [NIC](./multiple-nics.md)。
 
-[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)用于限制虚拟网络中的流量并隔离子网。
+[网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md)用于限制虚拟网络中的流量并隔离子网。
 
 在 Azure 上，DB2 pureScale 需要使用 TCP/IP 作为存储的网络连接。
 

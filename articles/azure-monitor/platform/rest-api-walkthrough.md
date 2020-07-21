@@ -5,28 +5,28 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e25e85f811d1c5d854b471bf0417e75ab1686d72
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945335"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505119"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文说明如何执行身份验证，使代码能够遵循 [Microsoft Azure 监视器 REST API 参考](https://docs.microsoft.com/rest/api/monitor/)。
+本文说明如何执行身份验证，使代码能够遵循 [Microsoft Azure 监视器 REST API 参考](/rest/api/monitor/)。
 
 使用 Azure Monitor API 能够以编程方式检索可用的默认指标定义、粒度和指标值。 可将数据保存在独立的数据存储（例如 Azure SQL 数据库、Azure Cosmos DB 或 Azure Data Lake）中。 然后，可以根据需要从该处执行其他分析。
 
-除了处理各种指标数据点以外，使用监视 API 还可以列出警报规则、查看活动日志以及执行其他许多操作。 有关可用操作的完整列表，请参阅 [Microsoft Azure 监视器 REST API 参考](https://docs.microsoft.com/rest/api/monitor/)。
+除了处理各种指标数据点以外，使用监视 API 还可以列出警报规则、查看活动日志以及执行其他许多操作。 有关可用操作的完整列表，请参阅 [Microsoft Azure 监视器 REST API 参考](/rest/api/monitor/)。
 
 ## <a name="authenticating-azure-monitor-requests"></a>对 Azure Monitor 请求进行身份验证
 
 第一步是对请求进行身份验证。
 
-针对 Azure 监视器 API 执行的所有任务都使用 Azure Resource Manager 身份验证模型。 因此，所有请求必须使用 Azure Active Directory (Azure AD) 进行身份验证。 对客户端应用程序进行身份验证的方法之一是创建 Azure AD 服务主体，并检索身份验证 (JWT) 令牌。 以下示例脚本演示如何通过 PowerShell 创建 Azure AD 服务主体。 有关更详细的演练，请参阅有关[使用 Azure PowerShell 创建用于访问资源的服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)的文档。 还可以[通过 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
+针对 Azure 监视器 API 执行的所有任务都使用 Azure Resource Manager 身份验证模型。 因此，所有请求必须使用 Azure Active Directory (Azure AD) 进行身份验证。 对客户端应用程序进行身份验证的方法之一是创建 Azure AD 服务主体，并检索身份验证 (JWT) 令牌。 以下示例脚本演示如何通过 PowerShell 创建 Azure AD 服务主体。 有关更详细的演练，请参阅有关[使用 Azure PowerShell 创建用于访问资源的服务主体](/powershell/azure/create-azure-service-principal-azureps)的文档。 还可以[通过 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ```powershell
 $subscriptionId = "{azure-subscription-id}"
@@ -85,13 +85,13 @@ $authHeader = @{
 2. 检索指标值
 
 > [!NOTE]
-> 有关使用 Azure REST API 进行身份验证的其他信息，请参阅 [Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)。
+> 有关使用 Azure REST API 进行身份验证的其他信息，请参阅 [Azure REST API 参考](/rest/api/azure/)。
 >
 >
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>检索指标定义（多维 API）
 
-使用 [Azure Monitor 指标定义 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) 可以访问服务可用的指标列表。
+使用 [Azure Monitor 指标定义 REST API](/rest/api/monitor/metricdefinitions) 可以访问服务可用的指标列表。
 
 **方法**：GET
 
@@ -228,7 +228,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>检索维值（多维 API）
 
-了解可用的指标定义后，可能会发现一些指标具有多个维。 在查询指标前，可能需要查明某个维具有的值的范围。 然后，根据这些维值，在查询指标时，可以选择根据维值对指标进行筛选或分段。  为此，请使用 [Azure Monitor 指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics)。
+了解可用的指标定义后，可能会发现一些指标具有多个维。 在查询指标前，可能需要查明某个维具有的值的范围。 然后，根据这些维值，在查询指标时，可以选择根据维值对指标进行筛选或分段。  为此，请使用 [Azure Monitor 指标 REST API](/rest/api/monitor/metrics)。
 
 对于任何筛选请求，请使用指标的名称“value”（而非“localizedValue”）。 如果未指定筛选器，则返回默认指标。 使用此 API 仅允许一个维度具有通配符筛选器。
 
@@ -301,7 +301,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>检索指标值（多维 API）
 
-知道可用的指标定义和可能的维值后，即可检索相关的指标值。  为此，请使用 [Azure Monitor 指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics)。
+知道可用的指标定义和可能的维值后，即可检索相关的指标值。  为此，请使用 [Azure Monitor 指标 REST API](/rest/api/monitor/metrics)。
 
 对于任何筛选请求，请使用指标的名称“value”（而非“localizedValue”）。 如果未指定维筛选器，则会返回汇总的聚合指标。 如果指标查询返回多个时间序列，则可以使用“Top”和“OrderBy”查询参数返回时间序列的有限排序列表。
 
@@ -387,7 +387,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="retrieve-metric-definitions"></a>检索指标定义
 
-使用 [Azure Monitor 指标定义 REST API](https://msdn.microsoft.com/library/mt743621.aspx) 可以访问服务可用的指标列表。
+使用 [Azure Monitor 指标定义 REST API](/rest/api/monitor/metricdefinitions) 可以访问服务可用的指标列表。
 
 **方法**：GET
 
@@ -451,7 +451,7 @@ Invoke-RestMethod -Uri $request `
 }
 ```
 
-有关详细信息，请参阅 [List the metric definitions for a resource in Azure Monitor REST API](https://msdn.microsoft.com/library/azure/mt743621.aspx)（在 Azure Monitor REST API 中列出资源的指标定义）文档。
+有关详细信息，请参阅 [List the metric definitions for a resource in Azure Monitor REST API](/rest/api/monitor/metricdefinitions)（在 Azure Monitor REST API 中列出资源的指标定义）文档。
 
 ## <a name="retrieve-metric-values"></a>检索指标值
 
@@ -594,7 +594,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 ## <a name="retrieve-the-resource-id"></a>检索资源 ID
 
-使用 REST API 确实有助于了解可用的指标定义、粒度和相关值。 使用 [Azure 管理库](https://msdn.microsoft.com/library/azure/mt417623.aspx)时，这些信息很有用。
+使用 REST API 确实有助于了解可用的指标定义、粒度和相关值。 使用 [Azure 管理库](/previous-versions/azure/reference/mt417623(v=azure.100))时，这些信息很有用。
 
 对于上述代码，要使用的资源 ID 是所需 Azure 资源的完整路径。 例如，要针对某个 Azure Web 应用执行查询，资源 ID 将是：
 
@@ -705,7 +705,7 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 
 ## <a name="retrieve-activity-log-data"></a>检索活动日志数据
 
-除了指标定义和相关值以外，还可以使用 Azure Monitor REST API 检索有关 Azure 资源的其他需关注的深入信息。 例如，可查询[活动日志](https://msdn.microsoft.com/library/azure/dn931934.aspx)数据。 以下示例请求使用 Azure Monitor REST API 来查询活动日志。
+除了指标定义和相关值以外，还可以使用 Azure Monitor REST API 检索有关 Azure 资源的其他需关注的深入信息。 例如，可查询[活动日志](/rest/api/monitor/activitylogs)数据。 以下示例请求使用 Azure Monitor REST API 来查询活动日志。
 
 在有过滤器的情况下获取活动日志：
 
@@ -735,5 +735,5 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 
 * 查看 [监视概述](../../azure-monitor/overview.md)。
 * 查看 [Azure 监视器支持的指标](metrics-supported.md)。
-* 查看 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
-* 查看 [Azure 管理库](https://msdn.microsoft.com/library/azure/mt417623.aspx)。
+* 查看 [Microsoft Azure 监视器 REST API 参考](/rest/api/monitor/)。
+* 查看 [Azure 管理库](/previous-versions/azure/reference/mt417623(v=azure.100))。

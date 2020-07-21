@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982133"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504914"
 ---
 # <a name="programmatically-manage-workbooks"></a>以编程方式管理工作簿
 
@@ -77,7 +78,7 @@ ms.locfileid: "82982133"
     }
     ```
 1. 在 `galleries` 对象中，使用你自己的值填充 `name` 和 `category` 键。 在下一部分详细了解[参数](#parameters)。
-2. 使用 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)、[命令行界面](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell) 等部署此 Azure 资源管理器模板。
+2. 使用 [Azure 门户](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)、[命令行界面](../../azure-resource-manager/templates/deploy-cli.md)、[PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) 等部署此 Azure 资源管理器模板。
 3. 打开 Azure 门户，导航到在 Azure 资源管理器模板中选择的工作簿库。 在示例模板中，导航到 Azure Monitor 工作簿库：
     1. 打开 Azure 门户并导航到 Azure Monitor
     2. 从目录中打开 `Workbooks`

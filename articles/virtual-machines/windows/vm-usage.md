@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 62880542e2cc4a93585011837b4cc962c8e79c0e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: d480b9309c9028d8f55ab50c72a86889f320810b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500109"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虚拟机使用情况
 通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](../../cost-management-billing/understand/review-individual-bill.md)。
@@ -137,10 +138,9 @@ Microsoft.ClassicCompute 表示通过 Azure 服务管理器部署的经典资源
 
 API 中可能有 3 个位置会返回 VM 上运行的操作系统：
 
-1) 运行包括来宾代理的 VM（所有 Linux VM 和大多数 Windows VM）将在 VM 实例视图中显示 OS 名称和 OS 版本。 任何时候都是如此，但由于这些信息来自来宾代理，因此并非所有 VM 都可以使用这些信息。 有关 API 文档，请单击[此处](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview)。
-2) 从平台映像部署的 VM 将包含映像详细信息，这些详细信息可能指示发布服务器为套餐或 SKU 选择的名称中的 OS 版本。 但是，这些信息是由发布服务器选择的，因此无法保证可以在命名中发现该 OS。 有关 API 文档，请单击[此处](https://docs.microsoft.com/rest/api/compute/images/get#operatingsystemtypes)。
-3) 每个 OS 磁盘都有一个指定的 Windows 或 Linux 值。 在从映像创建 OS 磁盘时，OS 磁盘将从映像继承该值。 将 OS 磁盘直接上传到平台时，将在创建 OS 磁盘时设置 OS 值。 此值始终存在，但 Azure 平台并不确保其正确性。 有关 API 文档，请单击[此处](https://docs.microsoft.com/rest/api/compute/virtualmachineimages/get#operatingsystemtypes)。
+1) 运行包括来宾代理的 VM（所有 Linux VM 和大多数 Windows VM）将在 VM 实例视图中显示 OS 名称和 OS 版本。 任何时候都是如此，但由于这些信息来自来宾代理，因此并非所有 VM 都可以使用这些信息。 有关 API 文档，请单击[此处](/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview)。
+2) 从平台映像部署的 VM 将包含映像详细信息，这些详细信息可能指示发布服务器为套餐或 SKU 选择的名称中的 OS 版本。 但是，这些信息是由发布服务器选择的，因此无法保证可以在命名中发现该 OS。 有关 API 文档，请单击[此处](/rest/api/compute/images/get#operatingsystemtypes)。
+3) 每个 OS 磁盘都有一个指定的 Windows 或 Linux 值。 在从映像创建 OS 磁盘时，OS 磁盘将从映像继承该值。 将 OS 磁盘直接上传到平台时，将在创建 OS 磁盘时设置 OS 值。 此值始终存在，但 Azure 平台并不确保其正确性。 有关 API 文档，请单击[此处](/rest/api/compute/virtualmachineimages/get#operatingsystemtypes)。
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解使用情况详细信息，请参阅[了解 Microsoft Azure 帐单](../../cost-management-billing/understand/review-individual-bill.md)
-

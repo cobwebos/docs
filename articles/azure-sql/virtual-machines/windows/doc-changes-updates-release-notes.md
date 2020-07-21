@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 9f41cb11960dbe9487231f14b005376261075a83
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231499"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503774"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上 SQL Server 的文档更改
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,17 +29,15 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机 (VM)。 本文�
 | 更改 | 详细信息 |
 | --- | --- |
 | **将日志迁移到超磁盘** | 了解如何将[日志文件迁移到超高磁盘](storage-migrate-to-ultradisk.md)，以利用高性能和低延迟。 | 
-
-
+| **使用 PowerShell 创建 AG** | 现在可以通过使用[PowerShell](availability-group-az-commandline-configure.md)和 Azure CLI 简化可用性组的创建。 | 
 
 
 ## <a name="june-2020"></a>2020 年 6 月
 
-
 | 更改 | 详细信息 |
 | --- | --- |
-| **分布式网络名称 (DNN) ** | Windows Server 2016 上的 SQL Server 2019 现在正在通过使用[分布式网络名称](hadr-distributed-network-name-dnn-configure.md)（而不是使用 Azure 负载均衡器）来预览将流量路由到故障转移群集实例 (FCI) 的支持。 此支持简化并简化了连接到 Azure 中的高可用性 (HA) 解决方案。 | 
-| **Azure 共享磁盘的 FCI** | 现在可以通过在 Windows Server 2016 + 虚拟机上使用带有 SQL Server 2019 的[Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md) [)  (FCI 部署故障转移群集实例](failover-cluster-instance-overview.md)。 |
+| **分布式网络名称（DNN）** | Windows Server 2016 上的 SQL Server 2019 现在正在通过使用[分布式网络名称](hadr-distributed-network-name-dnn-configure.md)（而不是使用 Azure 负载均衡器）来预览将流量路由到故障转移群集实例（FCI）的支持。 此支持简化并简化了连接到 Azure 中的高可用性（HA）解决方案的工作。 | 
+| **Azure 共享磁盘的 FCI** | 现在可以通过在 Windows Server 2016 + 虚拟机上使用 SQL Server 2019 的[Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)来部署[故障转移群集实例（FCI）](failover-cluster-instance-overview.md) 。 |
 | **重新组织的 FCI 文档** | 为清楚起见，重写并重新组织了有关[Azure vm 上 SQL Server 的故障转移群集实例](failover-cluster-instance-overview.md)的文档。 我们已将一些配置内容（如[群集配置最佳做法](hadr-cluster-best-practices.md)、如何为[SQL Server FCI 准备虚拟机](failover-cluster-instance-prepare-vm.md)，以及如何配置[Azure 负载均衡器](hadr-vnn-azure-load-balancer-configure.md)）分开。 | 
 | &nbsp; | &nbsp; |
 

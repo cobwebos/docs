@@ -4,11 +4,12 @@ description: 使用 Azure 策略大规模部署 Azure Monitor 功能。
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbfc0cafe83f53bd7cab2b93899e9c2cb02d52e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678692"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505204"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>使用 Azure 策略大规模部署 Azure Monitor
 虽然某些 Azure Monitor 功能配置了一次或几次限制，但必须为要监视的每个资源重复使用其他功能。 本文介绍使用 Azure 策略实现大规模 Azure Monitor 的方法，以确保对所有 Azure 资源一致且准确地配置监视。
@@ -23,14 +24,14 @@ ms.locfileid: "84678692"
 
 Azure 策略由下表中的对象组成。 有关每个对象的更详细说明，请参阅[Azure 策略对象](../../governance/policy/overview.md#azure-policy-objects)。
 
-| 项 | 描述 |
+| 项 | 说明 |
 |:---|:---|
 | 策略定义 | 描述在满足条件时要采取的资源符合性条件和效果。 这可能是特定类型的所有资源，也可能只是匹配某些属性的资源。 这种效果可能是只是将资源标记为符合或部署相关资源。 策略定义使用 JSON 编写，如[Azure 策略定义结构](../../governance/policy/concepts/definition-structure.md)中所述。 [了解 Azure 策略效果](../../governance/policy/concepts/effects.md)中介绍了影响。
 | 策略计划 | 应该一起应用的一组策略定义。 例如，你可能有一个策略定义，用于将资源日志发送到 Log Analytics 工作区，另一个用于将资源日志发送到事件中心。 创建一个包含两个策略定义的计划，并将该计划应用于资源而不是单个策略定义。 按照[Azure 策略计划结构](../../governance/policy/concepts/initiative-definition-structure.md)中所述，使用 JSON 编写计划。 |
 | 分配 | 策略定义或计划在分配到作用域之前不会生效。 例如，将策略分配给资源组，将其应用于在该资源中创建的所有资源，或将其应用于订阅，以将其应用于该订阅中的所有资源。  有关更多详细信息，请参阅[Azure 策略分配结构](../../governance/policy/concepts/assignment-structure.md)。 |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Azure Monitor 的内置策略定义
-Azure 策略包含多个与 Azure Monitor 相关的预生成定义。 您可以将这些策略定义分配给现有订阅，也可以将它们用作基础来创建自己的自定义定义。 有关 "**监视**" 类别中内置政治的完整列表，请参阅 Azure Monitor 的[Azure 策略内置策略定义](../policy-samples.md)。
+Azure 策略包含多个与 Azure Monitor 相关的预生成定义。 您可以将这些策略定义分配给现有订阅，也可以将它们用作基础来创建自己的自定义定义。 有关 "**监视**" 类别中内置政治的完整列表，请参阅 Azure Monitor 的[Azure 策略内置策略定义](../samples/policy-samples.md)。
 
 若要查看与监视相关的内置策略定义，请执行以下操作：
 
@@ -59,7 +60,7 @@ Azure 策略包含多个与 Azure Monitor 相关的预生成定义。 您可以�
 脚本[AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy)创建可使用 POWERSHELL 或 CLI 安装的特定资源类型的策略文件。 使用以下过程为诊断设置创建自定义策略定义。
 
 
-1. 确保已安装[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 。
+1. 确保已安装[Azure PowerShell](/powershell/azure/install-az-ps) 。
 2. 通过以下命令安装脚本：
   
     ```azurepowershell
@@ -112,7 +113,7 @@ Azure 策略包含多个与 Azure Monitor 相关的预生成定义。 您可以�
 
 ![计划参数](media/deploy-scale/initiative-parameters.png)
 
-### <a name="remediation"></a>补救
+### <a name="remediation"></a>修正
 计划将应用于创建的每个虚拟机。 [修正任务](../../governance/policy/how-to/remediate-resources.md)会将计划中的策略定义部署到现有资源，因此，您可以为已创建的任何资源创建诊断设置。 当使用 Azure 门户创建分配时，可以选择同时创建修正任务。 有关修正的详细信息，请参阅[用 Azure 策略修正不符合的资源](../../governance/policy/how-to/remediate-resources.md)。
 
 ![计划修正](media/deploy-scale/initiative-remediation.png)

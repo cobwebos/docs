@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e85ae50321b9aa034f6a6d2cadcc329a24dafa62
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707779"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500012"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB 系列和 HC 系列 VM 的已知问题
 
@@ -89,4 +89,4 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure 中的[高性能计算](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)。
+详细了解 Azure 中的[高性能计算](/azure/architecture/topics/high-performance-computing/)。

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62d16bc9ca6c4238ff7c6304c5e1964c2956c898
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847401"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505289"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-若要保持 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) 中的现有投资并将扩展功能用于 Azure Monitor，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Azure Monitor 中的日志，又可以继续使用 Operations Manager 执行以下操作：
+若要保持 [System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) 中的现有投资并将扩展功能用于 Azure Monitor，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Azure Monitor 中的日志，又可以继续使用 Operations Manager 执行以下操作：
 
 * 使用 Operations Manager 监视 IT 服务的运行状况
 * 保持与支持事件和问题管理的 ITSM 解决方案集成
@@ -47,11 +47,11 @@ ms.locfileid: "85847401"
     - 美国中西部
     - 澳大利亚东南部
     - 西欧
-    - 美国东部
+    - East US
     - 东南亚
     - 日本东部
     - 英国南部
-    - 印度中部
+    - Central India
     - 加拿大中部
     - 美国西部 2
 
@@ -154,7 +154,7 @@ ms.locfileid: "85847401"
 1. 打开 Operations Manager 控制台并选择“管理”**** 工作区。
 1. 在“RunAs 配置”下，选择“配置文件”********。
 1. 打开 **System Center Advisor Run As Profile Proxy** 配置文件。
-1. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以创建一个[运行方式帐户](https://technet.microsoft.com/library/hh321655.aspx)或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
+1. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以创建一个[运行方式帐户](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12))或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
 1. 若要设置管理的帐户，请选择“**选定的类、组或对象**”，单击“**选择...**” 然后单击“**组...**” 打开“**组搜索**”框。
 1. 搜索然后选择 **Microsoft System Center Advisor Monitoring Server Group**。 选择组后单击“**确定**”以关闭“**组搜索**”框。
 1. 单击“**确定**”以关闭“**添加运行方式帐户**”框。
@@ -173,7 +173,7 @@ ms.locfileid: "85847401"
 * **Microsoft.SystemCenter.Advisor.MPUpdate** - 更新 Azure Monitor 基础管理包。 默认情况下，每 12 小时运行一次。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - 更新在工作区中启用的解决方案管理包。 默认情况下，每五 (5) 分钟运行一次。
 
-可以重写这两个规则，以防止自动下载，方法是禁用自动下载，或修改管理服务器与 Azure Monitor 进行同步的频率，以确定新的管理包是否可用且应下载。 请按照“[如何重写规则或监视器](https://technet.microsoft.com/library/hh212869.aspx)”的步骤，通过以秒为单位的值修改“**频率**”参数来更改同步计划，或修改“**已启用**”参数禁用规则。 锁定 Operations Manager 管理组类所有对象的替代项。
+可以重写这两个规则，以防止自动下载，方法是禁用自动下载，或修改管理服务器与 Azure Monitor 进行同步的频率，以确定新的管理包是否可用且应下载。 请按照“[如何重写规则或监视器](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12))”的步骤，通过以秒为单位的值修改“**频率**”参数来更改同步计划，或修改“**已启用**”参数禁用规则。 锁定 Operations Manager 管理组类所有对象的替代项。
 
 若要继续按照现有更改控制过程控制生产管理组中的管理包版本，可以禁用规则并在允许更新的特定时间段内将其启用。 如果环境中有开发或 QA 管理组，并且该组已连接到 Internet，则通过 Log Analytics 工作区配置该管理组，使之支持此方案。 这样，在将 Azure Monitor 管理包发布到生产管理组之前，就可以查看和评估其迭代版本。
 

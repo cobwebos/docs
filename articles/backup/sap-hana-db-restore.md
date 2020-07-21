@@ -3,18 +3,18 @@ title: 还原 Azure VM 上的 SAP HANA 数据库
 description: 本文介绍如何还原在 Azure 虚拟机上运行的 SAP HANA 数据库。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a3db88ca3c995c3c190da051dbf9df6ae5e29530
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c62ea68683355fc703a5258e6e5fa0f3795f7e34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851408"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503585"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>还原 Azure VM 上的 SAP HANA 数据库
 
 本文介绍如何还原 azure 备份服务已备份到恢复服务保管库的 Azure 虚拟机（VM）上运行的 SAP HANA 数据库。 可以通过还原来为开发/测试方案创建数据的副本，或返回到以前的状态。
 
-有关如何备份 SAP HANA 数据库的详细信息，请参阅[备份 Azure VM 上的 SAP HANA 数据库](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)。
+有关如何备份 SAP HANA 数据库的详细信息，请参阅[备份 Azure VM 上的 SAP HANA 数据库](./backup-azure-sap-hana-database.md)。
 
 ## <a name="restore-to-a-point-in-time-or-to-a-recovery-point"></a>还原到某个时间点或恢复点
 
@@ -126,9 +126,9 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
 
 1. 在“选择还原点”中选择“日志(时间点)”，以[还原到特定的时间点](#restore-to-a-specific-point-in-time)。******** 或者选择 "**完全 & 差异**" 以[还原到特定恢复点](#restore-to-a-specific-recovery-point)。
 
-### <a name="restore-as-files"></a>作为文件还原
+### <a name="restore-as-files"></a>还原为文件
 
-若要将备份数据还原为文件而不是数据库，请选择 "**还原为文件**"。 文件转储到指定的路径后，你可以将这些文件放在要将其还原为数据库的任何 SAP HANA 计算机上。 由于可以将这些文件移到任何计算机上，因此你现在可以跨订阅和区域还原数据。
+若要将备份数据还原为文件而不是数据库，请选择 "**还原为文件**"。 文件转储到指定路径后，可以将这些文件移动到要将其还原为数据库的任何 SAP HANA 计算机上。 由于可以将这些文件移动到任何计算机，你现在可以跨订阅和区域进行数据还原。
 
 1. 在 "**还原配置**" 菜单中的 "**在何处和如何还原**" 下，选择 "**还原为文件**"。
 1. 选择要将备份文件还原到的**主机**/HANA 服务器名称。
@@ -140,10 +140,10 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
     * 目录文件
     * JSON 元数据文件（适用于所涉及的每个备份文件）
 
-    通常，将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，可让同一网络中的其他计算机或者装载了相同 Azure 文件共享的计算机更轻松地访问这些文件。
+    通常，如果将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，会使同一网络中的其他计算机或其上装载的同一 Azure 文件共享更加轻松地访问这些文件。
 
     >[!NOTE]
-    >若要在安装在目标注册 VM 上的 Azure 文件共享上还原数据库备份文件，请确保根帐户对 Azure 文件共享具有读/写权限。
+    >要在装载在目标注册的 VM 上的 Azure 文件共享上还原数据库备份文件，请确保根帐户对 Azure 文件共享具有读/写权限。
 
     ![选择目标路径](media/sap-hana-db-restore/restore-as-files.png)
 
@@ -152,22 +152,22 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
     ![选择还原点](media/sap-hana-db-restore/select-restore-point.png)
 
 1. 与所选还原点关联的所有备份文件都将转储到目标路径中。
-1. 根据所选的还原点类型（**时间点**或**完整 & 差异**），会看到一个或多个在目标路径中创建的文件夹。 其中一个名为的文件夹 `Data_<date and time of restore>` 包含完整备份和差异备份，另一个名为的文件夹 `Log` 包含日志备份。
-1. 将这些还原的文件移动到 SAP HANA 服务器，你希望将这些文件还原为数据库。
-1. 然后执行以下步骤：
+1. 根据所选的还原点类型（“时间点”或“完整和差异”），你将看到一个或多个在目标路径中创建的文件夹 。 名为 `Data_<date and time of restore>` 的文件夹之一包含完整备份和差异备份，名为 `Log` 的其他文件夹包含日志备份。
+1. 将这些已还原文件移动到要将其还原为数据库的 SAP HANA 服务器。
+1. 然后，执行以下步骤：
     1. 使用以下命令在存储备份文件的文件夹/目录上设置权限：
 
         ```bash
         chown -R <SID>adm:sapsys <directory>
         ```
 
-    1. 运行下一组命令`<SID>adm`
+    1. 运行下一组命令 `<SID>adm`
 
         ```bash
         su - <sid>adm
         ```
 
-    1. 生成用于还原的编录文件。 从用于完整备份的 JSON 元数据文件（将在稍后的还原操作中使用）中提取**BackupId** 。 请确保完整备份和日志备份位于不同的文件夹中，并删除这些文件夹中的目录文件和 JSON 元数据文件。
+    1. 生成用于还原的目录文件。 从用于完整备份的 JSON 元数据文件中提取“BackupId”，稍后将在还原操作中使用它。 请确保完整备份和日志备份位于不同的文件夹中，并删除这些文件夹中的目录文件和 JSON 元数据文件。
 
         ```bash
         hdbbackupdiag --generate --dataDir <DataFileDir> --logDirs <LogFilesDir> -d <PathToPlaceCatalogFile>
@@ -175,44 +175,44 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
 
         在上面的命令中：
 
-        * `<DataFileDir>`-包含完整备份的文件夹
-        * `<LogFilesDir>`-包含日志备份的文件夹
-        * `<PathToPlaceCatalogFile>`-必须在其中放置生成的目录文件的文件夹
+        * `<DataFileDir>` - 包含完整备份的文件夹
+        * `<LogFilesDir>` - 包含日志备份的文件夹
+        * `<PathToPlaceCatalogFile>` - 必须放置已生成的目录文件的文件夹
 
-    1. 使用新生成的目录文件通过 HANA Studio 还原，或使用此新生成的目录运行 HDBSQL restore 查询。 下面列出了 HDBSQL 查询：
+    1. 通过 HANA Studio 使用新生成的目录文件进行还原或使用此新生成的目录运行 HDBSQL 还原查询。 下面列出了 HDBSQL 查询：
 
-    * 要还原到某个时间点：
+    * 要还原到一个时间点：
 
-        如果要创建新的已还原数据库，请运行 HDBSQL 命令以创建新数据库， `<DatabaseName>` 然后停止该数据库的还原。 但是，如果只是还原现有数据库，请运行 HDBSQL 命令以停止数据库。
+        如果要创建新的已还原数据库，请运行 HDBSQL 命令，以创建新的数据库 `<DatabaseName>`，然后停止用于还原的数据库。 但是，如果只是还原现有数据库，请运行 HDBSQL 命令以停止数据库。
 
-        然后运行以下命令来还原数据库：
+        然后运行以下命令以还原数据库：
 
         ```hdbsql
         RECOVER DATABASE FOR <DatabaseName> UNTIL TIMESTAMP '<TimeStamp>' CLEAR LOG USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING LOG PATH (' <LogFileDir>') USING DATA PATH ('<DataFileDir>') USING BACKUP_ID <BackupIdFromJsonFile> CHECK ACCESS USING FILE
         ```
 
-        * `<DatabaseName>`-要还原的新数据库或现有数据库的名称
-        * `<Timestamp>`-时间点还原的确切时间戳
-        * `<DatabaseName@HostName>`-用于还原的数据库的名称，以及该数据库所在的**主机**/SAP HANA 服务器的名称。 `USING SOURCE <DatabaseName@HostName>`选项指定数据备份（用于还原）的数据库具有与目标 SAP HANA 计算机不同的 SID 或名称。 因此，不需要为从其创建备份的同一 HANA 服务器上执行的还原指定。
+        * `<DatabaseName>` - 新数据库或要还原的现有数据库的名称
+        * `<Timestamp>` - 时间点还原的确切时间戳
+        * `<DatabaseName@HostName>` - 备份用于还原的数据库的名称，以及此数据库所在位置的“主机”/SAP HANA 服务器的名称。 `USING SOURCE <DatabaseName@HostName>` 选项指定数据备份（用于还原）是一个具有与目标 SAP HANA 计算机不同的 SID 或名称的数据库。 因此，不需要为从其创建备份的同一 HANA 服务器上执行的还原指定。
         * `<PathToGeneratedCatalogInStep3>`-在**步骤 C**中生成的目录文件的路径
-        * `<DataFileDir>`-包含完整备份的文件夹
-        * `<LogFilesDir>`-包含日志备份的文件夹
+        * `<DataFileDir>` - 包含完整备份的文件夹
+        * `<LogFilesDir>` - 包含日志备份的文件夹
         * `<BackupIdFromJsonFile>`-在**步骤 C**中提取的**BackupId**
 
-    * 还原到特定的完整备份或差异备份：
+    * 要还原到特定完整备份或差异备份：
 
-        如果要创建新的已还原数据库，请运行 HDBSQL 命令以创建新数据库， `<DatabaseName>` 然后停止该数据库的还原。 但是，如果只是还原现有数据库，请运行 HDBSQL 命令来停止数据库：
+        如果要创建新的已还原数据库，请运行 HDBSQL 命令，以创建新的数据库 `<DatabaseName>`，然后停止用于还原的数据库。 但是，如果只是还原现有数据库，请运行 HDBSQL 命令来停止数据库：
 
         ```hdbsql
         RECOVER DATA FOR <DatabaseName> USING BACKUP_ID <BackupIdFromJsonFile> USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING DATA PATH ('<DataFileDir>')  CLEAR LOG
         ```
 
-        * `<DatabaseName>`-要还原的新数据库或现有数据库的名称
-        * `<Timestamp>`-时间点还原的确切时间戳
-        * `<DatabaseName@HostName>`-用于还原的数据库的名称，以及该数据库所在的**主机**/SAP HANA 服务器的名称。 `USING SOURCE <DatabaseName@HostName>`选项指定数据备份（用于还原）的数据库具有与目标 SAP HANA 计算机不同的 SID 或名称。 因此，不需要为从其创建备份的同一 HANA 服务器上执行的还原指定。
+        * `<DatabaseName>` - 新数据库或要还原的现有数据库的名称
+        * `<Timestamp>` - 时间点还原的确切时间戳
+        * `<DatabaseName@HostName>` - 备份用于还原的数据库的名称，以及此数据库所在位置的“主机”/SAP HANA 服务器的名称。 `USING SOURCE <DatabaseName@HostName>` 选项指定数据备份（用于还原）是一个具有与目标 SAP HANA 计算机不同的 SID 或名称的数据库。 因此，不需要为采用备份的同一 HANA 服务器上的还原指定它。
         * `<PathToGeneratedCatalogInStep3>`-在**步骤 C**中生成的目录文件的路径
-        * `<DataFileDir>`-包含完整备份的文件夹
-        * `<LogFilesDir>`-包含日志备份的文件夹
+        * `<DataFileDir>` - 包含完整备份的文件夹
+        * `<LogFilesDir>` - 包含日志备份的文件夹
         * `<BackupIdFromJsonFile>`-在**步骤 C**中提取的**BackupId**
 
 ### <a name="restore-to-a-specific-point-in-time"></a>还原到特定时间点

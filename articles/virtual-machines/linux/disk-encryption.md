@@ -1,6 +1,6 @@
 ---
 title: Azure 托管磁盘的服务器端加密 - Azure CLI
-description: 在将数据保存到存储群集之前，Azure 存储可通过静态加密来保护数据。 可以使用 Microsoft 托管密钥加密你的托管磁盘，也可以使用客户托管密钥以通过自己的密钥管理所做的加密。
+description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 可以使用 Microsoft 托管密钥加密你的托管磁盘，也可以使用客户托管密钥以通过自己的密钥管理所做的加密。
 author: roygara
 ms.date: 07/10/2020
 ms.topic: conceptual
@@ -8,26 +8,26 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2d4fc47247c9fe2ed1af0eee59500db7e894fdd0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0847f2360a3562f96454992470e3cc2000f66b11
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260134"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502718"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
 
-服务器端加密 (SSE) 可保护数据，并帮助实现组织安全性和合规性承诺。 默认情况下，SSE 会自动加密存储在 Azure 托管 (磁盘上的数据，默认情况下，在将其保存到云时) 静态。 
+服务器端加密 (SSE) 可保护数据，并帮助实现组织安全性和符合性承诺。 默认情况下，在将存储在 Azure 托管磁盘（OS 和数据磁盘）上的数据保存到云时，SSE 会自动对其进行加密。 
 
-Azure 托管磁盘中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强大块加密法之一）以透明方式进行加密，并符合 FIPS 140-2 规范。 有关 Azure 托管磁盘底层加密模块的详细信息，请参见[加密 API：下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强大分组加密之一）以透明方式加密，且符合 FIPS 140-2 规范。 有关加密模块基础 Azure 托管磁盘的详细信息，请参阅[加密 API：下一代](/windows/desktop/seccng/cng-portal)
 
 服务器端加密不会对托管磁盘的性能产生影响，并且不会产生额外的费用。 
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
-可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥来管理加密。 如果选择使用自己的密钥来管理加密，则可以指定*客户管理的密钥*，用于加密和解密托管磁盘中的所有数据。 
+可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥来管理加密。 如果选择使用自己的密钥管理加密，可以指定一个客户托管密钥，用于加密和解密托管磁盘中的所有数据。 
 
-以下部分更详细地介绍了每个密钥管理选项。
+以下部分更详细地介绍了密钥管理的每个选项。
 
 ### <a name="platform-managed-keys"></a>平台托管的密钥
 
@@ -76,7 +76,7 @@ Azure 托管磁盘中的数据将使用 256 位 [AES 加密法](https://en.wikip
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>服务器端加密与 Azure 磁盘加密
 
-[Azure 磁盘加密](../../security/fundamentals/azure-disk-encryption-vms-vmss.md)利用 Linux 的[DM dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。  使用客户托管密钥的服务器端加密通过加密存储服务中的数据，使你能够将任何 OS 类型和映像用于 VM，从而改进了 ADE。
+[Azure 磁盘加密](../../security/fundamentals/azure-disk-encryption-vms-vmss.md)利用 Linux 的[DM dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。  使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
 
 ## <a name="next-steps"></a>后续步骤
 

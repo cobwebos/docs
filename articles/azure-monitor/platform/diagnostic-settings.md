@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: a037eddb13645036fcbe501ecba33923733b6d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944366"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505170"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同目标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
@@ -27,6 +27,9 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
 一个诊断设置只能为每个目标定义一种类型。 若要将数据发送到多个特定的目标类型（例如，两个不同的 Log Analytics 工作区），请创建多个设置。 每个资源最多可以有 5 个诊断设置。
 
+以下视频演示如何使用诊断设置来路由平台日志。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AvVO]
+
 > [!NOTE]
 > [平台指标](metrics-supported.md)会自动发送到[Azure Monitor 指标](data-platform-metrics.md)。 可以使用诊断设置将特定 Azure 服务的指标发送到 Azure Monitor 日志，以便使用具有特定限制的[日志查询](../log-query/log-query-overview.md)的其他监视数据进行分析。 
 >  
@@ -34,7 +37,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。 例如：可以在每个节点级别浏览区块链上的“IOReadBytes”指标并为其绘制图表。 但是，当通过诊断设置导出时，导出的指标将表示为所有节点的所有读取字节数。 此外，由于内部限制，并非所有指标都可以导出到 Azure Monitor 日志/Log Analytics。 有关详细信息，请参阅[可导出指标的列表](metrics-supported-export-diagnostic-settings.md)。 
 >  
 >  
-> 若要解决特定指标的这些限制，建议你使用[指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) 手动提取它们并使用 [Azure Monitor 数据收集器 API](data-collector-api.md) 将其导入到 Azure Monitor 日志中。  
+> 若要解决特定指标的这些限制，建议你使用[指标 REST API](/rest/api/monitor/metrics/list) 手动提取它们并使用 [Azure Monitor 数据收集器 API](data-collector-api.md) 将其导入到 Azure Monitor 日志中。  
 
 
 ## <a name="destinations"></a>Destinations
@@ -86,7 +89,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
       ![诊断设置](media/diagnostic-settings/menu-monitor.png)
 
-   - 对于活动日志，在“Azure Monitor”菜单中，单击“活动日志”，然后单击“诊断设置”。   请确保禁用活动日志的任何旧配置。 有关详细信息，请参阅[禁用现有设置](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log)。
+   - 对于活动日志，在“Azure Monitor”菜单中，单击“活动日志”，然后单击“诊断设置”。   请确保禁用活动日志的任何旧配置。 有关详细信息，请参阅[禁用现有设置](./activity-log.md#legacy-collection-methods)。
 
         ![诊断设置](media/diagnostic-settings/menu-activity-log.png)
 
@@ -141,7 +144,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
 ## <a name="create-using-powershell"></a>使用 PowerShell 进行创建
 
-在 [Azure PowerShell](powershell-quickstart-samples.md) 中使用 [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 创建诊断设置。 有关参数说明，请参阅此 cmdlet 的文档。
+在 [Azure PowerShell](../samples/powershell-samples.md) 中使用 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 创建诊断设置。 有关参数说明，请参阅此 cmdlet 的文档。
 
 > [!IMPORTANT]
 > 不能将此方法用于 Azure 活动日志。 请改为利用[使用资源管理器模板在 Azure Monitor 中创建诊断设置](diagnostic-settings-template.md)，创建资源管理器模板并使用 PowerShell 进行部署。
@@ -154,7 +157,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>使用 Azure CLI 创建
 
-在 [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) 中使用 [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令创建诊断设置。 有关参数说明，请参阅此命令的文档。
+在 [Azure CLI](/cli/azure/monitor?view=azure-cli-latest) 中使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令创建诊断设置。 有关参数说明，请参阅此命令的文档。
 
 > [!IMPORTANT]
 > 不能将此方法用于 Azure 活动日志。 请改为按[使用资源管理器模板在 Azure Monitor 中创建诊断设置](diagnostic-settings-template.md)中的说明操作，创建资源管理器模板并使用 CLI 进行部署。
@@ -176,7 +179,7 @@ az monitor diagnostic-settings create  \
 请参阅[Azure Monitor 中的诊断设置资源管理器模板示例](../samples/resource-manager-diagnostic-settings.md)，以使用资源管理器模板创建或更新诊断设置。
 
 ## <a name="create-using-rest-api"></a>使用 REST API 进行创建
-若要使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 创建或更新诊断设置，请参阅[诊断设置](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)。
+若要使用 [Azure Monitor REST API](/rest/api/monitor/) 创建或更新诊断设置，请参阅[诊断设置](/rest/api/monitor/diagnosticsettings)。
 
 ## <a name="create-using-azure-policy"></a>使用 Azure 策略创建
 由于需要为每个 Azure 资源创建诊断设置，因此在创建每个资源时，可以使用 Azure 策略来自动创建诊断设置。 有关详细信息，请参阅[使用 Azure 策略大规模部署 Azure Monitor](deploy-scale.md) 。

@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443751ee974dae3c426f36cbc262bc1a3af65bd0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658024"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504931"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor 工作簿可视化效果
 
@@ -50,7 +51,7 @@ Azure Monitor 工作簿支持许多不同的可视化样式以满足你的报告
 1. 单击“编辑”工具栏项，将工作簿切换到编辑模式。
 2. 使用“添加查询”链接将日志查询控件添加到工作簿。
 3. 选择“日志”作为查询类型，并选择资源类型（例如 Application Insights）以及目标资源。
-4. 使用查询编辑器输入用于分析（例如，请求的趋势）的 [KQL](https://docs.microsoft.com/azure/kusto/query/)。
+4. 使用查询编辑器输入用于分析（例如，请求的趋势）的 [KQL](/azure/kusto/query/)。
 5. 将可视化效果设置为下列其中一项：“面积图”、“条形图”、“条形图(分类)”、“折线图”、“饼图”、“散点图”或“时间图”。      
 6. 根据需要设置其他参数 - 例如时间范围、可视化效果、大小、调色板和图例。
 

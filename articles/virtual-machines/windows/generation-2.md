@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 1ebba13de14935d931d5d21ab786889d9a3755da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144861"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500304"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -21,30 +21,30 @@ Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无�
 
 第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
 
-第 2 代 VM 使用新的基于 UEFI 的启动体系结构，而不是使用第 1 代 VM 所用的基于 BIOS 的体系结构。 与第 1 代 VM 相比，第 2 代 VM 的启动时间和安装时间可能有所改善。 有关第 2 代 VM 的概述以及第 1 代与第 2 代之间的某些差异，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代虚拟机？](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
+第 2 代 VM 使用新的基于 UEFI 的启动体系结构，而不是使用第 1 代 VM 所用的基于 BIOS 的体系结构。 与第 1 代 VM 相比，第 2 代 VM 的启动时间和安装时间可能有所改善。 有关第 2 代 VM 的概述以及第 1 代与第 2 代之间的某些差异，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代虚拟机？](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 
 ## <a name="generation-2-vm-sizes"></a>第 2 代 VM 的大小
 
 Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 Azure 目前为以下选定 VM 系列提供第 2 代支持：
 
-* [B 系列](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
+* [B 系列](../sizes-b-series-burstable.md)
 * [DCsv2 系列](../dcv2-series.md)
 * [DSv2 系列](../dv2-dsv2-series.md)和 [Dsv3 系列](../dv3-dsv3-series.md)
-* [Dasv4 系列](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
+* [Dasv4 系列](../dav4-dasv4-series.md)
 * [Esv3 系列](../ev3-esv3-series.md)
-* [Easv4 系列](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
+* [Easv4 系列](../eav4-easv4-series.md)
 * [Fsv2 系列](../fsv2-series.md)
-* [GS 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [GS 系列](../sizes-previous-gen.md#gs-series)
 * [HB 系列](../hb-series.md)
 * [HC 系列](../hc-series.md)
-* [Ls 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)和 [Lsv2 系列](../lsv2-series.md)
+* [Ls 系列](../sizes-previous-gen.md#ls-series)和 [Lsv2 系列](../lsv2-series.md)
 * [M 系列](../m-series.md)
 * [Mv2 系列](../mv2-series.md)<sup>1</sup>
 * [NCv2 系列](../ncv2-series.md)和 [NCv3 系列](../ncv3-series.md)
 * [ND 系列](../nd-series.md)
 * [NVv3 系列](../nvv3-series.md)
 
-<sup>1</sup> Mv2 系列不支持第 1 代 VM 映像，仅支持一部分第 2 代映像。 有关详细信息，请参阅 [Mv2 系列文档](https://docs.microsoft.com/azure/virtual-machines/mv2-series)。
+<sup>1</sup> Mv2 系列不支持第 1 代 VM 映像，仅支持一部分第 2 代映像。 有关详细信息，请参阅 [Mv2 系列文档](../mv2-series.md)。
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure 市场中的第 2 代 VM 映像
 
@@ -78,7 +78,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 代和第 2 代的特性
 
-| 功能 | 第 1 代 | 第 2 代 |
+| Feature | 第 1 代 | 第 2 代 |
 |---------|--------------|--------------|
 | 启动             | PCAT                      | UEFI                               |
 | 磁盘控制器 | IDE                       | SCSI                               |
@@ -159,7 +159,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     是。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
-   否。
+   不是。
 
 * **我有一个来自本地第 2 代 VM 的 .vhd 文件。我可以使用该 .vhd 文件在 Azure 中创建第 2 代 VM 吗？**
   是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：
@@ -213,6 +213,6 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [Hyper-V 中的第 2 代虚拟机](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
+* 了解 [Hyper-V 中的第 2 代虚拟机](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 
 * 了解如何[准备 VHD](prepare-for-upload-vhd-image.md) 以从本地系统上传到 Azure。

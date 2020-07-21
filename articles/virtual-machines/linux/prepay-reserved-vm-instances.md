@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: df63a6daabbb46201cc500701f3af23c05c0d9a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68bd8ffab1c9b5992c8d608cbb00f2134796df3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502040"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances"></a>利用 Azure 保留 VM 实例节省成本
+# <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>通过 Azure 保留 VM 实例（Linux）节省成本
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]
 

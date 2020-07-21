@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b9624313716081a039b12c73e54b9f7afc2a323
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659277"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505306"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>将 Azure Monitor 日志数据导入到 Power BI 中
 
@@ -20,12 +21,12 @@ ms.locfileid: "77659277"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>概述
-若要将 Azure Monitor 中 [Log Analytics 工作区](manage-access.md)的数据导入到 Power BI，可以基于 Azure Monitor 中的[日志查询](../log-query/log-query-overview.md)在 Power BI 中创建数据集。  每次刷新数据集时都会运行查询。  随后你即可生成使用数据集中的数据的 Power BI 报表。  若要在 Power BI 中创建数据集，你可以将查询从 Log Analytics 导出为 [Power Query (M) 语言](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification)。  然后，你可以使用其在 Power BI Desktop 中创建查询，再将其作为数据集发布到 Power BI。  此过程的详细信息如下所述。
+若要将 Azure Monitor 中 [Log Analytics 工作区](manage-access.md)的数据导入到 Power BI，可以基于 Azure Monitor 中的[日志查询](../log-query/log-query-overview.md)在 Power BI 中创建数据集。  每次刷新数据集时都会运行查询。  随后你即可生成使用数据集中的数据的 Power BI 报表。  若要在 Power BI 中创建数据集，你可以将查询从 Log Analytics 导出为 [Power Query (M) 语言](/powerquery-m/power-query-m-language-specification)。  然后，你可以使用其在 Power BI Desktop 中创建查询，再将其作为数据集发布到 Power BI。  此过程的详细信息如下所述。
 
 ![Log Analytics 到 Power BI](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>导出查询
-首先创建一个[日志查询](../log-query/log-query-overview.md)，该查询返回要填充 Power BI 数据集的数据。  随后将该查询导出为 Power BI Desktop 可以使用的 [Power Query (M) 语言](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification)。
+首先创建一个[日志查询](../log-query/log-query-overview.md)，该查询返回要填充 Power BI 数据集的数据。  随后将该查询导出为 Power BI Desktop 可以使用的 [Power Query (M) 语言](/powerquery-m/power-query-m-language-specification)。
 
 1. [在 Log Analytics 中创建日志查询](../log-query/get-started-portal.md)以提取数据集的数据。
 2. 选择“导出” > “Power BI 查询(M)”。  这会将查询导出到名为 **PowerBIQuery.txt** 的文本文件中。 
@@ -52,7 +53,7 @@ Power BI Desktop 是一个桌面应用程序，用于创建可发布到 Power BI
 ## <a name="publish-to-power-bi"></a>发布到 Power BI
 当你发布到 Power BI 时，将创建数据集和报表。  如果你是在 Power BI Desktop 中创建报表，则发布的报表将包含你的数据。  如果不是，则会创建一个空白报表。  你可以在 Power BI 中修改报表或基于数据集创建新报表。
 
-1. 基于你的数据创建报表。  请使用 [Power BI Desktop 文档](https://docs.microsoft.com/power-bi/desktop-report-view)（如果你不熟悉此应用程序）。  
+1. 基于你的数据创建报表。  请使用 [Power BI Desktop 文档](/power-bi/desktop-report-view)（如果你不熟悉此应用程序）。  
 1. 如果你已准备好将其发送到 Power BI，请单击“发布”。  
 1. 出现提示时，请在 Power BI 帐户中选择目标。  除非你有特定的目标，否则请使用“我的工作区”。
 

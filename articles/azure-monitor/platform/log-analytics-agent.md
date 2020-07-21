@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6bd45324313ebc44bd4c59cd6f09e2eaab28d32
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608360"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505136"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
-Azure Log Analytics 代理是为在任何云、本地计算机以及 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 监视的虚拟机中进行全面管理而开发的。 Windows 和 Linux 代理将收集的数据从不同来源发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、[Azure 安全中心](/azure/security-center/)和 [Azure 自动化](../../automation/automation-intro.md)。
+Azure Log Analytics 代理是为在任何云、本地计算机以及 [System Center Operations Manager](/system-center/scom/) 监视的虚拟机中进行全面管理而开发的。 Windows 和 Linux 代理将收集的数据从不同来源发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、[Azure 安全中心](../../security-center/index.yml)和 [Azure 自动化](../../automation/automation-intro.md)。
 
 本文提供该代理的详细概述、系统和网络要求以及不同的部署方法。
 
@@ -30,7 +31,7 @@ Azure Monitor 中的 [Azure 诊断扩展](diagnostics-extension-overview.md)也�
 
 - Azure 诊断扩展只能在 Azure 中的虚拟机中使用。 Log Analytics 代理可在 Azure、其他云和本地中的虚拟机中使用。
 - Azure 诊断扩展将数据发送到 Azure 存储、[Azure Monitor 指标](data-platform-metrics.md)（仅限 Windows）和事件中心。 Log Analytics 代理将数据收集到 [Azure Monitor 日志](data-platform-logs.md)中。
-- [解决方案](../monitor-reference.md#insights-and-core-solutions)、[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 和其他服务（如 [Azure 安全中心](/azure/security-center/)）需要 Log Analytics 代理。
+- [解决方案](../monitor-reference.md#insights-and-core-solutions)、[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 和其他服务（如 [Azure 安全中心](../../security-center/index.yml)）需要 Log Analytics 代理。
 
 ## <a name="costs"></a>成本
 Log Analytics 代理不收取任何费用，但引入的数据可能产生费用。 请查看[使用 Azure Monitor 日志管理使用情况和成本](manage-cost-storage.md)，获取有关 Log Analytics 工作区中收集的数据定价的详细信息。
@@ -58,7 +59,7 @@ Log Analytics 代理将数据发送到 Azure Monitor 中的 Log Analytics 工作
 
 * 要从 Windows 代理收集数据，可以[配置每个代理以向一个或多个工作区报告](agent-windows.md)，即使它向 System Center Operations Manager 管理组报告也是如此。 Windows 代理最多可向四个工作区报告。
 * Linux 代理不支持多宿主，只能向单个工作区报告。
-* Windows 代理支持 [FIPS 140 标准](https://docs.microsoft.com/windows/security/threat-protection/fips-140-validation)，但 Linux 代理不支持。  
+* Windows 代理支持 [FIPS 140 标准](/windows/security/threat-protection/fips-140-validation)，但 Linux 代理不支持。  
 
 如果使用 System Center Operations Manager 2012 R2 或更高版本：
 
@@ -124,7 +125,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 Python2 可执行文件必须使用以下命令化名为 "python"：
 
 ```
-alternatives --set python /usr/sbin/python2
+alternatives --set python `which python2`
 ```
 
 ### <a name="supported-distros"></a>支持的发行版
@@ -192,7 +193,7 @@ Windows 代理将于 2020 年 8 月 17 日开始以独占方式使用 SHA-2 签�
 |\* .blob.core.windows.net |端口 443 |出站|是 |
 |\* .azure-automation.net |端口 443 |出站|是 |
 
-有关 Azure 政府所需的防火墙信息，请参阅 [Azure 政府管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 
+有关 Azure 政府所需的防火墙信息，请参阅 [Azure 政府管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)。 
 
 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接并注册自动化服务以在环境中使用 Runbook 或管理解决方案，则它必须可以访问[针对混合 Runbook 辅助角色配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 URL。 
 
@@ -207,7 +208,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|properties| 描述 |
+|properties| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |

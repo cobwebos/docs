@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
-ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f267b155fe21e5dee1a7c488c999fe194ed38eb1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254742"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504112"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL 托管实例和 SQL Server 中机器学习服务之间的主要差异
 
@@ -43,14 +43,14 @@ ms.locfileid: "85254742"
 
 - 版本的 Python 和 R 的初始版本不同于 SQL 托管实例和 SQL Server 中机器学习服务：
 
-  |                      | Python | R     |
+  | System               | Python | R     |
   |----------------------|--------|-------|
   | SQL 托管实例 | 3.7.1  | 3.5.2 |
   | SQL Server           | 3.5.2  | 3.3.3 |
 
 - 无需通过 `sp_configure` 配置 `external scripts enabled`。 [注册](machine-learning-services-overview.md#signup)预览版后，会为 Azure SQL 托管实例启用机器学习。
 
-## <a name="packages"></a>package
+## <a name="packages"></a>包
 
 在 SQL 托管实例和 SQL Server 中，Python 和 R 包管理的工作方式有所不同。 差异为：
 

@@ -3,16 +3,16 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c8f142e9781946f572f6f3a744d8bc2736a3de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124249"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503755"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
-通过 Azure 备份，你可以使用[专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)从恢复服务保管库安全地备份和还原数据。 专用终结点使用 VNet 中的一个或多个专用 IP 地址将服务有效接入 VNet 中。
+通过 Azure 备份，你可以使用[专用终结点](../private-link/private-endpoint-overview.md)从恢复服务保管库安全地备份和还原数据。 专用终结点使用 VNet 中的一个或多个专用 IP 地址将服务有效接入 VNet 中。
 
 本文将帮助你了解创建 Azure 备份的专用终结点的过程，以及使用专用终结点帮助维护资源安全的方案。
 
@@ -25,7 +25,7 @@ ms.locfileid: "85124249"
 - 尽管恢复服务保管库可用于 Azure 备份和 Azure Site Recovery 这两种服务，但本文仅介绍将专用终结点用于 Azure 备份的情况。
 - Azure Active Directory 当前不支持专用终结点。 因此在 Azure VM 中执行数据库备份和使用 MARS 代理进行备份时，需要允许 Azure Active Directory 在区域中操作所需的 IP 和 FQDN 从受保护的网络进行出站访问。 如果适用，还可以使用 NSG 标记和 Azure 防火墙标记来允许访问 Azure AD。
 - 具有网络策略的虚拟网络不支持专用终结点。 在继续之前，需要禁用网络策略。
-- 如果在5月 1 2020 之前注册了恢复服务资源提供程序，则需要重新注册该提供程序。 若要重新注册提供程序，请转到 Azure 门户中的订阅，导航到左侧导航栏上的 "**资源提供程序**"，然后选择 " **microsoft.recoveryservices** "，然后单击 "**重新注册**"。
+- 如果在5月 1 2020 之前注册了恢复服务资源提供程序，则需要重新注册该提供程序。 若要重新注册提供程序，请转到 Azure 门户中的订阅，导航到左侧导航栏上的“资源提供程序”，然后选择“Microsoft.RecoveryServices”，并单击“重新注册”。
 
 ## <a name="recommended-and-supported-scenarios"></a>推荐和支持的方案
 
@@ -33,7 +33,7 @@ ms.locfileid: "85124249"
 
 | 在 Azure VM 中备份工作负载（SQL、SAP HANA）和使用 MARS 代理进行备份 | 建议使用专用终结点，以允许进行备份和还原，而无需从虚拟网络列出用于 Azure 备份或 Azure 存储的任何 IP/FQDN。 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **Azure VM 备份**                                         | VM 备份不要求你允许访问任何 IP 或 FQDN。 因此，它不需要专用终结点来备份和还原磁盘。  <br><br>   但是，从包含专用终结点的保管库执行文件恢复将限制为包含该保管库的终结点的虚拟网络。 <br><br>    使用 ACL 非托管磁盘时，请确保包含磁盘的存储帐户允许访问受信任的 Microsoft 服务（如果为 ACL）****。 |
+| **Azure VM 备份**                                         | VM 备份不要求你允许访问任何 IP 或 FQDN。 因此，它不需要专用终结点来备份和还原磁盘。  <br><br>   但是，从包含专用终结点的保管库执行文件恢复将限制为包含该保管库的终结点的虚拟网络。 <br><br>    使用 ACL 非托管磁盘时，请确保包含磁盘的存储帐户允许访问受信任的 Microsoft 服务（如果为 ACL）。 |
 | **Azure 文件备份**                                      | Azure 文件备份存储在本地存储帐户中。 因此，它不需要专用终结点来进行备份和还原。 |
 
 ## <a name="creating-and-using-private-endpoints-for-backup"></a>创建和使用专用终结点以进行备份
@@ -45,19 +45,19 @@ ms.locfileid: "85124249"
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-请参阅[此部分](#create-a-recovery-services-vault-using-the-azure-resource-manager-client)，了解如何使用 Azure 资源管理器客户端创建保管库。 这会创建一个已启用托管标识的保管库。 有关恢复服务保管库的详细信息，请参阅[在此](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)。
+请参阅[此部分](#create-a-recovery-services-vault-using-the-azure-resource-manager-client)，了解如何使用 Azure 资源管理器客户端创建保管库。 这会创建一个已启用托管标识的保管库。 有关恢复服务保管库的详细信息，请参阅[在此](./backup-azure-recovery-services-vault-overview.md)。
 
 ## <a name="enable-managed-identity-for-your-vault"></a>为保管库启用托管标识
 
 托管标识允许保管库创建和使用专用终结点。 本部分介绍如何为保管库启用托管标识。
 
-1. 转到“恢复服务保管库”->“标识”****。
+1. 转到“恢复服务保管库”->“标识”。
 
     ![将标识状态更改为“启用”](./media/private-endpoints/identity-status-on.png)
 
-1. 将“状态”更改为“启用”，然后单击“保存”**** **** ****。
+1. 将“状态”更改为“启用”，然后单击“保存”  。
 
-1. 此时将生成一个“对象 ID”，它是保管库的托管标识****。
+1. 此时将生成一个“对象 ID”，它是保管库的托管标识。
 
     >[!NOTE]
     >启用后，不得禁用托管标识（即使是暂时禁用）。 禁用托管标识可能导致出现不一致的行为。
@@ -75,13 +75,13 @@ ms.locfileid: "85124249"
 - `privatelink.blob.core.windows.net`（用于备份/还原数据）
 - `privatelink.queue.core.windows.net`（用于服务通信）
 
-1. 在“所有服务”搜索栏中搜索“专用 DNS 区域”，然后从下拉列表中选择“专用 DNS 区域”**** **** ****。
+1. 在“所有服务”搜索栏中搜索“专用 DNS 区域”，然后从下拉列表中选择“专用 DNS 区域”  。
 
     ![选择“专用 DNS 区域”](./media/private-endpoints/private-dns-zone.png)
 
-1. 显示“专用 DNS 区域”窗格后，单击“+添加”按钮以开始创建新区域**** ****。
+1. 显示“专用 DNS 区域”窗格后，单击“+添加”按钮以开始创建新区域 。
 
-1. 在“创建专用 DNS 区域”窗格中，填写所需的详细信息****。 订阅必须与将在其中创建专用终结点的位置相同。
+1. 在“创建专用 DNS 区域”窗格中，填写所需的详细信息。 订阅必须与将在其中创建专用终结点的位置相同。
 
     区域必须命名为：
 
@@ -90,8 +90,8 @@ ms.locfileid: "85124249"
 
     | **区域**                           | **服务** | **订阅和资源组 (RG) 详细信息**                  |
     | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **订阅**：与需要创建专用终结点的位置相同  RG****：VNET 或专用终结点的 RG |
-    | `privatelink.queue.core.windows.net` | 队列       | RG****：VNET 或专用终结点的 RG |
+    | `privatelink.blob.core.windows.net`  | Blob        | **订阅**：与需要创建专用终结点的位置相同  RG：VNET 或专用终结点的 RG |
+    | `privatelink.queue.core.windows.net` | 队列       | RG：VNET 或专用终结点的 RG |
 
     ![创建专用 DNS 区域](./media/private-endpoints/create-private-dns-zone.png)
 
@@ -105,22 +105,22 @@ ms.locfileid: "85124249"
 
 | **区域**                                                     | **服务** | **订阅和资源组详细信息**                  |
 | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   请注意：此处的 geo 指的是地区代码******。 例如， *wcus*和*NE*分别用于美国中部和北欧。 | Backup      | **订阅**：与需要创建专用终结点的位置相同  RG****：订阅中的任何 RG |
+| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   请注意：此处的 geo 指的是地区代码。 例如， *wcus*和*NE*分别用于美国中部和北欧。 | Backup      | **订阅**：与需要创建专用终结点的位置相同  RG：订阅中的任何 RG |
 
 请参阅[此列表](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)，了解地区代码。
 
 对于国家地区的 URL 命名约定：
 
-- [中国](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [德国](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [德国](../germany/germany-developer-guide.md#endpoint-mapping)
+- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 ### <a name="linking-private-dns-zones-with-your-virtual-network"></a>将专用 DNS 区域与虚拟网络链接
 
 上面创建的 DNS 区域现在必须链接到要备份的服务器所在的虚拟网络。 需要为创建的所有 DNS 区域执行此操作。
 
-1. 转到在上一步创建的 DNS 区域，并导航到左侧栏的“虚拟网络链接”****。 转到那里后，单击“+添加”按钮****。
-1. 填写必需的详细信息。 必须使用服务器所在的虚拟网络的相应详细信息填写“订阅”和“虚拟网络”字段**** ****。 其他字段必须保留不动。
+1. 转到在上一步创建的 DNS 区域，并导航到左侧栏的“虚拟网络链接”。 转到那里后，单击“+添加”按钮。
+1. 填写必需的详细信息。 必须使用服务器所在的虚拟网络的相应详细信息填写“订阅”和“虚拟网络”字段 。 其他字段必须保留不动。
 
     ![添加虚拟网络链接](./media/private-endpoints/add-virtual-network-link.png)
 
@@ -132,14 +132,14 @@ ms.locfileid: "85124249"
 - 要在其中创建专用终结点的资源组
 - 包含专用 DNS 区域的资源组
 
-建议向保管库（托管标识）授予这三个资源组的“参与者”角色****。 以下步骤介绍了如何针对特定的资源组执行此操作（需要为三个资源组中的每个资源组执行此操作）：
+建议向保管库（托管标识）授予这三个资源组的“参与者”角色。 以下步骤介绍了如何针对特定的资源组执行此操作（需要为三个资源组中的每个资源组执行此操作）：
 
-1. 转到“资源组”，并导航到左侧栏中的“访问控制(IAM)”****。
-1. 在“访问控制”中，转到“添加角色分配”**** ****。
+1. 转到“资源组”，并导航到左侧栏中的“访问控制(IAM)”。
+1. 在“访问控制”中，转到“添加角色分配” 。
 
     ![添加角色分配](./media/private-endpoints/add-role-assignment.png)
 
-1. 在“添加角色分配”中，选择“参与者”作为“角色”，然后使用保管库的“名称”作为“主体”**** **** **** **** ****。 选择保管库，并在完成后单击“保存”****。
+1. 在“添加角色分配”中，选择“参与者”作为“角色”，然后使用保管库的“名称”作为“主体”    。 选择保管库，并在完成后单击“保存”。
 
     ![选择角色和主体](./media/private-endpoints/choose-role-and-principal.png)
 
@@ -151,31 +151,31 @@ ms.locfileid: "85124249"
 
 本部分介绍为保管库创建专用终结点的过程。
 
-1. 在搜索栏中，搜索并选择“专用链接”****。 这会转到“专用链接中心”****。
+1. 在搜索栏中，搜索并选择“专用链接”。 这会转到“专用链接中心”。
 
     ![搜索专用链接](./media/private-endpoints/search-for-private-link.png)
 
-1. 单击左侧导航栏中的“专用终结点”****。 转到“专用终结点”窗格后，单击“+添加”以开始为保管库创建专用终结点**** ****。
+1. 单击左侧导航栏中的“专用终结点”。 转到“专用终结点”窗格后，单击“+添加”以开始为保管库创建专用终结点 。
 
     ![在专用链接中心添加专用终结点](./media/private-endpoints/add-private-endpoint.png)
 
-1. 在“创建专用终结点”过程中，需要指定用于创建专用终结点连接的详细信息****。
+1. 在“创建专用终结点”过程中，需要指定用于创建专用终结点连接的详细信息。
 
     1. **基本信息**：填写专用终结点的基本详细信息。 该区域应与保管库和资源相同。
 
         ![填写基本详细信息](./media/private-endpoints/basic-details.png)
 
-    1. **资源**：此选项卡要求你提及要为其创建连接的 PaaS 资源。 从所需订阅的资源类型中选择“Microsoft.RecoveryServices/vaults”****。 完成后，选择恢复服务保管库的名称作为“资源”，选择“AzureBackup”作为“目标子资源”**** **** ****。
+    1. **资源**：此选项卡要求你提及要为其创建连接的 PaaS 资源。 从所需订阅的资源类型中选择“Microsoft.RecoveryServices/vaults”。 完成后，选择恢复服务保管库的名称作为“资源”，选择“AzureBackup”作为“目标子资源”  。
 
         ![填写“资源”选项卡](./media/private-endpoints/resource-tab.png)
 
-    1. **配置**：从配置中，指定要在其中创建专用终结点的虚拟网络和子网。 这将是 VM 所在的 Vnet。 可以选择将专用终结点与专用 DNS 区域集成****。 或者，也可以使用自定义 DNS 服务器或创建专用 DNS 区域。
+    1. **配置**：从配置中，指定要在其中创建专用终结点的虚拟网络和子网。 这将是 VM 所在的 Vnet。 可以选择将专用终结点与专用 DNS 区域集成。 或者，也可以使用自定义 DNS 服务器或创建专用 DNS 区域。
 
         ![填写“配置”选项卡](./media/private-endpoints/configuration-tab.png)
 
-    1. （可选）可以为专用终结点添加标记****。
+    1. （可选）可以为专用终结点添加标记。
 
-    1. 输入详细信息后，继续“查看 + 创建”****。 完成验证后，单击“创建”以创建专用终结点****。
+    1. 输入详细信息后，继续“查看 + 创建”。 完成验证后，单击“创建”以创建专用终结点。
 
 ## <a name="approving-private-endpoints"></a>批准专用终结点
 
@@ -183,9 +183,9 @@ ms.locfileid: "85124249"
 
 请参阅[使用 Azure 资源管理器客户端手动批准专用终结点](#manual-approval-of-private-endpoints-using-the-azure-resource-manager-client)，以使用 Azure 资源管理器客户端批准专用终结点。
 
-1. 在恢复服务保管库中，导航到左侧栏的“专用终结点连接”****。
+1. 在恢复服务保管库中，导航到左侧栏的“专用终结点连接”。
 1. 选择要批准的专用终结点连接。
-1. 在顶部栏上选择“批准”****。 如果要拒绝或删除终结点连接，还可以选择“拒绝”或“删除”**** ****。
+1. 在顶部栏上选择“批准”。 如果要拒绝或删除终结点连接，还可以选择“拒绝”或“删除” 。
 
     ![批准专用终结点](./media/private-endpoints/approve-private-endpoints.png)
 
@@ -200,11 +200,11 @@ ms.locfileid: "85124249"
 
 这要求你将专用终结点中的每个 FQDN 条目添加到专用 DNS 区域。
 
-1. 转到“专用 DNS 区域”并导航到左侧栏上的“概述”选项**** ****。 转到那里后，单击“+记录集”以开始添加记录****。
+1. 转到“专用 DNS 区域”并导航到左侧栏上的“概述”选项 。 转到那里后，单击“+记录集”以开始添加记录。
 
     ![选择“+记录集”以添加记录](./media/private-endpoints/select-record-set.png)
 
-1. 在打开的“添加记录集”窗格中，为每个 FQDN 和专用 IP 添加一个条目作为“A 类型”记录**** ****。 可从专用终结点中获取 FQDN 和 IP 列表（在“概述”下）****。 如以下示例中所示，专用终结点中的第一个 FQDN 将添加到专用 DNS 区域中的记录集。
+1. 在打开的“添加记录集”窗格中，为每个 FQDN 和专用 IP 添加一个条目作为“A 类型”记录 。 可从专用终结点中获取 FQDN 和 IP 列表（在“概述”下）。 如以下示例中所示，专用终结点中的第一个 FQDN 将添加到专用 DNS 区域中的记录集。
 
     ![FQDN 和 IP 列表](./media/private-endpoints/list-of-fqdn-and-ip.png)
 
@@ -427,7 +427,7 @@ armclient PUT /subscriptions/<subscriptionid>/resourceGroups/<rgname>/providers/
 
     - **vaultPESubnetResourceGroup**：专用终结点将联接到的子网的资源组
 
-    - **vaultMsiName**：保管库的 MSI 名称，与 VaultName 相同****
+    - **vaultMsiName**：保管库的 MSI 名称，与 VaultName 相同
 
 1. 完成身份验证，该脚本将获取上面提供的给定订阅的上下文。 如果租户中缺少适当的角色，则该脚本将创建角色并将角色分配给保管库的 MSI。
 
@@ -456,7 +456,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 ### <a name="manual-approval-of-private-endpoints-using-the-azure-resource-manager-client"></a>使用 Azure 资源管理器客户端手动批准专用终结点
 
-1. 使用 GetVault 获取专用终结点的专用终结点连接 ID****。
+1. 使用 GetVault 获取专用终结点的专用终结点连接 ID。
 
     ```rest
     armclient GET /subscriptions/<subscriptionid>/resourceGroups/<rgname>/providers/Microsoft.RecoveryServices/vaults/<vaultname>?api-version=2017-07-01-preview
@@ -466,7 +466,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
     `privateendpointconnectionid = {peName}.{vaultId}.backup.{guid}`
 
-1. 从响应中获取专用终结点连接 ID（以及专用终结点名称，如有需要），将其替换为以下 JSON 和 Azure 资源管理器 URI，并尝试将状态更改为“已批准/已拒绝/已断开连接”，如以下示例所示**** ****：
+1. 从响应中获取专用终结点连接 ID（以及专用终结点名称，如有需要），将其替换为以下 JSON 和 Azure 资源管理器 URI，并尝试将状态更改为“已批准/已拒绝/已断开连接”，如以下示例所示 ：
 
     ```rest
     armclient PUT /subscriptions/<subscriptionid>/resourceGroups/<rgname>/providers/Microsoft.RecoveryServices/Vaults/<vaultname>/privateEndpointConnections/<privateendpointconnectionid>?api-version=2020-02-02-preview @C:\<filepath>\BackupAdminApproval.json
@@ -502,7 +502,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 | `privatelink.queue.core.windows.net`                           | 队列       |
 
 >[!NOTE]
->在上述文本中，geo 指地区代码**。 例如， *wcus*和*NE*分别用于美国中部和北欧。
+>在上述文本中，geo 指地区代码。 例如， *wcus*和*NE*分别用于美国中部和北欧。
 
 请参阅[此列表](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)，了解地区代码。
 
@@ -515,13 +515,13 @@ $privateEndpoint = New-AzPrivateEndpoint `
 - 保管库的专用终结点使用创建专用终结点时指定的名称。
 - blob 和队列服务的专用终结点以保管库的名称作为前缀。
 
-例如，下图显示了为专用终结点连接创建的三个专用终结点，带有名称 pee2epe**：
+例如，下图显示了为专用终结点连接创建的三个专用终结点，带有名称 pee2epe：
 
 ![专用终结点连接的三个专用终结点](./media/private-endpoints/three-private-endpoints.png)
 
 备份服务的 DNS 区域 (`privatelink.<geo>.backup.windowsazure.com`)：
 
-1. 在“专用链接中心”导航到用于备份的专用终结点****。 概述页面列出了专用终结点的 FQDN 和专用 IP。
+1. 在“专用链接中心”导航到用于备份的专用终结点。 概述页面列出了专用终结点的 FQDN 和专用 IP。
 
 1. 为每个 FQDN 和专用 IP 添加一个条目作为 A 类型记录。
 
@@ -529,7 +529,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 Blob 服务的 DNS 区域 (`privatelink.blob.core.windows.net`)：
 
-1. 在“专用链接中心”导航到用于 Blob 的专用终结点****。 概述页面列出了专用终结点的 FQDN 和专用 IP。
+1. 在“专用链接中心”导航到用于 Blob 的专用终结点。 概述页面列出了专用终结点的 FQDN 和专用 IP。
 
 1. 为 FQDN 和专用 IP 添加一个条目作为 A 类型记录。
 
@@ -537,7 +537,7 @@ Blob 服务的 DNS 区域 (`privatelink.blob.core.windows.net`)：
 
 队列服务的 DNS 区域 (`privatelink.queue.core.windows.net`)：
 
-1. 在“专用链接中心”导航到用于队列的专用终结点****。 概述页面列出了专用终结点的 FQDN 和专用 IP。
+1. 在“专用链接中心”导航到用于队列的专用终结点。 概述页面列出了专用终结点的 FQDN 和专用 IP。
 
 1. 为 FQDN 和专用 IP 添加一个条目作为 A 类型记录。
 
@@ -560,7 +560,7 @@ A. 否，用于备份的专用终结点仅可用于 Azure 备份。 如果服务
 问： 我漏掉了本文中的一个步骤，并继续对数据源进行了保护。 我是否仍可以使用专用终结点？<br>
 A. 未遵循本文的步骤操作并继续保护项可能导致无法使用专用终结点。 因此，建议在继续保护项之前查看此清单。
 
-问： 我是否可以使用自己的 DNS 服务器，而不使用 Azure 专用 DNS 区域或集成的专用 DNS 区域？<br>
+Q. 我是否可以使用自己的 DNS 服务器，而不使用 Azure 专用 DNS 区域或集成的专用 DNS 区域？<br>
 A. 是的，你可以使用自己的 DNS 服务器。 但是，请确保按照本部分中的建议添加所有必需的 DNS 记录。
 
 问： 按照本文中的过程操作后，是否需要在服务器上执行任何其他步骤？<br>

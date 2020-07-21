@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 585d3729a886f3a01dff6dcd9afdab63669c05b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: b5dcadd2381596509a3d2f512d0f4ebbbfbba893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225067"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502871"
 ---
 # <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>使用 Azure CLI 从共享映像库中的 VHD 或快照创建映像
 
@@ -67,9 +67,9 @@ az sig list -o table
 
 映像定义为映像创建一个逻辑分组。 它们用于管理有关映像的信息。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 
 
-制作映像定义时，请确保它具有所有正确信息。 在此示例中，我们假设快照或 VHD 来自正在使用的 VM，并且尚未通用化。 如果在运行适用于 Windows 的 Sysprep 或[waagent](https://github.com/Azure/WALinuxAgent)或 Linux 之后，在运行 Windows Sysprep 或 Linux) 的情况后，为通用 (OS 创建了 VHD 或快照， `-deprovision` `-deprovision+user` 请将更改 `-OsState` 为 `generalized` 。 
+制作映像定义时，请确保它具有所有正确信息。 在此示例中，我们假设快照或 VHD 来自正在使用的 VM，并且尚未通用化。 如果 VHD 或快照是通用操作系统（运行适用于 Windows 的 Sysprep 或[waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` 或 `-deprovision+user` Linux 之后），请将更改 `-OsState` 为 `generalized` 。 
 
-若要详细了解可为映像定义指定的值，请参阅[映像定义](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+若要详细了解可为映像定义指定的值，请参阅[映像定义](./linux/shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。
 
@@ -97,7 +97,7 @@ az sig image-definition create \
 
 使用[az image 画廊 create-image 版本](/cli/azure/sig/image-version#az-sig-image-version-create)创建映像版本。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 
 在此示例中，我们的映像的版本为*1.0.0* ，我们将在*美国中南部*地区创建1个副本，并使用区域冗余存储在*美国东部 2*区域中创建1个副本。 为复制选择目标区域时，请记住，还必须将 VHD 或快照的*源*区域包含为复制目标。
 
@@ -120,7 +120,7 @@ az sig image-version create \
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 你还可以通过在创建映像版本时添加来将所有映像版本副本存储在[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中 `--storage-account-type standard_zrs` 。
+> 你还可以通过在创建映像版本时添加来将所有映像版本副本存储在[区域冗余存储](../storage/common/storage-redundancy.md)中 `--storage-account-type standard_zrs` 。
 >
 
 ## <a name="next-steps"></a>后续步骤

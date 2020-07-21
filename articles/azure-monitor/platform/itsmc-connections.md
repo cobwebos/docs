@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655926"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505153"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](../../azure-monitor/platform/itsmc-overview.md)。
@@ -38,7 +39,7 @@ ms.locfileid: "83655926"
 - 已部署并配置 Service Manager Web 应用程序（Web 应用）。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Web 应用的信息。
 - 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connection)。
 - 支持的 Service Manager 版本：2012 R2 或 2016。
-- 用户角色：[高级操作员](https://technet.microsoft.com/library/ff461054.aspx)。
+- 用户角色：[高级操作员](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
 
 ### <a name="connection-procedure"></a>连接过程
 
@@ -200,7 +201,7 @@ ms.locfileid: "83655926"
 > 最后单击“更新”。
 > 2) **建议建立一个内部程序，用于确保连接保持活动状态：** 根据刷新令牌生命期来刷新令牌。 请确保在刷新令牌的预期到期时间之前（建议在刷新令牌生命期到期前几天）执行以下操作：
 >
-> 1. [完成 ITSM 连接器配置的手动同步过程](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 1. [完成 ITSM 连接器配置的手动同步过程](./itsmc-resync-servicenow.md)
 > 2. 撤销旧的刷新令牌，因为出于安全考虑，不建议保留旧密钥。 在“ServiceNow”边栏选项卡中搜索“系统 OAuth”，而不是选择“管理令牌”。 根据 OAuth 名称和到期日期从列表中选取旧令牌。
 > ![SNOW 系统 OAuth 定义](media/itsmc-connections/snow-system-oauth.png)
 > 3. 单击“撤销访问权限”，然后单击“撤消”。
@@ -247,6 +248,10 @@ ms.locfileid: "83655926"
 - 在此 ServiceNow 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
 了解详细信息：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+
+
+> [!NOTE]
+> 在 ServiceNow 中，每小时的请求会有一个速率限制。 若要配置此限制，请通过定义 ServiceNow 实例中的 "入站 REST API 速率限制" 来使用此限制。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>在 ServiceNow 应用中创建集成用户角色
 

@@ -8,22 +8,23 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: a8531ec2a3284eac64cb900f2d95ec02b9ffdd45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3c4c4ea25a8f8057a5830ad2207bb674d9cc011
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678080"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501545"
 ---
-# <a name="save-costs-with-a-reserved-instance-of-azure-dedicated-hosts"></a>使用 Azure 专用主机的保留实例节省成本
+# <a name="save-costs-with-azure-dedicated-host-reservations"></a>通过 Azure 专用主机预留节省成本
 
-当你提交到 Azure 专用主机的保留实例时，可以节省资金。 预订折扣将自动应用于与预订范围和属性匹配的运行的专用主机的数量。 无需将预订分配给专用主机即可获取折扣。 购买的预订实例仅涵盖使用情况的计算部分，并包括软件许可成本。 请参阅[虚拟机的 Azure 专用主机概述](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)。
+当你提交到 Azure 专用主机的保留实例时，可以节省资金。 预订折扣将自动应用于与预订范围和属性匹配的运行的专用主机的数量。 无需将预订分配给专用主机即可获取折扣。 购买的预订实例仅涵盖使用情况的计算部分，并包括软件许可成本。 请参阅[虚拟机的 Azure 专用主机概述](./windows/dedicated-hosts.md)。
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>购买之前确定适当的专用主机 SKU
 
 
 在购买预订之前，应确定所需的专用主机。 为代表 VM 系列和类型的专用主机定义 SKU。 
 
-首先，请使用[Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)或[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的支持大小来识别 VM 系列。
+首先，请使用[Windows 虚拟机](./windows/sizes.md)或[Linux](./linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的支持大小来识别 VM 系列。
 
 接下来，请检查 Azure 专用主机上是否支持该选项。 [Azure 专用主机定价](https://aka.ms/ADHPricing)页提供了专用主机 sku、其 CPU 信息以及各种定价选项（包括保留实例）的完整列表。
 
@@ -39,7 +40,7 @@ ms.locfileid: "84678080"
 
 - **云**  -预订不适用于德国或中国地区的购买。
 
-- **配额不足**  -作用域为单个订阅的保留必须在订阅中为新的保留实例提供 vCPU 配额。 例如，如果目标订阅的配额限制为10个 vcpu （对于 DSv3 系列），则不能购买保留支持此系列的专用主机。 保留配额检查包括已在订阅中部署的 Vm 和专用主机。 你可以 [创建配额增加请求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)   以解决此问题。
+- **配额不足**  -作用域为单个订阅的保留必须在订阅中为新的保留实例提供 vCPU 配额。 例如，如果目标订阅的配额限制为10个 vcpu （对于 DSv3 系列），则不能购买保留支持此系列的专用主机。 保留配额检查包括已在订阅中部署的 Vm 和专用主机。 你可以 [创建配额增加请求](../azure-portal/supportability/resource-manager-core-quotas-request.md)   以解决此问题。
 
 - **容量限制**  -在极少数情况下，Azure 会限制专用主机 Sku 子集的新保留购买，因为区域中的容量不足。
 
@@ -47,7 +48,7 @@ ms.locfileid: "84678080"
 
 可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买 Azure 专用主机实例的保留实例。
 
-提前支付预订费用， [按月](https://docs.microsoft.com/azure/billing/billing-monthly-payments-reservations)支付。 这些要求适用于购买保留的专用主机实例：
+提前支付预订费用， [按月](../cost-management-billing/reservations/prepare-buy-reservation.md)支付。 这些要求适用于购买保留的专用主机实例：
 
 - 对于至少一个 EA 订阅或具有即用即付费率的订阅，必须是所有者角色。
 
@@ -55,7 +56,7 @@ ms.locfileid: "84678080"
 
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理才能购买预留。
 
-若要购买实例：
+若要购买实例，请执行以下操作：
 
 1. 登录  [Azure 门户](https://portal.azure.com/)。
 
@@ -67,7 +68,7 @@ ms.locfileid: "84678080"
 
 如果你有 EA 协议，则可以使用 " **添加更多" 选项**   快速添加其他实例。 选项不适用于其他订阅类型。
 
-| **字段**           | **说明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 字段           | **说明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 订阅        | 用于支付预订费用的订阅。 订阅的付款方式将按预订费用收费。 订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或 Microsoft 客户协议，或者使用即用即付费率的单个订阅（产品/服务编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或-bc-op-nt-azr）。 将从货币承诺余额中扣除费用（如果可用），或按超额计费。 对于使用即用即付费率的订阅，将对订阅上的信用卡或发票付款方式收取费用。 |
 | 范围               | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -86,7 +87,7 @@ ms.locfileid: "84678080"
 
 对于获得预留折扣的使用量，使用数据的有效价格为零。 你可以看到哪个 VM 实例收到每个预订的预订折扣。
 
-有关如何在使用情况数据中显示预订折扣的详细信息，请参阅 [了解企业注册的 Azure 保留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)（   如果你是 EA 客户）。 如果有单独的订阅，请参阅 [了解即用即付订阅的 Azure 保留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)。
+有关如何在使用情况数据中显示预订折扣的详细信息，请参阅 [了解企业注册的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)（   如果你是 EA 客户）。 如果有单独的订阅，请参阅 [了解即用即付订阅的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 ## <a name="change-a-reservation-after-purchase"></a>在购买后更改保留
 
@@ -108,13 +109,13 @@ ms.locfileid: "84678080"
 
 - 数量
 
-- 持续时间
+- Duration
 
 不过，如果想要进行更改，则可以 *交换*   预订。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
-可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预订的自助服务交换和退款](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预订的自助服务交换和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
@@ -122,26 +123,24 @@ ms.locfileid: "84678080"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何管理预订，请参阅 [管理 Azure 预订](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)。
+若要了解如何管理预订，请参阅 [管理 Azure 预订](../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预订？](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [什么是 Azure 预订？](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [使用 Azure 专用主机](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [使用 Azure 专用主机](./windows/dedicated-hosts.md)
 
 - [专用主机定价](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [管理 Azure 中的预留](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [管理 Azure 中的预留](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 
-- [了解预留折扣的应用方式](https://docs.microsoft.com/azure/billing/billing-understand-vm-reservation-charges)
+- [了解预留折扣的应用方式](../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
-- [了解采用即用即付费率的订阅的预留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [了解采用即用即付费率的订阅的预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
-- [了解企业合约的预留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [了解企业合约的预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 
-- [预留未包含的 Windows 软件成本](https://docs.microsoft.com/azure/billing/billing-reserved-instance-windows-software-costs)
+- [预留未包含的 Windows 软件成本](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
 
-- [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+- [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](/partner-center/azure-reservations)

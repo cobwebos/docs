@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501946"
 ---
 共享映像库是一种服务，可帮助你围绕映像构建结构和组织。 共享映像库提供：
 
@@ -83,7 +83,7 @@ ms.locfileid: "86221624"
 
 ## <a name="regional-support"></a>区域支持
 
-所有公共区域都可以是目标区域，要复制到澳大利亚中部和澳大利亚中部 2，需要将订阅列入允许列表。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
+所有公共区域都可以是目标区域，但是若要复制到澳大利亚中部和澳大利亚中部2，需要将订阅添加到允许列表。 若要请求将订阅添加到允许列表，请参阅：https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>限制 
 
@@ -129,8 +129,8 @@ ms.locfileid: "86221624"
 
 | 与用户共享     | 共享的映像库 | 映像定义 | 映像版本 |
 |----------------------|----------------------|--------------|----------------------|
-| 共享的映像库 | 是                  | 适合          | 适合                  |
-| 映像定义     | 否                   | 适合          | 是                  |
+| 共享的映像库 | 是                  | 是          | 是                  |
+| 映像定义     | 否                   | 是          | 是                  |
 
 建议在库级别共享以获得最佳体验。 我们建议不要共享单个映像版本。 有关 RBAC 的详细信息，请参阅[使用 RBAC 管理对 Azure 资源的访问权限](../articles/role-based-access-control/role-assignments-portal.md)。
 
@@ -146,7 +146,7 @@ ms.locfileid: "86221624"
 创建后，可对映像库资源进行一些更改。 限制如下：
  
 共享映像库：
-- 描述
+- 说明
 
 映像定义：
 - 建议的 vCPU 数

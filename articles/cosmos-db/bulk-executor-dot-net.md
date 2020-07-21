@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 4bcd2349913c1823e80d46565dfa869d9efe955f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ab95223d084436d1bf39ba557ec3b01c0b534d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260655"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503381"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用批量执行程序 .NET 库在 Azure Cosmos DB 中执行批量操作
 
@@ -41,7 +41,7 @@ ms.locfileid: "85260655"
 
 现在，我们从 GitHub 下载示例 .NET 应用程序来接着处理代码。 此应用程序针对 Azure Cosmos 帐户中存储的数据执行批量操作。 若要克隆该应用程序，请打开命令提示符，导航到要将该应用程序复制到的目录，然后运行以下命令：
 
-```
+```bash
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
@@ -203,4 +203,4 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解 Nuget 包的详细信息和发行说明，请参阅[批量执行程序 SDK 详细信息](sql-api-sdk-bulk-executor-dot-net.md)。
+* 若要了解 NuGet 包详细信息和发行说明，请参阅[批量执行器 SDK 详细信息](sql-api-sdk-bulk-executor-dot-net.md)。

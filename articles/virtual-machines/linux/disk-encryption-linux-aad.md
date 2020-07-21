@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1349052488cb520f5866b5b0d238a223f2ceb68
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 274dda338fca1dae1940dd4a0fe66df617195544
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135095"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502616"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）
 
@@ -209,7 +209,7 @@ EncryptFormatAll 参数可以减少加密 Linux 数据磁盘所需的时间。 �
 - 添加构成 VM 的数据磁盘。
 - 格式化、装载这些磁盘并将其添加到 fstab 文件。
 
-    1. 格式化新添加的磁盘。 此处使用了 Azure 生成的符号链接。 使用符号链接可避免设备名更改所造成的问题。 有关详细信息，请参阅[排查设备名称问题](troubleshoot-device-names-problems.md)。
+    1. 格式化新添加的磁盘。 此处使用了 Azure 生成的符号链接。 使用符号链接可避免设备名更改所造成的问题。 有关详细信息，请参阅[排查设备名称问题](../troubleshooting/troubleshoot-device-names-problems.md)。
     
         ```console
         mkfs -t ext4 /dev/disk/azure/scsi1/lun0
@@ -265,7 +265,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 可以使用 [az vm disk attach](add-disk.md) 或[通过 Azure 门户](attach-disk-portal.md)添加新数据磁盘。 在加密之前，需要先装载新附加的数据磁盘。 必须请求加密数据驱动器，因为在进行加密时，该驱动器不可用。 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>使用 Azure CLI 在新添加的磁盘上启用加密
- 如果 VM 之前已通过 "所有" 进行了加密，则--volume 类型参数应始终为 "所有"。 All 包括 OS 和数据磁盘。 如果以前使用 "OS" 卷类型对 VM 进行了加密，则--volume 类型参数应更改为 "全部"，以便包括 OS 和新的数据磁盘。 如果 VM 只是以 "数据" 的类型进行加密，则它可以保留数据，如此处所示。 向 VM 添加新的数据磁盘并将其附加到没有足够的加密准备。 在启用加密之前，还必须格式化新附加的磁盘并将其正确装载在 VM 中。 在 Linux 上，必须使用[永久性块设备名称](troubleshoot-device-names-problems.md)在/etc/fstab 中装载磁盘。 
+ 如果 VM 之前已通过 "所有" 进行了加密，则--volume 类型参数应始终为 "所有"。 All 包括 OS 和数据磁盘。 如果以前使用 "OS" 卷类型对 VM 进行了加密，则--volume 类型参数应更改为 "全部"，以便包括 OS 和新的数据磁盘。 如果 VM 只是以 "数据" 的类型进行加密，则它可以保留数据，如此处所示。 向 VM 添加新的数据磁盘并将其附加到没有足够的加密准备。 在启用加密之前，还必须格式化新附加的磁盘并将其正确装载在 VM 中。 在 Linux 上，必须使用[永久性块设备名称](../troubleshooting/troubleshoot-device-names-problems.md)在/etc/fstab 中装载磁盘。 
 
 与 PowerShell 语法相反，在启用加密时，CLI 不要求你提供唯一的序列版本。 CLI 自动生成并使用自己唯一的序列版本值。
 

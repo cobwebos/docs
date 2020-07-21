@@ -5,29 +5,33 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/10/2020
+ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cafde6ed66e5b636be60533abafcd6f221fe33a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277682"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502499"
 ---
-Azure 共享磁盘（预览版）是 Azure 托管磁盘的一项新功能，可同时将托管磁盘附加到多个虚拟机 (VM)。 通过将托管磁盘附加到多个 VM，可以向 Azure 部署新的群集应用程序或迁移现有的群集应用程序。
+Azure 共享磁盘是 Azure 托管磁盘的一项新功能，可让你同时将托管磁盘附加到多个虚拟机（Vm）。 通过将托管磁盘附加到多个 VM，可以向 Azure 部署新的群集应用程序或迁移现有的群集应用程序。
 
 ## <a name="how-it-works"></a>工作原理
 
-群集中的 VM 可以根据群集应用程序使用 [SCSI 永久预留](https://www.t10.org/members/w_spc3.htm) (SCSI PR) 选择的预留来读取或写入附加的磁盘。 SCSI PR 是一种行业标准，可供本地存储区域网络 (SAN) 上运行的应用程序利用。 在托管磁盘上启用 SCSI PR，可以将这些应用程序按原样迁移到 Azure。
+群集中的 Vm 可以根据群集应用程序使用[Scsi 永久保留](https://www.t10.org/members/w_spc3.htm)（scsi PR）选择的保留来读取或写入其附加的磁盘。 SCSI PR 是一种行业标准，可供本地存储区域网络 (SAN) 上运行的应用程序利用。 在托管磁盘上启用 SCSI PR，可以将这些应用程序按原样迁移到 Azure。
 
-共享托管磁盘提供了可以从多个 VM 进行访问的共享块存储，这些存储作为逻辑单元号 (LUN) 公开。 然后，会将 LUN 从目标（磁盘）提供给发起程序 (VM)。 这些 LUN 看起来像直接附加存储 (DAS) 或 VM 的本地驱动器。
+共享托管磁盘提供可从多个虚拟机访问的共享块存储，它们作为逻辑单元号（Lun）公开。 然后，会将 LUN 从目标（磁盘）提供给发起程序 (VM)。 这些 LUN 看起来像直接附加存储 (DAS) 或 VM 的本地驱动器。
 
-共享托管磁盘本身并不提供可以使用 SMB/NFS 访问的完全托管的文件系统。 需要使用群集管理器（如 Windows Server 故障转移群集 (WSFC) 或 Pacemaker）来处理群集节点通信以及写入锁定。
+共享托管磁盘本身并不提供可以使用 SMB/NFS 访问的完全托管的文件系统。 需要使用群集管理器（如 Windows Server 故障转移群集（WSFC）或 Pacemaker）来处理群集节点通信和写入锁定。
 
 ## <a name="limitations"></a>限制
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
+
+### <a name="operating-system-requirements"></a>操作系统要求
+
+共享磁盘支持多个操作系统。 有关支持的操作系统，请参阅[Windows](#windows)或[Linux](#linux)部分。
 
 ## <a name="disk-sizes"></a>磁盘大小
 
@@ -37,23 +41,25 @@ Azure 共享磁盘（预览版）是 Azure 托管磁盘的一项新功能，可�
 
 ### <a name="windows"></a>Windows
 
-大多数基于 Windows 的群集构建于 WSFC 上，它处理群集节点通信的所有核心基础结构，使应用程序能够利用并行访问模式。 WSFC 根据 Windows Server 的版本启用 CSV 和非 CSV 的选项。 有关详细信息，请参阅[创建故障转移群集](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)。
+Windows Server 2008 和更高版本支持 Azure 共享磁盘。 大多数基于 Windows 的群集构建于 WSFC 上，后者处理群集节点通信的所有核心基础结构，使应用程序能够利用并行访问模式。 WSFC 根据 Windows Server 的版本启用 CSV 和非 CSV 的选项。 有关详细信息，请参阅[创建故障转移群集](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)。
 
 WSFC 上运行的热门应用程序包括：
 
-- [在 Azure Vm 上创建 FCI 和 Azure 共享磁盘 (SQL Server) ](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
-- 横向扩展文件服务器 (SoFS)
+- [使用 Azure 共享磁盘（SQL Server 在 Azure Vm 中）创建 FCI](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
+- 横向扩展文件服务器（SoFS） [模板] （https://aka.ms/azure-shared-disk-sofs-template)
+- SAP ASCS/SCS [模板] （https://aka.ms/azure-shared-disk-sapacs-template)
 - 常规用途的文件服务器（IW 工作负载）
 - 远程桌面服务器用户配置文件磁盘 (RDS UPD)
-- SAP ASCS/SCS
 
 ### <a name="linux"></a>Linux
 
-Linux 群集可以利用群集管理器，例如 [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker)。 Pacemaker 基于 [Corosync](http://corosync.github.io/corosync/) 构建，可为部署在高可用环境中的应用程序启用群集通信。 一些常见的群集文件系统包括 [ocfs2](https://oss.oracle.com/projects/ocfs2/) 和 [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2)。 可以使用 [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) 和 [sg_persist](https://linux.die.net/man/8/sg_persist) 之类的实用程序来处理预留和注册。
+支持 Azure 共享磁盘：
+- [SUSE SLE for SAP 和 SUSE SLE HA 15 SP1 及更高版本](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
+- [Ubuntu 18.04 及更高版本](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
+- [任何 RHEL 8 版本上的 RHEL 开发人员预览版](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
+- [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
-#### <a name="ubuntu"></a>Ubuntu
-
-若要了解如何在 Azure 共享磁盘上通过 Corosync 和 Pacemaker 设置 Ubuntu 高可用性，请参阅 [Ubuntu Community Discourse](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)。
+Linux 群集可以利用群集管理器，例如 [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker)。 Pacemaker 基于 [Corosync](http://corosync.github.io/corosync/) 构建，可为部署在高可用环境中的应用程序启用群集通信。 一些常见的群集文件系统包括 [ocfs2](https://oss.oracle.com/projects/ocfs2/) 和 [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2)。 可以使用基于 SCSI 永久保留（SCSI PR）和/或 STONITH 块设备（SBD）的聚类分析模型，对磁盘进行 arbitrating 访问。 使用 SCSI PR 时，可以使用[fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html)和[sg_persist](https://linux.die.net/man/8/sg_persist)等实用工具来处理预留和注册。
 
 ## <a name="persistent-reservation-flow"></a>永久预留流
 
@@ -85,12 +91,13 @@ Linux 群集可以利用群集管理器，例如 [Pacemaker](https://wiki.cluste
 
 超级磁盘提供附加限制，总共有两个限制。 因此，超级磁盘预留流可以按前面部分所述工作，也可以更精细地限制和分配性能。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="描述预留持有者、注册者和其他人的只读或读/写访问权限的表的图像。":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="描述预订持有者、注册和其他的 "ReadOnly" 或 "读/写" 访问权限的表的图像。":::
 
 ## <a name="performance-throttles"></a>性能限制
 
-### <a name="premium-ssd-performance-throttles"></a>高级 ssd 性能限制
-使用高级 ssd 时，磁盘 IOPS 和吞吐量是固定的，例如 P30 的 IOPS 为5000。 如果磁盘在2个 Vm 或5个 Vm 之间共享，则会保留此值。 可以从单个 VM 或跨越两个或多个 Vm 来访问磁盘限制。 
+### <a name="premium-ssd-performance-throttles"></a>高级 SSD 性能限制
+
+使用高级 SSD 时，磁盘 IOPS 和吞吐量是固定的，例如，P30 的 IOPS 为5000。 如果磁盘在2个 Vm 或5个 Vm 之间共享，则会保留此值。 可以从单个 VM 或跨越两个或多个 Vm 来访问磁盘限制。 
 
 ### <a name="ultra-disk-performance-throttles"></a>超级磁盘性能限制
 
@@ -101,8 +108,8 @@ Linux 群集可以利用群集管理器，例如 [Pacemaker](https://wiki.cluste
 |---------|---------|
 |DiskIOPSReadWrite     |所有装载具有写入访问权限的共享磁盘的 VM 所允许的 IOPS 总数。         |
 |DiskMBpsReadWrite     |所有装载具有写入访问权限的共享磁盘的 VM 所允许的总吞吐量 (MB/s)。         |
-|DiskIOPSReadOnly*     |所有以只读方式装载共享磁盘的 VM 所允许的 IOPS 总数。         |
-|DiskMBpsReadOnly*     |所有以只读方式装载共享磁盘的 VM 所允许的总吞吐量 (MB/s)。         |
+|DiskIOPSReadOnly*     |将共享磁盘装载到的所有 Vm 允许的 IOPS 总数 `ReadOnly` 。         |
+|DiskMBpsReadOnly*     |在装载共享磁盘的所有 Vm 上允许的总吞吐量（MB/秒） `ReadOnly` 。         |
 
 \* 仅适用于共享的超级磁盘
 
@@ -122,18 +129,22 @@ Linux 群集可以利用群集管理器，例如 [Pacemaker](https://wiki.cluste
 
 ##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>使用群集共享卷的双节点群集
 
-以下是使用群集共享卷的 2 节点 WSFC 的示例。 使用此配置，两个 VM 都可以同时对磁盘进行写入访问，这将导致 ReadWrite 限制将由两个 VM 共享，且不使用 ReadOnly 限制。
+以下是使用群集共享卷的 2 节点 WSFC 的示例。 使用此配置时，两个 Vm 都同时具有对磁盘的写入访问权限，这将导致在 `ReadWrite` 两个 vm 之间剥离中止，而 `ReadOnly` 不使用限制。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV 双节点超级性能示例":::
 
 ##### <a name="two-node-cluster-without-cluster-share-volumes"></a>无群集共享卷的双节点群集
 
-以下是未使用群集共享卷的 2 节点 WSFC 的示例。 使用此配置时，只有一个 VM 对磁盘具有写入访问权限。 这会导致 ReadWrite 限制专用于主 VM，ReadOnly 限制专用于辅助 VM。
+以下是未使用群集共享卷的 2 节点 WSFC 的示例。 使用此配置时，只有一个 VM 对磁盘具有写入访问权限。 这会导致 `ReadWrite` 限制仅用于主 VM，并且 `ReadOnly` 仅辅助副本使用限制。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV 双节点无 csv 超级磁盘示例":::
 
 ##### <a name="four-node-linux-cluster"></a>四节点 Linux 群集
 
-下面是具有一个编写器和三个横向扩展读取器的 4 节点 Linux 群集的示例。 使用此配置时，只有一个 VM 对磁盘具有写入访问权限。 这会导致将 ReadWrite 限制专用于主 VM，而 ReadOnly 限制则由辅助 VM 共享。
+下面是具有一个编写器和三个横向扩展读取器的 4 节点 Linux 群集的示例。 使用此配置时，只有一个 VM 对磁盘具有写入访问权限。 这会导致 `ReadWrite` 限制仅用于主 vm，并且 `ReadOnly` 由辅助 vm 拆分限制。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="四节点超级限制示例":::
+
+#### <a name="ultra-pricing"></a>超高定价
+
+超共享磁盘的定价基于预配的容量、总的预配 IOPS （diskIOPSReadWrite + diskIOPSReadOnly）和总的预配吞吐量（diskMBpsReadWrite + diskMBpsReadOnly）。 每个额外 VM 装载不收取额外费用。 例如，具有以下配置的 ultra 共享磁盘（diskSizeGB：1024、DiskIOPSReadWrite：10000、DiskMBpsReadWrite：600、DiskIOPSReadOnly：100、DiskMBpsReadOnly：1）将按 1024 GiB、10100 IOPS 和 601 MBps 收费，而不管它是装载到两个 Vm 还是五个 Vm。

@@ -11,21 +11,21 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 102808d716c080102cce4c02921637101da9fab7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 071baacd375cb5595bc99eeead7e818a35c4539b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553092"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500406"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息，可用于管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关提供的数据的完整列表，请参阅[元数据 API](#metadata-apis)。
-实例元数据服务适用于 VM 和虚拟机规模集实例。 它仅可用于运行使用 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)创建/管理的 VM。
+实例元数据服务适用于 VM 和虚拟机规模集实例。 它仅可用于运行使用 [Azure 资源管理器](/rest/api/resources/)创建/管理的 VM。
 
 Azure 的 IMDS 是一个 REST 终结点，可在已知不可路由的 IP 地址（）上使用 `169.254.169.254` ，只能从 VM 内部访问它。 VM 与 IMDS 之间的通信绝不会离开主机。
-在查询 IMDS 时，最好让 HTTP 客户端绕过 VM 中的 web 代理，并将其视为 `169.254.169.254` 相同 [`168.63.129.16`](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) 。
+在查询 IMDS 时，最好让 HTTP 客户端绕过 VM 中的 web 代理，并将其视为 `169.254.169.254` 相同 [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) 。
 
 ## <a name="security"></a>安全性
 
@@ -39,7 +39,7 @@ Azure 的 IMDS 是一个 REST 终结点，可在已知不可路由的 IP 地址�
 
 ### <a name="accessing-azure-instance-metadata-service"></a>访问 Azure 实例元数据服务
 
-若要访问实例元数据服务，请从 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)或 [Azure 门户](https://portal.azure.com)创建一个 VM，并按照以下示例操作。
+若要访问实例元数据服务，请从 [Azure 资源管理器](/rest/api/resources/)或 [Azure 门户](https://portal.azure.com)创建一个 VM，并按照以下示例操作。
 有关如何查询 IMDS 的更多示例，请参阅 [Azure 实例元数据示例](https://github.com/microsoft/azureimds)。
 
 下面是用于检索实例的所有元数据的示例代码。若要访问特定数据源，请参阅[元数据 API](#metadata-apis) 部分。 
@@ -246,22 +246,22 @@ name | VM 的名称 | 2017-04-02
 offer | 提供 VM 映像的信息，仅适用于从 Azure 映像库部署的映像 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-计划 | 包含 VM 的名称、产品和发布者（如果是 Azure 市场映像）的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
+计划 | 包含 VM 的名称、产品和发布者（如果是 Azure 市场映像）的[计划](/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 platformUpdateDomain |  正在运行 VM 的[更新域](manage-availability.md) | 2017-04-02
 platformFaultDomain | 正在运行 VM 的[容错域](manage-availability.md) | 2017-04-02
 provider | VM 的提供商 | 2018-10-01
-publicKeys | [公钥的集合](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
+publicKeys | [公钥的集合](/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
 publisher | VM 映像的发布者 | 2017-04-02
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/management/overview.md) | 2017-08-01
-ResourceId | 资源的[完全限定](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID | 2019-03-11
+resourceId | 资源的[完全限定](/rest/api/resources/resources/getbyid) ID | 2019-03-11
 sku | VM 映像的特定 SKU | 2017-04-02
 storageProfile | 参阅[存储配置文件](#storage-metadata) | 2019-06-01
 subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
-tags | 虚拟机的[标记](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
+标记 | 虚拟机的[标记](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | 格式化为 JSON 数组以方便编程分析的标记  | 2019-06-04
 版本 | VM 映像的版本 | 2017-04-02
 vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
-vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
+vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
 vmSize | [VM 大小](sizes.md) | 2017-04-02
 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
 
@@ -420,7 +420,7 @@ Azure 环境的云和值列在下面。
  云   | Azure 环境
 ---------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | AzurePublicCloud
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
+[Azure 政府](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
@@ -666,7 +666,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 > [!NOTE]
 > 由于 IMDS 的缓存机制，可能会返回以前缓存的 nonce 值。
 
-API 版本是必填字段。 有关支持的 API 版本的信息，请参阅[使用部分](#usage)。
+Api-version 是必填字段。 有关支持的 API 版本的信息，请参阅[使用部分](#usage)。
 Nonce 是一个可选的 10 位字符串。 如果未提供，IMDS 将在其所在位置返回当前 UTC 时间戳。
 
 **响应**
@@ -686,7 +686,7 @@ Nonce 是一个可选的 10 位字符串。 如果未提供，IMDS 将在其所�
 数据 | 说明
 -----|------------
 nonce | 可以随请求提供的可选字符串。 如果未提供 nonce，则会使用当前 UTC 时间戳
-plan | [Azure 市场映像计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)。 包含计划 ID（名称）、产品映像或产品/服务（产品）和发布者 ID（发布者）。
+plan | [Azure 市场映像计划](/rest/api/compute/virtualmachines/createorupdate#plan)。 包含计划 ID（名称）、产品映像或产品/服务（产品）和发布者 ID（发布者）。
 timestamp/createdOn | 创建签名文档时的 UTC 时间戳
 timestamp/expiresOn | 签名文档到期时的 UTC 时间戳
 vmId |  VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
@@ -704,7 +704,7 @@ $attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoPr
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```
 
-验证签名是否来自 Microsoft Azure，并检查证书链中是否存在错误。
+验证签名是否来自 Microsoft Azure 并检查证书链中是否存在错误。
 
 ```powershell
 # Get certificate chain
@@ -733,12 +733,12 @@ $json = $content | ConvertFrom-Json
 如果在初始请求中提供了 nonce 参数，则可以比较签名文档中的 nonce。
 
 > [!NOTE]
-> 公有云和每个主权云的证书将不同。
+> 公有云和每个主权云的证书将有所不同。
 
 云 | 证书
 ------|------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/) | *.metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)          | *.metadata.azure.us
+[Azure 政府](https://azure.microsoft.com/overview/clouds/government/)          | *.metadata.azure.us
 [Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)     | *.metadata.azure.cn
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                | *.metadata.microsoftazure.de
 
@@ -753,7 +753,7 @@ $json = $content | ConvertFrom-Json
 
 ## <a name="failover-clustering-in-windows-server"></a>Windows Server 中的故障转移群集
 
-对于使用故障转移群集查询实例元数据服务时的某些方案，需要将路由添加到路由表。
+在某些情况下，在使用故障转移群集查询实例元数据服务时，必须向路由表添加路由。
 
 1. 使用管理员特权打开命令提示符。
 
@@ -831,7 +831,7 @@ Visual Basic  | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 
 如果找不到某个数据元素，或者请求的格式不正确，则实例元数据服务返回标准 HTTP 错误。 例如：
 
-HTTP 状态代码 | 原因
+HTTP 状态代码 | Reason
 -----------------|-------
 200 正常 |
 400 错误的请求 | 查询叶节点时缺少 `Metadata: true` 标头或缺少参数 `format=json`
@@ -852,7 +852,7 @@ HTTP 状态代码 | 原因
 1. 我看不到为新版本填充的任何数据
    * 对于 2016 年 9 月之后创建的所有 VM，请添加[标记](../../azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 对于早期 VM（在 2016 年 9 月之前创建的 VM），请在 VM 实例中添加/删除扩展或数据磁盘以刷新元数据。
 1. 我为什么会收到错误 `500 Internal Server Error` 或 `410 Resource Gone`？
-   * 基于指数回退系统或[暂时性故障处理](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults)中所述的其他方法重试请求。 如果问题仍然存在，请在 Azure 门户中为 VM 创建支持问题。
+   * 基于指数回退系统或[暂时性故障处理](/azure/architecture/best-practices/transient-faults)中所述的其他方法重试请求。 如果问题仍然存在，请在 Azure 门户中为 VM 创建支持问题。
 1. 这是否适用于虚拟机规模集实例？
    * 是的，元数据服务可用于规模集实例。
 1. 我在虚拟机规模集中更新了我的标记，但与单实例 VM 不同，这些标记未出现在实例中，这是怎么回事？
@@ -894,7 +894,7 @@ HTTP 状态代码 | 原因
                Subnet Mask . . . . . . . . . . . : 255.255.255.0
             ... (continues) ...
             ```
-        1. 确认接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置或通过查看[Azure CLI](https://docs.microsoft.com/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)来查找主 NIC/IP。 请注意公共和专用 Ip （如果使用 cli，则为 MAC 地址）。 PowerShell CLI 示例：
+        1. 确认接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置或通过查看[Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)来查找主 NIC/IP。 请注意公共和专用 Ip （如果使用 cli，则为 MAC 地址）。 PowerShell CLI 示例：
             ```powershell
             $ResourceGroup = '<Resource_Group>'
             $VmName = '<VM_Name>'
@@ -911,12 +911,12 @@ HTTP 状态代码 | 原因
 
 ## <a name="support-and-feedback"></a>支持和反馈
 
-提交反馈和评论 https://feedback.azure.com 。
+请在 https://feedback.azure.com 中提交反馈和评论。
 
 若要获取该服务的支持，请针对长时间重试后仍无法获取元数据响应的 VM，在 Azure 门户中创建相关支持问题。
-使用的问题类型 `Management` ，并选择 `Instance Metadata Service` 作为类别。
+使用“`Management`”作为“问题类型”，然后选择“`Instance Metadata Service`”作为“类别”。
 
-![实例元数据支持](./media/instance-metadata-service/InstanceMetadata-support.png "屏幕截图：在实例元数据服务出现问题时打开支持案例")
+![实例元数据支持](./media/instance-metadata-service/InstanceMetadata-support.png "屏幕截图：在实例元数据服务出现问题时建立支持案例")
 
 ## <a name="next-steps"></a>后续步骤
 

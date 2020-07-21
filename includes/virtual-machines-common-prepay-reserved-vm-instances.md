@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/27/2020
-ms.openlocfilehash: d41affc55134ad34c325c12ab4a14f4013c58f9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 2fda9c41efd4c6765681d98011d8fb890b09d19f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371670"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502039"
 ---
 当你提交到 Azure 保留 VM 实例时，你可以节省资金。 预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 无需为虚拟机分配预订即可获取折扣。 购买的预订实例仅涵盖 VM 使用率的计算部分。 对于 Windows Vm，使用情况计量分为两个不同的计量器。 有一个计算计量器，与 Linux 计量和 Windows IP 指标相同。 进行购买时看到的费用仅适用于计算成本。 费用不包括 Windows 软件费用。 有关软件成本的详细信息，请参阅[Azure 保留 VM 实例中未包含的软件成本](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)。
 
@@ -84,7 +84,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - 对于 EA 订阅，必须在[ea 门户](https://ea.azure.com/)中启用 "**添加保留实例**" 选项。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理才能购买预留。
 
-若要购买实例：
+若要购买实例，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“所有服务” > “预订”。
@@ -101,7 +101,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 |区域    |预订涵盖的 Azure 区域。|    
 |VM 大小     |VM 实例的大小。|
 |优化对象     |默认情况下选择了 VM 实例大小灵活性。 单击 "**高级设置**" 以更改实例大小的灵活性值，以将预订折扣应用于同一[VM 大小组](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)中的其他 vm。 容量优先级可以对部署优先使用数据中心容量。 它可让你在需要时启动 VM 实例，从而提供更多的信心。 仅当预留范围为单个订阅时，容量优先级才可用。 |
-|术语        |一年或三年。|
+|术语        |一年或三年。 还有5年期限仅适用于 HBv2 Vm。|
 |数量    |预订中购买的实例数。 数量是可以获得计费折扣的正在运行的 VM 实例数。 例如，如果你在美国东部运行10个 Standard_D2 Vm，则可将数量指定为10，以最大程度地提高所有正在运行的 Vm 的权益。 |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
@@ -127,7 +127,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - 现有预订的区域
 - SKU
 - 数量
-- 持续时间
+- Duration
 
 不过，如果想要进行更改，则可以*交换*预订。
 

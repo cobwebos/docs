@@ -8,11 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 15118c9c3d2d1a528c62b539ab7bdd8f174c19de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49918335dc6855726e7d8de15c01a5f15280af08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080104"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503211"
 ---
 # <a name="sentiment-cognitive-skill"></a>情绪认知技能
 
@@ -35,20 +36,20 @@ Microsoft.Skills.Text.SentimentSkill
 
 参数区分大小写。
 
-| 参数名称 |                      |
+| 参数名称 | 说明 |
 |----------------|----------------------|
 | `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
 
 ## <a name="skill-inputs"></a>技能输入 
 
-| 输入名称 | 描述 |
+| 输入名称 | 说明 |
 |--------------------|-------------|
 | `text` | 要分析的文本。|
 | `languageCode`    |  （可选）表示记录的语言的字符串。 如果未指定此属性，则默认值为“en”。 <br/>请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/text-analytics-supported-languages.md)。|
 
 ## <a name="skill-outputs"></a>技能输出
 
-| 输出名称 | 描述 |
+| 输出名称 | 说明 |
 |--------------------|-------------|
 | `score` | 介于 0 和 1 之间的值，表示所分析的文本的情绪。 值接近 0 代表消极情绪，接近 0.5 代表中性情绪，接近 1 代表积极的情绪。|
 
@@ -109,7 +110,7 @@ Microsoft.Skills.Text.SentimentSkill
 }
 ```
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>备注
 如果为空，则不为这些记录返回情绪分数。
 
 ## <a name="error-cases"></a>错误案例

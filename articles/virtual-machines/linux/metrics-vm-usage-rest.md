@@ -8,21 +8,22 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1aa108d7f903ed791c534b2b88550eb8d022ef64
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944756"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502072"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 获取虚拟机使用情况指标
 
-此示例演示如何使用 [Azure REST API](/rest/api/azure/) 检索 [Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/monitor)的 CPU 使用情况。
+此示例演示如何使用 [Azure REST API](/rest/api/azure/) 检索 Linux 虚拟机的 CPU 使用情况。
 
 [Azure Monitor REST 参考](/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 
 ## <a name="build-the-request"></a>生成请求
 
-使用以下 GET 请求从虚拟机中收集 [CPU 百分比指标](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines)
+使用以下 GET 请求从虚拟机中收集 [CPU 百分比指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -41,10 +42,10 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 | 名称 | 说明 |
 | :--- | :---------- |
-| subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
+| subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 与资源相关的 Azure 资源组的名称。 可以从 Azure 资源管理器 API、CLI 或门户获取此值。 |
 | vmname | Azure 虚拟机的名称。 |
-| metricnames | 以逗号分隔的有效[负载均衡器指标](/azure/load-balancer/load-balancer-standard-diagnostics)列表。 |
+| metricnames | 以逗号分隔的有效[负载均衡器指标](../../load-balancer/load-balancer-standard-diagnostics.md)列表。 |
 | api-version | 要用于请求的 API 版本。<br /><br /> 本文档涵盖 API 版本 `2018-01-01`，包含于上述 URL 中。  |
 | timespan | 带有以下格式 `startDateTime_ISO/endDateTime_ISO` 的字符串，用于定义返回的指标的时间范围。 此可选参数设置为在示例中返回一天的数据。 |
 | &nbsp; | &nbsp; |

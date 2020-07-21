@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 705f9f3055d40d23c9ec5e24cfccfc0c96e114a5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235820"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502565"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>使用主机上的加密启用端到端加密-Azure CLI
 
@@ -35,7 +35,7 @@ ms.locfileid: "86235820"
 
 ## <a name="prerequisites"></a>先决条件
 
-为了能够在 Vm 或虚拟机规模集的主机上使用加密，必须在订阅上启用该功能。 encryptionAtHost@microsoft使用你的订阅 id 向 .com 发送电子邮件，以便为你的订阅启用该功能。
+为了能够在 Vm 或虚拟机规模集的主机上使用加密，必须在订阅上启用该功能。 使用你的订阅 Id 向发送电子邮件 encryptionAtHost@microsoft.com ，以便为你的订阅启用该功能。
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>创建 Azure Key Vault 和 DiskEncryptionSet
 
@@ -77,7 +77,7 @@ az group deployment create -g <yourResourceGroupName> \
 
 不支持旧的 VM 大小。 可以通过以下任一方法查找受支持的 VM 大小列表：
 
-调用[资源 SKU API](https://docs.microsoft.com/rest/api/compute/resourceskus/list)并检查 `EncryptionAtHostSupported` 功能是否设置为**True**。
+调用[资源 SKU API](/rest/api/compute/resourceskus/list)并检查 `EncryptionAtHostSupported` 功能是否设置为**True**。
 
 ```json
     {
@@ -98,7 +98,7 @@ az group deployment create -g <yourResourceGroupName> \
     }
 ```
 
-或调用[AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell cmdlet。
+或调用[AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell cmdlet。
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 

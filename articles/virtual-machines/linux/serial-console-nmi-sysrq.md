@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9ced48295fa4c396ed6c72fe021ed1e1be484b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758483"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501885"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用串行控制台发出 SysRq 和 NMI 调用
 
@@ -22,11 +23,11 @@ SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预�
 
 可以使用下面显示的命令栏上的键盘图标通过 Azure 串行控制台向 Azure 虚拟机发送 SysRq。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Azure 串行控制台的屏幕截图。 键盘图标突出显示，其菜单可见。 该菜单包含 Send SysRq 命令项。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 选择“发送 SysRq 命令”会打开一个对话框，其中提供了常用 SysRq 选项，或者可以接受该对话框中输入的 SysRq 命令序列。  这样，SysRq 序列便可以执行某个高级别的操作，例如，使用 `REISUB` 执行安全重新启动。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+!["向来宾发送 SysRq 命令" 对话框的屏幕截图。 选择用于输入命令的选项，并且命令框包含 REISUB。](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 不能在已停止或者其内核处于无响应状态的虚拟机上使用 SysRq 命令。 （例如内核崩溃）。
 
@@ -95,7 +96,7 @@ echo "1" >/proc/sys/kernel/sysrq
 
 可以使用下面显示的命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 传送 NMI 后，虚拟机配置将控制系统的响应方式。  可将 Linux 操作系统配置为在收到 NMI 时发生崩溃并创建内存转储。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![串行控制台的屏幕截图。 键盘图标突出显示，其菜单可见。 该菜单包含 "发送不可屏蔽" 中断项。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 对于支持使用 sysctl 配置内核参数的 Linux 系统，可以使用以下步骤来启用收到此 NMI 时发生崩溃：
 1. 将此行添加到 */etc/sysctl.conf* <br>
@@ -120,7 +121,7 @@ echo "1" >/proc/sys/kernel/sysrq
 - [收集崩溃日志](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>后续步骤
-* 主要串行控制台 Linux 文档页位于[此处](serial-console.md)。
+* 主要串行控制台 Linux 文档页位于[此处](../troubleshooting/serial-console-linux.md)。
 * 使用串行控制台启动到 [GRUB 并进入单用户模式](serial-console-grub-single-user-mode.md)
-* 串行控制台也适用于 [Windows](../windows/serial-console.md) VM
-* 了解有关[启动诊断](boot-diagnostics.md)的详细信息
+* 串行控制台也适用于 [Windows](../troubleshooting/serial-console-windows.md) VM
+* 了解有关[启动诊断](../troubleshooting/boot-diagnostics.md)的详细信息

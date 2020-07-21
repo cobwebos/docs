@@ -12,25 +12,26 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: amverma
-ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de61403b62f80bea7872d5ab3561567ae2109590
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74196767"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500062"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>使用 SR-IOV 启用 "不允许"
 
-Azure NC、ND 和 H 系列 Vm 均由专用的未受支持网络支持。 所有启用 RDMA 的大小都可以利用使用 Intel MPI 的网络。 某些 VM 系列已通过 SR-IOV 扩展了对所有 MPI 实现和 RDMA 谓词的支持。 支持 RDMA 的 Vm 包括[GPU 优化](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)和[高性能计算（HPC）](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) vm。
+Azure NC、ND 和 H 系列 Vm 均由专用的未受支持网络支持。 所有启用 RDMA 的大小都可以利用使用 Intel MPI 的网络。 某些 VM 系列已通过 SR-IOV 扩展了对所有 MPI 实现和 RDMA 谓词的支持。 支持 RDMA 的 Vm 包括[GPU 优化](../../sizes-gpu.md)和[高性能计算（HPC）](../../sizes-hpc.md) vm。
 
 ## <a name="choose-your-installation-path"></a>选择安装路径
 
 若要开始操作，最简单的方法是使用预先配置的、可在以下情况下使用的平台映像：
 
-- **Hpc Iaas vm** –若要开始使用适用于 HPC 的 IaaS vm，最简单的解决方案是使用已配置了 "不占用" 的[CentOS-HPC 7.6 VM OS 映像](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)。 由于此映像已配置了无线处理，因此不需要手动配置。 对于兼容的 Windows 版本，请参阅[支持 WINDOWS RDMA 的实例](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)。
+- **Hpc Iaas vm** –若要开始使用适用于 HPC 的 IaaS vm，最简单的解决方案是使用已配置了 "不占用" 的[CentOS-HPC 7.6 VM OS 映像](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)。 由于此映像已配置了无线处理，因此不需要手动配置。 对于兼容的 Windows 版本，请参阅[支持 WINDOWS RDMA 的实例](../../sizes-hpc.md#rdma-capable-instances)。
 
 - **Gpu IaaS vm** –当前没有为 Gpu 优化 vm 预先配置平台映像， [CentOS-HPC 7.6 VM OS 映像](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)除外。 若要使用无限配置自定义映像，请参阅[手动安装 MELLANOX OFED](#manually-install-mellanox-ofed)。
 
-如果你使用的是自定义 VM 映像或[GPU 优化](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)VM，则应通过将 InfiniBandDriverLinux 或 InfiniBandDriverWindows VM 扩展添加到你的部署来对其进行配置。 了解如何在[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances)和[Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)中使用这些 VM 扩展。
+如果你使用的是自定义 VM 映像或[GPU 优化](../../sizes-gpu.md)VM，则应通过将 InfiniBandDriverLinux 或 InfiniBandDriverWindows VM 扩展添加到你的部署来对其进行配置。 了解如何在[Linux](../../sizes-hpc.md#rdma-capable-instances)和[Windows](../../sizes-hpc.md#rdma-capable-instances)中使用这些 VM 扩展。
 
 ## <a name="manually-install-mellanox-ofed"></a>手动安装 Mellanox OFED
 
@@ -65,4 +66,4 @@ sudo systemctl restart waagent
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 Azure 上的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)的详细信息。
+了解有关 Azure 上的[HPC](/azure/architecture/topics/high-performance-computing/)的详细信息。

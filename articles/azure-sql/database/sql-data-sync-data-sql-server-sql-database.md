@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 80bc254aafa9c221fcaf724331928b7f30360eac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02207f8b5cf8628c3b2bbb72ab8d38ca9a4a5731
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610840"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504214"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure SQL 数据同步是什么？
 
@@ -78,7 +78,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 
 ## <a name="compare-with-transactional-replication"></a>与事务复制比较
 
-| | 数据同步 | 事务复制 |
+| 数据同步 | 事务复制 |
 |---|---|---|
 | 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 <br/>-Azure SQL 托管实例支持 |
 | 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | -无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
@@ -193,7 +193,7 @@ SQL 数据同步在所有区域中都可用。
 
 ### <a name="is-a-sql-database-account-required"></a>是否需要 SQL 数据库帐户
 
-是的。 您必须有一个 SQL 数据库帐户来托管中心数据库。
+是。 您必须有一个 SQL 数据库帐户来托管中心数据库。
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>能否使用数据同步仅在 SQL Server 数据库之间进行同步
 
@@ -201,14 +201,14 @@ SQL 数据同步在所有区域中都可用。
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>能否在属于不同订阅的 SQL 数据库中的数据库之间使用数据同步进行同步
 
-是的。 可以在属于不同订阅拥有的资源组的数据库之间进行同步。
+是。 可以在属于不同订阅拥有的资源组的数据库之间进行同步。
 
 - 如果订阅属于同一租户，并且你对所有订阅都有权限，则可以在 Azure 门户中配置同步组。
 - 否则，必须使用 PowerShell 来添加属于不同订阅的同步成员。
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>能否使用数据同步在属于不同云（如 Azure 公有云和 Azure 中国世纪互联）的 SQL 数据库中的数据库之间进行同步
 
-是的。 可以在属于不同云的数据库之间进行同步。 必须使用 PowerShell 来添加属于不同订阅的同步成员。
+是。 可以在属于不同云的数据库之间进行同步。 必须使用 PowerShell 来添加属于不同订阅的同步成员。
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>是否可以使用数据同步将生产数据库中的数据种子植入到空数据库，然后将这两个数据库同步
 

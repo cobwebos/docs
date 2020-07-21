@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443587"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500916"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 上的 Windows 重启循环
 本文介绍在 Microsoft Azure 中的 Windows 虚拟机 (VM) 上可能遇到的重启循环。
@@ -49,7 +50,7 @@ ms.locfileid: "75443587"
 
 ## <a name="solution"></a>解决方案
 
-要解决此问题，请[备份 OS 磁盘](../windows/snapshot-copy-managed-disk.md)，并[将 OS 磁盘附加到安全的 VM](../windows/troubleshoot-recovery-disks-portal.md)，然后按照相应地解决方案选项执行操作或逐个尝试解决方案。
+要解决此问题，请[备份 OS 磁盘](../windows/snapshot-copy-managed-disk.md)，并[将 OS 磁盘附加到安全的 VM](./troubleshoot-recovery-disks-portal-windows.md)，然后按照相应地解决方案选项执行操作或逐个尝试解决方案。
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
@@ -93,7 +94,7 @@ ms.locfileid: "75443587"
 
 16. [从 OS 磁盘创建新的 VM](../windows/create-vm-specialized.md)。
 
-17. 如果问题得到解决，则可能需要重新安装 [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe)。
+17. 如果问题得到解决，则可能需要重新安装 [RDAgent](/archive/blogs/mast/install-the-vm-agent-on-an-existing-azure-vm) (WaAppAgent.exe)。
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
@@ -112,5 +113,3 @@ ms.locfileid: "75443587"
 4. 从故障排除 VM 中删除该磁盘并等待大约 2 分钟，以便 Azure 释放此磁盘。
 
 5. [从 OS 磁盘创建新的 VM](../windows/create-vm-specialized.md)。
-
-

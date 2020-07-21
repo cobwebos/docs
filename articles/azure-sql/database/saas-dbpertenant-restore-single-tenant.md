@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1567d38f8e582c062aa024b40cf0ede1d8b691f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84027898"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504318"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>通过“每租户一个数据库”SaaS 应用程序还原单个租户
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +29,7 @@ ms.locfileid: "84027898"
 > * 将数据库还原为并行数据库（并行）。
 > * 就地还原数据库，替代现有数据库。
 
-|||
+| 模式 | 说明 |
 |:--|:--|
 | 还原为并行数据库 | 此模式可用于诸如审阅、审核和符合性之类的任务，使租户能够从之前的某个时间点检查其数据。 租户的当前数据库保持联机状态且不会更改。 |
 | 就地还原 | 此模式通常用于在租户误删除或误损坏数据后，将租户还原到之前的某个时间。 原始数据库将处于脱机状态，并且会被替换为还原的数据库。 |
@@ -53,7 +54,7 @@ ms.locfileid: "84027898"
 
 在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) Github 存储库中提供了 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 创建数据库时，可能需要 10 到 15 分钟的时间，才可从第一个完整备份中进行还原。 如果刚刚安装了应用程序，则可能需要稍等几分钟才可尝试此方案。
 
@@ -125,7 +126,7 @@ ms.locfileid: "84027898"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将数据库还原为并行数据库（并行）。

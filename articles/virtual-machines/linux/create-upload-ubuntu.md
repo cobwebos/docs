@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: c70a6049596aa38e9ae6118517fc471becbc1676
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a0d4d0a1c36f901ea38c5c73d3aa7a2cf49e02f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134633"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502684"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>为 Azure 准备 Ubuntu 虚拟机
 
@@ -22,7 +22,7 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
 * Ubuntu 18.04/Bionic：[bionic-server-cloudimg-amd64.vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 
 ## <a name="prerequisites"></a>先决条件
-本文假设已在虚拟硬盘中安装 Ubuntu Linux 操作系统。 可使用多种工具创建 .vhd 文件，如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅 [安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
+本文假设已在虚拟硬盘中安装 Ubuntu Linux 操作系统。 可使用多种工具创建 .vhd 文件，如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅 [安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
 **Ubuntu 安装说明**
 
@@ -176,9 +176,8 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
 
 13. 在 Hyper-V 管理器中单击“操作”->“关闭”。****
 
-14. Azure 仅接受固定大小的 VHD。 如果 VM 的 OS 磁盘不是固定大小的 VHD，请使用 `Convert-VHD` PowerShell cmdlet 并指定 `-VHDType Fixed` 选项。 请查看以下文档，了解 `Convert-VHD`：[Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd?view=win10-ps)。
+14. Azure 仅接受固定大小的 VHD。 如果 VM 的 OS 磁盘不是固定大小的 VHD，请使用 `Convert-VHD` PowerShell cmdlet 并指定 `-VHDType Fixed` 选项。 请查看以下文档，了解 `Convert-VHD`：[Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps)。
 
 
 ## <a name="next-steps"></a>后续步骤
 现在，可使用 Ubuntu Linux 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
-

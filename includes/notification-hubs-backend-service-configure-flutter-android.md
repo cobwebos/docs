@@ -63,7 +63,7 @@ ms.locfileid: "86156275"
     ```
 
     > [!NOTE]
-    > 确保在创建“Android 项目”时，按照 [](https://console.firebase.google.com) 中提供的说明引用最新版本。
+    > 确保在创建“Android 项目”时，按照 [Firebase 控制台](https://console.firebase.google.com)中提供的说明引用最新版本。
 
 1. 在应用级 build.gradle 文件（Gradle 脚本 > “build.gradle (Module: app)”）中，应用 Google Services Gradle 插件   。 在“android”节点的正上方应用插件。
 

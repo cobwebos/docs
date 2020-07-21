@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 43a5360965c13df3227ecbc0c716327346244ebd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 93b63450d65f55e96897f91a5c0c9fae1b0b47f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653618"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503279"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
@@ -339,14 +340,13 @@ SQL 数据库威胁检测程序使用以下检测方法之一：
 
 借助有助于发现影子 IT、评估风险、强制实施策略、调查活动和阻止威胁的工具，组织可以更安全地移到云端，同时保持对关键数据的控制。
 
-| | |
-|---|---|
+| 类别 | 说明 |
+| -------- | ----------- |
 | 发现 | 使用 Cloud App Security 发现影子 IT。 通过在云环境中发现应用、活动、用户、数据和文件，获得可见性。 发现连接到云的第三方应用。|
 |调查 | 通过使用云取证工具深入了解网络中的风险应用、特定用户和文件，从而调查云应用。 从云中收集的数据中查找模式。 生成报告以监视云。 |
 | 控制 | 通过设置策略和警报实现对网络云流量的最大控制，从而降低风险。 使用 Cloud App Security 将用户迁移到安全的经过批准的替代云应用。 |
 | 保护 | 使用 Cloud App Security 批准或阻止应用程序，强制执行数据丢失防护、控制权限和共享，以及生成自定义报告和警报。 |
 | 控制 | 通过设置策略和警报实现对网络云流量的最大控制，从而降低风险。 使用 Cloud App Security 将用户迁移到安全的经过批准的替代云应用。 |
-| | |
 
 
 ![Cloud App Security 示意图](./media/threat-detection/azure-threat-detection-fig14.png)
