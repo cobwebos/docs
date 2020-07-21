@@ -6,14 +6,15 @@
       href: devtest-lab-overview.md
     - name: Azure 开发测试实验室和实验室服务
       href: lab-services-overview.md
+- name: 快速入门
+  items:
+    - name: 创建实验室 - ARM 模板
+      displayName: Resource Manager
+      href: create-lab-windows-vm-template.md
 - name: 教程
   items:
     - name: 设置实验室
-      items:
-        - name: 使用 Azure 门户
-          href: tutorial-create-custom-lab.md
-        - name: 使用 Resource Manager 模板
-          href: create-lab-windows-vm-template.md
+      href: tutorial-create-custom-lab.md
     - name: 访问实验室
       href: tutorial-use-custom-lab.md
 - name: 示例
@@ -64,6 +65,10 @@
           href: devtest-lab-training-lab.md
         - name: 用于使用可认领 VM 的方案
           href: devtest-lab-use-claim-capabilities.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 配置实验室
@@ -122,18 +127,26 @@
           href: personal-data-delete-export.md
     - name: 在实验室中使用 VM
       items:
-        - name: 创建 VM - Azure 门户
-          href: devtest-lab-add-vm.md
-        - name: 创建 VM - Azure PowerShell
-          href: devtest-lab-vm-powershell.md
-        - name: 创建 VM - Azure CLI
-          href: devtest-lab-vmcli.md
-        - name: 创建 VM - 资源管理器模板
-          href: devtest-lab-use-resource-manager-template.md
-        - name: 使用共享映像库中的映像创建 VM
-          href: add-vm-use-shared-image.md
-        - name: 通过浏览器连接到 VM
-          href: connect-virtual-machine-through-browser.md
+        - name: 创建 VM
+          items:
+            - name: Azure 门户
+              href: devtest-lab-add-vm.md
+            - name: Azure PowerShell
+              href: devtest-lab-vm-powershell.md
+            - name: Azure CLI
+              href: devtest-lab-vmcli.md
+            - name: 资源管理器模板
+              href: devtest-lab-use-resource-manager-template.md
+            - name: 使用共享映像库中的映像创建 VM
+              href: add-vm-use-shared-image.md
+        - name: 连接到 VM
+          items:
+            - name: 连接到 Windows VM
+              href: connect-windows-virtual-machine.md
+            - name: 连接到 Linux VM
+              href: connect-linux-virtual-machine.md
+            - name: 通过浏览器连接到 VM
+              href: connect-virtual-machine-through-browser.md
         - name: 使用 PowerShell 或 CLI 启动或停止 VM
           href: use-command-line-start-stop-virtual-machines.md
         - name: 重新启动 VM
@@ -263,6 +276,12 @@
           href: troubleshoot-vm-environment-creation-failures.md
         - name: 排查项目失败问题
           href: devtest-lab-troubleshoot-artifact-failure.md
+    - name: 监视
+      items:
+        - name: 查看活动日志
+          href: activity-logs.md
+        - name: 创建活动日志警报
+          href: create-alerts.md
 - name: 参考
   items:
     - name: CLI
