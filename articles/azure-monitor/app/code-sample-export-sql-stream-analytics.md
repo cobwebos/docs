@@ -3,12 +3,12 @@ title: 从 Azure Application Insights 导出到 SQL | Microsoft Docs
 description: 使用流分析将 Application Insights 数据连续导出到 SQL。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087209"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540088"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文介绍如何使用[连续导出][export]和[azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从[AZURE 应用程序 Insights][start]移入 azure SQL 数据库。 
@@ -82,7 +82,7 @@ ms.locfileid: "86087209"
 ![依次选择“浏览”、“服务器”、服务器、“设置”、“防火墙”、“允许访问 Azure”](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>在 Azure SQL 数据库中创建表
-使用偏好的管理工具连接到在上一部分中创建的数据库。 本演练将使用 [SQL Server 管理工具](https://msdn.microsoft.com/ms174173.aspx) (SSMS)。
+使用偏好的管理工具连接到在上一部分中创建的数据库。 本演练将使用 [SQL Server 管理工具](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS)。
 
 ![连接到 Azure SQL 数据库](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -255,4 +255,3 @@ FROM [dbo].[PageViewsTable]
 [metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

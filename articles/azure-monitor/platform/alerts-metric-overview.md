@@ -1,15 +1,15 @@
 ---
 title: 了解指标警报在 Azure Monitor 中的工作原理。
 description: 获取指标警报功能的概述，以及它们在 Azure Monitor 中的工作原理。
-ms.date: 07/09/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187517"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539425"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -120,6 +120,15 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 增加回溯时段和违规次数还可以将警报筛选为针对重大偏差定义的警报。 [详细了解动态阈值高级选项](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean)。
 
+> [!NOTE]
+>
+> 建议选择大于*计算频率*的*聚合粒度（周期）* ，以减少在以下情况下缺少第一次评估增加的时间序列的可能性：
+> - 监视多个维度的指标警报规则–添加新维度值组合时
+> - 监视多个资源的指标警报规则-将新资源添加到作用域时
+> - 监视不连续（稀疏指标）的指标的指标警报规则–当在不发出此指标的时间超过24小时后发出指标时
+
+
+
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>使用 Azure Monitor 中的指标警报进行大规模监视
 
 到目前为止，已了解了如何使用单个指标警报监视与单个 Azure 资源相关的一个或多个指标时序。 很多时候，你可能希望将同一预警规则应用于许多资源。 对于存在于同一 Azure 区域中的资源，Azure Monitor 还支持使用一个指标警报规则监视多个资源（属于同一类型）。 
@@ -135,9 +144,9 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 可以通过以下三种方式之一指定单个指标警报规则的监视范围。 例如，对于虚拟机，可以将范围指定为：  
 
-- 订阅中的一个 Azure 区域)  (虚拟机列表
+- 订阅中的虚拟机列表（在一个 Azure 区域中）
 - 指定为单个订阅中一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）
-- 订阅中的一个 Azure 区域)  (所有虚拟机
+- 订阅中的所有虚拟机（在一个 Azure 区域中）
 
 > [!NOTE]
 >

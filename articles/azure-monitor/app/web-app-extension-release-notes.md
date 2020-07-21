@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 978cb7ece1f8b3e16815c1dc49e4983dc393cbfc
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937507"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539714"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>适用于 Application Insights 的 Azure Web 应用扩展的发行说明
 
@@ -21,7 +21,7 @@ ms.locfileid: "85937507"
 ## <a name="frequently-asked-questions"></a>常见问题
 
 - 如何查找当前正在启用的扩展版本？
-    - 转到  `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` 。 有关详细信息，请参阅[基于扩展/代理的监视的分步故障排除指南](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net#troubleshooting)。
+    - 转到 `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`。 有关详细信息，请参阅[基于扩展/代理的监视的分步故障排除指南](./azure-web-apps.md?tabs=net#troubleshooting)。
 
 - 如果我使用的是专用扩展，该怎么办？
     - 卸载专用站点扩展，因为它不再受支持。

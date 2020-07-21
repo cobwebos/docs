@@ -2,13 +2,13 @@
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 785243676040fc86d42e3125684239ebe6da2061
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/13/2020
+ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134675"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539221"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -917,7 +917,7 @@ ms.locfileid: "86134675"
 > | reservationrecommendations | 否 | 否 |
 > | reservationsummaries | 否 | 否 |
 > | reservationtransactions | 否 | 否 |
-> | tags | 否 | 否 |
+> | 标记 | 否 | 否 |
 > | tenants | 否 | 否 |
 > | terms | 否 | 否 |
 > | usagedetails | 否 | 否 |
@@ -2188,7 +2188,7 @@ ms.locfileid: "86134675"
 > | locations / usages | 否 | 否 |
 > | locations / validateresourceownership | 否 | 否 |
 > | locations / virtualnetworkavailableendpointservices | 否 | 否 |
-> | natgateways | 是 | 是 |
+> | natgateways | 否 | 否 |
 > | networkexperimentprofiles | 否 | 否 |
 > | networkintentpolicies | 是 | 是 |
 > | networkinterfaces | 是 | 是 |
@@ -2513,7 +2513,7 @@ ms.locfileid: "86134675"
 > | subscriptions / resources | 否 | 否 |
 > | subscriptions / tagnames | 否 | 否 |
 > | subscriptions / tagnames / tagvalues | 否 | 否 |
-> | tags | 否 | 否 |
+> | 标记 | 否 | 否 |
 > | templatespecs | 否 | 否 |
 > | templatespecs / versions | 否 | 否 |
 > | tenants | 否 | 否 |

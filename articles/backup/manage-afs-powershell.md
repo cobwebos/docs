@@ -3,11 +3,12 @@ title: 使用 PowerShell 管理 Azure 文件共享备份
 description: 了解如何使用 PowerShell 管理和监视 Azure 备份服务备份的 Azure 文件共享。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ee5fb92e4a66a9d6db66514f966c3650d3a4f13
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 889c9bb3ef087c700bbfc3a68959f2c5924bffda
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201967"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538587"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>使用 PowerShell 管理 Azure 文件共享备份
 
@@ -18,7 +19,7 @@ ms.locfileid: "83201967"
 
 ## <a name="modify-the-protection-policy"></a>修改保护策略
 
-若要更改用于备份 Azure 文件共享的策略，请使用 [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)。 指定相关备份项和新的备份策略。
+若要更改用于备份 Azure 文件共享的策略，请使用 [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection)。 指定相关备份项和新的备份策略。
 
 以下示例将“testAzureFS”保护策略从“dailyafs”更改为“monthlyafs”  。
 
@@ -31,7 +32,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 
 ## <a name="track-backup-and-restore-jobs"></a>跟踪备份和还原作业
 
-按需备份和还原操作会返回一个作业和一个 ID，如[运行按需备份](backup-azure-afs-automation.md#trigger-an-on-demand-backup)时所示。 使用 [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) cmdlet 跟踪作业进度和详细信息。
+按需备份和还原操作会返回一个作业和一个 ID，如[运行按需备份](backup-azure-afs-automation.md#trigger-an-on-demand-backup)时所示。 使用 [Get-AzRecoveryServicesBackupJobDetails](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet 跟踪作业进度和详细信息。
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -70,7 +71,7 @@ $job.ErrorDetails
 
 ## <a name="stop-protection-and-retain-recovery-points"></a>停止保护但保留恢复点
 
-若要在停止保护的同时保留数据，请使用 [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) cmdlet。
+若要在停止保护的同时保留数据，请使用 [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) cmdlet。
 
 下面的示例将停止对 afsfileshare 文件共享的保护，但会保留所有恢复点：
 
@@ -86,11 +87,11 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-输出中的“Job ID”属性对应于备份服务为“停止保护”操作创建的作业的作业 ID。 若要跟踪作业的状态，请使用 [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-3.3.0) cmdlet。
+输出中的“Job ID”属性对应于备份服务为“停止保护”操作创建的作业的作业 ID。 若要跟踪作业的状态，请使用 [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet。
 
 ## <a name="stop-protection-without-retaining-recovery-points"></a>停止保护而不保留恢复点
 
-若要停止保护而不保留恢复点，请使用 [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) cmdlet 并添加“-RemoveRecoveryPoints”参数。
+若要停止保护而不保留恢复点，请使用 [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) cmdlet 并添加“-RemoveRecoveryPoints”参数。
 
 下面的示例会停止对 afsfileshare 文件共享的保护，且不保留恢复点：
 

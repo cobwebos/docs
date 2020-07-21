@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539543"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
 
@@ -27,12 +28,12 @@ ms.locfileid: "81114413"
 
 下表提供了经典警报和新警报的编程接口的参考信息：
 
-|         |经典警报  |新指标警报 |
-|---------|---------|---------|
-|REST API     | [microsoft insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [参考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [参考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure 资源管理器模板 | [经典警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[新指标警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+| 部署脚本类型 | 经典警报 | 新指标警报 |
+| ---------------------- | -------------- | ----------------- |
+|REST API     | [microsoft insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [az monitor alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [引用](/powershell/module/az.monitor/add-azmetricalertrule)       |  [引用](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Azure Resource Manager 模板 | [经典警报](./alerts-enable-template.md)|[新指标警报](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>通知有效负载更改
 
@@ -40,13 +41,13 @@ ms.locfileid: "81114413"
 
 使用下表将经典格式中的 Webhook 有效负载字段映射到新格式：
 
-|  |经典警报  |新指标警报 |
-|---------|---------|---------|
+| 通知终结点类型 | 经典警报 | 新指标警报 |
+| -------------------------- | -------------- | ----------------- |
 |警报是否已激活或解决？    | **status**       | **data.status** |
 |有关警报的上下文信息     | **上下文**        | **data.context**        |
 |激活或解决警报时的时间戳     | **context.timestamp**       | **data.context.timestamp**        |
 | 警报规则 ID | **context.id** | **data.context.id** |
-| 警报规则名称 | **context.name** | **data.context.name** |
+| 预警规则名称 | **context.name** | **data.context.name** |
 | 警报规则的说明 | **context.description** | **data.context.description** |
 | 警报规则条件 | **context.condition** | **data.context.condition** |
 | 指标名称 | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
@@ -55,7 +56,7 @@ ms.locfileid: "81114413"
 | 运算符（如何将聚合指标值与阈值进行比较） | **context.condition.operator** | **data.context.condition.operator** |
 | 阈值 | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |
 | 指标值 | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
-| 订阅 ID | **context.subscriptionId** | **data.context.subscriptionId** |
+| 订阅 ID | **context.subname** | **data.context.subscriptionId** |
 | 受影响资源的资源组 | **context.resourceGroup** | **data.context.resourceGroup** |
 | 受影响资源的名称 | **context.resourceName** | **data.context.resourceName** |
 | 受影响资源的类型 | **context.resourceType** | **data.context.resourceType** |
@@ -70,7 +71,7 @@ ms.locfileid: "81114413"
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改逻辑应用以接收指标警报通知
 
-如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 请执行这些步骤：
+如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤：
 
 1. 创建新的逻辑应用。
 
@@ -149,11 +150,11 @@ else {
 
 ```
 
-有关在触发警报时停止虚拟机的完整 Runbook 示例，请参阅 [Azure 自动化文档](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook)。
+有关在触发警报时停止虚拟机的完整 Runbook 示例，请参阅 [Azure 自动化文档](../../automation/automation-create-alert-triggered-runbook.md)。
 
 ## <a name="partner-integration-via-webhooks"></a>通过 Webhook 进行合作伙伴集成
 
-[我们的大部分与经典警报集成的合作伙伴](https://docs.microsoft.com/azure/azure-monitor/platform/partners)已能够支持通过其集成处理新型指标警报。 能够处理新指标警报的已知集成包括：
+[我们的大部分与经典警报集成的合作伙伴](./partners.md)已能够支持通过其集成处理新型指标警报。 能够处理新指标警报的已知集成包括：
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7c1f0c18fc8b867e16ce539a24839637e1d14379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537481"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 数字孪生内部和外部路由事件
 
@@ -46,7 +46,7 @@ Azure 数字孪生使用**事件路由**将数据发送到服务外的使用者�
 
 计算资源还需要单独建立安全和访问权限。
 
-若要演练设置 Azure 函数以处理数字非整数事件的过程，请参阅[如何：设置用于处理数据的 azure 函数](how-to-create-azure-function.md)。
+若要演练设置 Azure 函数以处理数字非整数事件的过程，请参阅[*如何：设置用于处理数据的 azure 函数*](how-to-create-azure-function.md)。
 
 ## <a name="create-an-endpoint"></a>创建终结点
 
@@ -90,7 +90,7 @@ IoT 中心和 Azure 数字孪生中的不同类型的事件会生成不同类型
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何设置和管理事件路由：
-* [操作说明：管理终结点和路由](how-to-manage-routes.md)
+* [*操作说明：管理终结点和路由*](how-to-manage-routes.md)
 
 或者，请参阅如何使用 Azure Functions 在 Azure 数字孪生中路由事件：
-* [如何：设置用于处理数据的 Azure 函数](how-to-create-azure-function.md)
+* [*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md)

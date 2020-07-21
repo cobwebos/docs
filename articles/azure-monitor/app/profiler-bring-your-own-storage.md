@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361932"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539850"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>为 Application Insights Profiler 和 Snapshot Debugger 配置自带存储（BYOS）
 
@@ -21,9 +21,9 @@ ms.locfileid: "85361932"
 使用自带存储时，这些项目将被上传到您控制的存储帐户中。 这意味着，你可以控制 "静态加密" 策略、"生存期管理策略" 和 "网络访问"。 但是，你将负责与该存储帐户关联的成本。
 
 > [!NOTE]
-> 如果启用 "专用" 链接，则需要自带存储。 有关 Application Insights 的专用链接的详细信息，[请参阅文档。](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)
+> 如果启用 "专用" 链接，则需要自带存储。 有关 Application Insights 的专用链接的详细信息，[请参阅文档。](../platform/private-link-security.md)
 >
-> 如果要启用客户管理的密钥，则需要提供自己的存储。 有关 Application Insights 的客户托管密钥的详细信息，[请参阅文档。](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)
+> 如果要启用客户管理的密钥，则需要提供自己的存储。 有关 Application Insights 的客户托管密钥的详细信息，[请参阅文档。](../platform/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>如何访问我的存储帐户？
 1. 在虚拟机或应用服务中运行的代理会将项目（配置文件、快照和符号）上传到帐户中的 blob 容器。 此过程涉及到联系 Application Insights Profiler 或 Snapshot Debugger 服务，以获取存储帐户中新 blob 的 SAS （共享访问签名）令牌。
@@ -31,7 +31,7 @@ ms.locfileid: "85361932"
 1. 查看探查器跟踪或快照调试器分析时，服务将从 blob 存储提取分析结果。
 
 ## <a name="prerequisites"></a>先决条件
-* 请确保在与 Application Insights 资源相同的位置中创建存储帐户。 示例： 如果你的 Application Insights 资源位于美国西部2，则你的存储帐户还必须在美国西部2中。 
+* 请确保在与 Application Insights 资源相同的位置中创建存储帐户。 例如： 如果你的 Application Insights 资源位于美国西部2，则你的存储帐户还必须在美国西部2中。 
 * 通过访问控制（IAM） UI，将 "存储 Blob 数据参与者" 角色授予存储帐户中的 AAD 应用程序 "诊断服务受信任的存储访问权限"。
 * 如果启用了 "专用链接"，请配置其他设置，以允许从你的虚拟网络连接到受信任的 Microsoft 服务。 
 
@@ -60,7 +60,7 @@ _ ![ 图 1.0](media/profiler-bring-your-own-storage/figure-10.png)_
 _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_ 
  _图 1.1_ 
 
-如果还使用的是专用链接，则需要使用另外一个配置，以允许从你的虚拟网络连接到受信任的 Microsoft 服务。 请参阅[存储网络安全文档](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)。
+如果还使用的是专用链接，则需要使用另外一个配置，以允许从你的虚拟网络连接到受信任的 Microsoft 服务。 请参阅[存储网络安全文档](../../storage/common/storage-network-security.md#trusted-microsoft-services)。
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>将你的存储帐户链接到你的 Application Insights 资源
 若要为代码级诊断配置 BYOS （探查器/调试器），有两个选项：
@@ -73,7 +73,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
 1. 请确保已安装 Az PowerShell 4.2.0 或更高版本。
 
-    若要安装 Azure PowerShell，请参阅[官方 Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+    若要安装 Azure PowerShell，请参阅[官方 Azure PowerShell 文档](/powershell/azure/install-az-ps)。
 
 1. 安装 Application Insights PowerShell 扩展。
     ```powershell
@@ -85,7 +85,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
     Connect-AzAccount -Subscription "{subscription_id}"
     ```
 
-    有关如何登录的详细信息，请参阅[AzAccount 文档](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)。
+    有关如何登录的详细信息，请参阅[AzAccount 文档](/powershell/module/az.accounts/connect-azaccount)。
 
 1. 删除链接到 Application Insights 资源的上一个存储帐户。
 
@@ -121,7 +121,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
 1. 请确保已安装 Azure CLI。
 
-    若要安装 Azure CLI，请参阅[官方 Azure CLI 文档](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+    若要安装 Azure CLI，请参阅[官方 Azure CLI 文档](/cli/azure/install-azure-cli)。
 
 1. 安装 Application Insights CLI 扩展。
     ```powershell
@@ -152,7 +152,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
     ```
 
     > [!NOTE]
-    > 若要在链接的存储帐户上执行更新 Application Insights 资源，请参阅[APPLICATION INSIGHTS CLI 文档](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)。
+    > 若要在链接的存储帐户上执行更新 Application Insights 资源，请参阅[APPLICATION INSIGHTS CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)。
 
 #### <a name="configure-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板进行配置
 
@@ -198,7 +198,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
 1. 在 PowerShell 控制台中出现提示时提供以下参数：
     
-    |           参数           |                                描述                               |
+    |           参数           |                                说明                               |
     |-------------------------------|--------------------------------------------------------------------------|
     | application_insights_name     | 要启用 BYOS 的 Application Insights 资源的名称。            |
     | storage_account_name          | 要用作 BYOS 的存储帐户资源的名称。 |
@@ -276,7 +276,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
 若要进行常规 Snapshot Debugger 故障排除，请参阅[Snapshot Debugger 疑难解答文档](snapshot-debugger-troubleshoot.md)。 
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 * 如果我启用了 Profiler 或快照，然后启用了 BYOS，则我的数据将迁移到我的存储帐户中吗？
     _不能。_
 

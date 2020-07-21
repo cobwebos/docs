@@ -3,11 +3,12 @@ title: 关于 Azure 文件共享备份
 description: 了解如何在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40cb9ca0bd34fd65ab1983af6384d617db26e996
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539085"
 ---
 # <a name="about-azure-file-share-backup"></a>关于 Azure 文件共享备份
 
@@ -20,7 +21,7 @@ Azure 文件共享备份是一种基于云的本机备份解决方案，用于�
 * **内置的管理功能**：你可以计划备份并指定所需的保留期，而无需额外的数据删除开销。
 * **即时还原**： Azure 文件共享备份使用文件共享快照，因此，你可以只选择想要立即还原的文件。
 * **警报和报告**：你可以为备份和还原失败配置警报，并使用 Azure 备份提供的报表解决方案来深入了解文件共享中的备份。
-* **防止意外删除文件共享**： Azure 备份允许在保留期为14天的存储帐户级别启用[软删除功能](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。 即使恶意执行组件删除文件共享，文件共享的内容和恢复点（快照）也会保留在可配置的保留期内，从而能够成功恢复源内容和快照，而不会丢失数据。
+* **防止意外删除文件共享**： Azure 备份允许在保留期为14天的存储帐户级别启用[软删除功能](../storage/files/storage-files-prevent-file-share-deletion.md)。 即使恶意执行组件删除文件共享，文件共享的内容和恢复点（快照）也会保留在可配置的保留期内，从而能够成功恢复源内容和快照，而不会丢失数据。
 
 ## <a name="architecture"></a>体系结构
 

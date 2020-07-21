@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636081"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537963"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -51,10 +51,10 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必需 |
-| `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细的响应包括四种不同的显示文本表示形式。 默认设置为 `simple`。 | 可选 |
+| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必须 |
+| `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 Detailed 响应包括显示文本的四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置为 `masked`。 | 可选 |
-| `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过在“部署”  页上找到的其终结点 ID  使用自定义模型。 使用终结点 ID  作为 `cid` 查询字符串形式参数的实际参数。 | 可选 |
+| `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过在“部署”页上找到的其终结点 ID 使用自定义模型。 使用终结点 ID 作为 `cid` 查询字符串形式参数的实际参数。 | 可选 |
 
 ## <a name="request-headers"></a>请求标头
 
@@ -86,7 +86,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 此表列出了发音评估的必需参数和可选参数。
 
-| 参数 | 描述 | 必需/可选 |
+| 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | ReferenceText | 将对发音进行计算的文本。 | 必需 |
 | GradingSystem | 用于分数校准的点系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
@@ -200,7 +200,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 `RecognitionStatus` 字段可包含以下值：
 
-| 状态 | 描述 |
+| 状态 | 说明 |
 |--------|-------------|
 | `Success` | 识别成功并且存在 `DisplayText` 字段。 |
 | `NoMatch` | 在音频流中检测到语音，但没有匹配目标语言的字词。 通常表示识别语言不同于讲话用户所用的语言。 |
@@ -211,10 +211,10 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 > [!NOTE]
 > 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。
 
-`detailed`格式包括更多形式的可识别结果。
+`detailed` 格式包括其他形式的已识别结果。
 使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
 
-列表中的对象 `NBest` 可以包括：
+`NBest` 列表中的对象可以包括：
 
 | 参数 | 说明 |
 |-----------|-------------|
@@ -223,11 +223,11 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `ITN` | 已识别文本的反向文本规范化（“规范”）形式，已应用电话号码、数字、缩写（“doctor smith”缩写为“dr smith”）和其他转换。 |
 | `MaskedITN` | 可根据请求提供应用了亵渎内容屏蔽的 ITN 形式。 |
 | `Display` | 已识别文本的显示形式，其中添加了标点符号和大小写形式。 此参数与将格式设置为 `simple` 时提供的 `DisplayText` 相同。 |
-| `AccuracyScore` | 指示给定语音的读音准确性的分数。 |
-| `FluencyScore` | 指示给定语音的熟练的分数。 |
-| `CompletenessScore` | 该分数指示给定语音的完整性，方法是计算要向整个输入的单词的比率。 |
-| `PronScore` | 指示给定语音的发音质量的总体分数。 这是通过和权重计算得出的 `AccuracyScore` `FluencyScore` `CompletenessScore` 。 |
-| `ErrorType` | 此值指示与相对应的字是省略、插入还是不正确 `ReferenceText` 。 可能的值为 `None` （表示此词上无错误） `Omission` 、 `Insertion` 和 `Mispronunciation` 。 |
+| `AccuracyScore` | 语音的读音准确性。 "准确性" 指示音素与本机扬声器发音的匹配程度。 Word 和全文级别的准确性分数聚合为音素级别的准确性分数。 |
+| `FluencyScore` | 给定语音的熟练。 熟练指示语音如何与本机演讲者使用单词之间的无提示中断的方式相匹配。 |
+| `CompletenessScore` | 语音的完整性，通过计算发音为引用文本输入的比率来确定。 |
+| `PronScore` | 指示给定语音的发音质量的总体分数。 此值从 `AccuracyScore` 、 `FluencyScore` 和权重中聚合而 `CompletenessScore` 成。 |
+| `ErrorType` | 此值指示与 `ReferenceText` 相比，是省略、插入还是错误读出字词。 可能的值为 `None`（表示此词没有错误）、`Omission`、`Insertion` 和 `Mispronunciation`。 |
 
 ## <a name="sample-responses"></a>示例响应
 

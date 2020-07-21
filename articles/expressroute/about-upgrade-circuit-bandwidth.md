@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9f44cbd9b735839640702970a65de239b36b3f30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8f5aaa7b2a054aa31198779414387cebf0f0fbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209270"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537031"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>关于升级 ExpressRoute 线路带宽
 
-ExpressRoute 可与 Microsoft 的全球网络建立专用和专用连接。 连接由 ExpressRoute 伙伴的网络或与 Microsoft 企业边缘 (MSEE) 设备的直接连接来推动。 配置和测试物理连接后，可以通过创建 ExpressRoute 线路并配置对等互连，启用第2层和第3层连接。
+ExpressRoute 可与 Microsoft 的全球网络建立专用和专用连接。 连接由 ExpressRoute 伙伴的网络或与 Microsoft 企业边缘（MSEE）设备的直接连接来推动。 配置和测试物理连接后，可以通过创建 ExpressRoute 线路并配置对等互连，启用第2层和第3层连接。
 
 ## <a name="upgrade-circuit-bandwidth"></a><a name="upgrade"></a>升级线路带宽
 
@@ -32,9 +32,9 @@ ExpressRoute 可与 Microsoft 的全球网络建立专用和专用连接。 连�
 
 ### <a name="insufficient-expressroute-partner-bandwidth"></a><a name="bandwidth"></a>ExpressRoute 伙伴带宽不足
 
-如果 ExpressRoute 伙伴没有足够的容量，则需要创建一个新线路，并将其配置为所需的带宽。 为了保持连接性，请不要删除旧线路，直到预配新创建的线路、配置了对等互连，并 () 已预配 ExpressRoute 虚拟网络网关的连接对象。
+如果 ExpressRoute 伙伴没有足够的容量，则需要创建一个新线路，并将其配置为所需的带宽。 为了保持连接性，请不要删除旧线路，直至预配新创建的线路，配置对等互连，并且（有关专用对等互连）已设置 ExpressRoute 虚拟网络网关的连接对象。
 
-如果 ExpressRoute 伙伴没有足够的可用容量，则需要在所需的对等互连位置请求额外的容量。 预配新容量后，可以使用 "[升级线路带宽](#upgrade)" 部分中的文章中包含的步骤来创建新线路、配置连接并删除旧线路：
+如果 ExpressRoute 伙伴没有足够的可用容量，则需要在所需的对等互连位置请求额外的容量。 预配新容量后，可以使用 "[升级线路带宽](#upgrade)" 部分中的文章中包含的步骤来创建新线路、配置连接并删除旧线路。
 
 
 ### <a name="insufficient-expressroute-direct-bandwidth"></a><a name="bandwidth"></a>ExpressRoute 直接带宽不足

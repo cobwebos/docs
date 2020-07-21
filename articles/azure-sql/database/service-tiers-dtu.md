@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 1922e92f9314e48ae4e3106a53cf750da5daf5e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84037948"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539170"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,7 +34,7 @@ ms.locfileid: "84037948"
 
 选择服务层级首要考虑的是业务连续性、存储和性能需求。
 
-||基本|标准|高级|
+||基本|标准|Premium|
 | :-- | --: |--:| --:|
 |目标工作负荷|开发和生产|开发和生产|开发和生产|
 |运行时间 SLA|99.99%|99.99%|99.99%|
@@ -41,8 +42,8 @@ ms.locfileid: "84037948"
 |CPU|低|低、中、高|中、高|
 |IO 吞吐量（近似） |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
 |IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
-|列存储索引 |不适用|S3 及更高版本|支持|
-|内存中 OLTP|不适用|空值|支持|
+|列存储索引 |不可用|S3 及更高版本|支持|
+|内存中 OLTP|不可用|空值|支持|
 |||||
 
 > [!IMPORTANT]
@@ -58,7 +59,7 @@ ms.locfileid: "84037948"
 
 单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 Dtu 和 Edtu 的详细信息，请参阅[基于 DTU 的购买模型](purchasing-models.md#dtu-based-purchasing-model)。
 
-||基本|标准|高级|
+|基本|标准|Premium|
 | :-- | --: | --: | --: |
 | 最大存储大小 | 2 GB | 1 TB | 4 TB  |
 | 最大 DTU | 5 | 3000 | 4000 | 
@@ -69,7 +70,7 @@ ms.locfileid: "84037948"
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>弹性池 eDTU、存储和共用数据库限制
 
-| | **基本** | **Standard** | **高级** |
+| **基本** | **Standard** | **高级** |
 | :-- | --: | --: | --: |
 | 每个数据库的最大存储大小  | 2 GB | 1 TB | 1 TB |
 | 每个池的最大存储大小 | 156 GB | 4 TB | 4 TB |
@@ -111,7 +112,7 @@ ms.locfileid: "84037948"
 
 工作负荷由九种事务类型组成，如下表中所示。 每种事务旨在强调数据库引擎和系统硬件中的特定一组系统特征，与其他事务形成高反差。 此方法可更方便地评估不同组件对总体性能的影响。 例如，事务“Read Heavy”将从磁盘生成大量的读取操作。
 
-| 事务类型 | 描述 |
+| 事务类型 | 说明 |
 | --- | --- |
 | Read Lite |SELECT；在内存中；只读 |
 | Read Medium |SELECT；大多数在内存中；只读 |
@@ -172,9 +173,9 @@ ms.locfileid: "84037948"
 
 | 服务等级 | 吞吐量度量值 | 响应时间要求 |
 | --- | --- | --- |
-| 高级 |每秒事务数 |0.5 秒时达到 95% |
+| Premium |每秒事务数 |0.5 秒时达到 95% |
 | 标准 |每分钟事务数 |1.0 秒时达到 90% |
-| Basic |每小时事务数 |2.0 秒时达到 80% |
+| 基本 |每小时事务数 |2.0 秒时达到 80% |
 
 ## <a name="next-steps"></a>后续步骤
 

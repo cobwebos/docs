@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d63d932756495584b2870c597d3332077f8e86c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671607"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539833"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>使用 Application Insights 探查实时 Azure Service Fabric 应用程序
 
@@ -25,9 +26,9 @@ Azure 诊断中包括了 Application Insights Profiler。 可以使用 Azure 资
 
 若要设置环境，请执行以下操作：
 
-1. Profiler 支持 .NET Framework 和 .Net Core。 如果使用的是 .NET Framework，请确保使用 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本。 只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。 Profiler 支持 .NET Core 2.1 及更高版本的应用程序。
+1. Profiler 支持 .NET Framework 和 .Net Core。 如果使用的是 .NET Framework，请确保使用 [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本。 只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。 Profiler 支持 .NET Core 2.1 及更高版本的应用程序。
 
-1. 在部署模板文件中搜索 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)。
+1. 在部署模板文件中搜索 [Azure 诊断](../platform/diagnostics-extension-overview.md)。
 
 1. 添加以下 `SinksConfig` 部分作为 `WadCfg` 的子元素。 使用自己的 Application Insights 检测密钥替换 `ApplicationInsightsProfiler` 属性值：  
 
@@ -42,7 +43,7 @@ Azure 诊断中包括了 Application Insights Profiler。 可以使用 Azure 资
       }
       ```
 
-      若要了解如何将诊断扩展添加到部署模板，请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+      若要了解如何将诊断扩展添加到部署模板，请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)。
 
 1. 使用 Azure 资源管理器模板部署 Service Fabric 群集。  
   如果你的设置正确，则在安装 Azure 诊断扩展时将安装并启用 Application Insights Profiler。 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 7dc4164cac1998a02ae62d7682f9630aa4faa619
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658551"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539391"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor 中视图设计器可视化部件的参考指南
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
@@ -317,7 +318,7 @@ ms.locfileid: "77658551"
 例如，考虑一个名为 *Location* 的属性，该属性包括 *Redmond-Building 41* 和 *Bellevue-Building 12* 等值。 可以指定短划线 (–) 作为名称和值分隔符，指定 *City-Building* 作为名称。 此方法会将每个值分析为两个称作 *City* 和 *Building* 的属性。
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>点击导航
-点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会在[Log Analytics](../../azure-monitor/log-query/portals.md)中打开查询或启动其他视图。
+点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会在[Log Analytics](../log-query/log-query-overview.md)中打开查询或启动其他视图。
 
 下表描述了点击导航的设置。
 
@@ -339,7 +340,7 @@ ms.locfileid: "77658551"
 | 启用迷你图 |选择此链接可显示迷你图而不是水平条。 |
 | Operation |如果已启用迷你图，则对列表中每个属性执行此操作，计算迷你图的值。<ul><li>最后一个采样：时间间隔内序列的最后一个值。</li><li>最大值：时间间隔内序列的最大值。</li><li>最小值：时间间隔内序列的最小值。</li><li>总和：时间间隔内序列值的总和。</li><li>摘要：使用相同的 `measure` 命令作为标头中的查询。</li></ul> |
 
-### <a name="thresholds"></a><a name="thresholds"></a>阈值
+### <a name="thresholds"></a><a name="thresholds"></a>01b
 使用阈值可在列表中的每个项旁边显示彩色图标。 阈值对超出特定值或处于特定范围内的项提供快速的视觉指示。 例如，对于值可接受的项，显示绿色图标；如果值处于指示警告的范围内，则显示黄色；如果超出错误值，则显示红色。
 
 如果为部件启用阈值，则必须指定一个或多个阈值。 如果某项的值大于阈值并小于下一个阈值，则使用该值的颜色。 如果某项大于当时的最高阈值，则使用另一种颜色。 

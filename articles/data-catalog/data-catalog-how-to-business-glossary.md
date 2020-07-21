@@ -4,13 +4,14 @@ description: 操作指南文章重点说明了 Azure 数据目录中的业务术
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f91728435b885f3b4d9415bc81e18fdaaea0148f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976794"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537742"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>为管控标记设置业务术语表
 

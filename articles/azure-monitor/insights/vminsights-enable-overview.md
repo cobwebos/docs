@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507069"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539612"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>启用用于 VM 的 Azure Monitor 概述
 
@@ -44,8 +44,8 @@ ms.locfileid: "85507069"
 - 美国中西部
 - 美国西部
 - 美国西部 2
-- 美国中南部
-- 美国东部
+- South Central US
+- East US
 - 美国东部 2
 - 美国中部
 - 美国中北部
@@ -68,7 +68,7 @@ ms.locfileid: "85507069"
 
 如果没有 Log Analytics 工作区，则可以使用以下资源之一创建一个工作区：
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
@@ -86,7 +86,7 @@ ms.locfileid: "85507069"
 
 下表列出了用于 VM 的 Azure Monitor 支持的 Windows 和 Linux 操作系统。 本部分稍后将提供详细说明主要和次要 Linux OS 版本以及支持的内核版本的完整列表。
 
-|OS 版本 |性能 |地图 |
+|OS 版本 |性能 |Maps |
 |-----------|------------|-----|
 |Windows Server 2019 | X | X |
 |Windows Server 2016 1803 | X | X |
@@ -194,7 +194,7 @@ ms.locfileid: "85507069"
 
 使用下表中所述的方法之一启用用于 VM 的 Azure Monitor：
 
-| 部署状态 | 方法 | 描述 |
+| 部署状态 | 方法 | 说明 |
 |------------------|--------|-------------|
 | 单个 Azure VM、Azure VMSS 或 Azure Arc 计算机 | [从门户启用](vminsights-enable-single-vm.md) | 直接从 Azure 门户的菜单中选择 "**见解**"。 |
 | 多个 Azure VM、Azure VMSS 或 Azure Arc 计算机 | [通过 Azure Policy 启用](vminsights-enable-at-scale-policy.md) | 创建 VM 或 VMSS 时，使用 Azure 策略自动启用。 |

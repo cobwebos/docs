@@ -3,16 +3,16 @@ title: 映射数据流逆透视转换
 description: Azure 数据工厂映射数据流逆透视转换
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: c3e769334beb6a5739eebb8d7e8dc370533c2dc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: b7a05f33c199ab46508fa2b9bc0ef576f888ef27
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606250"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537708"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure 数据工厂逆透视转换
 
@@ -21,6 +21,8 @@ ms.locfileid: "81606250"
 通过将单个记录中多个列的值扩展为单个列中具有相同值的多个记录，可以在 ADF 映射数据流中使用逆透视。
 
 ![逆透视转换](media/data-flow/unpivot1.png "Unpivot 选项1")
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B1RR]
 
 ## <a name="ungroup-by"></a>分组依据
 

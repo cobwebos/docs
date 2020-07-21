@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184542"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539663"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -19,11 +19,11 @@ ms.locfileid: "86184542"
 
 本文收集了有关 Azure 中网络性能监视器 (NPM) 的常见问题 (FAQ)
 
-[网络性能监视器](/azure/networking/network-monitoring-overview)是一种基于云的[混合网络监视](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)解决方案，它可以帮助你监视网络基础结构中不同点之间的网络性能。 它还可帮助你监视与[服务和应用程序终结点](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)的网络连接，以及[监视 Azure ExpressRoute 的性能](../../azure-monitor/insights/network-performance-monitor-expressroute.md)。 
+[网络性能监视器](../../networking/network-monitoring-overview.md)是一种基于云的[混合网络监视](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)解决方案，它可以帮助你监视网络基础结构中不同点之间的网络性能。 它还可帮助你监视与[服务和应用程序终结点](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)的网络连接，以及[监视 Azure ExpressRoute 的性能](../../azure-monitor/insights/network-performance-monitor-expressroute.md)。 
 
 网络性能监视器可检测诸如流量黑洞、路由错误之类的网络问题，以及传统网络监视方法无法检测到的问题。 只要突破网络链接的阈值，解决方案就会生成警报并进行通知。 它还可以确保及时检测到网络性能问题，然后确定问题根源所在的特定网络段或设备。 
 
-可在线查看相关信息，深入了解[网络性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview)支持的各种功能。
+可在线查看相关信息，深入了解[网络性能监视器](../../networking/network-monitoring-overview.md)支持的各种功能。
 
 ## <a name="set-up-and-configure-agents"></a>安装和配置代理
 
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM 只能识别源与目标 IP 之间的底层网络跃点（交换机、路由器、服务器等）的 IP 和主机名。 此外，它还能识别这些已识别的跃点之间的延迟。 它不会单独监视这些底层跃点。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>是否可以使用 NPM 来监视 Azure 与 AWS 之间的网络连接？
-正确。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文。
+是。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)一文。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute 带宽用量是指传入还是传出带宽？
 带宽用量是传入和传出带宽的总计。 它以“位/秒”为单位表示。
@@ -188,7 +188,7 @@ NPM 可以通过某个[受支持区域](../../azure-monitor/insights/network-per
 NPM 可以通过某个[受支持区域](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)中托管的工作区，监视全球任意位置的服务的连接
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>NPM 的 ExpressRoute 监视器支持哪些区域？
-NPM 可以监视任何 Azure 区域中的 ExpressRoute 线路。 若要载入到 NPM，必须需要某个[受支持区域](/azure/expressroute/how-to-npm)中托管的 Log Analytics 工作区
+NPM 可以监视任何 Azure 区域中的 ExpressRoute 线路。 若要载入到 NPM，必须需要某个[受支持区域](../../expressroute/how-to-npm.md)中托管的 Log Analytics 工作区
 
 ## <a name="troubleshoot"></a>故障排除
 
@@ -231,7 +231,7 @@ HopLatencyValue 是从源到终结点的。
 * 若要确认主机防火墙是否未阻止所需端口上的通信，请通过以下视图查看源和目标节点的运行状况：“网络性能监视器”->“配置”->“节点”。 
   如果这些节点不正常，请查看说明并采取纠正措施。 如果节点正常，请转到下面的 使用。
 * 若要确认中间网络防火墙或 Azure NSG 是否未阻止所需端口上的通信，请遵照下面的说明使用第三方 PsPing 实用工具：
-  * 可从[此处](https://technet.microsoft.com/sysinternals/psping.aspx)获取 psping 实用工具。 
+  * 可从[此处](/sysinternals/downloads/psping)获取 psping 实用工具。 
   * 在源节点中运行以下命令。
     * psping-n 15 \<destination node IPAddress\> :P ortnumber 默认情况下 NPM 使用8084端口。 如果使用 EnableRules.ps1 脚本显式更改了此端口，请输入所用的自定义端口号。 这是从 Azure 机器向本地执行的 ping
 * 检查 ping 是否成功。 如果未成功，则表示中间网络防火墙或 Azure NSG 阻止了此端口上的流量。
@@ -255,7 +255,7 @@ NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线�
 * 监视配置中选择用来监视 ExpressRoute 线路的本地和 Azure 节点未通过所需的 ExpressRoute 线路相互建立连接。 确保选择正确的节点，并通过所要监视的 ExpressRoute 线路让它们相互建立连接。
 
 ### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>为什么 ExpressRoute 监视器在可用和传递数据时将线路/对等互连报告为不正常。
-ExpressRoute 监视器会将代理/服务报告的网络性能值 () 丢失、延迟和带宽使用率，并在配置期间设置的阈值进行比较。 对于线路，如果所报告的带宽使用率超过配置中设置的阈值，则线路会被标记为不正常。 对于对等互连，如果报告的丢失、延迟或带宽使用率大于配置中设置的阈值，则对等互连将标记为不正常。 NPM 不利用度量值或任何其他形式的数据到 deicde 的运行状况状态。
+ExpressRoute 监视器会将代理/服务报告的网络性能值（丢失、延迟和带宽使用率）与配置过程中设置的阈值进行比较。 对于线路，如果所报告的带宽使用率超过配置中设置的阈值，则线路会被标记为不正常。 对于对等互连，如果报告的丢失、延迟或带宽使用率大于配置中设置的阈值，则对等互连将标记为不正常。 NPM 不利用度量值或任何其他形式的数据到 deicde 的运行状况状态。
 
 ### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>ExpressRoute Monitor'bandwidth 使用率为什么会从指标位 in/out 报告值其他
 对于 ExpressRoute 监视器，带宽 utiliation 是过去20分钟的传入和传出带宽的平均值，以每秒位数表示。对于快速路由指标，位输入/输出是每分钟数据点。在内部，用于两者的数据集是相同的，但在 NPM 与 ER 指标之间进行聚合 valies。 对于精确、按分钟的监视和快速警报，建议直接在 ER 指标上设置警报
@@ -283,7 +283,7 @@ ExpressRoute 监视器会将代理/服务报告的网络性能值 () 丢失、�
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>在服务连接监视器功能中，服务响应时间为“不适用”，但网络丢包和延迟有效
 如果目标服务不是 Web 应用程序，但测试配置为 Web 测试，则可能会发生这种情况。 编辑测试配置，选择“网络”而不是“Web”作为测试类型。
 
-## <a name="miscellaneous"></a>其他
+## <a name="miscellaneous"></a>杂项
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>用于监视的节点的性能是否受影响？
 NPM 进程配置为当它的主机 CPU 资源利用率超过 5% 时停止。 这是为了确保可以持续使用这些节点来处理其常规工作负荷，而不会影响性能。

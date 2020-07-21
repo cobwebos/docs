@@ -4,11 +4,12 @@ description: 如何自定义适用于 .NET 和 .NET Core 的 Azure Application I
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691945"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539782"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
 
@@ -16,7 +17,7 @@ ms.locfileid: "84691945"
 
 ## <a name="what-are-telemetry-channels"></a>什么是遥测通道？
 
-遥测通道负责缓冲遥测项并将其发送到 Application Insights 服务，存储在该服务中的项可用于查询和分析。 遥测通道是实现 [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) 接口的任何类。
+遥测通道负责缓冲遥测项并将其发送到 Application Insights 服务，存储在该服务中的项可用于查询和分析。 遥测通道是实现 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) 接口的任何类。
 
 遥测信道的 `Send(ITelemetry item)` 方法在调用所有遥测初始化表达式和遥测处理器之后调用。 因此，遥测处理器删除的任何项不会进入通道。 一般情况下，`Send()` 不会立即将项发送到后端。 它通常将这些项缓冲在内存中并分批发送，以提高传输效率。
 
@@ -30,7 +31,7 @@ Application Insights .NET 和 .NET Core SDK 随附了两个内置通道：
 
     此通道随附在较大的 Microsoft.ApplicationInsights NuGet 包中，是未配置任何其他通道时，SDK 使用的默认通道。
 
-* `ServerTelemetryChannel`：一个更高级的通道，它具有重试策略，并可以在本地磁盘上存储数据。 如果发生暂时性错误，此通道会重试发送遥测数据。 在网络中断或者遥测量较高时，此通道还会使用本地磁盘存储在磁盘上保留项。 由于这些重试机制和本地磁盘存储，我们认为此通道更可靠，建议在所有生产方案中使用。 此通道是根据官方文档配置的 [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) 和 [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) 应用程序的默认通道。 此通道已针对长时间运行的服务器方案进行优化。 此通道实现的 [`Flush()`](#which-channel-should-i-use) 方法不是同步的。
+* `ServerTelemetryChannel`：一个更高级的通道，它具有重试策略，并可以在本地磁盘上存储数据。 如果发生暂时性错误，此通道会重试发送遥测数据。 在网络中断或者遥测量较高时，此通道还会使用本地磁盘存储在磁盘上保留项。 由于这些重试机制和本地磁盘存储，我们认为此通道更可靠，建议在所有生产方案中使用。 此通道是根据官方文档配置的 [ASP.NET](./asp-net.md) 和 [ASP.NET Core](./asp-net-core.md) 应用程序的默认通道。 此通道已针对长时间运行的服务器方案进行优化。 此通道实现的 [`Flush()`](#which-channel-should-i-use) 方法不是同步的。
 
     此通道作为 Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel NuGet 包交付，使用 Microsoft.ApplicationInsights.Web 或 Microsoft.ApplicationInsights.AspNetCore NuGet 包时可自动获取它。
 

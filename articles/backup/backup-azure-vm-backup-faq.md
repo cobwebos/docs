@@ -4,15 +4,16 @@ description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800645"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538762"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
-本文解答有关使用 [Azure 备份](backup-introduction-to-azure-backup.md)服务备份 Azure VM 的常见问题。
+本文解答有关使用 [Azure 备份](./backup-overview.md)服务备份 Azure VM 的常见问题。
 
 ## <a name="backup"></a>Backup
 
@@ -82,7 +83,7 @@ ms.locfileid: "82800645"
 
 Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排除。 但是，备份不会提供数据库一致性，因为未备份已启用 WA 的磁盘上的信息。 如果需要备份操作系统磁盘和备份未启用 WA 的磁盘，则可以使用此配置备份磁盘。
 
-Azure 备份为 SAP HANA 数据库提供了流式备份解决方案，其 RPO 为 15 分钟。 其通过 SAP 进行了 Backint 认证，利用 SAP HANA 的本机 API 提供本机备份支持。 了解[有关在 Azure VM 中备份 SAP HANA 数据库](https://docs.microsoft.com/azure/backup/sap-hana-db-about)的详细信息。
+Azure 备份为 SAP HANA 数据库提供了流式备份解决方案，其 RPO 为 15 分钟。 其通过 SAP 进行了 Backint 认证，利用 SAP HANA 的本机 API 提供本机备份支持。 了解[有关在 Azure VM 中备份 SAP HANA 数据库](./sap-hana-db-about.md)的详细信息。
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>从我在 VM 备份策略中设置的计划备份时间开始，我可以预期的备份开始时间的最大延迟是多少？
 
@@ -128,7 +129,11 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 [详细了解](backup-azure-vms-automation.md#restore-an-azure-vm)如何在 PowerShell 中执行此操作。
 
-### <a name="can-i-restore-the-vm-thats-been-deleted"></a>是否可以还原已删除的 VM？
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>如果还原操作无法创建 VM，则还原中包含的磁盘会发生什么情况？
+
+如果发生托管 VM 还原，即使 VM 创建失败，也仍会还原磁盘。
+
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>是否可以还原已删除的 VM？
 
 是的。 即使删除了 VM，也仍可以转到保管库中的相应备份项，然后从恢复点还原。
 
@@ -142,13 +147,13 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>更改已加密 VM 的密钥保管库设置时会发生什么情况？
 
-更改已加密 VM 的密钥保管库设置后，备份将继续使用新的详细信息集。 但是，从更改之前的恢复点还原后，必须先在密钥保管库中还原机密，然后才能从中创建 VM。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)。
+更改已加密 VM 的密钥保管库设置后，备份将继续使用新的详细信息集。 但是，从更改之前的恢复点还原后，必须先在密钥保管库中还原机密，然后才能从中创建 VM。 有关详细信息，请参阅[此文](./backup-azure-restore-key-secret.md)。
 
-机密/密钥滚动更新等操作不需要此步骤，还原后可以使用相同的密钥保管库。
+机密/密钥回滚等操作不需要此步骤，并且在还原后可以使用相同的密钥保管库。
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>在还原后我是否由于 VM 与域控制器的关系被破坏而可以访问 VM？
 
-可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)
+可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](./backup-azure-arm-restore-vms.md#post-restore-steps)
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 
@@ -165,7 +170,7 @@ VM 是使用已修改策略或新策略中的计划和保留设置备份的。
 2. 若要移动配置了 Azure 备份的虚拟机，请执行以下步骤：
 
    1. 找到虚拟机的位置。
-   2. 找到含有以下命名模式的资源组：`AzureBackupRG_<location of your VM>_1`。 例如， *AzureBackupRG_westus2_1*
+   2. 找到包含以下命名模式的资源组：`AzureBackupRG_<location of your VM>_1`。 例如， *AzureBackupRG_westus2_1*
    3. 在 Azure 门户中，查看“显示隐藏的类型”。
    4. 查找类型为 Microsoft.Compute/restorePointCollections 的资源，其命名模式为 `AzureBackup_<name of your VM that you're trying to move>_###########`。
    5. 删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。

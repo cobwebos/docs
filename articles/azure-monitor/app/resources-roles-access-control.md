@@ -3,12 +3,12 @@ title: Azure Application Insights 中的资源、角色和访问控制 | Microso
 description: 组织的见解的所有者、参与者和读者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92f40961cd824925fe6ed1b67745667121a66d2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628221"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539969"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
@@ -59,7 +59,7 @@ ms.locfileid: "82628221"
 
 下面的“添加权限”视图主要特定于 Application Insights 资源，如果从更高级别（如资源组）查看访问控制权限，则将看到其他并非以 Application Insights 为中心的角色。
 
-若要查看有关所有基于 Azure 角色的访问控制内置角色的信息，请使用[官方参考内容](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+若要查看有关所有基于 Azure 角色的访问控制内置角色的信息，请使用[官方参考内容](../../role-based-access-control/built-in-roles.md)。
 
 ![访问控制用户角色列表的屏幕截图](./media/resources-roles-access-control/0003-user-roles.png)
 
@@ -69,23 +69,23 @@ ms.locfileid: "82628221"
 
 | 角色 | 在资源组中 |
 | --- | --- |
-| [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |可以更改任何内容，包括用户访问权限。 |
-| [参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |可以编辑任何内容，包括所有资源。 |
-| [Application Insights 组件参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |可以编辑 Application Insights 资源。 |
-| [读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以查看但无法更改任何内容。 |
-| [Application Insights 快照调试器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | 授予用户使用 Application Insights 快照调试器功能的权限。 请注意，此角色既不包含在所有者角色中，也不包含在参与者角色中。 |
+| [所有者](../../role-based-access-control/built-in-roles.md#owner) |可以更改任何内容，包括用户访问权限。 |
+| [参与者](../../role-based-access-control/built-in-roles.md#contributor) |可以编辑任何内容，包括所有资源。 |
+| [Application Insights 组件参与者](../../role-based-access-control/built-in-roles.md#application-insights-component-contributor) |可以编辑 Application Insights 资源。 |
+| [读者](../../role-based-access-control/built-in-roles.md#reader) |可以查看但无法更改任何内容。 |
+| [Application Insights 快照调试器](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | 授予用户使用 Application Insights 快照调试器功能的权限。 请注意，此角色既不包含在所有者角色中，也不包含在参与者角色中。 |
 | Azure 服务部署版本管理参与者 | 通过 Azure 服务部署进行部署的服务的参与者角色。 |
-| [数据清除程序](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)。   |
+| [数据清除程序](../../role-based-access-control/built-in-roles.md#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](../platform/personal-data-mgmt.md)。   |
 | ExpressRoute 管理员 | 可以创建删除和管理快速路由。|
-| [Log Analytics 参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。  |
-| [Log Analytics 读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 |
+| [Log Analytics 参与者](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。  |
+| [Log Analytics 读者](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 |
 | masterreader | 允许用户查看所有内容，但不能进行更改。 |
-| [监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | 允许读取所有监视数据并更新监视设置。|
-| [监视指标发布者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标。 |
-| [监视读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | 可以读取所有监视数据。 |
+| [监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) | 允许读取所有监视数据并更新监视设置。|
+| [监视指标发布者](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标。 |
+| [监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader) | 可以读取所有监视数据。 |
 | 资源策略参与者（预览） | 通过 EA 回填的用户，具有创建/修改资源策略、创建支持票证和读取资源/层次结构的权限。  |
-| [用户访问管理员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | 允许用户管理其他用户对 Azure 资源的访问。|
-| [网站参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。|
+| [用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) | 允许用户管理其他用户对 Azure 资源的访问。|
+| [网站参与者](../../role-based-access-control/built-in-roles.md#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。|
 
 “编辑”包括创建、删除和更新：
 

@@ -4,12 +4,12 @@ description: 了解通用警报架构、应该使用它的原因以及启用它�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710926"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539476"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
 
@@ -52,8 +52,8 @@ ms.locfileid: "84710926"
 > 1. 以下警报类型默认支持通用架构（不需选择加入）：
 >     * 智能检测警报
 > 1. 以下警报类型目前不支持通用架构：
->     * 由[用于 VM 的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) 生成的警报
->     * 由 [Azure 成本管理](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)生成的警报
+>     * 由[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 生成的警报
+>     * 由 [Azure 成本管理](../../cost-management-billing/manage/cost-management-budget-scenario.md)生成的警报
 
 ### <a name="through-the-azure-portal"></a>通过 Azure 门户
 
@@ -64,9 +64,9 @@ ms.locfileid: "84710926"
 
 ### <a name="through-the-action-groups-rest-api"></a>通过操作组 REST API
 
-也可使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 来选择加入通用警报架构。 进行[创建或更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API 调用时，可以针对下述任意操作将标记 "useCommonAlertSchema" 设置为 true（选择加入）或 false（选择退出）：电子邮件/Webhook/逻辑应用/Azure Functions/自动化 Runbook。
+也可使用[操作组 API](/rest/api/monitor/actiongroups) 来选择加入通用警报架构。 进行[创建或更新](/rest/api/monitor/actiongroups/createorupdate) REST API 调用时，可以针对下述任意操作将标记 "useCommonAlertSchema" 设置为 true（选择加入）或 false（选择退出）：电子邮件/Webhook/逻辑应用/Azure Functions/自动化 Runbook。
 
-例如，针对[创建或更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API 设置的以下请求正文会执行以下操作：
+例如，针对[创建或更新](/rest/api/monitor/actiongroups/createorupdate) REST API 设置的以下请求正文会执行以下操作：
 
 * 针对电子邮件操作“John Doe 的电子邮件”启用通用警报架构
 * 针对电子邮件操作“Jane Smith 的电子邮件”禁用通用警报架构
@@ -121,7 +121,4 @@ ms.locfileid: "84710926"
 ## <a name="next-steps"></a>后续步骤
 
 - [Webhook/逻辑应用/Azure Functions/自动化 Runbook 的常见警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
-- [了解如何创建一个逻辑应用，以利用常见警报架构来处理所有警报。](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
-
-
-
+- [了解如何创建一个逻辑应用，以利用常见警报架构来处理所有警报。](./alerts-common-schema-integrations.md) 

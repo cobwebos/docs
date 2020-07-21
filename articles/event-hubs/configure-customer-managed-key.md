@@ -3,12 +3,12 @@ title: 为静态 Azure 事件中心数据配置你自己的密钥
 description: 本文提供了有关如何配置自己的密钥来加密 Azure 事件中心数据 rest 的信息。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479821"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537252"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>配置客户托管的密钥，以便通过使用 Azure 门户来加密静态 Azure 事件中心数据
 Azure 事件中心通过 Azure 存储服务加密（Azure SSE）提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 
@@ -41,7 +41,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 ## <a name="set-up-a-key-vault-with-keys"></a>设置密钥保管库与密钥
 启用客户管理的密钥后，需要将客户托管密钥与 Azure 事件中心命名空间相关联。 事件中心仅支持 Azure Key Vault。 如果启用了上一部分所述的“使用客户管理的密钥进行加密”选项，则需要将密钥导入 Azure Key Vault。  此外，必须为密钥配置“软删除”和“不清除”。   可以使用 [PowerShell](../key-vault/general/soft-delete-powershell.md) 或 [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) 配置这些设置。
 
-1. 若要创建新的密钥保管库，请遵循 Azure Key Vault [快速入门](../key-vault/general/overview.md)。 有关导入现有密钥的详细信息，请参阅[关于密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md)。
+1. 若要创建新的密钥保管库，请遵循 Azure Key Vault [快速入门](../key-vault/general/overview.md)。 有关导入现有密钥的详细信息，请参阅[关于密钥、机密和证书](../key-vault/general/about-keys-secrets-certificates.md)。
 1. 若要在创建保管库时启用“软删除”和“清除保护”，请使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令。
 
     ```azurecli-interactive
@@ -94,17 +94,17 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 ## <a name="log-schema"></a>日志架构 
 所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目都具有使用下表中描述的格式的字符串字段。 
 
-| “属性” | 说明 |
+| 名称 | 说明 |
 | ---- | ----------- | 
 | TaskName | 失败的任务的说明。 |
 | ActivityId | 用于跟踪的内部 ID。 |
 | category | 定义任务的分类。 例如，如果密钥保管库中的密钥处于禁用状态，则它将是信息类别; 如果密钥无法解包，则可能发生错误。 |
-| ResourceId | Azure 资源管理器资源 ID |
+| resourceId | Azure 资源管理器资源 ID |
 | keyVault | 密钥保管库的完整名称。 |
 | key | 用于加密事件中心命名空间的密钥名称。 |
 | 版本 | 所使用的密钥的版本。 |
 | operation | 对密钥保管库中的密钥执行的操作。 例如，禁用/启用密钥、包装或解包 |
-| 代码 | 与操作关联的代码。 示例：错误代码404，表示找不到键。 |
+| code | 与操作关联的代码。 示例：错误代码404，表示找不到键。 |
 | message | 与操作关联的任何错误消息 |
 
 下面是客户托管密钥的日志示例：
@@ -395,7 +395,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 最佳做法是始终启用日志，如前一部分中所示。 启用 BYOK 加密后，它有助于跟踪活动。 它还有助于限制问题的范围。
 
 下面是启用 BYOK 加密时要查找的常见错误代码。
@@ -419,7 +419,3 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 请参阅以下文章：
 - [事件中心概述](event-hubs-about.md)
 - [Key Vault 概述](../key-vault/general/overview.md)
-
-
-
-

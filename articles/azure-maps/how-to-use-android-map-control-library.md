@@ -9,11 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 241f107f0bb2163951104067cb82d6e6a967ad3e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540122"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK 入门
 
@@ -23,7 +24,7 @@ Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将引�
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 
-若要完成本文中的过程，首先需要在 S1 定价层中[创建一个 Azure Maps 帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)，并[获取帐户的主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
+若要完成本文中的过程，首先需要在 S1 定价层中[创建一个 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)，并[获取帐户的主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 

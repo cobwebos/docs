@@ -3,12 +3,12 @@ title: 获取连接字符串 - Azure 事件中心 | Microsoft Docs
 description: 本文说明如何获取客户端可用于连接 Azure 事件中心的连接字符串。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 271d4dcc1f2fab08dc7f625ce36e021eda225b87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320487"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537167"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串
 
@@ -73,5 +73,5 @@ az eventhubs eventhub authorization-rule keys list --resource-group dummyresourc
 
 访问以下链接可以了解有关事件中心的详细信息：
 
-* [事件中心概述](event-hubs-what-is-event-hubs.md)
+* [事件中心概述](./event-hubs-about.md)
 * [创建事件中心](event-hubs-create.md)

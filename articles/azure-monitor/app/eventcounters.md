@@ -3,15 +3,16 @@ title: Application Insights 中的事件计数器 | Microsoft Docs
 description: 监视 Application Insights 中的系统和自定义的 .NET/.NET Core EventCounters。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700431"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539935"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters 简介
 
-`EventCounter` 是用于发布和使用计数器或统计信息的 .NET/.NET Core 机制。 [本文档](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)概述了 `EventCounters` 以及有关如何发布和使用它们的示例。 所有 OS 平台（Windows、Linux 和 macOS）都支持 EventCounters。 可以将其视为仅在 Windows 系统中受支持的 [PerformanceCounters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) 的等效跨平台。
+`EventCounter` 是用于发布和使用计数器或统计信息的 .NET/.NET Core 机制。 [本文档](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)概述了 `EventCounters` 以及有关如何发布和使用它们的示例。 所有 OS 平台（Windows、Linux 和 macOS）都支持 EventCounters。 可以将其视为仅在 Windows 系统中受支持的 [PerformanceCounters](/dotnet/api/system.diagnostics.performancecounter) 的等效跨平台。
 
 尽管用户可以根据需要发布任何自定义 `EventCounters`，但 .NET Core 3.0 运行时默认情况下会发布一组此类计数器。 本文档将指导你完成在 Azure Application Insights 中收集和查看 `EventCounters`（系统定义或用户定义）所需的步骤。
 
@@ -90,14 +91,14 @@ Application Insights 支持使用 `EventCounterCollectionModule` 收集 `EventCo
 
 ## <a name="event-counters-in-metric-explorer"></a>Metric Explorer 中的事件计数器
 
-若要在 [Metric Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) 中查看 EventCounter 指标，请选择 Application Insights 资源，然后选择基于日志的指标作为指标命名空间。 EventCounter 指标随即显示在“自定义”类别下。
+若要在 [Metric Explorer](../platform/metrics-charts.md) 中查看 EventCounter 指标，请选择 Application Insights 资源，然后选择基于日志的指标作为指标命名空间。 EventCounter 指标随即显示在“自定义”类别下。
 
 > [!div class="mx-imgBorder"]
 > ![Application Insights 中报告的事件计数器](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Analytics 中的事件计数器
 
-还可以在 [Analytics](../../azure-monitor/app/analytics.md) 的“customMetrics”表中搜索和显示事件计数器报表。
+还可以在 [Analytics](../log-query/log-query-overview.md) 的“customMetrics”表中搜索和显示事件计数器报表。
 
 例如，运行以下查询，以查看收集了哪些计数器并可用于查询：
 
@@ -143,7 +144,7 @@ EventCounter 无需任何特殊权限，并且在支持 .NET Core 3.0 的所有�
 
 ### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>我已从 Azure Web 应用门户启用 Application Insights。 但看不到 EventCounters，这是什么原因？
 
- ASP.NET Core 的 [Application Insights 扩展](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps)尚不支持此功能。 支持此功能后，本文档会更新。
+ ASP.NET Core 的 [Application Insights 扩展](./azure-web-apps.md)尚不支持此功能。 支持此功能后，本文档会更新。
 
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 

@@ -4,11 +4,12 @@ description: 了解如何创建一个逻辑应用，以利用常见警报架构�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05349554f4c5e076562a75d48d58e0849986d6cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77668224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539493"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
 
@@ -22,13 +23,13 @@ ms.locfileid: "77668224"
 ## <a name="prerequisites"></a>必备条件 
 
 本文假设读者熟悉以下操作 
-* 设置警报规则（[指标](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)、[日志](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)、[活动日志](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)）
-* 设置[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* 从操作组中启用[常见警报架构](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema)
+* 设置警报规则（[指标](./alerts-metric.md)、[日志](./alerts-log.md)、[活动日志](./alerts-activity-log.md)）
+* 设置[操作组](./action-groups.md)
+* 从操作组中启用[常见警报架构](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>创建一个利用常见警报架构的逻辑应用
 
-1. 请按照[概述的步骤创建逻辑应用](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app)。 
+1. 请按照[概述的步骤创建逻辑应用](./action-groups-logic-app.md)。 
 
 1.  选择触发器：“当收到 HTTP 请求时”****。
 
@@ -129,7 +130,7 @@ ms.locfileid: "77668224"
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     详细了解如何[编写逻辑应用表达式](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions)。
+     详细了解如何[编写逻辑应用表达式](../../logic-apps/workflow-definition-language-functions-reference.md#logical-comparison-functions)。
 
     
 
@@ -138,4 +139,3 @@ ms.locfileid: "77668224"
 
 * [详细了解操作组](../../azure-monitor/platform/action-groups.md)。
 * [了解有关常见警报架构的详细信息](https://aka.ms/commonAlertSchemaDocs)。
-

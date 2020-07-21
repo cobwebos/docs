@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂支持的计算环境
+title: Azure 数据工厂版本1支持的计算环境
 description: 了解可在 Azure 数据工厂管道（例如 Azure HDInsight）中用于转换或处理数据的计算环境。
 services: data-factory
 documentationcenter: ''
@@ -11,13 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cdb913434d7aab3ceadbbf19d7a95000abf6776c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16e390f2c206cb1f81914bc02e15818282a54a5b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022004"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537558"
 ---
-# <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
+# <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure 数据工厂版本1支持的计算环境
 > [!NOTE]
 > 本文适用于 Azure 数据工厂版本 1。 如果使用当前版本的数据工厂服务，请参阅[计算链接服务](../compute-linked-services.md)。
 
@@ -118,7 +119,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 > 
 
 ### <a name="properties"></a>属性
-| Property                     | 描述                              | 必需 |
+| properties                     | 说明                              | 必需 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 将 type 属性设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中的工作节点/数据节点数。 HDInsight 群集创建时具有 2 个头节点以及一定数量的工作节点（为此属性指定的数量）。 节点大小为 Standard_D3，采用 4 个核心。 包含 4 个工作节点的群集采用 24 个核心（工作节点采用 4\*4 = 16 个核心，头节点采用 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | 是      |
@@ -141,7 +142,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="advanced-properties"></a>高级属性
 若要对按需 HDInsight 群集进行粒度配置，可指定以下属性：
 
-| Property               | 描述                              | 必需 |
+| properties               | 说明                              | 必需 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为要创建的 HDInsight 群集指定核心配置参数 (core-site.xml)。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -194,7 +195,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="node-sizes"></a>节点大小
 若要指定头节点、数据节点和 ZooKeeper 节点的大小，请使用以下属性： 
 
-| Property          | 描述                              | 必须 |
+| properties          | 说明                              | 必须 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 设置头节点的大小。 默认值为**Standard_D3**。 有关详细信息，请参阅[指定节点大小](#specify-node-sizes)。 | 否       |
 | dataNodeSize      | 设置数据节点的大小。 默认值为**Standard_D3**。 | 否       |
@@ -254,7 +255,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| Property          | 描述                              | 必需 |
+| properties          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 将 type 属性设置为 **HDInsight**。 | 是      |
 | clusterUri        | HDInsight 群集的 URI。        | 是      |
@@ -302,7 +303,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| Property          | 描述                              | 必需 |
+| properties          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 将 type 属性设置为 **AzureBatch**。 | 是      |
 | accountName       | Batch 帐户的名称。         | 是      |
@@ -329,7 +330,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| Property   | 描述                              | 必需 |
+| properties   | 说明                              | 必需 |
 | ---------- | ---------------------------------------- | -------- |
 | 类型       | 将 type 属性设置为 **AzureML**。 | 是      |
 | mlEndpoint | 批处理计分 URL。                   | 是      |
@@ -340,7 +341,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 下表描述了 JSON 定义中使用的泛型属性。
 
-| Property                 | 描述                              | 必需                                 |
+| properties                 | 说明                              | 必需                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | 将 type 属性设置为 **AzureDataLakeAnalytics**。 | 是                                      |
 | accountName          | Data Lake Analytics 帐户名。  | 是                                      |
@@ -359,7 +360,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 通过指定以下属性使用服务主体身份验证：
 
-| properties                | 描述                              | 必须 |
+| properties                | 说明                              | 必须 |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | 应用程序的客户端 ID。     | 是      |
 | servicePrincipalKey | 应用程序的密钥。           | 是      |
@@ -387,7 +388,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 #### <a name="user-credential-authentication"></a>用户凭据身份验证
 若要对 Data Lake Analytics 使用用户凭据身份验证，请指定以下属性：
 
-| Property          | 描述                              | 必需 |
+| properties          | 说明                              | 必需 |
 | :---------------- | :--------------------------------------- | :------- |
 | authorization | 在数据工厂编辑器中，选择“授权”按钮。**** 在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
 | sessionID     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是      |

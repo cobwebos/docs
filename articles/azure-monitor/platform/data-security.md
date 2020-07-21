@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333363"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539340"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
-本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](../../security/fundamentals/trust-center.md)的信息。  
+本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)的信息。  
 
 本文介绍 Log Analytics 如何收集、处理和保护数据。 可以使用代理连接到 Web 服务、使用 System Center Operations Manager 收集操作数据或从 Azure 诊断中检索数据供 Log Analytics 使用。 
 
@@ -42,9 +42,9 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 |平台/语言 | 支持 | 更多信息 |
 | --- | --- | --- |
 |Linux | Linux 分发版往往依赖于 [OpenSSL](https://www.openssl.org) 来提供 TLS 1.2 支持。  | 请检查 [OpenSSL 变更日志](https://www.openssl.org/news/changelog.html)，确认你的 OpenSSL 版本是否受支持。|
-| Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
-| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
+| Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](/windows-server/security/tls/tls-registry-settings)。  |
+| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](/windows-server/security/tls/tls-registry-settings)页。  |
 
 ## <a name="data-segregation"></a>数据隔离
 Log Analytics 服务引入数据后，数据将在该服务的每个组件上都保持逻辑隔离。 所有数据按工作区进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。 数据存储在所选区域的群集存储中的专用数据库内。
@@ -175,4 +175,3 @@ Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性�
 * 遵循 [Azure VM 快速入门](../../azure-monitor/learn/quick-collect-azurevm.md)，了解如何使用 Log Analytics 收集 Azure VM 的数据。  
 
 *  如果想要从环境中的 Windows 或 Linux 物理机或虚拟机收集数据，请参阅[适用于 Linux 计算机的快速入门](../../azure-monitor/learn/quick-collect-linux-computer.md)或[适用于 Windows 计算机的快速入门](../../azure-monitor/learn/quick-collect-windows-computer.md)
-

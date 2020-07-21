@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797606"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539680"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -37,7 +38,7 @@ ms.locfileid: "83797606"
 - 无需进行任何配置，即可自动从大多数 Azure 资源获取[平台指标、活动日志和诊断日志](platform/data-sources.md)。
 - 使用[用于 VM 的 Azure Monitor](insights/vminsights-overview.md) 为 VM 启用更深入的监视。
 -  使用[用于容器的 Azure Monitor](insights/container-insights-overview.md) 为 AKS 群集启用更深入的监视。
-- 为环境中的不同应用程序和服务添加[监视解决方案](insights/solutions-inventory.md)。
+- 为环境中的不同应用程序和服务添加[监视解决方案](./monitor-reference.md)。
 
 
 [基础结构即代码](/azure/devops/learn/what-is-infrastructure-as-code)是描述性模型中的基础结构的管理系统，它使用版本控制方式与 DevOps 团队用于源代码管理的方式相同。 它提高了环境的可靠性和可伸缩性，并让你利用管理应用程序时所用的类似流程。

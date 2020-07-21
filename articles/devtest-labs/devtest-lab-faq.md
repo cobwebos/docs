@@ -2,13 +2,13 @@
 title: Azure 开发测试实验室常见问题解答 | Microsoft Docs
 description: 本文提供有关 Azure 开发测试实验室的部分常见问题解答 (FAQ)。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b687ae5c7b64239387dad7a51e124fa2f507f2b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481657"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537475"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -200,7 +200,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 可以，可将多个磁盘附加到 VM 中。
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>开发测试实验室支持第 2 代映像吗？
-不是。 开发测试实验室服务不支持[第 2 代映像](../virtual-machines/windows/generation-2.md)。 如果第 1 代版本和第 2 代版本都可用于映像，则开发测试实验室在创建 VM 时仅显示映像的 1 代版本。 如果只有第 2 代版本的映像可用，则看不到映像。 
+是。 开发测试实验室服务支持[第2代映像](../virtual-machines/windows/generation-2.md)。 但是，如果第1代和第2代版本都可用于映像，则在创建 VM 时，开发测试 Labs 只显示映像的第1代版本。 如果该映像只有第2代可用版本，则会看到该映像。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果要将 Windows OS 映像用于我的测试，是否需要购买 MSDN 订阅？
 要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，请执行以下步骤之一：
@@ -212,7 +212,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 
 
 ### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>如何自动删除实验室中的所有 VM？
-作为实验室所有者，可在 Azure 门户中从实验室删除 VM。 还可以使用 PowerShell 脚本删除实验室中的所有 VM。 在下例中，修改“要更改的值”注释下方的参数值。 可以从 Azure 门户中的实验室窗格中检索 subscriptionId、labResourceGroup 和 labName 值。
+作为实验室所有者，可在 Azure 门户中从实验室删除 VM。 还可以使用 PowerShell 脚本删除实验室中的所有 VM。 在下例中，修改“要更改的值”注释下方的参数值。 可以从 Azure 门户的“实验室”窗格中检索 `subscriptionId`、`labResourceGroup` 和 `labName` 值。
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -340,9 +340,9 @@ foreach($labVM in $labVMs)
 ## <a name="networking"></a>网络
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>何时应该为开发测试实验室环境创建新的虚拟网络以及使用现有的虚拟网络？
-如果你的 VM 需要与现有基础结构进行交互，则考虑使用开发测试实验室环境中的现有虚拟网络。 如果使用 ExpressRoute，则可能需要最大限度减少 VNet/子网的数量，以便不会分割已分配供在订阅中使用的 IP 地址空间。
+如果你的 VM 需要与现有基础结构进行交互，则考虑使用开发测试实验室环境中的现有虚拟网络。 如果使用 ExpressRoute，可能需要将虚拟网络/子网的数量降至最低，以便不会对分配给订阅的使用的 IP 地址空间进行分段。
 
-还应考虑在此处使用 VNet 对等互连模式（[中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)）。 此方法支持跨订阅的 vnet/子网通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。
+请考虑在此处（[中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)）使用虚拟网络对等互连模式。 此方法支持跨订阅的 vnet/子网通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。
 
 每个订阅的虚拟网络数量有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 默认数量为 50，但此限制可以提高到 100。
 

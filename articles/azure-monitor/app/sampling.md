@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 664e61697c1fb0c339a4c2caf8d0125a73e608c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28bbf9749375a4523237e840c217977853cd4ddd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319628"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539816"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -21,7 +21,7 @@ ms.locfileid: "85319628"
 ## <a name="brief-summary"></a>简短摘要
 
 * 有三种不同类型的采样：自适应采样、固定速率采样和引入采样。
-* 默认情况下，已在所有最新版本的 Application Insights ASP.NET 和 ASP.NET Core 软件开发工具包 (SDK) 中启用自适应采样。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 也使用自适应采样。
+* 默认情况下，已在所有最新版本的 Application Insights ASP.NET 和 ASP.NET Core 软件开发工具包 (SDK) 中启用自适应采样。 [Azure Functions](../../azure-functions/functions-overview.md) 也使用自适应采样。
 * 固定速率采样可在最新版本的适用于 ASP.NET、ASP.NET Core、Java（代理和 SDK）和 Python 的 Application Insights SDK 中使用。
 * 引入采样适用于 Application Insights 服务终结点。 仅当没有其他采样生效时，才能应用引入采样。 如果 SDK 为遥测数据采样，则会禁用引入采样。
 * 对于 Web 应用程序，如果记录自定义事件，并需要确保事件集一同保留或一同丢弃，则事件必须具有相同的 `OperationId` 值。
@@ -36,6 +36,7 @@ ms.locfileid: "85319628"
 | ASP.NET Core | [是（默认已启用）](#configuring-adaptive-sampling-for-aspnet-core-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | 仅当没有其他采样生效时 |
 | Azure Functions | [是（默认已启用）](#configuring-adaptive-sampling-for-azure-functions) | 否 | 仅当没有其他采样生效时 |
 | Java | 否 | [是](#configuring-fixed-rate-sampling-for-java-applications) | 仅当没有其他采样生效时 |
+| Node.JS | 否 | [是](./nodejs.md#sampling) | 仅当没有其他采样生效时
 | Python | 否 | [是](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 仅当没有其他采样生效时 |
 | 所有其他 | 否 | 否 | [是](#ingestion-sampling) |
 
@@ -209,7 +210,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>为 Azure Functions 配置自适应采样
 
-按照[此页](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)中的说明配置 Azure Functions 中运行的应用的自适应采样。
+按照[此页](../../azure-functions/functions-monitoring.md#configure-sampling)中的说明配置 Azure Functions 中运行的应用的自适应采样。
 
 ## <a name="fixed-rate-sampling"></a>固定速率采样
 
@@ -481,7 +482,7 @@ handler = AzureLogHandler(
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>了解采样是否正在运行
 
-若要查找实际采样率（无论是否已应用），请使用如下所示的[分析查询](../../azure-monitor/app/analytics.md)：
+若要查找实际采样率（无论是否已应用），请使用如下所示的[分析查询](../log-query/log-query-overview.md)：
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -586,4 +587,4 @@ ASP.NET 和 ASP.NET Core SDK 中的默认采样行为是什么？
 ## <a name="next-steps"></a>后续步骤
 
 * [筛选](../../azure-monitor/app/api-filtering-sampling.md)可以对 SDK 发送的内容提供更严格地控制。
-* 请参阅开发人员网络文章[使用 Application Insights 优化遥测](https://msdn.microsoft.com/magazine/mt808502.aspx)。
+* 请参阅开发人员网络文章[使用 Application Insights 优化遥测](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights)。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945386"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539697"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 虚拟机
 本文介绍如何使用 Azure Monitor 从 Azure 虚拟机收集和分析监视数据以维护其运行状况。 可以使用 Azure Monitor 监视虚拟机的可用性和性能，就像监视任何[其他 Azure 资源](monitor-azure-resource.md)一样，但是它们与其他资源不同，因为你还需要监视客户操作和系统以及在其中运行的工作负载。 
@@ -29,7 +29,7 @@ ms.locfileid: "84945386"
 - 可以为虚拟机创建[诊断设置](../platform/diagnostic-settings.md)，以将平台指标发送到其他目标（例如存储和事件中心），但无法在 Azure 门户中配置这些诊断设置。 
 
 ## <a name="monitoring-data"></a>监视数据
-Azure 中的 Azure 虚拟机生成[日志](../platform/data-platform-logs.md)和[指标](../platform/data-platform-metrics.md)，如下图所示。
+Azure 中的虚拟机生成[日志](../platform/data-platform-logs.md)和[度量值](../platform/data-platform-metrics.md)，如下图所示。
 
 ![概述](media/monitor-vm-azure/logs-metrics.png)
 
@@ -133,12 +133,12 @@ az monitor diagnostic-settings create \
 | 菜单选项 | 说明 |
 |:---|:---|
 | 概述 | 显示虚拟主机的[平台指标](../platform/data-platform-metrics.md)。 单击图形可在[指标资源管理器](../platform/metrics-getting-started.md)中处理此数据。 |
-| 活动日志 | 为当前虚拟机筛选的[活动日志](../platform/activity-log-view.md)条目。 |
+| 活动日志 | 为当前虚拟机筛选的[活动日志](../platform/activity-log.md#view-the-activity-log)条目。 |
 | 洞察力 | 打开[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md)，其中包含当前选定的虚拟机映射。 |
 | 警报 | 查看当前虚拟机[警报](../platform/alerts-overview.md)。  |
 | 指标 | 打开[指标资源管理器](../platform/metrics-getting-started.md)，并将“范围”设置为“当前虚拟机”。 |
 | 诊断设置 | 为当前虚拟机启用和配置[诊断扩展](../platform/diagnostics-extension-overview.md)。 |
-| 顾问建议 | [Azure 顾问](/azure/advisor/)就当前虚拟机所提供的建议。 |
+| 顾问建议 | [Azure 顾问](../../advisor/index.yml)就当前虚拟机所提供的建议。 |
 | 日志 | 打开 [Log Analytics](../log-query/log-query-overview.md#what-is-log-analytics)，并将[范围](../log-query/scope.md)设置为“当前虚拟机”。 |
 | 连接监视器 | 打开[网络观察程序连接监视器](../../network-watcher/connection-monitor-preview.md)，以监视当前虚拟机和其他虚拟机之间的连接。 |
 
@@ -226,7 +226,7 @@ Event
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) 精细监视虚拟机上的工作负载。 请参阅[云监视指南](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/)，以比较监视平台和不同策略的实现。
+System Center Operations Manager (SCOM) 精细监视虚拟机上的工作负载。 请参阅[云监视指南](/azure/cloud-adoption-framework/manage/monitor/)，以比较监视平台和不同策略的实现。
 
 如果你有打算继续使用的现有 SCOM 环境，则可将其与 Azure Monitor 集成，以提供其他功能。 Azure Monitor 使用的 Log Analytics 代理与 SCOM 使用的代理相同，因此，你已监视虚拟机将数据发送到这两个虚拟机。 你仍需要将代理添加到用于 VM 的 Azure Monitor，并配置工作区以按上面所指定的方式收集额外数据，但虚拟机可以继续在 SCOM 环境中运行其现有管理包，而无需修改。
 
@@ -242,4 +242,3 @@ System Center Operations Manager (SCOM) 精细监视虚拟机上的工作负载�
 
 * [了解如何使用日志查询分析 Azure Monitor 日志中的数据。](../log-query/get-started-queries.md)
 * [了解 Azure Monitor 中使用指标和日志的警报。](../platform/alerts-overview.md)
-

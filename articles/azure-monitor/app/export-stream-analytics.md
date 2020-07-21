@@ -3,12 +3,12 @@ title: 使用流分析从 Azure Application Insights 进行导出 | Microsoft Do
 description: 流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224513"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539952"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
@@ -138,7 +138,7 @@ GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 
 * export-input 是为流输入指定的别名
 * pbi-output 是定义的输出别名
-* 之所以使用 [OUTER APPLY GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics)，是因为事件名称在嵌套的 JSON 数组中。 然后，使用“选择”来选择事件名称，以及在相应时间段内使用该名称的实例计数。 [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 子句将元素分组成以 1 分钟为单位的时间段。
+* 之所以使用 [OUTER APPLY GetElements](/stream-analytics-query/apply-azure-stream-analytics)，是因为事件名称在嵌套的 JSON 数组中。 然后，使用“选择”来选择事件名称，以及在相应时间段内使用该名称的实例计数。 [Group By](/stream-analytics-query/group-by-azure-stream-analytics) 子句将元素分组成以 1 分钟为单位的时间段。
 
 ### <a name="query-to-display-metric-values"></a>用于显示指标值的查询
 
@@ -212,4 +212,3 @@ Noam Ben Zeev 演示如何使用流分析处理导出的数据。
 * [连续导出](export-telemetry.md)
 * [属性类型和值的详细数据模型参考。](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-

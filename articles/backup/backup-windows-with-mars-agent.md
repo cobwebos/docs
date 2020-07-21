@@ -3,11 +3,12 @@ title: 使用 MARS 代理备份 Windows 计算机
 description: 使用 Microsoft Azure 恢复服务（MARS）代理来备份 Windows 计算机。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604839"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538626"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>将 Windows Server 文件和文件夹备份到 Azure
 
@@ -103,7 +104,7 @@ Azure 备份不会自动考虑夏令时 (DST)。 此默认设置可能会导致�
 1. 将备份数据写入暂存位置。
 1. 使用 AzureOfflineBackupDiskPrep 工具将暂存位置中的数据复制到一个或多个 SATA 磁盘。
 
-    该工具会创建 Azure 导入作业。 有关详细信息，请参阅[什么是 Azure 导入/导出服务](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)。
+    该工具会创建 Azure 导入作业。 有关详细信息，请参阅[什么是 Azure 导入/导出服务](../storage/common/storage-import-export-service.md)。
 1. 将 SATA 磁盘寄送到 Azure 数据中心。
 
     在数据中心，磁盘数据将复制到 Azure 存储帐户。 Azure 备份将数据从存储帐户复制到保管库，并计划增量备份。
@@ -114,7 +115,7 @@ Azure 备份不会自动考虑夏令时 (DST)。 此默认设置可能会导致�
 
 可以通过启用网络限制，来控制 MARS 代理使用网络带宽的方式。 如果你需要在工作时间备份数据，但想要控制备份和还原活动占用的带宽量，则限制会很有帮助。
 
-Azure 备份中的网络限制在本地操作系统上使用[服务质量 (QoS)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top)。
+Azure 备份中的网络限制在本地操作系统上使用[服务质量 (QoS)](/windows-server/networking/technologies/qos/qos-policy-top)。
 
 针对备份的网络限制适用于 Windows Server 2012 和更高版本，以及 Windows 8 和更高版本。 操作系统应该运行最新的服务包。
 

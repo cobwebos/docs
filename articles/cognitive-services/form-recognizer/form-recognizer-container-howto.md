@@ -7,23 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: a014628a9664e33aa855cc4fbf40979236d765f9
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6190653934dede1fa042beca8dbd2d7c06f43cfc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355601"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538014"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安装和运行窗体识别器容器（预览）
+
+[!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
 
 Azure 表单识别器应用机器学习技术从表单中识别和提取键值对和表。 它将值和表项与键值对相关联，然后输出包含原始文件中的关系的结构化数据。 
 
 若要降低复杂性并轻松地将自定义表单识别器模型集成到工作流自动化过程或其他应用程序中，可以使用简单的 REST API 来调用该模型。 只需要五个窗体文档（或一个空窗体和两个填充窗体），因此你可以快速、准确地获取结果并针对特定内容进行定制。 而无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 它不要求标记或标注数据。
-
-> [!IMPORTANT]
-> 窗体识别器容器当前使用版本1.0 的窗体识别器 API。 可以改为使用托管服务访问 API 的最新版本。
 
 | 函数 | 功能 |
 |----------|----------|
@@ -64,14 +63,6 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 > [!IMPORTANT]
 > 这些订阅密钥用于访问认知服务 API。 不要共享你的密钥。 安全地存储它们，例如，使用 Azure Key Vault。 此外，我们建议定期重新生成这些密钥。 发出 API 调用只需一个密钥。 重新生成第一个密钥时，可以使用第二个密钥来持续访问服务。
-
-## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
-
-填写并提交[请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
 ## <a name="the-host-computer"></a>主计算机
 

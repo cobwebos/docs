@@ -3,12 +3,12 @@ title: 对访问 Azure 事件中心资源的应用程序进行身份验证
 description: 本文提供有关对使用 Azure Active Directory 访问 Azure 事件中心资源的应用程序进行身份验证的信息
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 50566c9405eb203778068b61a03cb9a2d22209b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cf51daef7298ff0ad487d5a072b6126557578c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318175"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537286"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>对使用 Azure Active Directory 访问事件中心资源的应用程序进行身份验证
 Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用程序提供了集成的访问控制管理功能。 将 Azure AD 与 Azure 事件中心配合使用的主要优势在于，不再需要将凭据存储在代码中。 可以从 Microsoft 标识平台请求 OAuth 2.0 访问令牌。 请求令牌的资源名称为 `https://eventhubs.azure.net/`（对于 Kafka 客户端，请求令牌的资源为 `https://<namespace>.servicebus.windows.net`）。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功，Azure AD 会将访问令牌返回应用程序，应用程序可随之使用访问令牌对 Azure 事件中心资源请求授权。
@@ -78,7 +78,7 @@ Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访
 
 ![已注册的应用程序的应用程序 ID](./media/authenticate-application/application-id.png)
 
-有关向 Azure AD 注册应用程序的详细信息，请参阅[将应用程序与 Azure Active Directory](../active-directory/develop/quickstart-v2-register-an-app.md) 集成。
+有关向 Azure AD 注册应用程序的详细信息，请参阅[将应用程序与 Azure Active Directory](../active-directory/develop/quickstart-register-app.md) 集成。
 
 
 ### <a name="create-a-client-secret"></a>创建客户端机密   
@@ -119,4 +119,3 @@ Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访
 - [使用共享访问签名对 Azure 事件中心请求进行身份验证](authenticate-shared-access-signature.md)
 - [使用 Azure Active Directory 授权访问事件中心资源](authorize-access-azure-active-directory.md)
 - [使用共享访问签名授权访问事件中心资源](authorize-access-shared-access-signature.md)
-

@@ -6,20 +6,21 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654386"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539646"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
 
-我们听取了客户的反馈，最近已针对 Azure 中的各种监视服务推出了[新的定价体验](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。 本文以易于阅读的“问答”形式，汇总了与 Azure [网络性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) 相关的定价变化。
+我们听取了客户的反馈，最近已针对 Azure 中的各种监视服务推出了[新的定价体验](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。 本文以易于阅读的“问答”形式，汇总了与 Azure [网络性能监视器](../../networking/network-monitoring-overview.md) (NPM) 相关的定价变化。
 
 网络性能监视器包括三个组件：
-* [性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [服务终结点监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute 监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [性能监视器](../../networking/network-monitoring-overview.md#performance-monitor)
+* [服务终结点监视器](../../networking/network-monitoring-overview.md)
+* [ExpressRoute 监视器](../../networking/network-monitoring-overview.md#expressroute-monitor)
 
 以下各部分介绍了 NPM 组件的定价变化。
 
@@ -46,7 +47,7 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 **我有两个子网（A 和 B），并且在每个子网中都有多个代理。性能监视器监视子网 A 上的所有代理与子网 B 上的所有代理的连接。是否会根据子网间连接的数量向我收费？**
 
-不能。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
+不是。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
 
 **监视子网链接的费用是多少？**
 
@@ -111,4 +112,3 @@ ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有
 ## <a name="references"></a>参考
 
 [Log Analytics 定价常见问题解答](https://azure.microsoft.com/pricing/details/log-analytics/) - 常见问题解答部分提供了有关免费层、每个节点的定价和其他定价详细信息。
-

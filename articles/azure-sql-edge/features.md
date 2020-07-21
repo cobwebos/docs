@@ -8,12 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 34d2ba05b00ab92066bc7fa3ccd0b7b2aa59e15c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669631"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539204"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Azure SQL Edge（预览版）支持的功能 
 
@@ -35,15 +36,17 @@ Azure SQL Edge 有两个不同的版本或软件计划。 这些版本具有相�
 
 ## <a name="operating-system"></a>操作系统
 
-Azure SQL Edge 容器目前基于 Ubuntu 16.04，因此仅支持在运行 Ubuntu 16.04 （建议）或 Ubuntu 18.04 的 Docker 主机上运行。 Azure SQL Edge 还可以在其他操作系统主机上运行。 例如，它可以在 Linux 或 Windows 上的其他发行版上运行（通过使用 Docker CE 或 Docker EE）。 但请注意，Microsoft 未广泛测试这些配置。
+Azure SQL Edge 容器目前基于 Ubuntu 16.04，因此仅支持在运行 Ubuntu 16.04 LTS （推荐）或 Ubuntu 18.04 LTS 的 Docker 主机上运行。 例如，可以在其他操作系统主机上运行 Azure SQL Edge 容器，例如，它可以在其他 Linux 分发版上运行，也可以在 Windows 上运行（使用 Docker CE 或 Docker EE），但 Microsoft 不建议这样做，因为此配置可能不会经过广泛测试。
 
 目前仅支持通过 Azure IoT Edge 来部署 Azure SQL Edge。 有关详细信息，请参阅[Azure IoT Edge 支持的系统](https://docs.microsoft.com/azure/iot-edge/support)。
 
 在 Windows 上运行 Azure SQL Edge 的建议配置是在 Windows 主机上配置 Ubuntu VM，然后在 Linux VM 中运行 Azure SQL Edge。
 
+为 Azure SQL Edge 推荐和支持的文件系统为 EXT4 和 XFS。 如果使用永久性卷来备份 Azure SQL Edge 数据库存储，则基础主机文件系统需要是 EXT4 和 XFS。
+
 ## <a name="hardware-support"></a>硬件支持
 
-Azure SQL Edge 需要一个64位的处理器，该处理器可为 Intel、AMD 或 ARM，其中至少有一个处理器，主机上有 1 GB 的 RAM。 虽然 Azure SQL Edge 的启动内存占用接近 500 MB，但其他在边缘设备上运行的 IoT Edge 模块需要更多内存。
+Azure SQL Edge 需要64位处理器（x64 或 ARM64），并且主机上至少有一个处理器和一个 GB RAM。 虽然 Azure SQL Edge 的启动内存占用接近 500 MB，但其他在边缘设备上运行的 IoT Edge 模块需要更多内存。 Azure SQL Edge 的实际内存和 CPU 要求将取决于工作负荷和正在处理的数据量的复杂性。 为解决方案选择硬件时，Microsoft 建议运行广泛的性能测试，以确保满足解决方案所需的性能特征。  
 
 ## <a name="azure-sql-edge-components"></a>Azure SQL Edge 组件
 

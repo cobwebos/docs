@@ -3,12 +3,12 @@ title: 将 Azure 事件中心命名空间移到另一个区域 | Microsoft Docs
 description: 本文介绍如何将 Azure 事件中心命名空间从当前区域移到另一个区域。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b02c34b0c28420a7e27da56b107ed3925a761b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312960"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537065"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>将 Azure 事件中心命名空间移到另一个区域
 在多种情况下，可能需要将现有事件中心命名空间从一个区域移到另一个区域。 例如，可能需要创建一个具有相同配置的命名空间，以便进行测试。 在[灾难恢复规划](event-hubs-geo-dr.md#setup-and-failover-flow)过程中，可能还需要在另一个区域中创建辅助命名空间。
@@ -19,7 +19,7 @@ ms.locfileid: "85312960"
 ## <a name="prerequisites"></a>先决条件
 
 - 确保帐户使用的服务和功能在目标区域中受支持。
-- 为了获取预览功能，请确保订阅已列入此目标区域的白名单。
+- 对于预览版功能，请确保你的订阅已列入目标区域的允许列表。
 - 如果为命名空间中的事件中心启用了**捕获功能**，请在移动事件中心命名空间之前移动[Azure 存储或 Azure Data Lake Store 第2代](../storage/common/storage-account-move.md)或[Azure Data Lake Store 第1代](../data-lake-store/data-lake-store-migration-cross-region.md)帐户。 还可以按照与本文所述步骤类似的步骤，将包含存储和事件中心命名空间的资源组移到另一个区域。 
 - 如果事件中心命名空间位于**事件中心群集**中，请在执行本文中的步骤之前，在**目标区域**中[创建一个专用群集](event-hubs-dedicated-cluster-create-portal.md)。 你还可以使用[GitHub 上的快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/)来创建事件中心群集。 在模板中，删除 JSON 的命名空间部分以仅创建群集。 
 
@@ -108,5 +108,5 @@ ms.locfileid: "85312960"
 在本教程中，你已将一个 Azure 事件中心命名空间从一个区域移到了另一个区域，并清理了源资源。  若要详细了解如何在区域之间移动资源，以及如何在 Azure 中进行灾难恢复，请参阅：
 
 
-- [将资源移到新资源组或订阅中](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [将 Azure VM 移到另一区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [将资源移到新资源组或订阅中](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [将 Azure VM 移到另一区域](../site-recovery/azure-to-azure-tutorial-migrate.md)

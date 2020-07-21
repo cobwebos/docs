@@ -3,11 +3,12 @@ title: MARS 代理的支持矩阵
 description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代理的计算机时的 Azure 备份支持。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709872"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538643"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -29,7 +30,7 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 **安装** | **详细信息**
 --- | ---
 下载最新的 MARS 代理 | 可以从保管库下载最新版本的代理，或者[直接下载它](https://aka.ms/azurebackup_agent)。
-直接在计算机上安装 | 可以直接在本地 Windows 服务器上安装 MARS 代理，或者在运行任意[受支持操作系统](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)的 Windows VM 上安装它。
+直接在计算机上安装 | 可以直接在本地 Windows 服务器上安装 MARS 代理，或者在运行任意[受支持操作系统](./backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)的 Windows VM 上安装它。
 在备份服务器上安装 | 将 DPM 或 MABS 设置为备份到 Azure 时，可以在服务器上下载并安装 MARS 代理。 可在备份服务器支持矩阵中的[受支持操作系统](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)上安装该代理。
 
 > [!NOTE]
@@ -84,7 +85,7 @@ MARS 代理需要以下 URL 的访问权限：
 - Microsoft Azure 区域（根据恢复服务保管库的位置）
 - Azure 存储（根据恢复服务保管库的位置）
 
-有关详细信息，请参阅[ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md)。
 
 >[!NOTE]
 >对于新线路，公共对等互连已弃用。
@@ -127,7 +128,7 @@ Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | - .NET
 
 如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure Vm 并利用 Azure VM 备份来继续保护。 有关迁移 Windows server 的详细信息，请访问[此处的迁移页面](https://azure.microsoft.com/migration/windows-server/)。
 
-对于本地或托管环境，在无法升级操作系统或迁移到 Azure 的情况下，请为计算机激活扩展的安全更新以继续保护并支持。 请注意，只有特定版本有资格进行扩展安全更新。 请访问[FAQ 页面](https://www.microsoft.com/cloud-platform/extended-security-updates)了解更多。
+对于本地或托管环境，在无法升级操作系统或迁移到 Azure 的情况下，请为计算机激活扩展的安全更新以继续保护并支持。 请注意，只有特定版本有资格进行扩展安全更新。 请访问[FAQ 页面](https://www.microsoft.com/windows-server/extended-security-updates)了解更多。
 
 | **操作系统**                                       | **文件/文件夹** | **系统状态** | **软件/模块要求**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
@@ -158,7 +159,7 @@ Windows 7| 1,700 GB
 **Type** | **支持**
 --- | ---
 过<sup>*</sup>| 。
-压缩 | 。
+Compressed | 。
 稀疏 | 。
 压缩和稀疏 |。
 硬链接| 不支持。 跳过。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Resource Manager 模板创建指标警报
+title: 使用 Azure 资源管理器模板创建较新的指标警报
 description: 了解如何使用资源管理器模板创建指标警报。
 author: harelbr
 ms.author: harelbr
@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187568"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539459"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -27,7 +27,7 @@ ms.locfileid: "86187568"
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
 2. 编辑相应的参数文件并将其用作 JSON 来自定义警报。
-3. 有关 `metricName` 参数，请参阅 [Azure Monitor 支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中提供的指标。
+3. 有关 `metricName` 参数，请参阅 [Azure Monitor 支持的指标](./metrics-supported.md)中提供的指标。
 4. 使用[任意部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署模板。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>用于简单静态阈值指标警报的模板
@@ -204,7 +204,7 @@ ms.locfileid: "86187568"
 }
 ```
 
-[此处提供](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)了警报规则的架构和属性说明。
+[此处提供](/rest/api/monitor/metricalerts/createorupdate)了警报规则的架构和属性说明。
 
 参数的值可以在命令行上设置，也可以通过参数文件设置。 下面提供一个示例参数文件。
 
@@ -477,7 +477,7 @@ az group deployment create \
 }
 ```
 
-[此处提供](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)了警报规则的架构和属性说明。
+[此处提供](/rest/api/monitor/metricalerts/createorupdate)了警报规则的架构和属性说明。
 
 参数的值可以在命令行上设置，也可以通过参数文件设置。 下面提供一个示例参数文件。 
 
@@ -1248,7 +1248,7 @@ az group deployment create \
 
 可以使用以下模板创建基于自定义指标的更高级静态阈值指标警报规则。
 
-若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
+若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](./metrics-custom-overview.md)。
 
 基于自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 还应确保已报告自定义指标，因为无法针对尚不存在的自定义指标创建警报规则。
 
@@ -1504,7 +1504,7 @@ az group deployment create \
 
 >[!NOTE]
 >
-> [通过 Azure 门户浏览自定义指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)可以查找特定的自定义指标的指标命名空间
+> [通过 Azure 门户浏览自定义指标](./metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)可以查找特定的自定义指标的指标命名空间
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>用于监视多个资源的指标警报的模板

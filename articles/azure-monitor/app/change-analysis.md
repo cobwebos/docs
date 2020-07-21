@@ -5,17 +5,18 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82836720"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540156"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
 
 发生实时站点问题或服务中断时，快速确定根本原因至关重要。 标准的监视解决方案可能会针对问题发出警报。 它们甚至可以指出哪个组件发生了故障。 但是，此警报不一定总能立即解释故障的原因。 你知道你的站点在五分钟前还一切正常，但现在它已中断。 那么，过去 5 分钟发生了什么？ Azure Monitor 中的应用程序更改分析就是为了解答此类问题而开发的。
 
-更改分析构建在 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) 的强大功能基础之上，可让你洞察 Azure 应用程序的更改，以提高可观察性并减少 MTTR（平均修复时间）。
+更改分析构建在 [Azure Resource Graph](../../governance/resource-graph/overview.md) 的强大功能基础之上，可让你洞察 Azure 应用程序的更改，以提高可观察性并减少 MTTR（平均修复时间）。
 
 > [!IMPORTANT]
 > 更改分析目前以预览版提供。 此预览版不附带服务级别协议。 不建议对生产工作负荷使用此版本。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -34,7 +35,7 @@ ms.locfileid: "82836720"
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Azure 资源管理器跟踪的属性更改
 
-更改分析使用 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) 提供托管应用程序的 Azure 资源在不同时间的更改历史记录。 可以检测到管理的设置，例如托管标识、平台操作系统升级和主机名。
+更改分析使用 [Azure Resource Graph](../../governance/resource-graph/overview.md) 提供托管应用程序的 Azure 资源在不同时间的更改历史记录。 可以检测到管理的设置，例如托管标识、平台操作系统升级和主机名。
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure 资源管理器代理设置更改
 
@@ -58,7 +59,7 @@ ms.locfileid: "82836720"
 
 应用程序更改分析服务计算并聚合上述数据源中的更改数据。 它提供一组分析，使用户能够轻松地浏览所有资源更改，并识别故障排除或监视上下文中的相关更改。
 需将“Microsoft.ChangeAnalysis”资源提供程序注册到某个订阅，然后才可使用 Azure 资源管理器的跟踪属性和代理设置更改数据。 当你输入 Web 应用 "诊断和解决问题" 工具或显示 "更改分析独立" 选项卡时，将自动注册此资源提供程序。 它不会为你的订阅提供任何性能或成本实现。 当你为 web 应用启用更改分析（或启用 "诊断和解决问题" 工具）时，它将对 web 应用造成性能影响，无需支付费用。
-对于 Web 应用的来宾中更改，需要单独的支持才能在 Web 应用中扫描代码文件。 有关详细信息，请参阅本文后面[的诊断和解决问题工具](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#application-change-analysis-in-the-diagnose-and-solve-problems-tool)一节中的更改分析。
+对于 Web 应用的来宾中更改，需要单独的支持才能在 Web 应用中扫描代码文件。 有关详细信息，请参阅本文后面[的诊断和解决问题工具](#application-change-analysis-in-the-diagnose-and-solve-problems-tool)一节中的更改分析。
 
 ## <a name="visualizations-for-application-change-analysis"></a>应用程序更改分析的可视化效果
 
@@ -118,7 +119,7 @@ ms.locfileid: "82836720"
 
 先决条件：
 
-- PowerShell Az 模块。 请按照[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0)中的说明操作
+- PowerShell Az 模块。 请按照[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-2.6.0)中的说明操作
 
 运行以下脚本：
 
@@ -158,4 +159,4 @@ foreach ($webapp in $webapp_list)
 
 - 为 [Azure 应用服务应用](azure-web-apps.md)启用 Application Insights。
 - 为 [Azure VM 和 Azure 虚拟机规模集的 IIS 托管应用](azure-vm-vmss-apps.md)启用 Application Insights。
-- 详细了解有助于增强更改分析功能的 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)。
+- 详细了解有助于增强更改分析功能的 [Azure Resource Graph](../../governance/resource-graph/overview.md)。

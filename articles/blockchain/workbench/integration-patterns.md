@@ -4,12 +4,12 @@ description: Azure 区块链工作台预览版中的智能协定集成模式概�
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538302"
 ---
 # <a name="smart-contract-integration-patterns"></a>智能合约集成模式
 
@@ -134,7 +134,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 -   状态更改以事件的形式传递给下游使用者。
 -   下游使用者接收事件，并触发外部代码执行。
 
-![将控制权转换到外部过程](./media/integration-patterns/transition-external-process.png)
+![此关系图显示协定内的状态更改，导致事件转到分布式分类帐。 然后，区块链工作台选取事件并发布该事件。](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>从智能合同返回控制权
 
@@ -142,7 +142,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>以预期的格式在 Azure Blockchain Workbench 中直接传送
 
-![](./media/integration-patterns/direct-delivery.png)
+![此图显示了通过服务总线由区块链工作台选取的外部系统中的 P I 消息。 然后，区块链工作台代表代理将消息作为事务发送到分布式分类帐。 它将被传递给协定，导致状态更改。](./media/integration-patterns/direct-delivery.png)
 
 在此模型中，完成上述过程后，将与合同通信，并发生后续的状态更改，其中 -
 

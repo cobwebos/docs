@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84027648"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539187"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>使用分片多租户 Azure SQL 数据库在 SaaS 应用程序中预配和编录新租户
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +30,7 @@ ms.locfileid: "84027648"
 - 重点介绍如何使用 PowerShell 脚本代码实现预配和编录的[教程](#goto_1_tutorial)。
   - 该教程使用能够适应多租户分片数据库模式的 Wingtip Tickets SaaS 应用程序。
 
-<a name="goto_2_conceptual"/>
+<a name="goto_2_conceptual"></a>
 
 ## <a name="database-pattern"></a>数据库模式
 
@@ -110,11 +111,11 @@ ms.locfileid: "84027648"
 
 随后在目录分片映射中初始化和注册租户数据。 在示例应用中，为包含多个租户的数据库指定一个通用名称，例如 *tenants1* 或 *tenants2*。 为包含单个租户的数据库指定租户的名称。 示例中使用的特定命名约定不是模式的主要部分，因为使用目录可以将任何名称分配给数据库。
 
-<a name="goto_1_tutorial"/>
+<a name="goto_1_tutorial"></a>
 
 ## <a name="tutorial-begins"></a>教程开始
 
-在本教程中，你将了解：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将租户预配到多租户数据库中

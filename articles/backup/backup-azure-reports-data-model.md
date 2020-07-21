@@ -3,11 +3,12 @@ title: Azure 备份诊断事件的数据模型
 description: 此数据模型参考了将诊断事件发送到 Log Analytics (LA) 的资源特定模式。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484506"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538864"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 备份诊断事件的数据模型
 
@@ -119,7 +120,7 @@ ms.locfileid: "84484506"
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | 文本          | 正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
 | OperationName                  | 文本          | 此字段表示当前操作的名称 - Job    |
-| Category                       | 文本          | 此字段表示推送到 Azure Monitor 日志的诊断数据类别-AddonAzureBackupJobs |
+| Category                       | 文本          | 此字段表示推送到 Azure Monitor 日志的诊断数据的类别 - AddonAzureBackupJobs |
 | AdhocOrScheduledJob            | 文本          | 用于指定作业是临时作业还是计划作业的字段           |
 | BackupItemUniqueId             | 文本          | 用于标识与存储实体相关的备份项的唯一 ID |
 | BackupManagementServerUniqueId | 文本          | 用于标识与存储实体相关的备份管理服务器的唯一 ID |
@@ -219,5 +220,5 @@ ms.locfileid: "84484506"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解如何将诊断数据发送到 Log Analytics](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
-- [了解如何编写针对特定于资源的表的查询](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)
+- [了解如何将诊断数据发送到 Log Analytics](./backup-azure-diagnostic-events.md)
+- [了解如何针对特定于资源的表编写查询](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries)

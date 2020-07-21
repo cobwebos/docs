@@ -2,19 +2,19 @@
 title: 安装混合云扩展 (HCX)
 description: 设置适用于 Azure VMware 解决方案 (AVS) 私有云的 VMware 混合云扩展 (HCX) 解决方案
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367540"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539153"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安装适用于 Azure VMware 解决方案的 HCX
 
 在本文中，我们将逐步介绍为 Azure VMWare 解决方案（AVS）私有云设置 VMWare 混合云扩展（HCX）解决方案的过程。 HCX 允许将 VMware 工作负荷迁移到云，并通过各种内置 HCX 支持的迁移类型迁移到其他连接的站点。
 
-默认安装 HCX 高级，最多支持三个外部站点。 如果需要三个以上的站点，则客户可以选择通过支持启用 HCX Enterprise 附加产品。 公开上市（GA）后，HCX Enterprise 安装会向客户收取额外费用，但会提供[其他功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
+默认安装 HCX 高级，最多支持三个 Vcenter。 如果需要三个以上的选项，则客户可以选择通过支持启用 HCX Enterprise 外接程序。 公开上市（GA）后，HCX Enterprise 安装会向客户收取额外费用，但会提供[其他功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
 
 
 首先，请仔细查看[开始之前](#before-you-begin)、[软件版本要求](#software-version-requirements)和[先决条件](#prerequisites)。 

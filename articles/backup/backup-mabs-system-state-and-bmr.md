@@ -3,12 +3,12 @@ title: 系统状态和裸机恢复保护
 description: 使用 Azure 备份服务器备份系统状态，并提供裸机恢复 (BMR) 保护。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538694"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态并将计算机还原成裸机
 
@@ -98,12 +98,12 @@ Azure 备份服务器备份系统状态，并提供裸机恢复 (BMR) 保护。
 ## <a name="before-you-begin"></a>准备阶段
 
 1. **** 部署 Azure 备份服务器。 验证备份服务器是否已正确部署。 有关详细信息，请参阅：
-    * [Azure 备份服务器的系统要求](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
+    * [Azure 备份服务器的系统要求](/system-center/dpm/install-dpm#setup-prerequisites)
     * [备份服务器保护矩阵](backup-mabs-protection-matrix.md)
 
-1. **** 设置存储。 可以将备份数据存储在磁盘、磁带以及 Azure 云中。 有关详细信息，请参阅 [Prepare data storage](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage)（准备数据存储）。
+1. **** 设置存储。 可以将备份数据存储在磁盘、磁带以及 Azure 云中。 有关详细信息，请参阅 [Prepare data storage](/system-center/dpm/plan-long-and-short-term-data-storage)（准备数据存储）。
 
-1. **** 设置保护代理。 在要备份的计算机上安装保护代理。 有关详细信息，请参阅 [Deploy the DPM protection agent](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent)（部署 DPM 保护代理）。
+1. **** 设置保护代理。 在要备份的计算机上安装保护代理。 有关详细信息，请参阅 [Deploy the DPM protection agent](/system-center/dpm/deploy-dpm-protection-agent)（部署 DPM 保护代理）。
 
 ## <a name="back-up-system-state-and-bare-metal"></a>备份系统状态和裸机
 
@@ -115,7 +115,7 @@ Azure 备份服务器备份系统状态，并提供裸机恢复 (BMR) 保护。
 
 1. 在“选择组成员”页上展开计算机，然后选择“BMR”或“系统状态”。**** **** ****
 
-    请记住，不能在不同组中对同一计算机实施 BMR 和系统状态保护。 此外，在选择 BMR 时，会自动启用系统状态。 有关详细信息，请参阅 [Deploy protection groups](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)（部署保护组）。
+    请记住，不能在不同组中对同一计算机实施 BMR 和系统状态保护。 此外，在选择 BMR 时，会自动启用系统状态。 有关详细信息，请参阅 [Deploy protection groups](/system-center/dpm/create-dpm-protection-groups)（部署保护组）。
 
 1. 在“选择数据保护方法”页上，选择要如何处理短期和长期备份。****
 
@@ -159,7 +159,7 @@ Azure 备份服务器备份系统状态，并提供裸机恢复 (BMR) 保护。
 
     可以通过网络复制，也可以脱机备份（脱机种子设定）。 脱机备份使用 Azure 导入功能。 有关详细信息，请参阅 [Azure 备份中的脱机备份工作流](offline-backup-azure-data-box.md)。
 
-1. 在“摘要”**** 页上，查看设置。 选择“创建组”**** 之后，就会进行数据的初始复制。 数据复制完成后，“状态”页上的保护组状态为“正常”**** ****。 然后，会根据保护组设置进行备份。
+1. 在“摘要”页上，查看设置。 选择“创建组”**** 之后，就会进行数据的初始复制。 数据复制完成后，“状态”页上的保护组状态为“正常”**** ****。 然后，会根据保护组设置进行备份。
 
 ## <a name="recover-system-state-or-bmr"></a>恢复系统状态或 BMR
 
