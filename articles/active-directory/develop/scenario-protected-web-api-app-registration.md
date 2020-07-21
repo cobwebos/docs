@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868845"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518268"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 
@@ -28,15 +29,15 @@ ms.locfileid: "81868845"
 
 Microsoft 标识平台终结点可以发出 v1.0 令牌和 v2.0 令牌。 有关这些令牌的详细信息，请参阅[访问令牌](access-tokens.md)。
 
-接受的令牌版本取决于创建应用程序时所选择的**受支持的帐户类型**值。
+当你在 Azure 门户中创建 web API 应用程序注册时，API 可能接受的令牌版本取决于所选的**受支持帐户类型**。
 
-- 如果**支持的帐户类型**的值是**任何组织目录中的帐户和个人 Microsoft 帐户（例如 Skype、Xbox、Outlook.com）**，则接受的令牌版本为 v2.0。
-- 否则，接受的令牌版本为1.0。
+- 如果**支持的帐户类型**的值是**任何组织目录中的帐户和个人 Microsoft 帐户（例如 Skype、Xbox、Outlook.com）**，则接受的令牌版本必须为 v2.0。
+- 否则，接受的令牌版本可以为1.0 版。
 
 创建应用程序后，可以按以下步骤确定或更改接受的令牌版本：
 
 1. 在 Azure 门户中选择你的应用，然后选择“清单”。
-1. 在清单中找到 **accessTokenAcceptedVersion** 属性。 此属性的默认值为 2。
+1. 在清单中找到 **accessTokenAcceptedVersion** 属性。
 1. 该值向 Azure Active Directory (Azure AD) 指定 Web API 接受哪个令牌版本。
     - 如果值为 2，则 Web API 接受 v2.0 令牌。
     - 如果值为 **null**，则 Web API 接受 v1.0 令牌。
@@ -51,7 +52,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 ## <a name="exposed-api"></a>公开的 API
 
-特定于 Web API 的其他设置是公开的 API 和公开的范围。
+Web Api 特定的其他设置为公开的 API 和公开的作用域或应用角色。
 
 ### <a name="application-id-uri-and-scopes"></a>应用程序 ID URI 和范围
 
@@ -63,7 +64,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 - 一个或多个范围
 - 一个或多个应用角色
 
-默认情况下，应用程序注册门户建议使用资源 URI `api://{clientId}` 。 此 URI 是唯一的，但用户无法识别它。 如果更改 URI，请确保新值是唯一的。
+默认情况下，应用程序注册门户建议使用资源 URI `api://{clientId}` 。 此 URI 是唯一的，但用户无法识别它。 如果更改 URI，请确保新值是唯一的。 应用程序注册门户将确保使用[已配置的发布服务器域](howto-configure-publisher-domain.md)
 
 对于客户端应用程序，范围将显示为委托的权限，应用角色将显示为 Web API 的应用程序权限。 
 
@@ -71,6 +72,8 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 - 用户看到的内容。
 - 可授予管理员许可的租户管理员看到的内容。
+
+用户不能同意应用程序角色（因为它们是由代表自己调用 web API 的应用程序使用的）。 租户管理员将需要同意公开应用角色的 web API 的客户端应用程序。 有关详细信息，请参阅[管理员同意](v2-admin-consent.md)
 
 ### <a name="exposing-delegated-permissions-scopes"></a>公开委托的权限（范围）
 

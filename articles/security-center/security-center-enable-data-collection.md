@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855936"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519708"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (VM)、虚拟机规模集、IaaS 容器和非 Azure 计算机（包括本地计算机）收集数据，以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。
@@ -78,7 +78,7 @@ ms.locfileid: "85855936"
 1. 安全中心将会根据针对订阅设置的定价层，在工作区中自动启用安全中心解决方案。 
 
 > [!NOTE]
-> 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案。 对于“免费层”，安全中心将在默认工作区中启用 *SecurityCenterFree* 解决方案。 对于“标准层”，安全中心将在默认工作区中启用 *Security* 解决方案。
+> 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案。 对于“免费层”，安全中心将在默认工作区中启用 *SecurityCenterFree* 解决方案。 对于标准层，安全中心在默认工作区中启用*安全*解决方案。
 > 在 Log Analytics 中存储数据可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 有关现有 Log Analytics 帐户的详细信息，请参阅[现有 Log Analytics 客户](./faq-azure-monitor-logs.md)。

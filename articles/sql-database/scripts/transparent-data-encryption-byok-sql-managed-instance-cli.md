@@ -11,11 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: 271f68a57a4490032e318da57b4b37aac09a1410
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08f0531a99a7e0af42332e349989ce12722be42c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019342"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518786"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>使用 Azure Key Vault 中自己的密钥管理托管实例中的透明数据加密
 
@@ -55,7 +56,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| | |
+| 命令 | 说明 |
 |---|---|
 | [az sql db](/cli/azure/sql/db) | 数据库命令。 |
 | [az sql failover-group](/cli/azure/sql/failover-group) | 故障转移组命令。 |

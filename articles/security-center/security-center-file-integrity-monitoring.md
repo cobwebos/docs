@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628291"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519331"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -45,7 +46,7 @@ ms.locfileid: "84628291"
 安全中心会建议要监视的、可以轻松对其启用 FIM 的实体。 你也可以定义自己的 FIM 策略或要监视的实体。 本演练会演示这些操作。
 
 > [!NOTE]
-> 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机与 VM，已在安全中心的标准层上提供。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
+> 文件完整性监视（FIM）功能适用于 Windows 和 Linux 计算机和 Vm，并且在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
 
 FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视后，会获得一个“解决方案”类型的“更改跟踪”资源 。 有关数据收集频率的详细信息，请参阅 Azure 更改跟踪的[更改跟踪数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 
@@ -107,7 +108,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 可能还会显示工作区对应的以下按钮：
 
 - ![启用图标][3] 指示未对工作区启用 FIM。 选择工作区可在该工作区中的所有计算机上启用 FIM。
-- ![升级计划图标][4]指示工作区或订阅不是在安全中心的标准层下运行。 若要使用 FIM 功能，订阅必须运行标准层。  选择工作区可以升级到标准层。 若要详细了解标准层以及升级方法，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
+- ![升级计划图标 ][4] 表明工作区或订阅未在安全中心的标准层上运行。 若要使用 FIM 功能，订阅必须运行标准层。  选择工作区可以升级到标准层。 若要了解有关标准层和如何升级的详细信息，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
 - 空白（没有任何按钮）表示已对工作区启用 FIM。
 
 在“文件完整性监视”下，可以选择某个工作区以便对其启用 FIM、查看该工作区的“文件完整性监视”仪表板工作区，或者将该工作区[升级](security-center-pricing.md)到标准层。

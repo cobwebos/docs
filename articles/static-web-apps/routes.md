@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056780"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518769"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的路由
 
@@ -295,7 +295,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | /unknown-folder | 提供 /custom-404.html 文件。 |
 | 扩展名为的文件 `.custom` | 与 `text/html` MIME 类型一起提供 |
 
-- 所有响应都包含 `content-security-policy` 值为的标头 `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` 。
+所有响应都包含 `content-security-policy` 值为的标头 `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` 。
 
 <sup>1</sup> API 函数的路由规则仅支持[重定向](#redirects)和[保护具有角色的路由](#securing-routes-with-roles)。
 

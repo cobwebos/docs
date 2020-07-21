@@ -3,12 +3,12 @@ title: 用 ServiceNow 发送 Azure 服务运行状况警报
 description: 获取有关发送到 ServiceNow 实例的服务运行状况事件的个性化通知。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 96c181991fc962b08e777a55d891b881fc1bdba3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260206"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519059"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 Webhook 通过 ServiceNow 发送 Azure 服务运行状况警报
 
@@ -147,7 +147,7 @@ ms.locfileid: "86260206"
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>在 Azure 门户中使用 ServiceNow 创建警报
 ### <a name="for-a-new-action-group"></a>对于新操作组：
-1. 按[此文](../azure-monitor/platform/alerts-activity-log-service-notifications.md)中的步骤 1-8 操作，使用新操作组创建警报。
+1. 按[此文](./alerts-activity-log-service-notifications-portal.md)中的步骤 1-8 操作，使用新操作组创建警报。
 
 1. 在“操作”  列表中定义：
 
@@ -195,5 +195,5 @@ ms.locfileid: "86260206"
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 了解[服务运行状况通知](../azure-monitor/platform/service-notifications.md)。
+- 了解[服务运行状况通知](./service-notifications.md)。
 - 详细了解[操作组](../azure-monitor/platform/action-groups.md)。

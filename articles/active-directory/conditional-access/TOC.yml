@@ -47,8 +47,6 @@
       href: controls.md
     - name: 经典策略迁移
       href: policy-migration.md
-    - name: 基线保护策略
-      href: concept-baseline-protection.md
 - name: 操作指南
   expanded: true
   items:

@@ -3,12 +3,12 @@ title: 排查无数据问题 - 用于 .NET 的 Application Insights
 description: 在 Azure Application Insights 中看不到数据？ 试试这里。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 351ef145ab65fee8397034912f9a6ce295f1f909
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221028"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517161"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -42,7 +42,7 @@ ms.locfileid: "86221028"
 *在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。*
 
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](../../azure-monitor/app/windows-desktop.md)。
-* 请务必使用 [Visual Studio 2013 Update 3 或更高版本](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
+* 请务必使用 [Visual Studio 2013 Update 3 或更高版本](/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
 * 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。   如果是，请单击“更新”查看是否有可用的更新。
 * 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 如果未看到，请尝试卸载并重新安装 Developer Analytics Tools。
 
@@ -132,7 +132,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
   * 在 Visual Studio 解决方案资源管理器中右键单击项目，并依次选择“Application Insights”、“配置”。 重置应用，将遥测数据发送到正确的资源。
   * 如果找不到匹配的密钥，请检查在 Visual Studio 中使用的登录凭据是否与门户中使用的相同。
 * 在 [Microsoft Azure 主页仪表板](https://portal.azure.com)中，查看服务运行状况地图。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
-* 另请查看[我们的状态博客](https://blogs.msdn.microsoft.com/servicemap-status/)。
+* 另请查看[我们的状态博客](https://techcommunity.microsoft.com/t5/azure-monitor-status/bg-p/AzureMonitorStatusBlog)。
 * 是否针对[服务器端 SDK](../../azure-monitor/app/api-custom-events-metrics.md) 编写了可能更改 `TelemetryClient` 实例或 `TelemetryContext` 中的检测密钥的任何代码？ 或者，是否编写了可能筛选掉过多内容的[筛选或采样配置](../../azure-monitor/app/api-filtering-sampling.md)？
 * 如果编辑了 ApplicationInsights.config，请仔细检查 [TelemetryInitializers 和 TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md) 的配置。 命名不当的类型或参数可能导致 SDK 不发送任何数据。
 
@@ -154,7 +154,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>将应用发布到服务器后未看到（服务器）数据
 * 请检查是否确实将 Microsoft. ApplicationInsights DLL 连同 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll 一起复制到了服务器。
 * 在防火墙中，可能需要[打开某些 TCP 端口](../../azure-monitor/app/ip-addresses.md)。
-* 如果必须使用代理在企业网络外部发送数据，请在 Web.config 中设置 [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx)
+* 如果必须使用代理在企业网络外部发送数据，请在 Web.config 中设置 [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71))
 * Windows Server 2008：请确保已安装以下更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217)。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
@@ -170,7 +170,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 在 2018 年 2 月 5 日，我们宣布我们删除了客户端 IP 地址的日志记录。 这不会影响地理位置。
 
 > [!NOTE]
-> 如果需要 IP 地址的前 3 个八位字节，则可以使用[遥测初始化程序](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)添加自定义属性。
+> 如果需要 IP 地址的前 3 个八位字节，则可以使用[遥测初始化程序](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)添加自定义属性。
 > 这不会影响 2018 年 2 月 5 日之前收集的数据。
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>用户遥测数据包含错误的地理数据
@@ -206,9 +206,9 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 ### <a name="net-core"></a>.NET Core
 
-1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsights` 版本匹配
+1. 从 NuGet 安装 ASP.NET Core 包的[APPLICATION INSIGHTS SDK NuGet 包](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)。 安装的版本必须与当前安装的版本匹配 `Microsoft.ApplicationInsights` 。
 
-Microsoft.ApplicationInsights.AspNetCore 的最新版本为 2.8.2，它引用 Microsoft.ApplicationInsights 版本 2.11.2。 因此，要安装的 Microsoft.AspNet.ApplicationInsights.HostingStartup 版本应是 2.11.2。
+   最新版本的 Applicationinsights.config 是2.14.0，它是指 Applicationinsights.config 版本2.14.0。 因此，要安装的 Applicationinsights.config 版本应为2.14.0。
 
 2. 修改 `Startup.cs` 类中的 `ConfigureServices` 方法：
 
@@ -249,7 +249,7 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 ## <a name="collect-logs-with-dotnet-trace"></a>使用 dotnet-trace 收集日志
 
-在基于 Linux 的环境中，收集用于故障排除的日志的另一种特别有用的方法是使用 [`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+在基于 Linux 的环境中，收集用于故障排除的日志的另一种特别有用的方法是使用 [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -260,4 +260,4 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 按照[此文](../../azure-monitor/app/remove-application-insights.md)中提供的步骤，了解如何在 Visual Studio 中删除 Application Insights。
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
-* [有关 Application Insights 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+* [有关 Application Insights 的 Microsoft 问答页](/answers/topics/azure-monitor.html)

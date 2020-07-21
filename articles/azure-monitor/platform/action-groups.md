@@ -3,14 +3,15 @@ title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 6/5/2020
+ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465246"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516169"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -69,7 +70,7 @@ ms.locfileid: "84465246"
 ## <a name="action-specific-information"></a>特定于操作的信息
 
 > [!NOTE]
-> 请参阅[针对监视的订阅服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits)，了解下面每个项的数值限制。  
+> 请参阅[针对监视的订阅服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-monitor-limits)，了解下面每个项的数值限制。  
 
 ### <a name="automation-runbook"></a>自动化 Runbook
 有关针对 Runbook 有效负载的限制，请参阅 [Azure 订阅服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
@@ -106,21 +107,21 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-mo
 操作组中的逻辑应用操作数可能有限。
 
 ### <a name="secure-webhook"></a>安全 Webhook
-操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组和受保护的 Web API（Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
+操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组和受保护的 Web API（Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
 
-1. 为受保护的 Web API 创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview 。
-    - 将受保护的 API 配置为由守护程序应用调用。
+1. 为受保护的 Web API 创建 Azure AD 应用程序。 请参阅[受保护的 WEB API：应用注册](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration)。
+    - 配置要[由后台程序应用调用的](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)受保护 API。
     
-1. 启用操作组以使用 Azure AD 应用程序。
+2. 启用操作组以使用 Azure AD 应用程序。
 
     > [!NOTE]
-    > 此脚本必须由 [Azure AD 应用程序管理员角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成员执行。
+    > 此脚本必须由 [Azure AD 应用程序管理员角色](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)的成员执行。
     
     - 修改 PowerShell 脚本的 Connect-AzureAD 调用以使用 Azure AD 租户 ID。
     - 将 PowerShell 脚本的变量 $myAzureADApplicationObjectId 修改为使用 Azure AD 应用程序的对象 ID。
     - 运行修改后的脚本。
     
-1. 配置操作组安全 Webhook 操作。
+3. 配置操作组安全 Webhook 操作。
     - 从脚本中复制值 $myApp.ObjectId，并将其输入到 Webhook 操作定义中的“应用程序对象 ID”字段。
     
     ![安全 Webhook 操作](./media/action-groups/action-groups-secure-webhook.png)
@@ -252,4 +253,4 @@ Write-Host $myApp.AppRoles
 * 详细了解[ITSM 连接器](../../azure-monitor/platform/itsmc-overview.md)。
 * 详细了解有关警报的[速率限制](../../azure-monitor/platform/alerts-rate-limiting.md)。
 * 获取[活动日志警报概述](../../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。  
-* 了解如何[配置每次发布服务运行状况通知时的警报](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
+* 了解如何[配置每次发布服务运行状况通知时的警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3fab2515bb15cce35070de9326cd6afcc034b20
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976059"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517735"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>有关管理 Azure Kubernetes 服务 (AKS) 中的资源的应用程序开发人员最佳做法
 
@@ -27,7 +27,7 @@ ms.locfileid: "84976059"
 
 ## <a name="define-pod-resource-requests-and-limits"></a>定义 pod 资源请求和限制
 
-**最佳做法指导** - 在 YAML 清单中针对所有 pod 设置 pod 请求和限制。 如果 AKS 群集使用资源配额，而你未定义这些值，则可能会拒绝你的部署。**
+**最佳做法指导** - 在 YAML 清单中针对所有 pod 设置 pod 请求和限制。 如果 AKS 群集使用资源配额，而你未定义这些值，则可能会拒绝你的部署。
 
 管理 AKS 群集中的计算资源的主要方法是使用 pod 请求和限制。 这些请求和限制可让 Kubernetes 计划程序知道应该为 pod 分配哪些计算资源。
 
@@ -76,11 +76,11 @@ spec:
 
 **最佳做法指导** - 开发团队应该使用 Dev Spaces 针对 AKS 群集进行部署和调试。 此开发模型可确保在将应用部署到生产环境之前，实现基于角色的访问控制、网络或存储需求。
 
-使用 Azure Dev Spaces 直接针对 AKS 群集开发、调试和测试应用程序。 在整个应用程序生命周期，团队中的开发人员共同协作进行生成和测试。 可以继续使用现有的工具，例如 Visual Studio 或 Visual Studio Code。 为 Dev 空间安装了一个扩展，该扩展提供了一个选项，用于在 AKS 群集中运行和调试应用程序。
+使用 Azure Dev Spaces 直接针对 AKS 群集开发、调试和测试应用程序。 在整个应用程序生命周期，团队中的开发人员共同协作进行生成和测试。 可以继续使用现有的工具，例如 Visual Studio 或 Visual Studio Code。 已为 Dev Spaces 安装扩展，该扩展提供用于在 AKS 群集中运行和调试应用程序的选项。
 
-这种使用 Dev Spaces 的集成式开发和测试过程减少了 [minikube][minikube] 等本地测试环境的需求。 可以针对 AKS 群集进行开发和测试。 可根据前面有关使用命名空间逻辑隔离群集的部分中所述保护和隔离此群集。 当准备好将应用部署到生产环境时，可以放心地进行部署，因为针对真正 AKS 群集的所有开发工作均已完成。
+这种使用 Dev Spaces 的集成式开发和测试过程减少了对 [minikube][minikube] 等本地测试环境的需求。 可以针对 AKS 群集进行开发和测试。 可根据前面有关使用命名空间逻辑隔离群集的部分中所述保护和隔离此群集。 当准备好将应用部署到生产环境时，可以放心地进行部署，因为针对真正 AKS 群集的所有开发工作均已完成。
 
-Azure Dev Spaces 适用于在 Linux pod 和节点上运行的应用程序。
+Azure Dev Spaces 适用于在 Linux Pod 和节点上运行的应用程序。
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>使用适用于 Kubernetes 的 Visual Studio Code 扩展
 
@@ -96,7 +96,7 @@ Azure Dev Spaces 适用于在 Linux pod 和节点上运行的应用程序。
 
 [kube-advisor][kube-advisor] 工具是一个关联的 AKS 开放源代码项目，它将扫描 Kubernetes 群集，并报告它找到的问题。 一项有用的检查是识别未应用资源请求和限制的 pod。
 
-Kube-advisor 工具可以报告 Windows 应用程序和 Linux 应用程序的 PodSpecs 中缺少的资源请求和限制，但 kube-advisor 工具本身必须在 Linux pod 上计划。 可以使用 pod 配置中的[节点选择器][k8s-node-selector]，将 pod 计划为在具有特定 OS 的节点池上运行。
+kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux 应用程序中缺少的资源请求和限制，但 kube-advisor 工具本身必须在 Linux Pod 上进行计划。 可以使用 Pod 配置中的[节点选择器][k8s-node-selector]安排 Pod 在具有特定 OS 的节点池上运行。
 
 在托管许多开发团队和应用程序的 AKS 群集中，可能很难跟踪未设置这些资源请求和限制的 pod。 最佳做法是定期针对 AKS 群集运行 `kube-advisor`。
 
@@ -117,7 +117,7 @@ Kube-advisor 工具可以报告 Windows 应用程序和 Linux 应用程序的 Po
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
+[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

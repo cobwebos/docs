@@ -1,22 +1,22 @@
 ---
-title: '在 Azure Kubernetes Service 上启用基于主机的加密 (AKS) '
-description: 了解如何在 Azure Kubernetes Service (AKS) 群集中配置基于主机的加密
+title: 在 Azure Kubernetes Service （AKS）上启用基于主机的加密
+description: 了解如何在 Azure Kubernetes 服务（AKS）群集中配置基于主机的加密
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 7b9d930d62d0acea30af9b5e7e12e43fa8fcd5da
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d2b34d8c3090eb6ae3f1445ff1fc663d90367977
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244304"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517716"
 ---
-# <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service 上基于主机的加密 (AKS)  (预览) 
+# <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service （AKS）上基于主机的加密（预览版）
 
-通过基于主机的加密，存储在 AKS 代理节点 Vm 的 VM 主机上的数据将静态加密，并加密为存储服务。 这意味着临时磁盘会以平台管理的密钥加密。 操作系统和数据磁盘的缓存会以平台管理的密钥或客户托管的密钥进行加密，具体取决于在这些磁盘上设置的加密类型。 默认情况下，使用 AKS 时，操作系统和数据磁盘使用平台管理的密钥进行静态加密，这意味着这些磁盘的缓存也会默认使用平台管理的密钥进行静态加密。  可以[在 "自带密钥" 中指定自己的托管密钥， (在 Azure Kubernetes Service 中将 azure 磁盘与 azure 磁盘) ](azure-disk-customer-managed-keys.md)。 这些磁盘的缓存还将使用您在此步骤中指定的密钥进行加密。
+通过基于主机的加密，存储在 AKS 代理节点 Vm 的 VM 主机上的数据将静态加密，并加密为存储服务。 这意味着临时磁盘会以平台管理的密钥加密。 操作系统和数据磁盘的缓存会以平台管理的密钥或客户托管的密钥进行加密，具体取决于在这些磁盘上设置的加密类型。 默认情况下，使用 AKS 时，操作系统和数据磁盘使用平台管理的密钥进行静态加密，这意味着这些磁盘的缓存也会默认使用平台管理的密钥进行静态加密。  可以[在 Azure Kubernetes 服务中的 azure 磁盘后，按 "自带密钥（BYOK）"](azure-disk-customer-managed-keys.md)指定自己的托管密钥。 这些磁盘的缓存还将使用您在此步骤中指定的密钥进行加密。
 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 此功能只能在创建群集或创建节点池时设置。
 
@@ -27,18 +27,18 @@ ms.locfileid: "86244304"
 
 - 确保已 `aks-preview` 安装 CLI extension v 0.4.55 或更高版本
 - 确保 `EncryptionAtHost` 功能标志处于 `Microsoft.Compute` 启用状态。
-- 确保 `EncryptionAtHost` 功能标志处于 `Microsoft.ContainerService` 启用状态。
+- 确保 `EnableEncryptionAtHostPreview` 功能标志处于 `Microsoft.ContainerService` 启用状态。
 
 ### <a name="register-encryptionathost--preview-features"></a>注册 `EncryptionAtHost` 预览功能
 
-若要创建使用基于主机的加密的 AKS 群集，必须 `EncryptionAtHost` 在订阅上启用功能标志。
+若要创建使用基于主机的加密的 AKS 群集，必须 `EnableEncryptionAtHostPreview` `EncryptionAtHost` 在订阅上启用和功能标志。
 
 `EncryptionAtHost`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 
-az feature register --namespace "Microsoft.ContainerService"  --name "EncryptionAtHost"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 状态显示为“已注册”需要几分钟时间**。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
@@ -46,7 +46,7 @@ az feature register --namespace "Microsoft.ContainerService"  --name "Encryption
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EncryptionAtHost')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 准备就绪后， `Microsoft.ContainerService` `Microsoft.Compute` 使用[az provider register][az-provider-register]命令刷新和资源提供程序的注册：
@@ -58,7 +58,7 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 > [!IMPORTANT]
-> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能并不适合用于生产。 有关其他信息，请参阅以下支持文章：
+> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能不应用于生产。 有关其他信息，请参阅以下支持文章：
 >
 > - [AKS 支持策略](support-policies.md)
 > - [Azure 支持常见问题](faq.md)
@@ -79,9 +79,9 @@ az extension update --name aks-preview
 
 - 只能在新的节点池或新群集上启用。
 - 只能在支持 Azure 托管磁盘的服务器端加密且仅支持特定[支持的 VM 大小][supported-sizes]的[azure 区域][supported-regions]中启用。
-- 需要基于虚拟机规模集 (VMSS) 为*VM 集类型*的 AKS 群集和节点池。
+- 需要一个基于虚拟机规模集（VMSS）的 AKS 群集和节点池作为*VM 集类型*。
 
-## <a name="use-host-based-encryption-on-new-clusters-preview"></a>在新群集上使用基于主机的加密 (预览) 
+## <a name="use-host-based-encryption-on-new-clusters-preview"></a>在新群集上使用基于主机的加密（预览版）
 
 将群集代理节点配置为在创建群集时使用基于主机的加密。 使用 `--aks-custom-headers` 标志设置 `EnableEncryptionAtHost` 标头。
 
@@ -91,7 +91,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 
 如果要创建不包含基于主机的加密的群集，可以通过省略自定义参数来执行此操作 `--aks-custom-headers` 。
 
-## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>在现有群集上使用基于主机的加密 (预览) 
+## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>在现有群集上使用基于主机的加密（预览版）
 
 通过向群集中添加新的节点池，可以在现有群集上启用基于主机的加密。 使用标志配置新的节点池以使用基于主机的加密 `--aks-custom-headers` 。
 

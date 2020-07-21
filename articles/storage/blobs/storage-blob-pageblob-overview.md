@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 447653cdcaeb1a0bbf891a26e8bc0af5ead87fdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223289"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518701"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
@@ -33,6 +33,10 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 * 应用程序主导的增量快照管理：应用程序可以利用页 Blob 快照和 REST API 来保存应用程序检查点，而不会产生高昂的数据复制成本。 Azure 存储支持页 Blob 的本地快照，这类快照不要求复制整个 Blob。 使用这些公共快照 API 还可以访问和复制快照之间的增量数据。
 * 将应用程序和数据从本地实时迁移到云中：复制本地数据并使用 REST API 将数据直接写入 Azure 页 Blob，同时，本地 VM 可继续保持运行。 与目标同步后，可以使用该数据快速故障转移到 Azure VM。 这样，便可以在几乎不造成停机的情况下，将 VM 和虚拟磁盘从本地迁移到云中，因为数据迁移在后台发生，同时我们可以继续使用 VM，并且故障转移所需的停机时间很短（以分钟计）。
 * [基于 SAS](../common/storage-sas-overview.md) 的共享访问，可以实现支持并发控制的方案，例如多个读取者和单个写入者。
+
+## <a name="pricing"></a>定价
+
+页 blob 提供的这两种存储类型都有自己的定价模型。 高级页 blob 遵循托管磁盘定价模型，而标准页 blob 按使用大小和每个事务进行计费。 有关详细信息，请参阅[Azure 页 blob 定价页](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
 
 ## <a name="page-blob-features"></a>页 Blob 功能
 
@@ -54,7 +58,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例演示如何创建对**CloudBlobContainer**对象的引用，然后创建该容器 (*Testvhds*) （如果它尚不存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 blob，请调用[CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
+为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例演示如何创建对**CloudBlobContainer**对象的引用，然后创建容器（*testvhds*）（如果它尚不存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 blob，请调用[CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
 
 ```csharp
 using Microsoft.Azure;

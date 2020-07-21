@@ -4,16 +4,17 @@ description: 经典警报将被弃用。 使用警报可以监视 Azure 资源�
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114501"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515948"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
 
 > [!NOTE]
-> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 经典警报已[停](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)用，但对于尚不支持新警报的资源仍有限制。 
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 经典警报已[停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。 
 >
 
 警报允许配置数据条件，并在条件与最新监视数据匹配时发出通知。
@@ -88,7 +89,7 @@ Webhook 可实现自动化和修复，例如使用：
 * [通过 Azure 门户配置经典指标警报](alerts-classic-portal.md)
 * 配置[经典指标警报 PowerShell](alerts-classic-portal.md)
 * 配置[经典指标警报命令行接口 (CLI)](alerts-classic-portal.md)
-* 配置[经典指标警报 Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* 配置[经典指标警报 Azure Monitor REST API](/rest/api/monitor/alertrules)
 * 详细了解[活动日志](platform-logs-overview.md)
 * [通过 Azure 门户配置活动日志警报](activity-log-alerts.md)
 * [通过 Resource Manager 配置活动日志警报](alerts-activity-log.md)

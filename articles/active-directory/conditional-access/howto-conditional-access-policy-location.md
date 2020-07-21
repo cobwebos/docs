@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5350e728ad9c30a6e9258ce9c7615baf020473a8
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6f1eae9cc067f8aa10ad49d70dfe0393f4bed6c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995116"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518413"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件访问：按位置阻止访问
 
@@ -42,17 +43,15 @@ ms.locfileid: "83995116"
 1. 为策略指定一个名称。 建议组织创建一个有意义的策略名称标准。
 1. 在“分配”下，选择“用户和组”
    1. 在“包括”下，选择“所有用户”。
-   1. 选择“完成”。
-1. 在“云应用或操作” > “包含”下方，选择“所有云应用” ，然后选择“完成”。
+1. 在 "**云应用" 或 "操作**" 下  >  **Include**，选择 "**所有云应用**"。
 1. 在“条件” > “位置”下方。
    1. 将“配置”设置为“是” 
-   1. 对于“包含”，选择“所选位置” 
+   1. 在 "**包括**" 下，选择**所选位置**
    1. 选择你为组织创建的阻止位置。
-   1. 单击“选择” > “完成” > “完成”。
-1. 在“条件” > “客户端应用(预览)”下，将“配置”设置为“是”，然后选择“完成”。
-1. 在“访问控制” >  “阻止”下方，选择“选择”。
-1. 确认设置并将“启用策略”设置为“开启”。
-1. 选择“创建”以创建并启用策略。
+   1. 单击“选择”。
+1. 在 "**访问控制**" 下 > 选择 "**阻止访问**"，然后选择 "**选择**"。
+1. 确认设置，然后将“启用策略”设置为“打开”。 
+1. 选择 "**创建**" 创建条件性访问策略。
 
 ## <a name="next-steps"></a>后续步骤
 

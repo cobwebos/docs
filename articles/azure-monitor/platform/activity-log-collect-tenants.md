@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: d2f794365e15768dbf47647f2d9a8d08d5e8ba3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07c38cbd2d77a3cca594acd974705af35d8189b9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055742"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516339"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>跨 Azure Active Directory 租户 Azure Monitor 收集 Azure 活动日志（旧）
 
 > [!NOTE]
-> 本文介绍了在 Azure 租户之间配置 Azure 活动日志以在 Log Analytics 工作区中收集的传统方法。  你现在可以使用类似于收集资源日志的方式的诊断设置，将活动日志收集到 Log Analytics 工作区中。 请参阅[收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](activity-log-collect.md)。
+> 本文介绍了在 Azure 租户之间配置 Azure 活动日志以在 Log Analytics 工作区中收集的传统方法。  你现在可以使用类似于收集资源日志的方式的诊断设置，将活动日志收集到 Log Analytics 工作区中。 请参阅[收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](./activity-log.md)。
 
 
 本文逐步讲解如何使用逻辑应用的 Azure Log Analytics 数据收集器连接器，将 Azure 活动日志收集到 Azure Monitor 的 Log Analytics 工作区中。 需要将日志发送到不同 Azure Active Directory 租户中的工作区时，可以使用本文中所述的过程。 例如，如果你是托管服务提供商，可能想要从客户的订阅中收集活动日志，并将其存储在自己订阅中的 Log Analytics 工作区中。
 
-如果 Log Analytics 工作区位于同一 Azure 订阅中，或者位于不同的订阅但位于同一 Azure Active Directory 中，请使用[在 Azure Monitor 的 Log Analytics 工作区中收集和分析 Azure 活动日志](activity-log-collect.md)中的步骤来收集 Azure 活动日志。
+如果 Log Analytics 工作区位于同一 Azure 订阅中，或者位于不同的订阅但位于同一 Azure Active Directory 中，请使用[在 Azure Monitor 的 Log Analytics 工作区中收集和分析 Azure 活动日志](./activity-log.md)中的步骤来收集 Azure 活动日志。
 
 ## <a name="overview"></a>概述
 
@@ -90,17 +90,17 @@ ms.locfileid: "80055742"
 
 11. 单击“确定”，然后单击“保存”以保存这些设置。******** 这些设置会即时应用到订阅。
 
-<!-- Follow the steps in [stream the Azure Activity Log to Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) to configure a log profile that writes activity logs to an event hub. -->
+<!-- Follow the steps in [stream the Azure Activity Log to Event Hubs](./activity-log.md#legacy-collection-methods) to configure a log profile that writes activity logs to an event hub. -->
 
 ## <a name="step-3---create-logic-app"></a>步骤 3 - 创建逻辑应用
 
 开始将活动日志写入事件中心后，可以创建一个逻辑应用，用于从事件中心收集日志并将其写入 Log Analytics 工作区。
 
 逻辑应用中包括：
-- 一个[事件中心连接器](https://docs.microsoft.com/connectors/eventhubs/)触发器，用于从事件中心读取数据。
+- 一个[事件中心连接器](/connectors/eventhubs/)触发器，用于从事件中心读取数据。
 - 一个[“分析 JSON”操作](../../logic-apps/logic-apps-content-type.md)，用于提取 JSON 事件。
 - 一个[“撰写”操作](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action)，用于将 JSON 转换为对象。
-- 一个 [Log Analytics 发送数据连接器](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/)，用于将数据发布到 Log Analytics 工作区。
+- 一个 [Log Analytics 发送数据连接器](/connectors/azureloganalyticsdatacollector/)，用于将数据发布到 Log Analytics 工作区。
 
    ![在逻辑应用中添加事件中心触发器的插图](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
@@ -284,14 +284,14 @@ ms.locfileid: "80055742"
 
 
 ### <a name="add-log-analytics-send-data-action"></a>添加 Log Analytics 发送数据操作
-[Azure Log Analytics 数据收集器](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/)操作获取“撰写”操作中的对象，并将其发送到 Log Analytics 工作区。
+[Azure Log Analytics 数据收集器](/connectors/azureloganalyticsdatacollector/)操作获取“撰写”操作中的对象，并将其发送到 Log Analytics 工作区。
 
 1. 单击 "**新建步骤**" "  >  **添加操作**"
 2. 键入 *log analytics* 作为筛选器，然后选择“Azure Log Analytics 数据收集器 - 发送数据”操作。****
 
    ![在逻辑应用中添加 Log Analytics 发送数据操作](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. 输入连接名称，并粘贴 Log Analytics 工作区的**工作区 ID** 和**工作区密钥**。  单击**创建**。
+3. 输入连接名称，并粘贴 Log Analytics 工作区的**工作区 ID** 和**工作区密钥**。  单击“创建”。
 
    ![在逻辑应用中添加 Log Analytics 连接](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
@@ -330,7 +330,7 @@ ms.locfileid: "80055742"
 > 首次将新的自定义日志发送到 Log Analytics 工作区后，最长可能需要经过一小时，该自定义日志才可供搜索。
 
 >[!NOTE]
-> 活动日志将写入到自定义表，而不会显示在[活动日志解决方案](./activity-log-collect.md)中。
+> 活动日志将写入到自定义表，而不会显示在[活动日志解决方案](./activity-log.md)中。
 
 
 ![测试逻辑应用](media/collect-activity-logs-subscriptions/log-analytics-results.png)

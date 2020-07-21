@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 11fb2b7785540f24b0a8318428da01a4edd5cb5b
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: d7c3613a0ddce217e9d07c3fc2eba55b78c53a1b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516509"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Log Analytics 工作区
 
@@ -31,10 +32,10 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="create-a-workspace"></a>创建工作区
-使用 [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) 创建工作区。 以下示例使用本地计算机上的资源管理器模板在 eastus 位置中创建工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 也可以将模板存储在 Azure 存储帐户中，以便在组织中共享访问。 有关使用模板的更多信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
+使用 [az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) 创建工作区。 以下示例使用本地计算机上的资源管理器模板在 eastus 位置中创建工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 也可以将模板存储在 Azure 存储帐户中，以便在组织中共享访问。 有关使用模板的更多信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
 有关支持的区域的信息，请参阅[可在哪些区域使用 Log Analytics](https://azure.microsoft.com/regions/services/)，并在“搜索产品”字段中搜索 Azure Monitor。
 
@@ -105,7 +106,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
     }
     ```
 
-2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)参考，了解支持的属性和值。
+2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)参考，了解支持的属性和值。
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。   
 4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令。 当系统提示输入工作区名称时，提供一个在所有 Azure 订阅中全局唯一的名称。
 
@@ -118,17 +119,17 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 ![部署完成后的示例结果](media/quick-create-workspace-cli/template-output-01.png)
 
 ## <a name="troubleshooting"></a>疑难解答
-如果创建了一个工作区，该工作区已在过去 14 天内删除且处于[软删除状态](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)，那么该操作可能会有不同的结果，具体取决于你的工作区配置：
+如果创建了一个工作区，该工作区已在过去 14 天内删除且处于[软删除状态](../platform/delete-workspace.md#soft-delete-behavior)，那么该操作可能会有不同的结果，具体取决于你的工作区配置：
 1. 如果你提供的工作区名称、资源组、订阅和区域与已删除的工作区中的相同，则将恢复你的工作区，包括其数据、配置和连接的代理。
 2. 如果你使用相同的工作区名称，但提供不同的资源组、订阅或区域，则将收到“工作区名称 workspace-name 不是唯一的或存在冲突”错误 。 若要替换软删除，同时永久删除你的工作区并创建新的同名工作区，请按照以下步骤，先恢复工作区再执行永久删除：
-   * [恢复](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)工作区
-   * [永久删除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)工作区
+   * [恢复](../platform/delete-workspace.md#recover-workspace)工作区
+   * [永久删除](../platform/delete-workspace.md#permanent-workspace-delete)工作区
    * 使用相同的工作区名称创建新的工作区
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已有可用的工作区，可以配置监视遥测收集、运行日志搜索分析该数据，以及添加管理解决方案以提供其他数据和分析见解。  
 
-* 若要启用通过 Azure 诊断或 Azure 存储从 Azure 资源收集数据，请参阅[收集要在 Log Analytics 中使用的 Azure 服务日志和指标](../platform/collect-azure-metrics-logs.md)。  
+* 若要启用通过 Azure 诊断或 Azure 存储从 Azure 资源收集数据，请参阅[收集要在 Log Analytics 中使用的 Azure 服务日志和指标](../platform/resource-logs.md#send-to-log-analytics-workspace)。  
 * [将 System Center Operations Manager 添加为数据源](../platform/om-agents.md)以从报告 Operations Manager 管理组的代理收集数据并将其存储在 Log Analytics 工作区中。  
 * 连接 [Configuration Manager](../platform/collect-sccm.md) 以导入作为层次结构中集合成员的计算机。  
 * 查看可用的[监视解决方案](../insights/solutions.md)以及如何从工作区添加或删除解决方案。

@@ -3,11 +3,12 @@ title: 使用 Azure Application Insights 诊断故障和异常
 description: 从 ASP.NET 应用中捕获异常以及请求遥测。
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892336"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517206"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
@@ -18,7 +19,7 @@ ms.locfileid: "80892336"
   * Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用：添加[应用程序监视扩展](../../azure-monitor/app/azure-vm-vmss-apps.md)
   * 在应用代码中安装 [Application Insights SDK](../../azure-monitor/app/asp-net.md)，或者
   * IIS Web 服务器：运行 [Application Insights 代理](../../azure-monitor/app/monitor-performance-live-website-now.md)；或者
-  * Java Web 应用：启用 [Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+  * Java Web 应用：启用 [Java 代理](./java-in-process-agent.md)
 * 在网页中安装 [JavaScript 代码片段](../../azure-monitor/app/javascript.md)可以捕获浏览器异常。
 * 在某些应用程序框架中或者使用某些设置时，需要执行一些额外的步骤来捕获异常：
   * [Web 窗体](#web-forms)
@@ -27,7 +28,7 @@ ms.locfileid: "80892336"
   * [Web API 2*](#web-api-2x)
   * [WCF](#wcf)
 
-  本文从代码示例的角度着重介绍 .NET Framework 应用。 用于 .NET Framework 的某些方法在 .NET Core SDK 中已过时。 如果具有 .NET Core 应用，请参阅 [.NET Core SDK 文档](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。
+  本文从代码示例的角度着重介绍 .NET Framework 应用。 用于 .NET Framework 的某些方法在 .NET Core SDK 中已过时。 如果具有 .NET Core 应用，请参阅 [.NET Core SDK 文档](./asp-net-core.md)。
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>使用 Visual Studio 诊断异常
 在 Visual Studio 中打开应用解决方案，帮助进行调试。
@@ -213,7 +214,7 @@ public class GoodController : ApiController
 ### <a name="prior-versions-support"></a>以前版本支持
 如果使用 Application Insights Web SDK 2.5（及更低版本）的 MVC 4（及更低版本），请参照以下示例跟踪异常。
 
-如果 [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) 配置为 `Off`，[HTTP 模块](https://msdn.microsoft.com/library/ms178468.aspx)将可以收集异常。 但是，如果它是 `RemoteOnly`（默认值）或 `On`，异常将清除，并且 Application Insights 无法自动收集它。 可通过重写 [System.Web.Mvc.HandleErrorAttribute 类](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)并应用重写类来修复该问题，如下面针对不同的 MVC 版本所示（[GitHub 源](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)）：
+如果 [CustomErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) 配置为 `Off`，[HTTP 模块](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85))将可以收集异常。 但是，如果它是 `RemoteOnly`（默认值）或 `On`，异常将清除，并且 Application Insights 无法自动收集它。 可通过重写 [System.Web.Mvc.HandleErrorAttribute 类](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2)并应用重写类来修复该问题，如下面针对不同的 MVC 版本所示（[GitHub 源](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)）：
 
 ```csharp
     using System;

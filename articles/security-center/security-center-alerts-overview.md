@@ -8,20 +8,20 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: b639b382e69be30c2f04471e0a253ef5d7c7b4e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25b5569c123a4c7376aecd01b8e36f68b0a8e9b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125764"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519587"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
 在 Azure 安全中心，针对许多不同的资源类型提供多种不同的警报。 安全中心为部署在 Azure 上的资源以及部署在本地和混合云环境中的资源生成警报。
 
-安全警报由高级检测触发，仅在 Azure 安全中心的标准层提供。 有免费试用版可用。 可以在 [安全策略](security-center-pricing.md)中从选择定价层开始升级。 访问 [“安全中心”页](https://azure.microsoft.com/pricing/details/security-center/) ，了解详细的定价情况。
+安全警报由高级检测触发，仅在 Azure 安全中心的标准层中可用。 有免费试用版可用。 你可以从**定价 & 设置**"页升级。 了解有关[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)的详细信息。
 
 ## <a name="responding-to-todays-threats"></a>应对当前的威胁 <a name="respond-threats"> </a>
 

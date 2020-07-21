@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘动态创建永久性卷
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518005"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
 
@@ -31,18 +31,18 @@ ms.locfileid: "84751359"
 
 存储类用于定义使用永久性卷动态创建存储单位的方式。 有关 Kubernetes 存储类的详细信息，请参阅 [Kubernetes 存储类][kubernetes-storage-classes]。
 
-每个 AKS 群集包含两个预先创建的存储类，两者均配置为使用 Azure 磁盘：
+每个 AKS 群集都包含四个预先创建的存储类，两个类配置为使用 Azure 磁盘：
 
-* default 存储类可预配标准 Azure 磁盘。
-    * 标准存储由 HDD 提供支持，可以在确保性能的同时提供经济高效的存储。 标准磁盘适用于经济高效的开发和测试工作负载。
+* *默认*存储类预配标准 SSD Azure 磁盘。
+    * 标准存储由标准 Ssd 提供支持，并提供经济高效的存储，同时仍然提供可靠的性能。 
 * managed-premium 存储类可预配高级 Azure 磁盘。
     * 高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 如果群集中的 AKS 节点使用高级存储，请选择 managed-premium 类。
     
-如果使用默认存储类之一，则在创建存储类后无法更新卷大小。 为了能够在创建存储类后更新卷大小，请将行添加 `allowVolumeExpansion: true` 到默认存储类之一，或者可以创建自己的自定义存储类。 您可以使用命令编辑现有的存储类 `kubectl edit sc` 。 
+如果使用默认存储类之一，则创建存储类后将无法更新卷大小。 若要能够在创建存储类后更新卷大小，请将行 `allowVolumeExpansion: true` 添加到其中一个默认存储类，或者也可以创建自己的自定义存储类。 请注意，不支持减小 PVC 大小（以防数据丢失）。 可以使用 `kubectl edit sc` 命令编辑现有存储类。 
 
-例如，如果要使用大小为 4 TiB 的磁盘，则必须创建一个定义的存储类，因为磁盘 `cachingmode: None` [4 TiB 和更大的磁盘缓存不受支持](../virtual-machines/windows/premium-storage-performance.md#disk-caching)。
+例如，如果要使用大小为 4 TiB 的磁盘，需要创建一个定义 `cachingmode: None` 的存储类，因为[磁盘缓存不支持 4 TiB 及更大的磁盘](../virtual-machines/windows/premium-storage-performance.md#disk-caching)。
 
-有关存储类和创建自己的存储类的详细信息，请参阅[AKS 中适用于应用程序的存储选项][storage-class-concepts]。
+有关存储类和创建自己的存储类的详细信息，请参阅 [AKS 中应用程序的存储选项][storage-class-concepts]。
 
 使用 [kubectl get sc][kubectl-get] 命令查看预先创建的存储类。 以下示例显示了 AKS 群集中可用的预先创建存储类：
 
@@ -151,6 +151,9 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+## <a name="use-ultra-disks"></a>使用超磁盘
+若要利用超磁盘，请参阅[在 Azure Kubernetes Service 上使用 Ultra 磁盘（AKS）](use-ultra-disks.md)。
 
 ## <a name="back-up-a-persistent-volume"></a>备份永久性卷
 
@@ -284,3 +287,11 @@ Volumes:
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

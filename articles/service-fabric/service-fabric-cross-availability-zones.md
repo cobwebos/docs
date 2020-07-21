@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: a8f883457c2d6da6d2776bb2119caf5d09565170
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246412"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518990"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
@@ -27,7 +27,7 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 * 群集可靠性级别设置为 "白金"。
 * 三个标记为主节点的节点类型。
     * 每个节点类型都应映射到其自己的虚拟机规模集，位于不同的区域中。
-    * 每个虚拟机规模集应具有至少五个节点 (银持续性) 。
+    * 每个虚拟机规模集应至少具有五个节点（银持续性）。
 * 使用标准 SKU 的单个公共 IP 资源。
 * 使用标准 SKU 的单个负载均衡器资源。
 * 用于部署虚拟机规模集的子网所引用的 NSG。
@@ -170,7 +170,7 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
     "properties": {
         "type": "ServiceFabricNode",
         "autoUpgradeMinorVersion": false,
-        "publisher": "Microsoft.Azure.ServiceFabric.Test",
+        "publisher": "Microsoft.Azure.ServiceFabric",
         "settings": {
             "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
             "nodeTypeRef": "[parameters('vmNodeType1Name')]",
@@ -260,7 +260,7 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 * 用于部署虚拟机规模集的子网所引用的 NSG。
 * 三个标记为主节点的节点类型。
     * 每个节点类型都应映射到其自己的虚拟机规模集，位于不同的区域中。
-    * 每个虚拟机规模集应具有至少五个节点 (银持续性) 。
+    * 每个虚拟机规模集应至少具有五个节点（银持续性）。
 
 可在[示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure)中找到这些资源的示例。
 

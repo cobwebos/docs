@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254661"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517835"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -146,7 +146,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - 如果你希望自己的所有请求（针对任何域）都能够被接受并转发到后端池，请选择“基本”。 了解[如何创建包含基本侦听器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)。
 
-- 如果希望根据 *host* 标头或主机名将请求转发到不同的后端池，请选择多站点侦听器，并且必须在其中指定与传入请求匹配的主机名。 这是因为，应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。
+- 如果希望基于*主机*头或主机名将请求转发到不同的后端池，请选择 "多站点侦听器"，其中你还必须指定与传入请求匹配的主机名。 这是因为，应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 若要了解详细信息，请参阅[使用应用程序网关托管多个站点](multiple-site-overview.md)。
 
 #### <a name="order-of-processing-listeners"></a>侦听器的处理顺序
 
@@ -224,7 +224,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="order-of-processing-rules"></a>规则的处理顺序
 
-对于 v1 和 v2 SKU，按路径在基于路径的规则的 URL 路径映射中列出的顺序处理传入请求的模式匹配。 如果某个请求与 URL 路径映射中的两个或更多个路径的模式相匹配，则会匹配最先列出的路径。 请求将转发到与该路径关联的后端。
+使用 v1 和 v2 SKU 时，将按照路径在基于路径的规则的 URL 路径映射中列出的顺序处理传入请求的模式匹配。 如果某个请求与 URL 路径映射中的两个或更多个路径的模式相匹配，则会匹配最先列出的路径。 请求将转发到与该路径关联的后端。
 
 ### <a name="associated-listener"></a>关联的侦听器
 
@@ -279,12 +279,16 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 - [使用 PowerShell 将流量重定向到外部站点](redirect-external-site-powershell.md)
 - [使用 CLI 将流量重定向到外部站点](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>重写 HTTP 标头设置
+### <a name="rewrite-http-headers-and-url"></a>重写 HTTP 标头和 URL
 
-当请求和响应数据包在客户端和后端池之间移动时，此设置将添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅：
+通过使用重写规则，你可以添加、删除或更新 HTTP （S）请求和响应标头以及 URL 路径和查询字符串参数，因为请求和响应数据包将通过应用程序网关在客户端和后端池之间移动。
 
- - [重写 HTTP 标头概述](rewrite-http-headers.md)
+标头和 URL 参数可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
+有关详细信息，请参阅：
+
+ - [重写 HTTP 标头概述](rewrite-http-headers-url.md)
  - [配置 HTTP 标头重写](rewrite-http-headers-portal.md)
+ - [配置 URL 重写](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>HTTP 设置
 
@@ -307,7 +311,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 
 ### <a name="connection-draining"></a>连接清空
 
-连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 可以通过在 HTTP 设置上启用连接排出，将此设置应用到后端池的所有成员。 它确保后端池的所有注销实例继续维护现有连接，并在可配置的超时时间内处理正在进行的请求，并且不会接收任何新请求或连接。 此情况的唯一例外是由于网关托管会话相关性而绑定到注销实例的请求，这些请求将继续被转发到注销实例。 连接清空将应用到已从后端池中显式删除的后端实例。
+连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 可以通过在 HTTP 设置上启用连接排出来将此设置应用于后端池的所有成员。 它确保后端池的所有注销实例继续维护现有连接，并在可配置的超时时间内处理正在进行的请求，并且不会接收任何新请求或连接。 此情况的唯一例外是由于网关托管会话相关性而绑定到注销实例的请求，这些请求将继续被转发到注销实例。 连接清空将应用到已从后端池中显式删除的后端实例。
 
 ### <a name="protocol"></a>协议
 
@@ -357,7 +361,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 > [!NOTE]
 > 只有在将相应的 HTTP 设置显式关联到某个侦听器之后，自定义探测才会监视后端池的运行状况。
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>从后端地址中选取主机名
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>从后端地址中选取主机名
 
 此功能将请求中的 *host* 标头动态设置为后端池的主机名。 主机名使用 IP 地址或 FQDN。
 

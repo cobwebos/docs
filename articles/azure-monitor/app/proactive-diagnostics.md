@@ -3,11 +3,12 @@ title: Azure Application Insights 中的智能检测 | Microsoft Docs
 description: Application Insights 执行应用遥测的自动深入分析，并在有潜在问题时发出警告。
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700840"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516866"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测
  当 Web 应用程序中存在潜在性能问题和故障异常时，智能检测会自动向你发出警告。 它会对应用发送至 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测数据执行主动分析。 如果失败率中存在骤升或者客户端或服务器性能中存在异常模式，将收到警报。 此功能不需要任何配置。 它会在应用程序发送足够的遥测时运行。
@@ -33,7 +34,7 @@ ms.locfileid: "83700840"
 
 * [智能检测 - 失败异常](../../azure-monitor/app/proactive-failure-diagnostics.md)。 我们使用机器学习，通过与负载和其他因素相关为应用设置预期的失败请求速率。 如果失败率超出预期的包络线，我们将发送警报。
 * [智能检测 - 性能异常](../../azure-monitor/app/proactive-performance-diagnostics.md)。 如果操作的响应时间或依赖关系的持续时间比历史基线慢，或者如果我们在响应时间或页面加载时间中识别到异常模式，会收到通知。   
-* 一般降级和问题，如[跟踪降级](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity)、[内存泄漏](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak)、[异常量增加](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume)和[安全反模式](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack)。
+* 一般降级和问题，如[跟踪降级](./proactive-trace-severity.md)、[内存泄漏](./proactive-potential-memory-leak.md)、[异常量增加](./proactive-exception-volume.md)和[安全反模式](./proactive-application-security-detection-pack.md)。
 
 （每个通知中的帮助链接可转到相关文章。）
 
@@ -43,7 +44,7 @@ ms.locfileid: "83700840"
 
 可以通过打开智能检测“设置”边栏选项卡并选择规则（这将打开“编辑规则”边栏选项卡）来为特定的智能检测规则配置电子邮件通知。
 
-另外，还可以使用 Azure 资源管理器模板来更改配置。 有关更多详细信息，请参阅[使用 Azure 资源管理器模板管理 Application Insights 智能检测规则](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)。
+另外，还可以使用 Azure 资源管理器模板来更改配置。 有关更多详细信息，请参阅[使用 Azure 资源管理器模板管理 Application Insights 智能检测规则](./proactive-arm-config.md)。
 
 ## <a name="video"></a>视频
 
@@ -60,4 +61,3 @@ ms.locfileid: "83700840"
 
 * [手动配置的指标警报](../../azure-monitor/platform/alerts-log.md)
 * [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md) 
-

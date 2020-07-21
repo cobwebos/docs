@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255483"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518039"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -51,7 +51,7 @@ AKS 是一个托管服务，它提供独特的功能和较低的管理开销。 
 
 建议使用[虚拟机规模集](../virtual-machine-scale-sets/index.yml)和 [Azure 标准负载均衡器](./load-balancer-standard.md)支持的 AKS 群集来确保获得[多个节点池](./use-multiple-node-pools.md)、[可用性区域](../availability-zones/az-overview.md)、[授权的 IP 范围](./api-server-authorized-ip-ranges.md)、[群集自动缩放程序](./cluster-autoscaler.md)、[Azure Policy for AKS](../governance/policy/concepts/policy-for-kubernetes.md) 等功能，以及已发布的其他新功能。
 
-[虚拟机可用性集](../virtual-machine-scale-sets/availability.md#availability-sets)支持的 AKS 群集缺少上述许多功能的支持。
+[虚拟机可用性集](../virtual-machines/availability.md#availability-sets)支持的 AKS 群集缺少上述许多功能的支持。
 
 以下示例使用虚拟机规模集支持的单个节点池创建 AKS 群集。 它使用标准负载均衡器。 它还在群集的节点池中启用群集自动缩放程序，并将节点的最小数目设置为 *1*，最大数目设置为 *3*：
 

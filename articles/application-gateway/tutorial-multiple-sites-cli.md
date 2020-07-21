@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79a239148647467185e407e1e07fdea658a7be40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806269"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517888"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>使用 Azure CLI 创建托管多个网站的应用程序网关
 
@@ -30,7 +30,7 @@ ms.locfileid: "84806269"
 > * 使用后端池创建虚拟机规模集
 > * 在域中创建 CNAME 记录
 
-![多站点路由示例](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="多站点应用程序网关":::
 
 如果需要，可以使用 [Azure PowerShell](tutorial-multiple-sites-powershell.md) 完成此过程。
 
@@ -119,9 +119,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>添加后端侦听器
+### <a name="add-listeners"></a>添加侦听器
 
-使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) 添加路由流量所需的后端侦听器。
+使用[az 网络应用程序网关 http 侦听器 create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)添加路由流量所需的侦听器。
+
+>[!NOTE]
+> 使用应用程序网关或 WAF v2 SKU，你还可以为每个侦听器配置最多5个主机名，并且可以在主机名中使用通配符。 有关详细信息，请参阅[侦听器中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
+>若要使用 Azure CLI 在侦听器中使用多个主机名和通配符，则必须使用 `--host-names` 而不是 `--host-name` 。 利用主机名，最多可将5个主机名称为逗号分隔值。 例如： `--host-names "*.contoso.com,*.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \

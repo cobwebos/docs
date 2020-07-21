@@ -5,27 +5,29 @@ description: 了解如何创建和使用 Azure Kubernetes 服务 (AKS) 群集中
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205780"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517767"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的出口流量使用静态公共 IP 地址
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>将静态公共 IP 地址用于 Azure Kubernetes 服务中的*基本*SKU 负载均衡器的出口流量（AKS）
 
-默认情况下，Azure Kubernetes 服务 (AKS) 群集的出口 IP 地址是随机分配的。 例如，当需要标识用于访问外部服务的 IP 地址时，此配置是不理想的。 而是可能需要分配静态 IP 地址，此地址可被列入服务访问允许列表。
+默认情况下，Azure Kubernetes 服务 (AKS) 群集的出口 IP 地址是随机分配的。 例如，当需要标识用于访问外部服务的 IP 地址时，此配置是不理想的。 相反，你可能需要分配要添加到服务访问允许列表的静态 IP 地址。
 
 本文介绍了如何创建和使用静态公共 IP 地址，以便用于 AKS 群集中的出口流量。
 
 ## <a name="before-you-begin"></a>准备阶段
+
+本文假定你使用的是 Azure 基本负载均衡器。  建议使用[Azure 标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)，并且可以使用更高级的功能来[控制 AKS 出口流量](https://docs.microsoft.com/azure/aks/limit-egress-traffic)。
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 > [!IMPORTANT]
-> 本文使用带有单一节点池的*基本*SKU 负载均衡器。 此配置不可用于多个节点池，因为多个节点池不支持*基本*SKU 负载均衡器。 有关使用*标准*SKU 负载均衡器的更多详细信息，请参阅[使用 Azure Kubernetes Service 中的公共标准负载均衡器 (AKS) ][slb] 。
+> 本文使用带有单一节点池的*基本*SKU 负载均衡器。 此配置不可用于多个节点池，因为多个节点池不支持*基本*SKU 负载均衡器。 有关使用*标准*SKU 负载均衡器的更多详细信息，请参阅[使用 Azure KUBERNETES Service （AKS）中的公共标准负载均衡器][slb]。
 
 ## <a name="egress-traffic-overview"></a>出口流量概述
 
@@ -105,7 +107,7 @@ kubectl apply -f egress-service.yaml
 启动并附加到基本 Debian pod：
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 若要从容器中访问网站，请使用 `apt-get` 将 `curl` 安装到容器。

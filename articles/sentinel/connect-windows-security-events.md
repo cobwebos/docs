@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6573237cbba8951bdd45c5b32c572b9af772ee5a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555726"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519228"
 ---
 # <a name="connect-windows-security-events"></a>连接 Windows 安全事件 
 
@@ -87,7 +87,29 @@ ms.locfileid: "85555726"
 
 在 Log Analytics 中开始显示日志之前，可能需要大约20分钟的时间。 
 
+### <a name="configure-the-security-events-connector-for-anomalous-rdp-login-detection"></a>为异常 RDP 登录检测配置安全事件连接器
 
+> [!IMPORTANT]
+> 异常 RDP 登录检测目前为公共预览版。
+> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+Azure Sentinel 可以将机器学习（ML）应用于安全事件数据，以确定异常远程桌面协议（RDP）登录活动。 方案包括：
+
+- **异常 ip** -在过去30天内，ip 地址很少或从未被观察到
+
+- 不**寻常的地理位置**-IP 地址、城市、国家和 ASN 在过去30天内几乎不会被观察到
+
+- **新用户**-从 IP 地址和地理位置登录的新用户，这两者或其中一项都不会根据之前30天的数据查看。
+
+**配置说明**
+
+1. 必须通过 "**安全事件**" 数据连接器收集 RDP 登录数据（事件 ID 4624）。 请确保选择了除 "无" 之外的[事件集](#event-sets)以流式传输到 Azure Sentinel。
+
+1. 在 Azure Sentinel 门户中，单击 **"分析**"，然后单击 **"规则模板**" 选项卡。选择 " **（预览）异常 RDP 登录检测**规则"，并将 "**状态**" 滑块移动到 "**已启用**"。
+
+    > [!NOTE]
+    > 由于机器学习算法需要30天的数据来构建用户行为的基准配置文件，因此必须在检测到任何事件之前，先允许收集30天的安全事件数据。
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Windows 安全事件连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：

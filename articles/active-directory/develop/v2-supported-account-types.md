@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d19381094e027bd567ffc503d32f9212ef56a948
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518124"
 ---
 # <a name="supported-account-types"></a>支持的帐户类型
 
@@ -45,7 +45,6 @@ ms.locfileid: "82583102"
 - 守护程序应用程序只能与 Azure AD 组织配合使用。 尝试使用守护程序应用程序来处理 Microsoft 个人帐户并无意义。 将永远不会授予管理员许可。
 - 只能将集成身份验证流用于工作或学校帐户（在你的组织或任何组织中均可）。 集成 Windows 身份验证适用于域帐户，并且需要将计算机加入域或加入 Azure AD。 对于个人 Microsoft 帐户，此流程并无意义。
 - [资源所有者密码凭据授予](./v2-oauth-ropc.md)（用户名/密码）不能与个人 Microsoft 帐户一起使用。 个人 Microsoft 帐户要求用户在每次登录时都同意访问个人资源。 这就是此行为与非交互式流不兼容的原因。
-- 设备代码流不能与个人 Microsoft 帐户一起工作。
 
 ## <a name="account-types-in-national-clouds"></a>国家/地区云中的帐户类型
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f60b66790342874620971c8f15a1e8ace9a3c7cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 135da2102b77f1d6a94b4458e10fba8c4f2b8534
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335457"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517495"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求公共传输数据 
 
@@ -30,7 +30,7 @@ ms.locfileid: "80335457"
 
 ## <a name="prerequisites"></a>先决条件
 
-首先需要 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公用传输 Api 进行任何调用。 有关信息，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)创建 Azure Maps 帐户中的说明进行操作。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
+首先需要 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公用传输 Api 进行任何调用。 有关信息，请按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)创建 Azure Maps 帐户中的说明进行操作。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 
 本文使用 [Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用。 可以使用你喜欢的任何 API 开发环境。

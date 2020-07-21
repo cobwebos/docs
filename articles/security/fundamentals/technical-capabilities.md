@@ -2,24 +2,20 @@
 title: Azure 中的安全技术功能-Microsoft Azure
 description: Azure 中的安全服务简介，可帮助你保护云中的数据、资源和应用程序。
 services: security
-documentationcenter: na
-author: UnifyCloud
-manager: barbkess
-editor: TomSh
+author: terrylanfear
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/31/2019
-ms.author: TomSh
-ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: terrylan
+ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845343"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519314"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务，可帮助你保护云中的数据、资源和应用程序，并满足业务的安全需求。
@@ -56,7 +52,7 @@ Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中
 
 Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
-- 为混合企业中的每个用户创建和管理单一标识，从而保持用户、组和设备同步。
+- 为混合企业中的每个用户创建和管理单一标识，从而使用户、组和设备保持同步。
 
 - 提供对应用程序（包括数千个预先集成的 SaaS 应用）的单一登录访问。
 
@@ -169,77 +165,11 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 在云中保护数据的关键问题之一是考虑数据可能将发生的状态，以及哪些控件适用于该状态。 根据 Azure 数据安全与加密最佳实践，将针对以下数据状态提供建议。
 
 - 静态：包括物理媒体（磁盘或光盘）上以静态方式存在的所有信息存储对象、容器和类型。
-
 - 传输中：如果在组件、位置或程序之间传输数据（例如跨网络），则跨服务总线（从本地到云，反之亦然，包括 ExpressRoute 等混合连接），或在输入/输出过程中，将其视为是动态的。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
-要实现静态加密，请执行以下各项：
-
-支持使用下表详述的至少一个推荐加密模型来加密数据。
-
-| 加密模型 |  |  |  |
-| ----------------  | ----------------- | ----------------- | --------------- |
-| 服务器加密 | 服务器加密 | 服务器加密 | 客户端加密
-| 使用服务托管密钥的服务器端加密 | 使用 Azure Key Vault 中客户托管密钥的服务器端加密 | 使用本地客户托管密钥的服务器端加密 |
-| • Azure 资源提供程序执行加密和解密操作 <br> •    Microsoft 管理密钥 <br>•    完整云功能 | •    Azure 资源提供程序执行加密和解密操作<br>•  客户通过 Azure Key Vault 控制密钥<br>• 完整云功能 | •    Azure 资源提供程序执行加密和解密操作 <br>•本地客户控制密钥 <br> •   完整云功能| • Azure 服务无法看到已解密的数据 <br>•  客户将密钥保留在本地（或其他安全存储中）。 Azure 服务无法使用密钥 <br>• 精简云功能|
-
-### <a name="enabling-encryption-at-rest"></a>启用静态加密
-
-**标识用于存储数据的所有位置**
-
-静态加密的目标是对所有数据进行加密。 这样做可以避免丢失重要数据或所有持久保留位置。 请清点应用程序存储的所有数据。
-
-> [!Note]
-> 不只是“应用程序数据”或“PII”，还包括与应用程序相关的所有数据，其中包括帐户元数据（订阅映射、联系信息、PII）。
-
-考虑使用哪些存储来存储数据。 例如：
-
-- 外部存储（例如，SQL Azure、Document DB、HDInsights、Data Lake 等。）
-
-- 临时存储（包含租户数据的任何本地缓存）
-
-- 内存中缓存（可放入页面文件中。）
-
-### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>充分利用 Azure 中现有的静态加密支持
-
-对于你使用的每个商店，利用现有的静态加密支持。
-
-- Azure 存储：请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)
-
-- SQL Azure：请参阅[透明数据加密 (TDE)、SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
-
-- VM 和本地磁盘存储（[Azure 磁盘加密](../azure-security-disk-encryption-overview.md)）
-
-对于 VM 和本地磁盘存储，使用 Azure 磁盘加密（如果支持）：
-
-#### <a name="iaas"></a>IaaS
-
-包含 IaaS VM（Windows 或 Linux）的服务应使用 [Azure 磁盘加密](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx)对包含客户数据的卷进行加密。
-
-#### <a name="paas-v2"></a>PaaS v2
-
-在使用 Service Fabric 的 PaaS v2 上运行的服务可以对虚拟机规模集 [VMSS] 使用 Azure 磁盘加密来加密其 PaaS v2 VM。
-
-#### <a name="paas-v1"></a>PaaS v1
-
-PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序级加密对持久的静态数据进行加密。  这包括但不限于应用程序数据、临时文件、日志和故障转储。
-
-大多数服务应尝试利用存储资源提供程序的加密功能。 某些服务必须进行显式加密，例如，所有持久化密钥材料（证书、根密钥/主密钥）都必须存储在 Key Vault 中。
-
-如果你支持使用客户托管密钥进行服务端加密，则需要让客户能够通过某种方式向我们提供密钥。 支持的推荐方式是与 Azure Key Vault (AKV) 集成。 在此情况下，客户可以在 Azure Key Vault 中添加和管理其密钥。 客户可以通过 [Key Vault 入门](https://go.microsoft.com/fwlink/?linkid=521402)了解如何使用 AKV。
-
-若要与 Azure Key Vault 集成，可以添加代码，以便从 AKV 请求需要用于解密的密钥。
-
-- 有关如何与 AKV 集成的信息，请参阅 [Azure Key Vault – Step by Step](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/)（Azure Key Vault — 分步指南）。
-
-如果支持客户托管密钥，则需要为客户提供 UX 来指定要使用的 Key Vault（或 Key Vault URI）。
-
-由于静态加密涉及主机、基础结构和租户数据的加密，因此，因系统故障或恶意活动导致密钥丢失可能意味着丢失所有加密数据。 因此，静态加密解决方案必须具备能够弹性应对系统故障和恶意活动的全面灾难恢复方案，这一点很重要。
-
-实现静态加密的服务通常仍然容易受到主机驱动器上的加密密钥或未加密的数据的攻击（例如，在主机操作系统的页面文件中）。因此，服务必须确保其服务的主机卷已加密。 为了便于此计算团队启用了主机加密部署，该部署使用[BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP 和对 DCM 服务和代理的扩展来加密主机卷。
-
-大多数服务在标准 Azure VM 上实施。 此类服务应在计算团队启用[主机加密](../azure-security-disk-encryption-overview.md)时自动获取该功能。 在已推出的 Windows Server 2016 中，会自动为计算托管群集中运行的服务启用主机加密。
+静态加密在[Azure 静态数据加密](encryption-atrest.md)中进行了详细介绍。
 
 ### <a name="encryption-in-transit"></a>传输中加密
 

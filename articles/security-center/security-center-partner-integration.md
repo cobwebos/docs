@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758027"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519212"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -90,7 +91,7 @@ ms.locfileid: "81758027"
 安全中心会自动发现在 Azure 中运行但未连接到安全中心的安全解决方案，并在“发现的解决方案”部分中显示这些解决方案。 这些解决方案包括 Azure 解决方案，例如[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)和合作伙伴解决方案。
 
 > [!NOTE]
-> 在订阅级别，安全中心标准层是已发现解决方案功能所必需的。 若要详细了解定价层，请参阅[定价](security-center-pricing.md)。
+> 安全中心的标准层是在订阅级别上发现的解决方案功能所必需的。 若要详细了解定价层，请参阅[定价](security-center-pricing.md)。
 >
 
 在解决方案下选择“连接”，以便与安全中心集成，并获得安全警报通知。

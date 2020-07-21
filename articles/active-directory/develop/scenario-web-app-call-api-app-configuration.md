@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 3a6f92022a4e26c84efc2d5f68c3aad8b4685d30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 662520b9e31b4fe9a0925683fd0e661ce179e5b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558790"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518141"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web 应用：代码配置
 
@@ -32,7 +33,7 @@ Microsoft 身份验证库 (MSAL) 中的以下库支持 Web 应用的授权代码
 
 | MSAL 库 | 说明 |
 |--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持 .NET Framework 和 .NET Core 平台。 不支持通用 Windows 平台 (UWP)、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用。 对于 ASP.NET Core Web 应用和 Web API，MSAL.NET 封装在名为 Microsoft.Identity.Web 的更高级别库中|
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持 .NET Framework 和 .NET Core 平台。 不支持通用 Windows 平台 (UWP)、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用。 对于 ASP.NET Core web 应用和 web Api，MSAL.NET 封装[在名为](https://aka.ms/ms-identity-web)"" 的更高级别库中|
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> 适用于 Python 的 MSAL | 支持 Python Web 应用。 |
 | ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> 适用于 Java 的 MSAL | 支持 Java Web 应用。 |
 
@@ -48,8 +49,8 @@ public void ConfigureServices(IServiceCollection services)
 {
     // more code here
 
-    services.AddSignIn(Configuration, "AzureAd")
-            .AddWebAppCallsProtectedWebApi(Configuration,
+    services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd")
+            .AddMicrosoftWebAppCallsdWebApi(Configuration,
                                            initialScopes: new string[] { "user.read" })
             .AddInMemoryTokenCaches();
 
@@ -90,7 +91,7 @@ public void ConfigureServices(IServiceCollection services)
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Microsoft.Identity.Web 通过设置正确的 OpenID Connect 设置、订阅代码接收的事件和兑换代码来简化代码。 兑换授权代码不需要其他任何代码。
+Microsoft.Identity.Web 通过设置正确的 OpenID Connect 设置、订阅代码接收的事件和兑换代码来简化代码。 兑换授权代码不需要其他任何代码。 有关其工作原理的详细信息，请参阅[Microsoft web.config。](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L140)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -271,8 +272,8 @@ ASP.NET Core 教程使用依赖关系注入，让你能够在应用的 Startup.c
 
 ```csharp
 // Use a distributed token cache by adding:
-    services.AddSignIn(Configuration, "AzureAd")
-            .AddWebAppCallsProtectedWebApi(Configuration,
+    services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd")
+            .AddMicrosoftWebAppCallsWebApi(Configuration,
                                            initialScopes: new string[] { "user.read" })
             .AddDistributedTokenCaches();
 
@@ -296,7 +297,7 @@ services.AddDistributedSqlServerCache(options =>
 });
 ```
 
-若要详细了解令牌缓存提供程序，另请参阅本教程的 [ASP.NET Core Web 应用教程 | 令牌缓存](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)阶段。
+有关令牌缓存提供程序的详细信息，请参阅 Microsoft 的[令牌缓存序列化](https://aka.ms/ms-id-web/token-cache-serialization)文章和[ASP.NET Core Web 应用教程 |](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)Web 应用教程的令牌缓存阶段。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

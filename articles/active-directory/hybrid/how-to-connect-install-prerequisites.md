@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 11d5c1bb133f0aea241fbc55f96ab5f8818e5ed6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223918"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518107"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本主题介绍 Azure AD Connect 的先决条件和硬件要求。
@@ -34,7 +34,7 @@ ms.locfileid: "86223918"
   * [Azure 门户](https://portal.azure.com)。
   * [Office 门户](https://portal.office.com)。  
 * [添加并验证域](../active-directory-domains-add-azure-portal.md)，该域是计划在 Azure AD 中使用的。 例如，如果计划让用户使用 contoso.com，请确保此域已经过验证，并且不是直接使用 contoso.onmicrosoft.com 默认域。
-* 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制增加到 30 万个对象。 如果在 Azure AD 中需要更多的对象，则需要开具支持案例来请求增大此限制。 如果需要 50 万个以上的对象，则需要购买 Office 365、Azure AD Basic、Azure AD Premium 或企业移动性和安全性等许可证。
+* 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制增加到 30 万个对象。 如果在 Azure AD 中需要更多的对象，则需要开具支持案例来请求增大此限制。 如果需要50万个个以上的对象，则需要使用 Office 365、Azure AD Premium 或企业移动性和安全性等许可证。
 
 ### <a name="prepare-your-on-premises-data"></a>准备本地数据
 * 使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 确定目录中的错误，如重复项和格式设置问题，然后同步到 Azure AD 和 Office 365。
@@ -54,9 +54,9 @@ Azure AD Connect 服务器包含关键的标识数据。 确保对此服务器�
 
 若要详细了解如何保护 Active Directory 环境，请参阅[保护 Active Directory 的最佳实践](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)。
 
-#### <a name="installation-prerequisites"></a>安装先决条件 
+#### <a name="installation-prerequisites"></a>安装的先决条件 
 
-- Azure AD Connect 必须安装在已加入域的 Windows Server 2012 或更高版本上。 强烈建议此服务器是域控制器。 
+- Azure AD Connect 必须安装在已加入域的 Windows Server 2012 或更高版本上。 
 - 不能在 Small Business Server 或 2019 版以前的 Windows Server Essentials（支持 Windows Server Essentials 2019）上安装 Azure AD Connect。 该服务器必须使用 Windows Server Standard 或更高版本。  
 - 必须在 Azure AD Connect 服务器上安装完整的 GUI。 不支持在 Windows Server Core 上安装 Azure AD Connect。 
 - 如果使用 Azure AD Connect 向导来管理 ADFS 配置，则 Azure AD Connect 服务器不得启用“PowerShell 转换”组策略。 如果使用 Azure AD Connect 向导来管理同步配置，则可以启用 PowerShell 脚本。 
@@ -73,8 +73,8 @@ Microsoft 建议强化 Azure AD Connect 服务器，以降低这一 IT 环境关
 - 应将 Azure AD Connect 服务器的管理访问权限仅限于域管理员或其他严格控制的安全组。
 - 应[为具有特权访问权限的所有人员创建专用帐户](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)。 管理员不应使用特权高的帐户浏览 Web、检查电子邮件和执行日常生产力任务。
 - 应按照[保护特权访问](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts)中的说明进行操作。 
-- 应确保每台计算机都具有唯一的本地管理员密码。 [本地管理员密码解决方案 (LAPS) ](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps)可以在每个工作站上配置唯一的随机密码，并将其存储在 Active Directory (受 ACL 保护的 AD) 中。 只有符合条件的授权用户才可以读取或请求重置这些本地管理员帐户密码。 你可以从[Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)获取用于工作站和服务器的 LAPS。 有关使用 LAPS 和 Paw 运行环境的其他指南，请参阅[基于清洁源原则的操作标准](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)。 
-- 应为对组织信息系统具有特权访问权限的所有人员实施专用的[特权访问工作站 (PAW) ](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) 。 
+- 应确保每台计算机都具有唯一的本地管理员密码。 [本地管理员密码解决方案（LAPS）](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps)可在每个工作站上配置唯一的随机密码，并将其存储在受 ACL 保护 ACTIVE DIRECTORY （AD）中。 只有符合条件的授权用户才可以读取或请求重置这些本地管理员帐户密码。 你可以从[Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)获取用于工作站和服务器的 LAPS。 有关使用 LAPS 和 Paw 运行环境的其他指南，请参阅[基于清洁源原则的操作标准](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)。 
+- 应为具有组织信息系统的特许访问权限的所有人员实现专用的[特权访问工作站（PAW）](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) 。 
 - 你应遵循这些[附加指导原则](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)来减小 Active Directory 环境的攻击面。
 
 

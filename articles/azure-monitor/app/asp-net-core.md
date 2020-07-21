@@ -3,18 +3,18 @@ title: ASP.NET Core 应用程序的 Azure 应用程序见解 |Microsoft Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 7e575bf0d1fe138ae9dd4160b55be4f2c8ea5bea
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1d5ce4fe2a3ceb3235b77916aa408c681f81b0de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082193"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517223"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
-本文介绍如何为 [ASP.NET Core](https://docs.microsoft.com/aspnet/core) 应用程序启用 Application Insights。 完成本文中所述的步骤后，Application Insights 将从 ASP.NET Core 应用程序收集请求、依赖项、异常、性能计数器、检测信号和日志。
+本文介绍如何为 [ASP.NET Core](/aspnet/core) 应用程序启用 Application Insights。 完成本文中所述的步骤后，Application Insights 将从 ASP.NET Core 应用程序收集请求、依赖项、异常、性能计数器、检测信号和日志。
 
-本文所用的示例是一个面向 `netcoreapp3.0` 的 [MVC 应用程序](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)。 这些说明适用于所有 ASP.NET Core 应用程序。 如果使用的是[辅助角色服务](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services#worker-service-template)，请使用[此处](./worker-service.md)的说明。
+本文所用的示例是一个面向 `netcoreapp3.0` 的 [MVC 应用程序](/aspnet/core/tutorials/first-mvc-app)。 这些说明适用于所有 ASP.NET Core 应用程序。 如果使用的是[辅助角色服务](/aspnet/core/fundamentals/host/hosted-services#worker-service-template)，请使用[此处](./worker-service.md)的说明。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
@@ -32,8 +32,8 @@ ms.locfileid: "86082193"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个正常运行的 ASP.NET Core 应用程序。 如果需要创建 ASP.NET Core 应用程序，请遵循此 [ASP.NET Core 教程](https://docs.microsoft.com/aspnet/core/getting-started/)。
-- 有效的 Application Insights 检测密钥。 将任何遥测数据发送到 Application Insights 都需要使用此密钥。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
+- 一个正常运行的 ASP.NET Core 应用程序。 如果需要创建 ASP.NET Core 应用程序，请遵循此 [ASP.NET Core 教程](/aspnet/core/getting-started/)。
+- 有效的 Application Insights 检测密钥。 将任何遥测数据发送到 Application Insights 都需要使用此密钥。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](./create-new-resource.md)。
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>启用 Application Insights 服务器端遥测 (Visual Studio)
 
@@ -109,9 +109,9 @@ ms.locfileid: "86082193"
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    * `APPINSIGHTS_INSTRUMENTATIONKEY` 通常在 [Azure Web 应用](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net)中使用，但也可以在所有支持此 SDK 的平台使用。 （如果要执行无代码 Web 应用监视，则在不使用连接字符串的情况下必须使用此格式。）
+    * `APPINSIGHTS_INSTRUMENTATIONKEY` 通常在 [Azure Web 应用](./azure-web-apps.md?tabs=net)中使用，但也可以在所有支持此 SDK 的平台使用。 （如果要执行无代码 Web 应用监视，则在不使用连接字符串的情况下必须使用此格式。）
 
-    现在，也可以使用[连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)来代替设置检测密钥。
+    现在，也可以使用[连接字符串](./sdk-connection-string.md?tabs=net)来代替设置检测密钥。
 
     > [!NOTE]
     > 在代码中指定的检测密钥优先于环境变量 `APPINSIGHTS_INSTRUMENTATIONKEY`，而后者又优先于其他选项。
@@ -122,7 +122,7 @@ ms.locfileid: "86082193"
 
 ### <a name="live-metrics"></a>实时指标
 
-[实时指标](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)可用于快速验证是否正确配置了 Application Insights 监视。 尽管可能需要在几分钟时间后遥测数据才开始显示在门户和分析结果中，但实时指标能够近实时地显示正在运行的进程的 CPU 使用率。 它还可以显示其他遥测数据，例如请求、依赖项、跟踪等。
+[实时指标](./live-stream.md)可用于快速验证是否正确配置了 Application Insights 监视。 尽管可能需要在几分钟时间后遥测数据才开始显示在门户和分析结果中，但实时指标能够近实时地显示正在运行的进程的 CPU 使用率。 它还可以显示其他遥测数据，例如请求、依赖项、跟踪等。
 
 ### <a name="ilogger-logs"></a>ILogger 日志
 
@@ -134,7 +134,7 @@ ms.locfileid: "86082193"
 
 ### <a name="performance-counters"></a>性能计数器
 
-对 ASP.NET Core 中的[性能计数器](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/)的支持限制如下：
+对 ASP.NET Core 中的[性能计数器](./web-monitor-performance.md)的支持限制如下：
 
 * 如果应用程序在 Azure Web 应用 (Windows) 中运行，则 SDK 2.4.1 和更高版本将收集性能计数器。
 * 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.1 和更高版本将收集性能计数器。
@@ -147,7 +147,7 @@ ms.locfileid: "86082193"
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>为 Web 应用程序启用客户端遥测
 
-完成前面所述的步骤足以开始收集服务器端遥测数据。 如果应用程序包含客户端组件，请遵循后续步骤开始收集[使用情况遥测数据](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)。
+完成前面所述的步骤足以开始收集服务器端遥测数据。 如果应用程序包含客户端组件，请遵循后续步骤开始收集[使用情况遥测数据](./usage-overview.md)。
 
 1. 在 `_ViewImports.cshtml` 中添加注入代码：
 
@@ -172,11 +172,11 @@ ms.locfileid: "86082193"
 
 前面引用的 `.cshtml` 文件名取自默认的 MVC 应用程序模板。 从根本上讲，若要为应用程序正确启用客户端监视，JavaScript 代码片段必须出现在所要监视的应用程序的每个页面的 `<head>` 节中。 将 JavaScript 代码片段添加到 `_Layout.cshtml` 即可实现此应用程序模板的此目标。 
 
-如果项目不包含 `_Layout.cshtml`，你仍然可以添加[客户端监视](https://docs.microsoft.com/azure/azure-monitor/app/website-monitoring)。 为此，可将 JavaScript 代码片段添加到用于控制应用中所有页面的 `<head>` 的等效文件。 或者，可将代码片段添加到多个页面中，但这种解决方法很难掌控，因此我们一般不建议。
+如果项目不包含 `_Layout.cshtml`，你仍然可以添加[客户端监视](./website-monitoring.md)。 为此，可将 JavaScript 代码片段添加到用于控制应用中所有页面的 `<head>` 的等效文件。 或者，可将代码片段添加到多个页面中，但这种解决方法很难掌控，因此我们一般不建议。
 
 ## <a name="configure-the-application-insights-sdk"></a>配置 Application Insights SDK
 
-可以自定义适用于 ASP.NET Core 的 Application Insights SDK 以更改默认配置。 Application Insights SDK ASP.NET 的用户可以使用 `ApplicationInsights.config` 或通过修改 `TelemetryConfiguration.Active` 来熟悉配置更改。 对于 ASP.NET Core，需以不同的方式更改配置。 使用 ASP.NET Core 的内置[依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)将 ASP.NET Core SDK 添加到应用程序并对其进行配置。 除非另有指示，否则几乎所有的配置更改都是在 `Startup.cs` 类的 `ConfigureServices()` 方法中完成的。 以下部分提供了详细信息。
+可以自定义适用于 ASP.NET Core 的 Application Insights SDK 以更改默认配置。 Application Insights SDK ASP.NET 的用户可以使用 `ApplicationInsights.config` 或通过修改 `TelemetryConfiguration.Active` 来熟悉配置更改。 对于 ASP.NET Core，需以不同的方式更改配置。 使用 ASP.NET Core 的内置[依赖项注入](/aspnet/core/fundamentals/dependency-injection)将 ASP.NET Core SDK 添加到应用程序并对其进行配置。 除非另有指示，否则几乎所有的配置更改都是在 `Startup.cs` 类的 `ConfigureServices()` 方法中完成的。 以下部分提供了详细信息。
 
 > [!NOTE]
 > 在 ASP.NET Core 应用程序中，不支持通过修改 `TelemetryConfiguration.Active` 来更改配置。
@@ -225,7 +225,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="adding-telemetryinitializers"></a>添加 TelemetryInitializer
 
-如果要使用其他信息充实遥测数据，请使用[遥测初始值设定项](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)。
+如果要使用其他信息充实遥测数据，请使用[遥测初始值设定项](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)。
 
 将任何新的 `TelemetryInitializer` 添加到 `DependencyInjection` 容器，如以下代码所示。 SDK 会自动拾取添加到 `DependencyInjection` 容器的任何 `TelemetryInitializer`。
 
@@ -261,7 +261,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="adding-telemetry-processors"></a>添加遥测处理程序
 
-可以使用 `IServiceCollection` 中的扩展方法 `AddApplicationInsightsTelemetryProcessor` 将自定义遥测处理程序添加到 `TelemetryConfiguration`。 在[高级筛选方案](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer)中使用遥测处理器。 使用以下示例。
+可以使用 `IServiceCollection` 中的扩展方法 `AddApplicationInsightsTelemetryProcessor` 将自定义遥测处理程序添加到 `TelemetryConfiguration`。 在[高级筛选方案](./api-filtering-sampling.md#itelemetryprocessor-and-itelemetryinitializer)中使用遥测处理器。 使用以下示例。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -398,7 +398,7 @@ public class HomeController : Controller
     }
 ```
 
-有关 Application Insights 中自定义数据报告的详细信息，请参阅 [Application Insights 自定义指标 API 参考](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/)。 类似的方法可用于将自定义指标发送到使用[GETMETRIC API](./get-metric.md)Application Insights。
+有关 Application Insights 中自定义数据报告的详细信息，请参阅 [Application Insights 自定义指标 API 参考](./api-custom-events-metrics.md)。 类似的方法可用于将自定义指标发送到使用[GETMETRIC API](./get-metric.md)Application Insights。
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>某些 Visual Studio 模板使用 IWebHostBuilder 中的 UseApplicationInsights() 扩展方法来启用 Application Insights。 这种用法是否仍然有效？
 
@@ -406,7 +406,7 @@ public class HomeController : Controller
 
 ### <a name="im-deploying-my-aspnet-core-application-to-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>我正在将 ASP.NET Core 应用程序部署到 Web 应用。 是否仍要从 Web 应用启用 Application Insights 扩展？
 
-如果在生成时已按本文所示安装了 SDK，则无需从应用服务门户启用 [Application Insights 扩展](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps)。 即使安装了扩展，在检测到已将 SDK 添加到应用程序时，该扩展也仍会回退。 如果从扩展启用 Application Insights，则无需安装和更新 SDK。 但是，遵照本文中的说明启用 Application Insights 会更灵活，原因如下：
+如果在生成时已按本文所示安装了 SDK，则无需从应用服务门户启用 [Application Insights 扩展](./azure-web-apps.md)。 即使安装了扩展，在检测到已将 SDK 添加到应用程序时，该扩展也仍会回退。 如果从扩展启用 Application Insights，则无需安装和更新 SDK。 但是，遵照本文中的说明启用 Application Insights 会更灵活，原因如下：
 
    * Application Insights 遥测功能将在以下位置或模式下继续运行：
        * 所有操作系统，包括 Windows、Linux 和 Mac。
@@ -420,7 +420,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>是否可以使用状态监视器之类的工具来启用 Application Insights 监视？
 
-否。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
+否。 [状态监视器](./monitor-performance-live-website-now.md)和[状态监视器 v2](./status-monitor-v2-overview.md) 目前仅支持 ASP.NET 4.x。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>系统是否会自动为 ASP.NET Core 2.0 应用程序启用 Application Insights？
 
@@ -430,7 +430,7 @@ public class HomeController : Controller
 
 是的。 SDK 的功能支持在所有平台中是相同的，不过存在以下例外情况：
 
-* 该 SDK 在 Linux 上收集[事件计数器](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters)，因为[性能计数器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)仅在 Windows 中受支持。 大多数指标是相同的。
+* 该 SDK 在 Linux 上收集[事件计数器](./eventcounters.md)，因为[性能计数器](./performance-counters.md)仅在 Windows 中受支持。 大多数指标是相同的。
 * 尽管默认已启用 `ServerTelemetryChannel`，但如果应用程序在 Linux 或 MacOS 中运行，出现网络问题时，通道不会自动创建本地存储文件夹来暂时保留遥测数据。 由于这种限制，在出现暂时性的网络或服务器时，遥测数据将会丢失。 若要解决此问题，请为通道配置一个本地文件夹：
 
 ```csharp
@@ -460,7 +460,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 ## <a name="next-steps"></a>后续步骤
 
 * [浏览用户流](../../azure-monitor/app/usage-flows.md)，了解用户如何在应用中导航。
-* [配置快照收集](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)，以便在引发异常时查看源代码和变量的状态。
+* [配置快照收集](./snapshot-debugger.md)，以便在引发异常时查看源代码和变量的状态。
 * [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送自己的事件和指标，以获取应用性能和使用情况的详细视图。
 * 使用[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)从世界各地不断检查应用。
-* [ASP.NET Core 中的依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)
+* [ASP.NET Core 中的依赖项注入](/aspnet/core/fundamentals/dependency-injection)

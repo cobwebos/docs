@@ -4,50 +4,51 @@ description: 获取活动建议的定期摘要
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
-ms.openlocfilehash: 98f1bfd42a486e005cd1e777a83f5b615a7c8304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502459"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518073"
 ---
-# <a name="configure-periodic-summary-for-recommendations"></a>配置建议的定期摘要
+# <a name="configure-periodic-summary-for-recommendations"></a>针对建议配置定期摘要
 
-顾问**建议摘要**提供一种简单而主动的方式，可在不同的类别中随时了解你的活动建议。 利用此功能，可以在不同的类别中配置定期通知，以获得所有活动的建议摘要。 可以使用操作组选择所需的频道，如电子邮件、sms 或其他通知。 本文介绍如何为顾问建议设置**建议摘要**。
+使用 Azure 顾问的**建议摘要**可以轻松主动地了解不同类别中的活动建议。 可以通过此功能针对不同类别的所有活动建议的摘要配置定期通知。 可以使用操作组为电子邮件、短信之类的通知选择所需通道。 本文介绍了如何为 Azure 顾问建议设置**建议摘要**。
 
 
 ## <a name="setting-up-your-recommendation-digest"></a>设置建议摘要 
 
-**建议摘要**创建体验可帮助你配置摘要。 你可以为配置选择以下参数：
-1. 类别：我们提供了建议类别，如成本、高可用性、性能和运营绩效卓越。 此功能尚不可用于安全建议。
-2. 摘要的频率：摘要通知的频率可以是每周、每两周、每月一次。
-3. 操作组：可以选择现有操作组，也可以创建新的操作组。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
+可以借助**建议摘要**创建体验来配置摘要。 可选择以下参数进行配置：
+1. 类别：建议类别包括成本、高可用性、性能、卓越运营等。 此功能尚不可用于安全建议。
+2. 摘要频率：摘要通知的频率可以是每周、每两周和每月。
+3. 操作组：可以选择现有的操作组，也可以创建新的操作组。 若要详细了解操作组，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 4. 摘要语言
-5. 建议摘要名称：可以使用用户友好的字符串来更好地跟踪和监视摘要。
+5. 建议摘要名称：可以使用用户易记的字符串来更好地跟踪和监视摘要。
 
 ## <a name="steps-to-create-recommendation-digest-in-azure-portal"></a>在 Azure 门户中创建建议摘要的步骤
 
 下面是创建**建议摘要**的步骤：
-* **步骤1：** 在 Azure 门户中，单击 " **Advisor** "，然后在 "**监视**" 部分选择 "**建议摘要**" 
+* **步骤 1：** 在 Azure 门户中，转到“顾问”，然后在“监视”部分下选择“建议摘要”   
 
    ![建议摘要入口点](./media/digest-0.png)
 
-* **步骤2：** 从顶部栏中选择 "**新建议摘要**"，如下所示：
+* **步骤 2：** 从顶部栏中选择“新建建议摘要”，如下所示：
 
    ![创建建议摘要](./media/digest-5.png)
 
-* **步骤3：** 在 "**作用域**" 部分中，选择摘要的**订阅**
+* **步骤 3：** 在“范围”部分中选择摘要的“订阅”
 
    ![提供建议摘要输入](./media/digest-1.png)
 
-* **步骤4：** 在 "**条件**" 部分中，选择**类别**、**频率**和**语言**等配置
+* **步骤 4：** 在“条件”部分中选择配置，例如“类别”、“频率”和“语言”   
 
    ![提供建议摘要输入条件](./media/digest-2.png)
 
-* **步骤5：** 在 "**操作组**" 部分中，选择摘要的**操作组**。 可在此处了解详细信息-[创建和管理操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+* **步骤 5：** 在“操作组”部分中，选择摘要的“操作组”。 可以在此文中了解详细信息：[创建和管理操作组](../azure-monitor/platform/action-groups.md)
 
    ![提供建议摘要输入操作组](./media/digest-3.png)
 
-* **步骤6：** 在此最后一节中，对于**摘要详细信息**，可以为建议摘要指定名称和状态。 按 "**创建建议摘要**" 完成设置。
+* **步骤 6：** 这是**摘要详细信息**的最后一部分，可以在其中为建议摘要指定名称和状态。 按“创建建议摘要”按钮以完成设置。
    ![完成建议摘要创建](./media/digest-4.png)
 
 ## <a name="next-steps"></a>后续步骤
@@ -58,5 +59,5 @@ ms.locfileid: "79502459"
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
-* [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)
-* [顾问 REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [顾问卓越运营建议](advisor-operational-excellence-recommendations.md)
+* [顾问 REST API](/rest/api/advisor/)

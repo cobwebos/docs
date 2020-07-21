@@ -4,11 +4,12 @@ description: 使用顾问中的快速修复执行批量修正
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502485"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518056"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>顾问的快速修复修正
 通过**快速修复**，可以更快、更轻松地根据建议对多个资源进行修正。 它提供了对资源批量修正的功能，并通过对资源进行大规模修正来帮助你更快地优化订阅。
@@ -48,5 +49,5 @@ ms.locfileid: "79502485"
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
-* [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)
-* [顾问 REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [顾问卓越运营建议](advisor-operational-excellence-recommendations.md)
+* [顾问 REST API](/rest/api/advisor/)

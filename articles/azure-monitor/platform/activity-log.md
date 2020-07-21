@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 77946694253ff0c1c6953d0b20836d3cb6733801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e6fb2f09200e42f7ad7781716bb83ab418134509
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082295"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516135"
 ---
 # <a name="azure-activity-log"></a>Azure 活动日志
-活动日志是 Azure 中的一个[平台日志](platform-logs-overview.md)，可用于深入了解订阅级事件。 这包括诸如修改资源或启动虚拟机时的信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应创建诊断设置，以便将活动日志发送到[Azure Monitor 日志](data-platform-logs.md)、Azure 事件中心转发到 azure 外部或用于存档的 azure 存储。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
+活动日志是 Azure 中的一个[平台日志](platform-logs-overview.md)，可用于深入了解订阅级事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应创建诊断设置，以便将活动日志发送到[Azure Monitor 日志](data-platform-logs.md)、Azure 事件中心转发到 azure 外部或用于存档的 azure 存储。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
 
 有关创建诊断设置的详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](diagnostic-settings.md)。
 
@@ -43,9 +43,9 @@ ms.locfileid: "86082295"
 ### <a name="other-methods-to-retrieve-activity-log-events"></a>检索活动日志事件的其他方法
 你还可以使用以下方法来访问活动日志事件。
 
-- 使用 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet 从 PowerShell 中检索活动日志。 请参阅[Azure Monitor PowerShell 示例](../samples/powershell-samples.md#retrieve-activity-log)。
-- 使用 [az 监视活动-日志](https://docs.microsoft.com/cli/azure/monitor/activity-log)从 CLI 中检索活动日志。  请参阅 [Azure 监视器 CLI 示例](../samples/cli-samples.md#view-activity-log)。
-- 使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 从 REST 客户端检索活动日志。 
+- 使用 [Get-AzLog](/powershell/module/az.monitor/get-azlog) cmdlet 从 PowerShell 中检索活动日志。 请参阅[Azure Monitor PowerShell 示例](../samples/powershell-samples.md#retrieve-activity-log)。
+- 使用 [az 监视活动-日志](/cli/azure/monitor/activity-log)从 CLI 中检索活动日志。  请参阅 [Azure 监视器 CLI 示例](../samples/cli-samples.md#view-activity-log)。
+- 使用 [Azure Monitor REST API](/rest/api/monitor/) 从 REST 客户端检索活动日志。 
 
 
 ## <a name="send-to-log-analytics-workspace"></a>发送到 Log Analytics 工作区
@@ -58,9 +58,9 @@ ms.locfileid: "86082295"
 - 将活动日志条目存储 90 天以上。
 - Log Analytics 工作区中存储的活动日志数据不产生数据引入或数据保留费用。
 
-创建用于将活动日志发送到 Log Analytics 工作区的[诊断设置](diagnostic-settings.md)。 可以将任何单个订阅中的活动日志发送到最多五个工作区。 跨租户收集日志需要[Azure Lighthouse](/azure/lighthouse)。
+创建用于将活动日志发送到 Log Analytics 工作区的[诊断设置](diagnostic-settings.md)。 可以将任何单个订阅中的活动日志发送到最多五个工作区。 跨租户收集日志需要[Azure Lighthouse](../../lighthouse/index.yml)。
 
-Log Analytics 工作区中的活动日志数据存储在名为*AzureActivity*的表中，您可以使用[Log Analytics](../log-query/get-started-portal.md)中的[日志查询](../log-query/log-query-overview.md)来检索。 此表的结构因[日志条目类别](activity-log-schema.md)而异。 有关表属性的说明，请参阅[Azure Monitor 数据参考](https://docs.microsoft.com/azure/azure-monitor/reference/tables/azureactivity)。
+Log Analytics 工作区中的活动日志数据存储在名为*AzureActivity*的表中，您可以使用[Log Analytics](../log-query/get-started-portal.md)中的[日志查询](../log-query/log-query-overview.md)来检索。 此表的结构因[日志条目类别](activity-log-schema.md)而异。 有关表属性的说明，请参阅[Azure Monitor 数据参考](/azure/azure-monitor/reference/tables/azureactivity)。
 
 例如，若要查看每个类别的活动日志记录计数，请使用以下查询。
 
@@ -199,7 +199,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | 属性 | 必须 | 说明 |
+    | properties | 必须 | 说明 |
     | --- | --- | --- |
     | 名称 |是 |日志配置文件的名称。 |
     | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -242,13 +242,13 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | 属性 | 必须 | 说明 |
+    | properties | 必须 | 说明 |
     | --- | --- | --- |
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |
     | locations |是 |要为其收集活动日志事件的空格分隔区域列表。 可以使用 `az account list-locations --query [].name` 查看订阅的所有区域列表。 |
     | days |是 |活动的保留天数，介于 1 到 365 之间。 值为零时，将无限期（永久）存储日志。  如果为零，则启用的参数应设置为 false。 |
-    |已启用 | 是 |True 或 False。  用于启用或禁用保留策略。  如果为 True，则 days 参数必须为大于 0 的值。
+    |已启用 | 是 |判断正误。  用于启用或禁用保留策略。  如果为 True，则 days 参数必须为大于 0 的值。
     | categories |是 |应收集的事件类别的空格分隔列表。 可能值包括：Write、Delete 和 Action。 |
 
 
@@ -281,7 +281,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> 在有些情况下，这些列中的值可能全部都是大写。 如果你的某个查询包含这些列，应使用 [= ~ 运算符](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)来执行不区分大小写的比较。
+> 在有些情况下，这些列中的值可能全部都是大写。 如果你的某个查询包含这些列，应使用 [= ~ 运算符](/azure/kusto/query/datatypes-string-operators)来执行不区分大小写的比较。
 
 以下列已添加到更新后架构的 AzureActivity 中：
 

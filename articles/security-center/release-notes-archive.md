@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 19a6764b68a7a06f9777bac94c9f34aaf09aec0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970682"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519570"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -126,7 +126,7 @@ Kubernetes 很快就成了在云中部署和管理软件的新标准。 只有�
 
 ### <a name="virtual-machine-vulnerability-assessment-preview"></a>虚拟机漏洞评估（预览版）
 
-安装在虚拟机中的应用程序可能经常出现漏洞，导致虚拟机遭到入侵。 我们宣布，安全中心标准层包含针对虚拟机的内置漏洞评估，且不收取额外的费用。 由 Qualys 提供支持的漏洞评估公共预览版可让你持续扫描虚拟机上安装的所有应用程序以找出有漏洞的应用程序，并在安全中心门户体验中显示扫描结果。 安全中心负责处理所有部署操作，不需要用户额外付出精力。 接下来，我们计划提供漏洞评估选项来支持客户实现其独特的业务需求。
+安装在虚拟机中的应用程序可能经常出现漏洞，导致虚拟机遭到入侵。 我们将宣布安全中心标准层包含虚拟机的内置漏洞评估，无额外费用。 由 Qualys 提供支持的漏洞评估公共预览版可让你持续扫描虚拟机上安装的所有应用程序以找出有漏洞的应用程序，并在安全中心门户体验中显示扫描结果。 安全中心负责处理所有部署操作，不需要用户额外付出精力。 接下来，我们计划提供漏洞评估选项来支持客户实现其独特的业务需求。
 
 [详细了解针对 Azure 虚拟机的漏洞评估](security-center-vulnerability-assessment-recommendations.md)。
 

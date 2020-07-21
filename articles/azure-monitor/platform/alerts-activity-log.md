@@ -4,12 +4,12 @@ description: 使用 Azure 门户、Azure 资源管理器模板和 Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056253"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516050"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -20,7 +20,7 @@ ms.locfileid: "86056253"
 这些警报适用于 Azure 资源，可以使用 Azure 资源管理器模板来创建。 此外，还可以在 Azure 门户中创建、更新或删除它们。 通常，你可以创建活动日志警报，以便在 Azure 订阅中的资源发生特定的更改时接收通知。 警报通常限于特定的资源组或资源。 例如，你可能希望在示例资源组 **myProductionResourceGroup** 中的任何虚拟机被删除时收到通知。 或者，你可能希望在任何新角色分配到订阅中的用户时收到通知。
 
 > [!IMPORTANT]
-> 有关服务运行状况通知的警报无法通过用于创建活动日志警报的界面来创建。 若要详细了解如何创建和使用服务运行状况通知，请参阅[接收有关服务运行状况通知的活动日志警报](alerts-activity-log-service-notifications.md)。
+> 有关服务运行状况通知的警报无法通过用于创建活动日志警报的界面来创建。 若要详细了解如何创建和使用服务运行状况通知，请参阅[接收有关服务运行状况通知的活动日志警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。
 
 创建警报规则时，请确保：
 
@@ -28,6 +28,7 @@ ms.locfileid: "86056253"
 - 条件必须是配置警报时所依据的级别、状态、调用方、资源组、资源 ID 或资源类型事件类别。
 - 警报配置 JSON 中没有“anyOf”条件或嵌套的条件。 简单而言，只允许一个“allOf”条件，而不允许更多的“allOf”或“anyOf”条件。
 - 当类别是“管理”时，必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
+- 无法为活动日志的“警报”类别中的事件创建警报。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -101,7 +102,7 @@ ms.locfileid: "86056253"
     可以启用、禁用、编辑或删除规则。 详细了解如何管理活动日志规则。
 
 
-可以通过一个简单的类比来理解在活动日志上创建警报规则时可以基于的条件，那就是通过 [Azure 门户中的活动日志](activity-log-view.md#azure-portal)浏览或筛选事件。 在“Azure Monitor - 活动日志”屏幕中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报。  然后遵循上面所示的步骤 4 到 7 操作。
+可以通过一个简单的类比来理解在活动日志上创建警报规则时可以基于的条件，那就是通过 [Azure 门户中的活动日志](./activity-log.md#view-the-activity-log)浏览或筛选事件。 在“Azure Monitor - 活动日志”屏幕中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报。  然后遵循上面所示的步骤 4 到 7 操作。
     
  ![从活动日志添加警报](media/alerts-activity-log/add-activity-log.png)
     
@@ -243,7 +244,7 @@ ms.locfileid: "86056253"
 > 新的活动日志警报规则可能需要 5 分钟才能变为活动状态。
 
 ## <a name="rest-api"></a>REST API 
-[Azure Monitor 活动日志警报 API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) 是一个 REST API。 它与 Azure 资源管理器 REST API 完全兼容。 可以使用资源管理器 cmdlet 或 Azure CLI 通过 PowerShell 来使用它。
+[Azure Monitor 活动日志警报 API](/rest/api/monitor/activitylogalerts) 是一个 REST API。 它与 Azure 资源管理器 REST API 完全兼容。 可以使用资源管理器 cmdlet 或 Azure CLI 通过 PowerShell 来使用它。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -262,29 +263,29 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 活动日志警报具有专用的 PowerShell cmdlet 可用：
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert)：创建新的活动日志警报，或更新现有的活动日志警报。
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert)：获取一个或多个活动日志警报资源。
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert)：启用现有活动日志警报并设置其标记。
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert)：禁用现有活动日志警报并设置其标记。
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert)：删除活动日志警报。
+- [Set-AzActivityLogAlert](/powershell/module/az.monitor/set-azactivitylogalert)：创建新的活动日志警报，或更新现有的活动日志警报。
+- [Get-AzActivityLogAlert](/powershell/module/az.monitor/get-azactivitylogalert)：获取一个或多个活动日志警报资源。
+- [Enable-AzActivityLogAlert](/powershell/module/az.monitor/enable-azactivitylogalert)：启用现有活动日志警报并设置其标记。
+- [Disable-AzActivityLogAlert](/powershell/module/az.monitor/disable-azactivitylogalert)：禁用现有活动日志警报并设置其标记。
+- [Remove-AzActivityLogAlert](/powershell/module/az.monitor/remove-azactivitylogalert)：删除活动日志警报。
 
 ## <a name="azure-cli"></a>Azure CLI
 
-set [az monitor activity-log alert](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) 下的专用 Azure CLI 命令可用于管理活动日志警报规则。
+set [az monitor activity-log alert](/cli/azure/monitor/activity-log/alert) 下的专用 Azure CLI 命令可用于管理活动日志警报规则。
 
 若要创建新的活动日志警报规则，请下面的顺序使用以下命令：
 
-1. [az monitor activity-log alert create](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create)：创建新的活动日志警报规则资源。
-1. [az monitor activity-log alert scope](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope)：为已创建的活动日志警报规则添加范围。
-1. [az monitor activity-log alert action-group](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group)：将操作组添加到活动日志警报规则。
+1. [az monitor activity-log alert create](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create)：创建新的活动日志警报规则资源。
+1. [az monitor activity-log alert scope](/cli/azure/monitor/activity-log/alert/scope)：为已创建的活动日志警报规则添加范围。
+1. [az monitor activity-log alert action-group](/cli/azure/monitor/activity-log/alert/action-group)：将操作组添加到活动日志警报规则。
 
-若要检索一个活动日志警报规则资源，请使用 Azure CLI 命令 [az monitor activity-log alert show](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
-)。 若要查看某个资源组中的所有活动日志警报规则资源，请使用 [az monitor activity-log alert list](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)。
-可以使用 Azure CLI 命令 [az monitor activity-log alert delete](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) 删除活动日志警报规则资源。
+若要检索一个活动日志警报规则资源，请使用 Azure CLI 命令 [az monitor activity-log alert show](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+)。 若要查看某个资源组中的所有活动日志警报规则资源，请使用 [az monitor activity-log alert list](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)。
+可以使用 Azure CLI 命令 [az monitor activity-log alert delete](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) 删除活动日志警报规则资源。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[活动日志的 Webhook 架构](../../azure-monitor/platform/activity-log-alerts-webhook.md)。
 - 阅读[活动日志概述](../../azure-monitor/platform/activity-log-alerts.md)。
 - 详细了解[操作组](../../azure-monitor/platform/action-groups.md)。  
-- 了解[服务运行状况通知](../../azure-monitor/platform/service-notifications.md)。
+- 了解[服务运行状况通知](../../service-health/service-notifications.md)。

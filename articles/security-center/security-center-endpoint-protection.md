@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a9541eb3b7c662b43de0d3a609ecec4fe2621ca
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78208536"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519399"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 安全中心中的 Endpoint Protection 评估和建议
 
@@ -58,25 +59,19 @@ Azure 安全中心提供[支持的](security-center-services.md#endpoint-support
 
 * 安全中心建议在运行 MprotComputerStatus 且发生以下任何情况时，解决计算机上的 Endpoint Protection 运行状况问题 ：
 
-    * 以下属性至少一个为 false：
+  * 以下属性至少一个为 false：
 
-            **AMServiceEnabled**
+    * **AMServiceEnabled**
+    * **AntispywareEnabled**
+    * **RealTimeProtectionEnabled**
+    * **BehaviorMonitorEnabled**
+    * **IoavProtectionEnabled**
+    * **OnAccessProtectionEnabled**
 
-            **AntispywareEnabled**
-    
-            **RealTimeProtectionEnabled**
-    
-            **BehaviorMonitorEnabled**
-    
-            **IoavProtectionEnabled**
-    
-            **OnAccessProtectionEnabled**
-          
-    * 如果以下一个或两个签名更新大于或等于 7。 
+  * 如果以下一个或两个签名更新大于或等于 7。 
 
-            **AntispywareSignatureAge**
-    
-            **AntivirusSignatureAge**
+    * **AntispywareSignatureAge**
+    * **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 

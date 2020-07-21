@@ -4,12 +4,12 @@ description: 本文介绍在不将 kubectl 与适用于容器的 Azure Monitor �
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d60836af350e9af99355db9a7cc140a949d1492
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbd697f743d0d3369a8c35537ac2755ae5d3fc8c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337948"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516458"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何设置实时数据（预览版）功能
 
@@ -19,7 +19,7 @@ ms.locfileid: "85337948"
 
 - 没有启用 Kubernetes RBAC 授权的 AKS
 - 启用了 Kubernetes RBAC 授权的 AKS
-    - 配置了群集角色绑定 **[clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)** 的 AKS
+    - 配置了群集角色绑定 **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)** 的 AKS
 - 启用了基于 SAML 的 Azure Active Directory (AD) 单一登录的 AKS
 
 这些说明要求对 Kubernetes 群集具有管理访问权限，在配置为使用 Azure Active Directory (AD) 进行用户身份验证的情况下，要求对 Azure AD 具有管理访问权限。
@@ -108,7 +108,7 @@ AKS 在 2020 年 1 月发布了此新的角色绑定，因此在 2020 年 1 月�
 有关 Kubernetes 中的高级安全设置的详细信息，请查看 [Kubernetes 文档](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)。
 
 >[!NOTE]
->如果你要创建新的启用了 RBAC 的群集，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/azure-ad-integration.md)并按照步骤来配置 Azure AD 身份验证。 在创建客户端应用程序的步骤中，该部分中的一个注释突出显示了你需要为适用于容器的 Azure Monitor 创建的与下面步骤 3 中指定的 URL 匹配的两个重定向 URL。
+>如果你要创建新的启用了 RBAC 的群集，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/azure-ad-integration-cli.md)并按照步骤来配置 Azure AD 身份验证。 在创建客户端应用程序的步骤中，该部分中的一个注释突出显示了你需要为适用于容器的 Azure Monitor 创建的与下面步骤 3 中指定的 URL 匹配的两个重定向 URL。
 
 ### <a name="client-registration-reconfiguration"></a>重新配置客户端注册
 

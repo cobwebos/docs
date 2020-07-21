@@ -4,12 +4,12 @@ description: 将有关服务运行状况事件的个性化通知发送到现有�
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062861"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518922"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>使用 Webhook 为问题管理系统配置运行状况通知
 
@@ -115,5 +115,5 @@ https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="next-steps"></a>后续步骤
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 了解[服务运行状况通知](../azure-monitor/platform/service-notifications.md)。
+- 了解[服务运行状况通知](./service-notifications.md)。
 - 详细了解[操作组](../azure-monitor/platform/action-groups.md)。

@@ -5,12 +5,12 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8765e86ffeae86b9f4e2b693c0dbf92478632dbf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 640ee925a0a91c4f8424546e7ae734dfbeaed21d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253161"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518956"
 ---
 # <a name="configure-stateful-reliable-services"></a>配置有状态 Reliable Services
 有两组配置设置可供 Reliable Services 使用。 一组适用于群集中的所有 Reliable Services，而另一组特定于特定的 Reliable Services。
@@ -29,13 +29,15 @@ ms.locfileid: "86253161"
 
 在 Azure ARM 或本地 JSON 模板中，以下示例说明如何更改为支持有状态服务的任何可靠集合而创建的共享事务日志。
 
-    "fabricSettings": [{
-        "name": "KtlLogger",
-        "parameters": [{
-            "name": "SharedLogSizeInMB",
-            "value": "4096"
-        }]
+```json
+"fabricSettings": [{
+    "name": "KtlLogger",
+    "parameters": [{
+        "name": "SharedLogSizeInMB",
+        "value": "4096"
     }]
+}]
+```
 
 ### <a name="sample-local-developer-cluster-manifest-section"></a>本地开发人员群集清单部分示例
 若要在本地开发环境中更改此设置，则需编辑本地 clustermanifest.xml 文件。

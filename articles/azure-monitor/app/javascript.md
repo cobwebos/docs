@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464566"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517104"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -103,7 +104,7 @@ IE 8 （或更少）上特别不支持报告 SDK 加载失败。 这有助于减
 
 可用的配置选项包括 
 
-| 名称 | 类型 | 描述
+| 名称 | 类型 | 说明
 |------|------|----------------
 | src | string **[必需]** | 要从其加载 SDK 的的完整 URL。 此值用于动态添加的脚本/标记的 "src" 特性 &lt; &gt; 。 你可以使用公共 CDN 位置，也可以使用自己的私有托管位置。
 | name | string *[optional]* | 已初始化的 SDK 的全局名称，默认值为 appInsights。 因此 ```window.appInsights``` 将是对已初始化实例的引用。 注意：如果提供名称值或上一个实例（通过全局名称 appInsightsSDK），则此名称值也将在全局命名空间中定义为 ```window.appInsightsSDK=<name value>``` ，这是 SDK 初始化代码需要的，以确保它正在初始化并更新正确的代码段主干和代理方法。
@@ -154,7 +155,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 | 名称 | 默认 | 说明 |
 |------|---------|-------------|
-| instrumentationKey | null | **必需**<br>从 Azure 门户获取的检测密钥。 |
+| instrumentationKey | Null | **必需**<br>从 Azure 门户获取的检测密钥。 |
 | accountId | Null | 可选的帐户 ID（如果应用将用户分组到帐户中）。 不允许使用空格、逗号、分号、等于或竖线 |
 | sessionRenewalMs | 1800000 | 如果用户处于非活动状态有这么长的时间（以毫秒为单位），则会记录会话。 默认值为 30 分钟 |
 | sessionExpirationMs | 86400000 | 如果会话持续了这么长的时间（以毫秒为单位），则会记录会话。 默认值为 24 小时 |
@@ -179,20 +180,20 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | disableFlushOnBeforeUnload | false | 默认值为 false。 如果为 true，则触发 onBeforeUnload 事件时不会调用 flush 方法 |
 | enableSessionStorageBuffer | true | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
 | isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。|
-| cookieDomain | null | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 |
+| cookieDomain | Null | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 |
 | isRetryDisabled | false | 默认值为 false。 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 |
 | isStorageUseDisabled | false | 如果为 true，则 SDK 不会存储或读取本地和会话存储中的任何数据。 默认值为 false。 |
 | isBeaconApiDisabled | 是 | 如果为 false，则 SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有遥测数据 |
 | onunloadDisableBeacon | false | 默认值为 false。 选项卡关闭时，SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有剩余的遥测 |
-| sdkExtension | null | 设置 SDK 扩展名。 仅允许使用字母字符。 扩展名将添加为“ai.internal.sdkVersion”标记的前缀（例如“ext_javascript:2.0.0”）。 默认值为 null。 |
-| isBrowserLinkTrackingEnabled | false | 默认值为 false。 如果为 true，则 SDK 将跟踪所有[浏览器链接](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink)请求。 |
+| sdkExtension | Null | 设置 SDK 扩展名。 仅允许使用字母字符。 扩展名将添加为“ai.internal.sdkVersion”标记的前缀（例如“ext_javascript:2.0.0”）。 默认值为 null。 |
+| isBrowserLinkTrackingEnabled | false | 默认值为 false。 如果为 true，则 SDK 将跟踪所有[浏览器链接](/aspnet/core/client-side/using-browserlink)请求。 |
 | appId | Null | appId 用于在客户端上发生的 AJAX 依赖项与服务器端请求之间进行关联。 启用信标 API 后，无法自动使用 appId，但可以在配置中手动设置它。 默认值为 null |
 | enableCorsCorrelation | false | 如果为 true，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有 CORS 请求，以将传出的 AJAX 依赖项关联到服务器端上的对应请求。 默认值为 false |
 | namePrefix | undefined | 一个可选值，用作 localStorage 和 Cookie 名称的名称后缀。
 | enableAutoRouteTracking | false | 自动跟踪单页应用程序 (SPA) 中的路由更改。 如果为 true，则每次更改路由都会将一个新的页面视图发送到 Application Insights。 哈希路由更改 (`example.com/foo#bar`) 也会记录为新的页面视图。
 | enableRequestHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求标头，默认值为 false。
 | enableResponseHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求的响应标头，默认值为 false。
-| distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)的示例。
+| distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。
 | enableAjaxErrorStatusText | false | 默认值为 false。 如果为 true，则在失败的 AJAX 请求上包含依赖关系事件中的响应错误数据文本。
 | enableAjaxPerfTracking | false | 默认值为 false。 用于启用查找和包含其他浏览器窗口的标记。报告的 ajax （XHR 和 fetch）报告的指标中的性能计时。
 | maxAjaxPerfLookupAttempts | 3 | 默认值为 3。 要在窗口中查找的最大次数。性能计时（如果可用），这是必需的，因为并非所有浏览器都填充窗口。在报告 XHR 请求结束之前的性能和提取请求后，将在其完成后添加。
@@ -210,7 +211,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="configuration-autotrackpagevisittime"></a>配置：autoTrackPageVisitTime
 
-通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)发送。 此自定义指标可在[指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)中作为“基于日志的指标”查看。
+通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](../platform/metrics-custom-overview.md)发送。 此自定义指标可在[指标资源管理器](../platform/metrics-getting-started.md)中作为“基于日志的指标”查看。
 
 ## <a name="react-extensions"></a>React 扩展
 
@@ -223,21 +224,21 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 可以转到“指标”并添加你感兴趣的各个指标，来查看浏览器/客户端数据：
 
-![](./media/javascript/page-view-load-time.png)
+!["指标" 页的屏幕截图，Application Insights 显示 web 应用程序的指标数据的图形显示。](./media/javascript/page-view-load-time.png)
 
 还可以通过门户中的“浏览器”体验查看 JavaScript SDK 中的数据。
 
 选择“浏览器”，然后选择“失败”或“性能”。  
 
-![](./media/javascript/browser.png)
+![Application Insights 中的 "浏览器" 页的屏幕截图，显示如何将浏览器故障或浏览器性能添加到可以为 web 应用程序查看的指标。](./media/javascript/browser.png)
 
 ### <a name="performance"></a>性能
 
-![](./media/javascript/performance-operations.png)
+![Application Insights 中的 "性能" 页的屏幕截图，显示了 web 应用程序的操作指标的图形显示。](./media/javascript/performance-operations.png)
 
 ### <a name="dependencies"></a>依赖项
 
-![](./media/javascript/performance-dependencies.png)
+![显示 web 应用程序的依赖项指标图形显示的 "性能" 页面的屏幕截图 Application Insights。](./media/javascript/performance-dependencies.png)
 
 ### <a name="analytics"></a>分析
 
@@ -270,7 +271,7 @@ dataset
 
 1. 请在 Azure 门户中选择一个异常遥测项，以查看其“端到端事务详细信息”
 2. 确定哪些源映射对应于此调用堆栈。 源映射必须与堆栈帧的源文件相匹配，但后缀为 `.map`
-3. 将源映射拖放到 Azure 门户中的调用堆栈上 ![](https://i.imgur.com/Efue9nU.gif)
+3. 将源映射拖放到 Azure 门户中的调用堆栈上，该 ![ 图像显示了如何将源映射文件从生成文件夹拖放到 Azure 门户中的 "调用堆栈" 窗口。](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web 基本版
 
