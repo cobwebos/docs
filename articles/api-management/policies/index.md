@@ -13,20 +13,19 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b5b8c82aa420b62e3b6e68ee53352eb9f77988f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242961"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506683"
 ---
 # <a name="api-management-policy-samples"></a>API 管理策略示例
 
 [策略](../api-management-howto-policies.md)是一项强大的系统功能，可让发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 下表包含示例链接，并提供每个示例的简要说明。
 
-|                                                                                                                                                                      |                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **入站策略**                                                                                                                                                 |                                                                                                                                                                                                                             |
+| 入站策略 | 说明 |
+| ---------------- | ----------- |
 | [添加 Forwarded 标头，使后端 API 能够构造正确的 URL](./set-header-to-enable-backend-to-construct-urls.md) | 演示如何在入站请求中添加 Forwarded 标头，使后端 API 能够构造正确的 URL。                                                                                                        |
 | [添加包含相关 ID 的标头](./add-correlation-id.md)                                                             | 演示如何将包含相关 ID 的标头添加到入站请求。                                                                                                                                        |
 | [将功能添加到后端服务并缓存响应](./cache-response.md)                                             | 演示如何将功能添加到后端服务。 例如，接受位置的名称而不是天气预报 API 中的纬度和经度。                                                                    |
@@ -40,7 +39,7 @@ ms.locfileid: "86242961"
 | [基于请求的正文大小路由请求](./route-requests-based-on-size.md)                                            | 演示如何基于请求的正文大小路由请求。                                                                                                                                                       |
 | [将请求上下文信息转发到后端服务](./send-request-context-info-to-backend-service.md)                    | 演示如何将一些上下文信息发送到后端服务进行日志记录或处理。                                                                                                                                |
 | [设置响应缓存持续时间](./set-cache-duration.md)                                                                          | 演示如何使用后端发送的 Cache-Control 标头中的 maxAge 值设置响应缓存持续时间。                                                                                                             |
-| **出站策略**                                                                                                                                                |                                                                                                                                                                                                                             |
+| **出站策略** | **说明** |
 | [筛选响应内容](./filter-response-content.md)                                                                         | 演示如何基于与请求关联的产品从响应有效负载中筛选数据元素。                                                                                                        |
-| **出错时的策略**                                                                                                                                                |                                                                                                                                                                                                                             |
+| **出错时的策略** | **说明** |
 | [将错误记录到 Stackify](./log-errors-to-stackify.md)                                                                           | 演示如何添加错误日志记录策略，以便将错误发送到 Stackify 进行日志记录。                                                                                                                                            |

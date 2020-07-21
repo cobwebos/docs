@@ -23,7 +23,8 @@
       href: quickstart-create-data-factory-python.md
     - name: 创建数据工厂 - REST
       href: quickstart-create-data-factory-rest-api.md
-    - name: 创建数据工厂 - 资源管理器模板
+    - name: 创建数据工厂 - ARM 模板
+      displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: 安全性 - 启用客户管理的密钥加密
       href: enable-customer-managed-key.md
@@ -98,6 +99,8 @@
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: 按以时间分区的文件名称复制新文件
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+        - name: 使用托管 VNet 和专用终结点构建复制管道
+          href: tutorial-copy-data-portal-private.md
     - name: 转换数据
       items:
         - name: 使用映射数据流转换数据
@@ -126,6 +129,8 @@
                   href: tutorial-transform-data-hive-virtual-network-portal.md
                 - name: Azure PowerShell
                   href: tutorial-transform-data-hive-virtual-network.md
+        - name: 使用托管 VNet 和专用终结点构建映射数据流管道
+          href: tutorial-data-flow-private.md
     - name: 控制流
       items:
         - name: 用户界面 (UI)
@@ -162,6 +167,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 集成运行时
       href: concepts-integration-runtime.md
+    - name: 托管的虚拟网络
+      href: managed-virtual-network-private-endpoint.md
     - name: 安全性
       items:
         - name: 安全基线
@@ -408,6 +415,8 @@
           href: connector-web-table.md
         - name: Xero
           href: connector-xero.md
+        - name: XML 格式
+          href: format-xml.md
         - name: Zoho
           href: connector-zoho.md
     - name: 移动数据
@@ -469,12 +478,12 @@
           href: transform-data-using-spark.md
         - name: HDInsight Streaming 活动
           href: transform-data-using-hadoop-streaming.md
-        - name: 机器学习批处理执行活动
-          href: transform-data-using-machine-learning.md
-        - name: 机器学习更新资源活动
-          href: update-machine-learning-models.md
         - name: 机器学习执行管道活动
           href: transform-data-machine-learning-service.md
+        - name: 机器学习工作室（经典）批处理执行活动
+          href: transform-data-using-machine-learning.md
+        - name: 机器学习工作室（经典）更新资源活动
+          href: update-machine-learning-models.md
         - name: 存储过程活动
           href: transform-data-using-stored-procedure.md
         - name: 计算链接服务
@@ -681,7 +690,7 @@
               href: how-to-fixed-width.md
             - name: 行处理时出错
               href: how-to-data-flow-error-rows.md
-            - name: Azure SQL DB 到 CosmosDB
+            - name: Azure SQL DB 到 Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
         - name: 从本地进行 SSIS 迁移
           items:

@@ -179,6 +179,8 @@
           href: azure-nfs-volume.md
         - name: Azure NetApp 文件
           href: azure-netapp-files.md
+        - name: 使用 Azure 超级磁盘（预览版）
+          href: use-ultra-disks.md
     - name: 配置网络
       items:
         - name: 创建虚拟网络或使用现有虚拟网络
@@ -191,8 +193,6 @@
           href: internal-lb.md
         - name: 使用标准负载均衡器
           href: load-balancer-standard.md
-        - name: 将用户定义的路由用于入口
-          href: egress-outboundtype.md
         - name: 使用静态 IP 地址
           href: static-ip.md
         - name: 流入量
@@ -214,8 +214,14 @@
                   href: ingress-tls.md
                 - name: 使用静态公共 IP 地址
                   href: ingress-static-ip.md
-        - name: 出口流量
-          href: egress.md
+        - name: 流出量
+          items:
+            - name: 限制和控制群集出口流量
+              href: limit-egress-traffic.md
+            - name: 将用户定义的路由用于入口
+              href: egress-outboundtype.md
+            - name: 使用基本负载均衡器和静态 IP 地址
+              href: egress.md
         - name: 自定义 CoreDNS
           href: coredns-custom.md
     - name: 安全性和身份验证
@@ -238,13 +244,11 @@
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: 更新群集凭据
           href: update-credentials.md
-        - name: 限制和控制群集出口流量
-          href: limit-egress-traffic.md
         - name: 实现 Azure Active Directory 集成
           items:
-            - name: AKS 托管的 AAD（预览版）
+            - name: AKS 管理的 AAD
               href: managed-aad.md
-            - name: 使用 Azure CLI
+            - name: AAD 集成（旧版）
               href: azure-ad-integration-cli.md
         - name: 使用 Azure RBAC 进行 Kubernetes 授权（预览）
           href: manage-azure-rbac.md
@@ -291,8 +295,6 @@
       items:
         - name: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）
           href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
-        - name: 在 Visual Studio 中使用 Local Process with Kubernetes（预览版）
-          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: 通过 Helm 安装现有应用程序
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
@@ -383,10 +385,10 @@
       href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: 支持策略
       href: support-policies.md
-    - name: 路线图
+    - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 提供产品反馈
-      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: AKS 路线图
+      href: 'https://github.com/Azure/AKS/projects/1'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 视频

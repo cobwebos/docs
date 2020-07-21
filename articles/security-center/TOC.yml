@@ -1,6 +1,7 @@
 - name: 安全中心文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 关于安全中心
       href: security-center-intro.md
@@ -18,8 +19,11 @@
       href: recommendations-reference.md
     - name: 安全警报和意向攻击链
       href: alerts-reference.md
+    - name: 权限
+      href: security-center-permissions.md
+    - name: 定价
+      href: security-center-pricing.md
 - name: 快速入门
-  expanded: true
   items:
     - name: Azure 订阅
       href: security-center-get-started.md
@@ -29,6 +33,12 @@
       href: quick-onboard-linux-computer.md
     - name: Azure Stack 虚拟机
       href: quick-onboard-azure-stack.md
+    - name: 使用 PowerShell 自动加入
+      href: security-center-powershell-onboarding.md
+    - name: 配置数据收集
+      href: security-center-enable-data-collection.md
+    - name: 设置电子邮件通知
+      href: security-center-provide-security-contact-details.md
 - name: 教程
   items:
     - name: 规划和操作指南
@@ -39,21 +49,36 @@
       href: tutorial-security-incident.md
     - name: 提高合规性
       href: security-center-compliance-dashboard.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 安全功能分数
-      href: secure-score-security-controls.md
-    - name: 权限
-      href: security-center-permissions.md
+    - name: 安全分数、建议和策略
+      items:
+        - name: 安全功能分数
+          href: secure-score-security-controls.md
+        - name: 安全性建议的概述
+          href: security-center-recommendations.md
+        - name: 安全策略概述
+          href: tutorial-security-policy.md
+        - name: 内置安全策略
+          href: security-center-policy-definitions.md
+        - name: 使用建议增强安全性
+          href: security-center-using-recommendations.md
+    - name: 威胁防护和安全警报
+      items:
+        - name: 安全中心的威胁防护概述
+          href: threat-protection.md
+        - name: 安全警报概述
+          href: security-center-alerts-overview.md
+        - name: 警报参考列表
+          href: alerts-reference.md
+        - name: 警报架构
+          href: alerts-schemas.md
+        - name: 安全事件概述
+          href: security-center-alerts-cloud-smart.md
     - name: 数据安全
       href: security-center-data-security.md
-    - name: 使用建议增强安全性
-      href: security-center-using-recommendations.md
+    - name: 恰时 VM 访问
+      href: just-in-time-explained.md
     - name: 跨租户管理
       href: security-center-cross-tenant-management.md
     - name: 容器安全性
@@ -64,32 +89,18 @@
           href: azure-container-registry-integration.md
         - name: 与 Azure Kubernetes 服务集成
           href: azure-kubernetes-service-integration.md
-    - name: 威胁防护和安全警报
-      items:
-        - name: Azure 安全中心的威胁防护
-          href: threat-protection.md
-        - name: 安全警报概述
-          href: security-center-alerts-overview.md
-        - name: 警报参考列表
-          href: alerts-reference.md
-        - name: 警报架构
-          href: alerts-schemas.md
-        - name: 管理安全警报
-          href: security-center-managing-and-responding-alerts.md
-        - name: 安全警报的抑制规则
-          href: alerts-suppression-rules.md
-        - name: 管理安全事件
-          href: security-center-incident.md
-        - name: 云智能警报关联（事件）
-          href: security-center-alerts-cloud-smart.md
-        - name: 威胁报告
-          href: security-center-threat-report.md
-        - name: 警报验证（EICAR 测试文件）
-          href: security-center-alert-validation.md
 - name: 操作指南
   items:
     - name: 升级到高级安全
       href: security-center-onboarding.md
+    - name: 配置安全策略和符合性标准
+      items:
+        - name: 创建自定义安全策略
+          href: custom-security-policies.md
+        - name: 使用 Azure 策略 REST API 管理策略
+          href: configure-security-policy-azure-policy.md
+        - name: 为符合性仪表板选择标准
+          href: update-regulatory-compliance-packages.md
     - name: 扫描 VM 中的漏洞
       items:
         - name: 漏洞扫描概述
@@ -98,54 +109,28 @@
           href: built-in-vulnerability-assessment.md
         - name: 使用外部扫描程序
           href: partner-vulnerability-assessment.md
-    - name: 监视容器
-      href: monitor-container-security.md
-    - name: 使用 Microsoft Defender ATP 保护服务器
-      href: security-center-wdatp.md
-    - name: 使用 SQL 计算机的高级数据安全
-      href: security-center-iaas-advanced-data.md
-    - name: 使用应用服务保护应用程序
-      href: security-center-app-services.md
-    - name: 使用安全策略
+    - name: 配置威胁防护并处理警报
       items:
-        - name: 安全策略概述
-          href: tutorial-security-policy.md
-        - name: 使用内置安全策略
-          href: security-center-policy-definitions.md
-        - name: 创建自定义安全策略
-          href: custom-security-policies.md
-        - name: 使用 Azure 策略 REST API 管理策略
-          href: configure-security-policy-azure-policy.md
-    - name: 为符合性仪表板选择标准
-      href: update-regulatory-compliance-packages.md
-    - name: 自定义信息保护策略
-      href: security-center-info-protection-policy.md
-    - name: 管理安全解决方案
-      href: security-center-partner-integration.md
-    - name: 使用 PowerShell 自动加入
-      href: security-center-powershell-onboarding.md
-    - name: 与 Windows Admin Center 集成
-      href: windows-admin-center-integration.md
-    - name: 使用文件完整性监视比较基线
-      href: security-center-file-integrity-monitoring-baselines.md
-    - name: 自动响应警报和建议
-      href: workflow-automation.md
-    - name: 导出警报和建议
-      href: continuous-export.md
-    - name: 配置数据收集
-      href: security-center-enable-data-collection.md
-    - name: 为 Azure Key Vault 设置高级威胁防护
-      href: advanced-threat-protection-key-vault.md
-    - name: 设置电子邮件通知
-      href: security-center-provide-security-contact-details.md
-    - name: 定价
-      href: security-center-pricing.md
-    - name: 获取租户范围内的可见性
-      href: security-center-management-groups.md
-    - name: 实施安全建议
+        - name: 管理安全警报
+          href: security-center-managing-and-responding-alerts.md
+        - name: 创建和管理警报抑制规则
+          href: alerts-suppression-rules.md
+        - name: 为 Azure Key Vault 设置高级威胁防护
+          href: advanced-threat-protection-key-vault.md
+        - name: 管理安全事件
+          href: security-center-incident.md
+        - name: 生成威胁情报报表
+          href: security-center-threat-report.md
+        - name: 验证警报配置（EICAR 测试文件）
+          href: security-center-alert-validation.md
+        - name: 使用 Azure VM 上的 SQL 高级数据安全
+          href: security-center-iaas-advanced-data.md
+        - name: 自动响应警报
+          href: workflow-automation.md
+        - name: 导出警报
+          href: continuous-export.md
+    - name: 使用安全建议来提高安全性
       items:
-        - name: 安全建议是什么
-          href: security-center-recommendations.md
         - name: 修正建议
           href: security-center-remediate-recommendations.md
         - name: 加强安全态势
@@ -160,8 +145,20 @@
           href: security-center-sql-service-recommendations.md
         - name: 保护标识和访问权限
           href: security-center-identity-access.md
-        - name: 管理调查用户数据
-          href: security-center-investigation-user-data.md
+        - name: 自动响应建议
+          href: workflow-automation.md
+        - name: 导出建议
+          href: continuous-export.md
+    - name: 与其他工具和服务集成
+      items:
+        - name: 与 Windows Admin Center 集成
+          href: windows-admin-center-integration.md
+        - name: 保护 Azure 应用服务 web 应用和 API
+          href: security-center-app-services.md
+        - name: 与 Microsoft Defender ATP 集成
+          href: security-center-wdatp.md
+        - name: 集成安全解决方案和数据源
+          href: security-center-partner-integration.md
     - name: 应用云防御措施
       items:
         - name: 管理实时访问
@@ -170,8 +167,18 @@
           href: security-center-adaptive-application.md
         - name: 文件完整性监视
           href: security-center-file-integrity-monitoring.md
+        - name: 使用文件完整性监视比较基线
+          href: security-center-file-integrity-monitoring-baselines.md
         - name: 自适应网络强化
           href: security-center-adaptive-network-hardening.md
+    - name: 监视容器
+      href: monitor-container-security.md
+    - name: 自定义信息保护策略
+      href: security-center-info-protection-policy.md
+    - name: 管理调查用户数据
+      href: security-center-investigation-user-data.md
+    - name: 获取租户范围内的可见性
+      href: security-center-management-groups.md
 - name: 参考
   items:
     - name: REST API
