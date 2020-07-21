@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617177"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507941"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
 本文介绍 HANA 大型实例（B-HLI）的支持方案和体系结构详细信息。
@@ -60,7 +61,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 - **C**：用于节点到存储的连接。
 - **D**：用于 STONITH 设置的节点到 iSCSI 设备连接。 仅当请求 HSR 安装程序时才配置此接口。  
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点|
@@ -132,7 +133,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -146,7 +147,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |/hana/shared/SID | HANA 安装 | 
 |/hana/data/SID/mnt00001 | 数据文件安装 | 
@@ -167,7 +168,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -181,7 +182,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |/hana/shared/SID1 | 适用于 SID1 的 HANA 安装 | 
 |/hana/data/SID1/mnt00001 | SID1 的数据文件安装 | 
@@ -194,7 +195,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 
 ### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](./hana-overview-architecture.md)。
 
 ## <a name="single-node-with-dr-using-storage-replication"></a>使用存储复制进行灾难恢复的单节点
  
@@ -207,7 +208,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -221,7 +222,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |/hana/shared/SID | 适用于 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | SID 的数据文件安装 | 
@@ -231,9 +232,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 
 ### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](./hana-overview-architecture.md)。
 - 在灾难恢复站点：在 DR 中安装生产 HANA 实例的卷和装入点（对于 HANA 安装，标记为 "必需"）。 
-- 在 DR 站点上：数据、日志备份和共享卷（标记为 "存储复制"）通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)。
+- 在 DR 站点上：数据、日志备份和共享卷（标记为 "存储复制"）通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅[灾难恢复故障转移过程](./hana-overview-high-availability-disaster-recovery.md)。
 - *SKU 类型 I 类*的启动卷被复制到 DR 节点。
 
 
@@ -248,7 +249,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -262,7 +263,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -280,9 +281,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 
 ### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](./hana-overview-architecture.md)。
 - 在灾难恢复站点：在 DR 中安装生产 HANA 实例的卷和装入点（对于 HANA 安装，标记为 "必需"）。 
-- 在 DR 站点上：数据、日志备份和共享卷（标记为 "存储复制"）通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)。 
+- 在 DR 站点上：数据、日志备份和共享卷（标记为 "存储复制"）通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅[灾难恢复故障转移过程](./hana-overview-high-availability-disaster-recovery.md)。 
 - 在 DR 站点上：为 qa 实例安装配置了用于 QA 的数据、日志备份、日志和共享卷（标记为 "QA 实例安装"）。
 - *SKU 类型 I 类*的启动卷被复制到 DR 节点。
 
@@ -303,7 +304,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -317,7 +318,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主节点上**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -332,7 +333,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 
 ### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](./hana-overview-architecture.md)。
 - STONITH：为 STONITH 设置配置 SBD。 但是，STONITH 的使用是可选的。
 
 
@@ -349,7 +350,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -363,7 +364,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主站点的主节点上**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -386,11 +387,11 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 
 ### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](./hana-overview-architecture.md)。
 - STONITH：为 STONITH 设置配置 SBD。 但是，STONITH 的使用是可选的。
 - 在 DR 站点：主节点和辅助节点复制*需要两组存储卷*。
 - 在灾难恢复站点：在 DR 中安装生产 HANA 实例的卷和装入点（对于 HANA 安装，标记为 "必需"）。 
-- 在 DR 站点上：数据、日志备份和共享卷（标记为 "存储复制"）通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)。 
+- 在 DR 站点上：数据、日志备份和共享卷（标记为 "存储复制"）通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅[灾难恢复故障转移过程](./hana-overview-high-availability-disaster-recovery.md)。 
 - 在 DR 站点上：为 qa 实例安装配置了用于 QA 的数据、日志备份、日志和共享卷（标记为 "QA 实例安装"）。
 - *SKU 类型 I 类*的启动卷被复制到 DR 节点。
 
@@ -408,7 +409,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -422,7 +423,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主节点和备用节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
@@ -449,7 +450,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -463,7 +464,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主节点、辅助节点和备用节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
@@ -485,7 +486,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -499,7 +500,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主节点和辅助节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
@@ -524,7 +525,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -538,7 +539,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
@@ -554,7 +555,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 -  在灾难恢复站点：在 DR 中安装生产 HANA 实例的卷和装入点（对于 HANA 安装，标记为 "必需"）。 
-- 在 DR 站点上：数据、日志备份和共享卷（标记为 "存储复制"）通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)。 
+- 在 DR 站点上：数据、日志备份和共享卷（标记为 "存储复制"）通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅[灾难恢复故障转移过程](./hana-overview-high-availability-disaster-recovery.md)。 
 - *SKU 类型 I 类*的启动卷被复制到 DR 节点。
 
 
@@ -569,7 +570,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -583,7 +584,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点在每个机架单元（主和灾难恢复）上预先配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |/hana/shared/SID | 适用于 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | SID 的数据文件安装 | 
@@ -593,9 +594,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 
 ### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](./hana-overview-architecture.md)。
 - 主节点通过使用 HANA 系统复制与 DR 节点同步。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
 
 
 
@@ -610,7 +611,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -624,7 +625,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -643,11 +644,11 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 
 ### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
-- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](./hana-overview-architecture.md)。
 - 在灾难恢复站点：在 DR 中安装生产 HANA 实例的卷和装入点，并将其标记为 "在 DR 站点上生产实例"。 
 - 在 DR 站点上：为 qa 实例安装配置了用于 QA 的数据、日志备份、日志和共享卷（标记为 "QA 实例安装"）。
 - 主节点通过使用 HANA 系统复制与 DR 节点同步。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr"></a>HSR 的高可用性和灾难恢复 
  
@@ -660,7 +661,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -674,7 +675,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -692,7 +693,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 在灾难恢复站点：在 DR B-HLI 单位为生产 HANA 实例安装配置（标记为 "生产 DR 实例"）卷和装入点。 
 - 主站点节点通过使用 HANA 系统复制与 DR 节点同步。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>HSR 的高可用性和灾难恢复（成本优化）
  
@@ -705,7 +706,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -719,7 +720,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -741,7 +742,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 - 在灾难恢复站点：在 DR B-HLI 单位为生产 HANA 实例安装配置（标记为 "生产 DR 实例"）卷和装入点。 
 - 在 DR 站点上：为 qa 实例安装配置了用于 QA 的数据、日志备份、日志和共享卷（标记为 "QA 实例安装"）。
 - 主站点节点通过使用 HANA 系统复制与 DR 节点同步。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
 
 ## <a name="scale-out-with-dr-using-hsr"></a>使用 HSR 通过 DR 扩展
  
@@ -756,7 +757,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -770,7 +771,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 ### <a name="storage"></a>存储
 以下装入点已预配置：
 
-| 装入点 | 用例 | 
+| 装入点 | 使用案例 | 
 | --- | --- |
 |**在主节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
@@ -788,9 +789,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 在灾难恢复站点：在 DR B-HLI 单元中为生产 HANA 实例安装配置卷和装入点。 
 - 主站点节点通过使用 HANA 系统复制与 DR 节点同步。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md)用于将 ExpressRoute 线路链接在一起，以在区域网络之间建立专用网络。
 
 
 ## <a name="next-steps"></a>后续步骤
-- 适用于 HANA 大型实例的[基础结构和连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- HANA 大型实例的[高可用性和灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- 适用于 HANA 大型实例的[基础结构和连接](./hana-overview-infrastructure-connectivity.md)
+- HANA 大型实例的[高可用性和灾难恢复](./hana-overview-high-availability-disaster-recovery.md)

@@ -6,11 +6,12 @@ ms.author: yossiy
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be2d49a824066b8926ae455978facb34c0b44310
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77667782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505459"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor 中的日志警报
 [基于 Azure Monitor 日志的警报规则](alerts-unified-log.md)定期运行，因此应确保这些规则旨在将开销和延迟降至最低。 本文提供了有关编写日志警报的高效查询以及转换现有查询的过程的建议。 
@@ -49,7 +50,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
->新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的[跨资源查询](../log-query/cross-workspace-query.md)。 默认情况下，除非从[旧版日志警报 API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 ARM 模板](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)创建[跨资源查询](../log-query/cross-workspace-query.md)日志警报规则，而无需进行切换。但是，此警告规则可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
+>新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持日志警报中的[跨资源查询](../log-query/cross-workspace-query.md)。 默认情况下，除非从[旧版日志警报 API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 ARM 模板](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)创建[跨资源查询](../log-query/cross-workspace-query.md)日志警报规则，而无需进行切换。但是，此警告规则可通过 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
 
 ## <a name="examples"></a>示例
 以下示例包括使用 `search` 和 `union` 的日志查询，并提供可用于修改这些查询以与预警规则配合使用的步骤。
@@ -216,4 +217,3 @@ on Hour
 ## <a name="next-steps"></a>后续步骤
 - 了解 Azure Monitor 中的[日志警报](alerts-log.md)。
 - 了解[日志查询](../log-query/log-query-overview.md)。
-

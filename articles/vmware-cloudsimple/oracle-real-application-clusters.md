@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793034"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507661"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>优化 CloudSimple 私有云以安装 Oracle RAC
 
@@ -43,9 +44,9 @@ Oracle RAC 虚拟机具有多个磁盘，这些磁盘用于特定功能。  共�
 
 以下示例使用下表中定义的磁盘。
 
-| 磁盘和分区                                      | 目标                                       | 共享磁盘 |
+| 磁盘                                      | 目的                                       | 共享磁盘 |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| (OS)                                        | 操作系统磁盘                         | 否          |
+| OS                                        | 操作系统磁盘                         | 否          |
 | 格                                      | Oracle 网格软件的安装位置     | 否          |
 | DATABASE                                  | Oracle 数据库软件的安装位置 | 否          |
 | ORAHOME                                   | Oracle 数据库二进制文件的基准位置    | 否          |
@@ -168,7 +169,7 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 
 vSAN 策略为 VM 磁盘上存储的数据定义允许和磁盘条带化失败。  创建 VM 时，必须在 VM 磁盘上应用创建的存储策略。
 
-1. [登录到私有云的 vSphere 客户端](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)。
+1. [登录到私有云的 vSphere 客户端](./vcenter-access.md)。
 2. 在顶部菜单中，选择 "**策略和配置文件**"。
 3. 在左侧菜单中，选择 " **Vm 存储策略**"，然后选择 "**创建 vm 存储策略**"。
 4. 为策略输入有意义的名称，然后单击 "**下一步**"。

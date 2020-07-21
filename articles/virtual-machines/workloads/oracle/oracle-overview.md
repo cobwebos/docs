@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: rogardle
-ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6a516fc75880e3b6a5bc5b5907e8d968dce2ae31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224428"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507856"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 应用程序和解决方案概述
 
@@ -47,7 +47,7 @@ ms.locfileid: "86224428"
 
 * Oracle WebLogic Server 12.1.2
 
-* 使用 Unbreakable Enterprise 内核 (UEK) 6.8、6.9、6.10、7.3 到7.7、8.0、8.1 Oracle Linux。 
+* 使用 Unbreakable Enterprise 内核（UEK）6.8、6.9、6.10、7.3 到7.7、8.0、8.1 Oracle Linux。 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>高可用性和灾难恢复选项
 
@@ -55,13 +55,13 @@ ms.locfileid: "86224428"
 
 * 使用[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)来协调和管理 Azure 中的 Oracle Linux vm 和物理服务器的灾难恢复。 
 
-* 使用[Azure VMware 解决方案](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)在 azure 中 (RAC) 启用 Oracle 真实应用程序群集。
+* 使用[Azure VMware 解决方案](../../../vmware-cloudsimple/oracle-real-application-clusters.md)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)在 Azure 中启用 Oracle 真正应用程序群集（RAC）。
 
 ## <a name="backup-oracle-workloads"></a>备份 Oracle 工作负载
 
-* 使用 [Azure 备份](https://docs.microsoft.com/azure/backup/backup-overview)来备份 Oracle VM
+* 使用 [Azure 备份](../../../backup/backup-overview.md)来备份 Oracle VM
 
-* 使用 Oracle RMAN 备份 Oracle Database，并选择性地使用 [Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)，以装载[高度冗余的 Azure Blob 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，并将 RMAN 备份写入其中以提高复原能力。
+* 使用 Oracle RMAN 备份 Oracle Database，并选择性地使用 [Azure Blob Fuse](../../../storage/blobs/storage-how-to-mount-container-linux.md)，以装载[高度冗余的 Azure Blob 存储帐户](../../../storage/common/storage-redundancy.md)，并将 RMAN 备份写入其中以提高复原能力。
 
 ## <a name="integration-of-azure-with-oci"></a>Azure 与 OCI 集成
 
@@ -86,7 +86,7 @@ ms.locfileid: "86224428"
 
 ### <a name="set-up-oracle-databases-in-oci"></a>在 OCI 中设置 Oracle 数据库
 
-使用 Oracle Database 云服务 (自治数据库、RAC、Exadata、DBaaS、单一节点) 与 Azure 中运行的 Oracle 软件结合使用。 详细了解 [OCI 数据库选项](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
+结合在 Azure 中运行的 Oracle 软件，使用 Oracle Database 云服务（自主数据库、RAC、Exadata、DBaaS、单一节点）。 详细了解 [OCI 数据库选项](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
  
 
 ## <a name="licensing"></a>授权

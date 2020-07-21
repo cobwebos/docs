@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084321"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508876"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
@@ -145,7 +145,7 @@ ms.locfileid: "86084321"
 
     1. [将数据磁盘附加到 VM](../windows/attach-managed-disk-portal.md
 )。
-    2. 使用串行控制台可将文件复制到新驱动器。 例如 `copy C:\temp\ProcMonTrace.PML F:\`。 在此命令中，F 是附加的数据磁盘的驱动程序号。
+    2. 使用串行控制台可将文件复制到新驱动器。 例如，`copy C:\temp\ProcMonTrace.PML F:\`。 在此命令中，F 是附加的数据磁盘的驱动程序号。
     3. 分离数据驱动器，并将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
 6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按**结果筛选为 "拒绝访问**"，如以下屏幕截图所示：
@@ -218,7 +218,7 @@ ms.locfileid: "86084321"
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
-1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [将 OS 磁盘附加到恢复 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的 OS 磁盘的驱动器号。
 3. 打开权限提升的命令提示符实例（“以管理员身份运行”）。  然后运行以下脚本。 假设分配给附加的 OS 磁盘的驱动器号为 **F**。请将它替换为 VM 中的相应值。 
 
@@ -234,7 +234,7 @@ ms.locfileid: "86084321"
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [分离 OS 磁盘并重新创建 VM](../windows/troubleshoot-recovery-disks-portal.md)。 然后检查是否解决了问题。
+4. [分离 OS 磁盘并重新创建 VM](./troubleshoot-recovery-disks-portal-windows.md)。 然后检查是否解决了问题。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

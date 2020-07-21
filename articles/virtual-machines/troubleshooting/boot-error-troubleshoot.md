@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 1ab2861f73d66987230c9e3398227c8e80665e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56ee4b9e541aa4b374acbb59cf64da34046a06c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769602"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509063"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>对 Azure 虚拟机启动错误进行故障排除
 
@@ -35,5 +36,5 @@ ms.locfileid: "84769602"
 ## <a name="next-steps"></a>后续步骤
 
 - [启动诊断](boot-diagnostics.md)
-- [VM 串行控制台](../windows/serial-console.md)
-- [通过将 OS 磁盘附加到恢复 VM 对 Windows VM 进行故障排除](../windows/troubleshoot-recovery-disks.md)
+- [VM 串行控制台](./serial-console-windows.md)
+- [通过将 OS 磁盘附加到恢复 VM 对 Windows VM 进行故障排除](./troubleshoot-recovery-disks-windows.md)

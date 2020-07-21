@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422605"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509080"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "80422605"
 
 ## <a name="remote-cmd"></a>远程 CMD
 
-下载 [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec)。 运行以下命令连接到 VM：
+下载 [PsExec](/sysinternals/downloads/psexec)。 运行以下命令连接到 VM：
 
 ```cmd
 psexec \\<computer>-u user -s cmd
@@ -251,9 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Enter-PSSession cmdlet 的详细信息，请参阅 [Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx)。
-- 若要详细了解使用经典部署模型完成的适用于 Windows 的自定义脚本扩展，请参阅[适用于 Windows 的自定义脚本扩展](../extensions/custom-script-classic.md)。
+- 有关 Enter-PSSession cmdlet 的详细信息，请参阅 [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1)。
+- 若要详细了解使用经典部署模型完成的适用于 Windows 的自定义脚本扩展，请参阅[适用于 Windows 的自定义脚本扩展](../extensions/custom-script-windows.md)。
 - PsExec 包含在 [PSTools Suite](https://download.sysinternals.com/files/PSTools.zip) 中。
-- 有关 PSTools Suite 的详细信息，请参阅 [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)。
-
-
+- 有关 PSTools Suite 的详细信息，请参阅 [PSTools](/sysinternals/downloads/pstools)。

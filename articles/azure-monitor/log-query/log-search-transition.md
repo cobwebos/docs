@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670128"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505799"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>从 Log Analytics 日志搜索过渡到 Azure Monitor 日志
 Log Analytics 中的日志搜索功能最近已由一个可以分析 Azure Monitor 日志的新体验取代。 目前，仍可以在 Azure 门户中通过“Log Analytics 工作区”页上的“日志(经典)”菜单项访问日志搜索页，但该搜索页将在 2019 年 2 月 15 日删除。   本文介绍两种体验之间的差异，以帮助你从日志搜索过渡到新体验。 
@@ -57,7 +58,7 @@ Log Analytics 中的日志搜索功能最近已由一个可以分析 Azure Monit
 ![Azure Monitor 日志向下钻取](media/log-search-transition/drilldown-logs.png)
 
 ## <a name="take-action"></a>执行操作
-在日志搜索中，可以通过选择“执行操作”，从搜索结果[启动 Runbook](take-action.md)  。
+在日志搜索中，可以通过选择“执行操作”，从搜索结果[启动 Runbook](../platform/action-groups.md)  。
 
 ![执行操作](media/log-search-transition/take-action-log-search.png)
 

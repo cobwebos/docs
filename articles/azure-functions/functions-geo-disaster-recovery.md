@@ -4,11 +4,12 @@ description: 如何使用地理区域实现冗余，以及如何在 Azure Functi
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 446a76b823ce3592a83d0c2f898041951361b47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080231"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506275"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions 异地灾难恢复
 
@@ -21,7 +22,7 @@ Azure Functions 在特定区域运行。  若要提高可用性，可将相同�
 * 主动/主动。 两个区域都主动接收事件（采用重复或循环方式）。 建议将“主动/主动”用于 HTTPS 函数，与 Azure Front Door 组合使用。
 * 主动/被动。 一个区域主动接收事件，另一个区域（次要区域）处于空闲状态。  需要进行故障转移时，次要区域激活，开始接管处理操作。  建议将它用于非 HTTP 功能，例如服务总线和事件中心。
 
-有关多区域部署的详细信息，请参阅如何[在多个区域中运行应用](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
+有关多区域部署的详细信息，请参阅如何[在多个区域中运行应用](/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
 
 ## <a name="activeactive-for-https-functions"></a>HTTPS 函数的主动/主动
 

@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14df0f131aaef8a4c24e2d1eb242a9b440e7c7b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868019"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507584"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>快速入门-创建 Azure VMware 解决方案按 CloudSimple 服务
 
@@ -37,7 +38,7 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 
 ## <a name="create-the-service"></a>创建服务
 
-1. 选择“所有服务”****。
+1. 选择“所有服务”。
 2. 搜索**CloudSimple 服务**。
 
     ![搜索 CloudSimple 服务](media/create-cloudsimple-service-search.png)
@@ -62,7 +63,7 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 
 若要为 CloudSimple 私有云环境设置即用即付容量，请首先在 Azure 门户中设置节点。
 
-1. 选择“所有服务”****。
+1. 选择“所有服务”。
 2. 搜索**CloudSimple 节点**。
 
     ![搜索 CloudSimple 节点](media/create-cloudsimple-node-search.png)
@@ -86,4 +87,4 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 ## <a name="next-steps"></a>后续步骤
 
 * [创建私有云并配置环境](quickstart-create-private-cloud.md)
-* 了解有关[CloudSimple 服务](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)的详细信息
+* 了解有关[CloudSimple 服务](./cloudsimple-service.md)的详细信息

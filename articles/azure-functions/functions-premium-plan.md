@@ -5,12 +5,13 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 5ab506c57a78c67b33b888f1f50d83fe9813d0af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298508"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506190"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -112,22 +113,22 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |澳大利亚中部| 20 | 不可用 |
 |澳大利亚中部 2| 20 | 不可用 |
 |澳大利亚东部| 100 | 20 |
-|澳大利亚东南部 | 100 | 20 |
-|巴西南部| 60 | 20 |
+|Australia Southeast | 100 | 20 |
+|Brazil South| 60 | 20 |
 |加拿大中部| 100 | 20 |
 |美国中部| 100 | 20 |
 |东亚| 100 | 20 |
-|美国东部 | 100 | 20 |
+|East US | 100 | 20 |
 |美国东部 2| 100 | 20 |
 |法国中部| 100 | 20 |
 |德国中西部| 100 | 不可用 |
-|日本东部| 100 | 20 |
+|Japan East| 100 | 20 |
 |日本西部| 100 | 20 |
 |韩国中部| 100 | 20 |
 |美国中北部| 100 | 20 |
 |北欧| 100 | 20 |
 |挪威东部| 20 | 20 |
-|美国中南部| 100 | 20 |
+|South Central US| 100 | 20 |
 |印度南部 | 100 | 不可用 |
 |东南亚| 100 | 20 |
 |英国南部| 100 | 20 |

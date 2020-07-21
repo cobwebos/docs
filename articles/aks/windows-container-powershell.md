@@ -1,15 +1,15 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
+title: 使用 PowerShell 在 AKS 群集上创建 Windows Server 容器
 description: 了解如何使用 PowerShell 在 Azure Kubernetes 服务 (AKS) 中的 Windows Server 容器中快速创建 Kubernetes 群集并部署应用程序。
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cf195c439a1a53d8a720505edae3c9b6d379d157
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250866"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507040"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>使用 PowerShell 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -97,7 +97,7 @@ New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -
 
 上述命令将创建名为 npwin 的新节点池，并将其添加到 myAKSCluster 。 创建节点池以运行 Windows Server 容器时，VmSize 的默认值为 Standard_D2s_v3 。 如果选择设置 VmSize 参数，请检查[受限 VM 大小][restricted-vm-sizes]的列表。 最小推荐大小为 Standard_D2s_v3。 前一个命令还使用运行 `New-AzAks` 时创建的默认 vnet 中的默认子网。
 
-## <a name="connect-to-the-cluster"></a>连接到群集
+## <a name="connect-to-the-cluster"></a>连接至群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 要本地安装 `kubectl`，请使用 `Install-AzAksKubectl` cmdlet：
 
@@ -129,7 +129,7 @@ aksnpwin987654                      Ready    agent   108s   v1.16.7
 
 Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本文中，清单用于创建在 Windows Server 容器中运行 ASP.NET 示例应用程序所需的所有对象。 此清单包括用于 ASP.NET 示例应用程序的 [Kubernetes 部署][kubernetes-deployment]，以及用于从 Internet 访问应用程序的外部 [Kubernetes 服务][kubernetes-service]。
 
-ASP.NET 示例应用程序作为 [.NET Framework 示例][dotnet-samples]的一部分提供并在 Windows Server 容器中运行。 AKS 要求 Windows Server 容器基于 Windows Server 2019 或更高版本的映像。 Kubernetes 清单文件还必须定义[节点选择器][node-selector]，以告知 AKS 群集在可运行 Windows Server 容器的节点上运行 ASP.NET 示例应用程序的 Pod。
+ASP.NET 示例应用程序作为 [.NET Framework 示例][dotnet-samples]的一部分提供并在 Windows Server 容器中运行。 AKS 要求 Windows Server 容器基于 Windows Server 2019 或更高版本的映像。 Kubernetes 清单文件还必须定义[节点选择器][node-selector]，以指示 AKS 群集在可运行 Windows Server 容器的节点上运行 ASP.NET 示例应用程序的 Pod。
 
 创建名为 `sample.yaml` 的文件，并将其复制到以下 YAML 定义中。 如果使用 Azure Cloud Shell，则可以使用 `vi` 或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样：
 
@@ -195,7 +195,7 @@ service/sample created
 ## <a name="test-the-application"></a>测试应用程序
 
 应用程序运行时，Kubernetes 服务将向 Internet 公开应用程序前端。
-此过程可能需要几分钟才能完成。 有时，服务预配的时间可能超过几分钟。 在这种情况下，最多需要 10 分钟。
+此过程可能需要几分钟才能完成。 有时，预配服务所需的时间可能不止几分钟。 在这种情况下，最多需要 10 分钟。
 
 若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
 
@@ -236,7 +236,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何部署 Kubernetes 群集，以及如何将 Windows Server 容器中的 `ASP.NET` 示例应用程序部署到该群集。 [访问所创建的群集的 Kubernetes Web 仪表板][kubernetes-dashboard]。
+本文介绍了如何部署 Kubernetes 群集，以及如何将 Windows Server 容器中的 `ASP.NET` 示例应用程序部署到该群集。 访问已创建的群集的 [Kubernetes Web 仪表板][kubernetes-dashboard]。
 
 若要详细了解 AKS 并演练部署示例的完整代码，请继续阅读“Kubernetes 群集”教程。
 

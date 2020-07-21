@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 3f4846947b18adb1d3f33f1d46482b5c02ee831e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309826"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509148"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>主动确保你能够访问 GRUB 和 sysrq，可以节省大量停机时间
 
@@ -36,11 +37,11 @@ ms.locfileid: "84309826"
    - 损坏的 sshd 配置文件
    - 网络配置
 
- [此处](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux#common-scenarios-for-accessing-the-serial-console)详细介绍了许多其他情况
+ [此处](./serial-console-linux.md#common-scenarios-for-accessing-the-serial-console)详细介绍了许多其他情况
 
 验证是否可以访问 Azure 中部署的 VM 上的 GRUB 和串行控制台。 
 
-如果不熟悉串行控制台，请参阅[此链接](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux/)。
+如果不熟悉串行控制台，请参阅[此链接](./serial-console-linux.md)。
 
 > [!TIP]
 > 确保在进行更改之前对文件进行备份
@@ -345,7 +346,7 @@ GRUB 菜单应针对配置的 timeout=15 显示在屏幕上，而无需按 Esc�
 ## <a name="suse"></a>SuSE
 
 ## <a name="sles-12-sp1"></a>SLES 12 sp1
-可以根据官方[文档](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles)使用 YaST 引导加载程序
+可以根据官方[文档](./serial-console-grub-single-user-mode.md#grub-access-in-suse-sles)使用 YaST 引导加载程序
 
 也将以下参数添加/更改为 /etc/default/grub：
 
@@ -429,7 +430,7 @@ kernel /boot/vmlinuz-3.0.101-108.74-default root=/dev/disk/by-uuid/ab6b62bb--
 或者，可能需要在单个用户或紧急模式下访问 VM。 使用箭头键选择希望启动或中断的内核。
 通过将关键字“single”或“1”追加到内核启动行，输入所需的模式 。 在 RHEL 系统上，还可以追加 rd.break。
 
-有关如何访问单一用户模式的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#general-single-user-mode-access) 
+有关如何访问单一用户模式的详细信息，请参阅[此文档](./serial-console-grub-single-user-mode.md#general-single-user-mode-access) 
 
 
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)

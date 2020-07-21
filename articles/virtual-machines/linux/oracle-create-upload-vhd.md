@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: guybo
-ms.openlocfilehash: 5e144f63358275292ec224a63ed3ca61f809297a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 187362dcbb30c94425edc76724c042a0e4bc5045
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135296"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510304"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>为 Azure 准备 Oracle Linux 虚拟机
 
-本文假定已在虚拟硬盘中安装了 Oracle Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
+本文假定已在虚拟硬盘中安装了 Oracle Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
 ## <a name="oracle-linux-installation-notes"></a>Oracle Linux 安装说明
 * 另请参阅[常规 Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 的提示。
@@ -238,4 +238,3 @@ ms.locfileid: "86135296"
 
 ## <a name="next-steps"></a>后续步骤
 现在，已准备就绪，可以使用 Oracle Linux .vhd 在 Azure 中创建新的虚拟机了。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
-

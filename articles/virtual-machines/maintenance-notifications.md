@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: e65b2c94b5042f857a6ea5fc61136c572b780764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678505"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510032"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>处理计划内维护通知
 
@@ -24,7 +25,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 需要重启的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）。
 
-- 一个批从向客户发送通知开始。 默认情况下，通知将发送给服务管理员和共同管理员。 可以使用[活动日志警报](../service-health/alerts-activity-log-service-notifications.md)添加更多收件人和消息传送选项，例如电子邮件、短信和 Webhook。  
+- 一个批从向客户发送通知开始。 默认情况下，通知将发送给服务管理员和共同管理员。 可以使用[活动日志警报](../service-health/alerts-activity-log-service-notifications-portal.md)添加更多收件人和消息传送选项，例如电子邮件、短信和 Webhook。  
 - 出现通知后会提供一个自助服务时段。 在此时间窗口内，你可以查询哪些虚拟机受影响，并根据你自己的计划需求来启动维护。 自助服务时间窗口通常为大约 35 天。
 - 自助时段过后，就会开始计划内维护时段。 在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于虚拟机。 
 
@@ -75,13 +76,13 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 **答:** 对于部署在可用性集或虚拟机规模集中的虚拟机，我们有一个概念：更新域 (UD)。 执行维护时，Azure 遵循 UD 约束，不会从不同 UD（在同一可用性集中）重新启动虚拟机。  Azure 还会至少等待 30 分钟，然后才移到下一组虚拟机。 
 
-有关高可用性的详细信息，请参阅 [Azure 中虚拟机的可用性](./linux/availability.md)。
+有关高可用性的详细信息，请参阅 [Azure 中虚拟机的可用性](availability.md)。
 
 **问：如何收到有关计划内维护的通知？**
 
 **答:** 一次计划内维护是通过将计划设置到一个或多个 Azure 区域启动的。 不久以后，电子邮件通知将发送到订阅管理员（每个订阅一封电子邮件）。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，将不会收到通知，而是需要检查 VM 的维护状态。
 
-**问：我在门户、Powershell 或 CLI 中看不到计划内维护的任何指示。出了什么问题？**
+**问：在门户、PowerShell 或 CLI 中看不到任何计划内维护的指示。怎么了？**
 
 **答:** 一次计划内维护期间，与计划内维护相关的信息仅适用于将受到一次计划内维护影响的 VM。 换而言之，如果你看不到数据，则可能是这次维护已完成（或未启动）或虚拟机已在更新的服务器中托管。
 
@@ -121,4 +122,3 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 ## <a name="next-steps"></a>后续步骤
 
 还可以使用 [Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md) 或[门户](maintenance-notifications-portal.md)处理计划内维护。
-

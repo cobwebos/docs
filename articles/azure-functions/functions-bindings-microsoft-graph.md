@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290765b17cf34417176930dc9116309bdfd754c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322509"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506530"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions 的 Microsoft Graph 绑定
 
@@ -37,19 +38,19 @@ Microsoft Graph 扩展提供了以下绑定：
 
 ## <a name="setting-up-the-extensions"></a>设置扩展
 
-可通过绑定扩展  获取 Microsoft Graph 绑定。 绑定扩展是 Azure Functions 运行时的可选组件。 本部分介绍如何设置 Microsoft Graph 扩展和身份验证令牌扩展。
+可通过绑定扩展获取 Microsoft Graph 绑定。 绑定扩展是 Azure Functions 运行时的可选组件。 本部分介绍如何设置 Microsoft Graph 扩展和身份验证令牌扩展。
 
-### <a name="enabling-functions-20"></a>启用函数2。0
+### <a name="enabling-functions-20"></a>启用 Functions 2.0
 
-绑定扩展仅适用于 2.0 Azure Functions。 
+绑定扩展仅适用于 Azure Functions 2.0。 
 
-有关如何将函数应用设置为使用2.0 版本的函数运行时的信息，请参阅[如何以 Azure Functions 运行时版本为目标](set-runtime-version.md)。
+有关如何将函数应用设置为使用 2.0 版的 Functions 运行时的信息，请参阅[如何面向 Azure Functions 运行时版本](set-runtime-version.md)。
 
 ### <a name="installing-the-extension"></a>安装扩展
 
 若要从 Azure 门户安装扩展，请导航到引用此扩展的模板或绑定。 新建一个函数，在模板选择屏幕中选择“Microsoft Graph”方案。 从此方案中选择一个模板。 或者，可以导航到现有函数的的“集成”选项卡，然后选择本文介绍的绑定之一。
 
-在这两种情况下，均会显示一个警告，它将指定要安装的扩展。 单击“安装”  ，以获取该扩展。 每个函数应用只需安装每个扩展一次。 
+在这两种情况下，均会显示一个警告，它将指定要安装的扩展。 单击“安装”，以获取该扩展。 每个函数应用只需安装每个扩展一次。 
 
 > [!Note] 
 > 在消耗计划中，门户内安装进程最多需要 10 分钟。
@@ -58,12 +59,12 @@ Microsoft Graph 扩展提供了以下绑定：
 
 ### <a name="configuring-authentication--authorization"></a>配置身份验证/授权
 
-本文介绍的绑定需要使用一个标识。 这样 Microsoft Graph 就可以强制执行权限并审核交互。 此标识可以是访问你的应用程序的用户或应用程序本身。 若要配置此标识，请使用 Azure Active Directory 设置[应用服务身份验证/授权](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。 还需要请求你的函数所需的任意资源权限。
+本文介绍的绑定需要使用一个标识。 这样 Microsoft Graph 就可以强制执行权限并审核交互。 此标识可以是访问你的应用程序的用户或应用程序本身。 若要配置此标识，请使用 Azure Active Directory 设置[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)。 还需要请求你的函数所需的任意资源权限。
 
 > [!Note] 
 > Microsoft Graph 扩展仅支持 Azure AD 身份验证。 用户需要使用工作或学校帐户登录。
 
-如果使用的是 Azure 门户，则安装扩展的提示下面会显示一条警告。 该警告提示配置应用服务身份验证/授权并请求模板或绑定所需的任意权限。 根据需要单击“立即配置 Azure AD”  或“立即添加权限”  。
+如果使用的是 Azure 门户，则安装扩展的提示下面会显示一条警告。 该警告提示配置应用服务身份验证/授权并请求模板或绑定所需的任意权限。 根据需要单击“立即配置 Azure AD”或“立即添加权限”。
 
 
 
@@ -202,7 +203,7 @@ module.exports = function (context, req) {
 
 ### <a name="auth-token---configuration"></a>身份验证令牌 - 配置
 
-下表解释了在 function.json  文件和 `Token` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Token` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -337,7 +338,7 @@ module.exports = function (context, req) {
 
 ### <a name="excel-input---configuration"></a>Excel 输入 - 配置
 
-下表解释了在 function.json  文件和 `Excel` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Excel` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -499,7 +500,7 @@ module.exports = function (context, req) {
 
 ### <a name="excel-output---configuration"></a>Excel 输出 - 配置
 
-下表解释了在 function.json  文件和 `Excel` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Excel` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -645,7 +646,7 @@ module.exports = function (context, req) {
 
 ### <a name="file-input---configuration"></a>文件输入 - 配置
 
-下表解释了在 function.json  文件和 `OneDrive` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `OneDrive` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -793,7 +794,7 @@ module.exports = function (context, req) {
 
 ### <a name="file-output---configuration"></a>文件输出 - 配置
 
-下表解释了在 function.json  文件和 `OneDrive` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `OneDrive` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -944,7 +945,7 @@ module.exports = function (context, req) {
 
 ### <a name="outlook-output---configuration"></a>Outlook 输出 - 配置
 
-下表解释了在 function.json  文件和 `Outlook` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Outlook` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -977,12 +978,12 @@ module.exports = function (context, req) {
 
 ## <a name="webhooks"></a>Webhook
 
-通过 Webhook，你可以响应 Microsoft Graph 中的事件。 若要支持 webhook，需要使用函数创建、刷新和响应 webhook 订阅  。 完整的 webhook 解决方案需要组合以下绑定：
+通过 Webhook，你可以响应 Microsoft Graph 中的事件。 若要支持 webhook，需要使用函数创建、刷新和响应 webhook 订阅。 完整的 webhook 解决方案需要组合以下绑定：
 - [Microsoft Graph webhook 触发器](#webhook-trigger)，使你可以响应传入的 webhook。
 - [Microsoft Graph webhook 订阅输入绑定](#webhook-input)，使你可以列出现有的订阅并选择性地更新这些订阅。
 - [Microsoft Graph webhook 订阅输出绑定](#webhook-output)，使你可以创建或删除 webhook 订阅。
 
-这些绑定本身不需要任何 Azure AD 权限，但是你需要请求你想要响应的资源类型的相关权限。 有关每种资源类型所需的权限列表，请参阅[订阅权限](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)。
+这些绑定本身不需要任何 Azure AD 权限，但是你需要请求你想要响应的资源类型的相关权限。 有关每种资源类型所需的权限列表，请参阅[订阅权限](/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)。
 
 有关 webhook 的详细信息，请参阅[使用 Microsoft Graph 中的 webhook]。
 
@@ -1087,7 +1088,7 @@ module.exports = function (context) {
 
 ### <a name="webhook-trigger---configuration"></a>Webhook 触发器 - 配置
 
-下表解释了在 function.json  文件和 `GraphWebhookTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `GraphWebhookTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -1239,7 +1240,7 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-input---configuration"></a>Webhook 输入 - 配置
 
-下表解释了在 function.json  文件和 `GraphWebhookSubscription` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `GraphWebhookSubscription` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -1380,7 +1381,7 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-output---configuration"></a>Webhook 输出 - 配置
 
-下表解释了在 function.json  文件和 `GraphWebhookSubscription` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `GraphWebhookSubscription` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|

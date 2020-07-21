@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244525"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507091"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -40,11 +40,11 @@ ms.locfileid: "86244525"
 
 ## <a name="node-security"></a>节点安全性
 
-AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点通过 Moby 容器运行时运行经过优化的 Ubuntu 发行版。 Windows Server 节点运行优化的 Windows Server 2019 版本，并使用小鲸鱼容器运行时。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
+AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点通过 Moby 容器运行时运行经过优化的 Ubuntu 发行版。 Windows Server 节点运行已优化的 Windows Server 2019 版本，并使用 Moby 容器运行时。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
 
 Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。 如果 Linux OS 安全更新需要重启主机，系统不会自动执行重启操作。 可以手动重启 Linux 节点，或使用常用的方法，即使用 [Kured][kured]，这是一个适用于 Kubernetes 的开源重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
 
-对于 Windows Server 节点，Windows 更新不会自动运行和应用最新的更新。 在围绕 Windows 更新发布周期和你自己的验证过程的定期计划中，你应在 AKS 群集中的 Windows Server 节点池 (s) 上执行升级。 此升级过程会创建运行最新 Windows Server 映像和修补程序的节点，然后删除旧节点。 有关此过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+对于 Windows Server 节点，Windows 更新不会自动运行和应用最新的更新。 在 Windows 更新发布周期和你自己的验证过程的定期计划中，你应在 AKS 群集中的 Windows Server 节点池上进行升级。 此升级过程会创建运行最新 Windows Server 映像和修补程序的节点，然后删除旧节点。 有关此过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 系统将节点部署到专用虚拟网络子网中，且不分配公共 IP 地址。 出于故障排除和管理的目的，会默认启用 SSH。 只能使用内部 IP 地址访问此 SSH。
 
@@ -54,9 +54,9 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。
 
 ### <a name="compute-isolation"></a>计算隔离
 
- 由于符合性或法规要求，某些工作负荷可能需要与其他客户工作负荷进行高程度的隔离。 对于这些工作负荷，Azure 提供[隔离的虚拟机，这些虚拟机](../virtual-machines/linux/isolation.md)可用作 AKS 群集中的代理节点。 这些隔离的虚拟机隔离到特定的硬件类型，并专用于单个客户。 
+ 由于符合性或法规要求，某些工作负荷可能需要与其他客户工作负荷进行高程度的隔离。 对于这些工作负荷，Azure 提供[隔离的虚拟机，这些虚拟机](../virtual-machines/isolation.md)可用作 AKS 群集中的代理节点。 这些隔离的虚拟机隔离到特定的硬件类型，并专用于单个客户。 
 
- 若要将这些独立的虚拟机与 AKS 群集配合使用，请在创建 AKS 群集或添加节点池时选择[此处](../virtual-machines/linux/isolation.md)所列的隔离虚拟机大小之一作为**节点大小**。
+ 若要将这些独立的虚拟机与 AKS 群集配合使用，请在创建 AKS 群集或添加节点池时选择[此处](../virtual-machines/isolation.md)所列的隔离虚拟机大小之一作为**节点大小**。
 
 
 ## <a name="cluster-upgrades"></a>群集升级
@@ -82,6 +82,8 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。
 
 为筛选虚拟网络中的通信流量，Azure 使用网络安全组规则。 这些规则定义要允许或拒绝哪些源和目标 IP 范围、端口和协议访问资源。 会创建默认规则以允许 TLS 流量流向 Kubernetes API 服务器。 在使用负载均衡器、端口映射或入口路由创建服务时，AKS 会自动修改网络安全组，以便流量流向正确的方向。
 
+如果你为 AKS 群集提供自己的子网，并且想要修改流量流，请不要修改由 AKS 管理的子网级别网络安全组。 你可以创建更多子网级别的网络安全组来修改流量，只要它们不干扰管理群集所需的流量，例如负载平衡器访问、与控制平面的通信以及[出口][aks-limit-egress-traffic]。
+
 ### <a name="kubernetes-network-policy"></a>Kubernetes 网络策略
 
 为了限制群集中 Pod 之间的网络流量，AKS 提供了对 [Kubernetes 网络策略][network-policy]的支持。 使用网络策略，可以选择基于命名空间和标签选择器来允许或拒绝群集中的特定网络路径。
@@ -92,7 +94,7 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 
 使用机密会减少 pod 或服务 YAML 清单中定义的敏感信息。 可以请求存储在 Kubernetes API 服务器中的机密，作为 YAML 清单的一部分。 此方法仅为 pod 提供特定的机密访问权限。 请注意：原始机密清单文件包含 base64 格式的机密数据（如需更多详细信息，请参阅[官方文档][secret-risks]）。 因此，此文件应被视为敏感信息，不应提交给源代码管理。
 
-Kubernetes 机密存储在 etcd 中，这是一个分布式键值存储区。 Etcd 存储由 AKS 完全管理，[数据在 Azure 平台中静态加密][encryption-atrest]。 
+Kubernetes 机密存储在分布式密钥-值存储 etcd 中。 Etcd 存储由 AKS 完全托管，并且[数据在 Azure 平台中静态加密][encryption-atrest]。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -123,6 +125,7 @@ Kubernetes 机密存储在 etcd 中，这是一个分布式键值存储区。 Et
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md

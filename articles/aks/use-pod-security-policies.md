@@ -4,27 +4,26 @@ description: 了解如何使用 Azure Kubernetes 服务（AKS）中的 PodSecuri
 services: container-service
 ms.topic: article
 ms.date: 06/30/2020
-ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dd526b7825279d886c60fbb1820222a75abab03e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077620"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507074"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览-在 Azure Kubernetes Service （AKS）中使用 pod 安全策略保护群集
 
-<!--
 > [!WARNING]
-> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
-> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
-
-**This document and feature are set for deprecation.**
--->
+> **本文档中所述的功能 "pod 安全策略（预览版）" 设置为 "弃用"，在2020年10月15日之后将不再提供**，以支持[AKS 的 Azure 策略](use-pod-security-on-azure-policy.md)。
+>
+> 在弃用安全策略（预览版）后，必须在任何现有群集上禁用该功能，该功能使用不推荐使用的功能来执行将来的群集升级并保持在 Azure 支持范围内。
+>
+> 强烈建议使用适用于 AKS 的 Azure 策略开始测试方案，此策略提供内置策略来保护 pod 和内置计划，这些策略可映射到 pod 安全策略。 单击此处了解有关[从 pod 安全策略（预览版）迁移到 Azure 策略的](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)信息。
 
 若要提高 AKS 群集的安全性，可以限制可计划的 pod。 请求不允许的资源的 pod 无法在 AKS 群集中运行。 使用 pod 安全策略定义此访问权限。 本文介绍如何在 AKS 中使用 pod 安全策略来限制 pod 的部署。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能并不适合用于生产。 有关其他信息，请参阅以下支持文章：
+> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能不应用于生产。 有关其他信息，请参阅以下支持文章：
 >
 > * [AKS 支持策略][aks-support-policies]
 > * [Azure 支持常见问题][aks-faq]
@@ -37,7 +36,7 @@ ms.locfileid: "86077620"
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要使用 pod 安全策略，需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+若要使用 pod 安全策略，需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 *aks-preview* Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -48,6 +47,8 @@ az extension update --name aks-preview
 ```
 
 ### <a name="register-pod-security-policy-feature-provider"></a>注册 pod 安全策略功能提供程序
+
+**此文档和功能在2020年10月15日设置为弃用。**
 
 若要创建或更新 AKS 群集以使用 pod 安全策略，请先在订阅上启用功能标志。 若要注册*PodSecurityPolicyPreview*功能标志，请使用[az feature register][az-feature-register]命令，如以下示例中所示：
 
@@ -61,7 +62,7 @@ az feature register --name PodSecurityPolicyPreview --namespace Microsoft.Contai
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态**：
+准备就绪后，请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService

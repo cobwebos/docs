@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80300974"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509029"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>启动错误-这不是可启动磁盘
 
@@ -27,7 +27,7 @@ ms.locfileid: "80300974"
 
 ## <a name="symptoms"></a>症状
 
-使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)查看 VM 的屏幕截图时，会看到屏幕截图显示一个提示，其消息为“这不是可启动磁盘。 请插入可启动软盘并按任意键重试…”。
+使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，会看到屏幕截图显示一个提示，其消息为“这不是可启动磁盘。 请插入可启动软盘并按任意键重试…”。
 
    图 1
 
@@ -52,7 +52,7 @@ ms.locfileid: "80300974"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建并访问修复 VM
 
-1. 使用 [VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步骤 1-3 来准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步骤 1-3 来准备一个修复 VM。
 2. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="set-partition-status-to-active"></a>将“分区状态”设置为“活动”
@@ -148,4 +148,4 @@ ms.locfileid: "80300974"
 
 ### <a name="rebuild-the-original-vm"></a>重建原始 VM
 
-使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新装配 VM。
+使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM。

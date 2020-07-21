@@ -7,15 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0b4083bdc896ce2f78484fe4ab083b234c4c5d12
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726955"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508570"
 ---
-# <a name="create-a-vm-from-a-managed-image"></a>从托管的映像创建 VM
+# <a name="create-a-vm-from-a-managed-image"></a>从托管映像创建 VM
 
-可以使用 Azure 门户或 PowerShell 基于 Azure 托管 VM 映像创建多台虚拟机 (VM)。 托管 VM 映像包含创建 VM（包括 OS 和数据磁盘）所需的信息。 构成映像的虚拟硬盘 (VHD)（包括 OS 磁盘和任何数据磁盘）均作为托管磁盘存储。 
+可以使用 Azure 门户或 PowerShell 基于 Azure 托管 VM 映像创建多台虚拟机 (VM)。 托管 VM 映像包含创建 VM 所需的信息，包括 OS 和数据磁盘。 构成映像的虚拟硬盘 (VHD)（包括 OS 磁盘和任何数据磁盘）均作为托管磁盘存储。 
 
 在创建新的 VM 之前，需要[创建托管 VM 映像](capture-image-resource.md)以用作源映像，并向应有权访问该映像的任何用户授予对该映像的读取权限。 
 
@@ -23,7 +24,7 @@ ms.locfileid: "83726955"
 
 ## <a name="use-the-portal"></a>使用门户
 
-1. 转到 [Azure 门户](https://portal.azure.com)以找到托管映像。 搜索并选择“映像”。
+1. 转到 [Azure 门户](https://portal.azure.com)查找托管映像。 搜索并选择“映像”。
 3. 从列表中选择需要使用的映像。 随即打开映像“概述”页。
 4. 从菜单中选择“创建 VM”。
 5. 输入虚拟机信息。 在此处输入的用户名和密码将用来登录到虚拟机。 完成后选择“确定”。 可以在现有资源组中创建新的 VM，或者选择“新建”创建一个新的资源组用于存储 VM。
@@ -34,11 +35,11 @@ ms.locfileid: "83726955"
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
-可以使用 PowerShell 通过使用 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 的简化参数集来基于映像创建 VM。 该映像需要位于你要在其中创建 VM 的同一资源组中。
+可以使用 PowerShell 通过使用 [New-AzVm](/powershell/module/az.compute/new-azvm) cmdlet 的简化参数集来基于映像创建 VM。 该映像需要位于你要在其中创建 VM 的同一资源组中。
 
  
 
-[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 的简化参数集仅要求提供名称、资源组和映像名称便可基于映像创建 VM。 New-AzVm 将使用 -Name 参数的值作为它自动创建的所有资源的名称。 在此示例中，我们为每个资源提供更详细的名称，但让 cmdlet 自动创建这些资源。 你还可以提前创建资源（例如虚拟网络）并将名称传递给 cmdlet。 如果 New-AzVm 可以通过名称找到现有资源，就会使用现有资源。
+[New-AzVm](/powershell/module/az.compute/new-azvm) 的简化参数集仅要求提供名称、资源组和映像名称便可基于映像创建 VM。 New-AzVm 将使用 -Name 参数的值作为它自动创建的所有资源的名称。 在此示例中，我们为每个资源提供更详细的名称，但让 cmdlet 自动创建这些资源。 你还可以提前创建资源（例如虚拟网络）并将名称传递给 cmdlet。 如果 New-AzVm 可以通过名称找到现有资源，就会使用现有资源。
 
 以下示例在“myResourceGroup”资源组中从名为“myImage”的映像创建名为“myVMFromImage”的 VM。 
 
@@ -60,4 +61,3 @@ New-AzVm `
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure PowerShell 模块创建和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

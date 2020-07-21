@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9e4c4b9c809a626c71b4a7e9235d917b442be160
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373357"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509097"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows 停止错误 - #0x000000EF“关键进程已终止”
 
@@ -27,13 +27,13 @@ ms.locfileid: "80373357"
 
 ## <a name="symptom"></a>症状
 
-使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)查看 VM 的屏幕截图时，看到屏幕截图中显示了错误“#0x000000EF”和消息“关键进程已终止”   。
+使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，看到屏幕截图中显示了错误“#0x000000EF”和消息“关键进程已终止”   。
 
 ![“你的电脑遇到问题，需要重启。 我们将收集一些错误信息，然后你就可以重启。 (已完成 ##%)如果想了解更多信息，可以稍后联机搜索以下错误:0x000000EF”](media/troubleshoot-guide-critical-process-died/1.jpg)
 
 ## <a name="cause"></a>原因
 
-通常，此错误是在启动过程中关键的系统进程失败造成的。 可以在“[Bug 检查 0xEF:CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)”中详细了解关键进程。
+通常，此错误是在启动过程中关键的系统进程失败造成的。 可以在“[Bug 检查 0xEF:CRITICAL_PROCESS_DIED](/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)”中详细了解关键进程。
 
 ## <a name="solution"></a>解决方案
 
@@ -49,7 +49,7 @@ ms.locfileid: "80373357"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建并访问修复 VM
 
-1. 使用 [VM 修复命令的步骤 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 来准备一个修复 VM。
+1. 使用 [VM 修复命令的步骤 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 来准备一个修复 VM。
 2. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="fix-any-os-corruption"></a>修复任何 OS 损坏情况
@@ -61,7 +61,7 @@ ms.locfileid: "80373357"
 
    * 其中，< BOOT DISK DRIVE > 是修复 VM 的启动卷（通常为“C:”），< BROKEN DISK DRIVE > 是已损坏 VM 中的附加磁盘的驱动器号。 请将大于号/小于号及其包含的文本（例如“< text here >”）替换为相应的驱动器号。
 
-3. 接下来，使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新装配 VM，并查看它是否可启动。
+3. 接下来，使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM，并查看它是否可启动。
 4. 如果 VM 仍然不能启动，请继续收集内存转储文件。
 
 ### <a name="collect-the-memory-dump-file"></a>收集内存转储文件
@@ -70,7 +70,7 @@ ms.locfileid: "80373357"
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>将 OS 磁盘附加到新的修复 VM
 
-1. 使用 [VM 修复命令的步骤 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 来准备一个新的修复 VM。
+1. 使用 [VM 修复命令的步骤 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 来准备一个新的修复 VM。
 2. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>找到转储文件并提交支持票证
@@ -128,4 +128,4 @@ ms.locfileid: "80373357"
 
 ### <a name="rebuild-the-original-vm"></a>重建原始 VM
 
-使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新装配 VM。
+使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM。

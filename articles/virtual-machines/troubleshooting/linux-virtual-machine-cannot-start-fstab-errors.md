@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: daf3e3aaa95734c79e513c16e5d41aeb0bf894dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135260"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509046"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>排查 fstab 错误导致的 Linux VM 启动问题
 
-无法使用安全外壳 (SSH) 连接来与 Azure Linux 虚拟机 (VM) 建立连接。 在 [Azure 门户](https://portal.azure.com/)上运行[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)功能时，看到类似于以下示例的日志条目：
+无法使用安全外壳 (SSH) 连接来与 Azure Linux 虚拟机 (VM) 建立连接。 在 [Azure 门户](https://portal.azure.com/)上运行[启动诊断](./boot-diagnostics.md)功能时，看到类似于以下示例的日志条目：
 
 ## <a name="examples"></a>示例
 
@@ -106,8 +106,8 @@ Give root password for maintenance
 
 ### <a name="using-single-user-mode"></a>使用单用户模式
 
-1. 连接到[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
-2. 使用串行控制台获取单用户模式[单一用户](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)模式
+1. 连接到[串行控制台](./serial-console-linux.md)。
+2. 使用串行控制台获取单用户模式[单一用户](../linux/serial-console-grub-single-user-mode.md)模式
 3. Vm 启动到单用户模式后。 使用偏好的文本编辑器打开 fstab 文件。 
 
    ```
@@ -140,7 +140,7 @@ Give root password for maintenance
 
 ### <a name="using-root-password"></a>使用根密码
 
-1. 连接到[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
+1. 连接到[串行控制台](./serial-console-linux.md)。
 2. 使用本地用户和密码登录到系统。
 
    > [!Note]
@@ -188,7 +188,7 @@ Give root password for maintenance
 
 ## <a name="repair-the-vm-offline"></a>修复 VM 脱机
 
-1. 将 VM 的系统磁盘作为数据磁盘附加到恢复 VM（任何正常工作的 Linux VM）。 为此，可以使用 [CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)，或者使用 [VM 修复命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自动设置恢复 VM。
+1. 将 VM 的系统磁盘作为数据磁盘附加到恢复 VM（任何正常工作的 Linux VM）。 为此，可以使用 [CLI 命令](./troubleshoot-recovery-disks-linux.md)，或者使用 [VM 修复命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自动设置恢复 VM。
 
 2. 在恢复 VM 上将系统磁盘装载为数据磁盘后，在进行更改之前备份 fstab 文件，然后遵循后续步骤更正 fstab 文件。
 
@@ -217,7 +217,7 @@ Give root password for maintenance
    > * 每行中的字段由制表符或空格分隔。 空行将被忽略。 第一个字符是数字符号 (#) 的行是注释。 注释行可以保留在 fstab 文件中，但不会受到处理。 对于你不确定的 fstab 行，我们建议保留注释，而不要删除这些行。
    > * 要使 VM 能够恢复和启动，应该只有文件系统分区是所需的分区。 VM 可能会遇到有关其他带注释分区的应用程序错误。 但是，在没有其他分区的情况下，VM 应该也能启动。 稍后可以取消注释所有带注释的行。
    > * 建议使用文件系统分区的 UUID 将数据磁盘装载到 Azure VM 上。 例如，运行以下命令：``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * 若要确定文件系统的 UUID，请运行 blkid 命令。 有关语法的详细信息，请运行 man blkid 命令。 可以看到，要恢复的磁盘现已装载到新 VM 上。 尽管 UUID 应保持一致，但设备分区 ID（例如“/dev/sda1”）在此 VM 上是不同的。 [使用 CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)时，原始有故障 VM 的、位于非系统 VHD 上的文件系统分区不可在恢复 VM 中使用。
+   > * 若要确定文件系统的 UUID，请运行 blkid 命令。 有关语法的详细信息，请运行 man blkid 命令。 可以看到，要恢复的磁盘现已装载到新 VM 上。 尽管 UUID 应保持一致，但设备分区 ID（例如“/dev/sda1”）在此 VM 上是不同的。 [使用 CLI 命令](./troubleshoot-recovery-disks-linux.md)时，原始有故障 VM 的、位于非系统 VHD 上的文件系统分区不可在恢复 VM 中使用。
    > * nofail 选项有助于确保即使文件系统已损坏或启动时文件系统不存在，也能启动 VM。 建议在 fstab 文件中使用 nofail 选项，以便在无需用于启动 VM 的分区出错时，能够继续启动。
 
 7. 更改或注释掉 fstab 文件中任何错误的或不必要的行，使 VM 能够正常启动。
@@ -240,5 +240,5 @@ Give root password for maintenance
 
 ## <a name="next-steps"></a>后续步骤
 
-* [通过使用 Azure CLI 2.0 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [通过使用 Azure CLI 2.0 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除](./troubleshoot-recovery-disks-linux.md)
+* [通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除](./troubleshoot-recovery-disks-portal-linux.md)

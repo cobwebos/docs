@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e040f42db195760cf40f6dbdf651826b544b65a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564017"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507567"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>设置要使用的 vCenter 标识源 Active Directory
 
@@ -60,7 +61,7 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 | **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式  `ldap://hostname:port`   或  `ldaps://hostname:port` 。 端口通常为389，适用于 LDAP 连接，636用于 LDAPS 连接。 对于 Active Directory 多域控制器部署，端口通常为3268，适用于 LDAP，3269用于 LDAPS。<br><br> `ldaps://`   在主或辅助 LDAP URL 中使用时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
 | **辅助服务器 URL** | 用于故障转移的辅助域控制器 LDAP 服务器的地址。 |
 | **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请  `ldaps://`   在 "URL" 文本框中键入后显示 "选择证书" 按钮。 不需要辅助 URL。 |
-| **用户名** | 域中用户的 ID，这些用户和组的基本 DN 至少具有只读访问权限。 |
+| **Username** | 域中用户的 ID，这些用户和组的基本 DN 至少具有只读访问权限。 |
 | **密码** | Username 指定的用户的密码。 |
 
 当你具有上表中的信息时，可以将本地 Active Directory 添加为 vCenter 上的单一登录标识源。
@@ -79,7 +80,7 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 * 运行 Microsoft Windows Server 的一个或多个虚拟机用作新 Active Directory 林和域的域控制器。
 * 一个或多个运行 DNS 服务的虚拟机以进行名称解析。
 
-请参阅[安装新的 Windows Server 2012 Active Directory 林](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)获取详细步骤。
+请参阅[安装新的 Windows Server 2012 Active Directory 林](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)获取详细步骤。
 
 > [!TIP]
 > 为实现服务的高可用性，我们建议设置多个域控制器和 DNS 服务器。
@@ -93,7 +94,7 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 * 到 Active Directory 林位置的站点到站点 VPN 连接。
 * 用于解析现有 Active Directory 林的名称的 DNS 服务器。
 
-有关详细步骤，请参阅[安装新的 Windows Server 2012 Active Directory 子域或树域](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)。
+有关详细步骤，请参阅[安装新的 Windows Server 2012 Active Directory 子域或树域](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)。
 
 设置 Active Directory 域后，可以[在 vCenter 上为新 Active Directory 添加标识源](#add-an-identity-source-on-vcenter)。
 

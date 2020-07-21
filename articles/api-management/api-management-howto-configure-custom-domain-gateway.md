@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0894203be4867e305c8e15467a2a867b9bfdc727
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203159"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506802"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名
 
@@ -49,7 +49,7 @@ ms.locfileid: "82203159"
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>使用 Azure 门户为自承载网关设置自定义域名
 
-1. 从“设置”下选择“网关”。 
+1. 选择 "**部署和基础结构**" 下的**网关**。
 2. 选择要为其配置域名的自承载网关。
 3. 在“设置”下选择“主机名”。 
 4. 选择“+ 添加”。

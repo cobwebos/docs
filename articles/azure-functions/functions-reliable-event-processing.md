@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676125"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506020"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠事件处理
 
@@ -49,8 +50,8 @@ Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 
 此行为揭示了几个要点：
 
-- 未经处理的异常可能导致丢失消息。  导致异常的执行会继续递进指针。
-- 函数保证至少传送一次。  代码和相关系统可能需要[考虑到同一消息可能会接收两次这一事实](./functions-idempotent.md)。
+- 未经处理的异常可能导致丢失消息。 导致异常的执行会继续递进指针。
+- 函数保证至少传送一次。 代码和相关系统可能需要[考虑到同一消息可能会接收两次这一事实](./functions-idempotent.md)。
 
 ## <a name="handling-exceptions"></a>处理异常
 
@@ -69,7 +70,7 @@ Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) 是适用于 C# 应用程序的复原和暂时性故障处理库的一个示例。
 
-使用预编译的 C# 类库时，每当发生未经处理的异常，都可以借助[异常筛选器](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch)来运行代码。
+使用预编译的 C# 类库时，每当发生未经处理的异常，都可以借助[异常筛选器](/dotnet/csharp/language-reference/keywords/try-catch)来运行代码。
 
 [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 存储库中提供了演示如何使用异常筛选器的示例。
 
@@ -90,7 +91,7 @@ Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 
 实现详细信息可能有所不同，但对于实例之间的共享状态，需要使用一个存储机制。 可以选择将状态存储在 Azure 存储、Redis 缓存或者可由函数集合访问的任何其他帐户中。
 
-[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[持久功能](./durable/durable-functions-overview.md)适用于管理工作流和线路状态。 其他服务可能也适用，不过，本示例使用逻辑应用。 使用逻辑应用时，可以暂停和重启函数的执行，以便能够控制断路器模式的实现。
+[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[持久函数](./durable/durable-functions-overview.md)原本就很适合用来管理工作流和线路状态。 其他服务可能也适用，不过，本示例使用逻辑应用。 使用逻辑应用时，可以暂停和重启函数的执行，以便能够控制断路器模式的实现。
 
 ### <a name="define-a-failure-threshold-across-instances"></a>定义实例之间的故障阈值
 
@@ -122,7 +123,7 @@ Azure 逻辑应用随附了不同服务的内置连接器，提供有状态业�
 ## <a name="resources"></a>资源
 
 - [可靠事件处理的示例](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure 持久性实体断路器](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Azure 持久实体线路断路器](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>后续步骤
 

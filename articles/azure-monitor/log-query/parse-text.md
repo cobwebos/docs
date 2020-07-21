@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76cf939959d198d2c28181295a695a65ae46af9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672440"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505697"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的文本数据
-Azure Monitor 收集的某些日志数据会在单个属性中包括多条信息。 将此数据分析为多个属性可以更轻松地在查询中进行使用。 一个常见示例是收集在单个属性中包含多个值的整个日志项目的[自定义日志](../../log-analytics/log-analytics-data-sources-custom-logs.md)。 通过为不同值创建单独属性，可以对每个值进行搜索和聚合。
+Azure Monitor 收集的某些日志数据会在单个属性中包括多条信息。 将此数据分析为多个属性可以更轻松地在查询中进行使用。 一个常见示例是收集在单个属性中包含多个值的整个日志项目的[自定义日志](../platform/data-sources-custom-logs.md)。 通过为不同值创建单独属性，可以对每个值进行搜索和聚合。
 
 本文介绍了用于在引入数据时以及在查询中检索时分析 Azure Monitor 中的日志数据的不同选项，比较了每个选项的相对优点。
 
@@ -22,7 +23,7 @@ Azure Monitor 收集的某些日志数据会在单个属性中包括多条信息
 在收集数据的引入时间或是在使用查询分析数据的查询时间，可以分析数据。 每种策略都具有独特的优点，如下所述。
 
 ### <a name="parse-data-at-collection-time"></a>在收集时分析数据
-如果在收集时分析数据，则配置会在表中创建新属性的[自定义字段](../../log-analytics/log-analytics-custom-fields.md)。 查询不必包含任何分析逻辑，只需将这些属性用作表中的任何其他字段。
+如果在收集时分析数据，则配置会在表中创建新属性的[自定义字段](../platform/custom-fields.md)。 查询不必包含任何分析逻辑，只需将这些属性用作表中的任何其他字段。
 
 此方法的优点包括以下这些：
 

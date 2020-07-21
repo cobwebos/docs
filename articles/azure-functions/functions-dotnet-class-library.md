@@ -3,12 +3,12 @@ title: Azure Functions C# developer reference（Azure Functions C# 开发人员�
 description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254361"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506499"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -202,6 +202,28 @@ Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+可以将函数应用编译为[ReadyToRun 二进制文件](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)。 ReadyToRun 是一种预先编译的形式，它可以提高启动性能，从而有助于降低[冷启动](functions-scale.md#cold-start)在[消耗计划](functions-scale.md#consumption-plan)中运行时的影响。
+
+ReadyToRun 在 .NET 3.0 中提供，并且需要[3.0 版本的 Azure Functions 运行时](functions-versions.md)。
+
+若要将你的项目编译为 ReadyToRun，请通过添加和元素更新你的项目文件 `<PublishReadyToRun>` `<RuntimeIdentifier>` 。 下面是用于发布到 Windows 32 位函数应用的配置。
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> ReadyToRun 当前不支持交叉编译。 必须在与部署目标相同的平台上生成应用。 另外，请注意函数应用中配置的 "位数"。 例如，如果 Azure 中的 function app 为 Windows 64 位，则必须在 Windows 上编译应用 `win-x64` 作为[运行时标识符](/dotnet/core/rid-catalog)。
+
+还可以从命令行通过 ReadyToRun 生成应用。 有关详细信息，请参阅 `-p:PublishReadyToRun=true` 中的选项 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 。
+
 ## <a name="supported-types-for-bindings"></a>绑定支持的类型
 
 每个绑定都具有其自己支持的类型；例如，blob 触发器属性可以应用于字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持的类型之一。 [适用于 blob 绑定的绑定参考文章](functions-bindings-storage-blob-trigger.md#usage)列出了所有受支持的参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
@@ -238,7 +260,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>日志记录
 
-若要使用 C# 将输出记录到流式传输日志中，请包括 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 建议将其命名为 `log`，如下例所示：  
+若要使用 C# 将输出记录到流式传输日志中，请包括 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 建议将其命名为 `log`，如下例所示：  
 
 ```csharp
 public static class SimpleExample
@@ -257,7 +279,7 @@ public static class SimpleExample
 
 ## <a name="async"></a>异步
 
-要使函数[异步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，请使用 `async` 关键字并返回 `Task` 对象。
+要使函数[异步](/dotnet/csharp/programming-guide/concepts/async/)，请使用 `async` 关键字并返回 `Task` 对象。
 
 ```csharp
 public static class AsyncExample
@@ -330,7 +352,7 @@ public static class EnvironmentVariablesExample
 
 在本地开发和在 Azure 中运行时，都可以从环境变量读取应用设置。 在本地开发时，应用设置来自 *local.settings.json* 文件中的 `Values` 集合。 在这两个环境（本地和 Azure）中，`GetEnvironmentVariable("<app setting name>")` 都会检索命名应用设置的值。 例如，在本地运行时，如果 *local.settings.json* 文件包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，则会返回“My Site Name”。
 
-[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) 属性是用于获取应用设置值的替代 API，但我们建议你使用 `GetEnvironmentVariable`，如下所示。
+[System.Configuration.ConfigurationManager.AppSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) 属性是用于获取应用设置值的替代 API，但我们建议你使用 `GetEnvironmentVariable`，如下所示。
 
 ## <a name="binding-at-runtime"></a>在运行时绑定
 

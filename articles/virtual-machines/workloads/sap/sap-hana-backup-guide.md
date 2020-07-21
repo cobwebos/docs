@@ -12,11 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255221"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507822"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA 备份指南
 
@@ -24,11 +25,11 @@ ms.locfileid: "78255221"
 
 适用于 Azure 虚拟机上运行的 SAP HANA 的备份指南只介绍特定于 Azure 的主题。 若要查看一般 SAP HANA 备份相关项，请查看 SAP HANA 文档。 我们期望你熟悉主体数据库备份策略、原因、具有声音和有效备份策略的动机，并了解你的公司对备份过程的要求、备份和还原过程的保留期。
 
-SAP HANA 受到了各种 Azure VM 类型的官方支持，例如 Azure M 系列。 有关 SAP HANA 认证的 Azure Vm 和 HANA 大型实例单元的完整列表，请查看[查找认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)。 Microsoft Azure 提供了许多单位，其中 SAP HANA 在物理服务器上运行非虚拟化。 此服务称为[HANA 大型实例](hana-overview-architecture.md)。 本指南不介绍适用于 HANA 大型实例的备份过程和工具。 但将限制为 Azure 虚拟机。 有关 HANA 大型实例的备份/还原过程的详细信息，请阅读有关备份[和还原](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)一文。
+SAP HANA 受到了各种 Azure VM 类型的官方支持，例如 Azure M 系列。 有关 SAP HANA 认证的 Azure Vm 和 HANA 大型实例单元的完整列表，请查看[查找认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)。 Microsoft Azure 提供了许多单位，其中 SAP HANA 在物理服务器上运行非虚拟化。 此服务称为[HANA 大型实例](hana-overview-architecture.md)。 本指南不介绍适用于 HANA 大型实例的备份过程和工具。 但将限制为 Azure 虚拟机。 有关 HANA 大型实例的备份/还原过程的详细信息，请阅读有关备份[和还原](./hana-backup-restore.md)一文。
 
 本文重点介绍了在 Azure 虚拟机上进行 SAP HANA 三种备份的可能性：
 
-- 通过[Azure 备份服务](https://docs.microsoft.com/azure/backup/backup-overview)进行 HANA 备份 
+- 通过[Azure 备份服务](../../../backup/backup-overview.md)进行 HANA 备份 
 - 将 HANA 备份到 Azure Linux 虚拟机中的文件系统（参阅[文件级别的 SAP HANA Azure 备份](sap-hana-backup-file-level.md)）
 - 基于使用 Azure 存储 blob 快照功能的存储快照的 HANA 备份，手动或 Azure 备份服务
 
@@ -36,18 +37,18 @@ SAP HANA 受到了各种 Azure VM 类型的官方支持，例如 Azure M 系列�
 SAP HANA 提供一个备份 API，第三方备份工具可以借助此 API 来直接与 SAP HANA 集成。 Azure 备份服务或[Commvault](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/)等产品使用此专用接口来触发 SAP HANA 数据库或重做日志备份。 
 
 
-有关如何在 Azure 中查找受支持的 SAP 软件的信息，请参阅[azure 部署支持的 sap 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)一文。
+有关如何在 Azure 中查找受支持的 SAP 软件的信息，请参阅[azure 部署支持的 sap 软件](./sap-supported-product-on-azure.md)一文。
 
 ## <a name="azure-backup-service"></a>Azure 备份服务
 
 第一种情况是，Azure 备份服务使用 SAP HANA `backint` 接口通过 SAP HANA 数据库执行流式备份。 或者，你可以使用 Azure 备份服务的更通用的功能创建应用程序一致性磁盘快照，并将其传输到 Azure 备份服务。
 
-Azure 备份使用称为[backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)的专有 SAP HANA 接口，将和认证为适用于 SAP HANA 的备份解决方案。 有关该解决方案的更多详细信息及其功能及其可用的 Azure 区域，请参阅文章[支持矩阵，以备份 Azure vm 上的 SAP HANA 数据库](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)。 有关适用于 HANA 的 Azure 备份服务的详细信息和原则，请阅读[有关 Azure vm 中 SAP HANA 数据库备份](https://docs.microsoft.com/azure/backup/sap-hana-db-about)的文章。 
+Azure 备份使用称为[backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)的专有 SAP HANA 接口，将和认证为适用于 SAP HANA 的备份解决方案。 有关该解决方案的更多详细信息及其功能及其可用的 Azure 区域，请参阅文章[支持矩阵，以备份 Azure vm 上的 SAP HANA 数据库](../../../backup/sap-hana-backup-support-matrix.md#scenario-support)。 有关适用于 HANA 的 Azure 备份服务的详细信息和原则，请阅读[有关 Azure vm 中 SAP HANA 数据库备份](../../../backup/sap-hana-db-about.md)的文章。 
 
-利用 Azure 备份服务的第二种可能性是使用 Azure 高级存储的磁盘快照创建应用程序一致性备份。 其他 HANA 认证的 Azure 存储（如[Azure Ultra 磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)和[azure NetApp 文件](https://azure.microsoft.com/services/netapp/)）不支持通过 Azure 备份服务进行此类快照。 阅读以下文章：
+利用 Azure 备份服务的第二种可能性是使用 Azure 高级存储的磁盘快照创建应用程序一致性备份。 其他 HANA 认证的 Azure 存储（如[Azure Ultra 磁盘](../../linux/disks-enable-ultra-ssd.md)和[azure NetApp 文件](https://azure.microsoft.com/services/netapp/)）不支持通过 Azure 备份服务进行此类快照。 阅读以下文章：
 
-- [在 Azure 中计划 VM 备份基础结构](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
-- [Azure Linux VM 的应用程序一致性备份](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) 
+- [在 Azure 中计划 VM 备份基础结构](../../../backup/backup-azure-vms-introduction.md)
+- [Azure Linux VM 的应用程序一致性备份](../../../backup/backup-azure-linux-app-consistent.md) 
 
 这种活动的出现顺序如下：
 
@@ -103,7 +104,7 @@ Azure 备份使用称为[backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/
 
 SAP 不会在 HANA 备份与存储快照之间做出优先选择， 而是列出各自的优点与缺点，使用户能够根据情况和适用的存储技术确定要使用哪个服务（请参阅[规划备份和恢复策略](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)）。
 
-在 Azure 上，请注意，Azure blob 快照功能不&#39;t 提供跨多个磁盘的文件系统一致性（请参阅[通过 PowerShell 使用 blob 快照](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)）。 
+在 Azure 上，请注意，Azure blob 快照功能不&#39;t 提供跨多个磁盘的文件系统一致性（请参阅[通过 PowerShell 使用 blob 快照](/archive/blogs/cie/using-blob-snapshots-with-powershell)）。 
 
 此外，必须了解频繁使用 Blob 快照产生的计费影响，如以下文章中所述：[Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)（了解快照计费方式）— 与使用 Azure 虚拟磁盘时相比，快照产生的费用不是很明显。
 

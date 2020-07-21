@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
-ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5606da84d8311785752cc8319b7a3c642c1f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707778"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508026"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB-ACCT-WC 系列虚拟机概述
 
@@ -65,6 +65,6 @@ VM 本身并不知道未向其提供 pNUMA 0。 VM 将 pNUMA 1-15 视为 vNUMA 0
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解适用于 Azure 中[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)和[WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc)的 HPC VM 大小。
+* 详细了解适用于 Azure 中[Linux](../../sizes-hpc.md)和[WINDOWS](../../sizes-hpc.md)的 HPC VM 大小。
 
-* 详细了解 Azure 中的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) 。
+* 详细了解 Azure 中的[HPC](/azure/architecture/topics/high-performance-computing/) 。

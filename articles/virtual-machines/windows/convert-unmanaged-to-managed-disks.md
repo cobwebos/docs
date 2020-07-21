@@ -7,11 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b5d2e82b439454ff33a263af7710fe79f246893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658189"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508604"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 
@@ -34,7 +35,7 @@ ms.locfileid: "84658189"
 ## <a name="convert-single-instance-vms"></a>转换单实例 VM
 本节介绍如何将单实例 Azure VM 从非托管磁盘转换为托管磁盘。 （如果 VM 位于可用性集中，请参阅下一部分。） 
 
-1. 使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 解除分配 VM。 以下示例在名为 `myResourceGroup` 的资源组中解除分配名为 `myVM` 的 VM： 
+1. 使用 [Stop-AzVM](/powershell/module/az.compute/stop-azvm) cmdlet 解除分配 VM。 以下示例在名为 `myResourceGroup` 的资源组中解除分配名为 `myVM` 的 VM： 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -42,7 +43,7 @@ ms.locfileid: "84658189"
    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
    ```
 
-2. 使用 [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) cmdlet 将 VM 转换为托管磁盘。 以下过程转换之前的 VM，包括 OS 磁盘和任何数据磁盘，并启用虚拟机：
+2. 使用 [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) cmdlet 将 VM 转换为托管磁盘。 以下过程转换之前的 VM，包括 OS 磁盘和任何数据磁盘，并启用虚拟机：
 
    ```azurepowershell-interactive
    ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -54,7 +55,7 @@ ms.locfileid: "84658189"
 
 如果要转换为托管磁盘的 VM 位于可用性集中，则需要先将可用性集转换为托管可用性集。
 
-1. 使用 [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) cmdlet 转换可用性集。 以下示例在名为 `myResourceGroup` 的资源组中更新名为 `myAvailabilitySet` 的可用性集：
+1. 使用 [Update-AzAvailabilitySet](/powershell/module/az.compute/update-azavailabilityset) cmdlet 转换可用性集。 以下示例在名为 `myResourceGroup` 的资源组中更新名为 `myAvailabilitySet` 的可用性集：
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -71,7 +72,7 @@ ms.locfileid: "84658189"
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
    ```
 
-2. 解除分配 VM，并转换可用性集中的 VM。 以下脚本使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 解除分配每个 VM，使用 [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) 进行转换，并在转换进程结束后自动将其重启：
+2. 解除分配 VM，并转换可用性集中的 VM。 以下脚本使用 [Stop-AzVM](/powershell/module/az.compute/stop-azvm) cmdlet 解除分配每个 VM，使用 [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) 进行转换，并在转换进程结束后自动将其重启：
 
    ```azurepowershell-interactive
    $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -107,4 +108,3 @@ VM 将会停止并在完成迁移后重新启动。
 [将标准托管磁盘转换为高级托管磁盘](convert-disk-storage.md)
 
 使用[快照](snapshot-copy-managed-disk.md)获取 VM 的只读副本。
-

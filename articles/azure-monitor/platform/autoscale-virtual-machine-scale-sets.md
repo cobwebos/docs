@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c003d66f59f932d818740bdd378280049bbeb7d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37245711008442acd0379a35b393ac88c3775482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373873"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505530"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。
 
 > [!NOTE]
-> 虽然本演练说明了 VM 规模集的步骤，但相同的信息适用于自动缩放[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。有关基于简单性能指标（如 CPU）的 VM 规模集上的简单横向缩减/扩展设置，请参阅 [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) 和 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文档
+> 虽然本演练说明了 VM 规模集的步骤，但相同的信息适用于自动缩放[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。有关基于简单性能指标（如 CPU）的 VM 规模集上的简单横向缩减/扩展设置，请参阅 [Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) 和 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文档
 >
 >
 
@@ -195,7 +195,7 @@ ms.locfileid: "85373873"
             }
           }
     ```
-    有关支持的字段及其值，请参阅[自动缩放 REST API 文档](https://msdn.microsoft.com/library/azure/dn931928.aspx)。 现在，自动缩放设置包含了之前说明的三个配置文件。
+    有关支持的字段及其值，请参阅[自动缩放 REST API 文档](/rest/api/monitor/autoscalesettings)。 现在，自动缩放设置包含了之前说明的三个配置文件。
 
 7. 最后，来看一下自动缩放“通知”部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
    - 通知订阅的管理员和共同管理员
@@ -243,9 +243,9 @@ ms.locfileid: "85373873"
 
 [Azure 自动缩放的最佳实践](autoscale-best-practices.md)
 
-[使用 PowerShell 管理自动缩放](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+[使用 PowerShell 管理自动缩放](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
 
-[使用 CLI 管理自动缩放](cli-samples.md#autoscale)
+[使用 CLI 管理自动缩放](../samples/cli-samples.md#autoscale)
 
 [对自动缩放配置 Webhook 和电子邮件通知](autoscale-webhook-email.md)
 

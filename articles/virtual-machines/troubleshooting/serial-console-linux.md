@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9c2cee1478bc64c63b0d7ad09eec386b59678ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77167018"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509012"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 Azure 串行控制台
 
@@ -25,7 +26,7 @@ Azure 门户中的串行控制台提供对 Linux 虚拟机（Vm）和虚拟机�
 
 串行控制台的工作方式与 VM 和虚拟机规模集实例的工作方式相同。 在本文档中，除非另有说明，否则所有对 VM 的提及都将隐式包含虚拟机规模集实例。
 
-有关适用于 Windows 的串行控制台文档，请参阅[Windows 串行控制台](../windows/serial-console.md)。
+有关适用于 Windows 的串行控制台文档，请参阅[Windows 串行控制台](./serial-console-windows.md)。
 
 > [!NOTE]
 > 串行控制台在全球 Azure 区域中提供正式版，并在 Azure 政府中提供公共预览版。 它在 Azure 中国云中尚不可用。
@@ -37,7 +38,7 @@ Azure 门户中的串行控制台提供对 Linux 虚拟机（Vm）和虚拟机�
 
 - 使用串行控制台的 Azure 帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
-- VM 或虚拟机规模集实例必须具有基于密码的用户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。 
+- VM 或虚拟机规模集实例必须具有基于密码的用户。 可以使用 VM 访问扩展的[重置密码](../extensions/vmaccess.md#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。 
 
 - VM 或虚拟机规模集实例必须已启用[启动诊断](boot-diagnostics.md)。
 
@@ -49,16 +50,16 @@ Azure 门户中的串行控制台提供对 Linux 虚拟机（Vm）和虚拟机�
 
 
 > [!NOTE]
-> 串行控制台需要一个配置了密码的本地用户。 仅使用 SSH 公钥配置的 Vm 或虚拟机规模集将无法登录到串行控制台。 若要创建带有密码的本地用户，请使用 [VMAccess 扩展](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)（在 Azure 门户中选择“重置密码”即可访问它），然后创建带有密码的本地用户。****
+> 串行控制台需要一个配置了密码的本地用户。 仅使用 SSH 公钥配置的 Vm 或虚拟机规模集将无法登录到串行控制台。 若要创建带有密码的本地用户，请使用 [VMAccess 扩展](../extensions/vmaccess.md)（在 Azure 门户中选择“重置密码”即可访问它），然后创建带有密码的本地用户。****
 > 也可在帐户中重置管理员密码，方法是[使用 GRUB 启动进入单用户模式](./serial-console-grub-single-user-mode.md)。
 
 ## <a name="serial-console-linux-distribution-availability"></a>串行控制台 Linux 发行版可用性
-要使串行控制台正常运行，必须将来宾操作系统配置为向串行端口读取和写入控制台消息。 大多数[认可的 Azure Linux 发行](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)版都默认配置了串行控制台。 在 Azure 门户的“支持 + 故障排除”部分选择“串行控制台”即可访问串行控制台。********
+要使串行控制台正常运行，必须将来宾操作系统配置为向串行端口读取和写入控制台消息。 大多数[认可的 Azure Linux 发行](../linux/endorsed-distros.md)版都默认配置了串行控制台。 在 Azure 门户的“支持 + 故障排除”部分选择“串行控制台”即可访问串行控制台。********
 
 > [!NOTE]
 > 如果在串行控制台中没有看到任何内容，请确保在 VM 上启用了启动诊断。 命中**输入**通常会修复串行控制台中没有显示任何内容的问题。
 
-分布      | 串行控制台访问
+分发      | 串行控制台访问
 :-----------|:---------------------
 Red Hat Enterprise Linux    | 默认已启用串行控制台访问。
 CentOS      | 默认已启用串行控制台访问。
@@ -82,7 +83,7 @@ Oracle Linux        | 默认已启用串行控制台访问。
 损坏的*FSTAB*文件 | 按 **Enter** 键继续，然后使用文本编辑器修复 *FSTAB* 文件。 可能需要在单用户模式下执行此操作。 有关详细信息，请参阅[如何修复 fstab 问题](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)和[使用串行控制台访问 GRUB 和单一用户模式](serial-console-grub-single-user-mode.md)的串行控制台部分。
 错误的防火墙规则 |  如果已将 iptables 配置为阻止 SSH 连接，则可以使用串行控制台与 VM 交互，而无需使用 SSH。 可在[iptables 手册页](https://linux.die.net/man/8/iptables)找到更多详细信息。<br>同样，如果你的 firewalld 阻止 SSH 访问，你可以通过串行控制台访问 VM，然后重新配置 firewalld。 可在[firewalld 文档](https://firewalld.org/documentation/)中找到更多详细信息。
 文件系统损坏/检查 | 有关使用串行控制台排查文件系统损坏的详细信息，请参阅 Azure Linux VM 的串行控制台部分[无法启动，原因是文件系统错误](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck)。
-SSH 配置问题 | 访问串行控制台并更改设置。 无论 VM 的 SSH 配置如何，串行控制台都可以使用，因为它不需要 VM 使用网络连接。 故障排除指南可用于[排查连接失败、错误或被拒绝的 Azure LINUX VM 的 SSH 连接问题](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection)。 [有关连接到 Azure 中的 LINUX VM 时出现的问题的详细 SSH 故障排除步骤](./detailed-troubleshoot-ssh-connection.md)，请参阅详细信息
+SSH 配置问题 | 访问串行控制台并更改设置。 无论 VM 的 SSH 配置如何，串行控制台都可以使用，因为它不需要 VM 使用网络连接。 故障排除指南可用于[排查连接失败、错误或被拒绝的 Azure LINUX VM 的 SSH 连接问题](./troubleshoot-ssh-connection.md)。 [有关连接到 Azure 中的 LINUX VM 时出现的问题的详细 SSH 故障排除步骤](./detailed-troubleshoot-ssh-connection.md)，请参阅详细信息
 与引导加载程序交互 | 从串行控制台边栏选项卡中重启 VM 以访问 Linux VM 上的 GRUB。 有关详细信息和发行版特定的信息，请参阅[使用串行控制台访问 GRUB 和单用户模式](serial-console-grub-single-user-mode.md)。
 
 ## <a name="disable-the-serial-console"></a>禁用串行控制台
@@ -98,7 +99,7 @@ SSH 配置问题 | 访问串行控制台并更改设置。 无论 VM 的 SSH 配
 来回发送的所有数据在线路上经过加密。
 
 ### <a name="audit-logs"></a>审核日志
-对串行控制台的所有访问目前都会记录在虚拟机的[启动诊断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)日志中。 Azure 虚拟机管理员拥有并可控制这些日志的访问权限。
+对串行控制台的所有访问目前都会记录在虚拟机的[启动诊断](./boot-diagnostics.md)日志中。 Azure 虚拟机管理员拥有并可控制这些日志的访问权限。
 
 > [!CAUTION]
 > 不会记录控制台的访问密码。 但是，如果在控制台中运行的命令包含或输出密码、机密、用户名或其他任何形式的个人身份信息 (PII)，则这些信息将写入到 VM 启动诊断日志。 这些信息是在实现串行控制台的回滚功能过程中连同其他所有可见文本一起写入的。 这些日志不断循环，只有对诊断存储帐户拥有读取权限的个人才能访问它们。 如果要输入包含机密或 PII 的任何 dataor 命令，则建议使用 SSH，除非绝对需要串行控制台。
@@ -170,6 +171,5 @@ A. 是的。 由于串行控制台不需要 SSH 密钥，因此你只需设置�
 * 使用串行控制台[访问 GRUB 和单用户模式](serial-console-grub-single-user-mode.md)。
 * 使用串行控制台执行 [NMI 和 SysRq 调用](serial-console-nmi-sysrq.md)。
 * 了解如何使用串行控制台[在各种发行版中启用 GRUB](serial-console-grub-proactive-configuration.md)
-* 串行控制台也适用于[Windows vm](../windows/serial-console.md)。
+* 串行控制台也适用于[Windows vm](./serial-console-windows.md)。
 * 详细了解[启动诊断](boot-diagnostics.md)。
-

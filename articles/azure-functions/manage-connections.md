@@ -3,12 +3,12 @@ title: 管理 Azure Functions 中的连接
 description: 了解如何通过使用静态连接客户端来避免 Azure Functions 中的性能问题。
 ms.topic: conceptual
 ms.date: 02/25/2018
-ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab59d82ad4b11e4ac5179ef727392a83bb263e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846764"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505986"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
@@ -24,8 +24,7 @@ ms.locfileid: "85846764"
 
 ## <a name="static-clients"></a>静态客户端
 
-为了避免占用的连接数超过实际所需，可重复使用客户端实例，而不是在每次调用函数时创建新的实例。 不管编写函数时使用什么语言，建议重复使用客户端连接。 例如，如果使用单个静态客户端，[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)、[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) 和 Azure 存储客户端等 .NET 客户端可以管理连接。
+为了避免占用的连接数超过实际所需，可重复使用客户端实例，而不是在每次调用函数时创建新的实例。 不管编写函数时使用什么语言，建议重复使用客户端连接。 例如，如果使用单个静态客户端，[HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1)、[DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) 和 Azure 存储客户端等 .NET 客户端可以管理连接。
 
 在 Azure Functions 应用程序中使用特定于服务的客户端时，请遵循以下准则：
 
@@ -39,7 +38,7 @@ ms.locfileid: "85846764"
 
 ### <a name="httpclient-example-c"></a>HttpClient 示例 (C#)
 
-下面是用于创建静态 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) 实例的 C# 函数代码示例：
+下面是用于创建静态 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) 实例的 C# 函数代码示例：
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +51,7 @@ public static async Task Run(string input)
 }
 ```
 
-关于 .NET 中的 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) 的一个常见问题是“我应该释放我的客户端吗？” 一般情况下，在使用对象实现了 `IDisposable` 之后，你会释放这些对象。 但是，你不会释放静态客户端，因为在函数结束后还需要使用它。 你需要将静态客户端一直保留到应用程序生存期结束。
+关于 .NET 中的 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) 的一个常见问题是“我应该释放我的客户端吗？” 一般情况下，在使用对象实现了 `IDisposable` 之后，你会释放这些对象。 但是，你不会释放静态客户端，因为在函数结束后还需要使用它。 你需要将静态客户端一直保留到应用程序生存期结束。
 
 ### <a name="http-agent-examples-javascript"></a>HTTP 代理示例 (JavaScript)
 
@@ -76,8 +75,7 @@ http.request(options, onResponseCallback);
 
 ### <a name="documentclient-code-example-c"></a>DocumentClient 代码示例 (C#)
 
-[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) 连接到 Azure Cosmos DB 实例。 Azure Cosmos DB 文档建议[在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage)。 以下示例展示了在函数中执行该操作的一种模式：
+[DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) 连接到 Azure Cosmos DB 实例。 Azure Cosmos DB 文档建议[在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端](../cosmos-db/performance-tips.md#sdk-usage)。 以下示例展示了在函数中执行该操作的一种模式：
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -126,14 +124,13 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient 连接
 
-函数代码可使用 SQL Server 的 .NET Framework 数据提供程序 ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) 连接到 SQL 关系数据库。 这也是依赖于 ADO.NET 的数据框架的基础提供程序，如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 与 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) 和 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
+函数代码可使用 SQL Server 的 .NET Framework 数据提供程序 ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) 连接到 SQL 关系数据库。 这也是依赖于 ADO.NET 的数据框架的基础提供程序，如[实体框架](/ef/ef6/)。 与 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) 和 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 > [!TIP]
-> 某些数据框架（如实体框架）通常从配置文件的**ConnectionStrings**节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中****。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中****。
+> 某些数据框架（如实体框架）通常从配置文件的**ConnectionStrings**节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中****。 如果要在函数代码中创建 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中****。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关为何建议静态客户端的详细信息，请参阅不[正确的实例化对立模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
+有关为何建议静态客户端的详细信息，请参阅不[正确的实例化对立模式](/azure/architecture/antipatterns/improper-instantiation/)。
 
 有关更多 Azure Functions 性能提示，请参阅[优化 Azure Functions 的性能和可靠性](functions-best-practices.md)。

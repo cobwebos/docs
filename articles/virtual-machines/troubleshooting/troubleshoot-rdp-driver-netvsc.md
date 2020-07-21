@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f5a414f00ffa50114f090fc19f37b8a85428547
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71057985"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508995"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>由于 netvsc.sys，无法在 Azure 中远程连接到 Windows 10 或 Windows Server 2016 VM
 
@@ -69,7 +69,7 @@ ms.locfileid: "71057985"
 
 ### <a name="repair-the-vm-offline"></a>修复 VM 脱机
 
-1. [将系统磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [将系统磁盘附加到恢复 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 
 2. 开始与恢复 VM 建立远程桌面连接。
 
@@ -114,7 +114,7 @@ ms.locfileid: "71057985"
     reg unload HKLM\BROKENSYSTEM
     ```
 
-16. [拆离系统磁盘并重新创建 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+16. [拆离系统磁盘并重新创建 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

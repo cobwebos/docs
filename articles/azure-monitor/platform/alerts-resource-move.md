@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830054"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505476"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>如何在其目标资源移到不同的 Azure 区域时更新警报规则或操作规则
 
-本文介绍当你在区域之间移动其他 Azure 资源时，可能会影响现有[警报规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)和[操作规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules)，以及如何识别和解决这些问题。 请查看主[资源移动文档](https://docs.microsoft.com/azure/azure-resource-manager/management/move-region)，以了解有关何时在区域之间移动资源的详细信息以及设计移动过程的清单的详细信息。
+本文介绍当你在区域之间移动其他 Azure 资源时，可能会影响现有[警报规则](./alerts-overview.md)和[操作规则](./alerts-action-rules.md)，以及如何识别和解决这些问题。 请查看主[资源移动文档](../../azure-resource-manager/management/move-region.md)，以了解有关何时在区域之间移动资源的详细信息以及设计移动过程的清单的详细信息。
 
 ## <a name="why-the-problem-exists"></a>问题的原因
 
-警报规则和操作规则引用其他 Azure 资源。 示例包括[Azure vm](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)、 [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-move-resources-across-regions)和[azure 存储](https://docs.microsoft.com/azure/storage/common/storage-account-move)。 当你移动这些规则所引用的资源时，这些规则可能会因为无法找到其引用的资源而停止正常工作。
+警报规则和操作规则引用其他 Azure 资源。 示例包括[Azure vm](../../site-recovery/azure-to-azure-tutorial-migrate.md)、 [Azure SQL](../../azure-sql/database/move-resources-across-regions.md)和[azure 存储](../../storage/common/storage-account-move.md)。 当你移动这些规则所引用的资源时，这些规则可能会因为无法找到其引用的资源而停止正常工作。
 
 在移动目标资源后，规则可能会停止工作的两个主要原因：
 
@@ -78,7 +78,7 @@ Azure 资源发出的指标为区域。 每次将资源移到新区域时，就�
 1. 打开你在上一步中标识的规则，方法是单击该规则。
 2. 在 "**资源**" 下，单击 "**编辑**" 并根据需要调整范围。
 3. 根据需要调整规则的其他属性。
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 ![更改预警规则作用域](media/alerts-resource-move/change-alert-rule-scope.png)
 
@@ -94,20 +94,20 @@ Azure 资源发出的指标为区域。 每次将资源移到新区域时，就�
 
 ### <a name="change-scope-of-a-rule-using-rest-api"></a>使用 REST API 更改规则的作用域
 
-1. 获取现有规则（[指标警报](https://docs.microsoft.com/rest/api/monitor/metricalerts/get)、[活动日志警报](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/get)）
-2. 修改作用域（[活动日志警报](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/update)）
-3. 重新部署规则（[指标警报](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)、[活动日志警报](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/createorupdate)）
+1. 获取现有规则（[指标警报](/rest/api/monitor/metricalerts/get)、[活动日志警报](/rest/api/monitor/activitylogalerts/get)）
+2. 修改作用域（[活动日志警报](/rest/api/monitor/activitylogalerts/update)）
+3. 重新部署规则（[指标警报](/rest/api/monitor/metricalerts/createorupdate)、[活动日志警报](/rest/api/monitor/activitylogalerts/createorupdate)）
 
 ### <a name="change-scope-of-a-rule-using-powershell"></a>使用 PowerShell 更改规则的作用域
 
-1. 获取现有规则（[指标警报](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2)、[活动日志警报](https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert)和[操作规则](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Get-AzActionRule)）。
+1. 获取现有规则（[指标警报](/powershell/module/az.monitor/get-azmetricalertrulev2)、[活动日志警报](/powershell/module/az.monitor/get-azactivitylogalert)和[操作规则](/powershell/module/az.alertsmanagement/get-azactionrule)）。
 2. 修改作用域。 如果需要，请拆分为两个规则（对于指标警报，如上文所述）。
-3. 重新部署规则（[指标警报](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)、[活动日志警报](https://docs.microsoft.com/powershell/module/az.monitor/enable-azactivitylogalert)和[操作规则](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule)）。
+3. 重新部署规则（[指标警报](/powershell/module/az.monitor/add-azmetricalertrulev2)、[活动日志警报](/powershell/module/az.monitor/enable-azactivitylogalert)和[操作规则](/powershell/module/az.alertsmanagement/set-azactionrule)）。
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>使用 Azure CLI 更改规则的作用域
 
-1.  获取现有规则（[指标警报](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show)、[活动日志警报](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)）。
-2.  直接更新规则作用域（[指标警报](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update)、[活动日志警报](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope)）
+1.  获取现有规则（[指标警报](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show)、[活动日志警报](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)）。
+2.  直接更新规则作用域（[指标警报](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update)、[活动日志警报](/cli/azure/monitor/activity-log/alert/scope)）
 3.  如果需要，请拆分为两个规则（对于指标警报，如上文所述）。
 
 ## <a name="next-steps"></a>后续步骤

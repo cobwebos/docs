@@ -4,16 +4,16 @@ description: 使用 Azure Functions 计划连接到 Azure SQL 数据库的任务
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29e90838d91de69af43ae9cf8ec0d99b534f66be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254270"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506071"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
-本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库或 Azure SQL 托管实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2019 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 对于 Azure SQL 托管实例，需要[启用公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)才能从 Azure Functions 进行连接。 该方案使用针对数据库的大容量操作。 
+本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库或 Azure SQL 托管实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2019 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 对于 Azure SQL 托管实例，需要[启用公共终结点](../azure-sql/managed-instance/public-endpoint-configure.md)才能从 Azure Functions 进行连接。 该方案使用针对数据库的大容量操作。 
 
 如果首次使用 C# 函数，则应阅读 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
 
@@ -23,7 +23,7 @@ ms.locfileid: "85254270"
 
 + 本文演示的是 Transact-SQL 命令，该命令在 AdventureWorksLT 示例数据库的 SalesOrderHeader 表中执行批量清理操作  。 若要创建 AdventureWorksLT 示例数据库，请完成[使用 Azure 门户在 AZURE SQL 数据库中创建数据库一](../azure-sql/database/single-database-create-quickstart.md)文中的步骤。
 
-+ 必须针对用于本快速入门的计算机的公共 IP 地址添加[服务器级防火墙规则](../sql-database/sql-database-get-started-portal-firewall.md)。 此规则是从本地计算机访问 SQL 数据库实例所必需的。  
++ 必须针对用于本快速入门的计算机的公共 IP 地址添加[服务器级防火墙规则](../azure-sql/database/firewall-create-server-level-portal-quickstart.md)。 此规则是从本地计算机访问 SQL 数据库实例所必需的。  
 
 ## <a name="get-connection-information"></a>获取连接信息
 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 83c33e6935de7c9ed9f1b2c9f97aa18dd6b10f01
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5d16c62c14ff6f24e519173b979e11d21d997927
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199912"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505782"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure Monitor 中执行跨资源日志查询  
 
@@ -19,17 +20,17 @@ ms.locfileid: "83199912"
 
 以前，使用 Azure Monitor 只能分析来自当前工作区内的数据，这限制了跨订阅中定义的多个工作区查询数据的能力。  此外，之前只能直接在 Application Insights 中或从 Visual Studio 中使用 Application Insights 搜索通过基于 web 的应用程序收集的遥测数据项。 这还使得难以采用本机方式将操作数据和应用程序数据一起分析。
 
-现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。 你只能在 [Log Analytics](portals.md) 中执行这些类型的查询。
+现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。 你只能在 [Log Analytics](./log-query-overview.md) 中执行这些类型的查询。
 
 ## <a name="cross-resource-query-limits"></a>跨资源查询限制 
 
-* 可以在一个查询中包含的 Application Insights 资源和 Log Analytics 工作区的数量上限为 100 个。
-* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作查询，然后将它固定到 Azure 仪表板，以[对日志查询进行可视化处理](../learn/tutorial-logs-dashboards.md)。 
-* 新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持在日志警报中进行跨资源查询。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 Azure 资源管理器模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)来创建跨资源查询日志警报规则，而无需进行切换，但此警告规则是可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
+* 可以在单个查询中包含的 Application Insights 资源和 Log Analytics 工作区的数量限制为 100。
+* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，以[将日志查询可视化](../learn/tutorial-logs-dashboards.md)。 
+* 新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持在日志警报中进行跨资源查询。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 Azure 资源管理器模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)来创建跨资源查询日志警报规则，而无需进行切换，但此警告规则是可通过 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作区以及从 Application Insights 进行查询
-若要在查询中引用另一个工作区，请使用 [*workspace*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) 标识符，对于 Application Insights 中的应用，请使用 [*app*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression) 标识符。  
+若要在查询中引用另一个工作区，请使用 [*workspace*](./workspace-expression.md) 标识符，对于 Application Insights 中的应用，请使用 [*app*](./app-expression.md) 标识符。  
 
 ### <a name="identifying-workspace-resources"></a>标识工作区资源
 以下示例演示了跨 Log Analytics 工作区进行查询以从名为 *contosoretail-it* 的工作区的 Update 表中返回记录的汇总计数。 
@@ -69,7 +70,7 @@ ms.locfileid: "83199912"
     `app("fabrikamapp")`
 
     >[!NOTE]
-    >按名称标识应用假定名称在所有可访问的订阅之间是唯一的。 如果具有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用其他标识符之一。
+    >按名称标识应用程序会假设它在所有可访问的订阅中是唯一的。 如果具有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用其他标识符之一。
 
 * 限定名称 - 应用的“全名”，由订阅名称、资源组和组件名称组成，并采用以下格式：*subscriptionName/resourceGroup/componentName*。 
 
@@ -131,7 +132,7 @@ applicationsScoping
 ```
 
 >[!NOTE]
->此方法不能与日志警报一起使用，因为警报规则资源（包括工作区和应用）的访问验证是在警报创建时执行的。 不支持在警报创建后向函数添加新资源。 若要使用函数在日志警报中限定资源范围，则需要在门户中或使用资源管理器模板来编辑警报规则，以更新范围内资源。 此外，也可以在日志警报查询中添加资源列表。
+>此方法不能用于日志警报，因为警报规则资源（包括工作区和应用程序）的访问验证是在警报创建时执行的。 不支持在创建警报后将新资源添加到该函数。 若要使用函数在日志警报中限定资源范围，则需要在门户中或使用资源管理器模板来编辑警报规则，以更新范围内资源。 此外，也可以在日志警报查询中添加资源列表。
 
 
 ![时间表](media/cross-workspace-query/chart.png)

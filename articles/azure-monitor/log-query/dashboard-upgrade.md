@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 6fb9f691afc8874b19ca4575408027357f07cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833530"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505765"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>升级 Log Analytics 仪表板可视化效果
 
@@ -25,7 +25,7 @@ ms.locfileid: "85833530"
 
 Azure 仪表板是一种可视化整个 Azure surface 区域的状态的方法。 它们旨在为你的 Azure 房地产状态提供单个窗格，并允许使用多种快捷方式执行常见操作。 
 
-有关详细信息，请参阅[Azure 仪表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)
+有关详细信息，请参阅[Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)
 
 
 ## <a name="upgrading-log-analytics-dashboard-parts"></a>升级 Log Analytics 面板部件
@@ -68,7 +68,7 @@ Azure 仪表板是一种可视化整个 Azure surface 区域的状态的方法�
 
 ### <a name="query-time-scope---30-day-limit"></a>查询时间范围-30 天限制
 
-由于仪表板可能包含多个查询的多个可视化效果，因此单个固定查询的时间范围限制为30天。 单个查询只能在小于或等于30天的时间范围内运行。 此限制旨在确保面板加载时间合理。
+由于仪表板可能包含来自多个查询的多个可视化效果，因此单个固定查询的时间范围限制为 30 天。 单个查询只能在小于或等于30天的时间范围内运行。 此限制旨在确保面板加载时间合理。
 
 ### <a name="query-data-values---25-values-and-other-grouping"></a>查询数据值-25 个值和其他分组
 

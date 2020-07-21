@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 70c1b35759241c2fdf687e7b7042cf4a18232bf5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505714"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -32,7 +32,7 @@ ms.locfileid: "86085491"
 [用于资源组的 Azure Monitor（预览版）](insights/resource-group-insights.md) |  分类和诊断各资源出现的任何问题，同时提供有关资源组的运行状况和性能的整体上下文。 |
 | [用于存储的 Azure Monitor](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
 | [用于 VM 的 Azure Monitor](insights/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
-| [Key Vault 的 Azure Monitor（预览版）](insights/key-vaults-insights-overview.md) | 提供对你的密钥保管库的全面监视，方法是提供你的 Key Vault 请求、性能、故障和延迟的统一视图。 |
+| [Key Vault 的 Azure Monitor（预览版）](./insights/key-vault-insights-overview.md) | 提供对你的密钥保管库的全面监视，方法是提供你的 Key Vault 请求、性能、故障和延迟的统一视图。 |
 | [适用于 Azure Cache for Redis 的 Azure Monitor（预览版）](insights/redis-cache-insights-overview.md) |  提供有关整体性能、故障、容量和运行状况的统一交互式视图。 |
 
 
@@ -118,7 +118,7 @@ ms.locfileid: "86085491"
 |Intune | 否 | 是 | 否 |  |
 |IoT Central | 否 | 否 | 否 |  |
 |IoT 中心 | 是 | 是 | 否 |  |
-|Key Vault | 是 | 是 | [是](insights/key-vaults-insights-overview.md) |  |
+|Key Vault | 是 | 是 | [是](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes 服务 (AKS) | 否 | 否 | [是](insights/container-insights-overview.md)  |  |
 |负载均衡器 | 是 | 是 | 否 |  |
 |逻辑应用 | 是 | 是 | 否 |  |
@@ -176,20 +176,19 @@ ms.locfileid: "86085491"
 
 | 产品/服务 | 说明 |
 |:---|:---|
-| [Azure 自动化](/azure/automation/) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
-| [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/) | 对文档和电子邮件进行分类和选择性保护。 请参阅 [Azure 信息保护的中央报告](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
-| [Azure 安全中心](/azure/security-center/) | 收集和分析安全事件并执行威胁分析。 请参阅 [Azure 安全中心中的数据收集](/azure/security-center/security-center-enable-data-collection) |
-| [Azure Sentinel](/azure/sentinel/) | 连接到不同的源，包括 Office 365 和 Amazon Web Services 云轨迹。 请参阅[连接数据源](/azure/sentinel/connect-data-sources)。 |
-| [密钥保管库分析](insights/azure-key-vault.md) | 分析 Azure Key Vault AuditEvent 日志。 |
-| [Microsoft Intune](https://docs.microsoft.com/intune/) | 创建诊断设置以将日志发送到 Azure Monitor。 请参阅[将日志数据发送到 Intune 中的存储、事件中心或日志分析（预览版）](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)。  |
-| 网络  | [网络性能监视器](insights/network-performance-monitor.md) - 监视与服务和应用程序终结点的网络连接和其性能。<br>[Azure 应用程序网关](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - 分析来自 Azure 应用程序网关的日志和指标。<br>[流量分析](/azure/network-watcher/traffic-analytics) - 可以分析网络观察程序网络安全组 (NSG) 流日志，帮助洞察 Azure 云中的流量流。 |
+| [Azure 自动化](../automation/index.yml) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
+| [Azure 信息保护](/azure/information-protection/) | 对文档和电子邮件进行分类和选择性保护。 请参阅 [Azure 信息保护的中央报告](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
+| [Azure 安全中心](../security-center/index.yml) | 收集和分析安全事件并执行威胁分析。 请参阅 [Azure 安全中心中的数据收集](../security-center/security-center-enable-data-collection.md) |
+| [Azure Sentinel](../sentinel/index.yml) | 连接到不同的源，包括 Office 365 和 Amazon Web Services 云轨迹。 请参阅[连接数据源](../sentinel/connect-data-sources.md)。 |
+| [Microsoft Intune](/intune/) | 创建诊断设置以将日志发送到 Azure Monitor。 请参阅[将日志数据发送到 Intune 中的存储、事件中心或日志分析（预览版）](/intune/fundamentals/review-logs-using-azure-monitor)。  |
+| 网络  | [网络性能监视器](insights/network-performance-monitor.md) - 监视与服务和应用程序终结点的网络连接和其性能。<br>[Azure 应用程序网关](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - 分析来自 Azure 应用程序网关的日志和指标。<br>[流量分析](../network-watcher/traffic-analytics.md) - 可以分析网络观察程序网络安全组 (NSG) 流日志，帮助洞察 Azure 云中的流量流。 |
 | [Office 365](insights/solution-office-365.md) | 监视 Office 365 环境。 使用通过 Azure Sentinel 提供改进的载入来更新版本。 |
 | [SQL Analytics](insights/azure-sql.md) | 大规模或跨多个订阅监视 Azure SQL 数据库和 SQL 托管实例的性能。 |
 | [Surface Hub](insights/surface-hubs.md) | 跟踪 Surface Hub 设备的运行状况和使用情况。 |
-| [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | 通过将 Operations Manager 代理的管理组连接到 Azure Monitor，从代理收集数据。 请参阅[将 Operations Manager 连接到 Azure Monitor](platform/om-agents.md)<br> 使用 [Operations Manager 评估](insights/scom-assessment.md)解决方案评估 System Center Operations Manager 管理组的风险和运行状况。 |
-| [Microsoft 团队聊天室](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft 团队聊天室设备的集成、端到端管理。 |
-| [Visual Studio App Center](https://docs.microsoft.com/appcenter/) | 构建、测试和分发应用程序，然后监视它们的状态和使用情况。 请参阅[开始使用 App Center 和 Application Insights 分析移动应用](learn/mobile-center-quickstart.md)。 |
-| Windows | [Windows 更新符合性](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started) - 评估 Windows 桌面升级。<br>[桌面分析](https://docs.microsoft.com/configmgr/desktop-analytics/overview) - 与配置管理器集成，提供见解和情报，帮助你制定关于 Windows 客户端更新就绪性的更明智决策。 |
+| [System Center Operations Manager](/system-center/scom) | 通过将 Operations Manager 代理的管理组连接到 Azure Monitor，从代理收集数据。 请参阅[将 Operations Manager 连接到 Azure Monitor](platform/om-agents.md)<br> 使用 [Operations Manager 评估](insights/scom-assessment.md)解决方案评估 System Center Operations Manager 管理组的风险和运行状况。 |
+| [Microsoft 团队聊天室](/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft 团队聊天室设备的集成、端到端管理。 |
+| [Visual Studio App Center](/appcenter/) | 构建、测试和分发应用程序，然后监视它们的状态和使用情况。 请参阅[开始使用 App Center 和 Application Insights 分析移动应用](learn/mobile-center-quickstart.md)。 |
+| Windows | [Windows 更新符合性](/windows/deployment/update/update-compliance-get-started) - 评估 Windows 桌面升级。<br>[桌面分析](/configmgr/desktop-analytics/overview) - 与配置管理器集成，提供见解和情报，帮助你制定关于 Windows 客户端更新就绪性的更明智决策。 |
 
 
 
@@ -204,7 +203,7 @@ ms.locfileid: "86085491"
 | [DNS Analytics（预览版）](insights/dns-analytics.md) | 收集、分析和关联 Windows DNS 分析和审核日志，以及 DNS 服务器的其他相关数据。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 跨多个部署收集、查看和分析 Cloud Foundry 系统的运行状况和性能指标。 |
 | [容器](insights/containers.md) | 查看和管理 Docker 和 Windows 容器主机。 |
-| [按需评估](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | 评估和优化本地、混合和云 Microsoft 技术环境的可用性、安全性和性能。 |
+| [按需评估](/services-hub/health/getting_started_with_on_demand_assessments) | 评估和优化本地、混合和云 Microsoft 技术环境的可用性、安全性和性能。 |
 | [SQL 运行状况检查](insights/sql-assessment.md) | 评估 SQL Server 环境的风险和运行状况。  |
 | [传输数据](insights/wire-data.md) | 通过 Log Analytics 代理从与 Windows 和 Linux 相连的计算机中收集的网络与性能整合数据。 |
 
@@ -220,7 +219,7 @@ Azure Monitor 可以使用下表中列出的方法从 Azure 以外的资源收�
 
 | 资源 | 方法 |
 |:---|:---|
-| 应用程序 | 使用 Application Insights 监视 Azure 以外的 web 应用程序。 请参阅[什么是 Application Insights？](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 |
+| 应用程序 | 使用 Application Insights 监视 Azure 以外的 web 应用程序。 请参阅[什么是 Application Insights？](./app/app-insights-overview.md)。 |
 | 虚拟机 | 使用 Log Analytics 代理从其他云环境中或本地的虚拟机的来宾操作系统收集数据。 请参阅[使用 Log Analytics 代理收集日志数据](platform/log-analytics-agent.md)。 |
 | REST API 客户端 | 可使用单独的 API 将数据从任何 REST API 客户端写入 Azure Monitor 日志和指标。 请参阅[使用 HTTP 数据收集器 API 将日志数据发送到 Azure Monitor](platform/data-collector-api.md)，以及[使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储](platform/metrics-store-custom-rest-api.md)。 |
 

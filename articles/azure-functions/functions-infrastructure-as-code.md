@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170388"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506224"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -309,7 +309,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-premium-plan"></a>创建高级计划
 
-高级计划是一种特殊类型的 "服务器场" 资源。 您可以使用 `EP1` 、 `EP2` 或， `EP3` 对 `Name` `sku` [description 对象](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的属性值指定它。
+高级计划是一种特殊类型的 "服务器场" 资源。 您可以使用 `EP1` 、 `EP2` 或， `EP3` 对 `Name` `sku` [description 对象](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的属性值指定它。
 
 ```json
 {
@@ -516,7 +516,7 @@ Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果�
 }
 ```
 
-如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为， `linuxFxVersion` 并包括允许请求映像的配置，如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 此外，将设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为 `false` ，因为容器本身中提供了应用内容：
+如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为， `linuxFxVersion` 并包括允许请求映像的配置，如[用于容器的 Web 应用](../app-service/containers/index.yml)中所示。 此外，将设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为 `false` ，因为容器本身中提供了应用内容：
 
 ```json
 {
@@ -641,7 +641,7 @@ Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果�
 }
 ```
 > [!TIP]
-> 此模板使用[Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file)应用设置值，此值将函数部署引擎 (的基目录设置) 查找可部署代码。 在存储库内，函数位于 **src** 文件夹的子文件夹中。 因此，在前一个示例中，将应用设置值设置为 `src`。 如果函数位于存储库的根目录中，或者不从源代码管理进行部署，则可删除此应用设置值。
+> 此模板使用[Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file)应用设置值，此值设置函数部署引擎（Kudu）在其中查找可部署代码的基目录。 在存储库内，函数位于 **src** 文件夹的子文件夹中。 因此，在前一个示例中，将应用设置值设置为 `src`。 如果函数位于存储库的根目录中，或者不从源代码管理进行部署，则可删除此应用设置值。
 
 ## <a name="deploy-your-template"></a>部署模板
 

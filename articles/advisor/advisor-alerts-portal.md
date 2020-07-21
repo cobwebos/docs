@@ -3,18 +3,18 @@ title: 使用 Azure 门户为新建议创建 Azure 顾问警报
 description: 为新建议创建 Azure 顾问警报
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 351d1faf0cb049babe1091aaac465ff975ab47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507210"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>使用 Azure 门户创建有关新建议的 Azure 顾问警报 
 
 本文介绍如何使用 Azure 门户从 Azure Advisor 设置新建议的警报。 
 
-当 Azure 顾问检测到某个资源的新建议时，会将事件存储在[Azure 活动日志](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)中。 可以使用特定于建议的警报创建体验，从 Azure Advisor 为这些事件设置警报。 你可以选择一个订阅，还可以选择一个资源组来指定你想要接收警报的资源。 
+当 Azure 顾问检测到某个资源的新建议时，会将事件存储在[Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。 可以使用特定于建议的警报创建体验，从 Azure Advisor 为这些事件设置警报。 你可以选择一个订阅，还可以选择一个资源组来指定你想要接收警报的资源。 
 
 还可以通过使用以下属性来确定建议类型：
 
@@ -57,7 +57,7 @@ ms.locfileid: "85567102"
 
     ![Advisor 警报操作组](./media/advisor-alerts/create6.png)
 
-7. 在 "**操作组**" 部分中，选择 "**添加现有**项" 以使用已创建的操作组，或选择 "**新建**" 以设置新的[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。 
+7. 在 "**操作组**" 部分中，选择 "**添加现有**项" 以使用已创建的操作组，或选择 "**新建**" 以设置新的[操作组](../azure-monitor/platform/action-groups.md)。 
 
     ![Advisor 警报添加现有](./media/advisor-alerts/create7.png)
 

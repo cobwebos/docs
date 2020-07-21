@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 886e6cf237df94c056ec7c592e0b535327339871
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243790"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507057"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -41,15 +41,15 @@ Example:
 
 AKS 定义了一个正式发布的版本，作为在所有 SLO 或 SLA 度量中启用的版本以及在所有区域中可用的版本。 AKS 支持三个 GA 次要版本的 Kubernetes：
 
-* 在 AKS 中发布的最新 GA 次版本 (，我们将其称为 N) 。 
+* AKS 中发布的最新 GA 次版本（我们将引用为 N）。 
 * 以前的两个次要版本。 
-* 每个受支持的次要版本还支持最多两个 (2) 稳定的修补程序。
+* 每个受支持的次要版本还支持最多两（2）个稳定的修补程序。
 * AKS 可能还支持预览版本，这些版本已明确标记并受[预览版条款和条件的约束][preview-terms]。
 
 > [!NOTE]
 > AKS 使用涉及逐步部署的安全部署做法。 这意味着，新版本可能需要10个工作日内，或在所有区域中都有新版本可用。
 
-AKS 上支持的 Kubernetes 版本窗口称为 "N-2"： (N (最新版本) -2 (次版本) # A5。
+AKS 上支持的 Kubernetes 版本窗口称为 "N-2"：（N （最新版本）-2 （次版本））。
 
 例如，如果 AKS 引入*1.17* ，则为以下版本提供支持：
 
@@ -131,11 +131,11 @@ az aks get-versions --location eastus --output table
 | 1.17  | 09-19 年12月  | Jan 19   | 7月20日  | 1.20 GA | 
 | 1.18  | 三月-23-20  | 5月20   | 8月20  | 1.21 GA | 
 | 1.19  | 8月04-20  | 8月20   | 11 月 20 日  | 1.22 GA | 
-| 1.20  | * 11 月20    | * 12 月21日   | * Jan 21  | 1.23 GA | 
+| 1.20  | * 11 月20    | * Dec 20   | * Jan 21  | 1.23 GA | 
 
 \*挂起的上游发布日期确认。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
 **如果用户使用不受支持的次要版本升级 Kubernetes 群集，会发生什么情况？**
 
@@ -146,7 +146,7 @@ az aks get-versions --location eastus --output table
 
 不支持降级。
 
-**"不受支持" 的含义是什么**
+**“不在支持范围内”是什么意思**
 
 "不受支持" 意味着你正在运行的版本在受支持的版本列表外，请求支持时，系统将要求你将群集升级到受支持的版本，除非你在版本弃用后处于30天的宽限期。 此外，AKS 不会对支持的版本列表之外的群集进行任何运行时或其他保证。
 
@@ -156,7 +156,7 @@ az aks get-versions --location eastus --output table
 
 **用户是否可以永久地停留在 Kubernetes 版本上？**
 
-如果群集超出了三个 (3) 次版本的支持，并且发现有安全风险，则 Azure 会联系你主动升级群集。 如果你不执行进一步的操作，Azure 将保留你代表你自动升级群集的权限。
+如果某个群集超出了三（3）次版本的支持，并且发现有安全风险，则 Azure 会联系你以主动升级你的群集。 如果你不执行进一步的操作，Azure 将保留你代表你自动升级群集的权限。
 
 **如果节点池不在某个受支持的 AKS 版本中，控制平面支持哪个版本？**
 
@@ -181,4 +181,4 @@ az aks get-versions --location eastus --output table
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
 [az-aks-get-versions]: /cli/azure/aks#az-aks-get-versions
-[preview-terms]: /support/legal/preview-supplemental-terms
+[preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

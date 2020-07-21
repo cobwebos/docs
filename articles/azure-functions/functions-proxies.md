@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d66c690c3a0ba638a92150c9aa1dbb0dc2a41268
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82562060"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506151"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -89,7 +89,7 @@ ms.locfileid: "82562060"
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>引用应用程序设置
 
-还可以通过将设置名称括在百分号 (%) 之间来引用[针对 Function App 定义的应用程序设置](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)。
+还可以通过将设置名称括在百分号 (%) 之间来引用[针对 Function App 定义的应用程序设置](./functions-how-to-use-azure-function-app-settings.md)。
 
 例如，后端 URL *https://%ORDER_PROCESSING_HOST%/api/orders* 会将“%ORDER_PROCESSING_HOST%”替换为 ORDER_PROCESSING_HOST 设置的值。
 
@@ -110,7 +110,7 @@ ms.locfileid: "82562060"
 
 ## <a name="advanced-configuration"></a>高级配置
 
-配置的代理存储在一个 proxies.json 文件中，此文件位于函数应用目录的根目录中**。 使用函数支持的任意[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)时，可以手动编辑此文件并将其作为应用的一部分进行部署。 
+配置的代理存储在一个 proxies.json 文件中，此文件位于函数应用目录的根目录中**。 使用函数支持的任意[部署方法](./functions-continuous-deployment.md)时，可以手动编辑此文件并将其作为应用的一部分进行部署。 
 
 > [!TIP] 
 > 如果尚未设置一种部署方法，也可以在门户中使用 proxies.json 文件**。 转到到 Function App，选择“平台功能”，并选择“应用服务编辑器”。**** **** 这样，便可以看到 Function App 的整个文件结构并进行更改。
@@ -244,7 +244,7 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 > 在此示例中，响应正文是直接设置的，因此不需要 `backendUri` 属性。 此示例演示如何使用 Azure Functions 代理来模拟 API。
 
 [Azure 门户]: https://portal.azure.com
-[HTTP 触发器]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[HTTP 触发器]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [定义 requestOverrides 对象]: #requestOverrides

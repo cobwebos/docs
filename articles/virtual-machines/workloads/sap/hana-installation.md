@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117115"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507839"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -41,11 +42,11 @@ SAP HANA 的安装由你负责。 可以在 Azure 虚拟网络与 HANA 大型实
 
 从 Microsoft 收到 HANA 大型实例单元后，请验证以下设置并根据需要进行调整。
 
-接收 HANA 大型实例并建立与实例的访问和连接的**第一步**是签入 Azure 门户是否将实例显示为正确的 SKU 和操作系统。 [通过 Azure 门户读取 AZURE HANA 大型实例控制](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal)，以执行检查所需的步骤。
+接收 HANA 大型实例并建立与实例的访问和连接的**第一步**是签入 Azure 门户是否将实例显示为正确的 SKU 和操作系统。 [通过 Azure 门户读取 AZURE HANA 大型实例控制](./hana-li-portal.md)，以执行检查所需的步骤。
 
 接收 HANA 大型实例并建立与实例的访问和连接后，**第二步**是将实例的 os 注册到 os 提供程序。 此步骤在要部署到 Azure VM 的 SUSE SMT 实例中注册 SUSE Linux OS。 
 
-HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，请参阅[如何为 SUSE Linux 设置 SMT 服务器](hana-setup-smt.md)）。 或者，需要在所要连接的 Red Hat 订阅管理器中注册 Red Hat OS。 有关详细信息，请参阅[什么是 Azure 上的 SAP HANA（大型实例）？](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的备注。 
+HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，请参阅[如何为 SUSE Linux 设置 SMT 服务器](hana-setup-smt.md)）。 或者，需要在所要连接的 Red Hat 订阅管理器中注册 Red Hat OS。 有关详细信息，请参阅[什么是 Azure 上的 SAP HANA（大型实例）？](./hana-overview-architecture.md?toc=/azure/virtual-machines/linux/toc.json)中的备注。 
 
 此步骤对于修补操作系统（客户的责任）是必需的。 对于 SUSE，可在有关 [SMT 安装](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)的页面中找到有关安装和配置 SMT 的文档。
 
@@ -126,10 +127,10 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 ## <a name="networking"></a>网络
 假设已遵循以下文档中的建议设计了 Azure 虚拟网络并将这些虚拟网络连接到了 HANA 大型实例：
 
-- [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Azure 上的 SAP HANA（大型实例）概述和体系结构](./hana-overview-architecture.md)
 - [Azure 上的 SAP HANA （大型实例）基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-在单个单元的网络方面，有些详细信息值得注意。 每个 HANA 大型实例单元附带两个或三个 IP 地址，这些地址已分配到两个或三个 NIC 端口。 HANA 横向扩展配置和 HANA 系统复制方案中使用三个 IP 地址。 分配给单元 NIC 的一个 IP 地址位于 [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)中所述的服务器 IP 池外部。
+在单个单元的网络方面，有些详细信息值得注意。 每个 HANA 大型实例单元附带两个或三个 IP 地址，这些地址已分配到两个或三个 NIC 端口。 HANA 横向扩展配置和 HANA 系统复制方案中使用三个 IP 地址。 分配给单元 NIC 的一个 IP 地址位于 [Azure 上的 SAP HANA（大型实例）概述和体系结构](./hana-overview-architecture.md)中所述的服务器 IP 池外部。
 
 有关体系结构以太网的详细信息，请参阅 [HLI 支持的方案](hana-supported-scenario.md)。
 
@@ -264,7 +265,3 @@ HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为]
 
 
  
-
-
-
-

@@ -17,7 +17,7 @@
       expanded: true
       items:
         - name: Visual Studio Code
-          href: /azure/azure-functions/functions-create-first-function-vs-code
+          href: ./functions-create-first-function-vs-code.md
         - name: Visual Studio
           href: functions-create-your-first-function-visual-studio.md
         - name: 命令行
@@ -177,11 +177,11 @@
                 - name: Azure 门户
                   href: functions-create-first-azure-function.md
                 - name: 命令行
-                  href: create-cli.md
+                  href: ./functions-create-first-azure-function-azure-cli.md
                 - name: Visual Studio
-                  href: create-visual-studio.md
+                  href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
-                  href: create-visual-studio-code.md
+                  href: ./functions-create-first-function-vs-code.md
                 - name: 使用 Gradle 的 Java
                   href: functions-create-first-java-gradle.md
                 - name: 使用 Eclipse 的 Java
@@ -195,7 +195,7 @@
                 - name: Linux 应用服务计划
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 消耗计划
-                  href: functions-create-first-azure-function-azure-cli-linux.md
+                  href: ./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python
                 - name: 面向学生的 Azure 入门版
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB 触发器
@@ -211,13 +211,13 @@
             - name: Azure Cosmos DB - 门户
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: 存储 - Python
-              href: add-output-binding-storage-queue-python.md
+              href: ./functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python
             - name: 存储 - 门户
               href: functions-integrate-storage-queue-output-binding.md
             - name: 存储 - Visual Studio Code
-              href: add-output-binding-storage-queue-vs-code.md
+              href: ./functions-add-output-binding-storage-queue-vs-code.md
             - name: 存储 - Visual Studio
-              href: add-output-binding-storage-queue-vs.md
+              href: ./functions-add-output-binding-storage-queue-vs.md
             - name: 存储 - Java
               href: functions-add-output-binding-storage-queue-java.md
         - name: 调试和测试
@@ -316,7 +316,7 @@
             - name: Azure Cosmos DB - 门户
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: 存储 - Python
-              href: functions-add-output-binding-storage-queue-python.md
+              href: ./functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python
             - name: 存储 - 门户
               href: functions-integrate-storage-queue-output-binding.md
             - name: 存储 - Visual Studio Code
@@ -326,9 +326,9 @@
         - name: 连接到 SQL 数据库
           href: functions-scenario-database-table-cleanup.md
         - name: 连接到虚拟网络
-          href: functions-create-vnet-old.md
+          href: ./functions-create-vnet.md
         - name: 创建 Open API 2.0 定义
-          href: functions-api-definition-getting-started.md
+          href: ./functions-openapi-definition.md
         - name: 导出到 PowerApps 和 Microsoft Flow
           href: app-service-export-api-to-powerapps-and-flow.md
         - name: 使用托管标识
@@ -354,9 +354,9 @@
         - name: Azure PowerShell
           href: /powershell/module/az.functions
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
+          href: /java/api/overview/azure/functions/runtime?view=azure-java-stable
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
+          href: /python/api/azure-functions/azure.functions?view=azure-python
     - name: 应用设置参考
       href: functions-app-settings.md
     - name: 触发器和绑定
@@ -504,7 +504,7 @@
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-functions
     - name: 体系结构指南
-      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
+      href: /azure/architecture/serverless-quest/serverless-overview
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 定价
@@ -518,7 +518,7 @@
     - name: 视频
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
+      href: /answers/topics/azure-functions.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter

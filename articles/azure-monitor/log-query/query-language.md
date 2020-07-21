@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631800"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505731"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor 日志查询
 
@@ -27,7 +27,7 @@ Azure Monitor 日志在 Azure 数据资源管理器之上构建，Azure Monitor 
 ## <a name="concepts"></a>概念
 
 - [在 Azure Monitor 中分析日志数据](../../azure-monitor/log-query/log-query-overview.md)简要概述了日志查询以及如何构建 Azure Monitor 日志数据。
-- [查看和分析 Azure Monitor 中的日志数据](../../azure-monitor/log-query/portals.md)介绍了可在其中创建和运行日志查询的门户。
+- [查看和分析 Azure Monitor 中的日志数据](./log-query-overview.md)介绍了可在其中创建和运行日志查询的门户。
 
 ## <a name="reference"></a>参考
 

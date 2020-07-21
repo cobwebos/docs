@@ -4,16 +4,18 @@ description: 本文介绍如何从 Azure Analysis Services 数据库备份和还
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871293"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506989"
 ---
-# <a name="backup-and-restore"></a>备份和还原
+# <a name="analysis-services-database-backup-and-restore"></a>Analysis Services 数据库备份和还原
 
 在 Azure Analysis Services 中备份表格模型数据库与在本地 Analysis Services 中备份大致相同。 主要区别在于存储备份文件的位置。 必须将备份文件保存到 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)的容器中。 可以使用已有存储帐户和容器，也可以在为服务器配置存储设置时创建。
 

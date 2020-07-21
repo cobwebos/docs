@@ -2,19 +2,19 @@
 title: 虚拟 WAN：不同用户组的 Azure AD 租户： Azure AD 身份验证
 description: 可以使用 P2S VPN 通过 Azure AD 身份验证连接到 VNet
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: a1471226bcc22373904e65f95d0c07c2d5041f55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ca57ccc40669a607cd0541dc738e3a3eacf3e88
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749837"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507686"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
+# <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>创建用于 P2S OpenVPN 协议连接的 Azure Active Directory （AD）租户
 
 连接到 VNet 时，可以使用基于证书的身份验证或 RADIUS 身份验证。 但是，在使用开放 VPN 协议时，还可以使用 Azure Active Directory 身份验证。 如果希望不同的用户集能够连接到不同的网关，则可在 AD 中注册多个应用并将其链接到不同的网关。
 

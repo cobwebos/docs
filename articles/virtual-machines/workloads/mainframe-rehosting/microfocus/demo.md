@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80411073"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508043"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>为 Azure 上的微聚焦企业开发人员4.0 设置微焦点 CICS BankDemo
 
@@ -185,7 +185,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
      ![定义区域区域名称： BANKDEMO](media/08-demo-cics.png)
 
-7. 单击“完成” 。
+7. 单击“完成”。
 
 ## <a name="create-xa-resource-definitions"></a>创建 XA 资源定义
 
@@ -268,12 +268,12 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 ![大型机显示欢迎屏幕 ](media/14-demo.png)
  ![ 大型机显示-Rumba-子系统演示屏幕](media/15-demo.png)
 
-祝贺你！ 现在，使用微焦点企业服务器在 Azure 中运行 CICS 应用程序。
+恭喜！ 现在，使用微焦点企业服务器在 Azure 中运行 CICS 应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Azure 上的 Docker 容器中运行企业服务器](run-enterprise-server-container.md)
-- [大型机迁移-门户](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [疑难解答](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [大型机迁移-门户](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
+- [虚拟机](../../../linux/overview.md)
+- [故障排除](../../../troubleshooting/index.yml)
 - [揭密大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

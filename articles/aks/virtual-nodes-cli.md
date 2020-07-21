@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 8806390fe772491b629276b21734947a149d67e4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1cfbe1db33661dd712dfbc53670fb8f0525a481
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250679"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507023"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
 
@@ -80,7 +80,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 使用 [az group create][az-group-create] 命令创建资源组。 以下示例在*westus*位置创建名为*myResourceGroup*的资源组。
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 使用“[az group create][az-group-create]”命令创建资源组。 以下示例在*westus*位置创建名为*myResourceGroup*的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -271,7 +271,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 若要测试虚拟节点上运行的 Pod，请使用 Web 客户端浏览到演示应用程序。 由于为该 Pod 分配了一个内部 IP 地址，因此，可以从 AKS 群集上的另一个 Pod 快速测试此连接。 创建一个测试 Pod，并在其上附加一个终端会话：
 
 ```console
-kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
+kubectl run -it --rm testvk --image=debian
 ```
 
 使用 `apt-get` 在 Pod 中安装 `curl`：

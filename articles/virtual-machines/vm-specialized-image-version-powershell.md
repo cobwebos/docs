@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: fdf1e6cf15279a0ff5be4b45385a13a3b967d22e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44fbbbdb1c36f74a4131d4e5a82de6ef058381f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374621"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508742"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>使用专用化映像创建 VM 
 
 从共享映像库中存储的专用化映像版本创建 VM。 如果要使用通用化映像版本创建 VM，请参阅[使用一般化映像创建 vm](vm-generalized-image-version-powershell.md)。
 
-获得专用化映像版本后，可以创建一个或多个新 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet。 
+获得专用化映像版本后，可以创建一个或多个新 VM。 使用 [New-AzVM](/powershell/module/az.compute/new-azvm) cmdlet。 
 
 在此示例中，我们使用映像定义 ID 来确保新 VM 会使用最新版本的映像。 也可通过将映像版本 ID 用作 `Set-AzVMSourceImage -Id` 来使用特定版本。 例如，若要使用映像版本 *1.0.0*，请键入：`Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。 
 

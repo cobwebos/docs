@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 568f4189c55b49aa6f3e2d4e86582165a4a89cdd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: eef0304248c7cc9a1bf63e06247f86d607afce46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201101"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510100"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的大小
 
@@ -31,16 +31,16 @@ ms.locfileid: "86201101"
 
 - 有关不同大小的定价信息，请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)。 
 - 如需了解 Azure 区域中各种 VM 大小的可用性，请参阅 [可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
-- 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-subscription-service-limits.md)。
+- 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 了解有关 [Azure 计算单元 (ACU)](../acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
 
 ## <a name="rest-api"></a>REST API
 
 有关使用 REST API 来查询 VM 大小的信息，请参阅以下文章：
 
-- [List available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)（列出可用的虚拟机大小以便调整大小）
-- [List available virtual machine sizes for a subscription](https://docs.microsoft.com/rest/api/compute/resourceskus/list)（列出订阅的可用虚拟机大小）
-- [List available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)（列出可用性集中的可用虚拟机大小）
+- [List available virtual machine sizes for resizing](/rest/api/compute/virtualmachines/listavailablesizes)（列出可用的虚拟机大小以便调整大小）
+- [List available virtual machine sizes for a subscription](/rest/api/compute/resourceskus/list)（列出订阅的可用虚拟机大小）
+- [List available virtual machine sizes in an availability set](/rest/api/compute/availabilitysets/listavailablesizes)（列出可用性集中的可用虚拟机大小）
 
 ## <a name="acu"></a>ACU
 

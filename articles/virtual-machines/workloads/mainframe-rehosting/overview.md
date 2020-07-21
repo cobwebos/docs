@@ -10,11 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289792"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507873"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 虚拟机上的大型机重新承载
 
@@ -69,11 +70,11 @@ Azure 上的仿真环境可以通过应用程序开发人员控制的分布（AD
 
 IBM DB2 pureScale 环境为 Azure 提供了一个数据库群集。 它与原始环境并不完全相同，但它提供了类似的可用性和规模，因为在并行 Sysplex 设置中运行的是 IBM DB2 for z/OS。
 
-若要开始，请参阅[Azure 上的 IBM DB2 pureScale](/azure/virtual-machines/linux/ibm-db2-purescale-azure)。
+若要开始，请参阅[Azure 上的 IBM DB2 pureScale](../../linux/ibm-db2-purescale-azure.md)。
 
 ## <a name="considerations"></a>注意事项
 
-将大型机工作负荷迁移到 Azure 基础结构即服务（IaaS）时，可以选择多种类型的按需、可缩放的计算资源（包括 Azure Vm）。 Azure 提供了一系列[Linux](/azure/virtual-machines/linux/overview)和[Windows](/azure/virtual-machines/windows/overview) vm。
+将大型机工作负荷迁移到 Azure 基础结构即服务（IaaS）时，可以选择多种类型的按需、可缩放的计算资源（包括 Azure Vm）。 Azure 提供了一系列[Linux](../../linux/overview.md)和[Windows](../../windows/overview.md) vm。
 
 ### <a name="compute"></a>计算
 
@@ -85,21 +86,21 @@ Azure 计算能力比大型机容量比较高。 如果考虑将大型机工作�
 
 Azure 提供基于承诺的服务级别协议（Sla）。 默认情况下，有多个9的可用性，并且可以通过本地或基于异地的服务复制优化 Sla。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
-使用 Azure IaaS （例如 VM），特定系统功能提供故障转移支持，例如，故障转移群集实例和可用性集。 使用 Azure 平台即服务（PaaS）资源时，平台会自动处理故障转移。 示例包括[AZURE SQL 数据库](/azure/sql-database/sql-database-technical-overview)和[Azure Cosmos DB](/azure/cosmos-db/introduction)。
+使用 Azure IaaS （例如 VM），特定系统功能提供故障转移支持，例如，故障转移群集实例和可用性集。 使用 Azure 平台即服务（PaaS）资源时，平台会自动处理故障转移。 示例包括[AZURE SQL 数据库](../../../azure-sql/database/sql-database-paas-overview.md)和[Azure Cosmos DB](../../../cosmos-db/introduction.md)。
 
 ### <a name="scalability"></a>可伸缩性
 
-大型机通常会向上扩展，而云环境会扩大。Azure 提供了一系列[Linux](/azure/virtual-machines/linux/sizes)和[Windows](/azure/virtual-machines/windows/sizes)大小来满足你的需求。 云还可以向上或向下缩放以匹配确切的用户规范。 基于使用情况的计费模型，计算能力、存储和服务按需[缩放](/azure/architecture/best-practices/auto-scaling)。
+大型机通常会向上扩展，而云环境会扩大。Azure 提供了一系列[Linux](../../linux/sizes.md)和[Windows](../../windows/sizes.md)大小来满足你的需求。 云还可以向上或向下缩放以匹配确切的用户规范。 基于使用情况的计费模型，计算能力、存储和服务按需[缩放](/azure/architecture/best-practices/auto-scaling)。
 
 ### <a name="storage"></a>存储
 
-在云中，你有一系列灵活、可缩放的存储选项，你只需为所需的内容付费。 [Azure 存储](/azure/storage/common/storage-introduction)为数据对象提供可大规模缩放的对象存储，为云提供文件系统服务、可靠的消息传送存储，以及 NoSQL 存储。 对于 VM，托管和非托管磁盘提供持久且安全的磁盘存储。
+在云中，你有一系列灵活、可缩放的存储选项，你只需为所需的内容付费。 [Azure 存储](../../../storage/common/storage-introduction.md)为数据对象提供可大规模缩放的对象存储，为云提供文件系统服务、可靠的消息传送存储，以及 NoSQL 存储。 对于 VM，托管和非托管磁盘提供持久且安全的磁盘存储。
 
 了解如何[将大型机存储移到 Azure](./concepts/mainframe-storage-azure.md)。
 
 ### <a name="backup-and-recovery"></a>备份和恢复
 
-维护自己的灾难恢复站点可能是一种昂贵的做法。 Azure 为本地或区域级别或异地冗余的[备份](/azure/backup/backup-introduction-to-azure-backup)、[恢复](/azure/site-recovery/site-recovery-overview)和[冗余](/azure/storage/common/storage-redundancy)提供了易于实施和经济高效的选项。
+维护自己的灾难恢复站点可能是一种昂贵的做法。 Azure 为本地或区域级别或异地冗余的[备份](../../../backup/backup-overview.md)、[恢复](../../../site-recovery/site-recovery-overview.md)和[冗余](../../../storage/common/storage-redundancy.md)提供了易于实施和经济高效的选项。
 
 ## <a name="azure-government-for-mainframe-migrations"></a>适用于大型机迁移的 Azure 政府
 
@@ -117,7 +118,7 @@ Azure 政府为需要此类环境的系统提供了一种临时权限来操作�
 
 - [有关大型机主题的白皮书](mainframe-white-papers.md)
 - [大型机迁移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [疑难解答](/azure/virtual-machines/troubleshooting/)
+- [故障排除](../../troubleshooting/index.yml)
 - [揭密大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 7647283444ba41a5d629ba8a26fc711a699cd78d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561161"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507890"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>在 Azure 上安装微聚焦企业服务器5.0 和企业开发人员5。0
 
@@ -42,7 +42,7 @@ Azure 上的常见工作负载是开发和测试环境。 这种情况很常见�
     > [!Note]
     > 有几个选项可用于控制对 Vm 的访问：
     > -   最佳做法是设置[Azure 堡垒](https://azure.microsoft.com/services/azure-bastion/)。
-    > -   [站点到站点虚拟专用网络（VPN）](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell)隧道。
+    > -   [站点到站点虚拟专用网络（VPN）](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md)隧道。
     > -   Jumpbox VM。
 
 ## <a name="install-enterprise-server"></a>安装 Enterprise Server
@@ -125,8 +125,8 @@ Azure 上的常见工作负载是开发和测试环境。 这种情况很常见�
 
 **后续步骤**
 
--   [设置 BankDemo 应用程序](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo)
+-   [设置 BankDemo 应用程序](./demo.md)
 
--   [在 Docker 容器中运行企业服务器](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)
+-   [在 Docker 容器中运行企业服务器](./run-enterprise-server-container.md)
 
--   [大型机应用程序迁移](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [大型机应用程序迁移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

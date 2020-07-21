@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 9317999f8862cd9930870fecaf5be44d291c07a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d5ab5c125a8a395d1bc0139421ec804e1221e12
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829663"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506428"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>排查 Azure Cache for Redis 客户端问题
 
@@ -84,12 +84,14 @@ ms.locfileid: "85829663"
 
 在以下示例中，请求“A”和“B”快速发送到服务器。 服务器开始快速发送响应“A”和“B”。 由于数据传输需要时间，即使服务器的响应速度很快，响应“B”也必须等到响应“A”超时。
 
-    |-------- 1 Second Timeout (A)----------|
-    |-Request A-|
-         |-------- 1 Second Timeout (B) ----------|
-         |-Request B-|
-                |- Read Response A --------|
-                                           |- Read Response B-| (**TIMEOUT**)
+```console
+|-------- 1 Second Timeout (A)----------|
+|-Request A-|
+     |-------- 1 Second Timeout (B) ----------|
+     |-Request B-|
+            |- Read Response A --------|
+                                       |- Read Response B-| (**TIMEOUT**)
+```
 
 此请求/响应很难度量值。 可对客户端代码进行检测，以跟踪大型请求和响应。
 

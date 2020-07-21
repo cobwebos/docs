@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 53a9cd33f7bd2223be1c9f199b7a6d10d876c322
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 444f7cd7094a688c43d9aedce67d293e3c32e273
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082928"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508553"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>使用门户将 VM 部署到专用主机
 
@@ -42,7 +42,7 @@ ms.locfileid: "82082928"
 
 - VM 大小必须属于专用主机所用的同一大小系列。 例如，如果专用主机是 DSv3，则 VM 大小可以是 Standard_D4s_v3，但不能是 Standard_A4_v2。 
 - VM 需要位于专用主机所在的同一区域。
-- VM 不能是邻近放置组的一部分。 在将 VM 移动到专用主机之前，请先从邻近放置组中删除该 VM。 有关详细信息，请参阅[将 VM 移出邻近放置组](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM 不能是邻近放置组的一部分。 在将 VM 移动到专用主机之前，请先从邻近放置组中删除该 VM。 有关详细信息，请参阅[将 VM 移出邻近放置组](./proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)
 - VM 不能位于可用性集中。
 - 如果 VM 位于可用性区域中，则该可用性区域必须与主机组相同。 VM 和主机组的可用性区域设置必须匹配。
 
