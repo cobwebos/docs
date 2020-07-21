@@ -1,0 +1,56 @@
+- name: Azure 教育中心文档
+  href: ./index.yml
+- name: 概述
+  items:
+    - name: 什么是教育中心？
+      href: about-education-hub.md
+- name: 快速入门
+  items:
+    - name: 访问教育中心
+      href: access-education-hub.md
+    - name: 开始使用教育中心
+      href: get-started-education-hub.md
+    - name: 设置课程并创建课堂
+      href: set-up-course-classroom.md
+- name: 操作指南
+  items:
+    - name: 管理学术授权
+      href: hub-overview-page.md
+    - name: 创建分配并分配学分
+      href: create-assignment-allocate-credit.md
+- name: 支持
+  items:
+    - name: 服务台
+      href: educator-service-desk.md
+- name: Azure Dev Tools for Teaching
+  items:
+    - name: 概述
+      items:
+        - name: 什么是 Azure Dev Tools for Teaching？
+          href: azure-dev-tools-teaching/about-program.md
+        - name: 面向学生的 Azure
+          href: azure-dev-tools-teaching/azure-students-program.md
+        - name: 面向学生的 Azure 入门版
+          href: azure-dev-tools-teaching/azure-students-starter-program.md
+    - name: 快速入门
+      items:
+        - name: 注册或续订订阅
+          href: azure-dev-tools-teaching/enroll-renew-subscription.md
+        - name: 设置访问权限
+          href: azure-dev-tools-teaching/set-up-access.md
+    - name: 操作指南
+      items:
+        - name: 如何管理学生
+          href: azure-dev-tools-teaching/manage-students.md
+        - name: 如何下载软件
+          href: azure-dev-tools-teaching/download-software.md
+    - name: 疑难解答
+      items:
+        - name: 登录错误
+          href: azure-dev-tools-teaching/troubleshoot-login.md
+- name: 资源
+  items:
+    - name: 常见问题解答
+      href: azure-dev-tools-teaching/program-faq.md
+    - name: 支持
+      href: azure-dev-tools-teaching/program-support.md

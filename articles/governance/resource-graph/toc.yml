@@ -29,6 +29,9 @@
     - name: 运行自己的第一个查询 - Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: 运行自己的第一个查询 - Ruby
+      displayName: 'gem, azure-mgmt'
+      href: ./first-query-ruby.md
     - name: 运行自己的第一个查询 - REST
       displayName: 'armclient, postman'
       href: ./first-query-rest-api.md

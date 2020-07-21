@@ -19,6 +19,8 @@
       href: fhir-oss-powershell-quickstart.md
     - name: 部署适用于 Azure 的 FHIR Server - CLI
       href: fhir-oss-cli-quickstart.md
+    - name: 部署 IoT 连接器 - 门户
+      href: iot-fhir-portal-quickstart.md
 - name: 教程
   expanded: false
   items:
@@ -37,6 +39,11 @@
       href: access-fhir-postman-tutorial.md
     - name: 使用 SMART on FHIR 代理
       href: use-smart-on-fhir-proxy.md
+    - name: 从 IoT 设备引入数据
+      expanded: false
+      items:
+        - name: 通过 Azure IoT 中心接收设备数据
+          href: device-data-through-iot-hub.md
 - name: 示例
   items:
     - name: Azure Policy 内置策略定义
@@ -79,6 +86,8 @@
       href: enable-diagnostic-logging.md
     - name: 为适用于 FHIR 的 Azure API 获取令牌 - CLI
       href: get-healthcare-apis-access-token-cli.md
+    - name: 排除 IoT 连接器中的故障
+      href: iot-troubleshoot-guide.md
 - name: 概念
   expanded: false
   items:
@@ -88,6 +97,13 @@
       href: azure-ad-hcapi-token-validation.md
     - name: 使用自定义 HTTP 头将数据添加到审核日志
       href: use-custom-headers.md
+    - name: IoT 连接器工作原理
+      expanded: false
+      items:
+        - name: IoT 连接器数据流
+          href: iot-data-flow.md
+        - name: IoT 连接器映射模板
+          href: iot-mapping-templates.md
 - name: 资源
   items:
     - name: 常见问题解答
