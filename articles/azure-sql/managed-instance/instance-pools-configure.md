@@ -12,11 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd98d69c9a941e8da08fc7ab798c37b1a22f0bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708794"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498387"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>将 Azure SQL 托管实例部署到实例池
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +28,7 @@ ms.locfileid: "84708794"
 
 下表显示了与实例池相关的可用操作及其在 Azure 门户和 PowerShell 中的可用性。
 
-|Command|Azure 门户|PowerShell|
+|命令|Azure 门户|PowerShell|
 |:---|:---|:---|
 |创建实例池|否|是|
 |更新实例池（属性数量限制）|否 |是 |
@@ -99,7 +100,7 @@ $instancePool = New-AzSqlInstancePool `
   -Name "mi-pool-name" `
   -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
-  -VCore 80 `
+  -VCore 8 `
   -Edition "GeneralPurpose" `
   -ComputeGeneration "Gen5" `
   -Location "westeurope"
@@ -115,13 +116,13 @@ $instancePool = New-AzSqlInstancePool `
 若要创建托管实例，请执行以下命令：
 
 ```powershell
-$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
+$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-one-name" -VCore 2 -StorageSizeInGB 256
 ```
 
 在池中部署实例只需几分钟即可完成。 创建第一个实例后，可以创建其他实例：
 
 ```powershell
-$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -StorageSizeInGB 512
+$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-two-name" -VCore 4 -StorageSizeInGB 512
 ```
 
 ## <a name="create-a-database"></a>创建数据库 

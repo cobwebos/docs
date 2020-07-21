@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135318"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494728"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项
 Azure 默认提供单个虚拟网络内的所有虚拟机的 DNS 名称解析。 在 Azure 托管的虚拟机上配置自己的 DNS 服务，即可实现自己的 DNS 名称解析解决方案。 以下方案可帮助你选择适合你情况的解决方案。
@@ -121,7 +121,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，并允许本地�
 
 使用 Azure 提供的名称解析时，会通过 DHCP 为每个虚拟机提供内部 DNS 后缀。 使用你自己的名称解析解决方案时，不会向虚拟机提供该后缀，因为该后缀会干扰其他 DNS 体系结构。 若要通过 FQDN 来引用计算机，或者要在虚拟机上配置后缀，可通过 PowerShell 或 API 来确定该后缀：
 
-* 对于 Azure Resource Manager 托管的虚拟网络，可以通过[网络接口卡](https://msdn.microsoft.com/library/azure/mt163668.aspx)资源来使用该后缀。 也可通过运行 `azure network public-ip show <resource group> <pip name>` 命令来显示公共 IP 的详细信息，该 IP 中包括 NIC 的 FQDN。
+* 对于 Azure Resource Manager 托管的虚拟网络，可以通过[网络接口卡](/rest/api/virtualnetwork/networkinterfaces)资源来使用该后缀。 也可通过运行 `azure network public-ip show <resource group> <pip name>` 命令来显示公共 IP 的详细信息，该 IP 中包括 NIC 的 FQDN。
 
 如果不想将查询转发到 Azure，则需提供自己的 DNS 解决方案。  DNS 解决方案需要：
 
@@ -131,6 +131,6 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，并允许本地�
 * 禁止从 Internet 进行访问，减少外部代理带来的威胁。
 
 > [!NOTE]
-> 为了获得最佳性能，在 Azure DNS 服务器中使用虚拟机时，请禁用 IPv6 并为每个 DNS 服务器虚拟机分配[实例级公共 IP](../../virtual-network/virtual-networks-instance-level-public-ip.md)。  
+> 为了获得最佳性能，在 Azure DNS 服务器中使用虚拟机时，请禁用 IPv6 并为每个 DNS 服务器虚拟机分配[实例级公共 IP](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip)。  
 >
 >

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497754"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>如何将 Azure Kubernetes 与 Azure Cosmos DB（预览版）配合使用
 
@@ -33,7 +33,7 @@ ms.locfileid: "85262627"
 
    Azure Kubernetes 引擎 (aks-engine) 可以生成 Azure 资源管理器模板，用于 Azure 上的 Kubernetes 群集****。 aks-engine 的输入内容是群集定义文件，该文件描述所需的群集，包括业务流程协调程序、功能和代理。 输入文件的结构类似于 Azure Kubernetes 服务的公共 API。
 
-1. Azure Cosmos DB 中的 etcd API 目前处于预览状态。 登录并使用此处的预览版：https://aka.ms/cosmosetcdapi-signup。 提交表单后，订阅将被列入允许列表，以使用 Azure Cosmos etcd API。 
+1. Azure Cosmos DB 中的 etcd API 目前处于预览状态。 登录并使用此处的预览版：https://aka.ms/cosmosetcdapi-signup。 提交表单后，你的订阅将被允许使用 Azure Cosmos etcd API。 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 部署群集
 
@@ -43,7 +43,7 @@ ms.locfileid: "85262627"
    az login 
    ```
 
-1. 如果有多个订阅，请切换到已列入 Azure Cosmos DB etcd API 允许列表的订阅。 可以使用以下命令切换至所需订阅：
+1. 如果有多个订阅，请切换到 Azure Cosmos DB etcd API 允许使用的订阅。 可以使用以下命令切换至所需订阅：
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"

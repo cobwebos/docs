@@ -9,16 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 611ab503dfea44e8287e95cf607ce6af3b447d1f
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: a74b77ac59ece98f1a64839fd5000f4ab5d638f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83815785"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497873"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安装并运行人脸容器（预览）
+
+> [!IMPORTANT]
+> 已达到面部容器用户的限制。 目前不接受面部容器的新应用程序。
 
 Azure 认知服务面部为 Docker 提供标准化的 Linux 容器，用于检测图像中的人脸。 它还标识属性，其中包括 noses 和眼睛、性别、年龄和其他计算机预测的面部功能等人脸特征点。 除了检测以外，人还可以使用置信度分数来检查同一图像或不同图像中的两人脸是否相同。 人脸还可以对照数据库比较人脸，以查看看起来是否有相似或相同的人脸。 它还可以使用共享的视觉特征将相似的人为组。
 
@@ -28,19 +31,13 @@ Azure 认知服务面部为 Docker 提供标准化的 Linux 容器，用于检�
 
 必须满足以下先决条件，然后才能使用人脸服务容器。
 
-|必选|目的|
+|必须|目的|
 |--|--|
 |Docker 引擎| Docker 引擎必须安装在[主计算机](#the-host-computer)上。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 你需要基本了解 Docker 概念，如注册表、存储库、容器和容器映像。 还需要了解基本 `docker` 命令。| 
-|人脸资源 |若要使用该容器，必须具备：<br><br>Azure**面部**资源以及关联的 API 密钥和终结点 URI。 此资源的 "**概述**" 和 "**键**" 页上提供了这两个值。 它们是启动容器所必需的。<br><br>**{API_KEY}**： "**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}**： "**概述**" 页中提供的终结点
+|人脸资源 |若要使用该容器，必须具备：<br><br>Azure**面部**资源以及关联的 API 密钥和终结点 URI。 此资源的 "**概述**" 和 "**键**" 页上提供了这两个值。 它们是启动容器所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个****<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点****
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
-
-填写并提交[请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。 
-
-[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>主计算机
 
@@ -115,7 +112,7 @@ ApiKey={API_KEY}
 
 容器提供了基于 REST 的查询预测终结点 API。 
 
-使用主机 `http://localhost:5000`，以获得容器 API。
+为容器 API 使用主机 `http://localhost:5000`。
 
 
 <!--  ## Validate container is running -->

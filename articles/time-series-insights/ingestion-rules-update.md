@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解中的引入和平展规则的即将发生的更改 |Microsoft Docs
+title: Azure 时序见解 Gen2 中的引入和平展规则的即将发生的更改 |Microsoft Docs
 description: 引入规则更改
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 067244aa40256e3cc76239343790974bc3c06481
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f667ca5ad82182fcf40d5c1fbb325f2ea99a7e08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919028"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495102"
 ---
 # <a name="upcoming-changes-to-the-json-flattening-and-escaping-rules-for-new-environments"></a>新环境的 JSON 平展和转义规则即将发生的更改
 
-这些更改将应用于*新*的 Azure 时序见解即用即付（PAYG）环境。 这些更改不适用于标准 SKU 环境。
+**这些更改将仅应用于*新创建*的 Azure 时序见解 Gen2 环境。这些更改不适用于 Gen1 环境。**
 
-Azure 时序见解环境将按照一组特定的命名约定动态创建存储列。 引入事件时，会将一组规则应用于 JSON 有效负载和属性名称。 对于7月2020中的新 Azure 时序见解即用即付环境，对 JSON 数据的平展和存储方式的更改将生效。 在以下情况下，此更改会影响你：
+Azure 时序见解 Gen2 环境使用一组特定的命名约定动态创建存储列。 引入事件时，会将一组规则应用于 JSON 有效负载和属性名称。 对于2020年7月的新 Azure 时序见解 Gen2 环境，对 JSON 数据的平展和存储方式的更改将生效。 在以下情况下，此更改会对你造成影响：
 
 * 如果 JSON 负载包含嵌套对象
 *  如果 JSON 负载包含数组
@@ -45,15 +45,16 @@ Azure 时序见解环境将按照一组特定的命名约定动态创建存储�
 
  #### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>如果负载包含嵌套的 JSON 或特殊字符，则自动编写[时序模型](.\time-series-insights-update-tsm.md)变量表达式
 
-*  更新执行[TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch#typesbatchput)的客户端代码以匹配新的引入规则。 例如，的上一个[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) `"value": {"tsx": "$event.series_value.Double"}` 应更新为以下选项之一：
+*  更新执行[TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)的客户端代码以匹配新的引入规则。 例如，的上一个[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) `"value": {"tsx": "$event.series_value.Double"}` 应更新为以下选项之一：
     * `"value": {"tsx": "$event.series.value.Double"}`
     * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 
-
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读[添加对 Long 数据类型的支持](./time-series-insights-long-data-type.md)。
+- 阅读[Azure 时序见解 Gen2 存储和入口](./time-series-insights-update-storage-ingress.md)。
 
-- 阅读 [Azure 时序见解预览版存储和引入](./time-series-insights-update-storage-ingress.md)。
+- 阅读有关如何使用[时序查询 api](./concepts-query-overview.md)查询数据的详细信息。
+
+- 阅读有关[新时序表达式语法](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)的详细信息。
 

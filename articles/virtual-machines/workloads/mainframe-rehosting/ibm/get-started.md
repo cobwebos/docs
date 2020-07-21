@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 13c83c53cdad719d6a4bed4cc1852b85d62082e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e99685b4d1476ee527b9eb7f1332f6a6beece669
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68834585"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499966"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 上的 IBM 工作负荷
 
@@ -36,7 +37,7 @@ Azure 支持与现有的 IBM 大型机环境集成，使你可以迁移有意义
 
 **后续步骤**
 
-- [大型机迁移：误解和事实](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [大型机迁移：误解和事实](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [&Azure 上的开发/测试环境安装 IBM zD](./install-ibm-z-environment.md)
 - [在 IBM zD&T v1 中设置应用程序开发人员受控分发（ADCD）](./demo.md)
-- [Azure 上的 IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
+- [Azure 上的 IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)

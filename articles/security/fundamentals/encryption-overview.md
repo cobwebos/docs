@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 07/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 005932f4a4be9e4a7bae85a6b380c934de5e9874
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 4990d696986336e52fec3e87f4c3ea0c7517d3f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276526"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496377"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -119,11 +119,11 @@ Azure 提供了许多机制，用于在迁移数据时保持数据的私密性�
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Azure 中的数据链路层加密
 
-每当 Azure 客户流量在数据中心之间移动时（不是由 Microsoft (控制或代表 Microsoft) 使用[IEEE 802.1 AE MAC 安全标准](https://1.ieee802.org/security/802-1ae/)的数据链路层加密方法）， (也称为 MACsec) 将从点到点应用于基础网络硬件。  数据包会在发送之前在设备上加密和解密，从而阻止物理 "中间人" 或侦听/wiretapping 攻击。  由于此技术在网络硬件本身上集成，因此它在网络硬件上提供线路速率加密，而不会增加可度量的链接延迟。  默认情况下，此 MACsec 加密在某个区域内或各区域之间的所有 Azure 流量中处于启用状态，并且在要启用的客户部件上无需执行任何操作。 
+每当 Azure 客户流量在数据中心之间移动时（不是由 Microsoft （或代表 Microsoft）控制），使用[IEEE 802.1 AE MAC 安全标准](https://1.ieee802.org/security/802-1ae/)（也称为 MACsec）的数据链路层加密方法将在基础网络硬件之间通过点到点应用。  数据包会在发送之前在设备上加密和解密，从而阻止物理 "中间人" 或侦听/wiretapping 攻击。  由于此技术在网络硬件本身上集成，因此它在网络硬件上提供线路速率加密，而不会增加可度量的链接延迟。  默认情况下，此 MACsec 加密在某个区域内或各区域之间的所有 Azure 流量中处于启用状态，并且在要启用的客户部件上无需执行任何操作。 
 
 ### <a name="tls-encryption-in-azure"></a>Azure 中的 TLS 加密
 
-Microsoft 使客户能够使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) 协议在云服务和客户之间传输数据时对数据进行保护。 Microsoft 的数据中心与连接到 Azure 服务的客户端系统协商建立 TLS 连接。 TLS 提供严格的身份验证，消息隐私性和完整性强（允许检测消息篡改、拦截和伪造），具有良好的互操作性，算法灵活，易于部署和使用。
+Microsoft 使客户能够使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security)（TLS）协议在云服务和客户之间传输数据时保护数据。 Microsoft 的数据中心与连接到 Azure 服务的客户端系统协商建立 TLS 连接。 TLS 提供严格的身份验证，消息隐私性和完整性强（允许检测消息篡改、拦截和伪造），具有良好的互操作性，算法灵活，易于部署和使用。
 
 [完美正向保密](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) 通过唯一密钥保护客户的客户端系统与 Microsoft 云服务间的连接。 连接还使用基于 RSA 的 2,048 位加密密钥长度。 此组合使得别人难以拦截和访问传输中的数据。
 

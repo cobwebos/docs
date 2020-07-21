@@ -1,17 +1,17 @@
 ---
-title: 创建 Azure HPC 缓存实例
-description: 如何创建 Azure HPC 缓存实例
+title: 使用 Azure HPC 缓存聚合命名空间
+description: 如何为 Azure HPC 缓存规划虚拟命名空间
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: v-erkel
+ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045801"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497023"
 ---
 # <a name="plan-the-aggregated-namespace"></a>规划聚合命名空间
 
@@ -30,7 +30,7 @@ Azure HPC 缓存允许客户端通过虚拟命名空间访问各种存储系统�
 模板数据存储在数据中心中，此作业所需的信息存储在这些子目录中：
 
 * */goldline/templates/acme2017/sku798*
-* */goldline/templates/acme2017/sku980* 
+* */goldline/templates/acme2017/sku980*
 
 数据中心存储系统将公开以下导出：
 
@@ -52,10 +52,10 @@ NFS 存储目标可以有多个虚拟命名空间路径，只要每个路径引�
 
 由于 NFS 源路径是相同导出的子目录，因此需要从同一存储目标定义多个命名空间路径。
 
-| 存储目标主机名  | NFS 导出路径      | 子目录路径 | 命名空间路径    |
-|--------------------------|----------------------|-------------------|-------------------|
-| *IP 地址或主机名* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
-| *IP 地址或主机名* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
+| 存储目标主机名  | NFS 导出路径     | 子目录路径 | 命名空间路径    |
+|--------------------------|---------------------|-------------------|-------------------|
+| *IP 地址或主机名* | /goldline/templates | acme2017/sku798   | /templates/sku798 |
+| *IP 地址或主机名* | /goldline/templates | acme2017/sku980   | /templates/sku980 |
 
 客户端应用程序可以装载缓存并轻松访问聚合的命名空间文件路径 ``/source`` 、 ``/templates/sku798`` 和 ``/templates/sku980`` 。
 

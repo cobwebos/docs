@@ -3,20 +3,20 @@ title: 大规模配置保管库诊断设置
 description: 使用 Azure Policy 为给定范围内的所有保管库配置 Log Analytics 诊断设置
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e6ba8eb98ca1d6af9fc745d9baf3840ccd1ac224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2400be15dcd46084e9a605076c00cf5c5ac92463
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195700"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498043"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大规模配置保管库诊断设置
 
-Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将任何给定保管库的数据发送到 LA，需要为该保管库创建[诊断设置](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)。
+Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将任何给定保管库的数据发送到 LA，需要为该保管库创建[诊断设置](./backup-azure-diagnostic-events.md)。
 
 通常，为每个保管库手动添加诊断设置是一项繁琐的任务。 此外，创建的任何新保管库也需要启用诊断设置才能查看此保管库的报表。
 
-为了简化大规模创建诊断设置的过程（以 LA 为目标），Azure 备份提供了内置 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)。 此策略可为给定订阅或资源组中的所有保管库添加 LA 诊断设置。 以下部分介绍了如何使用此策略。
+为了简化大规模创建诊断设置的过程（以 LA 为目标），Azure 备份提供了内置 [Azure Policy](../governance/policy/index.yml)。 此策略可为给定订阅或资源组中的所有保管库添加 LA 诊断设置。 以下部分介绍了如何使用此策略。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
@@ -70,7 +70,7 @@ Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将
 * 保管库没有诊断设置。
 * 保管库具有诊断设置，但是没有一个设置启用了将 LA 作为目标的所有资源特定事件，并且在切换中选择了“资源特定”事件 。
 
-因此，即使用户的保管库在 AzureDiagnostics 模式下启用了 AzureBackupReport 事件（由备份报告提供支持），也将对此保管库应用修正任务，因为该资源特定模式是[今后](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)创建诊断设置的建议方法。
+因此，即使用户的保管库在 AzureDiagnostics 模式下启用了 AzureBackupReport 事件（由备份报告提供支持），也将对此保管库应用修正任务，因为该资源特定模式是[今后](./backup-azure-diagnostic-events.md#legacy-event)创建诊断设置的建议方法。
 
 此外，如果用户的保管库只启用了六个资源特定事件的子集，则将对此保管库应用修正任务，因为只有启用所有六个资源特定事件，备份报告才能按预期工作。
 
@@ -84,6 +84,6 @@ Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何使用备份报告](https://docs.microsoft.com/azure/backup/configure-reports)
-* [了解有关 Azure Policy 的详细信息](https://docs.microsoft.com/azure/governance/policy/)
-* [使用 Azure Policy 自动为给定范围内的所有 VM 启用备份](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+* [了解如何使用备份报告](./configure-reports.md)
+* [了解有关 Azure Policy 的详细信息](../governance/policy/index.yml)
+* [使用 Azure Policy 自动为给定范围内的所有 VM 启用备份](./backup-azure-auto-enable-backup.md)

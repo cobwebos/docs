@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c9868012698fcdf5a2352c289de85261b6899dc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081054"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497907"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -24,11 +24,11 @@ ms.locfileid: "86081054"
 
 ## <a name="before-you-start"></a>开始之前
 
-- 验证运行的是否是支持备份的 vCenter/ESXi 版本。 请参阅[此处](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支持矩阵。
+- 验证运行的是否是支持备份的 vCenter/ESXi 版本。 请参阅[此处](./backup-mabs-protection-matrix.md)的支持矩阵。
 - 确保已设置 Azure 备份服务器。 如果没有，请在开始之前进行[设置](backup-azure-microsoft-azure-backup.md)。 应运行装有最新更新的 Azure 备份服务器。
-- 请确保以下网络端口处于打开状态：
-  - MABS 和 vCenter 之间的 TCP 443
-  - MABS 和 ESXi 主机之间的 TCP 443 和 TCP 902
+- 确保以下网络端口处于打开状态：
+  - MABS 与 vCenter 之间的 TCP 443
+  - MABS 与 ESXi 主机之间的 TCP 443 和 TCP 902
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>与 vCenter 服务器建立安全连接
 
@@ -41,7 +41,7 @@ ms.locfileid: "86081054"
 - 必须了解 Azure 备份服务器处理备份的方式。
   - Azure 备份服务器首先将数据备份到本地磁盘存储。 对于保护的数据，Azure 备份服务器将使用存储池，即，Azure 备份服务器用来存储磁盘恢复点的一组磁盘和卷。 该存储池可以是直接附加存储 (DAS)、光纤通道 SAN，或者 iSCSI 存储设备或 SAN。 必须确保为 VMware VM 数据的本地备份提供足够的存储空间。
   - 然后，Azure 备份服务器会从本地磁盘存储备份到 Azure。
-  - 获取测算所需存储空间量的[帮助](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need)。 该信息适用于 DPM，但也适用于 Azure 备份服务器。
+  - 获取测算所需存储空间量的[帮助](/system-center/dpm/create-dpm-protection-groups#figure-out-how-much-storage-space-you-need)。 该信息适用于 DPM，但也适用于 Azure 备份服务器。
 
 ### <a name="set-up-the-certificate"></a>设置证书
 
@@ -167,8 +167,8 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 | Virtual machine.Guest Operations.Guest Operation Queries                   | Virtual machine.Guest Operations.Guest Operation Queries                   |
 | Virtual machine .Interaction .Device connection                            | Virtual machine .Interaction .Device connection                            |
 | Virtual machine .Interaction .Guest operating system management by VIX API | Virtual machine .Interaction .Guest operating system management by VIX API |
-| Virtual machine .Interaction .Power Off                                    | Virtual machine .Interaction .Power Off                                    |
-| Virtual machine .Inventory.Create new                                      | Virtual machine .Inventory.Create new                                      |
+| Virtual machine.Interaction.Power Off                                    | Virtual machine.Interaction.Power Off                                    |
+| Virtual machine.Inventory.Create new                                      | Virtual machine.Inventory.Create new                                      |
 | Virtual machine .Inventory.Remove                                          | Virtual machine .Inventory.Remove                                          |
 | Virtual machine .Inventory.Register                                        | Virtual machine .Inventory.Register                                        |
 | Virtual machine .Provisioning.Allow disk access                            | Virtual machine .Provisioning.Allow disk access                            |
@@ -281,7 +281,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![指定凭据](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. 单击“添加”将 VMware 服务器添加到服务器列表。 然后单击 **“下一步”** 。
+6. 单击“添加”将 VMware 服务器添加到服务器列表。 然后，单击 **“下一步”** 。
 
     ![添加 VMWare 服务器和凭据](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -309,7 +309,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 1. 在“选择保护组类型”页上选择“服务器”，然后单击“下一步”。   此时会显示“选择组成员”页。
 
-1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。 然后单击 **“下一步”** 。
+1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。 然后，单击 **“下一步”** 。
 
     - 选择某个文件夹时，也会选择该文件夹中的 VM 或子文件夹进行备份。 可以取消选中不想要备份的文件夹或 VM。
 1. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。
@@ -347,11 +347,11 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![选择副本创建方法](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。 然后单击 **“下一步”** 。
+1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。 然后，单击 **“下一步”** 。
       - 当副本数据变得不一致时，可以运行一致性检查；也可以根据设置的计划运行该检查。
       - 如果不想配置自动一致性检查，可运行手动检查。 为此，请右键单击保护组并选择“执行一致性检查”。
 
-1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。 可以选择单个成员，或者单击“全选”选择所有成员。 然后单击 **“下一步”** 。
+1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。 可以选择单个成员，或者单击“全选”选择所有成员。 然后，单击 **“下一步”** 。
 
     ![指定在线保护数据](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
@@ -373,20 +373,20 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![保护组成员和设置摘要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
-## <a name="vmware-parallel-backups"></a>VMWare 并行备份
+## <a name="vmware-parallel-backups"></a>VMware 并行备份
 
 >[!NOTE]
 > 此功能适用于 MABS V3 UR1。
 
-对于早期版本的 MABS，仅跨保护组执行并行备份。 使用 MABS V3 UR1，单个保护组内的所有 VMWare Vm 备份都是并行的，从而提高 VM 备份的速度。 所有 VMWare 增量复制作业都是并行运行的。 默认情况下，要并行运行的作业数设置为8。
+早期版本的 MABS 仅跨保护组执行并行备份。 借助 MABS V3 UR1，单个保护组中的所有 VMWare VM 备份将并行进行，从而提高 VM 备份速度。 所有 VMWare 增量复制作业将并行运行。 默认情况下，并行运行的作业数设置为 8。
 
-你可以通过使用如下所示的注册表项来修改作业数（默认情况下不存在，你需要添加）：
+你可以如下所示使用注册表项来修改作业数（默认情况下不存在此注册表项，你需要添加它）：
 
-**密钥路径**：`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
-**键类型**： DWORD （32位）值。
+**注册表项路径**：`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**注册表项类型**：DWORD（32 位）值。
 
 > [!NOTE]
-> 可将作业数修改为更大的值。 如果将作业数设置为1，复制作业将按顺序运行。 若要将数目增加到更大的值，必须考虑到 VMWare 性能。 请考虑使用中的资源数和 VMWare vSphere Server 上所需的其他使用量，并确定要并行运行的增量复制作业的数目。 此外，此更改只会影响新创建的保护组。 对于现有的保护组，你必须将另一个 VM 临时添加到保护组。 这会相应地更新保护组配置。 完成该过程后，可以从保护组中删除此 VM。
+> 你可以将作业数修改为较高的值。 如果将作业数设置为 1，则复制作业将按顺序运行。 若要将此数量增加到更大的值，则必须考虑 VMWare 性能。 考虑 VMWare vSphere Server 上正在使用的资源数量和所需的额外使用量，并确定要并行运行的增量复制作业的数量。 此外，此更改将仅影响新创建的保护组。 对于现有保护组，你必须临时向保护组中添加另一个 VM。 这会相应地更新保护组配置。 完成此过程后，可以从保护组中删除此 VM。
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
 
@@ -424,22 +424,22 @@ Windows Registry Editor Version 5.00
 > [!NOTE]
 > 此功能适用于 MABS V3 UR1。
 
-通过 MABS V3 UR1，你可以从 VMware VM 备份中排除特定的磁盘。 **ExcludeDisk.ps1**的配置脚本位于中 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` 。
+使用 MABS V3 UR1，你可以从 VMware VM 备份中排除特定的磁盘。 配置脚本 **ExcludeDisk.ps1** 位于 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` 中。
 
-若要配置磁盘排除，请按照以下步骤操作：
+若要配置磁盘排除，请执行以下步骤：
 
-### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>确定要排除的 VMWare VM 和磁盘详细信息
+### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>识别要排除的 VMWare VM 和磁盘详细信息
 
-  1. 在 VMware 控制台上，请前往要排除磁盘的 VM 设置。
-  2. 选择要排除的磁盘，并记下该磁盘的路径。
+  1. 在 VMware 控制台上，转到你要为其排除磁盘的 VM 设置。
+  2. 选择要排除的磁盘并记下该磁盘的路径。
 
-        例如，若要从 TestVM4 中排除硬盘 2，则硬盘 2 的路径为 [datastore1] TestVM4/TestVM4\_1.vmdk。
+        例如，从 TestVM4 中排除硬盘 2 时，硬盘 2 的路径是 **[datastore1] TestVM4/TestVM4\_1.vmdk**。
 
         ![要排除的硬盘](./media/backup-azure-backup-server-vmware/test-vm.png)
 
 ### <a name="configure-mabs-server"></a>配置 MABS 服务器
 
-导航到在其中配置了用于保护的 VMware VM 以配置磁盘排除的 MABS 服务器。
+导航到为 VMware VM 配置了保护的 MABS 服务器，以配置磁盘排除。
 
   1. 获取在 MABS 服务器上受保护的 VMware 主机的详细信息。
 
@@ -454,7 +454,7 @@ Windows Registry Editor Version 5.00
         Vcentervm1                   Contoso.COM       NoDatasourcesProtected
         ```
 
-  2. 选择 VMware 主机，然后列出 VMware 主机的 VM 保护。
+  2. 选择 VMware 主机，并列出 VMware 主机的 VM 保护。
 
         ```powershell
         $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
@@ -469,7 +469,7 @@ Windows Registry Editor Version 5.00
         Vcentervm1  TestVM4      VMware
         ```
 
-  3. 选择要排除磁盘的 VM。
+  3. 选择要为其排除磁盘的 VM。
 
         ```powershell
         $vmDsInfo[2]
@@ -481,12 +481,12 @@ Windows Registry Editor Version 5.00
         Vcentervm1   TestVM4   VMware
         ```
 
-  4. 若要排除磁盘，请导航到该 `Bin` 文件夹，并运行具有以下参数的*ExcludeDisk.ps1*脚本：
+  4. 若要排除磁盘，请导航到 `Bin` 文件夹，并使用以下参数运行 *ExcludeDisk.ps1* 脚本：
 
         > [!NOTE]
         > 在运行此命令之前，请在 MABS 服务器上停止 DPMRA 服务。 否则，该脚本将返回成功，但不会更新排除列表。 在停止服务之前，请确保没有正在进行的作业。
 
-     **要在排除列表中添加/删除磁盘，请运行以下命令：**
+     **若要在排除中添加/删除磁盘，请运行以下命令：**
 
       ```powershell
       ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
@@ -505,9 +505,9 @@ Windows Registry Editor Version 5.00
        Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
       ```
 
-  5. 验证是否已添加用于排除的磁盘。
+  5. 验证是否已添加要排除的磁盘。
 
-     **要查看特定 VM 的现有排除项，请运行以下命令：**
+     **若要查看特定 VM 的现有排除，请运行以下命令：**
 
         ```powershell
         ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
@@ -529,9 +529,9 @@ Windows Registry Editor Version 5.00
      为此 VM 配置保护后，在保护期间将不会列出已排除的磁盘。
 
         > [!NOTE]
-        > 如果为已受保护的 VM 执行这些步骤，需要在添加磁盘进行排除后手动运行一致性检查。
+        > 如果为已受保护的 VM 执行这些步骤，则需在添要排除的磁盘后手动运行一致性检查。
 
-### <a name="remove-the-disk-from-exclusion"></a>从排除列表中删除磁盘
+### <a name="remove-the-disk-from-exclusion"></a>从排除中删除磁盘
 
 若要从排除中删除磁盘，请运行以下命令：
 

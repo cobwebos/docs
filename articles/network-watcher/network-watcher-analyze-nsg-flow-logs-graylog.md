@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 406b02ee2e9c2f4e78ce50fc7160b382b9662303
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737421"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497108"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>在 Azure 中使用网络观察程序与 Graylog 来管理和分析网络安全组流日志
 
@@ -190,7 +190,7 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
    启动输入后，应会看到它显示在“本地输入”部分中，如下图所示：****
 
-   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![屏幕截图，显示包含已启动的输入的 "本地输入" 部分。](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
    若要详细了解 Graylog 消息输入，请参阅[文档](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)。
 
@@ -230,7 +230,7 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 3. 选择要从中进行可视化的任何所需参数（本示例选择了 IP 源）。 若要显示可能的小组件列表，请单击字段左侧的蓝色下拉箭头，并选择“快速值”生成小组件。**** 应会看到下图所示的内容：
 
-   ![Source IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
+   ![源 IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 
 4. 在此处，可以选择小组件右上角的“添加到仪表板”按钮，并选择要添加的相应仪表板。****
 

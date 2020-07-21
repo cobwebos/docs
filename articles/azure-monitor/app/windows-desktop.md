@@ -3,12 +3,12 @@ title: 监视 Windows 桌面应用的使用情况和性能
 description: 使用 Application Insights 分析 Windows 桌面应用的使用情况和性能。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718778"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499182"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
 
@@ -73,9 +73,9 @@ using Microsoft.ApplicationInsights;
 
 默认情况下，此 SDK 将收集并存储发出遥测的系统的计算机名称。
 
-计算机名称由 Application Insights[旧企业（按节点）定价层](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)用于内部计费。 默认情况下，如果使用遥测初始值设定项进行重写，则会 `telemetry.Context.Cloud.RoleInstance` 发送单独的属性， `ai.internal.nodeName` 该属性仍包含计算机名称值。 此值不会与 Application Insights 遥测数据存储在一起，但会在内部引入时使用，以允许与基于旧节点的计费模型向后兼容。
+计算机名称由 Application Insights[旧企业（按节点）定价层](./pricing.md#legacy-enterprise-per-node-pricing-tier)用于内部计费。 默认情况下，如果使用遥测初始值设定项进行重写，则会 `telemetry.Context.Cloud.RoleInstance` 发送单独的属性， `ai.internal.nodeName` 该属性仍包含计算机名称值。 此值不会与 Application Insights 遥测数据存储在一起，但会在内部引入时使用，以允许与基于旧节点的计费模型向后兼容。
 
-如果你使用的是[旧企业（按节点）定价层](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)，只需覆盖计算机名称的存储，请使用遥测初始值设定项：
+如果你使用的是[旧企业（按节点）定价层](./pricing.md#legacy-enterprise-per-node-pricing-tier)，只需覆盖计算机名称的存储，请使用遥测初始值设定项：
 
 **按如下所示编写自定义 TelemetryInitializer。**
 
@@ -116,7 +116,7 @@ namespace CustomInitializer.Telemetry
 
 ## <a name="override-transmission-of-computer-name"></a>覆盖计算机名称的传输
 
-如果你不在[旧版 Enterprise （按节点）定价层](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)，并且想要完全禁止发送任何包含计算机名称的遥测，则需要使用遥测处理器。
+如果你不在[旧版 Enterprise （按节点）定价层](./pricing.md#legacy-enterprise-per-node-pricing-tier)，并且想要完全禁止发送任何包含计算机名称的遥测，则需要使用遥测处理器。
 
 ### <a name="telemetry-processor"></a>遥测处理器
 
@@ -172,11 +172,10 @@ namespace WindowsFormsApp2
 ```
 
 > [!NOTE]
-> 虽然在技术上也可以使用上面所述的遥测处理器（即使你使用的是[旧企业（按节点）定价层）](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)，但由于无法对每个节点的定价正确区分节点，因此可能会导致过度计费。
+> 虽然在技术上也可以使用上面所述的遥测处理器（即使你使用的是[旧企业（按节点）定价层）](./pricing.md#legacy-enterprise-per-node-pricing-tier)，但由于无法对每个节点的定价正确区分节点，因此可能会导致过度计费。
 
 ## <a name="next-steps"></a>后续步骤
 * [创建仪表板](../../azure-monitor/app/overview-dashboard.md)
 * [诊断搜索](../../azure-monitor/app/diagnostic-search.md)
 * [探索指标](../../azure-monitor/platform/metrics-charts.md)
-* [编写分析查询](../../azure-monitor/app/analytics.md)
-
+* [编写分析查询](../log-query/log-query-overview.md)

@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807700"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499216"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -29,7 +30,7 @@ ms.locfileid: "85807700"
 自动启用的 Azure Monitor 功能（如收集指标和活动日志）免费提供。 存在与其他功能（例如日志查询和警报）相关的费用。 有关详细定价信息，请参阅 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ### <a name="how-do-i-enable-azure-monitor"></a>如何启用 Azure Monitor？
-在你创建新的 Azure 订阅时就会启用 Azure Monitor，并自动收集[活动日志](platform/activity-logs-overview.md)和平台[指标](platform/data-platform-metrics.md)。 创建[诊断设置](platform/diagnostic-settings.md)可收集有关 Azure 资源操作的更多详细信息，添加[监视解决方案](insights/solutions.md)和[见解](insights/insights-overview.md)可为特定服务收集的收集数据提供额外的分析。 
+在你创建新的 Azure 订阅时就会启用 Azure Monitor，并自动收集[活动日志](./platform/platform-logs-overview.md)和平台[指标](platform/data-platform-metrics.md)。 创建[诊断设置](platform/diagnostic-settings.md)可收集有关 Azure 资源操作的更多详细信息，添加[监视解决方案](insights/solutions.md)和[见解](insights/insights-overview.md)可为特定服务收集的收集数据提供额外的分析。 
 
 ### <a name="how-do-i-access-azure-monitor"></a>如何访问 Azure Monitor？
 可通过 Azure 门户中的“监视”菜单访问各项 Azure Monitor 功能和数据。 通过不同 Azure 服务的菜单的“监视”部分，可访问相同的工具，其中数据经过筛选，指向特定的资源。 也可通过 CLI、PowerShell 和 REST API 针对各种场景来访问 Azure Monitor 数据。
@@ -314,7 +315,7 @@ WireData
 
 * 浏览器遥测：收集发送方的 IP 地址。
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
-* 要详细了解如何在 Application Insights 中收集 IP 地址和地理位置数据，请参阅本[文章](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)。
+* 要详细了解如何在 Application Insights 中收集 IP 地址和地理位置数据，请参阅本[文章](./app/ip-collection.md)。
 
 
 可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
@@ -327,7 +328,7 @@ WireData
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>服务器或设备与 Azure 断开连接后，Application Insight 的遥测数据会怎么样？
 
-所有 SDK（包括 Web SDK）都包含“可靠传输”。 当服务器或设备与 Azure 断开连接后，遥测数据[本地存储在文件系统](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (Server SDK) 或 HTML5 会话存储 (Web SDK) 中。 SDK 会定期重新尝试发送此遥测数据，直到引入服务将其视为“过时”（日志 48 小时后过时，指标 30 分钟后过时）。 过时的遥测将被删除。 在某些情况下（例如本地存储已满时），将不进行重试。
+所有 SDK（包括 Web SDK）都包含“可靠传输”。 当服务器或设备与 Azure 断开连接后，遥测数据[本地存储在文件系统](./app/data-retention-privacy.md#does-the-sdk-create-temporary-local-storage) (Server SDK) 或 HTML5 会话存储 (Web SDK) 中。 SDK 会定期重新尝试发送此遥测数据，直到引入服务将其视为“过时”（日志 48 小时后过时，指标 30 分钟后过时）。 过时的遥测将被删除。 在某些情况下（例如本地存储已满时），将不进行重试。
 
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>是否可能会在遥测中发送个人数据？
@@ -409,7 +410,7 @@ WireData
 
 #### <a name="querying-the-telemetry"></a>查询遥测
 
-使用 [REST API](https://dev.applicationinsights.io/) 运行 [Analytics](app/analytics.md) 查询。
+使用 [REST API](https://dev.applicationinsights.io/) 运行 [Analytics](./log-query/log-query-overview.md) 查询。
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>如何设置事件警报？
 
@@ -476,7 +477,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 #### <a name="proxy-passthrough"></a>代理传递
 
 可配置计算机级别或应用程序级别代理来实现代理传递。
-有关详细信息，请参阅 dotnet 关于 [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) 的文章。
+有关详细信息，请参阅 dotnet 关于 [DefaultProxy](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) 的文章。
  
  示例 Web.config：
  ```xml
@@ -734,7 +735,7 @@ Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表�
 ## <a name="next-steps"></a>后续步骤
 如果未在此处找到问题的答案，可查看以下论坛，了解其他问题和解答。
 
-- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
-- [Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Log Analytics](/answers/topics/azure-monitor.html)
+- [Application Insights](/answers/topics/azure-monitor.html)
 
 有关 Azure Monitor 的一般性反馈，请访问[反馈论坛](https://feedback.azure.com/forums/34192--general-feedback)。

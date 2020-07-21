@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32fd0da0095c34c4ef199eb703881e048473f0a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733669"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499352"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights 代理 API 参考
 
@@ -118,7 +119,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 - **MachineFilter** 是计算机或 VM 名称所需的 C# 正则表达式。
     - “.*”将匹配所有项
     - “ComputerName”将仅匹配具有指定确切名称的计算机。
-- **AppFilter** 是 IIS 站点名称所需的 C# 正则表达式。 可以通过运行命令 [get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite) 获取服务器上的站点列表。
+- **AppFilter** 是 IIS 站点名称所需的 C# 正则表达式。 可以通过运行命令 [get-iissite](/powershell/module/iisadministration/get-iissite) 获取服务器上的站点列表。
     - “.*”将匹配所有项
     - “SiteName”将仅匹配具有指定确切名称的 IIS 站点。
 - 需要 **InstrumentationKey** 才能监视与上述两个筛选器匹配的应用。
@@ -134,7 +135,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 **可选。** 使用此开关可在无外设安装中接受许可条款和隐私声明。
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
-当你使用一组 Web 服务器时，你可能正在使用[共享配置](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
+当你使用一组 Web 服务器时，你可能正在使用[共享配置](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
 HttpModule 无法注入此共享配置。
 此脚本将失败，并提示需要额外的安装步骤。
 使用此开关可忽略该检查并继续安装必备组件。 有关详细信息，请参阅[已知与 iis 共享配置的冲突](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
@@ -446,8 +447,8 @@ listdlls64.exe -accepteula w3wp
 
 如果此过程因任何原因失败，你可以手动运行这些命令：
 - iisreset.exe /status
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
+- [handle64.exe](/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
+- [listdlls64.exe](/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -551,7 +552,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 
 ## <a name="start-applicationinsightsmonitoringtrace"></a>Start-ApplicationInsightsMonitoringTrace
 
-从无代码附加运行时收集 [ETW 事件](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal)。 此 cmdlet 是运行 [PerfView](https://github.com/microsoft/perfview) 的替代方法。
+从无代码附加运行时收集 [ETW 事件](/windows/desktop/etw/event-tracing-portal)。 此 cmdlet 是运行 [PerfView](https://github.com/microsoft/perfview) 的替代方法。
 
 收集的事件将实时输出到控制台，并保存到 ETL 文件。 可以通过 [PerfView](https://github.com/microsoft/perfview) 打开该输出 ETL 文件，以用于进一步的调查。
 
@@ -636,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况。
+ - [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
-- 使用[分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询。
+- 使用[分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
  
  添加更多遥测：
@@ -648,9 +649,3 @@ Timeout Reached. Stopping...
  
  使用 Application Insights 代理执行更多操作：
  - 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。
-
-
-
-
-
-

@@ -4,22 +4,18 @@ description: 介绍不同的克隆类型和用法，以及如何使用备份集�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 12/05/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ddc7d9e359fbb43680ae093c4e6cd2b9fb1ab2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514973"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496139"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>在 Azure 门户中使用 StorSimple 设备管理器服务来克隆卷
 
@@ -51,7 +47,7 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
 
 可以使用本地快照或云快照在相同的设备、不同的设备甚至云设备中创建克隆。
 
-以下过程描述如何从备份目录创建克隆。  启动克隆的另一种方法是转到“卷”，选择一个卷，右键单击调用上下文菜单，选择“克隆”。********
+以下过程描述如何从备份目录创建克隆。  
 
 执行以下步骤从备份目录创建卷的克隆。
 

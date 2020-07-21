@@ -3,17 +3,18 @@ title: 异常卷的异常增加 - Azure Application Insights
 description: 使用 Azure Application Insights 中的智能检测监视应用程序异常，了解异常卷的异常模式。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00b7a28a51f91c969b41d2ab85b611f6dde51396
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671760"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499420"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>异常卷的异常增加（预览）
 
 Application Insights 自动分析应用程序中引发的异常，并对异常遥测中的异常模式发出警告。
 
-此功能需要为应用[配置异常报告](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting)，除此之外，不需要其他特殊步骤。 在应用生成足够多的异常遥测数据后，此功能会激活。
+此功能需要为应用[配置异常报告](./asp-net-exceptions.md#set-up-exception-reporting)，除此之外，不需要其他特殊步骤。 在应用生成足够多的异常遥测数据后，此功能会激活。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>何时会收到此类型的智能检测通知？
 对比前面七天计算的基线，如果应用显示某个特殊类型的异常数在一天内异常增加，则可能会收到此类型的通知。

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2020
-ms.openlocfilehash: 8b3dba7996b098ec398c9fe94705c18190b30ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753563"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497635"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 
@@ -124,7 +124,11 @@ Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 �
 
 ## <a name="integration-runtime-location"></a>集成运行时位置
 
-数据工厂位置是存储数据工厂元数据和启动管道触发所在的位置。 同时，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。 此行为通过[全局可用 IR 来实现](https://azure.microsoft.com/global-infrastructure/services/)，以确保数据的符合性、有效性并减少网络对外费用。
+### <a name="relationship-between-factory-location-and-ir-location"></a>工厂位置和 IR 位置之间的关系
+
+当客户创建数据工厂实例时，他们需要指定数据工厂的位置。 数据工厂位置是存储数据工厂元数据和启动管道触发所在的位置。 工厂的元数据仅存储在客户选择的区域中，而不会存储在其他区域中。
+
+同时，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。 此行为通过[全局可用 IR 来实现](https://azure.microsoft.com/global-infrastructure/services/)，以确保数据的符合性、有效性并减少网络对外费用。
 
 IR 位置定义其后端计算的位置，尤其是执行数据移动、活动分派和 SSIS 包执行的位置。 IR 位置可能与数据工厂所属的位置不同。 
 

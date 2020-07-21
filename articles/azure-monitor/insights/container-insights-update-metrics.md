@@ -2,12 +2,13 @@
 title: 如何更新用于容器的 Azure Monitor 以启用指标 | Microsoft Docs
 description: 本文介绍如何更新用于容器的 Azure Monitor，以启用支持浏览聚合指标并针对其发出警报的自定义指标功能。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298255"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498978"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 以启用指标
 
@@ -21,21 +22,23 @@ ms.locfileid: "84298255"
 
 | 指标命名空间 | 指标 | 说明 |
 |------------------|--------|-------------|
-| insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount | 这是一些 *node* 指标，包含 *host* 作为维度，另外还包含<br> 作为*主机*维度的值的节点名称。 |
-| insights.container/pods | podCount | 这是一些 *pod* 指标，包含以下对象作为维度 - ControllerName、Kubernetes 命名空间、名称、阶段。 |
+| 见解：容器/节点 | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | *节点*度量值包括作为维度的*主机*。 它们还包括<br> 作为*主机*维度的值的节点名称。 |
+| 见解/容器 | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | 作为*pod*指标，它们包括下列各项： ControllerName、Kubernetes 命名空间、名称和阶段。 |
+| 见解：容器/容器 | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-可以通过 Azure 门户、Azure PowerShell 或 Azure CLI 更新群集，使其支持这些新功能。 使用 Azure PowerShell 和 CLI 可为每个群集或者为订阅中的所有群集启用此功能。 AKS 的新部署将自动包含此配置更改和功能。
+为了支持这些新功能，发布中包含了一个新的容器化代理，即**microsoft/oms： ciprod02212019**版本。 新的 AKS 部署自动包含此配置更改和功能。 更新群集以支持此功能可从 Azure 门户、Azure PowerShell 或 Azure CLI 执行。 Azure PowerShell 和 CLI。 你可以为订阅中的每个群集或所有群集启用此项。
 
-任一进程都将**监视指标发布者**角色分配给群集的服务主体或用户分配的 MSI 用于监视加载项，以便可以将代理收集的数据发布到群集资源。 监视指标发布者仅有权向资源推送指标，而无法更改任何状态、更新资源或读取任何数据。 有关角色的更多信息，请参阅[“监视指标发布者”角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
+任一进程都将**监视指标发布者**角色分配给群集的服务主体或用户分配的 MSI 用于监视加载项，以便可以将代理收集的数据发布到群集资源。 监视指标发布者仅有权向资源推送指标，而无法更改任何状态、更新资源或读取任何数据。 有关角色的详细信息，请参阅[监视指标发布者角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确认以下事项：
+更新群集之前，请确认以下各项：
 
 * 自定义指标只在一部分 Azure 区域中可用。 受支持的区域列表在[此处](../platform/metrics-custom-overview.md#supported-regions)记录。
-* 你是 AKS 群集资源上的 **[所有者](../../role-based-access-control/built-in-roles.md#owner)** 角色的成员，这样才能收集节点和 Pod 自定义性能指标。 
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+* 你是 AKS 群集资源上的 **[所有者](../../role-based-access-control/built-in-roles.md#owner)** 角色的成员，这样才能收集节点和 Pod 自定义性能指标。
+
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>通过 Azure 门户升级群集
 
@@ -121,4 +124,4 @@ ms.locfileid: "84298255"
 
 ## <a name="verify-update"></a>验证更新
 
-使用上述方法之一启动更新后，可以使用 Azure Monitor 指标资源管理器验证“指标命名空间”中是否列出了“见解”。  如果是，则表示可以继续，并开始设置[指标警报](../platform/alerts-metric.md)或者将图表固定到[仪表板](../../azure-portal/azure-portal-dashboards.md)。  
+使用上述方法之一启动更新后，可以使用 Azure Monitor 指标资源管理器验证“指标命名空间”中是否列出了“见解”。  如果是这样，可以继续设置[指标警报](../platform/alerts-metric.md)，或将图表固定到[仪表板](../../azure-portal/azure-portal-dashboards.md)。  

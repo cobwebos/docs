@@ -6,11 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d12db3ab046d115b60b67a9c22bf4e885cd0ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782562"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499454"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>使用 OpenCensus Python 跟踪依赖项
 
@@ -85,7 +86,7 @@ conn.close()
 通过 OpenCensus `django` 集成跟踪传出 Django 请求。
 
 > [!NOTE]
-> 跟踪的唯一传出 Django 请求是对数据库的调用。 有关对 Django 应用程序发出的请求，请参阅[传入请求](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request#tracking-django-applications)。
+> 跟踪的唯一传出 Django 请求是对数据库的调用。 有关对 Django 应用程序发出的请求，请参阅[传入请求](./opencensus-python-request.md#tracking-django-applications)。
 
 从 [PyPI](https://pypi.org/project/opencensus-ext-django/) 下载并安装 `opencensus-ext-django`，然后将以下行添加到 Django `settings.py` 文件中的 `MIDDLEWARE` 节。
 

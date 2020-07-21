@@ -7,48 +7,32 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
-ms.date: 02/05/2020
+ms.date: 07/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 76a0e4660967dafec8e314fd681d05e694e562b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368186"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495691"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>使用 Azure 机器学习分析数据
-> [!div class="op_single_selector"]
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure 机器学习](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-> * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
-> * [SSMS](sql-data-warehouse-query-ssms.md)
-> 
-> 
 
-本教程使用 Azure 机器学习功能，根据存储在 Azure Synapse 中的数据生成预测机器学习模型。 具体而言，这就是通过预测客户是否有可能购买自行车，为自行车商店 Adventure Works 打造的有针对性的市场营销活动。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
-> 
-> 
+本教程使用[Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer)来构建预测性机器学习模型。 该模型基于 Azure Synapse 中存储的数据。 本教程的方案是预测某个客户是否有可能购买自行车，而不是通过自行车店来构建目标市场营销活动。
 
 ## <a name="prerequisites"></a>先决条件
+
 要逐步完成本教程，需要以下各项：
 
-* 随 AdventureWorksDW 示例数据预先加载的 SQL 池。 若要完成此预配，请参阅 [创建 SQL 池](create-data-warehouse-portal.md)，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以 [手动加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)。
+* 使用 AdventureWorksDW 示例数据预先加载的 SQL 池。 若要设置此 SQL 池，请参阅[创建 sql 池](create-data-warehouse-portal.md)并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以[手动加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)。
+* Azure 机器学习工作区。 按照[本教程](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)创建新的教程。
 
-## <a name="1-get-the-data"></a>1.获取数据
-数据位于 AdventureWorksDW 数据库的 dbo.vTargetMail 视图中。 若要读取此数据：
+## <a name="get-the-data"></a>获取数据
 
-1. 登录到 [Azure Machine Learning Studio](https://studio.azureml.net/) 并单击我的试验。
-2. 单击屏幕左下方的“+新建”，然后选择“空试验” 。
-3. 输入试验的名称：有针对性的营销。
-4. 将“数据输入和输出”下的“导入数据”模块从模块窗格拖放到画布中 。
-5. 在“属性”窗格中指定 SQL 池的详细信息。
-6. 指定数据库 **查询** 以读取所需的数据。
+所使用的数据位于 AdventureWorksDW 的 vTargetMail 视图中。 若要在本教程中使用数据存储，请先将数据导出到 Azure Data Lake Storage 帐户，因为 Azure Synapse 当前不支持数据集。 Azure 数据工厂可用于将数据从数据仓库导出到使用[复制活动](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)Azure Data Lake Storage。 使用以下查询进行导入：
 
 ```sql
 SELECT [CustomerKey]
@@ -70,66 +54,111 @@ SELECT [CustomerKey]
 FROM [dbo].[vTargetMail]
 ```
 
-单击试验画布下面的“运行”以运行试验。
+Azure Data Lake Storage 中提供数据后，Azure 机器学习中的数据存储用于[连接到 Azure 存储服务](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)。 按照以下步骤创建数据存储和相应的数据集：
 
-![运行试验](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1-reader-new.png)
+1. 从 Azure 门户或在[Azure 机器学习 studio](https://ml.azure.com/)中登录，启动 Azure 机器学习工作室。
 
-试验成功运行完毕后，单击读取器模块底部的输出端口，并选择“可视化”以查看导入的数据。
+1. 在 "**管理**" 部分的左窗格中单击 "**数据存储**"，然后单击 "**新建数据存储**"。
 
-![查看导入的数据](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3-readerdata-new.png)
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/datastores-tab.png" alt-text="Azure 机器学习界面的左窗格的屏幕截图":::
 
-## <a name="2-clean-the-data"></a>2.清理数据
-清理数据时，请删除与模型无关的某些列。 为此，请按以下步骤操作：
+1. 提供数据存储的名称，选择类型为 "Azure Blob 存储"，提供位置和凭据。 然后单击“创建” 。
 
-1. 将“数据转换 < 操作”下的“选择数据集中的列”模块拖放到画布中 。 将此模块连接到“导入数据”模块。
-2. 单击“属性”窗格中的“启动列选择器”来指定想要删除的列。
+1. 接下来，在 "**资产**" 部分的左窗格中单击 "**数据集**"。 选择 "**创建数据集**"，其中包含**数据存储中**的选项。
 
-   ![项目列](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png)
-3. 排除两个列：CustomerAlternateKey 和 GeographyKey。
+1. 指定数据集的名称，并选择要进行**表格**的类型。 然后，单击 "**下一步**" 继续。
 
-   ![删除不需要的列](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5-columnselector-new.png)
+1. 在 "**选择或创建数据存储" 部分**中，选择**以前创建的数据存储**的选项。 选择之前创建的数据存储。 单击 "下一步" 并指定路径和文件设置。 如果文件包含列标题，请确保指定列标题。
 
-## <a name="3-build-the-model"></a>3.生成模型
-我们以 80-20 的比例拆分数据：80% 用于训练机器学习模型，20% 用于测试模型。 我们将使用“双类”算法处理此二元分类问题。
+1. 最后，单击 "**创建**" 创建数据集。
 
-1. 将“拆分”模块拖放到画布中。
-2. 在“属性”窗格中，为“第一个输出数据集中的行部分”输入 0.8。
+## <a name="configure-designer-experiment"></a>配置设计器试验
 
-   ![将数据拆分为训练集和测试集](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6-split-new.png)
-3. 将“双类提升决策树”模块拖放到画布中。
-4. 将“训练模型”模块拖放到画布中并指定输入，方法是将其连接到“双类提升决策树”（ML 算法）和“拆分”（要在其上训练算法的数据）模块  。 
+接下来，按照以下步骤进行设计器配置：
 
-     ![连接“训练模型”模块](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7-train-new.png)
-5. 然后在“属性”窗格中单击“启动列选择器”。 选择 **BikeBuyer** 列作为要预测的列。
+1. 在 "**作者**" 部分的左窗格中，单击 "**设计器**" 选项卡。
 
-   ![选择要预测的列](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8-traincolumnselector-new.png)
+1. 选择**易于使用的预生成模块**以生成新的管道。
 
-## <a name="4-score-the-model"></a>4.为模型评分
-现在，我们将测试模型如何在测试数据上执行。 我们将比较选择的算法和不同的算法，以查看哪一个的执行效果更好。
+1. 在右侧的 "设置" 窗格中，指定管道的名称。
+
+1. 同时，为之前设置的群集选择 "设置中的整个试验" 按钮的目标计算群集。 关闭“设置”窗格。
+
+## <a name="import-the-data"></a>导入数据
+
+1. 在 "搜索" 框下的左窗格中选择 "**数据集**" 子标签。
+
+1. 将之前创建的数据集拖动到画布中。
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="画布上数据集模块的屏幕截图。":::
+
+## <a name="clean-the-data"></a>清理数据
+
+若要清除数据，请删除与模型无关的列。 请遵循以下步骤进行配置：
+
+1. 在左窗格中选择 "**模块**" 子标签。
+
+1. 将“数据转换 < 操作”下的“选择数据集中的列”模块拖放到画布中 。 将此模块连接到**数据集**模块。
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="画布上列选择模块的屏幕截图。" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
+
+1. 单击该模块以打开 "属性" 窗格。 单击 "编辑列"，指定要删除的列。
+
+1. 排除两个列：CustomerAlternateKey 和 GeographyKey。 单击“保存”
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="显示删除的列的屏幕截图。":::
+
+## <a name="build-the-model"></a>构建模型
+
+数据拆分为 80-20: 80%，以训练机器学习模型，20% 用于测试模型。 此二元分类问题中使用了 "双类" 算法。
+
+1. 将 "**拆分数据**" 模块拖放到画布中。
+
+1. 在 "属性" 窗格中，为**第一个输出数据集中的部分行**输入0.8。
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="显示0.8 的拆分比例的屏幕截图。":::
+
+1. 将“双类提升决策树”模块拖放到画布中。
+
+1. 将 "**训练模型**" 模块拖放到画布中。 指定输入，方法是将其连接到**双类提升决策树**（ML 算法），并**拆分数据**（用于训练算法的数据）模块。
+
+1. 对于 "训练模型模型"，在 "属性" 窗格中的 "**标签列**" 选项中，选择 "编辑列"。 选择**BikeBuyer**列作为要预测的列，然后选择 "**保存**"。
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="显示标签列 BikeBuyer 选定的屏幕截图。":::
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="显示连接到双类提升决策树和拆分数据模块的定型模型模块的屏幕截图。":::
+
+## <a name="score-the-model"></a>为模型评分
+
+现在，测试模型如何在测试数据上执行。 将比较两个不同的算法，以查看哪一个算法的性能更佳。 请遵循以下步骤进行配置：
 
 1. 将“评分模型”模块拖放到画布中，并将其连接到“训练模型”和“拆分模型”模块  。
 
-   ![为模型评分](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9-score-new.png)
-2. 将“双类贝叶斯点机”拖放到试验画布中。 我们将比较此算法和双类提升决策树的执行效果。
-3. 复制“训练模型”和“评分模型”模块并将其粘贴在画布中。
-4. 将“评估模型”模块拖放到画布以比较两种算法。
-5. **运行** 试验。
+1. 将**平均感知器的双类 Bayes**拖动到试验画布中。 与双类提升决策树相比，将比较此算法的执行方式。
 
-   ![运行试验](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10-evaluate-new.png)
-6. 单击“评估模型”模块底部的输出端口，并单击“可视化”。
+1. 复制并粘贴 "模块**训练模型**" 和 "**评分模型**"。
 
-   ![可视化评估结果](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11-evalresults-new.png)
+1. 将“评估模型”模块拖放到画布以比较两种算法。
 
-提供的指标包括 ROC 曲线、精度和召回率示意图以及提升曲线。 查看这些度量值，我们可以看到第一个模型的执行效果优于第二个。 要查看第一个模型的预测内容，请单击“评分模型”的输出端口，并单击“可视化”。
+1. 单击 "**提交**" 以设置管道运行。
 
-![可视化评分结果](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12-scoreresults-new.png)
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="画布上所有剩余模块的屏幕截图。" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
 
-会看到另外两个列已添加到测试数据集。
+1. 运行完成后，右键单击 "**评估模型**" 模块，并单击 "**可视化计算结果**"。
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="结果的屏幕截图。":::
+
+提供的指标包括 ROC 曲线、精度和召回率示意图以及提升曲线。 查看这些指标，查看第一个模型的执行效果优于第二个模型。 若要查看第一个模型的预测内容，请右键单击 "评分模型" 模块，并单击 "可视化评分的数据集" 查看预测的结果。
+
+你将看到添加到测试数据集的两个列。
 
 * 评分概率：客户购买自行车的可能性。
 * 评分标签：模型执行的分类 – 自行车的购买者 (1) 或不是购买者 (0)。 标签的概率阈值设置为 50%，并可以调整。
 
-比较 BikeBuyer（实际）列和评分标签（预测），可以看到模型的执行效果。 接下来，可以使用此模型预测新的客户，并将其发布为 Web 服务，或将结果写回到 Azure Synapse。
+将列 BikeBuyer （实际）与评分标签（预测）进行比较，以查看模型的执行情况。 接下来，您可以使用此模型来预测新客户。 可以[将此模型发布为 web 服务](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)，或将结果写回 Azure Synapse。
 
 ## <a name="next-steps"></a>后续步骤
-若要深入了解如何构建预测性机器学习模型，请参阅 [Azure 上的机器学习简介](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)。
+
+若要详细了解 Azure 机器学习，请参阅[Azure 上的机器学习简介](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)。
+
+在[此处](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)了解数据仓库的内置评分。

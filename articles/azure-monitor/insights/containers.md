@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14fa6859a16dc173e75091983abee717bf813220
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984618"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499014"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor 中的容器监视解决方案
 
@@ -45,7 +45,7 @@ ms.locfileid: "85984618"
 
 下表概括了 Azure Monitor 中容器清单、性能和日志的 Docker 业务流程和操作系统监视支持。   
 
-| | ACS | Linux | Windows | 容器<br>清单 | 图像<br>清单 | 节点<br>库存 | 容器<br>性能 | 容器<br>事件 | 事件<br>日志 | 容器<br>日志 |
+|Docker 业务流程 | ACS | Linux | Windows | 容器<br>库存 | 映像<br>库存 | 节点<br>库存 | 容器<br>性能 | 容器<br>事件 | 事件<br>日志 | 容器<br>日志 |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -105,11 +105,11 @@ ms.locfileid: "85984618"
        - 查看[配置适用于 Kubernetes 的 Log Analytics Linux 代理](#configure-a-log-analytics-linux-agent-for-kubernetes)。
        - 查看[配置适用于 Kubernetes 的 Log Analytics Windows 代理](#configure-a-log-analytics-windows-agent-for-kubernetes)。
        - 查看“使用 Helm 在 Linux Kubernetes 上部署 Log Analytics 代理”。
-     - 如果拥有 Azure 容器服务 DC/OS 群集，请在[使用 Azure Monitor 监视 Azure 容器服务 dc/os 群集](../../container-service/dcos-swarm/container-service-monitoring-oms.md)中了解详细信息。
+     - 如果拥有 Azure 容器服务 DC/OS 群集，请在[使用 Azure Monitor 监视 Azure 容器服务 dc/os 群集](/previous-versions/azure/container-service/dcos-swarm/container-service-monitoring-oms)中了解详细信息。
      - 如果拥有 Docker Swarm 模式环境，请访问“配置适用于 Docker Swarm 的 Log Analytics 代理”了解更多信息。
      - 如果有 Service Fabric 群集，请在[具有 Azure Monitor 的监视器容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)中了解详细信息。
 
-请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
+请参阅 [Windows 上的 Docker 引擎](/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
 
 > [!IMPORTANT]
 > 在容器主机上安装[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)**之前**，主机上必须运行 Docker。 如果在安装 Docker 之前已经安装了代理，则需要重新安装适用于 Linux 的 Log Analytics 代理。 有关 Docker 的详细信息，请参阅 [Docker 网站](https://www.docker.com)。
@@ -505,7 +505,7 @@ dockerd --register-service -H npipe:// -H 0.0.0.0:2375
 Start-Service docker
 ```
 
-若要详细了解用于 Windows 容器的 Docker 守护程序配置，请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)。
+若要详细了解用于 Windows 容器的 Docker 守护程序配置，请参阅 [Windows 上的 Docker 引擎](/virtualization/windowscontainers/manage-docker/configure-docker-daemon)。
 
 #### <a name="install-windows-agents"></a>安装 Windows 代理
 
@@ -562,7 +562,7 @@ Start-Service docker
 
 - 容器事件 - 显示容器状态和包含失败的容器的计算机****。
 - 容器日志 - 显示随时间生成的容器日志文件图表，以及具有最大数量日志文件的计算机列表****。
-- Kubernetes 事件 - 显示随时间生成的 Kubernetes 事件图表，以及 Pod 生成事件的原因列表****。 仅在 Linux 环境中使用此数据集**。
+- Kubernetes 事件 - 显示随时间生成的 Kubernetes 事件图表，以及 Pod 生成事件的原因列表****。 仅在 Linux 环境中使用此数据集  。
 - Kubernetes 命名空间清单 - 显示命名空间和 Pod 的数量，并显示其层次结构****。 仅在 Linux 环境中使用此数据集**。
 - 容器节点清单 - 显示容器节点/主机上使用的业务流程类型的数量****。 此计算机节点/主机还会按容器数列出。 仅在 Linux 环境中使用此数据集**。
 - 容器映像清单 - 显示所用的容器映像总数以及映像类型的数量****。 映像数量还按映像标记列出。

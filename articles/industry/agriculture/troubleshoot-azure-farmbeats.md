@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187704"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497057"
 ---
-# <a name="troubleshoot"></a>疑难解答
+# <a name="troubleshoot-azure-farmbeats"></a>排查 Azure FarmBeats 问题
 
 本文提供常见 Azure FarmBeats 问题的解决方案。 有关更多帮助，请通过[支持论坛](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)联系我们，或通过 farmbeatssupport@microsoft.com 向我们发送电子邮件。
 
@@ -58,8 +58,8 @@ ms.locfileid: "86187704"
 
 **纠正措施**
 
-1. 请转到“FarmBeats 数据中心”资源组。
-2. 选择“事件中心”(DatafeedEventHubNamespace)，然后查看传入消息的数量。
+1. 中转到 FarmBeats 资源组。
+2. 选择**事件中心**命名空间（"传感器-伙伴-eh-名称-名称"），单击 "事件中心"，然后检查分配给伙伴的事件中心内的传入消息数。
 3. 执行下列任一操作：
 
    - 如果没有传入消息，请联系你的设备合作伙伴。  

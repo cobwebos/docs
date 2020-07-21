@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 7999f042b8a67bed8ef01cccec5890b1a2d58ebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f2f0def9a23437dff57dda2d1a57950cef86275
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510214"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496122"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概述-本地 Active Directory 域服务针对 Azure 文件共享的 SMB 进行身份验证
 
@@ -57,7 +57,7 @@ ms.locfileid: "85510214"
 
 ## <a name="regional-availability"></a>区域可用性
 
-使用 AD DS 的 azure 文件身份验证在[所有 Azure 公共区域](https://azure.microsoft.com/global-infrastructure/locations/)中均可用。
+在[所有 Azure 公共区域和 Gov 区域](https://azure.microsoft.com/global-infrastructure/locations/)中都提供了使用 AD DS 的 azure 文件身份验证。
 
 ## <a name="overview"></a>概述
 

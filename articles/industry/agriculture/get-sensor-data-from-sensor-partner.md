@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 707b432a4cb3918aa2dfbe460fc3cdcd53761bf1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80398235"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497074"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
@@ -66,7 +66,13 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
     cd  
     ```
 
-6. 运行以下命令。 这会将脚本下载到主目录。
+6. 运行以下命令。 这会连接经过身份验证的帐户以用于 Azure AD 请求
+
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+    
+7. 运行以下命令。 这会将脚本下载到主目录。
 
     ```azurepowershell-interactive 
 
@@ -74,7 +80,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
     ```
 
-7. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从**Azure Active Directory**  >  **概述**"页获取。
+8. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从**Azure Active Directory**  >  **概述**"页获取。
 
     ```azurepowershell-interactive 
 
@@ -82,7 +88,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
     ```
 
-8. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。
+9. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>使用生成的凭据集成设备数据
 

@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: f1d8bad3d0d3e73a387bdc76131461e5061bafce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf55c1f7de751f03fb804eb263cf0810a48378e1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263171"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494881"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>为虚拟机规模集选择适当数量的容错域
 默认情况下，系统会在没有区域的 Azure 区域中创建具有五个容错域的虚拟机规模集。 对于支持虚拟机规模集分区部署等等区域，如果已选中此选项，则每个区域的容错域计数的默认值为 1。 在这种情况下，FD = 1 意味着尽最大努力将属于规模集的 VM 实例分布在多个机架上。
@@ -22,10 +22,10 @@ ms.locfileid: "85263171"
 你还可以考虑使规模集容错域数量与托管磁盘容错域数量对齐。 如果整个托管磁盘容错域发生故障，此对齐有助于防止仲裁。 FD 计数可以设置为小于或等于每个区域中可用托管磁盘容错域的数量。 请参阅此[文档](../virtual-machines/windows/manage-availability.md)，了解按区域划分的托管磁盘容错域数。
 
 ## <a name="rest-api"></a>REST API
-如果未指定，则可以将属性设置 `properties.platformFaultDomainCount` 为1、2或3（默认值为3）。 请参阅[此处](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)的 REST API 文档。
+如果未指定，则可以将属性设置 `properties.platformFaultDomainCount` 为1、2或3（默认值为3）。 请参阅[此处](/rest/api/compute/virtualmachinescalesets/createorupdate)的 REST API 文档。
 
 ## <a name="azure-cli"></a>Azure CLI
-如果未指定参数，可以将参数设置 `--platform-fault-domain-count` 为1、2或3（默认值为3）。 请参阅[此处](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)的 Azure CLI 文档。
+如果未指定参数，可以将参数设置 `--platform-fault-domain-count` 为1、2或3（默认值为3）。 请参阅[此处](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)的 Azure CLI 文档。
 
 ```azurecli-interactive
 az vmss create \

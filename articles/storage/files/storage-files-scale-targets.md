@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536418"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496173"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -74,15 +74,15 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 
 为帮助你计划每个阶段的部署，下面提供了在采用某个配置的系统上进行内部测试期间观察到的结果
 
-| 系统配置 |  |
+| 系统配置 | 详细信息 |
 |-|-|
 | CPU | 64 个带 64 MiB L3 高速缓存的虚拟内核 |
 | 内存 | 128 GiB |
-| 磁盘和分区 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
+| 磁盘 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
 | 网络 | 1 Gbps 网络 |
-| 工作负荷 | 常规用途文件服务器|
+| 工作负载 | 常规用途文件服务器|
 
-| 初始的一次性预配  |  |
+| 初始的一次性预配  | 详细信息 |
 |-|-|
 | 对象数 | 2500 万个对象 |
 | 数据集大小| ~ 4.7 TiB |
@@ -92,7 +92,7 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 
 *当创建新的服务器终结点时，Azure 文件同步代理不下载任何文件内容。 它将首先同步整个命名空间，然后触发后台调用来将文件整体下载，或者根据服务器终结点上设置的云分层策略进行下载（如果启用了云分层）。
 
-| 持续同步  |   |
+| 持续同步  | 详细信息  |
 |-|--|
 | 同步的对象数| 125,000 个对象（~1% 的改动） |
 | 数据集大小| 50 GiB |

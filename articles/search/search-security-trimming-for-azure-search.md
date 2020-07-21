@@ -1,19 +1,19 @@
 ---
 title: 用于修整结果的安全筛选器
 titleSuffix: Azure Cognitive Search
-description: Azure 的文档级别的安全特权认知搜索搜索结果，使用安全筛选器和用户标识。
+description: 使用安全筛选器和用户标识的 Azure 认知搜索搜索结果的文档级别安全特权。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553140"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496411"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>用于在 Azure 认知搜索中修整结果的安全筛选器
 
@@ -32,28 +32,31 @@ ms.locfileid: "85553140"
 >[!NOTE]
 > 本文档未介绍检索主体标识符的过程。 应该从标识服务提供程序获取该标识符。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-本文假设读者拥有 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure 认知搜索服务](https://docs.microsoft.com/azure/search/search-create-service-portal)和 [Azure 认知搜索索引](https://docs.microsoft.com/azure/search/search-create-index-portal)。  
+本文假设你有[azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[azure 认知搜索服务](search-create-service-portal.md)和[索引](search-what-is-an-index.md)。  
 
 ## <a name="create-security-field"></a>创建安全字段
 
 文档必须包含一个指定哪些组拥有访问权限的字段。 此信息将成为筛选条件，在返回给请求发出者的结果集中选择或拒绝文档时，将以此条件为依据。
 我们假设为受保护的文件创建了一个索引，每个文件可由一组不同的用户访问。
+
 1. 将字段 `group_ids`（此处可选择任意名称）为 `Collection(Edm.String)`。 确保该字段的 `filterable` 属性设置为 `true`，以便根据用户拥有的访问权限筛选搜索结果。 例如，如果针对 `file_name` 为“secured_file_b”的文档将 `group_ids` 字段设置为 `["group_id1, group_id2"]`，则只有属于组 ID“group_id1”或“group_id2”的用户才对该文件拥有读访问权限。
+   
    确保字段的 `retrievable` 属性设置为 `false`，以便不会将其返回为搜索请求的一部分。
+
 2. 此外，针对此示例添加 `file_id` 和 `file_name` 字段。  
 
-```JSON
-{
-    "name": "securedfiles",  
-    "fields": [
-        {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "file_name", "type": "Edm.String"},
-        {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
-    ]
-}
-```
+    ```JSON
+    {
+        "name": "securedfiles",  
+        "fields": [
+            {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
+            {"name": "file_name", "type": "Edm.String"},
+            {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
+        ]
+    }
+    ```
 
 ## <a name="pushing-data-into-your-index-using-the-rest-api"></a>使用 REST API 将数据推送到索引中
   
@@ -149,7 +152,7 @@ api-key: [admin or query key]
  ]
 }
 ```
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 本文介绍了如何基于用户标识和 Azure 认知搜索 `search.in()` 函数筛选结果。 可以使用此函数传入请求用户的主体标识符，以将其与每个目标文档关联的主体标识符进行匹配。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
  

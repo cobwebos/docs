@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: a7a8af505394b5bf860778b9872434cdacf54210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54aac9fda42a867ab66d631279efbca4f812b01a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887013"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497603"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -77,11 +77,11 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 和 Dynamics CRM online
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为 "Dynamics"、"DynamicsCrm" 或 "CommonDataServiceForApps"。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 对于 Dynamics Online，此值必须为 "Online"。 | 是 |
-| serviceUri | Dynamics 实例的服务 URL。 例如 https://adfdynamics.crm.dynamics.com。 | 是 |
+| serviceUri | Dynamics 实例的服务 URL。 例如 https://www.crmdynamics.com。 | 是 |
 | authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 有效值为 "AADServicePrincipal" 和 "Office365"。 | 是 |
 | servicePrincipalId | Azure AD 应用程序的客户端 ID。 | 当身份验证为 "AADServicePrincipal" 时为 "是" |
 | servicePrincipalCredentialType | 用于服务主体身份验证的凭据类型。 有效值为 "ServicePrincipalKey" 和 "ServicePrincipalCert"。 | 当身份验证为 "AADServicePrincipal" 时为 "是" |
@@ -102,7 +102,7 @@ Dynamics 链接服务支持以下属性。
         "type": "Dynamics",  
         "typeProperties": {  
             "deploymentType": "Online",  
-            "serviceUri": "https://adfdynamics.crm.dynamics.com",  
+            "serviceUri": "https://www.crmdynamics.com",  
             "authenticationType": "AADServicePrincipal",  
             "servicePrincipalId": "<service principal id>",  
             "servicePrincipalCredentialType": "ServicePrincipalKey",  
@@ -124,7 +124,7 @@ Dynamics 链接服务支持以下属性。
         "type": "Dynamics", 
         "typeProperties": { 
             "deploymentType": "Online", 
-            "serviceUri": "https://adfdynamics.crm.dynamics.com", 
+            "serviceUri": "https://www.crmdynamics.com", 
             "authenticationType": "AADServicePrincipal", 
             "servicePrincipalId": "<service principal id>", 
             "servicePrincipalCredentialType": "ServicePrincipalCert", 
@@ -154,7 +154,7 @@ Dynamics 链接服务支持以下属性。
         "type": "Dynamics",
         "typeProperties": {
             "deploymentType": "Online",
-            "serviceUri": "https://adfdynamics.crm.dynamics.com",
+            "serviceUri": "https://www.crmdynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -174,16 +174,16 @@ Dynamics 链接服务支持以下属性。
 
 与 Dynamics online 比较的其他属性是**主机名**和**端口**。
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | Type 属性必须设置为 "Dynamics"、"DynamicsCrm" 或 "CommonDataServiceForApps"。 | 是的。 |
-| deploymentType | Dynamics 实例的部署类型。 对于与 IFD 的本地动态，值必须为 "OnPremisesWithIfd"。| 是的。 |
-| hostName | 本地 Dynamics 服务器的主机名称。 | 是的。 |
-| port | 本地 Dynamics 服务器的端口。 | 不能。 默认值为443。 |
-| organizationName | Dynamics 实例的组织名称。 | 是的。 |
-| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd” | 是的。 |
-| username | 要连接到 Dynamics 的用户名。 | 是的。 |
-| password | 为用户名指定的用户帐户的密码。 你可以将此字段标记为 "SecureString" 以将其安全地存储在数据工厂中。 也可以在 Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取。 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是的。 |
+| type | Type 属性必须设置为 "Dynamics"、"DynamicsCrm" 或 "CommonDataServiceForApps"。 | 是。 |
+| deploymentType | Dynamics 实例的部署类型。 对于与 IFD 的本地动态，值必须为 "OnPremisesWithIfd"。| 是。 |
+| hostName | 本地 Dynamics 服务器的主机名称。 | 是。 |
+| port | 本地 Dynamics 服务器的端口。 | 不是。 默认值为443。 |
+| organizationName | Dynamics 实例的组织名称。 | 是。 |
+| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd” | 是。 |
+| username | 要连接到 Dynamics 的用户名。 | 是。 |
+| password | 为用户名指定的用户帐户的密码。 你可以将此字段标记为 "SecureString" 以将其安全地存储在数据工厂中。 也可以在 Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取。 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是。 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定任何值，则属性使用默认的 Azure 集成运行时。 | 对于 source 为 No; 对于 sink，为 yes。 |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>示例：带有 IFD、使用 IFD 身份验证的本地 Dynamics
@@ -220,7 +220,7 @@ Dynamics 链接服务支持以下属性。
 
 若要从/向 Dynamics 复制数据，支持以下属性：
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 "DynamicsEntity"、"DynamicsCrmEntity" 或 "CommonDataServiceForAppsEntity"。 |是 |
 | entityName | 要检索的实体的逻辑名称。 | 如果活动源指定为 "query"，则对于源为 "否"，对于接收器为 "是" |
@@ -252,10 +252,10 @@ Dynamics 链接服务支持以下属性。
 
 若要从 Dynamics 复制数据，复制活动**源**部分支持以下属性：
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 "DynamicsSource"、"DynamicsCrmSource" 或 "CommonDataServiceForAppsSource"。 | 是 |
-| 查询 | FetchXML 是在 Dynamics online 和本地使用的专有查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[使用 FetchXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 如果 `entityName` 在数据集中指定，则为 No |
+| query | FetchXML 是在 Dynamics online 和本地使用的专有查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[使用 FetchXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 如果 `entityName` 在数据集中指定，则为 No |
 
 >[!NOTE]
 >即使在 FetchXML 查询中配置的列投影不包含 PK 列，也将始终复制该列。
@@ -320,13 +320,13 @@ Dynamics 链接服务支持以下属性。
 
 若要将数据复制到 Dynamics，复制活动**接收器**部分支持以下属性：
 
-| Property | 描述 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为 "DynamicsSink"、"DynamicsCrmSink" 或 "CommonDataServiceForAppsSink"。 | 是的。 |
+| type | 复制活动接收器的 type 属性必须设置为 "DynamicsSink"、"DynamicsCrmSink" 或 "CommonDataServiceForAppsSink"。 | 是。 |
 | writeBehavior | 操作的写入行为。 值必须为 "Upsert"。 | 是 |
-| alternateKeyName | 在实体上定义以执行 upsert 的备用密钥名称。 | 不能。 |
-| writeBatchSize | 每批中写入到 Dynamics 的数据行计数。 | 不能。 默认值为 10。 |
-| ignoreNullValues | 在写操作过程中是否忽略键字段之外的输入数据中的 null 值。<br/><br/>有效值为**TRUE**和**FALSE**：<ul><li>**TRUE**：执行 upsert 或更新操作时，目标对象中的数据保持不变。 插入在执行插入操作时定义的默认值。</li><li>**FALSE**：执行 upsert 或更新操作时，将目标对象中的数据更新为 null 值。 执行插入操作时插入 null 值。</li></ul> | 不能。 默认值为**FALSE**。 |
+| alternateKeyName | 在实体上定义以执行 upsert 的备用密钥名称。 | 不是。 |
+| writeBatchSize | 每批中写入到 Dynamics 的数据行计数。 | 不是。 默认值为 10。 |
+| ignoreNullValues | 在写操作过程中是否忽略键字段之外的输入数据中的 null 值。<br/><br/>有效值为**TRUE**和**FALSE**：<ul><li>**TRUE**：执行 upsert 或更新操作时，目标对象中的数据保持不变。 插入在执行插入操作时定义的默认值。</li><li>**FALSE**：执行 upsert 或更新操作时，将目标对象中的数据更新为 null 值。 执行插入操作时插入 null 值。</li></ul> | 不是。 默认值为**FALSE**。 |
 
 >[!NOTE]
 >对于 Dynamics sink，接收器**writeBatchSize**和复制活动**[parallelCopies](copy-activity-performance-features.md#parallel-copy)** 的默认值均为10。 因此，默认情况下会将100记录同时提交到 Dynamics。

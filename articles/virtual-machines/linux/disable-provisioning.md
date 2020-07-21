@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045750"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494507"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>禁用或删除 Vm 和映像中的 Linux 代理
 
 在删除 Linux 代理之前，你必须了解在删除 Linux 代理后哪些 VM 将无法执行的操作。
 
-Azure 虚拟机（VM）[扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)是用于在 azure vm 上提供部署后配置和自动化任务的小型应用程序，扩展由 azure 控制平面进行安装和管理。 [Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)负责处理平台扩展命令，并确保 VM 内扩展的正确状态。
+Azure 虚拟机（VM）[扩展](../extensions/overview.md)是用于在 azure vm 上提供部署后配置和自动化任务的小型应用程序，扩展由 azure 控制平面进行安装和管理。 [Azure Linux 代理](../extensions/agent-linux.md)负责处理平台扩展命令，并确保 VM 内扩展的正确状态。
 
 Azure 平台可承载许多扩展，其中包括 VM 配置、监视、安全性和实用工具应用程序。 第一方和第三方扩展都有很大的选择，其中使用了扩展的主要方案：
 * 支持第一方 Azure 服务，例如 Azure 备份、监视、磁盘加密、安全性、站点复制等。
@@ -31,7 +31,7 @@ Azure 平台可承载许多扩展，其中包括 VM 配置、监视、安全性�
 
 ## <a name="disabling-extension-processing"></a>禁用扩展处理
 
-有多种方法可以根据需要禁用扩展处理，但在继续之前，**必须**删除部署到 VM 的所有扩展，例如，使用 AZ CLI，可以[列出](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list)和[删除](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)：
+有多种方法可以根据需要禁用扩展处理，但在继续之前，**必须**删除部署到 VM 的所有扩展，例如，使用 AZ CLI，可以[列出](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list)和[删除](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)：
 
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -155,7 +155,7 @@ az sig image-version create \
 > 
 > 如果未执行上述操作，则平台将在40min 后尝试发送扩展配置和超时。
 
-若要部署禁用了扩展的 VM，可以将 Azure CLI 与[--enable](https://docs.microsoft.com/cli/azure/vm#az-vm-create)一起使用。
+若要部署禁用了扩展的 VM，可以将 Azure CLI 与[--enable](/cli/azure/vm#az-vm-create)一起使用。
 
 ```bash
 az vm create \

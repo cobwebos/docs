@@ -12,11 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 1d8261d05f59c7f40ba6b1e2d59d2b15ad56de95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3163d414e940d843489a34f319996b1b8ed6f4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424504"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497354"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>从 SSDT 在 Azure 中执行 SSIS 包
 
@@ -81,6 +82,30 @@ ms.locfileid: "84424504"
    ![选择“Azure 存储”](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
 
 4. 单击 "**连接**" 按钮以完成连接。  我们会在 SSDT 的 "**链接的 Azure 资源**" 解决方案资源管理器节点下显示所选 Azure-SSIS IR 和 azure 存储帐户。  我们还将刷新 Azure-SSIS IR 的状态，同时可以通过右键单击其节点弹出菜单，然后选择转到 ADF 门户/应用的**Start\Stop\Manage**菜单项来进行管理。
+
+## <a name="assess-ssis-projectpackages-for-executions-in-azure"></a>评估 SSIS project\packages 以在 Azure 中执行
+### <a name="assess-ssis-project-or-package"></a>评估 SSIS 项目或包
+在 Azure 中执行包之前，你可以评估你的包，以评估是否有任何潜在的迁移阻止程序或需要了解的信息。 
+-  你可以评估 "项目" 或 "单个包" 下的所有包。
+
+   ![评估项目 ](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
+    ![ 评估包](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
+
+-  您可以获取评估报告来检查每个评估问题，每个问题都有详细说明和建议。 你还可以将评估报表导出为 csv 文件。 
+
+   ![评估项目结果](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+
+### <a name="suppress-assessment-rule"></a>抑制评估规则
+如果确定不会对包应用某些评估规则，可以选择取消它。 
+-  你可以直接单击 "评估报表中**禁止**显示" 链接。
+
+   ![评估规则禁止设置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
+
+-  还可以通过**启用 Azure 的设置**进行配置。
+
+   ![启用 Azure 的设置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
+
+   ![通过 Azure 启用的设置评估规则禁止显示设置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png)
 
 ## <a name="execute-ssis-packages-in-azure"></a>在 Azure 中执行 SSIS 包
 ### <a name="azure-enabled-setting"></a>启用 Azure 的设置
@@ -159,6 +184,9 @@ ms.locfileid: "84424504"
 6. 在 Azure 中执行此包。 通过切换当前的 Visual Studio 配置，可以轻松地将环境切换回本地环境。
 
    ![切换 Visual Studio 配置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png)
+
+## <a name="current-limitations"></a>当前限制
+-  此 SSDT 功能目前不支持国内云。
 
 ## <a name="next-steps"></a>后续步骤
 在 Azure 中从 SSDT 运行包后，可以在 ADF 管道中将其部署和运行为 "执行 SSIS 包" 活动，请参阅[在 adf 管道中将 ssis 包作为 "执行 Ssis 包" 活动运行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。

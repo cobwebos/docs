@@ -1,5 +1,5 @@
 ---
-title: 提高列存储索引性能
+title: 提高列存储索引性能（工作区预览）
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: synapse-analytics
 author: kevinvngo
@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f1f3667c088c5f7300317ea02ca19a72e4e62905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c885bce5ca17d5919ec134d179f6009e91a969cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431028"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495476"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
+# <a name="maximizing-rowgroup-quality-for-columnstore-index-performance"></a>最大化列存储索引性能的行组质量
 
 行组质量由行组中的行数决定。 增加可用内存可以使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
 

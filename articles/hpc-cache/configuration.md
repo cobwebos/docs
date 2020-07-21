@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497193"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>配置其他 Azure HPC 缓存设置
 
@@ -51,7 +51,7 @@ Azure 门户中的 "**配置**" 页具有自定义多个设置的选项。 大�
 
 如果已禁用 root squash，则客户端根用户（UID 0）发出的请求会作为根传递到后端 NFS 存储系统。 此配置可能会允许不适当的文件访问。
 
-在缓存上设置根 squash 有助于补偿 ``no_root_squash`` 用作存储目标的 NAS 系统上所需的设置。 （了解有关[NFS 存储目标先决条件](hpc-cache-prereqs.md#nfs-storage-requirements)的详细信息。）与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
+在缓存上设置根 squash 有助于补偿 ``no_root_squash`` 用作存储目标的 NAS 系统上所需的设置。 （了解有关[NFS 存储目标先决条件](hpc-cache-prerequisites.md#nfs-storage-requirements)的详细信息。）与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
 
 默认设置为“是”。 （2020年4月之前创建的缓存可能会默认设置为 "**否**"。）
 

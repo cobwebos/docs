@@ -3,24 +3,25 @@ title: 启用容器 Azure Monitor |Microsoft Docs
 description: 本文介绍如何启用和配置容器 Azure Monitor，以便你可以了解容器的执行情况以及已确定的与性能相关的问题。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d85dd4f1eb89ddba96ec012acb7fb7550800ce7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499012"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>启用容器 Azure Monitor
 
 本文概述了可用于设置容器 Azure Monitor 的选项，这些选项可用于监视部署到 Kubernetes 环境并在上托管的工作负荷的性能：
 
-- [Azure Kubernetes 服务 (AKS)](https://docs.microsoft.com/azure/aks/)  
+- [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)版本3.x 和4。x  
 - [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html)版本4。x  
 - [启用了 Arc 的 Kubernetes 群集](../../azure-arc/kubernetes/overview.md)
 
 你还可以监视部署到中托管的自托管 Kubernetes 群集的工作负荷的性能：
 - Azure，使用[AKS 引擎](https://github.com/Azure/aks-engine)
-- [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910)或本地，使用 AKS 引擎。
+- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910)或本地，使用 AKS 引擎。
 
 可以使用以下任一受支持的方法为新部署或 Kubernetes 的一个或多个现有部署启用容器 Azure Monitor：
 
@@ -62,14 +63,14 @@ ms.locfileid: "85800624"
 
 容器 Azure Monitor 正式支持以下配置：
 
-- 环境： azure Red Hat OpenShift、Kubernetes 本地和 Azure 上的 AKS 引擎，以及 Azure Stack。 有关详细信息，请参阅[Azure Stack 上的 AKS 引擎](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)。
+- 环境： azure Red Hat OpenShift、Kubernetes 本地和 Azure 上的 AKS 引擎，以及 Azure Stack。 有关详细信息，请参阅[Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)。
 - 版本的 Kubernetes 和支持策略与[Azure Kubernetes 服务（AKS）中支持](../../aks/supported-kubernetes-versions.md)的版本相同。 
 
 ## <a name="network-firewall-requirements"></a>网络防火墙要求
 
 下表列出容器化代理与 Azure Monitor 容器进行通信所需的代理和防火墙配置信息。 来自代理的所有网络流量都是出站的，以便 Azure Monitor。
 
-|代理资源|Port |
+|代理资源|端口 |
 |--------------|------|
 | `*.ods.opinsights.azure.com` | 443 |
 | `*.oms.opinsights.azure.com` | 443 |
@@ -111,12 +112,12 @@ ms.locfileid: "85800624"
 
 若要启用容器 Azure Monitor，请使用下表中所述的方法之一：
 
-| 部署状态 | 方法 | 描述 |
+| 部署状态 | 方法 | 说明 |
 |------------------|--------|-------------|
 | 新建 Kubernetes 群集 | [使用 Azure CLI 创建 AKS 群集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| 你可以为使用 Azure CLI 创建的新的 AKS 群集启用监视。 |
 | | [使用 Terraform 创建 AKS 群集](container-insights-enable-new-cluster.md#enable-using-terraform)| 你可以为使用开源工具 Terraform 创建的新 AKS 群集启用监视。 |
 | | [使用 Azure 资源管理器模板创建 OpenShift 群集](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | 你可以为使用预配置的 Azure 资源管理器模板创建的新 OpenShift 群集启用监视。 |
-| | [使用 Azure CLI 创建 OpenShift 群集](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | 可以在使用 Azure CLI 部署新的 OpenShift 群集时启用监视。 |
+| | [使用 Azure CLI 创建 OpenShift 群集](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | 可以在使用 Azure CLI 部署新的 OpenShift 群集时启用监视。 |
 | 现有 Kubernetes 群集 | [使用 Azure CLI 启用 AKS 群集的监视](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | 你可以为已使用 Azure CLI 部署的 AKS 群集启用监视。 |
 | |[使用 Terraform 启用 AKS 群集](container-insights-enable-existing-clusters.md#enable-using-terraform) | 你可以为已使用开源工具 Terraform 部署的 AKS 群集启用监视。 |
 | | [为 Azure Monitor 启用 AKS 群集](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| 您可以为已从 Azure Monitor 中的 "多群集" 页部署的一个或多个 AKS 群集启用监视。 |

@@ -8,14 +8,14 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3ed3ff94b764c0fcb5521ef8106b32923b203a01
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 29e123666b35e4659e68a1a925047267f8519940
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260643"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496445"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引
 
@@ -136,7 +136,7 @@ Blob 索引器可从以下文档格式提取文本：
 > [!NOTE]
 > 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)来了解详细信息。
 >
-> 复合或嵌入文档 (例如 ZIP 存档、包含包含附件的嵌入 Outlook 电子邮件的 Word 文档或。带有附件) 的 MSG 文件也作为单个文档编制索引。 例如，从的附件中提取的所有图像。消息文件将在 normalized_images 字段中返回。
+> 复合文档或嵌入式文档（如 ZIP 存档、包含包含附件的嵌入 Outlook 电子邮件的 Word 文档或。带有附件的 MSG 文件）也作为单个文档编制索引。 例如，从的附件中提取的所有图像。消息文件将在 normalized_images 字段中返回。
 
 * 文档的文本内容将提取到名为 `content` 的字符串字段中。
 
@@ -212,7 +212,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 #### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>如果需要对某个字段进行编码以便将其用作键，但又想搜索它，该怎么办？
 
-有时，你需要使用诸如 metadata_storage_path 之类的字段的已编码版本作为键，但你也需要将该字段 (搜索，而不) 编码。 为了解决此问题，可以将其映射到两个字段中：一个将用于密钥，另一个将用于搜索目的。 在下面的示例中，"*键*" 字段包含编码的路径，而*路径*字段未编码，并将用作索引中的可搜索字段。
+有时，您需要使用诸如 metadata_storage_path 之类的字段的编码版本作为键，但您也需要此字段是可搜索的（不进行编码）。 为了解决此问题，可以将其映射到两个字段中：一个将用于密钥，另一个将用于搜索目的。 在下面的示例中，"*键*" 字段包含编码的路径，而*路径*字段未编码，并将用作索引中的可搜索字段。
 
 ```http
     PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30

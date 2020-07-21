@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c74d4f0b2e0b2d8ca09c9b2c1f1091594f5657dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2faf33fdd58090a335804f084ef2d1f180a9754a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111008"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499318"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights 代理（以前称为状态监视器 v2）：详细说明
 
@@ -29,9 +29,7 @@ ms.locfileid: "86111008"
 PowerShell 需要拥有管理员级别的权限才能对计算机进行更改。
 ### <a name="execution-policy"></a>执行策略
 - 说明:默认禁用 PowerShell 脚本的运行。 我们建议仅允许在当前范围运行 RemoteSigned 脚本。
-- 参考：[关于执行策略](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)和 [Set-ExecutionPolicy](
-https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
-)。
+- 参考：[关于执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)和 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)。
 - 命令：`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`。
 - 可选参数：
     - `-Force`。 跳过确认提示。
@@ -80,7 +78,7 @@ SerializationVersion           1.1.0.1
 1. 以管理员身份使用提升的执行策略运行 PowerShell。
 2. 安装 NuGet 包提供程序。
     - 说明:需要使用此提供程序才能与基于 NuGet 的存储库（例如 PowerShellGallery）交互。
-    - 参考：[Install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
+    - 参考：[Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
     - 命令：`Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`。
     - 可选参数：
         - `-Proxy`。 指定请求的代理服务器。
@@ -100,7 +98,7 @@ SerializationVersion           1.1.0.1
 
 3. 将 PowerShell 库配置为受信任的存储库。
     - 说明:默认情况下，PowerShell 库是不受信任的存储库。
-    - 参考：[Set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6)。
+    - 参考：[Set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6)。
     - 命令：`Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`。
     - 可选参数：
         - `-Proxy`。 指定请求的代理服务器。
@@ -146,7 +144,7 @@ SerializationVersion           1.1.0.1
 1. 确保满足 PowerShell 库的所有先决条件。
 2. 以管理员身份使用提升的执行策略运行 PowerShell。
 3. 安装 Az.ApplicationMonitor 模块。
-    - 参考：[Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6)。
+    - 参考：[Install-Module](/powershell/module/powershellget/install-module?view=powershell-6)。
     - 命令：`Install-Module -Name Az.ApplicationMonitor`。
     - 可选参数：
         - `-Proxy`。 指定请求的代理服务器。
@@ -172,7 +170,7 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>使用 Expand-Archive (v1.0.1.0) 将 nupkg 作为 zip 文件解压缩
 
 - 说明:基础版本的 Microsoft.PowerShell.Archive (v1.0.1.0) 无法解压缩 nupkg 文件。 使用 .zip 扩展名重命名文件。
-- 参考：[Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)。
+- 参考：[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)。
 - 命令：
 
     ```console
@@ -186,7 +184,7 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>使用 Expand-Archive (v1.1.0.0) 解压缩 nupkg
 
 - 说明:使用最新版本的 Expand-Archive 解压缩 nupkg 文件但不更改扩展名。
-- 参考：[Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) 和 [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)。
+- 参考：[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) 和 [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)。
 - 命令：
 
     ```console
@@ -199,7 +197,7 @@ SerializationVersion           1.1.0.1
 将手动下载的 PowerShell 模块安装到 PowerShell 目录中，使之可被 PowerShell 会话发现。
 有关详细信息，请参阅[安装 PowerShell 模块](/powershell/scripting/developer/module/installing-a-powershell-module)。
 
-若要将模块安装到任何其他目录中，请使用 [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) 手动导入模块。
+若要将模块安装到任何其他目录中，请使用 [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) 手动导入模块。
 
 > [!IMPORTANT] 
 > DLL 会通过相对路径进行安装。
@@ -218,14 +216,14 @@ SerializationVersion           1.1.0.1
 用于从 PowerShell 库下载并安装 Az.ApplicationMonitor 的 PowerShell 命令支持 `-Proxy` 参数。
 编写安装脚本时，请查看上述说明。
 
-Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 建议在 web.config 文件中配置应用的代理设置。 有关详细信息，请参阅 [Application Insights 常见问题解答：代理透传](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)。
+Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 建议在 web.config 文件中配置应用的代理设置。 有关详细信息，请参阅 [Application Insights 常见问题解答：代理透传](../faq.md#proxy-passthrough)。
 
 
 ## <a name="enable-monitoring"></a>启用监视
 
 使用 `Enable-ApplicationInsightsMonitoring` 命令以启用监视。
 
-有关如何使用此 cmdlet 的详细说明，请参阅 [API 参考](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)。
+有关如何使用此 cmdlet 的详细说明，请参阅 [API 参考](./status-monitor-v2-api-reference.md#enable-applicationinsightsmonitoring)。
 
 
 
@@ -235,7 +233,7 @@ Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 �
 
 - [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
-- [使用分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询。
+- [使用分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
 
  添加更多遥测：

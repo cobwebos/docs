@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945454"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498944"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>使用用于密钥保管库的 Azure Monitor（预览版）监视密钥保管库服务
 用于密钥保管库的 Azure Monitor（预览版）通过提供密钥保管库请求、性能、故障和延迟的统一视图，对密钥保管库进行全面监视。
@@ -24,7 +24,7 @@ ms.locfileid: "84945454"
 -   **深化分析**：可对特定密钥保管库执行详细分析。
 -    **可自定义**：可在其中更改要查看、修改的指标，或设置与限制相符的阈值，并保存你自己的工作簿。 可以将工作簿中的图表固定到 Azure 面板。
 
-用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 所有用户都可以访问基于指标的监视数据，但包含基于日志的可视化效果可能要求用户[对其 Azure 密钥保管库启用日志记录](https://docs.microsoft.com/azure/key-vault/key-vault-logging)。
+用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 所有用户都可以访问基于指标的监视数据，但包含基于日志的可视化效果可能要求用户[对其 Azure 密钥保管库启用日志记录](../../key-vault/general/logging.md)。
 
 ## <a name="configuring-your-key-vaults-for-monitoring"></a>配置密钥保管库以进行监视
 
@@ -39,7 +39,7 @@ ms.locfileid: "84945454"
 
 3. 保存诊断设置后，你将能够查看蜜月保管库见解下的所有基于日志的图表和可视化效果。 请注意，可能需要几分钟到几小时才能开始填充日志。
 
-4. 有关如何为密钥保管库服务启用诊断日志的其他帮助，请参阅[完整指南](https://docs.microsoft.com/azure/key-vault/key-vault-logging)。
+4. 有关如何为密钥保管库服务启用诊断日志的其他帮助，请参阅[完整指南](../../key-vault/general/logging.md)。
 
 ## <a name="view-from-azure-monitor"></a>从 Azure Monitor 查看
 
@@ -75,7 +75,7 @@ ms.locfileid: "84945454"
 
 工作簿显示成功（2xx 状态代码）、身份验证错误（401/403 状态代码）、限制（429 状态代码）和其他故障（4xx 状态代码）。
 
-为了更好地理解每个状态代码的含义，建议通读有关 [Azure 密钥保管库状态和响应代码](https://docs.microsoft.com/azure/key-vault/authentication-requests-and-responses)的文档。
+为了更好地理解每个状态代码的含义，建议通读有关 [Azure 密钥保管库状态和响应代码](../../key-vault/general/authentication-requests-and-responses.md)的文档。
 
 ## <a name="operations--latency-workbook"></a>“操作与延迟”工作簿
 
@@ -120,7 +120,7 @@ ms.locfileid: "84945454"
 用户还可以根据上表中的特定事务类型来确定视图的作用域，这会动态更新下表，用户可以在弹出的上下文窗格中查看完整的操作详细信息。
 
 >[!NOTE]
-> 请注意，用户必须启用了诊断设置才能查看此工作簿。 要详细了解如何启用诊断设置，请阅读有关 [Azure 密钥保管库日志记录](https://docs.microsoft.com/azure/key-vault/general/logging)的详细信息。
+> 请注意，用户必须启用了诊断设置才能查看此工作簿。 要详细了解如何启用诊断设置，请阅读有关 [Azure 密钥保管库日志记录](../../key-vault/general/logging.md)的详细信息。
 
 ## <a name="pin-and-export"></a>固定和导出
 
@@ -164,7 +164,7 @@ ms.locfileid: "84945454"
 
 ### <a name="resolving-performance-issues-or-failures"></a>解决性能问题或故障
 
-要帮助解决使用用于密钥保管库的 Azure Monitor（预览版）标识的任何密钥保管库相关问题，请参阅 [Azure 密钥保管库文档](https://docs.microsoft.com/azure/key-vault/)。
+要帮助解决使用用于密钥保管库的 Azure Monitor（预览版）标识的任何密钥保管库相关问题，请参阅 [Azure 密钥保管库文档](../../key-vault/index.yml)。
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>为什么只能看到200的密钥保管库
 
@@ -208,4 +208,4 @@ ms.locfileid: "84945454"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[使用 Azure Monitor 工作簿创建交互式报表](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
+查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。

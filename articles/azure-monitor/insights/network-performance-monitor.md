@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480872"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498952"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -31,7 +32,7 @@ ms.locfileid: "79480872"
 
 * [ExpressRoute 监视器](network-performance-monitor-expressroute.md)：通过 Azure ExpressRoute 监视分支办事处与 Azure 之间的端到端连接和性能。  
 
-可在线查看相关信息，深入了解[网络性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview)支持的各种功能。
+可在线查看相关信息，深入了解[网络性能监视器](../../networking/network-monitoring-overview.md)支持的各种功能。
  
 ## <a name="supported-regions"></a>支持的区域
 NPM 可从以下任一区域托管的工作区监视世界上任何地方网络和应用程序之间的连接：
@@ -60,7 +61,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * 中国东部 2
 
 
-可在[文档](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)中查看支持 ExpressRoute 监视器的区域列表。
+可在[文档](../../expressroute/how-to-npm.md?utm_swu=8117)中查看支持 ExpressRoute 监视器的区域列表。
 
 
 ## <a name="set-up-and-configure"></a>安装和配置
@@ -255,9 +256,9 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="alerts"></a>警报
 
-网络性能监视器使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) 的警报功能。
+网络性能监视器使用 [Azure Monitor](../platform/alerts-overview.md) 的警报功能。
 
-这意味着使用[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)管理所有通知。  
+这意味着使用[操作组](../platform/action-groups.md)管理所有通知。  
 
 如果你是通过 Log Analytics 创建警报的 NPM 用户： 
 1. 你将看到一个链接，该链接可将你重定向到 Azure 门户。 单击该链接以访问门户。
@@ -268,7 +269,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 如果你是通过 Azure 门户创建警报的 NPM 用户：  
 1. 可以选择直接输入电子邮件，也可以选择通过操作组创建警报。
 2. 如果选择直接输入电子邮件，则将创建名为 **NPM Email ActionGroup** 的操作组，并将电子邮件 ID 添加到该操作组。
-3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
+3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
 4. 成功创建警报后，可以使用“管理警报”链接来管理警报。 
 
 每次创建警报时，NPM 会在 Azure Monitor 中创建基于查询的日志警报规则。 默认情况下，每隔 5 分钟就会触发此查询。 Azure Monitor 不会对创建的前 250 条日志警报规则收取费用，超过 250 条日志警报规则限制的任何警报规则都将按照 [Azure Monitor 定价页中的警报定价](https://azure.microsoft.com/pricing/details/monitor/)计费。

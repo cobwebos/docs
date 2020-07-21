@@ -8,13 +8,13 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/02/2020
-ms.openlocfilehash: 60f4ed9940c70ed479c3108f3637aa55f2a42811
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/11/2020
+ms.openlocfilehash: 180bb78b66bc04e7c3d2aaf68a3dd6d30cfb671c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146892"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496547"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的索引器为 Cosmos DB 数据编制索引 
 
@@ -33,9 +33,9 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 + 对于通常可用的[SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)，可以使用[门户](#cosmos-indexer-portal)、 [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)或[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)来创建数据源和索引器。
 
-+ 对于[MONGODB API (预览) ](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)，可以使用[门户](#cosmos-indexer-portal)或[REST API 版本 2020-06-30-preview](search-api-preview.md)来创建数据源和索引器。
++ 对于[MONGODB API （预览版）](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)，可以使用[门户](#cosmos-indexer-portal)或[REST API 版本 2020-06-30-preview](search-api-preview.md)来创建数据源和索引器。
 
-+ 对于[Cassandra API (preview) ](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)和[Gremlin API (预览版) ](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，只能使用[REST API 版本 2020-06-30-preview](search-api-preview.md)来创建数据源和索引器。
++ 对于[Cassandra API （预览版）](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)和[Gremlin API （预览版）](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，只能使用[REST API 版本 2020-06-30-preview](search-api-preview.md)来创建数据源和索引器。
 
 
 > [!Note]
@@ -83,7 +83,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 - 跳过向导中的“扩充内容”页
 
-添加认知技能 (或扩充) 并不是一种进口要求。 除非有特定需要[将 AI 扩充添加](cognitive-search-concept-intro.md)到索引管道，否则应跳过此步骤。
+添加认知技能（或扩充）不是一种导入需求。 除非有特定需要[将 AI 扩充添加](cognitive-search-concept-intro.md)到索引管道，否则应跳过此步骤。
 
 若要跳过该步骤，请单击页面底部的“下一步”和“跳过”蓝色按钮。
 
@@ -269,11 +269,11 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 | Bool |Edm.Boolean、Edm.String |
 | 类似于整数的数字 |Edm.Int32、Edm.Int64、Edm.String |
 | 类似于浮点的数字 |Edm.Double、Edm.String |
-| String |Edm.String |
+| 字符串 |Edm.String |
 | 基元类型的数组，如 ["a", "b", "c"] |集合 (Edm.String) |
 | 类似于日期的字符串 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON 对象，如 { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
-| 其他 JSON 对象 |不适用 |
+| 其他 JSON 对象 |不可用 |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 - 配置并运行索引器
 
@@ -311,7 +311,7 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 
 ## <a name="indexing-changed-documents"></a>为已更改的文档编制索引
 
-数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一受支持的策略是 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) 使用 `_ts` Azure Cosmos DB 提供的 (时间戳) 属性，按如下所示指定：
+数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一受支持的策略是 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) 使用 `_ts` Azure Cosmos DB 提供的（时间戳）属性，如下所示：
 
 ```http
     {

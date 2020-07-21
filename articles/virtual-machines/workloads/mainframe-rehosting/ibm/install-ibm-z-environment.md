@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72025934"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499913"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>&Azure 上的开发/测试环境安装 IBM zD
 
@@ -56,13 +56,13 @@ Azure 和 Azure Stack 支持以下版本：
 
 ## <a name="create-the-base-image-and-connect"></a>创建基本映像并连接
 
-1. 在 Azure 门户中，使用所需的操作系统配置[创建 VM](/azure/virtual-machines/linux/quick-create-portal) 。 本文假设运行 Ubuntu 16.04 的 B4ms VM （具有4个 vcpu 和 16 GB 内存）。
+1. 在 Azure 门户中，使用所需的操作系统配置[创建 VM](../../../linux/quick-create-portal.md) 。 本文假设运行 Ubuntu 16.04 的 B4ms VM （具有4个 vcpu 和 16 GB 内存）。
 
 2. 创建 VM 后，打开用于 SSH 的入站端口22，为 FTP 打开 FTP，为网络服务器打开9443。
 
 3. 通过 "**连接**" 按钮获取 VM 的 "**概述**" 边栏选项卡上显示的 SSH 凭据。 选择 " **ssh** " 选项卡，并将 SSH 登录命令复制到剪贴板。
 
-4. 从本地 PC 登录到[Bash shell](/azure/cloud-shell/quickstart)并粘贴命令。 它采用**ssh \<user id\> \@ \<IP Address\> **格式。 系统提示输入凭据时，请输入凭据以建立与主目录的连接。
+4. 从本地 PC 登录到[Bash shell](../../../../cloud-shell/quickstart.md)并粘贴命令。 它采用**ssh \<user id\> \@ \<IP Address\> **格式。 系统提示输入凭据时，请输入凭据以建立与主目录的连接。
 
 ## <a name="copy-the-installation-file-to-the-server"></a>将安装文件复制到服务器
 

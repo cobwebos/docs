@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d55bcf921d5bddb1612f9cfb884b339f837c7aa2
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 315c635ba0864dc1565fd7ba5ccc450223d87ac9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225048"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494711"
 ---
 # <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>使用 PowerShell 从共享映像库中的 VHD 或快照创建映像
 
@@ -88,11 +88,11 @@ $gallery = Get-AzGallery `
 
 映像定义为映像创建一个逻辑分组。 它们用于管理有关映像的信息。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 
 
-制作映像定义时，请确保它具有所有正确信息。 在此示例中，我们假设快照或 VHD 来自正在使用的 VM，并且尚未通用化。 如果在运行适用于 Windows 的 Sysprep 或[waagent](https://github.com/Azure/WALinuxAgent)或 Linux 之后，在运行 Windows Sysprep 或 Linux) 的情况后，为通用 (OS 创建了 VHD 或快照， `-deprovision` `-deprovision+user` 请将更改 `-OsState` 为 `generalized` 。 
+制作映像定义时，请确保它具有所有正确信息。 在此示例中，我们假设快照或 VHD 来自正在使用的 VM，并且尚未通用化。 如果 VHD 或快照是通用操作系统（运行适用于 Windows 的 Sysprep 或[waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` 或 `-deprovision+user` Linux 之后），请将更改 `-OsState` 为 `generalized` 。 
 
-若要详细了解可以为映像定义指定的值，请参阅[映像定义](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
+有关可为映像定义指定的值的详细信息，请参阅[映像定义](./windows/shared-image-galleries.md#image-definitions)。
 
-使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，映像定义的名称为*myImageDefinition*，适用于专用 Windows OS。 若要使用 Linux OS 创建映像的定义，请使用 `-OsType Linux`。 
+使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，映像定义的名称为*myImageDefinition*，适用于专用 Windows OS。 若要使用 Linux OS 创建映像的定义，请使用 `-OsType Linux`。 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -107,16 +107,16 @@ $imageDefinition = New-AzGalleryImageDefinition `
    -Sku 'mySKU'
 ```
 
-### <a name="purchase-plan-information"></a>采购计划信息
+### <a name="purchase-plan-information"></a>购买计划信息
 
 在某些情况下，当从基于 Azure Marketplace 映像的映像创建 VM 时，需要在中传递购买计划信息。 在这些情况下，我们建议你在映像定义中包含采购计划信息。 在这种情况下，请参阅在[创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。
 
 
 ## <a name="create-an-image-version"></a>创建映像版本
 
-使用[AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)从快照创建映像版本。 
+使用[AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion)从快照创建映像版本。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 
 如果希望映像包含数据磁盘，则除了操作系统磁盘之外，还需要添加 `-DataDiskImage` 参数，并将其设置为数据磁盘快照或 VHD 的 ID。
 
@@ -148,7 +148,7 @@ $job.State
 > [!NOTE]
 > 需要等待映像版本完全完成生成和复制，然后才能使用相同的快照创建另一个映像版本。 
 >
-> 也可在[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中存储映像版本，只需在创建映像版本时添加 `-StorageAccountType Standard_ZRS` 即可。
+> 也可在[区域冗余存储](../storage/common/storage-redundancy.md)中存储映像版本，只需在创建映像版本时添加 `-StorageAccountType Standard_ZRS` 即可。
 >
 
 ## <a name="delete-the-source"></a>删除源

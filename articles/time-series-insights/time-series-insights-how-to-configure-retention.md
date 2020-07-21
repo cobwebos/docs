@@ -1,22 +1,23 @@
 ---
 title: 如何在环境中配置保留期 - Azure 时序见解 | Microsoft Docs
-description: 了解如何在 Azure 时序见解环境中配置保留期。
+description: 了解如何在 Azure Azure 时序见解环境中配置保留期。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 524e47e5be142b720687ad48ee9407da23284bd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ee06501134515d9369e98e724e55a66f040fffa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605051"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495119"
 ---
-# <a name="configuring-retention-in-time-series-insights"></a>在时序见解中配置保留期
+# <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>在 Azure 时序见解 Gen1 中配置保留期
 
 本文介绍如何在 Azure 时序见解中配置**数据保留时间**和**超出存储限制时的行为**。
 
@@ -24,18 +25,18 @@ ms.locfileid: "81605051"
 
 每个 Azure 时序见解环境都有用于配置**数据保留时间**的设置。 该值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
 
-每个时序见解环境都有一项附加设置：“超出存储限制时的行为”。  此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
+每个 Azure 时序见解环境都有一个额外的 "**存储限制超出" 行为**。 此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
 
 -  清除旧数据（默认行为）
 - 暂停传入 
 
-有关有助于更好地了解这些设置的详细信息，请参阅[了解时序见解中的保留期](time-series-insights-concepts-retention.md)。  
+若要详细了解这些设置，请参阅[了解 Azure 时序见解中的保留期](time-series-insights-concepts-retention.md)。  
 
 ## <a name="configure-data-retention"></a>配置数据保留
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”  。 选择时序见解环境。
+1. 查找现有的 Azure 时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”  。 选择 Azure 时序见解环境。
 
 1. 在“设置”标题下，选择“存储配置”   。
 
@@ -53,8 +54,8 @@ ms.locfileid: "81605051"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细信息，请参阅[了解时序见解中的保留期](time-series-insights-concepts-retention.md)。
+- 有关详细信息，请参阅[了解 Azure 时序见解中的保留期](time-series-insights-concepts-retention.md)。
 
-- 了解[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
+- 了解[如何缩放 Azure 时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
 
 - 了解如何[规划环境](time-series-insights-environment-planning.md)。

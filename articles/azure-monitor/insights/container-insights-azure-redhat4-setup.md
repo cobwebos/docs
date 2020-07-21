@@ -3,11 +3,12 @@ title: 为容器 Azure Monitor 配置 Azure Red Hat OpenShift v4 |Microsoft Docs
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本4或更高版本上托管 Azure Monitor 来配置 Kubernetes 群集的监视。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 49097d96ecf58d7c5bf7d1a60ff01fc7182587c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91b5644c13ac560910703454c4052e223f958014
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801472"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499165"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>为容器配置 Azure Red Hat OpenShift v4. x Azure Monitor
 
@@ -19,7 +20,7 @@ ms.locfileid: "85801472"
 
 可以使用本文中所述的受支持方法，为 Azure Red Hat OpenShift v4 的一个或多个现有部署启用容器 Azure Monitor。
 
-对于现有群集，请[在 Azure CLI 中运行此 Bash 脚本](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)。
+对于现有群集，请[在 Azure CLI 中运行此 Bash 脚本](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)。
 
 ## <a name="supported-and-unsupported-features"></a>支持和不支持的功能
 
@@ -151,7 +152,7 @@ export kubeContext="<kubeContext name of your ARO v4 cluster>"
 
 容器 Azure Monitor 中的多群集视图突出显示 Azure Red Hat OpenShift 群集，这些群集未在 "未监视的**群集**" 选项卡下启用监视功能。群集旁边的 "**启用**" 选项不会从门户中启动监视的载入。 你将重定向到本文，以按照本文前面所述的步骤手动启用监视。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左窗格或从主页中，选择 " **Azure Monitor**"。
 
@@ -171,4 +172,4 @@ export kubeContext="<kubeContext name of your ARO v4 cluster>"
 
 - 若要从群集中擦除和分析 Prometheus 指标，请查看[配置 Prometheus 度量值抓取](container-insights-prometheus-integration.md)。
 
-- 若要了解如何使用 Azure Monitor 容器停止监视群集，请参阅[如何停止监视 Azure Red Hat OpenShift 群集](container-insights-optout-openshift.md)。
+- 若要了解如何使用 Azure Monitor 容器停止监视群集，请参阅[如何停止监视 Azure Red Hat OpenShift 群集](./container-insights-optout-openshift-v3.md)。

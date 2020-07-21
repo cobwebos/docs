@@ -3,17 +3,17 @@ title: 使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Micro
 description: 在不重新部署网站的情况下监视网站性能。 使用托管在本地或 VM 中的 ASP.NET Web 应用。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166376"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499522"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
 > [!IMPORTANT]
-> 不再建议使用状态监视器，并**从六月6月 2021 1 日开始**，将不支持此版本的状态监视器。 它已被 Azure Monitor Application Insights 代理（以前称为状态监视器 v2）取代。 若要了解[本地服务器部署](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)或 [Azure 虚拟机和虚拟机规模集部署](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)，请参阅我们的文档。
+> 不再建议使用状态监视器，并**从六月6月 2021 1 日开始**，将不支持此版本的状态监视器。 它已被 Azure Monitor Application Insights 代理（以前称为状态监视器 v2）取代。 若要了解[本地服务器部署](./status-monitor-v2-overview.md)或 [Azure 虚拟机和虚拟机规模集部署](./azure-vm-vmss-apps.md)，请参阅我们的文档。
 
 无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 需要 [Microsoft Azure](https://azure.com) 订阅。
 
@@ -97,7 +97,7 @@ ms.locfileid: "86166376"
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- 如果需要确认已成功附加 Application Insights，可以在命令窗口中运行[Sysinternals 句柄](https://docs.microsoft.com/sysinternals/downloads/handle)以确认 applicationinsights.dll 是否已由 IIS 加载。
+- 如果需要确认已成功附加 Application Insights，可以在命令窗口中运行[Sysinternals 句柄](/sysinternals/downloads/handle)以确认 applicationinsights.dll 是否已由 IIS 加载。
 
   ```console
   handle.exe /p w3wp.exe
@@ -145,7 +145,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * 若要输出详细日志，请修改配置文件：`C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` 并将 `<add key="TraceLevel" value="All" />` 添加到 `appsettings`。
 然后重启状态监视器。
 
-* 由于状态监视器是一个 .NET 应用程序，因此还可以[通过向配置文件添加适当的诊断来启用 .NET 跟踪](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情况下，通过[配置网络跟踪](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)来查看网络级别发生的情况可能会很有用。
+* 由于状态监视器是一个 .NET 应用程序，因此还可以[通过向配置文件添加适当的诊断来启用 .NET 跟踪](/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情况下，通过[配置网络跟踪](/dotnet/framework/network-programming/how-to-configure-network-tracing)来查看网络级别发生的情况可能会很有用。
 
 ### <a name="insufficient-permissions"></a>权限不足
   
@@ -311,7 +311,7 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 
 ## <a name="download-status-monitor"></a><a name="download"></a>下载状态监视器
 
-- 使用新的 [PowerShell 模块](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)
+- 使用新的 [PowerShell 模块](./status-monitor-v2-overview.md)
 - 下载并运行[状态监视器安装程序](https://go.microsoft.com/fwlink/?LinkId=506648)
 - 或运行 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)并在其中搜索 Application Insights 状态监视器。
 
@@ -321,7 +321,7 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 
 * [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况
 * [搜索事件和日志][diagnostic]以诊断问题
-* [分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询
+* [分析](../log-query/log-query-overview.md)，以便进行更高级的查询
 
 添加更多遥测：
 
@@ -336,6 +336,6 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

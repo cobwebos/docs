@@ -5,19 +5,20 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037284"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495068"
 ---
-# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
+# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>使用事件中心将事件发送到 Azure 时序见解 Gen1 环境
 
 本文介绍如何在 Azure 事件中心中创建和配置事件中心。 其中还介绍了如何运行示例应用程序将事件从事件中心推送到 Azure 时序见解。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在 [Azure 时序见解](./time-series-insights-update-create-environment.md)中查看你的环境。
 
@@ -37,10 +38,10 @@ ms.locfileid: "86037284"
 
     [![创建使用者组](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
-1. 请确保创建一个使用者组，由时序见解事件源独占使用。
+1. 请确保创建专用于 Azure 时序见解事件源的使用者组。
 
     > [!IMPORTANT]
-    > 请确保该使用者组没有被任何其他服务（例如 Azure 流分析作业或其他时序见解环境）使用。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用 $Default 作为使用者组，则其他读者可能会重复使用使用者组****。
+    > 请确保此使用者组未被任何其他服务使用，如 Azure 流分析作业或其他 Azure 时序见解环境。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用 $Default 作为使用者组，则其他读者可能会重复使用使用者组****。
 
 1. 在菜单中的“设置”下，选择“共享访问策略”，然后选择“添加”************。
 
@@ -52,11 +53,11 @@ ms.locfileid: "86037284"
 
 1. 在“声明”下选择“发送”复选框********。
 
-## <a name="add-a-time-series-insights-instance"></a>添加时序见解实例
+## <a name="add-an-azure-time-series-insights-instance"></a>添加 Azure 时序见解实例
 
-时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据****。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id`****。 若要了解有关时序见解实例和**时序 ID**的详细信息，请参阅[时序模型](./concepts-model-overview.md)。
+在 Azure 时序见解第2代中，你可以使用时序模型（TSM）将上下文数据添加到传入的遥测。 在 TSM 中，你的标记或信号被称为*实例，* 你可以在*实例字段*中存储上下文数据。 使用时间序列 ID 在查询时加入数据****。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id`****。 若要详细了解如何在实例字段中存储数据，请阅读时序[模型](./concepts-model-overview.md)概述。
 
-### <a name="create-a-time-series-insights-event-source"></a>创建时序见解事件源
+### <a name="create-a-azure-time-series-insights-event-source"></a>创建 Azure 时序见解事件源
 
 1. 如果尚未创建事件源，请完成步骤以[创建事件源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 
@@ -72,7 +73,7 @@ ms.locfileid: "86037284"
 
     [![复制主键连接字符串的值](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. 转到  https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 该 URL 创建并运行模拟 windmill 设备。
+1. 转到 https://tsiclientsample.azurewebsites.net/windFarmGen.html。 该 URL 创建并运行模拟 windmill 设备。
 1. 在网页上的“事件中心连接字符串”框中，粘贴在 [windmill 输入字段](#push-events-to-windmills-sample)中复制的连接字符串****。
   
     [![将主键连接字符串粘贴到“事件中心连接字符串”框中](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
@@ -80,7 +81,7 @@ ms.locfileid: "86037284"
 1. 选择“单击可启动”****。 
 
     > [!TIP]
-    > Windmill 模拟器还会创建 JSON，你可以将其用作带有[时序见解 GA 查询 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)的有效负载。
+    > Windmill 模拟器还会创建 JSON，你可以使用[Azure 时序见解 GA 查询 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)作为负载。
 
     > [!NOTE]
     > 在浏览器选项卡关闭之前，模拟器将继续发送数据。
@@ -154,7 +155,7 @@ ms.locfileid: "86037284"
 
 * **输出**：两个事件。 “location”属性复制到每个事件****。
 
-    |location|events.id|events.timestamp|
+    |位置|events.id|events.timestamp|
     |--------|---------------|----------------------|
     |WestUs|device1|2016-01-08T01:08:00Z|
     |WestUs|device2|2016-01-08T01:17:00Z|
@@ -195,13 +196,13 @@ ms.locfileid: "86037284"
 
 * **输出**：两个事件。
 
-    |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
+    |位置|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
     |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|压力|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|振动|abs G|217.09|
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在时序见解资源管理器中[查看环境](https://insights.timeseries.azure.com)。
+- 在 Azure 时序见解资源管理器中[查看环境](https://insights.timeseries.azure.com)。
 
 - 阅读有关 [IoT 中心设备消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)的详细信息

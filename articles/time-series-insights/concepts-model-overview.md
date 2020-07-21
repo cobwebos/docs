@@ -1,31 +1,30 @@
 ---
-title: 时序模型 - Azure 时序见解 | Microsoft Docs
-description: 了解 Azure 时序见解预览版中的时序模型
+title: 时序模型-Azure 时序见解 Gen2 |Microsoft Docs
+description: 了解 Azure 时序见解 Gen2 中的时序模型。
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5a22987b1d67f9e9f8384e5376343af2f91b5e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049752"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495374"
 ---
-# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
+# <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 时序见解 Gen2 中的时序模型
 
-本文介绍时序模型及其功能，以及如何在 Azure 时序见解预览版环境中开始生成和更新自己的模型。
+本文介绍时序模型、功能，以及如何在 Azure 时序见解 Gen2 环境中开始构建和更新自己的模型。
 
 > [!TIP]
 >
 > * 有关实时时序模型的示例，请转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
-> * 若要了解如何在时序模型 UI 中导航，请阅读有关 [Azure 时序见解预览版资源管理器](time-series-insights-update-explorer.md)的文章。
-> * 通过时序见解 Web 资源管理器了解[如何使用时序模型](time-series-insights-update-how-to-tsm.md)。
+> * 了解如何使用 Azure 时序见解 Gen2 资源管理器[处理时序模型](time-series-insights-update-how-to-tsm.md)。
 
 ## <a name="summary"></a>总结
 
@@ -58,7 +57,7 @@ ms.locfileid: "86049752"
 
 ### <a name="key-capabilities"></a>关键功能
 
-时序模型的目标是让用户毫不费力地管理时序上下文化，它在时序见解预览版中可以实现以下功能。 它可以帮助你：
+为了简化和轻松管理时序 contextualization，时序模型在 Azure 时序见解 Gen2 中启用了以下功能。 它可以帮助你：
 
 * 利用标量函数、聚合操作等创作和管理计算或公式。
 * 定义父子关系以实现导航、搜索和引用。
@@ -72,11 +71,11 @@ ms.locfileid: "86049752"
 * [时序模型层次结构](#time-series-model-hierarchies)
 * [时序模型类型](#time-series-model-types)
 
-组合这些组件可以指定时序模型以及组织 Azure 时序见解数据。
+这些组件组合在一起，以指定时序模型和组织数据。
 
 [![时序模型概述图表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-可以通过[时序见解预览版](time-series-insights-update-how-to-tsm.md)界面来创建和管理时序模型。 可以通过[模型设置 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) 来管理时序模型设置。
+可以通过[Azure 时序见解 Gen2 资源管理器](time-series-insights-update-how-to-tsm.md)创建和管理时序模型。 可以通过[模型设置 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) 来管理时序模型设置。
 
 ## <a name="time-series-model-instances"></a>时序模型实例
 
@@ -88,7 +87,7 @@ ms.locfileid: "86049752"
 
 实例字段是描述性信息的集合，可包含层次结构级别的值，以及制造商、运营商等信息。**
 
-为时序见解环境配置事件源后，可在时序模型中自动发现和创建实例。 可以使用时序模型查询通过时序见解资源管理器来创建或更新实例。
+为 Azure 时序见解 Gen2 环境配置了事件源后，会在时序模型中自动发现和创建实例。 可以通过 Azure 时序见解 Gen2 资源管理器使用时序模型查询来创建或更新实例。
 
 [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)提供了多个实时实例示例。
 
@@ -98,7 +97,7 @@ ms.locfileid: "86049752"
 
 实例由 **timeSeriesId**、**typeId**、**name**、**description**、**hierarchyIds** 和 **instanceFields** 定义。 每个实例仅映射到一个*类型*和一个或多个*层次结构*。
 
-| Property | 描述 |
+| properties | 说明 |
 | --- | ---|
 | timeSeriesId | 与实例关联的时序的唯一 ID。 在大多数情况下，实例由诸如 deviceId 或 assetId 的属性唯一标识。 在某些情况下，可以使用更具体的组合 ID，最多可使用3个属性。 |
 | typeId | 与实例相关联的时序模型类型的区分大小写的唯一字符串 ID。 默认情况下，所有已发现的新实例都会关联到默认类型。
@@ -130,15 +129,15 @@ ms.locfileid: "86049752"
 ```
 
 > [!TIP]
-> 有关时序见解实例 API 以及创建、读取、更新和删除 (CRUD) 支持，请阅读[数据查询](concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[实例 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)。
+> 有关实例 API 创建、读取、更新和删除（CRUD）支持，请阅读[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[实例 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)。
 
 ## <a name="time-series-model-hierarchies"></a>时序模型层次结构
 
 时序模型层次结构通过指定属性名称及其关系来组织实例。**
 
-可以在给定的时序见解环境中配置多个层次结构。 一个时序模型实例可以映射到一个或多个层次结构（多对多的关系）。
+可以在给定的 Azure 时序见解 Gen2 环境中配置多个层次结构。 一个时序模型实例可以映射到一个或多个层次结构（多对多的关系）。
 
-[Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)客户端界面显示了标准实例和类型层次结构。
+[Contoso 风场演示](https://insights.timeseries.azure.com/preview/samples)显示标准实例和类型层次结构。
 
 [![时序模型层次结构示例](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
@@ -146,7 +145,7 @@ ms.locfileid: "86049752"
 
 层次结构由层次结构**id**、**名称**和**源**定义。
 
-| Property | 说明 |
+| properties | 说明 |
 | ---| ---|
 | id | 层次结构的唯一标识符，例如，在定义实例时使用。 |
 | name | 用于提供层次结构名称的字符串。 |
@@ -187,7 +186,7 @@ ms.locfileid: "86049752"
 * `ManufactureDate` 定义包含父级 `year` 和子级 `month` 的层次结构。 每个 `ManufactureDate` 可以包含多个 `years`，而后者又可以包含多个 `months`。
 
 > [!TIP]
-> 有关时序见解实例 API 和 CRUD 支持，请阅读[数据查询](concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[层次结构 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)。
+> 有关层次结构 API 创建、读取、更新和删除（CRUD）支持，请阅读[数据查询](concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[层次结构 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)。
 
 ### <a name="hierarchy-example"></a>层次结构示例
 
@@ -217,13 +216,13 @@ ms.locfileid: "86049752"
 | ID4 | "生成" = "1000"，"地板" = "10"  |
 | ID5 | 未设置 "生成"、"楼层" 或 "房间"。 |
 
-时序 **ID1** 和 **ID4** 在 [Azure 时序见解资源管理器](time-series-insights-update-explorer.md)中显示为层次结构 **H1** 的一部分，因为它们包含已完全定义且正确排序的 *building*、*floor* 和 *room* 参数。
+时序**ID1**和**ID4**在[Azure 时序见解 Gen2 资源管理器](time-series-insights-update-explorer.md)中作为层次结构**H1**的一部分显示，因为它们具有完全定义且正确排序的*生成*、*楼层*和*房间*参数。
 
 其他 ID 分类到“无父实例”下，因为它们不符合指定的数据层次结构。**
 
 ## <a name="time-series-model-types"></a>时序模型类型
 
-时序模型类型可帮助你定义用于执行计算的变量或公式。** 类型与特定的时序见解实例相关联。
+时序模型类型可帮助你定义用于执行计算的变量或公式。** 类型与特定实例关联。
 
 一个类型可以包含一个或多个变量。 例如，某个时序模型实例的类型为“温度传感器”，其中包括变量“平均温度”、“最小温度”和“最大温度”。********
 
@@ -232,13 +231,13 @@ ms.locfileid: "86049752"
 [![时序模型类型示例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> 有关时序见解实例 API 和 CRUD 支持，请阅读[数据查询](concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[类型 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
+> 有关 API 创建、读取、更新和删除（CRUD）支持类型，请阅读[数据查询](concepts-query-overview.md#time-series-model-query-tsm-q-apis)一文和[类型 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
 
 ### <a name="type-properties"></a>Type 属性
 
 时序模型类型由 **id**、**name**、**description** 和 **variables** 定义。
 
-| Property | 说明 |
+| properties | 说明 |
 | ---| ---|
 | id | 类型的区分大小写的唯一字符串 ID。 |
 | name | 用于提供类型名称的字符串。 |
@@ -266,7 +265,7 @@ ms.locfileid: "86049752"
         "Interpolated Speed": {
           "kind": "numeric",
           "value": {
-              "tsx": "$event.[speed].Double"
+              "tsx": "$event['Speed-Sensor'].Double"
           },
           "filter": null,
           "interpolation": {
@@ -276,7 +275,7 @@ ms.locfileid: "86049752"
               }
           },
           "aggregation": {
-              "tsx": "left($value)"
+              "tsx": "right($value)"
           }
         }
       }
@@ -284,114 +283,12 @@ ms.locfileid: "86049752"
   ]
 }
 ```
-
-### <a name="variables"></a>变量
-
-时序见解类型可能有多个变量，这些变量指定事件的公式和计算规则。
-
-每个变量可以是以下三个种类之一：数字、分类和聚合。********
-
-* “数字”种类适用于连续值。****
-* “分类”种类适用于一组定义的离散值。****
-* “聚合”值组合单个种类（要么全为数字，要么全为分类）的多个变量。****
-
-下表显示了每个变量种类的相关属性。
-
-[![时序模型变量表](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
-
-#### <a name="numeric-variables"></a>数字变量
-
-| 变量属性 | 描述 |
-| --- | ---|
-| 变量筛选器 | 筛选器是可选的条件子句，用于限制可在计算中考虑的行数。 |
-| 变量值 | 来自设备或传感器的，或使用时序表达式进行转换的用于计算的遥测值。 数字种类变量的类型必须为 *Double*。|
-| 变量内插 | 内插指定如何使用现有数据重构信号。 *Step* 和 *Linear* 内插选项适用于数字变量。 |
-| 变量聚合 | 支持通过 *Avg*、*Min*、*Max*、*Sum*、*Count*、*First*、*Last* 和时间加权（*Avg*、*Min*、*Max*、*Sum*、*Left*）运算符进行计算。 |
-
-变量符合以下 JSON 示例：
-
-```JSON
-"Interpolated Speed": {
-  "kind": "numeric",
-  "value": {
-    "tsx": "$event.[speed].Double"
-  },
-  "filter": null,
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span": "P1D"
-    }
-  },
-  "aggregation": {
-    "tsx": "left($value)"
-  }
-}
-```
-
-#### <a name="categorical-variables"></a>分类变量
-
-| 变量属性 | 描述 |
-| --- | ---|
-| 变量筛选器 | 筛选器是可选的条件子句，用于限制可在计算中考虑的行数。 |
-| 变量值 | 来自设备或传感器的用于计算的遥测值。 分类种类变量的类型必须是 *Long* 或 *String*。 |
-| 变量内插 | 内插指定如何使用现有数据重构信号。 *Step* 内插选项适用于分类变量。 |
-| 变量类别 | 类别在来自设备或传感器的值与某个标签之间创建映射。 |
-| 变量的默认类别 | 默认类别适用于“categories”属性中未映射的所有值。 |
-
-变量符合以下 JSON 示例：
-
-```JSON
-"Status": {
-  "kind": "categorical",
-  "value": {
-     "tsx": "toLong($event.[Status].Double)"
-},
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span" : "PT1M"
-    }
-  },
-  "categories": [
-    {
-      "values": [0, 1, 2],
-      "label": "Good"
-    },
-    {
-      "values": [3],
-      "label": "Bad"
-    }
-  ],
-  "defaultCategory": {
-    "label": "Not Applicable"
-  }
-}
-```
-
-#### <a name="aggregate-variables"></a>聚合变量
-
-| 变量属性 | 描述 |
-| --- | ---|
-| 变量筛选器 | 筛选器是可选的条件子句，用于限制可在计算中考虑的行数。 |
-| 变量聚合 | 支持通过 *Avg*、*Min*、*Max*、*Sum*、*Count*、*First* 和 *Last* 进行计算。 |
-
-变量符合以下 JSON 示例：
-
-```JSON
-"Aggregate Speed": {
-  "kind": "aggregate",
-  "filter": null,
-  "aggregation": {
-    "tsx": "avg($event.Speed.Double)"
-  }
-}
-```
-
-变量存储在时序模型的类型定义中，可以通过[查询 API](concepts-query-overview.md) 以内联方式提供，以重写存储的定义。
+时序模型类型可以有多个变量，用于指定事件的公式和计算规则。 阅读有关[如何定义时序模型变量的](./concepts-variables.md)详细信息
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[数据查询](concepts-query-overview.md)
+- 有关如何通过 Api 编辑模型的详细信息，请参阅[时序模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)参考文档。
 
-* 阅读时序[模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)参考文档。
+- 探索可以用[时序模型变量](./concepts-variables.md)创建的公式和计算
+
+- 了解如何在 Azure 时序见解 Gen2 中[查询数据](concepts-query-overview.md)

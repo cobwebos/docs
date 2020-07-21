@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945488"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498910"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
 
@@ -78,7 +78,7 @@ ms.locfileid: "84945488"
 | `201 Created` | 用于创建资源的 POST 操作成功。 |
 | `404 Not Found` | 此操作正在尝试对不再存在的资源执行操作。 例如，该资源可能已被删除。 |
 
-有关状态代码的完整列表，请参阅 [Azure Cosmos DB HTTP 状态代码](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)一文。
+有关状态代码的完整列表，请参阅 [Azure Cosmos DB HTTP 状态代码](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)一文。
 
 ### <a name="capacity"></a>容量
 
@@ -98,7 +98,7 @@ ms.locfileid: "84945488"
 
 ## <a name="pin-export-and-expand"></a>固定、导出和展开
 
-可以将任一指标部分固定到 [Azure 仪表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)，方法是选择该部分右上角的图钉图标。
+可以将任一指标部分固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)，方法是选择该部分右上角的图钉图标。
 
 ![仪表板指标部分的图钉示例](./media/cosmosdb-insights-overview/pin.png)
 
@@ -126,6 +126,6 @@ ms.locfileid: "84945488"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 配置[指标警报](../platform/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications.md)来设置自动警报，以帮助检测问题。
+* 配置[指标警报](../platform/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications-portal.md)来设置自动警报，以帮助检测问题。
 
 * 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
