@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146560"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536379"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -441,9 +441,9 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 此实例中的配置指定以下设置：
 
-* 该模型需要使用 Python。
-* [入口脚本](#script)，用于处理发送到部署的服务的 Web 请求。
-* 用于描述推理所需的 Python 包的 Conda 文件。
+* 此模型需要 Python
+* 用于处理发送到已部署服务的 web 请求的[条目脚本](#script)
+* 描述推理所需 Python 包的 Conda 文件
 
 若要详细了解如何将自定义 Docker 映像与推理配置结合使用，请参阅[如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
@@ -459,7 +459,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 > [!IMPORTANT]
 > 目前，我们仅支持分析预期其请求数据为字符串的服务，例如：字符串序列化 json、文本、字符串序列化图像等。数据集的每一行的内容（字符串）都会放入 HTTP 请求的正文中，然后会被发送到可以对评分模型进行封装的服务。
 
-下面是一个示例，说明了如何构造用于分析服务的输入数据集，该服务预期其传入请求数据包含序列化 json。 在此示例中，我们创建了一个数据集，该数据集基于 100 个请求数据内容相同的实例。 在实际方案中，建议使用包含各种输入的更大数据集，尤其是在模型资源使用/行为是依赖于输入的情况下。
+下面是一个示例，说明了如何构造用于分析服务的输入数据集，该服务预期其传入请求数据包含序列化 json。 在这种情况下，我们创建了一个基于数据集的同一请求数据内容的100实例。 在实际方案中，建议使用包含各种输入的更大数据集，尤其是在模型资源使用/行为是依赖于输入的情况下。
 
 ```python
 import json
@@ -537,7 +537,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="deploy-to-target"></a>部署到目标
 
-部署使用推理配置部署配置来部署模型。 不管计算目标如何，部署过程都是类似的。 部署到 AKS 的过程略有不同，因为必须提供对 AKS 群集的引用。
+部署使用推理配置部署配置来部署模型。 不管计算目标如何，部署过程都是类似的。 部署到 Azure Kubernetes Service （AKS）略有不同，因为必须提供对 AKS 群集的引用。
 
 ### <a name="choose-a-compute-target"></a>选择计算目标
 
@@ -629,7 +629,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 请参阅[部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
 
 ### <a name="ab-testing-controlled-rollout"></a>A/B 测试（受控推出）
-有关详细信息，请参阅 [ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
+有关详细信息，请参阅[ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
 
 ## <a name="consume-web-services"></a>使用 Web 服务
 
@@ -878,7 +878,7 @@ az ml model download --model-id mymodel:1 --target-dir model_folder
 ### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 格式
 需要以 SavedModel 格式注册 Tensorflow 模型，才能进行无代码模型部署****。
 
-请访问[此链接](https://www.tensorflow.org/guide/saved_model)以了解如何创建 SavedModel。
+请参阅[此链接](https://www.tensorflow.org/guide/saved_model)，了解有关如何创建 SavedModel 的信息。
 
 ```python
 from azureml.core import Model
@@ -914,7 +914,13 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-如果使用的是 Pytorch，请阅读[将模型从 PyTorch 导出到 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)，详细了解转换和限制。 
+若要对模型进行评分，请参阅[使用部署为 web 服务的 Azure 机器学习模型](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。 许多 ONNX 项目使用 protobuf 文件来简洁地存储定型和验证数据，这可能会导致难以知道服务所需的数据格式。 作为模型开发人员，您应该为您的开发人员提供文档：
+
+* 输入格式（JSON 或二进制）
+* 输入数据形状和类型（例如，形状的浮动数组 [100100，3]）
+* 域信息（例如，对于图像、颜色空间、组件顺序以及值是否规范化）
+
+如果你使用的是 Pytorch，则[从 Pytorch 将模型导出到 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)具有有关转换和限制的详细信息。 
 
 ### <a name="scikit-learn-models"></a>Scikit-learn 模型
 

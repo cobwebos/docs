@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a605a11b1effd5d272dc8123f7e9c5c44262a3e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223952"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530196"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
 
@@ -424,10 +424,10 @@ ms.locfileid: "86223952"
 
 下面是用于发送通知的不同方法：
 
-* **REST 接口**：可以使用 [REST 接口](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)在任何后端平台上支持通知。
+* **REST 接口**：可以使用 [REST 接口](/previous-versions/azure/reference/dn223264(v=azure.100))在任何后端平台上支持通知。
 * **Microsoft Azure 通知中心 .NET SDK**：在适用于 Visual Studio 的 Nuget 包管理器中，运行[NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * **Node.js**：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-push-notification-tutorial.md)。
-* **移动应用**：有关如何从通知中心集成的 Azure 应用服务移动应用后端发送通知的示例，请参阅[将推送通知添加到移动应用](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。
+* **移动应用**：有关如何从通知中心集成的 Azure 应用服务移动应用后端发送通知的示例，请参阅[将推送通知添加到移动应用](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)。
 * **Java/PHP**：有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>（可选）通过 .NET 控制台应用发送通知。

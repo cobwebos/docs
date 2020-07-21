@@ -7,16 +7,17 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37c8b760ada12bd8f54c78ac6a0ea228d113b6c2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74080102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536980"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS 要求
 Skype for Business 具有各种工作负荷，它们要求的 QoS 处理方式各有差异。 如果打算通过 ExpressRoute 使用语音服务，应遵守以下所述要求。
 
-![](./media/expressroute-qos/expressroute-qos.png)
+![显示通过 ExpressRoute 的语音服务的示意图。](./media/expressroute-qos/expressroute-qos.png)
 
 > [!NOTE]
 > QoS 要求仅适用于 Microsoft 对等互连。 Azure 公共对等互连和 Azure 专用对等互连上接收自网络流量中的 DSCP 值将重置为 0。 
@@ -30,7 +31,7 @@ Skype for Business 具有各种工作负荷，它们要求的 QoS 处理方式�
 | **语音** |EF (46) |Skype/Microsoft 团队/Lync 语音 |
 | **交互式** |AF41 (34) |视频，VBSS |
 | |AF21 (18) |应用共享 | 
-| **默认值** |AF11 (10) |文件传输 |
+| **默认** |AF11 (10) |文件传输 |
 | |CS0 (0) |任何其他项目 |
 
 * 应该将工作负荷分类，并标记正确的 DSCP 值。 遵循 [此处](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) 提供的指导，了解如何在网络中设置 DSCP 标记。

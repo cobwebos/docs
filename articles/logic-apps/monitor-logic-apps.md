@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731996"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536243"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>监视 Azure 逻辑应用的运行状态、查看其触发历史记录并为其设置警报
 
@@ -71,7 +71,7 @@ ms.locfileid: "82731996"
 
    ![查看有关运行中每个步骤的详细信息](./media/monitor-logic-apps/review-logic-app-run-details.png)
 
-   例如，可以获取运行的“关联 ID”属性，在使用[适用于逻辑应用的 REST API](https://docs.microsoft.com/rest/api/logic) 时，可能需要此信息。
+   例如，可以获取运行的“关联 ID”属性，在使用[适用于逻辑应用的 REST API](/rest/api/logic) 时，可能需要此信息。
 
 1. 若要获取有关特定步骤的详细信息，请选择以下任一选项：
 
@@ -138,7 +138,7 @@ ms.locfileid: "82731996"
 
 ## <a name="set-up-monitoring-alerts"></a>设置监视警报
 
-若要在出现特定的指标或超出逻辑应用的阈值时收到警报，请[在 Azure Monitor 中设置警报](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 若要在不使用 [Azure Monitor](../log-analytics/log-analytics-overview.md) 的情况下设置警报，请执行以下步骤。
+若要在出现特定的指标或超出逻辑应用的阈值时收到警报，请[在 Azure Monitor 中设置警报](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的指标](../azure-monitor/platform/data-platform.md)。 若要在不使用 [Azure Monitor](../azure-monitor/log-query/log-query-overview.md) 的情况下设置警报，请执行以下步骤。
 
 1. 在逻辑应用菜单中的“监视”下，选择“警报” > “新建警报规则”。  
 

@@ -4,18 +4,20 @@ description: 上线 API 启动产品/服务上线一览过程。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: f356291662851172a3c6917b44891ce901546dfa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5c5448a853447a0eacc8d974a5b00d5d1e8f4be2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115700"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535937"
 ---
 # <a name="go-live"></a>上线
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成，在你的产品/服务迁移到合作伙伴中心后，它们仍可运行。 集成造成了少量的更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 此 API 启动将应用投入生产的过程。 这通常是一项长期操作。 此调用使用[发布](./cloud-partner-portal-api-publish-offer.md) API 操作返回的通知电子邮件列表。
 
@@ -26,12 +28,12 @@ ms.locfileid: "86115700"
 
 |  **名称**      |   **说明**                                                           | **Data type** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | 要检索的产品/服务的发布者标识符，例如 `contoso`       |  String       |
-| offerId        | 要检索的产品/服务的产品/服务标识符                                   |  String       |
+| publisherId    | 要检索的产品/服务的发布者标识符，例如 `contoso`       |  字符串       |
+| offerId        | 要检索的产品/服务的产品/服务标识符                                   |  字符串       |
 | api-version    | API 最新版本                                                   |  日期         |
 |  |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>标头
 ------
 
 |  **名称**       |     **值**       |

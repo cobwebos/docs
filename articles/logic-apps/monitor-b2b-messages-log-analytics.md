@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76907976"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536253"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>为 Azure 逻辑应用中的 B2B 消息设置 Azure Monitor 日志并收集诊断数据
 
-在集成帐户中设置贸易合作伙伴之间的 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议来交换消息。 若要检查此通信是否按预期方式工作，可以为集成帐户设置[Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)。 [Azure Monitor](../azure-monitor/overview.md)可帮助你监视云和本地环境，使你能够更轻松地保持其可用性和性能。 通过使用 Azure Monitor 日志，可以在[Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)中记录和存储有关运行时数据和事件的数据，例如触发器事件、运行事件和操作事件。 对于消息，日志记录还会收集以下信息：
+在集成帐户中设置贸易合作伙伴之间的 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议来交换消息。 若要检查此通信是否按预期方式工作，可以为集成帐户设置[Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)。 [Azure Monitor](../azure-monitor/overview.md)可帮助你监视云和本地环境，使你能够更轻松地保持其可用性和性能。 通过使用 Azure Monitor 日志，可以在[Log Analytics 工作区](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)中记录和存储有关运行时数据和事件的数据，例如触发器事件、运行事件和操作事件。 对于消息，日志记录还会收集以下信息：
 
 * 消息计数和状态
 * 确认状态
@@ -162,7 +163,7 @@ Azure Monitor 允许您创建[日志查询](../azure-monitor/log-query/log-query
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../log-analytics/log-analytics-log-searches.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->
@@ -179,12 +180,12 @@ Azure Monitor 允许您创建[日志查询](../azure-monitor/log-query/log-query
 
 下面列出了各个 AS2 消息的属性说明。
 
-| Property | 描述 |
+| properties | 说明 |
 |----------|-------------|
-| **发送方** | “接收设置”**** 中指定的来宾合作伙伴，或 AS2 协议的“发送设置”**** 中指定的托管合作伙伴 |
+| **寄信** | “接收设置”**** 中指定的来宾合作伙伴，或 AS2 协议的“发送设置”**** 中指定的托管合作伙伴 |
 | **端** | “接收设置”**** 中指定的托管合作伙伴，或 AS2 协议的“发送设置”**** 中指定的来宾合作伙伴 |
 | **逻辑应用** | 设置了 AS2 操作的逻辑应用 |
-| **状态** | AS2 消息状态 <br>成功 = 收到或发送了有效的 AS2 消息。 未设置 MDN。 <br>成功 = 收到或发送了有效的 AS2 消息。 设置并收到了 MDN，或已发送 MDN。 <br>失败 = 收到的 AS2 消息无效。 未设置 MDN。 <br>挂起 = 收到或发送了有效的 AS2 消息。 已设置 MDN，且 MDN 符合预期。 |
+| **Status** | AS2 消息状态 <br>成功 = 收到或发送了有效的 AS2 消息。 未设置 MDN。 <br>成功 = 收到或发送了有效的 AS2 消息。 设置并收到了 MDN，或已发送 MDN。 <br>失败 = 收到的 AS2 消息无效。 未设置 MDN。 <br>挂起 = 收到或发送了有效的 AS2 消息。 已设置 MDN，且 MDN 符合预期。 |
 | **ACK** | MDN 消息状态 <br>已接受 = 收到或发送了肯定的 MDN。 <br>挂起 = 等待接收或发送 MDN。 <br>已拒绝 = 收到或发送了否定的 MDN。 <br>不需要 = 协议中未设置 MDN。 |
 | **方向** | AS2 消息传送方向 |
 | **跟踪 ID** | 用于关联逻辑应用中所有触发器和操作的 ID |
@@ -212,12 +213,12 @@ Here are the name formats for each downloaded AS2 message folder and files.
 
 下面列出了各个 X12 消息的属性说明。
 
-| Property | 描述 |
+| properties | 说明 |
 |----------|-------------|
-| **发送方** | “接收设置”**** 中指定的来宾合作伙伴，或 X12 协议的“发送设置”**** 中指定的托管合作伙伴 |
+| **寄信** | “接收设置”**** 中指定的来宾合作伙伴，或 X12 协议的“发送设置”**** 中指定的托管合作伙伴 |
 | **端** | “接收设置”**** 中指定的托管合作伙伴，或 X12 协议的“发送设置”**** 中指定的来宾合作伙伴 |
 | **逻辑应用** | 设置了 X12 操作的逻辑应用 |
-| **状态** | X12 消息状态 <br>成功 = 收到或发送了有效的 X12 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 X12 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送的 X12 消息无效。 <br>挂起 = 收到或发送了有效的 X12 消息。 已设置功能确认，且功能确认符合预期。 |
+| **Status** | X12 消息状态 <br>成功 = 收到或发送了有效的 X12 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 X12 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送的 X12 消息无效。 <br>挂起 = 收到或发送了有效的 X12 消息。 已设置功能确认，且功能确认符合预期。 |
 | **ACK** | 功能确认 (997) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
 | **方向** | X12 消息传送方向 |
 | **跟踪 ID** | 用于关联逻辑应用中所有触发器和操作的 ID |
@@ -247,12 +248,12 @@ Here are the name formats for each downloaded X12 message folder and files.
 
 下面列出了各个 EDIFACT 消息的属性说明。
 
-| Property | 描述 |
+| properties | 说明 |
 |----------|-------------|
-| **发送方** | “接收设置”**** 中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”**** 中指定的托管合作伙伴 |
+| **寄信** | “接收设置”**** 中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”**** 中指定的托管合作伙伴 |
 | **端** | “接收设置”**** 中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”**** 中指定的来宾合作伙伴 |
 | **逻辑应用** | 设置了 EDIFACT 操作的逻辑应用 |
-| **状态** | EDIFACT 消息状态 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送了的 EDIFACT 消息无效 <br>挂起 = 收到或发送了有效的 EDIFACT 消息。 已设置功能确认，且功能确认符合预期。 |
+| **Status** | EDIFACT 消息状态 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送了的 EDIFACT 消息无效 <br>挂起 = 收到或发送了有效的 EDIFACT 消息。 已设置功能确认，且功能确认符合预期。 |
 | **ACK** | 功能确认（CONTRL）状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
 | **方向** | EDIFACT 消息传送方向 |
 | **跟踪 ID** | 用于关联逻辑应用中所有触发器和操作的 ID |

@@ -1,23 +1,20 @@
 ---
-title: reference
-description: ''
+title: Azure FarmBeats Api
+description: 了解 Azure FarmBeats Api，该 Api 为农业企业提供具有基于 JSON 的响应的标准化 RESTful 接口。
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488029"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536566"
 ---
-# <a name="references"></a>reference
+# <a name="azure-farmbeats-apis"></a>Azure FarmBeats Api
 
-本文介绍 Azure FarmBeats Api。
-
-## <a name="rest-api"></a>REST API
-
-Azure FarmBeats Api 为农业企业提供了标准化的 RESTful 接口，并提供基于 JSON 的响应，帮助你充分利用 Azure FarmBeats 功能，例如：
+本文介绍 Azure FarmBeats Api。 Azure FarmBeats Api 为农业企业提供了标准化的 RESTful 接口，并提供基于 JSON 的响应，帮助你充分利用 Azure FarmBeats 功能，例如：
 
 - 用于获取传感器、照相机、无人机、天气、卫星和特选地面数据的 Api。
 - 跨通用数据提供程序的数据的规范化和 contextualization。
@@ -32,7 +29,7 @@ FarmBeats Api 包含 Swagger 技术文档。 有关所有 Api 及其相应的请
 
 下表汇总了 FarmBeats Datahub 中的所有对象和资源：
 
-| 对象和资源 | 描述
+| 对象和资源 | 说明
 --- | ---|
 Farm | 场对应于 FarmBeats 系统中感兴趣的物理位置。 每个场都有场名称和唯一场 ID。 |
 设备  | 设备对应于在场上存在的物理设备。 每台设备都具有唯一的设备 ID。 通常会将设备设置为具有场 ID 的场。
@@ -62,7 +59,7 @@ JSON 是一种与语言无关的常见数据格式，该格式提供任意数据
 
 必须在后续 API 请求的标头部分中发送访问令牌，如下所示：
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
@@ -181,6 +178,6 @@ Azure FarmBeats Datahub Api 返回标准 HTTP 错误。 最常见的错误代码
 
 在标头部分中，使用访问令牌将其发送到后续 API 请求，如下所示：
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**, "Content-Type" : "application/json" }
 ```

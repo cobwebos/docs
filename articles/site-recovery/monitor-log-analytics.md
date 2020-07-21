@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529023"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Site Recovery
 
@@ -67,8 +68,8 @@ Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDia
 7. 安装完成后，转到 Log Analytics 工作区并单击“高级设置”。 转到“数据”页并单击“Windows 性能计数器” 。 
 8. 单击“+”添加以下两个计数器，采样间隔为 300 秒：
 
-        ASRAnalytics(*)\SourceVmChurnRate 
-        ASRAnalytics(*)\SourceVmThrpRate 
+    - ASRAnalytics(*)\SourceVmChurnRate
+    - ASRAnalytics(*)\SourceVmThrpRate
 
 变动和上传速率数据将开始输入工作区。
 

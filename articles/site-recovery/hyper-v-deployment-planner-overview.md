@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 3db3d619118be74ec1429ace70f580558c0a6c9d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e4f1931aab056306ac5e9f9e9ef402ca26ec2d19
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134355"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528938"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>关于用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
@@ -70,11 +70,11 @@ Azure Site Recovery 部署规划器是一个命令行工具，适用于 Hyper-V 
 
 ## <a name="support-matrix"></a>支持矩阵
 
-| | **VMware 到 Azure** |**Hyper-V 到 Azure**|**Azure 到 Azure**|**Hyper-V 到辅助站点**|**VMware 到辅助站点**
+|**类别** | **VMware 到 Azure** |**Hyper-V 到 Azure**|**Azure 到 Azure**|**Hyper-V 到辅助站点**|**VMware 到辅助站点**
 --|--|--|--|--|--
-支持的方案 |是|是|否|是*|否
-支持的版本 | vCenter 6.7、6.5、6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | 不可用 |Windows Server 2016、Windows Server 2012 R2|不可用
-支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|不可用|Hyper-V 群集、Hyper-V 主机|不可用|
+支持的方案 |是|是|No|是*|否
+支持的版本 | vCenter 6.7、6.5、6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
+支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|NA|Hyper-V 群集、Hyper-V 主机|NA|
 可以按 Azure Site Recovery 部署规划器的运行实例进行分析的服务器数 |单个（一次只能分析属于一个 vCenter Server 或一个 ESXi 服务器的 VM）|多个（一次可以分析多个主机或主机群集的 VM）| 不可用 |多个（一次可以分析多个主机或主机群集的 VM）| 不可用
 
 *此工具主要用于 Hyper-V 到 Azure 灾难恢复方案。 对于 Hyper-V 到辅助站点灾难恢复，只能将其用于了解源端建议，例如所需网络带宽、每个源 Hyper-V 服务器上需要的可用存储空间，以及初始复制批处理数和批次定义。  忽略报表中的 Azure 建议和成本。 另外，“获取吞吐量”操作不适用于 Hyper-V 到辅助站点灾难恢复方案。
@@ -90,19 +90,24 @@ Azure Site Recovery 部署规划器是一个命令行工具，适用于 Hyper-V 
  |
 
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>将服务器添加到 TrustedHosts 列表中的步骤
-1.  要从其部署此工具的 VM 应该让需要分析的所有主机都位于其 TrustedHosts 列表中。 若要将客户端添加到 Trustedhosts 列表中，请在 VM 上通过提升的 PowerShell 运行以下命令。 VM 可以是 Windows Server 2012 R2 或 Windows Server 2016。 
+1. 要从其部署此工具的 VM 应该让需要分析的所有主机都位于其 TrustedHosts 列表中。 若要将客户端添加到 Trustedhosts 列表中，请在 VM 上通过提升的 PowerShell 运行以下命令。 VM 可以是 Windows Server 2012 R2 或 Windows Server 2016。 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
-
-1.  每个需要分析的 Hyper-V 主机都应：
+   ```powershell
+   set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+   ```
+1. 每个需要分析的 Hyper-V 主机都应：
 
     a. 有一个 VM，以便其上的此工具能够在其 TrustedHosts 列表中运行。 从 Hyper-V 主机上权限提升的 PowerShell 运行以下命令。
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```powershell
+      set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```
 
     b. 已启用 PowerShell 远程功能。
 
-            Enable-PSRemoting -Force
+      ```powershell
+      Enable-PSRemoting -Force
+      ```
 
 ## <a name="download-and-extract-the-deployment-planner-tool"></a>下载和提取部署规划器工具
 

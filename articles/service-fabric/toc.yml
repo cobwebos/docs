@@ -143,6 +143,8 @@
           href: cluster-security-certificates.md
         - name: Service Fabric 中的证书管理
           href: cluster-security-certificate-management.md
+        - name: Azure 安全基准的安全基线
+          href: security-baseline.md
     - name: 术语
       href: service-fabric-technical-overview.md
     - name: 构建应用程序

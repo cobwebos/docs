@@ -11,11 +11,12 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b5682334bd3fb23fbbebed5fc8ece6d55e9c5652
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1aab92bd192119f72bb057347f5a3ea2d980336
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733231"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536844"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>从云到设备通信指南
 
@@ -31,8 +32,8 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 
 下面详细比较了各种从云到设备的通信选项。
 
-|  | 直接方法 | 克隆的所需属性 | 云到设备的消息 |
-| ---- | ------- | ---------- | ---- |
+| 类别 | 直接方法 | 克隆的所需属性 | 云到设备的消息 |
+| ---------- | -------------- | ------------------------- | ------------------------ |
 | 方案 | 需要立即确认的命令，例如打开风扇。 | 旨在将设备置于某个所需状态的长时间运行命令。 例如，将遥测发送间隔设置为 30 分钟。 | 提供给设备应用的单向通知。 |
 | 数据流 | 双向。 设备应用可以立即响应方法。 解决方案后端根据上下文接收请求结果。 | 单向。 设备应用接收更改了属性的通知。 | 单向。 设备应用接收消息
 | 持续性 | 不联系已断开连接的设备。 通知解决方案后端：设备未连接。 | 设备孪生会保留属性值。 设备会在下次重新连接时读取属性值。 属性值可通过 [IoT 中心查询语言](iot-hub-devguide-query-language.md)检索。 | IoT 中心可保留消息长达 48 小时。 |

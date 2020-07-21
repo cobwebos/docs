@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: c8866714ca1736b3ba785b560cb5a7aea451fdf1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 73ba08406e224d6c2a0d5dcaba7e7896dcb4d740
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253331"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529295"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -470,10 +470,10 @@ Service Fabric 配置提供程序还支持配置更新。 可以使用 ASP.NET C
  
 向 Internet 公开时，无状态服务应使用可通过负载均衡器到达的已知稳定终结点。 需将此 URL 提供给应用程序的用户。 建议使用以下配置：
 
-|  |  | **说明** |
-| --- | --- | --- |
+| 类型 | 建议 | 说明 |
+| ---- | -------------- | ----- |
 | Web 服务器 | Kestrel | Windows 和 Linux 都支持 Kestrel，因此它是首选的 Web 服务器。 |
-| 端口配置 | 静态 | 应在 ServiceManifest.xml 的 `Endpoints` 配置中配置已知静态端口，例如为 HTTP 配置 80 或为 HTTPS 配置 443。 |
+| 端口配置 | static | 应在 ServiceManifest.xml 的 `Endpoints` 配置中配置已知静态端口，例如为 HTTP 配置 80 或为 HTTPS 配置 443。 |
 | ServiceFabricIntegrationOptions | 无 | 配置 Service Fabric 集成中间件时应使用 `ServiceFabricIntegrationOptions.None` 选项，以使服务不会验证传入请求是否具有唯一标识符。 应用程序的外部用户不会知道中间件使用的唯一标识信息。 |
 | 实例计数 | -1 | 在典型用例中，应将实例计数设置设置为 *-1*。 这样，便可以在从负载均衡器接收流量的所有节点上使用某个实例。 |
 
@@ -495,18 +495,18 @@ Service Fabric 配置提供程序还支持配置更新。 可以使用 ASP.NET C
 ### <a name="internal-only-stateless-aspnet-core-service"></a>仅限内部的无状态 ASP.NET Core 服务
 仅从群集内部调用的无状态服务应使用唯一的 URL 和动态分配的端口，以确保多个服务之间的协作正常进行。 建议使用以下配置：
 
-|  |  | **说明** |
-| --- | --- | --- |
+| 类型 | 建议 | 说明 |
+| ---- | -------------- | ----- |
 | Web 服务器 | Kestrel | 尽管 HTTP.sys 可用于内部无状态服务，但 Kestrel 是最佳的服务器，它允许多个服务实例共享一台主机。  |
 | 端口配置 | 动态分配 | 有状态服务的多个副本可能会共享主机进程或主机操作系统，因此需要唯一端口。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 通过动态端口分配，此设置可以防止前面所述的错误标识问题。 |
-| InstanceCount | 任意 | 可根据操作服务的需要将实例计数设置设置为任何值。 |
+| InstanceCount | any | 可根据操作服务的需要将实例计数设置设置为任何值。 |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>仅限内部的有状态 ASP.NET Core 服务
 仅从群集内部调用的有状态服务应使用动态分配的端口，以确保多个服务之间的协作正常进行。 建议使用以下配置：
 
-|  |  | **说明** |
-| --- | --- | --- |
+| 类型 | 建议 | 说明 |
+| ---- | -------------- | ----- |
 | Web 服务器 | Kestrel | `HttpSysCommunicationListener` 不能用于副本在其中共享主机进程的有状态服务。 |
 | 端口配置 | 动态分配 | 有状态服务的多个副本可能会共享主机进程或主机操作系统，因此需要唯一端口。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 通过动态端口分配，此设置可以防止前面所述的错误标识问题。 |

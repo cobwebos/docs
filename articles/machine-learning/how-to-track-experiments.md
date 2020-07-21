@@ -3,20 +3,21 @@ title: 记录 ML 试验和指标
 titleSuffix: Azure Machine Learning
 description: 监视 Azure ML 试验和运行指标，以便改进模型创建过程。 将日志记录添加到训练脚本并查看运行的记录结果。  使用 run.log、Run.start_logging 或 ScriptRunConfig。
 services: machine-learning
-author: sdgilley
-ms.author: sgilley
-ms.reviewer: sgilley
+author: likebupt
+ms.author: keli19
+ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 07/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a4f58423206a812dd94cc14d32aa52114c147d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675196"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536322"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -107,7 +108,7 @@ ms.locfileid: "84675196"
 
 使用“执行 Python 脚本”模块将日志记录逻辑添加到设计器试验中。 可以使用此工作流记录任何值，但是记录评估模型模块中的指标以跟踪不同运行期间的模型性能特别有用。
 
-1. 将“执行 Python 脚本”模块连接到“评估模型”模块的输出 。
+1. 将“执行 Python 脚本”模块连接到“评估模型”模块的输出 。 __评估模型__可以输出2个模型的评估结果。 下面的示例演示如何在父运行级别中记录2个输出端口的指标。 
 
     ![将“执行 Python 脚本”模块连接到“评估模型”模块](./media/how-to-track-experiments/designer-logging-pipeline.png)
 
@@ -115,23 +116,29 @@ ms.locfileid: "84675196"
 
     ```python
     # dataframe1 contains the values from Evaluate Model
-    def azureml_main(dataframe1 = None, dataframe2 = None):
+    def azureml_main(dataframe1=None, dataframe2=None):
         print(f'Input pandas.DataFrame #1: {dataframe1}')
-
+    
         from azureml.core import Run
-
+    
         run = Run.get_context()
-
-        # Log the mean absolute error to the current run to see the metric in the module detail pane.
-        run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
-
+    
         # Log the mean absolute error to the parent run to see the metric in the run details page.
         # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
         # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
-        run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+
+        # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
+        run.parent.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
+
+        # Log right output port result of Evaluate Model.
+        run.parent.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
     
         return dataframe1,
     ```
+
+1. 管道运行完成后，可以在 "试验" 页中看到*Mean_Absolute_Error* 。
+
+    ![将“执行 Python 脚本”模块连接到“评估模型”模块](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
 
 ## <a name="manage-a-run"></a>管理运行
 

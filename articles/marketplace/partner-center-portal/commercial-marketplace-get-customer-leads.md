@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: ca6e9a66d6c4daa4706813f945850b51505adeca
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9ee433f226b37c8ffd6ad466cca7cbd844d53524
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133443"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535971"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>商业市场产品/服务的潜在客户
 
@@ -106,7 +106,7 @@ ms.locfileid: "86133443"
 
 ### <a name="how-can-i-find-the-test-lead"></a>如何查找测试潜在客户？
 
-在潜在客户目标中搜索 `"MSFT_TEST"`。 下面是 Microsoft 的测试潜在客户示例：
+在潜在客户目标中搜索 `"MSFT_TEST"`。 下面是 Microsoft 的示例测试线索。 请注意，测试主管的格式根据潜在顾客目标的不同而异。
 
 ```
 {

@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 777febb86e6a1fa719b6a7d74c32defebcf3b58c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 4cfbc757b33c10ac559e7f8d6b62b9ccdaed404e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099812"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536090"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>对 Azure Database for MariaDB 使用虚拟网络服务终结点和规则
 
@@ -23,17 +24,19 @@ ms.locfileid: "85099812"
 > [!NOTE]
 > Azure 中的所有区域均提供此功能，其中 Azure Database for MariaDB 部署用于常规用途和内存优化服务器。
 
+还可以考虑使用连接的[专用链接](concepts-data-access-security-private-link.md)。 专用链接在 VNet 中为 Azure Database for MariaDB 服务器提供专用 IP 地址。
+
 <a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>术语和说明
 
-**虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联。
+**虚拟网络：** 可以将虚拟网络与 Azure 订阅关联。
 
 **子网：** 虚拟网络包含**子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
-**虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务。 务必要注意的一点是，将 Microsoft.Sql 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务器配置服务终结点通信  。
+**虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务。 务必要注意的一点是，将 Microsoft.Sql 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务器配置服务终结点通信****。
 
-**虚拟网络规则：** 适用于 Azure Database for MariaDB 服务器的虚拟网络规则是一个子网，该子网列在 Azure Database for MariaDB 服务器的访问控制列表 (ACL) 中。 该子网必须包含 Microsoft.Sql 类型名称才会列在 Azure Database for MariaDB 服务器的 ACL 中  。
+**虚拟网络规则：** 适用于 Azure Database for MariaDB 服务器的虚拟网络规则是一个子网，该子网列在 Azure Database for MariaDB 服务器的访问控制列表 (ACL) 中。 该子网必须包含 Microsoft.Sql 类型名称才会列在 Azure Database for MariaDB 服务器的 ACL 中****。
 
 虚拟网络规则要求 Azure Database for MariaDB 服务器接受来自该子网上所有节点的通信。
 
@@ -51,21 +54,16 @@ ms.locfileid: "85099812"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. 允许访问 Azure 服务
 
-“连接安全性”窗格有一个标签为“允许访问 Azure 服务”的“启用/禁用”按钮。   “启用”设置允许来自所有 Azure IP 地址和所有 Azure 子网的通信。  这些 Azure IP 或子网可能不是你所拥有的。 此“启用”设置可能超出你在开放方面对 Azure Database for MariaDB 数据库的需要。  虚拟网络规则功能提供精细得多的控制。
+“连接安全性”窗格有一个标签为“允许访问 Azure 服务”的“启用/禁用”按钮。******** “启用”设置允许来自所有 Azure IP 地址和所有 Azure 子网的通信。**** 这些 Azure IP 或子网可能不是你所拥有的。 此“启用”设置可能超出你在开放方面对 Azure Database for MariaDB 数据库的需要。**** 虚拟网络规则功能提供精细得多的控制。
 
 ### <a name="b-ip-rules"></a>B. IP 规则
 
-可以通过 Azure Database for MariaDB 防火墙指定 IP 地址范围，处于该范围内的通信允许进入 Azure Database for MariaDB 服务器。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，Azure 专用网络内部的许多节点都配置了动态 IP 地址。  某些情况下（例如重启 VM 时），动态 IP 地址可能会变化。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
+可以通过 Azure Database for MariaDB 防火墙指定 IP 地址范围，处于该范围内的通信允许进入 Azure Database for MariaDB 服务器。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，Azure 专用网络内部的许多节点都配置了动态 IP 地址。** 某些情况下（例如重启 VM 时），动态 IP 地址可能会变化。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
 
-可以通过获取 VM 的静态 IP 地址，对 IP 选项进行“补救”。  有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
+可以通过获取 VM 的静态 IP 地址，对 IP 选项进行“补救”。** 有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
 
 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 虚拟网络规则更易于制定和管理。
 
-### <a name="c-cannot-yet-have-azure-database-for-mariadb-on-a-subnet-without-defining-a-service-endpoint"></a>C. 在没有定义服务终结点的情况下，子网上还不能有 Azure Database for MariaDB
-
-如果 Microsoft.Sql 服务器是虚拟网络子网上的一个节点，则该虚拟网络中的所有节点都可以与 Azure Database for MariaDB 服务器通信  。 在这种情况下，VM 可以与 Azure Database for MariaDB 通信，而不需要任何虚拟网络规则或 IP 规则。
-
-但截至 2018 年 8 月，Azure Database for MariaDB 服务仍然无法直接分配给子网。
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -88,9 +86,9 @@ ms.locfileid: "85099812"
 在管理虚拟网络服务终结点时，安全角色是分开的。 下述每个角色都需要进行操作：
 
 - **网络管理员：** &nbsp; 启用终结点。
-- **数据库管理员：** &nbsp; 更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MariaDB 服务器。
+- **数据库管理员：** &nbsp;更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MariaDB 服务器。
 
- RBAC 备用：
+** RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
@@ -114,9 +112,11 @@ ms.locfileid: "85099812"
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][resource-manager-deployment-model-568f]网络。
 
-- 使用 **Microsoft.Sql** 服务标记为 Azure Database for MariaDB 启用虚拟网络服务终结点也会为以下所有 Azure 数据库服务启用终结点：Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure SQL 数据仓库。
+- 使用 Microsoft.Sql 服务标记为 Azure Database for MariaDB 启用虚拟网络服务终结点也会为所有 Azure 数据库服务（Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure SQL 数据仓库）启用终结点****。
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
+
+- 如果在子网中启用了**Sql** ，则表明你只希望使用 VNet 规则进行连接。 该子网中的资源的[非 VNet 防火墙规则](concepts-firewall-rules.md)将不起作用。
 
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
     - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]
@@ -124,15 +124,15 @@ ms.locfileid: "85099812"
 
 ## <a name="expressroute"></a>ExpressRoute
 
-如果网络通过使用 [ExpressRoute][expressroute-indexmd-744v] 连接到 Azure 网络，则每个线路在 Microsoft Edge 配置有两个公共 IP 地址。 这两个 IP 地址用于通过使用 Azure 公共对等互连连接到 Azure 存储等 Microsoft 服务。
+如果网络通过使用 [ ExpressRoute ][expressroute-indexmd-744v] 连接到 Azure 网络，则每个线路在 Microsoft Edge 配置有两个公共 IP 地址。 这两个 IP 地址用于通过使用 Azure 公共对等互连连接到 Azure 存储等 Microsoft 服务。
 
 若要允许从线路到 Azure Database for MariaDB 的通信，必须为线路的公共 IP 地址创建 IP 网络规则。 为查找 ExpressRoute 线路的公共 IP 地址，请使用 Azure 门户开具 ExpressRoute 支持票证。
 
-## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在未打开 VNET 服务终结点的情况下，将 VNET 防火墙规则添加到服务器
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>将 VNET 防火墙规则添加到服务器而不启用 VNET 服务终结点
 
-仅设置防火墙规则无助于将服务器保护到 VNet。 还必须**打开** VNet 服务终结点才能使安全性生效。 **打开**服务终结点时，VNet 子网会遇到停机，直到它完成从“关”到“开”   的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
+仅设置 VNet 防火墙规则不会帮助将服务器保护到 VNet。 还必须打开 VNet**服务终结点，以使**安全生效。 当**你启用服务终结点**时，VNet 子网会经历停机时间，直到它完成从**Off**到**On**的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
 
-可以使用 Azure CLI 或门户设置 **IgnoreMissingServiceEndpoint** 标志。
+可使用 Azure CLI 或门户设置 IgnoreMissingServiceEndpoint 标志****。
 
 ## <a name="related-articles"></a>相关文章
 - [Azure 虚拟网络][vm-virtual-network-overview]

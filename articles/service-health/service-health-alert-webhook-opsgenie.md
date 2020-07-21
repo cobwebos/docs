@@ -3,11 +3,12 @@ title: 使用 Webhook 通过 OpsGenie 发送 Azure 服务运行状况警报
 description: 获取有关发送到 OpsGenie 实例的服务运行状况事件的个性化通知。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654131"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529091"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>使用 Webhook 通过 OpsGenie 发送 Azure 服务运行状况警报
 
@@ -36,7 +37,7 @@ ms.locfileid: "77654131"
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>在 Azure 门户中使用 OpsGenie 创建警报
 ### <a name="for-a-new-action-group"></a>对于新操作组：
-1. 执行[使用 Azure 门户为新操作组创建有关服务运行状况通知的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)中的步骤 1 到步骤 8。
+1. 执行[使用 Azure 门户为新操作组创建有关服务运行状况通知的警报](./alerts-activity-log-service-notifications-portal.md)中的步骤 1 到步骤 8。
 
 1. 在“操作”  列表中定义：
 
@@ -84,5 +85,5 @@ ms.locfileid: "77654131"
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 了解[服务运行状况通知](../azure-monitor/platform/service-notifications.md)。
+- 了解[服务运行状况通知](./service-notifications.md)。
 - 详细了解[操作组](../azure-monitor/platform/action-groups.md)。

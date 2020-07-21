@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0eac72832d75c0c26addaef283015155c09b3935
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629391"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529363"
 ---
 # <a name="workflow-automation"></a>工作流自动化
 
@@ -33,16 +34,13 @@ ms.locfileid: "84629391"
     - 资源组（或**所有者**）上的**安全管理员角色**
     - 还必须对目标资源具有写入权限
     - 此外，若要使用 Azure 逻辑应用工作流，则必须具有以下逻辑应用角色/权限：
-
-        * [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)权限是必需的或逻辑应用读取/触发器访问（此角色无法创建或编辑逻辑应用; 仅*运行*现有的应用）
-
-        * 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的
-
-        * 如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务（例如，Outlook/团队/时差实例）
+        - [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)权限是必需的或逻辑应用读取/触发器访问（此角色无法创建或编辑逻辑应用; 仅*运行*现有的应用）
+        - 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的
+        - 如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务（例如，Outlook/团队/时差实例）
 - 云： 
     - ✔ 商业云
-    - ✔ US Gov
-    - ✘中国 Gov，其他 Gov
+    - ✔美国政府云
+    - ✘中国政府云，其他 gov 云
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>创建一个逻辑应用，并定义它应自动运行的时间 

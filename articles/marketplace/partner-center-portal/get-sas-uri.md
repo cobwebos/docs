@@ -3,22 +3,22 @@ title: VM 映像的共享访问签名 URI - Azure 市场
 description: 在 Azure 市场中为虚拟硬盘 (VHD) 生成共享访问签名 (SAS) URI。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: anbene
 ms.author: mingshen
-ms.date: 04/09/2020
-ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 569d9ce04422230c1d6b9ebb0957f01c320c5ba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121718"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536141"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
 本文介绍如何为每个虚拟硬盘 (VHD) 生成共享访问签名 (SAS) 统一资源标识符 (URI)。
 
-在发布过程中，必须为与计划关联的每个 VHD 提供 URI。 这些计划以前称为 SKU（或库存单位）。 Microsoft 需要在认证过程中访问这些 VHD。 你将在合作伙伴中心的“计划”选项卡上输入此 URI。
+在发布过程中，必须提供与计划关联的每个 VHD 的 URI （以前称为 Sku）。 Microsoft 需要在认证过程中访问这些 VHD。 你将在合作伙伴中心的“计划”选项卡上输入此 URI。
 
 为 VHD 生成 SAS URI 时，请遵循以下要求：
 
@@ -110,7 +110,7 @@ ms.locfileid: "86121718"
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-对要发布的 SKU 中的每个 VHD 重复这些步骤。
+对要发布的计划中的每个 VHD 重复这些步骤。
 
 ## <a name="verify-the-sas-uri"></a>验证 SAS URI
 

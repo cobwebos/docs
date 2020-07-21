@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b618513965298889fb656750419dedd79729f7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905128"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536464"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>为 Azure 逻辑应用中的集成帐户设置跨区域灾难恢复
 
@@ -59,7 +60,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 在发生灾难事件时，如果主要区域不可用于业务连续性，则将流量定向到次要区域。 次要区域可帮助企业根据与其合作伙伴达成的的 RPO/RTO 快速恢复功能。 另外，也可以最大限度地减少将故障从一个区域转移到另一个区域的工作。 
 
-将控制编号从主要区域复制到次要区域时，可能会像预期的那样出现延迟。 要避免在发生灾难事件时会将生成的重复控制编号发送给合作伙伴，建议使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0) 在次要区域协议中增加控制编号。
+将控制编号从主要区域复制到次要区域时，可能会像预期的那样出现延迟。 要避免在发生灾难事件时会将生成的重复控制编号发送给合作伙伴，建议使用 [PowerShell cmdlet](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0) 在次要区域协议中增加控制编号。
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>在发生灾难事件后，故障回复到主要区域
 
@@ -67,7 +68,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 1. 停止接收在次要区域中来自合作伙伴的消息。  
 
-2. 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0) 为所有的主要区域协议增加生成的控制编号。  
+2. 使用 [PowerShell cmdlet](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0) 为所有的主要区域协议增加生成的控制编号。  
 
 3. 将流量从次要区域定向到主要区域。
 
@@ -240,4 +241,3 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 ## <a name="next-steps"></a>后续步骤
 
 [使用 Azure Monitor 日志监视 B2B 消息](../logic-apps/monitor-b2b-messages-log-analytics.md)
-

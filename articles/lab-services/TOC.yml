@@ -46,8 +46,6 @@
               href: class-type-sql-server.md
             - name: Python 和 Jupyter Notebook
               href: class-type-jupyter-notebook.md
-            - name: 使用 Android Studio 进行移动应用开发
-              href: class-type-mobile-dev-android-studio.md
             - name: 大数据分析
               href: class-type-big-data-analytics.md
             - name: MATLAB

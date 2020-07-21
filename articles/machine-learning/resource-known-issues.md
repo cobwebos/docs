@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223452"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536107"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -96,6 +96,22 @@ ms.locfileid: "86223452"
     ```bash
     automl_setup
     ```
+    
+* **KeyError：在本地计算或 Azure Databricks 群集上运行 AutoML 时的 "品牌"**
+
+    如果新环境是在2020年6月10日之后使用 SDK 1.7.0 或更早版本创建的，则在 py-cpuinfo 包中进行更新后，训练可能会因此错误而失败。 （在2020年6月10日或之前创建的环境不受影响，因为使用缓存的培训图像，所以试验在远程计算上运行。）若要解决此问题，请执行以下两个步骤之一：
+    
+    * 将 SDK 版本更新为1.8.0 或更高版本（这也会将 py cpuinfo 降级到5.0.0）：
+    
+      ```bash
+      pip install --upgrade azureml-sdk[automl]
+      ```
+    
+    * 将 py-cpuinfo 的已安装版本降级为5.0.0：
+    
+      ```bash
+      pip install py-cpuinfo==5.0.0
+      ```
   
 * 错误消息：无法卸载 'PyYAML'
 
@@ -146,6 +162,12 @@ ms.locfileid: "86223452"
 > 不支持将 Azure 机器学习工作区移动到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
 
 * **Azure 门户**：如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规“概述”页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，请直接转到 [Azure 机器学习工作室](https://ml.azure.com)并搜索工作区名称。
+
+* **Azure 机器学习 studio web 门户中支持的浏览器**：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
+  * Microsoft Edge （新的 Microsoft Edge，最新版本。 不是 Microsoft Edge 旧版）
+  * Safari（最新版本，仅限 Mac）
+  * Chrome（最新版本）
+  * Firefox（最新版本）
 
 ## <a name="set-up-your-environment"></a>设置你的环境
 
@@ -217,9 +239,16 @@ ms.locfileid: "86223452"
 
 ## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 
-已知问题：
+* **计算准备时间较长：**
 
-* **计算准备时间很长**：第一次连接或创建计算目标可能需要几分钟甚至更长的时间。 
+第一次连接或创建计算目标时，可能需要几分钟或更长时间。 
+
+从模型数据收集器中，最多可能需要10分钟的时间，数据才会到达 blob 存储帐户。 等待10分钟，以确保下面的单元格将运行。
+
+```python
+import time
+time.sleep(600)
+```
 
 ## <a name="train-models"></a>训练模型
 

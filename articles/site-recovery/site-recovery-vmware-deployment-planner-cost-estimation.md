@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d7ee72b5f6441f2b3b3ea9a7eaa41a3e1b650745
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132200"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528955"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>查看 VMware 中的成本估算部署规划器 
 
@@ -150,16 +150,16 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>支持的货币
 Azure Site Recovery 部署规划器可以使用以下任何货币生成成本报表。
 
-|货币|名称||货币|名称||货币|名称|
+|货币|名称|货币|名称|货币|名称|
 |---|---|---|---|---|---|---|---|
-|ARS|阿根廷比索 ($)||AUD|澳大利亚元 ($)||BRL|巴西雷亚尔 (R$)|
-|CAD|加拿大元 ($)||CHF|瑞士法郎 (chf)||DKK|丹麦克朗 (kr)|
-|EUR|欧元 (€)||GBP|英镑 (£)||HKD|港元 (HK$)|
-|IDR|印度尼西亚卢比 (Rp)||INR|印度卢比 (₹)||JPY|日元 (¥)|
-|KRW|韩元 (₩)||MXN|墨西哥比索 (MX$)||MYR|马来西亚林吉特 (RM$)|
-|NOK|挪威克朗 (kr)||NZD|新西兰元 ($)||RUB|俄罗斯卢布 (руб)|
-|SAR|沙特里亚尔 (SR)||SEK|瑞典克朗 (kr)||TWD|台币 (NT$)|
-|TRY|土耳其里拉 (TL)||USD| 美元 ($)||ZAR|南非兰特 (R)|
+|ARS|阿根廷比索 ($)|AUD|澳大利亚元 ($)|BRL|巴西雷亚尔 (R$)|
+|CAD|加拿大元 ($)|CHF|瑞士法郎 (chf)|DKK|丹麦克朗 (kr)|
+|EUR|欧元 (€)|GBP|英镑 (£)|HKD|港元 (HK$)|
+|IDR|印度尼西亚卢比 (Rp)|INR|印度卢比 (₹)|JPY|日元 (¥)|
+|KRW|韩元 (₩)|MXN|墨西哥比索 (MX$)|MYR|马来西亚林吉特 (RM$)|
+|NOK|挪威克朗 (kr)|NZD|新西兰元 ($)|RUB|俄罗斯卢布 (руб)|
+|SAR|沙特里亚尔 (SR)|SEK|瑞典克朗 (kr)|TWD|台币 (NT$)|
+|TRY|土耳其里拉 (TL)|USD| 美元 ($)|ZAR|南非兰特 (R)|
 
 ## <a name="next-steps"></a>后续步骤
 详细了解如何[使用 Azure Site Recovery 将 VMware VM 转移到 Azure 进行保护](./vmware-azure-tutorial.md)。

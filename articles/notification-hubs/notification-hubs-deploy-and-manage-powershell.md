@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: d45b98f291a7524dac2927fc74c5dc52400209f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891199"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529975"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 部署和管理通知中心
 
@@ -31,7 +32,7 @@ ms.locfileid: "82891199"
 - 创建通知中心
 - 设置凭据
 
-如果还需要为通知中心创建新的服务总线命名空间，请参阅[使用 PowerShell 管理服务总线](../service-bus-messaging/service-bus-powershell-how-to-provision.md)。
+如果还需要为通知中心创建新的服务总线命名空间，请参阅[使用 PowerShell 管理服务总线](../service-bus-messaging/service-bus-manage-with-ps.md)。
 
 不支持直接使用 Azure PowerShell 随附的 cmdlet 来管理通知中心。 在 PowerShell 中，最佳方法是引用 Microsoft.Azure.NotificationHubs.dll 程序集。 该程序集是随 [Microsoft Azure 通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)一起分发的。
 
@@ -147,9 +148,9 @@ else
 
 ## <a name="additional-resources"></a>其他资源
 
-- [使用 PowerShell 管理服务总线](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-- [How to create Service Bus queues, topics and subscriptions using a PowerShell script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）
-- [How to create a Service Bus Namespace and an Event Hub using a PowerShell script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)（如何使用 PowerShell 脚本创建服务总线命名空间和事件中心）
+- [使用 PowerShell 管理服务总线](../service-bus-messaging/service-bus-manage-with-ps.md)
+- [How to create Service Bus queues, topics and subscriptions using a PowerShell script](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）
+- [How to create a Service Bus Namespace and an Event Hub using a PowerShell script](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)（如何使用 PowerShell 脚本创建服务总线命名空间和事件中心）
 
 一些现成的脚本也可供下载：
 
@@ -159,7 +160,7 @@ else
 [会员套餐]: https://azure.microsoft.com/pricing/member-offers/
 [免费试用]: https://azure.microsoft.com/pricing/free-trial/
 [安装和配置 Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[通知中心的 .NET API]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-[Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
-[New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
-[Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule
+[通知中心的 .NET API]: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[Get-AzureSBNamespace]: /powershell/module/servicemanagement/azure/get-azuresbnamespace
+[New-AzureSBNamespace]: /powershell/module/servicemanagement/azure/new-azuresbnamespace
+[Get-AzureSBAuthorizationRule]: /powershell/module/servicemanagement/azure/get-azuresbauthorizationrule

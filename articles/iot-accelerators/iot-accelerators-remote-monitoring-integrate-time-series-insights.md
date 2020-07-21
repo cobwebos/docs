@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232060"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536600"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>将 Azure 时序见解与远程监视集成
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 接下来，将时序见解作为附加资源部署到远程监视解决方案中，并将其连接到 IoT 中心。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 选择 "**创建资源**  >  **物联网**  >  **时序见解**"。
 
@@ -244,7 +244,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 为上面已更新的微服务配置 `standard` 部署的环境
 
-1. 在命令行上，运行 `kubectl proxy`。 有关详细信息，请参阅 [访问 Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/)。
+1. 在命令行上，运行 `kubectl proxy`。 有关详细信息，请参阅 [访问 Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/#using-kubectl-to-start-a-proxy-server)。
 
 1. 打开 Kubernetes 管理控制台。
 

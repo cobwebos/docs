@@ -3,14 +3,14 @@ title: 商业市场分析中的合作伙伴中心订单仪表板
 description: 了解如何以图形和可下载的格式访问关于市场产品/服务订单的分析报告。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118352"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536124"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“订单”仪表板
 
@@ -29,12 +29,9 @@ ms.locfileid: "86118352"
 - [按地域统计的订单](#orders-by-geography)
 - [按产品/服务统计的订单](#orders-by-offers)
 - [每站点与每席位的订单趋势](#orders-trend-per-site-versus-per-seat)
-- [按 SKU 统计的订单](#orders-by-skus)
+- [按计划排序](#orders-by-plans)
 - [订单和席位趋势](#orders-and-seats-trend)
 - [订单详细信息表](#order-details-table)
-
-> [!NOTE]
-> 分析报告在云合作伙伴门户 (CPP) 和合作伙伴中心的新商业市场计划中的显示方式之间存在差异。 一个具体方面是，CPP 中的 Seller Insights 具有“订单和使用情况”选项卡，该选项卡显示基于使用情况的套餐和非基于使用情况的套餐的数据 。 在合作伙伴中心中，“订单”页面有一个单独用于 SaaS 产品/服务的选项卡。
 
 ## <a name="order-dashboard-details"></a>订单仪表板详细信息
 
@@ -76,16 +73,16 @@ ms.locfileid: "86118352"
 
 “每站点与每席位”圆环图表示客户购买的每站点 SaaS 以及每席位 SaaS 订单的细目（此图表包含已取消的订单）。 柱形图表示客户购买的每站点 SaaS 以及每席位 SaaS 订单的趋势（此图表包含已取消的订单）。
 
-### <a name="orders-by-skus"></a>按 SKU 统计的订单
+### <a name="orders-by-plans"></a>按计划排序
 
-“按 SKU 统计的订单”图表表示所有产品/服务的库存单位 (SKU) 级别订单的趋势（这包括了已取消的订单）。 圆环图表示前五个 SKU 订单的明细，柱形图表示前 5 个 SKU 的订单趋势。
+"**按计划排序**" 图表表示你的所有产品/服务的计划级别的订单趋势（这包括已取消的订单）。 环形图表示前5个计划订单的明细，柱形图表示前5个计划的订单趋势。
 
 ### <a name="orders-and-seats-trend"></a>订单和席位趋势
 
 “订单和席位趋势”图表表示订单数最多的前 50 种产品/服务。 它们显示在排行榜上，并且是按最高订单数和订单百分比排序的。
 
-- **按 SKU 统计的订单**：在此图表中选择一种产品/服务即可查看前 5 个 SKU 的订单数的细目。
-- **按 SKU 统计的席位**：前五个 SKU 的每月座位趋势。 如果所选择的产品/服务不是每席位产品/服务，你将不会在此区域图表中看到任何数据。
+- **按计划排序**–选择产品/服务可查看图表中前5个计划的订单计数细目。
+- **按计划的座位**–前5个计划的座位每月趋势。 如果所选择的产品/服务不是每席位产品/服务，你将不会在此区域图表中看到任何数据。
 
 ### <a name="canceled-orders-by-offers"></a>按产品/服务统计的已取消的订单
 

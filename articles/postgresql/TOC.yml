@@ -114,7 +114,7 @@
               href: concepts-data-encryption-postgresql.md
             - name: 基础结构双重加密
               href: concepts-infrastructure-double-encryption.md
-            - name: 安全基线
+            - name: Azure 安全基准的安全基线
               href: security-baseline.md
         - name: 业务连续性
           items:
@@ -183,6 +183,8 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: 配置 SSL
               href: concepts-hyperscale-ssl-connection-security.md
+            - name: Azure 安全基准的安全基线
+              href: postgresql-hyperscale-security-baseline.md
         - name: 业务连续性
           items:
             - name: 备份和还原

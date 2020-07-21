@@ -4,18 +4,20 @@ description: 用于检索产品/服务的当前状态的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: 897c2517c3836e1c3940db02efae0e5d94667a65
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114068"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535869"
 ---
 # <a name="retrieve-offer-status"></a>检索产品/服务状态
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成，在你的产品/服务迁移到合作伙伴中心后，它们仍可运行。 集成造成了少量的更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 检索产品/服务的当前状态。
 
@@ -25,13 +27,12 @@ ms.locfileid: "86114068"
 
 |  **名称**       |   **说明**                            |  **Data type** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | 发布者标识符，例如 `Contoso`  |     String     |
-|  offerId        | 唯一标识产品/服务的 GUID      |     String     |
+|  publisherId    | 发布者标识符，例如 `Contoso`  |     字符串     |
+|  offerId        | 唯一标识产品/服务的 GUID      |     字符串     |
 |  api-version    | API 的最新版本                        |     日期       |
 |  |  |
 
-
-## <a name="header"></a>Header
+## <a name="header"></a>标头
 
 
 |  名称           |  值               |
@@ -41,7 +42,6 @@ ms.locfileid: "86114068"
 |  |  |
 
 ## <a name="body-example"></a>正文示例
-
 
 ### <a name="response"></a>响应
 
@@ -116,19 +116,18 @@ ms.locfileid: "86114068"
   }
 ```
 
-
 ### <a name="response-body-properties"></a>响应正文属性
 
 |  **名称**             |    **说明**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
-|  状态               | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。 |
+|  status               | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。 |
 |  计数             | 与产品/服务关联的消息数组                                                    |
 |  steps                | 产品/服务在发布期间所经历的一系列步骤                      |
 |  estimatedTimeFrame   | 以友好的格式估算完成此步骤所需的时间                       |
 |  id                   | 步骤的标识符                                                                         |
 |  stepName             | 步骤的名称                                                                               |
 |  description          | 步骤的说明                                                                        |
-|  状态               | 步骤的状态。 有关可能值的列表，请参阅下面的[步骤状态](#step-status)。    |
+|  status               | 步骤的状态。 有关可能值的列表，请参阅下面的[步骤状态](#step-status)。    |
 |  计数             | 与步骤相关的消息数组                                                          |
 |  processPercentage    | 步骤的完成百分比                                                              |
 |  previewLinks         | *当前未实现*                                                                    |
@@ -152,8 +151,8 @@ ms.locfileid: "86114068"
 |  NeverPublished              | 产品/服务从未发布过。                          |
 |  NotStarted                  | 产品/服务是新的，且未启动。                            |
 |  WaitingForPublisherReview   | 产品/服务正在等待发布者批准。                 |
-|  正在运行                     | 正在处理产品/服务提交。                     |
-|  成功                   | 产品/服务提交已完成处理。               |
+|  运行                     | 正在处理产品/服务提交。                     |
+|  已成功                   | 产品/服务提交已完成处理。               |
 |  已取消                    | 产品/服务提交已取消。                           |
 |  已失败                      | 产品/服务提交失败。                                 |
 |  |  |

@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b3ea9f07475affca76c8a3ff71de61abcadde8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74228145"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529703"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>适用于 iOS 13 的 Azure 通知中心更新
 
@@ -57,7 +58,7 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-为了帮助你完成这种过渡，当 Azure 通知中心检测到未设置 `apns-push-type` 的通知时，服务将从通知请求推断推送类型，并自动设置值。 请记住，必须将 Azure 通知中心配置为使用基于令牌的身份验证以设置所需的标头；有关详细信息，请参阅 [APNS 的基于令牌的 (HTTP/2) 身份验证](notification-hubs-push-notification-http2-token-authentification.md)。
+为了帮助你完成这种过渡，当 Azure 通知中心检测到未设置 `apns-push-type` 的通知时，服务将从通知请求推断推送类型，并自动设置值。 请记住，必须将 Azure 通知中心配置为使用基于令牌的身份验证以设置所需的标头；有关详细信息，请参阅 [APNS 的基于令牌的 (HTTP/2) 身份验证](./notification-hubs-push-notification-http2-token-authentication.md)。
 
 ## <a name="apns-priority"></a>APNS 优先级
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135727"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528972"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>启用区域以对 Azure 虚拟机进行灾难恢复
 
@@ -22,6 +22,7 @@ ms.locfileid: "86135727"
 >
 >- Site Recovery 当前不支持通过门户对区域到灾难恢复进行区域恢复计划。 请使用 PowerShell 或 REST API 来利用针对区域进行灾难恢复的恢复计划。 
 >- 对区域到区域灾难恢复的支持当前限制为两个区域：东南亚和英国南部。  
+>- 如果客户使用区域进行灾难恢复，则 Site Recovery 不会将客户数据从其部署到的区域中移出或存储。 如果客户选择了不同的区域，则他们可能会选择恢复服务保管库。 恢复服务保管库包含元数据，但没有实际的客户数据。
 
 Site Recovery 服务通过在计划内和计划外的停机期间保持业务应用程序的运行，来为业务连续性和灾难恢复策略提供贡献。 建议使用灾难恢复选项，使应用程序在发生区域性服务中断时能够正常运行。
 
@@ -104,7 +105,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 
 7. 单击 "下一步：审核 + 开始复制"，然后单击 "开始复制"。
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 **1. 区域到灾难恢复的区域的定价如何？**
 区域到区域灾难恢复的定价与 Azure 到 Azure 灾难恢复的定价相同。 可在[此处](https://azure.microsoft.com/pricing/details/site-recovery/)和[此处](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)找到有关定价页面的更多详细信息。 请注意，要在区域灾难恢复中看到的出口费用将低于区域进行灾难恢复。

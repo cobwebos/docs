@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 92df0a7919a7d01b062356bfa4d32cc701e1e6f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff988dd382c5df5d764c7ab29e8a469f510ba7f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341291"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529329"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议 - 参考指南
 
@@ -34,7 +34,7 @@ ms.locfileid: "85341291"
 
 ## <a name="network-recommendations"></a><a name="recs-network"></a>网络建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应在面向 Internet 的虚拟机上应用自适应网络强化建议**|当自适应网络强化功能发现了过于宽松的 NSG 规则时，标准定价层上的客户会看到此建议。<br>（相关策略：应在面向 Internet 的虚拟机上应用自适应网络强化建议）|高|N|虚拟机|
 |应在与 VM 关联的 NSG 上限制所有网络端口|通过限制现有允许规则的访问来增强面向 Internet 的 VM 的网络安全组。<br>当向*所有*源开放任何端口（端口 22、3389、5985、5986、80 和 1443 除外）时，将触发此建议。<br>（相关策略：应该限制通过面向 Internet 的终结点进行访问）|高|N|虚拟机|
@@ -53,7 +53,7 @@ ms.locfileid: "85341291"
 
 ## <a name="container-recommendations"></a><a name="recs-containers"></a>容器建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应在 Kubernetes 服务上定义经授权的 IP 范围**|通过仅向特定范围内的 IP 地址授予 API 访问权限，来限制对 Kubernetes 服务管理 API 的访问。 建议配置已获授权的 IP 范围，以便只有受允许网络中的应用程序可以访问群集。<br>（相关策略：[预览]：应在 Kubernetes 服务上定义经授权的 IP 范围）|高|N|计算资源（容器）|
 |应定义 Pod 安全策略，通过删除不必要的应用程序特权来减少攻击途径。|通过删除不必要的应用程序特权，来定义 Pod 安全策略以减少攻击途径。 建议配置 pod 安全策略，以便 pod 只能访问其有权访问的资源。<br>（相关策略：[预览]：应在 Kubernetes 服务上定义 Pod 安全策略）|中|N|计算资源（容器）|
@@ -65,7 +65,7 @@ ms.locfileid: "85341291"
 
 ## <a name="app-service-recommendations"></a><a name="recs-appservice"></a>应用服务建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**只能通过 HTTPS 访问 Web 应用程序**|为 Web 应用启用“仅 HTTPS”访问权限。 使用 HTTPS 可确保执行服务器/服务身份验证服务，并保护传输中的数据不受网络层窃听攻击威胁。<br>（相关策略：应只能通过 HTTPS 访问 Web 应用程序）|中型|**是**|应用服务|
 |**应该只能通过 HTTPS 访问函数应用**|为函数应用启用“仅 HTTPS”访问权限。 使用 HTTPS 可确保执行服务器/服务身份验证服务，并保护传输中的数据不受网络层窃听攻击威胁。<br>（相关策略：应只能通过 HTTPS 访问函数应用）|中型|**是**|应用服务|
@@ -82,7 +82,7 @@ ms.locfileid: "85341291"
 
 ## <a name="compute-and-app-recommendations"></a><a name="recs-computeapp"></a>计算和应用建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应启用 Azure 流分析的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用 Azure 流分析的诊断日志）|低|**是**|计算资源（流分析）|
 |**应启用 Batch 帐户的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用 Batch 帐户的诊断日志）|低|**是**|计算资源 (Batch)|
@@ -124,7 +124,7 @@ ms.locfileid: "85341291"
 
 ## <a name="virtual-machine-scale-set-recommendations"></a><a name="recs-vmscalesets"></a>虚拟机规模集建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应当启用虚拟机规模集中的诊断日志**|启用日志并将其保留长达一年的时间。 这样可以重新创建用于调查的活动线索。 这适用于发生安全事件或网络受到危害的情况。<br>（相关策略：应启用虚拟机规模集的诊断日志）|低|N|虚拟机规模集|
 |应在虚拟机规模集上修正 Endpoint Protection 运行状况故障|修复虚拟机规模集上的 Endpoint Protection 运行状况故障，使其免受威胁和漏洞的侵害。<br>（无相关策略 - 依赖于“应在虚拟机规模集上安装 Endpoint Protection 解决方案”）|低|N|虚拟机规模集|
@@ -137,11 +137,11 @@ ms.locfileid: "85341291"
 
 ## <a name="data-and-storage-recommendations"></a><a name="recs-datastorage"></a>数据和存储建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |应限制对具有防火墙和虚拟网络配置的存储帐户的访问|在存储帐户防火墙设置中审核无限制的网络访问权限。 应该配置网络规则，以便只有来自许可网络的应用程序才能访问存储帐户。 若要允许来自特定 Internet 或本地客户端的连接，可以向来自特定 Azure 虚拟网络或到公共 Internet IP 地址范围的流量授予访问权限。<br>（相关策略：审核对存储帐户的无限制网络访问）|低|N|存储帐户|
-|**应在 SQL 托管实例上启用高级数据安全**|高级数据安全 (ADS) 是一个提供高级 SQL 安全功能的统一包。 它可发现和分类敏感数据、呈现和减少潜在数据库漏洞，以及检测可能表明数据库有威胁的异常活动。 每个托管实例的广告收费为 $15。<br>（相关策略：应在 SQL 托管实例上启用高级数据安全性）|高|**是**|SQL|
-|**应在 SQL 数据库上启用高级数据安全性**|高级数据安全 (ADS) 是一个提供高级 SQL 安全功能的统一包。 它可发现和分类敏感数据、呈现和减少潜在数据库漏洞，以及检测可能表明数据库有威胁的异常活动。 ADS 费用为每个 SQL server 15 美元。<br>（相关策略：应对 SQL Server 启用高级数据安全）|高|**是**|SQL|
+|应对托管实例启用高级数据安全|高级数据安全 (ADS) 是一个提供高级 SQL 安全功能的统一包。 它可发现和分类敏感数据、呈现和减少潜在数据库漏洞，以及检测可能表明数据库有威胁的异常活动。 每个托管实例的广告收费为 $15。<br>（相关策略：应在 SQL 托管实例上启用高级数据安全性）|高|**是**|SQL|
+|**应在 SQL 服务器上启用高级数据安全性**|高级数据安全 (ADS) 是一个提供高级 SQL 安全功能的统一包。 它可发现和分类敏感数据、呈现和减少潜在数据库漏洞，以及检测可能表明数据库有威胁的异常活动。 ADS 费用为每个 SQL server 15 美元。<br>（相关策略：应对 SQL Server 启用高级数据安全）|高|**是**|SQL|
 |**应为 SQL 数据库设置 Azure Active Directory 管理员**|为 SQL 数据库预配 Azure AD 管理员，以启用 Azure AD 身份验证。 使用 Azure AD 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。<br>（相关策略：审核确认已为 SQL Server 预配了 Azure Active Directory 管理员）|高|N|SQL|
 |**应启用对 SQL 数据库的审核**|启用 SQL 数据库审核。 <br>（相关策略：应为服务器的高级数据安全设置上的 SQL 数据库启用审核）|低|**是**|SQL|
 |**应启用 Azure Data Lake Store 的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用 Azure Data Lake Store 的诊断日志）|低|**是**|Data Lake Store|
@@ -160,7 +160,7 @@ ms.locfileid: "85341291"
 
 ## <a name="identity-and-access-recommendations"></a><a name="recs-identity"></a>标识和访问建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应在对订阅拥有读取权限的帐户上启用 MFA**|为具有读取特权的所有订阅帐户启用多重身份验证 (MFA)，以防止破坏帐户或资源。<br>（相关策略：应在对订阅拥有读取权限的帐户上启用 MFA）|高|N|订阅|
 |应在对订阅拥有写入权限的帐户上启用 MFA|为具有写入特权的所有订阅帐户启用多重身份验证 (MFA)，以防止破坏帐户或资源。<br>（相关策略：应在对订阅拥有写入权限的帐户上启用 MFA）|高|N|订阅|
@@ -178,7 +178,7 @@ ms.locfileid: "85341291"
 
 ## <a name="deprecated-recommendations"></a>弃用的建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |应限制对应用服务的访问|通过更改网络配置来限制对应用服务的访问，以拒绝来自过大范围的入站流量。<br>（相关策略：[预览]：应限制对应用服务的访问）|高|N|应用服务|
 |应强化 IaaS NSG 上 Web 应用的规则|如果运行 web 应用程序的虚拟机的网络安全组 (NSG) 所包含的 NSG 规则对于 web 应用程序端口而言过于宽松，应强化这些安全组。<br>（相关策略：应该强化 IaaS 上 Web 应用程序的 NSG 规则）|高|N|虚拟机|

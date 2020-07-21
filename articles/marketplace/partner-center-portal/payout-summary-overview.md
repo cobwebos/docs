@@ -1,18 +1,18 @@
 ---
 title: 付款摘要概述 - Azure 市场
 description: 付款摘要显示了你通过产品/服务赚取的资金的详细信息。 它还显示了收到付款的时间以及付款金额。
-ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.service: marketplace
+ms.topic: article
 author: mingshen
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 087f7df8f8e3cc5e6e01ff023a88306d5fc4102d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118471"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535954"
 ---
 # <a name="payout-summary-overview"></a>付款摘要概述
 
@@ -42,19 +42,6 @@ ms.locfileid: "86118471"
 | 税务资料 | 可以更新 | 不允许访问 | 不允许访问 | 不允许访问 | 可以更新 | 不允许访问 |
 | 付款摘要 | 可以查看 | 不允许访问 | 不允许访问 | 不允许访问 | 可以查看 | 不允许访问  |
 | | | | | | | |
-
-## <a name="payout-report-differences"></a>付款报告差异
-
-以下是云合作伙伴门户（旧版）和合作伙伴中心（新版）之间的付款报告差异：
-
-| 云合作伙伴门户 | 合作伙伴中心 |
-| --- | --- |
-| **链接**： https://cloudpartner.azure.com/ | **链接**： https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory 和 https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigation**：Insights Payout 中提供的付款报告 | **Navigation**：合作伙伴中心提供的付款报告 - 付款图标 |
-| **范围**：<ul><li>对于正在进行、已收取和已支付的收款，每个行项的交易均可见。</li><li>报告 - 显示创建采购订单后的所有行项，包括正在进行的收款和正在进行的计费，以及收款状态和尚不符合付款条件的行项。</li></ul> | **范围**：<ul><li>显示被视为合格收入的行项。</li><li>客户先向 Microsoft 付款，然后 ISV 可以看到付款报告。</li><li>付款报告不会显示正在进行的收款和正在进行的计费。</li></ul> |
-| **交易尚未做好付款的准备**：正在进行的计费 | **交易尚未做好付款的准备**：下一次估计付款：付款状态处于未处理状态。 |
-| **付款状态**：不适用 | **付款状态**：<ul><li>未处理：收入可以用于付款。</li><li>即将发送：收入将在下一个月的付款中发送给出版商。</li><li>已发送：已将付款发送到银行。</li></ul> |
-| | |
 
 ## <a name="payment-schedules"></a>付款计划
 
@@ -90,18 +77,18 @@ ms.locfileid: "86118471"
 | earningExchangeRate | 用于显示相应美元金额的汇率 |
 | exchangeRateDate | 用于计算美元 EarningAmount 的汇率日期 |
 | paymentAmountWOTax | 按付款币种计算的收入金额（不含税），仅针对“已发送”的付款 |
-| paymentCurrency | 合作伙伴在付款资料中选择的付款币种。 仅针对已发送的付款 |
+| paymentCurrency | 合作伙伴在付款配置文件中选择的付款币种。 仅针对已发送的付款 |
 | paymentExchangeRate | 用于使用 ExchangeRateDate 以付款币种计算 paymentAmountWOTax 的汇率 |
 | paymentId | 付款的唯一标识符。 此数字在银行报表中可见 |
 | paymentStatus | 付款状态 |
 | paymentStatusDescription | 付款状态的说明 |
-| customerId | 始终为空 |
-| customerName | 始终为空 |
+| customerId | 始终为空白 |
+| customerName | 始终为空白 |
 | partNumber | 始终为空 |
 | productName | 与交易关联的产品名称 |
 | productId | 唯一的产品标识符 |
-| parentProductId | 唯一的父产品标识符。 如果交易没有父产品，则父产品 ID = 产品 ID。 |
-| parentProductName | 父产品的名称。 如果交易没有父产品，则父产品名称 = 产品名称。 |
+| parentProductId | 唯一父产品标识符。 如果交易没有父产品，则父产品 ID = 产品 ID。 |
+| parentProductName | 父产品名称。 如果交易没有父产品，则父产品名称 = 产品名称。 |
 | productType | 产品类型（例如应用、附加产品和游戏） |
 | invoiceNumber | 发票编号（仅适用于企业协议） |
 | resellerId | 经销商标识符 |
