@@ -4,12 +4,12 @@ description: 了解如何使用 WebJobs SDK 编写 Durable Functions 的代码�
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733407"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540292"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
 
@@ -31,7 +31,7 @@ WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载
 
 完成本文中的步骤：
 
-* [安装 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/)（包含 **Azure 开发**工作负荷）。
+* [安装 Visual Studio 2019](/visualstudio/install/)（包含 **Azure 开发**工作负荷）。
 
   如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具” > “获取工具和功能”以添加该工作负荷。**** ****
 
@@ -224,7 +224,7 @@ while (true)
     * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. 使用 .NET Core 配置框架，在文件*appsettings.js*中设置存储连接字符串和 Application Insights 检测密钥。 以下是一个示例：
+1. 使用 .NET Core 配置框架，在文件*appsettings.js*中设置存储连接字符串和 Application Insights 检测密钥。 下面是一个示例：
 
     ```json
         {

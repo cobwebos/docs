@@ -5,11 +5,12 @@ author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74226724"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540377"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>安装 Azure Functions 运行时预览版 2
 
@@ -70,7 +71,7 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
     ![Azure Functions 运行时预览版配置工具][7]
 
-1. 单击“数据库”  选项卡，输入 SQL Server 实例的连接详细信息（包括指定[数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)）并单击“应用”  。  需要与 SQL Server 实例建立连接，才能让 Azure Functions 运行时创建数据库来支持运行时。
+1. 单击“数据库”  选项卡，输入 SQL Server 实例的连接详细信息（包括指定[数据库主密钥](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)）并单击“应用”  。  需要与 SQL Server 实例建立连接，才能让 Azure Functions 运行时创建数据库来支持运行时。
 
     ![Azure Functions 运行时预览版数据库配置][8]
 

@@ -8,14 +8,11 @@ ms.topic: include
 ms.date: 02/03/2020
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: df529de23b5d964dd80dd9fa5dd17c460a2c4f28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49c5c8a55f43a0d14ffd1371de65680d8588e067
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062365"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544435"
 ---
-| |
-|--|
-|如果你的管理员已为你的组织启用了新的 "**我的应用**预览体验"，则在你选择帐户图标以便在 "**我的应用**" 页面顶部查看你的帐户信息时，你现在会看到一个链接。 如果你选择 "**试用新的我的应用程序体验**"，你会立即到达新的 URL （ https://myapplications.microsoft.com) 和更新的体验）。 然后，当你返回到 "**我的应用**" 页面时，你将自动前往新体验。<br><br>若要停止使用新体验，你可以在 "**我的应用**" 页面顶部选择 "帐户" 图标以查看帐户信息时，选择 "**退出预览体验**"。 你会立即返回到旧 URL (myapps.microsoft.com) 和旧体验。 此后，每次返回到“My Apps”页面时，你将自动进入旧体验****。|
-|
+> 如果你的管理员已为你的组织启用了新的 "**我的应用**预览体验"，则在你选择帐户图标以便在 "**我的应用**" 页面顶部查看你的帐户信息时，你现在会看到一个链接。 如果你选择 "**试用新的我的应用程序体验**"，你会立即到达新的 URL （ https://myapplications.microsoft.com) 和更新的体验）。 然后，当你返回到 "**我的应用**" 页面时，你将自动前往新体验。<br><br>若要停止使用新体验，你可以在 "**我的应用**" 页面顶部选择 "帐户" 图标以查看帐户信息时，选择 "**退出预览体验**"。 你会立即返回到旧 URL (myapps.microsoft.com) 和旧体验。 此后，每次返回到“My Apps”页面时，你将自动进入旧体验****。

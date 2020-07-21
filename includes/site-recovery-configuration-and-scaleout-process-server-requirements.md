@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85292114"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544398"
 ---
 **配置和进程服务器要求**
 
@@ -60,6 +60,9 @@ time.windows.com | 用于检查系统时间与全球时间之间的时间同步
 | <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https： \/ /login.live.com </li><li> https： \/ /graph.windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com （可选） </li><li> https： \/ /www.live.com </li><li> https： \/ /www.microsoft.com </li></ul> | OVF 安装程序需要对这些附加 Url 的访问权限。 它们用于 Azure Active Directory 的访问控制和标识管理。
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | 完成 MySQL 下载。 </br> 在少数几个区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保 CDN URL 还列入允许列表。
 |
+
+> [!NOTE]
+> 如果你具有与 Site Recovery 保管库的[私有链接连接](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md)，则不需要为配置服务器提供任何其他 internet 访问权限。 这种情况的一个例外是，使用 .OVA 模板设置 CS 计算机时，需要访问以下 Url （或更高版本的私有链接访问 https://management.azure.com - https://www.live.com 和） https://www.microsoft.com 。 如果你不希望允许访问这些 Url，请使用统一安装程序设置该 CS。
 
 ## <a name="required-software"></a>所需软件
 

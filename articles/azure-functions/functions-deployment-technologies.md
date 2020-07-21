@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: glenga
-ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63c52b8b1ee9b9448a1ba6f78873ae6a036e3563
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735294"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540207"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -179,7 +179,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 
 下表显示了支持门户编辑的操作系统和语言：
 
-| | Windows 消耗计划 | Windows 高级 | Windows 专用计划 | Linux 消耗计划 | Linux 高级版 | Linux 专用计划 |
+| 语言 | Windows 消耗计划 | Windows 高级 | Windows 专用计划 | Linux 消耗计划 | Linux 高级版 | Linux 专用计划 |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C# 脚本 |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|

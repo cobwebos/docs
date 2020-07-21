@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792967"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544550"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2为标识分配访问权限
 
@@ -92,7 +92,16 @@ Azure 文件支持全套 NTFS 基本和高级权限。 你可以通过装入并�
 使用 Windows net use**** 命令装载 Azure 文件共享。 请记住，将以下示例中的占位符值替换为自己的值。 有关装载文件共享的详细信息，请参阅[将 Azure 文件共享用于 Windows](../articles/storage/files/storage-how-to-use-files-windows.md)。 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+ net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+ Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 如果在连接到 Azure 文件时遇到问题，请参阅在[Windows 上为 Azure 文件装载错误发布的疑难解答工具](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)。 我们还提供了有关在阻止端口445时解决方案的[指南](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)。 
@@ -130,5 +139,13 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 使用以下命令装载 Azure 文件共享。 请务必将占位符值替换为你自己的值。 由于已经过身份验证，因此不需要提供存储帐户密钥、本地 AD DS 凭据或 Azure AD DS 凭据。 通过本地 AD DS 或 Azure AD DS 进行身份验证时，支持单一登录体验。 如果遇到 AD DS 凭据装入问题，请参阅[在 Windows 中对 Azure 文件问题进行故障排除](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以获得指导。
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+ net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+ Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
 ```

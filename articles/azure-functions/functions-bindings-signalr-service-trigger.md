@@ -1,32 +1,32 @@
 ---
 title: Azure Functions SignalR 服务触发器绑定
-description: 了解如何从 Azure Functions 发送 SignalR Service 消息。
+description: 了解如何从 Azure Functions 发送 SignalR 服务消息。
 author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830700"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540224"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务触发器绑定
 
-使用*SignalR*触发器绑定来响应从 Azure SignalR 服务发送的消息。 触发函数时，传递给函数的消息将被分析为 json 对象。
+使用 SignalR 触发器绑定来响应从 Azure SignalR 服务发送的消息。 触发函数时，传递给函数的消息分析为 json 对象。
 
-若要了解设置和配置详细信息，请参阅[概述](functions-bindings-signalr-service.md)。
+有关设置和配置详细信息，请参阅[概述](functions-bindings-signalr-service.md)。
 
 ## <a name="example"></a>示例
 
-下面的示例演示一个函数，该函数使用触发器绑定接收一条消息并记录该消息。
+下面的示例演示一个函数，该函数使用触发器绑定来接收消息并记录该消息。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-适用于 c # 的 SignalR 服务触发器绑定具有两种编程模型。 基于类的模型和传统模型。 基于类的模型可提供一致的 SignalR 服务器端编程体验。 和传统模型具有更大的灵活性，与其他函数绑定类似。
+适用于 C# 的 SignalR 服务触发器绑定具有两种编程模型。 基于类的模型和传统模型。 基于类的模型可提供一致的 SignalR 服务器端编程体验。 传统模型提供更大的灵活性，并与其他函数绑定类似。
 
-### <a name="with-class-based-model"></a>具有基于类的模型
+### <a name="with-class-based-model"></a>使用基于类的模型
 
 有关详细信息，请参阅[基于类的模型](../azure-signalr/signalr-concept-serverless-development-config.md#class-based-model)。
 
@@ -41,9 +41,9 @@ public class SignalRTestHub : ServerlessHub
 }
 ```
 
-### <a name="with-traditional-model"></a>传统模型
+### <a name="with-traditional-model"></a>对于传统模型
 
-传统模型服从由 c # 开发的 Azure 函数的约定。 如果不熟悉，可以从[文档](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-class-library)学习。
+传统模型遵守使用 C# 开发的 Azure Function 的约定。 如果不熟悉该约定，可通过[文档](./functions-dotnet-class-library.md)了解和学习。
 
 ```cs
 [FunctionName("SignalRTest")]
@@ -53,9 +53,9 @@ public static async Task Run([SignalRTrigger("SignalRTest", "messages", "SendMes
 }
 ```
 
-#### <a name="use-attribute-signalrparameter-to-simplify-parameternames"></a>使用特性 `[SignalRParameter]` 简化`ParameterNames`
+#### <a name="use-attribute-signalrparameter-to-simplify-parameternames"></a>使用特性 `[SignalRParameter]` 简化 `ParameterNames`
 
-由于使用非常麻烦 `ParameterNames` ，因此 `SignalRParameter` 提供了相同的目的。
+由于使用 `ParameterNames` 有点麻烦，可使用 `SignalRParameter` 来实现同一目的。
 
 ```cs
 [FunctionName("SignalRTest")]
@@ -172,64 +172,64 @@ def main(invocation) -> None:
 |---------|---------|----------------------|
 |**type**| 不适用 | 必须设置为 `SignalRTrigger`。|
 |**direction**| 不适用 | 必须设置为 `in`。|
-|**name**| 不适用 | 用于触发器调用上下文对象的函数代码中使用的变量名称。 |
-|**hubName**|**HubName**| 此值必须设置为要触发的函数的 SignalR 集线器的名称。|
-|**category**|**类别**| 此值必须设置为要触发的函数的消息类别。 类别可以是以下值之一： <ul><li>**连接**：包括*连接*事件和已*断开*连接的事件</li><li>**消息**：包含除*connections*类中的所有其他事件</li></ul> |
-|**event**|**事件**| 此值必须设置为要触发的函数的消息事件。 对于 "*消息*类别"，事件是客户端发送的[调用消息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的*目标*。 对于 "*连接*" 类别，只使用 "*连接*" 和 "*断开*连接"。 |
-|**parameterNames**|**ParameterNames**| 可有可无绑定到参数的名称的列表。 |
+|**name**| 不适用 | 在函数代码中用于“触发器调用上下文”对象的变量名称。 |
+|**hubName**|**HubName**| 此值必须设置为要触发的函数的 SignalR 中心的名称。|
+|**category**|**类别**| 此值必须设置为要触发的函数的消息类别。 类别可以是下列值之一： <ul><li>**连接**：包括“已连接”和“已断开连接”的事件 </li><li>**消息**：包含除连接类别中事件的所有其他事件</li></ul> |
+|**event**|**事件**| 此值必须设置为要触发的函数的消息事件。 对于消息类别，事件是客户端发送的[调用消息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的目标 。 对于连接类别，只使用“已连接”和“已断开连接”  。 |
+|**parameterNames**|**ParameterNames**| （可选）绑定到参数的名称列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 
 ## <a name="payload"></a>有效负载
 
-触发器输入类型声明为 `InvocationContext` 或自定义类型。 如果你选择 `InvocationContext` 对请求内容具有完全访问权限。 对于自定义类型，运行时会尝试分析 JSON 请求正文，以设置对象属性。
+触发器输入类型声明为 `InvocationContext` 或自定义类型。 如果选择 `InvocationContext`，会获得对请求内容的完全访问权限。 对于自定义类型，运行时会尝试分析 JSON 请求正文，以设置对象属性。
 
 ### <a name="invocationcontext"></a>InvocationContext
 
 InvocationContext 包含 SignalR 服务发送的消息中的所有内容。
 
-|InvocationContext 中的属性 | 描述|
+|InvocationContext 中的属性 | 说明|
 |------------------------------|------------|
-|自变量| 可用于*消息*类别。 在[调用消息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中包含*参数*|
-|错误| 可用于*断开连接*的事件。 如果在没有错误的情况下关闭连接或包含错误消息，则可以为空。|
-|Hub| 消息所属的中心名称。|
-|类别| 消息的类别。|
+|参数| 可用于消息类别。 包含[调用消息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的参数|
+|错误| 可用于“已断开连接”事件。 如果连接关闭时未发生错误，可以为空，否则会包含错误消息。|
+|Hub| 消息所属的中心的名称。|
+|Category| 消息的类别。|
 |事件| 消息的事件。|
 |ConnectionId| 发送消息的客户端的连接 ID。|
 |UserId| 发送消息的客户端的用户标识。|
 |头文件| 请求的标头。|
-|查询| 客户端连接到服务时请求的查询。|
+|查询| 客户端连接到服务时的请求的查询。|
 |声明| 客户端的声明。|
 
 ## <a name="using-parameternames"></a>使用 `ParameterNames`
 
-中的 `ParameterNames` 属性 `SignalRTrigger` 允许你将调用消息的参数绑定到函数的参数。 这为你提供了一种更方便的方法来访问的参数 `InvocationContext` 。
+通过 `SignalRTrigger` 中的属性 `ParameterNames`，可将调用消息的参数绑定到函数的参数。 这为你提供了更方便的方法来访问 `InvocationContext` 的参数。
 
-假设你有一个 JavaScript SignalR 客户端尝试 `broadcast` 在 Azure 函数中使用两个参数调用方法。
+假设你有 JavaScript SignalR 客户端尝试调用 Azure Function 中带有两个参数的方法 `broadcast`。
 
 ```javascript
 await connection.invoke("broadcast", message1, message2);
 ```
 
-你可以从参数访问这两个参数，并通过使用为其分配参数类型 `ParameterNames` 。
+你可以通过参数来访问这两个参数，也可使用 `ParameterNames` 为它们分配参数类型。
 
-### <a name="remarks"></a>注解
+### <a name="remarks"></a>备注
 
-对于参数绑定，顺序很重要。 如果使用的是 `ParameterNames` ，中的顺序 `ParameterNames` 与您在客户端中调用的参数的顺序相匹配。 如果使用 `[SignalRParameter]` 的是 c # 中的属性，则 Azure Function 方法中的参数顺序与客户端中参数的顺序相匹配。
+对于参数绑定，顺序很重要。 如果使用 `ParameterNames`，则 `ParameterNames` 中的顺序与在客户端中调用参数的顺序相匹配。 如果在 C# 中使用特性 `[SignalRParameter]`，则 Azure Function 方法中的参数顺序与客户端中参数的顺序相匹配。
 
-`ParameterNames``[SignalRParameter]`**不能**同时使用和特性，否则将出现异常。
+`ParameterNames` 和特性 `[SignalRParameter]` 不能同时使用，否则将出现异常。
 
 ## <a name="send-messages-to-signalr-service-trigger-binding"></a>将消息发送到 SignalR 服务触发器绑定
 
-Azure Function 生成 SignalR 服务触发器绑定的 URL，其格式如下：
+Azure Function 为 SignalR 服务触发器绑定生成 URL，其格式如下：
 
 ```http
 https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
 ```
 
-`API_KEY`由 Azure Function 生成。 `API_KEY`当你使用 SignalR 服务触发器绑定时，你可以从 Azure 门户中获取。
+`API_KEY` 由 Azure Function 生成。 使用 SignalR 服务触发器绑定时，可以从 Azure 门户中获取 `API_KEY`。
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API 密钥":::
 
-你应在 SignalR 服务的上游设置中设置此 URL `UrlTemplate` 。
+应在 SignalR 服务的“上游设置”的 `UrlTemplate` 中设置此 URL。
 
 ## <a name="next-steps"></a>后续步骤
 

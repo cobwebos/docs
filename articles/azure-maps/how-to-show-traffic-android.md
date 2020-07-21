@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92e111a6e76dbe285dd8cc7a93ce75f556142565
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335378"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540139"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 显示地图上的流量数据 Android SDK
 
@@ -21,9 +21,9 @@ ms.locfileid: "80335378"
 
 ## <a name="prerequisites"></a>先决条件
 
-你需要[创建 Azure 帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)并[获取订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)，然后才能在地图上显示流量。 然后，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)并加载地图。
+你需要[创建 Azure 帐户](quick-demo-map-app.md#create-an-azure-maps-account)并[获取订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)，然后才能在地图上显示流量。 然后，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)并加载地图。
 
-## <a name="incidents-traffic-data"></a>事件流量数据 
+## <a name="incidents-traffic-data"></a>事件流量数据
 
 需要导入以下库来调用 `setTraffic` 和 `incidents` ：
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 使用以下代码片段设置流量流数据。 与上一节中的代码类似，我们将方法的返回值传递 `flow` 给 `setTraffic` 方法。 有四个可传递到的值 `flow` ，每个值都将触发 `flow` 以返回各自的值。 然后，将的返回值 `flow` 作为参数传递给 `setTraffic` 。 请参阅下表中的以下四个值：
 
-| | |
+|流值 | 说明|
 | :-- | :-- |
 | TrafficFlow | 不显示地图上的流量数据 |
 | TrafficFlow | 显示相对于旅途的自由流动速度的流量数据 |

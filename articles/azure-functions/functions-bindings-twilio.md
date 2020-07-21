@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8116abda71ae78b05786ede03256eb9e9bb59345
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76715056"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540258"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 绑定
 
@@ -240,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的示例演示如何使用[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注发送短信。 `to` `from` 属性定义中需要、和的值， `body` 即使您以编程方式重写它们也是如此。
+下面的示例演示如何使用[TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注发送短信。 `to` `from` 属性定义中需要、和的值， `body` 即使您以编程方式重写它们也是如此。
 
 ```java
 package com.function;
@@ -318,7 +319,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-将[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注放置在 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) 参数上 `T` ，其中可以是任何本机 Java 类型 `int` ，如、 `String` 、 `byte[]` 或 POJO 类型。
+将[TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注放置在 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 参数上 `T` ，其中可以是任何本机 Java 类型 `int` ，如、 `String` 、 `byte[]` 或 POJO 类型。
 
 ---
 
@@ -333,7 +334,7 @@ Python 不支持特性。
 |**name**|**name**| 在 Twilio 短信的函数代码中使用的变量名。 |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid （）的应用设置的名称 `TwilioAccountSid` 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
 |**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌（）的应用设置的名称 `TwilioAccountAuthToken` 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
-|**to**| 不适用 - 在代码中指定 | **To**| 此值设置为短信将发送到的电话号码。|
+|**to**| 不适用 - 在代码中指定 | **收件人**| 此值设置为短信将发送到的电话号码。|
 |**from**|**from** | **From**| 此值设置为发送短信的电话号码。|
 |**body**|**body** | **正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |  
 
