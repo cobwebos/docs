@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791107"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524737"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>使用 Azure Maps 绘图错误可视化工具
 
@@ -23,7 +23,7 @@ ms.locfileid: "84791107"
 
 必须先执行以下操作，然后才能下载绘图错误可视化工具：
 
-1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 3. [创建 Creator 资源](how-to-manage-creator.md)
 

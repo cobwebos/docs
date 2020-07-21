@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: f23df5924354fa688743d29919095413ec12ce18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7addc87f3096a75a55d0ea3b5804fd0006d5cb8c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444346"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526480"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机修复命令修复 Windows VM
 
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对磁盘本身执行缓解操作。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure VM 修复命令将磁盘连接到另一个 Windows VM 来修复所有错误，然后重新生成原始 VM。
 
 > [!IMPORTANT]
-> * 本文中的脚本仅适用于使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的 VM。
+> * 本文中的脚本仅适用于使用 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的 VM。
 > * 运行脚本需要 VM 的出站连接（端口 443）。
 > * 一次只能运行一个脚本。
 > * 无法取消正在运行的脚本。
@@ -46,7 +46,7 @@ ms.locfileid: "85444346"
 4. 运行 az vm repair run。
 5. 运行 az vm repair restore。
 
-有关其他文档和说明，请参阅 [az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)。
+有关其他文档和说明，请参阅 [az vm repair](/cli/azure/ext/vm-repair/vm/repair)。
 
 ## <a name="repair-process-example"></a>修复过程示例
 
@@ -58,9 +58,9 @@ ms.locfileid: "85444346"
 
    选择“复制”以复制代码块，然后将其粘贴到 Cloud Shell 中，选择 Enter 来运行它。 
 
-   如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI version 2.0.30 或更高版本。 运行 ``az --version`` 即可查找版本。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+   如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI version 2.0.30 或更高版本。 运行 ``az --version`` 即可查找版本。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
    
-   如果需要使用与当前登录到 Azure 门户的帐户不同的帐户登录 Cloud Shell，可以使用 ``az login`` [az login reference](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)。  若要在与你的帐户关联的订阅之间切换，你可以使用 ``az account set --subscription`` [az account set reference](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)。
+   如果需要使用不同于当前登录到 Azure 门户的帐户登录 Cloud Shell，可以使用 ``az login`` [az login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login)。  若要在与你的帐户关联的订阅之间切换，你可以使用 ``az account set --subscription`` [az account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set)。
 
 2. 如果是首次使用 `az vm repair` 命令，请添加 vm-repair CLI 扩展。
 
@@ -104,6 +104,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)。
-* 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[排查 Azure 中虚拟机上的应用程序连接问题](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection)。
-* 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+* 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](./troubleshoot-rdp-connection.md)。
+* 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[排查 Azure 中虚拟机上的应用程序连接问题](./troubleshoot-app-connection.md)。
+* 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。

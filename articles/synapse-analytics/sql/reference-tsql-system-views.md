@@ -1,5 +1,5 @@
 ---
-title: 系统视图
+title: Synapse SQL-工作区预览版中支持的系统视图
 description: Synapse SQL 中支持的系统视图文档的链接。
 author: filippopovic
 ms.service: synapse-analytics
@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f58c34a46f4eb1bffe4516f2a6f9f17a799fbfb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab6d7266daf96a38f81566725a6931aebaf7e7d9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82786591"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527789"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Synapse SQL 中支持的系统视图
 Synapse SQL 中支持的 T-sql 语句的文档链接。

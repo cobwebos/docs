@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 60053f24aa4231f1100d0b00cb6cf70b851b1939
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218280"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526022"
 ---
 ## <a name="application-performance-indicators"></a>应用程序性能指标
 
@@ -138,7 +138,7 @@ PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘
 IO 请求是应用程序要执行的输入/输出操作单元。 识别 IO 请求的性质（随机或有序、读取或写入、小型或大型）有助于确定应用程序的性能要求。 了解 IO 请求的性质很重要，这有助于在设计应用程序基础结构时进行正确的决策。 IO 必须均匀分布，以实现可能的最佳性能。
 
 IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的输入/输出操作请求的大小。 IO 大小对性能（尤其是应用程序能够实现的 IOPS 和带宽）有很大的影响。 下面的公式说明了 IOPS、IO 大小和带宽/吞吐量之间的关系。  
-    ![](media/premium-storage-performance/image1.png)
+    ![显示公式 I O P S 次 O 大小等于吞吐量的关系图。](media/premium-storage-performance/image1.png)
 
 某些应用程序允许更改其 IO 大小，而某些应用程序则不允许。 例如，SQL Server 会自行确定最佳 IO 大小，不允许用户对其进行更改。 另一方面，Oracle 提供了名为 [DB\_BLOCK\_SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) 的参数，可用于配置数据库的 I/O 请求大小。
 
@@ -195,7 +195,7 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 
 下表总结了这种情况下标准存储和高级存储的成本明细。
 
-| &nbsp; | **标准** | **高级** |
+| &nbsp; | **Standard** | **高级** |
 | --- | --- | --- |
 | **VM 每月的成本** |$1,570.58 (Standard\_D14) |$1,003.66 (Standard\_DS13) |
 | **每月磁盘成本** |$1,638.40（32 x 1-TB 磁盘） |$544.34（4 x P30 磁盘） |
@@ -265,7 +265,7 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 *ReadWrite*  
 默认情况下，OS 磁盘已启用 ReadWrite 缓存。 我们最近还增加了对在数据磁盘上进行 ReadWrite 缓存的支持。 如果使用 ReadWrite 缓存，则必须通过适当方法将数据从缓存写入到永久性磁盘。 例如，SQL Server 会自行将缓存数据写入永久性存储磁盘。 对不负责保留所需数据的应用程序使用 ReadWrite 缓存可能会在 VM 崩溃时导致数据丢失。
 
-无  
+*无*  
 目前，只有数据磁盘支持“无”。 OS 磁盘不支持此选项。 如果在 OS 磁盘上设置“无”，它将在内部覆盖此设置并将其设置为“ReadOnly”。
 
 举例来说，可以通过执行以下操作将这些准则应用到在高级存储上运行的 SQL Server：
@@ -371,13 +371,13 @@ Azure 将高级存储平台设计为可以进行大规模并行处理。 因此�
 
 *最佳队列深度*  
 队列深度值过高也有其缺点。 如果队列深度值过高，则应用程序会尝试实现非常高的 IOPS。 除非应用程序的永久性磁盘具有足够高的预配 IOPS，否则会对应用程序延迟造成负面影响。 以下公式显示了 IOPS、延迟和队列深度之间的关系。  
-    ![](media/premium-storage-performance/image6.png)
+    ![显示公式 I O P S 的时间延迟等于队列深度的关系图。](media/premium-storage-performance/image6.png)
 
 不应随意地将队列深度配置为某个很高的值，而应将其配置为最佳值，该值可以确保应用程序实现足够高的 IOPS，但又不会影响延迟。 例如，如果应用程序延迟需要设置为 1 毫秒，则要实现 5,000 IOPS，所需队列深度为：QD = 5000 x 0.001 = 5。
 
 *条带化卷的队列深度*  
 条带化卷应保持足够高的队列深度，使得每个磁盘都有各自的高峰队列深度。 例如，以某个应用程序为考虑对象，该应用程序所推送的队列深度为 2，条带中有四个磁盘。 两个 IO 请求会发送到两个磁盘中，剩下两个磁盘会处于空闲状态。 因此，请将队列深度配置为让所有磁盘都能够处于繁忙状态。 下面的公式说明了如何确定条带化卷的队列深度。  
-    ![](media/premium-storage-performance/image7.png)
+    ![显示每个磁盘的公式为 Q D 的图表，每个卷的列数等于条带化卷的 Q D。](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>限制
 

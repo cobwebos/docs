@@ -3,12 +3,12 @@ title: 限制和边界 - QnA Maker
 description: QnA Maker 对部分知识库和服务具有元限制。 为了测试和发布，请务必将知识库保留在这些限制内。
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855552"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524431"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -18,7 +18,7 @@ ms.locfileid: "85855552"
 
 最大知识库数基于[Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)。
 
-|**Azure 认知搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure 认知搜索层** | 免费 | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |已发布知识库的最大允许数量|2|14|49|199|199|2,999|
 
@@ -61,7 +61,7 @@ ms.locfileid: "85855552"
 
 每个知识库的元数据字段的最大数目取决于**[Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)**。
 
-|**Azure 认知搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure 认知搜索层** | 免费 | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |每个 QnA Maker 服务的元数据字段的最大数量（包括所有知识库）|1,000|100*|1,000|1,000|1,000|1,000|
 
@@ -72,14 +72,15 @@ ms.locfileid: "85855552"
 |项|允许的字符|Regex 模式匹配|最大字符数|
 |--|--|--|--|
 |名称（键）|可用<br>字母数字（字母和数字）<br>`_`强调<br> 不得包含空格。|`^[a-zA-Z0-9_]+$`|100|
-|“值”|允许除以外的所有内容<br>`:`开头<br>`|`（垂直管道）<br>仅允许一个值。|`^[^:|]+$`|500|
+|值|允许除以外的所有内容<br>`:`开头<br>`|`（垂直管道）<br>仅允许一个值。|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>知识库内容限制
 知识库中内容的总体限制：
 * 答案文本的长度：25,000
 * 问题文本的长度：1,000
-* 元数据键/值文本的长度：100
+* 元数据密钥文本的长度：100
+* Metadata 值文本的长度：500
 * 支持的元数据名称字符：字母、数字和`_`
 * 元数据值支持的字符数：除和之外的所有字符 `:``|`
 * 文件名长度：200

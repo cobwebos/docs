@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: becbf7f89266fb0f56aaa053eb7cba9291da6896
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514097"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527857"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>使用 StorSimple 设备管理器服务更改 StorSimple 密码
 
@@ -36,25 +36,25 @@ Azure 门户中的“设备设置”选项包含可以在由 StorSimple 设备�
 
 2. 在设备的表格列表中，选择并单击要更改其密码的设备。
 
-    ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+    ![显示 StorSimple 设备管理器服务的屏幕截图。 在 "管理" 下选择 "设备"。 在设备列表中，选择一个设备。](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. 在“设置”边栏选项卡中，转到“设备设置”>“安全性”。********
 
-    ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+    ![显示设备管理器服务的 "设置" 边栏选项卡的屏幕截图。 在 "设备设置" 下，选择 "安全性"。](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. 在“安全设置”边栏选项卡中，单击“密码”更改设备管理员密码。********
 
-    ![](./media/storsimple-8000-change-passwords/changepwd3.png)
+    ![显示 "安全设置" 边栏选项卡的屏幕截图。 将突出显示密码按钮。](./media/storsimple-8000-change-passwords/changepwd3.png)
 
 5. 在“密码”边栏选项卡中，提供包含 8 至 15 个字符的管理员密码。**** 此密码必须是下述 3 项或 3 项以上要求的组合：大写字符、小写字符、数字字符、特殊字符。
 
 6. 确认该密码。
 
-    ![](./media/storsimple-8000-change-passwords/changepwd4.png)
+    ![显示 "密码" 边栏选项卡的屏幕截图。 在 "设备管理员密码" 下，将填写 "新密码" 和 "确认密码" 框。](./media/storsimple-8000-change-passwords/changepwd4.png)
 
 7. 单击“保存”，出现确认提示时，单击“是”。********
 
-    ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+    ![显示 "密码" 边栏选项卡的屏幕截图。 突出显示 "保存" 按钮。](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 现在应该会更新设备管理员密码。 此修改过的密码可用于访问 Windows PowerShell 界面。
 
@@ -70,25 +70,25 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 2. 在设备的表格列表中，选择并单击要设置或更改其 StorSimple Snapshot Manager 密码的设备。
 
-     ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+     ![显示 StorSimple 设备管理器服务的屏幕截图。 在 "管理" 下选择 "设备"。 在设备列表中，选择一个设备。](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. 在“设置”边栏选项卡中，转到“设备设置”>“安全性”。********
 
-     ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+     ![显示设备管理器服务的 "设置" 边栏选项卡的屏幕截图。 在 "设备设置" 下，选择 "安全性"。](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. 在“安全设置”边栏选项卡中，单击“密码”设置或更改 StorSimple Snapshot Manager 密码。********
 
-     ![](./media/storsimple-8000-change-passwords/changepwd3.png) 
+     ![显示 "安全设置" 边栏选项卡的屏幕截图。 将突出显示密码按钮。](./media/storsimple-8000-change-passwords/changepwd3.png) 
 
 5. 在“密码”边栏选项卡中，输入包含 14 或 15 个字符的密码。**** 请确保该密码包含 3 项或 3 项以上下述要求的组合：大写字符、小写字符、数字字符、特殊字符。
 
 6. 确认该密码。
 
-     ![](./media/storsimple-8000-change-passwords/changepwd5.png)
+     ![显示 "密码" 边栏选项卡的屏幕截图。 在 "Snapshot Manager 密码" 下，将填写 "新密码" 和 "确认密码" 框。](./media/storsimple-8000-change-passwords/changepwd5.png)
 
 7. 单击“保存”，出现确认提示时，单击“是”。********
 
-     ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+     ![显示 "密码" 边栏选项卡的屏幕截图。 突出显示 "保存" 按钮。](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 StorSimple Snapshot Manager 密码现在应已更新。
 

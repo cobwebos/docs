@@ -2,24 +2,28 @@
 title: 设置专用链接
 description: 在容器注册表上设置专用终结点，并通过本地虚拟网络中的专用链接启用访问。 私有链接访问是高级服务层的一项功能。
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/26/2020
+ms.openlocfilehash: 713b19e4a60e5dcad6cfd92d65f97af2e921c0e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509332"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523836"
 ---
-# <a name="configure-azure-private-link-for-an-azure-container-registry"></a>为 Azure 容器注册表配置 Azure 专用链接 
+# <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure Private Link 将专用连接到 Azure 容器注册表
 
-将虚拟网络专用 IP 地址分配给使用 [Azure 专用链接](../private-link/private-link-overview.md)的注册表终结点，从而限制对注册表的访问。 虚拟网络上客户端与注册表之间的网络流量将穿过虚拟网络以及 Microsoft 主干网络上的专用链接，因此不会从公共 Internet 公开。
 
-可以为专用终结点[配置 DNS 设置](../private-link/private-endpoint-overview.md#dns-configuration)，以便将这些设置解析为注册表的已分配专用 IP 地址。 使用 DNS 配置时，网络中的客户端和服务可以继续按注册表的完全限定的域名（如 myregistry.azurecr.io）来访问注册表。
+通过将虚拟网络专用 IP 地址分配到注册表终结点并使用[Azure 专用链接](../private-link/private-link-overview.md)，限制对注册表的访问。 虚拟网络上的客户端与注册表的专用终结点之间的网络流量将遍历 Microsoft 主干网络上的虚拟网络和专用链接，从而消除了公共 internet 的泄露。 通过 "专用链接"，还可以通过[Azure ExpressRoute](../expressroute/expressroute-introduction.MD)专用对等互连或[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)启用从本地进行的私有注册表访问。
+
+你可以为注册表的专用终结点[配置 DNS 设置](../private-link/private-endpoint-overview.md#dns-configuration)，以使这些设置解析为注册表分配的专用 IP 地址。 使用 DNS 配置时，网络中的客户端和服务可以继续按注册表的完全限定的域名（如 myregistry.azurecr.io）来访问注册表。 
 
 此功能在“高级”容器注册表服务层级中可用。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层级](container-registry-skus.md)。
+
 
 ## <a name="things-to-know"></a>使用须知
 
 * 当前，在使用专用终结点配置的注册表无法使用 Azure 安全中心进行映像扫描。
+* 目前，最多可以为注册表设置10个私有终结点。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -245,7 +249,7 @@ az network private-dns record-set a add-record \
 5. 在完成时选择“下一步:资源”。
 6. 输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
@@ -258,7 +262,7 @@ az network private-dns record-set a add-record \
 
     | 设置 | 值 |
     | ------- | ----- |
-    |**网络**| |
+    |**联网**| |
     | 虚拟网络| 选择要在其中部署虚拟机的虚拟网络，例如 myDockerVMVNET。 |
     | 子网 | 选择要在其中部署虚拟机的子网，例如 myDockerVMSubnet。 |
     |专用 DNS 集成||
@@ -266,7 +270,7 @@ az network private-dns record-set a add-record \
     |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
     |||
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。 
+1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 2. 看到“验证通过”消息时，选择“创建” 。
 
 创建专用终结点之后，专用区域中的 DNS 设置会显示在门户中的“专用终结点”页上：

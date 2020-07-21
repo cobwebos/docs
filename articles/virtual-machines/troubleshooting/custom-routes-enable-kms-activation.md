@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 085647c392bb6cec51fba8b6e42cb8f03707223c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1c2050969e95b521554bba100b688add3a987a80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134589"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526735"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>在强制隧道方案中，Windows 激活失败
 
@@ -53,9 +53,9 @@ Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名�
  
 
 > [!NOTE] 
-> 激活使用公共 IP 地址，并将受标准 SKU 负载均衡器配置的影响。 请仔细查看 [Azure 中的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)以了解要求。
+> 激活使用公共 IP 地址，并将受标准 SKU 负载均衡器配置的影响。 请仔细查看 [Azure 中的出站连接](../../load-balancer/load-balancer-outbound-connections.md)以了解要求。
 
-1. 打开 Azure PowerShell，然后[登录到 Azure 订阅](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
+1. 打开 Azure PowerShell，然后[登录到 Azure 订阅](/powershell/azure/authenticate-azureps)。
 2. 运行以下命令：
 
     ```powershell
@@ -77,7 +77,7 @@ Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名�
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. 请转到存在激活问题的 VM。 使用 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 测试其是否能够访问 KMS 服务器：
+3. 请转到存在激活问题的 VM。 使用 [PsPing](/sysinternals/downloads/psping) 测试其是否能够访问 KMS 服务器：
 
     ```console
     psping kms.core.windows.net:1688
@@ -89,7 +89,7 @@ Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名�
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. 打开 Azure PowerShell，然后[登录到 Azure 订阅](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
+1. 打开 Azure PowerShell，然后[登录到 Azure 订阅](/powershell/azure/authenticate-azureps)。
 2. 运行以下命令：
 
     ```powershell
@@ -107,7 +107,7 @@ Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名�
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. 请转到存在激活问题的 VM。 使用 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 测试其是否能够访问 KMS 服务器：
+3. 请转到存在激活问题的 VM。 使用 [PsPing](/sysinternals/downloads/psping) 测试其是否能够访问 KMS 服务器：
 
     ```console
     psping kms.core.windows.net:1688
@@ -117,7 +117,5 @@ Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [KMS 客户端安装密钥](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
-)
-- [查看并选择激活方法](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
-)
+- [KMS 客户端安装密钥](/windows-server/get-started/kmsclientkeys)
+- [查看并选择激活方法](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj134256(v=ws.11))

@@ -4,29 +4,24 @@ description: 介绍如何使用 StorSimple 设备管理器服务备份目录从�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 05/23/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 0f0be9609dfd00e8e5dc9919b20fc42ec91ce9eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514553"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527823"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
 
 ## <a name="overview"></a>概述
 
 本教程介绍如何使用现有备份集在 StorSimple 8000 系列设备上执行还原操作。 使用“备份目录”边栏选项卡可从本地或云备份还原卷。**** “备份目录”边栏选项卡显示执行手动或自动备份时创建的所有备份集。**** 在后台下载数据时，从备份集执行还原操作会立即使卷联机。
-
-开始还原的另一种方法是转到“设备”> [你的设备] >“卷”。**** 在“卷”边栏选项卡中选择一个卷，单击右键调用上下文菜单，选择“还原”。********
 
 ## <a name="before-you-restore"></a>还原前
 

@@ -15,17 +15,18 @@ ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: 27e88966759eaa158ffe86efce9905b1709ddbbe
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: a45f0a882c58c7035badcc1270c66bd9c6fb252a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848716"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526905"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>使用 PowerShell 收集订阅中所有 VM 的详细信息
 
 此脚本创建一个 csv，其中包含所提供订阅中 VM 的 VM 名称、资源组名称、区域、VM 大小、虚拟网络、子网、专用 IP 地址、OS 类型和公共 IP 地址。
 
-如果还没有 [Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free)。
+如果还没有 [Azure 订阅](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -70,19 +71,17 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>脚本说明
-此脚本使用以下命令创建订阅中 VM 的详细信息的 csv 导出。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建订阅中 VM 详细信息的 csv 导出。 表中的每条命令均链接到特定于命令的文档。
 
-|Command|说明|
+|命令|说明|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|设置要在当前会话中使用的 cmdlet 的租户、订阅和环境。|
-|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|获取虚拟机的属性。|
-|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|获取公共 IP 地址。|
-|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|获取网络接口。|
+|[Select-AzSubscription](/powershell/module/az.accounts/set-azcontext)|设置要在当前会话中使用的 cmdlet 的租户、订阅和环境。|
+|[Get-AzVM](/powershell/module/az.compute/get-azvm)|获取虚拟机的属性。|
+|[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)|获取公共 IP 地址。|
+|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface)|获取网络接口。|
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
 
-可以在 [Azure Windows VM 文档](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples?toc=/azure/virtual-machines/windows/toc.json)中找到其他虚拟机 PowerShell 脚本示例。
-
-
+可以在 [Azure Windows VM 文档](../windows/powershell-samples.md?toc=/azure/virtual-machines/windows/toc.json)中找到其他虚拟机 PowerShell 脚本示例。

@@ -1,5 +1,5 @@
 ---
-title: 通过 PowerShell 自定义 RDP 属性-Azure
+title: 通过 PowerShell 春季2020自定义 RDP 属性-Azure
 description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面自定义 RDP 属性。
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d41df8fe4f411cf28af83c8b4b667f1e86bdb45d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c666a11f8d5e13d022309eddab16edb6aab76381
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259911"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527755"
 ---
-# <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>自定义主机池远程桌面协议属性
+# <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自定义主机池远程桌面协议（RDP）属性
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
@@ -23,7 +23,7 @@ ms.locfileid: "86259911"
 > Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-通过自定义主机池的远程桌面协议 (RDP) 属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 你可以通过使用 Azure 门户或在**AzWvdHostPool** cmdlet 中使用 *-CustomRdpProperty*参数自定义 Windows 虚拟桌面中的 RDP 属性。
+通过自定义主机池的远程桌面协议（RDP）属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 你可以通过使用 Azure 门户或在**AzWvdHostPool** cmdlet 中使用 *-CustomRdpProperty*参数自定义 Windows 虚拟桌面中的 RDP 属性。
 
 有关支持的属性及其默认值的完整列表，请参阅[支持的 RDP 文件设置](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "86259911"
 
 |RDP 属性 | 台式机 | RemoteApps |
 |---|---| --- |
-| 多监视器模式 | Enabled | 不适用 |
+| 多监视器模式 | 已启用 | 不可用 |
 | 已启用驱动器重定向 | 驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡| 驱动器、剪贴板和打印机 |
 | 远程音频模式 | 本地播放 | 本地播放 |
 

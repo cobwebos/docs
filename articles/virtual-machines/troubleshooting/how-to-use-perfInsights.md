@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207711"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526633"
 ---
-# <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
+# <a name="how-to-use-perfinsights-in-azure"></a>如何在 Azure 中使用 PerfInsights
 
 [PerfInsights](https://aka.ms/perfinsightsdownload) 是一种自助诊断工具，用于收集和分析诊断数据，并提供报告以帮助解决 Azure 中的 Windows 虚拟机性能问题。 PerfInsights 可以作为独立工具在虚拟机上运行，可以通过使用 [Azure 虚拟机的性能诊断](performance-diagnostics.md)直接从门户运行，也可以通过安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)来运行。
 
@@ -57,7 +57,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 ### <a name="benchmarking"></a>基准测试
 
-此方案对附加到 VM 的所有驱动器运行[Diskspd](https://github.com/Microsoft/diskspd)基准测试 (IOPS 和 MBPS) 。 
+此方案针对所有附加到 VM 的驱动器运行[Diskspd](https://github.com/Microsoft/diskspd)基准测试（IOPS 和 MBPS）。 
 
 > [!Note]
 > 此方案可能影响系统，不应在实时生产系统中运行。 必要时可在专用维护时段运行此方案，以免出现问题。 因跟踪或基准测试而导致工作负荷增加时，可能会对 VM 性能造成负面影响。
@@ -65,13 +65,13 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 ### <a name="performance-analysis"></a>性能分析
 
-此方案使用在 RuleEngineConfig.json 文件中指定的计数器运行[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)跟踪。 如果 VM 确定为运行 SQL Server 的服务器，则会运行性能计数器跟踪。 通过使用在 RuleEngineConfig.json 文件中找到的计数器，它也会执行此操作。 此方案还包括性能诊断数据。
+此方案使用在 RuleEngineConfig.json 文件中指定的计数器运行[性能计数器](/windows/win32/perfctrs/performance-counters-portal)跟踪。 如果 VM 确定为运行 SQL Server 的服务器，则会运行性能计数器跟踪。 通过使用在 RuleEngineConfig.json 文件中找到的计数器，它也会执行此操作。 此方案还包括性能诊断数据。
 
 ### <a name="azure-files-analysis"></a>Azure 文件分析
 
 此方案运行特殊的性能计数器捕获和网络跟踪。 捕获包括所有的“服务器消息块 (SMB) 客户端共享”计数器。 以下是一些关键的 SMB 客户端共享性能计数器，属于捕获的一部分：
 
-| **类型**     | **SMB 客户端共享计数器** |
+| **Type**     | **SMB 客户端共享计数器** |
 |--------------|-------------------------------|
 | IOPS         | 数据请求/秒             |
 |              | 读取请求/秒             |
@@ -265,7 +265,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 “磁盘映射”和“卷映射”部分描述了逻辑卷与物理磁盘的相互关系。********
 
-物理磁盘透视图（“磁盘映射”）中的表格显示了磁盘上运行的所有逻辑卷。 在以下示例中， **PhysicalDrive2**运行 (J 和 H) 在多个分区上创建的两个逻辑卷：
+物理磁盘透视图（“磁盘映射”）中的表格显示了磁盘上运行的所有逻辑卷。 在以下示例中， **PhysicalDrive2**运行在多个分区（J 和 H）上创建的两个逻辑卷：
 
 ![磁盘选项卡的屏幕截图](media/how-to-use-perfInsights/pi-disk-tab.png)
 
@@ -300,7 +300,7 @@ Diskspd 是 Microsoft 开发的一个存储负载生成器和性能测试工具�
 
 ### <a name="xperf"></a>Xperf
 
-Xperf 是一个命令行工具，用于通过 Windows 性能工具包捕获跟踪。 有关详细信息，请参阅 [Windows Performance Toolkit – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/)（Windows 性能工具包 – Xperf）。
+Xperf 是一个命令行工具，用于通过 Windows 性能工具包捕获跟踪。 有关详细信息，请参阅 [Windows Performance Toolkit – Xperf](/archive/blogs/ntdebugging/windows-performance-toolkit-xperf)（Windows 性能工具包 – Xperf）。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -313,4 +313,3 @@ Xperf 是一个命令行工具，用于通过 Windows 性能工具包捕获跟�
 请遵照消息中的说明访问文件传输工作区。 为了提高安全性，首次使用时必须更改密码。
 
 登录后，可以找到一个对话框，用于上传 PerfInsights 收集的 PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip 文件****。
-

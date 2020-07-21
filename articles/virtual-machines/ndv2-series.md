@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a5b7dea30cff70d5c45460eb8ded2fa370afa2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c298ee691b476fb58c567490ab2e62e45aba3e7c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726584"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526939"
 ---
 # <a name="updated-ndv2-series"></a>更新的 NDv2 系列
 
@@ -23,9 +24,9 @@ NDv2 实例可为使用 CUDA GPU 优化计算内核的 HPC 和 AI 工作负荷�
 
 严重而言，NDv2 是为计算强度向上扩展（为每个 VM 提供8个 Gpu）和向外扩展（跨多个 vm 工作）的。 NDv2 系列现在支持100千兆位的 ""，它类似于 HB-ACCT-WC 系列 HPC VM 提供的功能，从而为并行方案（包括 AI 和 ML 的分布式培训）提供高性能群集。 此后端网络支持所有主要的不受支持的协议（包括 NVIDIA 的 NCCL2 库使用的协议），从而允许对 Gpu 进行无缝群集。
 
-> 在 ND40rs_v2 VM 上[启用 "允许](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband)" 时，请使用 4.7-1.0.0.1 Mellanox OFED 驱动程序。
+> 在 ND40rs_v2 VM 上[启用 "允许](./workloads/hpc/enable-infiniband.md)" 时，请使用 4.7-1.0.0.1 Mellanox OFED 驱动程序。
 >
-> 由于 GPU 内存增加，新的 ND40rs_v2 VM 需要使用[第2代 vm](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)和 marketplace 映像。 
+> 由于 GPU 内存增加，新的 ND40rs_v2 VM 需要使用[第2代 vm](./windows/generation-2.md)和 marketplace 映像。 
 >
 > 请注意：具有 16 GB 的每个 GPU 内存的 ND40s_v2 不再可供预览，已被更新的 ND40rs_v2 取代。
 

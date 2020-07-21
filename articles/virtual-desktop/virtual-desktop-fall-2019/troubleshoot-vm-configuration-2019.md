@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟桌面会话主机故障排除-Azure
+title: Windows 虚拟桌面会话主机秋季2019故障排除-Azure
 description: 如何解决在配置 Windows 虚拟桌面会话主机虚拟机时遇到的问题。
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362503"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527653"
 ---
-# <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
+# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>排查会话主机虚拟机配置问题
 
 >[!IMPORTANT]
 >本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-vm-configuration.md)。

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74684135"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526871"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局使用 LVM （逻辑卷管理器）时，Linux VM 的故障排除
 
@@ -28,7 +29,7 @@ ms.locfileid: "74684135"
 
 创建受影响 VM 的快照。 
 
-然后，该快照将附加到**救援** VM。 根据[此处](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal)的说明了解如何创建**快照**。
+然后，该快照将附加到**救援** VM。 根据[此处](../linux/snapshot-copy-managed-disk.md#use-azure-portal)的说明了解如何创建**快照**。
 
 ## <a name="create-a-rescue-vm"></a>创建救援 VM
 一般情况下，我们建议使用相同或类似的操作系统版本创建救援 VM。 使用与受影响 VM 相同的**区域**和**资源组**
@@ -208,7 +209,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 
 ### <a name="example-3---enable-serial-console"></a>示例 3-启用串行控制台
-如果无法访问 Azure 串行控制台，请验证 Linux VM 的 GRUB 配置参数并更正它们。 可[在此文档中](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)找到详细信息
+如果无法访问 Azure 串行控制台，请验证 Linux VM 的 GRUB 配置参数并更正它们。 可[在此文档中](./serial-console-grub-proactive-configuration.md)找到详细信息
 
 ### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>示例 4-具有有问题的 LVM 交换卷的内核加载
 
@@ -273,4 +274,4 @@ umount /rescue
 
  [Azure 串行控制台]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
 
-[单用户模式](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
+[单用户模式](./serial-console-grub-single-user-mode.md)

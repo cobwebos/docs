@@ -11,11 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250343"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525409"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -85,7 +86,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 在撰写本文时，对 RHEL 7.4 及更低版本的 EUS 支持已终止。 有关更多详细信息，请参阅[Red Hat 文档](https://access.redhat.com/support/policy/updates/errata/#Long_Support)中的 "Red Hat Enterprise Linux 扩展维护" 部分。
 * RHEL 7.4 EUS 支持于 2019 年 8 月 31 日终止
 * RHEL 7.5 EUS 支持于 2020 年 4 月 30 日终止
-* RHEL 7.6 EUS 支持于 2020 年 10 月 31 日终止
+* RHEL 7.6 EUS 支持在5月31日结束，2021
 * RHEL 7.7 EUS 支持于 2021 年 8 月 30 日终止
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>将 RHEL VM 切换到 EUS（版本锁定到特定次要版本）
@@ -167,7 +168,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 >从2020年1月起，新的 Azure 美国政府版映像将使用以上 Azure Global 标头中提到的公共 IP。
 
 >[!NOTE]
->另外，请注意，Azure 德国已弃用，以取代公共德国地区。 Azure 德国客户的建议使用[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers)的步骤开始指向公共 RHUI。
+>另外，请注意，Azure 德国已弃用，以取代公共德国地区。 Azure 德国客户的建议使用[此处](#manual-update-procedure-to-use-the-azure-rhui-servers)的步骤开始指向公共 RHUI。
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI 基础结构
 

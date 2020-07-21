@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039001"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524499"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
 
@@ -53,7 +53,7 @@ ms.locfileid: "86039001"
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
-此容器支持设置的最小值和建议值：
+下表列出了容器主机的最小值和建议值。 你的要求可能会根据流量量而发生变化。
 
 |容器| 最小值 | 建议 | TPS<br>(最小值, 最大值)|
 |-----------|---------|-------------|--|
@@ -108,7 +108,7 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 |包类型|查询终结点 API|查询可用性|包文件名格式|
 |--|--|--|--|
 |带有版本|GET、POST|仅容器|`{APP_ID}_v{APP_VERSION}.gz`|
-|过渡|GET、POST|Azure 和容器|`{APP_ID}_STAGING.gz`|
+|暂存|GET、POST|Azure 和容器|`{APP_ID}_STAGING.gz`|
 |生产|GET、POST|Azure 和容器|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -241,7 +241,7 @@ ApiKey={API_KEY}
 
 容器提供了基于 REST 的查询预测终结点 API。 已发布（过渡或生产）应用的终结点包含的路由与已进行版本控制的应用的终结点不同__。
 
-使用主机 `http://localhost:5000`，以获得容器 API。
+为容器 API 使用主机 `http://localhost:5000`。
 
 # <a name="v3-prediction-endpoint"></a>[V3 预测终结点](#tab/v3)
 
@@ -252,9 +252,9 @@ ApiKey={API_KEY}
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|目标|
+|查询参数|类型|用途|
 |--|--|--|
-|`query`|字符串|用户的话语。|
+|`query`|string|用户的话语。|
 |`verbose`|boolean|一个布尔值，表示是否为预测的模型返回所有元数据。 默认值为 false。|
 |`log`|boolean|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 false。|
 |`show-all-intents`|boolean|一个布尔值，表示是返回所有意向，还是只返回打分最高的意向。 默认值为 false。|
@@ -268,10 +268,10 @@ ApiKey={API_KEY}
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|目标|
+|查询参数|类型|用途|
 |--|--|--|
-|`q`|字符串|用户的话语。|
-|`timezoneOffset`|number|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
+|`q`|string|用户的话语。|
+|`timezoneOffset`|数字|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
 |`verbose`|boolean|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
 |`staging`|boolean|设置为 true 时，返回过渡环境结果中的查询。 |
 |`log`|boolean|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 true。|

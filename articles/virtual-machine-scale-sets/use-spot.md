@@ -9,11 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 70d7eb000ed2d50bc22bb005621ee7515e5a2a61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310557"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527449"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure Spot VM 
 
@@ -114,12 +115,12 @@ $vmssConfig = New-AzVmssConfig `
 
 **问：** 如何管理 Spot 的配额？
 
-**答:** Spot 实例和标准实例会有不同的配额池。 将在 VM 与规模集实例之间共享 Spot 配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+**答:** Spot 实例和标准实例会有不同的配额池。 将在 VM 与规模集实例之间共享 Spot 配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 
 **问：** 是否可以为 Spot 申请额外的配额？
 
-**答:** 是的，你可以通过[标准配额申请流程](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)提交申请，请求提高 Spot VM 的配额。
+**答:** 是的，你可以通过[标准配额申请流程](../azure-portal/supportability/per-vm-quota-requests.md)提交申请，请求提高 Spot VM 的配额。
 
 
 **问：** 是否可以将现有的规模集转换为 Spot 规模集？
@@ -157,7 +158,7 @@ $vmssConfig = New-AzVmssConfig `
 |------------------------------|-----------------------------------|
 | 企业协议         | 是                               |
 | 即用即付                | 是                               |
-| 云服务提供商 (CSP) | [联系你的合作伙伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| 云服务提供商 (CSP) | [联系你的合作伙伴](/partner-center/azure-plan-get-started) |
 | 优点                     | 不可用                     |
 | 赞助                    | 是                               |
 | 免费试用版                   | 不可用                     |
@@ -165,7 +166,7 @@ $vmssConfig = New-AzVmssConfig `
 
 **问：** 我可以在何处发布问题？
 
-**答:** 你可以在[问答](https://docs.microsoft.com/answers/topics/azure-spot.html)中发布问题并使用 `azure-spot` 来标记问题。 
+**答:** 你可以在[问答](/answers/topics/azure-spot.html)中发布问题并使用 `azure-spot` 来标记问题。 
 
 ## <a name="next-steps"></a>后续步骤
 

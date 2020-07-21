@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76842395"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526497"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>排查文件系统错误导致的 Linux VM 启动问题
 
@@ -74,7 +75,7 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的发行版�
 
 ## <a name="resolution"></a>解决方法
 
-若要解决此问题，请使用[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)将 VM 启动到紧急模式，并使用该工具修复文件系统。 如果未在 VM 上启用串行控制台或不工作，请参阅本文的[修复 VM 脱机](#repair-the-vm-offline)部分。
+若要解决此问题，请使用[串行控制台](./serial-console-linux.md)将 VM 启动到紧急模式，并使用该工具修复文件系统。 如果未在 VM 上启用串行控制台或不工作，请参阅本文的[修复 VM 脱机](#repair-the-vm-offline)部分。
 
 ## <a name="use-the-serial-console"></a>使用串行控制台
 
@@ -82,8 +83,8 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的发行版�
 
    > [!Note]
    > 有关使用适用于 Linux 的串行控制台的详细信息，请参阅：
-   > * [使用串行控制台访问 GRUB 和单用户模式](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-   > * [使用串行控制台进行 SysRq 和 NMI 调用](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
+   > * [使用串行控制台访问 GRUB 和单用户模式](../linux/serial-console-grub-single-user-mode.md)
+   > * [使用串行控制台进行 SysRq 和 NMI 调用](./serial-console-nmi-sysrq.md)
 
 2. 选择电源图标按钮，然后选择 "重新启动 VM"。 （如果串行控制台未启用或未成功连接，你将看不到此按钮。）
 
@@ -133,7 +134,7 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的发行版�
 
 ## <a name="repair-the-vm-offline"></a>修复 VM 脱机
 
-1. 将 VM 的系统磁盘作为数据磁盘附加到恢复 VM（任何正常工作的 Linux VM）。 为此，可以使用 [CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)，或者使用 [VM 修复命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自动设置恢复 VM。
+1. 将 VM 的系统磁盘作为数据磁盘附加到恢复 VM（任何正常工作的 Linux VM）。 为此，可以使用 [CLI 命令](./troubleshoot-recovery-disks-linux.md)，或者使用 [VM 修复命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自动设置恢复 VM。
 
 2. 找到附加的系统磁盘的驱动器标签。 在此示例中，我们假定附加的系统磁盘的驱动器标签为 /dev/sdc1。 请将它替换为 VM 的相应值。
 
@@ -177,6 +178,5 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的发行版�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [通过使用 Azure CLI 2.0 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [使用门户将数据磁盘附加到 Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
-
+* [通过使用 Azure CLI 2.0 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除](./troubleshoot-recovery-disks-linux.md)
+* [使用门户将数据磁盘附加到 Linux VM](../linux/attach-disk-portal.md)

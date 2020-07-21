@@ -13,11 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85acd8e26ca10730638332047a37d281358d205f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75965611"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526539"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>排查在 Azure 中重新启动现有 Windows VM 或调整其大小时遇到的部署问题
 尝试启动已停止的 Azure 虚拟机 (VM)，或调整现有 Azure VM 的大小时，经常遇到的错误是分配失败。 当群集或区域没有可用的资源或无法支持所请求的 VM 大小时，将发生此错误。
@@ -29,7 +30,7 @@ ms.locfileid: "75965611"
 
 [查看部署操作](../../azure-resource-manager/templates/deployment-history.md)
 
-[通过查看活动日志管理 Azure 资源](../../resource-group-audit.md)
+[通过查看活动日志管理 Azure 资源](../../azure-resource-manager/management/view-activity-logs.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>问题：启动已停止的 VM 时发生错误
 尝试启动已停止的 VM，但出现分配失败。
@@ -61,5 +62,4 @@ ms.locfileid: "75965611"
   3. 选择已调整大小的 VM，单击“启动”，并启动每个已停止的 VM。 
 
 ## <a name="next-steps"></a>后续步骤
-如果在 Azure 中创建新的 Windows VM 时遇到问题，请参阅[排查在 Azure 中新建 Windows 虚拟机时遇到的部署问题](../windows/troubleshoot-deployment-new-vm.md)。
-
+如果在 Azure 中创建新的 Windows VM 时遇到问题，请参阅[排查在 Azure 中新建 Windows 虚拟机时遇到的部署问题](./troubleshoot-deployment-new-vm-windows.md)。

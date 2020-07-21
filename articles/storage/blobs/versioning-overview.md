@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433585"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528394"
 ---
 # <a name="blob-versioning-preview"></a>Blob 版本控制（预览版）
 
@@ -175,7 +176,7 @@ Blob 版本控制用于保护数据免遭意外或恶意删除。 若要增强�
 
 下表显示了哪些 RBAC 操作支持删除 blob 或 blob 版本。
 
-| 描述 | Blob 服务操作 | 需要 RBAC 数据操作 | RBAC 内置角色支持 |
+| 说明 | Blob 服务操作 | 需要 RBAC 数据操作 | RBAC 内置角色支持 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 正在删除 blob 的当前版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 存储 Blob 数据参与者 |
 | 删除版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | 存储 Blob 数据所有者 |
@@ -194,6 +195,10 @@ Blob 版本的已签名资源为 `bv` 。 有关详细信息，请参阅[创建�
 
 Blob 版本控制在以下区域提供预览版：
 
+- 美国东部 2
+- 美国中部
+- 北欧
+- 西欧
 - 法国中部
 - 加拿大东部
 - 加拿大中部
@@ -312,7 +317,7 @@ Blob 版本（如 blob 快照）按与活动数据相同的费率进行计费。
 
 ![Azure 存储资源](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [启用 Blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

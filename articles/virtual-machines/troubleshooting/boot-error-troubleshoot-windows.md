@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ab1262def78da4971ea6e5535f3ac915a38ec8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678760"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526752"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 关机停滞在 "正在重新启动"、"正在关闭" 或 "正在停止服务"
 
@@ -24,7 +25,7 @@ ms.locfileid: "84678760"
 
 ## <a name="symptoms"></a>症状
 
-使用 "[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)" 查看 VM 的屏幕截图时，可能会看到屏幕截图显示消息 "正在重新启动"、"正在关闭" 或 "正在停止服务"。
+使用 "[启动诊断](./boot-diagnostics.md)" 查看 VM 的屏幕截图时，可能会看到屏幕截图显示消息 "正在重新启动"、"正在关闭" 或 "正在停止服务"。
 
 ![“正在重启”、“正在关闭”或“正在停止服务”屏幕](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
@@ -40,9 +41,9 @@ Windows 使用关闭进程来执行系统维护操作，并处理更新、角色
 
 2. 从工作 VM 分离包含所需文件的磁盘，并将该磁盘附加到损坏的 VM。 我们将在此磁盘上调用**实用工具磁盘**。
 
-使用[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)完成以下步骤：
+使用[串行控制台](./serial-console-windows.md)完成以下步骤：
 
-1. 打开管理 Powershell 并检查在停止时停止响应的服务。
+1. 打开管理 PowerShell 并检查在停止时停止响应的服务。
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
@@ -80,13 +81,13 @@ dism /online /cleanup-image /restorehealth
 
 **将 OS 磁盘附加到恢复 VM**
 
-1. 拍摄受影响的 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)。
+1. 拍摄受影响的 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
-2. [将 OS 磁盘附加到恢复 VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
+2. [将 OS 磁盘附加到恢复 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 
 3. 通过远程桌面连接到恢复 VM。
 
-4. 如果 OS 磁盘已加密，则必须先关闭加密，然后才能进入下一步。 有关详细信息，请参阅[在无法启动的 VM 中解密加密的 OS 磁盘](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution)。
+4. 如果 OS 磁盘已加密，则必须先关闭加密，然后才能进入下一步。 有关详细信息，请参阅[在无法启动的 VM 中解密加密的 OS 磁盘](./troubleshoot-bitlocker-boot-error.md#solution)。
 
 **找到转储文件并提交支持票证**
 
@@ -141,7 +142,7 @@ dism /online /cleanup-image /restorehealth
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
+5. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 
 6. 启动 VM 并访问串行控制台。
 

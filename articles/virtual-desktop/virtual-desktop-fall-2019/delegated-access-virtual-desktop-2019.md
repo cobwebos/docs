@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟桌面中的委托访问-Azure
+title: Windows 虚拟桌面秋季2019中的委托访问-Azure
 description: 如何在 Windows 虚拟桌面部署上委派管理功能，包括示例。
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 899e42e3b592ce1bc92d7d47578e10355b1c6de7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614429"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527551"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的委托访问
+# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Windows 虚拟桌面中的委托访问秋季2019
 
 >[!IMPORTANT]
 >本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../delegated-access-virtual-desktop.md)。

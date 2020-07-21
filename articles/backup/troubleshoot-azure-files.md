@@ -3,12 +3,12 @@ title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079881"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524482"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>在备份 Azure 文件共享时排查问题
 
@@ -57,6 +57,9 @@ ms.locfileid: "86079881"
 >只有注销已注册到保管库的所有存储帐户后，才能删除恢复服务保管库。
 
 ## <a name="common-backup-or-restore-errors"></a>常见的备份或还原错误
+
+>[!NOTE]
+>请参阅[本文档](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup)，确保你有足够的权限执行备份或还原操作。
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound-操作失败，因为找不到文件共享
 
@@ -313,7 +316,7 @@ ms.locfileid: "86079881"
 
 错误消息：备份失败，因为关联的 Azure 文件共享已永久删除
 
-检查是否永久删除了备份的文件共享。 如果是，请停止该文件共享的备份，以避免重复的备份失败。 若要了解如何停止保护，请参阅[停止保护 Azure 文件共享](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
+检查是否永久删除了备份的文件共享。 如果是，请停止该文件共享的备份，以避免重复的备份失败。 若要了解如何停止保护，请参阅[停止保护 Azure 文件共享](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
 ## <a name="next-steps"></a>后续步骤
 

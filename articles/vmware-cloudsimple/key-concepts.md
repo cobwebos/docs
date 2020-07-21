@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8677bc7e4b9f4c2b24b5439aeefb307b9c544ed3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869034"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525018"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>使用 CloudSimple 管理 Azure VMware 解决方案的主要概念
 
@@ -60,4 +61,4 @@ CloudSimple 服务提供了每个区域的网络，其中部署了 CloudSimple �
 了解以下内容的详细信息：
 
 * [CloudSimple 虚拟机](cloudsimple-virtual-machines.md)
-* [Azure 订阅映射](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)
+* [Azure 订阅映射](./azure-subscription-mapping.md)

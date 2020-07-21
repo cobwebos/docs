@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15f94e93c270c8d62436b81a7caedbf181c1aeb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5b6879d11a4b47c0090f13baa0a15dcc696c8534
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022536"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525375"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
 
@@ -306,7 +307,7 @@ ms.locfileid: "84022536"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-本文档介绍在 Azure IaaS 中部署适用于 SAP 工作负荷的 Oracle Database 时要考虑的多个不同领域。 在阅读本文档之前，我们建议阅读[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)。 此外，我们建议阅读 [Azure 上的 SAP 工作负荷文档](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 
+本文档介绍在 Azure IaaS 中部署适用于 SAP 工作负荷的 Oracle Database 时要考虑的多个不同领域。 在阅读本文档之前，我们建议阅读[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)。 此外，我们建议阅读 [Azure 上的 SAP 工作负荷文档](./get-started.md)中的其他指南。 
 
 有关支持在 Azure 上的 Oracle 中运行 SAP 的 Oracle 版本及相应 OS 版本，可参阅 SAP 说明 [2039619]。
 
@@ -347,14 +348,14 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支持的操作�
 
 如果 VM 较小，我们建议在 OS 磁盘中安装/定位 Oracle home、stage、“saptrace”、“saparch”、“sapbackup”、“sapcheck”或“sapreorg”。 Oracle DBMS 组件的这些部分在 I/O 和 I/O 吞吐量方面并不密集。 这意味着，OS 磁盘可以处理 I/O 要求。 OS 磁盘的默认大小为 127 GB。 
 
-如果可用空间不足，则可以将磁盘[调整大小](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)到 2048 GB。 Oracle Database 和重做日志文件需要存储在单独的数据磁盘上。 Oracle 临时表空间会发生异常。 可以在 D:/（非持久驱动器）上创建临时文件。 非持久性驱动器 D:\ 还提供更大的 I/O 延迟和吞吐量（除 A 系列 VM 外）。 
+如果可用空间不足，则可以将磁盘[调整大小](../../windows/expand-os-disk.md)到 2048 GB。 Oracle Database 和重做日志文件需要存储在单独的数据磁盘上。 Oracle 临时表空间会发生异常。 可以在 D:/（非持久驱动器）上创建临时文件。 非持久性驱动器 D:\ 还提供更大的 I/O 延迟和吞吐量（除 A 系列 VM 外）。 
 
 若要确定正确的临时文件空间，可在现有系统上检查临时文件的大小。
 
 ### <a name="storage-configuration"></a>存储配置
-仅支持一个使用 NTFS 格式化磁盘的 Oracle 实例。 所有数据库文件都必须存储在托管磁盘（推荐）或 VHD 的 NTFS 文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)或 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 
+仅支持一个使用 NTFS 格式化磁盘的 Oracle 实例。 所有数据库文件都必须存储在托管磁盘（推荐）或 VHD 的 NTFS 文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)或 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。 
 
-我们强烈建议使用 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 另外，我们强烈建议使用[高级 SSD](../../windows/disks-types.md) 进行 Oracle Database 部署。
+我们强烈建议使用 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。 另外，我们强烈建议使用[高级 SSD](../../windows/disks-types.md) 进行 Oracle Database 部署。
 
 Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅：
 
@@ -403,19 +404,19 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 
 #### <a name="write-accelerator"></a>写入加速器
-与 Azure 高级存储相比，Azure M 系列 VM 可通过多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)。
+与 Azure 高级存储相比，Azure M 系列 VM 可通过多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../linux/how-to-enable-write-accelerator.md)。
 
 
 ### <a name="backuprestore"></a>备份/还原
 支持通过适用于 Oracle 的 SAP BR* 工具提供备份/还原功能，其方式与在标准 Windows Server 操作系统上一样。 Oracle 恢复管理器 (RMAN) 也支持备份到磁盘以及从磁盘还原。
 
-还可以使用 Azure 备份来运行应用程序一致性 VM 备份。 [在 Azure 中规划 VM 备份基础结构](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)指出，Azure 备份使用 Windows VSS 功能来执行应用程序一致性备份。 Azure 上 SAP 支持的 Oracle DBMS 版本可以利用 VSS 功能进行备份。 有关详细信息，请阅读 Oracle 文档 [使用 VSS 进行数据库备份和还原的基本概念](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701)。
+还可以使用 Azure 备份来运行应用程序一致性 VM 备份。 [在 Azure 中规划 VM 备份基础结构](../../../backup/backup-azure-vms-introduction.md)指出，Azure 备份使用 Windows VSS 功能来执行应用程序一致性备份。 Azure 上 SAP 支持的 Oracle DBMS 版本可以利用 VSS 功能进行备份。 有关详细信息，请阅读 Oracle 文档 [使用 VSS 进行数据库备份和还原的基本概念](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701)。
 
 
 ### <a name="high-availability"></a>高可用性
 支持通过 Oracle Data Guard 实现高可用性和灾难恢复。 要在 Data Guard 中实现自动故障转移，需要使用快速启动故障转移 (FSFA)。 观察者 (FSFA) 触发故障转移。 如果不使用 FSFA，则只能使用手动故障转移配置。
 
-有关 Azure 中 Oracle Database 灾难恢复的详细信息，请参阅 [Azure 环境中 Oracle Database 12c 数据库的灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)。
+有关 Azure 中 Oracle Database 灾难恢复的详细信息，请参阅 [Azure 环境中 Oracle Database 12c 数据库的灾难恢复](../oracle/oracle-disaster-recovery.md)。
 
 ### <a name="accelerated-networking"></a>加速网络
 对于 Window 上的 Oracle 部署，我们强烈建议根据 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)中所述使用加速网络。 也可以考虑[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的建议。 
@@ -443,7 +444,7 @@ SAP 应用程序使用 Oracle Database 的特定方案也受支持。 详细信�
 
 Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)或 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。
 
-对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching) 至少需要 UEK 版本 4。
+对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](../../windows/premium-storage-performance.md#disk-caching) 至少需要 UEK 版本 4。
 
 强烈建议使用 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。 另外，还强烈建议使用 [Azure 高级 SSD](../../windows/disks-types.md) 进行 Oracle Database 部署。
 
@@ -497,19 +498,19 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 
 #### <a name="write-accelerator"></a>写入加速器
-对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)。
+对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../linux/how-to-enable-write-accelerator.md)。
 
 
 ### <a name="backuprestore"></a>备份/还原
 支持通过适用于 Oracle 的 SAP BR* 工具提供备份/还原功能，其方式与在裸机和 Hyper-V 上一样。 Oracle 恢复管理器 (RMAN) 也支持备份到磁盘以及从磁盘还原。
 
-有关如何使用 Azure 备份和恢复服务进行备份和恢复 Oracle Database 的详细信息，请参阅[在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery)。
+有关如何使用 Azure 备份和恢复服务进行备份和恢复 Oracle Database 的详细信息，请参阅[在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库](../oracle/oracle-backup-recovery.md)。
 
 ### <a name="high-availability"></a>高可用性
-支持通过 Oracle Data Guard 实现高可用性和灾难恢复。 若要在 Data Guard 中实现自动故障转移，需要使用快速启动故障转移 (FSFA)。 观察者功能 (FSFA) 触发故障转移。 如果不使用 FSFA，则只能使用手动故障转移配置。 有关详细信息，请参阅[在 Azure Linux 虚拟机上实施 Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)。
+支持通过 Oracle Data Guard 实现高可用性和灾难恢复。 若要在 Data Guard 中实现自动故障转移，需要使用快速启动故障转移 (FSFA)。 观察者功能 (FSFA) 触发故障转移。 如果不使用 FSFA，则只能使用手动故障转移配置。 有关详细信息，请参阅[在 Azure Linux 虚拟机上实施 Oracle Data Guard](../oracle/configure-oracle-dataguard.md)。
 
 
-有关在 Azure 环境下的 Oracle Database 数据库灾难恢复方面的信息，请参阅[在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)。
+有关在 Azure 环境下的 Oracle Database 数据库灾难恢复方面的信息，请参阅[在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复](../oracle/oracle-disaster-recovery.md)。
 
 ### <a name="accelerated-networking"></a>加速网络
 Oracle Linux 7 更新 5 (Oracle Linux 7.5) 提供对 Oracle Linux 中 Azure 加速网络的支持。 如果无法升级到最新的 Oracle Linux 7.5 版本，可能的解决方法是，使用 RedHat 兼容内核 (RHCK) 而不是 Oracle UEK 内核。 

@@ -3,15 +3,16 @@ title: 使用 Azure 备份服务器还原 VMware VM
 description: 使用 Azure 备份服务器 (MABS) 还原 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d11b9259a44c32891f5fefa6f175681838927586
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212348"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524516"
 ---
 # <a name="restore-vmware-virtual-machines"></a>还原 VMware 虚拟机
 
-本文介绍如何使用 Microsoft Azure 备份服务器 (MABS) 还原 VMware VM 恢复点。 有关使用 MABS 恢复数据的概述，请参阅[恢复受保护的数据](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)。 在 MABS 管理员控制台中，可通过两种方式查找可恢复的数据 - 搜索或浏览。 恢复数据时，你不一定想要将数据或 VM 还原到相同的位置。 出于此原因，MABS 支持对 VMware VM 备份使用三种恢复选项：
+本文介绍如何使用 Microsoft Azure 备份服务器 (MABS) 还原 VMware VM 恢复点。 有关使用 MABS 恢复数据的概述，请参阅[恢复受保护的数据](./backup-azure-alternate-dpm-server.md)。 在 MABS 管理员控制台中，可通过两种方式查找可恢复的数据 - 搜索或浏览。 恢复数据时，你不一定想要将数据或 VM 还原到相同的位置。 出于此原因，MABS 支持对 VMware VM 备份使用三种恢复选项：
 
 * **原始位置恢复 (OLR)** - 使用 OLR 可将受保护的 VM 还原到其原始位置。 仅当自备份以来未添加或删除磁盘时，才可以将 VM 还原到其原始位置。 如果已添加或删除磁盘，则必须使用备用位置恢复。
 

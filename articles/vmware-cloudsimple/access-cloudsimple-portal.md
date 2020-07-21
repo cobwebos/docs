@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2e5a4d057e1074c6cce0f374846bc9e0a64950
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869335"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525086"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>通过 CloudSimple 中的门户访问 VMware 解决方案 Azure 门户
 
@@ -20,9 +21,9 @@ ms.locfileid: "81869335"
 
 ## <a name="before-you-begin"></a>开始之前
 
-具有内置**所有者**和**参与者**角色的用户可以访问 CloudSimple 门户。  必须在部署 CloudSimple 服务的资源组上配置角色。  还可以在 CloudSimple 服务对象上配置角色。  有关检查角色的详细信息，请参阅[查看角色分配](https://docs.microsoft.com/azure/role-based-access-control/check-access)一文。 只有具有内置**所有者**和**参与者**角色的用户才能访问 CloudSimple 门户。  必须在订阅上配置角色。  有关检查角色的详细信息，请参阅[查看角色分配](https://docs.microsoft.com/azure/role-based-access-control/check-access)一文。
+具有内置**所有者**和**参与者**角色的用户可以访问 CloudSimple 门户。  必须在部署 CloudSimple 服务的资源组上配置角色。  还可以在 CloudSimple 服务对象上配置角色。  有关检查角色的详细信息，请参阅[查看角色分配](../role-based-access-control/check-access.md)一文。 只有具有内置**所有者**和**参与者**角色的用户才能访问 CloudSimple 门户。  必须在订阅上配置角色。  有关检查角色的详细信息，请参阅[查看角色分配](../role-based-access-control/check-access.md)一文。
 
-如果你使用的是自定义角色，则角色应在下具有以下任何操作 ```Actions``` 。  有关自定义角色的详细信息，请参阅 [Azure 资源的自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。  如果任一操作是的一部分 ```NotActions``` ，则用户无法访问 CloudSimple 门户。
+如果你使用的是自定义角色，则角色应在下具有以下任何操作 ```Actions``` 。  有关自定义角色的详细信息，请参阅 [Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。  如果任一操作是的一部分 ```NotActions``` ，则用户无法访问 CloudSimple 门户。
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -37,7 +38,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
-1. 选择“所有服务”****。
+1. 选择“所有服务”。
 
 2. 搜索 " **CloudSimple Services**"。
 
@@ -70,5 +71,5 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[创建私有云](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/)
+* 了解如何[创建私有云](./create-private-cloud.md)
 * 了解如何[配置私有云环境](quickstart-create-private-cloud.md)

@@ -8,36 +8,36 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: fa97935c10b2a5df70c9babf031a889a9c1e9f34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d05386f1dfbab28d5fe42d02b8e9be0f257afafd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837874"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527196"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>迁移需要多长时间？
 
-迁移的规划和执行在很大程度上取决于体系结构的复杂性。迁移有时可能需要几个月的时间。  
+计划迁移和执行迁移很大程度都取决于体系结构的复杂性，这可能需要几个月的时间。  
 
-## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM（经典）上的新客户的定义是什么？
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM（经典版）新客户的定义是什么？
 
-在 2020 年 2 月（开始弃用之前的一个月）未在其订阅中包含 IaaS VM（经典）的客户被视为新客户。 
+2020 年 2 月（开始弃用之前的一个月）的订阅中没有 IaaS VM（经典版）的客户则视为新客户。 
 
-## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS 虚拟机（经典）上的现有客户的定义是什么？
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS 虚拟机（经典版）现有客户的定义是什么？
 
-在 2020 年 2 月在其订阅中包含活动的、或者已停止但已分配的 IaaS VM（经典）的客户被视为现有客户。 只有这些客户才需要在 2023 年 3 月 1 日之前将其 VM 从 Azure Service Manager 迁移到 Azure 资源管理器。 
+2020 年 2 月在其订阅中有过活跃的或已停止但曾分配过的 IaaS VM（经典版）的客户则视为现有客户。 只有这些客户才会在 2023 年 3 月 1 日之后将其 VM 从 Azure Service Manager 迁移到 Azure 资源管理器。 
 
-## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>为何出现带有“NewClassicVMCreationNotAllowedForSubscription”字样的错误？
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>为什么会收到“NewClassicVMCreationNotAllowedForSubscription”这样的错误信息？
 
-在停用过程中，IaaS VM（经典）不再适用于新客户。 我们已将你识别为新客户，因此你的操作未获得授权。 我们强烈建议使用[配备了 ARM 的 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果无法使用配备了 ARM 的 Azure VM，请联系支持人员，以将订阅加入允许列表。
+停用过程开始后，IaaS VM（经典版）不再适用于新客户。 我们已将你识别为新客户，因此你无权执行该操作。 我们强烈推荐使用[使用 ARM 的 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果无法通过 ARM 使用 Azure Vm，请联系支持人员，将订阅添加到允许列表。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
-在 2023 年 3 月 1 日之前，对 IaaS VM（经典）没有影响。 在正式版中，IaaS VM（经典）是完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。 在 2023 年 3 月 1 日，将完全停用这些 VM，且会停止并解除分配任何活动的或已分配的 VM。 这不会影响其他经典资源，如云服务（经典）、存储帐户（经典）等。   
+2023 年 3 月 1 日前都是 IaaS VM （经典版），所以不会产生影响。 IaaS VM（经典版）是公开上市的完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。 2023 年 3 月 1 日起会全面停用这些 VM，并且会停止或解除分配任何活跃的或分配的 VM。 这不会影响到其他经典的资源，如云服务（经典版）、存储帐户（经典版）等。   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我近期不打算迁移，我的 VM 会发生什么情况？ 
 
-在 2023 年 3 月 1 日，将完全停用 IaaS VM（经典），且会停止并解除分配任何活动的或已分配的 VM。 为了防止业务受到影响，我们建议立即开始规划迁移，并在 2023 年 3 月 1 日之前完成迁移。 我们不会弃用现有的经典 API、云服务和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 建议你开始规划将这些资源迁移到 Azure 资源管理器。 
+2023 年 3 月 1 日起会全面停用 IaaS VM（经典版），并且会停止或解除分配任何活跃的或分配的 VM。 为避免影响业务，我们强烈建议现在就开始计划迁移并在 2023 年 3 月 1 日之前完成迁移。 我们近期不会淘汰现有的经典 API、云服务和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 我们建议现在开始计划将这些资源迁移到 Azure 资源管理器。 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>对于我现有的工具而言，此迁移计划有何意义？ 
 
@@ -57,7 +57,7 @@ ms.locfileid: "83837874"
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必须使用 Resource Manager 下的 IaaS，是否必须购买其他 ExpressRoute 线路？ 
 
-不是。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
+不会。 我们近期实现了 [将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已经为经典 IaaS 资源配置基于角色的访问控制策略，该怎么办？ 
 
@@ -68,7 +68,7 @@ ms.locfileid: "83837874"
 将 VM 从经典模式移到资源管理器模式时，在迁移之前进行的备份不会迁移到新迁移的资源管理器 VM 中。 但是，如果希望保留经典 VM 的备份，请在迁移之前执行以下步骤。 
 
 1. 在恢复服务保管库中，转到“受保护的项”选项卡并选择 VM。 
-2. 单击停止保护。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
+2. 单击停止保护。 将“删除关联的备份数据”选项保留为“未选中”状态。
 
 > [!NOTE]
 > 在保留数据前将收取备份实例成本。 备份副本将按保持期进行删除。 但是，最后的备份副本会始终保留，直至你显式删除备份数据。 建议检查虚拟机的保留期，并在保留期结束后对保管库中受保护项触发“删除备份数据”。 
@@ -88,7 +88,7 @@ ms.locfileid: "83837874"
 
 ## <a name="what-happens-if-i-run-into-a-quota-error-while-preparing-the-iaas-resources-for-migration"></a>如果我在准备要迁移的 IaaS 资源时遇到配额错误，会发生什么情况？ 
 
-建议中止迁移，然后记录支持请求，以在要迁移 VM 的区域中增加配额。 配额请求经过批准后，可以重新开始执行迁移步骤。
+建议用户中止迁移，并记录支持请求，以在要迁移 VM 的区域中增加配额。 配额请求经过批准后，可以重新开始执行迁移步骤。
 
 ## <a name="how-do-i-report-an-issue"></a>如何报告问题？ 
 
@@ -104,4 +104,4 @@ ms.locfileid: "83837874"
 
 ## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>我收到消息，指出 *“VM 报告总体代理状态为‘未就绪’。因此，此 VM 无法迁移。请确保 VM 代理报告总体代理状态为‘就绪’”* 或 *“VM 包含未报告其状态的扩展。因此，此 VM 无法迁移。”*
 
-当 VM 未建立到 Internet 的出站连接时，将收到此消息。 VM 代理使用出站连接访问 Azure 存储帐户，每隔五分钟更新一次代理状态。
+当 VM 未建立到 Internet 的出站连接时，会收到此消息。 VM 代理使用出站连接访问 Azure 存储帐户，每隔五分钟更新一次代理状态。

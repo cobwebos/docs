@@ -4,14 +4,14 @@ description: 了解如何将应用服务资源从一个区域移动到另一个�
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87a2da31802a8b6858e875c23ef1dbd2d6d006bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945471"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524848"
 ---
-# <a name="move-an-app-service-app-to-another-region"></a>将应用服务应用移动到其他区域
+# <a name="move-an-app-service-resource-to-another-region"></a>将应用服务资源移到另一个区域
 
 本文介绍了如何将应用服务资源移动到其他 Azure 区域。 由于各种原因，你可能需要将资源移动到其他区域。 例如，利用新的 Azure 区域，部署仅在特定区域中可用的功能或服务，满足内部策略和监管要求，或者满足容量规划要求。
 

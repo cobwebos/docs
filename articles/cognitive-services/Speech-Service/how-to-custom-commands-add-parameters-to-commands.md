@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362367"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524295"
 ---
 # <a name="add-parameters-to-commands"></a>向命令添加参数
 
@@ -54,16 +54,19 @@ ms.locfileid: "85362367"
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | 名称               | `OnOff`           | 参数的描述性名称                                                                           |
        | 为全局          | unchecked       | 指示此参数的值是否全局应用于应用程序中所有命令的复选框|
-       | 必须           | checked         | 一个复选框，该复选框指示在完成命令之前是否需要此参数的值 |
+       | 必需           | checked         | 一个复选框，该复选框指示在完成命令之前是否需要此参数的值 |
        | 响应所需的参数      |简单编辑器 >`On or Off?`      | 在未知情况下询问此参数值的提示 |
-       | 类型               | String          | 参数的类型，例如 Number、String、Date Time 或 Geography   |
+       | 类型               | 字符串          | 参数的类型，例如 Number、String、Date Time 或 Geography   |
        | Configuration      | 接受来自内部目录的预定义输入值 | 对于字符串，这会将输入限制为一组可能值 |
        | 预定义的输入值     | `on`, `off`           | 可能的值及其别名集         |
        
         
    1. 要添加预定义的输入值，请选择 "**添加预定义的输入**"，并在 "**新建项**" 窗口中键入上表中提供的**名称**。 在这种情况下，我们不使用别名，因此可将其留空。 
+
     > [!div class="mx-imgBorder"]
-        > ![Create 参数](media/custom-commands/create-on-off-parameter.png)
+
+    > ![Create 参数](media/custom-commands/create-on-off-parameter.png)
+
    1. 选择 "**保存**" 以保存参数的所有配置。
  
  ### <a name="add-subjectdevice-parameter"></a>添加 SubjectDevice 参数 
@@ -75,14 +78,14 @@ ms.locfileid: "85362367"
        | ------------------ | --------------------- |
        | 名称               | `SubjectDevice`         |
        | 为全局          | unchecked             |
-       | 必须           | checked               |
+       | 必需           | checked               |
        | 响应所需的参数     | 简单编辑器 >`Which device do you want to control?`    | 
-       | 类型               | String                |          |
+       | 类型               | 字符串                |          |
        | Configuration      | 接受来自内部目录的预定义输入值 | 
        | 预定义的输入值 | `tv`, `fan`               |
        | 别名（ `tv` ）      | `television`, `telly`     |
 
-   1. 选择“保存”****
+   1. 选择“保存”
 
 ### <a name="modify-example-sentences"></a>修改示例句子
 
@@ -104,7 +107,7 @@ turn something {OnOff}
 turn something
 ```
 
-选择“保存” 。
+选择“保存”。
 
 > [!TIP]
 > 示例句子编辑器使用大括号来引用参数。 - `turn {OnOff} the {SubjectDevice}`使用选项卡自动完成由以前创建的参数支持的功能。
@@ -115,15 +118,15 @@ turn something
 
 1. 在 "**条件**" 部分中，选择 "**添加条件**"。
 1. 在 "**新建条件**" 窗口的 "**类型**" 列表中，选择 "**必需参数**"。 在下面的检查列表中，选中 "**麦克风**" 和 " **SubjectDevice**"。
-1. 选择“创建” 。
+1. 选择“创建”。
 1. 在 "**操作**" 部分中，通过将鼠标悬停在操作上并选择 "编辑" 按钮来编辑现有的 "**发送语音响应**" 操作。 这一次，将使用新创建的**麦克风**和**SubjectDevice**参数
 
     ```
     Ok, turning the {SubjectDevice} {OnOff}
     ```
-1. 选择“保存” 。
+1. 选择“保存”。
 
-### <a name="try-it-out"></a>试用
+### <a name="try-it-out"></a>试试看
 1. 选择位于右窗格顶部的 "**定型**" 图标。
 
 1. 训练完成后，选择 "**测试**"。 **您的应用程序**窗口将出现。
@@ -168,7 +171,7 @@ change the temperature
 | 条件         | 要求的参数 > 温度           |
 | 操作           | 发送语音响应 >`Ok, setting temperature to {Temperature} degrees` |
 
-### <a name="try-it-out"></a>试用
+### <a name="try-it-out"></a>试试看
 
 使用几个交互来**定型**和**测试**更改。
 
@@ -210,7 +213,7 @@ alarm for {DateTime}
    | 操作    | 发送语音响应-`Ok, alarm set for {DateTime}`  |
 
 
-### <a name="try-it-out"></a>试用
+### <a name="try-it-out"></a>试试看
 
 **训练**和**测试**更改。
 - 输入：为明天中午设置警报

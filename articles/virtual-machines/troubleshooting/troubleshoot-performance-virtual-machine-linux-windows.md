@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75772612"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526650"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>排查 Linux 或 Windows 上的 Azure 虚拟机性能问题
 
-本文介绍如何通过监视和观察瓶颈来排查一般的虚拟机 (VM) 性能问题，并针对可能发生的问题提供可行的修正救措施。 除了监视之外，还可以使用 Perfinsights。Perfinsights 提供报告，以及最佳做法建议和 IO/CPU/内存方面的关键瓶颈。 Perfinsights 适用于 Azure 中的[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)和[Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) VM。
+本文介绍如何通过监视和观察瓶颈来排查一般的虚拟机 (VM) 性能问题，并针对可能发生的问题提供可行的修正救措施。 除了监视之外，还可以使用 Perfinsights。Perfinsights 提供报告，以及最佳做法建议和 IO/CPU/内存方面的关键瓶颈。 Perfinsights 适用于 Azure 中的[Windows](./how-to-use-perfinsights.md)和[Linux](./how-to-use-perfinsights-linux.md) VM。
 
 本文逐步讲解如何使用监视来诊断性能瓶颈。
 
@@ -29,7 +30,7 @@ ms.locfileid: "75772612"
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS 虚拟机监视
 
-若要监视来宾 VM，请使用 Azure VM 监视，当较高层面的出现某些资源状况时，它可以发出警报。 若要检查是否已启用 VM 诊断，请参阅 [Azure 资源日志概述](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)。 如果看到以下消息，则很可能未启用诊断：
+若要监视来宾 VM，请使用 Azure VM 监视，当较高层面的出现某些资源状况时，它可以发出警报。 若要检查是否已启用 VM 诊断，请参阅 [Azure 资源日志概述](../../azure-monitor/learn/tutorial-resource-logs.md)。 如果看到以下消息，则很可能未启用诊断：
 
 ![未启用监视](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -100,7 +101,7 @@ ms.locfileid: "75772612"
 
 ### <a name="cpu-observe-trends"></a>观察 CPU 趋势
 
-查看性能问题时，请注意趋势，并了解它们对你产生的影响。 在后续部分，我们将使用门户中的“监视”图形来显示趋势。 还可以使用这些图形来交叉参考同一时间段内的不同资源行为。 若要自定义图形，请单击“[Azure Monitor 数据平台](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)”。
+查看性能问题时，请注意趋势，并了解它们对你产生的影响。 在后续部分，我们将使用门户中的“监视”图形来显示趋势。 还可以使用这些图形来交叉参考同一时间段内的不同资源行为。 若要自定义图形，请单击“[Azure Monitor 数据平台](../../azure-monitor/platform/data-platform.md)”。
 
 蜂值–蜂值可与计划的任务/已知事件相关。 如果可以识别任务，请确定该任务是否以所需的性能级别运行。 如果性能可接受，则可能不需要增加资源。
 
@@ -119,7 +120,7 @@ ms.locfileid: "75772612"
 
 如果已增大 VM 的大小，但 CPU 利用率仍为 95%，请确定此设置是否能够在可接受的级别提供更好的性能或更高的应用程序吞吐量。 如果不是，请排查单个应用程序/进程的问题。
 
-可以使用[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)或[Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)的 Perfinsights 来分析哪个进程正在驱动 CPU 消耗。 
+可以使用[Windows](./how-to-use-perfinsights.md)或[Linux](./how-to-use-perfinsights-linux.md)的 Perfinsights 来分析哪个进程正在驱动 CPU 消耗。 
 
 ## <a name="check-for-memory-bottleneck"></a>检查内存瓶颈
 
@@ -150,13 +151,13 @@ ms.locfileid: "75772612"
 
 如果升级到更大的 VM，你会发现，在100% 之前，你仍有持续稳定的增长，可以确定应用程序/进程并进行故障排除。
 
-可以使用[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)或[Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)的 Perfinsights 来分析哪个进程正在驱动内存消耗。 
+可以使用[Windows](./how-to-use-perfinsights.md)或[Linux](./how-to-use-perfinsights-linux.md)的 Perfinsights 来分析哪个进程正在驱动内存消耗。 
 
 ## <a name="check-for-disk-bottleneck"></a>检查磁盘瓶颈
 
 若要检查 VM 的存储子系统，请在 Azure VM 级别通过使用 VM 诊断中的计数器以及存储帐户诊断来检查诊断。
 
-对于 VM 特定的故障排除，可以使用适用于[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)或[Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)的 Perfinsights，这有助于分析正在驱动 IO 的进程。 
+对于 VM 特定的故障排除，可以使用适用于[Windows](./how-to-use-perfinsights.md)或[Linux](./how-to-use-perfinsights-linux.md)的 Perfinsights，这有助于分析正在驱动 IO 的进程。 
 
 请注意，我们没有用于区域冗余和高级存储帐户的计数器。 对于与这些计数器相关的问题，请提出支持案例。
 
@@ -207,7 +208,7 @@ AverageE2ELatency 表示客户端延迟。 验证应用程序执行 IOPS 的方�
 
 对于标准存储下的新磁盘产品，IOPS 和吞吐量限制可能不同，但标准存储帐户的累积限制为 20000 IOPS （高级存储具有不同的帐户或磁盘级别限制）。 阅读有关不同标准存储磁盘产品和每个磁盘限制的详细信息：
 
-* [Windows 上的 VM 磁盘的可伸缩性和性能目标](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)。
+* [Windows 上的 VM 磁盘的可伸缩性和性能目标](../windows/disk-scalability-targets.md)。
 
 #### <a name="references"></a>参考
 
@@ -223,19 +224,19 @@ AverageE2ELatency 表示客户端延迟。 验证应用程序执行 IOPS 的方�
 
 标准存储下的新磁盘产品提供了不同的 IOPS 和吞吐量限制（每个 VHD 不公开 IOPS）。 查看数据，查看是否在 VM 级别使用磁盘读取和写入来达到了 VM 级别的最小的 VHD 吞吐量，并优化了 VM 存储配置以扩展过去的单个 VHD 限制。 阅读有关不同标准存储磁盘产品和每个磁盘限制的详细信息：
 
-* [Windows 上的 VM 磁盘的可伸缩性和性能目标](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)。
+* [Windows 上的 VM 磁盘的可伸缩性和性能目标](../windows/disk-scalability-targets.md)。
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>高磁盘利用率/延迟修正
 
 减少客户端延迟并优化 VM IO 以缩放过去的 VHD 限制
 
-* [在 Azure 中优化 Windows IO](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
+* [在 Azure 中优化 Windows IO](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md?toc=/azure/virtual-machines/windows/toc.json)
 
-* [在 Azure 中优化 Linux 的 IO](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
+* [在 Azure 中优化 Linux 的 IO](/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 
 #### <a name="reduce-throttling"></a>减少限制
 
-如果达到存储帐户的上限，请对存储帐户之间的 Vhd 重新平衡。 请参阅[Azure 存储可伸缩性和性能目标](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/)。
+如果达到存储帐户的上限，请对存储帐户之间的 Vhd 重新平衡。 请参阅[Azure 存储可伸缩性和性能目标](../../storage/common/scalability-targets-standard-account.md)。
 
 ### <a name="increase-throughput-and-reduce-latency"></a>提高吞吐量并减少延迟
 
@@ -243,9 +244,9 @@ AverageE2ELatency 表示客户端延迟。 验证应用程序执行 IOPS 的方�
 
 这些文章介绍了具体的方案：
 
-* [迁移到 Azure 高级存储](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [迁移到 Azure 高级存储](../windows/migrate-to-managed-disks.md)
 
-* [将 Azure 高级存储用于 SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
+* [将 Azure 高级存储用于 SQL Server](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage)
 
 ## <a name="next-steps"></a>后续步骤
 

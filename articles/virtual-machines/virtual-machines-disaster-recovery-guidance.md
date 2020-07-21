@@ -6,11 +6,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77115622"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525817"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服务中断影响了 Azure VM，该怎么办
 Microsoft 的同仁兢兢业业，只为确保在任何时候都能提供需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。
@@ -34,7 +35,7 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 
 
 > [!NOTE]
-> 注意，对此过程无任何控制权，并且此过程仅适用于区域范围的服务中断。 因此，还必须依靠应用程序特有的其他备份方法才能达到最高级别的可用性。 有关详细信息，请参阅[灾难恢复的数据策略](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)部分。
+> 注意，对此过程无任何控制权，并且此过程仅适用于区域范围的服务中断。 因此，还必须依靠应用程序特有的其他备份方法才能达到最高级别的可用性。 有关详细信息，请参阅[灾难恢复的数据策略](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)部分。
 >
 >
 
@@ -44,7 +45,7 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 
 - 若要详细了解如何实现灾难恢复和高可用性策略，请参阅 [Azure 应用程序的灾难恢复和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)。
 
-- 若要掌握有关云平台功能的详细技术知识，请参阅 [Azure 复原技术指南](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance)。
+- 若要掌握有关云平台功能的详细技术知识，请参阅 [Azure 复原技术指南](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)。
 
 
 - 如果指示不清楚，或者如果希望 Microsoft 自动执行操作，请联系[客户支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

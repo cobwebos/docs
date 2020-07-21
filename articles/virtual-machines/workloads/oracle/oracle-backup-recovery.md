@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7f6b9ddfd5b25ea8482e0bbf5622fa16bc450662
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224445"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525587"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
 
 可从命令提示符使用 Azure CLI 或通过脚本来创建和管理 Azure 资源。 在本文中，我们使用 Azure CLI 脚本从 Azure 市场库映像部署 Oracle Database 12c 数据库。
 
-在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅[Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅[Azure CLI 安装指南](/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>准备环境
 
@@ -33,7 +33,7 @@ ms.locfileid: "86224445"
 
 *   要执行备份和恢复过程，首先必须创建已安装 Oracle Database 12c 实例的 Linux VM。 用来创建 VM 的市场映像是“Oracle:Oracle-Database-Ee:12.1.0.2:latest”**。
 
-    要了解如何创建 Oracle 数据库，请参阅 [Oracle 创建数据库快速入门](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)。
+    要了解如何创建 Oracle 数据库，请参阅 [Oracle 创建数据库快速入门](./oracle-database-quick-create.md)。
 
 
 ### <a name="step-2-connect-to-the-vm"></a>步骤 2：连接到 VM
@@ -508,7 +508,7 @@ ms.locfileid: "86224445"
 
     ![公共 IP 地址列表](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  在“公共 IP 地址”边栏选项卡中，单击“添加”********。 在“创建公共 IP 地址”边栏选项卡的“名称”下，选择公共 IP 名称********。 对于“资源组”，请选择“使用现有资源组”。  然后单击“创建”。
+2.  在“公共 IP 地址”边栏选项卡中，单击“添加”********。 在“创建公共 IP 地址”边栏选项卡的“名称”下，选择公共 IP 名称********。 对于“资源组”，请选择“使用现有资源组”。  然后单击“创建” 。
 
     ![创建 IP 地址](./media/oracle-backup-recovery/create_ip_01.png)
 
@@ -572,6 +572,3 @@ az group delete --name myResourceGroup
 [教程：创建具有高可用性的 VM](../../linux/create-cli-complete.md)
 
 [浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)
-
-
-

@@ -4,17 +4,17 @@ description: Azure 存储在将数据保存到云之前会自动对其进行加�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 06/17/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8b4236e40e8dfbe6ce67bca007be0b6737a6e0c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6244b3ab72f7fa8ea375ff67a08e8d1d241df4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945573"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527891"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -32,6 +32,8 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 
 有关 Azure 存储加密的底层加密模块的详细信息，请参见[加密 API：下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)。
 
+有关 Azure 托管磁盘的加密和密钥管理的信息，请参阅适用于 Windows Vm[的 azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)或适用于 Linux Vm 的[azure 托管磁盘的服务器端加密](../../virtual-machines/linux/disk-encryption.md)。
+
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
 新存储帐户中的数据使用 Microsoft 托管密钥加密。 可以依赖于使用 Microsoft 托管的密钥来加密数据，也可以使用你自己的密钥来管理加密。 如果你选择使用自己的密钥来管理加密，则可以采用两种做法：
@@ -41,18 +43,56 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 
 下表比较了 Azure 存储加密的密钥管理选项。
 
-|                                        |    Microsoft 管理的密钥                             |    客户管理的密钥                                                                                                                        |    客户提供的密钥                                                          |
-|----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-|    加密/解密操作    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    支持的 Azure 存储服务    |    全部                                                |    Blob 存储，Azure 文件<sup>1，2</sup>                                                                                                               |    Blob 存储                                                                  |
-|    密钥存储                         |    Microsoft 密钥存储    |    Azure Key Vault                                                                                                                              |    客户自己的密钥存储                                                                 |
-|    密钥轮换责任         |    Microsoft                                          |    客户                                                                                                                                     |    客户                                                                      |
-|    密钥控制                          |    Microsoft                                     |    客户                                                                                                                    |    客户                                                                 |
+| 密钥管理参数 | Microsoft 管理的密钥 | 客户管理的密钥 | 客户提供的密钥 |
+|--|--|--|--|
+| 加密/解密操作 | Azure | Azure | Azure |
+| 支持的 Azure 存储服务 | 全部 | Blob 存储，Azure 文件<sup>1，2</sup> | Blob 存储 |
+| 密钥存储 | Microsoft 密钥存储 | Azure Key Vault | 客户自己的密钥存储 |
+| 密钥轮换责任 | Microsoft | 客户 | 客户 |
+| 密钥控制 | Microsoft | 客户 | 客户 |
 
 <sup>1</sup>有关创建支持对队列存储使用客户托管密钥的帐户的信息，请参阅[创建支持队列的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
 <sup>2</sup>有关创建支持使用客户管理的密钥和表存储的帐户的信息，请参阅[创建支持表的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 
-有关 Azure 托管磁盘的加密和密钥管理的信息，请参阅适用于 Windows Vm[的 azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)或适用于 Linux Vm 的[azure 托管磁盘的服务器端加密](../../virtual-machines/linux/disk-encryption.md)。
+## <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 存储的加密作用域（预览）
+
+默认情况下，存储帐户使用作用域为存储帐户的密钥进行加密。 你可以选择使用 Microsoft 管理的密钥或存储在 Azure Key Vault 中的客户托管密钥来保护和控制对加密数据的密钥的访问权限。
+
+使用加密范围，可以选择在容器级别或单个 blob 上管理加密。 你可以使用加密作用域在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。
+
+可以使用 Azure 存储资源提供程序为存储帐户创建一个或多个加密作用域。 当你创建加密作用域时，你可以指定是使用 Microsoft 托管密钥还是使用存储在 Azure Key Vault 中的客户托管密钥来保护作用域。 同一存储帐户上的不同加密范围可以使用 Microsoft 管理的密钥或客户管理的密钥。
+
+创建加密作用域后，可以在请求上指定加密作用域，以创建容器或 blob。 有关如何创建加密范围的详细信息，请参阅[创建和管理加密范围（预览）](../blobs/encryption-scope-manage.md)。
+
+> [!NOTE]
+> 预览期间，读取访问异地冗余存储（GRS）帐户不支持加密作用域。
+
+> [!IMPORTANT]
+> 加密范围预览版仅适用于非生产使用。 生产服务级别协议 (SLA) 当前不可用。
+>
+> 若要避免意外的成本，请务必禁用当前不需要的任何加密作用域。
+
+### <a name="create-a-container-or-blob-with-an-encryption-scope"></a>使用加密范围创建容器或 blob
+
+在加密范围下创建的 blob 使用为该作用域指定的密钥进行加密。 创建 blob 时，可以为单个 blob 指定加密作用域，也可以在创建容器时指定默认的加密作用域。 当在容器级别指定默认加密范围时，该容器中的所有 blob 都将使用与默认作用域相关联的密钥进行加密。
+
+当你在具有默认加密作用域的容器中创建 blob 时，如果将容器配置为允许替代默认加密范围，则可以指定覆盖默认加密范围的加密作用域。 若要防止覆盖默认的加密范围，请将容器配置为拒绝单个 blob 的替代。
+
+属于加密作用域的 blob 上的读取操作以透明方式发生，前提是未禁用加密作用域。
+
+### <a name="disable-an-encryption-scope"></a>禁用加密范围
+
+禁用加密作用域时，将会失败，并出现 HTTP 错误代码403（禁止访问），并会导致任何后续的读取或写入操作失败。 如果重新启用加密范围，读取和写入操作将再次正常继续。
+
+禁用加密作用域后，你将不再向其收费。 禁用不需要的任何加密范围以避免不必要的费用。
+
+如果你的加密范围受 Azure Key Vault 的客户托管密钥保护，则还可以删除密钥保管库中的关联密钥，以便禁用加密作用域。 请记住，Azure Key Vault 中的客户托管密钥受到软删除和清除保护的保护，并且已删除的密钥服从这些属性定义的行为。 有关详细信息，请参阅 Azure Key Vault 文档中的以下主题之一：
+
+- [如何在 PowerShell 中使用软删除](../../key-vault/general/soft-delete-powershell.md)
+- [如何在 CLI 中使用软删除](../../key-vault/general/soft-delete-cli.md)
+
+> [!NOTE]
+> 不能删除加密作用域。
 
 ## <a name="next-steps"></a>后续步骤
 

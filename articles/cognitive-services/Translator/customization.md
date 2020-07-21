@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996992"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523989"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
@@ -27,7 +27,7 @@ ms.locfileid: "83996992"
 
 使用自定义翻译，可以构建神经翻译系统，以了解自己的业务和行业中使用的术语。 然后，自定义的翻译系统将集成到现有的应用程序、工作流和网站中。
 
-### <a name="how-does-it-work"></a>工作原理
+### <a name="how-does-it-work"></a>它是如何工作的？
 
 使用之前翻译的文档（leaflets、网页、文档等）构建一个翻译系统，该系统可反映与标准翻译系统更好的特定于域的术语和样式。 用户可以上传 TMX、XLIFF、TXT、DOCX 和 XLSX 文档。  
 
@@ -47,8 +47,8 @@ ms.locfileid: "83996992"
 
 ## <a name="custom-translator-versus-hub"></a>自定义翻译与 Hub
 
-|   | **中心** | **自定义翻译**|
-|:-----|:----:|:----:|
+| Feature | 集线器 | 自定义翻译 |
+| ------- | :-: | :---------------: |
 |自定义功能状态    | 正式版    | 正式版 |
 | 文本 API 版本    | 仅 V2    | 仅 V3 |
 | SMT 自定义    | 是    | 否 |

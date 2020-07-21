@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025123"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525035"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam B&R 在 CloudSimple 私有云上备份工作负荷 Vm
 
@@ -194,7 +195,7 @@ Veeam 解决方案要求你执行以下操作：
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>配置 Azure blob 存储以进行长期数据保留
 
 1. 按照[使用 Azure 存储](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)的 Microsoft 视频入门中所述，创建标准类型和 blob 容器的常规用途存储帐户（GPv2）。
-2. 创建 Azure 存储容器，如[创建容器](https://docs.microsoft.com/rest/api/storageservices/create-container)引用中所述。
+2. 创建 Azure 存储容器，如[创建容器](/rest/api/storageservices/create-container)引用中所述。
 2. `azcopy`从 Microsoft 下载适用于 Linux 的命令行实用工具。 你可以在 CentOS 7.5 的 bash shell 中使用以下命令。
 
     ```
@@ -205,7 +206,7 @@ Veeam 解决方案要求你执行以下操作：
     sudo yum -y install icu
     ```
 
-3. 使用 `azcopy` 命令将备份文件复制到 blob 容器和 blob 容器。  请参阅[在 Linux 上通过 AzCopy 传输数据](../storage/common/storage-use-azcopy-linux.md)了解详细命令。
+3. 使用 `azcopy` 命令将备份文件复制到 blob 容器和 blob 容器。  请参阅[在 Linux 上通过 AzCopy 传输数据](../storage/common/storage-use-azcopy-v10.md)了解详细命令。
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>私有云的 vCenter 控制台：安装 Veeam B&R
 
@@ -290,8 +291,8 @@ Veeam 解决方案要求你执行以下操作：
 * [在 Azure 门户中创建 Linux 虚拟机](../virtual-machines/linux/quick-create-portal.md)
 * [如何在 Azure 门户中将托管的数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [通过 Azure 存储入门-视频](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [创建容器](https://docs.microsoft.com/rest/api/storageservices/create-container)
-* [使用 AzCopy on Linux 传输数据](../storage/common/storage-use-azcopy-linux.md)
+* [创建容器](/rest/api/storageservices/create-container)
+* [使用 AzCopy on Linux 传输数据](../storage/common/storage-use-azcopy-v10.md)
 
 ### <a name="vmware-references"></a>VMware 引用
 

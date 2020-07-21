@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373344"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526532"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM 因 Windows 启动管理器而无法启动
 
@@ -29,7 +29,7 @@ ms.locfileid: "80373344"
 
 VM 一直在等待用户提示。除非用户手动进行指示，否则 VM 不会启动。
 
-使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)查看 VM 的屏幕截图时，会看到屏幕截图显示 Windows 启动管理器，其中包含消息“请选择要启动的操作系统，或按 TAB 键选择一项工具:”  。
+使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，会看到屏幕截图显示 Windows 启动管理器，其中包含消息“请选择要启动的操作系统，或按 TAB 键选择一项工具:”  。
 
 图 1
  
@@ -53,7 +53,7 @@ VM 一直在等待用户提示。除非用户手动进行指示，否则 VM 不�
 
 如果有权访问串行控制台，可以通过两种方式来实现更快的启动时间。 请缩短*displaybootmenu*等待时间，或完全删除该标志。
 
-1. 按照说明访问[适用于 Windows 的 Azure 串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)，以获取对基于文本的控制台的访问权限。
+1. 按照说明访问[适用于 Windows 的 Azure 串行控制台](./serial-console-windows.md)，以获取对基于文本的控制台的访问权限。
 
    > [!NOTE]
    > 如果无法访问串行控制台，请直接跳到[创建和访问修复 VM](#create-and-access-a-repair-vm)。
@@ -77,7 +77,7 @@ VM 一直在等待用户提示。除非用户手动进行指示，否则 VM 不�
 
 ### <a name="create-and-access-a-repair-vm"></a>创建并访问修复 VM
 
-1. 使用 [VM 修复命令的步骤 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 来准备一个修复 VM。
+1. 使用 [VM 修复命令的步骤 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 来准备一个修复 VM。
 2. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>在修复 VM 上进行配置以缩短启动时间。
@@ -154,4 +154,4 @@ VM 一直在等待用户提示。除非用户手动进行指示，否则 VM 不�
 
 ### <a name="rebuild-the-original-vm"></a>重建原始 VM
 
-使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新装配 VM。
+使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM。

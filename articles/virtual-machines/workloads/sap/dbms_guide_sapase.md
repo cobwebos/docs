@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273199"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525256"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
 
-本文档介绍在 Azure IaaS 中部署 SAP 时要考虑的多个不同领域。 在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 本文档介绍在 Linux 和 Windows 操作系统上运行的 SAP ASE。 Azure 支持的最低版本为 SAP ASE 16.0.02 （版本16支持包2）。 建议部署最新版本的 SAP 和最新的修补程序级别。  建议使用最小的 SAP ASE 16.0.03.07 （版本16支持包3修补程序级别7）。  最新版本的 SAP 可以在[目标 ASE 16.0 发行计划和 CR List 信息](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)中找到。
+本文档介绍在 Azure IaaS 中部署 SAP 时要考虑的多个不同领域。 在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](./get-started.md)中的其他指南。 本文档介绍在 Linux 和 Windows 操作系统上运行的 SAP ASE。 Azure 支持的最低版本为 SAP ASE 16.0.02 （版本16支持包2）。 建议部署最新版本的 SAP 和最新的修补程序级别。  建议使用最小的 SAP ASE 16.0.03.07 （版本16支持包3修补程序级别7）。  最新版本的 SAP 可以在[目标 ASE 16.0 发行计划和 CR List 信息](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)中找到。
 
 有关 SAP 应用程序或安装媒体位置的发布支持的其他信息，请参阅以下位置的 SAP 产品可用性矩阵：
 
@@ -58,7 +59,7 @@ Microsoft Azure 提供了许多不同的虚拟机类型，可运行最小的 SAP
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>针对 SAP ASE 部署的 VM 和磁盘结构的建议
 
-Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的任何 vm 类型都支持 sap ASE For Sap NetWeaver 应用程序 #1928533 用于中型 SAP ASE 数据库服务器的典型 vm 类型包括 Esv3。  大型多 tb 数据库可以利用 M 系列 VM 类型。 可以通过启用 M 系列写入加速器来改善 SAP ASE 事务日志磁盘写入性能。 由于 SAP ASE 执行日志写入的方式，应小心地测试写入加速器。  查看[SAP 支持说明 #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)并考虑运行性能测试。  
+Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的任何 vm 类型都支持 sap ASE For Sap NetWeaver 应用程序 #1928533 用于中型 SAP ASE 数据库服务器的典型 vm 类型包括 Esv3。  大型多 tb 数据库可以利用 M 系列 VM 类型。 可以通过启用 M 系列写入加速器来改善 SAP ASE 事务日志磁盘写入性能。 由于 SAP ASE 执行日志写入的方式，应小心地测试写入加速器。  查看[SAP 支持说明 #2816580](../../windows/how-to-enable-write-accelerator.md)并考虑运行性能测试。  
 写入加速器仅适用于事务日志磁盘。 磁盘级别缓存应设置为 "无"。 如果 Azure 写入加速器与其他 DBMS 相比，没有显示类似的改进，别惊讶。 根据 SAP ASE 写入事务日志的方式，Azure 写入加速器不会有很小的加速。
 建议为数据设备和日志设备使用不同的磁盘。  系统数据库 sybsecurity 并且 `saptools` 不需要专用磁盘，可放置在包含 SAP 数据库数据和日志设备的磁盘上 
 
@@ -70,7 +71,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 建议按照在 SAP 自适应服务器企业和[sap 支持说明 #1815695](https://launchpad.support.sap.com/#/notes/1815695)[中配置自动数据库空间扩展](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)一文中所述配置自动数据库扩展。 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Azure 虚拟机、磁盘和文件系统配置中的示例 SAP ASE 
-下面的模板显示适用于 Linux 和 Windows 的示例配置。 确认虚拟机和磁盘配置之前，请确保单个 VM 的网络和存储带宽配额足以满足业务要求。 同时请记住，不同的 Azure VM 类型具有不同的可附加到 VM 的最大磁盘数。 例如，E4s_v3 VM 的存储 IO 吞吐量限制为 48 MB/秒。 如果数据库备份活动所需的存储吞吐量超过 48 MB/秒，则更大的 VM 类型具有更大的存储带宽吞吐量是不可避免的。 配置 Azure 存储时，还需要记住，尤其是在[Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance)中，每 GB 容量的吞吐量和 IOPS 都发生变化。 有关详细信息，请参阅本主题中的[如何在 Azure 中使用哪些磁盘类型？](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types)。 特定 Azure VM 类型的配额记录在 "[内存优化" 虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/sizes-memory)和链接到该虚拟机的文章中。 
+下面的模板显示适用于 Linux 和 Windows 的示例配置。 确认虚拟机和磁盘配置之前，请确保单个 VM 的网络和存储带宽配额足以满足业务要求。 同时请记住，不同的 Azure VM 类型具有不同的可附加到 VM 的最大磁盘数。 例如，E4s_v3 VM 的存储 IO 吞吐量限制为 48 MB/秒。 如果数据库备份活动所需的存储吞吐量超过 48 MB/秒，则更大的 VM 类型具有更大的存储带宽吞吐量是不可避免的。 配置 Azure 存储时，还需要记住，尤其是在[Azure 高级存储](../../windows/premium-storage-performance.md)中，每 GB 容量的吞吐量和 IOPS 都发生变化。 有关详细信息，请参阅本主题中的[如何在 Azure 中使用哪些磁盘类型？](../../windows/disks-types.md)。 特定 Azure VM 类型的配额记录在 "[内存优化" 虚拟机大小](../../sizes-memory.md)和链接到该虚拟机的文章中。 
 
 > [!NOTE]
 >  如果 DBMS 系统从本地移至 Azure，则建议在 VM 上执行监视，并评估 CPU、内存、IOPS 和存储吞吐量。 将观测到的最大值与上面提到的文章中记录的 VM 配额限制进行比较
@@ -79,7 +80,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 数据库大小介于 50 GB – 250 GB （如 SAP 解决方案管理器）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E4s_v3 （4 vCPU/32 GB RAM） | E4s_v3 （4 vCPU/32 GB RAM） | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -100,7 +101,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 例如，如果数据库大小介于 250 GB – 750 GB 之间，则中型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E16s_v3 （16 vCPU/128 GB RAM） | E16s_v3 （16 vCPU/128 GB RAM） | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -120,7 +121,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 数据库大小介于 750 GB – 2000 GB （如大型 SAP Business Suite system）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E64s_v3 （64 vCPU/432 GB RAM） | E64s_v3 （64 vCPU/432 GB RAM） | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -141,7 +142,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 数据库大小为 2 TB + 的小型 SAP ASE DB 服务器的配置示例，如更大的全局使用的 SAP 业务套件系统，如下所示
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | M 系列（1.0 到 4.0 TB RAM）  | M 系列（1.0 到 4.0 TB RAM） | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -212,7 +213,7 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 - 考虑对 x 大系统使用 UltraDisk 
 - 运行 `saptune` LINUX 操作系统上的 SAP-ASE 
 - 通过数据库加密保护数据库–手动存储密钥 Azure Key Vault 
-- 完成[Azure 上的 SAP 清单](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) 
+- 完成[Azure 上的 SAP 清单](./sap-deployment-checklist.md) 
 - 配置日志备份和完整备份 
 - 测试 HA/DR、备份和还原，并 & 批量测试 
 - 确认自动数据库扩展正在工作 
@@ -309,5 +310,4 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 
 
 ## <a name="next-steps"></a>后续步骤
-查看[Azure 上的 SAP 工作负荷一文：规划和部署清单](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-
+查看[Azure 上的 SAP 工作负荷一文：规划和部署清单](./sap-deployment-checklist.md)

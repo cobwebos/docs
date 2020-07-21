@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869304"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524990"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>管理私有云资源和活动
 
@@ -36,13 +37,13 @@ ms.locfileid: "81869304"
 
 ## <a name="private-cloud-summary"></a>私有云摘要
 
-查看所选私有云的完整摘要。  “摘要”页包括私有云上部署的 DNS 服务器。  可以设置从本地 DNS 服务器到私有云 DNS 服务器的 DNS 转发。  有关 DNS 转发的详细信息，请参阅[从本地为私有云 vCenter 配置 DNS 用于名称解析](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/)。
+查看所选私有云的完整摘要。  “摘要”页包括私有云上部署的 DNS 服务器。  可以设置从本地 DNS 服务器到私有云 DNS 服务器的 DNS 转发。  有关 DNS 转发的详细信息，请参阅[从本地为私有云 vCenter 配置 DNS 用于名称解析](./on-premises-dns-setup.md)。
 
 ![私有云摘要](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>可用操作
 
-* [启动 vSphere 客户端](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)。 访问此私有云的 vCenter。
+* [启动 vSphere 客户端](./vcenter-access.md)。 访问此私有云的 vCenter。
 * [购买节点](create-nodes.md)。 将节点添加到此私有云。
 * [展开](expand-private-cloud.md)。 将节点添加到此私有云。
 * **刷新**。 更新此页上的信息。
@@ -57,10 +58,10 @@ ms.locfileid: "81869304"
 
 ### <a name="available-actions"></a>可用操作
 
-* [添加 VLAN/子网](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)。 将 VLAN/子网添加到此私有云。
+* [添加 VLAN/子网](./create-vlan-subnet.md)。 将 VLAN/子网添加到此私有云。
 
 选择一个 VLAN/子网以执行以下操作
-* [附加防火墙表](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/)。 将防火墙表附加到此私有云。
+* [附加防火墙表](./firewall.md)。 将防火墙表附加到此私有云。
 * **编辑**
 * **删除**（仅限用户定义的 VLAN/子网）
 

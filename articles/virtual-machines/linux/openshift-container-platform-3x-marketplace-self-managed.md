@@ -10,15 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d32e4b7806ec53f48389b127ab34371271cf07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759574"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527228"
 ---
 # <a name="configure-prerequisites"></a>配置先决条件
 
-在使用 Marketplace 产品/服务在 Azure 中部署自我托管的 OpenShift 容器平台3.11 群集之前，必须先配置几个必备组件。  有关创建 ssh 密钥（无密码）、Azure 密钥保管库、密钥保管库密钥和服务主体的说明，请阅读[OpenShift 先决条件](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites)一文。
+在使用 Marketplace 产品/服务在 Azure 中部署自我托管的 OpenShift 容器平台3.11 群集之前，必须先配置几个必备组件。  有关创建 ssh 密钥（无密码）、Azure 密钥保管库、密钥保管库密钥和服务主体的说明，请阅读[OpenShift 先决条件](./openshift-container-platform-3x-prerequisites.md)一文。
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>使用 Marketplace 产品/服务进行部署

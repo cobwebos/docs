@@ -1,5 +1,5 @@
 ---
-title: 利用新的会话主机展开现有的主机池-Azure
+title: 展开具有新的会话主机的现有主机春季 2020-Azure
 description: 如何使用 Windows 虚拟桌面中的新会话主机扩展现有的主机池。
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b23cee72af7f8262fdd552c2d4c26c608b68a1e4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259887"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527602"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的会话主机展开现有的主机池
 
@@ -29,7 +29,7 @@ ms.locfileid: "86259887"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>扩展主机池所需的条件
 
-在开始之前，请确保已使用以下方法之一) 创建了主机池和会话主机虚拟机 (Vm：
+在开始之前，请确保已使用以下方法之一创建了主机池和会话主机虚拟机（Vm）：
 
 - [Azure 门户](./create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 创建主机池](./create-host-pools-powershell.md)
@@ -54,7 +54,7 @@ ms.locfileid: "86259887"
 
 5. 选择 " **+ 添加**" 开始创建主机池。
 
-6. 忽略 "基本信息" 选项卡，然后选择 " **VM 详细信息**" 选项卡。在此处，你可以查看和编辑要添加到主机池的虚拟机 (VM) 的详细信息。
+6. 忽略 "基本信息" 选项卡，然后选择 " **VM 详细信息**" 选项卡。可在此处查看和编辑要添加到主机池的虚拟机（VM）的详细信息。
 
 7. 选择要在其下创建 Vm 的资源组，然后选择区域。 您可以选择当前使用的区域或新区域。
 
