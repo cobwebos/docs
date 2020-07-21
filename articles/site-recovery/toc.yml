@@ -62,6 +62,8 @@
           href: tutorial-dr-drill-azure.md
         - name: 故障转移到 Azure
           href: hyper-v-azure-failover-failback-tutorial.md
+        - name: 使用专用终结点启用本地复制
+          href: ./hybrid-how-to-enable-replication-private-endpoints.md
     - name: 迁移到 Azure
       items:
         - name: 为本地复制准备 Azure
@@ -186,6 +188,8 @@
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: 为添加的磁盘启用复制
               href: azure-to-azure-enable-replication-added-disk.md
+            - name: 使用专用终结点启用复制
+              href: ./azure-to-azure-how-to-enable-replication-private-endpoints.md
             - name: 排除磁盘
               href: azure-to-azure-exclude-disks.md
             - name: 故障转移后重新保护 Azure VM
@@ -242,6 +246,8 @@
               href: vmware-azure-set-up-target.md
             - name: 配置复制设置
               href: vmware-azure-set-up-replication.md
+            - name: 使用专用终结点启用本地复制
+              href: ./hybrid-how-to-enable-replication-private-endpoints.md
             - name: 部署移动服务
               items:
                 - name: 移动服务概述和安装
@@ -308,6 +314,8 @@
               href: physical-azure-set-up-source.md
             - name: 设置目标环境
               href: vmware-azure-set-up-target.md
+            - name: 使用专用终结点启用本地复制
+              href: ./hybrid-how-to-enable-replication-private-endpoints.md
             - name: 部署移动服务
               items:
                 - name: 关于移动服务安装

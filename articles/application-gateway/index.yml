@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 03/24/2020
-  ms.openlocfilehash: aaa1774b7680f87e9c3dab13dbe53a627f3890bf
-  ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+  ms.openlocfilehash: 63000da3b1d3e69c2a0c0a1d10267e18da199ffa
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80245729"
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86524754"
 landingContent:
 - title: 了解应用程序网关
   linkLists:
@@ -71,6 +71,18 @@ landingContent:
     links:
     - text: 创建 AKS 的入口控制器
       url: ingress-controller-install-new.md
+- title: 使用应用程序网关重写 HTTP 标头和 URL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 使用应用程序网关重写 HTTP 标头和 URL
+      url: rewrite-http-headers-url.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure 门户重写 HTTP 标头
+      url: rewrite-http-headers-portal.md
+    - text: 使用 Azure 门户重写 URL 和查询字符串
+      url: rewrite-url-portal.md
 - title: 排查应用程序网关问题
   linkLists:
   - linkListType: overview
