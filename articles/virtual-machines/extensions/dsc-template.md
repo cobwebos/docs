@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891662"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511154"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
 
-本文介绍 [Desired State Configuration (DSC) 扩展处理程序](dsc-overview.md)的 Azure 资源管理器模板。 许多示例将 **RegistrationURL**（以字符串形式提供）和 **RegistrationKey**（作为 [PSCredential](/dotnet/api/system.management.automation.pscredential) 提供）与 Azure 自动化一起使用。 有关获取这些值的详细信息，请参阅[登记由 Azure 自动化状态配置管理的计算机 - 安全注册](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration)。
+本文介绍 [Desired State Configuration (DSC) 扩展处理程序](dsc-overview.md)的 Azure 资源管理器模板。 很多示例都使用**RegistrationURL** （以字符串形式提供）和**RegistrationKey** （作为[PSCredential](/dotnet/api/system.management.automation.pscredential)提供，以与 Azure 自动化集成。 有关获取这些值的详细信息，请参阅[登记由 Azure 自动化状态配置管理的计算机 - 安全注册](../../automation/automation-dsc-onboarding.md#enable-machines-securely-using-registration)。
 
 > [!NOTE]
 > 你可能会遇到略有不同的架构示例。 2016 年 10 月发行版中发生了架构更改。 有关详细信息，请参阅[从以前的格式更新](#update-from-a-previous-format)。

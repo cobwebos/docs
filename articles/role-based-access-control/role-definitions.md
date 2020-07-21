@@ -15,11 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996614"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511630"
 ---
 # <a name="understand-azure-role-definitions"></a>了解 Azure 角色定义
 
@@ -89,7 +90,7 @@ assignableScopes []
 
 ### <a name="role-definition-example"></a>角色定义示例
 
-下面是 Azure PowerShell 和 Azure CLI 中显示的[参与者](built-in-roles.md#contributor)角色定义。 `Actions` 下的通配符 (`*`) 操作表示分配给此角色的主体可以执行所有操作，换句话说，它可以管理所有内容。 这包括将来定义的操作，因为 Azure 会添加新的资源类型。 `NotActions` 下的操作会从 `Actions` 中减去。 就[参与者](built-in-roles.md#contributor)角色而言，`NotActions` 去除了此角色管理资源访问权限以及分配资源访问权限的能力。
+下面是 Azure PowerShell 和 Azure CLI 中显示的[参与者](built-in-roles.md#contributor)角色定义。 `Actions` 下的通配符 (`*`) 操作表示分配给此角色的主体可以执行所有操作，换句话说，它可以管理所有内容。 这包括将来定义的操作，因为 Azure 会添加新的资源类型。 `NotActions` 下的操作会从 `Actions` 中减去。 如果是 "[参与者](built-in-roles.md#contributor)" 角色，则会 `NotActions` 删除此角色管理资源访问权限的能力，还会管理 Azure 蓝图分配。
 
 Azure PowerShell 中显示的参与者角色：
 

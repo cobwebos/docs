@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78968893"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510719"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
 
@@ -25,7 +26,7 @@ ms.locfileid: "78968893"
 存储库还具有用于设置 Grafana 仪表板的脚本。 可以使用仪表板查询 Prometheus，后者是 DB2 中包含的开源监视和警报系统。
 
 > [!NOTE]
-> 客户端上的 deploy.sh 脚本创建私有 SSH 密钥，并通过 HTTPS 将其传递给部署模板。 为提高安全性，建议使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 来存储机密、密钥和密码。
+> 客户端上的 deploy.sh 脚本创建私有 SSH 密钥，并通过 HTTPS 将其传递给部署模板。 为提高安全性，建议使用 [Azure Key Vault](../../key-vault/general/overview.md) 来存储机密、密钥和密码。
 
 ## <a name="how-the-deployment-script-works"></a>部署脚本的工作原理
 
@@ -74,7 +75,7 @@ GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | 欢迎使用                   |                                              | 新安装                                                                                           |
 | 选择产品          |                                              | DB2 版本 11.1.3.3。 带有 DB2 pureScale 的服务器版本                                              |
-| 配置             | 目录                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| Configuration             | 目录                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 选择安装类型                 | 典型                                                                                               |
 |                           | 我同意 IBM 条款                     | 已选中                                                                                               |
 | 实例所有者            | 实例的现有用户、用户名        | DB2sdin1                                                                                              |

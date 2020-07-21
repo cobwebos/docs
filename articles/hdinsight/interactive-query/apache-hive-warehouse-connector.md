@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221011"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511885"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Apache Spark 和 Apache Hive 与 Hive Warehouse Connector 集成
 
@@ -123,7 +123,7 @@ Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要�
 
 ### <a name="spark-shell"></a>Spark-shell
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 Apache Spark 群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 Apache Spark 群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -179,9 +179,9 @@ Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要�
 
 对于 Python，还应添加以下配置。 
 
-    ```python
-    --py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
-    ```
+```python
+--py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
+```
     
 ## <a name="run-queries-on-enterprise-security-package-esp-clusters"></a>对企业安全性套餐 (ESP) 群集运行查询
 

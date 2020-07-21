@@ -4,11 +4,12 @@ description: 本文介绍如何为本地 Windows 服务器解决系统状态备�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969575"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513837"
 ---
 # <a name="troubleshoot-system-state-backup"></a>解决系统状态备份的问题
 
@@ -19,11 +20,11 @@ ms.locfileid: "78969575"
 建议在开始对系统状态备份进行故障排除之前执行以下验证：
 
 - [确保 Microsoft Azure 恢复服务 (MARS) 代理是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [确保在 MARS 代理和 Azure 之间存在网络连接](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [确保在 MARS 代理和 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 如有必要，请重启并重试操作
-- [确保在暂存文件夹位置有 5-10% 的可用卷空间](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
-- [检查其他进程或防病毒软件是否正在干扰 Azure 备份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
-- [计划的备份失败，但手动备份成功](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
+- [确保在暂存文件夹位置有 5-10% 的可用卷空间](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [检查其他进程或防病毒软件是否正在干扰 Azure 备份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- [计划的备份失败，但手动备份成功](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - 确保 OS 有最新更新
 - [确保从备份中排除使用不受支持的属性的不受支持驱动器和文件](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - 请确保受保护系统上的系统时钟配置为正确时区 <br>
@@ -32,7 +33,7 @@ ms.locfileid: "78969575"
   - 确保在服务器上卸载代理并将其从门户中删除 <br>
   - 使用的密码正是一开始用于注册服务器的 <br>
 - 如果是脱机备份，请在开始脱机备份操作之前，确保源和副本计算机上都安装了 Azure PowerShell 版本 3.7.0
-- [在 Azure 虚拟机上运行备份代理时的注意事项](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
+- [在 Azure 虚拟机上运行备份代理时的注意事项](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-agent-running-on-an-azure-virtual-machine)
 
 ### <a name="limitation"></a>限制
 
@@ -136,7 +137,7 @@ Microsoft 软件影子副本提供程序(SWPRV) | 手动
 
 | 症状 | 解决方法
 | -- | --
-| - MARS 代理失败，显示错误消息：由于包含系统文件的卷上磁盘空间不足，使影子副本卷无法增长，备份失败 <br/><br/> - volsnap 系统事件日志中出现以下错误/警告日志：“卷 C: 上的磁盘空间不足，C: 影子副本的影子副本存储无法增长，由于此故障，卷 C: 的所有影子副本都存在被删除的风险” | - 释放事件日志中突出显示的卷中的空间，以便在备份过程中有足够的空间供影子副本增长 <br/><br/> - 配置影子副本空间时，可以限制用于影子副本的空间量。 有关详细信息，请参阅[此文](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
+| - MARS 代理失败，显示错误消息：由于包含系统文件的卷上磁盘空间不足，使影子副本卷无法增长，备份失败 <br/><br/> - volsnap 系统事件日志中出现以下错误/警告日志：“卷 C: 上的磁盘空间不足，C: 影子副本的影子副本存储无法增长，由于此故障，卷 C: 的所有影子副本都存在被删除的风险” | - 释放事件日志中突出显示的卷中的空间，以便在备份过程中有足够的空间供影子副本增长 <br/><br/> - 配置影子副本空间时，可以限制用于影子副本的空间量。 有关详细信息，请参阅[此文](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
 
 ### <a name="efi-partition-locked"></a>EFI 分区已锁定
 

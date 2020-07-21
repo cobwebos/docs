@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112980"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512657"
 ---
-# <a name="release-notes"></a>发行说明
+# <a name="speech-service-release-notes"></a>语音服务发行说明
 
 ## <a name="text-to-speech-2020-july-release"></a>文本到语音 2020-7 月发行版
 
@@ -87,12 +87,12 @@ ms.locfileid: "86112980"
 
 * JavaScript：修复 FireFox 中的播放问题，并修复 macOS 和 iOS 上的 Safari。 
 
-## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1： 2020-6 月发行版
-**语音 CLI （也称为 SPX）**
--   添加了 CLI 帮助搜索功能：
+## <a name="speech-sdk-1121-2020-june-release"></a>语音 SDK 1.12.1：2020 年 6 月版本
+**语音 CLI（也称为 SPX）**
+-   添加了 CLI 内帮助搜索功能：
     -   `spx help find --text TEXT`
     -   `spx help find --topic NAME`
--   已更新为使用新部署的 v4.0 批处理和自定义语音 Api：
+-   更新为可与新部署的 v3.0 批处理和自定义语音识别 API 配合使用：
     -   `spx help batch examples`
     -   `spx help csr examples`
 
@@ -100,52 +100,52 @@ ms.locfileid: "86112980"
 -   **C \# ，c + +**：演讲者识别预览版：此功能可让演讲者识别（讲话？）和发言人验证（这是他们宣称的身份吗？）。 首先[请参阅 "](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/speaker-recognition-overview)[演讲者识别基础" 文章](https://docs.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-basics)或[API 参考文档](https://docs.microsoft.com/rest/api/speakerrecognition/)。
 
 **Bug 修复**
--   **C \# 、c + +**：固定麦克风录制在检测扬声器时未在1.12 中工作。
+-   **C\#、C++** ：在 1.12 版中，修复的麦克风录音在说话人辨识中未正常工作。
 -   **JavaScript**：修复了 FireFox 中的文本到语音转换，以及 MacOS 和 iOS 上的 Safari。
--   解决在使用8通道流时会话脚本上发生的 Windows 应用程序验证器访问冲突崩溃的问题。
--   修复了多设备会话翻译中的 Windows 应用程序验证程序访问冲突崩溃。
+-   针对使用 8 通道流时对话听录中 Windows 应用程序验证工具访问冲突崩溃的修复。
+-   针对多设备对话翻译中 Windows 应用程序验证工具访问冲突崩溃的修复。
 
 **示例**
 -   **C #**：用于演讲者识别的[代码示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/speaker-recognition)。
 -   **C + +**：用于演讲者识别的[代码示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/speaker-recognition)。
 -   **Java**：适用于 Android 上意向识别的[代码示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/intent-recognition)。 
 
-**COVID-19 缩减测试：** 由于在过去的几周内远程工作，我们不能像往常一样进行手动验证测试。 我们尚未进行任何所做的更改，我们认为可能会中断任何内容，并通过所有的自动测试。 如果我们遗漏了某些内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br>
+**COVID-19 缩减测试：** 由于过去几周一直在远程工作，我们无法像往常那样执行那么多手动验证测试。 我们没有做我们认为可能会造成任何破坏的任何更改，我们的自动化测试已全部通过。 如果我们遗漏了某些内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br>
 请保重身体！
 
 
-## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0： 2020-可能发布
-**语音 CLI （也称为 SPX）**
-- **SPX**是一种新的命令行工具，可用于从命令行执行识别、合成、转换、批脚本和自定义语音管理。 使用它来测试语音服务，或编写脚本来编写需要执行的语音服务任务。 下载此工具并阅读[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)的文档。
+## <a name="speech-sdk-1120-2020-may-release"></a>语音 SDK 1.12.0：2020 年 5 月版本
+**语音 CLI（也称为 SPX）**
+- SPX 是新的命令行工具，可用于从命令行执行识别、合成、翻译、批量听录和自定义语音管理。 使用它来测试语音服务，或为需要执行的语音服务任务编写脚本。 下载该工具，并在[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)查看文档。
 
 **新功能**
-- **转到**[语音识别](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go)和[自定义语音助手](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)的全新转语言支持。 [在此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-go)设置开发环境。 有关示例代码，请参阅下面的 "示例" 部分。 
-- **JavaScript**：添加了对文本到语音功能的浏览器支持。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file?pivots=programming-language-JavaScript)的文档。
-- **C + +、c #、Java**： `KeywordRecognizer` Windows、Android、Linux & iOS 平台上支持的新对象和 api。 阅读[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-overview)的文档。 有关示例代码，请参阅下面的 "示例" 部分。 
-- **Java**：通过翻译支持添加了多设备对话。 请参阅[此处](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription)的参考文档。
+- **转到**[语音识别](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go)和[自定义语音助手](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)的全新转语言支持。 在[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-go)设置开发环境。 有关示例代码，请参阅下面的“示例”部分。 
+- **JavaScript**：添加了对文本转语音的浏览器支持。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file?pivots=programming-language-JavaScript)的文档。
+- **C++、C#、Java**：Windows、Android、Linux 和 iOS 平台上支持的新 `KeywordRecognizer` 对象和 API。 在[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-overview)阅读该文档。 有关示例代码，请参阅下面的“示例”部分。 
+- **Java**：添加了带翻译支持的多设备对话。 在[此处](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription)参阅参考文档。
 
-**优化 & 优化**
-- **JavaScript**：优化的浏览器麦克风实现改善语音识别的准确性。
-- **Java**：在没有 SWIG 的情况下使用直接 JNI 实现重构的绑定。 这减少了用于 Windows、Android、Linux 和 Mac 的所有 Java 包的绑定大小的10倍，并简化了语音 SDK Java 实现的进一步开发。
-- **Linux**：经过更新的支持[文档](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)，其中包含最新的 RHEL 7 特定说明。
-- 提高了连接逻辑，以便在出现服务和网络错误时尝试多次连接。
+**改进与优化**
+- **JavaScript**：优化了浏览器麦克风实现，改善了语音识别的准确性。
+- **Java**：使用直接 JNI 实现（没有 SWIG）重构了绑定。 这对于 Windows、Android、Linux 和 Mac 的所有 Java 包而言减少了 10 倍的绑定大小，并简化了语音 SDK Java 实现的进一步开发。
+- Linux：使用最新的 RHEL 7 特定说明更新了支持[文档](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)。
+- 改善了连接逻辑，以便在出现服务和网络错误时多次尝试连接。
 - 更新了[Portal.azure.com](https://portal.azure.com) Speech 快速入门页面，帮助开发人员在 azure 语音旅程中进行下一步。
 
 **Bug 修复**
-- **C #、Java**：修复了在 Linux ARM （32和64位）上加载 SDK 库的[问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587)。
-- **C #**：修复了 TranslationRecognizer、IntentRecognizer 和连接对象的本机句柄的显式处理。
-- **C #**：固定 ConversationTranscriber 对象的音频输入生存期管理。
-- 修复了 `IntentRecognizer` 从简单短语识别意向时，结果原因未正确设置的问题。
-- 修复了 `SpeechRecognitionEventArgs` 未正确设置结果偏移量的问题。
-- 修复了在打开 websocket 连接前 SDK 尝试发送网络消息的争用情况。 `TranslationRecognizer`在添加参与者时可重复执行。
+- **C#、Java**：修复了 Linux ARM（32 位和 64 位）上加载 SDK 库时出现的[问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587)。
+- **C#** ：修复了 TranslationRecognizer、IntentRecognizer 和 Connection 对象的本机句柄的显式处理。
+- **C#** ：修复了 ConversationTranscriber 对象的音频输入生存期管理。
+- 修复了从简单短语识别意图时 `IntentRecognizer` 结果原因未正确设置的问题。
+- 修复了未正确设置 `SpeechRecognitionEventArgs` 结果偏移量的问题。
+- 修复了在打开 websocket 连接前 SDK 尝试发送网络消息的争用条件。 添加参与者时，针对 `TranslationRecognizer` 可重现。
 - 修复了关键字识别器引擎中的内存泄漏。
 
 **示例**
-- **转到**：添加了[语音识别](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go)和[自定义语音助手](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)的快速入门。 [在此处](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)查找示例代码。 
+- **转到**：添加了[语音识别](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go)和[自定义语音助手](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)的快速入门。 在[此处](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)查找示例代码。 
 - **JavaScript**：添加了[文本到语音](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、[翻译](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript)和[意向识别](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)的快速入门。
 - [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)和[Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)的关键字识别示例（Android）。  
 
-**COVID-19 缩减测试：** 由于在过去的几周内远程工作，我们不能像往常一样进行手动验证测试。 我们尚未进行任何所做的更改，我们认为可能会中断任何内容，并通过所有的自动测试。 如果我们遗漏了某些内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br>
+**COVID-19 缩减测试：** 由于过去几周一直在远程工作，我们无法像往常那样执行那么多手动验证测试。 我们没有做我们认为可能会造成任何破坏的任何更改，我们的自动化测试已全部通过。 如果我们遗漏了某些内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br>
 请保重身体！
 
 ## <a name="speech-sdk-1110-2020-march-release"></a>语音 SDK 1.11.0：2020 年 3 月版
@@ -170,7 +170,7 @@ ms.locfileid: "86112980"
 - Unity：修复了意向识别公共示例（其中的 LUIS json 导入失败）。 有关详细信息，请参阅[此文](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369)。
 - Python:为 `Language ID` 添加了示例。 有关详细信息，请参阅[此文](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)。
     
-**Covid19 缩减测试：** 由于在过去的几周内远程工作，我们不能像往常一样进行手动设备验证测试。 例如，在 Linux、iOS 和 macOS 上测试麦克风输入和扬声器输出。 我们没有做我们认为可能会破坏这些平台上的任何东西的任何更改，我们的自动化测试已全部通过。 如果我们遗漏了某些内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br> 感谢你长久以来的支持。 与往常一样，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 或 [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731) 上发布问题或反馈。<br>
+**Covid19 缩减测试：** 由于过去几周一直在远程工作，我们无法像往常那样执行那么多手动的设备验证测试。 例如，在 Linux、iOS 和 macOS 上测试麦克风输入和扬声器输出。 我们没有做我们认为可能会破坏这些平台上的任何东西的任何更改，我们的自动化测试已全部通过。 如果我们遗漏了某些内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br> 感谢你长久以来的支持。 与往常一样，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 或 [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731) 上发布问题或反馈。<br>
 请保重身体！
 
 ## <a name="speech-sdk-1100-2020-february-release"></a>语音 SDK 1.10.0：2020 年 2 月版

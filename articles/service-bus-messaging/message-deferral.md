@@ -3,12 +3,13 @@ title: Azure 服务总线 - 消息延迟
 description: 本文介绍如何延迟传送 Azure 服务总线消息。 该消息将保留在队列或订阅中，但会搁置处理。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f4fe231c56a1bcdea4f15de90cb0e9406f0284a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341229"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511273"
 ---
 # <a name="message-deferral"></a>消息延迟
 
@@ -19,6 +20,9 @@ ms.locfileid: "85341229"
 订单处理序列就是一个简单的演示示例：来自外部付款提供程序的付款通知先显示在系统中，然后将存储前端中的匹配采购订单传播到履行系统。 在这种情况下，履行系统可能会延迟付款通知的处理，直到出现可与该通知关联的订单。 在会合方案中，来自不同源的消息可推动工作流，实时执行顺序可能确实正确，但反映结果的消息可能不按顺序到达。
 
 最终，延迟有助于将消息的到达顺序重新排列为处理顺序，同时将需要延迟处理的消息安全保留在消息存储中。
+
+> [!NOTE]
+> 延迟的消息[在过期后](./service-bus-dead-letter-queues.md#exceeding-timetolive)将不会自动移动到死信队列。 此行为是设计的。
 
 ## <a name="message-deferral-apis"></a>消息延迟 API
 

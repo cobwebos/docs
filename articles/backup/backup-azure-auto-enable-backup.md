@@ -3,11 +3,12 @@ title: 使用 Azure Policy 在创建 VM 时自动启用备份
 description: 本文介绍如何使用 Azure Policy 为在给定范围内创建的所有 VM 自动启用备份
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77584262"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514214"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure Policy 在创建 VM 时自动启用备份
 
@@ -17,7 +18,7 @@ ms.locfileid: "77584262"
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-* 内置策略当前仅支持 Azure VM。 用户必须确保分配期间指定的保留策略是 VM 保留策略。 请参阅[本](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus)文档以查看此策略支持的所有 VM sku。
+* 内置策略当前仅支持 Azure VM。 用户必须确保分配期间指定的保留策略是 VM 保留策略。 请参阅[本](./backup-azure-policy-supported-skus.md)文档以查看此策略支持的所有 VM sku。
 
 * 策略一次可以分配给一个位置和订阅。 若要跨位置和订阅启用 VM 备份，需要创建策略分配的多个实例，位置和订阅的每个组合都需要创建一个实例。
 
@@ -47,7 +48,7 @@ ms.locfileid: "77584262"
 
 > [!NOTE]
 >
-> 也可以通过使用[修正](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)，在现有 VM 上使用 Azure Policy。
+> 也可以通过使用[修正](../governance/policy/how-to/remediate-resources.md)，在现有 VM 上使用 Azure Policy。
 
 > [!NOTE]
 >
@@ -55,4 +56,4 @@ ms.locfileid: "77584262"
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关 Azure Policy 的详细信息](https://docs.microsoft.com/azure/governance/policy/overview)
+[了解有关 Azure Policy 的详细信息](../governance/policy/overview.md)

@@ -4,11 +4,12 @@ description: 本文介绍如何使用 REST API 更新保管库配置。
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248220"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513109"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 恢复服务保管库配置
 
@@ -20,11 +21,11 @@ ms.locfileid: "84248220"
 
 但某些情况下，不需要此功能。 如果保管库包含备份项（甚至是软删除的备份项），则无法删除 Azure 恢复服务保管库。 如果需要立即删除保管库，这可能会导致出现问题。 例如：部署操作通常会删除同一工作流中的已创建资源。 部署操作可以创建保管库，为项配置备份，执行测试还原，然后继续删除备份项和保管库。 如果保管库删除失败，则整个部署也可能会失败。 禁用软删除是确保立即删除的唯一方法。
 
-因此，您需要仔细选择是否禁用特定保管库的软删除操作，具体取决于方案。 有关详细信息，请参阅[软删除](backup-azure-security-feature-cloud.md)一文。
+因此，你需要根据具体方案谨慎选择是否对特定保管库禁用软删除。 有关详细信息，请参阅[软删除](backup-azure-security-feature-cloud.md)一文。
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>使用 REST API 获取软删除状态
 
-默认情况下，将为任何新建的恢复服务保管库启用软删除状态。 若要获取/更新保管库的软删除状态，请查看与备份保管库的配置相关的 [REST API 文档](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs)
+默认情况下，将为任何新建的恢复服务保管库启用软删除状态。 若要获取/更新保管库的软删除状态，请查看与备份保管库的配置相关的 [REST API 文档](/rest/api/backup/backupresourcevaultconfigs)
 
 若要获取保管库的当前软删除状态，请使用以下 GET 操作
 
@@ -44,7 +45,7 @@ GET 操作的成功响应如下所示：
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 正常     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>示例响应
 
@@ -80,13 +81,13 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 以下通用定义用于创建请求正文
 
-有关详细信息，请参阅 [REST API 文档](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)
+有关详细信息，请参阅 [REST API 文档](/rest/api/backup/backupresourcevaultconfigs/update#request-body)
 
 |名称  |必须  |类型  |说明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  可选的 eTag       |
 |location     |  是       |String         |   资源位置      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保管库的属性       |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保管库的属性       |
 |tags     |         | Object        |     资源标记    |
 
 #### <a name="example-request-body"></a>示例请求正文
@@ -108,7 +109,7 @@ PATCH 操作的成功响应如下所示：
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 正常     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>示例响应
 

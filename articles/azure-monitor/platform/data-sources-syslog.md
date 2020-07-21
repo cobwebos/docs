@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: cce74358a206c7103d537ba80c62d6561606b818
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 983091ac0d1f9fdcb33e64d2af521ec3442a040b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242026"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515506"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
@@ -90,7 +90,6 @@ local7.warning     @127.0.0.1:25224
 user.error    @127.0.0.1:25224
 ```
 
-
 #### <a name="syslog-ng"></a>syslog-ng
 syslog-ng 的配置文件位于 **/etc/syslog-ng/syslog-ng.conf**。  其默认内容如下所示。 这会收集针对全部设施和所有严重级别的从本地代理发送的 syslog 消息。   
 
@@ -163,17 +162,16 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
 
 * FluentD 配置文件应为新文件（位于 `/etc/opt/microsoft/omsagent/conf/omsagent.d`），同时用自定义端口号替换“端口”条目中的值  。
 
-    ```config
+    ```xml
     <source>
-      type syslog
-      port %SYSLOG_PORT%
-      bind 127.0.0.1
-      protocol_type udp
-      tag oms.syslog
+        type syslog
+        port %SYSLOG_PORT%
+        bind 127.0.0.1
+        protocol_type udp
+        tag oms.syslog
     </source>
     <filter oms.syslog.**>
-      type filter_syslog
-    </filter>
+        type filter_syslog
     ```
 
 * 对于 rsyslog，应创建新的配置文件（位于 `/etc/rsyslog.d/`），同时用自定义端口号替换值 %SYSLOG_PORT%。  

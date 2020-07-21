@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: bf94631c821c8a7ba5e2870af0bf1ecfd268e888
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203594"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515438"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 在 Azure Monitor 中创建和配置 Log Analytics 工作区
 本文提供两个代码示例，它们展示了如何在 Azure Monitor 中创建和配置 Log Analytics 工作区。  
@@ -193,7 +193,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> 为自定义日志定义配置的 CustomLogRawJson 的格式可能很复杂。 使用 [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) 检索现有自定义日志的配置。 Properties 属性是 CustomLogRawJson 参数的必需配置 。
+> 为自定义日志定义配置的 CustomLogRawJson 的格式可能很复杂。 使用 [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) 检索现有自定义日志的配置。 Properties 属性是 CustomLogRawJson 参数的必需配置 。
 
 在上面的示例中，regexDelimiter 定义为“\\n”表示换行符。 日志分隔符也可能是时间戳。  以下是支持的格式：
 
@@ -212,14 +212,13 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | `yyyy-MM-ddTHH:mm:ss` <br> T 是文字字母 T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
 
 ## <a name="troubleshooting"></a>疑难解答
-如果创建了一个工作区，该工作区已在过去 14 天内删除且处于[软删除状态](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)，那么该操作可能会有不同的结果，具体取决于你的工作区配置：
+如果创建了一个工作区，该工作区已在过去 14 天内删除且处于[软删除状态](./delete-workspace.md#soft-delete-behavior)，那么该操作可能会有不同的结果，具体取决于你的工作区配置：
 1. 如果你提供的工作区名称、资源组、订阅和区域与已删除的工作区中的相同，则将恢复你的工作区，包括其数据、配置和连接的代理。
 2. 如果你使用相同的工作区名称，但提供不同的资源组、订阅或区域，则将收到“工作区名称 workspace-name 不是唯一的或存在冲突”错误 。 若要替换软删除，同时永久删除你的工作区并创建新的同名工作区，请按照以下步骤，先恢复工作区再执行永久删除：
-   * [恢复](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)工作区
-   * [永久删除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)工作区
+   * [恢复](./delete-workspace.md#recover-workspace)工作区
+   * [永久删除](./delete-workspace.md#permanent-workspace-delete)工作区
    * 使用相同的工作区名称创建新的工作区
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关使用 Log Analytics 的 PowerShell 配置的其他信息，请[查看 Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/)。
-
+* 有关使用 Log Analytics 的 PowerShell 配置的其他信息，请[查看 Log Analytics PowerShell cmdlet](/powershell/module/az.operationalinsights/)。

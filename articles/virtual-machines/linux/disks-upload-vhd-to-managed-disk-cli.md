@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8656f0396aff7f20c867a5fae3d929236a3aa0d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510440"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
 
@@ -34,7 +34,7 @@ ms.locfileid: "84945624"
 
 这种托管磁盘有两种独特的状态：
 
-- ReadToUpload，表示磁盘已做好上传准备，但尚未生成[安全访问签名](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS)。
+- ReadToUpload，表示磁盘已做好上传准备，但尚未生成[安全访问签名](../../storage/common/storage-sas-overview.md) (SAS)。
 - ActiveUpload，表示磁盘已做好上传准备，并且已生成 SAS。
 
 > [!NOTE]
@@ -132,4 +132,3 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 ## <a name="next-steps"></a>后续步骤
 
 成功将 VHD 上传到托管磁盘后，可[将该磁盘作为数据磁盘附加到现有的 VM](add-disk.md)，或者[将该磁盘作为 OS 磁盘附加到 VM](upload-vhd.md#create-the-vm)，以创建新的 VM。 
-

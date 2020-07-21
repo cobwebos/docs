@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969561"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511120"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
 若要在 Azure 中快速创建虚拟机 (VM)，可使用单个使用默认值的 Azure CLI 命令创建任何所需的支持资源。 虚拟网络、公共 IP 地址和网络安全组规则等资源均会自动创建。 为了在生产使用中更好地控制环境，可提前创建这些资源，然后将 VM 添加到其中。 本文将逐步介绍如何创建 VM 和每个支持资源。
@@ -549,13 +550,13 @@ sudo apt-get install -y nginx
 ![VM 上的默认 NGINX 站点](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>作为模板导出
-如果现在要使用相同参数创建额外的开发环境或与其匹配的生产环境，该怎么办？ Resource Manager 使用定义了所有环境参数的 JSON 模板。 通过引用此 JSON 模板构建出整个环境。 可以[手动构建 JSON 模板](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，也可以通过导出现有环境来替你创建 JSON 模板。 使用 [az group export](/cli/azure/group) 导出资源组，如下所示：
+如果现在要使用相同参数创建额外的开发环境或与其匹配的生产环境，该怎么办？ Resource Manager 使用定义了所有环境参数的 JSON 模板。 通过引用此 JSON 模板构建出整个环境。 可以[手动构建 JSON 模板](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json)，也可以通过导出现有环境来替你创建 JSON 模板。 使用 [az group export](/cli/azure/group) 导出资源组，如下所示：
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-此命令在当前工作目录中创建 `myResourceGroup.json` 文件。 从此模板创建环境时，系统会提示输入所有资源名称。 可以通过将 `--include-parameter-default-value` 参数添加到 `az group export` 命令在模板文件中填充这些名称。 请编辑 JSON 模板以指定资源名称，或[创建 parameters.json 文件](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来指定资源名称。
+此命令在当前工作目录中创建 `myResourceGroup.json` 文件。 从此模板创建环境时，系统会提示输入所有资源名称。 可以通过将 `--include-parameter-default-value` 参数添加到 `az group export` 命令在模板文件中填充这些名称。 请编辑 JSON 模板以指定资源名称，或[创建 parameters.json 文件](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json)来指定资源名称。
 
 若要基于模板创建环境，请使用 [az group deployment create](/cli/azure/group/deployment)，如下所示：
 
@@ -565,7 +566,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-可能需要阅读[有关通过模板进行部署的详细信息](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 请了解如何对环境进行增量更新、如何使用参数文件，以及如何从单个存储位置访问模板。
+可能需要阅读[有关通过模板进行部署的详细信息](../../azure-resource-manager/templates/deploy-cli.md?toc=/azure/virtual-machines/linux/toc.json)。 请了解如何对环境进行增量更新、如何使用参数文件，以及如何从单个存储位置访问模板。
 
 ## <a name="next-steps"></a>后续步骤
 现在，已准备好开始使用多个网络组件和 VM。 可以使用此处介绍的核心组件，通过此示例环境来构建应用程序。

@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60510116"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512633"
 ---
 # <a name="default-insights-tag"></a>默认见解标记
 
@@ -100,7 +100,7 @@ ms.locfileid: "60510116"
 
 ## <a name="pagesincluding-insight"></a>PagesIncluding 见解
 
-PagesIncluding 见解提供了包含此图像的网页列表。 它实际上是一个`Image`对象列表，该`hostPageUrl`字段包含包含图像的网页的 URL。 有关示例用法，请参阅[PagesIncluding 见解示例](./bing-insights-usage.md#pagesincluding-insight-example)。
+PagesIncluding 见解提供了包含此图像的网页列表。 它实际上是一个对象列表 `Image` ，该 `hostPageUrl` 字段包含包含图像的网页的 URL。 有关示例用法，请参阅[PagesIncluding 见解示例](./bing-insights-usage.md#pagesincluding-insight-example)。
 
 ```json
       {
@@ -168,7 +168,7 @@ ShoppingSources 见解提供了一个网站列表，用户可以在这些网站�
 
 ## <a name="moresizes-insight"></a>MoreSizes 见解
 
-MoreSizes 见解标识在 Internet 上找到 Bing 的图像的大小（更大或更小）（请参阅`availableSizesCount`字段）：
+MoreSizes 见解标识在 Internet 上找到 Bing 的图像的大小（更大或更小）（请参阅 `availableSizesCount` 字段）：
 
 ```json
       {
@@ -278,7 +278,7 @@ Recipes 见解提供了一个网页列表，这些网页中包含用于制作图
 
 ## <a name="imagebyid-insight"></a>ImageById 见解
 
-ImageById 见解提供一个`Image`图像的对象，该对象是你请求以下内容的见解：
+ImageById 见解提供一个 `Image` 图像的对象，该对象是你请求以下内容的见解：
 
 ```json
       {
@@ -425,4 +425,12 @@ DocumentLevelSuggestions 见解提供基于图像内容的建议搜索词列表�
 
 查看[bing insights 使用情况示例](bing-insights-usage.md)，了解必应如何显示视觉对象见解。
 
-若要快速开始处理第一个请求，请参阅快速入门： [c #](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | node.js[Python](quickstarts/python.md)。
+若要快速了解如何使用第一个请求，请参阅快速入门：
+
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md)。

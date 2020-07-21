@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 412574bc9f994b522ef10b15c2f4efcfe69e07c0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c7b394c9327b34d205f5b107851c7579fb57fc0c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232349"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512191"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -43,7 +43,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | --- | --- | --- |
 | **澳大利亚政府** | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
 | **欧洲** | 法国中部、法国南部、德国北部、德国中西部、北欧、挪威东部、挪威西部、瑞士北部、瑞士西部、英国西部、英国南部、西欧 |阿姆斯特丹、阿姆斯特丹 2、柏林、哥本哈根、都柏林、法兰克福、日内瓦、伦敦、伦敦 2、马赛、米兰、慕尼黑、纽波特（威尔士）、奥斯陆、巴黎、斯塔万格、斯德哥尔摩、苏黎世、慕尼黑 |
-| **北美** | 美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大，芝加哥，达拉斯，丹佛，拉斯维加斯，洛杉矶，迈阿密，明尼阿波利斯，纽约，Queretaro (墨西哥) ，San Antonio，西雅图，硅谷，硅谷 Valley2，华盛顿特区，华盛顿 DC2，蒙特利尔，魁北克城，多伦多，范特区 |
+| **北美** | 美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大，芝加哥，达拉斯，丹佛，拉斯维加斯，洛杉矶，迈阿密，明尼阿波利斯，纽约，Queretaro （墨西哥），San Antonio，西雅图，硅谷，硅 Valley2，华盛顿特区，华盛顿 DC2，蒙特利尔，魁北克城，多伦多，范特区 |
 | **亚洲** | 东亚、东南亚 | 曼谷、香港特别行政区、香港特别行政区 2、雅加达、吉隆坡、新加坡、新加坡 2、台北 |
 | **印度** | 印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
 | **日本** | 日本西部、日本东部 |大阪、东京、东京 2 |
@@ -78,7 +78,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **位置** | **Address** | **区域** | **本地 Azure 区域** | **ER Direct** | **服务提供商** |
 | --- | --- | --- | --- | --- | --- |
 | **阿姆斯特丹** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | 西欧 | 10G，100G | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX Reach、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、Telefonica、Telenor、Telia Carrier、Verizon、Zayo |
-| **阿姆斯特丹 2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | 西欧 | 10G，100G | CenturyLink Cloud Connect、Colt、DE-CIX、euNetworks、Interxion、Orange、Vodafone |
+| **阿姆斯特丹 2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | 西欧 | 10G，100G | CenturyLink Cloud Connect、Colt、CIX、euNetworks、Interxion、NOS、橙色、Vodafone |
 | **亚特兰大** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | 不适用 | 10G，100G | Equinix、Megaport |
 | **奥克兰** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | 不适用 | 10G | Devoli、Kordia、Megaport、Spark NZ、Vocus Group NZ |
 | **曼谷** | [AIS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | 不适用 | 10G | AIS，UIH |
@@ -113,7 +113,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **米兰** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | 不适用 | 10G | Equinix、Retelit |
 | **明尼阿波利斯** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | 不适用 | 10G，100G | Cologix |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | 不适用 | 10G，100G | Bell Canada、Cologix、Megaport、Telus、Zayo |
-| **Mumbai** | Tata Communications | 2 | 印度西部 | 10G | CIX、Global CloudXchange (GCX) 、依赖 Jio、Sify、Tata 通信、Verizon |
+| **Mumbai** | Tata Communications | 2 | 印度西部 | 10G | CIX、Global CloudXchange （GCX）、依赖 Jio、Sify、Tata 通信、Verizon |
 | **孟买 2** | Airtel | 2 | 印度西部 | 不适用 | Airtel、Sify、Vodafone Idea |
 | **慕尼黑** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | 不适用 | 10G | DE-CIX |
 | **纽约** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | 不适用 | 10G，100G | CenturyLink Cloud Connect、Colt、Coresite、CIX、Equinix、InterCloud、Megaport、Packet、Zayo |
@@ -124,7 +124,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **珀斯** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | 不适用 | 10G | Megaport、NextDC |
 | **Phoenix** | [EdgeConnext PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | 不适用 | 10G | |
 | **魁北克市** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | 加拿大东部 | 不适用 | Bell Canada、Megaport |
-| **Queretaro (墨西哥) ** | [KIO Networks QR01](https://www.kionetworks.com/es-mx/) | 4 | 不适用 | 10G | Transtelco|
+| **Queretaro （墨西哥）** | [KIO Networks QR01](https://www.kionetworks.com/es-mx/) | 4 | 不适用 | 10G | Transtelco|
 | **Quincy** | [Sabey 数据中心-构建](https://sabeydatacenters.com/data-center-locations/central-washington-data-centers/quincy-data-center) | 1 | 美国西部 2 | 10G，100G | | 
 | **圣安东尼奥** | [CyrusOne SA1](https://cyrusone.com/locations/texas/san-antonio-texas/) | 1 | 美国中南部 | 10G，100G | CenturyLink Cloud Connect、Megaport |
 | **圣保罗** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | 3 | 巴西南部 | 不适用 | Aryaka Networks、Ascenty Data Centers、British Telecom、Equinix、Level 3 Communications、Neutrona Networks、Orange、Tata Communications、Telefonica、UOLDIVEO |

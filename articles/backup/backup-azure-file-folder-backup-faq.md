@@ -1,18 +1,18 @@
 ---
-title: 备份文件和文件夹 - 常见问题
+title: Microsoft Azure 恢复服务（MARS）代理-常见问题
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056168"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514061"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>与对文件和文件夹进行备份相关的常见问题
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题-Microsoft Azure 恢复服务（MARS）代理
 
-本文解答了 abound 在[Azure 备份](backup-overview.md)服务中备份文件和文件夹和 MICROSOFT AZURE 恢复服务（MARS）代理的常见问题。
+本文解答了有关通过[Azure 备份](backup-overview.md)服务中的 MICROSOFT AZURE 恢复服务（MARS）代理来备份数据的常见问题。
 
 ## <a name="configure-backups"></a>配置备份
 
@@ -74,11 +74,11 @@ ms.locfileid: "86056168"
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>用于备份的最大文件路径长度是多少？
 
-MARS 代理依赖于 NTFS，并使用受 [Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths) 限制的文件路径长度规范。 如果你要保护的文件长于所允许的值，请备份父文件夹或磁盘驱动器。  
+MARS 代理依赖于 NTFS，并使用受 [Windows API](/windows/win32/FileIO/naming-a-file#fully-qualified-vs-relative-paths) 限制的文件路径长度规范。 如果你要保护的文件长于所允许的值，请备份父文件夹或磁盘驱动器。  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>文件路径中允许什么字符？
 
-MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](/windows/desktop/FileIO/naming-a-file#naming-conventions)。
+MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](/windows/win32/FileIO/naming-a-file#naming-conventions)。
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>出现“尚未为此服务器配置 Azure 备份”警告
 
@@ -91,11 +91,11 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder"></a>针对缓存文件夹的最小大小要求是什么？
 
-缓存文件夹的大小取决于要备份的数据量。
+缓存文件夹的大小决定了要备份的数据量。
 
 * 缓存文件夹卷的可用空间应当至少为备份数据总大小的 5-10%。
 * 如果卷的可用空间少于 5%，请增大卷大小，或遵循[这些步骤](#how-do-i-change-the-cache-location-for-the-mars-agent)将缓存文件夹移到具有足够空间的卷。
-* 如果备份 Windows 系统状态，包含缓存文件夹的卷中需有额外的 30-35 GB 可用空间。
+* 如果备份 Windows 系统状态，则在包含缓存文件夹的卷上将需要额外的 30-35 GB 可用空间。
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何检查暂存文件夹是否有效并可访问？
 
@@ -165,17 +165,17 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 | 原始计算机 <br> *（创建备份的源计算机）* | 通行短语 | 可用选项 |
 | --- | --- | --- |
-| 可用 |丢失 |如果原始计算机（在其中创建备份的计算机）可用且仍在同一个恢复服务保管库中注册，则你可以遵循[这些步骤](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)重新生成通行短语。  |
+| 可用 |丢失 |如果原始计算机（在其中创建备份的计算机）可用且仍在同一个恢复服务保管库中注册，则你可以遵循[这些步骤](./backup-azure-manage-mars.md#re-generate-passphrase)重新生成通行短语。  |
 | 丢失 |丢失 |无法恢复数据或数据不可用 |
 
 考虑以下情况：
 
-* 如果在同一台原始计算机上卸载并重新注册代理时使用了：
-  * 相同的通行短语，则可以还原已备份的数据。
-  * 不同的通行短语，则无法还原已备份的数据。
-* 如果在不同的计算机上安装代理时使用了：
-  * 相同的通行短语（在原始计算机中使用的通行短语），则可以还原已备份的数据。
-  * 不同的通行短语，则无法还原已备份的数据。
+* 如果在与三个相同的原始计算机上卸载并重新注册代理
+  * *相同的密码*，则可以还原已备份的数据。
+  * *不同密码*，则无法还原已备份的数据。
+* 如果在*其他计算机*上安装代理，
+  * *同一密码*（在原始计算机上使用），则可以还原已备份的数据。
+  * *不同密码*，则无法还原已备份的数据。
 * 如果原始计算机已损坏（阻止你通过 MARS 控制台重新生成通行短语），但你可以还原或访问 MARS 代理使用的原始暂存文件夹，则你也许可以还原（如果忘记了密码）。 若要获取更多帮助，请联系客户支持人员。
 
 #### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>如果丢失了原始计算机（在其中创建备份的计算机），如何予以恢复？
@@ -184,7 +184,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 | 原始计算机 | 通行短语 | 可用选项 |
 | --- | --- | --- |
-| 丢失 |可用 |可以在另一台计算机上安装并注册 MARS 代理，该计算机包含你在注册原始计算机期间提供的相同通行短语。 选择“恢复选项” > “另一位置”执行还原。  有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+| 丢失 |可用 |可以在另一台计算机上安装并注册 MARS 代理，该计算机包含你在注册原始计算机期间提供的相同通行短语。 选择“恢复选项” > “另一位置”执行还原。  有关详细信息，请参阅[此文](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 | 丢失 |丢失 |无法恢复数据或数据不可用 |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>我的备份作业运行失败或运行时间过长。 我的保留期已过。 是否仍可以还原？

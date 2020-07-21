@@ -3,17 +3,17 @@ title: 将 Azure 事件中心与 Azure 专用链接服务集成
 description: 了解如何将 Azure 事件中心与 Azure 专用链接服务集成
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312830"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512243"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>将 Azure 事件中心与 Azure 专用链接集成
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
 
-专用终结点是一个网络接口，可以将你通过专用且安全的方式连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
+专用终结点是一个网络接口，可以将你通过专用且安全的方式连接到 Azure 专用链接支持的服务。 专用终结点使用虚拟网络中的专用 IP 地址，从而将该服务有效地引入到虚拟网络。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
 
 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
 
@@ -57,11 +57,14 @@ ms.locfileid: "85312830"
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 在搜索栏中键入“事件中心”。
 3. 从列表中选择要将专用终结点添加到的**命名空间**。
-4. 选择“设置”下的“网络”选项卡。 
-5. 选择页面顶部的“专用终结点连接”选项卡。 
-6. 选择页面顶部的“+ 专用终结点”按钮。
+4. 在“设置”下选择“网络”选项卡。 
 
-    ![映像](./media/private-link-service/private-link-service-3.png)
+    > [!NOTE]
+    > 只会看到**标准**命名空间或**专用**命名空间的 "**网络**" 选项卡。 
+1. 选择页面顶部的“专用终结点连接”选项卡。 
+1. 在页面顶部选择“+ 专用终结点”按钮。
+
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text=""网络" 页-专用终结点连接选项卡-添加专用终结点链接":::
 7. 在“基本信息”页上执行以下步骤： 
     1. 选择要在其中创建专用终结点的 Azure 订阅。 
     2. 选择专用终结点资源的资源组。
@@ -214,7 +217,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 2. 选择要批准的专用终结点
 3. 选择“批准”按钮。
 
-    ![图像](./media/private-link-service/approve-private-endpoint.png)
+    ![映像](./media/private-link-service/approve-private-endpoint.png)
 4. 在“批准连接”页上添加注释（可选），然后选择“是”。  如果选择“否”，则不会执行任何操作。 
 5. 应会看到，列表中专用终结点连接的状态已更改为“已批准”。 
 

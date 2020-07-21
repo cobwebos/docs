@@ -8,29 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: acba4d9fab784181fda5728c30831c8c1838b91f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de81fcb5ee62f9b295c93132b271507c040af46a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879524"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512745"
 ---
 # <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>将窗体识别器容器部署到 Azure 容器实例
 
+[!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
+
 了解如何将认知服务[窗体识别器](form-recognizer-container-howto.md)容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示如何创建 Azure 窗体识别器资源。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
 
-> [!IMPORTANT]
-> 窗体识别器容器当前使用版本1.0 的窗体识别器 API。 可以改为使用托管服务访问 API 的最新版本。
-
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
-
-## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
-
-在请求访问该容器之前，必须先填写并提交[认知服务表单识别器容器访问请求表单](https://aka.ms/FormRecognizerContainerRequestAccess)。 这也会注册计算机视觉。 不需要单独注册计算机视觉请求表单。 
-
-[!INCLUDE [Request access](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Create a Cognitive Services Form Recognizer resource](includes/create-resource.md)]
 

@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545631"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511834"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
@@ -38,7 +38,7 @@ ms.locfileid: "80545631"
 
 每个部署清单中需要两个模块：`$edgeAgent` 和 `$edgeHub`。 这些模块属于管理 IoT Edge 设备及其上运行的模块的 IoT Edge 运行时。 有关这些模块的详细信息，请参阅[了解 IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-除了两个运行时模块以外，还可以添加最多 20 个自己的、要在 IoT Edge 设备上运行的模块。
+除了这两个运行时模块外，还可以添加多达30个要在 IoT Edge 设备上运行的模块。
 
 仅包含 IoT Edge 运行时（edgeAgent 和 edgeHub）的部署清单是有效的。
 

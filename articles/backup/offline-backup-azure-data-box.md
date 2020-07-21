@@ -3,16 +3,16 @@ title: 使用 Azure Data Box 进行脱机备份
 description: 了解如何使用 Azure Data Box 从 MARS 代理脱机将较大的初始备份数据植入恢复服务保管库。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160949"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513687"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure Data Box 进行 Azure 备份脱机备份
 
-你可以使用[Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview)将大型初始 MICROSOFT AZURE 恢复服务（MARS）备份从脱机状态（无需使用网络）植入恢复服务保管库。 此过程可节省时间和网络带宽，在这种情况下，将在高延迟网络中联机移动大量的备份数据。 此增强功能目前处于预览阶段。 基于 Azure Data Box 的脱机备份在[基于 Azure 导入/导出服务的脱机备份](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)方面提供了两个不同的优点：
+你可以使用[Azure Data Box](../databox/data-box-overview.md)将大型初始 MICROSOFT AZURE 恢复服务（MARS）备份从脱机状态（无需使用网络）植入恢复服务保管库。 此过程可节省时间和网络带宽，在这种情况下，将在高延迟网络中联机移动大量的备份数据。 此增强功能目前处于预览阶段。 基于 Azure Data Box 的脱机备份在[基于 Azure 导入/导出服务的脱机备份](./backup-azure-backup-import-export.md)方面提供了两个不同的优点：
 
 - 无需购买你自己的与 Azure 兼容的磁盘和连接器。 Azure Data Box 附带与所选[DATA BOX SKU](https://azure.microsoft.com/services/databox/data/)关联的磁盘。
 - Azure 备份（MARS 代理）可以将备份数据直接写入 Azure Data Box 支持的 Sku。 此功能无需为初始备份数据预配暂存位置。 你还不需要实用程序来设置数据的格式并将其复制到磁盘。
@@ -47,8 +47,8 @@ ms.locfileid: "82160949"
 
 | 备份数据大小（按 MARS 压缩后） * 每服务器 | 支持的 Azure Data Box SKU                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 7.2 TB                                                    | [Azure Data Box 磁盘](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| >7.2 TB 和 <= 80 TB * *                                      | [Azure Data Box （100 TB）](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| <= 7.2 TB                                                    | [Azure Data Box 磁盘](../databox/data-box-disk-overview.md) |
+| >7.2 TB 和 <= 80 TB * *                                      | [Azure Data Box （100 TB）](../databox/data-box-overview.md) |
 
 * 典型的压缩率在10% 到20% 之间变化。 <br>
 * * 如果你预计单个 MARS 服务器的初始备份数据超过 80 TB，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
@@ -113,7 +113,7 @@ ms.locfileid: "82160949"
 
 ### <a name="order-and-receive-the-data-box-device"></a>订购并接收 Data Box 设备
 
-使用 MARS 和 Azure Data Box 的脱机备份过程要求 Data Box 设备处于交付状态，然后才能使用 MARS 代理触发脱机备份。 若要为你的要求订购最适合的 SKU，请参阅[备份数据大小和支持的 Data Box sku](#backup-data-size-and-supported-data-box-skus)。 按照[教程：对 Azure Data Box 磁盘](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered)进行排序和接收 Data Box 设备教程中的步骤进行操作。
+使用 MARS 和 Azure Data Box 的脱机备份过程要求 Data Box 设备处于交付状态，然后才能使用 MARS 代理触发脱机备份。 若要为你的要求订购最适合的 SKU，请参阅[备份数据大小和支持的 Data Box sku](#backup-data-size-and-supported-data-box-skus)。 按照[教程：对 Azure Data Box 磁盘](../databox/data-box-disk-deploy-ordered.md)进行排序和接收 Data Box 设备教程中的步骤进行操作。
 
 > [!IMPORTANT]
 > 不要为**帐户类型**选择*BlobStorage* 。 MARS 代理需要支持页 blob 的帐户，在选择*BlobStorage*时，不支持页 blob。 创建 Azure Data Box 作业的目标存储帐户时，请选择 "**存储 V2 （常规用途 V2）** " 作为**帐户类型**。
@@ -124,7 +124,7 @@ ms.locfileid: "82160949"
 
 1. 请确保卸载以前安装的任何 MARS 代理。
 1. 从此[网站](https://aka.ms/azurebackup_agent)下载最新的 MARS 代理。
-1. 运行*MARSAgentInstaller.exe*，并*仅*执行将[代理安装并注册](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)到恢复服务保管库（要在其中存储备份）的步骤。
+1. 运行*MARSAgentInstaller.exe*，并*仅*执行将[代理安装并注册](./install-mars-agent.md#install-and-register-the-agent)到恢复服务保管库（要在其中存储备份）的步骤。
 
    > [!NOTE]
    > 恢复服务保管库必须与 Azure Data Box 作业位于同一订阅中。
@@ -137,14 +137,14 @@ ms.locfileid: "82160949"
 
 ### <a name="set-up-azure-data-box-disks"></a>设置 Azure Data Box 磁盘
 
-如果为一个或多个 Azure Data Box 磁盘排序（每个磁盘最多 8 TB），请按照此处提到的步骤[解压缩、连接和解锁 Data Box 磁盘](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up)。
+如果为一个或多个 Azure Data Box 磁盘排序（每个磁盘最多 8 TB），请按照此处提到的步骤[解压缩、连接和解锁 Data Box 磁盘](../databox/data-box-disk-deploy-set-up.md)。
 
 >[!NOTE]
 >使用 MARS 代理的服务器可能没有 USB 端口。 在这种情况下，你可以将 Azure Data Box 磁盘连接到另一台服务器或客户端，并将设备的根目录公开为网络共享。
 
 ### <a name="set-up-azure-data-box"></a>设置 Azure Data Box
 
-如果你订购了 Azure Data Box 实例（最多 100 TB），请按照此处的步骤[设置你的 Data Box 实例](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)。
+如果你订购了 Azure Data Box 实例（最多 100 TB），请按照此处的步骤[设置你的 Data Box 实例](../databox/data-box-deploy-set-up.md)。
 
 #### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>将 Azure Data Box 实例作为本地系统安装
 
@@ -160,8 +160,8 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
     psexec.exe  -s  -i  cmd.exe
     ```
 
-   作为前一个命令的结果打开的命令窗口位于本地系统上下文中。 使用此命令窗口执行将 Azure 页 blob 共享装载为 Windows server 上的网络驱动器的步骤。
-1. 按照[连接到 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box)中的步骤，将你的服务器与 MARS 代理连接到通过 NFS 连接到 Data Box 设备。 在本地系统命令提示符下运行以下命令，以装载 Azure 页 blob 共享。
+   由于上一个命令打开的命令窗口位于本地系统上下文中。 使用此命令窗口执行将 Azure 页 blob 共享装载为 Windows server 上的网络驱动器的步骤。
+1. 按照[连接到 Data Box](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box)中的步骤，将你的服务器与 MARS 代理连接到通过 NFS 连接到 Data Box 设备。 在本地系统命令提示符下运行以下命令，以装载 Azure 页 blob 共享。
 
     ```cmd
     mount -o nolock \\<DeviceIPAddress>\<StorageAccountName_PageBlob X:  
@@ -195,7 +195,7 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
 
     ![获取订阅 ID Data Box 作业](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. 选择已解压缩、已连接并解锁 Data Box 磁盘的正确 Data Box 顺序。 选择“下一步”。
+1. 选择已解压缩、已连接并解锁 Data Box 磁盘的正确 Data Box 顺序。 选择“**下一页**”。
 
     ![选择 Data Box 订单](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -238,18 +238,18 @@ MARS 代理将开始备份您选择的 Azure Data Box 设备上的数据。 此�
 
 本部分介绍在将数据备份到 Azure Data Box Disk 成功之后要执行的步骤。
 
-- 按照本文中的步骤将[Azure Data Box 磁盘寄送到 Azure](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up)。 如果使用 Azure Data Box 100 TB 设备，请按照以下步骤将[Azure Data Box 设备寄送到 Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)。
+- 按照本文中的步骤将[Azure Data Box 磁盘寄送到 Azure](../databox/data-box-disk-deploy-picked-up.md)。 如果使用 Azure Data Box 100 TB 设备，请按照以下步骤将[Azure Data Box 设备寄送到 Azure](../databox/data-box-deploy-picked-up.md)。
 
-- [监视 Azure 门户中的 Data Box 作业](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify)。 Azure Data Box 作业完成后，MARS 代理会在下一次计划备份时自动将数据从存储帐户移动到恢复服务保管库。 然后，在成功创建恢复点时，它会将备份作业标记为 "*已完成*"。
+- [监视 Azure 门户中的 Data Box 作业](../databox/data-box-disk-deploy-upload-verify.md)。 Azure Data Box 作业完成后，MARS 代理会在下一次计划备份时自动将数据从存储帐户移动到恢复服务保管库。 然后，在成功创建恢复点时，它会将备份作业标记为 "*已完成*"。
 
     >[!NOTE]
     >MARS 代理会在创建策略期间触发备份。 在作业完成之前，这些作业标志 "等待 Azure Data Box 作业完成"。
 
 - MARS 代理成功创建对应于初始备份的恢复点之后，可以删除与 Azure Data Box 作业关联的存储帐户或特定内容。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
-Microsoft Azure 备份（MAB）代理在租户中为你创建 Azure Active Directory （Azure AD）应用程序。 此应用程序需要一个证书，用于在配置脱机种子设定策略时创建和上载的身份验证。 我们使用 Azure PowerShell 创建证书并将其上传到 Azure AD 应用程序。
+Microsoft Azure 恢复服务（MARS）代理在租户中为你创建 Azure Active Directory （Azure AD）应用程序。 此应用程序需要一个证书，用于在配置脱机种子设定策略时创建和上载的身份验证。 我们使用 Azure PowerShell 创建证书并将其上传到 Azure AD 应用程序。
 
 ### <a name="problem"></a>问题
 

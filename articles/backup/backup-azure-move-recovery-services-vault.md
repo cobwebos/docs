@@ -3,12 +3,13 @@ title: 如何移动 Azure 备份恢复服务保管库
 description: 有关如何跨 Azure 订阅和资源组移动恢复服务保管库的说明。
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 40ef55fa3b86856051b840c5d88ab8fadae3b7c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368220"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514095"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 
@@ -16,7 +17,7 @@ ms.locfileid: "85368220"
 
 ## <a name="supported-regions"></a>支持的区域
 
-以下区域支持恢复服务保管库的资源移动：澳大利亚东部、澳大利亚东南部、加拿大中部、加拿大东部、东南亚、东亚、美国中部、美国中北部、美国东部、美国东部 2、美国中南部、美国中西部、美国中西部 2、美国西部、印度中部、印度南部、日本东部、日本西部、韩国中部、韩国南部、北欧、西欧、南非北部、南非西部、英国南部和英国西部。
+澳大利亚东部支持恢复服务保管库的资源移动，澳大利亚东南部、加拿大中部、加拿大东部、南东亚、东亚、美国中部、美国中北部、美国东部、美国东部2、美国中南部、美国东部、美国中部、美国西部、美国西部、美国西部2、美国中部、韩国、日本东部、日本西部、韩国中部、韩国南部、日本东部、日本西部、韩国中部、韩国南部、北欧、西欧、南非北部、南非西部、英国南部和英国西部。
 
 ## <a name="unsupported-regions"></a>不受支持的区域
 
@@ -24,7 +25,7 @@ ms.locfileid: "85368220"
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>移动恢复服务保管库的先决条件
 
-- 在跨资源组的保管库移动期间，源和目标资源组都会被锁定，从而阻止了写入和删除操作。 有关详细信息，请参阅此[文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
+- 在跨资源组的保管库移动期间，源和目标资源组都会被锁定，从而阻止了写入和删除操作。 有关详细信息，请参阅此[文章](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 只有订阅管理员有权移动保管库。
 - 对于跨订阅移动保管库，目标订阅必须位于与源订阅相同的租户中，并且应启用其状态。
 - 必须有权对目标资源组执行写入操作。
@@ -34,7 +35,7 @@ ms.locfileid: "85368220"
 - 不管 VM 是否连同保管库一起移动，都始终可以从保管库中保留的备份历史记录还原该 VM。
 - Azure 磁盘加密要求密钥保管库和 VM 位于同一 Azure 区域和订阅中。
 - 若要移动包含托管磁盘的虚拟机，请参阅[此文](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)。
-- 用于移动通过经典模型部署的资源的选项会有所不同，这取决于你是要将资源移到订阅中，还是移动到新的订阅。 有关详细信息，请参阅此[文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
+- 用于移动通过经典模型部署的资源的选项会有所不同，这取决于你是要将资源移到订阅中，还是移动到新的订阅。 有关详细信息，请参阅此[文章](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 跨订阅移动保管库或将其移到新资源组后，为保管库定义的备份策略将会保留。
 - 只能移动包含以下任何类型的备份项的保管库。 在移动保管库之前，需要停止下面未列出的任何类型的备份项目，并将数据永久删除。
   - Azure 虚拟机
@@ -45,13 +46,13 @@ ms.locfileid: "85368220"
 
 > [!NOTE]
 > 不支持将 Azure 备份的恢复服务保管库移动到 azure 区域。<br><br>
-> 如果已使用**Azure Site Recovery**配置了用于灾难恢复的任何 Vm （Azure IaaS、Hyper-v、VMware）或物理计算机，则移动操作将被阻止。 如果要为 Azure Site Recovery 移动保管库，请参阅[此文](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)，了解如何手动移动保管库。
+> 如果已使用**Azure Site Recovery**配置了用于灾难恢复的任何 Vm （Azure IaaS、Hyper-v、VMware）或物理计算机，则移动操作将被阻止。 如果要为 Azure Site Recovery 移动保管库，请参阅[此文](../site-recovery/move-vaults-across-regions.md)，了解如何手动移动保管库。
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>使用 Azure 门户将恢复服务保管库移到不同的资源组
 
 将恢复服务保管库及其关联的资源移到不同的资源组
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 打开“恢复服务保管库”列表，并选择要移动的保管库。**** 当保管库仪表板打开时，其外观如下图所示。
 
    ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -80,7 +81,7 @@ ms.locfileid: "85368220"
 
 可将恢复服务保管库及其关联的资源移到不同的订阅
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 打开“恢复服务保管库”列表，并选择要移动的保管库。 当保管库仪表板打开时，其外观如下图所示。
 
     ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -146,4 +147,4 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 
 可以在资源组和订阅之间移动许多不同类型的资源。
 
-有关详细信息，请参阅[将资源移到新资源组或订阅](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
+有关详细信息，请参阅[将资源移到新资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。

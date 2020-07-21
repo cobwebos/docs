@@ -3,12 +3,12 @@ title: 确定导致非符合性的原因
 description: 如果资源不符合，可能有很多原因。 找出导致非符合性的原因。
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970767"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512021"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -133,7 +133,7 @@ Install-Module Az.GuestConfiguration
 可以使用以下命令查看 VM 所有来宾分配的当前状态：
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
 ```
 
 ```output
@@ -146,7 +146,7 @@ Audit that an application is not installed inside Windows VMs.            {[Inst
 若要仅查看描述 VM 不符合原因的原因短语，只需返回原因子属性。
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
 ```
 
 ```output

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80247378"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511171"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>在 Azure VM 中运行的 SQL Server 的 Azure 备份
 
@@ -26,7 +26,7 @@ ms.locfileid: "80247378"
 
 ## <a name="network-connectivity"></a>网络连接
 
-Azure 备份支持 NSG 标记，可以部署代理服务器或列出的 IP 范围；有关每种方法的详细信息，请参阅此[文章](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity)。
+Azure 备份支持 NSG 标记，可以部署代理服务器或列出的 IP 范围；有关每种方法的详细信息，请参阅此[文章](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -102,7 +102,7 @@ statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrexten
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-需要将包含 SQL 应用程序的 Azure VM“注册”到恢复服务保管库。 在注册期间，AzureBackupWindowsWorkload 扩展会安装到 VM 上。 请使用  [Register-AzRecoveryServicesBackupContainerPS](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) cmdlet 注册 VM。
+需要将包含 SQL 应用程序的 Azure VM“注册”到恢复服务保管库。 在注册期间，AzureBackupWindowsWorkload 扩展会安装到 VM 上。 请使用  [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) cmdlet 注册 VM。
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -113,5 +113,5 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 
 ## <a name="next-steps"></a>后续步骤
 
-- [详细了解](https://docs.microsoft.com/azure/backup/backup-sql-server-azure-troubleshoot) Azure SQL Server 备份故障排除准则。
-- 有关如何备份在 Azure 虚拟机 (VM) 上运行并使用 Azure 备份服务的 SQL Server 数据库的[常见问题](https://docs.microsoft.com/azure/backup/faq-backup-sql-server)。
+- [详细了解](../../backup/backup-sql-server-azure-troubleshoot.md) Azure SQL Server 备份故障排除准则。
+- 有关如何备份在 Azure 虚拟机 (VM) 上运行并使用 Azure 备份服务的 SQL Server 数据库的[常见问题](../../backup/faq-backup-sql-server.md)。

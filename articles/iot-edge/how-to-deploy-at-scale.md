@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82134411"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512004"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署 IoT Edge 模块
 
@@ -61,7 +61,7 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 
 ### <a name="step-2-modules"></a>步骤 2：模块
 
-最多可以向一个部署添加 20 个模块。 如果创建不含模块的部署，就会从目标设备中删除任何当前模块。
+最多可以向部署中添加30个模块。 如果创建不含模块的部署，就会从目标设备中删除任何当前模块。
 
 在部署中，你可以管理 IoT Edge 代理和 IoT Edge 中心模块的设置。 选择“运行时设置”可配置两个运行时模块。 在分层部署中，不包括运行时模块，因此无法对其进行配置。
 

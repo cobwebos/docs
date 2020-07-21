@@ -3,11 +3,12 @@ title: 获取有关 Azure VMware 解决方案部署或预配失败的帮助
 description: 如何从 Azure VMware 解决方案（AVS）私有云获取所需信息，以将服务请求用于 AVS 部署或预配失败。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 3032c01d48617347c454d71498571b0e6b789e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986881"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514571"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>获取有关 Azure VMware 解决方案部署或预配失败的帮助
 
@@ -71,7 +72,7 @@ ms.locfileid: "84986881"
 
 ## <a name="create-your-support-request"></a>创建支持请求
 
-有关创建支持请求的一般指南，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 
+有关创建支持请求的一般指南，请参阅[如何创建 Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 
 
 下面是针对 AVS 部署或预配失败创建 SR 的其他指导。
 

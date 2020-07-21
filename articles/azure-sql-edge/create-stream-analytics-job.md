@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e1f98cffd17d0a8823cc5849830667fcdad1212
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255409"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515217"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>在 Azure SQL Edge （预览版）中创建 Azure 流分析作业 
 
@@ -153,7 +153,7 @@ SELECT
 Timestamp as [Time],
 [Temperature] As [Temperature],
 GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''Score'') as ChangePointScore,
-GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly,
+GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly
 INTO TemperatureAnomalies FROM MyEdgeHubInput2;
 '
 go
@@ -197,7 +197,7 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 
 流式处理作业可以具有以下状态之一：
 
-| 状态 | 描述 |
+| 状态 | 说明 |
 |--------| ------------|
 | 创建 | 流式处理作业已创建，但尚未启动。 |
 | 正在启动 | 流式处理作业处于开始阶段。 |

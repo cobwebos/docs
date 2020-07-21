@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/06/2020
-ms.openlocfilehash: 24e964ec37184e38358b5c64eff05a8aa10a431d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 07/16/2020
+ms.openlocfilehash: c0a397ac71c7c466145357093b6c22f78e627d1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086804"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511579"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -88,6 +88,10 @@ ms.locfileid: "86086804"
 > | [Azure Kubernetes 服务群集管理员角色](#azure-kubernetes-service-cluster-admin-role) | 列出群集管理员凭据操作。 | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Azure Kubernetes 服务群集用户角色](#azure-kubernetes-service-cluster-user-role) | 列出群集用户凭据操作。 | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | [Azure Kubernetes 服务参与者角色](#azure-kubernetes-service-contributor-role) | 授予读取和写入 Azure Kubernetes 服务群集的访问权限 | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
+> | [Azure Kubernetes 服务 RBAC 管理员](#azure-kubernetes-service-rbac-admin) | 允许你管理群集/命名空间下的所有资源，但不能更新或删除资源配额和命名空间。 | 3498e952-d568-435e-9b2c-8d77e338d7f7 |
+> | [Azure Kubernetes 服务 RBAC 群集管理](#azure-kubernetes-service-rbac-cluster-admin) | 允许你管理群集中的所有资源。 | b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b |
+> | [Azure Kubernetes 服务 RBAC 读取器](#azure-kubernetes-service-rbac-reader) | 允许你查看群集/命名空间中除密码之外的所有资源。 | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
+> | [Azure Kubernetes 服务 RBAC 编写器](#azure-kubernetes-service-rbac-writer) | 允许你更新群集/命名空间中的所有内容，但资源配额、命名空间、pod 安全策略、证书签名请求、（群集）角色和（群集）角色绑定除外。 | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
 > | **数据库** |  |  |
 > | [Cosmos DB 帐户读者角色](#cosmos-db-account-reader-role) | 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB 操作员](#cosmos-db-operator) | 允许管理 Azure Cosmos DB 帐户，但不能访问其中的数据。 阻止访问帐户密钥和连接字符串。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -155,7 +159,7 @@ ms.locfileid: "86086804"
 > | [安全读取者](#security-reader) | 查看安全中心的权限。 可以查看但不能更改建议、警报、安全策略和安全状态。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest 实验室用户](#devtest-labs-user) | 允许连接、启动、重启和关闭 Azure 开发测试实验室中的虚拟机。 | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
-> | [实验室创建者](#lab-creator) | 允许在 Azure 实验室帐户下创建、管理、删除托管实验室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
+> | [实验室创建者](#lab-creator) | 允许你在 Azure 实验室帐户下创建新实验室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **监视** |  |  |
 > | [Application Insights 组件参与者](#application-insights-component-contributor) | 可管理 Application Insights 组件 | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights 快照调试器](#application-insights-snapshot-debugger) | 授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色不包括这些权限。 在向用户授予 Application Insights Snapshot Debugger 角色时，必须将该角色直接授予用户。 将角色添加到自定义角色时，无法识别该角色。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
@@ -204,9 +208,8 @@ ms.locfileid: "86086804"
 允许管理所有功能（授予对资源的访问权限除外）。 [了解详细信息](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | * | 创建和管理所有类型的资源 |
 > | **不操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/Delete | 删除角色、策略分配、策略定义和策略集定义 |
@@ -254,9 +257,8 @@ ms.locfileid: "86086804"
 允许管理所有功能，包括对资源的访问权限。 [了解详细信息](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | * | 创建和管理所有类型的资源 |
 > | **不操作** |  |
 > | *无* |  |
@@ -294,9 +296,8 @@ ms.locfileid: "86086804"
 允许查看所有内容，但不能进行任何更改。 [了解详细信息](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -334,9 +335,8 @@ ms.locfileid: "86086804"
 允许管理用户对 Azure 资源的访问权限。 [了解详细信息](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/* | 管理授权 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
@@ -381,9 +381,8 @@ ms.locfileid: "86086804"
 允许管理经典虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/domainNames/* | 创建和管理经典计算域名 |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/* | 创建和管理虚拟机 |
@@ -453,9 +452,8 @@ ms.locfileid: "86086804"
 查看门户中的虚拟机，并以管理员身份登录[了解详细信息](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/read | 获取公共 IP 地址定义。 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 获取虚拟网络定义 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | 获取负载均衡器定义 |
@@ -505,9 +503,8 @@ ms.locfileid: "86086804"
 允许管理虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 [了解详细信息](../virtual-machines/linux/tutorial-govern-resources.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | 创建和管理计算可用性集 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | 创建和管理计算位置 |
@@ -625,9 +622,8 @@ ms.locfileid: "86086804"
 在门户中查看虚拟机并以普通用户身份登录。 [了解详细信息](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/read | 获取公共 IP 地址定义。 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 获取虚拟网络定义 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | 获取负载均衡器定义 |
@@ -678,9 +674,8 @@ ms.locfileid: "86086804"
 可以管理 CDN 终结点，但不能向其他用户授予访问权限。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -732,9 +727,8 @@ ms.locfileid: "86086804"
 可以查看 CDN 终结点，但不能进行更改。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -786,9 +780,8 @@ ms.locfileid: "86086804"
 可以管理 CDN 配置文件及其终结点，但不能向其他用户授予访问权限。 [了解详细信息](../cdn/cdn-app-dev-net.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -840,9 +833,8 @@ ms.locfileid: "86086804"
 可以查看 CDN 配置文件及其终结点，但不能进行更改。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
 > | [Microsoft.Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -894,9 +886,8 @@ ms.locfileid: "86086804"
 允许管理经典网络，但不允许访问这些网络。 [了解详细信息](../virtual-network/virtual-network-manage-peering.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/* | 创建和管理经典网络 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
@@ -946,9 +937,8 @@ ms.locfileid: "86086804"
 允许管理 Azure DNS 中的 DNS 区域和记录集，但不允许控制对其访问的人员。 [了解详细信息](../dns/dns-protect-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/dnsZones/* | 创建和管理 DNS 区域和记录 |
@@ -998,9 +988,8 @@ ms.locfileid: "86086804"
 允许管理网络，但不允许访问这些网络。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/* | 创建并管理网络 |
@@ -1050,9 +1039,8 @@ ms.locfileid: "86086804"
 允许管理专用 DNS 区域资源，但不允许管理它们所链接到的虚拟网络。 [了解详细信息](../dns/dns-protect-private-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -1108,9 +1096,8 @@ ms.locfileid: "86086804"
 允许管理流量管理器配置文件，但不允许控制谁可以访问它们。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/trafficManagerProfiles/* |  |
@@ -1163,9 +1150,8 @@ ms.locfileid: "86086804"
 可以创建和管理 Avere vFXT 群集。 [了解详细信息](../avere-vfxt/avere-vfxt-deploy-plan.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/*/read |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* |  |
@@ -1247,9 +1233,8 @@ ms.locfileid: "86086804"
 由 Avere vFXT 群集用来管理群集[了解详细信息](../avere-vfxt/avere-vfxt-manage-cluster.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/read | 获取虚拟机的属性 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | 获取网络接口定义。  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/write | 创建网络接口，或更新现有的网络接口。  |
@@ -1313,9 +1298,8 @@ ms.locfileid: "86086804"
 允许管理备份服务，但不允许创建保管库及授予他人访问权限 [了解详细信息](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 获取虚拟网络定义 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/* |  |
@@ -1433,9 +1417,8 @@ ms.locfileid: "86086804"
 允许管理备份服务，但删除备份、创建保管库及授予他人访问权限除外 [了解详细信息](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 获取虚拟网络定义 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/read | 返回操作状态 |
@@ -1583,9 +1566,8 @@ ms.locfileid: "86086804"
 可以查看备份服务，但不能进行更改 [了解详细信息](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/read | 返回操作状态 |
@@ -1697,9 +1679,8 @@ ms.locfileid: "86086804"
 允许管理经典存储帐户，但不允许对其进行访问。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/* | 创建和管理存储帐户 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
@@ -1749,9 +1730,8 @@ ms.locfileid: "86086804"
 允许经典存储帐户密钥操作员在经典存储帐户上列出和再生成密钥 [了解详细信息](../key-vault/secrets/overview-storage-keys.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listkeys/action | 列出存储帐户的访问密钥。 |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/regeneratekey/action | 再生成存储帐户的现有访问密钥。 |
 > | **不操作** |  |
@@ -1791,9 +1771,8 @@ ms.locfileid: "86086804"
 可让你管理 Data Box 服务下的所有内容，但不能向其他人授予访问权限。 [了解详细信息](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
@@ -1841,9 +1820,8 @@ ms.locfileid: "86086804"
 可让你管理 Data Box 服务，但不能创建订单或编辑订单详细信息，以及向其他人授予访问权限。 [了解详细信息](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/*/read |  |
 > | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/jobs/listsecrets/action |  |
@@ -1899,9 +1877,8 @@ ms.locfileid: "86086804"
 允许提交、监视和管理自己的作业，但是不允许创建或删除 Data Lake Analytics 帐户。 [了解详细信息](../data-lake-analytics/data-lake-analytics-manage-use-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | Microsoft.BigAnalytics/accounts/* |  |
 > | [Microsoft.DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/* |  |
@@ -1981,9 +1958,8 @@ ms.locfileid: "86086804"
 允许查看所有内容，但不允许删除或创建存储帐户或包含的资源。 它还允许使用存储帐户密钥对存储帐户中包含的所有数据进行读/写访问。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 返回指定存储帐户的访问密钥。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/ListAccountSas/action | 返回指定存储帐户的帐户 SAS 令牌。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
@@ -2025,9 +2001,8 @@ ms.locfileid: "86086804"
 允许管理存储帐户。 提供对帐户密钥的访问权限，而帐户密钥可以用来通过共享密钥授权对数据进行访问。 [了解详细信息](../storage/common/storage-auth-aad.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | 创建、更新或读取 Analysis Server 的诊断设置 |
@@ -2081,9 +2056,8 @@ ms.locfileid: "86086804"
 允许列出和重新生成存储帐户访问密钥。 [了解详细信息](../storage/common/storage-account-keys-manage.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/action | 返回指定存储帐户的访问密钥。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/regeneratekey/action | 再生成指定存储帐户的访问密钥。 |
 > | **不操作** |  |
@@ -2123,9 +2097,8 @@ ms.locfileid: "86086804"
 读取、写入和删除 Azure 存储容器和 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [了解详细信息](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/delete | 删除容器。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | 返回容器或容器列表。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/write | 修改容器的元数据或属性。 |
@@ -2177,9 +2150,8 @@ ms.locfileid: "86086804"
 提供对 Azure 存储 Blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [了解详细信息](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/* | 对容器的完全权限。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 返回 Blob 服务的用户委托密钥。 |
 > | **不操作** |  |
@@ -2221,9 +2193,8 @@ ms.locfileid: "86086804"
 读取和列出 Azure 存储容器和 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [了解详细信息](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | 返回容器或容器列表。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 返回 Blob 服务的用户委托密钥。 |
 > | **不操作** |  |
@@ -2265,9 +2236,8 @@ ms.locfileid: "86086804"
 获取用户委托密钥，该密钥随后可用于为使用 Azure AD 凭据签名的容器或 Blob 创建共享访问签名。 有关详细信息，请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 [了解详细信息](https://docs.microsoft.com/rest/api/storageservices/get-user-delegation-key)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 返回 Blob 服务的用户委托密钥。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -2305,9 +2275,8 @@ ms.locfileid: "86086804"
 允许针对 Azure 文件共享中的文件/目录的读取、写入和删除权限。 在 Windows 文件服务器上，此角色没有内置的等效角色。 [了解详细信息](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -2349,9 +2318,8 @@ ms.locfileid: "86086804"
 允许读取、写入、删除和修改 Azure 文件共享中文件/目录上的 ACL。 此角色等效于 Windows 文件服务器上更改的文件共享 ACL。 [了解详细信息](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -2395,9 +2363,8 @@ ms.locfileid: "86086804"
 允许针对 Azure 文件共享中的文件/目录的读取权限。 此角色等效于 Windows 文件服务器上读取的文件共享 ACL。 [了解详细信息](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -2435,9 +2402,8 @@ ms.locfileid: "86086804"
 读取、写入和删除 Azure 存储队列和队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [了解详细信息](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/delete | 删除队列。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | 返回队列或队列列表。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/write | 修改队列元数据或属性。 |
@@ -2485,9 +2451,8 @@ ms.locfileid: "86086804"
 速览、检索和删除 Azure 存储队列中的消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [了解详细信息](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -2527,9 +2492,8 @@ ms.locfileid: "86086804"
 将消息添加到 Azure 存储队列。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [了解详细信息](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -2567,9 +2531,8 @@ ms.locfileid: "86086804"
 读取并列出 Azure 存储队列和队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 [了解详细信息](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | 返回队列或队列列表。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -2612,9 +2575,8 @@ ms.locfileid: "86086804"
 授予从 Azure Maps 帐户中读取地图相关数据的权限。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -2652,9 +2614,8 @@ ms.locfileid: "86086804"
 允许管理搜索服务，但不允许访问这些服务。 [了解详细信息](../search/search-security-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -2704,9 +2665,8 @@ ms.locfileid: "86086804"
 允许管理网站的 Web 计划，但不允许访问这些计划。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -2758,9 +2718,8 @@ ms.locfileid: "86086804"
 允许管理网站（而非 Web 计划），但不允许访问这些网站。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/* | 创建和管理 Insights 组件 |
@@ -2823,9 +2782,8 @@ ms.locfileid: "86086804"
 acr 删除 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/artifacts/delete | 删除容器注册表中的项目。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -2863,9 +2821,8 @@ acr 删除 [了解详细信息](../container-registry/container-registry-roles.m
 acr 映像签名程序 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/sign/write | 推送/拉取容器注册表的内容信任元数据。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -2903,9 +2860,8 @@ acr 映像签名程序 [了解详细信息](../container-registry/container-regi
 acr 拉取 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | 从容器注册表中拉取或获取映像。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -2943,9 +2899,8 @@ acr 拉取 [了解详细信息](../container-registry/container-registry-roles.m
 acr 推送 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | 从容器注册表中拉取或获取映像。 |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/push/write | 将映像推送或写入容器注册表。 |
 > | **不操作** |  |
@@ -2985,9 +2940,8 @@ acr 推送 [了解详细信息](../container-registry/container-registry-roles.m
 ACR 隔离数据读取器
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | 从容器注册表中拉取或获取已隔离的映像 |
 > | **不操作** |  |
 > | *无* |  |
@@ -3025,9 +2979,8 @@ ACR 隔离数据读取器
 ACR 隔离数据编写器
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | 从容器注册表中拉取或获取已隔离的映像 |
 > | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/write | 写入/修改已隔离映像的隔离状态 |
 > | **不操作** |  |
@@ -3067,9 +3020,8 @@ ACR 隔离数据编写器
 列出群集管理员凭据操作。 [了解详细信息](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/action | 列出托管群集的 clusterAdmin 凭据 |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/action | 使用列表凭据按角色名称获取托管的群集访问配置文件 |
 > | **不操作** |  |
@@ -3109,9 +3061,8 @@ ACR 隔离数据编写器
 列出群集用户凭据操作。 [了解详细信息](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出托管群集的 clusterUser 凭据 |
 > | **不操作** |  |
 > | *无* |  |
@@ -3149,9 +3100,8 @@ ACR 隔离数据编写器
 授予读取和写入 Azure Kubernetes 服务群集的访问权限
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | 获取托管的群集 |
 > | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/write | 创建新的或更新现有的托管的群集 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
@@ -3188,6 +3138,254 @@ ACR 隔离数据编写器
 }
 ```
 
+### <a name="azure-kubernetes-service-rbac-admin"></a>Azure Kubernetes 服务 RBAC 管理员
+
+允许你管理群集/命名空间下的所有资源，但不能更新或删除资源配额和命名空间。 [了解详细信息](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [/Deployments/write](resource-provider-operations.md#microsoftresources) | 创建或更新部署。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 获取订阅操作结果。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 获取订阅的列表。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出托管群集的 clusterUser 凭据 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
+> | **NotDataActions** |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | 写入 resourcequotas |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/delete | 删除 resourcequotas |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | 写入命名空间 |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/delete | 删除命名空间 |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage all resources under cluster/namespace, except update or delete resource quotas and namespaces.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3498e952-d568-435e-9b2c-8d77e338d7f7",
+  "name": "3498e952-d568-435e-9b2c-8d77e338d7f7",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*"
+      ],
+      "notDataActions": [
+        "Microsoft.ContainerService/managedClusters/resourcequotas/write",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/delete",
+        "Microsoft.ContainerService/managedClusters/namespaces/write",
+        "Microsoft.ContainerService/managedClusters/namespaces/delete"
+      ]
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Admin",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-rbac-cluster-admin"></a>Azure Kubernetes 服务 RBAC 群集管理
+
+允许你管理群集中的所有资源。 [了解详细信息](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [/Deployments/write](resource-provider-operations.md#microsoftresources) | 创建或更新部署。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 获取订阅操作结果。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 获取订阅的列表。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出托管群集的 clusterUser 凭据 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage all resources in the cluster.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b",
+  "name": "b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Cluster Admin",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-rbac-reader"></a>Azure Kubernetes 服务 RBAC 读取器
+
+允许你查看群集/命名空间中除密码之外的所有资源。 [了解详细信息](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [/Deployments/write](resource-provider-operations.md#microsoftresources) | 创建或更新部署。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 获取订阅操作结果。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 获取订阅的列表。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出托管群集的 clusterUser 凭据 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
+> | **NotDataActions** |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/secrets/* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you view all resources in cluster/namespace, except secrets.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/7f6c6a51-bcf8-42ba-9220-52d62157d7db",
+  "name": "7f6c6a51-bcf8-42ba-9220-52d62157d7db",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*/read"
+      ],
+      "notDataActions": [
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
+        "Microsoft.ContainerService/managedClusters/secrets/*"
+      ]
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-rbac-writer"></a>Azure Kubernetes 服务 RBAC 编写器
+
+允许你更新群集/命名空间中的所有内容，但资源配额、命名空间、pod 安全策略、证书签名请求、（群集）角色和（群集）角色绑定除外。 [了解详细信息](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [/Deployments/write](resource-provider-operations.md#microsoftresources) | 创建或更新部署。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 获取订阅操作结果。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 获取订阅的列表。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出托管群集的 clusterUser 凭据 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/write |  |
+> | **NotDataActions** |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | 写入命名空间 |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | 写入 resourcequotas |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/certificates.k8s.io/certificatesigningrequests/write | 写入 certificatesigningrequests |
+> | [ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/policy/podsecuritypolicies/write | 写入 podsecuritypolicies |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you update everything in cluster/namespace, except resource quotas, namespaces, pod security policies, certificate signing requests, (cluster)roles and (cluster)role bindings.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
+  "name": "a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*/read",
+        "Microsoft.ContainerService/managedClusters/*/write"
+      ],
+      "notDataActions": [
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
+        "Microsoft.ContainerService/managedClusters/namespaces/write",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/write",
+        "Microsoft.ContainerService/managedClusters/certificates.k8s.io/certificatesigningrequests/write",
+        "Microsoft.ContainerService/managedClusters/policy/podsecuritypolicies/write"
+      ]
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Writer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ## <a name="databases"></a>数据库
 
 
@@ -3196,9 +3394,8 @@ ACR 隔离数据编写器
 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 [了解详细信息](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/*/read | 读取任何集合 |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/readonlykeys/action | 读取数据库帐户只读密钥。 |
@@ -3248,9 +3445,8 @@ ACR 隔离数据编写器
 允许管理 Azure Cosmos DB 帐户，但不能访问其中的数据。 阻止访问帐户密钥和连接字符串。 [了解详细信息](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -3310,9 +3506,8 @@ ACR 隔离数据编写器
 可以为帐户提交 Cosmos DB 数据库或容器的还原请求 [了解详细信息](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/backup/action | 提交配置备份的请求 |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/restore/action | 提交还原请求 |
 > | **不操作** |  |
@@ -3352,9 +3547,8 @@ ACR 隔离数据编写器
 可管理 Azure Cosmos DB 帐户。 Azure Cosmos DB 以前称为 DocumentDB。 [了解详细信息](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* | 创建并管理 Azure Cosmos DB 帐户 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
@@ -3406,10 +3600,10 @@ ACR 隔离数据编写器
 允许管理 Redis 缓存，但不允许访问这些缓存。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | /Register/action[缓存](resource-provider-operations.md#microsoftcache) | 将“Microsoft.Cache”资源提供程序注册到订阅 |
 > | [Microsoft.Cache](resource-provider-operations.md#microsoftcache)/redis/* | 创建和管理 Redis 缓存 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -3435,6 +3629,7 @@ ACR 隔离数据编写器
     {
       "actions": [
         "Microsoft.Authorization/*/read",
+        "Microsoft.Cache/register/action",
         "Microsoft.Cache/redis/*",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.ResourceHealth/availabilityStatuses/read",
@@ -3458,9 +3653,8 @@ ACR 隔离数据编写器
 允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 [了解详细信息](../data-share/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -3566,9 +3760,8 @@ ACR 隔离数据编写器
 允许你管理 SQL 托管实例和必需的网络配置，但无法向其他人授予访问权限。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -3634,9 +3827,8 @@ ACR 隔离数据编写器
 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 [了解详细信息](../sql-database/sql-database-advanced-data-security.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/action | 将存储帐户或 SQL 数据库等资源加入到子网。 不可发出警报。 |
@@ -3758,9 +3950,8 @@ ACR 隔离数据编写器
 允许管理 SQL Server 和数据库，但不允许访问它们及其安全相关策略。 [了解详细信息](../sql-database/sql-database-aad-authentication-configure.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -3867,7 +4058,7 @@ ACR 隔离数据编写器
 }
 ```
 
-## <a name="analytics"></a>Analytics
+## <a name="analytics"></a>分析
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
@@ -3875,9 +4066,8 @@ ACR 隔离数据编写器
 允许完全访问 Azure 事件中心资源。 [了解详细信息](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -3917,9 +4107,8 @@ ACR 隔离数据编写器
 允许接收对 Azure 事件中心资源的访问权限。 [了解详细信息](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/consumergroups/read |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -3959,9 +4148,8 @@ ACR 隔离数据编写器
 允许以发送方式访问 Azure 事件中心资源。 [了解详细信息](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/read |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -4001,9 +4189,8 @@ ACR 隔离数据编写器
 创建和管理数据工厂，以及其中的子资源。 [了解详细信息](../data-factory/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.DataFactory](resource-provider-operations.md#microsoftdatafactory)/dataFactories/* | 创建和管理数据工厂，以及它们包含的子资源。 |
 > | [Microsoft.DataFactory](resource-provider-operations.md#microsoftdatafactory)/factories/* | 创建和管理数据工厂，以及它们包含的子资源。 |
@@ -4057,9 +4244,8 @@ ACR 隔离数据编写器
 可以清除分析数据 [了解详细信息](../azure-monitor/platform/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/*/read |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/purge/action | 从 Application Insights 清除数据 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 查看日志分析数据 |
@@ -4103,9 +4289,8 @@ ACR 隔离数据编写器
 允许你读取和修改 HDInsight 群集配置。 [了解详细信息](../hdinsight/hdinsight-migrate-granular-access-cluster-configurations.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.HDInsight](resource-provider-operations.md#microsofthdinsight)/*/read |  |
 > | [Microsoft.HDInsight](resource-provider-operations.md#microsofthdinsight)/clusters/getGatewaySettings/action | 获取 HDInsight 群集的网关设置 |
 > | [Microsoft.HDInsight](resource-provider-operations.md#microsofthdinsight)/clusters/updateGatewaySettings/action | 更新 HDInsight 群集的网关设置 |
@@ -4159,9 +4344,8 @@ ACR 隔离数据编写器
 可以阅读、创建、修改和删除 HDInsight 所需的域服务相关操作企业安全性套餐[了解详细信息](../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.AAD](resource-provider-operations.md#microsoftaad)/*/read |  |
 > | [Microsoft.AAD](resource-provider-operations.md#microsoftaad)/domainServices/*/read |  |
 > | [Microsoft.AAD](resource-provider-operations.md#microsoftaad)/domainServices/oucontainer/* |  |
@@ -4203,9 +4387,8 @@ ACR 隔离数据编写器
 Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 [了解详细信息](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/* |  |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/extensions/* |  |
@@ -4269,9 +4452,8 @@ Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 �
 Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 [了解详细信息](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 执行搜索查询 |
@@ -4320,9 +4502,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许访问区块链成员节点[了解更多](../blockchain/service/configure-aad.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/read | 获取或列出现有的区块链成员事务节点。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -4365,9 +4546,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许创建、读取、更新、删除和管理认知服务的密钥。 [了解详细信息](../cognitive-services/cognitive-services-virtual-networks.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
 > | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/features/read | 获取订阅的功能。 |
@@ -4437,9 +4617,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许读取认知服务数据。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -4477,9 +4656,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许读取和列出认知服务的密钥。 [了解详细信息](../cognitive-services/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/read |  |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | 列出密钥 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/read | 读取经典指标警报 |
@@ -4546,9 +4724,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 为用户提供 Azure 远程呈现的转换、管理会话、呈现和诊断功能[了解详细信息](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -4600,9 +4777,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 为用户提供 Azure 远程渲染的管理会话、渲染和诊断功能。 [了解详细信息](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -4648,9 +4824,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许你管理帐户中的空间锚，但不能删除它们[了解更多](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -4698,9 +4873,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许你管理帐户中的空间锚，包括删除它们[了解更多](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -4750,9 +4924,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许您在帐户中查找和读取空间锚的属性[了解详细信息](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -4799,9 +4972,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 可以管理服务和 API [了解详细信息](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/* | 创建和管理 API 管理服务 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
@@ -4851,9 +5023,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 可以管理服务，但不能管理 API [了解详细信息](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/read | 读取 API 管理服务实例 |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/backup/action | 将 API 管理服务备份到用户提供的存储帐户中的指定容器 |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/delete | 删除 API 管理服务实例 |
@@ -4921,9 +5092,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 对服务和 API 的只读访问权限 [了解详细信息](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/read | 读取 API 管理服务实例 |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/read | 读取 API 管理服务实例的元数据 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -4977,9 +5147,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许对应用程序配置数据进行完全访问。 [了解详细信息](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -5021,9 +5190,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许对应用程序配置数据进行读取访问。 [了解详细信息](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -5061,9 +5229,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许完全访问 Azure 服务总线资源。 [了解详细信息](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -5103,9 +5270,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许对 Azure 服务总线资源进行接收访问。 [了解详细信息](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/queues/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/subscriptions/read |  |
@@ -5149,9 +5315,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许对 Azure 服务总线资源进行发送访问。 [了解详细信息](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/queues/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/read |  |
 > | [Microsoft.ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/subscriptions/read |  |
@@ -5195,9 +5360,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许管理 Azure Stack 注册。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Test-azurestack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | 获取 Azure Stack Edge 订阅的属性 |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | 获取 Azure Stack 市场产品的属性 |
@@ -5241,9 +5405,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 可以管理 EventGrid 事件订阅操作。 [了解详细信息](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* |  |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | 按主题类型列出全局事件订阅 |
@@ -5297,9 +5460,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 可以读取 EventGrid 事件订阅。 [了解详细信息](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/read | 读取事件订阅 |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | 按主题类型列出全局事件订阅 |
@@ -5347,9 +5509,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 角色允许用户或主体完全访问 FHIR 数据[了解更多](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -5387,9 +5548,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 角色允许用户或主体读取和导出 FHIR 数据[了解详细信息](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -5429,9 +5589,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 角色允许用户或主体读取 FHIR 数据[了解更多](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -5469,9 +5628,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 角色允许用户或主体读取和写入 FHIR 数据[了解详细信息](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -5511,9 +5669,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许管理集成服务环境，但不允许访问这些环境。 [了解详细信息](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/* |  |
@@ -5555,9 +5712,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许开发人员在集成服务环境中创建和更新工作流、集成帐户与 API 连接。 [了解详细信息](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/read | 读取集成服务环境。 |
@@ -5601,9 +5757,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许管理智能系统帐户，但不允许访问这些帐户。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.IntelligentSystems/accounts/* | 创建和管理智能系统帐户 |
@@ -5653,9 +5808,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许管理逻辑应用，但不允许更改其访问权限。 [了解详细信息](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/action | 列出存储帐户的访问密钥。 |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/read | 返回包含给定帐户的存储帐户。 |
@@ -5733,9 +5887,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 允许读取、启用和禁用逻辑应用，但不允许编辑或更新它们。 [了解详细信息](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/*/read | 读取 Insights 警报规则 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/*/read |  |
@@ -5808,9 +5961,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 创建、读取、更新和删除用户分配的标识 [了解详细信息](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/read | 获取现有用户分配标识 |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/write | 创建新的用户分配标识或更新与现有用户分配标识关联的标记 |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/delete | 删除现有用户分配标识 |
@@ -5862,9 +6014,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 读取和分配用户分配的标识 [了解详细信息](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/read |  |
 > | [Microsoft.ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/assign/action |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -5917,9 +6068,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 Azure Sentinel 参与者[了解更多](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 查看日志分析数据 |
@@ -5983,9 +6133,8 @@ Azure Sentinel 参与者[了解更多](../sentinel/roles.md)
 Azure Sentinel 读者[了解更多](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 检查用户授权和许可证 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
@@ -6053,9 +6202,8 @@ Azure Sentinel 读者[了解更多](../sentinel/roles.md)
 Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 检查用户授权和许可证 |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
@@ -6127,9 +6275,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许管理密钥保管库，但不允许对其进行访问。 [了解详细信息](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/* |  |
@@ -6181,9 +6328,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 查看和更新安全中心的权限。 与安全读取者角色具有相同的权限，还可以更新安全策略并关闭警报和建议。 [了解详细信息](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | 创建和管理策略分配 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | 创建和管理策略定义 |
@@ -6241,9 +6387,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许你将评估推送到安全中心
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/assessments/write | 创建或更新订阅的安全评估 |
 > | **不操作** |  |
 > | *无* |  |
@@ -6281,9 +6426,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 这是旧角色。 请改用安全管理员。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/*/read | 读取经典虚拟机的配置信息 |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/*/write | 写入经典虚拟机的配置 |
@@ -6339,9 +6483,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 查看安全中心的权限。 可以查看但不能更改建议、警报、安全策略和安全状态。 [了解详细信息](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 查看日志分析数据 |
@@ -6396,9 +6539,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许连接、启动、重启和关闭 Azure 开发测试实验室中的虚拟机。 [了解详细信息](../devtest-labs/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/read | 获取可用性集的属性 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read | 读取虚拟机属性（VM 大小、运行时状态、VM 扩展等） |
@@ -6497,17 +6639,14 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 
 ### <a name="lab-creator"></a>实验室创建者
 
-允许在 Azure 实验室帐户下创建、管理、删除托管实验室。 [了解详细信息](../lab-services/add-lab-creator.md)
+允许你在 Azure 实验室帐户下创建新实验室。 [了解详细信息](../lab-services/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/*/read |  |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/createLab/action | 在实验室帐户中创建实验室。 |
-> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/sizes/getRegionalAvailability/action |  |
-> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRegionalAvailability/action | 获取实验室帐户下配置的每个大小类别的区域可用性信息 |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getPricingAndAvailability/action | 获取实验室帐户的大小、地理位置和操作系统组合的定价与可用性。 |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRestrictionsAndUsage/action | 获取此订阅的核心限制和用量 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -6524,7 +6663,7 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you create, manage, delete your managed labs under your Azure Lab Accounts.",
+  "description": "Lets you create new labs under your Azure Lab Accounts.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b97fb8bc-a8b2-4522-a38b-dd33c7e65ead",
   "name": "b97fb8bc-a8b2-4522-a38b-dd33c7e65ead",
   "permissions": [
@@ -6533,8 +6672,6 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
         "Microsoft.Authorization/*/read",
         "Microsoft.LabServices/labAccounts/*/read",
         "Microsoft.LabServices/labAccounts/createLab/action",
-        "Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action",
-        "Microsoft.LabServices/labAccounts/getRegionalAvailability/action",
         "Microsoft.LabServices/labAccounts/getPricingAndAvailability/action",
         "Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
@@ -6559,9 +6696,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以管理 Application Insights 组件 [了解详细信息](../azure-monitor/app/resources-roles-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典警报规则 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* | 创建和管理新警报规则 |
@@ -6615,9 +6751,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色不包括这些权限。 在向用户授予 Application Insights Snapshot Debugger 角色时，必须将该角色直接授予用户。 将角色添加到自定义角色时，无法识别该角色。 [了解详细信息](../azure-monitor/app/snapshot-debugger.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/*/read |  |
@@ -6665,9 +6800,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 [了解详细信息](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/alerts/* |  |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/alertsSummary/* |  |
@@ -6765,9 +6899,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许针对 Azure 资源发布指标 [了解详细信息](../azure-monitor/insights/container-insights-update-metrics.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/Register/Action | 注册 Microsoft Insights 提供程序 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -6811,9 +6944,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 [了解详细信息](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 执行搜索查询 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
@@ -6855,9 +6987,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以保存共享的工作簿。 [了解详细信息](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/write | 创建或更新工作簿 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/delete | 删除工作簿 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | 读取工作簿 |
@@ -6899,9 +7030,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以读取工作簿。 [了解详细信息](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [microsoft.insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | 读取工作簿 |
 > | **不操作** |  |
 > | *无* |  |
@@ -6942,9 +7072,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 使用自动化 Runbook 创建和管理作业。 [了解详细信息](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/hybridRunbookWorkerGroups/read | 读取混合 Runbook 辅助角色资源 |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobs/read | 获取 Azure 自动化作业 |
@@ -7006,9 +7135,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 自动化操作员能够启动、停止、暂停和恢复作业 [了解详细信息](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/hybridRunbookWorkerGroups/read | 读取混合 Runbook 辅助角色资源 |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobs/read | 获取 Azure 自动化作业 |
@@ -7086,9 +7214,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 读取 Runbook 属性 - 以能够创建 runbook 的作业。 [了解详细信息](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/runbooks/read | 获取 Azure 自动化 Runbook |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
@@ -7136,9 +7263,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以加入 Azure Connected Machine。 [了解详细信息](../azure-arc/servers/onboard-service-principal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | 读取任何 Azure Arc 计算机 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | 写入 Azure Arc 计算机 |
 > | [Microsoft.GuestConfiguration](resource-provider-operations.md#microsoftguestconfiguration)/guestConfigurationAssignments/read | 获取来宾配置分配。 |
@@ -7180,9 +7306,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以读取、写入、删除和重新加入 Azure Connected Machine。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | 读取任何 Azure Arc 计算机 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | 写入 Azure Arc 计算机 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | 删除 Azure Arc 计算机 |
@@ -7230,9 +7355,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许对帐单数据进行读取访问[了解更多](../cost-management-billing/manage/manage-billing-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Billing](resource-provider-operations.md#microsoftbilling)/*/read | 读取计费信息 |
 > | [Microsoft.Commerce](resource-provider-operations.md#microsoftcommerce)/*/read |  |
@@ -7282,9 +7406,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以管理蓝图定义，但不能对其进行分配。 [了解详细信息](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprints/* | 创建和管理蓝图定义或蓝图项目。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -7330,9 +7453,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以指定现有已发布的蓝图，但不能创建新的蓝图。 请注意：仅当使用用户分配的托管标识完成分配时，此分配才有效。 [了解详细信息](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/* | 创建和管理蓝图分配。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
@@ -7378,9 +7500,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以查看成本和管理成本配置（例如预算、出口）[了解详细信息](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/* |  |
 > | [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement)/* |  |
 > | [Microsoft.Billing](resource-provider-operations.md#microsoftbilling)/billingPeriods/read |  |
@@ -7434,9 +7555,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可以查看成本数据和配置（例如预算、出口）[了解详细信息](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/*/read |  |
 > | [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/read |  |
 > | [Microsoft.Billing](resource-provider-operations.md#microsoftbilling)/billingPeriods/read |  |
@@ -7490,9 +7610,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许用户编辑和删除层次结构设置
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/write | 创建或更新管理组层次结构设置。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/delete | 删除管理组层次结构设置。 |
 > | **不操作** |  |
@@ -7532,9 +7651,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许创建托管应用程序资源。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/applications/* |  |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/register/action | 注册到解决方案。 |
@@ -7580,9 +7698,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 可让你在托管应用程序资源上读取和执行操作
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/applications/read | 检索应用程序列表。 |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/*/action |  |
@@ -7624,9 +7741,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许读取托管应用中的资源并请求 JIT 访问。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Solutions](resource-provider-operations.md#microsoftsolutions)/jitRequests/* |  |
@@ -7668,9 +7784,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 托管服务注册分配删除角色允许管理租户用户删除分配给其租户的注册分配。 [了解详细信息](../lighthouse/how-to/remove-delegation.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/read | 检索托管服务注册分配的列表。 |
 > | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/delete | 删除托管服务注册分配。 |
 > | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/operationStatuses/read | 读取资源的操作状态。 |
@@ -7712,14 +7827,14 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 管理组参与者角色 [了解详细信息](../governance/management-groups/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/delete | 删除管理组。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/delete | 从管理组取消关联订阅。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/write | 将现有订阅与管理组关联。 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/write | 创建或更新管理组。 |
+> | /ManagementGroups/subscriptions/read[管理](resource-provider-operations.md#microsoftmanagement) | 列出给定管理组下的订阅。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7742,7 +7857,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
         "Microsoft.Management/managementGroups/read",
         "Microsoft.Management/managementGroups/subscriptions/delete",
         "Microsoft.Management/managementGroups/subscriptions/write",
-        "Microsoft.Management/managementGroups/write"
+        "Microsoft.Management/managementGroups/write",
+        "Microsoft.Management/managementGroups/subscriptions/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7760,10 +7876,10 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 管理组读取者角色
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
+> | /ManagementGroups/subscriptions/read[管理](resource-provider-operations.md#microsoftmanagement) | 列出给定管理组下的订阅。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7782,7 +7898,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
   "permissions": [
     {
       "actions": [
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Management/managementGroups/subscriptions/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7800,9 +7917,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许管理 New Relic 应用程序性能管理帐户和应用程序，但不允许访问它们。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -7852,9 +7968,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许对资源策略进行读取访问，并允许对资源组件策略事件进行写入访问。 [了解详细信息](../governance/policy/concepts/policy-for-kubernetes.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/read | 获取有关策略分配的信息。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/read | 获取有关策略定义的信息。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/read | 获取有关策略集定义的信息。 |
@@ -7900,9 +8015,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 有权创建/修改资源策略、创建支持票证和读取资源/层次结构的用户。 [了解详细信息](../governance/policy/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | 创建和管理策略分配 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | 创建和管理策略定义 |
@@ -7950,9 +8064,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许管理 Site Recovery 服务，但保管库创建和角色分配除外 [了解详细信息](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 获取虚拟网络定义 |
@@ -8044,9 +8157,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许进行故障转移和故障回复，但不允许执行其他 Site Recovery 管理操作 [了解详细信息](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 获取虚拟网络定义 |
@@ -8198,9 +8310,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许查看 Site Recovery 状态，但不允许执行其他管理操作 [了解详细信息](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | “获取扩展信息”操作获取表示“vault”类型的 Azure 资源的对象扩展信息 |
@@ -8298,9 +8409,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许创建和管理支持请求[了解详细信息](../azure-portal/supportability/how-to-create-azure-support-request.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
@@ -8342,9 +8452,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许你管理实体上的标记，而无需提供对实体本身的访问权限。 [了解详细信息](../azure-resource-manager/management/tag-resources.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/resources/read | 获取资源组的资源。 |
@@ -8399,9 +8508,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许管理 BizTalk 服务，但不允许访问这些服务。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | Microsoft.BizTalkServices/BizTalk/* | 创建和管理 BizTalk 服务 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
@@ -8451,9 +8559,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许用户使用应用程序组中的应用程序。 [了解详细信息](../virtual-desktop/delegated-access-virtual-desktop.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -8491,9 +8598,8 @@ Azure Sentinel 响应程序[了解详细信息](../sentinel/roles.md)
 允许管理计划程序作业集合，但不允许访问这些集合。
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | 操作 | 说明 |
 > | --- | --- |
-> | **操作** |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |

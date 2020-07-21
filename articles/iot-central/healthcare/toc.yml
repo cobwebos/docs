@@ -16,7 +16,7 @@
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: 什么是应用程序模板？
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建健康状况数据分类仪表板
       href: howto-health-data-triage.md
@@ -52,34 +52,40 @@
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: 管理
       items:
-        - name: 管理应用程序设置
-          href: ../core/howto-administer.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 导出应用程序
-          href: ../core/howto-use-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 管理用户和角色
-          href: ../core/howto-manage-users-roles.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 管理帐单
-          href: ../core/howto-view-bill.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 自定义应用程序 UI
-          href: ../core/howto-customize-ui.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 向仪表板添加磁贴
-          href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 从 Azure 门户进行管理
-          href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 从 Azure CLI 进行管理
-          href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 从 Azure PowerShell 进行管理
-          href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 从云解决方案提供商门户进行管理
-          href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-    - name: 个性化
-      items:
-        - name: 创建 Azure IoT Central 个人仪表板
-          href: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 管理个人首选项
-          href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: 切换实时聊天
-          href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+        - name: 管理应用程序
+          items:
+            - name: 管理应用程序设置
+              href: ../core/howto-administer.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: 管理用户和角色
+              href: ../core/howto-manage-users-roles.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: 管理帐单
+              href: ../core/howto-view-bill.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: 自定义应用程序 UI
+              href: ../core/howto-customize-ui.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: 导出应用程序
+              href: ../core/howto-use-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: 监视应用程序运行状况
+              href: ../core/howto-monitor-application-health.md
+            - name: 关于你的应用程序
+              href: ../core/howto-get-app-info.md
+        - name: 从其他位置管理
+          items:
+            - name: 从 Azure 门户进行管理
+              href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: 从 Azure CLI 进行管理
+              href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: 从 Azure PowerShell 进行管理
+              href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: 以编程方式管理
+              href: ../core/howto-manage-iot-central-programmatically.md
+            - name: 从云解决方案提供商门户进行管理
+              href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+        - name: 个性化
+          items:
+            - name: 管理个人首选项
+              href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: 切换实时聊天
+              href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: 资源
   items:
     - name: 支持和帮助选项
@@ -105,9 +111,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: 客户数据请求
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: 支持的浏览器

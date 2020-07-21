@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515421"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor 上客户拥有的用于日志引入的存储帐户
 
-Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志](azure-storage-iis-table.md)等数据类型的数据引入过程中使用存储帐户。 在数据引入过程中，先将日志发送到存储帐户，然后再引入到 Log Analytics 或 Application Insights。 如果希望在数据引入过程中对数据进行控制，可以使用自己的存储帐户，不要使用服务托管存储。 使用自己的存储帐户，可以控制引入期间日志的访问、内容、加密和保留。 我们将其称为自带存储或 BYOS。 
+Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志](./diagnostics-extension-logs.md)等数据类型的数据引入过程中使用存储帐户。 在数据引入过程中，先将日志发送到存储帐户，然后再引入到 Log Analytics 或 Application Insights。 如果希望在数据引入过程中对数据进行控制，可以使用自己的存储帐户，不要使用服务托管存储。 使用自己的存储帐户，可以控制引入期间日志的访问、内容、加密和保留。 我们将其称为自带存储或 BYOS。 
 
 需要 BYOS 的一种方案是通过专用链接进行网络隔离。 使用 VNet 时，通常需要进行网络隔离，并限制公共 internet 访问。 在这种情况下，访问日志数据引入的 Azure Monitor 服务存储可能会被完全阻止，或被视为不好的做法。 相反，应通过 VNet 中客户所有的存储帐户引入日志，或从该帐户轻松访问日志。
 
@@ -23,7 +23,7 @@ Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志
 
 ## <a name="data-types-supported"></a>支持的数据类型
 
-从存储帐户中引入的数据类型包括以下各项。 有关数据引入类型的详细信息，请参阅[从 Azure 诊断扩展到 Azure Monitor 日志的数据收集](azure-storage-iis-table.md)。
+从存储帐户中引入的数据类型包括以下各项。 有关数据引入类型的详细信息，请参阅[从 Azure 诊断扩展到 Azure Monitor 日志的数据收集](./diagnostics-extension-logs.md)。
 
 | 类型 | 表格信息 |
 |:-----|:------------------|
@@ -54,7 +54,7 @@ Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志
 ## <a name="command-line-and-rest-api"></a>命令行和 REST API
 
 ### <a name="command-line"></a>命令行
-若要创建和管理链接存储帐户，请使用[az monitor log analytics 工作区链接存储](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可以链接和取消链接工作区中的存储帐户，并列出链接的存储帐户。
+若要创建和管理链接存储帐户，请使用[az monitor log analytics 工作区链接存储](/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可以链接和取消链接工作区中的存储帐户，并列出链接的存储帐户。
 
 ### <a name="request-and-cli-values"></a>请求和 CLI 值
 

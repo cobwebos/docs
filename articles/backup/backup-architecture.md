@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055250"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514299"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -42,10 +42,10 @@ Azure 备份将备份的数据存储在恢复服务保管库中。 保管库是 
 - 使用保管库可以方便地组织备份数据，并将管理开销降至最低。
 - 在每个 Azure 订阅中，最多可以创建 500 个保管库。
 - 可以监视保管库中的已备份项，包括 Azure Vm 和本地计算机。
-- 可以使用 Azure [基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 来管理对保管库的访问。
+- 可以使用 Azure [基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 来管理对保管库的访问。
 - 指定如何复制保管库中的数据以实现冗余：
-  - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-  - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+  - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](../storage/common/storage-redundancy.md)。
+  - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](../storage/common/storage-redundancy.md)。
   - 恢复服务保管库默认使用 GRS。
 
 ## <a name="backup-agents"></a>备份代理
@@ -120,6 +120,17 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 - 创建保管库后，还会创建一个 "DefaultPolicy"，并将其用于备份资源。
 - 对备份策略的保留期所做的任何更改都将以追溯方式到新的恢复点。
 
+### <a name="additional-reference"></a>其他参考 
+
+-   Azure VM 计算机：如何[创建](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)和[修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)策略？ 
+-   Azure 虚拟机中的 SQL Server 数据库：如何[创建](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)和[修改](./manage-monitor-sql-database-backup.md#modify-policy)策略？ 
+-   Azure 文件共享：如何[创建](./backup-afs.md#discover-file-shares-and-configure-backup)和[修改](./manage-afs-backup.md#modify-policy)策略？ 
+-   SAP HANA：如何[创建](./backup-azure-sap-hana-database.md#create-a-backup-policy)和[修改](./sap-hana-db-manage.md#change-policy)策略？ 
+-   MARS：如何[创建](./backup-windows-with-mars-agent.md#create-a-backup-policy)和[修改](./backup-azure-manage-mars.md#modify-a-backup-policy)策略？ 
+-   [根据工作负荷类型计划备份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- [如果更改保留策略，现有恢复点会发生什么情况？](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+
+
 ## <a name="architecture-built-in-azure-vm-backup"></a>体系结构：内置 Azure VM 备份
 
 1. 为 Azure VM 启用备份时，将会根据指定的计划运行备份。
@@ -134,7 +145,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
     - 只会复制自上次备份以来发生更改的数据块。
     - 不会加密数据。 Azure 备份可以备份使用 Azure 磁盘加密进行加密的 Azure VM。
     - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成备份。 每日备份策略规定的 VM 备份总时间不会超过 24 小时。
-1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability)。
+1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](./backup-instant-restore-capability.md)。
 
 无需显式允许 internet 连接来备份 Azure Vm。
 

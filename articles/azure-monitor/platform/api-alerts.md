@@ -4,19 +4,19 @@ description: 使用 Log Analytics 警报 REST API 可以在 Log Analytics 中创
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: 4ab2a1369fc4902afec7d62e44ef8e947864167f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 38f2f671ecf426f6544f6faf934aec7071451b0d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112045"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515744"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>在 Log Analytics 中通过 REST API 创建和管理警报规则 
 
 使用 Log Analytics 警报 REST API 可以在 Log Analytics 中创建和管理警报。  本文提供了用于执行不同操作的 API 和几个示例的详细信息。
 
 > [!IMPORTANT]
-> 如[前文所](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)述，在*2019 年6月 1*日之后创建的 log analytics 工作区，将**只能使用 Azure** ScheduledQueryRules [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)、 [azure Resource manange 模板](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)和[PowerShell cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)来管理警报规则。 对于较旧的工作区，客户可以轻松地[切换其首选的警报规则管理方法](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)，以利用 Azure Monitor scheduledQueryRules 作为默认功能，并获得许多[新的好处](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)，例如使用本机 PowerShell cmdlet、在规则中增加 lookback 时间段、在单独的资源组或订阅中创建规则，等等。
+> 如[前文所](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)述，在*2019 年6月 1*日之后创建的 log analytics 工作区，将**只能使用 Azure** ScheduledQueryRules [REST API](/rest/api/monitor/scheduledqueryrules/)、 [azure Resource manange 模板](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)和[PowerShell cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)来管理警报规则。 对于较旧的工作区，客户可以轻松地[切换其首选的警报规则管理方法](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)，以利用 Azure Monitor scheduledQueryRules 作为默认功能，并获得许多[新的好处](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)，例如使用本机 PowerShell cmdlet、在规则中增加 lookback 时间段、在单独的资源组或订阅中创建规则，等等。
 
 Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 在本文档中，你将看到一些示例，其中使用[ARMClient](https://github.com/projectkudu/ARMClient)（一种可简化调用 AZURE 资源管理器 API 的开源命令行工具）从 PowerShell 命令行访问 API。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 借助这些工具，可以利用 RESTful Azure 资源管理器 API 对 Log Analytics 工作区进行调用并在其中执行搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
 
@@ -139,7 +139,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 | 部分 | 说明 | 使用情况 |
 |:--- |:--- |:--- |
 | 阈值 |用于确定何时运行操作的条件。| 每个警报所必需的，无论是在警报扩展到 Azure 之前还是之后。 |
-| severity |当触发时用来对警报进行分类的标签。| 每个警报所必需的，无论是在警报扩展到 Azure 之前还是之后。 |
+| 严重性 |当触发时用来对警报进行分类的标签。| 每个警报所必需的，无论是在警报扩展到 Azure 之前还是之后。 |
 | 取消 |用于停止警报通知的选项。 | 对于每个警报均为可选，无论是在警报扩展到 Azure 之前还是之后。 |
 | 操作组 |在其中指定所需操作的 Azure 操作组的 ID，例如 - 电子邮件、SMS、语音呼叫、Webhook、自动化 Runbook、ITSM 连接器，等等。| 警报扩展到 Azure 后所必需的|
 | 自定义操作|修改有关从操作组中选择操作的标准输出| 对于每个警报都是可选的，可以在警报扩展到 Azure 后使用。 |
@@ -185,7 +185,7 @@ $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','p
 armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 ```
 
-#### <a name="severity"></a>severity
+#### <a name="severity"></a>严重性
 Log Analytics 允许你将警报归类到各个类别，以便更轻松地进行管理和会审。 定义的警报严重性是：信息性、警告和严重。 它们如下所示映射到 Azure 警报的常规严重性级别：
 
 |Log Analytics 严重性级别  |Azure 警报严重性级别  |
@@ -265,7 +265,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName
 #### <a name="action-groups"></a>操作组
 Azure 中的所有警报都使用操作组作为用来处理操作的默认机制。 使用操作组，可以将操作指定一次，然后将操作组关联到 Azure 中的多个警报。 不需要一再重复声明相同的操作。 操作组支持多个操作 - 包括电子邮件、SMS、语音呼叫、ITSM 连接、自动化 Runbook、Webhook URI，等等。 
 
-对于已将其警报扩展到 Azure 中的用户 - 一个计划现在应当将操作组详细信息与阈值一起传递，以便能够创建警报。 在创建警报前，需要先在操作组中定义电子邮件详细信息、Webhook URL、Runbook 自动化详细信息以及其他操作；可以在门户中[通过 Azure Monitor 创建操作组](../../azure-monitor/platform/action-groups.md)，也可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups)。
+对于已将其警报扩展到 Azure 中的用户 - 一个计划现在应当将操作组详细信息与阈值一起传递，以便能够创建警报。 在创建警报前，需要先在操作组中定义电子邮件详细信息、Webhook URL、Runbook 自动化详细信息以及其他操作；可以在门户中[通过 Azure Monitor 创建操作组](../../azure-monitor/platform/action-groups.md)，也可以使用[操作组 API](/rest/api/monitor/actiongroups)。
 
 若要添加操作组到警报的关联，请在警报定义中指定操作组的唯一 Azure 资源管理器 ID。 下面提供了一个示例展示：
 
@@ -390,4 +390,3 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 * 在 Log Analytics 中使用 [REST API 执行日志搜索](../../azure-monitor/log-query/log-query-overview.md)。
 * 了解[Azure monitor 中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)
 * 如何[在 Azure monitor 中创建、编辑或管理日志警报规则](../../azure-monitor/platform/alerts-log.md)
-

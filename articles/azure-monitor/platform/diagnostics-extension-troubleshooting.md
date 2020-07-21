@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696960"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515489"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](diagnostics-extension-overview.md)。
@@ -49,7 +50,7 @@ ms.locfileid: "84696960"
 | **MonAgentHost 日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num> |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>指标数据不显示在 Azure 门户中
-Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果在门户中查看数据时遇到问题，请查看 \* Azure 诊断存储帐户中的 WADMetrics 表，以查看是否存在相应的指标记录，并确保注册了[资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
+Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果在门户中查看数据时遇到问题，请查看 \* Azure 诊断存储帐户中的 WADMetrics 表，以查看是否存在相应的指标记录，并确保注册了[资源提供程序](../../azure-resource-manager/management/resource-providers-and-types.md)。
 
 此处，表的 PartitionKey 是资源 ID、虚拟机或虚拟机规模集  。 RowKey 是指标名称（也称为性能计数器名称）  。
 
@@ -296,4 +297,3 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 - 存储中的数据是否有英文计数器名称。 如果计数器名称不是英文，门户指标图表将无法识别它。 **缓解措施**：将系统帐户的计算机语言更改为英语。 要执行此操作，请选择“控制面板” > “区域” > “管理” > “复制设置”     。 接下来，取消选择“欢迎界面和系统帐户”，以免将自定义语言应用到系统帐户  。
 
 - 如果在性能计数器名称中使用通配符 (\*)，则在将性能计数器发送到 Azure 存储接收器时，门户将无法关联已配置和已收集的计数器。 **缓解措施**：若要确保可以使用通配符并让门户展开 (\*)，请将性能计数器路由到 Azure Monitor 接收器。
-

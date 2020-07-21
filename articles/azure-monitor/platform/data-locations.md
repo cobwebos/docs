@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/21/2019
-ms.openlocfilehash: 7d4459867081d920fefb9471b1a682d21040da9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb7e92a676115d784bd19714178b3bd442798e26
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515540"
 ---
 # <a name="monitoring-data-locations-in-azure-monitor"></a>Azure Monitor 中的监视数据位置
 
@@ -23,12 +24,12 @@ Azure Monitor 基于[日志](data-platform-logs.md)和[指标](data-platform-met
 | 位置 | 说明 | 访问方法 |
 |:---|:---|:---|:--|
 | Azure Monitor 指标 | 为分析时间戳数据而优化的时序数据库。 | [指标资源管理器](metrics-getting-started.md)<br>[Azure Monitor 指标 API](/rest/api/monitor/metrics) |
-| Azure Monitor 日志    | 基于 Azure 数据资源管理器的 Log Analytics 工作区，它提供了功能强大的分析引擎和丰富的查询语言。 | [Log Analytics](../log-query/portals.md)<br>[Log Analytics API](https://dev.loganalytics.io/)<br>[Application Insights API](https://dev.applicationinsights.io/reference/get-query) |
-| 活动日志 | 当将活动日志中的数据发送到 Azure Monitor 日志，以便与其他数据一起分析它时，活动日志中的数据最有用，但活动日志本身也会收集数据，因此可以在 Azure 门户中直接查看活动日志。 | [Azure 门户](activity-log-view.md#azure-portal)<br>[Azure Monitor 事件 API](/rest/api/monitor/eventcategories) |
-| Azure 存储 | 一些数据源将直接写入 Azure 存储，并且需要配置才能将数据移到日志中。 还可以将数据发送到 Azure 存储以进行存档以及与外部系统集成。  | [存储分析](/rest/api/storageservices/storage-analytics)<br>[服务器资源管理器](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[存储资源管理器](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) |
+| Azure Monitor 日志    | 基于 Azure 数据资源管理器的 Log Analytics 工作区，它提供了功能强大的分析引擎和丰富的查询语言。 | [Log Analytics](../log-query/log-query-overview.md)<br>[Log Analytics API](https://dev.loganalytics.io/)<br>[Application Insights API](https://dev.applicationinsights.io/reference/get-query) |
+| 活动日志 | 当将活动日志中的数据发送到 Azure Monitor 日志，以便与其他数据一起分析它时，活动日志中的数据最有用，但活动日志本身也会收集数据，因此可以在 Azure 门户中直接查看活动日志。 | [Azure 门户](./activity-log.md#view-the-activity-log)<br>[Azure Monitor 事件 API](/rest/api/monitor/eventcategories) |
+| Azure 存储 | 一些数据源将直接写入 Azure 存储，并且需要配置才能将数据移到日志中。 还可以将数据发送到 Azure 存储以进行存档以及与外部系统集成。  | [存储分析](/rest/api/storageservices/storage-analytics)<br>[服务器资源管理器](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) |
 | 事件中心 | 将数据发送到 Azure 事件中心以将其流式传输到其他位置。 | [捕获到存储](../../event-hubs/event-hubs-capture-overview.md)  |
-| 用于 VM 的 Azure Monitor | 用于 VM 的 Azure Monitor 将工作负荷运行状况数据存储在 Azure 门户中其监视体验所使用的自定义位置。 | [Azure 门户](../insights/vminsights-overview.md)<br>[工作负荷监视器 REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)<br>[Azure 资源运行状况 REST API](https://docs.microsoft.com/rest/api/resourcehealth/)  |
-| 警报 | Azure Monitor 创建的警报。 | [Azure 门户](alerts-managing-alert-instances.md)<br>[警报管理 REST API](https://docs.microsoft.com/rest/api/monitor/alertsmanagement/alerts) |
+| 用于 VM 的 Azure Monitor | 用于 VM 的 Azure Monitor 将工作负荷运行状况数据存储在 Azure 门户中其监视体验所使用的自定义位置。 | [Azure 门户](../insights/vminsights-overview.md)<br>[工作负荷监视器 REST API](/rest/api/monitor/microsoft.workloadmonitor/components)<br>[Azure 资源运行状况 REST API](/rest/api/resourcehealth/)  |
+| 警报 | Azure Monitor 创建的警报。 | [Azure 门户](alerts-managing-alert-instances.md)<br>[警报管理 REST API](/rest/api/monitor/alertsmanagement/alerts) |
 
 
 

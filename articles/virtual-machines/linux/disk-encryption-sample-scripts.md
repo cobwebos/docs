@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610347"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510491"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
+# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>适用于 Linux Vm 的 Azure 磁盘加密示例脚本
 
 本文提供了用于准备预加密 VHD 和其他任务的示例脚本。
 
@@ -186,7 +186,7 @@ ms.locfileid: "85610347"
 
    ![Ubuntu 16.04 安装 - 在启动时提供通行短语](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. 使用[这些说明](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)准备 VM 以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
+6. 使用[这些说明](./create-upload-ubuntu.md?toc=/azure/virtual-machines/linux/toc.json)准备 VM 以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
 
 执行以下步骤，配置适用于 Azure 的加密：
 
@@ -262,7 +262,7 @@ ms.locfileid: "85610347"
 
    ![openSUSE 13.2 安装 - 在启动时提供通行短语](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. 遵循 [Prepare a SLES or openSUSE virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)（为 Azure 准备 SLES 或 openSUSE 虚拟机）中的说明准备 VM，以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
+3. 遵循 [Prepare a SLES or openSUSE virtual machine for Azure](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131)（为 Azure 准备 SLES 或 openSUSE 虚拟机）中的说明准备 VM，以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
 
 若要配置适用于 Azure 的加密，请执行以下步骤：
 1. 编辑 /etc/dracut.conf 并添加以下行：
@@ -339,7 +339,7 @@ ms.locfileid: "85610347"
 
    ![CentOS 7 安装 - 在启动时输入通行短语](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. 通过 [Prepare a CentOS-based virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)（为 Azure 准备基于 CentOS 的虚拟机）中的“CentOS 7.0+”说明准备 VM 以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
+5. 通过 [Prepare a CentOS-based virtual machine for Azure](./create-upload-centos.md?toc=/azure/virtual-machines/linux/toc.json#centos-70)（为 Azure 准备基于 CentOS 的虚拟机）中的“CentOS 7.0+”说明准备 VM 以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
 
 6. 现在可以解除配置 VM，并将 VHD 上传到 Azure 中。
 
@@ -439,7 +439,7 @@ ms.locfileid: "85610347"
 在下一步中使用 `$secretUrl` 以便[在不使用 KEK 的情况下附加 OS 磁盘](#without-using-a-kek)。
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>使用 KEK 加密的磁盘加密机密
-将机密上传到 Key Vault 之前，可根据需要使用密钥加密密钥对其进行加密。 先使用包装 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 加密使用密钥加密密钥的机密。 此包装操作的输出是 base64 URL 编码的字符串，可以使用 [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet 将其作为机密上传。
+将机密上传到 Key Vault 之前，可根据需要使用密钥加密密钥对其进行加密。 先使用包装 [API](/rest/api/keyvault/wrapkey) 加密使用密钥加密密钥的机密。 此包装操作的输出是 base64 URL 编码的字符串，可以使用 [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet 将其作为机密上传。
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

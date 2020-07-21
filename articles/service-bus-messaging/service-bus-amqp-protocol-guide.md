@@ -3,12 +3,12 @@ title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Microsoft
 description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186905"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511307"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -48,7 +48,7 @@ AMQP 1.0 协议被设计为可扩展，允许进一步规范以增强其功能�
 
 AMQP 将通信程序称为容器**；其中包含节点**，即这些容器内的通信实体。 队列可以是此类节点。 AMQP 允许多路复用，因此单个连接可用于节点之间的许多通信路径；例如，应用程序客户端可以同时从一个队列接收，并通过相同的网络连接发送到另一个队列。
 
-![][1]
+![显示容器之间的会话和连接的关系图。][1]
 
 网络连接因此固定在容器上。 它由采用客户端角色的容器启动，对采用接收者角色的容器进行出站 TCP 套接字连接，以侦听和接受入站 TCP 连接。 连接握手包括协商协议版本，声明或协商传输级别安全性 (TLS/SSL) 的使用，以及基于 SASL 的连接范围的身份验证/授权握手。
 
@@ -77,14 +77,14 @@ Azure 服务总线目前只对每个连接使用一个会话。 服务总线标�
 
 ![目标端口列表][4]
 
-.NET 客户端将失败，并出现 SocketException ( "以其访问权限所禁止的方式尝试访问套接字" ) 如果这些端口被防火墙阻止。 可以通过在连接字符串中设置来禁用该功能 `EnableAmqpLinkRedirect=false` ，这会强制客户端通过端口5671与远程服务进行通信。
+如果防火墙阻止这些端口，.NET 客户端将失败，并出现 SocketException （"以某种方式，尝试通过其访问权限禁止访问套接字"）。 可以通过在连接字符串中设置来禁用该功能 `EnableAmqpLinkRedirect=false` ，这会强制客户端通过端口5671与远程服务进行通信。
 
 
 ### <a name="links"></a>链接
 
 AMQP 通过链接传输消息。 链接是在能以单个方向传输消息的会话中创建的通信路径；传输状态协商通过链接在已连接方之间双向进行。
 
-![][2]
+![显示会话 carryign 两个容器之间的链接连接的屏幕截图。][2]
 
 任一容器可以在现有的会话中随时创建链接，这使 AMQP 不同于其他许多协议（包括 HTTP 和 MQTT），其中启动传输和传输路径是创建套接字连接之一方的独占权限。
 
@@ -100,7 +100,7 @@ AMQP 通过链接传输消息。 链接是在能以单个方向传输消息的�
 
 建立链接后，即可通过该链接传输消息。 在 AMQP 中，使用明确的协议手势运行传输（传输** 行为原语），以通过链接将消息从发送者转到接收者。 传输在“安置好”时完成，这意味着双方已建立该传输结果的共识。
 
-![][3]
+![显示消息在发送方和接收方之间传输的关系图，以及由该消息产生的处理。][3]
 
 在最简单的情况下，发送者可以选择发送“预先安置”的消息，这意味着客户端对结果不感兴趣，并且接收者不提供任何有关操作结果的反馈。 此模式由服务总线在 AMQP 协议级别支持，但不显示在任何客户端 API 中。
 
@@ -120,7 +120,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”**），其
 
 除了以前介绍过的会话级别流量控制模型以外，每个链接都有自己的流量控制模型。 会话级别流量控制可防止容器必须一次处理太多帧，链接级别流量控制让应用程序负责控制它想要从链接处理的消息数目以及时机。
 
-![][4]
+![显示源、目标、源端口、目标端口和协议名称的日志屏幕截图。 在 fiest 行中，目标端口10401（0x28 A）以黑色列出。][4]
 
 在链接上，传输仅在发送方具有足够的*链接信用额度*时才会发生。 链接信用额度是接收者使用*流程*行为原语所设置的计数器，其范围是链接。 将链接信用额度分配给发送者时，将通过传递消息来尝试用完该信用额度。 每个消息传递使剩余的链接信用额度减 1。 当链接信用额度用完时，便会停止传递。
 
@@ -223,9 +223,9 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”**），其
 | message-id |应用程序为此消息定义的自由格式标识符。 用于重复检测。 |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |应用程序定义的用户标识符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
 | to |应用程序定义的目标标识符，服务总线无法进行解释。 |[收件人](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[标签](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |应用程序定义的回复路径指示符，服务总线无法进行解释。 |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[Id](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-type |应用程序定义的内容类型指示符，服务总线无法进行解释。 |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |应用程序定义的内容编码指示符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
 | absolute-expiry-time |声明消息过期的绝对时刻。 在输入时忽略（观察到标头 TTL），在输出时授权具权威性。 |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -283,7 +283,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”**），其
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | . . . <br/>其他链接上的<br/>事务性工作<br/> . . . |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
-| | <------ | disposition( <br/> first=57, last=57, <br/>state =** ( # B1**) |
+| | <------ | disposition( <br/> first=57, last=57, <br/>state = 已**接受（）**）|
 
 #### <a name="sending-a-message-in-a-transaction"></a>在事务中发送消息
 
@@ -360,7 +360,7 @@ CBS 定义由消息传送基础结构所提供的虚拟管理节点（名为 $cb
 | 密钥 | 可选 | 值类型 | 值内容 |
 | --- | --- | --- | --- |
 | operation |否 |string |**put-token** |
-| 类型 |否 |string |正在放置的令牌类型。 |
+| type |否 |string |正在放置的令牌类型。 |
 | name |否 |string |令牌应用到的“受众”。 |
 | expiration |是 |timestamp |令牌过期时间。 |
 

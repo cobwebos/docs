@@ -3,11 +3,12 @@ title: 将新式备份存储与 Azure 备份服务器一起使用
 description: 了解 Azure 备份服务器中的新功能。 本文介绍如何升级备份服务器安装。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172376"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513704"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>将存储添加到 Azure 备份服务器
 
@@ -17,7 +18,7 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 > 若要使用新式备份存储，必须在 Windows Server 2016 上运行备份服务器 V2 或 V3，或者在 Windows Server 2019 上运行备份服务器 V3。
 > 如果在早期版本的 Windows Server 上运行备份服务器 V2，则 Azure 备份服务器无法利用新式备份存储。 而是采用与备份服务器 V1 相同的方式来保护工作负载。 有关详细信息，请参阅备份服务器版本[保护矩阵](backup-mabs-protection-matrix.md)。
 >
-> 若要实现增强的备份性能，建议在 Windows Server 2019 上部署包含分层存储的 MABS v3。 有关配置分层存储的步骤，请参阅 DPM 文章 "[设置带分层存储的 mb](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)"。
+> 若要实现增强的备份性能，建议在 Windows Server 2019 上部署包含分层存储的 MABS v3。 有关配置分层存储的步骤，请参阅 DPM 文章 "[设置带分层存储的 mb](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)"。
 
 ## <a name="volumes-in-backup-server"></a>备份服务器中的卷
 
@@ -102,13 +103,13 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 1. 在管理员控制台中，选择“保护”**** 功能。 在“保护组成员”**** 列表中，右键单击成员，然后选择“停止保护成员”****。
 
-   ![停止保护成员](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![停止保护成员](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. 在“从组中删除”**** 对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击“确定”。
 
    如果要立即将已用磁盘空间返回到可用存储池，则选中“删除磁盘上的副本”**** 复选框以删除与成员关联的备份数据（和恢复点）。
 
-   ![“从组中删除”对话框](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![“从组中删除”对话框](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. 创建一个使用新式备份存储的保护组。 包括未受保护的数据源。
 
@@ -120,7 +121,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 1. 在管理员控制台中，选择 "**管理**  >  **磁盘存储**"  >  **添加**"。
 
-    ![“添加磁盘存储”对话框](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![“添加磁盘存储”对话框](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. 在“添加磁盘存储”**** 对话框中，选择“添加磁盘”****。
 
@@ -130,6 +131,6 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 安装备份服务器之后，了解如何准备服务器或开始保护工作负载。
 
-- [准备备份服务器工作负载](backup-azure-microsoft-azure-backup.md)
+- [准备备份服务器工作负荷](backup-azure-microsoft-azure-backup.md)
 - [使用备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)
 - [使用备份服务器备份 SQL Server](backup-azure-sql-mabs.md)

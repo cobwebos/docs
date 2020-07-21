@@ -5,19 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f0a8fd186862cf95ebdbb2d5bd92d8ff860b3ba1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680686"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515472"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>可通过诊断设置导出的 Azure Monitor 平台指标
 
-Azure Monitor 默认提供[平台指标](data-platform-metrics.md)，无需配置。 它提供多种方式来与平台指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 有关 Azure Monitor 的合并指标管道中当前可用的平台指标的完整列表，请参阅[支持的指标](metrics-supported.md)。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)。 其他指标可在门户或旧版 API 中使用。
+Azure Monitor 默认提供[平台指标](data-platform-metrics.md)，无需配置。 它提供多种方式来与平台指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 有关 Azure Monitor 的合并指标管道中当前可用的平台指标的完整列表，请参阅[支持的指标](metrics-supported.md)。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](/rest/api/monitor/metricdefinitions)。 其他指标可在门户或旧版 API 中使用。
 
 可以通过以下两种方式将平台指标从 Azure monitor 管道导出到其他位置。
 1. 使用[诊断设置](diagnostic-settings.md)发送到 Log Analytics、事件中心或 Azure 存储。
-2. 使用[指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list)
+2. 使用[指标 REST API](/rest/api/monitor/metrics/list)
 
 由于 Azure Monitor 后端的复杂性，并非所有指标都可使用诊断设置进行导出。 下表列出了使用诊断设置可以和不可以导出的指标。
 

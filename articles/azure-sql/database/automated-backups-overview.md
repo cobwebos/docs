@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-ms.date: 06/04/2020
-ms.openlocfilehash: 340f4310da5131ea0d2576e7c77d8f6cd0a731b3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/20/2020
+ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983098"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515100"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自动备份-Azure SQL 数据库 & SQL 托管实例
 
@@ -36,7 +36,7 @@ SQL 数据库和 SQL 托管实例都使用 SQL Server 技术每周创建一次[�
 
 如果你的数据保护规则要求你的备份长时间可用（长达10年），则可以为单一数据库和池数据库配置[长期保留](long-term-retention-overview.md)。
 
-可使用这些备份：
+可使用这些备份执行以下任务：
 
 - 使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 将[现有数据库还原到保持期过去的某个时间点](recovery-using-backups.md#point-in-time-restore)。 对于单个和共用数据库，此操作将在与原始数据库相同的服务器上创建一个新的数据库，但使用不同的名称，以避免覆盖原始数据库。 还原完成后，可以删除或[重命名](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database)原始数据库，并将还原的数据库重命名为具有原始数据库名称。 在托管实例上，此操作同样可以在同一订阅和同一区域中的相同或不同的托管实例上创建数据库的副本。
 - 将[删除的数据库还原到删除时的时间](recovery-using-backups.md#deleted-database-restore)点或保留期内的任何时间点。 删除的数据库只能还原到创建原始数据库的同一服务器或托管实例上。 删除数据库时，该服务在删除之前将执行最终事务日志备份，以防止任何数据丢失。
@@ -101,7 +101,7 @@ SQL 数据库和 SQL 托管实例将总使用的备份存储计算为累积值�
 
 ## <a name="backup-retention"></a>备份保留
 
-对于所有新的、还原的和复制的数据库，Azure SQL 数据库和 Azure SQL 托管实例保留足够的备份，以便在过去7天内默认 PITR。 除了超大规模数据库之外，你可以在 1-35 day 范围内更改每个数据库的[备份保留期](#change-the-pitr-backup-retention-period)。 如[备份存储消耗](#backup-storage-consumption)中所述，存储到 enable PITR 的备份可能早于保持期。
+对于所有新的、还原的和复制的数据库，Azure SQL 数据库和 Azure SQL 托管实例保留足够的备份，以便在过去7天内默认 PITR。 除了超大规模数据库之外，可以更改1-35 天范围内每个活动数据库的[备份保留期](#change-the-pitr-backup-retention-period)。 如[备份存储消耗](#backup-storage-consumption)中所述，存储到 enable PITR 的备份可能早于保持期。 仅适用于 Azure SQL 托管实例，一旦在0-35 天内删除了数据库，就可以设置 PITR 备份保留速率。 
 
 如果删除了某个数据库，则系统会将备份的备份方式与其特定的保留期相同。 不能更改已删除数据库的备份保留期。
 
@@ -192,7 +192,7 @@ Azure SQL 工程团队不断地会自动测试自动数据库备份的还原。 
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>使用 Azure 门户更改 PITR 备份保留期
 
-若要使用 Azure 门户更改 PITR 备份保持期，请转到包含要更改其保持期的数据库的服务器或托管实例。 
+若要使用 Azure 门户更改活动数据库的 PITR 备份保持期，请转到包含要更改其保持期的数据库的服务器或托管实例。 
 
 #### <a name="sql-database"></a>[SQL 数据库](#tab/single-database)
 
@@ -214,9 +214,54 @@ Azure SQL 工程团队不断地会自动测试自动数据库备份的还原。 
 > [!IMPORTANT]
 > SQL 数据库和 SQL 托管实例仍支持 PowerShell AzureRM 模块，但所有将来的开发都适用于 Az .Sql 模块。 有关详细信息，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
+#### <a name="sql-database"></a>[SQL 数据库](#tab/single-database)
+
+若要更改活动的 Azure SQL 数据库的 PITR 备份保留，请使用以下 PowerShell 示例。
+
 ```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
+
+#### <a name="sql-managed-instance"></a>[SQL 托管实例](#tab/managed-instance)
+
+若要为**单个活动**的 SQL 托管实例数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+
+```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase -RetentionDays 1
+```
+
+若要为**所有活动**的 SQL 托管实例数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+
+```powershell
+# SET new PITR backup retention period for ALL active databases
+# Valid backup retention must be between 1 and 35 days
+Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 1
+```
+
+若要为**单个已删除**的 SQL 托管实例数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+ 
+```powershell
+# SET new PITR backup retention on an individual deleted database
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database.
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+若要更改**所有已删除**SQL 托管实例数据库的 PITR 备份保留，请使用以下 PowerShell 示例。
+
+```powershell
+# SET new PITR backup retention for ALL deleted databases
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+零（0）天保留期表示备份立即被删除并且不再保留给已删除的数据库。
+一旦已删除的数据库的 PITR 备份保留期减少，就不能再增加了。
+
+---
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-rest-api"></a>使用 REST API 更改 PITR 备份保留期
 
@@ -260,3 +305,4 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 - 获取有关如何[使用 PowerShell 将数据库还原到某个时间点](scripts/restore-database-powershell.md)的详细信息。
 - 有关如何使用 Azure 门户配置和管理 Azure Blob 存储中的自动备份的长期保留，并从这些备份进行还原的信息，请参阅[使用 Azure 门户管理长期备份保留](long-term-backup-retention-configure.md)。
 - 有关如何使用 PowerShell 配置和管理 Azure Blob 存储中的自动备份的长期保留，并从这些备份进行还原的信息，请参阅[使用 PowerShell 管理长期备份保留](long-term-backup-retention-configure.md)。
+- 若要了解如何优化备份存储的保留期和 Azure SQL 托管实例的成本，请参阅[托管实例的微调备份存储成本](https://aka.ms/mi-backup-tuning)。

@@ -4,11 +4,12 @@ description: Azure Monitor 的参考了解 Azure 资源日志支持的服务和�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418587"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515387"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure 资源日志支持的类别
 
@@ -104,7 +105,7 @@ ms.locfileid: "84418587"
 |WebApplicationFirewallLogs|Web 应用程序防火墙日志|
 
 
-## <a name="microsoftcdnprofiles"></a>Microsoft Cdn/配置文件
+## <a name="microsoftcdnprofiles"></a>Microsoft.Cdn/profiles
 
 |Category|类别显示名称|
 |---|---|
@@ -376,9 +377,9 @@ ms.locfileid: "84418587"
 |AppBrowserTimings|浏览器计时|
 |AppDependencies|依赖项|
 |AppEvents|事件|
-|AppExceptions|例外|
+|AppExceptions|异常|
 |AppMetrics|指标|
-|AppPageViews|页面查看次数|
+|AppPageViews|页面视图|
 |AppPerformanceCounters|性能计数器|
 |AppRequests|Requests|
 |AppSystemEvents|系统事件|
@@ -711,6 +712,6 @@ ms.locfileid: "84418587"
 ## <a name="next-steps"></a>后续步骤
 
 * [详细了解资源日志](../../azure-monitor/platform/platform-logs-overview.md)
-* [将资源日志流式传输到**事件中心**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [使用 Azure Monitor REST API 更改资源日志诊断设置](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [使用 Log Analytics 分析 Azure 存储中的日志](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [将资源日志流式传输到**事件中心**](./resource-logs.md#send-to-azure-event-hubs)
+* [使用 Azure Monitor REST API 更改资源日志诊断设置](/rest/api/monitor/diagnosticsettings)
+* [使用 Log Analytics 分析 Azure 存储中的日志](./resource-logs.md#send-to-log-analytics-workspace)

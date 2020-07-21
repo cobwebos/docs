@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457257"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515523"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
 
@@ -49,7 +49,7 @@ Azure Monitor 中的日志存储在基于 [Azure 数据资源管理器](/azure/d
 > 区分 Azure Monitor 日志和 Azure 中的日志数据源很重要。 例如，Azure 中的订阅级别事件将写入[活动日志](platform-logs-overview.md)，你可以从 Azure Monitor 菜单查看该日志。 大多数资源将操作信息写入[资源日志](platform-logs-overview.md)，你可以将其转发到不同的位置。 Azure Monitor 日志是一种日志数据平台，它收集活动日志和资源日志以及其他监视数据，以便对整个资源集进行深入分析。
 
 
- 可以在 Azure 门户中配合 [Log Analytics](../log-query/portals.md) 以交互方式使用[日志查询](../log-query/log-query-overview.md)，或者将结果添加到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)，以结合其他数据生成可视化效果。 还可以创建[日志警报](alerts-log.md)，以根据计划查询的结果触发警报。
+ 可以在 Azure 门户中配合 [Log Analytics](../log-query/log-query-overview.md) 以交互方式使用[日志查询](../log-query/log-query-overview.md)，或者将结果添加到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)，以结合其他数据生成可视化效果。 还可以创建[日志警报](alerts-log.md)，以根据计划查询的结果触发警报。
 
 在 [Azure Monitor 中的日志](data-platform-logs.md)中详细了解 Azure Monitor 日志，包括其数据源。
 
@@ -81,7 +81,7 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 
 
 ## <a name="stream-data-to-external-systems"></a>将数据流式传输到外部系统
-除了使用 Azure 中的工具分析监视数据以外，可能还需要将这些数据转发到外部工具，例如某个安全信息和事件管理 (SIEM) 产品。 通常，这种转发是通过 [Azure 事件中心](/azure/event-hubs/)直接从受监视资源完成的。 可将某些源配置为直接向事件中心发送数据，同时，可以使用另一个进程（例如逻辑应用）来检索所需的数据。 有个详细信息，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](stream-monitoring-data-event-hubs.md)。
+除了使用 Azure 中的工具分析监视数据以外，可能还需要将这些数据转发到外部工具，例如某个安全信息和事件管理 (SIEM) 产品。 通常，这种转发是通过 [Azure 事件中心](../../event-hubs/index.yml)直接从受监视资源完成的。 可将某些源配置为直接向事件中心发送数据，同时，可以使用另一个进程（例如逻辑应用）来检索所需的数据。 有个详细信息，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](stream-monitoring-data-event-hubs.md)。
 
 
 

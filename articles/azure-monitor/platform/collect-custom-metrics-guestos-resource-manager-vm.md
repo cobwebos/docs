@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650539"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515778"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 对于来自 Azure 虚拟机来宾 OS 的性能数据，不会像收集其他[平台指标](../insights/monitor-azure-resource.md#monitoring-data)一样自动收集其性能数据。 安装 Azure Monitor [诊断扩展](diagnostics-extension-overview.md)以将来宾 OS 指标收集到指标数据库中，以便该数据库可用于 Azure Monitor 指标的所有功能，包括准实时警报、制图、路由和来自 REST API 的访问。 本文介绍使用资源管理器模板将 Windows 虚拟机的来宾 OS 性能指标发送到指标数据库的过程。 
@@ -24,9 +25,9 @@ ms.locfileid: "83650539"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
+- 你的订阅必须已注册到 [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md)。
 
-- 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+- 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
 - VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。 
 
@@ -285,4 +286,3 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[自定义指标](metrics-custom-overview.md)。
-

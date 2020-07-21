@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80366489"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510423"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -46,7 +46,7 @@ ms.locfileid: "80366489"
 | CentOS | CentOS 6，CentOS 7 |
 | Debian | Debian 9 |
 | openSUSE | openSUSE Leap 42.3 |
-| RedHat Enterprise Linux 7 | RHEL 6 和 RHEL 7 | 
+| RedHat Enterprise Linux | RHEL 6 和 RHEL 7 | 
 | SUSE Linux 企业服务器 | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04 和 Ubuntu Server 18.04 |
 
@@ -109,7 +109,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-成功将扩展安装到 VM 后，会显示 "*成功*" 的*provisioningState* 。 VM 需要运行的 VM 代理来安装扩展。 有关详细信息，请参阅[VM 代理概述](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
+成功将扩展安装到 VM 后，会显示 "*成功*" 的*provisioningState* 。 VM 需要运行的 VM 代理来安装扩展。 有关详细信息，请参阅[VM 代理概述](../extensions/agent-windows.md)。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 
@@ -138,7 +138,7 @@ az role assignment create \
 
 若要详细了解如何使用 RBAC 来管理对 Azure 订阅资源的访问权限，请参阅 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure 门户](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) 的使用指南。
 
-也可对 Azure AD 进行配置，要求特定的用户通过多重身份验证登录到 Linux 虚拟机。 有关详细信息，请参阅[云中的 Azure 多重身份验证入门](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)。
+也可对 Azure AD 进行配置，要求特定的用户通过多重身份验证登录到 Linux 虚拟机。 有关详细信息，请参阅[云中的 Azure 多重身份验证入门](../../active-directory/authentication/howto-mfa-getstarted.md)。
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>登录到 Linux 虚拟机
 

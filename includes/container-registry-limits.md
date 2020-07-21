@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242231"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512601"
 ---
 | 资源 | 基本 | Standard | Premium |
 |---|---|---|---|
@@ -28,12 +28,13 @@ ms.locfileid: "85242231"
 | 异地复制 | 空值 | 空值 | [支持][geo-replication] |
 | 内容信任 | 空值 | 空值 | [支持][content-trust] |
 | 具有专用终结点的专用链接 | 空值 | 空值 | [支持][plink] |
+| &bull;专用终结点 | 空值 | 空值 | 10 |
 | 服务终结点 VNet 访问 | 空值 | 空值 | [预览][vnet] |
 | 客户管理的密钥 | 空值 | 空值 | [支持][cmk] |
 | 存储库范围内的权限 | 空值 | 空值 | [预览][token]|
 | &bull; 令牌 | 空值 | 空值 | 20,000 |
-| &bull; 范围映射 | 空值 | 空值 | 20,000 |
-| &bull; 每个范围映射的存储库 | 不适用 | 不适用 | 500 |
+| &bull; 范围映射 | 不可用 | 不可用 | 20,000 |
+| &bull; 每个范围映射的存储库 | 不可用 | 不可用 | 500 |
 
 
 每个层的每日费率中包含<sup>1</sup>个存储。 对于其他存储，将按每个 GiB 支付额外的每日费率，最高可达存储限制。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。

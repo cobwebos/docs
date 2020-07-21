@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2bf0443465f0cfd98f8bce93e60f9007ac7503be
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042062"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510967"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>VM 预配和云初始化疑难解答
 
@@ -21,17 +21,17 @@ ms.locfileid: "86042062"
 
 有关设置的问题的一些示例：
 - VM 在 "正在创建" 上停滞了40分钟，并且 VM 创建标记为失败
-- 不处理 CustomData
+- `CustomData`不处理
 - 临时磁盘装载失败
 - 用户未创建，或存在用户访问问题
 - 未正确设置网络
 - 交换文件或分区故障
 
-本文逐步说明如何排查云初始化问题。 有关更深入的详细信息，请参阅[云初始化深入探讨](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive)。
+本文逐步说明如何排查云初始化问题。 有关更深入的详细信息，请参阅[云初始化深入探讨](./cloud-init-deep-dive.md)。
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>步骤1：在不 customData 的情况下测试部署
+## <a name="step-1-test-the-deployment-without-customdata"></a>步骤1：测试部署，无需`customData`
 
-创建 VM 时，云初始化可以接受传递给它的 customData。 首先，应确保这不会导致任何部署问题。 尝试预配 VM，无需传入任何配置。 如果发现 VM 无法预配，请继续执行下面的步骤，如果发现未应用正在传递的配置，请转到[步骤 4]()。 
+`customData`创建 VM 时，可以接受将其传递给它的云初始化。 首先，应确保这不会导致任何部署问题。 尝试预配 VM，无需传入任何配置。 如果发现 VM 无法预配，请继续执行下面的步骤，如果发现未应用正在传递的配置，请转到[步骤 4]()。 
 
 ## <a name="step-2-review-image-requirements"></a>步骤2：查看映像要求
 VM 设置失败的主要原因是操作系统映像不满足在 Azure 上运行的先决条件。 尝试在 Azure 中预配映像之前，请确保已正确准备好映像。 
@@ -39,15 +39,16 @@ VM 设置失败的主要原因是操作系统映像不满足在 Azure 上运行�
 
 以下文章说明了准备 Azure 中支持的各种 linux 分发的步骤：
 
-- [基于 CentOS 的分发版](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [其他：非认可的分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [基于 CentOS 的分发版](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES 和 openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
+- [其他：非认可的分发版](create-upload-generic.md)
 
-对于[支持的 azure 云初始化映像](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)，Linux 分发版已经具备了所有必需的包和配置，以便在 Azure 中正确预配映像。 如果发现 VM 未能从自己的特选映像创建，请尝试使用可选的 customData 为云初始化配置的受支持的 Azure Marketplace 映像。 如果 customData 使用 Azure Marketplace 映像正常工作，则可能是特选映像出现问题。
+对于[支持的 azure 云初始化映像](./using-cloud-init.md)，Linux 分发版已经具备了所有必需的包和配置，以便在 Azure 中正确预配映像。 如果发现 VM 未能从自己的特选映像创建，请尝试使用可选的已配置为进行云初始化的受支持的 Azure Marketplace 映像 `customData` 。 如果 `customData` 使用 Azure Marketplace 映像可以正常工作，则可能是特选映像出现问题。
 
 ## <a name="step-3-collect--review-vm-logs"></a>步骤3：收集 & 查看 VM 日志
 
@@ -55,11 +56,11 @@ VM 设置失败的主要原因是操作系统映像不满足在 Azure 上运行�
 
 VM 运行时，你将需要 VM 中的日志，以了解预配失败的原因。  若要了解 VM 设置失败的原因，请不要停止 VM。 让 VM 保持运行状态。 若要收集日志，需要使发生故障的 VM 处于运行状态。 若要收集日志，请使用以下方法之一：
 
-- [串行控制台](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+- [串行控制台](./serial-console-grub-single-user-mode.md)
 
-- 在创建 VM 之前[启用启动诊断](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics)，然后在启动过程中[查看](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics)。
+- 在创建 VM 之前[启用启动诊断](./tutorial-monitor.md#enable-boot-diagnostics)，然后在启动过程中[查看](./tutorial-monitor.md#view-boot-diagnostics)。
 
-- [运行 AZ VM Repair](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands)附加并装载 OS 磁盘，这将允许你收集以下日志：
+- [运行 AZ VM Repair](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md)附加并装载 OS 磁盘，这将允许你收集以下日志：
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -107,7 +108,7 @@ Stderr: mount: unknown filesystem type 'udf'
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-如果有权访问[串行控制台](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)，可以尝试重新运行 cloud init 正在尝试运行的命令。
+如果有权访问[串行控制台](./serial-console-grub-single-user-mode.md)，可以尝试重新运行 cloud init 正在尝试运行的命令。
 
 `/var/log/cloud-init.log`还可以在/etc/cloud/cloud.cfg.d/05_logging 中重新配置日志记录。 有关云初始化日志记录的详细信息，请参阅[云初始化文档](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)。 
 
@@ -132,4 +133,4 @@ Stderr: mount: unknown filesystem type 'udf'
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你仍然无法隔离云初始化未运行配置的原因，你需要更密切地了解每个云初始化阶段中发生的情况，以及模块运行的时间。 有关详细信息，请参阅深入了解[云初始化配置](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive)。 
+如果你仍然无法隔离云初始化未运行配置的原因，你需要更密切地了解每个云初始化阶段中发生的情况，以及模块运行的时间。 有关详细信息，请参阅深入了解[云初始化配置](./cloud-init-deep-dive.md)。 

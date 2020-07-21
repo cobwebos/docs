@@ -3,15 +3,15 @@ title: 示例 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了 GitHub 上 Azure 事件中心的示例列表。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9529b11d15460c713a0ae14f3bccfa1c2684a3ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d7a40e399482af0ad3a501918a7e3307d724c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315505"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512293"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>带有 Azure 事件中心示例的 Git 存储库 
-可以在 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) 上找到事件中心示例。 这些示例演示了 [Azure 事件中心](/azure/event-hubs/)的主要功能。 本文对可用示例进行了分类和介绍，每个示例均具有链接。
+可以在 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) 上找到事件中心示例。 这些示例演示了 [Azure 事件中心](./index.yml)的主要功能。 本文对可用示例进行了分类和介绍，每个示例均具有链接。
 
 ## <a name="net-samples"></a>.NET 示例
 
@@ -57,6 +57,6 @@ ms.locfileid: "85315505"
 ## <a name="next-steps"></a>后续步骤
 可在以下文章中了解有关事件中心的详细信息：
 
-- [事件中心概述](event-hubs-what-is-event-hubs.md)
+- [事件中心概述](./event-hubs-about.md)
 - [事件中心功能](event-hubs-features.md)
 - [事件中心常见问题](event-hubs-faq.md)

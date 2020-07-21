@@ -3,12 +3,12 @@ title: 使用 MABS 备份 Hyper-V 虚拟机
 description: 本文包含使用 Microsoft Azure 备份 Server （MABS）对虚拟机进行备份和恢复的过程。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420403"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514539"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>使用 Azure 备份服务器备份 Hyper-V 虚拟机
 
@@ -155,4 +155,4 @@ MABS 按如下步骤使用 VSS 执行备份。 为清楚起见，本说明中的
 
 ## <a name="next-steps"></a>后续步骤
 
-[从 Azure 备份服务器恢复数据](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)
+[从 Azure 备份服务器恢复数据](./backup-azure-alternate-dpm-server.md)

@@ -10,11 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79458063"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513013"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 快速入门
 
@@ -25,7 +26,7 @@ ms.locfileid: "79458063"
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 1. 从 Azure 门户的顶部导航开始**Cloud Shell** 。 <br>
-![](media/quickstart/shell-icon.png)
+![显示如何在 Azure 门户中启动 Azure Cloud Shell 的屏幕截图。](media/quickstart/shell-icon.png)
 
 2. 选择用于创建存储帐户和 Microsoft Azure 文件共享的订阅。
 3. 选择“创建存储”
@@ -35,7 +36,7 @@ ms.locfileid: "79458063"
 
 ### <a name="select-the-bash-environment"></a>选择 Bash 环境
 检查 shell 窗口左侧的环境下拉列表是否显示 `Bash`。 <br>
-![](media/quickstart/env-selector.png)
+![显示如何为 Azure Cloud Shell 选择 Bash 环境的屏幕截图。](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>设置订阅
 1. 列出可以访问的订阅。
@@ -43,10 +44,11 @@ ms.locfileid: "79458063"
    az account list
    ```
 
-2. 设置首选订阅： <br>
-```azurecli-interactive
-az account set --subscription 'my-subscription-name'
-```
+2. 设置首选订阅：
+
+   ```azurecli-interactive
+   az account set --subscription 'my-subscription-name'
+   ```
 
 > [!TIP]
 > 将使用 `/home/<user>/.azure/azureProfile.json` 为将来的会话记住订阅。
@@ -72,7 +74,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ### <a name="ssh-into-your-linux-vm"></a>通过 SSH 连接到 Linux VM
 1. 在 Azure 门户搜索栏中搜索 VM 名称。
 2. 单击“连接”以获取 VM 名称和公共 IP 地址。 <br>
-   ![](media/quickstart/sshcmd-copy.png)
+   ![显示如何使用 S H 连接到 Linux V M 的屏幕截图。](media/quickstart/sshcmd-copy.png)
 
 3. 使用 `ssh` 命令通过 SSH 连接到 VM。
    ```
@@ -80,7 +82,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
    ```
 
 建立 SSH 连接后，应看到 Ubuntu 欢迎提示。 <br>
-![](media/quickstart/ubuntu-welcome.png)
+![建立 S H 连接后，显示 Ubuntu 初始化和欢迎提示的屏幕截图。](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>清理 
 1. 退出 SSH 会话。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555964"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511324"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>将 Fortinet 连接到 Azure Sentinel
 
@@ -36,12 +36,14 @@ ms.locfileid: "85555964"
 
 1. 在 Fortinet 设备上打开 CLI，并运行以下命令：
 
-        config log syslogd setting
-        set format cef
-        set port 514
-        set server <ip_address_of_Receiver>
-        set status enable
-        end
+    ```console
+    config log syslogd setting
+    set format cef
+    set port 514
+    set server <ip_address_of_Receiver>
+    set status enable
+    end
+    ```
 
     - 将服务器**ip 地址**替换为代理的 ip 地址。
     - 将**syslog 端口**设置为**514**或在代理上设置的端口。

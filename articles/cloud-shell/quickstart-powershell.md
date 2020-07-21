@@ -9,11 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686012"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512973"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -26,11 +27,11 @@ ms.locfileid: "84686012"
 
 1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮****
 
-   ![](media/quickstart-powershell/shell-icon.png)
+   ![显示如何从 Azure 门户启动 Azure Cloud Shell 的屏幕截图。](media/quickstart-powershell/shell-icon.png)
 
 2. 在下拉列表中选择 PowerShell 环境，随后会进入 Azure 驱动器 `(Azure:)`
 
-   ![](media/quickstart-powershell/environment-ps.png)
+   ![显示如何为 Azure Cloud Shell 选择 PowerShell 环境的屏幕截图。](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>运行 PowerShell 命令
 

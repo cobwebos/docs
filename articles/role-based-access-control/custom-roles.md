@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a30ea70c623c8456ae97c8ca9475e4989784edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d973cf47ed691914b22d62e1a99315c6ea9183d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995848"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511596"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
 
@@ -125,6 +126,30 @@ ms.locfileid: "82995848"
 | `DataActions`</br>`dataActions` | 否 | String[] | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 如果使用 `DataActions` 来创建自定义角色，则无法在管理组范围内分配该角色。 有关详细信息，请参阅 [DataActions](role-definitions.md#dataactions)。 |
 | `NotDataActions`</br>`notDataActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 有关详细信息，请参阅 [NotDataActions](role-definitions.md#notdataactions)。 |
 | `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 一个字符串数组，指定自定义角色的可分配范围。 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。 有关详细信息，请参阅 [AssignableScopes](role-definitions.md#assignablescopes)。 |
+
+## <a name="wildcard-permissions"></a>通配符权限
+
+`Actions`、 `NotActions` 、 `DataActions` 和 `NotDataActions` 支持通配符（ `*` ）以定义权限。 通配符（ `*` ）将权限扩展到与所提供的操作字符串匹配的所有内容。 例如，假设你要添加与 Azure 成本管理和导出相关的所有权限。 可以添加所有这些操作字符串：
+
+```
+Microsoft.CostManagement/exports/action
+Microsoft.CostManagement/exports/read
+Microsoft.CostManagement/exports/write
+Microsoft.CostManagement/exports/delete
+Microsoft.CostManagement/exports/run/action
+```
+
+只需添加通配符字符串，而不是添加所有这些字符串。 例如，以下通配符字符串等效于前面的五个字符串。 此通配符权限还包括将来可能要添加的任何导出权限。
+
+```
+Microsoft.CostManagement/exports/*
+```
+
+你还可以在字符串中包含多个通配符。 例如，以下字符串表示对成本管理的所有查询权限。
+
+```
+Microsoft.CostManagement/*/query/*
+```
 
 ## <a name="steps-to-create-a-custom-role"></a>创建自定义角色的步骤
 

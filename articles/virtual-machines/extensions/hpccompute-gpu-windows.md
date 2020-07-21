@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: a30a6b3daaf1f334c7e61f93aaab6fc717e18063
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8390f3273c7c8b5ca3b97d5da5184ab784b15c4b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676533"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511035"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>适用于 Windows 的 NVIDIA GPU 驱动程序扩展
 
@@ -25,7 +26,7 @@ ms.locfileid: "84676533"
 
 此扩展在 Windows N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=874330)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
-[此处](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)提供了有关手动安装驱动程序和当前支持的版本的说明。
+[此处](../windows/n-series-driver-setup.md)提供了有关手动安装驱动程序和当前支持的版本的说明。
 此扩展也可用于在 [Linux N 系列 VM](hpccompute-gpu-linux.md) 上安装 NVIDIA GPU 驱动程序。
 
 ## <a name="prerequisites"></a>先决条件
@@ -84,7 +85,7 @@ ms.locfileid: "84676533"
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
 
-虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-manager-template-child-resource.md)。 
+虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
 以下示例假定扩展嵌套在虚拟机资源内。 嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。
 
@@ -175,4 +176,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 ## <a name="next-steps"></a>后续步骤
 有关扩展的详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](features-windows.md)。
 
-有关 N 系列 VM 的详细信息，请参阅 [GPU 优化虚拟机大小](../windows/sizes-gpu.md)。
+有关 N 系列 VM 的详细信息，请参阅 [GPU 优化虚拟机大小](../sizes-gpu.md)。

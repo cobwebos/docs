@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985303"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514709"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ Azure SQL [透明数据加密 (TDE)](/sql/relational-databases/security/encrypti
 
 - **unwrapKey** - 用于取消保护（解密）DEK
 
-Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../../azure-monitor/insights/azure-key-vault.md)，以便以后可以审核这些事件。
+Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../../azure-monitor/insights/key-vault-insights-overview.md)，以便以后可以审核这些事件。
 
 将服务器配置为使用 AKV 中的 TDE 保护器后，该服务器会将每个启用了 TDE 的数据库的 DEK 发送到 Key Vault 用于加密。 Key Vault 返回已加密的 DEK，该 DEK 随后将存储在用户数据库中。
 

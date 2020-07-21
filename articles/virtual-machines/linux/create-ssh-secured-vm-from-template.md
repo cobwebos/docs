@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c77864acd53976b9108a77198f645c419763b21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28c688526bccc411bce6f4118dc55160083deba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414447"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510916"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>如何使用 Azure Resource Manager 模板创建 Linux 虚拟机
 
@@ -55,7 +56,7 @@ az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-d
 
 下面是一些其他资源：
 
-- 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](/azure/azure-resource-manager/)。
+- 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](../../azure-resource-manager/index.yml)。
 - 若要查看 Azure 虚拟机架构，请参阅[azure 模板参考](/azure/templates/microsoft.compute/allversions)。
 - 若要查看更多的虚拟机模板示例，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
 

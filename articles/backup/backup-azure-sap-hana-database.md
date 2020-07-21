@@ -1,21 +1,22 @@
 ---
-title: 通过 Azure 备份将 SAP HANA 数据库备份到 Azure
-description: 本文介绍如何使用 Azure 备份服务来将 SAP HANA 数据库备份到 Azure 虚拟机。
+title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure
+description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273ba40feee01c2dd2bfe68d1660a5c94f254062
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667312"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513823"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
-SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO) 和长期保留。 可以使用 [Azure 备份](backup-overview.md)来备份 Azure 虚拟机上运行的 SAP HANA 数据库。
+SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) 和长期保留。 可以使用 [Azure 备份](backup-overview.md)来备份在 Azure 虚拟机 (VM) 上运行的 SAP HANA 数据库。
 
-本文介绍如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
+本文展示了如何将在 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 
-本文介绍如何执行以下操作：
+本文将指导如何进行以下操作：
 > [!div class="checklist"]
 >
 > * 创建并配置保管库
@@ -24,10 +25,10 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 > * 运行按需备份作业
 
 >[!NOTE]
->RHEL（7.4、7.6、7.7 或 8.1）的 SAP HANA 备份预览[入门](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)。 如需深入咨询，请通过 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 联系我们。
+>RHEL（7.4、7.6、7.7 或 8.1）的 SAP HANA 备份预览[入门](./tutorial-backup-sap-hana-db.md)。 如需深入咨询，请通过 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 联系我们。
 
 >[!NOTE]
->Azure VM 中的 SQL Server 软删除和 Azure VM 工作负荷中的 SAP HANA 软删除现以预览版形式提供。<br>
+>**针对 Azure VM 中 SQL 服务器的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除**现已推出预览版。<br>
 >若要注册预览版，请向我们写信 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
 ## <a name="prerequisites"></a>先决条件
@@ -43,8 +44,8 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 | **选项**                        | **优点**                                               | **缺点**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 专用终结点                 | 允许通过虚拟网络中的专用 IP 进行备份  <br><br>   提供网络和保管库端的精细控制 | 产生标准专用终结点[开销](https://azure.microsoft.com/pricing/details/private-link/) |
-| NSG 服务标记                  | 由于范围更改会自动合并，因此更易于管理   <br><br>   无额外成本 | 只可用于 NSG  <br><br>    提供对整个服务的访问权限 |
-| Azure 防火墙 FQDN 标记          | 自动管理必需的 FQDN，因此更易于管理 | 仅可与 Azure 防火墙配合使用                         |
+| NSG 服务标记                  | 由于范围更改会自动合并，因此管理变得更容易   <br><br>   无额外成本 | 只可用于 NSG  <br><br>    提供对整个服务的访问 |
+| Azure 防火墙 FQDN 标记          | 自动管理必需的 FQDN，因此更易于管理 | 只可用于 Azure 防火墙                         |
 | 允许访问服务 FQDN/IP | 无额外成本   <br><br>  适用于所有网络安全设备和防火墙 | 可能需要访问一组广泛的 IP 或 FQDN   |
 | 使用 HTTP 代理                 | 对 VM 进行单点 Internet 访问                       | 通过代理软件运行 VM 带来的额外成本         |
 
@@ -52,17 +53,17 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 
 #### <a name="private-endpoints"></a>专用终结点
 
-使用专用终结点，可以从虚拟网络内的服务器安全地连接到恢复服务保管库。 专用终结点为保管库使用 VNET 地址空间中的 IP。 虚拟网络中的资源与保管库之间的网络流量将通过虚拟网络和 Microsoft 主干网络上的专用链接传输。 这样就不会从公共 Internet 泄露信息。 在[此处](https://docs.microsoft.com/azure/backup/private-endpoints)详细了解 Azure 备份的专用终结点。
+使用专用终结点，可以从虚拟网络内的服务器安全地连接到恢复服务保管库。 专用终结点为保管库使用 VNET 地址空间中的 IP。 虚拟网络中的资源与保管库之间的网络流量将通过虚拟网络和 Microsoft 主干网络上的专用链接传输。 这样就不会从公共 Internet 泄露信息。 在[此处](./private-endpoints.md)详细了解 Azure 备份的专用终结点。
 
 #### <a name="nsg-tags"></a>NSG 标记
 
-如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD 和 Azure 存储创建类似的 [NSG 规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，以便在连接后进行身份验证和数据传输。  以下步骤介绍了为 Azure 备份标记创建规则的过程：
+如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD 和 Azure 存储创建类似的 [NSG 规则](../virtual-network/security-overview.md#service-tags)，以便在连接后进行身份验证和数据传输。  以下步骤介绍了为 Azure 备份标记创建规则的过程：
 
-1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
+1. 在“所有服务”中，转到“网络安全组”并选择网络安全组。 
 
 1. 在“设置”下选择“出站安全规则”。 
 
-1. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
+1. 选择“添加”  。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
 
 1. 单击“添加”，保存新创建的出站安全规则。
 
@@ -70,7 +71,7 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 
 #### <a name="azure-firewall-tags"></a>Azure 防火墙标记
 
-如果使用 Azure 防火墙，请使用 *AzureBackup* [Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)创建应用程序规则。 这允许对 Azure 备份进行所有出站访问。
+如果使用 Azure 防火墙，请使用 *AzureBackup* [Azure 防火墙 FQDN 标记](../firewall/fqdn-tags.md)创建应用程序规则。 这允许对 Azure 备份进行所有出站访问。
 
 #### <a name="allow-access-to-service-ip-ranges"></a>允许访问服务 IP 范围
 
@@ -84,7 +85,7 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 | -------------- | ------------------------------------------------------------ |
 | Azure 备份  | `*.backup.windowsazure.com`                             |
 | Azure 存储 | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | 根据[这篇文章](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)，允许访问第 56 和 59 节下的 FQDN |
+| Azure AD      | 根据[这篇文章](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)，允许访问第 56 和 59 节下的 FQDN |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP 代理服务器路由流量
 
@@ -97,13 +98,13 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 1. 在保管库中，单击“开始使用”中的“备份” 。 在“工作负荷在哪里运行?”中，选择“Azure VM 中的 SAP HANA” 。
 2. 单击“启动发现”。 这会开始在保管库区域中发现未受保护的 Linux VM。
 
-   * 发现后，未受保护的 VM 应会按名称和资源组列在门户中。
-   * 如果某个 VM 未按预期列出，请检查它是否已保管库中备份。
-   * 可能有多个 VM 同名，但它们属于不同的资源组。
+   * 在发现后，未受保护的 VM 将显示在门户中，按名称和资源组列出。
+   * 如果某个 VM 未按预期列出，请检查它是否已在保管库中备份。
+   * 可能有多个 VM 同名，但属于不同的资源组。
 
 3. 在“选择虚拟机”中，单击脚本下载链接。此脚本可为 Azure 备份服务提供访问 SAP HANA VM 的权限以进行数据库发现。
-4. 在每个托管要备份的 SAP HANA 数据库的 VM 上运行此脚本。
-5. 在 VM 上运行此脚本后，在“选择虚拟机”中选择该 VM。 然后单击“发现数据库”。
+4. 在托管要备份的 SAP HANA 数据库的每个 VM 上运行此脚本。
+5. 在 VM 上运行此脚本后，在“选择虚拟机”中选择 VM。 然后单击“发现数据库”。
 6. Azure 备份可发现该 VM 上的所有 SAP HANA 数据库。 在发现期间，Azure Backup 将 VM 注册到保管库，并在该 VM 上安装扩展。 不会在数据库中安装任何代理。
 
     ![发现 SAP HANA 数据库](./media/backup-azure-sap-hana-database/hana-discover.png)
@@ -118,7 +119,7 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 2. 在“选择要备份的项”中，选择要保护的所有数据库，然后选择“确定”。
 
     ![选择要备份的项](./media/backup-azure-sap-hana-database/select-items.png)
-3. 在“备份策略” > “选择备份策略”中，按照以下说明，为数据库创建一个新的备份策略。
+3. 在“备份策略” > “选择备份策略”中，按照下面的说明，为数据库创建一个新的备份策略。 
 
     ![选择备份策略](./media/backup-azure-sap-hana-database/backup-policy.png)
 4. 创建策略后，在“备份”菜单中单击“启用备份” 。
@@ -144,16 +145,16 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 
    ![输入策略名称](./media/backup-azure-sap-hana-database/policy-name.png)
 2. 在“完整备份策略”中选择“备份频率”，然后选择“每日”或“每周”。   
-   * **每日**：请选择备份作业开始时的小时和时区。
-       * 必须运行完整备份。 无法关闭该选项。
+   * **每日**：选择开始备份作业的小时和时区。
+       * 你必须运行完整备份。 无法关闭此选项。
        * 单击“完整备份”以查看策略。
        * 对于每日完整备份，无法创建差异备份。
-   * 每周：选择备份作业运行时的星期、小时和时区。
+   * **每周**：选择运行备份作业的星期、小时和时区。
 
    ![选择备份频率](./media/backup-azure-sap-hana-database/backup-frequency.png)
 
 3. 在“保持期”中，对完整备份配置保留设置。
-    * 默认情况下，选择所有选项。 清除你不想使用的所有保持期限制，并设置要使用的选项。
+    * 默认情况下将选择所有选项。 清除你不想使用的所有保持期限制，并设置要使用的选项。
     * 任何备份类型（完整/差异/日志）的最短保持期均为七天。
     * 恢复点已根据其保留范围标记为保留。 例如，如果选择每日完整备份，则每天只触发一次完整备份。
     * 根据每周保持期和设置，将会标记并保留特定日期的备份。
@@ -172,8 +173,8 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 
 7. 单击“确定”保存策略，并返回“备份策略”主菜单 。
 8. 请选择“日志备份”，以添加事务日志备份策略。
-    * 在“日志备份”中，选择“启用”。   由于 SAP HANA 管理所有日志备份，此类备份无法被禁用。
-    * 设置频率和保留控件。
+    * 在“日志备份”中，选择“启用”。   由于 SAP HANA 管理所有日志备份，因此无法禁用此功能。
+    * 设置频率和保留期控制。
 
     > [!NOTE]
     > 日志备份仅在成功完成一次完整备份之后进行。
@@ -182,33 +183,35 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 10. 完成定义备份策略后，单击“确定”。
 
 > [!NOTE]
-> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将保留，直到最后一个日志备份的保留期结束。 这可能意味着完整备份会保留一段额外的时间，以确保所有日志都可以恢复。 假设用户具有每周完整备份、每日差异和 2 小时日志。 所有这些备份都将保留 30 天。 不过，只有在下一个完整备份可用后（即 30 + 7 天后），才会真正清除/删除每周完整备份。 例如，每周完整备份在 11 月 16 日执行。 根据保留策略，它应保留到12月16日。 此完整备份的最后一次日志备份在下一次计划完整备份（11 月 22 日）之前发生。 在此日志有效期在 12 月 22 日截止之前，不能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份将保留到 12 月 22 日。
+> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将一直保留到最后一个日志备份的保留期结束为止。 这可能意味着完整备份会保留一段额外的时间，以确保所有日志都可以恢复。 假设用户有每周完整备份、每日差异备份和 2 小时日志备份。 所有这些备份都将保留 30 天。 但是，只有在下一个完整备份可用后（即 30 + 7 天后），才能真正清除/删除这个每周完整备份。 假设每周完整备份发生在 11 月 16 日。 根据保留策略，它应保留到 12 月 16 日。 该完整备份的最后一次日志备份发生在下一次计划的完整备份之前，即 11 月 22 日。 必须等到 12 月 22 日此日志备份可用后，才能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份将保留到 12 月 22 日。
 
 ## <a name="run-an-on-demand-backup"></a>运行按需备份
 
-备份根据策略计划运行。 可以按需运行备份，如下所示：
+备份按照策略计划运行。 可以如下所述运行按需备份：
 
 1. 在保管库菜单中，单击“备份项”。
 2. 在“备份项”中，选择运行 SAP HANA 数据库的 VM，然后单击“立即备份”。
-3. 在 "**立即备份**" 中，选择要执行的备份类型。 。 此备份将根据与此备份项关联的策略进行保留。
-4. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于数据库的大小。
+3. 在“立即备份”中，选择要执行的备份的类型。 。 此备份将根据与此备份项关联的策略进行保留。
+4. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于你的数据库的大小。
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行 SAP HANA Studio 备份
 
-如果要对正在使用 Azure 备份备份的数据库执行本地备份（使用 HANA Studio），请执行以下操作：
+如果要使用 Azure 备份创建正在备份的数据库的本地备份（使用 HANA Studio），请执行以下操作：
 
-1. 等待数据库的所有完整备份或日志备份完成。 检查 SAP HANA Studio / Cockpit 中的状态。
-2. 禁用日志备份，并将备份目录设置为相关数据库的文件系统。
-3. 为此，请双击“systemdb” > “配置” > “选择数据库” > “筛选器(日志)”   。
-4. 将 enable_auto_log_backup 设置为“否” 。
-5. 将 log_backup_using_backint 设置为 False 。
-6. 对数据库执行按需完整备份。
-7. 等待完整备份和目录备份完成。
-8. 将以前的设置还原为适用于 Azure 的设置：
-    * 将 enable_auto_log_backup 设置为“是” 。
-    * 将 log_backup_using_backint 设置为 True 。
+1. 等待数据库的所有完整备份或日志备份完成。 在 SAP HANA Studio / Cockpit 中检查状态。
+1. 禁用日志备份，并将备份目录设置为相关数据库的文件系统。
+1. 为此，请双击“systemdb” > “配置” > “选择数据库” > “筛选器(日志)”。   
+1. 将 **enable_auto_log_backup** 设置为 **No**。
+1. 将 **log_backup_using_backint** 设置为 **False**。
+1. 将**catalog_backup_using_backint**设置为**False**。
+1. 创建数据库的完整备份。
+1. 等待完整备份和目录备份完成。
+1. 将前面的设置恢复为 Azure 的设置：
+    * 将 **enable_auto_log_backup** 设置为 **Yes**。
+    * 将 **log_backup_using_backint** 设置为 **True**。
+    * 将**catalog_backup_using_backint**设置为**True**。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[还原在 Azure VM 上运行的 SAP HANA 数据库](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
-* 了解如何[管理使用 Azure 备份进行备份的 SAP HANA 数据库](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)
+* 了解如何[还原在 Azure VM 上运行的 SAP HANA 数据库](./sap-hana-db-restore.md)
+* 了解如何[管理使用 Azure 备份进行备份的 SAP HANA 数据库](./sap-hana-db-manage.md)

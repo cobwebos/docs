@@ -9,13 +9,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: b8d01a383e816bfc73413d21e9cc8d51d326ab14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ced66c1d3023b7edb3220b45e24d3eb54098df8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70307184"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512480"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 监视发送的数据共享的使用情况
+# <a name="use-powershell-to-set-azure-data-share-sychronization-settings"></a>使用 PowerShell 设置 Azure 数据共享同步设置
 
 此 PowerShell 脚本设置并获取共享同步设置。
 
@@ -45,7 +46,7 @@ Get-AzDataShareSynchronizationSetting -ResourceGroupName $resourceGroupName -Acc
 
 此脚本使用以下命令： 
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [新-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | 创建共享同步。 |
 | [AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | 获取共享同步的同步设置。 |
