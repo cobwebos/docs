@@ -20,7 +20,7 @@ ms.locfileid: "86206227"
 
 使用 Microsoft Azure Data Box 云解决方案可以通过快速、经济、可靠的方式向 Azure 发送 TB 量级的数据。 通过向你发送专有的 Data Box 存储设备来加速安全数据传输。 每个存储设备的最大可用存储容量为 80 TB，并通过区域运营商传送到数据中心。 该设备具有坚固的外壳，可在运输过程中保护数据。
 
-可以通过 Azure 门户订购 Data Box 设备，以便从 Azure 导入或导出数据。 收到设备后，可使用本地 Web UI 进行快速设置。 根据导入或导出数据的位置，将数据从服务器复制到设备，反之亦然，然后将设备寄回 Azure。 如果要将数据导入到 Azure，在 Azure 数据中心内，数据将从设备自动上传到 Azure。 通过 Azure 门户中的 Data Box 服务对整个过程进行端到端跟踪。
+可以通过 Azure 门户订购 Data Box 设备，以便从 Azure 导入或导出数据。 收到设备后，可使用本地 Web UI 进行快速设置。 根据是导入数据还是导出数据，将数据从服务器复制到设备或从设备复制到服务器，再将设备寄回 Azure。 如果要将数据导入到 Azure，在 Azure 数据中心内，数据将从设备自动上传到 Azure。 通过 Azure 门户中的 Data Box 服务对整个过程进行端到端跟踪。
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
@@ -43,7 +43,7 @@ Data Box 非常适合在在无网络连接到有限网络连接的情况下传�
 
 下面是可以使用 Data Box 从 Azure 导出数据的各种场景。
 
-- **灾难恢复** - 将来自 Azure 的数据副本还原到本地网络。 通常执行此操作，以防出现需要将大量 Azure 数据导出到 Data Box 的灾难恢复情况。 Microsoft 随后会发送此 Data Box，数据将在短时间内在本地进行还原。 
+- **灾难恢复** - 将来自 Azure 的数据副本还原到本地网络。 灾难恢复时需要将大量 Azure 数据导出到 Data Box，此时通常执行此操作。 Microsoft 随后会发送此 Data Box，数据将在短时间内在本地进行还原。 
 
 - **安全要求** - 由于政府或安全要求，你需要能够从 Azure 导出数据。 例如，Azure 存储在 US Secret 和 Top Secret 云中可用时，你可以使用 Data Box 从 Azure 导出数据。 
 
