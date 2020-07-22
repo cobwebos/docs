@@ -1,15 +1,15 @@
 ---
 title: 快速入门：你的第一个 Python 查询
 description: 本快速入门介绍为 Python 启用 Resource Graph 库并运行第一个查询的步骤。
-ms.date: 05/27/2020
+ms.date: 07/15/2020
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 58ba931f5d222df8d863a11a25af6563192ef453
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: f7ca6ce5fab687e26007949898ad72c75d036782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609941"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511910"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>快速入门：使用 Python 运行你的第一个 Resource Graph 查询
 
@@ -99,7 +99,7 @@ ms.locfileid: "84609941"
        # Run query
        argResults = argClient.resources(argQuery)
    
-       # Show JSON results
+       # Show Python object
        print(argResults)
    
    getresources("Resources | project name, type | limit 5")

@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203749"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498502"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 
@@ -67,21 +67,21 @@ ms.locfileid: "86203749"
 - [使用 Azure 资源管理器模板将 Azure 活动日志发送到 Log Analytics 工作区](learn/quick-collect-activity-log-arm.md) - 新文章。
 
 #### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>来自平台日志内容重构和整合的新文章和更新文章
-- [将 Azure 资源日志存档到存储帐户](platform/resource-logs-collect-storage.md)
+- [将 Azure 资源日志存档到存储帐户](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure 活动日志事件架构](platform/activity-log-schema.md)
 - [Azure 活动日志](platform/activity-log.md)
 - [Azure Monitor CLI 示例](samples/cli-samples.md)
 - [Azure Monitor PowerShell 示例](samples/powershell-samples.md)
 - [Azure 监视 REST API 演练](platform/rest-api-walkthrough.md)
-- [Azure 资源日志支持的服务和架构](platform/diagnostic-logs-schema.md)
+- [Azure 资源日志支持的服务和架构](./platform/resource-logs-schema.md)
 - [Azure 资源日志](platform/resource-logs.md)
-- [收集和分析 Azure Monitor 中的 Azure 活动日志](platform/activity-log-collect.md)
-- [收集 Log Analytics 工作区中的 Azure 资源日志](platform/resource-logs-collect-workspace.md)
+- [收集和分析 Azure Monitor 中的 Azure 活动日志](./platform/activity-log.md)
+- [收集 Log Analytics 工作区中的 Azure 资源日志](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [创建诊断设置以将平台日志和指标发送到不同目标](platform/diagnostic-settings.md)
-- [导出 Azure 活动日志](platform/activity-log-export.md)
+- [导出 Azure 活动日志](./platform/activity-log.md#legacy-collection-methods)
 - [Azure 平台日志概述](platform/platform-logs-overview.md)
-- [将 Azure 平台日志流式传输到事件中心](platform/resource-logs-stream-event-hubs.md)
-- [在 Azure Monitor 中查看 Azure 活动日志事件](platform/activity-log-view.md)
+- [将 Azure 平台日志流式传输到事件中心](./platform/resource-logs.md#send-to-azure-event-hubs)
+- [在 Azure Monitor 中查看 Azure 活动日志事件](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>虚拟机
 - [在 Azure 门户中启用用于 VM 的 Azure Monitor](insights/vminsights-enable-single-vm.md) - 更新为包含 Azure Arc。
@@ -155,7 +155,7 @@ ms.locfileid: "86203749"
 
 ### <a name="insights"></a>洞察力
 - [适用于 Azure Cache for Redis（预览版）的 Azure Monitor](insights/redis-cache-insights-overview.md) - 新文章。
-- [使用 Azure Monitor for Key Vault（预览版）监视 Key Vault](insights/key-vaults-insights-overview.md) - 新文章。
+- [使用 Azure Monitor for Key Vault（预览版）监视 Key Vault](./insights/key-vault-insights-overview.md) - 新文章。
 
 ### <a name="logs"></a>日志
 - [使用 PowerShell 创建和配置 Log Analytics](platform/powershell-workspace-configuration.md) - 添加了故障排除部分。
@@ -280,7 +280,7 @@ ms.locfileid: "86203749"
 
 ### <a name="platform-logs"></a>平台日志
 
-- [在 Azure Monitor 中收集和分析 Azure 活动日志](platform/activity-log-collect.md) - 重新撰写了该文章，以更好地解释如何使用诊断设置收集活动日志。
+- [在 Azure Monitor 中收集和分析 Azure 活动日志](./platform/activity-log.md) - 重新撰写了该文章，以更好地解释如何使用诊断设置收集活动日志。
 
 ### <a name="virtual-machines"></a>虚拟机
 
@@ -326,7 +326,7 @@ ms.locfileid: "86203749"
 
 #### <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
 
-- [将 Azure Active Directory 与 Azure Kubernetes 服务集成](../aks/azure-ad-integration.md) - 添加了有关以下事项的说明：创建客户端应用程序来支持启用了 RBAC 的群集以支持将 Azure Monitor 用于容器。
+- [将 Azure Active Directory 与 Azure Kubernetes 服务集成](../aks/azure-ad-integration-cli.md) - 添加了有关以下事项的说明：创建客户端应用程序来支持启用了 RBAC 的群集以支持将 Azure Monitor 用于容器。
 
 #### <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
 
@@ -412,8 +412,8 @@ ms.locfileid: "86203749"
 
 ### <a name="platform-logs"></a>平台日志
 
-- [使用诊断设置收集 Azure 活动日志 - Azure Monitor](platform/diagnostic-settings-legacy.md) - 有关已更改的属性的附加信息。
-- [导出 Azure 活动日志](platform/activity-log-export.md) - 根据 UI 变化更新了此文章。 
+- [使用诊断设置收集 Azure 活动日志 - Azure Monitor](./platform/activity-log.md) - 有关已更改的属性的附加信息。
+- [导出 Azure 活动日志](./platform/activity-log.md#legacy-collection-methods) - 根据 UI 变化更新了此文章。 
 
 ## <a name="december-2019"></a>2019 年 12 月
 
@@ -450,7 +450,7 @@ ms.locfileid: "86203749"
 
 ### <a name="insights-and-solutions"></a>见解和解决方案
 
-- [用于容器的 Azure Monitor 常见问题解答](insights/container-insights-faq.md) - 添加了有关“映像”和“名称”字段的问题。
+- [用于容器的 Azure Monitor 常见问题解答](./faq.md) - 添加了有关“映像”和“名称”字段的问题。
 - [Azure Monitor 中的 Azure SQL Analytics 解决方案](insights/azure-sql.md) - 更新了数据库等待托管实例支持。
 - [配置用于容器的 Azure Monitor 代理数据收集](insights/container-insights-agent-config.md) - 添加了 enrich_container_logs 的设置。
 - [使用用于容器的 Azure Monitor 配置混合 Kubernetes 群集](insights/container-insights-hybrid-setup.md) - 添加了故障排除部分。
@@ -474,19 +474,19 @@ ms.locfileid: "86203749"
 
 在根据用于通过诊断设置配置活动日志的新功能重新组织平台日志内容的过程中，我们已更新多篇文章。
 
-- [将 Azure 资源日志存档到存储帐户](platform/resource-logs-collect-storage.md)
+- [将 Azure 资源日志存档到存储帐户](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure 活动日志事件架构](platform/activity-log-schema.md)
 - [Azure Monitor 服务限制](service-limits.md)
-- [收集和分析 Log Analytics 工作区中的 Azure 活动日志](platform/activity-log-collect.md)
-- [使用诊断设置（预览版）收集 Azure 活动日志 - Azure Monitor](platform/diagnostic-settings-legacy.md)
+- [收集和分析 Log Analytics 工作区中的 Azure 活动日志](./platform/activity-log.md)
+- [使用诊断设置（预览版）收集 Azure 活动日志 - Azure Monitor](./platform/activity-log.md)
 - [跨 Azure 租户将 Azure 活动日志收集到 Log Analytics 工作区中](platform/activity-log-collect-tenants.md)
-- [收集 Log Analytics 工作区中的 Azure 资源日志](platform/resource-logs-collect-workspace.md)
+- [收集 Log Analytics 工作区中的 Azure 资源日志](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [使用资源管理器模板在 Azure 中创建诊断设置](platform/diagnostic-settings-template.md)
 - [创建诊断设置以收集 Azure 中的日志和指标](platform/diagnostic-settings.md)
-- [导出 Azure 活动日志](platform/activity-log-export.md)
+- [导出 Azure 活动日志](./platform/activity-log.md#legacy-collection-methods)
 - [Azure 平台日志概述](platform/platform-logs-overview.md)
 - [将 Azure 监视数据流式传输到事件中心](platform/stream-monitoring-data-event-hubs.md)
-- [将 Azure 平台日志流式传输到事件中心](platform/resource-logs-stream-event-hubs.md)
+- [将 Azure 平台日志流式传输到事件中心](./platform/resource-logs.md#send-to-azure-event-hubs)
 
 ### <a name="quickstarts-and-tutorials"></a>快速入门和教程
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: b3c8c045b7d773f6345072ed46c4a668d0db8ec5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b28e139ecbfee0ba3a9e092827d0b57ff145a842
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459468"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526922"
 ---
 # <a name="monitor-a-vm-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 VM
 
@@ -46,15 +46,15 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 针对虚拟机运行 VM 扩展。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az vm create](/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
+| [azure vm extension set](/cli/azure/vm/extension) | 针对虚拟机运行 VM 扩展。 |
+| [az group delete](/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Windows VM 文档](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。

@@ -3,12 +3,12 @@ title: PowerShell 脚本 - 撤销删除已删除的文件共享
 description: 了解如何使用 Azure PowerShell 脚本撤消删除意外删除的文件共享。
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: 2eb89735a8327e782d8d8a712f4f0d59911540cc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 199cb4720c2efe03d47fd06ea0cf41eae29d06fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84121257"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513228"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>用于撤销删除意外删除的文件共享的 PowerShell 脚本
 
@@ -154,7 +154,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 在运行脚本之前，请从[此链接](https://docs.microsoft.com//powershell/azure/install-az-ps?view=azps-3.3.0)安装最新的 Azure PowerShell Az 模块。
+1. 在运行脚本之前，请从[此链接](//powershell/azure/install-az-ps)安装最新的 Azure PowerShell Az 模块。
 2. 请记住以下详细信息，因为需要将它们作为脚本的不同参数值传递：
 
     * **-SubscriptionId** - 文件共享所属的订阅 ID。
@@ -209,4 +209,3 @@ Restore-DeletedFileShare : More than one share with the specified name was found
 ```powershell
    .\UnDelete.ps1 -ResourceGroupName afsshare-StorageAccountName afsshare -SubscriptionId f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4 -FileShareName share1 -DeletedShareVersion 01D5D7F77ACC7864
 ```
-

@@ -4,12 +4,12 @@ description: 概述 Azure 备份服务及其如何有助于实现业务连续性
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 70fcbc432c3a3584047fe5ac39f217981a73df71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709923"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513517"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什么是 Azure 备份服务？
 
@@ -43,8 +43,8 @@ Azure 备份具有以下主要优势：
 - **保留短期和长期数据**：可将[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)用于短期和长期数据保留。
 - **自动存储管理** - 混合环境常常需要异类存储（部分在本地，部分在云端）。 在 Azure 备份中，使用本地存储设备无需付费。 Azure 备份会自动分配和管理备份存储，且采用即用即付模型。 因此，只需为所用的存储付费。 [详细了解](https://azure.microsoft.com/pricing/details/backup)定价情况。
 - **多个存储选项** - Azure 备份提供两种类型的复制来保持存储/数据的高可用性。
-  - [本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
-  - [异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md) 是默认的和推荐的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 提供更高的数据持久度，即使出现区域性服务中断也是如此。
+  - [本地冗余存储 (LRS)](../storage/common/storage-redundancy.md) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
+  - [异地冗余存储 (GRS)](../storage/common/storage-redundancy.md) 是默认的和推荐的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 提供更高的数据持久度，即使出现区域性服务中断也是如此。
 
 ## <a name="next-steps"></a>后续步骤
 

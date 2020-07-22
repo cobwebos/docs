@@ -7,18 +7,18 @@ ms.date: 06/13/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: 345710e1ade459d49602c18820d47826141e6f81
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa9dcc45656256e1f666bbf1b096c5c66b123b31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68721946"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528496"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>适用于 Azure Blob 存储的 Azure CLI 示例
 
 下表包含的链接指向使用创建和管理 Azure 存储的 Azure CLI 生成的 Bash 脚本。
 
-| | |
+| Script | 说明 |
 |---|---|
 |**存储帐户**||
 | [创建存储帐户并检索/轮换访问密钥](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 创建 Azure 存储帐户并检索和轮换其访问密钥。 |

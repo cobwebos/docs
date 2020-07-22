@@ -3,12 +3,12 @@ title: 什么是 Azure 事件中心？ - 大数据引入服务 | Microsoft Docs
 description: 了解 Azure 事件中心 - 每秒可引入数百万个事件的大数据流式处理服务。
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 175f7e249e02d5c85dd38cf49821b2893de159a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314256"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522102"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -44,7 +44,7 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 
 在 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  中近乎实时地[捕获](event-hubs-capture-overview.md)数据，以进行长期保留或微批处理。 可以基于用于派生实时分析的同一个流实现此行为。 设置捕获极其简单。 无需管理费用即可运行它，并且可以使用事件中心 [吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 使用事件中心可以专注于数据处理而不是数据捕获。
 
-Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，以构成无服务器体系结构。
+Azure 事件中心还能与 [Azure Functions](../azure-functions/index.yml) 集成，以构成无服务器体系结构。
 
 ## <a name="scalable"></a>可缩放
 
@@ -74,7 +74,7 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 
 （Azure Stack Hub 和 Azure 上的）事件中心版本提供高度的功能奇偶一致性。 这种奇偶一致性意味着 SDK、示例、PowerShell、CLI 和门户提供类似的体验（差异很小）。 
 
-Stack 上的事件中心在公共预览期免费。 有关详细信息，请参阅 [Azure Stack Hub 上的事件中心概述](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)。
+Stack 上的事件中心在公共预览期免费。 有关详细信息，请参阅 [Azure Stack Hub 上的事件中心概述](/azure-stack/user/event-hubs-overview)。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -94,5 +94,3 @@ Stack 上的事件中心在公共预览期免费。 有关详细信息，请参�
 
 - [事件中心功能概述](event-hubs-features.md)
 - [常见问题解答](event-hubs-faq.md)。
-
-

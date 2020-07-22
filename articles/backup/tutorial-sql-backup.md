@@ -3,12 +3,12 @@ title: 教程 - 将 SQL Server 数据库备份到 Azure
 description: 在本教程中，了解如何将 Azure VM 上运行的 SQL Server 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: f1d76fe0dfa428688714b8383c3974ac63195681
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0f3ec8e9407c97f91a7f215a6a2734a254006d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81680733"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513284"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中备份 SQL Server 数据库
 
@@ -64,7 +64,7 @@ ms.locfileid: "81680733"
 * 右方括号“]”
 * 数据库名称以“F:\”开头
 
-对于 Azure 表不支持的字符，可以使用别名，但我们建议避免使用别名。 [了解详细信息](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
+对于 Azure 表不支持的字符，可以使用别名，但我们建议避免使用别名。 [了解详细信息](/rest/api/storageservices/understanding-the-table-service-data-model)。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

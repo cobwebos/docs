@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: 96ab2b7c8e80375f97df550ed6c83e7bb3e2f3e3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: eb7dcc0956cd9ce214ad3894aa8cc2b99beed942
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562084"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519807"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>快速入门：在 PowerShell 中使用 REST API 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "85562084"
 > * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
-> * [门户](search-create-index-portal.md)
+> * [门户](search-get-started-portal.md)
 > 
 
 本文引导你完成使用 PowerShell 和 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 创建、加载和查询 Azure 认知搜索索引的过程。 本文介绍如何以交互方式运行 PowerShell 命令。 你也可以[下载并运行一个 PowerShell 脚本](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)来执行相同的操作。

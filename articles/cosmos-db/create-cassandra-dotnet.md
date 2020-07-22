@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 88ec29ef1a0c0766a6c50af218e66f5fec3b9087
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e274db2983c476c2428fdd0d25f3dff9bbc5e6ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118417"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523870"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -120,7 +120,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”。
 
-1. 使用 ![“复制”按钮](./media/create-cassandra-dotnet/copy.png) 屏幕右侧的按钮以复制“用户名”值。
+1. 使用屏幕右侧的 :::image type="icon" source="./media/create-cassandra-dotnet/copy.png"::: 按钮以复制“用户名”值。
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制访问密钥":::
 

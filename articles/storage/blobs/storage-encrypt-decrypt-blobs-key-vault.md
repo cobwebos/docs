@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: 21771fb1bb041dd2f09f5d82d9def4cfe91794f6
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 82131ab4e1f990af25c669131e20c789a0f74dcf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808398"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518651"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教程 - 使用 Azure 密钥保管库加密和解密 blob
 
@@ -210,7 +210,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 以下是使用 PowerShell 在密钥保管库中创建可用作 SymmetricKey 的密钥的示例。
 请注意，硬编码值 $key 仅用于演示目的。 请在自己的代码中生成此密钥。
 
-```csharp
+```powershell
 // Here we are making a 128-bit key so we have 16 characters.
 //     The characters are in the ASCII range of UTF8 so they are
 //    each 1 byte. 16 x 8 = 128.

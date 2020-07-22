@@ -3,12 +3,12 @@ title: 使用 Python 向/从 Azure 事件中心发送/接收事件（最新版�
 description: 本文演练如何创建一个可使用最新 azure/event-hubs 版本 5 包向/从 Azure 事件中心发送/接收事件的 Python 应用程序。
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: f47a770975caac7f07e0bfa3181e50a94b6e59ba
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2203b76d22f2a90e89d6e2c4a849b2c8016df89a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321684"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521830"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>使用 Python（azure-eventhub 版本 5）向/从事件中心发送/接收事件
 本快速入门介绍如何使用 **azure-eventhub 版本 5** Python 包向事件中心发送事件以及从事件中心接收事件。
@@ -80,7 +80,7 @@ ms.locfileid: "85321684"
 本快速入门使用 Azure Blob 存储作为检查点存储。 检查点存储用于保存检查点（即，上次读取位置）。  
 
 > [!NOTE]
-> 如果在 Azure Stack Hub 上运行，该平台支持的存储 Blob SDK 版本可能不同于通常在 Azure 上提供的版本。 例如，如果在 [Azure Stack Hub 版本 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) 上运行，则存储服务的最高可用版本为版本 2017-11-09。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2017-11-09 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅 GitHub 上的[同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)和[异步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)示例。 有关 Azure Stack Hub 上支持的 Azure 存储服务版本的详细信息，请参阅 [Azure Stack Hub 存储：差异和注意事项](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)。
+> 如果在 Azure Stack Hub 上运行，该平台支持的存储 Blob SDK 版本可能不同于通常在 Azure 上提供的版本。 例如，如果在 [Azure Stack Hub 版本 2002](/azure-stack/user/event-hubs-overview) 上运行，则存储服务的最高可用版本为版本 2017-11-09。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2017-11-09 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅 GitHub 上的[同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)和[异步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)示例。 有关 Azure Stack Hub 上支持的 Azure 存储服务版本的详细信息，请参阅 [Azure Stack Hub 存储：差异和注意事项](/azure-stack/user/azure-stack-acs-differences)。
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>创建 Azure 存储帐户和 Blob 容器

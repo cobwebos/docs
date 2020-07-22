@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 85b78ad92997344ff6ea0f30da25205790d90eef
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7da5e25624a0e3a323e60cdf91660b29f58f31d7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196762"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514741"
 ---
 # <a name="use-the-azure-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>使用 Azure CLI 移动 SQL 弹性池中 SQL 数据库中的数据库
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| | |
+| 命令 | 说明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | 服务器命令。 |
 | [az sql elastic-pools](/cli/azure/sql/elastic-pool) | 弹性池命令。 |

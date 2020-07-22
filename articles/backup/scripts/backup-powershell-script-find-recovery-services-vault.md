@@ -3,12 +3,12 @@ title: PowerShell 脚本 - 查找存储帐户的保管库
 description: 了解如何使用 Azure PowerShell 脚本查找存储帐户所注册到的恢复服务保管库。
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: 786420ec8cef6516f7261c71b40641693efece07
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b343b2f93ed439188c5c0238bf108064f6e132c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76775863"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513245"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>用于查找存储帐户所注册到的恢复服务保管库的 Powershell 脚本
 
@@ -72,4 +72,4 @@ Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[从 Azure 门户备份 Azure 文件共享](https://docs.microsoft.com/azure/backup/backup-afs)
+了解如何[从 Azure 门户备份 Azure 文件共享](../backup-afs.md)

@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e50daf3d94d30e4799bf7a645f46bb70fd6750c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77660217"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516492"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入门：使用 Azure Application Insights 开始监视 Node.js Web 应用程序
 
@@ -36,7 +36,7 @@ ms.locfileid: "77660217"
    ![添加 Azure Application Insights 资源](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
-   >如果这是你首次创建 Application Insights 资源，可以通过访问[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)文档来了解更多信息。
+   >如果这是你首次创建 Application Insights 资源，可以通过访问[创建 Application Insights 资源](../app/create-new-resource.md)文档来了解更多信息。
 
    此时会显示配置页，请使用下表填写输入字段。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "77660217"
    npm install applicationinsights --save
    ```
 
-3. 编辑应用的第一个 .js  文件并将以下两行添加到脚本的最顶部。 如果使用的是 [Node.js 快速入门应用](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)，则将修改 index.js  文件。 将 `<instrumentation_key>` 替换为应用程序的检测密钥。 
+3. 编辑应用的第一个 .js  文件并将以下两行添加到脚本的最顶部。 如果使用的是 [Node.js 快速入门应用](../../app-service/app-service-web-get-started-nodejs.md)，则将修改 index.js  文件。 将 `<instrumentation_key>` 替换为应用程序的检测密钥。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -131,4 +131,4 @@ ms.locfileid: "77660217"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [查找和诊断性能问题](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [查找和诊断性能问题](../log-query/log-query-overview.md)

@@ -4,16 +4,16 @@ description: 快速入门：使用 Azure 资源管理器模板创建包含事件
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: 1aa1dc0a4be8c74651a764788184ae1eefe17e75
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 445a52593e95074d9941a1592d688de7eea9c006
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038083"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522034"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建事件中心
 
-Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。 本快速入门将使用 [Azure 资源管理器模板（ARM 模板）](../azure-resource-manager/management/overview.md)创建事件中心。 然后部署 ARM 模板，以创建包含一个事件中心的[事件中心](event-hubs-what-is-event-hubs.md)类型的命名空间。
+Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。 本快速入门将使用 [Azure 资源管理器模板（ARM 模板）](../azure-resource-manager/management/overview.md)创建事件中心。 然后部署 ARM 模板，以创建包含一个事件中心的[事件中心](./event-hubs-about.md)类型的命名空间。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -107,6 +107,6 @@ Write-Host "Press [ENTER] to continue ..."
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
-[Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
-[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
+[Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/management/manage-resources-powershell.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/management/manage-resources-cli.md
 [Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/

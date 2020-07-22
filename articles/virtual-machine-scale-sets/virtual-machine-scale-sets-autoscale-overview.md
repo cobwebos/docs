@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 11207dceb29c779c081c140ee8cd362d8a217acf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: dd042b28035b5e9a4b18041d6c1a81f77cfd4ea7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856744"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527398"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集自动缩放概述
 Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实例数。 这种自动且弹性的行为可以减少监视和优化应用程序性能所需的管理开销。 创建规则，用于定义提供正面客户体验而可接受的性能。 如果满足定义的这些阈值，自动缩放规则会采取措施来调整规模集的容量。 还可以计划事件，以便在固定的时间自动增加或减少规模集的容量。 本文概述所提供的性能指标，以及自动缩放可以执行的操作。
@@ -137,6 +137,6 @@ Azure 诊断扩展是在 VM 实例中运行的代理。 该代理可监视性能
 
 本概述文章详细介绍了如何使用自动缩放规则来横向缩放以及增加或减少规模集中的 VM 实例数目。  还可进行纵向缩放，即增大或减小 VM 实例的大小  。 有关详细信息，请参阅[虚拟机规模集的纵向自动缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
 
-有关如何管理 VM 实例的信息，请参阅[使用 Azure PowerShell 管理虚拟机规模集](virtual-machine-scale-sets-windows-manage.md)。
+有关如何管理 VM 实例的信息，请参阅[使用 Azure PowerShell 管理虚拟机规模集](./virtual-machine-scale-sets-manage-powershell.md)。
 
-若要了解如何在触发自动缩放规则时生成警报，请参阅[在 Azure Monitor 中使用自动缩放操作发送电子邮件和 Webhook 警报通知](../azure-monitor/platform/autoscale-webhook-email.md)。 还可以[在 Azure Monitor 中使用审核日志发送电子邮件和 Webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)。
+若要了解如何在触发自动缩放规则时生成警报，请参阅[在 Azure Monitor 中使用自动缩放操作发送电子邮件和 Webhook 警报通知](../azure-monitor/platform/autoscale-webhook-email.md)。 还可以[在 Azure Monitor 中使用审核日志发送电子邮件和 Webhook 警报通知](../azure-monitor/platform/alerts-log-webhook.md)。

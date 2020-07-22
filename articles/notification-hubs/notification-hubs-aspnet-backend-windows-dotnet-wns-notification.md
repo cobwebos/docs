@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e13e7c1057d5a01867b561fc7ee7d1eed1a97ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220144"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530484"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送通知
 
@@ -51,7 +51,7 @@ ms.locfileid: "86220144"
 本教程基于在[教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程中完成的项目中的代码。 因此，请在开始本教程之前完成该教程。
 
 > [!NOTE]
-> 如果使用 Azure 应用服务中的移动应用作为后端服务，请参阅本教程的[移动应用版本](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。
+> 如果使用 Azure 应用服务中的移动应用作为后端服务，请参阅本教程的[移动应用版本](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -224,7 +224,7 @@ ms.locfileid: "86220144"
     ```
 13. 右键单击“WindowsApp”项目，单击“添加”，然后单击“类”  。 将类命名为 `RegisterClient.cs`，然后单击“确定”以生成该类。
 
-    此类会包装联系应用后端所需的 REST 调用，以便注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](https://msdn.microsoft.com/library/dn743807.aspx)中所述。 它使用单击“登录并注册”按钮时存储在本地存储中的授权令牌。
+    此类会包装联系应用后端所需的 REST 调用，以便注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](/previous-versions/azure/azure-services/dn743807(v=azure.100))中所述。 它使用单击“登录并注册”按钮时存储在本地存储中的授权令牌。
 14. 在 RegisterClient.cs 文件的顶部添加以下 `using` 语句：
 
     ```csharp
@@ -357,4 +357,4 @@ ms.locfileid: "86220144"
 [Get started with Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
