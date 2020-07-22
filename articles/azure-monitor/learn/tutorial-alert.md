@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77656256"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505867"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 监视和警报应用程序的运行状况
 
@@ -28,7 +28,7 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 
 完成本教程：
 
-创建 [Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights)。
+创建 [Application Insights 资源](./dotnetcore-quick-start.md#enable-application-insights)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -56,7 +56,7 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 
     ![编辑警报](media/tutorial-alert/edit-alert-001.png)
 
-6. 将失败的位置数设置为大于或等于 3。 创建一个[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)，用于配置当达到警报阈值时向谁发出通知。
+6. 将失败的位置数设置为大于或等于 3。 创建一个[操作组](../platform/action-groups.md)，用于配置当达到警报阈值时向谁发出通知。
 
     ![保存警报 UI](media/tutorial-alert/save-alert-001.png)
 

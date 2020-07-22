@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
-ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 471690c5c0f5ebb4cea111b85cab1fe0524a36cd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74039110"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509715"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>在负载均衡虚拟机规模集中部署 LAMP 堆栈
 
@@ -50,17 +50,17 @@ az group delete -n myResourceGroup
 
 | Command | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | 创建虚拟机规模集 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | 添加负载均衡终结点 |
-| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension) | 创建对 VM 部署运行自定义脚本的扩展 |
-| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss) | 在将扩展应用到规模集之前部署的 VM 实例上运行此自定义脚本。 |
-| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss) | 通过添加更多 VM 实例来扩大规模集。 部署实例时，在实例上运行此自定义脚本。 |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | 获取示例创建的 VM 的 IP 地址。 |
-| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | 获取负载均衡器使用的前端和后端端口。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az vmss create](/cli/azure/vmss) | 创建虚拟机规模集 |
+| [az network lb rule create](/cli/azure/network/lb/rule) | 添加负载均衡终结点 |
+| [az vmss extension set](/cli/azure/vmss/extension) | 创建对 VM 部署运行自定义脚本的扩展 |
+| [az vmss update-instances](/cli/azure/vmss) | 在将扩展应用到规模集之前部署的 VM 实例上运行此自定义脚本。 |
+| [az vmss scale](/cli/azure/vmss) | 通过添加更多 VM 实例来扩大规模集。 部署实例时，在实例上运行此自定义脚本。 |
+| [az network public-ip list](/cli/azure/network/public-ip) | 获取示例创建的 VM 的 IP 地址。 |
+| [az network lb show](/cli/azure/network/lb) | 获取负载均衡器使用的前端和后端端口。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。

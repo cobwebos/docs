@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 04/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 2f90746448460d168d5fa4751af1f407d217f8ed
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 304d0a689b30b0e900d07b4654c4f5cd6db7b9ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562134"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496717"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebook 创建 Azure 认知搜索索引
 
@@ -24,7 +24,7 @@ ms.locfileid: "85562134"
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
-> * [门户](search-create-index-portal.md)
+> * [门户](search-get-started-portal.md)
 > 
 
 使用 Python 和 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 生成可创建、加载和查询 Azure 认知搜索索引的 Jupyter Notebook。 本文介绍如何逐步生成笔记本。 你也可以[下载并运行一个已完成的 Jupyter Python 笔记本](https://github.com/Azure-Samples/azure-search-python-samples)。

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/01/2020
-ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c6ab5c2cae2bb966c2b040b40dbf36e56a54411b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955686"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496746"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入门：在门户中创建演示应用（Azure 认知搜索）
 
@@ -31,7 +31,7 @@ ms.locfileid: "85955686"
 
 + [Microsoft Edge（最新版本）](https://www.microsoft.com/edge)或 Google Chrome。
 
-+ 要用作所生成应用程序的基础的[搜索索引](search-create-index-portal.md)。 
++ 要用作所生成应用程序的基础的[搜索索引](search-what-is-an-index.md)。 
 
   本快速入门使用内置的“房地产”示例数据和索引，因为该示例包含缩略图（向导支持将图像添加到结果页）。 若要创建本练习中使用的索引，请运行“导入数据”向导，并选择“realestate-us-sample”数据源。
 

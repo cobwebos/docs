@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 28f093bc464a45862d3b253d628b7ae03810f81a
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871231"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510168"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>教程 - 为 Azure Linux 虚拟机配置滚动部署策略
 
@@ -33,7 +33,7 @@ Azure Pipelines 提供了一组功能完备的 CI/CD 自动化工具，用于目
 
 ### <a name="configure-cicd-on-virtual-machines"></a>在虚拟机上配置 CI/CD
 
-可以将虚拟机作为目标添加到[部署组](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups)。 然后，可以将它们作为目标进行多计算机更新。 部署到计算机后，请查看部署组中的**部署历史记录**。 使用此视图可以从 VM 跟踪到管道，然后再跟踪到提交。
+可以将虚拟机作为目标添加到[部署组](/azure/devops/pipelines/release/deployment-groups)。 然后，可以将它们作为目标进行多计算机更新。 部署到计算机后，请查看部署组中的**部署历史记录**。 使用此视图可以从 VM 跟踪到管道，然后再跟踪到提交。
 
 ### <a name="rolling-deployments"></a>滚动部署
 
@@ -93,5 +93,5 @@ Azure Pipelines 提供了一组功能完备的 CI/CD 自动化工具，用于目
  
 ## <a name="additional-resources"></a>其他资源
 
-- [使用 Azure DevOps Projects 部署到 Azure 虚拟机](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [Implement continuous deployment of your app to an Azure virtual machine scale set](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)（实现将应用持续部署到 Azure 虚拟机规模集）
+- [使用 Azure DevOps Projects 部署到 Azure 虚拟机](../../devops-project/azure-devops-project-vms.md)
+- [Implement continuous deployment of your app to an Azure virtual machine scale set](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)（实现将应用持续部署到 Azure 虚拟机规模集）

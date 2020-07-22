@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 60e3529e68183488016e40211730412da8e3e0bb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564617"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496207"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入门：Azure Sentinel 入门
 
@@ -91,23 +91,26 @@ ms.locfileid: "85564617"
 
 使用以下示例查询可以比较不同周次的流量趋势。 可以轻松切换要对其运行查询的设备供应商和数据源。 此示例使用来自 Windows 的 SecurityEvent。可将其切换为针对其他任何防火墙中的 AzureActivity 或 CommonSecurityLog 运行。
 
-     |where DeviceVendor == "Palo Alto Networks":
-      // week over week query
-      SecurityEvent
-      | where TimeGenerated > ago(14d)
-      | summarize count() by bin(TimeGenerated, 1d)
-      | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
-
+```console
+ |where DeviceVendor == "Palo Alto Networks":
+  // week over week query
+  SecurityEvent
+  | where TimeGenerated > ago(14d)
+  | summarize count() by bin(TimeGenerated, 1d)
+  | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
+```
 
 可以创建一个查询用于合并多个源中的数据。 可以创建一个查询，用于在 Azure Active Directory 审核日志中查找刚刚创建的新用户，然后检查 Azure 日志，以确定该用户在创建后的 24 小时内，是否开始进行角色分配更改。 该可疑活动会显示在此仪表板上：
 
-    AuditLogs
-    | where OperationName == "Add user"
-    | project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
-    | join (AzureActivity
-    | where OperationName == "Create role assignment"
-    | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
-    | project-away user1
+```console
+AuditLogs
+| where OperationName == "Add user"
+| project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
+| join (AzureActivity
+| where OperationName == "Create role assignment"
+| project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
+| project-away user1
+```
 
 可以基于用户的角色创建不同的工作簿，以查看该用户的数据并了解其正在查找哪些信息。 例如，可以针对网络管理员创建包含防火墙数据的工作簿。 此外，可以根据数据的查找频率创建工作簿，不管这些数据是每日都要查看的数据，还是每隔一小时检查一次的其他项（例如，你可能想要每隔一小时查看自己的 Azure AD 登录，以搜索异常）。 
 

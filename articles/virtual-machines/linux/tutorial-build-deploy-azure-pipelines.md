@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8aa53d4b08a4a0bdaa4e1f12169811ae88edbd2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76988322"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501868"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教程：使用 Azure DevOps Services 和 Azure Pipelines 将应用部署到 Azure 中的 Linux 虚拟机
 
@@ -24,7 +24,7 @@ ms.locfileid: "76988322"
 
 Azure Pipelines 提供了一组完整且功能完备的 CI/CD 自动化工具，以部署本地或任何云上的虚拟机。
 
-在本教程中，你将设置基于 YAML 的 CI/CD 管道，以便将应用部署到 Linux 虚拟机作为资源的 Azure Pipelines [环境](https://docs.microsoft.com/azure/devops/pipelines/process/environments?view=azure-devops)中，其中每个虚拟机都充当 Web 服务器来运行应用。
+在本教程中，你将设置基于 YAML 的 CI/CD 管道，以便将应用部署到 Linux 虚拟机作为资源的 Azure Pipelines [环境](/azure/devops/pipelines/process/environments?view=azure-devops)中，其中每个虚拟机都充当 Web 服务器来运行应用。
 
 学习如何：
 
@@ -41,11 +41,11 @@ Azure Pipelines 提供了一组完整且功能完备的 CI/CD 自动化工具，
   你可以获取[免费 Azure DevOps Services 组织](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308)。
 
   > [!NOTE]
-  > 有关详细信息，请参阅[连接到 Azure DevOps Services](https://docs.microsoft.com/azure/devops/organizations/projects/connect-to-projects?view=vsts)。
+  > 有关详细信息，请参阅[连接到 Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects?view=vsts)。
 
-*  部署目标需用到 Linux 虚拟机。  有关详细信息，请参阅[使用 Azure CLI 创建和管理 Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)。
+*  部署目标需用到 Linux 虚拟机。  有关详细信息，请参阅[使用 Azure CLI 创建和管理 Linux VM](./tutorial-manage-vm.md)。
 
-*  为虚拟机开启入站端口 80。 有关详细信息，请参阅[使用 Azure 门户创建网络安全组](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)。
+*  为虚拟机开启入站端口 80。 有关详细信息，请参阅[使用 Azure 门户创建网络安全组](../../virtual-network/tutorial-filter-network-traffic.md)。
 
 ## <a name="get-your-sample-app-code"></a>获取示例应用代码
 
@@ -91,13 +91,13 @@ https://github.com/azure-devops/fabrikam-node
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 若要安装 javascript 应用或 Node.js 应用，需要使用包含 Nginx Web 服务器的 Linux VM 来部署应用。
-如果你没有包含 Nginx 的 Linux VM，请使用[此示例](/azure/virtual-machines/linux/quick-create-cli)中的步骤在 Azure 中创建一个。
+如果你没有包含 Nginx 的 Linux VM，请使用[此示例](./quick-create-cli.md)中的步骤在 Azure 中创建一个。
 
 * * * 
 
 ## <a name="create-an-azure-pipelines-environment-with-azure-virtual-machines"></a>通过 Azure 虚拟机创建 Azure Pipelines 环境
 
-虚拟机可作为资源添加到[环境](https://docs.microsoft.com/azure/devops/pipelines/process/environments)中，并可面向多计算机部署。 环境中的部署历史记录视图提供从 VM 到管道再到提交的可跟踪性。
+虚拟机可作为资源添加到[环境](/azure/devops/pipelines/process/environments)中，并可面向多计算机部署。 环境中的部署历史记录视图提供从 VM 到管道再到提交的可跟踪性。
 
 可以在“Pipelines”部分中的“环境”中心创建环境   。
 1.  登录到 Azure DevOps 组织，并导航到你的项目。
@@ -163,7 +163,7 @@ https://github.com/azure-devops/fabrikam-node
     artifact: drop
 ```
 
-有关更多指导，请按照[使用 Maven 生成 Java 应用](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java)中所述的步骤进行操作。
+有关更多指导，请按照[使用 Maven 生成 Java 应用](/azure/devops/pipelines/ecosystems/java)中所述的步骤进行操作。
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
@@ -196,7 +196,7 @@ https://github.com/azure-devops/fabrikam-node
       artifact: drop
 ```
 
-有关更多指导，请按照[使用 gulp 生成 Node.js 应用](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/javascript)中的步骤进行操作。
+有关更多指导，请按照[使用 gulp 生成 Node.js 应用](/azure/devops/pipelines/ecosystems/javascript)中的步骤进行操作。
 
 - 查看管道以了解其功能。 请确保所有默认输入都适用于你的代码。
 
@@ -208,7 +208,7 @@ https://github.com/azure-devops/fabrikam-node
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>定义要部署到 Linux VM 的 CD 步骤
 
-1. 编辑上面的管道，并使用以下 YAML 语法引用之前获取的环境和 VM 资源来包含[部署作业](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs)：
+1. 编辑上面的管道，并使用以下 YAML 语法引用之前获取的环境和 VM 资源来包含[部署作业](/azure/devops/pipelines/process/deployment-jobs)：
 
    ```YAML
    jobs:  
@@ -221,7 +221,7 @@ https://github.com/azure-devops/fabrikam-node
      strategy:
    ```
 2. 可以从环境中选择特定的虚拟机集来接收部署，方法是指定为环境中的每个虚拟机定义的“标记”  。
-[此处](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) 是部署作业的完整 YAML 架构。
+[此处](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) 是部署作业的完整 YAML 架构。
 
 3. 可以指定`runOnce` 或 `rolling` 作为部署策略。 
 
@@ -295,8 +295,8 @@ https://github.com/azure-devops/fabrikam-node
 ![VMjobs_view](media/tutorial-deploy-vms-azure-pipelines/vm-jobsview.png)
 
 ## <a name="next-steps"></a>后续步骤
-- 可继续[自定义刚刚创建的管道](https://docs.microsoft.com/azure/devops/pipelines/customize-pipeline)。
-- 若要了解可在 YAML 管道中执行的其他操作，请参阅 [YAML 架构参考](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema)。
+- 可继续[自定义刚刚创建的管道](/azure/devops/pipelines/customize-pipeline)。
+- 若要了解可在 YAML 管道中执行的其他操作，请参阅 [YAML 架构参考](/azure/devops/pipelines/yaml-schema)。
 - 若要了解如何部署 LAMP（Linux、Apache、MySQL 和 PHP）堆栈，请继续学习下一个教程。
 
 > [!div class="nextstepaction"]

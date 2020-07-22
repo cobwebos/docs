@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 05dd9f6c2f1f08ec0e420bd4257d2c26e1963e5b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d99af6965e4d2e73ed302530d76126e0e6e8a3ef
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850056"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505918"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>快速入门：使用 Azure Monitor 从混合环境中的 Linux 计算机收集数据
 
@@ -87,7 +87,7 @@ ms.locfileid: "83850056"
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    当代理服务器要求进行身份验证时，以下命令包括 `-p` 代理参数和示例语法：
+    代理服务器要求进行身份验证时，以下命令包括 `-p` 代理参数和示例语法：
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -99,7 +99,7 @@ ms.locfileid: "83850056"
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    当代理服务器要求进行身份验证时，以下命令包括 `-p` 代理参数和示例语法：
+    代理服务器要求进行身份验证时，以下命令包括 `-p` 代理参数和示例语法：
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
@@ -168,4 +168,4 @@ Azure Monitor 可以从你为长期分析和报告指定的 Linux syslog 和性�
 若要了解如何查看和分析数据，请继续本教程。
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中查看或分析数据](../../azure-monitor/learn/tutorial-viewdata.md)
+> [在 Log Analytics 中查看或分析数据](../log-query/get-started-portal.md)

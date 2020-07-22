@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7c84c705da99bd6f04a6737a1c781b905cbeaad6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6afdae275b98a86eba14b920a6969c967c5a7db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100475"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508230"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>教程：使用 Azure 安全中心监视 Windows 虚拟机
 
@@ -52,7 +52,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 ## <a name="set-up-a-security-policy"></a>设置安全策略
 
-安全策略用于定义安全中心要为哪些项收集数据并提供建议。 可将不同的安全策略应用到不同的 Azure 资源集。 尽管默认情况下会对照所有策略项评估 Azure 资源，但可以针对所有 Azure 资源或某个资源组关闭单个策略项。 有关安全中心安全策略的详细信息，请参阅[在 Azure 安全中心设置安全策略](../../security-center/security-center-policies.md)。 
+安全策略用于定义安全中心要为哪些项收集数据并提供建议。 可将不同的安全策略应用到不同的 Azure 资源集。 尽管默认情况下会对照所有策略项评估 Azure 资源，但可以针对所有 Azure 资源或某个资源组关闭单个策略项。 有关安全中心安全策略的详细信息，请参阅[在 Azure 安全中心设置安全策略](../../security-center/tutorial-security-policy.md)。 
 
 若要为整个订阅设置安全策略，请执行以下操作：
 

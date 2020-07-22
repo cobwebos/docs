@@ -3,12 +3,12 @@ title: 教程 - 了解如何访问私有云
 description: 了解如何访问 Azure VMware 解决方案 (AVS) 私有云
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 32dc5c173789996d2559eda1153b1509e10e5984
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873602"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497958"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>教程：了解如何访问 Azure VMware 解决方案 (AVS) 私有云
 
@@ -43,7 +43,7 @@ ms.locfileid: "83873602"
 | **用户名** | 输入用于登录到 VM 的用户名。 |
 | **密码** | 输入用于登录到 VM 的密码。 |
 | **确认密码** | 输入用于登录到 VM 的密码。 |
-| **公共入站端口** | 选择“无”。 如果选择“无”，可以使用 [JIT 访问](../security-center/security-center-just-in-time.md#configure-jit-access-from-an-azure-vms-page-)，以便仅在需要访问 VM 时才控制对 VM 的访问。  |
+| **公共入站端口** | 选择“无”。 如果选择“无”，可以使用 [JIT 访问](../security-center/security-center-just-in-time.md#jit-configure)，以便仅在需要访问 VM 时才控制对 VM 的访问。  |
 
 输入适当的信息后，单击“查看 + 创建”。 验证通过后，选择“创建”启动虚拟机创建过程。
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 1616466619c7c7627106c09de703d02a7c40d248
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 83f0ea094c26a1ff664ef27729731b77d987e7ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75458402"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501484"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>通过 CLI 使用现有托管 OS 磁盘创建虚拟机
 
@@ -52,10 +52,10 @@ az group delete --name myResourceGroup
 
 | Command | 说明 |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk) | 使用磁盘名称和资源组名称获取托管磁盘属性。 Id 属性用来将托管磁盘附加到新 VM |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 使用托管 OS 磁盘创建 VM |
+| [az disk show](/cli/azure/disk) | 使用磁盘名称和资源组名称获取托管磁盘属性。 Id 属性用来将托管磁盘附加到新 VM |
+| [az vm create](/cli/azure/vm) | 使用托管 OS 磁盘创建 VM |
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。

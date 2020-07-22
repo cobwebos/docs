@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: e4ac4f669d38f07d9fe4edbd600cc06f135fac03
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674558"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506292"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>快速入门：使用 Kotlin 和 Maven 创建第一个函数
 
@@ -25,7 +25,7 @@ ms.locfileid: "80674558"
 
 - [Java 开发人员工具包](https://aka.ms/azure-jdks)版本 8
 - [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本
 
 > [!IMPORTANT]
@@ -79,7 +79,7 @@ Maven 会要求你提供所需的值来完成项目的生成操作。 有关 gro
 [INFO] Parameter: artifactId, Value: fabrikam-function
 </pre>
 
-在此示例 `fabrikam-functions` 中，Maven 在新文件夹中创建名为 artifactId  的项目文件 项目中生成的可以运行的代码是一个简单的回显请求正文的 [HTTP 触发](/azure/azure-functions/functions-bindings-http-webhook)函数：
+在此示例 `fabrikam-functions` 中，Maven 在新文件夹中创建名为 artifactId  的项目文件 项目中生成的可以运行的代码是一个简单的回显请求正文的 [HTTP 触发](./functions-bindings-http-webhook.md)函数：
 
 ```kotlin
 class Function {

@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 347f5d84968fc2a5b04eb51206b2000d76c35895
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 966fd5a3c89fb794b270a9cce6c45c43f4da7354
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554084"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494951"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 自动缩放虚拟机规模集
 此脚本创建运行 Ubuntu 的虚拟机规模集，当 CPU 负载发生变化时，它会使用基于主机的指标自动缩放。
@@ -37,7 +37,7 @@ az group delete --name myResourceGroup
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令创建资源组、虚拟机规模集和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az group create](/cli/azure/ad/group) | 创建用于存储所有资源的资源组。 |
 | [az vmss create](/cli/azure/vmss) | 创建虚拟机规模集并将其连接到虚拟网络、子网和网络安全组。 负载均衡器也会被创建，以将流量分配到多个 VM 实例。 此命令还指定要使用的 VM 映像和管理凭据。  |
@@ -45,4 +45,4 @@ az group delete --name myResourceGroup
 | [az group delete](/cli/azure/ad/group) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/overview)。

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c82f087505c1634dd621252935c4017687340b2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b3b57cd2a2e5d5502f3865eddcdddfac67460dc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198245"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495013"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教程：通过 Azure PowerShell 对虚拟机规模集创建和使用磁盘
 
@@ -44,12 +44,12 @@ ms.locfileid: "83198245"
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 | 类型 | 常见大小 | 临时磁盘大小上限 (GiB) |
 |----|----|----|
-| [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 1600 |
-| [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 576 |
-| [内存优化](../virtual-machines/windows/sizes-memory.md) | D、E、G、M 系列 | 6144 |
-| [存储优化](../virtual-machines/windows/sizes-storage.md) | L 系列 | 5630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N 系列 | 1440 |
-| [高性能](../virtual-machines/windows/sizes-hpc.md) | A 和 H 系列 | 2000 |
+| [常规用途](../virtual-machines/sizes-general.md) | A、B、D 系列 | 1600 |
+| [计算优化](../virtual-machines/sizes-compute.md) | F 系列 | 576 |
+| [内存优化](../virtual-machines/sizes-memory.md) | D、E、G、M 系列 | 6144 |
+| [存储优化](../virtual-machines/sizes-storage.md) | L 系列 | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 1440 |
+| [高性能](../virtual-machines/sizes-hpc.md) | A 和 H 系列 | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
@@ -58,12 +58,12 @@ ms.locfileid: "83198245"
 ### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
 | 类型 | 常见大小 | 每个 VM 的最大数据磁盘数 |
 |----|----|----|
-| [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 64 |
-| [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 64 |
-| [内存优化](../virtual-machines/windows/sizes-memory.md) | D、E、G、M 系列 | 64 |
-| [存储优化](../virtual-machines/windows/sizes-storage.md) | L 系列 | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N 系列 | 64 |
-| [高性能](../virtual-machines/windows/sizes-hpc.md) | A 和 H 系列 | 64 |
+| [常规用途](../virtual-machines/sizes-general.md) | A、B、D 系列 | 64 |
+| [计算优化](../virtual-machines/sizes-compute.md) | F 系列 | 64 |
+| [内存优化](../virtual-machines/sizes-memory.md) | D、E、G、M 系列 | 64 |
+| [存储优化](../virtual-machines/sizes-storage.md) | L 系列 | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 64 |
+| [高性能](../virtual-machines/sizes-hpc.md) | A 和 H 系列 | 64 |
 
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
@@ -135,7 +135,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>准备数据磁盘
 已创建并附加到规模集 VM 实例的磁盘是原始磁盘。 将磁盘用于数据和应用程序之前，必须准备磁盘。 若要准备磁盘，需要创建分区、创建文件系统，并将其装载。
 
-若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/windows/extensions-customscript.md)。
+若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/extensions/custom-script-windows.md)。
 
 
 以下示例在每个 VM 实例上执行来自 GitHub 示例存储库的脚本，使用的是 [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) 命令，该命令用于准备所有原始的附加数据磁盘：

@@ -1,6 +1,6 @@
 ---
 title: Azure CLI Script 示例 - 加密 Linux VM
-description: Azure CLI Script 示例 - 加密 Linux VM
+description: Azure CLI 脚本示例 - 加密 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 585096f7b45a1d5396e7d59f9d54de90486a103a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6e8574218ab035cc4e8ddd694dd04f8528197528
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459910"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509692"
 ---
-# <a name="encrypt-a-linux-virtual-machine-in-azure"></a>加密 Azure 中的 Linux 虚拟机
+# <a name="encrypt-a-linux-virtual-machine-in-azure"></a>在 Azure 中加密 Linux 虚拟机
 
-此脚本创建安全的 Azure Key Vault、加密密钥、Azure Active Directory 服务主体和 Linux 虚拟机 (VM)。 然后使用来自 Key Vault 和服务主体凭据的加密密钥对 VM 进行加密。
+此脚本创建安全的 Azure 密钥保管库、加密密钥、Azure Active Directory 服务主体和 Linux 虚拟机 (VM)。 然后使用 Key Vault 和服务主体凭据中的加密密钥对 VM 进行加密。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -44,22 +44,22 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建资源组、Azure Key Vault、服务主体、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建资源组、Azure 密钥保管库、服务主体、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
-| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault) | 创建 Azure Key Vault 来存储安全的数据，例如加密密钥。 |
-| [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key) | 在 Key Vault 中创建加密密钥。 |
-| [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp) | 创建 Azure Active Directory 服务主体来安全地进行身份验证并控制对加密密钥的访问。 |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault) | 设置对 Key Vault 的权限来向服务主体授予对加密密钥的访问权限。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [az vm encryption enable](https://docs.microsoft.com/cli/azure/vm/encryption) | 使用服务主体凭据和加密密钥在 VM 上启用加密。 |
-| [az vm encryption show](https://docs.microsoft.com/cli/azure/vm/encryption) | 显示 VM 加密过程的状态。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az keyvault create](/cli/azure/keyvault) | 创建 Azure Key Vault，存储加密密钥等安全数据。 |
+| [az keyvault key create](/cli/azure/keyvault/key) | 在 Key Vault 中创建加密密钥。 |
+| [az ad sp create-for-rbac](/cli/azure/ad/sp) | 创建 Azure Active Directory 服务主体，安全地进行身份验证并控制对加密密钥的访问。 |
+| [az keyvault set-policy](/cli/azure/keyvault) | 设置对 Key Vault 的权限，授予服务主体访问加密密钥的权限。 |
+| [az vm create](/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
+| [az vm encryption enable](/cli/azure/vm/encryption) | 使用服务主体凭据和加密密钥对 VM 进行加密。 |
+| [az vm encryption show](/cli/azure/vm/encryption) | 显示 VM 加密过程的状态。 |
+| [az group delete](/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
