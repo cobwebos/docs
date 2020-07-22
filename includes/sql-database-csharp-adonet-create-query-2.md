@@ -4,12 +4,12 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bca885f9b19086302fd91d29b8ff6553b7205f28
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050313"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545054"
 ---
 ## <a name="c-program-example"></a>C# 程序示例
 
@@ -80,7 +80,7 @@ ERD 显示两个表之间的关系。 **tabEmployee.DepartmentCode** 子列中�
     View the report output here, then press any key to end the program...
     ```
 
-<a name="cs_1_connect"/>
+<a name="cs_1_connect"></a>
 
 ### <a name="connect-to-sql-database-using-adonet"></a>使用 ADO.NET 连接到 SQL 数据库
 
@@ -130,7 +130,7 @@ namespace csharp_db_test
         }
 ```
 
-<a name="cs_2_return"/>
+<a name="cs_2_return"></a>
 
 ### <a name="methods-that-return-t-sql-statements"></a>返回 T-SQL 语句的方法
 
@@ -238,7 +238,7 @@ static string Build_6_Tsql_SelectEmployees()
 }
 ```
 
-<a name="cs_3_submit"/>
+<a name="cs_3_submit"></a>
 
 ### <a name="submit-t-sql-to-the-database"></a>将 T-SQL 提交到数据库
 

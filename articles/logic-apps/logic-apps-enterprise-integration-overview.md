@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: adf15904d4490647074d6e2b46ac7e9e871dd388
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77191371"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536396"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 企业集成解决方案
 
@@ -42,7 +42,7 @@ ms.locfileid: "77191371"
 
 * 若要创建映射和架构，可以使用[适用于 Visual Studio 2015 的 Microsoft Azure 逻辑应用企业集成工具 2.0](https://aka.ms/vsmapsandschemas) 和 Visual Studio 2015。
 
-创建集成帐户并添加项目后，可以通过在 Azure 门户中创建一个逻辑应用，开始使用这些项目构建 B2B 工作流。 如果你不熟悉逻辑应用，请尝试[创建一个简单的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用这些项目，请确保先将集成帐户链接到逻辑应用。 之后，逻辑应用便可以访问集成帐户。 还可以使用 Visual Studio 或 [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) 来创建、管理和部署逻辑应用。
+创建集成帐户并添加项目后，可以通过在 Azure 门户中创建一个逻辑应用，开始使用这些项目构建 B2B 工作流。 如果你不熟悉逻辑应用，请尝试[创建一个简单的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用这些项目，请确保先将集成帐户链接到逻辑应用。 之后，逻辑应用便可以访问集成帐户。 还可以使用 Visual Studio 或 [PowerShell](/powershell/module/az.logicapp) 来创建、管理和部署逻辑应用。
 
 下面是开始构建 B2B 逻辑应用的概要步骤：
 
