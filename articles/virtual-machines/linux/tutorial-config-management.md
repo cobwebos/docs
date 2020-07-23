@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: cac17d15d792622d9a26ff7c228ce1f0ba76bbc4
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fe53f400c1e03f0f3bb9d5e85891769d58320d84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027573"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501936"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
 
 Azure [更改跟踪](../../automation/change-tracking.md)允许你轻松识别更改，[更新管理](../../automation/automation-update-management.md)允许你管理 Azure Linux VM 的操作系统更新。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 管理 Linux 更新
@@ -77,7 +77,7 @@ az vm create \
 执行验证以确定是否为该 VM 启用了更新管理。
 验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
 
-[Log Analytics](../../log-analytics/log-analytics-overview.md) 工作区用于收集由功能和服务（如更新管理）生成的数据。
+[Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区用于收集由功能和服务（如更新管理）生成的数据。
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 若要在需要更新的 VM 上执行其他操作，可使用 Azure 自动化运行针对 VM 的 Runbook，例如下载和应用更新。
 
@@ -87,8 +87,8 @@ az vm create \
 
 如果在载入过程中发现缺少下列任何先决条件，则会自动添加这些条件：
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md) 工作区
-* [自动化帐户](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区
+* [自动化帐户](../../automation/index.yml)
 * VM 上已启用[混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
 
 “更新管理”屏幕随即打开。 配置要使用的位置、Log Analytics 工作区和自动化帐户，然后选择“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
@@ -171,21 +171,21 @@ az vm create \
 
 ### <a name="track-changes"></a>跟踪更改
 
-在 VM 中的“操作”下选择“更改跟踪”。  选择“编辑设置”，此时会显示“更改跟踪”页。 选择要跟踪的设置类型，然后选择“+ 添加”以配置设置。 Linux 上的可用选项为“Linux 文件”。
+在 VM 中的“操作”下选择“更改跟踪”。 选择“编辑设置”，此时会显示“更改跟踪”页。 选择要跟踪的设置类型，然后选择“+ 添加”以配置设置。 Linux 上的可用选项为“Linux 文件”。
 
 有关更改跟踪的详细信息，请参阅[排查 VM 上的更改问题](../../automation/automation-tutorial-troubleshoot-changes.md)
 
 ### <a name="view-inventory"></a>查看清单
 
-在 VM 中的“操作”下选择“清单”。  在“软件”选项卡上有一个表，列出了已发现的软件。 可在表中查看每个软件记录的高级详细信息。 这些详细信息包括软件名称、版本、发布者和上次刷新时间。
+在 VM 中的“操作”下选择“清单”。 在“软件”选项卡上有一个表，列出了已发现的软件。 可在表中查看每个软件记录的高级详细信息。 这些详细信息包括软件名称、版本、发布者和上次刷新时间。
 
 ![查看清单](./media/tutorial-monitoring/inventory-view-results.png)
 
 ### <a name="monitor-activity-logs-and-changes"></a>监视活动日志和更改
 
-在 VM 的“更改跟踪”页中，选择“管理活动日志连接”。  此任务打开“Azure 活动日志”页。 选择“连接”，将更改跟踪连接到 VM 的 Azure 活动日志。
+在 VM 的“更改跟踪”页中，选择“管理活动日志连接”。 此任务打开“Azure 活动日志”页。 选择“连接”，将更改跟踪连接到 VM 的 Azure 活动日志。
 
-启用此设置后，导航到 VM 的“概览”页，然后选择“停止”以停止 VM。  出现提示时，选择“是”即可停止 VM。 将 VM 解除分配以后，请选择“启动”以重启 VM。
+启用此设置后，导航到 VM 的“概览”页，然后选择“停止”以停止 VM。 出现提示时，选择“是”即可停止 VM。 将 VM 解除分配以后，请选择“启动”以重启 VM。
 
 停止和启动 VM 时，会在活动日志中记录一个事件。 导航回到“更改跟踪”页。 选择页面底部的“事件”选项卡。 一段时间后，事件会显示在图表和表中。 可以选择每个事件来查看其详细信息。
 

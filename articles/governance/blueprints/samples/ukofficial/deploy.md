@@ -1,14 +1,14 @@
 ---
 title: 部署 UK OFFICIAL 和 UK NHS 蓝图示例
 description: UK OFFICIAL 和 UK NHS 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 2ac2d17c08b3f585f86d1b2d339c3c7cf52844ce
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a4512eb982943664afc8217c5332e5e3b6e62fc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037165"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521439"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>部署 UK OFFICIAL 和 UK NHS 蓝图示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "86037165"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
 
 1. 在“其他示例”下找到“UK OFFICIAL”或“UK NHS”蓝图示例，然后选择“使用此示例” 。
 

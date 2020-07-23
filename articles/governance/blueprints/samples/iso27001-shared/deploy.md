@@ -1,14 +1,14 @@
 ---
 title: 部署 ISO 27001 共享服务蓝图示例
 description: ISO 27001 共享服务蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 19e394f115c87c499f7839c6ef63921e68f4d357
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0f2fa71e56deadba1188ab0fa69898c261861eb5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044696"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521456"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>部署 ISO 27001 共享服务蓝图示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "86044696"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
 
 1. 在“其他示例”下找到“ISO 27001:共享服务”蓝图示例，然后选择“使用此示例”。
 
@@ -134,7 +134,7 @@ ms.locfileid: "86044696"
 |Key Vault 模板|资源管理器模板|Jumpbox 管理员 SSH 密钥或密码|Jumpbox 上的帐户的密钥或密码。 必须与 **Jumpbox 模板**中的相同属性值相匹配。 无默认值，且不能留空。|
 |Key Vault 模板|资源管理器模板|域管理员用户名|用于访问 Active Directory VM 以及将其他 VM 加入域的用户名。 必须与 **Active Directory 域服务模板**中的“域管理员用户”属性值相匹配。 默认值为 _domain-admin-user_。|
 |Key Vault 模板|资源管理器模板|域管理员密码|域管理员用户的密码。 无默认值，且不能留空。|
-|Key Vault 模板|资源管理器模板|AAD 对象 ID|需要访问 Key Vault 实例的帐户的 AAD 对象标识符。 无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。 使用“名称”框筛选帐户名，并选择该帐户。 在“用户配置文件”页上，选择“对象 ID”旁边的“单击以复制”图标。   |
+|Key Vault 模板|资源管理器模板|AAD 对象 ID|需要访问 Key Vault 实例的帐户的 AAD 对象标识符。 无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。 使用“名称”框筛选帐户名，并选择该帐户。 在“用户配置文件”页上，选择“对象 ID”旁边的“单击以复制”图标。  |
 |Key Vault 模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |Key Vault 模板|资源管理器模板|Key Vault SKU|指定创建的 Key Vault 的 SKU。 默认值为“高级”。|
 |Jumpbox 资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-sharedsvcs-jb-rg` 相连接可使资源组名称保持唯一。|

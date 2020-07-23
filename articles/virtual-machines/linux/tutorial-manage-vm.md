@@ -14,16 +14,16 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8e559be82fc7c3d6b25b99319785d49e30f56287
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c233ef9cfb6ded6f3d4e96b893970d4282dfc22e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459995"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526973"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理 Linux VM
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM
@@ -32,15 +32,15 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 > * 调整 VM 的大小
 > * 查看并了解 VM 状态
 
-本教程在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”  。
+本教程在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用“[az group create](https://docs.microsoft.com/cli/azure/group)”命令创建资源组。 
+使用“[az group create](/cli/azure/group)”命令创建资源组。 
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroupVM”的资源组。 
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus”  区域中创建了名为“myResourceGroupVM”  的资源组。 
 
 ```azurecli-interactive
 az group create --name myResourceGroupVM --location eastus
@@ -50,7 +50,7 @@ az group create --name myResourceGroupVM --location eastus
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](https://docs.microsoft.com/cli/azure/vm) 命令创建虚拟机。 
+使用 [az vm create](/cli/azure/vm) 命令创建虚拟机。 
 
 创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 下面的示例创建一个名为 *myVM*、运行 Ubuntu Server 的 VM。 将在该 VM 上创建名为 *azureuser* 的用户帐户，并生成 SSH 密钥（如果这些密钥在默认密钥位置 ( *~/.ssh*) 中不存在）：
 
@@ -94,9 +94,9 @@ exit
 
 ## <a name="understand-vm-images"></a>了解 VM 映像
 
-Azure 市场包括许多可用于创建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，Azure CLI 用于在市场中搜索 CentOS 映像，此映像稍后用于部署第二个虚拟机。 
+Azure 市场包括许多可用于创建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，使用 Azure CLI 在市场中搜索 CentOS 映像，此映像稍后用于部署第二个虚拟机。 
 
-若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image) 命令。
+若要查看最常用映像的列表，请使用 [az vm image list](/cli/azure/vm/image) 命令。
 
 ```azurecli-interactive 
 az vm image list --output table
@@ -147,7 +147,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 ## <a name="understand-vm-sizes"></a>了解 VM 大小
 
-虚拟机大小决定虚拟机可用计算资源（如 CPU、GPU 和内存）的数量。 需要根据预期的工作负载适当调整虚拟机的大小。 如果工作负荷增加，则可调整现有虚拟机的大小。
+虚拟机大小决定虚拟机可用计算资源（如 CPU、GPU 和内存）的数量。 需要根据预期的工作负载适当调整虚拟机的大小。 如果工作负荷增加，可调整现有虚拟机的大小。
 
 ### <a name="vm-sizes"></a>VM 大小
 
@@ -155,12 +155,12 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 | 类型                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [常规用途](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
-| [计算优化](sizes-compute.md)   | Fsv2          | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存分析。                 |
-| [存储优化](sizes-storage.md)      | Lsv2、Ls              | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
-| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 专门针对大量图形绘制和视频编辑的 VM。       |
-| [高性能](sizes-hpc.md) | H        | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 |
+| [常规用途](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
+| [计算优化](../sizes-compute.md)   | Fsv2          | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
+| [内存优化](../sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [存储优化](../sizes-storage.md)      | Lsv2、Ls              | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
+| [GPU](../sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 专门针对大量图形绘制和视频编辑的 VM。       |
+| [高性能](../sizes-hpc.md) | H        | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 |
 
 
 ### <a name="find-available-vm-sizes"></a>查找可用的 VM 大小
@@ -227,13 +227,13 @@ az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --qu
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-如果所需大小在当前群集上不可用，则需解除分配 VM，才能执行调整大小操作。 使用 [az vm deallocate]( /cli/azure/vm) 命令停止和解除分配 VM。 请注意，重新打开 VM 的电源时，可能会删除临时磁盘上的所有数据。 除非使用静态 IP 地址，否则公共 IP 地址也会更改。 
+如果所需大小在当前群集上不可用，则需解除分配 VM，然后才能执行调整大小操作。 使用 [az vm deallocate]( /cli/azure/vm) 命令停止和解除分配 VM。 请注意，重新打开 VM 的电源时，临时磁盘上的所有数据可能已删除。 除非使用静态 IP 地址，否则公共 IP 地址也会更改。 
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupVM --name myVM
 ```
 
-解除分配 VM 后，可能会发生大小调整。 
+解除分配后，可进行大小调整。 
 
 ```azurecli-interactive
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
@@ -258,7 +258,7 @@ Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的�
 | 正在停止 | 指示正在停止虚拟机。 | 
 | 已停止 | 指示虚拟机已停止。 虚拟机处于停止状态时仍会产生计算费用。  |
 | 正在解除分配 | 指示正在解除分配虚拟机。 |
-| 已解除分配 | 指示虚拟机已从监控程序中删除，但仍可在控制面板中使用。 处于“已解除分配”状态的虚拟机不会产生计算费用。 |
+| 已解除分配 | 指示虚拟机已从虚拟机监控程序中删除，但仍可在控制面板中使用。 处于“已解除分配”状态的虚拟机不会产生计算费用。 |
 | - | 指示虚拟机的电源状态未知。 |
 
 ### <a name="find-the-power-state"></a>查找电源状态
@@ -314,7 +314,7 @@ az group delete --name myResourceGroupVM --no-wait --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习 VM 创建和管理的基本知识，例如如何：
+在本教程中，你已学习 VM 创建和管理的基本知识，例如如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM
