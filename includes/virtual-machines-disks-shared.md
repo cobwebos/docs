@@ -91,7 +91,7 @@ Linux 群集可以利用群集管理器，例如 [Pacemaker](https://wiki.cluste
 
 超级磁盘提供附加限制，总共有两个限制。 因此，超级磁盘预留流可以按前面部分所述工作，也可以更精细地限制和分配性能。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="描述预订持有者、注册和其他的 "ReadOnly" 或 "读/写" 访问权限的表的图像。":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="描述预订持有者、注册和其他的 ReadOnly 或 读/写 访问权限的表的图像。":::
 
 ## <a name="performance-throttles"></a>性能限制
 
